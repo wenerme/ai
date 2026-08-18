@@ -394,8 +394,8 @@ Claude Code v2.1.195 and later also allow these by default:
 Sandbox network access requests are routed through the classifier rather than allowed by default. As of v2.1.198, the classifier reuses its verdict for a network host and port instead of re-running on every connection:
 
 * An allow is reused until new content enters the conversation, at which point that host is checked again
-* In the interactive CLI, a deny is dropped when the turn ends
-* In [non-interactive mode](/docs/en/headless) and Agent SDK sessions there is no turn boundary, so a deny is reused for the rest of the run
+* Claude Code v2.1.234 and later reuse a deny caused by the conversation outgrowing the classifier's context window until new content enters the conversation, or until [compaction](/docs/en/costs#reduce-token-usage) shrinks what the classifier reads. Claude Code then checks the host again
+* A deny that the classifier reached by evaluating the request lasts for the turn in the interactive CLI. In [non-interactive mode](/docs/en/headless) and Agent SDK sessions, Claude Code reuses that deny for the rest of the run, because those sessions have no turn boundary
 * Changing your permission mode or rules drops all cached verdicts
 
 Run `claude auto-mode defaults` to print the full rule lists as JSON. If routine actions get blocked, an administrator can add trusted repos, buckets, and services via the `autoMode.environment` setting: see [Configure auto mode](/docs/en/auto-mode-config).

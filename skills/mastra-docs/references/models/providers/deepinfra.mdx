@@ -1,11 +1,11 @@
 ---
 title: "Deep Infra | Models"
-description: "Use Deep Infra models with Mastra. 59 models available."
+description: "Use Deep Infra models with Mastra. 60 models available."
 ---
 
 # [Deep Infra logo]Deep Infra
 
-Access 59 Deep Infra models through Mastra's model router. Authentication is handled automatically using the `DEEPINFRA_API_KEY` environment variable.
+Access 60 Deep Infra models through Mastra's model router. Authentication is handled automatically using the `DEEPINFRA_API_KEY` environment variable.
 
 Learn more in the [Deep Infra documentation](https://deepinfra.com/models).
 
@@ -552,6 +552,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 2,
     "outputCost": 6
+  },
+  {
+    "model": "deepinfra/Qwen/Qwen3.8-27B",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 32768,
+    "inputCost": 0.4,
+    "outputCost": 3
   },
   {
     "model": "deepinfra/Qwen/Qwen3.8-Max",

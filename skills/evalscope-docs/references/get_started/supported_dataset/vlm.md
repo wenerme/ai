@@ -17,6 +17,7 @@ Below is the list of supported VLM benchmarks. Click on a benchmark name for det
 | `cmmmu` | [CMMMU](../../benchmarks/cmmmu.md) | `Chinese`, `Knowledge`, `MultiModal`, `QA` |
 | `cmmu` | [CMMU](../../benchmarks/cmmu.md) | `Knowledge`, `MCQ`, `MultiModal`, `QA` |
 | `common_voice_15` | [CommonVoice15](../../benchmarks/common_voice_15.md) | `Audio`, `MultiLingual`, `SpeechRecognition` |
+| `count_qa` | [CountQA](../../benchmarks/count_qa.md) | `MultiModal`, `QA`, `Reasoning` |
 | `docvqa` | [DocVQA](../../benchmarks/docvqa.md) | `Knowledge`, `MultiModal`, `QA` |
 | `emb_spatial_bench` | [EmbSpatial-Bench](../../benchmarks/emb_spatial_bench.md) | `MCQ`, `MultiModal`, `Reasoning` |
 | `erqa` | [ERQA](../../benchmarks/erqa.md) | `MCQ`, `MultiModal`, `Reasoning` |
@@ -51,6 +52,8 @@ Below is the list of supported VLM benchmarks. Click on a benchmark name for det
 | `omni_doc_bench` | [OmniDocBench](../../benchmarks/omni_doc_bench.md) | `Knowledge`, `MultiModal`, `QA` |
 | `omni_doc_bench_v1_6` | [OmniDocBench-v1.6](../../benchmarks/omni_doc_bench_v1_6.md) | `Knowledge`, `MultiModal`, `QA` |
 | `perception_bench` | [PerceptionBench](../../benchmarks/perception_bench.md) | `MultiModal`, `QA` |
+| `phyx_mc` | [PhyX-MC](../../benchmarks/phyx_mc.md) | `MCQ`, `MultiModal`, `Reasoning` |
+| `phyx_oe` | [PhyX-OE](../../benchmarks/phyx_oe.md) | `MultiModal`, `QA`, `Reasoning` |
 | `pmc_vqa` | [PMC-VQA](../../benchmarks/pmc_vqa.md) | `MCQ`, `Medical`, `MultiModal` |
 | `pope` | [POPE](../../benchmarks/pope.md) | `Hallucination`, `MultiModal`, `Yes/No` |
 | `real_world_qa` | [RealWorldQA](../../benchmarks/real_world_qa.md) | `Knowledge`, `MultiModal`, `QA` |
@@ -58,6 +61,7 @@ Below is the list of supported VLM benchmarks. Click on a benchmark name for det
 | `screenspot_pro` | [ScreenSpot-Pro](../../benchmarks/screenspot_pro.md) | `Agent`, `Grounding`, `MultiModal` |
 | `seed_bench_2_plus` | [SEED-Bench-2-Plus](../../benchmarks/seed_bench_2_plus.md) | `Knowledge`, `MCQ`, `MultiModal`, `Reasoning` |
 | `simple_vqa` | [SimpleVQA](../../benchmarks/simple_vqa.md) | `MultiModal`, `QA`, `Reasoning` |
+| `slake` | [SLAKE](../../benchmarks/slake.md) | `Medical`, `MultiModal`, `QA` |
 | `tir_bench` | [TIR-Bench](../../benchmarks/tir_bench.md) | `MultiModal`, `QA`, `Reasoning` |
 | `torgo` | [TORGO](../../benchmarks/torgo.md) | `Audio`, `SpeechRecognition` |
 | `tvbench` | [TVBench](../../benchmarks/tvbench.md) | `MCQ`, `MultiModal`, `Video` |
@@ -86,6 +90,7 @@ Below is the list of supported VLM benchmarks. Click on a benchmark name for det
 ../../benchmarks/cmmmu.md
 ../../benchmarks/cmmu.md
 ../../benchmarks/common_voice_15.md
+../../benchmarks/count_qa.md
 ../../benchmarks/docvqa.md
 ../../benchmarks/emb_spatial_bench.md
 ../../benchmarks/erqa.md
@@ -120,6 +125,8 @@ Below is the list of supported VLM benchmarks. Click on a benchmark name for det
 ../../benchmarks/omni_doc_bench.md
 ../../benchmarks/omni_doc_bench_v1_6.md
 ../../benchmarks/perception_bench.md
+../../benchmarks/phyx_mc.md
+../../benchmarks/phyx_oe.md
 ../../benchmarks/pmc_vqa.md
 ../../benchmarks/pope.md
 ../../benchmarks/real_world_qa.md
@@ -127,6 +134,7 @@ Below is the list of supported VLM benchmarks. Click on a benchmark name for det
 ../../benchmarks/screenspot_pro.md
 ../../benchmarks/seed_bench_2_plus.md
 ../../benchmarks/simple_vqa.md
+../../benchmarks/slake.md
 ../../benchmarks/tir_bench.md
 ../../benchmarks/torgo.md
 ../../benchmarks/tvbench.md

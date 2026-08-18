@@ -1,5 +1,5 @@
 ---
-description: Verify incoming JWTs to prevent replay attacks and token tampering at the edge.
+description: Verify incoming JWTs to detect token tampering and invalid tokens at the edge.
 title: JSON Web Tokens validation
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # JSON Web Tokens validation
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-JSON web tokens (JWT) are often used as part of an authentication component on many web applications. Since JWTs are crucial to identifying users and their access, ensuring the token’s integrity is important.
+JSON web tokens (JWT) are often used as part of an authentication component on many web applications. Since JWTs are crucial to identifying users and their access, ensuring the token's integrity is important.
 
-API Shield’s JWT validation stops JWT replay attacks and JWT tampering by cryptographically verifying incoming JWTs before they are passed to your API origin. JWT validation will also stop requests with expired tokens or tokens that are not yet valid.
+API Shield's JWT validation cryptographically verifies incoming JWTs before they reach your API origin. It detects tokens that are expired, tampered with, or not yet valid. You then create a rule to act on the validation results.
 
 ## Process
 
-Endpoints must be added to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/) for JWT validation to protect them.
+JWT validation has two parts: a token configuration that tells Cloudflare how to find and verify JWTs, and a rule that acts on the validation results.
 
-A JWT validation configuration has two parts: a token validation configuration that contains your JWT signer's public JSON Web Key Set (JWKS), and a JWT validation rule that specifies which hostnames and endpoints to validate.
+After you create a token configuration, Cloudflare checks every request in the zone for a JWT at the configured locations. When Cloudflare finds a JWT, it validates the token and makes the verified claims available in `http.request.jwt.claims` fields. For available fields and standard claims, refer to the [JWT validation fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/?field-category=JWT+validation) reference. You do not need a rule or an operation in [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/) for validation. Rules determine how Cloudflare acts on the results.
 
 ### Add a token validation configuration
 
@@ -38,15 +38,34 @@ Each JWT issuer typically publishes public keys (JWKS) for verification at a kno
 
 To automatically keep your JWKS up to date when your identity provider refreshes them, you can use a Worker. Refer to [Configure Workers to automatically update keys](https://developers.cloudflare.com/api-shield/security/jwt-validation/jwt-worker/) to learn more about setting up the Worker.
 
+### Act on JWT validation results
+
+For new security policies, Cloudflare generally recommends using WAF custom rules.
+
+* **[WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/)** — use these for zone-wide policies based on verified JWT claims. Custom rules can combine claims with other signals, such as [attack score](https://developers.cloudflare.com/waf/detections/attack-score/). Endpoints do not need to be in Endpoint Management.
+* **JWT validation rules** — use these when enforcement must apply only to specific operations in [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/). These rules support the `is_jwt_valid()` and `is_jwt_present()` functions, which are not available in custom rules.
+
+Cloudflare validates JWTs the same way regardless of which rule type you choose.
+
+For example, to reference a simple string claim in a rule expression, use [lookup\_json\_string()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup%5Fjson%5Fstring) with your token configuration ID and the claim name:
+
+```txt
+lookup_json_string(http.request.jwt.claims["<TOKEN_CONFIGURATION_ID>"][0], "claim_name")
+```
+
+For a complete example, refer to [Issue challenge for admin user in JWT claim based on attack score](https://developers.cloudflare.com/waf/custom-rules/use-cases/check-jwt-claim-to-protect-admin-user/). For all available fields, refer to the [JWT validation fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/?field-category=JWT+validation) reference.
+
 ### Add a JWT validation rule
+
+JWT validation rules use operations from Endpoint Management to control where Cloudflare applies their `log` or `block` action.
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. On API JWT validation rules, select **Create rule**.
 3. Add a name for your rule.
 4. Select a hostname to protect requests with saved endpoints using the rule.
-5. Deselect any endpoints that you want JWT validation to ignore (for example, an endpoint used to generate a JWT).
-6. Select the token validation configuration that corresponds to the incoming requests.
+5. Deselect any endpoints that you want to exclude from the JWT validation rule's enforcement.
+6. Select the token configuration that corresponds to the incoming requests.
 7. Choose whether to strictly enforce token presence on these endpoints.
 
   * You may not expect 100% of clients to send in JWTs with their requests. If this is the case, choose _Ignore_. JWT validation will still validate JWTs that are present.
@@ -56,7 +75,7 @@ To automatically keep your JWKS up to date when your identity provider refreshes
 
 Note
 
-Token configuration rules will automatically apply to new endpoints added to Endpoint Management if those endpoints also match the rule.
+JWT validation rules automatically apply to new endpoints added to Endpoint Management if those endpoints also match the rule's selector.
 
 ---
 
@@ -117,10 +136,7 @@ JWT validation is available for all API Shield customers. Enterprise customers w
 
 ## Limitations
 
-Currently, the following known limitations exist:
-
-1. JWT validation only operates on JWTs sent in client request headers or cookies. If your clients send in JWTs in a `POST` body, direct that feedback to your account team.
-2. JWT validation only operates for endpoints (host, method, and path) added to Endpoint Management. You can add all of your endpoints to endpoint management through [API Discovery](https://developers.cloudflare.com/api-shield/management-and-monitoring/#add-endpoints-from-api-discovery), [Schema validation](https://developers.cloudflare.com/api-shield/management-and-monitoring/#add-endpoints-from-schema-validation), [manually via the Cloudflare dashboard](https://developers.cloudflare.com/api-shield/management-and-monitoring/#add-endpoints-manually), or via the [API](https://developers.cloudflare.com/api/resources/api%5Fgateway/subresources/operations/methods/create/).
+JWT validation only operates on JWTs sent in client request headers or cookies. If your clients send JWTs in a `POST` body, contact your account team.
 
 Was this helpful?
 
@@ -128,8 +144,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/#page","headline":"JSON Web Tokens validation · Cloudflare API Shield docs","description":"Verify incoming JWTs to prevent replay attacks and token tampering at the edge.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/#page","headline":"JSON Web Tokens validation · Cloudflare API Shield docs","description":"Verify incoming JWTs to detect token tampering and invalid tokens at the edge.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
 ```

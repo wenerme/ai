@@ -58,6 +58,7 @@ Match the message you see in your terminal to a section below.
 | `Claude.ai login expired`                                                                                                                                                                     | [Authentication](#remote-control-couldnt-refresh-your-login)                                                                  |
 | `Claude.ai login was rejected — run /login, then /remote-control`                                                                                                                             | [Authentication](#remote-control-couldnt-refresh-your-login)                                                                  |
 | `OAuth token unavailable — run /login to restore Remote Control`                                                                                                                              | [Authentication](#remote-control-couldnt-refresh-your-login)                                                                  |
+| `signed-in claude.ai account or organization changed on this machine`                                                                                                                         | [Authentication](#remote-control-stopped-because-the-signed-in-account-changed)                                               |
 | `OAuth token revoked` / `OAuth token has expired`                                                                                                                                             | [Authentication](#oauth-token-revoked-or-expired)                                                                             |
 | `API Error: 401 Invalid authentication credentials`                                                                                                                                           | [Authentication](#api-error-401-invalid-authentication-credentials)                                                           |
 | `Login expired · Please run /login`                                                                                                                                                           | [Authentication](#login-expired)                                                                                              |
@@ -749,6 +750,27 @@ The middle of the message names what failed:
 * Run `/remote-control` to reconnect the session. Messages ending `run /login to restore Remote Control` don't need this step: Claude Code reconnects on its own once you sign in.
 
 Before v2.1.224, `OAuth token refresh failed — run /login to re-authenticate` read `OAuth token refresh failed — re-authenticate, then re-enable Remote Control`, and `JWT refresh failed: no OAuth token — run /login` read `no OAuth token available for recovery (code <N>)`. The `Claude.ai login expired`, `Claude.ai login was rejected`, and `OAuth token unavailable` messages were added in v2.1.225.
+
+<h3 id="remote-control-stopped-because-the-signed-in-account-changed">
+  Remote Control stopped because the signed-in account changed
+</h3>
+
+Claude Code shows this line during a [Remote Control](/docs/en/remote-control) session when you sign in to a different claude.ai account or organization on this machine. You made the switch outside the Claude Code session, for example by running `/login` in another terminal.
+
+A Remote Control session that you started while signed in through `/login` belongs to the claude.ai account and organization that were signed in at the time.
+
+```text theme={null}
+Remote Control disconnected — signed-in claude.ai account or organization changed on this machine — run /remote-control to start a session for the current account, or /login to switch back, then /remote-control
+```
+
+Claude Code stops the Remote Control session as soon as claude.ai confirms that the account or organization changed. Your local session keeps running without Remote Control.
+
+**What to do:**
+
+* Run `/remote-control` to start a new Remote Control session under the current account or organization
+* To switch back, run `/login` and sign in to the previous account or organization again. Then run `/remote-control`.
+
+Before v2.1.234, Claude Code didn't notice when you switched to a different account or organization outside the Claude Code session. Claude Code kept the Remote Control session connected until a later request to the Remote Control server failed with `Remote Control server rejected the request (HTTP 404)`. That failure could come hours after the switch.
 
 ### OAuth token revoked or expired
 

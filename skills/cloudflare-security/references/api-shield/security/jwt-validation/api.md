@@ -1,5 +1,5 @@
 ---
-description: Create token configurations and validation rules for JWT validation using the API.
+description: Configure JWT validation and act on its results using the Cloudflare API.
 title: Configure JWT validation via the API
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure JWT validation via the API
 
-Last updated Jul 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Use the Cloudflare API to configure [JWT validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/), which requires token configurations and token validation rules.
+Use the Cloudflare API to configure [JWT validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/). A token configuration defines how Cloudflare finds and validates JWTs. You then use a WAF custom rule or a token validation rule to [act on the results](#act-on-validation-results).
 
 ## Token configurations
 
-A token configuration defines a JSON Web Key Set (JWKs), which is used to validate JSON Web Tokens (JWTs) sent by clients and information on where these JWTs are sent in the request.
+A token configuration defines the JSON Web Key Set (JWKS) used to validate JSON Web Tokens (JWTs). It also defines where Cloudflare finds JWTs in requests.
 
 Note
 
@@ -26,13 +26,13 @@ A zone may have up to four token configurations.
 
 Token configurations require the following information:
 
-| Field name     | Description                                                                                                                                                 | Example                                                                                                             | Notes                                             |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
-| title          | A human-readable name for the configuration that allows you to quickly identify the purpose of the configuration.                                           | Production JWT configuration                                                                                        | Limited to 50 characters.                         |
-| description    | A human-readable description that gives more details than title which serves as a means to allow customers to better document the use of the configuration. | This configuration is used for all endpoints in endpoint management and checks the JWT in the authorization header. | Limited to 500 characters.                        |
-| token\_sources | A list of possible locations where then JWT can be found on the request.                                                                                    | http.request.headers\[\\"authorization\\"\]\[0\] http.request.cookies\[\\"Authorization\\"\]\[0\]                   | Refer to the [information](#token-sources) below. |
-| token\_type    | This specifies the type of token to validate.                                                                                                               | jwt                                                                                                                 | Only jwt is currently supported.                  |
-| credentials    | This describes the cryptographic public keys that should be used to validate JWTs. This field must be a JSON web key.                                       | Refer to the example below.                                                                                         | Refer to the [information](#credentials) below.   |
+| Field name     | Description                                                                                                                                                 | Example                                                                                           | Notes                                             |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| title          | A human-readable name for the configuration that allows you to quickly identify the purpose of the configuration.                                           | Production JWT configuration                                                                      | Limited to 50 characters.                         |
+| description    | A human-readable description that gives more details than title which serves as a means to allow customers to better document the use of the configuration. | This configuration checks the JWT in the authorization header.                                    | Limited to 500 characters.                        |
+| token\_sources | A list of possible locations where then JWT can be found on the request.                                                                                    | http.request.headers\[\\"authorization\\"\]\[0\] http.request.cookies\[\\"Authorization\\"\]\[0\] | Refer to the [information](#token-sources) below. |
+| token\_type    | This specifies the type of token to validate.                                                                                                               | jwt                                                                                               | Only jwt is currently supported.                  |
+| credentials    | This describes the cryptographic public keys that should be used to validate JWTs. This field must be a JSON web key.                                       | Refer to the example below.                                                                       | Refer to the [information](#credentials) below.   |
 
 ### Token sources
 
@@ -118,7 +118,7 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/conf
 }'
 ```
 
-The response will be in a Cloudflare `v4` response envelope and the result contains the created configuration. Note the returned ID, as it will be used to reference the token configuration when creating token validation rules using the API.
+The response will be in a Cloudflare `v4` response envelope and the result contains the created configuration. Note the returned ID. You can use it to reference the token configuration in JWT claim fields or token validation rules.
 
 ```json
 {
@@ -163,9 +163,20 @@ If API Shield defaults an omitted algorithm, the response includes the effective
 
 Inspect both `result` and `messages` to confirm the effective credentials.
 
+## Act on validation results
+
+After you create a token configuration, Cloudflare checks every request in the zone for a JWT at the configured token sources and validates any token it finds. You do not need a token validation rule or an operation in Endpoint Management for validation. Rules determine how Cloudflare acts on the results.
+
+For new security policies, Cloudflare generally recommends using WAF custom rules.
+
+* **[WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/)** — use these for zone-wide policies based on verified JWT claims. Custom rules can combine claims with other signals, such as [attack score](https://developers.cloudflare.com/waf/detections/attack-score/). Endpoints do not need to be in Endpoint Management.
+* **Token validation rules** — use these when enforcement must apply only to specific operations in Endpoint Management. These rules support the `is_jwt_valid()` and `is_jwt_present()` functions, which are not available in custom rules.
+
+To reference a custom claim in a rule expression, you can use `lookup_json_*` functions like [lookup\_json\_string()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup%5Fjson%5Fstring) with your token configuration ID and the claim name. For a complete example, refer to [Issue challenge for admin user in JWT claim based on attack score](https://developers.cloudflare.com/waf/custom-rules/use-cases/check-jwt-claim-to-protect-admin-user/). For all available fields and standard claims, refer to the [JWT validation fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/?field-category=JWT+validation) reference.
+
 ## Token validation rules
 
-Token validation rules allow you to enforce a security policy using existing token configurations.
+Token validation rules enforce a security policy using existing token configurations and operations in Endpoint Management.
 
 Token validation rules can be configured using the Cloudflare API or [dashboard](https://developers.cloudflare.com/api-shield/security/jwt-validation/#add-a-jwt-validation-rule).
 
@@ -180,11 +191,11 @@ Token validation rules can be configured using the Cloudflare API or [dashboard]
 
 ### Selectors
 
-Selectors control the scope of your token validation rule.
+Selectors control to which operations from Endpoint Management Cloudflare applies the action of a token validation rule.
 
-If you only need JWT validation on specific hostnames or subdomains of your apex domain, use the hostname in a selector to include it in the JWT validation rule.
+If you only need enforcement on specific hostnames or subdomains of your apex domain, use the hostname in a selector to include matching operations in the JWT validation rule.
 
-If you need to exclude endpoints from JWT validation that never have valid JWTs used with them (by design), such as a path and method used to establish a valid JWT in the first place, you must use the endpoint’s operation ID to exclude the endpoint in a selector.
+If you need to exclude endpoints from enforcement, use the endpoint's operation ID in a selector. For example, you can exclude an endpoint that issues or refreshes JWTs.
 
 To find the operation ID, refer to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/) or use the [Cloudflare API](https://developers.cloudflare.com/api/resources/api%5Fgateway/subresources/operations/methods/list/).
 
@@ -211,6 +222,8 @@ The following functions can be used to interact with JWT Tokens on a request:
 
 * [is\_jwt\_valid(token\_configuration\_id)](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#is%5Fjwt%5Fvalid) — Returns true if the request has a valid token according to the token configuration with the ID `token_configuration_id`.
 * [is\_jwt\_present(token\_configuration\_id)](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#is%5Fjwt%5Fpresent) — Returns true if the request has a token as configured in the token configuration with the ID `token_configuration_id`.
+
+These functions are only available in token validation rules. They are not available in WAF custom rules.
 
 ### Common use cases
 
@@ -639,7 +652,7 @@ Note
 
 The same accuracy applies as for EXP claims. As such, a token may be already regarded as valid one minute before its NBF claim in case of perfect synchronization between issuer and validator.
 
-1. The final validation result and whether a token was present at all is made available to the WAF which applies the policy’s configured action (`log`/`block`).
+1. Cloudflare makes verified claims available as `http.request.jwt.claims` fields. WAF custom rules can act on these claims. Token validation rules can act on token presence and validity.
 2. Security Analytics events in the Cloudflare dashboard for the `API Shield - Token Validation` service will explain violation reasons in the `Token validation violations` section of the event.
 
 Was this helpful?
@@ -648,8 +661,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/#page","headline":"Configure JWT validation via the API · Cloudflare API Shield docs","description":"Create token configurations and validation rules for JWT validation using the API.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/#page","headline":"Configure JWT validation via the API · Cloudflare API Shield docs","description":"Configure JWT validation and act on its results using the Cloudflare API.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
 ```
