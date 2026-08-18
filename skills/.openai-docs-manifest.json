@@ -274,10 +274,10 @@
   "openai-docs/guides/amazon-bedrock.md": {
     "url": "https://developers.openai.com/api/docs/guides/amazon-bedrock.md",
     "skill": "openai-docs",
-    "etag": "W/\"2a6511fbb7795c4111cd6a2e4bfa9792\"",
-    "lastModified": "Wed, 05 Aug 2026 01:52:31 GMT",
-    "size": 13078,
-    "updatedAt": "2026-08-05T03:25:41.864Z"
+    "etag": "W/\"b30af8a9375274a29fd348f6b77cb121\"",
+    "lastModified": "Tue, 18 Aug 2026 07:29:40 GMT",
+    "size": 12964,
+    "updatedAt": "2026-08-18T10:43:11.850Z"
   },
   "openai-docs/guides/audio.md": {
     "url": "https://developers.openai.com/api/docs/guides/audio.md",

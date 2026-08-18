@@ -117,7 +117,7 @@ export const UptimeChart = ({permaslug}) => {
   const recentDomain = getRecentDomain(buckets, ["availability", "availabilityWithoutRouting"]);
   const recentSegments = getLineSegments(buckets, "availability", recentDomain.min, recentDomain.max, recentPlotLeft, recentPlotWidth);
   const withoutRoutingSegments = hasAvailabilityWithoutRouting ? getLineSegments(buckets, "availabilityWithoutRouting", recentDomain.min, recentDomain.max, recentPlotLeft, recentPlotWidth) : [];
-  return <div className="w-full space-y-6 p-4 sm:p-6">
+  return <div className="flex w-full flex-col gap-6 p-4 sm:p-6">
       <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
         <p className="text-muted-foreground text-sm">Availability over the last 3 days</p>
         {typeof uptime.availability === "number" ? <p className="text-lg font-semibold tabular-nums">
@@ -125,7 +125,7 @@ export const UptimeChart = ({permaslug}) => {
           </p> : null}
       </div>
 
-      <div className="space-y-2">
+      <div className="flex flex-col gap-2">
         <h3 className="text-sm font-medium">Hourly availability</h3>
         <svg viewBox="0 0 720 48" className="h-12 w-full" role="img" aria-labelledby={`${chartId}-uptime-hourly-title`}>
           <title id={`${chartId}-uptime-hourly-title`}>
@@ -139,7 +139,7 @@ export const UptimeChart = ({permaslug}) => {
         </div>
       </div>
 
-      <div className="space-y-2">
+      <div className="flex flex-col gap-2">
         <h3 className="text-sm font-medium">Availability over the last 24 hours</h3>
         <svg viewBox={`0 0 ${recentViewBoxWidth} 160`} className="h-40 w-full" role="img" aria-labelledby={`${chartId}-uptime-recent-title`}>
           <title id={`${chartId}-uptime-recent-title`}>

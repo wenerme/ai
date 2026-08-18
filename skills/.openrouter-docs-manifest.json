@@ -6335,6 +6335,12 @@
     "size": 1970,
     "updatedAt": "2026-07-06T14:23:14.927Z"
   },
+  "agent-sdk/typescript/api-reference/operations/groupby.md": {
+    "url": "https://openrouter.ai/docs/agent-sdk/typescript/api-reference/operations/groupby.md",
+    "lastModified": "Tue, 18 Aug 2026 10:55:16 GMT",
+    "size": 885,
+    "updatedAt": "2026-08-18T10:55:16.086Z"
+  },
   "agent-sdk/typescript/api-reference/operations/headquarters.md": {
     "url": "https://openrouter.ai/docs/agent-sdk/typescript/api-reference/operations/headquarters.md",
     "lastModified": "Mon, 06 Jul 2026 14:23:15 GMT",
@@ -11311,9 +11317,9 @@
   },
   "cookbook/building-agents/subagent-server-tool.md": {
     "url": "https://openrouter.ai/docs/cookbook/building-agents/subagent-server-tool.md",
-    "lastModified": "Fri, 24 Jul 2026 03:50:49 GMT",
-    "size": 23666,
-    "updatedAt": "2026-07-24T03:50:49.723Z"
+    "lastModified": "Tue, 18 Aug 2026 11:03:36 GMT",
+    "size": 23546,
+    "updatedAt": "2026-08-18T11:03:36.707Z"
   },
   "cookbook/coding-agents/automatic-code-review.md": {
     "url": "https://openrouter.ai/docs/cookbook/coding-agents/automatic-code-review.md",
@@ -11527,9 +11533,9 @@
   },
   "guides/best-practices/uptime-optimization.md": {
     "url": "https://openrouter.ai/docs/guides/best-practices/uptime-optimization.md",
-    "lastModified": "Sat, 15 Aug 2026 02:07:22 GMT",
-    "size": 11422,
-    "updatedAt": "2026-08-15T02:07:22.614Z"
+    "lastModified": "Tue, 18 Aug 2026 11:03:55 GMT",
+    "size": 11452,
+    "updatedAt": "2026-08-18T11:03:55.678Z"
   },
   "guides/community/anthropic-agent-sdk.md": {
     "url": "https://openrouter.ai/docs/guides/community/anthropic-agent-sdk.md",

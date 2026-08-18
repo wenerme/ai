@@ -354,14 +354,14 @@ const tools = [
 ];
 ```
 
-| Parameter               | What it controls                                                                                                                                         |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `model`                 | The worker model. Pick the cheapest model that can handle the subtask quality you need.                                                                  |
-| `max_completion_tokens` | Output token ceiling (including reasoning). Prevents runaway generation on open-ended tasks.                                                             |
-| `temperature`           | Lower values for deterministic extraction, higher for creative drafting. Range 0 to 2.                                                                   |
-| `reasoning`             | `effort` controls reasoning depth. Set to `"low"` for fast, cheap tasks. `max_tokens` is accepted and validated but **not yet forwarded** to the worker. |
-| `instructions`          | System prompt for the worker. Shape its output format and behavior.                                                                                      |
-| `max_tool_calls`        | Range 1 to 25. Accepted and validated but **not yet enforced** on the worker call. Plan for enforcement when relying on it as a cost guard.              |
+| Parameter               | What it controls                                                                                                                          |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `model`                 | The worker model. Pick the cheapest model that can handle the subtask quality you need.                                                   |
+| `max_completion_tokens` | Output token ceiling (including reasoning). Prevents runaway generation on open-ended tasks.                                              |
+| `temperature`           | Lower values for deterministic extraction, higher for creative drafting. Range 0 to 2.                                                    |
+| `reasoning`             | `effort` controls reasoning depth. Set to `"low"` for fast, cheap tasks. Both `effort` and `max_tokens` are forwarded to the worker call. |
+| `instructions`          | System prompt for the worker. Shape its output format and behavior.                                                                       |
+| `max_tool_calls`        | Range 1 to 25. Forwarded to the worker call as `max_tool_calls`, so it acts as a hard ceiling on the worker's tool-calling steps.         |
 
 The full parameter reference is at [Subagent server tool](/docs/guides/features/server-tools/subagent).
 

@@ -150,16 +150,16 @@ Claude has two safety mechanisms: checkpoints let you undo file changes, and per
 
 **File edits are reversible.** Before Claude edits a file, it snapshots the current contents. If something goes wrong, press `Esc` twice to rewind to a previous state, or ask Claude to undo.
 
-Checkpoints are separate from git and remain available when you resume a conversation. They only cover file changes, and a restore [skips symlinked and hard-linked files](/docs/en/checkpointing#symlinked-and-hard-linked-paths-not-restored). Actions that affect remote systems (databases, APIs, deployments) can't be checkpointed, which is why Claude asks before running commands with external side effects.
+Checkpoints are separate from git and remain available when you resume a conversation. They only cover file changes, and a restore [skips symlinked and hard-linked files](/docs/en/checkpointing#symlinked-and-hard-linked-paths-not-restored). Actions that affect remote systems (databases, APIs, deployments) can't be checkpointed. You control those with your permission mode and permission rules.
 
 ### Control what Claude can do
 
-Press `Shift+Tab` to cycle through permission modes:
+Choose a permission mode to set what Claude can do without asking you. Press `Shift+Tab` to cycle through the permission modes:
 
+* **Auto**: a classifier reviews most actions in the background and blocks the risky ones instead of asking you. On Pro, Max, and Team plans, it's the [built-in starting permission mode](/docs/en/permission-modes#which-mode-a-session-starts-in) for interactive terminal and VS Code sessions
 * **Manual**: Claude asks before file edits and shell commands
 * **Accept edits**: Claude edits files and runs common filesystem commands like `mkdir` and `mv` without asking, still asks for other commands
 * **Plan**: Claude explores and proposes a plan without editing your source files
-* **Auto**: Claude evaluates all actions with background safety checks
 
 You can also allow specific commands in `.claude/settings.json` so Claude doesn't ask each time. This is useful for trusted commands like `npm test` or `git status`. Settings can be scoped from organization-wide policies down to personal preferences. See [Permissions](/docs/en/permissions) for details.
 
@@ -228,7 +228,7 @@ For visual work, paste a screenshot of the design and ask Claude to compare its 
 
 ### Explore before implementing
 
-For complex problems, separate research from coding. Use plan mode (`Shift+Tab` twice) to analyze the codebase first:
+For complex problems, separate research from coding. Press `Shift+Tab` until the status bar shows `⏸ plan mode on`, then ask Claude to analyze the codebase first:
 
 ```text theme={null}
 Read src/auth/ and understand how we handle sessions.
