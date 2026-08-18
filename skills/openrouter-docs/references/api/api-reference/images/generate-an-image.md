@@ -1396,6 +1396,9 @@ components:
         amazon-bedrock:
           additionalProperties: {}
           type: object
+        amazon-bedrock/claude-on-aws:
+          additionalProperties: {}
+          type: object
         amazon-nova:
           additionalProperties: {}
           type: object
@@ -1403,6 +1406,9 @@ components:
           additionalProperties: {}
           type: object
         anthropic:
+          additionalProperties: {}
+          type: object
+        anthropic/2:
           additionalProperties: {}
           type: object
         anyscale:

@@ -11,9 +11,9 @@ Overrides the installation source detected by `biome upgrade`.
 
 The following installation sources are supported:
 
-- `npm`: Treats Biome as installed through an npm-compatible package manager. You must update Biome using that package manager.
-- `homebrew`: Updates Biome by running `brew upgrade biome`.
-- `standalone`: Updates the standalone Biome binary directly.
+- `npm`: updates Biome by running an npm-compatible package manager command.
+- `homebrew`: updates Biome by running `brew upgrade biome`.
+- `standalone`: updates the standalone Biome binary directly.
 
 Use this when `biome upgrade` cannot correctly detect how Biome was installed, such as a Homebrew installation under a custom prefix.
 
@@ -58,11 +58,11 @@ Controls internal logging for commands such as `check`, `lint`, `format`, and `c
 The following logging levels are supported:
 
 - `none`: Disables internal logging.
-- `tracing`: Shows the most detailed logs, including span timing.
-- `debug`: Shows detailed information useful for debugging.
 - `info`: Shows general information about Biome's operation.
 - `warn`: Shows warnings and errors.
 - `error`: Shows only errors.
+- `debug`: Shows detailed information useful for debugging.
+- `tracing`: Shows the most detailed logs, including span timing.
 
 Use this to inspect Biome's internal CLI activity while checking a project.
 
@@ -100,7 +100,7 @@ BIOME_CONFIG_PATH="$HOME/.config/biome/biome.json" biome check .
 
 Number of worker threads used by `biome ci`. Defaults to automatic selection.
 
-Use this to limit CPU and memory usage in a constrained CI runner.
+Use this to limit CPU usage in a constrained CI runner.
 
 ```shell
 BIOME_THREADS=2 biome ci .
@@ -139,7 +139,7 @@ Overrides the Biome binary used by the `@biomejs/biome` npm package. If this var
 Use this to run a system-installed or locally built binary through the `@biomejs/biome` package.
 
 ```shell
-BIOME_BINARY=/usr/local/bin/biome npx @biomejs/biome check .
+BIOME_BINARY=/usr/local/bin/biome npx @biomejs/biome check
 ```
 
 ## `RUST_BACKTRACE`

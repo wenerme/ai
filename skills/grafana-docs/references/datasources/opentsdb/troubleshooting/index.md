@@ -15,7 +15,7 @@ labels:
 menuTitle: Troubleshooting
 title: Troubleshoot OpenTSDB data source issues
 weight: 500
-last_reviewed: 2026-01-28
+review_date: 2026-08-11
 ---
 
 # Troubleshoot OpenTSDB data source issues
@@ -157,7 +157,7 @@ OpenTSDB relies on HBase for data storage. Performance problems in HBase directl
 
 1. Monitor HBase region server health and compaction status.
 1. Ensure sufficient heap memory is allocated to HBase region servers.
-1. Check for region hotspots and rebalance if necessary.
+1. Check for region hot spots and redistribute regions if necessary.
 1. Refer to the [OpenTSDB troubleshooting guide](http://opentsdb.net/docs/build/html/user_guide/troubleshooting.html) for HBase-specific issues.
 
 ## Enable debug logging

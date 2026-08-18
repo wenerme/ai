@@ -20,7 +20,7 @@ Check out the [unified AI model catalog](https://developers.cloudflare.com/ai/mo
 
 Task TypesCapabilitiesAuthorsNewest first
 
-We found 83 modelsClear filters
+We found 84 modelsClear filters
 
 No models found
 
@@ -48,7 +48,7 @@ Try a different search term, or broaden your search by removing filters.
 
 [![DeepSeek logo](https://developers.cloudflare.com/_astro/deepseek.CkzAgvN6.svg)deepseek-v4-flash-0731DeepSeekText GenerationDeepSeek-V4-Flash-0731 is the official release of DeepSeek-V4-Flash, superseding the preview version, with substantially enhanced agentic capabilities. Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/workers-ai/models/deepseek-v4-flash-0731/)
 
-[![DeepSeek logo](https://developers.cloudflare.com/_astro/deepseek.CkzAgvN6.svg)deepseek-v4-pro-0813DeepSeekText Generationdeepseek-ai/deepseek-v4-pro-0813Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/workers-ai/models/deepseek-v4-pro-0813/)
+[![DeepSeek logo](https://developers.cloudflare.com/_astro/deepseek.CkzAgvN6.svg)deepseek-v4-pro-0813DeepSeekText GenerationDeepSeek V4 Pro is a high-capability reasoning model from DeepSeek with a one million token context window, built for long-horizon agentic workflows and complex, multi-step problem-solvingCloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/workers-ai/models/deepseek-v4-pro-0813/)
 
 [![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)detr-resnet-50BetaMetaObject DetectionDEtection TRansformer (DETR) model trained end-to-end on COCO 2017 object detection (118k annotated images).Cloudflare-hosted](https://developers.cloudflare.com/workers-ai/models/detr-resnet-50/)
 
@@ -80,9 +80,9 @@ Try a different search term, or broaden your search by removing filters.
 
 [agemma-sea-lion-v4-27b-itaisingaporeText GenerationSEA-LION stands for Southeast Asian Languages In One Network, which is a collection of Large Language Models (LLMs) which have been pretrained and instruct-tuned for the Southeast Asia (SEA) region.Cloudflare-hosted](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/)
 
-[Pinned![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)glm-4.7-flashZhipu AIText GenerationGLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/)
+[Pinned![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)glm-4.7-flashZhipu AIText GenerationGLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/)
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)glm-5.2Zhipu AIText GenerationZ.ai's flagship agentic coding modelCloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/workers-ai/models/glm-5.2/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)glm-5.2Zhipu AIText GenerationZ.ai's flagship agentic coding modelCloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/workers-ai/models/glm-5.2/)
 
 [Pinned![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)gpt-oss-120bOpenAIText GenerationOpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/)
 
@@ -167,6 +167,8 @@ Try a different search term, or broaden your search by removing filters.
 [![Qwen logo](https://developers.cloudflare.com/_astro/qwen.ByCZjtXU.svg)qwen3-30b-a3b-fp8QwenText GenerationQwen3 is the latest generation of large language models in Qwen series, offering a comprehensive suite of dense and mixture-of-experts (MoE) models. Built upon extensive training, Qwen3 delivers groundbreaking advancements in reasoning, instruction-following, agent capabilities, and multilingual support.Cloudflare-hostedBatchFunction callingReasoning](https://developers.cloudflare.com/workers-ai/models/qwen3-30b-a3b-fp8/)
 
 [![Qwen logo](https://developers.cloudflare.com/_astro/qwen.ByCZjtXU.svg)qwen3-embedding-0.6bQwenText EmbeddingsThe Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks. Cloudflare-hosted](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/)
+
+[![Qwen logo](https://developers.cloudflare.com/_astro/qwen.ByCZjtXU.svg)qwen3.8-27bQwenImage-Text-to-TextQwen 3.8 27B is a 27-billion-parameter instruction-tuned language model from Alibaba's Qwen family, designed for vision, efficient general-purpose text generation and agentic workloads.Cloudflare-hostedFunction callingReasoningVision](https://developers.cloudflare.com/workers-ai/models/qwen3.8-27b/)
 
 [![Qwen logo](https://developers.cloudflare.com/_astro/qwen.ByCZjtXU.svg)qwq-32bQwenText GenerationQwQ is the reasoning model of the Qwen series. Compared with conventional instruction-tuned models, QwQ, which is capable of thinking and reasoning, can achieve significantly enhanced performance in downstream tasks, especially hard problems. QwQ-32B is the medium-sized reasoning model, which is capable of achieving competitive performance against state-of-the-art reasoning models, e.g., DeepSeek-R1, o1-mini.Cloudflare-hostedLoRAReasoning](https://developers.cloudflare.com/workers-ai/models/qwq-32b/)
 

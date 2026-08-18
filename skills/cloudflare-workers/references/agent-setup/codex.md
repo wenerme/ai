@@ -44,7 +44,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 1. **Download Codex**
@@ -128,23 +128,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ## Tips

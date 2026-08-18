@@ -5904,7 +5904,7 @@ Fields:
 - Introduced in GitLab 19.2.
 - Status: Experiment.
 
-Resolves an approval gate on a paused continuous deployment rollout by recording the decision in the rollout transition journal.
+Resolves an open approval gate on a continuous deployment rollout by recording the decision in the rollout transition journal.
 
 Input type: `CdRolloutGateResolveInput`
 
@@ -6946,7 +6946,7 @@ Arguments:
 | <a id="mutation-createcontainerprotectionrepositoryrule-minimumaccesslevelfordelete"></a>`minimumAccessLevelForDelete`  | [`ContainerProtectionRepositoryRuleAccessLevel`](#containerprotectionrepositoryruleaccesslevel) | Introduced in GitLab 17.11. Status: Experiment. Minimum GitLab access level required to delete container images from the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the default minimum access level is `DEVELOPER`. Valid only when feature flag `container_registry_protected_containers_delete` is enabled. |
 | <a id="mutation-createcontainerprotectionrepositoryrule-minimumaccesslevelforpush"></a>`minimumAccessLevelForPush` | [`ContainerProtectionRepositoryRuleAccessLevel`](#containerprotectionrepositoryruleaccesslevel) | Minimum GitLab access level required to push container images to the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the default minimum access level is `DEVELOPER`. |
 | <a id="mutation-createcontainerprotectionrepositoryrule-projectpath"></a>`projectPath` | [`ID!`](#id) | Full path of the project where a protection rule is located. |
-| <a id="mutation-createcontainerprotectionrepositoryrule-repositorypathpattern"></a>`repositoryPathPattern` | [`String!`](#string) | Container repository path pattern protected by the protection rule. Must start with the project’s full path. For example: `my-project/*-prod-*`. Wildcard character `*` is allowed anywhere after the project’s full path. |
+| <a id="mutation-createcontainerprotectionrepositoryrule-repositorypathpattern"></a>`repositoryPathPattern` | [`String!`](#string) | Container repository path pattern protected by the protection rule. Must start with the project's full path. For example: `my-project/*-prod-*`. Wildcard character `*` is allowed anywhere after the project's full path. |
 
 Fields:
 
@@ -16368,7 +16368,7 @@ Arguments:
 | <a id="mutation-updatecontainerprotectionrepositoryrule-id"></a>`id` | [`ContainerRegistryProtectionRuleID!`](#containerregistryprotectionruleid) | Global ID of the container repository protection rule to be updated. |
 | <a id="mutation-updatecontainerprotectionrepositoryrule-minimumaccesslevelfordelete"></a>`minimumAccessLevelForDelete`  | [`ContainerProtectionRepositoryRuleAccessLevel`](#containerprotectionrepositoryruleaccesslevel) | Introduced in GitLab 17.11. Status: Experiment. Minimum GitLab access level required to delete container images from the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the default minimum access level is `DEVELOPER`. Valid only when feature flag `container_registry_protected_containers_delete` is enabled. |
 | <a id="mutation-updatecontainerprotectionrepositoryrule-minimumaccesslevelforpush"></a>`minimumAccessLevelForPush` | [`ContainerProtectionRepositoryRuleAccessLevel`](#containerprotectionrepositoryruleaccesslevel) | Minimum GitLab access level required to push container images to the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the default minimum access level is `DEVELOPER`. |
-| <a id="mutation-updatecontainerprotectionrepositoryrule-repositorypathpattern"></a>`repositoryPathPattern` | [`String`](#string) | Container repository path pattern protected by the protection rule. Must start with the project’s full path. For example: `my-project/*-prod-*`. Wildcard character `*` is allowed anywhere after the project’s full path. |
+| <a id="mutation-updatecontainerprotectionrepositoryrule-repositorypathpattern"></a>`repositoryPathPattern` | [`String`](#string) | Container repository path pattern protected by the protection rule. Must start with the project's full path. For example: `my-project/*-prod-*`. Wildcard character `*` is allowed anywhere after the project's full path. |
 
 Fields:
 
@@ -34475,6 +34475,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="cdrollout-application"></a>`application` | [`CdApplication`](#cdapplication) | Application the rollout belongs to. |
 | <a id="cdrollout-applicationflowdefinition"></a>`applicationFlowDefinition`  | [`CdApplicationFlowDefinition`](#cdapplicationflowdefinition) | Introduced in GitLab 19.2. Status: Experiment. Flow definition the rollout was created from. |
+| <a id="cdrollout-awaitingapproval"></a>`awaitingApproval`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Indicates whether the rollout has an open approval gate awaiting a decision, derived from its transition journal. |
 | <a id="cdrollout-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the rollout was created. |
 | <a id="cdrollout-finishedat"></a>`finishedAt` | [`Time`](#time) | Timestamp of when the rollout finished. |
 | <a id="cdrollout-id"></a>`id` | [`CdRolloutID!`](#cdrolloutid) | Global ID of the rollout. |
@@ -36670,7 +36671,7 @@ Fields:
 | <a id="containerprotectionrepositoryrule-id"></a>`id` | [`ContainerRegistryProtectionRuleID!`](#containerregistryprotectionruleid) | ID of the container repository protection rule. |
 | <a id="containerprotectionrepositoryrule-minimumaccesslevelfordelete"></a>`minimumAccessLevelForDelete`  | [`ContainerProtectionRepositoryRuleAccessLevel`](#containerprotectionrepositoryruleaccesslevel) | Introduced in GitLab 17.11. Status: Experiment. Minimum GitLab access level required to delete container images from the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the default minimum access level is `DEVELOPER`. Valid only when feature flag `container_registry_protected_containers_delete` is enabled. |
 | <a id="containerprotectionrepositoryrule-minimumaccesslevelforpush"></a>`minimumAccessLevelForPush` | [`ContainerProtectionRepositoryRuleAccessLevel`](#containerprotectionrepositoryruleaccesslevel) | Minimum GitLab access level required to push container images to the container repository. Valid values include `MAINTAINER`, `OWNER`, or `ADMIN`. If the value is `nil`, the default minimum access level is `DEVELOPER`. |
-| <a id="containerprotectionrepositoryrule-repositorypathpattern"></a>`repositoryPathPattern` | [`String!`](#string) | Container repository path pattern protected by the protection rule. Must start with the project’s full path. For example: `my-project/*-prod-*`. Wildcard character `*` is allowed anywhere after the project’s full path. |
+| <a id="containerprotectionrepositoryrule-repositorypathpattern"></a>`repositoryPathPattern` | [`String!`](#string) | Container repository path pattern protected by the protection rule. Must start with the project's full path. For example: `my-project/*-prod-*`. Wildcard character `*` is allowed anywhere after the project's full path. |
 
 ### `ContainerProtectionTagRule`
 
@@ -38441,8 +38442,7 @@ Fields:
 - Introduced in GitLab 18.2.
 - Status: Experiment.
 
-Ancestor dependency paths for a dependency. \
-      Returns `null` if `dependency_graph_graphql` feature flag is disabled.
+Ancestor dependency paths for a dependency. Returns `null` if `dependency_graph_graphql` feature flag is disabled.
 
 Returns [`DependencyPathPage`](#dependencypathpage).
 
@@ -38483,8 +38483,7 @@ Fields:
 - Introduced in GitLab 18.2.
 - Status: Experiment.
 
-Ancestor dependency paths for a dependency. \
-      Returns `null` if `dependency_graph_graphql` feature flag is disabled.
+Ancestor dependency paths for a dependency. Returns `null` if `dependency_graph_graphql` feature flag is disabled.
 
 Returns [`DependencyPathPage`](#dependencypathpage).
 
@@ -39811,7 +39810,7 @@ Fields:
 | <a id="duoworkflow-userid"></a>`userId` | [`UserID!`](#userid) | ID of the user. |
 | <a id="duoworkflow-userpermissions"></a>`userPermissions` | [`DuoWorkflowPermissions`](#duoworkflowpermissions) | Permissions of the current user for the workflow. |
 | <a id="duoworkflow-websearchenabled"></a>`webSearchEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Whether web search is enabled for the session. |
-| <a id="duoworkflow-weburl"></a>`webUrl` | [`String`](#string) | URL of the object. |
+| <a id="duoworkflow-weburl"></a>`webUrl` | [`String`](#string) | URL of the session. |
 | <a id="duoworkflow-workitem"></a>`workItem` | [`WorkItem`](#workitem) | Associated work item (issue or epic), if any. |
 | <a id="duoworkflow-workflowdefinition"></a>`workflowDefinition` | [`String`](#string) | GitLab Duo Agent Platform flow type based on its capabilities. |
 
@@ -53172,8 +53171,7 @@ Arguments:
 - Introduced in GitLab 17.10.
 - Status: Experiment.
 
-Ancestor dependency paths for a dependency used by the project. \
-          Returns `null` if `dependency_graph_graphql` feature flag is disabled.
+Ancestor dependency paths for a dependency used by the project. Returns `null` if `dependency_graph_graphql` feature flag is disabled.
 
 Returns [`DependencyPathPage`](#dependencypathpage).
 
@@ -61122,6 +61120,7 @@ Fields:
 | <a id="workitemwidgetagentplan-aiplanningenabled"></a>`aiPlanningEnabled` | [`Boolean!`](#boolean) | Indicates whether AI planning is enabled for the work item. |
 | <a id="workitemwidgetagentplan-content"></a>`content` | [`String`](#string) | Content of the agent plan. This field can only be resolved for one work item in any single request. |
 | <a id="workitemwidgetagentplan-contenthtml"></a>`contentHtml` | [`String`](#string) | GitLab Flavored Markdown rendering of `content`. This field can only be resolved for one work item in any single request. |
+| <a id="workitemwidgetagentplan-readinessscore"></a>`readinessScore`  | [`Int`](#int) | Introduced in GitLab 19.3. Status: Experiment. Readiness score of the agent plan (0-100). Null when the score is not yet available. Only available when the `workplan_score` feature flag is enabled. |
 | <a id="workitemwidgetagentplan-type"></a>`type` | [`WorkItemWidgetType`](#workitemwidgettype) | Widget type. |
 
 ### `WorkItemWidgetAiSession`
@@ -66867,10 +66866,10 @@ Risk rating levels based on score ranges.
 
 | Value | Description |
 | ----- | ----------- |
-| <a id="riskrating-critical"></a>`CRITICAL` | Critical risk (76–100). |
-| <a id="riskrating-high"></a>`HIGH` | High risk (51–75). |
-| <a id="riskrating-low"></a>`LOW` | Low risk (0–25). |
-| <a id="riskrating-medium"></a>`MEDIUM` | Medium risk (26–50). |
+| <a id="riskrating-critical"></a>`CRITICAL` | Critical risk (76-100). |
+| <a id="riskrating-high"></a>`HIGH` | High risk (51-75). |
+| <a id="riskrating-low"></a>`LOW` | Low risk (0-25). |
+| <a id="riskrating-medium"></a>`MEDIUM` | Medium risk (26-50). |
 | <a id="riskrating-unknown"></a>`UNKNOWN` | Unknown risk level. |
 
 ### `SastUiComponentSize`
@@ -70829,8 +70828,7 @@ Fields:
 - Introduced in GitLab 18.2.
 - Status: Experiment.
 
-Ancestor dependency paths for a dependency. \
-      Returns `null` if `dependency_graph_graphql` feature flag is disabled.
+Ancestor dependency paths for a dependency. Returns `null` if `dependency_graph_graphql` feature flag is disabled.
 
 Returns [`DependencyPathPage`](#dependencypathpage).
 
@@ -73757,7 +73755,8 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="workitemwidgetagentplaninput-content"></a>`content` | [`String!`](#string) | Content of the agent plan. |
+| <a id="workitemwidgetagentplaninput-content"></a>`content` | [`String`](#string) | Content of the agent plan. |
+| <a id="workitemwidgetagentplaninput-readinessscore"></a>`readinessScore`  | [`Int`](#int) | Introduced in GitLab 19.3. Status: Experiment. Readiness score of the agent plan (0-100). Null when the score is not yet available. Only available when the `workplan_score` feature flag is enabled. |
 
 ### `WorkItemWidgetAssigneesInput`
 

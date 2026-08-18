@@ -1,11 +1,11 @@
 ---
 title: "Merge Gateway | Models"
-description: "Use Merge Gateway models with Mastra. 169 models available."
+description: "Use Merge Gateway models with Mastra. 171 models available."
 ---
 
 # [Merge Gateway logo]Merge Gateway
 
-Access 169 Merge Gateway models through Mastra's model router. Authentication is handled automatically using the `MERGE_GATEWAY_API_KEY` environment variable.
+Access 171 Merge Gateway models through Mastra's model router. Authentication is handled automatically using the `MERGE_GATEWAY_API_KEY` environment variable.
 
 Learn more in the [Merge Gateway documentation](https://docs.merge.dev/merge-gateway).
 
@@ -1574,6 +1574,30 @@ for await (const chunk of stream) {
     "maxOutput": 32768,
     "inputCost": 0.15,
     "outputCost": 1.2
+  },
+  {
+    "model": "merge-gateway/qwen/qwen3-vl-235b-a22b-instruct",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 131072,
+    "maxOutput": 32768,
+    "inputCost": 0.287,
+    "outputCost": 1.147
+  },
+  {
+    "model": "merge-gateway/qwen/qwen3-vl-235b-a22b-thinking",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 32768,
+    "inputCost": 0.287,
+    "outputCost": 2.867
   },
   {
     "model": "merge-gateway/qwen/qwen3-vl-plus",

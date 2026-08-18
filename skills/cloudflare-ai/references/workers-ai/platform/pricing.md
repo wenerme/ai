@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/platform/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/platform/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -76,6 +76,7 @@ The Price in Tokens column is equivalent to the Price in Neurons column - the di
 | @cf/qwen/qwq-32b                             | $0.660 per M input tokens  $1.000 per M output tokens                                   | 60000 neurons per M input tokens  90909 neurons per M output tokens                                            |
 | @cf/qwen/qwen2.5-coder-32b-instruct          | $0.660 per M input tokens  $1.000 per M output tokens                                   | 60000 neurons per M input tokens  90909 neurons per M output tokens                                            |
 | @cf/qwen/qwen3-30b-a3b-fp8                   | $0.051 per M input tokens  $0.335 per M output tokens                                   | 4625 neurons per M input tokens  30475 neurons per M output tokens                                             |
+| @cf/qwen/qwen3.8-27b                         | $0.450 per M input tokens  $3.200 per M output tokens                                   | 40909 neurons per M input tokens  290909 neurons per M output tokens                                           |
 | @cf/openai/gpt-oss-120b                      | $0.350 per M input tokens  $0.750 per M output tokens                                   | 31818 neurons per M input tokens  68182 neurons per M output tokens                                            |
 | @cf/openai/gpt-oss-20b                       | $0.200 per M input tokens  $0.300 per M output tokens                                   | 18182 neurons per M input tokens  27273 neurons per M output tokens                                            |
 | @cf/aisingapore/gemma-sea-lion-v4-27b-it     | $0.351 per M input tokens  $0.555 per M output tokens                                   | 31876 neurons per M input tokens  50488 neurons per M output tokens                                            |
@@ -145,5 +146,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/platform/pricing/#page","headline":"Pricing · Cloudflare Workers AI docs","description":"Workers AI pricing is based on Neurons, with a free daily allocation and per-model rates.","url":"https://developers.cloudflare.com/workers-ai/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/platform/pricing/#page","headline":"Pricing · Cloudflare Workers AI docs","description":"Workers AI pricing is based on Neurons, with a free daily allocation and per-model rates.","url":"https://developers.cloudflare.com/workers-ai/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

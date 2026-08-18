@@ -789,30 +789,45 @@
     "size": 804,
     "updatedAt": "2026-06-25T05:42:13.346Z"
   },
+  "grafana-honeycomb-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-honeycomb-datasource/latest/alerting.md",
+    "size": 7396,
+    "updatedAt": "2026-08-18T02:10:01.552Z"
+  },
+  "grafana-honeycomb-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-honeycomb-datasource/latest/annotations.md",
+    "size": 6186,
+    "updatedAt": "2026-08-18T02:10:01.700Z"
+  },
   "grafana-honeycomb-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-honeycomb-datasource/latest/configure.md",
-    "size": 4693,
-    "updatedAt": "2026-06-25T05:42:13.710Z"
+    "size": 7430,
+    "updatedAt": "2026-08-18T02:10:01.854Z"
   },
   "grafana-honeycomb-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-honeycomb-datasource/latest.md",
-    "size": 5315,
-    "updatedAt": "2026-06-25T05:42:14.069Z"
+    "size": 5374,
+    "updatedAt": "2026-08-18T02:10:02.025Z"
+  },
+  "grafana-honeycomb-datasource/install.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-honeycomb-datasource/latest/install.md",
+    "size": 11552,
+    "updatedAt": "2026-08-18T02:10:02.187Z"
   },
   "grafana-honeycomb-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-honeycomb-datasource/latest/query-editor.md",
-    "size": 10194,
-    "updatedAt": "2026-06-25T05:42:14.435Z"
+    "size": 11743,
+    "updatedAt": "2026-08-18T02:10:02.366Z"
   },
   "grafana-honeycomb-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-honeycomb-datasource/latest/template-variables.md",
-    "size": 2842,
-    "updatedAt": "2026-06-25T05:42:14.789Z"
+    "size": 6032,
+    "updatedAt": "2026-08-18T02:10:02.517Z"
   },
   "grafana-honeycomb-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-honeycomb-datasource/latest/troubleshooting.md",
-    "size": 5779,
-    "updatedAt": "2026-06-25T05:42:15.154Z"
+    "size": 21332,
+    "updatedAt": "2026-08-18T02:10:02.666Z"
   },
   "grafana-ibmdb2-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-ibmdb2-datasource/latest/configure.md",
@@ -1991,8 +2006,8 @@
   },
   "index.md": {
     "url": "https://grafana.com/docs/plugins.md",
-    "size": 8893,
-    "updatedAt": "2026-07-21T06:50:52.972Z"
+    "size": 8869,
+    "updatedAt": "2026-08-18T02:10:41.894Z"
   },
   "marcusolsson-calendar-panel/basic-config.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/basic-config.md",

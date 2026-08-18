@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Claude Code
 
-Last updated Aug 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Claude Code ↗](https://docs.anthropic.com/en/docs/claude-code/overview) reads its endpoint and credentials from environment variables. If your gateway is protected by Cloudflare Access, refer to [Use with Cloudflare Access](#use-with-cloudflare-access). This configuration sends requests to AI Gateway's [Anthropic endpoint](https://developers.cloudflare.com/ai-gateway/usage/providers/anthropic/), authenticated with your Cloudflare gateway token. The Anthropic endpoint exposes the same `/v1/messages` API that Claude Code expects. When AI Gateway supplies the Anthropic credentials for you — using either an Anthropic API key you [store as a provider key (BYOK)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) or [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) credits — the `ANTHROPIC_API_KEY` that Claude Code requires can be any placeholder value.
+By pointing [Claude Code ↗](https://docs.anthropic.com/en/docs/claude-code/overview) at AI Gateway instead of a provider directly, you get observability, caching, rate limiting, and centralized credentials for Anthropic, Amazon Bedrock, or Google Vertex AI, without changing how you invoke `claude`. Claude Code reads its endpoint and credentials from environment variables. If your gateway is protected by Cloudflare Access, refer to [Use with Cloudflare Access](#use-with-cloudflare-access). This configuration sends requests to AI Gateway's [Anthropic endpoint](https://developers.cloudflare.com/ai-gateway/usage/providers/anthropic/), authenticated with your Cloudflare gateway token. The Anthropic endpoint exposes the same `/v1/messages` API that Claude Code expects. When AI Gateway supplies the Anthropic credentials for you — using either an Anthropic API key you [store as a provider key (BYOK)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) or [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) credits — the `ANTHROPIC_API_KEY` that Claude Code requires can be any placeholder value.
 
 ## Prerequisites
 
@@ -121,8 +121,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/#page","headline":"Claude Code · Cloudflare AI Gateway docs","description":"Route Claude Code through AI Gateway using your Cloudflare gateway token.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/#page","headline":"Claude Code · Cloudflare AI Gateway docs","description":"Route Claude Code through AI Gateway using your Cloudflare gateway token.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,11 +1,11 @@
 ---
 title: "Cerebras | Models"
-description: "Use Cerebras models with Mastra. 3 models available."
+description: "Use Cerebras models with Mastra. 2 models available."
 ---
 
 # [Cerebras logo]Cerebras
 
-Access 3 Cerebras models through Mastra's model router. Authentication is handled automatically using the `CEREBRAS_API_KEY` environment variable.
+Access 2 Cerebras models through Mastra's model router. Authentication is handled automatically using the `CEREBRAS_API_KEY` environment variable.
 
 Learn more in the [Cerebras documentation](https://inference-docs.cerebras.ai/models/overview).
 
@@ -60,18 +60,6 @@ for await (const chunk of stream) {
     "maxOutput": 40960,
     "inputCost": 0.35,
     "outputCost": 0.75
-  },
-  {
-    "model": "cerebras/zai-glm-4.7",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 131072,
-    "maxOutput": 40960,
-    "inputCost": 2.25,
-    "outputCost": 2.75
   }
 ]}
 />
@@ -103,7 +91,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "cerebras/zai-glm-4.7"
+      ? "cerebras/gpt-oss-120b"
       : "cerebras/gemma-4-31b";
   }
 });
