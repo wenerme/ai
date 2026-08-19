@@ -1,11 +1,11 @@
 ---
 title: "Ofox | Models"
-description: "Use Ofox models with Mastra. 103 models available."
+description: "Use Ofox models with Mastra. 107 models available."
 ---
 
 # [Ofox logo]Ofox
 
-Access 103 Ofox models through Mastra's model router. Authentication is handled automatically using the `OFOX_API_KEY` environment variable.
+Access 107 Ofox models through Mastra's model router. Authentication is handled automatically using the `OFOX_API_KEY` environment variable.
 
 Learn more in the [Ofox documentation](https://ofox.ai/docs).
 
@@ -569,6 +569,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "ofox/google/gemini-3.6-flash",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 1.5,
+    "outputCost": 7.5
+  },
+  {
+    "model": "ofox/google/gemini-3.7-flash",
     "imageInput": true,
     "audioInput": true,
     "videoInput": true,
@@ -1180,6 +1192,30 @@ for await (const chunk of stream) {
     "outputCost": 2.5
   },
   {
+    "model": "ofox/x-ai/grok-4.5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 500000,
+    "maxOutput": 65536,
+    "inputCost": 2,
+    "outputCost": 6
+  },
+  {
+    "model": "ofox/x-ai/grok-4.6",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 500000,
+    "maxOutput": 65536,
+    "inputCost": 2,
+    "outputCost": 6
+  },
+  {
     "model": "ofox/z-ai/glm-4.6",
     "imageInput": false,
     "audioInput": false,
@@ -1253,6 +1289,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "ofox/z-ai/glm-5.2",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 1.4,
+    "outputCost": 4.4
+  },
+  {
+    "model": "ofox/z-ai/glm-5.3",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,

@@ -23817,6 +23817,30 @@ Fields:
 | <a id="devopsadoptionsnapshotedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="devopsadoptionsnapshotedge-node"></a>`node` | [`DevopsAdoptionSnapshot`](#devopsadoptionsnapshot) | The item at the end of the edge. |
 
+#### `DiffConnection`
+
+The connection type for [`Diff`](#diff).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="diffconnection-edges"></a>`edges` | [`[DiffEdge]`](#diffedge) | A list of edges. |
+| <a id="diffconnection-nodes"></a>`nodes` | [`[Diff]`](#diff) | A list of nodes. |
+| <a id="diffconnection-overflow"></a>`overflow` | [`Boolean!`](#boolean) | Whether files were omitted from the page because it exceeded the diff size limits. Omitted files are absent from `nodes` and are not flagged with `collapsed` or `too_large`. |
+| <a id="diffconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `DiffEdge`
+
+The edge type for [`Diff`](#diff).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="diffedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="diffedge-node"></a>`node` | [`Diff`](#diff) | The item at the end of the edge. |
+
 #### `DiscussionConnection`
 
 The connection type for [`Discussion`](#discussion).
@@ -31396,6 +31420,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="agentplatformsessionsaggregationresponsedimensions-flowtype"></a>`flowType` | [`String`](#string) | Type of session. |
+| <a id="agentplatformsessionsaggregationresponsedimensions-project"></a>`project` | [`Project`](#project) | Project the session ran in. |
 | <a id="agentplatformsessionsaggregationresponsedimensions-user"></a>`user` | [`UserCore`](#usercore) | Session owner. |
 
 #### Fields with arguments
@@ -32706,6 +32731,7 @@ Arguments:
 | <a id="analytics-agentplatformsessions-createdeventatto"></a>`createdEventAtTo` | [`Time`](#time) | Filter by session creation timestamp. End of the range. |
 | <a id="analytics-agentplatformsessions-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
 | <a id="analytics-agentplatformsessions-flowtype"></a>`flowType` | [`[String!]`](#string) | Filter by one or many flow types. |
+| <a id="analytics-agentplatformsessions-projectid"></a>`projectId` | [`[String!]`](#string) | Filter by one or many project Global IDs. |
 | <a id="analytics-agentplatformsessions-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
 
 ##### `Analytics.contributions`
@@ -46859,6 +46885,25 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="mergerequest-diffstats-path"></a>`path` | [`String`](#string) | Specific file path. |
 
+##### `MergeRequest.diffs`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Diffs of the merge request, including per-file patch text. Files whose content is omitted because they exceed size limits are reported with the `collapsed` or `too_large` flags. When a page exceeds the diff size limits, later files are omitted entirely and the connection `overflow` field is set. Supports forward-only pagination. This field can only be resolved 10 times in any single request.
+
+Returns [`DiffConnection`](#diffconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequest-diffs-expanded"></a>`expanded` | [`Boolean`](#boolean) | Return full patch text even for files that would otherwise be collapsed for size. |
+
 ##### `MergeRequest.discussionsWithActivity`
 
 - Introduced in GitLab 19.2.
@@ -60775,6 +60820,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="wikipage-awardemoji"></a>`awardEmoji` | [`AwardEmojiConnection`](#awardemojiconnection) | List of emoji reactions associated with the wiki page. (see [Connections](#connections)) |
 | <a id="wikipage-commenters"></a>`commenters` | [`UserCoreConnection!`](#usercoreconnection) | All commenters on the noteable. (see [Connections](#connections)) |
+| <a id="wikipage-content"></a>`content` | [`String`](#string) | Content of the wiki page. |
 | <a id="wikipage-discussions"></a>`discussions` | [`DiscussionConnection!`](#discussionconnection) | All discussions on the noteable. (see [Connections](#connections)) |
 | <a id="wikipage-id"></a>`id` | [`WikiPageMetaID!`](#wikipagemetaid) | Global ID of the wiki page metadata record. |
 | <a id="wikipage-name"></a>`name` | [`String`](#string) | Name or title of the object. |

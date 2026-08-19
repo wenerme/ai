@@ -81,10 +81,10 @@ The following scopes are available for advanced search:
 
 ## Syntax
 
-Advanced search uses [`simple_query_string`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html),
+Advanced search uses [`simple_query_string`](https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-simple-query-string-query),
 which supports both exact and fuzzy queries.
 
-When you search for a user, the [`fuzzy`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-fuzzy-query.html) query is used by default.
+When you search for a user, the [`fuzzy`](https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-fuzzy-query) query is used by default.
 You can refine user search with `simple_query_string`.
 
 | Syntax | Description      | Example |

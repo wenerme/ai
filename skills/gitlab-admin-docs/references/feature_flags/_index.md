@@ -5,7 +5,7 @@ GitLab administrator: enable and disable GitLab features deployed behind feature
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed
 
-GitLab adopted feature flags strategies
+GitLab adopted feature flag strategies
 to deploy features in an early stage of development so that they can be
 incrementally rolled out.
 

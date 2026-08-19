@@ -359,6 +359,5 @@ Token counts, cost, answer text, and provider-specific usage detail keys vary by
 ## Next steps
 
 * Read the [Advisor reference](/docs/guides/features/server-tools/advisor) for exact parameters, multiple-advisor rules, memory, streaming, and API-surface details.
-* Add [Web Search](/docs/guides/features/server-tools/web-search) as an Advisor sub-tool when the reviewer needs current sources.
 * Use [Response Caching](/docs/guides/features/response-caching) for repeated stable prefixes in the executor prompt.
 * Add [Human-in-the-Loop controls](/docs/cookbook/building-agents/hitl-tools) when a second opinion should pause for a person instead of another model.

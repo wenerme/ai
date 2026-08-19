@@ -16,7 +16,7 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
 The `openrouter:advisor` server tool lets a model consult a higher-intelligence **advisor model** mid-generation. When your model hits a decision point (before committing to an approach, when it's stuck, or before declaring a task done), it invokes the tool with a `prompt`. The advisor model thinks, returns its guidance as the tool result, and your model continues, informed by the advice.
 
-Unlike a fixed model pairing, the advisor can be **any OpenRouter model**, and it can optionally run as a **sub-agent with its own tools** (for example `openrouter:web_search`). The tool returns the advisor model's response directly as the tool result. Your model writes the final answer.
+Unlike a fixed model pairing, the advisor can be **any OpenRouter model**. The tool returns the advisor model's response directly as the tool result. Your model writes the final answer.
 
 You can offer the model a choice of **several named advisors** by including multiple `openrouter:advisor` entries in the `tools` array, one per advisor (see [Multiple advisors](#multiple-advisors)). At most one entry may omit `name` to act as the default advisor.
 
@@ -98,7 +98,7 @@ The advisor model is resolved with the following precedence:
    definition does not fix one.
 3. The model from the outer API request, as a fallback.
 
-This lets you either pin the advisor model up front (`parameters.model`) or let the executing model pick it per call. The advisor tool itself can never be the advisor model.
+This lets you either pin the advisor model up front (`parameters.model`) or let the executing model pick it per call.
 
 ## When does the model invoke it?
 
@@ -116,7 +116,6 @@ Pass an optional `parameters` object on the tool entry:
       "parameters": {
         "model": "~anthropic/claude-opus-latest",
         "instructions": "You are a senior staff engineer. Be decisive.",
-        "tools": [{ "type": "openrouter:web_search" }],
         "forward_transcript": false
       }
     }
@@ -128,11 +127,9 @@ Pass an optional `parameters` object on the tool entry:
 | ----------------------- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`                  | None (default advisor) | Optional name for this advisor. The model sees one tool per named advisor (plus one default for an entry with no `name`). Names must be unique across entries. Letters, digits, spaces, underscores, and dashes; trimmed; 1–64 chars. See [Multiple advisors](#multiple-advisors). |
 | `model`                 | Outer request model    | The advisor model to consult (any OpenRouter model). See [Choosing the advisor model](#choosing-the-advisor-model).                                                                                                                                                                |
-| `tools`                 | None                   | Tools made available to the advisor sub-agent. Only OpenRouter server tools (such as `openrouter:web_search`) are supported; function tools are rejected with a `400` because the advisor has no way to execute them. The advisor may not list itself.                             |
 | `instructions`          | None                   | System instructions for the advisor sub-agent.                                                                                                                                                                                                                                     |
 | `forward_transcript`    | `false`                | When `true`, the full parent conversation is forwarded to the advisor (and the tool-call `prompt`, if given, is appended as a final user turn). When `false`, the advisor sees only the `prompt`.                                                                                  |
 | `stream`                | `false`                | When `true`, the advice streams incrementally as it is produced (Responses API only). See [Streaming advice](#streaming-advice).                                                                                                                                                   |
-| `max_tool_calls`        | Provider default       | Max tool-calling steps the advisor sub-agent may take. Only relevant when the advisor has tools. Range 1–25.                                                                                                                                                                       |
 | `max_completion_tokens` | Provider default       | Max output tokens (including reasoning) for the advisor call.                                                                                                                                                                                                                      |
 | `reasoning`             | Provider default       | Reasoning config forwarded to the advisor call, an object with optional `effort` and `max_tokens`.                                                                                                                                                                                 |
 | `temperature`           | Provider default       | Sampling temperature (`0`–`2`) forwarded to the advisor call.                                                                                                                                                                                                                      |
@@ -298,21 +295,14 @@ Replay these blocks unchanged on the assistant message of follow-up requests for
 
 Notes on the native shape:
 
-* `model` is the only advisor configuration the native shape carries. For `instructions`, sub-agent `tools`, `forward_transcript`, and the other [parameters](#parameters), use the `openrouter:advisor` form on Chat Completions or Responses.
+* `model` is the only advisor configuration the native shape carries. For `instructions`, `forward_transcript`, and the other [parameters](#parameters), use the `openrouter:advisor` form on Chat Completions or Responses.
 * `max_uses` is not honored: consultations are capped per request by OpenRouter's fixed limit, and a `max_uses` below that limit does not lower it. `caching`, `allowed_callers`, and `defer_loading` are also ignored.
 * Forcing the advisor via `tool_choice: { "type": "tool", "name": "advisor" }` is supported.
 
-## Sub-agent tools
-
-When you pass `tools`, the advisor runs as an agentic sub-agent over them before producing its advice. For example, giving the advisor `openrouter:web_search` lets it ground its guidance in fresh sources. The advisor's tool use happens inside the tool call; only its final text is returned to your model.
-
-Nested tools must be OpenRouter server tools (for example `openrouter:web_search` or `openrouter:web_fetch`). Function tools (`{ "type": "function" }`) are rejected with a `400`: the advisor call has no client-side executor, so a function tool call could never be fulfilled.
-
 ## Recursion protection
 
-The advisor tool cannot invoke itself. Two guards enforce this:
+The advisor tool cannot re-enter itself through an inner call. The recursion guard is:
 
-* A self-reference check rejects an advisor entry inside the advisor's own `tools` array (and rejects the advisor tool name as the advisor `model`).
 * Each inner advisor call carries an `x-openrouter-advisor-depth` header; the advisor tool is stripped from any sub-call, so an advisor sub-agent can never re-enter the advisor.
 
 Consultations are also capped per request to bound cost and latency.
