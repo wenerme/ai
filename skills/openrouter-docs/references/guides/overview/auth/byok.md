@@ -324,7 +324,7 @@ Learn more in the [AWS Bedrock Getting Started with the API](https://docs.aws.am
 
 ### Google Vertex API Keys
 
-To use Google Vertex AI with OpenRouter, you'll need to provide your Google Cloud service account key in JSON format. The service account key should include all standard Google Cloud service account fields, with an optional `region` field for specifying the deployment region. For [Batch API](/docs/batch-quickstart) Vertex BYOK, a `bucket` field is also required.
+To use Google Vertex AI with OpenRouter, provide your Google Cloud service account key in JSON format. The key should include the standard Google Cloud service account fields, with an optional `region` for selecting the deployment region.
 
 ```json lines theme={null}
 {
@@ -339,8 +339,7 @@ To use Google Vertex AI with OpenRouter, you'll need to provide your Google Clou
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/your-service-account@your-project.iam.gserviceaccount.com",
   "universe_domain": "googleapis.com",
-  "region": "global",
-  "bucket": "your-batch-bucket"
+  "region": "global"
 }
 ```
 
@@ -350,11 +349,32 @@ You can find these values in your Google Cloud Console:
 
 2. **region** (optional): Specify the region for your Vertex AI deployment. Use `"global"` to allow requests to run in any available region, or specify a specific region like `"us-central1"` or `"europe-west1"`.
 
-3. **bucket** (required for [Batch API](/docs/batch-quickstart) Vertex BYOK): A Cloud Storage bucket in your project used for batch job artifacts. Accepts a bucket name (`"my-batch-bucket"`) or a bucket URI (`"gs://my-batch-bucket"`, optional trailing slash). Do not include an object path (`"gs://my-batch-bucket/prefix"` is rejected). Synchronous requests ignore this field. A key without `bucket` is rejected when you submit a Vertex batch.
+### Vertex Batch storage
 
-Make sure your service account has the necessary permissions to access Vertex AI services:
+[Batch API](/docs/batch-quickstart) Vertex BYOK stages input and reads Vertex output from a bucket in your own project. The default is bucketless: omit `bucket`, and OpenRouter creates `or-batch-<project>-<region>` on the first batch in each region — uniform bucket-level access, public access prevention, 30-day object lifecycle, soft delete disabled — and reuses it afterwards. Synchronous requests ignore this field.
 
-* `aiplatform.endpoints.predict`
+For production, grant the key service account a custom IAM role at project scope with only the permissions OpenRouter uses:
+
+* `storage.buckets.create`, `storage.buckets.get`, and `storage.buckets.list`;
+* `storage.objects.create`, `storage.objects.get`, `storage.objects.list`, and `storage.objects.delete` (delete enables retry-safe overwrite of staged input).
+
+Project scope is required because OpenRouter creates the bucket and verifies project ownership. For the simplest setup, `roles/storage.admin` includes these permissions but also grants additional Storage administration capabilities.
+
+To manage storage yourself, set `bucket` to a bucket name or URI (`"my-batch-bucket"` or `"gs://my-batch-bucket"`; object paths like `"gs://my-batch-bucket/prefix"` are rejected). It must belong to the key's project. OpenRouter leaves location compatibility to Vertex for these user-managed overrides. Grant:
+
+* the key service account: object read/write, bucket get, and bucket list on the project (the list is how OpenRouter verifies ownership);
+* the project's Vertex AI service agent (`service-<PROJECT_NUMBER>@gcp-sa-aiplatform.iam.gserviceaccount.com`): object access and bucket metadata access, since Vertex reads input and writes prediction shards as this agent. Create the agent before the first batch if it does not exist yet:
+
+```bash lines theme={null}
+gcloud beta services identity create --service=aiplatform.googleapis.com --project=YOUR_PROJECT
+```
+
+Make sure your service account has the necessary Vertex AI permissions:
+
+* `aiplatform.endpoints.predict` for synchronous requests
+* `aiplatform.batchPredictionJobs.*` for Batch API jobs (OpenRouter uses `create` and `get`)
+
+The example `roles/aiplatform.user` binding below includes these permissions.
 
 Example IAM policy:
 
@@ -369,12 +389,6 @@ Example IAM policy:
     }
   ]
 }
-```
-
-For Batch, also grant `roles/storage.objectUser` on that bucket to the key SA and to Vertex's service agent (`service-<PROJECT_NUMBER>@gcp-sa-aiplatform.iam.gserviceaccount.com`). Create the agent first if it does not exist:
-
-```bash lines theme={null}
-gcloud beta services identity create --service=aiplatform.googleapis.com --project=YOUR_PROJECT
 ```
 
 Learn more in the [Google Cloud Vertex AI documentation](https://cloud.google.com/vertex-ai/docs/start/introduction-unified-platform) and [Service Account setup guide](https://cloud.google.com/iam/docs/service-accounts-create).
@@ -398,7 +412,7 @@ When debugging BYOK issues, look for these common HTTP status codes in the provi
 
 * **400 Bad Request**: The request format was invalid for the provider. Check that your model and key configuration is correct.
 * **401 Unauthorized**: Your API key is invalid or has been revoked. Verify your key in your provider's console.
-* **403 Forbidden**: Your API key doesn't have permission to access the requested resource. For AWS Bedrock, ensure your IAM policy includes the required `bedrock:InvokeModel` permissions. For Google Vertex, verify your service account has `aiplatform.endpoints.predict` permissions.
+* **403 Forbidden**: Your API key doesn't have permission to access the requested resource. For AWS Bedrock, ensure your IAM policy includes the required `bedrock:InvokeModel` permissions. For Google Vertex, verify your service account has `aiplatform.endpoints.predict` for synchronous requests and the required `aiplatform.batchPredictionJobs.*` permissions for Batch API jobs.
 * **429 Too Many Requests**: You've hit the rate limit on your provider account. Check your provider's rate limit settings or wait before retrying.
 * **500 Server Error**: The provider encountered an internal error. This is typically a temporary issue on the provider's side.
 
@@ -410,6 +424,6 @@ If you encounter 403 errors with BYOK, the issue is often related to permissions
 2. The model you're trying to access is enabled in your AWS account for the specified region.
 3. Your credentials (access key and secret) are correct and active.
 
-For Google Vertex, verify that your service account has `aiplatform.endpoints.predict` permissions.
+For Google Vertex, verify that your service account has `aiplatform.endpoints.predict` for synchronous requests and the required `aiplatform.batchPredictionJobs.*` permissions for Batch API jobs.
 
 You can test your provider permissions directly in the provider's console (AWS Console, Google Cloud Console, etc.) by attempting to invoke the model there first.

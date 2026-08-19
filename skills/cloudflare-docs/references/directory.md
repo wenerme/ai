@@ -92,6 +92,8 @@ Try a different search term, or clear your filters.
 
 [**Cloudflare Tunnel for SASE**Connect private networks and resources to Cloudflare One](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
+[C**Cloudflare Wallets**Reserve a wallet handle and give your account and its agents a stable, human-readable identity for agentic payments](https://developers.cloudflare.com/wallets/)
+
 [**Cloudflare WAN**Replace legacy WAN and securely connect any traffic source to Cloudflare's network](https://developers.cloudflare.com/cloudflare-wan/)
 
 [**Cloudflare Web Analytics**Get vital web analytics for your website](https://developers.cloudflare.com/web-analytics/)
@@ -192,7 +194,7 @@ Try a different search term, or clear your filters.
 
 [**R2**Store large amounts of unstructured data without egress fees](https://developers.cloudflare.com/r2/)
 
-[**R2 Data Catalog**Create, manage, and query Iceberg tables stored in R2](https://developers.cloudflare.com/r2/data-catalog/)
+[**R2 Data Catalog**Create, manage, and query Iceberg tables stored in R2](https://developers.cloudflare.com/r2-data-catalog/)
 
 [**R2 SQL**Cloudflare's serverless, distributed query engine for data stored in R2 Data Catalog](https://developers.cloudflare.com/r2-sql/)
 

@@ -1,11 +1,11 @@
 ---
 title: "EmpirioLabs AI | Models"
-description: "Use EmpirioLabs AI models with Mastra. 53 models available."
+description: "Use EmpirioLabs AI models with Mastra. 54 models available."
 ---
 
 # [EmpirioLabs AI logo]EmpirioLabs AI
 
-Access 53 EmpirioLabs AI models through Mastra's model router. Authentication is handled automatically using the `EMPIRIOLABS_API_KEY` environment variable.
+Access 54 EmpirioLabs AI models through Mastra's model router. Authentication is handled automatically using the `EMPIRIOLABS_API_KEY` environment variable.
 
 Learn more in the [EmpirioLabs AI documentation](https://docs.empiriolabs.ai).
 
@@ -173,6 +173,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "empiriolabs/glm-5-2",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 1.4,
+    "outputCost": 4.4
+  },
+  {
+    "model": "empiriolabs/glm-5-3",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,

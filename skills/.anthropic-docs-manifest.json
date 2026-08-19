@@ -326,8 +326,8 @@
   "anthropic-docs/build-with-claude/prompt-caching.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
     "skill": "anthropic-docs",
-    "size": 157198,
-    "updatedAt": "2026-08-14T02:34:41.167Z"
+    "size": 153975,
+    "updatedAt": "2026-08-19T10:40:31.343Z"
   },
   "anthropic-docs/build-with-claude/mid-conversation-system-messages.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/mid-conversation-system-messages",
