@@ -21,6 +21,7 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 `xai/grok-4.5`
 
 * Third-party
+* Zero data retention
 
 xAI's Grok 4.5, a frontier model built for coding, agentic tasks, and knowledge work. Accepts text and image inputs, and supports function calling, structured outputs, and configurable reasoning effort (low, medium, high).
 
@@ -29,6 +30,7 @@ xAI's Grok 4.5, a frontier model built for coding, agentic tasks, and knowledge 
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 500,000 tokens                                                                                                 |
 | Terms and License                                                                   | [link ↗](https://x.ai/legal/terms-of-service-enterprise)                                                       |
 | More information                                                                    | [link ↗](https://docs.x.ai/developers/models/grok-4.5)                                                         |
+| Zero data retention                                                                 | Yes                                                                                                            |
 | Request formats                                                                     | Chat Completions                                                                                               |
 | Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.5) |
 
@@ -10056,7 +10058,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-4.5/#page","headline":"Grok 4.5 (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok 4.5, a frontier model built for coding, agentic tasks, and knowledge work. Accepts text and image inputs, and supports function calling, structured outputs, and configurable reasoning effort (low, medium, high).","url":"https://developers.cloudflare.com/ai/models/xai/grok-4.5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

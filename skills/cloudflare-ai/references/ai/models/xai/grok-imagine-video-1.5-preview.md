@@ -21,14 +21,16 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 `xai/grok-imagine-video-1.5-preview`
 
 * Third-party
+* Zero data retention
 
 xAI's next-generation video generation model. Generates, edits, and extends videos from text and image inputs. Supports multiple aspect ratios and resolutions with improved quality over the previous generation.
 
-| Model Info        |                                                                                                                                      |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| Terms and License | [link ↗](https://x.ai/legal/terms-of-service)                                                                                        |
-| More information  | [link ↗](https://docs.x.ai/developers/models/grok-imagine-video)                                                                     |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-imagine-video-1.5-preview) |
+| Model Info          |                                                                                                                                      |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Terms and License   | [link ↗](https://x.ai/legal/terms-of-service)                                                                                        |
+| More information    | [link ↗](https://docs.x.ai/developers/models/grok-imagine-video)                                                                     |
+| Zero data retention | Yes                                                                                                                                  |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-imagine-video-1.5-preview) |
 
 ## Usage
 
@@ -134,7 +136,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/#page","headline":"Grok Imagine Video 1.5 Preview (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's next-generation video generation model. Generates, edits, and extends videos from text and image inputs. Supports multiple aspect ratios and resolutions with improved quality over the previous generation.","url":"https://developers.cloudflare.com/ai/models/xai/grok-imagine-video-1.5-preview/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -77,17 +77,129 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Parameters
 
-▶Option 1{}
+Schema variant
 
-object
+Text to VideoImage to VideoVideo Continuation
 
-▶Option 2{}
+mode
 
-object
+`string`requiredconst: t2v
 
-▶Option 3{}
+prompt
 
-object
+`string`requiredminLength: 1Free-form prompt describing the video.
+
+aspect\_ratio
+
+`string`enum: auto, 21:9, 2:1, 16:9, 4:3, 1:1, 3:4, 9:16Output aspect ratio. \`auto\` (default) picks one from the prompt and any references.
+
+▶duration
+
+`one of`
+
+resolution
+
+`string`enum: hd, fhd\`hd\` (default) or \`fhd\` for a higher-resolution result finished by the video upsampler.
+
+generate\_audio
+
+`boolean`Generate synchronized audio alongside the video. Defaults to true.
+
+safety\_tolerance
+
+`integer`minimum: 0maximum: 4Tolerance for input/output harm moderation, 0 (strictest) to 4\. Defaults to 2\. Sexual content is capped at level 3 and hate content at level 2 regardless of the requested tolerance; requests with conditioning media are capped at level 2.
+
+draft
+
+`boolean`Generate a fast, low-cost preview instead of a final render, at a reduced flat price. Only available at hd resolution.
+
+mode
+
+`string`requiredconst: i2v
+
+prompt
+
+`string`requiredminLength: 1Free-form prompt describing the video.
+
+▶keyframes
+
+`one of`required
+
+aspect\_ratio
+
+`string`enum: auto, 21:9, 2:1, 16:9, 4:3, 1:1, 3:4, 9:16Output aspect ratio. \`auto\` (default) picks one from the prompt and any references.
+
+▶duration
+
+`one of`
+
+resolution
+
+`string`enum: hd, fhd\`hd\` (default) or \`fhd\` for a higher-resolution result finished by the video upsampler.
+
+generate\_audio
+
+`boolean`Generate synchronized audio alongside the video. Defaults to true.
+
+safety\_tolerance
+
+`integer`minimum: 0maximum: 4Tolerance for input/output harm moderation, 0 (strictest) to 4\. Defaults to 2\. Sexual content is capped at level 3 and hate content at level 2 regardless of the requested tolerance; requests with conditioning media are capped at level 2.
+
+draft
+
+`boolean`Generate a fast, low-cost preview instead of a final render, at a reduced flat price. Only available at hd resolution.
+
+mode
+
+`string`requiredconst: v2v
+
+prompt
+
+`string`requiredminLength: 1Free-form prompt describing the video.
+
+start\_video
+
+`string`requiredThe video to continue: an HTTPS URL or base64 mp4 (<= 50MB, <= 15s). The generated clip carries on from its final frames.
+
+aspect\_ratio
+
+`string`enum: auto, 21:9, 2:1, 16:9, 4:3, 1:1, 3:4, 9:16Output aspect ratio. \`auto\` (default) picks one from the prompt and any references.
+
+▶duration
+
+`one of`
+
+resolution
+
+`string`enum: hd, fhd\`hd\` (default) or \`fhd\` for a higher-resolution result finished by the video upsampler.
+
+generate\_audio
+
+`boolean`Generate synchronized audio alongside the video. Defaults to true.
+
+safety\_tolerance
+
+`integer`minimum: 0maximum: 4Tolerance for input/output harm moderation, 0 (strictest) to 4\. Defaults to 2\. Sexual content is capped at level 3 and hate content at level 2 regardless of the requested tolerance; requests with conditioning media are capped at level 2.
+
+draft
+
+`boolean`Generate a fast, low-cost preview instead of a final render, at a reduced flat price. Only available at hd resolution.
+
+video
+
+`string`format: uriSigned URL to the generated mp4 (24fps, with audio by default). Expires \~2 hours after ready — download promptly.
+
+draft\_cache
+
+`string`Draft-mode cache bundle URL, only present for draft: true requests.
+
+video
+
+`string`format: uriSigned URL to the generated mp4 (24fps, with audio by default). Expires \~2 hours after ready — download promptly.
+
+draft\_cache
+
+`string`Draft-mode cache bundle URL, only present for draft: true requests.
 
 video
 
@@ -109,7 +221,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/black-forest-labs/flux-3-video/#page","headline":"FLUX 3 Video (Black Forest Labs) · Cloudflare AI docs · Cloudflare AI docs","description":"FLUX 3 Video is Black Forest Labs' video generation model. It generates video from a text prompt (t2v), animates one or more reference images (i2v), or continues an existing clip (v2v), with synchronized audio, up to fhd resolution, and 5-20 second durations.","url":"https://developers.cloudflare.com/ai/models/black-forest-labs/flux-3-video/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Reserved IP addresses
 
-Last updated Aug 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare reserves several IPv4 and IPv6 ranges for internal routing and service functionality. Most of these ranges are drawn from the CGNAT address space (`100.64.0.0/10`). [Gateway initial resolved IPs](#gateway-initial-resolved-ips) are the exception, using a public Cloudflare-owned range by default. To avoid routing conflicts, your Cloudflare Tunnel, Cloudflare Mesh, or WAN routes should not include subsets of these reserved ranges. Broader routes that contain a reserved range, such as `0.0.0.0/0`, are unaffected because longest-prefix match ensures the reserved ranges still take priority.
 
@@ -83,7 +83,7 @@ For deployments that use the [Cloudflare One Client](https://developers.cloudfla
 
 In **Exclude IPs and domains** mode, the Cloudflare One Client excludes the CGNAT range (`100.64.0.0/10`) from its routing by default. You must delete the reserved IP ranges that fall within CGNAT space from your Split Tunnels exclude list, or the associated features will stop working.
 
-[Gateway initial resolved IPs](#gateway-initial-resolved-ips) are the exception: the default range (`172.64.128.0/20`) is public Cloudflare address space, not CGNAT, so it is **not** excluded by default in Exclude mode — no Split Tunnel changes are required for this range. This only applies if you configured a custom initial resolved IP range within CGNAT space. In that case, treat it the same as the other CGNAT-based ranges.
+[Gateway initial resolved IPs](#gateway-initial-resolved-ips) are the exception: the default range (`172.64.128.0/20`) is public Cloudflare address space, not CGNAT, so it is **not** excluded by default in Exclude mode. The Cloudflare One Client also automatically removes this range, along with the entire `2606:4700:0cf1::/48` IPv6 range (which also covers [device IPs](#device-ips) and [Cloudflare source IPs](#cloudflare-source-ips) on IPv6), from any exclusions you configure — refer to [Automatically managed ranges](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#automatically-managed-ranges). No Split Tunnel changes are required for these ranges. This only applies to the default IPv4 range: if you configured a custom initial resolved IP range within CGNAT space, treat it the same as the other CGNAT-based ranges below.
 
 Cloudflare recommends adding back the IPs that are not explicitly used for Cloudflare One services. This reduces the risk of conflicts with existing private network configurations that may use CGNAT address space.
 
@@ -95,7 +95,7 @@ Calculate
 
 ### Include mode
 
-In **Include IPs and domains** mode, the Cloudflare One Client sends only traffic for the included routes to Cloudflare. You must explicitly add the reserved IP ranges that your deployment depends on. For example, if you use [hostname routing or egress policy host selectors](#gateway-initial-resolved-ips), add `172.64.128.0/20` (or your custom IPv4 range) and `2606:4700:0cf1:4000::/64` to your Split Tunnels include list.
+In **Include IPs and domains** mode, the Cloudflare One Client sends only traffic for the included routes to Cloudflare. You must explicitly add the reserved IP ranges that your deployment depends on, except the default [Gateway initial resolved IP range](#gateway-initial-resolved-ips) (`172.64.128.0/20`) and the entire `2606:4700:0cf1::/48` IPv6 range (which also covers [device IPs](#device-ips) and [Cloudflare source IPs](#cloudflare-source-ips) on IPv6) — the Cloudflare One Client automatically includes these. Refer to [Automatically managed ranges](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#automatically-managed-ranges) for details. If you use [hostname routing or egress policy host selectors](#gateway-initial-resolved-ips) with a custom IPv4 initial resolved IP range, add that custom range to your Split Tunnels include list.
 
 Was this helpful?
 
@@ -106,5 +106,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#page","headline":"Reserved IP addresses · Cloudflare One docs","description":"Reference information for Reserved IP addresses in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv4","IPv6"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#page","headline":"Reserved IP addresses · Cloudflare One docs","description":"Reference information for Reserved IP addresses in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv4","IPv6"]}
 ```

@@ -12,13 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Worker script
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you have both static assets and a Worker script configured, Cloudflare will first attempt to serve static assets if one matches the incoming request. You can read more about how we match assets in the [HTML handling docs](https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/).
 
 If an appropriate static asset if not found, Cloudflare will invoke your Worker script.
 
 This allows you to easily combine together these two features to create powerful applications (e.g. a [full-stack application](https://developers.cloudflare.com/workers/static-assets/routing/full-stack-application/), or a [Single Page Application (SPA)](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/) or [Static Site Generation (SSG) application](https://developers.cloudflare.com/workers/static-assets/routing/static-site-generation/) with an API).
+
+## Cloudflare Access context
+
+Note
+
+When a Worker has Static Assets, the internal assets router does not pass `ctx.access` to the user Worker. Access still protects the Worker and its assets, but `ctx.access` is unavailable to the user Worker. For more information, refer to [ctx.access limitations](https://developers.cloudflare.com/workers/configuration/cloudflare-access/#ctxaccess-limitations).
 
 ## Run your Worker script first
 
@@ -36,7 +42,7 @@ If you need to always run your Worker script before serving static assets (for e
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-18",
 	"main": "./worker/index.ts",
 	"assets": {
 		"directory": "./dist/",
@@ -49,7 +55,7 @@ If you need to always run your Worker script before serving static assets (for e
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-18"
 main = "./worker/index.ts"
 
 [assets]
@@ -120,7 +126,7 @@ You can also configure selective Worker-first routing using an array of route pa
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-18",
 	"main": "./worker/index.ts",
 	"assets": {
 		"directory": "./dist/",
@@ -134,7 +140,7 @@ You can also configure selective Worker-first routing using an array of route pa
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-18"
 main = "./worker/index.ts"
 
 [assets]
@@ -200,8 +206,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/#page","headline":"Worker script · Cloudflare Workers docs","description":"How the presence of a Worker script influences static asset routing and the related configuration options.","url":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/#page","headline":"Worker script · Cloudflare Workers docs","description":"How the presence of a Worker script influences static asset routing and the related configuration options.","url":"https://developers.cloudflare.com/workers/static-assets/routing/worker-script/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

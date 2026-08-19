@@ -1,12 +1,12 @@
 ---
 title: "Seedance 2.5: 오디오가 포함된 AI 비디오 생성"
 description: "ComfyUI에서 Seedance 2.5를 사용하여 동기화된 오디오, 멀티모달 참조 제어, 정밀한 편집 기능으로 30초 비디오를 생성하세요"
-translationSourceHash: 6a9e65e4
+translationSourceHash: 491ca89c
 translationFrom: tutorials/partner-nodes/bytedance/seedance-2-5.mdx
 translationBlockHashes:
   "_intro": dc2235cc
   "Key capabilities": fa1f654f
-  "Available workflows": 7b9a45db
+  "Available workflows": 076944b5
   "Get started": 30f9b70a
 ---
 
@@ -27,7 +27,7 @@ Seedance 2.5는 2026년 7월 31일에 출시된 ByteDance의 차세대 비디오
 
 ### 텍스트 기반 비디오 생성 (T2V)
 
-텍스트 프롬프트에서 동기화된 사운드와 음악이 포함된 30초 시네마틱 비디오를 생성합니다.
+텍스트 프롬프트에서 동기화된 사운드와 음악이 포함된 30초 시네마틱 비디오를 생성합니다. 노드는 480p, 720p, 1080p 출력 해상도를 지원합니다.
 
 <video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_seedance2_5_t2v.mp4"></video>
 
@@ -36,6 +36,36 @@ Seedance 2.5는 2026년 7월 31일에 출시된 ByteDance의 차세대 비디오
   
   
     워크플로 JSON을 다운로드합니다.
+  
+
+이 워크플로에는 전용 1080p 버전도 있습니다:
+
+  
+    Comfy Cloud에서 1080p 텍스트 기반 비디오 생성 워크플로를 즉시 사용해 보세요.
+  
+  
+    워크플로 JSON을 다운로드하세요.
+  
+
+### 이미지 기반 비디오 생성 (I2V)
+
+단일 이미지를 동기화된 사운드, 음악, 대화가 포함된 1080p 비디오 클립으로 변환합니다. 이 워크플로는 최대 30초, 모든 화면 비율의 클립을 지원하며 입력은 단일 이미지입니다.
+
+<video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_seedance2_5_i2v_1080p.mp4"></video>
+
+  
+    Comfy Cloud에서 이미지 기반 비디오 생성 워크플로를 즉시 사용해 보세요.
+  
+  
+    워크플로 JSON을 다운로드하세요.
+  
+
+입력 자료
+
+워크플로를 사용해 보려면 다음 샘플 입력 이미지를 다운로드하세요:
+
+  
+    샘플 입력 이미지 다운로드
   
 
 ### 첫/마지막 프레임 기반 비디오 생성 (FLF2V)

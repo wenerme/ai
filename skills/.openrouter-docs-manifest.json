@@ -6103,9 +6103,9 @@
   },
   "agent-sdk/typescript/api-reference/operations/deleteworkspacerequest.md": {
     "url": "https://openrouter.ai/docs/agent-sdk/typescript/api-reference/operations/deleteworkspacerequest.md",
-    "lastModified": "Thu, 13 Aug 2026 02:47:38 GMT",
-    "size": 3775,
-    "updatedAt": "2026-08-13T02:47:38.357Z"
+    "lastModified": "Wed, 19 Aug 2026 01:59:54 GMT",
+    "size": 3782,
+    "updatedAt": "2026-08-19T01:59:54.792Z"
   },
   "agent-sdk/typescript/api-reference/operations/document.md": {
     "url": "https://openrouter.ai/docs/agent-sdk/typescript/api-reference/operations/document.md",
@@ -6901,9 +6901,9 @@
   },
   "agent-sdk/typescript/api-reference/workspaces.md": {
     "url": "https://openrouter.ai/docs/agent-sdk/typescript/api-reference/workspaces.md",
-    "lastModified": "Thu, 13 Aug 2026 02:48:49 GMT",
-    "size": 35873,
-    "updatedAt": "2026-08-13T02:48:49.287Z"
+    "lastModified": "Wed, 19 Aug 2026 02:01:14 GMT",
+    "size": 35874,
+    "updatedAt": "2026-08-19T02:01:14.639Z"
   },
   "agent-sdk/typescript/errors/badgatewayresponseerror.md": {
     "url": "https://openrouter.ai/docs/agent-sdk/typescript/errors/badgatewayresponseerror.md",
@@ -10087,9 +10087,9 @@
   },
   "api/api-reference/betaanalytics/query-analytics-data.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/betaanalytics/query-analytics-data.md",
-    "lastModified": "Sat, 15 Aug 2026 02:05:19 GMT",
-    "size": 22908,
-    "updatedAt": "2026-08-15T02:05:19.542Z"
+    "lastModified": "Wed, 19 Aug 2026 02:05:46 GMT",
+    "size": 22994,
+    "updatedAt": "2026-08-19T02:05:46.862Z"
   },
   "api/api-reference/byok/create-a-byok-provider-credential.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/byok/create-a-byok-provider-credential.md",
@@ -11521,9 +11521,9 @@
   },
   "guides/best-practices/prompt-caching.md": {
     "url": "https://openrouter.ai/docs/guides/best-practices/prompt-caching.md",
-    "lastModified": "Thu, 13 Aug 2026 02:55:45 GMT",
-    "size": 27081,
-    "updatedAt": "2026-08-13T02:55:45.530Z"
+    "lastModified": "Wed, 19 Aug 2026 02:08:19 GMT",
+    "size": 27110,
+    "updatedAt": "2026-08-19T02:08:19.452Z"
   },
   "guides/best-practices/reasoning-tokens.md": {
     "url": "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens.md",
@@ -11614,6 +11614,12 @@
     "lastModified": "Mon, 06 Jul 2026 14:30:34 GMT",
     "size": 1102,
     "updatedAt": "2026-07-06T14:30:34.760Z"
+  },
+  "guides/community/render.md": {
+    "url": "https://openrouter.ai/docs/guides/community/render.md",
+    "lastModified": "Wed, 19 Aug 2026 02:08:28 GMT",
+    "size": 14199,
+    "updatedAt": "2026-08-19T02:08:28.925Z"
   },
   "guides/community/replit.md": {
     "url": "https://openrouter.ai/docs/guides/community/replit.md",

@@ -192,7 +192,7 @@ kubectl exec -it -c toolbox <toolbox-pod-name> bash
 gitlab-rake gitlab:cleanup:list_orphan_job_artifact_final_objects
 ```
 
-When the command complete, copy the file out of the session onto persistent storage.
+When the command completes, copy the file out of the session onto persistent storage.
 
 The Rake task has some additional features that apply to all types of GitLab deployment:
 
@@ -249,7 +249,7 @@ kubectl exec -it -c toolbox <toolbox-pod-name> bash
 gitlab-rake gitlab:cleanup:delete_orphan_job_artifact_final_objects
 ```
 
-- When the command complete, copy the file out of the session onto persistent storage.
+- When the command completes, copy the file out of the session onto persistent storage.
 
 The following applies to all types of GitLab deployment:
 

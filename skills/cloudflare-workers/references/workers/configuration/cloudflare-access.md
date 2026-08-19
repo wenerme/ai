@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Access
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/cloudflare-access/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/cloudflare-access/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Cloudflare Access, you can restrict who is authorized to access your application. You decide who is approved, and every request is checked before your Worker runs. Approved visitors are let through, while everyone else is shown a login page or blocked.
 
@@ -207,7 +207,7 @@ For advanced policy configuration, such as multiple identity providers, device p
 
 ## Read authenticated user identity with ctx.access
 
-Every time Cloudflare Access authenticates a request, your Worker can read the signed-in user's identity — including email, groups, device posture, and [more identity fields](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/#user-identity) — directly through `ctx.access`. No extra configuration or JWT parsing required.
+When Cloudflare Access authenticates a request that directly invokes your Worker, the Worker can read the signed-in user's identity — including email, groups, device posture, and [more identity fields](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/#user-identity) — through `ctx.access`. No extra configuration or JWT parsing is required.
 
 Use this to personalize responses, enforce fine-grained permissions, or log activity per user.
 
@@ -242,6 +242,18 @@ export default {
 	},
 };
 ```
+
+### `ctx.access` limitations
+
+Note
+
+`ctx.access` applies only to the Worker invocation authenticated by Access. Cloudflare Access does not propagate `ctx.access` through [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) HTTP requests or remote procedure call (RPC) invocations. The downstream Worker does not receive the caller's Access context.
+
+If the caller instead sends a `fetch()` subrequest to an Access-protected hostname with valid [service token headers](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) or a valid [CF\_Authorization cookie](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/), Access evaluates the new request and creates a `ctx.access` object for the downstream Worker. This is a newly authenticated context, not context propagated from the caller.
+
+Workers with [Static Assets](https://developers.cloudflare.com/workers/static-assets/) execute behind an internal router Worker. Access still protects the application and its assets. However, the router does not pass `ctx.access` to the user Worker.
+
+The Cloudflare Vite plugin can add `assets` to the generated deployment configuration when the input Wrangler configuration omits it. Frameworks that use the plugin, including TanStack Start, can therefore be affected even when their source configuration does not declare Static Assets.
 
 ## Test ctx.access locally
 
@@ -346,5 +358,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/cloudflare-access/#page","headline":"Cloudflare Access · Cloudflare Workers docs","description":"Require sign-in before visitors can reach Cloudflare Workers, preview deployments, or all Workers in an account.","url":"https://developers.cloudflare.com/workers/configuration/cloudflare-access/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/cloudflare-access/#page","headline":"Cloudflare Access · Cloudflare Workers docs","description":"Require sign-in before visitors can reach Cloudflare Workers, preview deployments, or all Workers in an account.","url":"https://developers.cloudflare.com/workers/configuration/cloudflare-access/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

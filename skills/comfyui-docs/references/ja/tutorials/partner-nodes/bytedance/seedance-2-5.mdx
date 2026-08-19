@@ -1,12 +1,12 @@
 ---
 title: "Seedance 2.5 - オーディオ付きAIビデオ生成"
 description: "ComfyUIでSeedance 2.5を使用して、同期オーディオ、マルチモーダル参照制御、精密な編集に対応した30秒のビデオを生成します"
-translationSourceHash: 6a9e65e4
+translationSourceHash: 491ca89c
 translationFrom: tutorials/partner-nodes/bytedance/seedance-2-5.mdx
 translationBlockHashes:
   "_intro": dc2235cc
   "Key capabilities": fa1f654f
-  "Available workflows": 7b9a45db
+  "Available workflows": 076944b5
   "Get started": 30f9b70a
 ---
 
@@ -27,7 +27,7 @@ Seedance 2.5 は、2026年7月31日にリリースされた ByteDance の新世�
 
 ### テキストから動画生成（T2V）
 
-テキストプロンプトから、同期されたサウンドと音楽を備えた30秒のシネマティックなビデオを生成します。
+テキストプロンプトから、同期されたサウンドと音楽を備えた30秒のシネマティックなビデオを生成します。ノードは480p、720p、1080pの出力解像度に対応しています。
 
 <video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_seedance2_5_t2v.mp4"></video>
 
@@ -36,6 +36,36 @@ Seedance 2.5 は、2026年7月31日にリリースされた ByteDance の新世�
   
   
     ワークフローJSONをダウンロードします。
+  
+
+このワークフローには専用の1080pバージョンもあります：
+
+  
+    Comfy Cloudで1080pテキストから動画生成ワークフローをすぐに試せます。
+  
+  
+    ワークフローJSONをダウンロードします。
+  
+
+### 画像から動画生成（I2V）
+
+1枚の画像を、同期されたサウンド、音楽、会話を備えた1080pのビデオクリップに変換します。このワークフローは最大30秒・任意のアスペクト比のクリップに対応し、入力は1枚の画像です。
+
+<video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_seedance2_5_i2v_1080p.mp4"></video>
+
+  
+    Comfy Cloudで画像から動画生成ワークフローをすぐに試せます。
+  
+  
+    ワークフローJSONをダウンロードします。
+  
+
+入力素材
+
+ワークフローを試すには、以下のサンプル入力画像をダウンロードしてください：
+
+  
+    サンプル入力画像をダウンロード
   
 
 ### 先頭・末尾フレームから動画生成（FLF2V）

@@ -20,12 +20,12 @@ Origin parameters determine how `cloudflared` sends requests to the origin serve
 
 This section describes how to update origin parameters for a remotely-managed tunnel. If you are using a locally-managed tunnel, add these parameters to your [configuration file](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/).
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Networks** \> **Connectors** \> **Cloudflare Tunnels**.
-2. Choose a tunnel and select **Edit**.
-3. Select the **Published application routes** tab.
-4. Choose an application and select **Edit**.
-5. Under **Additional application settings**, modify one or more origin parameters.
-6. Select **Save**.
+1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels** and select your tunnel.
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
+2. Go to the **Routes** tab.
+3. Select **Edit route** from the action menu on the published application you want to configure, or select **Add route** to create a new one.
+4. Expand **Additional application settings** and modify origin parameters under the **HTTP**, **TLS**, or **Connection** categories.
+5. Select **Save changes**.
 
 ## TLS settings
 
@@ -213,7 +213,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/#page","headline":"Origin parameters · Cloudflare One docs","description":"Reference information for Origin parameters in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}

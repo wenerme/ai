@@ -5784,6 +5784,7 @@ Arguments:
 | <a id="mutation-cdartifactsourcecreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-cdartifactsourcecreate-name"></a>`name` | [`String!`](#string) | Name of the artifact source. |
 | <a id="mutation-cdartifactsourcecreate-serviceid"></a>`serviceId` | [`CdServiceID!`](#cdserviceid) | Global ID of the service to create the artifact source for. |
+| <a id="mutation-cdartifactsourcecreate-sourceconfig"></a>`sourceConfig` | [`JSON`](#json) | Configuration of the artifact source, defined by the consuming driver. |
 | <a id="mutation-cdartifactsourcecreate-sourceref"></a>`sourceRef` | [`String!`](#string) | Reference of the artifact source. |
 
 Fields:
@@ -12792,6 +12793,53 @@ Fields:
 | <a id="mutation-organizationupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-organizationupdate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-organizationupdate-organization"></a>`organization` | [`Organization`](#organization) | Organization after mutation. |
+
+### `Mutation.organizationUserCreate`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Input type: `OrganizationUserCreateInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-organizationusercreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-organizationusercreate-email"></a>`email` | [`String`](#string) | Email of the user to add to the organization. |
+| <a id="mutation-organizationusercreate-organizationid"></a>`organizationId` | [`OrganizationsOrganizationID!`](#organizationsorganizationid) | ID of the organization to add the user to. |
+| <a id="mutation-organizationusercreate-usertype"></a>`userType` | [`OrganizationUserType!`](#organizationusertype) | Type to add the organization user with. |
+| <a id="mutation-organizationusercreate-username"></a>`username` | [`String`](#string) | Username of the user to add to the organization. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-organizationusercreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-organizationusercreate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-organizationusercreate-organizationuser"></a>`organizationUser`  | [`OrganizationUser`](#organizationuser) | Introduced in GitLab 19.3. Status: Experiment. Organization user added by the mutation. |
+
+### `Mutation.organizationUserDelete`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Input type: `OrganizationUserDeleteInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-organizationuserdelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-organizationuserdelete-id"></a>`id` | [`OrganizationsOrganizationUserID!`](#organizationsorganizationuserid) | ID of the organization user to delete. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-organizationuserdelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-organizationuserdelete-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-organizationuserdelete-organizationuser"></a>`organizationUser`  | [`OrganizationUser`](#organizationuser) | Introduced in GitLab 19.3. Status: Experiment. Organization user that was deleted. |
 
 ### `Mutation.organizationUserUpdate`
 
@@ -19940,6 +19988,29 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="approvalprojectruleedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="approvalprojectruleedge-node"></a>`node` | [`ApprovalProjectRule`](#approvalprojectrule) | The item at the end of the edge. |
+
+#### `ArtifactRegistryPackageConnection`
+
+The connection type for [`ArtifactRegistryPackage`](#artifactregistrypackage).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistrypackageconnection-edges"></a>`edges` | [`[ArtifactRegistryPackageEdge]`](#artifactregistrypackageedge) | A list of edges. |
+| <a id="artifactregistrypackageconnection-nodes"></a>`nodes` | [`[ArtifactRegistryPackage]`](#artifactregistrypackage) | A list of nodes. |
+| <a id="artifactregistrypackageconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `ArtifactRegistryPackageEdge`
+
+The edge type for [`ArtifactRegistryPackage`](#artifactregistrypackage).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistrypackageedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="artifactregistrypackageedge-node"></a>`node` | [`ArtifactRegistryPackage`](#artifactregistrypackage) | The item at the end of the edge. |
 
 #### `ArtifactRegistryRepositoryConnection`
 
@@ -32968,6 +33039,31 @@ Fields:
 | <a id="approvalscanresultpolicy-name"></a>`name` | [`String!`](#string) | Represents the name of the policy. |
 | <a id="approvalscanresultpolicy-reporttype"></a>`reportType` | [`ApprovalReportType!`](#approvalreporttype) | Represents the report_type of the approval rule. |
 
+### `ArtifactRegistryMavenPackage`
+
+Maven package in an Artifact Registry repository.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistrymavenpackage-artifactid"></a>`artifactId`  | [`String!`](#string) | Introduced in GitLab 19.3. Status: Experiment. Maven artifact ID coordinate of the package. |
+| <a id="artifactregistrymavenpackage-groupid"></a>`groupId`  | [`String!`](#string) | Introduced in GitLab 19.3. Status: Experiment. Maven group ID coordinate of the package. |
+| <a id="artifactregistrymavenpackage-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.3. Status: Experiment. ID of the package in Artifact Registry. |
+
+### `ArtifactRegistryNpmPackage`
+
+npm package in an Artifact Registry repository.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistrynpmpackage-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.3. Status: Experiment. ID of the package in Artifact Registry. |
+| <a id="artifactregistrynpmpackage-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.3. Status: Experiment. Name of the package, including its scope when it has one. |
+| <a id="artifactregistrynpmpackage-scope"></a>`scope`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. npm scope of the package. Null for an unscoped package. |
+| <a id="artifactregistrynpmpackage-versionscount"></a>`versionsCount`  | [`Int!`](#int) | Introduced in GitLab 19.3. Status: Experiment. Number of versions of the package. Buffered, so it can lag the version list. |
+
 ### `ArtifactRegistryRepository`
 
 Repository in Artifact Registry.
@@ -32985,6 +33081,25 @@ Fields:
 | <a id="artifactregistryrepository-settings"></a>`settings`  | [`JSON!`](#json) | Introduced in GitLab 19.3. Status: Experiment. Kind-specific configuration, discriminated by format and kind. Empty for hosted repositories. |
 | <a id="artifactregistryrepository-sizebytes"></a>`sizeBytes`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.3. Status: Experiment. Storage the repository occupies, in bytes. Buffered, so it can lag. |
 | <a id="artifactregistryrepository-visibility"></a>`visibility`  | [`ArtifactRegistryRepositoryVisibility!`](#artifactregistryrepositoryvisibility) | Introduced in GitLab 19.3. Status: Experiment. Who can read the repository. |
+
+### `ArtifactRegistryRepositoryDetails`
+
+Repository in Artifact Registry, with the packages it holds.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryrepositorydetails-description"></a>`description`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Human-readable description of the repository. Null when unset. |
+| <a id="artifactregistryrepositorydetails-downloadscount"></a>`downloadsCount`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.3. Status: Experiment. Number of artifact downloads from the repository. Buffered, so it can lag. |
+| <a id="artifactregistryrepositorydetails-format"></a>`format`  | [`ArtifactRegistryRepositoryFormat!`](#artifactregistryrepositoryformat) | Introduced in GitLab 19.3. Status: Experiment. Package format the repository holds. |
+| <a id="artifactregistryrepositorydetails-kind"></a>`kind`  | [`ArtifactRegistryRepositoryKind!`](#artifactregistryrepositorykind) | Introduced in GitLab 19.3. Status: Experiment. How the repository sources its artifacts. |
+| <a id="artifactregistryrepositorydetails-lastupdatedat"></a>`lastUpdatedAt`  | [`Time`](#time) | Introduced in GitLab 19.3. Status: Experiment. Time the repository content last changed. Null when the content never changed. |
+| <a id="artifactregistryrepositorydetails-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.3. Status: Experiment. Name of the repository, unique within its namespace. |
+| <a id="artifactregistryrepositorydetails-packages"></a>`packages`  | [`ArtifactRegistryPackageConnection`](#artifactregistrypackageconnection) | Introduced in GitLab 19.3. Status: Experiment. Packages the repository holds, ordered by name. Can be selected once per operation, so one operation reads packages for one repository. Returns `null` for a repository holding images, for a repository that is gone, and when Artifact Registry rejects the read. |
+| <a id="artifactregistryrepositorydetails-settings"></a>`settings`  | [`JSON!`](#json) | Introduced in GitLab 19.3. Status: Experiment. Kind-specific configuration, discriminated by format and kind. Empty for hosted repositories. |
+| <a id="artifactregistryrepositorydetails-sizebytes"></a>`sizeBytes`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.3. Status: Experiment. Storage the repository occupies, in bytes. Buffered, so it can lag. |
+| <a id="artifactregistryrepositorydetails-visibility"></a>`visibility`  | [`ArtifactRegistryRepositoryVisibility!`](#artifactregistryrepositoryvisibility) | Introduced in GitLab 19.3. Status: Experiment. Who can read the repository. |
 
 ### `ArtifactRegistryRoleAssignment`
 
@@ -34325,6 +34440,7 @@ Fields:
 | <a id="cdapplicationflowdefinition-application"></a>`application` | [`CdApplication`](#cdapplication) | Application the flow definition belongs to. |
 | <a id="cdapplicationflowdefinition-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the application flow definition was created. |
 | <a id="cdapplicationflowdefinition-definition"></a>`definition`  | [`String`](#string) | Introduced in GitLab 19.2. Status: Experiment. Body of the application flow definition. |
+| <a id="cdapplicationflowdefinition-definitionsteps"></a>`definitionSteps`  | [`[CdDefinitionStep!]`](#cddefinitionstep) | Introduced in GitLab 19.3. Status: Experiment. Top-level nodes of the flow definition's static step tree, computed from its YAML and not persisted. A stage node exposes its nested steps through its own `steps` field. |
 | <a id="cdapplicationflowdefinition-id"></a>`id` | [`CdApplicationFlowDefinitionID!`](#cdapplicationflowdefinitionid) | Global ID of the application flow definition. |
 | <a id="cdapplicationflowdefinition-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the application flow definition was last updated. |
 | <a id="cdapplicationflowdefinition-version"></a>`version` | [`Int!`](#int) | Version of the application flow definition. |
@@ -34375,9 +34491,26 @@ Fields:
 | <a id="cdartifactsource-id"></a>`id` | [`CdArtifactSourceID!`](#cdartifactsourceid) | Global ID of the artifact source. |
 | <a id="cdartifactsource-name"></a>`name` | [`String`](#string) | Name of the artifact source. |
 | <a id="cdartifactsource-service"></a>`service` | [`CdService`](#cdservice) | Service the artifact source belongs to. |
+| <a id="cdartifactsource-sourceconfig"></a>`sourceConfig` | [`JSON`](#json) | Configuration of the artifact source, defined by the consuming driver. |
 | <a id="cdartifactsource-sourceref"></a>`sourceRef` | [`String`](#string) | Reference of the artifact source. |
 | <a id="cdartifactsource-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the artifact source was last updated. |
 | <a id="cdartifactsource-versions"></a>`versions`  | [`CdVersionConnection`](#cdversionconnection) | Introduced in GitLab 19.2. Status: Experiment. Versions of the artifact source. |
+
+### `CdDefinitionStep`
+
+Node in a continuous deployment flow definition step tree, computed from its YAML and not persisted.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="cddefinitionstep-environment"></a>`environment` | [`CdEnvironment`](#cdenvironment) | Environment the step targets, null for steps that target no environment (for example a stage container or a wait step) or that name an environment that does not exist. |
+| <a id="cddefinitionstep-name"></a>`name` | [`String`](#string) | Name of the step, as defined by the flow definition. |
+| <a id="cddefinitionstep-params"></a>`params` | [`JSON`](#json) | Step-specific configuration copied from the flow definition (for example wait seconds or canary service weights). |
+| <a id="cddefinitionstep-parentpath"></a>`parentPath` | [`String`](#string) | Path of the parent step, null for a top-level step. |
+| <a id="cddefinitionstep-path"></a>`path` | [`String!`](#string) | Position of the step in the flow definition tree (for example "0", "0.1"). |
+| <a id="cddefinitionstep-steptype"></a>`stepType` | [`String!`](#string) | Type of the step, as defined by the flow definition (for example "com.gitlab.cd.steps.stage" or a deploy driver step type). |
+| <a id="cddefinitionstep-steps"></a>`steps` | [`[CdDefinitionStep!]`](#cddefinitionstep) | Nested steps, for a stage step. Empty for any other step type. |
 
 ### `CdDeployment`
 
@@ -39658,6 +39791,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="duomessage-additionalcontext"></a>`additionalContext` | [`[AiAdditionalContext!]`](#aiadditionalcontext) | Additional context items attached to the message. |
+| <a id="duomessage-alternativecount"></a>`alternativeCount`  | [`Int`](#int) | Introduced in GitLab 19.3. Status: Experiment. Number of other versions of the turn, from the user retrying it, excluding the one shown. Set on the user message anchoring the turn, `0` when it has no alternatives. Returns `null` on every message, if the `dw_read_blobs_graphql` feature flag is disabled, or if the session does not store incremental checkpoints. |
 | <a id="duomessage-componentname"></a>`componentName`  | [`String`](#string) | Introduced in GitLab 19.0. Status: Experiment. Component name associated with the message. |
 | <a id="duomessage-content"></a>`content` | [`String!`](#string) | Content of the message. |
 | <a id="duomessage-correlationid"></a>`correlationId` | [`String`](#string) | Optional client-supplied identifier echoed back to correlate this message with the request that initiated it. |
@@ -50320,7 +50454,7 @@ Arguments:
 
 Single Artifact Registry repository in the organization, by name. Returns `null` when not found or when the `artifact_registry_ui` feature flag is disabled.
 
-Returns [`ArtifactRegistryRepository`](#artifactregistryrepository).
+Returns [`ArtifactRegistryRepositoryDetails`](#artifactregistryrepositorydetails).
 
 Arguments:
 
@@ -50659,8 +50793,8 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="organizationuserpermissions-adminorganization"></a>`adminOrganization` | [`Boolean!`](#boolean) | If `true`, the user can perform `admin_organization` on this resource. |
+| <a id="organizationuserpermissions-deleteorganizationuser"></a>`deleteOrganizationUser` | [`Boolean!`](#boolean) | If `true`, the user can perform `delete_organization_user` on this resource. |
 | <a id="organizationuserpermissions-deleteuser"></a>`deleteUser` | [`Boolean!`](#boolean) | If `true`, the user can perform `delete_user` on this resource. |
-| <a id="organizationuserpermissions-removeuser"></a>`removeUser` | [`Boolean!`](#boolean) | If `true`, the user can perform `remove_user` on this resource. |
 
 ### `Package`
 
@@ -56953,6 +57087,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="secretsmanagerentitlement-betaprogramended"></a>`betaProgramEnded`  | [`Boolean`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Indicates whether the free-beta program has ended for the namespace. Set only when state is TRIAL_ELIGIBLE; null otherwise. |
 | <a id="secretsmanagerentitlement-blockedreason"></a>`blockedReason`  | [`SecretsManagerEntitlementBlockedReason`](#secretsmanagerentitlementblockedreason) | Introduced in GitLab 19.2. Status: Experiment. Reason the entitlement is blocked; null when state is not BLOCKED. |
 | <a id="secretsmanagerentitlement-creditsremaining"></a>`creditsRemaining`  | [`Int`](#int) | Introduced in GitLab 19.2. Status: Experiment. Number of trial credits remaining. |
 | <a id="secretsmanagerentitlement-creditstotal"></a>`creditsTotal`  | [`Int`](#int) | Introduced in GitLab 19.2. Status: Experiment. Initial trial credit allocation for the current trial period. |
@@ -63569,6 +63704,7 @@ Values for sorting CI/CD job analytics.
 | <a id="cijobfailurereason-runner_unsupported"></a>`RUNNER_UNSUPPORTED` | A job that failed due to runner unsupported. |
 | <a id="cijobfailurereason-scheduler_failure"></a>`SCHEDULER_FAILURE` | A job that failed due to scheduler failure. |
 | <a id="cijobfailurereason-script_failure"></a>`SCRIPT_FAILURE` | A job that failed due to script failure. |
+| <a id="cijobfailurereason-secrets_manager_access_denied"></a>`SECRETS_MANAGER_ACCESS_DENIED` | A job that failed due to secrets manager access denied. |
 | <a id="cijobfailurereason-secrets_provider_not_found"></a>`SECRETS_PROVIDER_NOT_FOUND` | A job that failed due to secrets provider not found. |
 | <a id="cijobfailurereason-server_timeout_canceling"></a>`SERVER_TIMEOUT_CANCELING` | A job that failed due to server timeout canceling. |
 | <a id="cijobfailurereason-server_timeout_running"></a>`SERVER_TIMEOUT_RUNNING` | A job that failed due to server timeout running. |
@@ -66247,6 +66383,15 @@ Access level of an organization user.
 | ----- | ----------- |
 | <a id="organizationuseraccesslevel-default"></a>`DEFAULT`  | Introduced in GitLab 16.11. Status: Experiment. Guest access. |
 | <a id="organizationuseraccesslevel-owner"></a>`OWNER`  | Introduced in GitLab 16.11. Status: Experiment. Owner access. |
+
+### `OrganizationUserType`
+
+Type of an organization user.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="organizationusertype-admin"></a>`ADMIN`  | Introduced in GitLab 19.3. Status: Experiment. Organization administrator. |
+| <a id="organizationusertype-user"></a>`USER`  | Introduced in GitLab 19.3. Status: Experiment. Regular organization user. |
 
 ### `OrganizationVisibility`
 
@@ -70117,6 +70262,15 @@ One of:
 - [`AiCatalogThirdPartyFlow`](#aicatalogthirdpartyflow)
 - [`AiFoundationalChatAgent`](#aifoundationalchatagent)
 
+#### `ArtifactRegistryPackage`
+
+Package in an Artifact Registry repository, by package format.
+
+One of:
+
+- [`ArtifactRegistryMavenPackage`](#artifactregistrymavenpackage)
+- [`ArtifactRegistryNpmPackage`](#artifactregistrynpmpackage)
+
 #### `CiJobTokenScopeTarget`
 
 Represents an object that is the target of a CI_JOB_TOKEN allowlist entry.
@@ -72397,6 +72551,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="cdartifactsourceinput-name"></a>`name` | [`String!`](#string) | Name of the artifact source. |
+| <a id="cdartifactsourceinput-sourceconfig"></a>`sourceConfig` | [`JSON`](#json) | Configuration of the artifact source, defined by the consuming driver. |
 | <a id="cdartifactsourceinput-sourceref"></a>`sourceRef` | [`String!`](#string) | Reference of the artifact source. |
 
 ### `CdEnvironmentDriverBindingInput`

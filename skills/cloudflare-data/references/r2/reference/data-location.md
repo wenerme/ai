@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Data location
 
-Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/reference/data-location/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/reference/data-location/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn how the location of data stored in R2 is determined and about the different available inputs that control the physical location where objects in your buckets are stored.
 
@@ -148,6 +148,7 @@ The following jurisdictions are supported:
 | ------------ | ------------------------ |
 | eu           | European Union           |
 | fedramp      | FedRAMP                  |
+| us           | United States            |
 
 Note
 
@@ -169,8 +170,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/reference/data-location/#page","headline":"Data location · Cloudflare R2 docs","description":"Control where R2 stores your data using automatic placement, location hints, or jurisdictions.","url":"https://developers.cloudflare.com/r2/reference/data-location/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/reference/data-location/#page","headline":"Data location · Cloudflare R2 docs","description":"Control where R2 stores your data using automatic placement, location hints, or jurisdictions.","url":"https://developers.cloudflare.com/r2/reference/data-location/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

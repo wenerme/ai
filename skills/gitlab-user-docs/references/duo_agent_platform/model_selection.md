@@ -43,6 +43,7 @@ in the Agent Platform.
 | Claude Opus 5               | Yes             | No       | No           | Yes      |
 | Gemini 3.5 Flash            | Yes             | No       | No           | Yes      |
 | Gemini 3.6 Flash            | Yes             | No       | No           | Yes      |
+| Gemini 3.7 Flash            | Yes             | No       | No           | Yes      |
 | GPT-5                       | Yes             | No       | No           | Yes      |
 | GPT-5.1                     | Yes             | No       | No           | Yes      |
 | GPT-5.2                     | Yes             | Yes      | Yes          | Yes      |

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Check the logs
 
@@ -102,9 +102,9 @@ However, the key server is open source so you may attempt to build and deploy a 
 
 ## Key server multi-domain support
 
-You can use the same key server for multiple domains.
+A single key server can serve multiple domains. Add each certificate's private key to the `private_key_stores` block in `gokeyless.yaml`, or pass them with `--private-key-dirs` / `--private-key-files`. Refer to [Serve multiple private keys](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/run-with-docker/#serve-multiple-private-keys) for details.
 
-However, if you do, you will need to add the hostname and the Zone ID of the new domain to the `gokeyless.yaml` file.
+The `hostname` and `zone_id` fields are single string values used only during enrollment. You do not need to update them for additional domains.
 
 ## Additional questions
 
@@ -116,8 +116,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/troubleshooting/#page","headline":"Troubleshooting Keyless SSL · Cloudflare SSL/TLS docs","description":"Review how to troubleshoot issues when using Cloudflare Keyless SSL.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/troubleshooting/#page","headline":"Troubleshooting Keyless SSL · Cloudflare SSL/TLS docs","description":"Review how to troubleshoot issues when using Cloudflare Keyless SSL.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

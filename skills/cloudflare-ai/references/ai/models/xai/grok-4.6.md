@@ -21,6 +21,7 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 `xai/grok-4.6`
 
 * Third-party
+* Zero data retention
 
 xAI's Grok 4.6, a flagship reasoning model for coding, agentic tasks, and visual work. Accepts text and image inputs, and supports function calling and structured outputs.
 
@@ -29,6 +30,7 @@ xAI's Grok 4.6, a flagship reasoning model for coding, agentic tasks, and visual
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 500,000 tokens                                                                                                 |
 | Terms and License                                                                   | [link ↗](https://x.ai/legal/terms-of-service-enterprise)                                                       |
 | More information                                                                    | [link ↗](https://docs.x.ai/developers/models)                                                                  |
+| Zero data retention                                                                 | Yes                                                                                                            |
 | Request formats                                                                     | Chat Completions                                                                                               |
 | Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.6) |
 

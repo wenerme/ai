@@ -1271,18 +1271,18 @@
   },
   "grafana-pathfinder-app/administrators-reference.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/administrators-reference.md",
-    "size": 10044,
-    "updatedAt": "2026-06-25T05:42:55.621Z"
+    "size": 10381,
+    "updatedAt": "2026-08-19T02:11:33.356Z"
   },
   "grafana-pathfinder-app/architecture.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/architecture.md",
-    "size": 15088,
-    "updatedAt": "2026-06-25T05:42:56.001Z"
+    "size": 15611,
+    "updatedAt": "2026-08-19T02:11:33.605Z"
   },
   "grafana-pathfinder-app/block-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor.md",
-    "size": 16061,
-    "updatedAt": "2026-06-25T05:42:56.356Z"
+    "size": 16793,
+    "updatedAt": "2026-08-19T02:11:33.803Z"
   },
   "grafana-pathfinder-app/getting-started.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/getting-started.md",
@@ -1301,8 +1301,8 @@
   },
   "grafana-pathfinder-app/upgrade-notes.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/upgrade-notes.md",
-    "size": 9281,
-    "updatedAt": "2026-07-14T03:57:50.440Z"
+    "size": 14183,
+    "updatedAt": "2026-08-19T02:11:34.594Z"
   },
   "grafana-pyroscope-app/access.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/access.md",
