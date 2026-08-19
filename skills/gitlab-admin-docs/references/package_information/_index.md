@@ -5,7 +5,7 @@
 
 The Linux package is bundled with all dependencies required for GitLab
 to function correctly. More details can be found
-at [bundling dependencies document](omnibus_packages.md).
+at the [bundling dependencies document](omnibus_packages.md).
 
 ## Package Version
 

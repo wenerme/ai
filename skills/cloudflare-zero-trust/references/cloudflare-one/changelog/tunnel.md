@@ -16,6 +16,24 @@ Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/tunnel.xml)
 
+## 2026-08-18
+
+
+**Configure origin application settings for Cloudflare Tunnel in the dashboard**
+
+You can now configure origin application settings directly in the Cloudflare dashboard when adding or editing a published application route for a [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/). These settings control how `cloudflared` connects to your origin server and were previously only available in the Cloudflare One dashboard or via local configuration files.
+
+![Configure origin application settings in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=948,format=webp/_astro/tunnel-origin-settings-dashboard.CsC2RwFC.gif)
+
+When editing a published application, expand **Additional application settings** to configure parameters organized into three categories:
+
+* **HTTP** — Set a custom HTTP Host header or disable chunked encoding.
+* **TLS** — Configure origin server name, CA pool, TLS timeout, disable TLS verification, match SNI to host, or enable HTTP/2 to origin.
+* **Connection** — Tune connect timeout, keep-alive timeout, keep-alive connections, TCP keep-alive interval, proxy type, or disable Happy Eyeballs.
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
+
+For the full list of origin parameters, refer to [Origin parameters](https://developers.cloudflare.com/tunnel/advanced/origin-parameters/).
+
 ## 2026-08-11
 
 
@@ -42,9 +60,13 @@ This is the default range. You can [configure a custom initial resolved IP range
 * [Access private applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/) on non-HTTPS ports
 * [Egress policy host selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/) (Domain, Host, Application, and Content Categories)
 
-You can check your account's current range, or configure a custom range, at any time from **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles**, or using the [Initial Resolved IP Subnet API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/subnets/#%28resource%29%20zero%5Ftrust.networks.subnets.initial%5Fresolved%5Fip).
+You can check your account's current range, or configure a custom range, at any time from **Networking** \> **IP addresses** \> **Address space** \> **Custom IPs**, or using the [Initial Resolved IP Subnet API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/subnets/#%28resource%29%20zero%5Ftrust.networks.subnets.initial%5Fresolved%5Fip).
+
+[Go to **Custom IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space/custom-ips)
 
 For full instructions, refer to [Configure initial resolved IPs](https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/). The IPv6 range (`2606:4700:0cf1:4000::/64`) is unchanged and is not affected by this restriction.
+
+The default IPv4 range, and all Cloudflare One IPv6 ranges, are automatically routed through the Cloudflare One Client and do not require any Split Tunnel configuration. Refer to [Automatically managed ranges](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#automatically-managed-ranges) for details.
 
 If you were relying on a Chrome Enterprise policy workaround (such as `LocalNetworkAccessRestrictionsTemporaryOptOut`) while your account was still on the legacy CGNAT-based range, refer to [Google Chrome restricts access to private hostnames](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/#google-chrome-restricts-access-to-private-hostnames) for next steps.
 

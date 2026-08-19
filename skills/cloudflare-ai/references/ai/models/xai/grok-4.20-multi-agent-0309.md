@@ -21,6 +21,7 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 `xai/grok-4.20-multi-agent-0309`
 
 * Third-party
+* Zero data retention
 
 xAI's Grok 4.20 multi-agent model with a 2M-token context window. Multiple agents collaborate in parallel to perform deep research tasks, with function calling, structured outputs, and reasoning capabilities.
 
@@ -29,6 +30,7 @@ xAI's Grok 4.20 multi-agent model with a 2M-token context window. Multiple agent
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 2,000,000 tokens                                                                                                                 |
 | Terms and License                                                                   | [link ↗](https://x.ai/legal/terms-of-service)                                                                                    |
 | More information                                                                    | [link ↗](https://x.ai/)                                                                                                          |
+| Zero data retention                                                                 | Yes                                                                                                                              |
 | Request formats                                                                     | Responses                                                                                                                        |
 | Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.20-multi-agent-0309) |
 
@@ -939,7 +941,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/#page","headline":"Grok 4.20 Multi-Agent (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok 4.20 multi-agent model with a 2M-token context window. Multiple agents collaborate in parallel to perform deep research tasks, with function calling, structured outputs, and reasoning capabilities.","url":"https://developers.cloudflare.com/ai/models/xai/grok-4.20-multi-agent-0309/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

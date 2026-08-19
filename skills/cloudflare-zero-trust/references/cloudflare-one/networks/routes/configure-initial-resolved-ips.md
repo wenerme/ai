@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure initial resolved IPs
 
-Last updated Aug 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Initial resolved IPs (also called token IPs) are ephemeral addresses that Gateway assigns to DNS queries so it can associate hostname-based traffic with the correct policy or tunnel at the network layer, where hostname information is not usually available. Refer to [Gateway initial resolved IPs](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#gateway-initial-resolved-ips) for a list of features that depend on this range.
 
@@ -31,14 +31,14 @@ If you configure a custom IPv4 range within Carrier-Grade NAT (CGNAT) address sp
 
 ## Prerequisites
 
-* You have the [Cloudflare One Networks Write](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) permission (for API access), or dashboard access to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles**.
+* You have the [Cloudflare One Networks Write](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) permission (for API access), or dashboard access to **Networking** \> **IP addresses** \> **Address space** \> **Custom IPs**.
 * Your new range does not conflict with existing routes or other reserved [Cloudflare One subnets](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/) in your account.
 
 ## Check your current range
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles**.
-2. Select the **Initial resolved IP** filter.
-3. View your account's current IPv4 range in the **IP subnet range** field.
+1. Go to **Networking** \> **IP addresses** \> **Address space** \> **Custom IPs**.
+[Go to **Custom IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space/custom-ips)
+2. Find the row where **Assign to** is **Initial Resolved IP** to see your account's current IPv4 range in the **Prefix** column.
 
 Send a `GET` request to the [Get Initial Resolved IP Subnet](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/subnets/subresources/initial%5Fresolved%5Fip/methods/get/) endpoint for the address family you want to check:
 
@@ -50,11 +50,11 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/zerotrust/subnet
 
 ## Update your range
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles**.
-2. Select the **Initial resolved IP** filter.
-3. Select **Configure**.
-4. Enter your new IPv4 range in **IP subnet CIDR**.
-5. Select **Save**.
+1. Go to **Networking** \> **IP addresses** \> **Address space** \> **Custom IPs**.
+[Go to **Custom IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space/custom-ips)
+2. Find the row where **Assign to** is **Initial Resolved IP**, select the three dots menu, and select **Edit**.
+3. Enter your new IPv4 range in **IP address**.
+4. Select **Save**.
 
 Send a `PUT` request to the [Update Initial Resolved IP Subnet](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/subnets/subresources/initial%5Fresolved%5Fip/methods/update/) endpoint with your desired network range:
 
@@ -75,7 +75,7 @@ Note
 
 Only the IPv4 range is configurable. The IPv6 initial resolved IP range (`2606:4700:0cf1:4000::/64`) is fixed and does not need to be changed to resolve Chromium's Local Network Access restrictions, which do not affect IPv6.
 
-After you change your range, update your [Split Tunnel configuration](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#split-tunnel-configuration) so that traffic to the new range routes through the Cloudflare One Client, and remove the old range if it is no longer used by any other reserved IP purpose.
+The default IPv4 range is [automatically routed through the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#automatically-managed-ranges) and does not require any Split Tunnel configuration. If you configure a custom range, update your [Split Tunnel configuration](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#split-tunnel-configuration) so that traffic to the new range routes through the Cloudflare One Client, and remove the old range if it is no longer used by any other reserved IP purpose.
 
 Initial resolved IPs have a TTL of approximately 10 minutes. DNS queries resolved before you change your range continue to use the previous range until that TTL expires. After that, new DNS queries receive an initial resolved IP from the new range.
 
@@ -88,5 +88,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/#page","headline":"Configure initial resolved IPs · Cloudflare One docs","description":"Configure the IPv4 range Gateway uses to assign initial resolved IPs for hostname-based traffic.","url":"https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/#page","headline":"Configure initial resolved IPs · Cloudflare One docs","description":"Configure the IPv4 range Gateway uses to assign initial resolved IPs for hostname-based traffic.","url":"https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -2201,6 +2201,7 @@ Convert a work item to a specified type.
 **Additional details**:
 
 - To convert an issue to an epic or incident, use [`/promote_to`](#promote_to).
+- `/type Epic` also converts an issue to an epic, the same as `/promote_to Epic`.
 
 ### `unapprove`
 

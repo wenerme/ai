@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Supported cloud providers in Cloud Connector
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/cloud-connector/providers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/cloud-connector/providers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloud Connector currently supports the following cloud providers and services:
 
@@ -20,6 +20,7 @@ Cloud Connector currently supports the following cloud providers and services:
 * Amazon Web Services - S3
 * Google Cloud Platform - Cloud Storage
 * Microsoft Azure - Blob Storage
+* Oracle Cloud - Object Storage
 
 ## Cloudflare R2
 
@@ -103,14 +104,38 @@ If the blob container is not configured for public access, you must change the c
 
 Once you configure Cloud Connector with your storage provider's public bucket, you may wish that only Cloudflare can access the objects in that bucket. To achieve this, check your provider's documentation on how to create a policy that only allows incoming requests from [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips/).
 
+## Oracle Cloud Infrastructure Object Storage
+
+Cloud Connector supports Oracle Cloud Infrastructure (OCI) Object Storage through the Amazon S3 Compatibility API.
+
+Public buckets only
+
+Cloud Connector does not authenticate requests to OCI. Your bucket must allow anonymous object reads. Private buckets and pre-authenticated request URLs are not supported.
+
+Enter an OCI hostname without a protocol, port, or path. Cloud Connector accepts the following formats:
+
+| Addressing style         | Hostname format                                                     | Request path                   |
+| ------------------------ | ------------------------------------------------------------------- | ------------------------------ |
+| Path style (traditional) | <NAMESPACE>.compat.objectstorage.<REGION>.oraclecloud.com           | /<BUCKET\_NAME>/<OBJECT\_NAME> |
+| Path style (dedicated)   | <NAMESPACE>.compat.objectstorage.<REGION>.oci.customer-oci.com      | /<BUCKET\_NAME>/<OBJECT\_NAME> |
+| Virtual-hosted style     | <BUCKET\_NAME>.vhcompat.objectstorage.<REGION>.oci.customer-oci.com | /<OBJECT\_NAME>                |
+
+For path-style endpoints, include the bucket name in the incoming request path. For example, `https://example.com/<BUCKET_NAME>/index.html` maps to the same path on the OCI endpoint.
+
+For virtual-hosted endpoints, the bucket name is part of the hostname. An incoming request to `https://example.com/index.html` maps to `/index.html` on that bucket. OCI requires virtual-hosted bucket names to use a regional scope and a DNS-compatible name that is unique within the region.
+
+For more information, refer to [Object Storage Dedicated Endpoints ↗](https://docs.oracle.com/en-us/iaas/Content/Object/Concepts/dedicatedendpoints.htm), [Amazon S3 Compatibility API Hosted Style Support in Object Storage ↗](https://docs.oracle.com/en-us/iaas/Content/Object/s3-virtual-style.htm), and [Changing an Object Storage Bucket's Visibility ↗](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/managingbuckets%5Ftopic-To%5Fchange%5Fthe%5Fvisibility%5Fof%5Fa%5Fbucket.htm).
+
+Once you configure Cloud Connector with your storage provider's public bucket, you may wish that only Cloudflare can access the objects in that bucket. To achieve this, check your provider's documentation on how to create a policy that only allows incoming requests from [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips/).
+
 Was this helpful?
 
 YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/providers/#page","headline":"Supported cloud providers in Cloud Connector · Cloudflare Rules docs","description":"Cloud providers and storage services supported by Cloud Connector.","url":"https://developers.cloudflare.com/rules/cloud-connector/providers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","Azure","GCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/providers/#page","headline":"Supported cloud providers in Cloud Connector · Cloudflare Rules docs","description":"Cloud providers and storage services supported by Cloud Connector.","url":"https://developers.cloudflare.com/rules/cloud-connector/providers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AWS","Azure","GCP","OCI"]}
 ```

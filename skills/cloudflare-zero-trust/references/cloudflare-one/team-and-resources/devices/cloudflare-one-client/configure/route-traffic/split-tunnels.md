@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Split Tunnels
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Split Tunnels can be configured to exclude or include IP addresses or domains from going through the Cloudflare One Client (formerly WARP). This feature is commonly used to run the Cloudflare One Client alongside a VPN (in Exclude mode) or to provide access to a specific private network (in Include mode).
 
@@ -236,6 +236,17 @@ In [Traffic only mode](https://developers.cloudflare.com/cloudflare-one/team-and
 * `104.19.194.29`
 * `104.19.195.29`
 
+## Automatically managed ranges
+
+The Cloudflare One Client automatically includes the following ranges in Include mode, and automatically removes them from any exclusions configured in Exclude mode. This happens at runtime on the device: the ranges are not stored in your device profile, do not appear in the Split Tunnels list in the dashboard, and do not need to be added manually.
+
+* **IPv4**: `172.64.128.0/20` — the default [Gateway initial resolved IP range](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#gateway-initial-resolved-ips)
+* **IPv6**: `2606:4700:0cf1::/48` — covers [device IPs](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#device-ips), [Cloudflare source IPs](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#cloudflare-source-ips), and [Gateway initial resolved IPs](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#gateway-initial-resolved-ips)
+
+You do not need to add these ranges to your Split Tunnels configuration. If you are troubleshooting a feature that depends on one of these ranges (for example, [hostname routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) or [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)), you can still add the range explicitly as a diagnostic step, but this should not be required for normal operation.
+
+If your account uses a [custom initial resolved IP range](https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/) instead of the default `172.64.128.0/20`, add that custom range to your Split Tunnels configuration.
+
 ## Domain-based Split Tunnels
 
 Domain-based split tunneling has a few ramifications you should be aware of before deploying in your organization:.
@@ -294,8 +305,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#page","headline":"Split Tunnels · Cloudflare One docs","description":"Split Tunnels in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks","DNS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#page","headline":"Split Tunnels · Cloudflare One docs","description":"Split Tunnels in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks","DNS"]}
 ```

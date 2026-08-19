@@ -27,7 +27,7 @@ simpler operation compared to the three-step import method.
 1. Ensure the registry is set to `read-only` mode.
 
    Edit your `/etc/gitlab/gitlab.rb` and add the `maintenance` section to the `registry['storage']` configuration.
-   For example, for a `gcs` backend registry using a `gs://my-company-container-registry` bucket,
+   For example, for a `gcs`-backed registry using a `gs://my-company-container-registry` bucket,
    the configuration could be:
 
    ```ruby
@@ -91,7 +91,7 @@ simpler operation compared to the three-step import method.
 1. Ensure the registry is set to `read-only` mode.
 
    Edit your `/etc/gitlab/gitlab.rb` and add the `maintenance` section to the `registry['storage']` configuration.
-   For example, for a `gcs` backend registry using a `gs://my-company-container-registry` bucket,
+   For example, for a `gcs`-backed registry using a `gs://my-company-container-registry` bucket,
    the configuration could be:
 
    ```ruby
@@ -168,7 +168,7 @@ Prerequisites:
 1. Ensure the registry is set to `read-only` mode.
 
    Edit your `/etc/gitlab/gitlab.rb` and add the `maintenance` section to the `registry['storage']` configuration.
-   For example, for a `gcs` backed registry using a `gs://my-company-container-registry` bucket,
+   For example, for a `gcs`-backed registry using a `gs://my-company-container-registry` bucket,
    the configuration could be:
 
    ```ruby

@@ -1,11 +1,11 @@
 ---
 title: "Weights & Biases | Models"
-description: "Use Weights & Biases models with Mastra. 28 models available."
+description: "Use Weights & Biases models with Mastra. 29 models available."
 ---
 
 # [Weights & Biases logo]Weights & Biases
 
-Access 28 Weights & Biases models through Mastra's model router. Authentication is handled automatically using the `WANDB_API_KEY` environment variable.
+Access 29 Weights & Biases models through Mastra's model router. Authentication is handled automatically using the `WANDB_API_KEY` environment variable.
 
 Learn more in the [Weights & Biases documentation](https://docs.wandb.ai).
 
@@ -350,6 +350,18 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": 0.25,
     "outputCost": 1.25
+  },
+  {
+    "model": "wandb/Qwen/Qwen3.8-27B",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": 0.4,
+    "outputCost": 3
   },
   {
     "model": "wandb/zai-org/GLM-5.1",

@@ -16,6 +16,23 @@ Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/email-security-cf1.xml)
 
+## 2026-08-17
+
+
+**Post-quantum key exchange for MX deployments**
+
+Cloudflare Email Security now supports post-quantum hybrid key exchange with X25519MLKEM768 on the SMTP connections we make to receive and deliver mail. Deploying Email Security in front of a provider that supports post-quantum hybrid key agreement (like Google Workspace) will create a TLS 1.3 connection using post-quantum key agreement.
+
+Inbound MX connections and outbound delivery connections now negotiate the [X25519MLKEM768](https://developers.cloudflare.com/ssl/post-quantum-cryptography/#hybrid-key-agreement) hybrid key agreement when the peer supports it, protecting SMTP traffic against [harvest-now, decrypt-later ↗](https://blog.cloudflare.com/pq-2024/) attacks.
+
+Support is backwards compatible and enabled automatically for all customers. Senders and receivers that do not yet advertise post-quantum key agreement continue to connect with classical key exchange.
+
+This applies to all Email Security packages:
+
+* **Advantage**
+* **Enterprise**
+* **Enterprise + PhishGuard**
+
 ## 2026-08-12
 
 

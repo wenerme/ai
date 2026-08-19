@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Cloudflare platform access
@@ -134,7 +134,11 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+```
+
+```txt
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ```txt
@@ -142,15 +146,11 @@ Set up a Waiting Room to handle flash sale traffic spikes without dropping reque
 ```
 
 ```txt
+Add bot protection and rate limiting to my login and checkout endpoints.
+```
+
+```txt
 Set up rate limiting and WAF rules to block abuse on my public API.
-```
-
-```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
-```
-
-```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ## Tips

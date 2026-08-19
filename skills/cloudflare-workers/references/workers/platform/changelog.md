@@ -20,6 +20,14 @@ This is _different_ from [compatibility dates](https://developers.cloudflare.com
 
 [Subscribe to RSS](https://developers.cloudflare.com/workers/platform/changelog/index.xml)
 
+## 2026-08-18
+
+* Updated v8 to version 15.2.
+
+## 2026-07-16
+
+* Updated v8 to version 15.1.
+
 ## 2026-06-04
 
 * Updated v8 to version 15.0.
@@ -469,7 +477,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/workers/platform/changelog/#page","headline":"Workers Changelog · Cloudflare Workers docs","description":"Review recent changes to Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/platform/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

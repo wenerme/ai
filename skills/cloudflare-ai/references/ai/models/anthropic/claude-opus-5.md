@@ -1,5 +1,5 @@
 ---
-description: Claude Opus 5 is Anthropic's model for complex agentic coding and enterprise work, delivering intelligence close to Claude Fable 5 at half the price. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing.
+description: Claude Opus 5 is Anthropic's model for complex agentic coding and enterprise work, delivering intelligence close to Claude Fable 5 at half the price. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing. Unlike Fable 5, Opus 5 has no data retention requirements for general access.
 title: Claude Opus 5
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -22,7 +22,7 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 * Third-party
 
-Claude Opus 5 is Anthropic's model for complex agentic coding and enterprise work, delivering intelligence close to Claude Fable 5 at half the price. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing.
+Claude Opus 5 is Anthropic's model for complex agentic coding and enterprise work, delivering intelligence close to Claude Fable 5 at half the price. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing. Unlike Fable 5, Opus 5 has no data retention requirements for general access.
 
 | Model Info                                                                          |                                                                                                                           |
 | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -385,8 +385,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-opus-5/#page","headline":"Claude Opus 5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Opus 5 is Anthropic's model for complex agentic coding and enterprise work, delivering intelligence close to Claude Fable 5 at half the price. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-opus-5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-opus-5/#page","headline":"Claude Opus 5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Opus 5 is Anthropic's model for complex agentic coding and enterprise work, delivering intelligence close to Claude Fable 5 at half the price. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing. Unlike Fable 5, Opus 5 has no data retention requirements for general access.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-opus-5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

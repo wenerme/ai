@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Precursor
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/precursor/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/precursor/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Precursor is a client-side, session-based verification system that continuously evaluates a visitor's behavior over time. Instead of relying on a single challenge event, Precursor runs ongoing verification in the browser to detect automation that appears legitimate in individual requests but exhibits non-human patterns across a session.
 
@@ -117,7 +117,7 @@ Precursor is tightly integrated with [cf\_clearance](https://developers.cloudfla
 
 ## Visibility in Security Analytics
 
-Once Precursor runs on a zone, its detections appear in the zone's Analytics view. To open it, select your zone in the Cloudflare dashboard, then go to **Security** \> **Analytics** \> **Traffic** \> **Bot analysis**. The bot score distribution and WAF rule-match counts now include Precursor's behavioral and biometric detections.
+Once Precursor runs on a zone, its detections appear in the zone's Analytics view. To open it, select your zone in the Cloudflare dashboard, then go to **Security** \> **Analytics** \> **Traffic** \> **Bot analysis**. The bot score distribution and WAF rule-match counts now include Precursor's detections.
 
 For more information, refer to [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/).
 
@@ -130,5 +130,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/precursor/#page","headline":"Precursor · Cloudflare challenges docs","description":"Client-side, session-based verification that continuously evaluates visitor behavior to identify automation.","url":"https://developers.cloudflare.com/cloudflare-challenges/precursor/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/precursor/#page","headline":"Precursor · Cloudflare challenges docs","description":"Client-side, session-based verification that continuously evaluates visitor behavior to identify automation.","url":"https://developers.cloudflare.com/cloudflare-challenges/precursor/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

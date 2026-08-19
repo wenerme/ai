@@ -149,9 +149,13 @@ This is the default range. You can [configure a custom initial resolved IP range
 * [Access private applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/) on non-HTTPS ports
 * [Egress policy host selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/) (Domain, Host, Application, and Content Categories)
 
-You can check your account's current range, or configure a custom range, at any time from **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles**, or using the [Initial Resolved IP Subnet API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/subnets/#%28resource%29%20zero%5Ftrust.networks.subnets.initial%5Fresolved%5Fip).
+You can check your account's current range, or configure a custom range, at any time from **Networking** \> **IP addresses** \> **Address space** \> **Custom IPs**, or using the [Initial Resolved IP Subnet API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/subnets/#%28resource%29%20zero%5Ftrust.networks.subnets.initial%5Fresolved%5Fip).
+
+[Go to **Custom IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space/custom-ips)
 
 For full instructions, refer to [Configure initial resolved IPs](https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/). The IPv6 range (`2606:4700:0cf1:4000::/64`) is unchanged and is not affected by this restriction.
+
+The default IPv4 range, and all Cloudflare One IPv6 ranges, are automatically routed through the Cloudflare One Client and do not require any Split Tunnel configuration. Refer to [Automatically managed ranges](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#automatically-managed-ranges) for details.
 
 If you were relying on a Chrome Enterprise policy workaround (such as `LocalNetworkAccessRestrictionsTemporaryOptOut`) while your account was still on the legacy CGNAT-based range, refer to [Google Chrome restricts access to private hostnames](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/#google-chrome-restricts-access-to-private-hostnames) for next steps.
 

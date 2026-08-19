@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Intune
 
-Last updated Jul 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/intune/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/intune/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers how to deploy the Cloudflare One Client (formerly WARP) using Microsoft Intune.
 
@@ -162,40 +162,7 @@ You must deploy a [user-side certificate](https://developers.cloudflare.com/clou
 
 Sharing this certificate with Intune automates the installation of this certificate on your user devices, creating trust between browsers on a user's device and Cloudflare.
 
-### 2\. Allow Cloudflare One Client system extensions
-
-Before deploying the Cloudflare One Client, you need to allow its system extensions.
-
-1. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), go to **Devices** \> **macOS**.
-2. Under **Manage devices**, select **Configuration**.
-3. Select **Create** \> **New Policy**.
-4. For **Profile type**, select _Settings catalog_ \> select **Create**.
-5. In **Basics**, input the necessary field(s) and give your policy a name like `Cloudflare One Client System Extensions` \> select **Next**.
-6. In **Configuration settings**, select **Add settings**.
-7. In the **Settings picker**, search for **System Extensions** under System Configuration.
-8. Enable **Allowed System Extensions**.
-9. Select **Edit instance** and add:
-
-  * Bundle Identifier: `com.cloudflare.1dot1dot1dot1.macos`
-  * Team Identifier: `68WVV388M8`
-![Intune admin console where you enter team identifier and bundle identifier](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3741,height=1286,format=webp/_astro/intune-bundle-team-identifier.D4Pncyz9.png)
-Running the following command in the terminal will return the verified identifiers. This validation ensures that the values you enter into Intune match the official application signatures guaranteed by Apple.
-```bash
-codesign -dv --verbose=4 /Applications/Cloudflare\ WARP.app 2>&1 | grep Identifier
-```
-Expected output:
-```txt
-Identifier=com.cloudflare.1dot1dot1dot1.macos
-TeamIdentifier=68WVV388M8
-```
-10. Select **Save**.
-11. In **Scope tags**, select **Next**.
-12. In **Assignments**, select an option (for example, **Add all devices** or **Add all users**) that is valid for your scope. This will be the same scope for all steps. Select **Next**.
-13. Review your configuration and select **Create**.
-
-This step allows the Cloudflare One Client to install without user interaction. By completing this step, you allow the Cloudflare One Client to install and manage its required system extensions without end-user prompts.
-
-### 3\. Upload `MobileConfig` configuration
+### 2\. Upload `MobileConfig` configuration
 
 1. Open a text editor and paste in the following `.mobileconfig` template:
 ```xml
@@ -270,7 +237,7 @@ Start by deploying the template in its default, minimal form. This helps you ver
 
 By completing this step, you preconfigure the Cloudflare One Client with your team settings so it connects automatically upon installation.
 
-### 4\. Upload Cloudflare One Client `.pkg`
+### 3\. Upload Cloudflare One Client `.pkg`
 
 Best practice
 
@@ -649,5 +616,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/intune/#page","headline":"Intune · Cloudflare One docs","description":"Intune in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/intune/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft","XML","PowerShell"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/intune/#page","headline":"Intune · Cloudflare One docs","description":"Intune in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/intune/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft","XML","PowerShell"]}
 ```
