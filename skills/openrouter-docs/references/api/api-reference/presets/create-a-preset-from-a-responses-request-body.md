@@ -3824,7 +3824,9 @@ components:
             executor).
           type: string
         error:
-          description: Error message when the advisor call did not produce advice.
+          description: >-
+            Error message when the advisor call did not produce advice. Set
+            together with `status: 'failed'` on the terminal item.
           type: string
         id:
           type: string
@@ -3850,7 +3852,7 @@ components:
           description: The prompt the executor sent to the advisor.
           type: string
         status:
-          $ref: '#/components/schemas/ToolCallStatus'
+          $ref: '#/components/schemas/FailableToolCallStatus'
         type:
           enum:
             - openrouter:advisor
@@ -3878,7 +3880,9 @@ components:
             same `call_id`.
           type: string
         error:
-          description: Error message when the subagent task did not produce an outcome.
+          description: >-
+            Error message when the subagent task did not produce an outcome. Set
+            together with `status: 'failed'` on the terminal item.
           type: string
         id:
           type: string
@@ -3912,7 +3916,7 @@ components:
             delegating model).
           type: string
         status:
-          $ref: '#/components/schemas/ToolCallStatus'
+          $ref: '#/components/schemas/FailableToolCallStatus'
         task_description:
           description: The task description the delegating model sent to the worker.
           type: string
@@ -4372,6 +4376,12 @@ components:
         - server_label
       type: object
     CustomToolCallItem:
+      allOf:
+        - $ref: '#/components/schemas/OpenAIResponseCustomToolCall'
+        - properties:
+            status:
+              $ref: '#/components/schemas/ToolCallStatus'
+          type: object
       description: >-
         A call to a custom (freeform-grammar) tool created by the model —
         distinct from `function_call`. Used for tools like Codex CLI's
@@ -4384,30 +4394,6 @@ components:
           *** End Patch
         name: apply_patch
         type: custom_tool_call
-      properties:
-        call_id:
-          type: string
-        id:
-          type: string
-        input:
-          type: string
-        name:
-          type: string
-        namespace:
-          description: >-
-            Namespace qualifier for tools registered as part of a namespace tool
-            group (e.g. an MCP server)
-          type: string
-        type:
-          enum:
-            - custom_tool_call
-          type: string
-      required:
-        - type
-        - call_id
-        - name
-        - input
-      type: object
     CustomToolCallOutputItem:
       allOf:
         - $ref: '#/components/schemas/OpenAIResponseCustomToolCallOutput'
@@ -6421,6 +6407,14 @@ components:
         - url
         - title
       type: object
+    FailableToolCallStatus:
+      enum:
+        - in_progress
+        - completed
+        - incomplete
+        - failed
+      example: completed
+      type: string
     ShellCallOutputContent:
       additionalProperties: {}
       description: >-
@@ -6465,6 +6459,39 @@ components:
         - stdout
         - stderr
         - outcome
+      type: object
+    OpenAIResponseCustomToolCall:
+      example:
+        call_id: call-abc123
+        id: ctc-abc123
+        input: |-
+          *** Begin Patch
+          *** End Patch
+        name: apply_patch
+        type: custom_tool_call
+      properties:
+        call_id:
+          type: string
+        id:
+          type: string
+        input:
+          type: string
+        name:
+          type: string
+        namespace:
+          description: >-
+            Namespace qualifier for tools registered as part of a namespace tool
+            group (e.g. an MCP server)
+          type: string
+        type:
+          enum:
+            - custom_tool_call
+          type: string
+      required:
+        - type
+        - call_id
+        - name
+        - input
       type: object
     OpenAIResponseCustomToolCallOutput:
       example:

@@ -331,7 +331,7 @@ The worker's tool use happens inside the subagent call. Only its final text is r
 
 Two constraints on nested tools:
 
-* Only OpenRouter server tools work (e.g. `openrouter:web_search`, `openrouter:web_fetch`, `openrouter:datetime`). Function tools are rejected with a `400` because the worker has no client-side executor.
+* Only OpenRouter server tools work (e.g. `openrouter:web_search`, `openrouter:web_fetch`, `openrouter:datetime`). Function tools placed in the nested `tools` array are rejected with a `400`. On the Responses API, the subagent can additionally inherit top-level function tools (experimental). See [Inheriting Client Function Tools](/docs/guides/features/server-tools/subagent#inheriting-client-function-tools).
 * The subagent tool can't list itself. Recursion guards prevent the worker from re-entering the subagent.
 
 ## 4. Tune the worker for cost and quality
@@ -354,14 +354,14 @@ const tools = [
 ];
 ```
 
-| Parameter               | What it controls                                                                                                                          |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `model`                 | The worker model. Pick the cheapest model that can handle the subtask quality you need.                                                   |
-| `max_completion_tokens` | Output token ceiling (including reasoning). Prevents runaway generation on open-ended tasks.                                              |
-| `temperature`           | Lower values for deterministic extraction, higher for creative drafting. Range 0 to 2.                                                    |
-| `reasoning`             | `effort` controls reasoning depth. Set to `"low"` for fast, cheap tasks. Both `effort` and `max_tokens` are forwarded to the worker call. |
-| `instructions`          | System prompt for the worker. Shape its output format and behavior.                                                                       |
-| `max_tool_calls`        | Range 1 to 25. Forwarded to the worker call as `max_tool_calls`, so it acts as a hard ceiling on the worker's tool-calling steps.         |
+| Parameter               | What it controls                                                                                                                              |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `model`                 | The worker model. Pick the cheapest model that can handle the subtask quality you need.                                                       |
+| `max_completion_tokens` | Output token ceiling (including reasoning). Prevents runaway generation on open-ended tasks.                                                  |
+| `temperature`           | Lower values for deterministic extraction, higher for creative drafting. Range 0 to 2.                                                        |
+| `reasoning`             | `effort` controls reasoning depth. Set to `"low"` for fast, cheap tasks. `max_tokens` sets the upper bound for the worker's reasoning tokens. |
+| `instructions`          | System prompt for the worker. Shape its output format and behavior.                                                                           |
+| `max_tool_calls`        | Range 1 to 25. Ceiling on the worker's own tool-calling loop.                                                                                 |
 
 The full parameter reference is at [Subagent server tool](/docs/guides/features/server-tools/subagent).
 

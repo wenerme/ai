@@ -1,11 +1,11 @@
 ---
 title: "Umans AI | Models"
-description: "Use Umans AI models with Mastra. 8 models available."
+description: "Use Umans AI models with Mastra. 7 models available."
 ---
 
 # [Umans AI logo]Umans AI
 
-Access 8 Umans AI models through Mastra's model router. Authentication is handled automatically using the `UMANS_AI_API_KEY` environment variable.
+Access 7 Umans AI models through Mastra's model router. Authentication is handled automatically using the `UMANS_AI_API_KEY` environment variable.
 
 Learn more in the [Umans AI documentation](https://app.umans.ai/offers/code/docs/orgs).
 
@@ -86,18 +86,6 @@ for await (const chunk of stream) {
     "maxOutput": 32768,
     "inputCost": 0.15,
     "outputCost": 1
-  },
-  {
-    "model": "umans-ai/umans-glm-5.1",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 204800,
-    "maxOutput": 131072,
-    "inputCost": 1.4,
-    "outputCost": 4.4
   },
   {
     "model": "umans-ai/umans-glm-5.2",

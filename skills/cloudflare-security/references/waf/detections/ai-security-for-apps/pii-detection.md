@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # PII detection
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Security for Apps (formerly Firewall for AI) can detect personally identifiable information (PII) in incoming LLM prompts. There are two approaches to PII detection, and you can use them together for layered protection:
 
@@ -26,7 +26,7 @@ When AI Security for Apps is enabled and a request arrives at a `cf-llm` labeled
 * **LLM PII detected** ([cf.llm.prompt.pii\_detected](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.pii%5Fdetected/)) — `true` if any PII was found.
 * **LLM PII categories** ([cf.llm.prompt.pii\_categories](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.pii%5Fcategories/)) — An array of the specific PII types found.
 
-The detection is based on [Presidio ↗](https://microsoft.github.io/presidio/supported%5Fentities/), a data protection and de-identification SDK. Refer to the [cf.llm.prompt.pii\_categories field reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.pii%5Fcategories/) for the full list of recognized categories.
+The detection is powered by an AI-based Named Entity Recognition (NER) model. Refer to the [cf.llm.prompt.pii\_categories field reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.pii%5Fcategories/) for the full list of recognized categories.
 
 Detecting PII in responses
 
@@ -34,47 +34,21 @@ AI Security for Apps PII detection runs on incoming requests (prompts) only. If 
 
 Supported PII categories
 
-| Category                     | Description                                                                   |
-| ---------------------------- | ----------------------------------------------------------------------------- |
-| CREDIT\_CARD                 | Credit card number                                                            |
-| CRYPTO                       | Cryptocurrency wallet address                                                 |
-| DATE\_TIME                   | Date or time expression                                                       |
-| EMAIL\_ADDRESS               | Email address                                                                 |
-| IBAN\_CODE                   | International bank account number                                             |
-| IP\_ADDRESS                  | IP address                                                                    |
-| NRP                          | Nationality, religious, or political group                                    |
-| LOCATION                     | Physical location or address                                                  |
-| PERSON                       | Person name                                                                   |
-| PHONE\_NUMBER                | Phone number                                                                  |
-| MEDICAL\_LICENSE             | Medical license number                                                        |
-| URL                          | URL                                                                           |
-| US\_BANK\_NUMBER             | US bank account number                                                        |
-| US\_DRIVER\_LICENSE          | US driver license number                                                      |
-| US\_ITIN                     | US Individual Taxpayer Identification Number                                  |
-| US\_PASSPORT                 | US passport number                                                            |
-| US\_SSN                      | US Social Security Number                                                     |
-| UK\_NHS                      | UK National Health Service number                                             |
-| UK\_NINO                     | UK National Insurance Number                                                  |
-| ES\_NIF                      | Spanish tax identification number                                             |
-| ES\_NIE                      | Spanish foreigner identification number                                       |
-| IT\_FISCAL\_CODE             | Italian fiscal code                                                           |
-| IT\_DRIVER\_LICENSE          | Italian driver license                                                        |
-| IT\_VAT\_CODE                | Italian VAT code                                                              |
-| IT\_PASSPORT                 | Italian passport number                                                       |
-| IT\_IDENTITY\_CARD           | Italian identity card                                                         |
-| PL\_PESEL                    | Polish national identification number                                         |
-| SG\_NRIC\_FIN                | Singapore National Registration Identity Card / Foreign Identification Number |
-| SG\_UEN                      | Singapore Unique Entity Number                                                |
-| AU\_ABN                      | Australian Business Number                                                    |
-| AU\_ACN                      | Australian Company Number                                                     |
-| AU\_TFN                      | Australian Tax File Number                                                    |
-| AU\_MEDICARE                 | Australian Medicare number                                                    |
-| IN\_PAN                      | Indian Permanent Account Number                                               |
-| IN\_AADHAAR                  | Indian Aadhaar number                                                         |
-| IN\_VEHICLE\_REGISTRATION    | Indian vehicle registration number                                            |
-| IN\_VOTER                    | Indian voter ID                                                               |
-| IN\_PASSPORT                 | Indian passport number                                                        |
-| FI\_PERSONAL\_IDENTITY\_CODE | Finnish personal identity code                                                |
+| Category        | Description                           |
+| --------------- | ------------------------------------- |
+| BANK\_ACCOUNT   | Bank account number                   |
+| CREDIT\_CARD    | Credit card number                    |
+| DATE\_TIME      | Date or time expression               |
+| DRIVER\_LICENSE | Driver license number                 |
+| EMAIL\_ADDRESS  | Email address                         |
+| IP\_ADDRESS     | IPv4 address                          |
+| LOCATION        | Physical location or address          |
+| PASSPORT        | Passport number                       |
+| PERSON          | Full or partial name of an individual |
+| PHONE\_NUMBER   | Phone number                          |
+| TAX\_ID         | Tax identification number             |
+| US\_SSN         | US Social Security Number             |
+| URL             | URL                                   |
 
 ### Be specific to reduce false positives
 
@@ -180,8 +154,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/#page","headline":"PII detection · Cloudflare Web Application Firewall (WAF) docs","description":"Detect personally identifiable information in AI request and response bodies.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/#page","headline":"PII detection · Cloudflare Web Application Firewall (WAF) docs","description":"Detect personally identifiable information in AI request and response bodies.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

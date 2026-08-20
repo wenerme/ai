@@ -1,5 +1,5 @@
 ---
-description: Validate API requests against OpenAPI schemas to block malformed or unexpected traffic.
+description: Supply Schema Profiles through uploaded OpenAPI schemas.
 title: Schema validation
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,178 +12,64 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Schema validation
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/schema-validation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/schema-validation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Available on all plans
+Note
+
+Schema Validation is the uploaded source for a Schema Profile. For the shared detection and mitigation model, refer to [Application Profiles](https://developers.cloudflare.com/waf/detections/application-profiles/).
 
 The API schema defines which API requests are valid based on several request properties like target endpoint, path or query variable format, and HTTP method.
 
-Schema validation allows you to check if incoming traffic complies with a previously supplied API schema. When you provide an API schema or select from a list of learned schema, API Shield creates rules for incoming traffic from the schema definitions. These rules define which traffic is allowed and which traffic gets logged or blocked.
+Schema Validation compares incoming requests with an uploaded OpenAPI schema. The uploaded schema supplies expected request structure for a Schema Profile.
 
-Schema validation 2.0 is the current version. For help configuring the previous version for one or more hosts using the dashboard, refer to [Configure Classic Schema validation](https://developers.cloudflare.com/api-shield/reference/classic-schema-validation/). You can make changes to your Classic Schema validation settings but you cannot add any new schemas.
+After the uploaded profile becomes available, Cloudflare generates an **always-on detection**. Use `cf.schema_validation.uploaded.violated` to analyze and mitigate violations.
 
-You can migrate to Schema validation 2.0 manually by uploading your schemas to the new system.
+The detection does not mitigate traffic by itself. Review results in [Profile Analysis](https://developers.cloudflare.com/waf/detections/application-profiles/analyze-profile-detections/) before [enforcing the profile with Custom Rules](https://developers.cloudflare.com/waf/detections/application-profiles/enforce-profiles-with-custom-rules/).
 
----
+Schema Validation 2.0 is the current version. For previous-version reference, refer to [Configure Classic Schema Validation](https://developers.cloudflare.com/api-shield/reference/classic-schema-validation/).
 
-## Process
+## Configure an uploaded schema
 
-Endpoints must be added to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/) for Schema validation to protect them. Uploading a schema via the Cloudflare dashboard will automatically add endpoints, or you can manually add them from [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/).
+Endpoints must exist as operations in **Web Assets** \> **Operations**. Uploading through the dashboard adds schema operations automatically.
 
-If you are uploading a schema via the API or Terraform, you must parse the schema and add your endpoints manually.
+When using the API or Terraform, add schema operations separately. For automation details, refer to [API configuration](https://developers.cloudflare.com/api-shield/security/schema-validation/api/) or [Terraform](https://developers.cloudflare.com/api-shield/reference/terraform/#manage-schema-validation).
 
-The API endpoint is the location where API calls or requests are fulfilled. API Shield defines endpoints as a host, method, and path tuple.
-
-Note
-
-To view the contents in your learned schema, refer to [Export a schema](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/#export-a-schema) in Endpoint Management.
-
----
-
-### Add validation by uploading a schema
+### Upload a schema
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.
 [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Schema validation** tab.
 3. Select **Add validation**.
-4. Upload a schema file.
+4. Upload an OpenAPI schema file.
 5. Select **Add schema and endpoints**.
 
-Note
+Changes may take several minutes, depending on the operation count.
 
-Changes may take a few minutes to process depending on the number of added endpoints.
-
-### Add validation by applying a learned schema to a single endpoint
+### Manage uploaded schemas
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.
 [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Schema validation** tab.
-3. Select **Add validation**.
-4. Select **Apply learned schema**.
-5. Choose an action and select **Apply schema**.
+3. Select **Schema settings**.
+4. Filter by **API abuse**.
+5. Under **Schema validation** \> **Active schemas**, review uploaded schemas.
+6. From the schema overflow menu, download or delete the schema.
 
-### Add validation by applying a learned schema to an entire hostname
+Deleting an uploaded schema stops its profile evaluation. Associated operations remain in the Web Assets inventory.
 
-At this time, learned schemas will not overwrite customer-uploaded schemas. If an endpoint is covered by a customer-uploaded schema and also appears in a learned schema, the **Changes** field is set to `Unaffected`.
+### Add a fallthrough rule
 
-1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-2. Go to the **Schema validation** tab.
-3. Select **Add validation**.
-4. Select **Apply learned schema**.
-5. Choose a hostname and review the endpoints that will be protected by the learned schema.
-6. (Optional) Change the action if a request does not match the schema.
-7. Select **Apply schema**.
-
-Note
-
-If an endpoint is currently protected by a learned schema, the date of the last applied learned schema will be shown in the current schema field.
-
-### Add validation by adding a fallthrough rule
-
-A fallthrough rule acts as a catch-all for requests that do not match endpoints in [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/).
-
-By ensuring that all your endpoints in a schema are added to Endpoint Management, the fallthrough action can protect you against legacy or zombie endpoints that your team may be unaware of.
-
-To set up a fallthrough action:
+A fallthrough rule matches requests that do not match known operations. Use this WAF Custom Rule to protect against unidentified endpoints.
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Templates**.
-3. Search for the template named `Mitigate API requests to unidentified endpoints` and select **Preview template**.
-4. Give your rule a descriptive name.
-5. Choose one or more hostnames from the dropdown menu and select your action.
-6. Select **Save as draft** to deploy later, or **Deploy** to deploy now.
+3. Find `Mitigate API requests to unidentified endpoints` and select **Preview template**.
+4. Enter a descriptive rule name.
+5. Choose the intended hostnames and rule action.
+6. Select **Save as draft** or **Deploy**.
 
-Your current fallthrough rules can be viewed in the security rules list.
-
-Note
-
-You can use the `cf.api_gateway.fallthrough_detected` field in your own custom rule for a more customized logic check. This field evaluates as `true` when a request does not match an endpoint in Endpoint Management. Check against your API hostname or root path to ensure that you are not blocking non-API traffic on your zone.
-
-### Change the action of an entire schema
-
-1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-2. Go to the **Schema validation** tab.
-3. Check the multi-select box to select all endpoints associated with the schema.
-4. Select **Change action**.
-5. Choose an action from the dropdown menu.
-6. Select **Set action**.
-
-### Change the global default action of Schema validation
-
-Schema validation’s default action is visible on the main Schema validation page. This action applies to any endpoint with its action set to `Default`.
-
-* `Log` action: logs events to [Firewall Events](https://developers.cloudflare.com/firewall/).
-* `Block` action: blocks requests that fail the schema for an endpoint and logs events to [Firewall Events](https://developers.cloudflare.com/firewall/).
-* `None` action: non-compliant requests are neither logged nor blocked.
-
-To change the default action:
-
-1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
-2. Filter by **API abuse**.
-3. Under **Schema validation** \> **Configurations**, select the edit icon next to **Default action**.
-4. Choose a new action from the dropdown menu.
-5. Select **Save**.
-
-### Change the action of a single endpoint
-
-You can change individual endpoint actions separately from the default action in Schema validation.
-
-This allows you to be stricter on blocking non-compliant requests on certain endpoints when the default action is `Log`. It can also be used to relax constraints on non-compliant requests on certain endpoints when the default action is set to `Block`. You may want to silence known false positives on an endpoint by setting the action to `None`.
-
-To change the action on an individual endpoint:
-
-1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-2. Go to the **Schema validation** tab.
-3. Search for the endpoint to change.
-4. Select the three dots on the endpoint's row > **Change action**.
-5. Choose a new action from the dropdown menu and select **Set action**.
-
-### Disable Schema validation without changing actions
-
-You can disable Schema validation entirely for temporary troubleshooting. You can override all actions at once, preventing Schema validation from taking any action while you complete your troubleshooting.
-
-To disable Schema validation without changing actions:
-
-1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-2. Go to the **Schema validation** tab.
-3. Select **Schema settings**.
-4. Filter by **API abuse**.
-5. Turn **Schema validation** off.
-
-Your per-endpoint configurations will be saved when modifying the setting, so that you do not lose your configuration. To re-enable your configurations after troubleshooting, navigate back to the settings and select **Enable**.
-
-### View active schemas
-
-1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-2. Go to the **Schema validation** tab.
-3. Select **Schema settings**.
-4. Filter by **API abuse**.
-5. View your schemas on **Schema validation** \> **Active schemas**.
-
-Note
-
-To export a schema, refer to [Export a schema](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/#export-a-schema).
-
-### Delete active schemas
-
-Deleting the schema will remove validation from the currently associated endpoints, but it will not delete the endpoints from Endpoint Management.
-
-To delete currently uploaded or learned schemas:
-
-1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-2. Go to the **Schema validation** tab.
-3. Select **Schema settings**.
-4. Filter by **API abuse**.
-5. View your schemas on **Schema validation** \> **Active schemas**.
-6. Select the ellipses to access the menu and download or delete the listed schema.
+For custom logic, use `cf.api_gateway.fallthrough_detected`. Scope the rule to your API hostname or root path.
 
 ---
 
@@ -211,7 +97,7 @@ There is a limit of 10,000 total operations for enabled schemas for Enterprise c
 
 ### Body size for validation
 
-Schema validation inspects request bodies up to a maximum size that depends on your zone plan. Request bodies that exceed this limit are not validated against your schema, and the configured [Schema validation action](https://developers.cloudflare.com/api-shield/security/schema-validation/#change-the-global-default-action-of-schema-validation) will not apply to those requests.
+Schema Validation inspects request bodies up to a plan-specific maximum size. Requests exceeding this limit are not evaluated against the uploaded schema.
 
 The default body size limits are:
 
@@ -228,7 +114,7 @@ This limit is separate from the [WAF maximum body inspection size](https://devel
 
 #### Identify requests exceeding the body size limit
 
-If Schema validation is blocking or logging requests due to the body size limit, you will see events in **Security** \> **Analytics** \> **Events** with the Schema validation rule as the source.
+Use request logs to compare body sizes with your plan limit.
 
 For limits on Free, Pro, Business, or Enterprise customers not subscribed to API Shield, refer to [Plans](https://developers.cloudflare.com/api-shield/plans/).
 
@@ -347,24 +233,22 @@ Media-ranges can also be configured to enforce a `charset` parameter. For this, 
 
 This section addresses common issues you may encounter when using schema validation.
 
-### `OneOf` constraint error schema violation in the Security Events
+### Resolve a `OneOf` constraint violation
 
-A `OneOf` constraint error means an API request failed schema validation because its body did not match exactly one of the options defined in a [oneOf ↗](https://swagger.io/docs/specification/v3%5F0/data-models/oneof-anyof-allof-not/) list within your uploaded schema.
+A `OneOf` constraint error means a request violated its uploaded profile. Its body did not match exactly one [oneOf ↗](https://swagger.io/docs/specification/v3%5F0/data-models/oneof-anyof-allof-not/) option.
 
 The request was invalid for one of two reasons:
 
 * **Matches Zero**: The payload did not correctly match any of the available subschemas. This is common when a discriminator field is set, but the payload is missing other required fields for that type.
 * **Matches Multiple**: The payload was ambiguous and matched more than one subschema. This happens with generic schemas (for example, if a payload includes both an `email` and a `phone` field, it might match both an `email` and a `phone` schema definition, violating the "exactly one" rule).
 
-To fix this, check the failing request body against the API schema definition. It will either be missing required fields for the intended type or include properties from multiple different, conflicting types that make it ambiguous.
+To fix this, compare the sampled request with its schema definition. The request may omit required fields or match conflicting types.
 
 ---
 
 ## Availability
 
-Schema validation is available for all customers. Refer to [Plans](https://developers.cloudflare.com/api-shield/plans/) for more information based on your plan type.
-
-[Schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/) is only available for customers subscribed to API Shield.
+Customers with API Security already have access to Schema Profiles through Schema Learning and Schema Validation. Cloudflare is opening a closed beta to invited Enterprise customers without API Security. Interested customers can contact their account team to express interest. Closed-beta access does not imply future plan availability or pricing.
 
 Was this helpful?
 
@@ -372,8 +256,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/schema-validation/#page","headline":"Schema validation · Cloudflare API Shield docs","description":"Validate API requests against OpenAPI schemas to block malformed or unexpected traffic.","url":"https://developers.cloudflare.com/api-shield/security/schema-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/schema-validation/#page","headline":"Schema validation · Cloudflare API Shield docs","description":"Supply Schema Profiles through uploaded OpenAPI schemas.","url":"https://developers.cloudflare.com/api-shield/security/schema-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

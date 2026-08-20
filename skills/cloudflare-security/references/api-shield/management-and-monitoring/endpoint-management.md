@@ -1,5 +1,5 @@
 ---
-description: Promote, learn, and monitor API endpoints with API Shield and Web Assets.
+description: Manage API operations through the Web Assets dashboard.
 title: Endpoint Management
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,13 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Endpoint Management
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Available on all plans
 
-Web Assets provides a unified inventory for managing API endpoints. In Web Assets, an **operation** represents an endpoint by its HTTP method, hostname pattern, and path pattern.
+Endpoint Management content uses the current [Web Assets](https://developers.cloudflare.com/security/web-assets/) dashboard. Go to **Web Assets** \> **Operations** to manage API endpoints.
 
-Promote an API endpoint to move its operation into the `full` state. Promotion starts collecting data for profile learning and [performance analysis](#endpoint-analysis).
+An operation is Cloudflare's term for an endpoint identified by HTTP method, hostname pattern, and path pattern. Web Assets continuously discovers operations, and you can add them manually.
+
+Cloudflare discovered operations are only added to the inventory. To start profiling, select **Learn profile** for the intended operation.
+
+Schema Profile availability
+
+Customers with API Security already have access to Schema Profiles through Schema Learning and Schema Validation. Cloudflare is opening a closed beta to invited Enterprise customers without API Security. Interested customers can contact their account team to express interest. Closed beta access does not imply future plan availability or pricing.
 
 Note
 
@@ -30,20 +36,13 @@ When an endpoint uses [Cloudflare Workers](https://developers.cloudflare.com/wor
 [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Operations** tab.
 
-### Add endpoints from API Discovery
+### Review discovered operations
 
-The **Learn profile** action is available to API Shield customers using unified operation discovery and other customers with access to profile learning.
+Web Assets continuously adds discovered operations to the inventory. Discovery does not start profile learning.
 
-This workflow promotes an existing discovered operation.
+Candidate operations can provide context for matching, edge security detections, and [Sequence Analytics](https://developers.cloudflare.com/api-shield/security/sequence-analytics/). You do not need to change every discovered operation.
 
-1. From **Web Assets** \> **Operations**, open the row actions for a candidate or shadow operation.
-2. Select **Learn profile**.
-
-Cloudflare promotes the operation to the `full` state. The row action then changes to **Profile learned**. For more information, refer to [Promote an operation](https://developers.cloudflare.com/security/web-assets/manage-operations/#promote-an-operation).
-
-You do not need to promote every discovered operation. Candidate operations can provide context for matching, edge security detections, and [Sequence Analytics](https://developers.cloudflare.com/api-shield/security/sequence-analytics/) without promotion. Persisted API profiles and [risk findings](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#risk-labels) require operations in the `full` state.
-
-### Add endpoints from Schema validation
+### Add operations from Schema validation
 
 1. From **Web Assets** \> **Operations**, select **Add operation**.
 2. Select **Upload schema**.
@@ -52,7 +51,7 @@ You do not need to promote every discovered operation. Candidate operations can 
 
 API Shield looks for duplicate operations with the same hostname, method, and path. Duplicate operations are not added.
 
-### Add endpoints manually
+### Add operations manually
 
 1. From **Web Assets** \> **Operations**, select **Add operation**.
 2. Select **Manually add**.
@@ -92,13 +91,22 @@ You can edit the identity of an operation.
 3. Update the HTTP method, hostname pattern, or path pattern.
 4. Select **Save**.
 
-Editing a candidate or shadow operation promotes it to the `full` state with the edited values.
-
 Editing this operation will change its ID
 
-Cloudflare computes operation IDs from the HTTP method, hostname, and path. Cloudflare relearns labels, schemas, and rate limiting recommendations for an operation with a new ID.
+Cloudflare computes operation IDs from the HTTP method, hostname, and path. Changing these values creates a different operation ID.
 
-### Delete endpoints manually
+### Start profile learning
+
+Start profiling only after reviewing the operation identity.
+
+1. From **Web Assets** \> **Operations**, open the operation overflow menu.
+2. Select **Learn profile**.
+3. After the profile becomes available, open the overflow menu again.
+4. Select **View details** and review **Security overview**.
+
+For learning requirements, analytics, and enforcement, refer to [Application Profiles](https://developers.cloudflare.com/waf/detections/application-profiles/).
+
+### Delete operations manually
 
 You can delete endpoints one at a time or in bulk.
 
@@ -109,7 +117,7 @@ Caution
 
 When you delete a full operation, Cloudflare stops tracking its associated performance and analytics data. Its previous historical metrics cannot be restored. If the operation returns to the `full` state, metric tracking restarts from that point.
 
-## Endpoint analysis
+## Operation analysis
 
 For each operation in the `full` state, you can view:
 
@@ -161,8 +169,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#page","headline":"Endpoint Management · Cloudflare API Shield docs","description":"Promote, learn, and monitor API endpoints with API Shield and Web Assets.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#page","headline":"Endpoint Management · Cloudflare API Shield docs","description":"Manage API operations through the Web Assets dashboard.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

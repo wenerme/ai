@@ -10381,9 +10381,9 @@
   },
   "api/api-reference/presets/create-a-preset-from-a-responses-request-body.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/create-a-preset-from-a-responses-request-body.md",
-    "lastModified": "Wed, 19 Aug 2026 11:03:31 GMT",
-    "size": 223036,
-    "updatedAt": "2026-08-19T11:03:31.404Z"
+    "lastModified": "Thu, 20 Aug 2026 02:11:14 GMT",
+    "size": 223818,
+    "updatedAt": "2026-08-20T02:11:14.529Z"
   },
   "api/api-reference/presets/get-a-preset.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/get-a-preset.md",
@@ -10423,9 +10423,9 @@
   },
   "api/api-reference/responses/create-a-response.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/responses/create-a-response.md",
-    "lastModified": "Wed, 19 Aug 2026 11:03:37 GMT",
-    "size": 342134,
-    "updatedAt": "2026-08-19T11:03:37.478Z"
+    "lastModified": "Thu, 20 Aug 2026 02:11:21 GMT",
+    "size": 342151,
+    "updatedAt": "2026-08-20T02:11:21.070Z"
   },
   "api/api-reference/scim/create-a-scim-group-mapping.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/scim/create-a-scim-group-mapping.md",
@@ -10483,9 +10483,9 @@
   },
   "api/api-reference/video-generation/list-all-video-generation-models.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/video-generation/list-all-video-generation-models.md",
-    "lastModified": "Sat, 15 Aug 2026 02:05:51 GMT",
-    "size": 13783,
-    "updatedAt": "2026-08-15T02:05:51.783Z"
+    "lastModified": "Thu, 20 Aug 2026 02:11:28 GMT",
+    "size": 14444,
+    "updatedAt": "2026-08-20T02:11:28.573Z"
   },
   "api/api-reference/video-generation/poll-video-generation-status.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/video-generation/poll-video-generation-status.md",
@@ -10495,9 +10495,9 @@
   },
   "api/api-reference/video-generation/submit-a-video-generation-request.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/video-generation/submit-a-video-generation-request.md",
-    "lastModified": "Tue, 18 Aug 2026 02:05:26 GMT",
-    "size": 31004,
-    "updatedAt": "2026-08-18T02:05:26.223Z"
+    "lastModified": "Thu, 20 Aug 2026 02:11:29 GMT",
+    "size": 31509,
+    "updatedAt": "2026-08-20T02:11:29.944Z"
   },
   "api/api-reference/workspaces/bulk-add-members-to-a-workspace.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/workspaces/bulk-add-members-to-a-workspace.md",
@@ -11041,9 +11041,9 @@
   },
   "client-sdks/python/sdks/videogeneration/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/videogeneration/README.md",
-    "lastModified": "Sat, 08 Aug 2026 02:28:01 GMT",
-    "size": 20398,
-    "updatedAt": "2026-08-08T02:28:01.609Z"
+    "lastModified": "Thu, 20 Aug 2026 02:12:39 GMT",
+    "size": 21416,
+    "updatedAt": "2026-08-20T02:12:39.281Z"
   },
   "client-sdks/python/sdks/workspaces/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/workspaces/README.md",
@@ -11317,9 +11317,9 @@
   },
   "cookbook/building-agents/subagent-server-tool.md": {
     "url": "https://openrouter.ai/docs/cookbook/building-agents/subagent-server-tool.md",
-    "lastModified": "Tue, 18 Aug 2026 11:03:36 GMT",
-    "size": 23546,
-    "updatedAt": "2026-08-18T11:03:36.707Z"
+    "lastModified": "Thu, 20 Aug 2026 02:13:11 GMT",
+    "size": 23785,
+    "updatedAt": "2026-08-20T02:13:11.144Z"
   },
   "cookbook/coding-agents/automatic-code-review.md": {
     "url": "https://openrouter.ai/docs/cookbook/coding-agents/automatic-code-review.md",
@@ -11797,9 +11797,9 @@
   },
   "guides/features/guardrails/sensitive-info.md": {
     "url": "https://openrouter.ai/docs/guides/features/guardrails/sensitive-info.md",
-    "lastModified": "Tue, 21 Jul 2026 06:47:57 GMT",
-    "size": 12850,
-    "updatedAt": "2026-07-21T06:47:57.874Z"
+    "lastModified": "Thu, 20 Aug 2026 02:14:06 GMT",
+    "size": 13020,
+    "updatedAt": "2026-08-20T02:14:06.949Z"
   },
   "guides/features/input-output-logging.md": {
     "url": "https://openrouter.ai/docs/guides/features/input-output-logging.md",
@@ -11911,9 +11911,9 @@
   },
   "guides/features/server-tools/subagent.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/subagent.md",
-    "lastModified": "Mon, 17 Aug 2026 11:13:29 GMT",
-    "size": 12573,
-    "updatedAt": "2026-08-17T11:13:29.900Z"
+    "lastModified": "Thu, 20 Aug 2026 02:14:20 GMT",
+    "size": 23365,
+    "updatedAt": "2026-08-20T02:14:20.798Z"
   },
   "guides/features/server-tools/web-fetch.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/web-fetch.md",

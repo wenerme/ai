@@ -4243,6 +4243,30 @@ Fields:
 | <a id="mutation-artifactregistryrolebulkgrant-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-artifactregistryrolebulkgrant-grantedrolecount"></a>`grantedRoleCount` | [`Int`](#int) | Number of role assignments granted. Present only on success. |
 
+### `Mutation.artifactRegistryRoleBulkRevoke`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Revokes Artifact Registry roles from users on resources in a single all-or-nothing operation.
+
+Input type: `ArtifactRegistryRoleBulkRevokeInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryrolebulkrevoke-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryrolebulkrevoke-revocations"></a>`revocations` | [`[ArtifactRegistryRoleRevocationInput!]!`](#artifactregistryrolerevocationinput) | Role revocations to apply. All succeed or none are applied. A maximum of 1000 revocations is allowed per request. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryrolebulkrevoke-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryrolebulkrevoke-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-artifactregistryrolebulkrevoke-revokedrolecount"></a>`revokedRoleCount` | [`Int`](#int) | Number of role assignments revoked. Present only on success. |
+
 ### `Mutation.artifactRegistryRoleGrant`
 
 - Introduced in GitLab 19.2.
@@ -4267,6 +4291,30 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="mutation-artifactregistryrolegrant-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-artifactregistryrolegrant-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+
+### `Mutation.artifactRegistryRoleRevoke`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Revokes a user's Artifact Registry role on a resource. Names no role: a user holds one role per resource, and revoking removes it.
+
+Input type: `ArtifactRegistryRoleRevokeInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryrolerevoke-assigneeid"></a>`assigneeId` | [`UserID!`](#userid) | Global ID of the user to revoke the role from. |
+| <a id="mutation-artifactregistryrolerevoke-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryrolerevoke-resourceid"></a>`resourceId` | [`String!`](#string) | UUID of the Artifact Registry resource (repository or namespace) the role is assigned on. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryrolerevoke-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryrolerevoke-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 
 ### `Mutation.ascpComponentCreate`
 
@@ -5977,6 +6025,31 @@ Fields:
 | <a id="mutation-cdserviceupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-cdserviceupdate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-cdserviceupdate-service"></a>`service` | [`CdService`](#cdservice) | Service updated by the mutation. |
+
+### `Mutation.cdVersionCreate`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Creates a continuous deployment version from a free-text name, for artifacts GitLab did not observe being pushed.
+
+Input type: `CdVersionCreateInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-cdversioncreate-artifactsourceid"></a>`artifactSourceId` | [`CdArtifactSourceID!`](#cdartifactsourceid) | Global ID of the artifact source to create the version for. |
+| <a id="mutation-cdversioncreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-cdversioncreate-name"></a>`name` | [`String!`](#string) | Name of the version. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-cdversioncreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-cdversioncreate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-cdversioncreate-version"></a>`version` | [`CdVersion`](#cdversion) | Version created by the mutation. |
 
 ### `Mutation.cdVersionSetCreate`
 
@@ -12007,7 +12080,7 @@ Arguments:
 | <a id="mutation-mergerequestsetreviewers-iid"></a>`iid` | [`String!`](#string) | IID of the merge request to mutate. |
 | <a id="mutation-mergerequestsetreviewers-operationmode"></a>`operationMode` | [`MutationOperationMode`](#mutationoperationmode) | Operation to perform. Defaults to REPLACE. |
 | <a id="mutation-mergerequestsetreviewers-projectpath"></a>`projectPath` | [`ID!`](#id) | Project the merge request to mutate is in. |
-| <a id="mutation-mergerequestsetreviewers-reviewerusernames"></a>`reviewerUsernames` | [`[String!]!`](#string) | Usernames of reviewers to assign. Replaces existing reviewers by default. |
+| <a id="mutation-mergerequestsetreviewers-reviewerusernames"></a>`reviewerUsernames` | [`[String!]!`](#string) | Usernames of reviewers to assign. Replaces existing reviewers by default. Usernames that do not match a visible user are reported in `errors` and not assigned. |
 
 Fields:
 
@@ -24454,30 +24527,6 @@ Fields:
 | <a id="featureflagedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="featureflagedge-node"></a>`node` | [`FeatureFlag`](#featureflag) | The item at the end of the edge. |
 
-#### `FinishedPipelinesAggregationResponseConnection`
-
-The connection type for [`FinishedPipelinesAggregationResponse`](#finishedpipelinesaggregationresponse).
-
-Fields:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="finishedpipelinesaggregationresponseconnection-count"></a>`count` | [`Int!`](#int) | Total number of aggregated rows. |
-| <a id="finishedpipelinesaggregationresponseconnection-edges"></a>`edges` | [`[FinishedPipelinesAggregationResponseEdge]`](#finishedpipelinesaggregationresponseedge) | A list of edges. |
-| <a id="finishedpipelinesaggregationresponseconnection-nodes"></a>`nodes` | [`[FinishedPipelinesAggregationResponse]`](#finishedpipelinesaggregationresponse) | A list of nodes. |
-| <a id="finishedpipelinesaggregationresponseconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
-
-#### `FinishedPipelinesAggregationResponseEdge`
-
-The edge type for [`FinishedPipelinesAggregationResponse`](#finishedpipelinesaggregationresponse).
-
-Fields:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="finishedpipelinesaggregationresponseedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
-| <a id="finishedpipelinesaggregationresponseedge-node"></a>`node` | [`FinishedPipelinesAggregationResponse`](#finishedpipelinesaggregationresponse) | The item at the end of the edge. |
-
 #### `GitlabSubscriptionBudgetCapUserOverrideConnection`
 
 The connection type for [`GitlabSubscriptionBudgetCapUserOverride`](#gitlabsubscriptionbudgetcapuseroverride).
@@ -32109,6 +32158,7 @@ Fields:
 | <a id="aifoundationalchatagent-systemprompt"></a>`systemPrompt` | [`String`](#string) | System prompt for the agent. |
 | <a id="aifoundationalchatagent-tools"></a>`tools` | [`[AiCatalogBuiltInTool!]!`](#aicatalogbuiltintool) | List of built-in tools enabled for the agent. |
 | <a id="aifoundationalchatagent-version"></a>`version` | [`String`](#string) | Version of the agent. |
+| <a id="aifoundationalchatagent-visibility"></a>`visibility` | [`AiCatalogItemVisibility!`](#aicatalogitemvisibility) | Visibility of the agent in the catalog. |
 
 ### `AiFoundationalChatAgentFlowConfig`
 
@@ -32807,28 +32857,6 @@ Arguments:
 | <a id="analytics-duousageevents-timestampfrom"></a>`timestampFrom` | [`Time`](#time) | Filter by event timestamp. Start of the range. |
 | <a id="analytics-duousageevents-timestampto"></a>`timestampTo` | [`Time`](#time) | Filter by event timestamp. End of the range. |
 | <a id="analytics-duousageevents-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
-
-##### `Analytics.finishedPipelines`
-
-- Introduced in GitLab 19.0.
-- Status: Experiment.
-
-Aggregation engine for finished pipelines analytics.
-
-Returns [`FinishedPipelinesAggregationScope`](#finishedpipelinesaggregationscope).
-
-Arguments:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="analytics-finishedpipelines-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
-| <a id="analytics-finishedpipelines-finishedatfrom"></a>`finishedAtFrom` | [`Time`](#time) | Filter by pipeline finish timestamp. Start of the range. |
-| <a id="analytics-finishedpipelines-finishedatto"></a>`finishedAtTo` | [`Time`](#time) | Filter by pipeline finish timestamp. End of the range. |
-| <a id="analytics-finishedpipelines-ref"></a>`ref` | [`[String!]`](#string) | Filter by one or many pipeline refs. |
-| <a id="analytics-finishedpipelines-source"></a>`source` | [`[String!]`](#string) | Filter by one or many pipeline sources. |
-| <a id="analytics-finishedpipelines-startedatfrom"></a>`startedAtFrom` | [`Time`](#time) | Filter by pipeline start timestamp. Start of the range. |
-| <a id="analytics-finishedpipelines-startedatto"></a>`startedAtTo` | [`Time`](#time) | Filter by pipeline start timestamp. End of the range. |
-| <a id="analytics-finishedpipelines-status"></a>`status` | [`[String!]`](#string) | Filter by one or many pipeline statuses. |
 
 ##### `Analytics.mergeRequests`
 
@@ -34773,6 +34801,7 @@ Fields:
 | <a id="cdversion-name"></a>`name` | [`String!`](#string) | Name of the version. |
 | <a id="cdversion-reference"></a>`reference` | [`String`](#string) | Reference of the version. |
 | <a id="cdversion-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the version was last updated. |
+| <a id="cdversion-verified"></a>`verified` | [`Boolean!`](#boolean) | Indicates the version was observed being pushed to the artifact source, rather than entered as a free-text name. |
 
 ### `CdVersionSet`
 
@@ -39056,6 +39085,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="deploymentsaggregationresponse-canceledrate"></a>`canceledRate` | [`Float`](#float) | Deployment canceled rate (out of finished deployments). |
 | <a id="deploymentsaggregationresponse-dimensions"></a>`dimensions` | [`DeploymentsAggregationResponseDimensions`](#deploymentsaggregationresponsedimensions) | Aggregation dimensions. Every selected dimension will be used for aggregation. |
+| <a id="deploymentsaggregationresponse-duration"></a>`duration` | [`DeploymentsAggregationResponseDurationMetrics`](#deploymentsaggregationresponsedurationmetrics) | Aggregated `duration` metrics. |
 | <a id="deploymentsaggregationresponse-failurerate"></a>`failureRate` | [`Float`](#float) | Deployment failure rate (out of finished deployments). |
 | <a id="deploymentsaggregationresponse-successrate"></a>`successRate` | [`Float`](#float) | Deployment success rate (out of finished deployments). |
 | <a id="deploymentsaggregationresponse-totalcount"></a>`totalCount` | [`Int`](#int) | Total number of deployments. |
@@ -39111,6 +39141,32 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="deploymentsaggregationresponsedimensions-finishedat-granularity"></a>`granularity` | [`String`](#string) |  |
+
+### `DeploymentsAggregationResponseDurationMetrics`
+
+Aggregated `duration` metrics for `Deployments` aggregation engine.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="deploymentsaggregationresponsedurationmetrics-max"></a>`max` | [`Int`](#int) | Maximum deployment duration in milliseconds. |
+| <a id="deploymentsaggregationresponsedurationmetrics-mean"></a>`mean` | [`Float`](#float) | Mean deployment duration in milliseconds. |
+| <a id="deploymentsaggregationresponsedurationmetrics-min"></a>`min` | [`Int`](#int) | Minimum deployment duration in milliseconds. |
+
+#### Fields with arguments
+
+##### `DeploymentsAggregationResponseDurationMetrics.quantile`
+
+Quantile of deployment duration in milliseconds.
+
+Returns [`Float`](#float).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="deploymentsaggregationresponsedurationmetrics-quantile-quantile"></a>`quantile` | [`Float`](#float) |  |
 
 ### `DeploymentsAggregationScope`
 
@@ -41052,97 +41108,6 @@ Fields:
 | <a id="findingreportscomparer-status"></a>`status` | [`FindingReportsComparerStatus`](#findingreportscomparerstatus) | Comparison status. |
 | <a id="findingreportscomparer-statusreason"></a>`statusReason` | [`String`](#string) | Text explaining the status. |
 
-### `FinishedPipelinesAggregationResponse`
-
-Response for `FinishedPipelines` aggregation engine.
-
-Fields:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="finishedpipelinesaggregationresponse-canceledrate"></a>`canceledRate` | [`Float`](#float) | Pipeline canceled rate. |
-| <a id="finishedpipelinesaggregationresponse-dimensions"></a>`dimensions` | [`FinishedPipelinesAggregationResponseDimensions`](#finishedpipelinesaggregationresponsedimensions) | Aggregation dimensions. Every selected dimension will be used for aggregation. |
-| <a id="finishedpipelinesaggregationresponse-failurerate"></a>`failureRate` | [`Float`](#float) | Pipeline failure rate. |
-| <a id="finishedpipelinesaggregationresponse-skippedrate"></a>`skippedRate` | [`Float`](#float) | Pipeline skipped rate. |
-| <a id="finishedpipelinesaggregationresponse-successrate"></a>`successRate` | [`Float`](#float) | Pipeline success rate. |
-| <a id="finishedpipelinesaggregationresponse-totalcount"></a>`totalCount` | [`Int`](#int) | Total number of pipelines. |
-
-#### Fields with arguments
-
-##### `FinishedPipelinesAggregationResponse.durationQuantile`
-
-Pipeline duration quantile in seconds.
-
-Returns [`Float`](#float).
-
-Arguments:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="finishedpipelinesaggregationresponse-durationquantile-quantile"></a>`quantile` | [`Float`](#float) |  |
-
-### `FinishedPipelinesAggregationResponseDimensions`
-
-Response dimensions for `FinishedPipelines` aggregation engine.
-
-Fields:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="finishedpipelinesaggregationresponsedimensions-project"></a>`project` | [`Project`](#project) | Project. |
-| <a id="finishedpipelinesaggregationresponsedimensions-ref"></a>`ref` | [`String`](#string) | Pipeline ref. |
-| <a id="finishedpipelinesaggregationresponsedimensions-source"></a>`source` | [`String`](#string) | Pipeline source. |
-| <a id="finishedpipelinesaggregationresponsedimensions-status"></a>`status` | [`String`](#string) | Pipeline status. |
-
-#### Fields with arguments
-
-##### `FinishedPipelinesAggregationResponseDimensions.finishedAt`
-
-Pipeline finish time.
-
-Returns [`Time`](#time).
-
-Arguments:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="finishedpipelinesaggregationresponsedimensions-finishedat-granularity"></a>`granularity` | [`String`](#string) |  |
-
-##### `FinishedPipelinesAggregationResponseDimensions.startedAt`
-
-Pipeline start time.
-
-Returns [`Time`](#time).
-
-Arguments:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="finishedpipelinesaggregationresponsedimensions-startedat-granularity"></a>`granularity` | [`String`](#string) |  |
-
-### `FinishedPipelinesAggregationScope`
-
-Aggregation scope for `FinishedPipelines`. Apply ordering and pagination on the aggregation.
-
-#### Fields with arguments
-
-##### `FinishedPipelinesAggregationScope.aggregated`
-
-Aggregated data.
-
-Returns [`FinishedPipelinesAggregationResponseConnection`](#finishedpipelinesaggregationresponseconnection).
-
-This field returns a [connection](#connections). It accepts the
-four standard [pagination arguments](#pagination-arguments):
-`before: String`, `after: String`, `first: Int`, and `last: Int`.
-
-Arguments:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="finishedpipelinesaggregationscope-aggregated-orderby"></a>`orderBy` | [`[AggregationOrder!]`](#aggregationorder) | Sorting order list for the aggregated data. |
-| <a id="finishedpipelinesaggregationscope-aggregated-successrate"></a>`successRate` | [`[Float!]`](#float) | Filter by exact pipeline success rate The `success_rate` metric must also be requested when using this filter. |
-
 ### `ForkDetails`
 
 Details of the fork project compared to its upstream project.
@@ -42690,6 +42655,7 @@ Fields:
 | <a id="group-pendingmembers"></a>`pendingMembers`  | [`PendingMemberInterfaceConnection`](#pendingmemberinterfaceconnection) | Introduced in GitLab 16.6. Status: Experiment. A pending membership of a user within this group. |
 | <a id="group-permanentdeletiondate"></a>`permanentDeletionDate`  | [`String`](#string) | Introduced in GitLab 16.11. Status: Experiment. For groups pending deletion, returns the group's scheduled deletion date. For groups not pending deletion, returns a theoretical date based on current settings if marked for deletion today. |
 | <a id="group-plan"></a>`plan`  | [`NamespacePlan`](#namespaceplan) | Introduced in GitLab 18.2. Status: Experiment. Subscription plan associated with the namespace. |
+| <a id="group-policystore"></a>`policyStore`  | [`PolicyStore`](#policystore) | Introduced in GitLab 19.4. Status: Experiment. Policy store catalogs. Returns `null` when the policy store experiment is not active for the group. |
 | <a id="group-productanalyticsstoredeventslimit"></a>`productAnalyticsStoredEventsLimit`  | [`Int`](#int) | Introduced in GitLab 16.9. Status: Experiment. Number of product analytics events namespace is permitted to store per cycle. |
 | <a id="group-projectcreationlevel"></a>`projectCreationLevel` | [`String`](#string) | Permission level required to create projects in the group. |
 | <a id="group-projectstatistics"></a>`projectStatistics`  | [`NamespaceProjectStatistics`](#namespaceprojectstatistics) | Introduced in GitLab 18.2. Status: Experiment. Statistics of the projects in the group. Only available from [Query.groups](#querygroups). |
@@ -49055,6 +49021,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="mergerequestsaggregationresponse-dimensions"></a>`dimensions` | [`MergeRequestsAggregationResponseDimensions`](#mergerequestsaggregationresponsedimensions) | Aggregation dimensions. Every selected dimension will be used for aggregation. |
 | <a id="mergerequestsaggregationresponse-throughputcount"></a>`throughputCount` | [`Int`](#int) | Number of merged merge requests. |
+| <a id="mergerequestsaggregationresponse-timetomerge"></a>`timeToMerge` | [`MergeRequestsAggregationResponseTimeToMergeMetrics`](#mergerequestsaggregationresponsetimetomergemetrics) | Aggregated `time_to_merge` metrics. |
 | <a id="mergerequestsaggregationresponse-totalcount"></a>`totalCount` | [`Int`](#int) | Total number of merge requests. |
 
 #### Fields with arguments
@@ -49107,6 +49074,32 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="mergerequestsaggregationresponsedimensions-metricmergedat-granularity"></a>`granularity` | [`String`](#string) | Time bucket granularity: daily, weekly, or monthly. |
+
+### `MergeRequestsAggregationResponseTimeToMergeMetrics`
+
+Aggregated `time_to_merge` metrics for `MergeRequests` aggregation engine.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestsaggregationresponsetimetomergemetrics-max"></a>`max` | [`Int`](#int) | Maximum time to merge in seconds. |
+| <a id="mergerequestsaggregationresponsetimetomergemetrics-mean"></a>`mean` | [`Float`](#float) | Mean time to merge in seconds. |
+| <a id="mergerequestsaggregationresponsetimetomergemetrics-min"></a>`min` | [`Int`](#int) | Minimum time to merge in seconds. |
+
+#### Fields with arguments
+
+##### `MergeRequestsAggregationResponseTimeToMergeMetrics.quantile`
+
+Quantile of time to merge in seconds.
+
+Returns [`Float`](#float).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestsaggregationresponsetimetomergemetrics-quantile-quantile"></a>`quantile` | [`Float`](#float) |  |
 
 ### `MergeRequestsAggregationScope`
 
@@ -50460,6 +50453,7 @@ Fields:
 | <a id="organization-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 16.4. Status: Experiment. Name of the organization. |
 | <a id="organization-organizationusers"></a>`organizationUsers`  | [`OrganizationUserConnection!`](#organizationuserconnection) | Introduced in GitLab 16.4. Status: Experiment. Users with access to the organization. |
 | <a id="organization-path"></a>`path`  | [`String!`](#string) | Introduced in GitLab 16.4. Status: Experiment. Path of the organization. |
+| <a id="organization-policystore"></a>`policyStore`  | [`PolicyStore`](#policystore) | Introduced in GitLab 19.4. Status: Experiment. Policy store catalogs. Returns `null` when the policy store experiment is not active for the organization. |
 | <a id="organization-rootpath"></a>`rootPath`  | [`String!`](#string) | Introduced in GitLab 18.5. Status: Experiment. Root path in the context of the organization. |
 | <a id="organization-softdeletedat"></a>`softDeletedAt`  | [`Time`](#time) | Introduced in GitLab 19.1. Status: Experiment. Timestamp when the organization was soft-deleted.Visible to admins and organization owners only. |
 | <a id="organization-state"></a>`state`  | [`OrganizationState!`](#organizationstate) | Introduced in GitLab 19.0. Status: Experiment. State of the organization. |
@@ -52033,6 +52027,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="pipelinesaggregationresponse-dimensions"></a>`dimensions` | [`PipelinesAggregationResponseDimensions`](#pipelinesaggregationresponsedimensions) | Aggregation dimensions. Every selected dimension will be used for aggregation. |
+| <a id="pipelinesaggregationresponse-duration"></a>`duration` | [`PipelinesAggregationResponseDurationMetrics`](#pipelinesaggregationresponsedurationmetrics) | Aggregated `duration` metrics. |
 
 #### Fields with arguments
 
@@ -52111,6 +52106,32 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="pipelinesaggregationresponsedimensions-startedat-granularity"></a>`granularity` | [`String`](#string) |  |
+
+### `PipelinesAggregationResponseDurationMetrics`
+
+Aggregated `duration` metrics for `Pipelines` aggregation engine.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="pipelinesaggregationresponsedurationmetrics-max"></a>`max` | [`Int`](#int) | Maximum pipeline duration in seconds. |
+| <a id="pipelinesaggregationresponsedurationmetrics-mean"></a>`mean` | [`Float`](#float) | Mean pipeline duration in seconds. |
+| <a id="pipelinesaggregationresponsedurationmetrics-min"></a>`min` | [`Int`](#int) | Minimum pipeline duration in seconds. |
+
+#### Fields with arguments
+
+##### `PipelinesAggregationResponseDurationMetrics.quantile`
+
+Quantile of pipeline duration in seconds.
+
+Returns [`Float`](#float).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="pipelinesaggregationresponsedurationmetrics-quantile-quantile"></a>`quantile` | [`Float`](#float) |  |
 
 ### `PipelinesAggregationScope`
 
@@ -52323,6 +52344,51 @@ Fields:
 | <a id="policyscope-includinggroups"></a>`includingGroups` | [`GroupConnection!`](#groupconnection) | Groups to which the policy should be applied. (see [Connections](#connections)) |
 | <a id="policyscope-includingprojects"></a>`includingProjects` | [`ProjectConnection!`](#projectconnection) | Projects to which the policy should be applied. (see [Connections](#connections)) |
 | <a id="policyscope-matchmode"></a>`matchMode`  | [`PolicyScopeMatchMode!`](#policyscopematchmode) | Introduced in GitLab 18.10. Status: Experiment. Specifies how multiple policy scope conditions are combined. |
+
+### `PolicyStore`
+
+Catalogs available when creating a policy in the policy store.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="policystore-actions"></a>`actions`  | [`[PolicyStoreAction!]!`](#policystoreaction) | Introduced in GitLab 19.4. Status: Experiment. Actions available when creating a policy in the policy store. |
+| <a id="policystore-rules"></a>`rules`  | [`[PolicyStoreRule!]!`](#policystorerule) | Introduced in GitLab 19.4. Status: Experiment. Rule kinds available when creating a policy in the policy store. |
+| <a id="policystore-triggers"></a>`triggers`  | [`[PolicyStoreTrigger!]!`](#policystoretrigger) | Introduced in GitLab 19.4. Status: Experiment. Triggers available when creating a policy in the policy store. |
+
+### `PolicyStoreAction`
+
+Action available when creating a policy in the policy store.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="policystoreaction-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.4. Status: Experiment. Identifier of the action. |
+| <a id="policystoreaction-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Human-readable name of the action. |
+
+### `PolicyStoreRule`
+
+Rule kind available when creating a policy in the policy store.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="policystorerule-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.4. Status: Experiment. Identifier of the rule kind. |
+| <a id="policystorerule-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Human-readable name of the rule kind. |
+
+### `PolicyStoreTrigger`
+
+Trigger available when creating a policy in the policy store.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="policystoretrigger-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.4. Status: Experiment. Identifier of the trigger. |
+| <a id="policystoretrigger-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Human-readable name of the trigger. |
 
 ### `PolicyViolationDetails`
 
@@ -72483,6 +72549,17 @@ Arguments:
 | <a id="artifactregistryroleassignmentinput-assigneeid"></a>`assigneeId` | [`UserID!`](#userid) | Global ID of the user to grant the role to. |
 | <a id="artifactregistryroleassignmentinput-resourceid"></a>`resourceId` | [`String!`](#string) | UUID of the Artifact Registry resource (repository or namespace) the role applies to. |
 | <a id="artifactregistryroleassignmentinput-role"></a>`role` | [`ArtifactRegistryRole!`](#artifactregistryrole) | Artifact Registry role to grant. |
+
+### `ArtifactRegistryRoleRevocationInput`
+
+Single Artifact Registry role revocation. Names no role: a user holds one role per resource, and revoking removes it.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryrolerevocationinput-assigneeid"></a>`assigneeId` | [`UserID!`](#userid) | Global ID of the user to revoke the role from. |
+| <a id="artifactregistryrolerevocationinput-resourceid"></a>`resourceId` | [`String!`](#string) | UUID of the Artifact Registry resource (repository or namespace) the role is assigned on. |
 
 ### `AscpSecurityGuidelineInput`
 

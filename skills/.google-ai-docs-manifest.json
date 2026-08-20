@@ -200,8 +200,8 @@
   "google-ai-api/interactions-api.md": {
     "url": "https://ai.google.dev/api/interactions-api",
     "skill": "google-ai-api",
-    "size": 134964,
-    "updatedAt": "2026-08-13T11:31:53.004Z"
+    "size": 135671,
+    "updatedAt": "2026-08-20T02:15:19.299Z"
   },
   "google-ai-docs/api-key.md": {
     "url": "https://ai.google.dev/gemini-api/docs/api-key",
@@ -278,8 +278,8 @@
   "google-ai-docs/speech-generation.md": {
     "url": "https://ai.google.dev/gemini-api/docs/speech-generation",
     "skill": "google-ai-docs",
-    "size": 30585,
-    "updatedAt": "2026-07-31T04:10:15.042Z"
+    "size": 30574,
+    "updatedAt": "2026-08-20T02:15:32.809Z"
   },
   "google-ai-docs/music-generation.md": {
     "url": "https://ai.google.dev/gemini-api/docs/music-generation",
@@ -320,8 +320,8 @@
   "google-ai-docs/computer-use.md": {
     "url": "https://ai.google.dev/gemini-api/docs/computer-use",
     "skill": "google-ai-docs",
-    "size": 58986,
-    "updatedAt": "2026-07-31T04:10:18.706Z"
+    "size": 60629,
+    "updatedAt": "2026-08-20T02:15:37.203Z"
   },
   "google-ai-docs/custom-agents.md": {
     "url": "https://ai.google.dev/gemini-api/docs/custom-agents",

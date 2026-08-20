@@ -52,18 +52,6 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "llmgateway/claude-3-opus",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 200000,
-    "maxOutput": 4096,
-    "inputCost": 15,
-    "outputCost": 75
-  },
-  {
     "model": "llmgateway/claude-fable-5",
     "imageInput": true,
     "audioInput": false,
@@ -276,8 +264,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 384000,
-    "inputCost": 0.05,
-    "outputCost": 0.09
+    "inputCost": 0.076,
+    "outputCost": 0.153
   },
   {
     "model": "llmgateway/deepseek-v4-pro",
@@ -662,6 +650,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.55,
     "outputCost": 1.784
+  },
+  {
+    "model": "llmgateway/glm-5.3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 1.4,
+    "outputCost": 4.4
   },
   {
     "model": "llmgateway/gpt-3.5-turbo",

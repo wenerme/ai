@@ -42,12 +42,12 @@ Regex-based presets include:
 
 ### NLP-Based Detection
 
-Some types of sensitive information — like person names and physical addresses — cannot be reliably detected with simple patterns. For these, OpenRouter uses NLP-powered entity recognition (via [Presidio](https://microsoft.github.io/presidio/)), which analyzes text contextually.
+Some types of sensitive information — like person names and geographic locations — cannot be reliably detected with simple patterns. For these, OpenRouter uses NLP-powered entity recognition (via [Presidio](https://microsoft.github.io/presidio/)), which analyzes text contextually. When a geographic location is recognized, address redaction extends over the adjoining street line.
 
 NLP-based presets include:
 
 * Person names *(beta)*
-* Physical addresses / locations *(beta)*
+* Geographic locations and anchored street addresses *(beta)*
 
 <Warning>
   The "Person Name" and "Address" presets are currently in **beta**. Detection accuracy may vary — especially for uncommon name formats and partial or non-standard addresses. If the check times out, the request proceeds (not blocked). We're actively improving these models.
@@ -81,7 +81,7 @@ NLP-based detection is contextual and probabilistic. Keep the following in mind:
 
 **Address**:
 
-* Partial addresses without city/state may be missed
+* A street address without a recognizable city, state, or locality anchor may not be detected at all
 * Ambiguous location names (e.g., "Paris" as a name vs. a city) depend on context
 * Non-standard or abbreviated formats may not be detected
 

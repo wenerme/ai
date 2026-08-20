@@ -39,6 +39,39 @@ For more details on Cloudflare One Client support timelines and end-of-life (EOL
 
 Latest release
 
+**Version:** Windows 2026.7.1343.0**Date:** 2026-08-19**Size:** 59.5 MB
+
+[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.7.1343.0)
+
+#### Release notes
+
+This release introduces multiple features from our previous beta release into stable release, including:
+
+* When reauthentication is needed for any reason, the notifications are clearer and reduce the actions needed to get you back to work by redirecting to the browser for authentication instead of the app window when necessary.
+* When a network is blocking or otherwise not supportive of HTTP/3, the client will learn and adapt by switching the order of fallback for that network by starting with HTTP/2 first and then trying HTTP/3 if needed. This reduces delays in time to connectivity when joining older or heavily filtered networks.
+
+**Additional changes and improvements**
+
+* Fixed a process leak in the Windows GUI that could exhaust system resources during IPC client-creation failures.
+* Fixed being unable to switch organizations when the client was stuck in the "Device not in organization" state.
+* Fixed an issue where Microsoft Defender would falsely flag the Cloudflare One Client installation as malicious when installing with Intune.
+* Made the Windows domain-joined posture check more reliable.
+* A DNS search domain parsing failure no longer prevents connection.
+* Cloud icon now correctly reflects actual connection status instead of showing disconnected while fully connected.
+* Fixed missing certificate error display due to a race condition.
+* Fixed empty black window after transitioning from docked dual displays to undocked/internal display.
+
+**Known issues**
+
+* None
+
+For Zero Trust documentation please see: <https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/>
+For Consumer documentation please see: <https://developers.cloudflare.com/warp-client/>
+
+Previous version history (14)
+
+Windows 2026.6.905.0
+
 **Version:** Windows 2026.6.905.0**Date:** 2026-08-10**Size:** 59.1 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.6.905.0)
@@ -46,8 +79,6 @@ Latest release
 #### Release notes
 
 This hotfix addresses an uncommon and intermittent case on Windows devices where the device is unable to reconnect after the device is woken from sleep.
-
-Previous version history (13)
 
 Windows 2026.6.880.0
 
@@ -441,6 +472,37 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 Latest release
 
+**Version:** macOS 2026.7.1343.0**Date:** 2026-08-19**Size:** 153 MB
+
+[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.7.1343.0)
+
+#### Release notes
+
+This release introduces multiple features from our previous beta release into stable release, including:
+
+* When reauthentication is needed for any reason, the notifications are clearer and reduce the actions needed to get you back to work by redirecting to the browser for authentication instead of the app window when necessary.
+* When a network is blocking or otherwise not supportive of HTTP/3, the client will learn and adapt by switching the order of fallback for that network by starting with HTTP/2 first and then trying HTTP/3 if needed. This reduces delays in time to connectivity when joining older or heavily filtered networks.
+
+**Additional changes and improvements**
+
+* Fixed the client not allowing login to another organization when currently showing "Device not in organization."
+* A DNS search domain parsing failure no longer prevents connection.
+* Cloud icon now correctly reflects actual connection status instead of showing disconnected while fully connected.
+* Fixed missing certificate error display due to a race condition.
+* Fixed crash when trying to connect to captive portal on Wi-Fi.
+* Fixed empty black window after transitioning from docked dual displays to undocked/internal display.
+
+**Known issues**
+
+* None
+
+For Zero Trust documentation please see: <https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/>
+For Consumer documentation please see: <https://developers.cloudflare.com/warp-client/>
+
+Previous version history (11)
+
+macOS 2026.6.880.0
+
 **Version:** macOS 2026.6.880.0**Date:** 2026-07-21**Size:** 152 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.6.880.0)
@@ -448,8 +510,6 @@ Latest release
 #### Release notes
 
 This hotfix resolves a regression that caused a large increase in DNS-over-TCP queries to fallback and internal DNS servers. The client now sends fallback DNS queries over UDP first, falling back to TCP only when a response is truncated, instead of querying both protocols in parallel.
-
-Previous version history (10)
 
 macOS 2026.6.822.0
 
@@ -700,6 +760,39 @@ This release contains minor fixes and improvements.
 
 Latest release
 
+**Version:** Linux 2026.7.1343.0**Date:** 2026-08-19**Size:** 75.3 MB
+
+AlmaLinux / RHEL 10 (arm64)AlmaLinux / RHEL 10 (x86-64)AlmaLinux / RHEL 9 (arm64)AlmaLinux / RHEL 9 (x86-64)Debian 12 (arm64)Debian 12 (x86-64)Debian 13 (arm64)Debian 13 (x86-64)Fedora 43 (arm64)Fedora 43 (x86-64)Fedora 44 (arm64)Fedora 44 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)Ubuntu 26.04 (arm64)Ubuntu 26.04 (x86-64)
+
+[Download](https://downloads.cloudflareclient.com/v1/download/almalinux10-arm/version/2026.7.1343.0)
+
+#### Release notes
+
+This release introduces multiple features from our previous beta release into stable release, including:
+
+* When reauthentication is needed for any reason, the notifications are clearer and reduce the actions needed to get you back to work by redirecting to the browser for authentication instead of the app window when necessary.
+* When a network is blocking or otherwise not supportive of HTTP/3, the client will learn and adapt by switching the order of fallback for that network by starting with HTTP/2 first and then trying HTTP/3 if needed. This reduces delays in time to connectivity when joining older or heavily filtered networks.
+
+**Additional changes and improvements**
+
+* Fixed the client not allowing login to another organization when currently showing "Device not in organization."
+* A DNS search domain parsing failure no longer prevents connection.
+* Cloud icon now correctly reflects actual connection status instead of showing disconnected while fully connected.
+* Fixed missing certificate error display due to a race condition.
+* Fixed empty black window after transitioning from docked dual displays to undocked/internal display.
+* Fixed hostname routes not working for Cloudflare Mesh when the IP addresses of the hostnames are local addresses.
+
+**Known issues**
+
+* When in DNS Only mode, the client may send DNS queries for names that are configured for Local Domain Fallback to the encrypted DNS server instead of falling back to the system configuration. Local Domain Fallback works as expected in other client modes.
+
+For Zero Trust documentation please see: <https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/>
+For Consumer documentation please see: <https://developers.cloudflare.com/warp-client/>
+
+Previous version history (12)
+
+Linux 2026.6.880.0
+
 **Version:** Linux 2026.6.880.0**Date:** 2026-07-21**Size:** 74.4 MB
 
 AlmaLinux / RHEL 10 (arm64)AlmaLinux / RHEL 10 (x86-64)AlmaLinux / RHEL 9 (arm64)AlmaLinux / RHEL 9 (x86-64)Debian 12 (arm64)Debian 12 (x86-64)Debian 13 (arm64)Debian 13 (x86-64)Fedora 43 (arm64)Fedora 43 (x86-64)Fedora 44 (arm64)Fedora 44 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)Ubuntu 26.04 (arm64)Ubuntu 26.04 (x86-64)
@@ -710,15 +803,13 @@ AlmaLinux / RHEL 10 (arm64)AlmaLinux / RHEL 10 (x86-64)AlmaLinux / RHEL 9 (arm64
 
 This hotfix resolves a regression that caused a large increase in DNS-over-TCP queries to fallback and internal DNS servers. The client now sends fallback DNS queries over UDP first, falling back to TCP only when a response is truncated, instead of querying both protocols in parallel.
 
-Previous version history (11)
-
 Linux 2026.6.836.0
 
 **Version:** Linux 2026.6.836.0**Date:** 2026-07-01**Size:** 74.4 MB
 
-Debian 12 (arm64)Debian 12 (x86-64)Debian 13 (arm64)Debian 13 (x86-64)Fedora 43 (arm64)Fedora 43 (x86-64)Fedora 44 (arm64)Fedora 44 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)Ubuntu 26.04 (arm64)Ubuntu 26.04 (x86-64)
+AlmaLinux / RHEL 10 (arm64)AlmaLinux / RHEL 10 (x86-64)AlmaLinux / RHEL 9 (arm64)AlmaLinux / RHEL 9 (x86-64)Debian 12 (arm64)Debian 12 (x86-64)Debian 13 (arm64)Debian 13 (x86-64)Fedora 43 (arm64)Fedora 43 (x86-64)Fedora 44 (arm64)Fedora 44 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)Ubuntu 26.04 (arm64)Ubuntu 26.04 (x86-64)
 
-[Download](https://downloads.cloudflareclient.com/v1/download/bookworm-arm/version/2026.6.836.0)
+[Download](https://downloads.cloudflareclient.com/v1/download/almalinux10-arm/version/2026.6.836.0)
 
 #### Release notes
 
@@ -737,9 +828,9 @@ Linux 2026.6.822.0
 
 **Version:** Linux 2026.6.822.0**Date:** 2026-06-29**Size:** 76 MB
 
-Debian 12 (arm64)Debian 12 (x86-64)Debian 13 (arm64)Debian 13 (x86-64)Fedora 43 (arm64)Fedora 43 (x86-64)Fedora 44 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)Ubuntu 26.04 (arm64)Ubuntu 26.04 (x86-64)
+AlmaLinux / RHEL 10 (arm64)AlmaLinux / RHEL 10 (x86-64)AlmaLinux / RHEL 9 (arm64)AlmaLinux / RHEL 9 (x86-64)Debian 12 (arm64)Debian 12 (x86-64)Debian 13 (arm64)Debian 13 (x86-64)Fedora 43 (arm64)Fedora 43 (x86-64)Fedora 44 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)Ubuntu 26.04 (arm64)Ubuntu 26.04 (x86-64)
 
-[Download](https://downloads.cloudflareclient.com/v1/download/bookworm-arm/version/2026.6.822.0)
+[Download](https://downloads.cloudflareclient.com/v1/download/almalinux10-arm/version/2026.6.822.0)
 
 #### Release notes
 

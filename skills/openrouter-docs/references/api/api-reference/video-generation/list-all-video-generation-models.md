@@ -272,6 +272,13 @@ components:
           description: Unix timestamp of when the model was created
           example: 1692901234
           type: integer
+        creativity:
+          description: Supported creativity levels for video upscaling models
+          items:
+            type: integer
+          type:
+            - array
+            - 'null'
         description:
           description: Description of the model
           example: >-
@@ -430,6 +437,22 @@ components:
           type:
             - array
             - 'null'
+        upscale_factor:
+          description: Supported upscale factor range for video upscaling models
+          properties:
+            max:
+              format: double
+              type:
+                - number
+                - 'null'
+            min:
+              format: double
+              type:
+                - number
+                - 'null'
+          type:
+            - object
+            - 'null'
       required:
         - id
         - canonical_slug
@@ -440,6 +463,8 @@ components:
         - supported_sizes
         - supported_durations
         - supported_frame_images
+        - upscale_factor
+        - creativity
         - generate_audio
         - seed
         - allowed_passthrough_parameters

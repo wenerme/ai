@@ -54,17 +54,21 @@ Creates an edited or extended image given one or more source images and a prompt
 
     A fully qualified URL or base64-encoded data URL.
 
-- `model: optional string or "gpt-image-1.5" or "gpt-image-1" or "gpt-image-1-mini" or "chatgpt-image-latest" or null`
+- `model: optional string or "gpt-image-1.5" or "gpt-image-2" or "gpt-image-2-2026-04-21" or 3 more or null`
 
-  The model to use for image editing.
+  The GPT image model to use for image editing, including `gpt-image-2` and its dated snapshot `gpt-image-2-2026-04-21`.
 
   - `string`
 
-  - `"gpt-image-1.5" or "gpt-image-1" or "gpt-image-1-mini" or "chatgpt-image-latest"`
+  - `"gpt-image-1.5" or "gpt-image-2" or "gpt-image-2-2026-04-21" or 3 more`
 
-    The model to use for image editing.
+    The GPT image model to use for image editing, including `gpt-image-2` and its dated snapshot `gpt-image-2-2026-04-21`.
 
     - `"gpt-image-1.5"`
+
+    - `"gpt-image-2"`
+
+    - `"gpt-image-2-2026-04-21"`
 
     - `"gpt-image-1"`
 

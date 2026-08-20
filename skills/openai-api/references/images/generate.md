@@ -28,13 +28,17 @@ Creates an image given a prompt. [Learn more](/docs/guides/images).
 
 - `model: optional string or ImageModel or null`
 
-  The model to use for image generation. One of `dall-e-2`, `dall-e-3`, or a GPT image model (`gpt-image-1`, `gpt-image-1-mini`, `gpt-image-1.5`). Defaults to `dall-e-2` unless a parameter specific to the GPT image models is used.
+  The model to use for image generation. One of `dall-e-2`, `dall-e-3`, or a GPT image model (`gpt-image-1`, `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`, `gpt-image-2-2026-04-21`). Defaults to `dall-e-2` unless a parameter specific to the GPT image models is used.
 
   - `string`
 
-  - `ImageModel = "gpt-image-1.5" or "dall-e-2" or "dall-e-3" or 2 more`
+  - `ImageModel = "gpt-image-1.5" or "gpt-image-2" or "gpt-image-2-2026-04-21" or 4 more`
 
     - `"gpt-image-1.5"`
+
+    - `"gpt-image-2"`
+
+    - `"gpt-image-2-2026-04-21"`
 
     - `"dall-e-2"`
 
