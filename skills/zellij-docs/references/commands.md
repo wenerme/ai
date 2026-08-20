@@ -55,3 +55,18 @@ These flags can be invoked with `zellij --flag`.
 | --help                             |   Display the help prompt |
 | --debug                             |  Gather additional debug information |
 | --version                       |  Print version information |
+| --layout-string [KDL]           |  Use a raw KDL layout string instead of a layout file |
+
+## `--layout-string`
+
+Takes a [layout](./layouts.md) as a raw KDL string rather than as a path to a layout file. Useful for scripting and for generating layouts on the fly.
+
+If invoked from inside a Zellij session (or with an explicit `--session`), the layout is added to the running session as new tab(s). Otherwise, a new session is started with it.
+
+This flag conflicts with `--layout` and `--new-session-with-layout`.
+
+```
+$ zellij --layout-string 'layout { pane split_direction="vertical" { pane; pane; } }'
+```
+
+The layout is parsed and validated before being sent to the session, so syntax errors are reported immediately.

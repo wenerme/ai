@@ -10585,9 +10585,9 @@
   },
   "api_reference/errors-and-debugging.md": {
     "url": "https://openrouter.ai/docs/api_reference/errors-and-debugging.md",
-    "lastModified": "Fri, 14 Aug 2026 03:03:50 GMT",
-    "size": 35722,
-    "updatedAt": "2026-08-14T03:03:50.143Z"
+    "lastModified": "Thu, 20 Aug 2026 11:07:31 GMT",
+    "size": 47619,
+    "updatedAt": "2026-08-20T11:07:31.272Z"
   },
   "api_reference/limits.md": {
     "url": "https://openrouter.ai/docs/api_reference/limits.md",
@@ -10669,9 +10669,9 @@
   },
   "changelog.md": {
     "url": "https://openrouter.ai/docs/changelog.md",
-    "lastModified": "Sun, 09 Aug 2026 02:39:25 GMT",
-    "size": 25388,
-    "updatedAt": "2026-08-09T02:39:25.562Z"
+    "lastModified": "Thu, 20 Aug 2026 11:07:38 GMT",
+    "size": 27431,
+    "updatedAt": "2026-08-20T11:07:38.842Z"
   },
   "client-sdks/agent-migration.md": {
     "url": "https://openrouter.ai/docs/client-sdks/agent-migration.md",

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Autonomous responses
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Send messages and trigger LLM responses from the server without a human action. Use this for scheduled follow-ups, queue processing, email-triggered responses, and autonomous agent workflows.
 
@@ -593,7 +593,9 @@ if (result.status === "aborted") {
 }
 ```
 
-`continueLastTurn()` accepts the same `options.signal` argument. `AbortSignal` objects cannot cross Durable Object RPC boundaries, and the signal is in memory only. If the Durable Object hibernates mid-turn and chat recovery is enabled, the recovered turn usually continues without the original signal; for pre-stream interruptions, recovery can instead retry the latest unanswered user message automatically. An abort fired after restart has no effect on the recovered turn.
+`continueLastTurn()` accepts the same `options.signal` argument. `AbortSignal` objects cannot cross Durable Object RPC boundaries, and the signal is in memory only. If the Durable Object hibernates mid-turn, durable recovery usually continues without the original signal. For pre-stream interruptions, recovery can retry the latest unanswered user message. An abort fired after restart has no effect on the recovered turn.
+
+Persist cancellation intent when cancellation must survive a restart. Read that state in `onChatRecovery()` and return `{ continue: false }` to prevent another model call.
 
 Use `cancelSubmission(submissionId)` for durable cancellation when work was accepted with `submitMessages()` or when cancellation must cross Worker and Durable Object RPC boundaries.
 
@@ -635,8 +637,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/#page","headline":"Autonomous responses · Cloudflare Agents docs","description":"Send server-initiated messages and trigger LLM responses from Cloudflare Agents without user action.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/#page","headline":"Autonomous responses · Cloudflare Agents docs","description":"Send server-initiated messages and trigger LLM responses from Cloudflare Agents without user action.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

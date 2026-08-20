@@ -3,7 +3,7 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed
 
-[Google Cloud Identity](https://cloud.google.com/identity/) provides a Secure
+[Google Cloud Identity](https://cloud.google.com/identity) provides a Secure
 LDAP service that can be configured with GitLab for authentication and group sync.
 
 Secure LDAP requires a slightly different configuration than standard LDAP servers.

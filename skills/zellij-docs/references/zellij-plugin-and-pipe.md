@@ -43,8 +43,14 @@ $ zellij plugin -- https://path/to/my/plugin.wasm
     -i, --in-place
             Open the new pane in place of the current pane, temporarily suspending it
 
+        --no-focus
+            Open the plugin pane without changing the focus of any client
+
     -s, --skip-plugin-cache
             Skip the plugin cache and force reloading of the plugin (good for development)
+
+        --tab-id <TAB_ID>
+            Open the plugin pane in the tab with this id (conflicts with --in-place)
 
         --width <WIDTH>
             The width if the pane is floating as a bare integer (eg. 1) or percent (eg. 10%)
@@ -62,7 +68,7 @@ Zellij [pipes](./plugin-pipes.md) provide a way to send messages to one or more 
 
 eg.
 ```
-$ zellij plugin -- https://path/to/my/plugin.wasm
+$ zellij pipe --name my_pipe_name -- my_arbitrary_data
 ```
 
 **USAGE**:
@@ -80,7 +86,6 @@ zellij pipe --name my_pipe_name -- my_arbitrary_data
 * Pipe data into this command's STDIN and get output from the plugin on this command's STDOUT
 
 tail -f /tmp/my-live-logfile | zellij pipe --name logs --plugin https://example.com/my-plugin.wasm | wc -l
-    zellij plugin [OPTIONS] [--] <URL>
 ```
 
 **ARGS**:

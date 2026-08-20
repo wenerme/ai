@@ -17,13 +17,12 @@ bind "Left" // bind the left arrow key
   - `Right` (right-arrow key)
   - `Up` (up-arrow key)
   - `Down` (down-arrow key)
-  - `Backspace`
   - `Home`
   - `End`
   - `PageUp`
   - `PageDown`
   - `Tab`
-  - `Delete`
+  - `Delete` (can also be written as `Del`)
   - `Insert`
   - `Space`
   - `Enter`

@@ -1,6 +1,6 @@
 # Vulnerability risk assessment data
 
-Use vulnerability risk data to help assess the potential impact to your environment.
+Use vulnerability risk data to help assess the potential impact on your environment.
 
 - Severity: Each vulnerability is assigned a standardized GitLab severity value.
 - For vulnerabilities in the [Common Vulnerabilities and Exposures (CVE)](https://www.cve.org/) catalog,
@@ -19,7 +19,7 @@ high severity and a low EPSS score.
 - [Generally available](https://gitlab.com/groups/gitlab-org/-/epics/11544) in GitLab 17.7. Feature flags `cve_enrichment_querying` and `cve_enrichment_ingestion` removed.
 
 The EPSS score provides an estimate of the likelihood a vulnerability in the CVE catalog will be
-exploited in the next 30 days. EPSS assigns each CVE a score between 0 to 1 (equivalent to 0% to
+exploited in the next 30 days. EPSS assigns each CVE a score between 0 and 1 (equivalent to 0% to
 100%).
 
 ## KEV
@@ -28,7 +28,7 @@ exploited in the next 30 days. EPSS assigns each CVE a score between 0 to 1 (equ
 
 The KEV catalog lists vulnerabilities that are known to have been exploited. You should prioritize
 the remediation of vulnerabilities in the KEV catalog above other vulnerabilities. Attacks using
-these vulnerabilities have occurred and the exploitation method is likely known to attackers.
+these vulnerabilities have occurred, and the exploitation method is likely known to attackers.
 
 ## Reachability
 

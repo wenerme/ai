@@ -3,6 +3,28 @@
 ## Using the built-in themes
 The built-in themes in Zellij can be used by setting the `theme [THEME_NAME]` in the [configuration file](./configuration.md). Take a look at the [list of themes](./theme-list.md) to see what's possible.
 
+## Automatic dark and light theme switching
+Instead of (or in addition to) the static `theme` directive, two themes can be configured - one for when the host terminal is in dark mode, and one for when it is in light mode:
+
+```javascript
+theme_dark "catppuccin-mocha"
+theme_light "catppuccin-latte"
+```
+
+**Both** [`theme_dark`](./options.md#theme_dark) and [`theme_light`](./options.md#theme_light) must be set for automatic switching to happen. If only one of them is set, the static `theme` remains authoritative.
+
+Zellij detects the color scheme of the terminal it is attached to (through `DSR 997` replies and `CSI 2031` change notifications) and switches themes when it changes. Terminals that do not report their color scheme will not trigger switching.
+
+The theme can also be switched manually, with these actions (bindable in the [`keybinds`](./keybindings.md) block) and their CLI equivalents:
+
+| Action | CLI |
+|---|---|
+| [`SetDarkTheme`](./keybindings-possible-actions.md#setdarktheme) | `zellij action set-dark-theme` |
+| [`SetLightTheme`](./keybindings-possible-actions.md#setlighttheme) | `zellij action set-light-theme` |
+| [`ToggleTheme`](./keybindings-possible-actions.md#toggletheme) | `zellij action toggle-theme` |
+
+Programs running inside panes can subscribe to color scheme changes themselves with `CSI ? 2031 h` and will receive `CSI ?997;1 n` (dark) or `CSI ?997;2 n` (light) whenever the mode changes.
+
 ## Theme Definition Specification
 Themes in Zellij are defined according to UI components. These components are used in the various plugins that make up the Zellij interface, and can also be used dynamically in user plugins.
 
@@ -105,7 +127,7 @@ theme "your_theme_name"
 
 directive above or below it. This way, Zellij will pick up on any changes to the theme in real time and you will not have to restart the session to see your changes.
 
-Otherwise, it's possible to define themes in separate files under the `themes` folder located in `CONFIG_DIR/themes`. You can find the exact location of this folder with `zellij setup --check`.
+Otherwise, it's possible to define themes in separate files under the `themes` folder located in `CONFIG_DIR/themes`. You can find the exact location of this folder with `zellij setup --check`. Changes to files in this folder are also picked up live, without restarting the session.
 
 Themes can also be loaded from the command line when starting Zellij:
 ```

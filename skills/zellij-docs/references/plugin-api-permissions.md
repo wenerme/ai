@@ -14,7 +14,7 @@ Change Zellij state (Panes, Tabs and UI)
 ### OpenFiles
 Open files (eg. for editing)
 
-### RunCommand
+### RunCommands
 Run commands in panes or silently
 
 ### OpenTerminalsOrPlugins
@@ -36,7 +36,7 @@ Control (start, stop, get status, manage login tokens) the Zellij [web-server](.
 Intercept user input (eg. keypresses), having all of this input sent to the plugin instead.
 
 ### ReadPaneContents
-Read the rendered contents of terminal panes. Required for subscribing to `PaneRenderReport` and `PaneRenderReportWithAnsi` events.
+Read the rendered contents of terminal panes. Required for subscribing to the `PaneRenderReport` event.
 
 ### RunActionsAsUser
 Execute Zellij actions as if they were performed by the user. Required for the `run_action` plugin API command.

@@ -43,7 +43,6 @@ For complete type definitions referenced below, see the [Type Reference](./plugi
 - [InterceptedKeyPress](#interceptedkeypress)
 - [UserAction](#useraction)
 - [PaneRenderReport](#panerenderreport)
-- [PaneRenderReportWithAnsi](#panerenderreportwithansi)
 - [ActionComplete](#actioncomplete)
 - [CwdChanged](#cwdchanged)
 - [AvailableLayoutInfo](#availablelayoutinfo)
@@ -51,6 +50,10 @@ For complete type definitions referenced below, see the [Type Reference](./plugi
 - [HighlightClicked](#highlightclicked)
 - [CommandChanged](#commandchanged)
 - [HostTerminalThemeChanged](#hostterminalthemechanged)
+- [InitialKeybinds](#initialkeybinds)
+- [SoftKeyboardVisibilityChanged](#softkeyboardvisibilitychanged)
+- [HintText](#hinttext)
+- [ActivePaneScroll](#activepanescroll)
 
 ---
 
@@ -65,6 +68,8 @@ Event::ModeUpdate(ModeInfo)
 **Payload:** [`ModeInfo`](./plugin-api-types.md#modeinfo)
 
 Fired when the input mode or relevant session metadata changes. Provides information about the current input mode (e.g., `Normal`, `Locked`, `Pane`, `Tab`), bound keys, the active theme colors, and the session name.
+
+**Note:** plugins that subscribe to [`InitialKeybinds`](#initialkeybinds) receive the keybindings through that event instead, and their `ModeUpdate` events arrive with an empty `keybinds` field from then on - this keeps the frequently fired `ModeUpdate` lightweight.
 
 **Example:**
 
@@ -887,20 +892,6 @@ Provides the rendered content of subscribed panes with ANSI escape codes strippe
 
 ---
 
-## `PaneRenderReportWithAnsi`
-
-```rust
-Event::PaneRenderReportWithAnsi(HashMap<PaneId, PaneContents>)
-```
-
-**Required Permission:** [`ReadPaneContents`](./plugin-api-permissions.md)
-
-**Payload:** `HashMap<PaneId, PaneContents>`
-
-Same as `PaneRenderReport`, but with ANSI escape codes preserved in the content. Useful when the plugin needs to process or display the terminal output with formatting intact.
-
----
-
 ## `ActionComplete`
 
 ```rust
@@ -1049,13 +1040,15 @@ fn update(&mut self, event: Event) -> bool {
 Event::CommandChanged(PaneId, Vec<String>, bool, Vec<ClientId>)
 ```
 
+**Required Permission:** [`ReadApplicationState`](./plugin-api-permissions.md)
+
 **Payload:**
 - [`PaneId`](./plugin-api-types.md#paneid) - the pane whose running command changed
 - `Vec<String>` - the new command and its arguments (argv)
 - `bool` - `true` if the new command is the foreground process in the pane
 - `Vec<ClientId>` - client IDs that have this pane focused
 
-Fired when the foreground command running inside a terminal pane changes (for example when a user runs `vim` from a shell, or when that program exits and the shell becomes foreground again). No permission is required.
+Fired when the foreground command running inside a terminal pane changes (for example when a user runs `vim` from a shell, or when that program exits and the shell becomes foreground again).
 
 **Example:**
 
@@ -1099,3 +1092,95 @@ fn update(&mut self, event: Event) -> bool {
     }
 }
 ```
+
+---
+
+## `InitialKeybinds`
+
+```rust
+Event::InitialKeybinds(KeybindsVec)
+```
+
+**Payload:**
+- `KeybindsVec` - `Vec<(`[`InputMode`](./plugin-api-types.md#inputmode)`, Vec<(`[`KeyWithModifier`](./plugin-api-types.md#keywithmodifier)`, Vec<`[`Action`](./plugin-api-types.md#action)`>)>)>` - the keybindings of all input modes
+
+Fired once when subscribing to this event, and again after every keybinding reconfiguration (eg. through [`rebind_keys`](./plugin-api-commands.md#rebind_keys) or a configuration reload). No permission is required.
+
+Plugins that need the keybindings should prefer this event over reading them from [`ModeUpdate`](#modeupdate): once subscribed, `ModeUpdate` events arrive with an empty `keybinds` field, which makes them considerably cheaper.
+
+**Example:**
+
+```rust
+fn update(&mut self, event: Event) -> bool {
+    match event {
+        Event::InitialKeybinds(keybinds) => {
+            self.keybinds = keybinds;
+            true
+        },
+        _ => false,
+    }
+}
+```
+
+---
+
+## `SoftKeyboardVisibilityChanged`
+
+```rust
+Event::SoftKeyboardVisibilityChanged(bool)
+```
+
+**Required Permission:** [`ReadApplicationState`](./plugin-api-permissions.md)
+
+**Payload:**
+- `bool` - `true` if the on-screen keyboard is now visible
+
+Fired when the on-screen (soft) keyboard of the client displaying this plugin is shown or hidden. Only relevant for clients connected through the [web client](./web-client.md) on a mobile device. The keyboard can also be shown or hidden by the plugin itself with [`set_soft_keyboard`](./plugin-api-commands.md#set_soft_keyboard).
+
+---
+
+## `HintText`
+
+```rust
+Event::HintText(BTreeMap<usize, StyledText>)
+```
+
+**Required Permission:** [`ReadApplicationState`](./plugin-api-permissions.md)
+
+**Payload:**
+- `BTreeMap<usize, `[`StyledText`](./plugin-api-types.md#styledtext)`>` - hint text variants keyed by the display width they are intended for
+
+Provides the contextual hint text Zellij would like to display (eg. what the user can do with the currently focused pane or stack). Several variants of the same hint are provided, each fitting a different width - the plugin should render the widest variant that fits in the space it has.
+
+**Example:**
+
+```rust
+fn update(&mut self, event: Event) -> bool {
+    match event {
+        Event::HintText(variants) => {
+            self.hint = variants
+                .into_iter()
+                .filter(|(width, _)| *width <= self.available_width)
+                .last()
+                .map(|(_, text)| text);
+            true
+        },
+        _ => false,
+    }
+}
+```
+
+---
+
+## `ActivePaneScroll`
+
+```rust
+Event::ActivePaneScroll(Option<(usize, usize)>)
+```
+
+**Required Permission:** [`ReadApplicationState`](./plugin-api-permissions.md)
+
+**Payload:**
+- `Option<(usize, usize)>` - the scroll position and the total length of the scrollback of the displayed pane, or `None` if this information is unavailable
+
+Fired when the scroll position of the single displayed pane changes. This is only sent when the session displays a single pane with a title (ie. when the [`pane_frame_style`](./options.md#pane_frame_style) is `titles` and only one pane is displayed), which is the case where a plugin (eg. a tab-bar) may want to render a scrollbar or a scroll indicator for it.

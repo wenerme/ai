@@ -68,7 +68,7 @@ This release introduces multiple features from our previous beta release into st
 For Zero Trust documentation please see: <https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/>
 For Consumer documentation please see: <https://developers.cloudflare.com/warp-client/>
 
-Previous version history (14)
+Previous version history (13)
 
 Windows 2026.6.905.0
 
@@ -424,36 +424,6 @@ This release contains a hotfix for pre-login for multi-user for the 2025.6.1135.
   * The custom DNS server address on the primary network adapter is changed while WARP is connected.
 To work around this issue, please reconnect the WARP client by toggling off and back on.
 
-Windows 2025.6.1335.0
-
-**Version:** Windows 2025.6.1335.0**Date:** 2025-08-19**Size:** 134 MB
-
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.6.1335.0)
-
-#### Release notes
-
-This release contains minor fixes and improvements.
-
-**Changes and improvements**
-
-* Improvements to better manage multi-user pre-login registrations.
-* Fixed an issue preventing devices from reaching split-tunneled traffic even when WARP was disconnected.
-* Fix to prevent WARP from re-enabling its firewall rules after a user-initiated disconnect.
-* Improvement for faster client connectivity on high-latency captive portal networks.
-* Fixed an issue where recursive CNAME records could cause intermittent WARP connectivity issues.
-
-**Known issues**
-
-* For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 version KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-* Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:
-
-  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  * A custom DNS server address is configured on the primary network adapter.
-  * The custom DNS server address on the primary network adapter is changed while WARP is connected.
-To work around this issue, reconnect the WARP client by toggling off and back on.
-
 ## macOS
 
 [Download latest stable release](https://downloads.cloudflareclient.com/v1/download/macos/ga)
@@ -499,7 +469,7 @@ This release introduces multiple features from our previous beta release into st
 For Zero Trust documentation please see: <https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/>
 For Consumer documentation please see: <https://developers.cloudflare.com/warp-client/>
 
-Previous version history (11)
+Previous version history (10)
 
 macOS 2026.6.880.0
 
@@ -719,28 +689,6 @@ This release contains minor fixes and improvements.
 * macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
 * Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
 
-macOS 2025.6.1335.0
-
-**Version:** macOS 2025.6.1335.0**Date:** 2025-08-19**Size:** 108 MB
-
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.6.1335.0)
-
-#### Release notes
-
-This release contains minor fixes and improvements.
-
-**Changes and improvements**
-
-* Fixed an issue preventing devices from reaching split-tunneled traffic even when WARP was disconnected.
-* Fix to prevent WARP from re-enabling its firewall rules after a user-initiated disconnect.
-* Improvement for faster client connectivity on high-latency captive portal networks.
-* Fixed an issue where recursive CNAME records could cause intermittent WARP connectivity issues.
-
-**Known issues**
-
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-
 ## Linux
 
 [Package repository](https://pkg.cloudflareclient.com/)
@@ -789,7 +737,7 @@ This release introduces multiple features from our previous beta release into st
 For Zero Trust documentation please see: <https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/>
 For Consumer documentation please see: <https://developers.cloudflare.com/warp-client/>
 
-Previous version history (12)
+Previous version history (11)
 
 Linux 2026.6.880.0
 
@@ -1049,29 +997,6 @@ This release contains minor fixes and improvements including an updated public k
 * Improvement to limit idle connections in [Gateway with DoH mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode) to avoid unnecessary resource usage that can lead to DoH requests not resolving.
 * Improvements to maintain [Global WARP override](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-warp-on-all-devices) settings when [switching between organizations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/#switch-organizations-in-the-cloudflare-one-client).
 * Improvements to maintain client connectivity during network changes.
-
-**Known issues**
-
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-
-Linux 2025.6.1335.0
-
-**Version:** Linux 2025.6.1335.0**Date:** 2025-08-19**Size:** 50.6 MB
-
-buster-armbuster-intelCentOS / RHEL 8 (arm64)CentOS / RHEL 8 (x86-64)Debian 11 (arm64)Debian 11 (x86-64)Debian 12 (arm64)Debian 12 (x86-64)Fedora 34 (arm64)Fedora 34 (x86-64)Fedora 35 (arm64)Fedora 35 (x86-64)Ubuntu 20.04 (arm64)Ubuntu 20.04 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)
-
-[Download](https://downloads.cloudflareclient.com/v1/download/buster-arm/version/2025.6.1335.0)
-
-#### Release notes
-
-This release contains minor fixes and improvements.
-
-**Changes and improvements**
-
-* Fixed an issue preventing devices from reaching split-tunneled traffic even when WARP was disconnected.
-* Fix to prevent WARP from re-enabling its firewall rules after a user-initiated disconnect.
-* Improvement for faster client connectivity on high-latency captive portal networks.
-* Fixed an issue where recursive CNAME records could cause intermittent WARP connectivity issues.
 
 **Known issues**
 

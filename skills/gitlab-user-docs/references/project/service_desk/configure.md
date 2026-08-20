@@ -382,7 +382,7 @@ To **disable** the custom email address:
 
 ### Change or remove custom email configuration
 
-To change the custom email configuration you must reset and remove it and configure custom email again.
+To change the custom email configuration, you must reset and remove it and configure custom email again.
 
 To reset the configuration at any step in the process, select **Reset custom email**.
 The credentials are then removed from the database.
@@ -416,9 +416,8 @@ In Google Workspace:
 
 1. Create a new account for the custom email address you'd like to use (for example, `support@example.com`).
 1. Sign in to that account and activate
-   [two-factor authentication](https://myaccount.google.com/u/3/signinoptions/two-step-verification).
-1. [Create an app password](https://myaccount.google.com/u/3/apppasswords) that you can use as your
-   SMTP password.
+   two-factor authentication: `https://myaccount.google.com/u/3/signinoptions/two-step-verification`
+1. Create an app password that you can use as your SMTP password: `https://myaccount.google.com/u/3/apppasswords`
    Store it in a secure place and remove spaces between the characters.
 
 Next, you must [configure email forwarding in Google Workspace](#configure-email-forwarding-in-google-workspace).

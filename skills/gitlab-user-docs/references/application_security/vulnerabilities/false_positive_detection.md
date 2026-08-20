@@ -9,7 +9,7 @@ Automatic detection and filtering of false positives in SAST findings.
 - [Generally available](https://gitlab.com/groups/gitlab-org/-/work_items/19789) in GitLab 18.10.
 - Feature flags [`ai_experiment_sast_fp_detection`](https://gitlab.com/gitlab-org/gitlab/-/work_items/584344) and [`enable_vulnerability_fp_detection`](https://gitlab.com/gitlab-org/gitlab/-/work_items/584343) removed in GitLab 19.1.
 
-When a static application security testing (SAST) scan runs, the SAST False Positive Detection Flow automatically analyzes each Critical and High severity SAST vulnerabilities to determine the likelihood that it's a false positive. Detection is available for vulnerabilities from [GitLab-supported SAST analyzers](../sast/analyzers.md).
+When a static application security testing (SAST) scan runs, the SAST False Positive Detection Flow automatically analyzes each Critical and High severity SAST vulnerability to determine the likelihood that it's a false positive. Detection is available for vulnerabilities from [GitLab-supported SAST analyzers](../sast/analyzers.md).
 
 The flow assessment includes:
 
@@ -58,7 +58,7 @@ To turn on false positive detection for a specific project:
 1. Turn on the **Turn on SAST false positive detection** toggle.
 1. Select **Save changes**.
 
-When you allow false positive detection for the group and turn it on for the project, the feature work works automatically with your existing SAST scanners.
+When you allow false positive detection for the group and turn it on for the project, the feature works automatically with your existing SAST scanners.
 
 ## Automatic detection
 

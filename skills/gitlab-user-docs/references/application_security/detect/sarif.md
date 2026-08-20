@@ -205,7 +205,7 @@ For the per-file run limit, see [limits](#limits).
 | Maximum `helpUri` length               | 2,048 characters                                              | No   |
 | Supported SARIF versions               | 2.1.0 only                                                    | No   |
 
-When a per-run count exceeds its limit, GitLab process the first N entries and records a warning.
+When a per-run count exceeds its limit, GitLab processes the first N entries and records a warning.
 When a result has a string field that exceeds its character limit,
 the whole result is skipped and counted toward the [drop rate](#ingestion-behavior).
 

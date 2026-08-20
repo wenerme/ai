@@ -73,7 +73,7 @@ GitLab Duo collects aggregated or de-identified first-party usage data through a
 - Prompt and suffix lengths
 - Model used
 - Status code responses
-- API responses times
+- API response times
 - Code Suggestions also collects:
   - Language the suggestion was in (for example, Python)
   - Editor being used (for example, VS Code)
@@ -99,7 +99,7 @@ Generative AI may produce unexpected results that may be:
 - Low-quality
 - Incoherent
 - Incomplete
-- Produce failed pipelines
+- Failed pipelines
 - Insecure code
 - Offensive or insensitive
 - Out of date information

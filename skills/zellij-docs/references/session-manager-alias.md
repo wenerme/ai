@@ -16,6 +16,9 @@ The session manager allows the user to:
 7. **View session metadata** - See tab counts, connected clients, and other session information
 8. **Web sharing controls** - Start/stop the web server and manage sharing settings from within the session manager
 
+## Dismissing the session manager
+Pressing `Esc` or `Ctrl c` closes the session manager rather than hiding it. It also closes itself after switching to another session.
+
 ## Contract
 Zellij loads the session-manager as a floating pane. Plugins implementing this alias should expect to be loaded in floating mode and should provide a navigable interface for the features listed above.
 

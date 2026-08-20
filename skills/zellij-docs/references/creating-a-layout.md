@@ -295,6 +295,8 @@ If `true`, this pane property dictates that the children panes of this pane will
 
 In a stack of panes, all panes except one have just one line - showing their title (and their scroll and exit code when relevant). The focused pane among these is displayed normally as any other pane.
 
+Since `0.45.0`, a stack is rendered as a list of these one-line titles with the expanded pane pinned to the bottom of the stack, rather than expanded in place between the titles. The previous rendering can be restored by setting the [`stacked_pane_list`](./options.md#stacked_pane_list) option to `false`.
+
 eg.
 ```javascript
 layout {
@@ -351,6 +353,8 @@ These properties may be included inside floating `pane`s. They can be either a f
 `tab` nodes can optionally be used to start a layout with several tabs.
 
 **Note**: all tab arguments should be specified on its title line. The child-braces are reserved for its child panes.
+
+**Note**: properties that belong to a tab (`name`, `split_direction` and `hide_floating_panes`) cannot be placed on the `layout` node itself when the layout also contains explicit `tab` nodes - they must be placed on each `tab` node. Doing otherwise is an error, and Zellij will point out which property should be moved where.
 
 eg.
 ```javascript

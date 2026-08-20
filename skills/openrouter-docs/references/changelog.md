@@ -8,6 +8,15 @@
 
 Entries on this page are generated automatically from [OpenAPI specification](/docs/api_reference/overview) diffs when releases ship. Breaking changes are reviewed by a human before publication. See [API Versioning](/docs/api_reference/versioning) for what counts as a breaking change and how deprecations are announced. Endpoint paths are shown relative to the API base URL (`https://openrouter.ai/api/v1`).
 
+<Update label="August 19, 2026" tags={["Errors","Schemas"]} rss="Actionable model availability errors: new error.availability object with 11 machine-readable codes.">
+  ## Actionable model availability errors
+
+  Model-availability failures (unknown model, no endpoints, deprecated model, provider capacity exhausted, region/privacy/constraint filtering, ended `:free` promotions) now carry an additive `error.availability` object on the error envelope, on non-streaming responses and streaming error chunks across all three API skins (Chat Completions, Responses, Anthropic Messages).
+
+  * New `error.availability` object with fields: `code` (one of 11 stable values: `model_not_found`, `wrong_endpoint`, `no_endpoints`, `model_deprecated`, `model_unavailable_upstream`, `capacity_exhausted`, `temporarily_unavailable`, `region_restricted`, `privacy_restricted`, `constraint_filtered`, `free_variant_ended`), `retryable`, `retry_after`, `requested_models`, `affected_providers`, `excluded_by`, `fallback_models`, `constraint`, and `docs_url`. See [Model availability errors](/docs/api_reference/errors-and-debugging#model-availability-errors) for the full code table, field reference, and example payloads.
+  * **Migration notes:** The change is additive and backward compatible — `error_type`, `http_status`, and `message` are unchanged, so existing error handling keeps working. Clients that currently parse the free-text `message` prose to distinguish availability conditions should switch to `availability.code`. Clients keying off HTTP status alone should note that unknown model ids on the chat completions router now consistently return `400` (previously they could surface as `500`). `availability.retry_after` mirrors the `Retry-After` header in the response body and is populated whenever any attempted endpoint supplied a retry hint. `error.metadata.previous_errors` is now a slim, stable shape (`{provider, code, status}`) and no longer carries raw upstream provider error bodies — do not parse upstream bodies from it.
+</Update>
+
 <Update label="July 29, 2026" tags={["Benchmarks"]} rss="1 modified endpoint, 1 new schema, 2 modified schemas.">
   ## Modified endpoints
 

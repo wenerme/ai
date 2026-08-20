@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Client tools
 
-Last updated Jun 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/client-tools/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/client-tools/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Think supports tools that execute in the browser. The client sends serializable tool schemas in the chat request body, Think merges them with server tools, and when the LLM calls a client tool, the call is routed to the client for execution.
 
@@ -162,7 +162,7 @@ When a turn produces several client tool calls at once, Think waits for **all** 
 
 ## Survive restarts while waiting for a human
 
-A Durable Object can be evicted at any time, including while a turn is paused on an approval prompt or a client-side tool call. Because `Think` enables [chatRecovery](https://developers.cloudflare.com/agents/harnesses/think/recovery/) by default, the SDK treats such a turn as waiting on the human, not stuck. It parks the turn instead of failing it, and the user's eventual approval or tool result resumes the conversation.
+A Durable Object can be evicted at any time, including while a turn is paused on an approval prompt or a client-side tool call. [Think durable recovery](https://developers.cloudflare.com/agents/harnesses/think/recovery/) is always on. The SDK treats such a turn as waiting on the human, not stuck. It parks the turn instead of failing it. The user's eventual approval or tool result resumes the conversation.
 
 For which interactions are exempt from recovery budgets, refer to [Turns waiting on a human are not sealed](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#turns-waiting-on-a-human-are-not-sealed).
 
@@ -213,8 +213,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/client-tools/#page","headline":"Client tools · Cloudflare Agents docs","description":"Browser-side tools, approval flows, auto-continuation, message concurrency, and multi-tab broadcast for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/client-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/client-tools/#page","headline":"Client tools · Cloudflare Agents docs","description":"Browser-side tools, approval flows, auto-continuation, message concurrency, and multi-tab broadcast for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/client-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
