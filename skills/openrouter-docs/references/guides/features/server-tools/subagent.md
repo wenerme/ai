@@ -165,7 +165,239 @@ On failure the result has `status: "error"` with a message; the calling model co
 
 When you pass `tools`, the worker runs as an agentic sub-agent over them before producing its outcome. For example, giving the worker `openrouter:web_search` lets it ground its result in fresh sources. The worker's tool use happens inside the tool call; only its final text is returned to your model.
 
-Nested tools must be OpenRouter server tools (for example `openrouter:web_search` or `openrouter:web_fetch`). Function tools (`{ "type": "function" }`) placed directly in the nested `tools` array are rejected with a `400` — a worker's client functions are configured through inheritance instead: set `inherit_functions` (or `inherited_function_names`) to copy the request's top-level function tools into the worker. An inheriting worker that calls a client function suspends, and its pending calls surface on the response as `function_call` items carrying `subagent_id` for your client to execute (experimental, Responses API only).
+Nested tools must be OpenRouter server tools (for example `openrouter:web_search` or `openrouter:web_fetch`). Client function tools (`{ "type": "function" }`) placed directly in the nested `tools` array are rejected with a `400`. See [Inheriting Client Function Tools](#inheriting-client-function-tools).
+
+## Inheriting Client Function Tools
+
+<Note>
+  **Experimental**
+
+  Client function inheritance and the suspension/replay contract below are experimental and subject to change without notice. They are supported on the [Responses API](/docs/api/api-reference/responses/create-a-response) (`/api/v1/responses`) only; requests on other APIs that set `inherit_functions` or `inherited_function_names` are rejected with a `400`.
+</Note>
+
+The subagent can inherit the function tools you define at the top level of the request by setting either of the following parameters:
+
+* `inherit_functions: true` gives the worker every function tool in the request's top-level `tools` list.
+* `inherited_function_names` allows you to define an array of names. Each tool with a matching name is copied fully into the worker's tools. The list is ignored when `inherit_functions` is `true` (everything is already inherited), and a listed name that matches no top-level function tool is rejected with a `400`.
+
+```json lines theme={null}
+{
+  "model": "openai/gpt-5.2",
+  "input": [
+    { "type": "message", "role": "user", "content": "Where is order o_1?" }
+  ],
+  "tools": [
+    {
+      "type": "function",
+      "name": "lookup_order",
+      "description": "Look up an order by its id.",
+      "parameters": {
+        "type": "object",
+        "properties": { "order_id": { "type": "string" } },
+        "required": ["order_id"]
+      }
+    },
+    {
+      "type": "function",
+      "name": "update_order",
+      "description": "Update an order's status by its id.",
+      "parameters": {
+        "type": "object",
+        "properties": { "order_id": { "type": "string" }, "status": { "type": "string" } },
+        "required": ["order_id", "status"]
+      }
+    },
+    {
+      "type": "openrouter:subagent",
+      "parameters": {
+        "model": "~anthropic/claude-haiku-latest",
+        "inherited_function_names": ["lookup_order"]
+      }
+    }
+  ]
+}
+```
+
+### What happens when a subagent calls a local tool
+
+When the subagent calls an inherited client tool, its run pauses and the response's turn ends (it is possible for the subagent to also call multiple tools in parallel). The response output contains:
+
+* The spawning `openrouter:subagent` item with `status: "in_progress"`. It carries `call_id` (the id of the tool call that spawned the worker) plus the `task_name` and `task_description`, which are both generated and visible to the model.
+* The subagent's pending calls, projected as standard `function_call` output items that additionally carry two attribution fields:
+
+| Field            | Description                                                                                                                                                                                                                                                                                   |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `subagent_id`    | Matches the `call_id` of the `openrouter:subagent` item that spawned the worker. Present on every subagent-originated function call.                                                                                                                                                          |
+| `subagent_items` | The subagent's internal transcript produced this round. Treat it as opaque and replay it unchanged so the worker resumes with its context intact. When the worker makes several parallel function calls in one round, only the first call carries it; the siblings carry `subagent_id` alone. |
+
+A suspended response looks like this in the Responses API:
+
+```json lines theme={null}
+{
+  "output": [
+    {
+      "type": "openrouter:subagent",
+      "id": "st_1",
+      "status": "in_progress",
+      "call_id": "call_root_1",
+      "task_name": "lookup-order",
+      "task_description": "Look up order o_1 and report its status."
+    },
+    {
+      "id": "fc_1",
+      "type": "function_call",
+      "status": "completed",
+      "call_id": "call_child_1",
+      "name": "lookup_order",
+      "arguments": "{\"order_id\":\"o_1\"}",
+      "subagent_id": "call_root_1",
+      "subagent_items": [
+        {
+          "type": "message",
+          "role": "assistant",
+          "content": [{ "type": "output_text", "text": "Looking up the order." }]
+        },
+        {
+          "type": "function_call",
+          "call_id": "call_child_1",
+          "name": "lookup_order",
+          "arguments": "{\"order_id\":\"o_1\"}"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Execute subagent function calls exactly like ordinary function calls, but ensure that your client does not drop the extra fields added for replay bookkeeping. The delegating model may also call your functions directly in the same turn; those items carry no `subagent_id`.
+
+### Replaying to resume the worker
+
+To preserve subagent state when returning the output of `function_call` items, you must send the conversation back:
+
+1. The `openrouter:subagent` item, verbatim.
+2. Every projected `function_call` item exactly as returned, with `subagent_id` and `subagent_items` intact, in the order you received them.
+3. One `function_call_output` item per projected call, matched by `call_id`. (No change from non-subagent `function_call_output`.)
+4. The same `tools` array. The `openrouter:subagent` entry that spawned the worker must still be present, and the order of `openrouter:subagent` entries must stay stable across requests — instance identity is positional.
+
+```json lines theme={null}
+{
+  "model": "openai/gpt-5.2",
+  "input": [
+    { "type": "message", "role": "user", "content": "Where is order o_1?" },
+    {
+      "type": "openrouter:subagent",
+      "id": "st_1",
+      "status": "in_progress",
+      "call_id": "call_root_1",
+      "task_name": "lookup-order",
+      "task_description": "Look up order o_1 and report its status."
+    },
+    {
+      "id": "fc_1",
+      "type": "function_call",
+      "status": "completed",
+      "call_id": "call_child_1",
+      "name": "lookup_order",
+      "arguments": "{\"order_id\":\"o_1\"}",
+      "subagent_id": "call_root_1",
+      "subagent_items": [
+        {
+          "type": "message",
+          "role": "assistant",
+          "content": [{ "type": "output_text", "text": "Looking up the order." }]
+        },
+        {
+          "type": "function_call",
+          "call_id": "call_child_1",
+          "name": "lookup_order",
+          "arguments": "{\"order_id\":\"o_1\"}"
+        }
+      ]
+    },
+    {
+      "type": "function_call_output",
+      "call_id": "call_child_1",
+      "output": "{\"status\":\"shipped\"}"
+    }
+  ],
+  "tools": [
+    {
+      "type": "function",
+      "name": "lookup_order",
+      "description": "Look up an order by its id.",
+      "parameters": {
+        "type": "object",
+        "properties": { "order_id": { "type": "string" } },
+        "required": ["order_id"]
+      }
+    },
+    {
+      "type": "function",
+      "name": "update_order",
+      "description": "Update an order's status by its id.",
+      "parameters": {
+        "type": "object",
+        "properties": { "order_id": { "type": "string" }, "status": { "type": "string" } },
+        "required": ["order_id", "status"]
+      }
+    },
+    {
+      "type": "openrouter:subagent",
+      "parameters": {
+        "model": "~anthropic/claude-haiku-latest",
+        "inherited_function_names": ["lookup_order"]
+      }
+    }
+  ]
+}
+```
+
+OpenRouter detects the answered calls and resumes each suspended worker with your results injected. A worker that finishes produces a completed `openrouter:subagent` item — a **new** item with a fresh `id` but the same `call_id` — carrying its `outcome`, and the delegating model continues with the `outcome` text in its context:
+
+```json lines theme={null}
+{
+  "output": [
+    {
+      "type": "openrouter:subagent",
+      "id": "st_2",
+      "status": "completed",
+      "call_id": "call_root_1",
+      "task_name": "lookup-order",
+      "task_description": "Look up order o_1 and report its status.",
+      "model": "anthropic/claude-haiku-4.5",
+      "outcome": "Order o_1 has shipped."
+    },
+    {
+      "type": "message",
+      "role": "assistant",
+      "status": "completed",
+      "content": [{ "type": "output_text", "text": "Your order o_1 has shipped." }]
+    }
+  ]
+}
+```
+
+A resumed worker may also call a function tool again, in which case it suspends again — the loop supports multiple rounds. A suspend-again response carries the round's **new** projected calls only; the suspended `openrouter:subagent` item is announced once and is not restated, so keep the copy you already have. On each subsequent replay, include the full history — the suspended item, every projected call from every round with its `function_call_output` — plus the new round's calls and outputs. While any worker is still working, the delegating model does not resume: it continues only once all of its workers have settled.
+
+The cost of resumed worker runs folds into the usage reported on the request that resumed them, the same way live worker runs fold into their own request's usage.
+
+### Streaming
+
+With `stream: true`, the suspension surfaces through the standard Responses SSE events with one contract worth knowing:
+
+* The suspended `openrouter:subagent` item's `response.output_item.added` event is deferred until the spawning tool call's arguments finish streaming, and arrives fully enriched — it already carries `call_id`, `task_name`, `task_description`, and `name`/`instance_name` when set — so you can rebuild your replay history from per-item events alone. A suspended item never receives a `response.output_item.done` event in that response.
+* Each projected `function_call` item streams normally. Its `response.output_item.added` event carries `subagent_id` for early attribution; the potentially large `subagent_items` transcript rides only the `response.output_item.done` event and the final `response.completed` snapshot.
+* On a later round, a worker that completes is announced as a new item (fresh `id`, same `call_id`) with a normal `response.output_item.added` and `response.output_item.done` pair.
+
+### Failure handling
+
+A failed worker never fails the response. In every failure case below, the affected worker degrades to a `status: "error"` tool result; the delegating model sees the error and continues:
+
+* The suspension cannot be delivered (for example, the worker's transcript cannot be serialized for replay).
+* A replayed worker cannot be resumed — its item is missing `call_id` or the task echo, its projected calls or their `subagent_items` were not replayed, a projected call has no `function_call_output`, or the spawning `openrouter:subagent` entry was dropped from `tools`.
+
+One exception: a replayed `function_call` with an invalid or mismatched `subagent_id` (i.e. there is no corresponding `openrouter:subagent` item) is rejected with a `400`.
 
 ## Recursion protection
 

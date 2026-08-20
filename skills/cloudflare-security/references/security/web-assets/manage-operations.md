@@ -1,5 +1,5 @@
 ---
-description: Add, promote, review, refine, and delete HTTP request operations in Web Assets.
+description: Manage operations and start profile learning in Web Assets.
 title: Manage operations
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage operations
 
-Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security/web-assets/manage-operations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security/web-assets/manage-operations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Operation states
 
@@ -20,11 +20,11 @@ Each operation has one of the following states:
 
 | State     | Meaning                                                                                                                                                           |
 | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| full      | An operation that you promoted, added manually, or created from a schema. Full operations are used for matching, logging, detections, and rules.                  |
+| full      | An operation that you selected, added manually, or created from a schema. Full operations are used for matching, logging, detections, and rules.                  |
 | candidate | An operation that Cloudflare discovered from traffic. Candidate operations are used for matching, logging, detections, and rules before you manually review them. |
 | shadow    | An operation that exists in Web Assets but is not used for matching, logging, detections, or rules.                                                               |
 
-You do not need to promote every discovered operation to the `full` state. Candidate operations provide operation context automatically, while full operations support additional learning and protections.
+You do not need to move every discovered operation to the `full` state. Candidate operations provide operation context automatically. Profile learning starts only when you select **Learn profile**.
 
 ## Discovery requirements
 
@@ -51,33 +51,35 @@ Discovery can group them into one operation:
 GET api.example.com/profile/{var1}
 ```
 
-Discovered operations are used for matching before you manually refine them. This provides operation context for discovered traffic without requiring you to promote every discovery first.
+Discovered operations are used for matching before you manually refine them. This provides operation context without requiring a state change first.
 
 Discovery-backed matching is subject to plan availability and system limits. Cloudflare currently sends up to 3,000 operations per zone to the edge for matching. Operations in the `full` state are prioritized first, followed by operations in the `candidate` state.
 
-## Promote an operation
+## Start profile learning
 
-Promote a candidate or shadow operation to move it into the `full` state and start profile learning.
+Select **Learn profile** to start intentional profile learning. Discovery, manual creation, and editing do not start profiling.
 
-The **Learn profile** action is available to API Shield customers using unified operation discovery and other customers with access to profile learning.
+Customers with API Security already have access to Schema Profiles through Schema Learning and Schema Validation. Cloudflare is opening a closed beta to invited Enterprise customers without API Security. Interested customers can contact their account team to express interest. Closed-beta access does not imply future plan availability or pricing.
 
-After promotion, Cloudflare learns the expected request structure from observed traffic. For API endpoints, API Shield also collects data to learn and report additional context:
+For a candidate or shadow operation, this action also moves the operation into the `full` state. An operation already in the `full` state remains there. Cloudflare then learns expected request structure from qualifying traffic.
+
+For API endpoints, API Shield also collects data for other context:
 
 * Request structures through [schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/)
 * Normal request volume through [rate limit recommendations](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/)
 * Authentication usage through [Authentication Posture](https://developers.cloudflare.com/api-shield/security/authentication-posture/)
 * Persisted security findings through [API endpoint risk labels](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#risk-labels)
 
-Each feature has separate data and timing requirements. For example, [schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/#limitations) requires an operation to remain full for at least 24 hours.
+Each feature has separate data and timing requirements. For Schema Profiles, refer to [Schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/).
 
 Full operations can also use protections that require a known API endpoint, including [Schema Validation](https://developers.cloudflare.com/api-shield/security/schema-validation/), [fallthrough rules](https://developers.cloudflare.com/api-shield/security/schema-validation/#add-validation-by-adding-a-fallthrough-rule), and [sequence mitigation](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/).
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page with the **Operations** tab highlighted.
 [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-2. Open the row actions for a candidate or shadow operation.
+2. Open the row actions for the operation.
 3. Select **Learn profile**.
 
-After promotion, the row action changes to **Profile learned**.
+After the profile becomes available, select **View details**. Review the learned schema under **Security overview**.
 
 ## Traffic matching behavior
 
@@ -108,6 +110,8 @@ Add an operation manually when traffic you want to protect has not been discover
 3. Choose **Manually add**.
 4. Select the HTTP method, enter the hostname pattern and path pattern.
 5. Confirm with **Add operation**.
+
+Manual creation only adds the operation to inventory. Select **Learn profile** separately to start profiling.
 
 ## Use variables in operation patterns
 
@@ -154,11 +158,11 @@ Review overlapping operations before making changes. Cloudflare matches a reques
 4. Update the HTTP method, hostname pattern, or path pattern.
 5. Select **Save**.
 
-Editing a candidate or shadow operation promotes it to the `full` state with the edited values.
+Editing updates the operation inventory entry. It does not start profile learning.
 
 Editing this operation will change its ID
 
-Cloudflare computes operation IDs from the HTTP method, hostname, and path. Cloudflare relearns labels, schemas, and rate limiting recommendations for an operation with a new ID.
+Cloudflare computes operation IDs from the HTTP method, hostname, and path. Changing these values creates a different operation ID.
 
 ## Delete operations
 
@@ -183,8 +187,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/web-assets/manage-operations/#page","headline":"Manage operations · Security dashboard docs","description":"Add, promote, review, refine, and delete HTTP request operations in Web Assets.","url":"https://developers.cloudflare.com/security/web-assets/manage-operations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/web-assets/manage-operations/#page","headline":"Manage operations · Security dashboard docs","description":"Manage operations and start profile learning in Web Assets.","url":"https://developers.cloudflare.com/security/web-assets/manage-operations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

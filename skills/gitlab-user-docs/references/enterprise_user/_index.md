@@ -304,10 +304,7 @@ To hide email addresses for enterprise users:
 ### Prevent enterprise users from deleting their own account
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/241926) in GitLab 19.2 [with a flag](../../administration/feature_flags/_index.md) named `deleting_account_disabled_for_enterprise_users`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248605) in GitLab 19.4. Feature flag `deleting_account_disabled_for_enterprise_users` removed.
 
 Group Owners can prevent enterprise users in their group from deleting their own accounts.
 When this setting is disabled, enterprise users cannot delete their account from their user settings.

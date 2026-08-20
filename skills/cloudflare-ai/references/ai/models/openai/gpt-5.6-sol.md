@@ -10,7 +10,7 @@ image: https://developers.cloudflare.com/og-docs.png
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
+![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)
 
 # GPT-5.6 Sol
 
@@ -23,6 +23,10 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 * Third-party
 
 GPT-5.6 Sol is OpenAI's frontier GPT-5.6 model for complex professional work, using the Responses API for reasoning and stateful context management.
+
+Tip
+
+GPT-5.6 Sol is 50% off through Sept 18
 
 | Model Info                                                                          |                                                                                                                      |
 | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -393,7 +397,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-sol/#page","headline":"GPT-5.6 Sol (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.6 Sol is OpenAI's frontier GPT-5.6 model for complex professional work, using the Responses API for reasoning and stateful context management.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.6-sol/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -14,57 +14,31 @@ Array of string values with the personally identifiable information (PII) catego
 
 The possible values are the following:
 
-| Category                     | Description                                                                                                                              |
-| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| CREDIT\_CARD                 | Credit card number                                                                                                                       |
-| CRYPTO                       | Crypto wallet number (currently only Bitcoin address)                                                                                    |
-| DATE\_TIME                   | Absolute or relative dates or periods or times smaller than a day                                                                        |
-| EMAIL\_ADDRESS               | Email address                                                                                                                            |
-| IBAN\_CODE                   | International Bank Account Number (IBAN)                                                                                                 |
-| IP\_ADDRESS                  | Internet Protocol (IP) address                                                                                                           |
-| NRP                          | A person's nationality, religious or political group                                                                                     |
-| LOCATION                     | Name of politically or geographically defined location (cities, provinces, countries, international regions, bodies of water, mountains) |
-| PERSON                       | Full person name                                                                                                                         |
-| PHONE\_NUMBER                | Telephone number                                                                                                                         |
-| MEDICAL\_LICENSE             | Common medical license numbers                                                                                                           |
-| URL                          | Uniform Resource Locator (URL), used to locate a resource on the Internet                                                                |
-| US\_BANK\_NUMBER             | US bank account number                                                                                                                   |
-| US\_DRIVER\_LICENSE          | US driver license                                                                                                                        |
-| US\_ITIN                     | US Individual Taxpayer Identification Number (ITIN)                                                                                      |
-| US\_PASSPORT                 | US passport number                                                                                                                       |
-| US\_SSN                      | US Social Security Number (SSN)                                                                                                          |
-| UK\_NHS                      | UK NHS number                                                                                                                            |
-| UK\_NINO                     | UK National Insurance Number                                                                                                             |
-| ES\_NIF                      | Spanish NIF number (personal tax ID)                                                                                                     |
-| ES\_NIE                      | Spanish NIE number (foreigners ID card)                                                                                                  |
-| IT\_FISCAL\_CODE             | Italian personal tax ID code                                                                                                             |
-| IT\_DRIVER\_LICENSE          | Italian driver license number                                                                                                            |
-| IT\_VAT\_CODE                | Italian VAT code number                                                                                                                  |
-| IT\_PASSPORT                 | Italian passport number                                                                                                                  |
-| IT\_IDENTITY\_CARD           | Italian identity card number                                                                                                             |
-| PL\_PESEL                    | Polish PESEL number                                                                                                                      |
-| SG\_NRIC\_FIN                | National Registration Identification Card (Singapore)                                                                                    |
-| SG\_UEN                      | Unique Entity Number (for entities registered in Singapore)                                                                              |
-| AU\_ABN                      | Australian Business Number (ABN)                                                                                                         |
-| AU\_ACN                      | Australian Company Number (ACN)                                                                                                          |
-| AU\_TFN                      | Australian tax file number (TFN)                                                                                                         |
-| AU\_MEDICARE                 | Medicare number (issued by Australian government)                                                                                        |
-| IN\_PAN                      | Indian Permanent Account Number (PAN)                                                                                                    |
-| IN\_AADHAAR                  | Individual identity number (issued by Indian government)                                                                                 |
-| IN\_VEHICLE\_REGISTRATION    | Vehicle registration number (issued by Indian government)                                                                                |
-| IN\_VOTER                    | Numeric voter ID (issued by Indian Election Commission)                                                                                  |
-| IN\_PASSPORT                 | Indian Passport Number                                                                                                                   |
-| FI\_PERSONAL\_IDENTITY\_CODE | Finnish Personal Identity Code                                                                                                           |
+| Category        | Description                                                               |
+| --------------- | ------------------------------------------------------------------------- |
+| BANK\_ACCOUNT   | Bank account number                                                       |
+| CREDIT\_CARD    | Credit card number                                                        |
+| DATE\_TIME      | Date or time expression                                                   |
+| DRIVER\_LICENSE | Driver license number                                                     |
+| EMAIL\_ADDRESS  | Email address                                                             |
+| IP\_ADDRESS     | Internet Protocol (IPv4) address                                          |
+| LOCATION        | Physical location or address                                              |
+| PASSPORT        | Passport number                                                           |
+| PERSON          | Full or partial name of an individual                                     |
+| PHONE\_NUMBER   | Telephone number                                                          |
+| TAX\_ID         | Tax identification number                                                 |
+| US\_SSN         | US Social Security Number (SSN)                                           |
+| URL             | Uniform Resource Locator (URL), used to locate a resource on the Internet |
 
-The categories list is based on the [list of PII entities supported by Presidio](https://microsoft.github.io/presidio/supported%5Fentities/). Presidio is the data protection and de-identification SDK used in AI Security for Apps.
+The categories are detected by an AI-based Named Entity Recognition (NER) model.
 
 Requires a Cloudflare Enterprise plan. You must also enable [AI Security for Apps](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/).
 
 Example usage:
 
 ```txt
-# Matches requests where PII categorized as "EMAIL_ADDRESS" or "IBAN_CODE" was detected:
-(cf.llm.prompt.pii_detected and any(cf.llm.prompt.pii_categories[*] in {"EMAIL_ADDRESS" "IBAN_CODE"}))
+# Matches requests where PII categorized as "EMAIL_ADDRESS" or "BANK_ACCOUNT" was detected:
+(cf.llm.prompt.pii_detected and any(cf.llm.prompt.pii_categories[*] in {"EMAIL_ADDRESS" "BANK_ACCOUNT"}))
 ```
 
 Categories:
@@ -74,7 +48,7 @@ Was this helpful?
 
 YesNo
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.pii_categories/#page","headline":"cf.llm.prompt.pii_categories · Cloudflare Ruleset Engine docs","description":"Array of string values with the personally identifiable information (PII) categories found in the LLM prompt included in the request.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.pii_categories/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

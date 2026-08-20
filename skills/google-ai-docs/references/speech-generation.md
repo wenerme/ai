@@ -289,7 +289,7 @@ then pass that transcript to the TTS model to read aloud.
     client = genai.Client()
 
     transcript_interaction = client.interactions.create(
-       model="gemini-3.6-flash",
+       model="gemini-3.7-flash",
        input="""Generate a short transcript around 100 words that reads
                 like it was clipped from a podcast by excited herpetologists.
                 The hosts names are Dr. Anya and Liam."""
@@ -317,7 +317,7 @@ then pass that transcript to the TTS model to read aloud.
     async function main() {
 
     const transcriptInteraction = await client.interactions.create({
-       model: "gemini-3.6-flash",
+       model: "gemini-3.7-flash",
        input: "Generate a short transcript around 100 words that reads like it was clipped from a podcast by excited herpetologists. The hosts names are Dr. Anya and Liam.",
        })
 
@@ -779,12 +779,10 @@ Complex
     Pacing: The "Drift": The tempo is incredibly slow and liquid. Words bleed into each other. There is zero urgency.
     ...
 
-**Give it a try**
+### Give it a try
 
-Try some of these examples yourself on
-[TTS App](http://aistudio.google.com/app/apps/bundled/synergy_intro) and let
-Gemini put you in the directors chair. Keep these tips in mind to make great
-vocal performances:
+You can try these examples yourself by using the [Voice Library](https://aistudio.google.com/apps/bundled/voice-library?showPreview=true). Use the
+following guidelines to make great vocal performances:
 
 - Remember to keep the entire prompt coherent -- the script and direction go hand in hand in creating a great performance.
 - Don't feel you have to describe everything, sometimes giving the model space to fill in the gaps helps naturalness. (Just like a talented actor)

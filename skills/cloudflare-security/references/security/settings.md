@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Security settings
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security/settings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security/settings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page describes the security settings available in the new security dashboard for a given domain.
 
@@ -68,7 +68,7 @@ Additionally, you can manage the following settings:
 * [Cloudflare managed ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/)
 * [AI Security for Apps](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/)
 * [Schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/)
-* [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/) (requires you to upload a schema or apply a learned schema)
+* [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/) (requires an uploaded schema)
 * [Under Attack mode](https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/) (under Security Level)
 * SSL/TLS DDoS attack protection
 
@@ -159,12 +159,11 @@ The following table links to additional information about each available setting
 | [OWASP Core](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/) ruleset                                                | **Security** \> **WAF** \> **Managed rules** tab                                                                                                                       |
 | Rate limit authentication requests                                                                                                                     | **Security** \> **WAF** \> **Rate limiting rules** tab                                                                                                                 |
 | [Replace insecure JavaScript libraries](https://developers.cloudflare.com/waf/tools/replace-insecure-js-libraries/)                                    | **Security** \> **Settings**                                                                                                                                           |
-| [Schema learning](https://developers.cloudflare.com/api-shield/security/schema-validation/):                                                           | **Security** \> **API Shield** \> **Schema Validation**                                                                                                                |
+| [Schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/):                        | **Security** \> **Web Assets** \> **Operations**                                                                                                                       |
 | — [Session identifiers](https://developers.cloudflare.com/api-shield/management-and-monitoring/session-identifiers/)                                   | **Security** \> **API Shield** \> **Settings**                                                                                                                         |
 | [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/)                                                          | **Security** \> **API Shield** \> **Schema Validation**                                                                                                                |
-| — [Endpoints](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/)                                             | **Security** \> **API Shield**                                                                                                                                         |
+| — [Operations](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/)                                            | **Security** \> **Web Assets** \> **Operations**                                                                                                                       |
 | — [Active schemas](https://developers.cloudflare.com/api-shield/security/schema-validation/#view-active-schemas)                                       | **Security** \> **API Shield** \> **Schema Validation**                                                                                                                |
-| — [Default action](https://developers.cloudflare.com/api-shield/security/schema-validation/#change-the-global-default-action-of-schema-validation)     | **Security** \> **API Shield** \> **Schema Validation**                                                                                                                |
 | [Security level: I'm under attack mode](https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/)                                   | **Security** \> **Settings**                                                                                                                                           |
 | [Security.txt](https://developers.cloudflare.com/security-center/infrastructure/security-file/)                                                        | **Security** \> **Settings**                                                                                                                                           |
 | [Sensitive data detection](https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-data-detection/#configure-in-the-dashboard) ruleset | **Security** \> **Sensitive Data**                                                                                                                                     |
@@ -183,8 +182,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/settings/#page","headline":"Security settings · Security dashboard docs","description":"Configure different Cloudflare security features that protect your web applications, APIs, and resources.","url":"https://developers.cloudflare.com/security/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/settings/#page","headline":"Security settings · Security dashboard docs","description":"Configure different Cloudflare security features that protect your web applications, APIs, and resources.","url":"https://developers.cloudflare.com/security/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

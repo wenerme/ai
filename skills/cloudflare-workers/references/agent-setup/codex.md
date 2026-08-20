@@ -44,7 +44,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 1. **Download Codex**
@@ -128,7 +128,7 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ```txt
@@ -140,11 +140,11 @@ Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ## Tips

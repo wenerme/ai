@@ -12,11 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Traffic detections
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Traffic detections check incoming requests for malicious or potentially malicious activity. Each enabled detection scores or classifies requests by populating one or more fields. These fields appear as filters in the [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) dashboard, and you can use them in rule expressions.
+Traffic detections check incoming requests for malicious, potentially malicious, or non-conforming activity. Each enabled detection scores or classifies requests by populating one or more fields. These fields appear as filters in the [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) dashboard, and you can use them in rule expressions.
 
 Detections are always on once enabled, even if you have not configured any security rules that use them. You can review detection results in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) to identify traffic patterns and spot potentially malicious traffic. For example, you can analyze traffic based on [attack score](https://developers.cloudflare.com/waf/detections/attack-score/), [bot score](https://developers.cloudflare.com/bots/concepts/bot-score/), [content scan results](https://developers.cloudflare.com/waf/detections/malicious-uploads/), or the [presence of personally identifiable information (PII)](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/) in large language model (LLM) prompts.
+
+[Application Profiles](https://developers.cloudflare.com/waf/detections/application-profiles/) compare requests with application-specific expected structures. Profile detections do not mitigate traffic without a security rule.
+
+Application Profiles availability
+
+Customers with API Security already have access to Schema Profiles through Schema Learning and Schema Validation. Cloudflare is opening a closed beta to invited Enterprise customers without API Security. Interested customers can contact their account team to express interest. Closed-beta access does not imply future plan availability or pricing.
 
 Cloudflare provides the following detections:
 
@@ -26,6 +32,7 @@ Cloudflare provides the following detections:
 * [AI Security for Apps](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/)
 * [Bot score](https://developers.cloudflare.com/bots/concepts/bot-score/)
 * [Threat intelligence](https://developers.cloudflare.com/waf/detections/threat-intelligence/)
+* [Application Profiles](https://developers.cloudflare.com/waf/detections/application-profiles/)
 
 ## Availability
 
@@ -41,16 +48,16 @@ Cloudflare provides the following detections:
 
 For more information on bot score, refer to [Bot scores](https://developers.cloudflare.com/bots/concepts/bot-score/).
 
-## Turn on a detection
+## Turn on a settings-managed detection
 
-To turn on a traffic detection:
+For detections managed through Security settings:
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Detection tools**.
 3. Turn on the desired detections.
 
-Enabled detections will run for all incoming traffic.
+Detections enabled through Security settings run for all incoming traffic. Application Profiles instead evaluate requests after a learned or uploaded profile becomes available.
 
 Notes
 
@@ -70,5 +77,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/#page","headline":"Traffic detections · Cloudflare Web Application Firewall (WAF) docs","description":"Traffic detection signals including attack scores, bot scores, and leaked credentials.","url":"https://developers.cloudflare.com/waf/detections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/#page","headline":"Traffic detections · Cloudflare Web Application Firewall (WAF) docs","description":"Traffic detection signals including attack scores, bot scores, and leaked credentials.","url":"https://developers.cloudflare.com/waf/detections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

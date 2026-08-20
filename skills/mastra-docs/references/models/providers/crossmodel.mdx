@@ -1,11 +1,11 @@
 ---
 title: "CrossModel | Models"
-description: "Use CrossModel models with Mastra. 51 models available."
+description: "Use CrossModel models with Mastra. 52 models available."
 ---
 
 # [CrossModel logo]CrossModel
 
-Access 51 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
+Access 52 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
 
 Learn more in the [CrossModel documentation](https://www.crossmodel.ai/docs).
 
@@ -650,6 +650,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 1.2,
     "outputCost": 4.4
+  },
+  {
+    "model": "crossmodel/z-ai/glm-5.3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 1.2,
+    "outputCost": 4.4
   }
 ]}
 />
@@ -682,7 +694,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "crossmodel/z-ai/glm-5.2"
+      ? "crossmodel/z-ai/glm-5.3"
       : "crossmodel/anthropic/claude-fable-5";
   }
 });

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security/web-assets/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security/web-assets/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You do not need to complete a fixed setup flow before discovered operations can be used for protection. Use this page to choose the capability that matches your task.
 
@@ -26,7 +26,7 @@ Discovered operations can be used for matching and downstream security detection
 
 Add an operation when traffic you want to protect does not appear, or when you want to define the operation structure yourself.
 
-Promote a discovered API endpoint to move its operation into the `full` state and learn its traffic profile. Refine an operation when its method, hostname pattern, or path pattern does not match how the traffic should be grouped or protected.
+Manual creation and editing only update operation inventory. Refine an operation when its method, hostname pattern, or path pattern does not match your intended grouping.
 
 For more information, refer to [Manage operations](https://developers.cloudflare.com/security/web-assets/manage-operations/).
 
@@ -50,11 +50,13 @@ Certain metrics, such as latency, may not populate when a request is handled by 
 
 ## Use learned schemas
 
-Schema learning observes live API traffic for operations in the `full` state. It discovers the parameters, headers, and body formats that your operations accept. You can export learned schemas in OpenAPI `v3.0.0` format.
+Discovered operations do not automatically start profile learning. To learn a Schema Profile, select **Learn profile** from the operation overflow menu.
+
+After the profile becomes available, select **View details**. Review the learned schema under **Security overview**.
 
 If you already maintain OpenAPI schemas, you can upload them to create operations and use them with API Shield [Schema Validation](https://developers.cloudflare.com/api-shield/security/schema-validation/).
 
-For more information, refer to [schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/).
+For the complete workflow, refer to [Application Profiles](https://developers.cloudflare.com/waf/detections/application-profiles/) and [Schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/).
 
 ## Define security protections
 
@@ -76,8 +78,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/web-assets/get-started/#page","headline":"Get started · Security dashboard docs","description":"Use Web Assets to review operations, labels, matched traffic, learned schemas, and risks.","url":"https://developers.cloudflare.com/security/web-assets/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/web-assets/get-started/#page","headline":"Get started · Security dashboard docs","description":"Use Web Assets to review operations, labels, matched traffic, learned schemas, and risks.","url":"https://developers.cloudflare.com/security/web-assets/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

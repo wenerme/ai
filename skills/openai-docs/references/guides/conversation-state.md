@@ -551,7 +551,7 @@ puts(second.output_text)
 
 If you are using [the Responses API WebSocket mode](https://developers.openai.com/api/docs/guides/websocket-mode), continuation uses the same `previous_response_id` semantics as HTTP mode, but over a persistent socket with repeated `response.create` events.
 
-The connection-local cache currently keeps the most recent previous response in memory for low-latency continuation. If an uncached ID cannot be resolved, send a new turn with `previous_response_id` set to `null` and pass full input context.
+The connection-local cache keeps recent previous responses in memory for low-latency continuation. When you use `stream_id`, each lane can retain its latest response; `previous_response_id` still controls lineage, so a new lane can fork from a response on another lane while that response remains available. If an uncached ID cannot be resolved, send a new turn with `previous_response_id` set to `null` and pass full input context.
 
 
 

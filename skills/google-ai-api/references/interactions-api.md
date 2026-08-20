@@ -80,6 +80,9 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-3.6-flash`
 
   Our most intelligent model for sustained frontier performance in agentic and coding tasks.
+- `gemini-3.7-flash`
+
+  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
 - `lyria-3-clip-preview`
 
   Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
@@ -126,7 +129,12 @@ Configuration parameters for model interactions.
 
 max_output_tokens integer (optional) The maximum number of tokens to include in the response.
 seed integer (optional) Seed used in decoding for reproducibility.
-speech_config array (SpeechConfig) (optional) Configuration for speech interaction.
+speech_config SpeakerConfig or array (SpeechConfig) (optional) Optional. Speech and multi-speaker configuration.
+Configuration for multi-speaker and speech generation.
+
+#### Fields
+
+speakers array (SpeechConfig) (optional) Individual speaker configurations.
 The configuration for speech interaction.
 
 #### Fields
@@ -219,6 +227,9 @@ values:
 - `edit`
 
   Modifies an existing input video.
+- `extend`
+
+  Extends an existing input video.
 agent_config object (optional) **Agent Configuration**   
 Configuration for the agent.   
 *Alternative to \`generation_config\`. Only applicable when \`agent\` is set.*
@@ -1072,6 +1083,9 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 
   Our most intelligent model for sustained frontier performance in agentic and coding tasks.
 - `gemini-3.6-flash`
+
+  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
+- `gemini-3.7-flash`
 
   Our most intelligent model for sustained frontier performance in agentic and coding tasks.
 - `lyria-3-clip-preview`
@@ -3756,8 +3770,25 @@ values:
 
   Video data is returned as a URI.
 duration string (optional) The duration for the video output.
-gcs_uri string (optional) The GCS URI to store the video output. Required for Vertex if delivery mode
-is URI.
+gcs_uri string (optional) The Cloud Storage URI to store the video output. Required for Vertex if
+delivery mode is URI.
+resolution enum (string) (optional) The video output resolution. Defaults to 720p.
+
+Possible
+values:
+
+- `360p`
+
+  360p resolution.
+- `720p`
+
+  720p resolution.
+- `1080p`
+
+  1080p resolution.
+- `4k`
+
+  4K resolution.
 type object (required) No description provided.
 
 Always set to `"video"`.
@@ -4416,7 +4447,7 @@ A source to be mounted into the environment.
 content string (optional) The inline content if \`type\` is \`INLINE\`.
 encoding string (optional) Optional encoding for inline content (e.g. \`base64\`).
 source string (optional) The source of the environment.
-For GCS, this is the GCS path.
+For Cloud Storage, this is the Cloud Storage path.
 For GitHub, this is the GitHub path.
 target string (optional) Where the source should appear in the environment.
 type enum (string) (optional) No description provided.
@@ -4426,7 +4457,7 @@ values:
 
 - `gcs`
 
-  A GCS bucket.
+  A Cloud Storage bucket.
 - `inline`
 
   Inline content.

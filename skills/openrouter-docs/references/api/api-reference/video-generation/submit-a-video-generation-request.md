@@ -225,6 +225,12 @@ components:
           example: https://example.com/webhook
           format: uri
           type: string
+        creativity:
+          description: >-
+            Creativity level for video upscaling models only. This parameter is
+            not supported by video generation models.
+          example: 1
+          type: integer
         duration:
           description: Duration of the generated video in seconds
           example: 8
@@ -299,6 +305,14 @@ components:
             aspect_ratio.
           example: 1280x720
           type: string
+        upscale_factor:
+          description: >-
+            Upscale factor for video upscaling models only. This parameter is
+            not supported by video generation models.
+          example: 2
+          exclusiveMinimum: true
+          minimum: 0
+          type: number
       required:
         - model
       type: object

@@ -22,6 +22,7 @@ With Academia Hub, you get **an all-in-one subscription to the Hugging Face Hub 
   [EPITA logo]
   [UT logo]
   [HKPolyU logo]
+  [Dartmouth logo]
 </div>
 
 ## What's included in the subscription

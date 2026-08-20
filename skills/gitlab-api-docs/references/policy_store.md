@@ -7,11 +7,10 @@ REST API to manage security policies stored in the policy store for an organizat
 - Status: Experiment
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606971) in GitLab 19.3 [with a feature flag](../administration/feature_flags/_index.md) named `security_policies_v2`. Disabled by default.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/604367) to persist policies to the database instead of per-process memory in GitLab 19.4.
 
 > [!warning]
 > This feature is an [experiment](../policy/development_stages_support.md).
-> Policies created through this API are held in memory only.
-> They do not survive a restart and are not shared between application processes.
 > The endpoints can change without notice.
 
 Use this API to author [security policies](../user/application_security/policies/_index.md)
@@ -228,7 +227,7 @@ The policy endpoints return the following attributes:
 | Attribute         | Type            | Description |
 | ----------------- | --------------- | ----------- |
 | `actions`         | array           | Actions the policy takes. |
-| `created_at`      | string          | Date and time the policy was created. `null` while the policy store is held in memory. |
+| `created_at`      | string          | Date and time the policy was created. |
 | `description`     | string          | Description of the policy. |
 | `id`              | integer         | ID of the policy. |
 | `lifecycle_state` | string          | Either `active` or `disabled`. |
@@ -240,7 +239,7 @@ The policy endpoints return the following attributes:
 | `rules`           | array           | Rules of the policy. |
 | `scope_rego`      | string          | Compiled scope of the policy, as Rego. |
 | `trigger_type`    | string          | Trigger the policy responds to. |
-| `updated_at`      | string          | Date and time the policy was last changed. `null` while the policy store is held in memory. |
+| `updated_at`      | string          | Date and time the policy was last changed. |
 | `version`         | integer         | Revision of the policy. An update that changes at least one value raises it by one. |
 
 ### List all policies
@@ -286,8 +285,8 @@ Example response:
     "scope_rego": "package gitlab.scope\n\napplicable := [result.policy | some result in results; result.applies]\n...",
     "mode": "enforce",
     "lifecycle_state": "active",
-    "created_at": null,
-    "updated_at": null
+    "created_at": "2026-08-07T13:56:32.985Z",
+    "updated_at": "2026-08-07T13:56:32.985Z"
   }
 ]
 ```
@@ -334,8 +333,8 @@ Example response:
   "scope_rego": "package gitlab.scope\n\napplicable := [result.policy | some result in results; result.applies]\n...",
   "mode": "enforce",
   "lifecycle_state": "active",
-  "created_at": null,
-  "updated_at": null
+  "created_at": "2026-08-07T13:56:32.985Z",
+  "updated_at": "2026-08-07T13:56:32.985Z"
 }
 ```
 
@@ -399,8 +398,8 @@ Example response:
   "scope_rego": "package gitlab.scope\n\napplicable := [result.policy | some result in results; result.applies]\n...",
   "mode": "enforce",
   "lifecycle_state": "active",
-  "created_at": null,
-  "updated_at": null
+  "created_at": "2026-08-07T13:56:32.985Z",
+  "updated_at": "2026-08-07T13:56:32.985Z"
 }
 ```
 
@@ -467,8 +466,8 @@ Example response:
   "scope_rego": "package gitlab.scope\n\napplicable := [result.policy | some result in results; result.applies]\n...",
   "mode": "enforce",
   "lifecycle_state": "active",
-  "created_at": null,
-  "updated_at": null
+  "created_at": "2026-08-07T13:56:32.985Z",
+  "updated_at": "2026-08-07T14:02:47.198Z"
 }
 ```
 
