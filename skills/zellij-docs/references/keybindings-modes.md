@@ -27,3 +27,9 @@ The available modes are:
 - renamepane
 - session
 - tmux
+
+## A note about `scroll` mode
+
+Leaving `scroll` mode keeps the scroll position of the pane - the pane is no longer scrolled back down to the bottom automatically. To scroll to the bottom and leave the mode, use a binding that includes the [`ScrollToBottom`](./keybindings-possible-actions.md#scrolltobottom) action.
+
+Focusing a pane that is scrolled back automatically enters `scroll` mode, and focusing a pane that is not scrolled back returns to `normal` mode.

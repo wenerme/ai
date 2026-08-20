@@ -187,6 +187,26 @@ Enable or disable mouse selection support for the plugin pane.
 
 ---
 
+### `set_soft_keyboard`
+
+```rust
+fn set_soft_keyboard(on: bool)
+```
+
+**Required Permission:** [`ChangeApplicationState`](./plugin-api-permissions.md)
+
+Show or hide the on-screen (soft) keyboard of the client that is displaying this plugin. This is only relevant for clients connected through the [web client](./web-client.md) on a mobile device - other clients ignore it.
+
+Changes to the visibility of the soft keyboard (including ones the user makes) are reported through the [`SoftKeyboardVisibilityChanged`](./plugin-api-events.md#softkeyboardvisibilitychanged) event.
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `on` | `bool` | `true` to show the soft keyboard, `false` to hide it |
+
+---
+
 ## Query / Information Retrieval
 
 ---
@@ -638,12 +658,12 @@ Rename the current session.
 ### `delete_dead_session`
 
 ```rust
-fn delete_dead_session(name: &str)
+fn delete_dead_session(name: &str) -> Result<(), String>
 ```
 
 **Required Permission:** [`ChangeApplicationState`](./plugin-api-permissions.md)
 
-Permanently delete a resurrectable (dead) session with the given name.
+Permanently delete a resurrectable (dead) session with the given name. Blocks until the deletion has been acknowledged, so that subsequent session queries reflect it.
 
 **Parameters:**
 
@@ -651,29 +671,37 @@ Permanently delete a resurrectable (dead) session with the given name.
 |-----------|------|-------------|
 | `name` | `&str` | Name of the dead session to delete |
 
+**Returns:** `Result<(), String>` - an error message if the session could not be deleted
+
+> **Changed in `0.45.0`:** this function used to return `()` and was fire-and-forget. Plugins that ignore the result need to handle it (eg. with `let _ = ...`) in order to compile.
+
 ---
 
 ### `delete_all_dead_sessions`
 
 ```rust
-fn delete_all_dead_sessions()
+fn delete_all_dead_sessions() -> Result<(), String>
 ```
 
 **Required Permission:** [`ChangeApplicationState`](./plugin-api-permissions.md)
 
-Permanently delete all resurrectable (dead) sessions on this machine.
+Permanently delete all resurrectable (dead) sessions on this machine. Blocks until the deletion has been acknowledged.
+
+**Returns:** `Result<(), String>` - an error message if the sessions could not be deleted
+
+> **Changed in `0.45.0`:** this function used to return `()` and was fire-and-forget.
 
 ---
 
 ### `kill_sessions`
 
 ```rust
-fn kill_sessions<S: AsRef<str>>(session_names: &[S])
+fn kill_sessions<S: AsRef<str>>(session_names: &[S]) -> Result<(), String>
 ```
 
 **Required Permission:** [`ChangeApplicationState`](./plugin-api-permissions.md)
 
-Kill one or more sessions by name.
+Kill one or more sessions by name. Blocks until the sessions have been killed.
 
 **Parameters:**
 
@@ -681,11 +709,15 @@ Kill one or more sessions by name.
 |-----------|------|-------------|
 | `session_names` | `&[S]` | Slice of session names to kill |
 
+**Returns:** `Result<(), String>` - an error message if the sessions could not be killed
+
 **Example:**
 
 ```rust
-kill_sessions(&["old-session", "temp-session"]);
+kill_sessions(&["old-session", "temp-session"])?;
 ```
+
+> **Changed in `0.45.0`:** this function used to return `()` and was fire-and-forget.
 
 ---
 
@@ -1420,9 +1452,11 @@ fn open_command_pane_in_new_tab(
 ) -> (Option<usize>, Option<PaneId>)
 ```
 
-**Required Permission:** [`ChangeApplicationState`](./plugin-api-permissions.md)
+**Required Permission:** [`RunCommands`](./plugin-api-permissions.md)
 
 Open a new tab with a command pane running the specified command.
+
+> **Changed in `0.45.0`:** this function used to require `ChangeApplicationState`.
 
 **Parameters:**
 
@@ -1498,9 +1532,11 @@ fn open_editor_pane_in_new_tab(
 ) -> (Option<usize>, Option<PaneId>)
 ```
 
-**Required Permission:** [`ChangeApplicationState`](./plugin-api-permissions.md)
+**Required Permission:** [`OpenFiles`](./plugin-api-permissions.md)
 
 Open a new tab with an editor pane for the specified file.
+
+> **Changed in `0.45.0`:** this function used to require `ChangeApplicationState`.
 
 **Parameters:**
 
@@ -1510,6 +1546,59 @@ Open a new tab with an editor pane for the specified file.
 | `context` | `BTreeMap<String, String>` | Arbitrary context for event callbacks |
 
 **Returns:** `(Option<usize>, Option<PaneId>)` - the tab ID and pane ID
+
+---
+
+### `new_tab_unfocused`
+
+```rust
+fn new_tab_unfocused(name: Option<String>, cwd: Option<PathBuf>) -> Option<usize>
+```
+
+**Required Permission:** [`ChangeApplicationState`](./plugin-api-permissions.md)
+
+Open a new tab in the background, without changing the focus of any client. To open a new tab and focus it, see [`new_tab`](#new_tab).
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `name` | `Option<String>` | Optional name for the new tab |
+| `cwd` | `Option<PathBuf>` | Optional working directory for the new tab |
+
+**Returns:** `Option<usize>` - the id of the created tab, if successful
+
+---
+
+### `new_tiled_pane_in_tab`
+
+```rust
+fn new_tiled_pane_in_tab(tab_position: usize) -> Option<PaneId>
+```
+
+**Required Permission:** [`OpenTerminalsOrPlugins`](./plugin-api-permissions.md)
+
+Open a new tiled pane running the default shell in the tab at the given position.
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `tab_position` | `usize` | The position of the tab in which to open the pane |
+
+**Returns:** `Option<`[`PaneId`](./plugin-api-types.md#paneid)`>` - the id of the created pane, if successful
+
+---
+
+### `new_pane`
+
+```rust
+fn new_pane()
+```
+
+**Required Permission:** [`ChangeApplicationState`](./plugin-api-permissions.md)
+
+Open a new tiled pane running the default shell in the focused tab.
 
 ---
 
@@ -1921,6 +2010,30 @@ Move focus to the previous pane in chronological order.
 
 ---
 
+### `focus_last_pane`
+
+```rust
+fn focus_last_pane()
+```
+
+**Required Permission:** None
+
+Move focus back to the pane that was focused before the currently focused one. Takes floating panes into account, and swaps the pane in place when the focused pane is fullscreen.
+
+---
+
+### `focus_host_session`
+
+```rust
+fn focus_host_session()
+```
+
+**Required Permission:** [`ChangeApplicationState`](./plugin-api-permissions.md)
+
+When this session is running inside another Zellij session (see [nested sessions](./nested-sessions.md)), move focus up to the host (outer) session. Has no effect when the session is not nested.
+
+---
+
 ### `move_focus`
 
 ```rust
@@ -2066,6 +2179,24 @@ Hide all floating panes in the specified tab, or the active tab if `None`.
 | `tab_id` | `Option<usize>` | Tab ID, or `None` for the active tab |
 
 **Returns:** `Result<bool, String>` - whether floating panes are now hidden
+
+---
+
+### `toggle_floating_panes`
+
+```rust
+fn toggle_floating_panes(tab_id: Option<u64>)
+```
+
+**Required Permission:** [`ChangeApplicationState`](./plugin-api-permissions.md)
+
+Toggle the visibility of the floating panes in the specified tab, or the active tab if `None`.
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `tab_id` | `Option<u64>` | Tab ID, or `None` for the active tab |
 
 ---
 
@@ -2238,6 +2369,18 @@ Toggle the focused pane to be fullscreen or normal sized.
 
 ---
 
+### `toggle_focus_no_ui_fullscreen`
+
+```rust
+fn toggle_focus_no_ui_fullscreen()
+```
+
+**Required Permission:** [`ChangeApplicationState`](./plugin-api-permissions.md)
+
+Toggle the focused pane to be fullscreen or normal sized, with the fullscreen pane covering the entire display - including the space normally occupied by the UI bars (eg. the tab-bar and status-bar). Unlike [`toggle_focus_fullscreen`](#toggle_focus_fullscreen), which keeps them visible.
+
+---
+
 ### `toggle_pane_id_fullscreen`
 
 ```rust
@@ -2265,6 +2408,30 @@ fn toggle_pane_frames()
 **Required Permission:** [`ChangeApplicationState`](./plugin-api-permissions.md)
 
 Toggle the UI pane frames on or off globally.
+
+---
+
+### `set_pane_frame_style`
+
+```rust
+fn set_pane_frame_style(pane_frame_style: PaneFrameStyle)
+```
+
+**Required Permission:** [`ChangeApplicationState`](./plugin-api-permissions.md)
+
+Set the style of the pane frames for the whole session (see the [`pane_frame_style`](./options.md#pane_frame_style) option).
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `pane_frame_style` | [`PaneFrameStyle`](./plugin-api-types.md#paneframestyle) | `Full`, `Titles` or `None` |
+
+**Example:**
+
+```rust
+set_pane_frame_style(PaneFrameStyle::Titles);
+```
 
 ---
 

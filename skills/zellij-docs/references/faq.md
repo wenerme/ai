@@ -7,7 +7,7 @@ The best and easiest way is to choose the "Unlock-First (non-colliding)" [keybin
 
 You can load the `compact` layout with `zellij --layout compact`.
 
-Additionally, you can disable pane frames either at runtime with `Ctrl + <p> + <z>` or through the [config](./configuration.md) with `pane_frames: false`.
+Additionally, you can disable pane frames either at runtime with `Ctrl + <p> + <z>` or through the [config](./configuration.md) with `pane_frames false`. A middle ground is `pane_frame_style "titles"` (the default since `0.45.0`), which renders a single title line above each pane rather than a full frame around it.
 
 ### Followup Question: can I use the `compact` layout but still see the keybinding hints when necessary?
 Yes! You can set up a keybinding tooltip toggle for the compact-bar. Choose a key (for example `F1`) and set it up in the [config](./configuration.md) (and then restart):
@@ -39,14 +39,14 @@ This depends on which terminal emulator you're using. Here are some links that m
 3. [Alacritty](https://github.com/zellij-org/zellij/issues/2051#issuecomment-1461519892)
 
 ## Copy / Paste isn't working, how can I fix this?
-Some terminals don't support the the OSC 52 signal, which is the method Zellij uses by default to copy text to the clipboard. To get around this, you can either switch to a supported terminal (eg. Alacritty or xterm) or configure Zellij to use an external utility when copy pasting (eg. xclip, wl-copy or pbcopy).
+Some terminals don't support the OSC 52 signal, which is the method Zellij uses by default to copy text to the clipboard. To get around this, you can either switch to a supported terminal (eg. Alacritty or xterm) or configure Zellij to use an external utility when copy pasting (eg. xclip, wl-copy or pbcopy).
 
 To do the latter, add one of the following to your [Zellij Config](./configuration.md):
 
-```
-copy_command: "xclip -selection clipboard" # x11
-copy_command: "wl-copy"                    # wayland
-copy_command: "pbcopy"                     # osx
+```javascript
+copy_command "xclip -selection clipboard" // x11
+copy_command "wl-copy"                    // wayland
+copy_command "pbcopy"                     // osx
 ```
 
 Note that the only method that works when connecting to a remote Zellij session (eg. through SSH) is OSC 52. If you require this functionality, please consider using a terminal that supports it.
@@ -81,4 +81,10 @@ The socket directory is located at:
 
 By default, Zellij looks for an editor defined in the `EDITOR` or `VISUAL` environment variables (in this order).
 Make sure one is set (eg. `export EDITOR=/usr/bin/vim`) before Zellij starts.
-Alternatively, you can set one in the Zellij [config](./configuration.md) using `scrollback-editor`.
+Alternatively, you can set one in the Zellij [config](./configuration.md) using `scrollback_editor`.
+
+## Programs in my panes cannot read the clipboard, why?
+
+Since `0.45.0`, Zellij replies with an empty clipboard to programs that attempt to *read* the clipboard through OSC 52. Copying (OSC 52 write) is unaffected.
+
+Clipboard reading can be enabled with the [`dangerously_enable_paste_buffer_read`](./options.md#dangerously_enable_paste_buffer_read) option, but note that once enabled, **any** program in **any** pane (including one connected over SSH) can read the system clipboard without prompting.

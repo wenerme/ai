@@ -23,3 +23,6 @@ layout {
 This layout is intended to be loaded into Zellij (either in a running session or in a new session), to load the user's default `$EDITOR` to the `main.rs` and `Cargo.toml` files, show the rendered plugin in a separate pane as well as the compilation and plugin hot-reload logs.
 
 Zellij plugins can of course be developed out of the terminal as well.
+
+## Building and testing on native targets
+Since `0.45.0`, the host functions the plugin API is built on are compiled only for `wasm32` targets, with a no-op stub used elsewhere. Plugin crates can therefore be compiled, unit-tested and type-checked on the native target (eg. with `cargo test`) without a WebAssembly toolchain - keeping in mind that API calls do nothing there.

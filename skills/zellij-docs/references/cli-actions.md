@@ -16,6 +16,7 @@
 - [dump-screen](#dump-screen)
 - [edit](#edit)
 - [edit-scrollback](#edit-scrollback)
+- [focus-last-pane](#focus-last-pane)
 - [focus-next-pane](#focus-next-pane)
 - [focus-pane-id](#focus-pane-id)
 - [focus-previous-pane](#focus-previous-pane)
@@ -62,6 +63,7 @@
 - [set-light-theme](#set-light-theme)
 - [set-pane-borderless](#set-pane-borderless)
 - [set-pane-color](#set-pane-color)
+- [set-pane-frame-style](#set-pane-frame-style)
 - [show-floating-panes](#show-floating-panes)
 - [start-or-reload-plugin](#start-or-reload-plugin)
 - [stack-panes](#stack-panes)
@@ -70,6 +72,7 @@
 - [toggle-active-sync-tab](#toggle-active-sync-tab)
 - [toggle-floating-panes](#toggle-floating-panes)
 - [toggle-fullscreen](#toggle-fullscreen)
+- [toggle-no-ui-fullscreen](#toggle-no-ui-fullscreen)
 - [toggle-pane-borderless](#toggle-pane-borderless)
 - [toggle-pane-embed-or-floating](#toggle-pane-embed-or-floating)
 - [toggle-pane-frames](#toggle-pane-frames)
@@ -278,6 +281,7 @@ Open the specified file in a new zellij pane with your default EDITOR. Returns t
         --height <HEIGHT>          Height for floating pane (requires --floating)
         --pinned <PINNED>          Pin the floating pane (requires --floating)
         --near-current-pane        Open near the current pane rather than following focus
+        --no-focus                 Open the pane without changing the focus of any client
         --tab-id <TAB_ID>         Target a specific tab by ID (conflicts with --in-place, --near-current-pane)
     -b, --borderless <BORDERLESS>  Start without a border
 ```
@@ -308,6 +312,14 @@ eg.
 ```
 $ zellij action edit-scrollback
 $ zellij action edit-scrollback --pane-id terminal_3 --ansi
+```
+
+#### focus-last-pane
+Change focus back to the pane that was focused before the currently focused one. Works across floating and tiled panes, and swaps the pane in place when the focused pane is fullscreen.
+
+eg.
+```
+$ zellij action focus-last-pane
 ```
 
 #### focus-next-pane
@@ -463,11 +475,13 @@ Launch a new plugin instance. Unlike `launch-or-focus-plugin`, this always launc
     -c, --configuration <CONFIG>   Plugin configuration (key=value pairs)
     -s, --skip-plugin-cache        Skip the plugin cache and force reloading
         --tab-id <TAB_ID>          Target a specific tab by ID (conflicts with --in-place)
+        --no-focus                 Open the plugin pane without changing the focus of any client
 ```
 
 eg.
 ```
 zellij action launch-plugin file:/path/to/plugin.wasm --floating
+zellij action launch-plugin zellij:session-manager --no-focus
 ```
 
 #### list-clients
@@ -770,11 +784,13 @@ Open a new pane in the specified direction or as a floating pane. If no directio
         --pinned <PINNED>              Pin the floating pane (requires --floating)
         --stacked                      Open in stacked mode (conflicts with --floating/--direction)
         --tab-id <TAB_ID>             Target a specific tab by ID (conflicts with --in-place, --near-current-pane)
+        --pane-id <PANE_ID>            The pane to replace when using --in-place (default: the focused pane)
     -b, --blocking                     Block until the pane exits
         --block-until-exit-success     Block until the command exits with status 0
         --block-until-exit-failure     Block until the command exits with non-zero status
         --block-until-exit             Block until the command exits regardless of status
         --near-current-pane            Open near the current pane rather than following focus
+        --no-focus                     Open the pane without changing the focus of any client
         --borderless <BORDERLESS>      Start without a border
 ```
 
@@ -784,8 +800,12 @@ $ zellij action new-pane -f # open a new floating pane with the default shell
 $ zellij action new-pane --name "follow this log!" -- tail -f /tmp/my-log-file
 $ zellij action new-pane --stacked
 $ zellij action new-pane --in-place -- htop
+$ zellij action new-pane --in-place --pane-id terminal_4 -- htop
 $ zellij action new-pane --plugin zellij:strider --floating
+$ zellij action new-pane --no-focus -- tail -f /tmp/my-log-file
 ```
+
+**Note about `--no-focus`**: the pane is opened without changing the focus of any connected client. Its placement is relative to the pane the command was issued from rather than to the focused pane.
 
 **Note:** This can also be shortened to `zellij run`
 
@@ -817,13 +837,17 @@ See [layout CWD composition](./creating-a-layout.md#cwd-composition) for more in
         --block-until-exit-success     Block until the command exits with status 0
         --block-until-exit-failure     Block until the command exits with non-zero status
         --block-until-exit             Block until the command exits regardless of status
+        --no-focus                     Create the tab without changing the focus of any client
 ```
 
 eg.
 ```
 $ zellij action new-tab --layout /path/to/layout.kdl --name "my tab"
 $ zellij action new-tab -- htop
+$ zellij action new-tab --no-focus --name "background tab"
 ```
+
+**Note about `--no-focus`**: the new tab is created in the background without changing the focus of any connected client. When a layout is used, its `focus` properties are suppressed as well.
 
 #### next-swap-layout
 Switch to the next swap layout for the current tab
@@ -841,7 +865,7 @@ $ zellij action next-swap-layout
 #### override-layout
 Override the layout of the active tab with the specified layout file.
 
-**ARGS**: Path to the layout file
+**ARGS (optional)**: Path to the layout file - either this or `--layout-string` must be provided
 
 **OPTIONS**:
 ```
@@ -856,7 +880,10 @@ eg.
 ```
 $ zellij action override-layout /path/to/layout.kdl
 $ zellij action override-layout /path/to/layout.kdl --retain-existing-terminal-panes --apply-only-to-active-tab
+$ zellij action override-layout --layout-string 'layout { pane; pane; }'
 ```
+
+**Note**: layouts provided with `--layout-string` (here and in `new-tab` / `switch-session`) are parsed and validated before being sent to the session, so syntax errors are reported immediately.
 
 #### page-scroll-down
 Scroll down one page in focus pane
@@ -1119,6 +1146,18 @@ eg.
 $ zellij action set-pane-borderless --pane-id terminal_3 --borderless true
 ```
 
+#### set-pane-frame-style
+Set the style of the pane frames for the whole session at runtime. This is the runtime equivalent of the [`pane_frame_style`](./options.md#pane_frame_style) configuration option.
+
+**ARGS**: The frame style - one of `full` (a full border around each pane), `titles` (a single title line above each pane) or `none` (no frames)
+
+eg.
+```
+$ zellij action set-pane-frame-style titles
+$ zellij action set-pane-frame-style full
+$ zellij action set-pane-frame-style none
+```
+
 #### set-pane-color
 Set the default foreground and/or background color of a pane. Colors can be specified as hex (eg. "#00e000") or rgb notation (eg. "rgb:00/e0/00").
 
@@ -1245,6 +1284,21 @@ Toggle between fullscreen focus pane and normal layout
 eg.
 ```
 $ zellij action toggle-fullscreen
+```
+
+#### toggle-no-ui-fullscreen
+Toggle between fullscreen focus pane and normal layout, with the pane taking up the entire display - including the space normally occupied by the UI bars (eg. the tab-bar and status-bar). This is unlike `toggle-fullscreen`, which keeps the UI bars visible.
+
+**OPTIONS**:
+```
+    -p, --pane-id <PANE_ID>    Target a specific pane by ID
+    -t, --tab-id <TAB_ID>      Target a specific tab by ID
+```
+
+eg.
+```
+$ zellij action toggle-no-ui-fullscreen
+$ zellij action toggle-no-ui-fullscreen --pane-id terminal_3
 ```
 
 #### toggle-pane-borderless

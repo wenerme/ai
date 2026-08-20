@@ -21,6 +21,18 @@ eg.
     bind "a" { Copy; }
 ```
 
+## `CopyLastCommandOutput`
+
+ Copy the output of the last command run in the focused pane to the clipboard. Requires the shell to emit [OSC 133 shell integration](./shell-integration.md) sequences, which delimit the command's output. The copied region is briefly flashed in the pane.
+
+**Possible arguments**: None
+
+By default bound to `c` in `scroll` mode.
+
+```javascript
+    bind "a" { CopyLastCommandOutput; }
+```
+
 ## `BreakPane`
 
  Break the focused pane out of its current tab into a new tab
@@ -110,6 +122,42 @@ or with ANSI styling preserved:
 ```javascript
     bind "a" { EditScrollback { ansi true; } }
 ```
+## `FocusGuestSession`
+
+ When the focused pane contains a [nested Zellij session](./nested-sessions.md), descend into it - routing keyboard and mouse input to the nested (guest) session and dimming the chrome of the host session.
+
+**Possible arguments**: None
+
+By default bound to `[` in `session` mode.
+
+```javascript
+    bind "a" { FocusGuestSession; }
+```
+
+## `FocusHostSession`
+
+ When running inside a [nested Zellij session](./nested-sessions.md), return focus to the host (outer) session.
+
+**Possible arguments**: None
+
+By default bound to `]` in `session` mode.
+
+```javascript
+    bind "a" { FocusHostSession; }
+```
+
+## `FocusLastPane`
+
+ Change focus back to the pane that was focused before the currently focused one. Takes floating panes into account, and swaps the pane in place when the focused pane is fullscreen.
+
+**Possible arguments**: None
+
+By default bound to `;` in `pane` mode and to `Alt \` in all modes.
+
+```javascript
+    bind "a" { FocusLastPane; }
+```
+
 ## `FocusNextPane`
 
  Change focus to the next pane (order not guaranteed)
@@ -541,6 +589,28 @@ or as a stacked pane:
 ```javascript
     bind "a" { ScrollToBottom; }
 ```
+## `ScrollToNextPrompt`
+
+ Scroll the focused pane down to the next shell prompt in its scrollback. Requires the shell to emit [OSC 133 shell integration](./shell-integration.md) sequences.
+
+**Possible arguments**: None
+
+By default bound to `]` in `scroll` and `search` modes.
+
+```javascript
+    bind "a" { ScrollToNextPrompt; }
+```
+## `ScrollToPreviousPrompt`
+
+ Scroll the focused pane up to the previous shell prompt in its scrollback. Requires the shell to emit [OSC 133 shell integration](./shell-integration.md) sequences.
+
+**Possible arguments**: None
+
+By default bound to `[` in `scroll` and `search` modes.
+
+```javascript
+    bind "a" { ScrollToPreviousPrompt; }
+```
 ## `ScrollUp`
 
  Scroll the focused pane up 1 line
@@ -589,6 +659,18 @@ or as a stacked pane:
     bind "a" { SearchToggleOption "CaseSensitivity"; }
 ```
 
+## `SelectCommandAtScrollPosition`
+
+ Select the command and its output at the current scroll position of the focused pane, so that it can be copied. Requires the shell to emit [OSC 133 shell integration](./shell-integration.md) sequences.
+
+**Possible arguments**: None
+
+By default bound to `m` in `scroll` and `search` modes.
+
+```javascript
+    bind "a" { SelectCommandAtScrollPosition; }
+```
+
 ## `SetDarkTheme`
 
  Switch the theme to dark (uses the configured `theme_dark`).
@@ -607,6 +689,16 @@ or as a stacked pane:
 
 ```javascript
     bind "a" { SetLightTheme; }
+```
+
+## `SetPaneFrameStyle`
+
+ Set the style of the pane frames for the whole session (see the [`pane_frame_style`](./options.md#pane_frame_style) option)
+
+**Required arguments**: "full" | "titles" | "none"
+
+```javascript
+    bind "a" { SetPaneFrameStyle "full"; }
 ```
 
 ## `SwitchToMode`
@@ -703,6 +795,30 @@ or:
 
 ```javascript
     bind "a" { ToggleFocusFullscreen; }
+```
+
+## `ToggleFocusNoUiFullscreen`
+
+ Toggle the focused pane as fullscreen on/off, with the pane taking up the entire display - including the space normally occupied by the UI bars (eg. the tab-bar and status-bar). Unlike `ToggleFocusFullscreen`, which keeps them visible.
+
+**Possible arguments**: None
+
+By default bound to `Shift f` in `pane` mode.
+
+```javascript
+    bind "a" { ToggleFocusNoUiFullscreen; }
+```
+
+## `ToggleHostFullscreen`
+
+ When running inside a [nested Zellij session](./nested-sessions.md), toggle the fullscreen state of this session's pane within the host (outer) session.
+
+**Possible arguments**: None
+
+By default bound to `f` in `session` mode.
+
+```javascript
+    bind "a" { ToggleHostFullscreen; }
 ```
 
 ## `ToggleMouseMode`

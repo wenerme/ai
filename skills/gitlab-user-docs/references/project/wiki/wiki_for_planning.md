@@ -8,7 +8,7 @@ Use GitLab Wiki with your planning workflow. Connect documentation to epics, iss
 GitLab Wiki works with your planning tools. It's not a separate tool.
 You can link wiki pages to epics, issues, and boards.
 With embedded views powered by GitLab Query Language (GLQL), your wiki pages can display
-live, auto-updating views of issues and work items - turning documentation into dynamic dashboards.
+live, auto-updating views of issues and work items, turning documentation into dynamic dashboards.
 Learn how to connect wiki with issues, epics, and boards to create a smooth workflow where
 documentation and planning work together.
 

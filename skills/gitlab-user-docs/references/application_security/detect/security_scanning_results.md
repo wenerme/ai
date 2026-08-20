@@ -7,7 +7,7 @@
 - [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/490332) in GitLab 17.9.
 - Feature flag `dependency_scanning_for_pipelines_with_cyclonedx_reports` removed in 17.10.
 
-View and act on the results of pipeline security scanning in GitLab. Select security scanners run in
+View and act on the results of pipeline security scanning in GitLab. Security scanners run in
 a pipeline and output security reports. The contents of these reports are processed and presented in
 GitLab.
 

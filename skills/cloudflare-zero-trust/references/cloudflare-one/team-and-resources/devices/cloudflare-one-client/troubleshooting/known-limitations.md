@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Known limitations
 
-Last updated Jul 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below, you will find information on devices, software, and configurations that are incompatible with the Cloudflare One Client (formerly WARP).
 
@@ -47,13 +47,6 @@ The Cloudflare One Client will now reinstall its network adapter, and the Cloudf
 ## Managed network on legacy Windows Server
 
 [Managed network detection](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/) will not work when the TLS certificate is served from IIS 8.5 on Windows Server 2012 R2\. To work around the limitation, move the certificate to a different host.
-
-## Split Tunnels for Microsoft 365 traffic
-
-Microsoft has recently made changes to the IP addresses used by Microsoft 365 applications (such as Microsoft Teams). Customers using the [Directly route Microsoft 365 traffic](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#directly-route-microsoft-365-traffic) feature will need to manually add the following IPs to their [Split Tunnels Exclude list](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route):
-
-* `24.24.24.24/32`
-* `52.120.0.0/14`
 
 ## nslookup on Windows in DoH mode
 
@@ -293,5 +286,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/#page","headline":"Known limitations - Cloudflare One Client · Cloudflare One docs","description":"Reference information for Known limitations in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","DNS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/#page","headline":"Known limitations - Cloudflare One Client · Cloudflare One docs","description":"Reference information for Known limitations in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","DNS"]}
 ```

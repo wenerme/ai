@@ -43,10 +43,13 @@ $ zellij run -- git diff
 -n, --name <NAME>                 Name of the new pane
     --near-current-pane           if set, will open the pane near the current one rather than
                                   following the user's focus
+    --no-focus                    Open the pane without changing the focus of any client
     --pinned <PINNED>             Whether to pin a floating pane so that it is always on top
 -s, --start-suspended             Start the command suspended, only running after you first
                                   presses ENTER
     --stacked
+    --tab-id <TAB_ID>             Open the pane in the tab with this id (conflicts with
+                                  --in-place and --near-current-pane)
     --width <WIDTH>               The width if the pane is floating as a bare integer (eg. 1) or
                                   percent (eg. 10%)
 -x, --x <X>                       The x coordinates if the pane is floating as a bare integer
@@ -56,6 +59,10 @@ $ zellij run -- git diff
 ```
 
 **Note**: to shorten this command to a more friendly length, see `Completions` under: [CLI](./controlling-zellij-through-cli.md#completions)
+
+**About `--no-focus`**: the pane is opened without changing the focus of any connected client. Its placement is relative to the pane the command was issued from rather than to the focused pane. This is useful for scripts that open panes in the background.
+
+**About `--tab-id`**: the pane is opened in the tab with the given (numeric) id rather than in the focused tab. Tab ids can be obtained with `zellij action list-tabs` or `zellij action query-tab-names`.
 
 This new pane will not immediately close when the command exits. Instead, it will show its exit status on the pane frame and allow users to press `<ENTER>` to re-run the command inside the same pane, or `<Ctrl-c>` to close the pane.
 
@@ -94,7 +101,10 @@ $ zellij edit ./main.rs --line-number 10 # open main.rs pointed at line number 1
 -l, --line-number <LINE_NUMBER>    Open the file in the specified line number
     --near-current-pane            if set, will open the pane near the current one rather than
                                    following the user's focus
+    --no-focus                     Open the pane without changing the focus of any client
     --pinned <PINNED>              Whether to pin a floating pane so that it is always on top
+    --tab-id <TAB_ID>              Open the pane in the tab with this id (conflicts with
+                                   --in-place and --near-current-pane)
     --width <WIDTH>                The width if the pane is floating as a bare integer (eg. 1)
                                    or percent (eg. 10%)
 -x, --x <X>                        The x coordinates if the pane is floating as a bare integer

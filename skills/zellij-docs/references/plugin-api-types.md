@@ -39,6 +39,8 @@ All types listed here are available via `use zellij_tile::prelude::*;`.
 - [HostTerminalThemeMode](#hostterminalthememode)
 - [ClientInfo](#clientinfo)
 - [ModeInfo](#modeinfo)
+- [PaneFrameStyle](#paneframestyle)
+- [StyledText](#styledtext)
 - [Mouse](#mouse)
 - [CopyDestination](#copydestination)
 - [PermissionType](#permissiontype)
@@ -495,6 +497,7 @@ pub struct PaneContents {
     pub lines_below_viewport: Vec<String>,
     pub viewport: Vec<String>,
     pub selected_text: Option<SelectedText>,
+    pub cursor: Option<(usize, usize)>,
 }
 ```
 
@@ -504,6 +507,7 @@ pub struct PaneContents {
 | `lines_below_viewport` | `Vec<String>` | Lines below the current viewport (only populated if full scrollback is requested) |
 | `viewport` | `Vec<String>` | Currently visible lines |
 | `selected_text` | `Option<SelectedText>` | Currently selected text range, if any |
+| `cursor` | `Option<(usize, usize)>` | Cursor position (x, y) inside the viewport, if visible |
 
 **Note:** `lines_above_viewport` and `lines_below_viewport` are only populated when explicitly requested (e.g., with `get_full_scrollback: true` in `get_pane_scrollback`). This is for performance reasons.
 
@@ -819,6 +823,13 @@ pub struct ModeInfo {
     pub web_server_ip: Option<IpAddr>,
     pub web_server_port: Option<u16>,
     pub web_server_capability: Option<bool>,
+    pub pane_frame_style: Option<PaneFrameStyle>,
+    pub session_dimmed: Option<bool>,
+    pub session_ancestry: Vec<String>,
+    pub host_fullscreen: Option<bool>,
+    pub nested_ascend_keys: Vec<KeyWithModifier>,
+    pub session_ascended: Option<bool>,
+    pub nested_descend_keys: Vec<KeyWithModifier>,
 }
 ```
 
@@ -839,6 +850,53 @@ pub struct ModeInfo {
 | `web_server_ip` | `Option<IpAddr>` | Configured web server IP |
 | `web_server_port` | `Option<u16>` | Configured web server port |
 | `web_server_capability` | `Option<bool>` | Whether web server functionality is available |
+| `pane_frame_style` | `Option<`[`PaneFrameStyle`](#paneframestyle)`>` | The frame style currently used in this session |
+| `session_dimmed` | `Option<bool>` | Whether this session's UI is dimmed because focus was handed to a nested session |
+| `session_ancestry` | `Vec<String>` | The names of the sessions this session is nested in, outermost first |
+| `host_fullscreen` | `Option<bool>` | Whether this session's pane is fullscreen inside its host session |
+| `nested_ascend_keys` | `Vec<`[`KeyWithModifier`](#keywithmodifier)`>` | Keys bound to `FocusHostSession` |
+| `session_ascended` | `Option<bool>` | Whether focus has been handed back up to the host session |
+| `nested_descend_keys` | `Vec<`[`KeyWithModifier`](#keywithmodifier)`>` | Keys bound to `FocusGuestSession` |
+
+The last seven fields relate to [nested sessions](./nested-sessions.md) and to the [pane frame style](./options.md#pane_frame_style). They allow plugins that render session chrome (eg. the tab-bar and status-bar) to indicate where the session sits in the nesting hierarchy and how to leave it.
+
+---
+
+## `PaneFrameStyle`
+
+The style used to render pane frames in the session. See the [`pane_frame_style`](./options.md#pane_frame_style) option.
+
+```rust
+pub enum PaneFrameStyle {
+    Full,
+    Titles,
+    None,
+}
+```
+
+| Variant | Description |
+|---------|-------------|
+| `Full` | A full border around each pane |
+| `Titles` | A single title line above each pane (default) |
+| `None` | No pane frames |
+
+---
+
+## `StyledText`
+
+A piece of text with a set of highlighted (emphasized) character indices. Used, among others, as the payload of the [`HintText`](./plugin-api-events.md#hinttext) event. It can be turned into a `Text` UI component with `Text::from(styled_text)`.
+
+```rust
+pub struct StyledText {
+    pub text: String,
+    pub indices: Vec<Vec<usize>>,
+}
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `text` | `String` | The text itself |
+| `indices` | `Vec<Vec<usize>>` | Character indices to emphasize, grouped by [color index](./plugin-ui-rendering.md) |
 
 ---
 
@@ -850,6 +908,8 @@ A mouse event that occurred while the user is focused on the plugin pane.
 pub enum Mouse {
     ScrollUp(usize),
     ScrollDown(usize),
+    ScrollLeft(usize),
+    ScrollRight(usize),
     LeftClick(isize, usize),
     RightClick(isize, usize),
     Hold(isize, usize),
@@ -862,6 +922,8 @@ pub enum Mouse {
 |---------|-----------|-------------|
 | `ScrollUp(n)` | `usize` - number of lines | Mouse wheel scrolled up |
 | `ScrollDown(n)` | `usize` - number of lines | Mouse wheel scrolled down |
+| `ScrollLeft(n)` | `usize` - number of columns | Mouse wheel scrolled left (horizontal scroll) |
+| `ScrollRight(n)` | `usize` - number of columns | Mouse wheel scrolled right (horizontal scroll) |
 | `LeftClick(line, col)` | `isize, usize` - line and column | Left mouse button clicked |
 | `RightClick(line, col)` | `isize, usize` - line and column | Right mouse button clicked |
 | `Hold(line, col)` | `isize, usize` - line and column | Mouse button held (drag) |
@@ -1044,6 +1106,17 @@ The `Action` enum represents all possible Zellij actions that can be triggered p
 | `NextSwapLayout` | Switch to next swap layout |
 | `LaunchOrFocusPlugin { plugin, .. }` | Launch or focus a plugin |
 | `RenameSession { name }` | Rename the current session |
+| `FocusLastPane` | Focus the previously focused pane |
+| `ToggleFocusNoUiFullscreen` | Toggle fullscreen for the focused pane, covering the UI bars as well |
+| `SetPaneFrameStyle { pane_frame_style }` | Set the [pane frame style](#paneframestyle) for the session |
+| `AreFloatingPanesVisible` | Query whether floating panes are visible |
+| `SetDarkTheme` / `SetLightTheme` / `ToggleTheme` | Switch between the configured dark and light themes |
+| `FocusHostSession` | [Nested sessions](./nested-sessions.md): move focus to the host session |
+| `FocusGuestSession` | [Nested sessions](./nested-sessions.md): descend into the guest session in the focused pane |
+| `ToggleHostFullscreen` | [Nested sessions](./nested-sessions.md): toggle this session's pane fullscreen in its host |
+| `ScrollToPreviousPrompt` / `ScrollToNextPrompt` | Jump between shell prompts in the scrollback ([OSC 133](./shell-integration.md)) |
+| `SelectCommandAtScrollPosition` | Select the command and output at the scroll position ([OSC 133](./shell-integration.md)) |
+| `CopyLastCommandOutput` | Copy the last command's output to the clipboard ([OSC 133](./shell-integration.md)) |
 
 For the complete list, see the [source code](https://github.com/zellij-org/zellij/blob/main/zellij-utils/src/input/actions.rs).
 
@@ -1092,12 +1165,17 @@ pub enum EventType {
     InterceptedKeyPress,
     UserAction,
     PaneRenderReport,
-    PaneRenderReportWithAnsi,
     ActionComplete,
     CwdChanged,
     AvailableLayoutInfo,
     PluginConfigurationChanged,
     HighlightClicked,
+    CommandChanged,
+    InitialKeybinds,
+    HostTerminalThemeChanged,
+    SoftKeyboardVisibilityChanged,
+    HintText,
+    ActivePaneScroll,
 }
 ```
 

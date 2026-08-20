@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Chat agents
 
-Last updated Aug 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build AI-powered chat interfaces with `AIChatAgent` and `useAgentChat`. Messages are automatically persisted to SQLite, streams resume on disconnect, and tool calls work across server and client.
 
@@ -541,7 +541,7 @@ if (result.status === "aborted") {
 }
 ```
 
-`continueLastTurn()` accepts the same `options.signal` argument. `AbortSignal` objects cannot cross Durable Object RPC boundaries, so construct the controller inside the Durable Object that calls `saveMessages()` or `continueLastTurn()`. The signal is in memory only; if the Durable Object hibernates mid-turn and `chatRecovery` is enabled, the recovered turn runs without the original signal.
+`continueLastTurn()` accepts the same `options.signal` argument. `AbortSignal` objects cannot cross Durable Object RPC boundaries, so construct the controller inside the Durable Object that calls `saveMessages()` or `continueLastTurn()`. The signal is in memory only. If the Durable Object hibernates mid-turn, the recovered turn runs without the original signal. Persist cancellation intent when cancellation must survive a restart.
 
 ### `onChatResponse`
 
@@ -772,27 +772,13 @@ Use `abortRequest()` when you know the request ID. Use `abortAllRequests()` for 
 
 ### Stream recovery
 
-Automatic stream resumption (the `resume` option on `useAgentChat`) is **client reconnect recovery** — it resumes an active stream when a client disconnects and reconnects. It does not cover Durable Object eviction: if the Worker process or Durable Object is evicted while the model call is in flight, the stream itself is gone. `chatRecovery` handles that case.
+Automatic stream resumption (the `resume` option on `useAgentChat`) is **client reconnect recovery** — it resumes an active stream when a client disconnects and reconnects. It does not cover Durable Object eviction. If the Worker process or Durable Object is evicted while the model call is in flight, the stream itself is gone. Durable chat recovery handles that case.
 
-When a Durable Object is evicted mid-stream (code update, inactivity timeout, resource limit), the LLM connection is severed permanently and the in-memory streaming state is lost. `chatRecovery` wraps each chat turn in a [runFiber()](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/), providing automatic `keepAlive` during streaming and a recovery hook on restart.
+A mid-stream Durable Object eviction permanently severs the LLM connection. Durable recovery wraps every `AIChatAgent` and [Think](https://developers.cloudflare.com/agents/harnesses/think/) chat turn in a [runFiber()](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/). The fiber provides automatic `keepAlive` during streaming and a recovery hook on restart.
 
-```js
-export class ChatAgent extends AIChatAgent {
-	chatRecovery = true;
-}
-```
+The fiber row survives in SQLite after an eviction. On the next activation, the framework detects the interrupted fiber. It reconstructs the partial response from buffered stream chunks and calls `onChatRecovery`.
 
-```ts
-export class ChatAgent extends AIChatAgent {
-	override chatRecovery = true;
-}
-```
-
-`AIChatAgent` defaults `chatRecovery` to `false`, so existing chat agents only get client reconnect and resumable-stream behavior unless they opt in. [Think](https://developers.cloudflare.com/agents/harnesses/think/) defaults it to `true`.
-
-When enabled, every `onChatMessage` call runs inside a fiber. If the agent is evicted mid-stream, the fiber row survives in SQLite. On the next activation, the framework detects the interrupted fiber, reconstructs the partial response from buffered stream chunks, and calls `onChatRecovery`.
-
-`chatRecovery` can also be set to a configuration object to bound recovery and customize the terminal experience when recovery cannot succeed:
+Durable recovery is always on. Use `chatRecovery` only to tune recovery budgets and terminal behavior:
 
 ```js
 export class ChatAgent extends AIChatAgent {
@@ -803,8 +789,8 @@ export class ChatAgent extends AIChatAgent {
 		// Primary stuck-turn bound. Resets on every progress-bearing attempt, so a
 		// turn that keeps producing content survives unbounded interruption.
 		noProgressTimeoutMs: 5 * 60 * 1000,
-		// Runaway-loop guard. Defaults to Infinity (no cap). Set a finite value to
-		// seal a turn that keeps emitting content but never converges.
+		// Runaway-loop guard. Defaults to 1,000. Set a higher value for a long
+		// agentic turn, or Infinity to remove the cap.
 		maxRecoveryWork: 200,
 		// Caller policy consulted from the second recovery attempt onward. Return
 		// false to stop recovery. This is where you enforce a token/cost budget.
@@ -830,8 +816,8 @@ export class ChatAgent extends AIChatAgent {
 		// Primary stuck-turn bound. Resets on every progress-bearing attempt, so a
 		// turn that keeps producing content survives unbounded interruption.
 		noProgressTimeoutMs: 5 * 60 * 1000,
-		// Runaway-loop guard. Defaults to Infinity (no cap). Set a finite value to
-		// seal a turn that keeps emitting content but never converges.
+		// Runaway-loop guard. Defaults to 1,000. Set a higher value for a long
+		// agentic turn, or Infinity to remove the cap.
 		maxRecoveryWork: 200,
 		// Caller policy consulted from the second recovery attempt onward. Return
 		// false to stop recovery. This is where you enforce a token/cost budget.
@@ -856,7 +842,8 @@ The `chatRecovery` object accepts the following configuration options:
 | stableTimeoutMs      | 10\_000          | How long a recovery attempt waits for the isolate to reach stable state before rescheduling.                                                                                                                                                      |
 | terminalMessage      | generic message  | The message shown to the user when recovery is given up on.                                                                                                                                                                                       |
 | noProgressTimeoutMs  | 300\_000 (5 min) | Primary stuck-turn bound: how long an incident may go without forward progress before it is sealed (no\_progress\_timeout). **Resets on every progress-bearing attempt**, so a turn that keeps producing content survives unbounded interruption. |
-| maxRecoveryWork      | Infinity         | Runaway-loop guard. Maximum produced content/tool units since the incident began before a still-progressing turn is sealed. Defaults to no cap.                                                                                                   |
+| maxRecoveryWork      | 1,000            | Runaway-loop guard. Maximum produced content/tool units since the incident began before a still-progressing turn is sealed. Set a higher value or Infinity for a long agentic turn.                                                               |
+| maxOomRetries        | 3                | Retry budget for Durable Object memory-limit resets. Set 0 to stop after the first memory-limit reset.                                                                                                                                            |
 | shouldKeepRecovering | —                | Caller policy consulted from the second recovery attempt onward. Return false to stop recovery. Use it to enforce a token or cost budget. ctx.work is a coarse segment count, not tokens, so track real spend yourself.                           |
 | onExhausted          | —                | Called once when recovery is given up on, before the terminal message is delivered. Inspect ctx.reason for why.                                                                                                                                   |
 
@@ -873,17 +860,18 @@ The `chatRecovery` object accepts the following configuration options:
 | work                  | number                | Coarse, monotonic count of content/tool segments produced since the incident opened (not tokens). |
 | ageMs                 | number                | Wall-clock ms since the incident's first interruption.                                            |
 
-A progressing turn is never terminated by the framework on its own — it survives unbounded interruption (for example a dense deploy window) as long as it keeps making forward progress. Recovery is sealed only by one of these `ctx.reason` values:
+A progressing turn survives repeated interruptions as long as it stays within the `maxRecoveryWork` limit. Recovery is sealed by one of these `ctx.reason` values:
 
 * `no_progress_timeout` — no forward progress within the no-progress window (a stuck turn).
 * `max_attempts_exceeded` — the attempt cap was spent on a tight no-progress alarm loop.
 * `work_budget_exceeded` — the turn kept producing content but exceeded `maxRecoveryWork` (a runaway loop).
 * `recovery_aborted` — your `shouldKeepRecovering` hook returned `false`.
+* `out_of_memory` — recovery exceeded the memory-limit retry budget.
 * `stable_timeout` — recovery attempts kept timing out waiting for stable state until the budget drained (extreme churn).
 
 Tip
 
-A finite `maxRecoveryWork` can seal a legitimately long turn. Set a cap well above what a healthy turn produces, or use `shouldKeepRecovering` with real token or cost accounting for a precise budget.
+The `maxRecoveryWork` default prevents a progressing turn from running forever. Increase it for long agentic turns. Use `shouldKeepRecovering` with durable token or cost data for a precise budget.
 
 #### Turns waiting on a human are not sealed
 
@@ -921,8 +909,6 @@ Override to implement provider-specific recovery. The default behavior persists 
 
 ```js
 export class ChatAgent extends AIChatAgent {
-	chatRecovery = true;
-
 	async onChatRecovery(ctx) {
 		console.log(`Recovered ${ctx.partialText.length} chars of partial text`);
 
@@ -939,8 +925,6 @@ import type {
 } from "@cloudflare/ai-chat";
 
 export class ChatAgent extends AIChatAgent {
-	override chatRecovery = true;
-
 	override async onChatRecovery(
 		ctx: ChatRecoveryContext,
 	): Promise<ChatRecoveryOptions> {
@@ -1000,6 +984,15 @@ override async onChatRecovery(
 }
 ```
 
+#### Control automatic continuation
+
+Durable bookkeeping remains active when automatic continuation is not appropriate.
+
+* Return `{ continue: false }` when another model call is unsafe.
+* Persist cancellation intent and read it in `onChatRecovery()`.
+* Record idempotency keys before external side effects.
+* Use recovery budgets with durable spend data to limit cost.
+
 #### `continueLastTurn`
 
 Appends to the last assistant message by re-calling `onChatMessage` with the saved request body. The response is streamed as a continuation — appended to the existing assistant message, not a new one. No synthetic user message is created.
@@ -1019,8 +1012,6 @@ Use `this.stash()` inside `onChatMessage` to persist provider-specific data for 
 
 ```js
 export class ChatAgent extends AIChatAgent {
-	chatRecovery = true;
-
 	async onChatMessage(_onFinish, options) {
 		const result = streamText({
 			model: openai("gpt-5.4"),
@@ -1044,8 +1035,6 @@ export class ChatAgent extends AIChatAgent {
 
 ```ts
 export class ChatAgent extends AIChatAgent {
-	override chatRecovery = true;
-
 	async onChatMessage(_onFinish, options) {
 		const result = streamText({
 			model: openai("gpt-5.4"),
@@ -2376,5 +2365,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#page","headline":"Chat agents · Cloudflare Agents docs","description":"Build AI chat interfaces with AIChatAgent and useAgentChat, including message persistence, streaming, and tool support.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#page","headline":"Chat agents · Cloudflare Agents docs","description":"Build AI chat interfaces with AIChatAgent and useAgentChat, including message persistence, streaming, and tool support.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -57,6 +57,21 @@ print_nested_list_with_coordinates(vec![
 ], 1, 1, None, None);
 ```
 
+In addition to `color_range` and `color_indices`, which take character ranges and indices, `NestedListItem` provides convenience methods that take the text to color rather than its coordinates:
+
+| Method | Description |
+|---|---|
+| `color_substring(color_idx, substring)` | Color the first occurrence of `substring` |
+| `color_nth_substring(color_idx, substring, n)` | Color the `n`th occurrence of `substring` |
+| `color_last_substring(color_idx, substring)` | Color the last occurrence of `substring` |
+| `color_all(color_idx)` | Color the whole item |
+| `success_color_last_substring(substring)` | Color the last occurrence of `substring` with the theme's "success" color |
+| `error_color_last_substring(substring)` | Color the last occurrence of `substring` with the theme's "error" color |
+
+```rust
+NestedListItem::new("my-session (2 tabs)").color_substring(0, "my-session").success_color_last_substring("(2 tabs)")
+```
+
 #### Text
 [text]
 
@@ -70,6 +85,14 @@ Example from the Rust SDK (renders the screenshot above):
 let text = Text::new("foo bar baz").selected().color_range(0, 0..=2).color_range(1, 3..=5).color_range(2, 7..=9);
 print_text_with_coordinates(text, 0, 0, None, None);
 ```
+
+A `Text` element can also be marked as `disabled()`, which renders it dimmed to indicate that the thing it represents is currently unavailable:
+
+```rust
+print_text(Text::new("Not available right now").disabled());
+```
+
+A [`StyledText`](./plugin-api-types.md#styledtext) (received for example through the [`HintText`](./plugin-api-events.md#hinttext) event) can be turned into a `Text` element with `Text::from(styled_text)`, preserving its emphasized indices.
 
 ### The Protocol
 *Note: This section discusses the private DCS ANSI serialization protocol used to represent the above components. It could be of interest to SDK authors, but plugin developers are encouraged to use the SDK abstractions instead.*

@@ -81,6 +81,8 @@ To obtain any embedded file (including templates), the [`gitea embedded` tool](.
 Be aware that any statement contained inside `{{` and `}}` are Gitea's template syntax and
 shouldn't be touched without fully understanding these components.
 
+Gitea pages are protected by Content-Security-Policy, use `<script nonce="{{ctx.CspScriptNonce}}">...</script>` for script tags.
+
 ### Customizing startpage / homepage
 
 Copy [`home.tmpl`](https://github.com/go-gitea/gitea/blob/main/templates/home.tmpl) for your version of Gitea from `templates` to `$GITEA_CUSTOM/templates`.
@@ -135,7 +137,7 @@ copy JavaScript files from https://gitea.com/davidsvantesson/plantuml-code-highl
 `$GITEA_CUSTOM/public/assets/` folder. Then add the following to `$GITEA_CUSTOM/templates/custom/footer.tmpl`:
 
 ```html
-<script>
+<script nonce="{{ctx.CspScriptNonce}}">
   $(async () => {
     if (!$('.language-plantuml').length) return;
     await Promise.all([
@@ -181,18 +183,18 @@ nano $GITEA_CUSTOM/templates/custom/footer.tmpl
 ```
 
 ```html
-<script>
+<script nonce="{{ctx.CspScriptNonce}}">
     function onPageChange() {
       // Supported 3D file types
       const fileTypes = ['3dm', '3ds', '3mf', 'amf', 'bim', 'brep', 'dae', 'fbx', 'fcstd', 'glb', 'gltf', 'ifc', 'igs', 'iges', 'stp', 'step', 'stl', 'obj', 'off', 'ply', 'wrl'];
-  
+
       // Select matching link
       const links = Array.from(document.querySelectorAll('a.ui.mini.basic.button'));
       const link3D = links.find(link => {
         const href = link.href.toLowerCase();
         return href.includes('/raw/') && fileTypes.some(ext => href.endsWith(`.${ext}`));
       });
-  
+
 	if (link3D) {
 	  const existingScript = document.querySelector('script[src="/assets/o3dv/o3dv.min.js"]');
 
@@ -222,11 +224,11 @@ nano $GITEA_CUSTOM/templates/custom/footer.tmpl
 		  newView3D.style.flexGrow = '1';
 		  newView3D.style.minHeight = '0';
 		  newView3D.style.width = '100%';
-		
+
 		const header = document.querySelector('header');
 		const headerHeight = header ? header.offsetHeight : 0;
 
-		newView3D.style.height = `calc(100vh - ${headerHeight}px)`;		
+		newView3D.style.height = `calc(100vh - ${headerHeight}px)`;
 
 		// Append the new container inside fileView
 		fileView.appendChild(newView3D);
@@ -269,7 +271,7 @@ nano $GITEA_CUSTOM/templates/custom/footer.tmpl
     };
 
     // Run when the page is fully loaded
-    document.addEventListener('DOMContentLoaded', onPageChange); 
+    document.addEventListener('DOMContentLoaded', onPageChange);
 
     const targetSelector = 'a.ui.mini.basic.button[href*="/raw/"]';
     let lastHref = null;
@@ -285,7 +287,7 @@ nano $GITEA_CUSTOM/templates/custom/footer.tmpl
 
         const fileName = currentHref.split('/').pop();
         console.log('New Raw file link detected after delay:', fileName);
-        
+
         onPageChange();
       }
     };

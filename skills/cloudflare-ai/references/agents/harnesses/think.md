@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Think
 
-Last updated Aug 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cloudflare/think` lets you build a stateful AI chat agent — one that streams replies, remembers the conversation, and calls tools — by extending a single base class. You provide a model with `getModel()`, and Think wires up the rest of the chat lifecycle for you: the agentic loop (the model calls tools, reads the results, and keeps going until it has an answer), message persistence, streaming, client tools, stream resumption, and extensions — all backed by Durable Object SQLite.
 
@@ -176,7 +176,7 @@ function Chat() {
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-08-05",
+  "compatibility_date": "2026-08-20",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -204,7 +204,7 @@ function Chat() {
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-08-05"
+compatibility_date = "2026-08-20"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]
@@ -372,7 +372,7 @@ Key behaviors:
 
 * **Blocking modes cannot nest.** Calling `wait`/`stream`/`continuation` (or the equivalent shortcut) from _inside_ an active turn — for example, from a tool's `execute` — throws, because it would deadlock the turn queue. From inside a turn, use `runTurn({ mode: "submit" })` (durable, runs after the current turn frees the queue) or [addMessages()](#add-messages-without-a-turn) (transcript only, no inference).
 * **`submit` is idempotent.** Pass `submissionId` and/or `idempotencyKey`; re-submitting a known key returns the existing record with `accepted: false` instead of starting a second turn. See [Programmatic submissions](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/).
-* **Recovery-safe.** When `chatRecovery` is enabled, the `wait`, `stream`, and drained `submit` paths all run inference inside a recovery fiber, so an interrupted turn resumes after eviction.
+* **Recovery-safe.** The `wait`, `stream`, and drained `submit` paths run inference inside a recovery fiber, so an interrupted turn resumes after eviction.
 
 `runTurn` is exported alongside its option and result types: `RunTurnOptions`, `RunTurnWait`, `RunTurnSubmit`, `RunTurnStream`, `TurnInputMessages`, and `TurnResult`.
 
@@ -522,8 +522,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/think/#page","headline":"Think · Cloudflare Agents docs","description":"Opinionated chat agent framework with built-in tools, persistent memory, lifecycle hooks, streaming, messengers, scheduled tasks, Workflows, and sub-agent RPC.","url":"https://developers.cloudflare.com/agents/harnesses/think/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/think/#page","headline":"Think · Cloudflare Agents docs","description":"Opinionated chat agent framework with built-in tools, persistent memory, lifecycle hooks, streaming, messengers, scheduled tasks, Workflows, and sub-agent RPC.","url":"https://developers.cloudflare.com/agents/harnesses/think/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

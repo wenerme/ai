@@ -15,7 +15,7 @@
 > The availability of this feature is controlled by a feature flag.
 > For more information, see the history.
 
-GitLab validity checks determines whether a secret, like an access token, is active.
+GitLab validity checks determine whether a secret, like an access token, is active.
 A secret is active when:
 
 - It is not expired.
@@ -133,13 +133,13 @@ flowchart TD
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/537133) in GitLab 18.2 [with a feature flag](../../../api/feature_flags.md) named `secret_detection_validity_checks_refresh_token`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/552306) in GitLab 18.7 Feature flag `secret_detection_validity_checks_refresh_token` removed.
 
-After validity checks runs, the status of a token is not automatically updated, even if the token is revoked or expires.
+After validity checks run, the status of a token is not automatically updated, even if the token is revoked or expires.
 To update a token, you can manually refresh the status:
 
 1. On the vulnerability report, select the vulnerability you want to refresh.
 1. Next to the token status, select **Retry** ().
 
-Validity checks is re-run, and the token status is updated.
+Validity checks are re-run, and the token status is updated.
 
 ## Troubleshooting
 

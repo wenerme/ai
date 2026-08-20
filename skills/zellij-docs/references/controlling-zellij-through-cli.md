@@ -56,3 +56,5 @@ $ ze ./main.rs # open a new pane with your editor (eg. vim) pointed at ./main.rs
 ```
 
 See your shell's documentation for information on where to append these.
+
+The fish completions additionally complete session names for `zellij attach`, `zellij kill-session` and `zellij delete-session` (as well as their aliases, eg. `d`).

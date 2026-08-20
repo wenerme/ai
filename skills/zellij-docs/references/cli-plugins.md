@@ -1,1 +1,0 @@
-# Zellij Plugin

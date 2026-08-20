@@ -7,6 +7,8 @@ These exited resurrectable sessions can be listed through the CLI or the built-i
 ## What is Resurrected and how to Configure
 By default, Zellij serializes the session layout (panes and tabs) and the command running in each pane (it will re-run them in command panes). Through configuration it's possible to have Zellij also serialize and resurrect the pane viewport and scrollback.
 
+Tabs are serialized in the order in which they appear in the session, so tabs that were reordered by the user keep their position when the session is resurrected.
+
 Zellij does not immediately run resurrected commands, but rather places them behind a "Press `ENTER` to run..." banner so as to prevent uncomfortable accidents with things like `rm -rf`.
 
 ### `session_serialization`

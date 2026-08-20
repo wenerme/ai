@@ -185,11 +185,25 @@ Optional flags:
 $ zellij web --status --timeout 5 --ip 0.0.0.0 --port 443
 ```
 
+## Installing as an app (PWA)
+The web client is a Progressive Web App: it serves a web manifest, icons and the relevant iOS meta tags, and so can be installed as a standalone application from Chromium-based browsers, Firefox, Safari and iOS.
+
+Once installed, it opens in its own window without browser chrome. This works behind a reverse proxy as well, including when the client is served under a [`base_url`](#base_url) prefix. There is nothing to configure.
+
 ## Mobile Support
-The web client supports mobile browsers. Two behaviors are specifically adapted for mobile devices:
+The web client detects mobile browsers (through a coarse pointer and user-agent detection) and switches to a dedicated mobile interface automatically. There is nothing to configure.
+
+The mobile interface includes:
 
 1. **Viewport Resizing**: The terminal automatically resizes to match the real mobile viewport, accounting for dynamic changes such as the address bar showing/hiding and the on-screen keyboard appearing/disappearing.
 2. **Touch Scroll**: Vertical touch swipes are converted to terminal scroll events, allowing natural scrolling through terminal output.
+3. **Touch chrome**: touch-friendly UI controls replacing the keyboard-driven ones.
+4. **Pane and tab pickers**: for switching between panes and tabs without keybindings.
+5. **On-screen keyboard**: including keys that physical mobile keyboards lack (this can also be shown and hidden by plugins).
+6. **Panning and a fit toggle**: to move around a session larger than the screen, or to fit it to the screen.
+7. **Single pane fullscreen**: focusing on one pane at a time, which is often the only practical layout on a phone.
+8. **Light theme support**: following the device color scheme.
+9. **Welcome screen**: rendered client-side when connecting without an existing session.
 
 ## This feature can optionally be disabled at compile-time
 For those who are averse to this feature (even when it's disabled - which is the default), Zellij can be compiled completely without this feature or its dependencies by removing the `web-server-capability` compile-time flag. For convenience, Zellij also provides an additional pre-built binary compiled without this flag called `zellij-no-web`.

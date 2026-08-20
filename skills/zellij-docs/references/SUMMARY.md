@@ -20,7 +20,6 @@
     - [List of Themes](./theme-list.md)
     - [Legacy Themes](./legacy-themes.md)
   - [CLI Configuration](./command-line-options.md)
-  - [Migrating from old YAML config files](./migrating-yaml-config.md)
 - [Controlling Zellij through the CLI](./controlling-zellij-through-cli.md)
   - [Zellij Run & Edit](./zellij-run-and-edit.md)
   - [Zellij Action](./cli-actions.md)
@@ -33,7 +32,6 @@
         - [Swap Layouts](./swap-layouts.md)
     - [Including Configuration in Layouts](./layouts-with-config.md)
     - [Examples](./layout-examples.md)
-    - [Migrating from old YAML layouts](./migrating-yaml-layouts.md)
 - [Plugins](./plugins.md) 
   - [Loading Plugins](./plugin-loading.md)
   - [Plugin API](./plugin-api.md)
@@ -63,5 +61,7 @@
   - [Developing a Plugin in Other Languages](./plugin-other-languages.md)
 
 - [Session Resurrection](./session-resurrection.md)
+- [Nested Sessions](./nested-sessions.md)
+- [Shell Integration](./shell-integration.md)
 - [Web Client](./web-client.md)
 - [Compatibility](./compatibility.md)

@@ -57,6 +57,16 @@ Configuration options can be set directly at the root of the [configuration file
 - [visual_bell](#visual_bell)
 - [focus_follows_mouse](#focus_follows_mouse)
 - [mouse_click_through](#mouse_click_through)
+- [pane_frame_style](#pane_frame_style)
+- [stacked_pane_list](#stacked_pane_list)
+- [support_kitty_graphics_protocol](#support_kitty_graphics_protocol)
+- [mouse_scroll_resize](#mouse_scroll_resize)
+- [mouse_hover_tips](#mouse_hover_tips)
+- [osc133_command_selection](#osc133_command_selection)
+- [word_separators](#word_separators)
+- [host_notification_protocol](#host_notification_protocol)
+- [nested_session_handling](#nested_session_handling)
+- [dangerously_enable_paste_buffer_read](#dangerously_enable_paste_buffer_read)
 
 ---
 
@@ -96,7 +106,7 @@ default_shell "fish"
 
 ### pane_frames
 
-Toggle between having pane frames around the panes
+Toggle between having pane frames around the panes. The style of these frames is controlled by [`pane_frame_style`](#pane_frame_style) - since `0.45.0` the default style is a single title line above each pane rather than a full border.
 
 Options:
   - true (default)
@@ -238,6 +248,8 @@ Default: false
 ```javascript
 mirror_session true
 ```
+
+Note: since `0.45.0`, each tab is sized according to the viewports of only the clients currently viewing it. Clients focused on different tabs therefore no longer constrain each other, while clients viewing the same tab converge on a common size. Tabs that nobody is viewing keep their last dimensions. This behavior is not configurable.
 
 ### layout_dir
 
@@ -563,4 +575,126 @@ Options:
 
 ```javascript
 mouse_click_through true
+```
+
+### pane_frame_style
+The style of the pane frames when `pane_frames` is enabled.
+
+Options:
+  - "titles" (default) - a single title line above each pane
+  - "full" - a full border around each pane (the pre-`0.45.0` look)
+  - "none" - no frames at all (identical to `pane_frames false`)
+
+Setting `pane_frames false` forces the style to `none` regardless of this option.
+
+The style can also be changed at runtime with the `SetPaneFrameStyle` [action](./keybindings-possible-actions.md#setpaneframestyle) or with `zellij action set-pane-frame-style`.
+
+```javascript
+pane_frame_style "titles"
+```
+
+### stacked_pane_list
+Whether stacked panes are rendered as a list of one-line titles with the expanded pane pinned to the bottom of the stack. When false, the expanded pane is rendered in place inside the stack (the pre-`0.45.0` behavior).
+
+Options:
+  - true (default)
+  - false
+
+```javascript
+stacked_pane_list false
+```
+
+### support_kitty_graphics_protocol
+Enable support for the Kitty graphics protocol, allowing programs running in panes to display images. Defaults to true if the terminal supports it (queried when Zellij starts). Changing this option requires restarting Zellij.
+
+Options:
+  - true (default if terminal supports it)
+  - false
+
+```javascript
+support_kitty_graphics_protocol true
+```
+
+### mouse_scroll_resize
+Whether holding Ctrl and scrolling the mouse wheel resizes the focused pane. When false, such scroll events are passed through to the pane instead.
+
+Options:
+  - true (default)
+  - false
+
+```javascript
+mouse_scroll_resize false
+```
+
+### mouse_hover_tips
+Whether to show contextual help tips when hovering with the mouse (eg. resize help near pane borders, pane group shortcuts). This is distinct from `mouse_hover_effects`, which controls hover *visual* effects such as frame highlighting.
+
+Options:
+  - true (default)
+  - false
+
+```javascript
+mouse_hover_tips false
+```
+
+### osc133_command_selection
+Whether triple-clicking inside output marked with [OSC 133 shell integration](./shell-integration.md) sequences selects the whole command and its output rather than the logical line under the cursor.
+
+Options:
+  - true (default)
+  - false
+
+```javascript
+osc133_command_selection false
+```
+
+### word_separators
+The characters that terminate a word when double-clicking to select it. Whitespace always separates words and does not need to be included here.
+
+Default: `"[]{}<>()"`
+
+```javascript
+word_separators "[]{}<>()/\\"
+```
+
+### host_notification_protocol
+The protocol used to forward desktop notifications emitted by panes (through OSC 9, OSC 99 or OSC 777) to the host terminal. See [desktop notifications](./compatibility.md#desktop-notifications).
+
+Options:
+  - "auto" (default) - OSC 99 for terminals that support it (eg. kitty), OSC 9 otherwise
+  - "osc9" - always use OSC 9
+  - "osc99" - always use OSC 99
+  - "bell" - emit a terminal bell instead of a notification
+  - "off" - do not forward notifications to the host terminal
+
+```javascript
+host_notification_protocol "osc9"
+```
+
+### nested_session_handling
+What Zellij should do when a pane contains another (nested) Zellij session. See [nested sessions](./nested-sessions.md).
+
+Options:
+  - "ask" (default) - show a prompt when focusing the pane, offering to zoom into the nested session or to take control of it
+  - "fullscreen" - always zoom into the nested session when focusing its pane
+  - "descend" - always route input to the nested session when focusing its pane
+  - "never" - do nothing automatically
+
+```javascript
+nested_session_handling "descend"
+```
+
+### dangerously_enable_paste_buffer_read
+Whether programs running inside panes are allowed to **read** the system clipboard through the OSC 52 escape sequence. When false, such requests receive an empty reply.
+
+**Warning**: when this is enabled, any program running in any pane - including one running on a remote machine over SSH - can read the contents of the clipboard at any time, without prompting.
+
+Copying to the clipboard (OSC 52 write) is not affected by this option and is always available.
+
+Options:
+  - true
+  - false (default)
+
+```javascript
+dangerously_enable_paste_buffer_read true
 ```
