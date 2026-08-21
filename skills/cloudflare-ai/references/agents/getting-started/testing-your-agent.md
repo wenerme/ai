@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Testing your Agents
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/getting-started/testing-your-agent/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/getting-started/testing-your-agent/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Because Agents run on Cloudflare Workers and Durable Objects, they can be tested using the same tools and techniques as Workers and Durable Objects.
 
@@ -22,18 +22,18 @@ Because Agents run on Cloudflare Workers and Durable Objects, they can be tested
 
 Note
 
-The `agents-starter` template and new Cloudflare Workers projects already include the relevant `vitest` and `@cloudflare/vitest-pool-workers` packages, as well as a valid `vitest.config.js` file.
+The `agents-starter` template and new Cloudflare Workers projects already include the relevant `vitest` and `@cloudflare/vitest-plugin` packages, as well as a valid `vitest.config.js` file.
 
 Before you write your first test, install the necessary packages:
 
 ```sh
-npm install vitest@^4.1.0 @cloudflare/vitest-pool-workers --save-dev
+npm install vitest@^4.1.0 @cloudflare/vitest-plugin --save-dev
 ```
 
 Ensure that your `vitest.config.js` has the `cloudflareTest` plugin configured:
 
 ```js
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { cloudflareTest } from "@cloudflare/vitest-plugin";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -134,8 +134,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/getting-started/testing-your-agent/#page","headline":"Testing your Agents · Cloudflare Agents docs","description":"Write and run tests for Cloudflare Agents using Vitest and the Workers test pool.","url":"https://developers.cloudflare.com/agents/getting-started/testing-your-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/getting-started/testing-your-agent/#page","headline":"Testing your Agents · Cloudflare Agents docs","description":"Write and run tests for Cloudflare Agents using Vitest and the Workers test pool.","url":"https://developers.cloudflare.com/agents/getting-started/testing-your-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

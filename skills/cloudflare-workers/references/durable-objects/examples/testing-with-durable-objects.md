@@ -14,24 +14,24 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Write tests for Durable Objects using the Workers Vitest integration.
 
-Last updated Jun 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Use the [@cloudflare/vitest-pool-workers ↗](https://www.npmjs.com/package/@cloudflare/vitest-pool-workers) package to write tests for your Durable Objects. This integration runs your tests inside the Workers runtime, giving you direct access to Durable Object bindings and APIs.
+Use the [@cloudflare/vitest-plugin ↗](https://www.npmjs.com/package/@cloudflare/vitest-plugin) package to write tests for your Durable Objects. This integration runs your tests inside the Workers runtime, giving you direct access to Durable Object bindings and APIs.
 
 ## Prerequisites
 
 Install Vitest and the Workers Vitest integration as dev dependencies:
 
 ```sh
-npm i -D vitest@^4.1.0 @cloudflare/vitest-pool-workers
+npm i -D vitest@^4.1.0 @cloudflare/vitest-plugin
 ```
 
 ```sh
-pnpm add -D vitest@^4.1.0 @cloudflare/vitest-pool-workers
+pnpm add -D vitest@^4.1.0 @cloudflare/vitest-plugin
 ```
 
 ```sh
-yarn add -D vitest@^4.1.0 @cloudflare/vitest-pool-workers
+yarn add -D vitest@^4.1.0 @cloudflare/vitest-plugin
 ```
 
 ## Example Durable Object
@@ -193,7 +193,7 @@ export default {
 Create a `vitest.config.ts` file that uses the `cloudflareTest()` plugin:
 
 ```ts
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { cloudflareTest } from "@cloudflare/vitest-plugin";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -212,7 +212,7 @@ Make sure your Wrangler configuration includes the Durable Object binding and SQ
   "name": "counter-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-22",
+  "compatibility_date": "2026-08-20",
   "durable_objects": {
     "bindings": [
       { "name": "COUNTER", "class_name": "Counter" }
@@ -228,7 +228,7 @@ Make sure your Wrangler configuration includes the Durable Object binding and SQ
 name = "counter-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-20"
 
 [[durable_objects.bindings]]
 name = "COUNTER"
@@ -248,7 +248,7 @@ Create a `test/tsconfig.json` to configure TypeScript for your tests:
 	"extends": "../tsconfig.json",
 	"compilerOptions": {
 		"moduleResolution": "bundler",
-		"types": ["@cloudflare/vitest-pool-workers/types"]
+		"types": ["@cloudflare/vitest-plugin/types"]
 	},
 	"include": ["./**/*.ts", "../src/worker-configuration.d.ts"]
 }
@@ -1078,8 +1078,8 @@ Or add a script to your `package.json`:
 ## Related resources
 
 * [Workers Vitest integration](https://developers.cloudflare.com/workers/testing/vitest-integration/) \- Full documentation for the Vitest integration
-* [Durable Objects testing recipe ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-pool-workers-examples/durable-objects) \- Example from the Workers SDK
-* [RPC testing recipe ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-pool-workers-examples/rpc) \- Testing JSRPC with Durable Objects
+* [Durable Objects testing recipe ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/durable-objects) \- Example from the Workers SDK
+* [RPC testing recipe ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/rpc) \- Testing JSRPC with Durable Objects
 
 Was this helpful?
 
@@ -1087,8 +1087,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/#page","headline":"Testing Durable Objects · Cloudflare Durable Objects docs","description":"Write tests for Durable Objects using the Workers Vitest integration.","url":"https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/#page","headline":"Testing Durable Objects · Cloudflare Durable Objects docs","description":"Write tests for Durable Objects using the Workers Vitest integration.","url":"https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

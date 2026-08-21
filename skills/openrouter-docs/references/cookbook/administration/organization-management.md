@@ -55,15 +55,20 @@ Only organization administrators can:
 
 ### Transferring Credits from Personal to Organization
 
-If you need to transfer credits from your personal account to your organization account:
+You can transfer eligible credits from your personal account to an organization yourself:
 
-1. Email [support@openrouter.ai](mailto:support@openrouter.ai) with your request
-2. Include your organization details and the amount you wish to transfer
-3. Our support team will process the transfer manually
+1. Go to [Settings > Credits](https://openrouter.ai/settings/credits)
+2. Select **Move credits to organization**
+3. Choose an eligible organization, review the amount, confirm the transfer, and select **Transfer**
 
 <Info>
-  Credit transfers from personal to organization accounts require manual processing by our support team and cannot be done automatically through the interface.
+  Invoiced or arrears-billed organizations cannot receive transferred credits because they are billed by invoice instead of using a prepaid credit balance.
 </Info>
+
+The transfer dialog also enforces these restrictions:
+
+* New organization memberships must meet a tenure requirement before the organization can receive a transfer.
+* An organization that recently received a transfer has a cooldown before it can receive another one.
 
 ## API Key Management
 

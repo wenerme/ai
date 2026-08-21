@@ -66,7 +66,7 @@ To see the commits included in a merge request:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Code** > **Merge requests**, then select your merge request.
-1. To show a list of the commits in the merge request, newest first, select **Commits** .
+1. To show a list of the commits in the merge request, newest first, select **Commits**.
    To read more about the commit, select **Toggle commit description** ()
    on any commit.
 1. To view the changes in the commit, select the title of the commit link.

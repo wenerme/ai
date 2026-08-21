@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connection pooling
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/concepts/connection-pooling/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/concepts/connection-pooling/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive maintains a pool of connections to your database. These are optimally placed to minimize the latency for your applications. You can configure the amount of connections your Hyperdrive configuration uses to connect to your origin database. This enables you to right-size your connection pool based on your database capacity and application requirements.
 
@@ -25,6 +25,18 @@ All configurations have a minimum of 5 connections, and with a maximum depending
 Hyperdrive will automatically scale the amount of database connections held open by Hyperdrive depending on your traffic and the amount of load that is put on your database.
 
 The `max_size` parameter acts as a soft limit - Hyperdrive may temporarily create additional connections during network issues or high traffic periods to ensure high availability and resiliency.
+
+## Restart the connection pool
+
+Hyperdrive manages the connection pool for you, including automatic detection and recovery from most database failovers. In rare cases, you may need to restart the pool manually as a break-glass action — for example, after a database failover where Hyperdrive has not yet cycled its connections to the new primary.
+
+To restart, select your Hyperdrive configuration in the Cloudflare dashboard, go to the **Settings** tab, and select **Restart** under **Danger zone**. Restarting requires the [**Hyperdrive Admin** role](https://developers.cloudflare.com/fundamentals/manage-members/roles/).
+
+Restarting drains the existing connection pool and forces Hyperdrive to establish new connections to your origin database. After a restart, the **Settings** tab shows when the configuration was last manually restarted.
+
+Caution
+
+Restarting drops all active connections in the pool and forces them to be re-established. In-flight queries may see brief errors while the pool rebuilds.
 
 ## Pooling mode
 
@@ -57,8 +69,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/concepts/connection-pooling/#page","headline":"Connection pooling · Cloudflare Hyperdrive docs","description":"Hyperdrive maintains a pool of database connections optimally placed to minimize latency for your applications.","url":"https://developers.cloudflare.com/hyperdrive/concepts/connection-pooling/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/concepts/connection-pooling/#page","headline":"Connection pooling · Cloudflare Hyperdrive docs","description":"Hyperdrive maintains a pool of database connections optimally placed to minimize latency for your applications.","url":"https://developers.cloudflare.com/hyperdrive/concepts/connection-pooling/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

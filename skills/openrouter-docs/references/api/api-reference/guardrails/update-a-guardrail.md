@@ -92,8 +92,6 @@ tags:
     name: Video Generation
   - description: Workspaces endpoints
     name: Workspaces
-  - description: beta.Analytics endpoints
-    name: beta.Analytics
 externalDocs:
   description: OpenRouter Documentation
   url: https://openrouter.ai/docs
@@ -776,10 +774,11 @@ components:
             - 'null'
         workspace_id:
           description: >-
-            The workspace this guardrail is scoped to, or `null` for an unscoped
-            legacy guardrail predating workspaces. A `null` value does not mean
-            the default workspace, and does not apply the guardrail across every
-            workspace.
+            The workspace this guardrail belongs to, or `null` for an unscoped
+            legacy guardrail predating workspaces. Workspace membership
+            organizes the guardrail; it does not apply the guardrail to the
+            workspace's traffic. A `null` value does not mean the default
+            workspace, and does not apply the guardrail across every workspace.
           example: 0df9e665-d932-5740-b2c7-b52af166bc11
           type:
             - string

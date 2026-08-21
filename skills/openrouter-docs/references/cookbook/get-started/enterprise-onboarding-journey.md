@@ -126,7 +126,7 @@ Your team completes [SSO](/docs/guides/features/sso), [SCIM group mappings](/doc
 
 ### Day 5 to 7: inference strategy and observability session
 
-The second and final required meeting. It covers [provider routing](/docs/guides/routing/provider-selection), [model fallbacks](/docs/guides/routing/model-fallbacks), [prompt caching](/docs/guides/best-practices/prompt-caching), [presets](/docs/guides/features/presets) so your application code names use cases rather than model versions, [Broadcast](/docs/guides/features/broadcast) into your own observability stack, [user attribution](/docs/cookbook/administration/user-tracking), and access to the [Analytics API (beta)](/docs/api/api-reference/betaanalytics/query-analytics-data) for your own reporting. Create presets from the [Presets](https://openrouter.ai/workspaces/default/presets) page.
+The second and final required meeting. It covers [provider routing](/docs/guides/routing/provider-selection), [model fallbacks](/docs/guides/routing/model-fallbacks), [prompt caching](/docs/guides/best-practices/prompt-caching), [presets](/docs/guides/features/presets) so your application code names use cases rather than model versions, [Broadcast](/docs/guides/features/broadcast) into your own observability stack, [user attribution](/docs/cookbook/administration/user-tracking), and access to the [Analytics API](/docs/api/api-reference/analytics/query-analytics-data) for your own reporting. Create presets from the [Presets](https://openrouter.ai/workspaces/default/presets) page.
 
 You leave the session with at least one preset in use and traces flowing to your platform.
 

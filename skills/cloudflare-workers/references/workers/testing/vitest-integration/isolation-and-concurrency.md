@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Isolation and concurrency
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review how the Workers Vitest integration runs your tests, how it isolates tests from each other, and how it imports modules.
 
@@ -37,11 +37,11 @@ By default, test files run concurrently. To make test files share the same stora
 
 Each Worker has its own module cache. As Workers are reused between test runs, their module caches are also reused. Vitest invalidates parts of the module cache at the start of each test run based on changed files.
 
-The Workers Vitest pool works by running code inside a Cloudflare Worker that Vitest would usually run inside a [Node.js Worker thread ↗](https://nodejs.org/api/worker%5Fthreads.html). To make this possible, the pool **automatically injects** the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag), \[`no_nodejs_compat_v2`\] and [export\_commonjs\_default](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#commonjs-modules-do-not-export-a-module-namespace) compatibility flags. This is the minimal compatibility setup that still allows Vitest to run correctly, but without pulling in polyfills and globals that aren't required. If you already have a Node.js compatibility flag defined in your configuration, Vitest Pool Workers will not try to add those flags.
+The Workers Vitest plugin runs code inside a Cloudflare Worker that Vitest would usually run inside a [Node.js Worker thread ↗](https://nodejs.org/api/worker%5Fthreads.html). To make this possible, the plugin **automatically injects** the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag), \[`no_nodejs_compat_v2`\] and [export\_commonjs\_default](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#commonjs-modules-do-not-export-a-module-namespace) compatibility flags. This is the minimal compatibility setup that still allows Vitest to run correctly, but without pulling in polyfills and globals that are not required. If you already have a Node.js compatibility flag defined in your configuration, the Vitest plugin does not add those flags.
 
 Caution
 
-Using Vitest Pool Workers may cause your Worker to behave differently when deployed than during testing as the `nodejs_compat` flag is enabled by default. This means that Node.js-specific APIs and modules are available when running your tests. However, Cloudflare Workers do not support these Node.js APIs in the production environment unless you specify this flag in your Worker configuration.
+Using the Workers Vitest plugin may cause your Worker to behave differently when deployed because the `nodejs_compat` flag is enabled by default. This means that Node.js-specific APIs and modules are available when running your tests. However, Cloudflare Workers do not support these Node.js APIs in the production environment unless you specify this flag in your Worker configuration.
 
 If you do not have a `nodejs_compat` or `nodejs_compat_v2` flag in your configuration and you import a Node.js module in your Worker code, your tests may pass, but you will find that you will not be able to deploy this Worker, as the upload call (either via the REST API or via Wrangler) will throw an error.
 
@@ -53,7 +53,7 @@ The Wrangler configuration file does not specify either `nodejs_compat` or `node
 { "name": "test",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22"
+	"compatibility_date": "2026-08-20"
 	# no nodejs_compat flags here
 }
 ```
@@ -62,7 +62,7 @@ The Wrangler configuration file does not specify either `nodejs_compat` or `node
 name = "test"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-20"
 ```
 
 In our `src/index.ts` file, we use the `process` object, which is a Node.js global, unavailable in the Workerd runtime:
@@ -105,8 +105,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/#page","headline":"Isolation and concurrency · Cloudflare Workers docs","description":"Review how the Workers Vitest integration runs your tests, how it isolates tests from each other, and how it imports modules.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/#page","headline":"Isolation and concurrency · Cloudflare Workers docs","description":"Review how the Workers Vitest integration runs your tests, how it isolates tests from each other, and how it imports modules.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

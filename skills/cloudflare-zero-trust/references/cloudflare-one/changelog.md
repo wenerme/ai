@@ -43,7 +43,7 @@ This release introduces multiple features from our previous beta release into st
 
 **Known issues**
 
-* None
+* If a user upgrades to version 2026.7.1343.0, downgrades to an earlier version, re-registers, and then upgrades back to 2026.7.1343.0, the client might fail to connect or switch organizations. To resolve this issue, run `warp-cli registration delete` or `warp-cli registration delete-all`.
 
 For Zero Trust documentation please see: <https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/>
 For Consumer documentation please see: <https://developers.cloudflare.com/warp-client/>

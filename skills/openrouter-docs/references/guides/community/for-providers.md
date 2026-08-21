@@ -121,6 +121,7 @@ Below is an example of the response format:
         "slug": "anthropic/claude-sonnet-4"
       },
       "datacenters": [{ "country_code": "US", "region": "us-east-1" }],
+      "deployment_region": "US",
       "compliance": { "zdr": true, "hipaa": false }
     }
   ]
@@ -636,7 +637,7 @@ Each map uses the same [capability descriptor](#capability-descriptors) grammar,
 }
 ```
 
-### 6. Datacenters and compliance
+### 6. Datacenters, deployment region, and compliance
 
 Declare where each endpoint physically serves from and its data-handling posture:
 
@@ -646,6 +647,7 @@ Declare where each endpoint physically serves from and its data-handling posture
     { "country_code": "US", "region": "us-east-1" },
     { "country_code": "DE" }
   ],
+  "deployment_region": "US",
   "compliance": {
     "zdr": true,
     "hipaa": false
@@ -655,6 +657,7 @@ Declare where each endpoint physically serves from and its data-handling posture
 
 * `datacenters[].country_code`: ISO 3166-1 alpha-2 country code.
 * `datacenters[].region`: provider-scoped region identifier (e.g. `us-east-1`).
+* `deployment_region`: optional provider-scoped label for the model deployment's region or scope (e.g. `US`, `global`). Use it when the same underlying model is deployed to more than one region under distinct model `id`s, so each document declares which regional deployment it describes. It complements `datacenters`, which lists the physical serving locations. This is a display-only label today: OpenRouter does not route or bill on it, so use consistent values across your documents and coordinate the vocabulary with us before publishing.
 * `compliance.zdr`, zero data retention: no prompt retention and no training on prompts.
 * `compliance.hipaa`: HIPAA compliance. Additional boolean certification flags (SOC 2, GDPR, FedRAMP, ...) may be added over time.
 

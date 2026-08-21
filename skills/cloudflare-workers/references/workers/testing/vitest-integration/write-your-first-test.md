@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Write your first test
 
-Last updated May 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide will instruct you through getting started with the `@cloudflare/vitest-pool-workers` package. For more complex examples of testing using `@cloudflare/vitest-pool-workers`, refer to [Recipes](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes/).
+This guide explains how to get started with the `@cloudflare/vitest-plugin` package. For more complex examples of testing with `@cloudflare/vitest-plugin`, refer to [Recipes](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes/).
 
 ## Prerequisites
 
@@ -22,22 +22,22 @@ First, make sure that:
 
 * Your [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) is set to `2022-10-31` or later.
 * Your Worker using the ES modules format (if not, refer to the [migrate to the ES modules format](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) guide).
-* Vitest and `@cloudflare/vitest-pool-workers` are installed in your project as dev dependencies
+* Vitest and `@cloudflare/vitest-plugin` are installed in your project as dev dependencies
 npmyarnpnpmbun
 ```
-npm i -D vitest@^4.1.0 @cloudflare/vitest-pool-workers
+npm i -D vitest@^4.1.0 @cloudflare/vitest-plugin
 ```
 ```
-yarn add -D vitest@^4.1.0 @cloudflare/vitest-pool-workers
+yarn add -D vitest@^4.1.0 @cloudflare/vitest-plugin
 ```
 ```
-pnpm add -D vitest@^4.1.0 @cloudflare/vitest-pool-workers
+pnpm add -D vitest@^4.1.0 @cloudflare/vitest-plugin
 ```
 ```
-bun add -d vitest@^4.1.0 @cloudflare/vitest-pool-workers
+bun add -d vitest@^4.1.0 @cloudflare/vitest-plugin
 ```
 Note
-The `@cloudflare/vitest-pool-workers` package requires Vitest 4.1 or later.
+The `@cloudflare/vitest-plugin` package requires Vitest 4.1 or later.
 
 ## Define Vitest configuration
 
@@ -46,7 +46,7 @@ In your `vitest.config.ts` file, use the `cloudflareTest()` plugin to configure 
 You can use your Worker configuration from your [Wrangler config file](https://developers.cloudflare.com/workers/wrangler/configuration/) by specifying it with `wrangler.configPath`.
 
 ```ts
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { cloudflareTest } from "@cloudflare/vitest-plugin";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -85,7 +85,7 @@ If you are not using Typescript, you can skip this section.
 
 First make sure you have run [wrangler types](https://developers.cloudflare.com/workers/wrangler/commands/), which generates [types for the Cloudflare Workers runtime](https://developers.cloudflare.com/workers/languages/typescript/) and an `Env` type based on your Worker's bindings.
 
-Then add a `tsconfig.json` in your tests folder and add `"@cloudflare/vitest-pool-workers"` to your types array to define types for `cloudflare:test`. You should also add the output of `wrangler types` to the `include` array so that the types for the Cloudflare Workers runtime are available.
+Then add a `tsconfig.json` in your tests folder and add `"@cloudflare/vitest-plugin"` to your types array to define types for `cloudflare:test`. You should also add the output of `wrangler types` to the `include` array so that the types for the Cloudflare Workers runtime are available.
 
 Example test/tsconfig.json
 
@@ -95,7 +95,7 @@ Example test/tsconfig.json
 	"compilerOptions": {
 		"moduleResolution": "bundler",
 		"types": [
-			"@cloudflare/vitest-pool-workers/types", // provides `cloudflare:test` and `cloudflare:workers` types
+			"@cloudflare/vitest-plugin/types", // provides `cloudflare:test` and `cloudflare:workers` types
 		],
 	},
 	"include": [
@@ -221,11 +221,11 @@ describe("Hello World worker", () => {
 });
 ```
 
-When using `exports.default.fetch()` for integration tests, your Worker code runs in the same context as the test runner. This means you can use global mocks to control your Worker, but also means your Worker uses the subtly different module resolution behavior provided by Vite. Usually this is not a problem, but to run your Worker in a fresh environment that is as close to production as possible, you can use an auxiliary Worker. Refer to [this example ↗](https://github.com/cloudflare/workers-sdk/blob/main/fixtures/vitest-pool-workers-examples/basics-integration-auxiliary/vitest.config.ts) for how to set up integration tests using auxiliary Workers. However, using auxiliary Workers comes with [limitations](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/#workerspooloptions) that you should be aware of.
+When using `exports.default.fetch()` for integration tests, your Worker code runs in the same context as the test runner. This means you can use global mocks to control your Worker, but also means your Worker uses the subtly different module resolution behavior provided by Vite. Usually this is not a problem, but to run your Worker in a fresh environment that is as close to production as possible, you can use an auxiliary Worker. Refer to [this example ↗](https://github.com/cloudflare/workers-sdk/blob/main/fixtures/vitest-plugin-examples/basics-integration-auxiliary/vitest.config.ts) for how to set up integration tests using auxiliary Workers. However, using auxiliary Workers comes with [limitations](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/#workerspooloptions) that you should be aware of.
 
 ## Related resources
 
-* For more complex examples of testing using `@cloudflare/vitest-pool-workers`, refer to [Recipes](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes/).
+* For more complex examples of testing with `@cloudflare/vitest-plugin`, refer to [Recipes](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes/).
 * [Configuration API reference](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/)
 * [Test APIs reference](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/)
 
@@ -235,8 +235,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/#page","headline":"Write your first test · Cloudflare Workers docs","description":"Write tests against Workers using Vitest","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/#page","headline":"Write your first test · Cloudflare Workers docs","description":"Write tests against Workers using Vitest","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

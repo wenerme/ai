@@ -31,7 +31,7 @@ keywords: Ultralytics Explorer, data exploration, semantic search, vector simila
     <a href="https://github.com/ultralytics/ultralytics/actions/workflows/ci.yml">[Ultralytics CI]</a>
     <a href="https://clickpy.clickhouse.com/dashboard/ultralytics">[Ultralytics Downloads]</a>
     <a href="https://discord.com/invite/ultralytics">[Ultralytics Discord]</a>
-    <a href="https://community.ultralytics.com/">[Ultralytics Forums]</a>
+    <a href="https://community.ultralytics.com">[Ultralytics Forums]</a>
     <a href="https://www.reddit.com/r/ultralytics/">[Ultralytics Reddit]</a>
 
     <a href="https://console.paperspace.com/github/ultralytics/ultralytics">[Run Ultralytics on Gradient]</a>
@@ -49,7 +49,7 @@ Install `ultralytics` and run `yolo explorer` in your terminal to run custom que
 
 !!! warning "Community Note ⚠️"
 
-    As of **`ultralytics>=8.3.12`**, Ultralytics Explorer has been removed. To use Explorer, install `pip install ultralytics==8.3.11`. Similar (and expanded) dataset exploration features are available in [Ultralytics Platform](https://platform.ultralytics.com/).
+    As of **`ultralytics>=8.3.12`**, Ultralytics Explorer has been removed. To use Explorer, install `pip install ultralytics==8.3.11`. Similar (and expanded) dataset exploration features are available in [Ultralytics Platform](https://platform.ultralytics.com).
 
 ## Setup
 

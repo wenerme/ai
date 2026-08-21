@@ -109,7 +109,7 @@ run();
 
 ## create
 
-Create a new guardrail for the authenticated user. [Management key](/docs/client-sdks/typescript/docs/guides/overview/auth/management-api-keys) required.
+Create a new guardrail for the authenticated user. A newly created guardrail enforces nothing until it is assigned to API keys or organization members; `workspace_id` places the guardrail in a workspace but does not apply it to that workspace's traffic. To restrict all traffic in a workspace, update the workspace's default guardrail instead. [Management key](/docs/client-sdks/typescript/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 

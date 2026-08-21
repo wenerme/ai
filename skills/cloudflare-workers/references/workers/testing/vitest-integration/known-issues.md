@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Known issues
 
-Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/known-issues/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/known-issues/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Workers Vitest pool is currently in open beta. The following are issues Cloudflare is aware of and fixing:
+The Workers Vitest plugin has the following known issues:
 
 ### Coverage
 
@@ -50,7 +50,7 @@ beforeAll(async () => {
 
 #### Explicitly signal resource disposal
 
-When calling RPC methods of a Service Worker or Durable Object that return non-primitive values (such as objects or classes extending `RpcTarget`), use the `using` keyword to explicitly signal when resources can be disposed of. See [this example test ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-pool-workers-examples/rpc/test/unit.test.ts#L155) and refer to [explicit-resource-management](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle#explicit-resource-management) for more details.
+When calling RPC methods of a Service Worker or Durable Object that return non-primitive values (such as objects or classes extending `RpcTarget`), use the `using` keyword to explicitly signal when resources can be disposed of. See [this example test ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/rpc/test/unit.test.ts#L155) and refer to [explicit-resource-management](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle#explicit-resource-management) for more details.
 
 ```ts
 using result = await stub.getCounter();
@@ -87,7 +87,7 @@ In this case, any exports from `@virtual-module` (such as `MyEntrypoint`) cannot
 To work around this, add the `additionalExports` option to your Vitest configuration:
 
 ```ts
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { cloudflareTest } from "@cloudflare/vitest-plugin";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -109,7 +109,7 @@ The `additionalExports` option is a map where keys are the export names and valu
 If you encounter module resolution issues such as: `Error: Cannot use require() to import an ES Module` or `Error: No such module`, you can bundle these dependencies using the [deps.optimizer ↗](https://vitest.dev/config/#deps-optimizer) option:
 
 ```ts
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { cloudflareTest } from "@cloudflare/vitest-plugin";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -163,7 +163,7 @@ async function viteImport(file: string) {
 
 ```ts
 // File: vitest.config.ts
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { cloudflareTest } from "@cloudflare/vitest-plugin";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -185,8 +185,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/known-issues/#page","headline":"Known issues · Cloudflare Workers docs","description":"Explore the known issues associated with the Workers Vitest integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/known-issues/#page","headline":"Known issues · Cloudflare Workers docs","description":"Explore the known issues associated with the Workers Vitest integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

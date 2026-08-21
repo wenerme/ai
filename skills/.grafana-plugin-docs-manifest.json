@@ -879,10 +879,45 @@
     "size": 3664,
     "updatedAt": "2026-06-25T05:42:18.729Z"
   },
+  "grafana-iot-twinmaker-app/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-iot-twinmaker-app/latest/alerting.md",
+    "size": 5247,
+    "updatedAt": "2026-08-21T02:24:23.013Z"
+  },
+  "grafana-iot-twinmaker-app/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-iot-twinmaker-app/latest/configure.md",
+    "size": 14726,
+    "updatedAt": "2026-08-21T02:24:23.249Z"
+  },
+  "grafana-iot-twinmaker-app/dashboards.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-iot-twinmaker-app/latest/dashboards.md",
+    "size": 4044,
+    "updatedAt": "2026-08-21T02:24:23.427Z"
+  },
   "grafana-iot-twinmaker-app/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-iot-twinmaker-app/latest.md",
-    "size": 10758,
-    "updatedAt": "2026-06-25T05:42:19.096Z"
+    "size": 5319,
+    "updatedAt": "2026-08-21T02:24:23.617Z"
+  },
+  "grafana-iot-twinmaker-app/panels.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-iot-twinmaker-app/latest/panels.md",
+    "size": 10309,
+    "updatedAt": "2026-08-21T02:24:23.818Z"
+  },
+  "grafana-iot-twinmaker-app/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-iot-twinmaker-app/latest/query-editor.md",
+    "size": 13379,
+    "updatedAt": "2026-08-21T02:24:24.009Z"
+  },
+  "grafana-iot-twinmaker-app/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-iot-twinmaker-app/latest/template-variables.md",
+    "size": 6294,
+    "updatedAt": "2026-08-21T02:24:24.196Z"
+  },
+  "grafana-iot-twinmaker-app/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-iot-twinmaker-app/latest/troubleshooting.md",
+    "size": 14766,
+    "updatedAt": "2026-08-21T02:24:24.397Z"
   },
   "grafana-jenkins-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-jenkins-datasource/latest.md",
@@ -2006,8 +2041,8 @@
   },
   "index.md": {
     "url": "https://grafana.com/docs/plugins.md",
-    "size": 8869,
-    "updatedAt": "2026-08-18T02:10:41.894Z"
+    "size": 8968,
+    "updatedAt": "2026-08-21T02:25:05.843Z"
   },
   "marcusolsson-calendar-panel/basic-config.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/basic-config.md",

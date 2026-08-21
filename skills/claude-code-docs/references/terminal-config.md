@@ -12,6 +12,7 @@ Claude Code works in any terminal without configuration. This page is for when s
 * [Option-key shortcuts do nothing on macOS](#enable-option-key-shortcuts-on-macos)
 * [No sound or alert when Claude finishes](#get-a-terminal-bell-or-notification)
 * [You run Claude Code inside tmux](#configure-tmux)
+* [Backspace deletes a whole word on Windows](#fix-backspace-deleting-a-whole-word-on-windows)
 * [Display flickers or scrollback jumps](#switch-to-fullscreen-rendering)
 * [You want Vim keys in the prompt](#edit-prompts-with-vim-keybindings)
 
@@ -119,6 +120,12 @@ set -as terminal-features 'xterm*:extkeys'
 
 The `allow-passthrough` line lets notifications and progress updates reach the outer terminal instead of being swallowed by tmux. The `extended-keys` lines let tmux distinguish Shift+Enter from plain Enter so the newline shortcut works.
 
+## Fix Backspace deleting a whole word on Windows
+
+On Windows, Claude Code reads a Backspace that arrives as `^H` as Ctrl+Backspace, which [deletes the previous word](/docs/en/interactive-mode#text-editing), except when `TERM_PROGRAM` is `mintty` or `TERM` is `cygwin`. On macOS and Linux, Claude Code reads it as plain Backspace.
+
+If each press of Backspace deletes a whole word, your terminal sends `^H` for plain Backspace. Set [`CLAUDE_CODE_BS_AS_CTRL_BACKSPACE=0`](/docs/en/env-vars). Backspace and Ctrl+H then erase one character each. If Ctrl+Backspace erases only one character on macOS or Linux because your terminal sends `^H` for it, set the variable to `1` instead.
+
 ## Match the color theme
 
 Use the `/theme` command, or the theme picker in `/config`, to choose a Claude Code theme that matches your terminal. Selecting the auto option detects your terminal's light or dark background, so the theme follows OS appearance changes whenever your terminal does. Claude Code does not control the terminal's own color scheme, which is set by the terminal application.
@@ -206,7 +213,7 @@ The reference below covers the tokens you can set in `overrides`. The interactiv
 
   | Token          | Controls                                           |
   | :------------- | :------------------------------------------------- |
-  | `promptBorder` | Input box border in the default permission mode    |
+  | `promptBorder` | Input box border in Manual mode                    |
   | `planMode`     | Plan mode accent and border                        |
   | `autoAccept`   | Accept-edits mode accent and border                |
   | `bashBorder`   | Input box border when entering a `!` shell command |
@@ -273,7 +280,7 @@ If the display flickers or the scroll position jumps while Claude is working, sw
 
 If flicker is the only problem and your terminal supports synchronized output but isn't auto-detected, such as Emacs `eat`, set [`CLAUDE_CODE_FORCE_SYNC_OUTPUT=1`](/docs/en/env-vars) to stop the flicker without changing renderers.
 
-Run `/tui fullscreen` to switch and save the preference. Your conversation relaunches intact and future sessions start in fullscreen. You can also set the `CLAUDE_CODE_NO_FLICKER` environment variable before starting Claude Code:
+Run `/tui fullscreen` to switch and save the preference. Your conversation relaunches intact and future sessions start in fullscreen unless a [fullscreen start fails](/docs/en/fullscreen#fullscreen-renderer-didnt-finish-starting). You can also set the `CLAUDE_CODE_NO_FLICKER` environment variable before starting Claude Code:
 
 <CodeGroup>
   ```bash Bash and Zsh theme={null}

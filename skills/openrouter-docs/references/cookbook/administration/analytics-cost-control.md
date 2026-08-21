@@ -21,7 +21,7 @@ export const CopyPromptButton = ({prompt, buttonLabel = "Copy prompt"}) => {
     </div>;
 };
 
-**Goal:** Run a cost review on your OpenRouter account using your coding agent, the beta [Analytics API](/docs/api/api-reference/betaanalytics/query-analytics-data), and the [openrouter-analytics skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-analytics).
+**Goal:** Run a cost review on your OpenRouter account using your coding agent, the [Analytics API](/docs/api/api-reference/analytics/query-analytics-data), and the [openrouter-analytics skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-analytics).
 
 **Outcome:** A set of query recipes and agent prompts for digging into your own usage data: which models burn the most, which API keys cause it, and what to repoint or cache.
 
@@ -34,7 +34,7 @@ export const CopyPromptButton = ({prompt, buttonLabel = "Copy prompt"}) => {
     prompt={`Run a cost review on my OpenRouter account and give me ranked recommendations for reducing spend next month.
 
 Use the openrouter-analytics skill if it's installed (clone https://github.com/OpenRouterTeam/skills and run npm install in skills/openrouter-analytics/scripts). Otherwise call the API directly. Either way, read these source-of-truth docs for the current query schema, metrics, and dimensions before writing any query:
-- Query endpoint reference: https://openrouter.ai/docs/api/api-reference/betaanalytics/query-analytics-data
+- Query endpoint reference: https://openrouter.ai/docs/api/api-reference/analytics/query-analytics-data
 - Skill with runnable query scripts: https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-analytics
 
 Auth: the Analytics API needs an OpenRouter management key (regular inference keys get a 403). Look for one in my environment or secret store first; the skill's scripts read it from OPENROUTER_API_KEY or a --api-key flag. If you can't find one, stop and ask me to create one at https://openrouter.ai/settings/management-keys instead of guessing.
@@ -73,8 +73,8 @@ You need:
 
 Use these references for exact schemas:
 
-* [Query analytics endpoint](/docs/api/api-reference/betaanalytics/query-analytics-data)
-* [Get analytics metadata](/docs/api/api-reference/betaanalytics/get-available-analytics-metrics-and-dimensions)
+* [Query analytics endpoint](/docs/api/api-reference/analytics/query-analytics-data)
+* [Get analytics metadata](/docs/api/api-reference/analytics/get-available-analytics-metrics-and-dimensions)
 * [Management API keys](/docs/guides/overview/auth/management-api-keys)
 * [openrouter-analytics skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-analytics)
 
@@ -101,7 +101,7 @@ git clone https://github.com/OpenRouterTeam/skills
 cd skills/skills/openrouter-analytics/scripts && npm install
 ```
 
-Schema discovery comes first. Metrics and dimensions evolve while the API is in beta, so query what's actually there instead of trusting a doc snapshot:
+Schema discovery comes first. Metrics and dimensions evolve, so query what's actually there instead of trusting a doc snapshot:
 
 ```bash lines theme={null}
 npx tsx discover-schema.ts
@@ -114,11 +114,11 @@ curl https://openrouter.ai/api/v1/analytics/meta \
   -H "Authorization: Bearer $OPENROUTER_API_KEY"
 ```
 
-The response lists every metric, dimension, filter operator, and granularity the API currently supports; the [meta endpoint reference](https://openrouter.ai/docs/api/api-reference/betaanalytics/get-available-analytics-metrics-and-dimensions) shows the full shape. Spend metrics (`total_usage`, `usage_*`) are in USD. Token metrics are native tokens. `cache_hit_rate` is a 0 to 1 ratio.
+The response lists every metric, dimension, filter operator, and granularity the API currently supports; the [meta endpoint reference](https://openrouter.ai/docs/api/api-reference/analytics/get-available-analytics-metrics-and-dimensions) shows the full shape. Spend metrics (`total_usage`, `usage_*`) are in USD. Token metrics are native tokens. `cache_hit_rate` is a 0 to 1 ratio.
 
 Two things to know before reading any output: count metrics can come back as **strings** (the reference's example shows them as numbers, so parse defensively and accept both), and `metadata.truncated` tells you whether the result hit the row limit. If it's `true`, your totals are partial; raise `limit` or narrow the query before drawing conclusions.
 
-The API caps queries at 2 dimensions; a third returns a 400 (`dimensions: Too big: expected array to have <=2 items`, observed June 2026; the API is in beta, so behavioral details like this can drift). If your agent needs another angle (say, model by key by day), it should run separate queries or add a time-axis `granularity` instead.
+The API caps queries at 2 dimensions; a third returns a 400 (`dimensions: Too big: expected array to have <=2 items`, observed June 2026, and behavioral details like this can drift). If your agent needs another angle (say, model by key by day), it should run separate queries or add a time-axis `granularity` instead.
 
 ## Recipe: which models burn the most?
 
@@ -311,7 +311,7 @@ Filter values must match what the dimension stores internally, so agents should 
 
 ## Next steps
 
-* Read the [Analytics API reference](/docs/api/api-reference/betaanalytics/query-analytics-data) for exact request and response schemas.
+* Read the [Analytics API reference](/docs/api/api-reference/analytics/query-analytics-data) for exact request and response schemas.
 * Drill from an aggregate into individual requests with the `generation_id` dimension, then inspect them with the [openrouter-generations skill](https://github.com/OpenRouterTeam/skills/tree/main/skills/openrouter-generations).
 * Set [credit limits on keys](/docs/api/api-reference/api-keys/update-an-api-key) once you know which ones drift.
 * Add [usage accounting](/docs/cookbook/administration/usage-accounting) to get per-request cost in your own logs.

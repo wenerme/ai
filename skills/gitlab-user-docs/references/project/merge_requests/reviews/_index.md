@@ -138,7 +138,7 @@ them a notification email.
 When reviewing a merge request, follow the review process instead of leaving individual
 comments. When you select **Start a review**, the **Reviewers** section of the right sidebar updates
 your status from **Awaiting review** () to
-**Reviewer started review** ()
+**Reviewer started review** ().
 
 To start your review of a merge request:
 

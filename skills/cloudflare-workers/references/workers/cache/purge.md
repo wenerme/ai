@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Purging the cache
 
-Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/cache/purge/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/cache/purge/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Your Worker can invalidate its own cached responses at any time using the purge API. Purging is useful when data changes and the new value is more important than the performance benefit of continuing to serve the cached response — for example, after a content update, a user action, or a webhook from an upstream system.
 
@@ -306,7 +306,7 @@ Add the [version metadata binding](https://developers.cloudflare.com/workers/run
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-20",
 	"cache": { "enabled": true, "cross_version_cache": true },
 	"version_metadata": { "binding": "CF_VERSION_METADATA" },
 }
@@ -316,7 +316,7 @@ Add the [version metadata binding](https://developers.cloudflare.com/workers/run
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-20"
 
 [cache]
 enabled = true
@@ -530,7 +530,7 @@ On failure, each error in `errors` carries a numeric `code` and a human-readable
 
 ## Rate limits
 
-`purge()` uses the same rate-limiting system as Cloudflare's zone purge API. For the rate limits that apply to your account's plan, refer to [Availability and limits](https://developers.cloudflare.com/cache/how-to/purge-cache/#availability-and-limits). When the purge is rate-limited, `success` is `false` and `errors` contains an entry describing the rejection.
+`purge()` uses the same rate-limiting system as Cloudflare's zone purge API. However, because Workers Caching is associated with the Worker rather than the zone, Workers Cache always uses the **Free tier limits** described in [Availability and limits](https://developers.cloudflare.com/cache/how-to/purge-cache/#availability-and-limits), regardless of your account or zone plan. When the purge is rate-limited, `success` is `false` and `errors` contains an entry describing the rejection.
 
 Was this helpful?
 
@@ -538,8 +538,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/purge/#page","headline":"Purging the cache · Cloudflare Workers docs","description":"Invalidate cached responses using ctx.cache.purge() — purge by tag, by path prefix, or purge everything.","url":"https://developers.cloudflare.com/workers/cache/purge/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/purge/#page","headline":"Purging the cache · Cloudflare Workers docs","description":"Invalidate cached responses using ctx.cache.purge() — purge by tag, by path prefix, or purge everything.","url":"https://developers.cloudflare.com/workers/cache/purge/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

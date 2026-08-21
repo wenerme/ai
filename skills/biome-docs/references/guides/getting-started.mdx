@@ -41,7 +41,7 @@ Biome provides a [command-line interface] to format, lint, and check your code.
 [command-line interface]: /reference/cli
 
 	
-		<Code frame="none" code={`
+		<Code frame="none" showLineNumbers={false} code={`
 # Format all files
 npx @biomejs/biome format --write
 
@@ -62,7 +62,7 @@ npx @biomejs/biome check --write <files>
     `} lang="bash"  />
 	
 	
-		<Code frame="none" code={`
+		<Code frame="none" showLineNumbers={false} code={`
 # Format all files
 pnpx @biomejs/biome format --write
 
@@ -83,7 +83,7 @@ pnpx @biomejs/biome check --write <files>
     `} lang="bash"  />
 	
 	
-		<Code frame="none" code={`
+		<Code frame="none" showLineNumbers={false} code={`
 # Format all files
 bunx --bun @biomejs/biome format --write
 
@@ -104,7 +104,7 @@ bunx --bun @biomejs/biome check --write <files>
     `} lang="bash"  />
 	
 	
-		<Code frame="none" code={`
+		<Code frame="none" showLineNumbers={false} code={`
 # Format specific files
 deno run -A npm:@biomejs/biome format --write <files>
 
@@ -125,7 +125,7 @@ deno run -A npm:@biomejs/biome check --write <files>
     `} lang="bash"  />
 	
 	
-		<Code frame="none" code={`
+		<Code frame="none" showLineNumbers={false} code={`
 # Format all files
 yarn exec biome format --write
 

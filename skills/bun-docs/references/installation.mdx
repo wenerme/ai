@@ -220,16 +220,13 @@ To download Bun binaries directly, visit the [releases page on GitHub](https://g
 ### Latest Version Downloads
 
   
-    Standard Linux x64 binary
+    glibc, Nehalem or newer
   
   
-    For older CPUs without AVX2
+    ARM64 Linux systems
   
   
-    Standard Windows binary
-  
-  
-    For older CPUs without AVX2
+    Nehalem or newer
   
   
     Windows on ARM (Snapdragon, etc.)
@@ -240,16 +237,12 @@ To download Bun binaries directly, visit the [releases page on GitHub](https://g
   
     Intel Macs
   
-  
-    ARM64 Linux systems
-  
 
 ### Musl Binaries
 
 For distributions without `glibc` (Alpine Linux, Void Linux):
 
 - [Linux x64 musl](https://github.com/oven-sh/bun/releases/latest/download/bun-linux-x64-musl.zip)
-- [Linux x64 musl baseline](https://github.com/oven-sh/bun/releases/latest/download/bun-linux-x64-musl-baseline.zip)
 - [Linux ARM64 musl](https://github.com/oven-sh/bun/releases/latest/download/bun-linux-aarch64-musl.zip)
 
   Bun's glibc binaries require glibc 2.17 or newer. If you encounter an error like `bun:
@@ -260,29 +253,16 @@ For distributions without `glibc` (Alpine Linux, Void Linux):
 
 ## CPU Requirements
 
-CPU requirements depend on which binary you're using:
+Bun ships a single x64 binary per platform. It targets the Nehalem microarchitecture (SSE4.2) and selects AVX2/AVX-512
+code paths at runtime when the CPU supports them, so there is no separate "baseline" download to choose.
 
-	
-		**x64 binaries** target the Haswell CPU architecture (AVX and AVX2 instructions required)
-    | Platform | Intel Requirement | AMD Requirement |
-		|----------|-------------------|-----------------| 
-    | x64 | Haswell (4th gen Core) or newer | Excavator or newer |
-	
+| Platform | Intel Requirement               | AMD Requirement    |
+| -------- | ------------------------------- | ------------------ |
+| x64      | Nehalem (1st gen Core) or newer | Bulldozer or newer |
 
-    
-    	**x64-baseline binaries** target the Nehalem architecture for older CPUs
-    | Platform | Intel Requirement | AMD Requirement |
-    |----------|-------------------|-----------------|
-    | x64-baseline | Nehalem (1st gen Core) or newer | Bulldozer or newer |
-
-    	
-    		Baseline builds are slower than regular builds. Use them only if you encounter an "Illegal
-    		Instruction" error.
-    	
-    
-
-  Bun does not support CPUs older than the baseline target, which requires the SSE4.2 extension. Bun requires macOS 13.0
-  or later.
+  Bun does not support x64 CPUs without the SSE4.2 extension. Bun requires macOS 13.0 or later. The `-baseline` release
+  assets and `@oven/bun-*-x64-baseline` npm packages are kept as aliases of the single x64 binary for backward
+  compatibility with older install scripts.
 
 ---
 

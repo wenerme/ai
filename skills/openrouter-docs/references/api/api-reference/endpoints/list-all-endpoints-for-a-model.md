@@ -90,8 +90,6 @@ tags:
     name: Video Generation
   - description: Workspaces endpoints
     name: Workspaces
-  - description: beta.Analytics endpoints
-    name: beta.Analytics
 externalDocs:
   description: OpenRouter Documentation
   url: https://openrouter.ai/docs

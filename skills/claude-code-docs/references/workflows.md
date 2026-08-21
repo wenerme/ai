@@ -85,10 +85,6 @@ Claude Code includes `/deep-research` as a built-in workflow:
 
 Workflows run in the background, so the session stays responsive while agents work. Run `/workflows` at any time to list running and completed workflows, then select one to open its progress view.
 
-```text wrap theme={null}
-/workflows
-```
-
 The progress view shows each phase with its agent counts, token totals, and elapsed time. The footer lists the key for each action:
 
 | Key            | Action                                                                                                                      |
@@ -170,8 +166,8 @@ Whether you see this prompt depends on your [permission mode](/docs/en/permissio
 
 | Permission mode                            | When you're prompted                                                                                                                                    |
 | :----------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Default, accept edits                      | Every run, unless you've selected **Yes, and don't ask again** for that workflow in this project                                                        |
 | Auto                                       | First launch only. Any **Yes** records consent in your user settings, and later launches start without prompting. Skipped entirely when ultracode is on |
+| Manual, accept edits                       | Every run, unless you've selected **Yes, and don't ask again** for that workflow in this project                                                        |
 | Bypass permissions, `claude -p`, Agent SDK | Never. The run starts immediately                                                                                                                       |
 
 In the Desktop app, an approval card shows the workflow name, the phase list, and a token-usage caution, with **Once**, **Always**, and **Deny** actions. The progress view appears in the Background tasks side pane.
