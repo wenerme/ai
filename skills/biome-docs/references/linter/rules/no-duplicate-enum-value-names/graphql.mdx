@@ -4,6 +4,7 @@
 editUrl: false
 title: noDuplicateEnumValueNames (GraphQL)
 description: GraphQL documentation for noDuplicateEnumValueNames
+localized: false
 ---
 
 <RuleLanguageLinks current="graphql" languages={[{"id":"graphql","label":"GraphQL","href":"/linter/rules/no-duplicate-enum-value-names/graphql/"}]} />
@@ -48,7 +49,7 @@ enum A {
 }
 ```
 
-<pre class="language-text"><code class="language-text">code-block.graphql:3:8 <a href="https://biomejs.dev/linter/rules/no-duplicate-enum-value-names/graphql">lint/correctness/noDuplicateEnumValueNames</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">Duplicate enum value name.</span>      <strong>1 │ </strong>enum A &#123;    <strong>2 │ </strong>  TEST  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>  OTHER   <strong>   │ </strong>         <strong><span style="color: Tomato;">&gt;</span></strong> <strong>4 │ </strong>  TEST   <strong>   │ </strong>  <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>5 │ </strong>&#125;    <strong>6 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">A GraphQL enum type is only valid if all its values are uniquely named. Make sure to name every enum value differently.</span>  </code></pre>
+<Fragment set:html={"<pre class=\"language-text\"><code class=\"language-text\">code-block.graphql:3:8 <a href=\"https://biomejs.dev/linter/rules/no-duplicate-enum-value-names\">lint/correctness/noDuplicateEnumValueNames</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style=\"color: Tomato;\">✖</span></strong> <span style=\"color: Tomato;\">Duplicate enum value name.</span>      <strong>1 │ </strong>enum A &#123;    <strong>2 │ </strong>  TEST  <strong><span style=\"color: Tomato;\">&gt;</span></strong> <strong>3 │ </strong>  OTHER   <strong>   │ </strong>         <strong><span style=\"color: Tomato;\">&gt;</span></strong> <strong>4 │ </strong>  TEST   <strong>   │ </strong>  <strong><span style=\"color: Tomato;\">^</span></strong><strong><span style=\"color: Tomato;\">^</span></strong><strong><span style=\"color: Tomato;\">^</span></strong><strong><span style=\"color: Tomato;\">^</span></strong>    <strong>5 │ </strong>&#125;    <strong>6 │ </strong>    <strong><span style=\"color: lightgreen;\">ℹ</span></strong> <span style=\"color: lightgreen;\">A GraphQL enum type is only valid if all its values are uniquely named. Make sure to name every enum value differently.</span>  </code></pre>"} />
 
 ```graphql
 enum B {
@@ -57,7 +58,7 @@ enum B {
 }
 ```
 
-<pre class="language-text"><code class="language-text">code-block.graphql:2:7 <a href="https://biomejs.dev/linter/rules/no-duplicate-enum-value-names/graphql">lint/correctness/noDuplicateEnumValueNames</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">Duplicate enum value name.</span>      <strong>1 │ </strong>enum B &#123;  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>2 │ </strong>  TEST   <strong>   │ </strong>        <strong><span style="color: Tomato;">&gt;</span></strong> <strong>3 │ </strong>  TesT   <strong>   │ </strong>  <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>4 │ </strong>&#125;    <strong>5 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">A GraphQL enum type is only valid if all its values are uniquely named. Make sure to name every enum value differently.</span>  </code></pre>
+<Fragment set:html={"<pre class=\"language-text\"><code class=\"language-text\">code-block.graphql:2:7 <a href=\"https://biomejs.dev/linter/rules/no-duplicate-enum-value-names\">lint/correctness/noDuplicateEnumValueNames</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style=\"color: Tomato;\">✖</span></strong> <span style=\"color: Tomato;\">Duplicate enum value name.</span>      <strong>1 │ </strong>enum B &#123;  <strong><span style=\"color: Tomato;\">&gt;</span></strong> <strong>2 │ </strong>  TEST   <strong>   │ </strong>        <strong><span style=\"color: Tomato;\">&gt;</span></strong> <strong>3 │ </strong>  TesT   <strong>   │ </strong>  <strong><span style=\"color: Tomato;\">^</span></strong><strong><span style=\"color: Tomato;\">^</span></strong><strong><span style=\"color: Tomato;\">^</span></strong><strong><span style=\"color: Tomato;\">^</span></strong>    <strong>4 │ </strong>&#125;    <strong>5 │ </strong>    <strong><span style=\"color: lightgreen;\">ℹ</span></strong> <span style=\"color: lightgreen;\">A GraphQL enum type is only valid if all its values are uniquely named. Make sure to name every enum value differently.</span>  </code></pre>"} />
 
 ### Valid
 

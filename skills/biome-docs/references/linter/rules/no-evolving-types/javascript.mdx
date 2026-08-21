@@ -4,6 +4,7 @@
 editUrl: false
 title: noEvolvingTypes (JavaScript)
 description: JavaScript (and super languages) documentation for noEvolvingTypes
+localized: false
 ---
 
 <RuleLanguageLinks current="javascript" languages={[{"id":"javascript","label":"JavaScript (and super languages)","href":"/linter/rules/no-evolving-types/javascript/"}]} />
@@ -48,19 +49,19 @@ then we recommend to disable this rule.
 let a;
 ```
 
-<pre class="language-text"><code class="language-text">code-block.ts:1:5 <a href="https://biomejs.dev/linter/rules/no-evolving-types/javascript">lint/suspicious/noEvolvingTypes</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Orange;">⚠</span></strong> <span style="color: Orange;">The type of this variable may evolve implicitly to any type, including the </span><span style="color: Orange;"><strong>any</strong></span><span style="color: Orange;"> type.</span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>let a;   <strong>   │ </strong>    <strong><span style="color: Tomato;">^</span></strong>    <strong>2 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Add an explicit type or initialization to avoid implicit type evolution.</span>  </code></pre>
+<Fragment set:html={"<pre class=\"language-text\"><code class=\"language-text\">code-block.ts:1:5 <a href=\"https://biomejs.dev/linter/rules/no-evolving-types\">lint/suspicious/noEvolvingTypes</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style=\"color: Orange;\">⚠</span></strong> <span style=\"color: Orange;\">The type of this variable may evolve implicitly to any type, including the </span><span style=\"color: Orange;\"><strong>any</strong></span><span style=\"color: Orange;\"> type.</span>    <strong><span style=\"color: Tomato;\">&gt;</span></strong> <strong>1 │ </strong>let a;   <strong>   │ </strong>    <strong><span style=\"color: Tomato;\">^</span></strong>    <strong>2 │ </strong>    <strong><span style=\"color: lightgreen;\">ℹ</span></strong> <span style=\"color: lightgreen;\">Add an explicit type or initialization to avoid implicit type evolution.</span>  </code></pre>"} />
 
 ```ts
 const b = [];
 ```
 
-<pre class="language-text"><code class="language-text">code-block.ts:1:7 <a href="https://biomejs.dev/linter/rules/no-evolving-types/javascript">lint/suspicious/noEvolvingTypes</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Orange;">⚠</span></strong> <span style="color: Orange;">The type of this variable may evolve implicitly to any type, including the </span><span style="color: Orange;"><strong>any</strong></span><span style="color: Orange;"> type.</span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>const b = [];   <strong>   │ </strong>      <strong><span style="color: Tomato;">^</span></strong>    <strong>2 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Add an explicit type or initialization to avoid implicit type evolution.</span>  </code></pre>
+<Fragment set:html={"<pre class=\"language-text\"><code class=\"language-text\">code-block.ts:1:7 <a href=\"https://biomejs.dev/linter/rules/no-evolving-types\">lint/suspicious/noEvolvingTypes</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style=\"color: Orange;\">⚠</span></strong> <span style=\"color: Orange;\">The type of this variable may evolve implicitly to any type, including the </span><span style=\"color: Orange;\"><strong>any</strong></span><span style=\"color: Orange;\"> type.</span>    <strong><span style=\"color: Tomato;\">&gt;</span></strong> <strong>1 │ </strong>const b = [];   <strong>   │ </strong>      <strong><span style=\"color: Tomato;\">^</span></strong>    <strong>2 │ </strong>    <strong><span style=\"color: lightgreen;\">ℹ</span></strong> <span style=\"color: lightgreen;\">Add an explicit type or initialization to avoid implicit type evolution.</span>  </code></pre>"} />
 
 ```ts
 let c = null;
 ```
 
-<pre class="language-text"><code class="language-text">code-block.ts:1:5 <a href="https://biomejs.dev/linter/rules/no-evolving-types/javascript">lint/suspicious/noEvolvingTypes</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Orange;">⚠</span></strong> <span style="color: Orange;">The type of this variable may evolve implicitly to any type, including the </span><span style="color: Orange;"><strong>any</strong></span><span style="color: Orange;"> type.</span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>let c = null;   <strong>   │ </strong>    <strong><span style="color: Tomato;">^</span></strong>    <strong>2 │ </strong>    <strong><span style="color: lightgreen;">ℹ</span></strong> <span style="color: lightgreen;">Add an explicit type or initialization to avoid implicit type evolution.</span>  </code></pre>
+<Fragment set:html={"<pre class=\"language-text\"><code class=\"language-text\">code-block.ts:1:5 <a href=\"https://biomejs.dev/linter/rules/no-evolving-types\">lint/suspicious/noEvolvingTypes</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style=\"color: Orange;\">⚠</span></strong> <span style=\"color: Orange;\">The type of this variable may evolve implicitly to any type, including the </span><span style=\"color: Orange;\"><strong>any</strong></span><span style=\"color: Orange;\"> type.</span>    <strong><span style=\"color: Tomato;\">&gt;</span></strong> <strong>1 │ </strong>let c = null;   <strong>   │ </strong>    <strong><span style=\"color: Tomato;\">^</span></strong>    <strong>2 │ </strong>    <strong><span style=\"color: lightgreen;\">ℹ</span></strong> <span style=\"color: lightgreen;\">Add an explicit type or initialization to avoid implicit type evolution.</span>  </code></pre>"} />
 
 ### Valid
 

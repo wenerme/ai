@@ -8,6 +8,12 @@
 
 Entries on this page are generated automatically from [OpenAPI specification](/docs/api_reference/overview) diffs when releases ship. Breaking changes are reviewed by a human before publication. See [API Versioning](/docs/api_reference/versioning) for what counts as a breaking change and how deprecations are announced. Endpoint paths are shown relative to the API base URL (`https://openrouter.ai/api/v1`).
 
+<Update label="August 19, 2026" tags={["BYOK"]} rss="New: manage BYOK credential restrictions (allowed_models, allowed_user_ids, allowed_api_key_hashes) via create/update.">
+  ## New capabilities
+
+  * BYOK API: manage credential restrictions (`allowed_models`, `allowed_user_ids`, `allowed_api_key_hashes`) via create/update. See the [BYOK guide](/docs/guides/overview/auth/byok#managing-filters-via-the-management-api) for examples and validation rules.
+</Update>
+
 <Update label="August 19, 2026" tags={["Errors","Schemas"]} rss="Actionable model availability errors: new error.availability object with 11 machine-readable codes.">
   ## Actionable model availability errors
 

@@ -66489,8 +66489,8 @@ State of an organization.
 | <a id="organizationstate-active"></a>`ACTIVE`  | Introduced in GitLab 19.0. Status: Experiment. Active organization. |
 | <a id="organizationstate-confirmed"></a>`CONFIRMED`  | Introduced in GitLab 19.0. Status: Experiment. Confirmed organization. |
 | <a id="organizationstate-deletion_in_progress"></a>`DELETION_IN_PROGRESS`  | Introduced in GitLab 19.0. Status: Experiment. Deletion In Progress organization. |
-| <a id="organizationstate-read_only"></a>`READ_ONLY`  | Introduced in GitLab 19.2. Status: Experiment. Read Only organization. |
-| <a id="organizationstate-read_only_initialization"></a>`READ_ONLY_INITIALIZATION`  | Introduced in GitLab 19.2. Status: Experiment. Read Only Initialization organization. |
+| <a id="organizationstate-maintenance"></a>`MAINTENANCE`  | Introduced in GitLab 19.2. Status: Experiment. Maintenance organization. |
+| <a id="organizationstate-maintenance_initialization"></a>`MAINTENANCE_INITIALIZATION`  | Introduced in GitLab 19.2. Status: Experiment. Maintenance Initialization organization. |
 | <a id="organizationstate-soft_deleted"></a>`SOFT_DELETED`  | Introduced in GitLab 19.0. Status: Experiment. Soft Deleted organization. |
 | <a id="organizationstate-unconfirmed"></a>`UNCONFIRMED`  | Introduced in GitLab 19.0. Status: Experiment. Unconfirmed organization. |
 
