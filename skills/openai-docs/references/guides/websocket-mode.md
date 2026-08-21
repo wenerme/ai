@@ -2,9 +2,7 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-The Responses API supports a WebSocket mode for long-running, tool-call-heavy workflows. Beyond lowering latency, `stream_id` lets one persistent connection to `/v1/responses` run parallel conversations and fork an existing conversation onto a new stream. Continue each turn by sending only new input items plus `previous_response_id`.
-
-This pattern is WebSocket multiplexing: multiple logical response lanes over one persistent connection.
+The Responses API supports a WebSocket mode for long-running, tool-call-heavy workflows. Beyond lowering latency, `stream_id` enables WebSocket multiplexing: one persistent connection to `/v1/responses` can run parallel conversations and fork an existing conversation onto a new stream. Continue each turn by sending only new input items plus `previous_response_id`.
 
 WebSocket mode is compatible with both Zero Data Retention (ZDR) and `store=false`.
 
@@ -13,153 +11,6 @@ WebSocket mode is compatible with both Zero Data Retention (ZDR) and `store=fals
 WebSocket mode is most useful when a workflow involves many model-tool round trips (for example, agentic coding or orchestration loops with repeated tool calls).
 
 Because the connection stays open and each turn sends only incremental input, WebSocket mode reduces per-turn continuation overhead and improves end-to-end latency across long chains. For rollouts with 20+ tool calls, we have seen up to roughly 40% faster end-to-end execution.
-
-## What `stream_id` unlocks
-
-A `stream_id` names an ordered lane on one WebSocket connection. Keep `stream_id` and `previous_response_id` separate:
-
-- `stream_id` controls where events go and which requests run in first-in, first-out order.
-- `previous_response_id` controls conversation lineage.
-
-That separation unlocks two useful patterns.
-
-### Run conversations in parallel
-
-Send independent `response.create` events back-to-back with different `stream_id` values. The server can run them concurrently on one connection. Their events can interleave, so keep one reader loop and route each event by `stream_id`.
-
-```text
-one WebSocket connection
-├─ stream_id="planner"   draft a deployment plan
-└─ stream_id="research"  list deployment risks
-```
-
-Requests with the same `stream_id` stay first-in, first-out and do not overlap. Requests with different `stream_id` values can run concurrently.
-
-#### Limits per connection
-
-- A connection can have up to 16 active, in-flight responses across named and default lanes. The connection accepts more `response.create` events and queues them until an active response finishes.
-- A connection accepts up to 32 distinct named `stream_id` values. The implicit default lane does not count toward this named-stream limit. Reuse an existing `stream_id` or open a new connection after reaching the limit.
-
-### Fork a conversation onto a new stream
-
-To branch from a completed response, send its ID as `previous_response_id` with a new `stream_id`. While that response remains available, the new stream inherits its context, and the original stream can keep going. After the fork starts, both branches can run concurrently because they use different stream IDs.
-
-With `store=false` (including ZDR), a cross-lane fork depends on the parent remaining in the connection-local cache. If the fork queues while the source lane advances or fails, the parent can be evicted before the fork starts, and the fork returns `previous_response_not_found`. Wait for the fork lane to emit `response.in_progress` before advancing the source lane, or retry with `previous_response_id` set to `null` and replay full input context.
-
-```text
-main:   resp_1 ──▶ resp_2 ──▶ resp_3
-                       ╲
-critic:                 resp_4 ──▶ resp_5
-```
-
-Reusing a `stream_id` without `previous_response_id` starts a new response; it does not continue the conversation.
-
-The key calls look like this:
-
-```text
-# One socket, two independent conversations.
-send_create("planner", "Draft a deployment plan.")
-send_create("research", "List deployment risks.")
-
-# Fork the planner response, then continue the original branch in parallel.
-send_create(
-    "critic",
-    "Find gaps in this plan.",
-    previous_response_id=planner_response_id,
-)
-send_create(
-    "planner",
-    "Add rollback steps.",
-    previous_response_id=planner_response_id,
-)
-```
-
-### Complete example
-
-Run parallel conversations, then fork one
-
-```python
-import json
-import os
-
-from websocket import create_connection
-
-ws = create_connection(
-    "wss://api.openai.com/v1/responses",
-    header=[f"Authorization: Bearer {os.environ['OPENAI_API_KEY']}"],
-)
-
-latest_response_id_by_lane = {}
-
-
-def send_create(stream_id, text, previous_response_id=None):
-    payload = {
-        "type": "response.create",
-        "stream_id": stream_id,
-        "model": "gpt-5.6",
-        "store": False,
-        "input": [
-            {
-                "type": "message",
-                "role": "user",
-                "content": [{"type": "input_text", "text": text}],
-            }
-        ],
-    }
-    if previous_response_id is None:
-        previous_response_id = latest_response_id_by_lane.get(stream_id)
-    if previous_response_id:
-        payload["previous_response_id"] = previous_response_id
-    ws.send(json.dumps(payload))
-
-
-def drain_until_complete(expected_stream_ids):
-    completed = set()
-    while completed != expected_stream_ids:
-        event = json.loads(ws.recv())
-        stream_id = event.get("stream_id")
-        event_type = event.get("type")
-
-        if event_type == "error" and stream_id is None:
-            raise RuntimeError(f"connection error: {event}")
-        if stream_id not in expected_stream_ids:
-            continue
-
-        if event_type == "response.completed":
-            latest_response_id_by_lane[stream_id] = event["response"]["id"]
-            completed.add(stream_id)
-        elif event_type in {"response.failed", "response.incomplete", "error"}:
-            raise RuntimeError(f"lane {stream_id} failed: {event}")
-
-
-# 1. Run two independent conversations in parallel.
-send_create("planner", "Draft a deployment plan for a stateless API service.")
-send_create("research", "List common deployment risks for a stateless API service.")
-drain_until_complete({"planner", "research"})
-
-# 2. Fork the planner conversation and continue the original branch in parallel.
-planner_response_id = latest_response_id_by_lane["planner"]
-send_create(
-    "critic",
-    "Find gaps in this deployment plan.",
-    previous_response_id=planner_response_id,
-)
-send_create(
-    "planner",
-    "Add rollback and monitoring steps to the plan.",
-    previous_response_id=planner_response_id,
-)
-drain_until_complete({"critic", "planner"})
-
-ws.close()
-```
-
-
-A `stream_id` must be 1–256 characters and can contain only letters, numbers, underscores (`_`), hyphens (`-`), and periods (`.`). Use it only in WebSocket `response.create` events; do not include it in HTTP `POST /v1/responses`.
-
-For named streams, server events include the matching `stream_id`, including terminal events and request-scoped errors.
-
-If you omit `stream_id`, the request uses an implicit default lane, and its events do not include `stream_id`. The default lane otherwise follows the same ordering and concurrency rules as named streams. An empty string is not a valid `stream_id`; omit the field to select the default lane.
 
 ## Connect and create responses
 
@@ -292,6 +143,151 @@ ws.send(
 ```
 
 
+## Run conversations in parallel
+
+You can maintain parallel conversations on the same connection using the `stream_id` parameter. Send independent `response.create` events back-to-back with different `stream_id` values. The server can run them concurrently on one connection. Their events can interleave, so keep one reader loop and route each event by `stream_id`.
+
+A `stream_id` names an ordered lane on one WebSocket connection. Keep `stream_id` and `previous_response_id` separate:
+
+- `stream_id` controls where events go and which requests run in first-in, first-out order.
+- `previous_response_id` controls conversation lineage.
+
+That separation unlocks two useful patterns.
+
+```text
+one WebSocket connection
+├─ stream_id="planner"   draft a deployment plan
+└─ stream_id="research"  list deployment risks
+```
+
+Requests with the same `stream_id` stay first-in, first-out and do not overlap. Requests with different `stream_id` values can run concurrently.
+
+### Limits per connection
+
+- A connection can have up to 16 active, in-flight responses across named and default lanes. The connection accepts more `response.create` events and queues them until an active response finishes.
+- A connection accepts up to 32 distinct named `stream_id` values. The implicit default lane does not count toward this named-stream limit. Reuse an existing `stream_id` or open a new connection after reaching the limit.
+
+### Fork a conversation onto a new stream
+
+To branch from a completed response, send its ID as `previous_response_id` with a new `stream_id`. While that response remains available, the new stream inherits its context, and the original stream can keep going. After the fork starts, both branches can run concurrently because they use different stream IDs.
+
+With `store=false` (including ZDR), a cross-lane fork depends on the parent remaining in the connection-local cache. If the fork queues while the source lane advances or fails, the parent can be evicted before the fork starts, and the fork returns `previous_response_not_found`. Wait for the fork lane to emit `response.in_progress` before advancing the source lane, or retry with `previous_response_id` set to `null` and replay full input context.
+
+```text
+main:   resp_1 ──▶ resp_2 ──▶ resp_3
+                       ╲
+critic:                 resp_4 ──▶ resp_5
+```
+
+Reusing a `stream_id` without `previous_response_id` starts a new response; it does not continue the conversation.
+
+The key calls look like this:
+
+```text
+# One socket, two independent conversations.
+send_create("planner", "Draft a deployment plan.")
+send_create("research", "List deployment risks.")
+
+# Fork the planner response, then continue the original branch in parallel.
+send_create(
+    "critic",
+    "Find gaps in this plan.",
+    previous_response_id=planner_response_id,
+)
+send_create(
+    "planner",
+    "Add rollback steps.",
+    previous_response_id=planner_response_id,
+)
+```
+
+### Complete example
+
+Run parallel conversations, then fork one
+
+```python
+import json
+import os
+
+from websocket import create_connection
+
+ws = create_connection(
+    "wss://api.openai.com/v1/responses",
+    header=[f"Authorization: Bearer {os.environ['OPENAI_API_KEY']}"],
+)
+
+latest_response_id_by_lane = {}
+
+
+def send_create(stream_id, text, previous_response_id=None):
+    payload = {
+        "type": "response.create",
+        "stream_id": stream_id,
+        "model": "gpt-5.6",
+        "store": False,
+        "input": [
+            {
+                "type": "message",
+                "role": "user",
+                "content": [{"type": "input_text", "text": text}],
+            }
+        ],
+    }
+    if previous_response_id is None:
+        previous_response_id = latest_response_id_by_lane.get(stream_id)
+    if previous_response_id:
+        payload["previous_response_id"] = previous_response_id
+    ws.send(json.dumps(payload))
+
+
+def drain_until_complete(expected_stream_ids):
+    completed = set()
+    while completed != expected_stream_ids:
+        event = json.loads(ws.recv())
+        stream_id = event.get("stream_id")
+        event_type = event.get("type")
+
+        if event_type == "error" and stream_id is None:
+            raise RuntimeError(f"connection error: {event}")
+        if stream_id not in expected_stream_ids:
+            continue
+
+        if event_type == "response.completed":
+            latest_response_id_by_lane[stream_id] = event["response"]["id"]
+            completed.add(stream_id)
+        elif event_type in {"response.failed", "response.incomplete", "error"}:
+            raise RuntimeError(f"lane {stream_id} failed: {event}")
+
+
+# 1. Run two independent conversations in parallel.
+send_create("planner", "Draft a deployment plan for a stateless API service.")
+send_create("research", "List common deployment risks for a stateless API service.")
+drain_until_complete({"planner", "research"})
+
+# 2. Fork the planner conversation and continue the original branch in parallel.
+planner_response_id = latest_response_id_by_lane["planner"]
+send_create(
+    "critic",
+    "Find gaps in this deployment plan.",
+    previous_response_id=planner_response_id,
+)
+send_create(
+    "planner",
+    "Add rollback and monitoring steps to the plan.",
+    previous_response_id=planner_response_id,
+)
+drain_until_complete({"critic", "planner"})
+
+ws.close()
+```
+
+
+A `stream_id` must be 1–256 characters and can contain only letters, numbers, underscores (`_`), hyphens (`-`), and periods (`.`). Use it only in WebSocket `response.create` events; do not include it in HTTP `POST /v1/responses`.
+
+For named streams, server events include the matching `stream_id`, including terminal events and request-scoped errors.
+
+If you omit `stream_id`, the request uses an implicit default lane, and its events do not include `stream_id`. The default lane otherwise follows the same ordering and concurrency rules as named streams. An empty string is not a valid `stream_id`; omit the field to select the default lane.
+
 ## Connection behavior and limits
 
 - Events within each response follow the existing Responses streaming event model. Events from different lanes can interleave.
@@ -322,6 +318,21 @@ When the server can associate an error with a named lane, the error event includ
     "code": "previous_response_not_found",
     "message": "Previous response with id 'resp_abc' not found.",
     "param": "previous_response_id"
+  }
+}
+```
+
+`invalid_stream_id`
+
+```json
+{
+  "type": "error",
+  "status": 400,
+  "error": {
+    "type": "invalid_request_error",
+    "code": "invalid_stream_id",
+    "message": "The 'stream_id' field must be a non-empty string with at most 256 characters and may only contain letters, numbers, underscores, hyphens, and periods.",
+    "param": "stream_id"
   }
 }
 ```

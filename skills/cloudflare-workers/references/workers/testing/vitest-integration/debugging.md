@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Debugging
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/debugging/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/debugging/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide shows you how to debug your Workers tests with Vitest. This is available with `@cloudflare/vitest-pool-workers` v0.7.5 or later.
+This guide shows you how to debug your Workers tests with Vitest and `@cloudflare/vitest-plugin`.
 
 ## Open inspector with Vitest
 
@@ -35,7 +35,7 @@ vitest --inspect=3456 --no-file-parallelism
 Alternatively, you can define it in your Vitest configuration file:
 
 ```ts
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { cloudflareTest } from "@cloudflare/vitest-plugin";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -99,8 +99,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/debugging/#page","headline":"Debugging · Cloudflare Workers docs","description":"Debug your Workers tests with Vitest.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/debugging/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/debugging/#page","headline":"Debugging · Cloudflare Workers docs","description":"Debug your Workers tests with Vitest.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/debugging/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

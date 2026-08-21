@@ -223,7 +223,7 @@ Add a `repositories` section to your
 
 Authentication for [SBT](https://www.scala-sbt.org/index.html) is based on
 [basic HTTP Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication).
-You must to provide a name and a password.
+You must provide a name and a password.
 
 > [!note]
 > The name field must be named to match the token you chose.
@@ -842,7 +842,7 @@ To delete older package versions, consider using the Packages API or the UI.
 - Required role [changed](https://gitlab.com/gitlab-org/gitlab/-/issues/350682) from Developer to Maintainer in GitLab 15.0.
 - Required role [changed](https://gitlab.com/gitlab-org/gitlab/-/issues/370471) from Maintainer to Owner in GitLab 17.0.
 
-To prevent users from publishing duplicate Maven packages, you can use the [GraphQl API](../../../api/graphql/reference/_index.md#packagesettings) or the UI.
+To prevent users from publishing duplicate Maven packages, you can use the [GraphQL API](../../../api/graphql/reference/_index.md#packagesettings) or the UI.
 
 In the UI:
 

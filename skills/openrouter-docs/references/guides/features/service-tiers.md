@@ -196,13 +196,29 @@ Anthropic itself has deprecated its priority tier. Per [Anthropic's service tier
 
 ### How Routing Works
 
-Non-default tier endpoints (`flex`, `priority`) are only considered when your request asks for them. There are two ways to do that:
+Non-default tier endpoints (`flex`, `priority`) are only considered when your request asks for them. There are three ways to do that:
 
 1. **The `service_tier` parameter.** For `priority`, matching endpoints are tried first (sorted by throughput), with fallback to other endpoints if none succeed; billing always follows the endpoint actually used, so a priority request that falls back off-tier is charged at that endpoint's standard rate, not the tier rate. For `flex`, routing is restricted to flex endpoints (sorted by price). Flex never falls back to a default-tier endpoint, since that would cost more than the tier you requested, so a flex capacity error surfaces instead. If the pool contains no flex endpoints at all (for example, the model has no flex-capable provider), the request routes normally at standard rates. Combine with [`allow_fallbacks: false`](/docs/guides/routing/provider-selection#disabling-fallbacks) to route only to the top endpoint of that tier.
 
 2. **Tier endpoint slugs in [`provider.order` or `provider.only`](/docs/guides/routing/provider-selection).** Each tier has its own endpoint slug, formed by appending the tier to the provider slug, e.g. `openai/priority` or `google-vertex/flex`. For example, `"provider": { "only": ["openai/priority"] }` restricts routing to OpenAI's priority tier.
 
-Requests that don't use either of these are never routed to a non-default service tier.
+3. **The [`:nitro`](/docs/guides/routing/model-variants/nitro) and [`:floor`](/docs/guides/routing/model-variants/floor) model variants.** `:nitro` makes priority endpoints eligible and `:floor` makes flex endpoints eligible, but unlike the `service_tier` parameter, tier endpoints get no special treatment: the whole pool is sorted by the variant's metric (throughput for `:nitro`, price for `:floor`), so a tier endpoint is used only when it wins that sort. Because admission depends on that sort, setting `provider.order` (which replaces sorting with your explicit ordering) disables the variant's tier admission; name a tier endpoint slug in the order list to include it. An explicit `service_tier: "default"` also disables the variant's tier admission, so you can use `:nitro`/`:floor` purely for their sorting while pinning the standard tier.
+
+Requests that don't use any of these are never routed to a non-default service tier.
+
+### Comparing Tier Selection Options
+
+| Option                                       | Eligible pool                                                   | Ordering                                                  | Fallback                                                  |
+| -------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| `service_tier: "priority"` (or `"fast"`)     | Default + priority endpoints                                    | Priority endpoints first, each group sorted by throughput | Falls back to non-priority endpoints                      |
+| `service_tier: "flex"`                       | Flex endpoints only (when any exist)                            | Sorted by price                                           | No fallback to default endpoints, capacity errors surface |
+| `provider.only` with a tier slug             | Only the endpoints the slugs name (tier slugs opt in that tier) | Default load-balanced ordering unless a sort is set       | Within the named endpoints only                           |
+| `provider.order` with a tier slug            | Unchanged (tier slugs opt in the named tier endpoints)          | Listed endpoints first, in your order                     | Falls back to unlisted endpoints unless disabled          |
+| `:nitro` variant                             | Default + priority endpoints                                    | Entire pool sorted by throughput, no tier preference      | Next-fastest endpoint of any tier                         |
+| `:floor` variant                             | Default + flex endpoints                                        | Entire pool sorted by price, no tier preference           | Next-cheapest endpoint of any tier                        |
+| `provider.sort` (`"throughput"` / `"price"`) | Unchanged (does not opt into any tier)                          | Entire pool sorted by the chosen metric                   | Next endpoint in sorted order                             |
+
+In every case, billing follows the tier that actually served the request: if a provider sheds a tier request to its default tier, you're billed the default rate.
 
 ### Tier Endpoints in the API
 

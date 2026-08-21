@@ -21,7 +21,7 @@ The following table summarizes which types of dependencies each scanning tool ca
 | Development dependencies                                                                     | Yes         | No         |
 | Dependencies in a lock file committed to your repository                                     | Yes         | Yes <sup>1</sup> |
 | Binaries built by Go                                                                         | No          | Yes <sup>2</sup> |
-| Dynamically-linked language-specific dependencies installed by the Operating System          | No          | Yes        |
+| Dynamically linked language-specific dependencies installed by the operating system          | No          | Yes        |
 | Operating system dependencies                                                                | No          | Yes        |
 | Language-specific dependencies installed on the operating system (not built by your project) | No          | Yes        |
 

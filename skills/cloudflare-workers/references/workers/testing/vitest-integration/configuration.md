@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration
 
-Last updated Jul 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Workers Vitest integration provides additional configuration on top of Vitest's usual options using the `cloudflareTest()` Vite plugin.
 
 An example configuration would be:
 
 ```ts
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { cloudflareTest } from "@cloudflare/vitest-plugin";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -39,7 +39,7 @@ Custom Vitest `environment`s or `runner`s are not supported when using the Worke
 
 ## APIs
 
-The following APIs are exported from the `@cloudflare/vitest-pool-workers` package.
+The following APIs are exported from the `@cloudflare/vitest-plugin` package.
 
 ### `cloudflareTest(options)`
 
@@ -48,7 +48,7 @@ A Vite plugin that configures Vitest to use the Workers integration with the cor
 It also accepts an optionally-`async` function returning `options`.
 
 ```ts
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { cloudflareTest } from "@cloudflare/vitest-plugin";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -62,11 +62,11 @@ export default defineConfig({
 
 ### `buildPagesASSETSBinding(assetsPath)`
 
-Exported from `@cloudflare/vitest-pool-workers/config`. Creates a Pages ASSETS binding that serves files inside the `assetsPath`. This is required if you use `createPagesEventContext()` to test your **Pages Functions**. Refer to the [Pages recipe](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes) for a full example.
+Exported from `@cloudflare/vitest-plugin/config`. Creates a Pages ASSETS binding that serves files inside the `assetsPath`. This is required if you use `createPagesEventContext()` to test your **Pages Functions**. Refer to the [Pages recipe](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes) for a full example.
 
 ```ts
 import path from "node:path";
-import { buildPagesASSETSBinding, cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { buildPagesASSETSBinding, cloudflareTest } from "@cloudflare/vitest-plugin";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -88,11 +88,11 @@ export default defineConfig({
 
 ### `readD1Migrations(migrationsPath)`
 
-Exported from `@cloudflare/vitest-pool-workers/config`. Reads all [D1 migrations](https://developers.cloudflare.com/d1/reference/migrations/) stored at `migrationsPath` and returns them ordered by migration number. Each migration will have its contents split into an array of individual SQL queries. Call the [applyD1Migrations()](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#d1) function inside a test or [setup file ↗](https://vitest.dev/config/#setupfiles) to apply migrations. Refer to the [D1 recipe ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-pool-workers-examples/d1) for an example project using migrations.
+Exported from `@cloudflare/vitest-plugin/config`. Reads all [D1 migrations](https://developers.cloudflare.com/d1/reference/migrations/) stored at `migrationsPath` and returns them ordered by migration number. Each migration will have its contents split into an array of individual SQL queries. Call the [applyD1Migrations()](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#d1) function inside a test or [setup file ↗](https://vitest.dev/config/#setupfiles) to apply migrations. Refer to the [D1 recipe ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/d1) for an example project using migrations.
 
 ```ts
 import path from "node:path";
-import { cloudflareTest, readD1Migrations } from "@cloudflare/vitest-pool-workers";
+import { cloudflareTest, readD1Migrations } from "@cloudflare/vitest-plugin";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -142,7 +142,7 @@ Options passed directly to `cloudflareTest()`.
 
 ## Dynamic configuration with `inject`
 
-You can pass an `async` function to `cloudflareTest()` that receives an `inject` function. This allows you to define `miniflare` configuration based on injected values from [globalSetup ↗](https://vitest.dev/config/#globalsetup) scripts. Use this if you have a value in your configuration that is dynamically generated and only known at runtime of your tests. For example, a global setup script might start an upstream server on a random port. This port could be `provide()`d and then `inject()`ed in the configuration for an external service binding or [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). Refer to the [Hyperdrive recipe ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-pool-workers-examples/hyperdrive) for an example project using this provide/inject approach.
+You can pass an `async` function to `cloudflareTest()` that receives an `inject` function. This allows you to define `miniflare` configuration based on injected values from [globalSetup ↗](https://vitest.dev/config/#globalsetup) scripts. Use this if you have a value in your configuration that is dynamically generated and only known at runtime of your tests. For example, a global setup script might start an upstream server on a random port. This port could be `provide()`d and then `inject()`ed in the configuration for an external service binding or [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). Refer to the [Hyperdrive recipe ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/hyperdrive) for an example project using this provide/inject approach.
 
 Illustrative example
 
@@ -165,7 +165,7 @@ export default function ({ provide }: GlobalSetupContext) {
 }
 
 // vitest.config.ts
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { cloudflareTest } from "@cloudflare/vitest-plugin";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
@@ -201,8 +201,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Vitest configuration specific to the Workers integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Vitest configuration specific to the Workers integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migrate from Miniflare 2's test environments
 
-Last updated May 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-miniflare-2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-miniflare-2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Miniflare 2 ↗](https://github.com/cloudflare/miniflare?tab=readme-ov-file) provided custom environments for Jest and Vitest in the `jest-environment-miniflare` and `vitest-environment-miniflare` packages respectively. The `@cloudflare/vitest-pool-workers` package provides similar functionality using modern Miniflare versions and the [workerd runtime ↗](https://github.com/cloudflare/workerd). `workerd` is the same JavaScript/WebAssembly runtime that powers Cloudflare Workers. Using `workerd` practically eliminates behavior mismatches between your tests and deployed code. Refer to the [Miniflare 3 announcement ↗](https://blog.cloudflare.com/miniflare-and-workerd) for more information.
+[Miniflare 2 ↗](https://github.com/cloudflare/miniflare?tab=readme-ov-file) provided custom environments for Jest and Vitest in the `jest-environment-miniflare` and `vitest-environment-miniflare` packages respectively. The `@cloudflare/vitest-plugin` package provides similar functionality using modern Miniflare versions and the [workerd runtime ↗](https://github.com/cloudflare/workerd). `workerd` is the same JavaScript/WebAssembly runtime that powers Cloudflare Workers. Using `workerd` reduces behavior mismatches between your tests and deployed code. Refer to the [Miniflare 3 announcement ↗](https://blog.cloudflare.com/miniflare-and-workerd) for more information.
 
 Caution
 
@@ -26,12 +26,12 @@ The Workers Vitest integration does not support testing Workers using the servic
 
 ## Install the Workers Vitest integration
 
-First, you will need to uninstall the old environment and install the new pool. Vitest environments can only customize the global scope, whereas pools can run tests using a completely different runtime. In this case, the pool runs your tests inside [workerd ↗](https://github.com/cloudflare/workerd) instead of Node.js.
+First, uninstall the old environment and install the Vitest plugin. Vitest environments can only customize the global scope, whereas the plugin runs tests using a different runtime. In this case, the plugin runs your tests inside [workerd ↗](https://github.com/cloudflare/workerd) instead of Node.js.
 
 ```sh
 npm uninstall vitest-environment-miniflare
 npm install --save-dev vitest@^4.1.0
-npm install --save-dev @cloudflare/vitest-pool-workers
+npm install --save-dev @cloudflare/vitest-plugin
 ```
 
 ## Update your Vitest configuration file
@@ -39,7 +39,7 @@ npm install --save-dev @cloudflare/vitest-pool-workers
 After installing the Workers Vitest integration, update your Vitest configuration file to use the `cloudflareTest()` Vite plugin instead. Most Miniflare configuration previously specified in `environmentOptions` can be moved to the `miniflare` option in `cloudflareTest()`. Refer to [Miniflare's WorkerOptions interface ↗](https://github.com/cloudflare/workers-sdk/blob/main/packages/miniflare/README.md#interface-workeroptions) for supported options and the [Miniflare version 2 to 3 migration guide](https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/) for more information. If you relied on configuration stored in a Wrangler file, set `wrangler.configPath` too.
 
 ```diff
-+ import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
++ import { cloudflareTest } from "@cloudflare/vitest-plugin";
 + import { defineConfig } from "vitest/config";
 
 - export default defineWorkersConfig({
@@ -69,7 +69,7 @@ If you are using TypeScript, update your `tsconfig.json` to include the correct 
       "types": [
 				...
 -       "vitest-environment-miniflare/globals"
-+       "@cloudflare/vitest-pool-workers/types"
++       "@cloudflare/vitest-plugin/types"
       ]
     },
   }
@@ -119,7 +119,7 @@ The `new ExecutionContext()` constructor and `getMiniflareWaitUntil()` function 
 
 ## Mock outbound requests
 
-The `getMiniflareFetchMock()` function is no longer available. To mock outbound `fetch()` requests, mock `globalThis.fetch` directly or use ecosystem libraries such as [MSW ↗](https://mswjs.io/). Refer to the [request mocking example ↗](https://github.com/cloudflare/workers-sdk/blob/main/fixtures/vitest-pool-workers-examples/request-mocking/test/imperative.test.ts) for a complete example.
+The `getMiniflareFetchMock()` function is no longer available. To mock outbound requests, use [@msw/cloudflare ↗](https://github.com/mswjs/cloudflare). Refer to [Mock outbound requests](https://developers.cloudflare.com/workers/testing/vitest-integration/mock-outbound-requests/) for setup instructions.
 
 ## Use Durable Object helpers
 
@@ -189,8 +189,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-miniflare-2/#page","headline":"Migrate from Miniflare 2's test environments · Cloudflare Workers docs","description":"Migrate from Miniflare 2 to the Workers Vitest integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-miniflare-2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-miniflare-2/#page","headline":"Migrate from Miniflare 2's test environments · Cloudflare Workers docs","description":"Migrate from Miniflare 2 to the Workers Vitest integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-miniflare-2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

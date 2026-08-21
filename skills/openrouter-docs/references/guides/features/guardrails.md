@@ -40,6 +40,10 @@ Each guardrail can include any combination of:
 
 ## Assigning Guardrails
 
+<Warning>
+  A guardrail enforces nothing until it is assigned. Creating a guardrail only defines it: passing a `workspace_id` places the guardrail in that workspace for organization, but does not apply it to the workspace's traffic. To restrict all traffic in a workspace without per-key or per-member assignments, configure the [workspace default guardrail](#updating-the-workspace-default-guardrail-via-api) instead.
+</Warning>
+
 Guardrails can be assigned at multiple levels:
 
 * **Member assignments** - Assign to specific organization members. Sets a baseline for all their API keys and chatroom usage.

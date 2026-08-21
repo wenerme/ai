@@ -143,10 +143,10 @@ To ensure each project uses different cookies, enable the Pages [unique domains]
 
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/163523) unique domain URLs to be shorter in GitLab 17.4.
 
-By default, every new project uses pages unique domains to avoid projects on the same group
-to share cookies.
+By default, every new project uses pages unique domains to avoid projects in the same group
+from sharing cookies.
 
-The project maintainer can disable this feature on:
+The project maintainer can disable this feature:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Deploy** > **Pages**.

@@ -6,7 +6,7 @@
 
 > High-speed model inference with :nitro
 
-The `:nitro` variant is an alias for sorting providers by throughput. When you use `:nitro`, OpenRouter will prioritize providers with the highest throughput (tokens per second).
+The `:nitro` variant optimizes for speed. When you use `:nitro`, OpenRouter sorts the model's providers by throughput (tokens per second) and also makes [priority service tier](/docs/guides/features/service-tiers) endpoints eligible, so a provider's priority tier can serve the request when it is genuinely the fastest option.
 
 ## Usage
 
@@ -18,4 +18,13 @@ Append `:nitro` to any model ID:
 }
 ```
 
-This is exactly equivalent to setting `provider.sort` to `"throughput"` in your request. For more details on provider sorting, see the [Provider Routing documentation](/docs/guides/routing/provider-selection#provider-sorting).
+## How it works
+
+`:nitro` does two things:
+
+1. **Sorts all eligible endpoints by throughput**, the same effect as setting [`provider.sort` to `"throughput"`](/docs/guides/routing/provider-selection#provider-sorting).
+2. **Admits priority service tier endpoints** into the eligible pool. Unlike the [`service_tier: "priority"` parameter](/docs/guides/features/service-tiers), priority endpoints get no special treatment: they compete with every other endpoint on measured throughput, and win only when they are actually the fastest.
+
+Because priority tier endpoints are billed at priority rates, a `:nitro` request served by a priority endpoint is charged that endpoint's priority pricing. As always, billing follows the tier the provider actually serves: if the provider sheds the request to its default tier, you're billed the default rate. See [Service Tiers](/docs/guides/features/service-tiers) for the full comparison of tier-selection options.
+
+If you want throughput sorting without priority tier eligibility, set `provider.sort` to `"throughput"` instead of using `:nitro`.

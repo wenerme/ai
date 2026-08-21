@@ -30,7 +30,7 @@ keywords: Ultralytics, YOLO, YOLO26, YOLO11, object detection, image segmentatio
     <a href="https://github.com/ultralytics/ultralytics/actions/workflows/ci.yml">[Ultralytics CI]</a>
     <a href="https://clickpy.clickhouse.com/dashboard/ultralytics">[Ultralytics Downloads]</a>
     <a href="https://discord.com/invite/ultralytics">[Ultralytics Discord]</a>
-    <a href="https://community.ultralytics.com/">[Ultralytics Forums]</a>
+    <a href="https://community.ultralytics.com">[Ultralytics Forums]</a>
     <a href="https://www.reddit.com/r/ultralytics/">[Ultralytics Reddit]</a>
 
     <a href="https://console.paperspace.com/github/ultralytics/ultralytics">[Run Ultralytics on Gradient]</a>

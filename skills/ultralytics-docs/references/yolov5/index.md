@@ -13,7 +13,7 @@ keywords: YOLOv5, Ultralytics, object detection, computer vision, deep learning,
     <a href="https://github.com/ultralytics/ultralytics/actions/workflows/ci.yml">[Ultralytics CI]</a>
     <a href="https://clickpy.clickhouse.com/dashboard/ultralytics">[Ultralytics Downloads]</a>
     <a href="https://discord.com/invite/ultralytics">[Ultralytics Discord]</a>
-    <a href="https://community.ultralytics.com/">[Ultralytics Forums]</a>
+    <a href="https://community.ultralytics.com">[Ultralytics Forums]</a>
     <a href="https://www.reddit.com/r/ultralytics/">[Ultralytics Reddit]</a>
 
     <a href="https://console.paperspace.com/github/ultralytics/ultralytics">[Run Ultralytics on Gradient]</a>
@@ -49,7 +49,7 @@ Here's a compilation of comprehensive tutorials that will guide you through diff
 
 ## Supported Environments
 
-Ultralytics provides a range of ready-to-use environments, each pre-installed with essential dependencies such as [CUDA](https://developer.nvidia.com/cuda), [CuDNN](https://developer.nvidia.com/cudnn), [Python](https://www.python.org/), and [PyTorch](https://pytorch.org/), to kickstart your projects. You can also manage your models and datasets using [Ultralytics Platform](https://platform.ultralytics.com).
+Ultralytics provides a range of ready-to-use environments, each pre-installed with essential dependencies such as [CUDA](https://developer.nvidia.com/cuda), [CuDNN](https://developer.nvidia.com/cuda/cuda-x-libraries/cudnn), [Python](https://www.python.org/), and [PyTorch](https://pytorch.org/), to kickstart your projects. You can also manage your models and datasets using [Ultralytics Platform](https://platform.ultralytics.com).
 
 - **Free GPU Notebooks**: <a href="https://bit.ly/yolov5-paperspace-notebook">[Run on Gradient]</a> <a href="https://colab.research.google.com/github/ultralytics/yolov5/blob/master/tutorial.ipynb">[Open In Colab]</a> <a href="https://www.kaggle.com/models/ultralytics/yolov5">[Open In Kaggle]</a>
 - **Google Cloud**: [GCP Quickstart Guide](environments/google-cloud-quickstart-tutorial.md)

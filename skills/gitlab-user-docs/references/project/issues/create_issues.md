@@ -158,7 +158,7 @@ HTML page to create issues with certain fields prefilled.
 To build the URL to create an issue with prefilled values, combine:
 
 1. The project's or group's Issues page URL, followed by `/new`.
-   For example: `https://gitlab.com/gitlab-org/gitlab/-/issues/new`
+   For example: `https://gitlab.com/gitlab-org/gitlab/-/work_items/new`
 
 1. `?` to start listing parameters.
 1. URL parameter, followed by `=` and value.
@@ -184,19 +184,19 @@ To create an issue in the GitLab project:
 - With a prefilled title and description:
 
   ```plaintext
-  https://gitlab.com/gitlab-org/gitlab/-/issues/new?issue[title]=Whoa%2C%20we%27re%20half-way%20there&issue[description]=Whoa%2C%20livin%27%20in%20a%20URL
+  https://gitlab.com/gitlab-org/gitlab/-/work_items/new?issue[title]=Whoa%2C%20we%27re%20half-way%20there&issue[description]=Whoa%2C%20livin%27%20in%20a%20URL
   ```
 
 - With a prefilled title and description template:
 
   ```plaintext
-  https://gitlab.com/gitlab-org/gitlab/-/issues/new?issue[title]=Validate%20new%20concept&issuable_template=Feature%20Proposal%20-%20basic
+  https://gitlab.com/gitlab-org/gitlab/-/work_items/new?issue[title]=Validate%20new%20concept&issuable_template=Feature%20Proposal%20-%20basic
   ```
 
 - With a prefilled title, description, and marked as confidential:
 
   ```plaintext
-  https://gitlab.com/gitlab-org/gitlab/-/issues/new?issue[title]=Validate%20new%20concept&issue[description]=Research%20idea&issue[confidential]=true
+  https://gitlab.com/gitlab-org/gitlab/-/work_items/new?issue[title]=Validate%20new%20concept&issue[description]=Research%20idea&issue[confidential]=true
   ```
 
 ## Using Service Desk

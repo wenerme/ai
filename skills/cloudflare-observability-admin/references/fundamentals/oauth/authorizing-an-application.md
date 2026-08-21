@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Authorizing an application
 
-Last updated Aug 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/oauth/authorizing-an-application/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/oauth/authorizing-an-application/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Overview
 
@@ -25,7 +25,7 @@ When a third-party application requests access to your Cloudflare account, you w
 * **Application name and logo**: The name and branding of the requesting application
 * **Publisher domain**: The domain and verification status of the application publisher
 * **Account selection**: Choose which Cloudflare account(s) the application can access
-* **Requested permissions**: After selecting the account(s) the application may access, the specific scopes the application is requesting will be displayed before consent is complete. To finish the authorization process, review the permissions the application is requesting and click “**Authorize**”
+* **Requested permissions**: After selecting the account(s) the application may access, the specific scopes the application is requesting will be displayed before consent is complete. You can also decline optional permissions. To finish the authorization process, review the permissions the application is requesting and select “**Authorize**”
 
 Each shield icon indicates who owns the application and whether its domain ownership is verified:
 
@@ -35,6 +35,14 @@ Each shield icon indicates who owns the application and whether its domain owner
 
 Domain verification only confirms that the application owner controls the displayed domain.
 
+### Edit optional permissions
+
+All requested permissions are selected by default. You can turn off optional permissions, but required permissions remain selected. Select **Read only** to include only optional scopes with read access, or **Full access** to include all optional scopes. If the client has no permissions configured as optional, editing controls do not appear.
+
+1. In **Additional access**, select **Edit Permissions**.
+2. Turn permissions on or off individually or by category.
+3. Select **Authorize** to grant required and selected optional permissions.
+
 ## View and revoke authorized applications
 
 Application authorizations may be viewed and revoked at any time from the profile page on the Cloudflare dashboard.
@@ -42,7 +50,7 @@ Application authorizations may be viewed and revoked at any time from the profil
 1. Log in to the Cloudflare dashboard.
 2. [Go to **Manage OAuth authorizations** ↗](https://dash.cloudflare.com/?to=/profile/access-management/authorization)
 3. View the list of applications you have authorized.
-  * If you wish to revoke access to an application, click the “Revoke” button for that row
+  * If you wish to revoke access to an application, select the “Revoke” button for that row
 
 ## Account administrator controls
 
@@ -60,8 +68,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/oauth/authorizing-an-application/#page","headline":"Authorizing an application · Cloudflare Fundamentals docs","description":"Learn more about what it means to authorize a third-party application on Cloudflare","url":"https://developers.cloudflare.com/fundamentals/oauth/authorizing-an-application/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/oauth/authorizing-an-application/#page","headline":"Authorizing an application · Cloudflare Fundamentals docs","description":"Learn more about what it means to authorize a third-party application on Cloudflare","url":"https://developers.cloudflare.com/fundamentals/oauth/authorizing-an-application/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

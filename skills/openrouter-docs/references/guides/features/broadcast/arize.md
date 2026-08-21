@@ -6,7 +6,9 @@
 
 > Send traces to Arize AX
 
-[Arize AX](https://arize.com) is an evaluation and observability platform developed by Arize; it offers tools for agent tracing, evals, prompt optimization, and more.
+[Arize AX](https://arize.com/products/ax/) is the full-featured evaluation and observability platform from [Arize AI](https://arize.com/?utm_source=openrouter-docs\&utm_medium=partner\&utm_campaign=partner-docs\&utm_content=broadcast-arize) for production teams, AI-native companies, and enterprises. It is available as managed cloud or enterprise self-hosted deployment and offers tools for agent tracing, evals, prompt optimization, and production monitoring.
+
+For teams looking for an open-source workflow for local development or single-container self-hosting, [Arize Phoenix](https://arize.com/phoenix/) uses the same OpenInference foundation. Arize's [agent evaluation guide](https://arize.com/guides/ai-agent-handbook/agent-evaluation/) and [LLM evaluation guide](https://arize.com/resources/llm-evaluation/) explain how traces can support evaluation and debugging after OpenRouter requests are captured.
 
 ## Step 1: Get your Arize AX credentials
 
