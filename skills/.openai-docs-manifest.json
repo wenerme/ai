@@ -594,10 +594,10 @@
   "openai-docs/guides/migrate-to-responses.md": {
     "url": "https://developers.openai.com/api/docs/guides/migrate-to-responses.md",
     "skill": "openai-docs",
-    "etag": "W/\"e1672268dc40c5274e1f00be8f4c5c16\"",
-    "lastModified": "Fri, 21 Aug 2026 00:31:58 GMT",
-    "size": 55498,
-    "updatedAt": "2026-08-21T01:54:21.982Z"
+    "etag": "W/\"832b8d0fdb3bea4ba42de41cb7ba079c\"",
+    "lastModified": "Fri, 21 Aug 2026 04:22:13 GMT",
+    "size": 55521,
+    "updatedAt": "2026-08-21T10:46:14.863Z"
   },
   "openai-docs/guides/model-guidance.md": {
     "url": "https://developers.openai.com/api/docs/guides/model-guidance.md",

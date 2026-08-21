@@ -194,6 +194,22 @@ components:
         disabled: false
         name: Updated OpenAI Key
       properties:
+        allowed_api_key_hashes:
+          description: >-
+            Optional allowlist of OpenRouter API key hashes (`api_keys.hash`)
+            that may use this credential. `null` clears the restriction. Must
+            contain at least one hash if provided. Hashes that do not belong to
+            your account return a 400.
+          example:
+            - f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943
+          items:
+            pattern: ^[a-f0-9]{64}$
+            type: string
+          maxItems: 100
+          minItems: 1
+          type:
+            - array
+            - 'null'
         allowed_models:
           description: >-
             Optional allowlist of model slugs this credential may be used for.

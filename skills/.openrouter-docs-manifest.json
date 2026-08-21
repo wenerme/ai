@@ -10093,9 +10093,9 @@
   },
   "api/api-reference/byok/create-a-byok-provider-credential.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/byok/create-a-byok-provider-credential.md",
-    "lastModified": "Fri, 21 Aug 2026 02:17:38 GMT",
-    "size": 19357,
-    "updatedAt": "2026-08-21T02:17:38.112Z"
+    "lastModified": "Fri, 21 Aug 2026 11:06:48 GMT",
+    "size": 20161,
+    "updatedAt": "2026-08-21T11:06:48.127Z"
   },
   "api/api-reference/byok/delete-a-byok-provider-credential.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/byok/delete-a-byok-provider-credential.md",
@@ -10117,9 +10117,9 @@
   },
   "api/api-reference/byok/update-a-byok-provider-credential.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/byok/update-a-byok-provider-credential.md",
-    "lastModified": "Fri, 21 Aug 2026 02:17:42 GMT",
-    "size": 18548,
-    "updatedAt": "2026-08-21T02:17:42.341Z"
+    "lastModified": "Fri, 21 Aug 2026 11:06:51 GMT",
+    "size": 19160,
+    "updatedAt": "2026-08-21T11:06:51.360Z"
   },
   "api/api-reference/chat/create-a-chat-completion.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/chat/create-a-chat-completion.md",
@@ -10669,9 +10669,9 @@
   },
   "changelog.md": {
     "url": "https://openrouter.ai/docs/changelog.md",
-    "lastModified": "Thu, 20 Aug 2026 11:07:38 GMT",
-    "size": 27431,
-    "updatedAt": "2026-08-20T11:07:38.842Z"
+    "lastModified": "Fri, 21 Aug 2026 11:08:02 GMT",
+    "size": 27897,
+    "updatedAt": "2026-08-21T11:08:02.680Z"
   },
   "client-sdks/agent-migration.md": {
     "url": "https://openrouter.ai/docs/client-sdks/agent-migration.md",
@@ -10717,9 +10717,9 @@
   },
   "client-sdks/go/sdks/byok/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/byok/README.md",
-    "lastModified": "Sat, 08 Aug 2026 02:27:35 GMT",
-    "size": 15217,
-    "updatedAt": "2026-08-08T02:27:35.278Z"
+    "lastModified": "Fri, 21 Aug 2026 11:08:08 GMT",
+    "size": 15427,
+    "updatedAt": "2026-08-21T11:08:08.237Z"
   },
   "client-sdks/go/sdks/chat/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/chat/README.md",
@@ -10897,9 +10897,9 @@
   },
   "client-sdks/python/sdks/byok/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/byok/README.md",
-    "lastModified": "Sat, 08 Aug 2026 02:27:50 GMT",
-    "size": 25527,
-    "updatedAt": "2026-08-08T02:27:50.270Z"
+    "lastModified": "Fri, 21 Aug 2026 11:08:27 GMT",
+    "size": 28247,
+    "updatedAt": "2026-08-21T11:08:27.513Z"
   },
   "client-sdks/python/sdks/chat/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/chat/README.md",
@@ -11071,9 +11071,9 @@
   },
   "client-sdks/typescript/sdks/byok/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/sdks/byok/README.md",
-    "lastModified": "Sat, 08 Aug 2026 02:28:05 GMT",
-    "size": 21072,
-    "updatedAt": "2026-08-08T02:28:05.155Z"
+    "lastModified": "Fri, 21 Aug 2026 11:08:49 GMT",
+    "size": 21282,
+    "updatedAt": "2026-08-21T11:08:49.675Z"
   },
   "client-sdks/typescript/sdks/chat/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/sdks/chat/README.md",
@@ -11989,9 +11989,9 @@
   },
   "guides/overview/auth/byok.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/byok.md",
-    "lastModified": "Wed, 19 Aug 2026 11:06:32 GMT",
-    "size": 21658,
-    "updatedAt": "2026-08-19T11:06:32.896Z"
+    "lastModified": "Fri, 21 Aug 2026 11:10:29 GMT",
+    "size": 26053,
+    "updatedAt": "2026-08-21T11:10:29.791Z"
   },
   "guides/overview/auth/management-api-keys.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/management-api-keys.md",

@@ -4,7 +4,7 @@
 
 # Create a BYOK provider credential
 
-> Create a new bring-your-own-key (BYOK) provider credential. The raw key is encrypted at rest and never returned in API responses. When `workspace_id` is omitted, the credential is created in the default workspace; if that default has been deleted, the request returns a 400 and you must pass `workspace_id` explicitly. Treat the raw key as write-only; it is never returned after creation. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+> Create a new bring-your-own-key (BYOK) provider credential. The raw key is encrypted at rest and never returned in API responses. When `workspace_id` is omitted, the credential is created in the default workspace; if that default has been deleted, the request returns a 400 and you must pass `workspace_id` explicitly. Treat the raw key as write-only; it is never returned after creation. Use `allowed_api_key_hashes` to restrict the credential to specific OpenRouter API keys. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 
 
@@ -107,7 +107,9 @@ paths:
         `workspace_id` is omitted, the credential is created in the default
         workspace; if that default has been deleted, the request returns a 400
         and you must pass `workspace_id` explicitly. Treat the raw key as
-        write-only; it is never returned after creation. [Management
+        write-only; it is never returned after creation. Use
+        `allowed_api_key_hashes` to restrict the credential to specific
+        OpenRouter API keys. [Management
         key](/docs/guides/overview/auth/management-api-keys) required.
       operationId: createBYOKKey
       requestBody:
@@ -189,6 +191,22 @@ components:
         name: Production OpenAI Key
         provider: openai
       properties:
+        allowed_api_key_hashes:
+          description: >-
+            Optional allowlist of OpenRouter API key hashes (`api_keys.hash`)
+            that may use this credential. `null` means no restriction. Must
+            contain at least one hash if provided. Hashes that do not belong to
+            your account return a 400.
+          example:
+            - f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943
+          items:
+            pattern: ^[a-f0-9]{64}$
+            type: string
+          maxItems: 100
+          minItems: 1
+          type:
+            - array
+            - 'null'
         allowed_models:
           description: >-
             Optional allowlist of model slugs this credential may be used for.

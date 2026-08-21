@@ -186,6 +186,83 @@ Each BYOK key supports optional filters to control when it is used:
 
 Filters are evaluated before routing. A key is only used when all of its active filters match the current request. If no filters are set, the key is available to all models, API keys, and members.
 
+#### Managing Filters via the Management API
+
+You can set and update all three filters programmatically using the [BYOK management endpoints](/docs/api/api-reference/byok/list-byok-provider-credentials). The API uses these field names:
+
+| UI filter      | API field                | Type               | Semantics                                                                                                                                                     |
+| -------------- | ------------------------ | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Model filter   | `allowed_models`         | `string[] \| null` | Allowlist of model slugs (e.g. `["openai/gpt-4o"]`). `null` means no restriction.                                                                             |
+| API key filter | `allowed_api_key_hashes` | `string[] \| null` | Allowlist of OpenRouter API key hashes (the `hash` field from the [Keys API](/docs/api/api-reference/api-keys/create-a-new-api-key)). `null` means no restriction. |
+| Member filter  | `allowed_user_ids`       | `string[] \| null` | Allowlist of user IDs (Clerk user IDs). `null` means no restriction.                                                                                          |
+
+Each field accepts up to 100 entries. Omission and `null` mean different things, and omission itself means something different depending on whether you're creating or updating:
+
+* **Create**: omitting a field means no restriction. Passing an array sets the restriction to those entries.
+* **Update**: omitting a field leaves its current value unchanged — whatever restriction (or lack of one) the key already has is preserved. Passing `null` clears a previously set restriction. Passing an array replaces the restriction with those entries.
+* An empty array (`[]`) is invalid for `allowed_api_key_hashes` and is rejected with a `400` error — pass `null` to clear the restriction instead, or omit the field to leave it unset (create) or unchanged (update).
+
+**Create a BYOK key with restrictions:**
+
+```bash theme={null}
+curl -X POST https://openrouter.ai/api/v1/byok \
+  -H "Authorization: Bearer $OPENROUTER_MANAGEMENT_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "provider": "openai",
+    "key": "sk-...",
+    "name": "Production GPT-4o Key",
+    "allowed_models": ["openai/gpt-4o", "openai/gpt-4o-mini"],
+    "allowed_api_key_hashes": ["f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943"],
+    "allowed_user_ids": ["user_2abc123"]
+  }'
+```
+
+**Update restrictions on an existing key:**
+
+```bash theme={null}
+curl -X PATCH https://openrouter.ai/api/v1/byok/11111111-2222-3333-4444-555555555555 \
+  -H "Authorization: Bearer $OPENROUTER_MANAGEMENT_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "allowed_api_key_hashes": null
+  }'
+```
+
+**Read back a key with restrictions:**
+
+```bash theme={null}
+curl https://openrouter.ai/api/v1/byok/11111111-2222-3333-4444-555555555555 \
+  -H "Authorization: Bearer $OPENROUTER_MANAGEMENT_KEY"
+```
+
+```json theme={null}
+{
+  "data": {
+    "id": "11111111-2222-3333-4444-555555555555",
+    "provider": "openai",
+    "workspace_id": "550e8400-e29b-41d4-a716-446655440000",
+    "label": "sk-...AbCd",
+    "name": "Production GPT-4o Key",
+    "disabled": false,
+    "is_fallback": false,
+    "allowed_models": ["openai/gpt-4o", "openai/gpt-4o-mini"],
+    "allowed_api_key_hashes": ["f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943"],
+    "allowed_user_ids": ["user_2abc123"],
+    "sort_order": 0,
+    "created_at": "2025-08-24T10:30:00Z"
+  }
+}
+```
+
+**Validation rules for `allowed_api_key_hashes`:**
+
+* Must be an array of strings (the SHA-256 `hash` values returned by the [Keys API](/docs/api/api-reference/api-keys/create-a-new-api-key)).
+* Each hash must be exactly 64 lowercase hexadecimal characters. Hashes in any other format are rejected with a `400` error.
+* Maximum 100 entries.
+* Must contain at least one hash if provided — an empty array (`[]`) is rejected with a `400` error. Pass `null` to clear the restriction instead, or omit the field to leave it unset (create) or unchanged (update).
+* Every hash must resolve to a live API key owned by your account; unknown or cross-account hashes return a `400` error.
+
 #### Combining Filters with Multiple Keys
 
 Filters and multiple keys work together to enable flexible routing strategies. For example:

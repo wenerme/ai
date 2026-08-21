@@ -4,6 +4,7 @@
 editUrl: false
 title: noEmptyPattern (JavaScript)
 description: JavaScript (and super languages) documentation for noEmptyPattern
+localized: false
 ---
 
 <RuleLanguageLinks current="javascript" languages={[{"id":"javascript","label":"JavaScript (and super languages)","href":"/linter/rules/no-empty-pattern/javascript/"}]} />
@@ -41,19 +42,19 @@ Disallows empty destructuring patterns.
 var {} = foo;
 ```
 
-<pre class="language-text"><code class="language-text">code-block.js:1:5 <a href="https://biomejs.dev/linter/rules/no-empty-pattern/javascript">lint/correctness/noEmptyPattern</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">Unexpected empty object pattern.</span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>var &#123;&#125; = foo;   <strong>   │ </strong>    <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>2 │ </strong>  </code></pre>
+<Fragment set:html={"<pre class=\"language-text\"><code class=\"language-text\">code-block.js:1:5 <a href=\"https://biomejs.dev/linter/rules/no-empty-pattern\">lint/correctness/noEmptyPattern</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style=\"color: Tomato;\">✖</span></strong> <span style=\"color: Tomato;\">Unexpected empty object pattern.</span>    <strong><span style=\"color: Tomato;\">&gt;</span></strong> <strong>1 │ </strong>var &#123;&#125; = foo;   <strong>   │ </strong>    <strong><span style=\"color: Tomato;\">^</span></strong><strong><span style=\"color: Tomato;\">^</span></strong>    <strong>2 │ </strong>  </code></pre>"} />
 
 ```js
 var {a: {}} = foo;
 ```
 
-<pre class="language-text"><code class="language-text">code-block.js:1:9 <a href="https://biomejs.dev/linter/rules/no-empty-pattern/javascript">lint/correctness/noEmptyPattern</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">Unexpected empty object pattern.</span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>var &#123;a: &#123;&#125;&#125; = foo;   <strong>   │ </strong>        <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>2 │ </strong>  </code></pre>
+<Fragment set:html={"<pre class=\"language-text\"><code class=\"language-text\">code-block.js:1:9 <a href=\"https://biomejs.dev/linter/rules/no-empty-pattern\">lint/correctness/noEmptyPattern</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style=\"color: Tomato;\">✖</span></strong> <span style=\"color: Tomato;\">Unexpected empty object pattern.</span>    <strong><span style=\"color: Tomato;\">&gt;</span></strong> <strong>1 │ </strong>var &#123;a: &#123;&#125;&#125; = foo;   <strong>   │ </strong>        <strong><span style=\"color: Tomato;\">^</span></strong><strong><span style=\"color: Tomato;\">^</span></strong>    <strong>2 │ </strong>  </code></pre>"} />
 
 ```js
 function foo({}) {}
 ```
 
-<pre class="language-text"><code class="language-text">code-block.js:1:14 <a href="https://biomejs.dev/linter/rules/no-empty-pattern/javascript">lint/correctness/noEmptyPattern</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">Unexpected empty object pattern.</span>    <strong><span style="color: Tomato;">&gt;</span></strong> <strong>1 │ </strong>function foo(&#123;&#125;) &#123;&#125;   <strong>   │ </strong>             <strong><span style="color: Tomato;">^</span></strong><strong><span style="color: Tomato;">^</span></strong>    <strong>2 │ </strong>  </code></pre>
+<Fragment set:html={"<pre class=\"language-text\"><code class=\"language-text\">code-block.js:1:14 <a href=\"https://biomejs.dev/linter/rules/no-empty-pattern\">lint/correctness/noEmptyPattern</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style=\"color: Tomato;\">✖</span></strong> <span style=\"color: Tomato;\">Unexpected empty object pattern.</span>    <strong><span style=\"color: Tomato;\">&gt;</span></strong> <strong>1 │ </strong>function foo(&#123;&#125;) &#123;&#125;   <strong>   │ </strong>             <strong><span style=\"color: Tomato;\">^</span></strong><strong><span style=\"color: Tomato;\">^</span></strong>    <strong>2 │ </strong>  </code></pre>"} />
 
 ### Valid
 

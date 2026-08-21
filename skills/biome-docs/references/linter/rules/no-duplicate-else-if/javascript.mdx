@@ -4,6 +4,7 @@
 editUrl: false
 title: noDuplicateElseIf (JavaScript)
 description: JavaScript (and super languages) documentation for noDuplicateElseIf
+localized: false
 ---
 
 <RuleLanguageLinks current="javascript" languages={[{"id":"javascript","label":"JavaScript (and super languages)","href":"/linter/rules/no-duplicate-else-if/javascript/"}]} />
@@ -57,7 +58,7 @@ if (a) {
 }
 ```
 
-<pre class="language-text"><code class="language-text">code-block.js:5:12 <a href="https://biomejs.dev/linter/rules/no-duplicate-else-if/javascript">lint/suspicious/noDuplicateElseIf</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style="color: Tomato;">✖</span></strong> <span style="color: Tomato;">This branch can never execute. Its condition is a duplicate or covered by previous conditions in the if-else-if chain.</span>      <strong>3 │ </strong>&#125; else if (b) &#123;    <strong>4 │ </strong>    bar();  <strong><span style="color: Tomato;">&gt;</span></strong> <strong>5 │ </strong>&#125; else if (b) &#123;   <strong>   │ </strong>           <strong><span style="color: Tomato;">^</span></strong>    <strong>6 │ </strong>    baz();    <strong>7 │ </strong>&#125;  </code></pre>
+<Fragment set:html={"<pre class=\"language-text\"><code class=\"language-text\">code-block.js:5:12 <a href=\"https://biomejs.dev/linter/rules/no-duplicate-else-if\">lint/suspicious/noDuplicateElseIf</a> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  <strong><span style=\"color: Tomato;\">✖</span></strong> <span style=\"color: Tomato;\">This branch can never execute. Its condition is a duplicate or covered by previous conditions in the if-else-if chain.</span>      <strong>3 │ </strong>&#125; else if (b) &#123;    <strong>4 │ </strong>    bar();  <strong><span style=\"color: Tomato;\">&gt;</span></strong> <strong>5 │ </strong>&#125; else if (b) &#123;   <strong>   │ </strong>           <strong><span style=\"color: Tomato;\">^</span></strong>    <strong>6 │ </strong>    baz();    <strong>7 │ </strong>&#125;  </code></pre>"} />
 
 ### Valid
 
