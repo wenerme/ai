@@ -701,6 +701,7 @@ components:
               - $ref: '#/components/schemas/AnthropicToolSearchToolBm25'
               - $ref: '#/components/schemas/AnthropicToolSearchToolRegex'
               - $ref: '#/components/schemas/ShellServerTool_OpenRouter'
+              - $ref: '#/components/schemas/ToolSearchServerTool'
           type: array
         top_k:
           type: integer
@@ -2251,6 +2252,24 @@ components:
       required:
         - type
       type: object
+    ToolSearchServerTool:
+      description: >-
+        OpenRouter built-in server tool: finds tools marked `defer_loading` and
+        makes them callable
+      example:
+        parameters:
+          max_results: 5
+        type: openrouter:tool_search
+      properties:
+        parameters:
+          $ref: '#/components/schemas/ToolSearchServerToolConfig'
+        type:
+          enum:
+            - openrouter:tool_search
+          type: string
+      required:
+        - type
+      type: object
     TraceConfig:
       additionalProperties: {}
       description: >-
@@ -3411,6 +3430,16 @@ components:
           $ref: '#/components/schemas/ShellServerToolEnvironment'
         sleep_after_seconds:
           $ref: '#/components/schemas/SandboxSleepAfterSeconds'
+      type: object
+    ToolSearchServerToolConfig:
+      description: Configuration for the openrouter:tool_search server tool
+      example:
+        max_results: 5
+      properties:
+        max_results:
+          description: Maximum tools returned by one search. Defaults to 5.
+          example: 5
+          type: integer
       type: object
     Preset:
       description: A preset without version details.

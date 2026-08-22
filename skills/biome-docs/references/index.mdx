@@ -75,10 +75,13 @@ hero:
 
     Try the Biome formatter on the [playground](/playground/) or directly on your project:
 
-    ```shell
-    npm i -D --save-exact @biomejs/biome
-    npx @biomejs/biome format --write ./src
-    ```
+  <PackageManagerCommand
+    npm={["i -D -E @biomejs/biome", "@biomejs/biome format"]}
+    pnpm={["add -D -E @biomejs/biome", "@biomejs/biome format"]}
+    yarn={["add -D -E @biomejs/biome", "@biomejs/biome format"]}
+    bun={["add -D -E @biomejs/biome", "@biomejs/biome format"]}
+    deno={["add -D npm:@biomejs/biome", "@biomejs/biome format"]}
+  />
 </div>
 
 <div class="hero-code">
@@ -95,10 +98,13 @@ hero:
 
     Try the Biome linter on the [playground](/playground/) or directly on your project:
 
-    ```shell
-    npm i -D --save-exact @biomejs/biome
-    npx @biomejs/biome lint --write ./src
-    ```
+  <PackageManagerCommand
+    npm={["i -D -E @biomejs/biome", "@biomejs/biome lint --write"]}
+    pnpm={["add -D -E @biomejs/biome", "@biomejs/biome lint --write"]}
+    yarn={["add -D -E @biomejs/biome", "@biomejs/biome lint --write"]}
+    bun={["add -D -E @biomejs/biome", "@biomejs/biome lint --write"]}
+    deno={["add -D npm:@biomejs/biome", "@biomejs/biome lint --write"]}
+  />
 
 </div>
 
@@ -111,10 +117,13 @@ hero:
 
     Run all tools with the `check` command:
 
-    ```shell
-    npm i -D --save-exact @biomejs/biome
-    npx @biomejs/biome check --write ./src
-    ```
+    <PackageManagerCommand
+      npm={["i -D -E @biomejs/biome", "@biomejs/biome check --write"]}
+      pnpm={["add -D -E @biomejs/biome", "@biomejs/biome check --write"]}
+      yarn={["add -D -E @biomejs/biome", "@biomejs/biome check --write"]}
+      bun={["add -D -E @biomejs/biome", "@biomejs/biome check --write"]}
+      deno={["add -D npm:@biomejs/biome", "@biomejs/biome check --write"]}
+    />
 
 </div>
 

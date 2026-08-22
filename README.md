@@ -1371,7 +1371,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 123 skills, 33716 files, 408 MiB total
+> 123 skills, 33717 files, 408 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1397,7 +1397,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [bun-ffi-interop-pattern](./skills/bun-ffi-interop-pattern/SKILL.md) | 1 | 4.8 KiB |
 | [caddy-docs](./skills/caddy-docs/SKILL.md) | 82 | 667 KiB |
 | [chrome-devtools](./skills/chrome-devtools/SKILL.md) | 1 | 3.6 KiB |
-| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 141 | 6.5 MiB |
+| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 141 | 6.6 MiB |
 | [clickhouse-docs](./skills/clickhouse-docs/SKILL.md) | 1105 | 10 MiB |
 | [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1588 | 17 MiB |
 | [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 381 | 2.9 MiB |
@@ -1436,7 +1436,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [google-ai-docs](./skills/google-ai-docs/SKILL.md) | 94 | 2.1 MiB |
 | [grafana-docs](./skills/grafana-docs/SKILL.md) | 631 | 6.3 MiB |
 | [grafana-plugin-docs](./skills/grafana-plugin-docs/SKILL.md) | 645 | 4.4 MiB |
-| [hono-docs](./skills/hono-docs/SKILL.md) | 87 | 358 KiB |
+| [hono-docs](./skills/hono-docs/SKILL.md) | 87 | 359 KiB |
 | [huggingface-docs](./skills/huggingface-docs/SKILL.md) | 361 | 2.0 MiB |
 | [humanizer](./skills/humanizer/SKILL.md) | 1 | 15 KiB |
 | [image-prompt-guide](./skills/image-prompt-guide/SKILL.md) | 9 | 323 KiB |
@@ -1462,7 +1462,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 529 | 24 MiB |
 | [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 472 KiB |
 | [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 481 | 2.8 MiB |
-| [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2388 | 15 MiB |
+| [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2389 | 15 MiB |
 | [orpc-docs](./skills/orpc-docs/SKILL.md) | 1 | 4.7 KiB |
 | [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | 2 | 7.4 KiB |
 | [papermc-docs](./skills/papermc-docs/SKILL.md) | 192 | 877 KiB |
