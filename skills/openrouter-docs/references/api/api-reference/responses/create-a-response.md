@@ -590,7 +590,15 @@ components:
             anyOf:
               - allOf:
                   - $ref: '#/components/schemas/FunctionTool'
-                  - properties: {}
+                  - properties:
+                      defer_loading:
+                        description: >-
+                          Withhold this tool from the model until
+                          `openrouter:tool_search` finds it. Requires the tool
+                          search server tool; at least one tool must remain
+                          non-deferred.
+                        example: true
+                        type: boolean
                     type: object
                 description: Function tool definition
                 example:
@@ -636,6 +644,7 @@ components:
               - $ref: '#/components/schemas/ApplyPatchServerTool_OpenRouter'
               - $ref: '#/components/schemas/BashServerTool'
               - $ref: '#/components/schemas/ShellServerTool_OpenRouter'
+              - $ref: '#/components/schemas/ToolSearchServerTool'
           type: array
         top_k:
           type: integer
@@ -2901,6 +2910,24 @@ components:
       required:
         - type
       type: object
+    ToolSearchServerTool:
+      description: >-
+        OpenRouter built-in server tool: finds tools marked `defer_loading` and
+        makes them callable
+      example:
+        parameters:
+          max_results: 5
+        type: openrouter:tool_search
+      properties:
+        parameters:
+          $ref: '#/components/schemas/ToolSearchServerToolConfig'
+        type:
+          enum:
+            - openrouter:tool_search
+          type: string
+      required:
+        - type
+      type: object
     TraceConfig:
       additionalProperties: {}
       description: >-
@@ -3074,7 +3101,15 @@ components:
             oneOf:
               - allOf:
                   - $ref: '#/components/schemas/FunctionTool'
-                  - properties: {}
+                  - properties:
+                      defer_loading:
+                        description: >-
+                          Withhold this tool from the model until
+                          `openrouter:tool_search` finds it. Requires the tool
+                          search server tool; at least one tool must remain
+                          non-deferred.
+                        example: true
+                        type: boolean
                     type: object
                 description: Function tool definition
                 example:
@@ -5632,7 +5667,15 @@ components:
             anyOf:
               - allOf:
                   - $ref: '#/components/schemas/FunctionTool'
-                  - properties: {}
+                  - properties:
+                      defer_loading:
+                        description: >-
+                          Withhold this tool from the model until
+                          `openrouter:tool_search` finds it. Requires the tool
+                          search server tool; at least one tool must remain
+                          non-deferred.
+                        example: true
+                        type: boolean
                     type: object
                 description: Function tool definition
                 example:
@@ -5678,6 +5721,7 @@ components:
               - $ref: '#/components/schemas/ApplyPatchServerTool_OpenRouter'
               - $ref: '#/components/schemas/BashServerTool'
               - $ref: '#/components/schemas/ShellServerTool_OpenRouter'
+              - $ref: '#/components/schemas/ToolSearchServerTool'
               - additionalProperties: {}
                 properties:
                   type:
@@ -6802,6 +6846,16 @@ components:
           $ref: '#/components/schemas/ShellServerToolEnvironment'
         sleep_after_seconds:
           $ref: '#/components/schemas/SandboxSleepAfterSeconds'
+      type: object
+    ToolSearchServerToolConfig:
+      description: Configuration for the openrouter:tool_search server tool
+      example:
+        max_results: 5
+      properties:
+        max_results:
+          description: Maximum tools returned by one search. Defaults to 5.
+          example: 5
+          type: integer
       type: object
     ResponsesErrorField:
       description: Error information returned from the API
