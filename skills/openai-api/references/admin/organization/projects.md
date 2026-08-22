@@ -12,7 +12,7 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
 ### Returns
 
-- `Project object { id, created_at, object, 4 more }`
+- `Project object { id, created_at, object, 5 more }`
 
   Represents an individual project.
 
@@ -42,6 +42,34 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
     The name of the project. This appears in reporting.
 
+  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+
+    The residency configuration for the project.
+
+    - `"GLOBAL"`
+
+    - `"US_STORAGE_PROCESSING"`
+
+    - `"EU_STORAGE_PROCESSING"`
+
+    - `"JP_STORAGE"`
+
+    - `"KR_STORAGE"`
+
+    - `"CA_STORAGE"`
+
+    - `"SG_STORAGE"`
+
+    - `"IN_STORAGE"`
+
+    - `"AU_STORAGE"`
+
+    - `"GB_STORAGE"`
+
+    - `"AE_STORAGE"`
+
+    - `"AE_STORAGE_PROCESSING"`
+
   - `status: optional string or null`
 
     `active` or `archived`
@@ -64,6 +92,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/archive \
   "archived_at": 0,
   "external_key_id": "external_key_id",
   "name": "name",
+  "residency": "GLOBAL",
   "status": "status"
 }
 ```
@@ -105,13 +134,37 @@ Create a new project in the organization. Projects can be created and archived, 
 
   External key ID to associate with the project.
 
-- `geography: optional string or null`
+- `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more or null`
 
-  Create the project with the specified data residency region. Your organization must have access to Data residency functionality in order to use. See [data residency controls](/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
+  Create the project with the specified residency configuration. Your organization must have access to the requested residency configuration in order to use it. See [data residency controls](/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
+
+  - `"GLOBAL"`
+
+  - `"US_STORAGE_PROCESSING"`
+
+  - `"EU_STORAGE_PROCESSING"`
+
+  - `"JP_STORAGE"`
+
+  - `"KR_STORAGE"`
+
+  - `"CA_STORAGE"`
+
+  - `"SG_STORAGE"`
+
+  - `"IN_STORAGE"`
+
+  - `"AU_STORAGE"`
+
+  - `"GB_STORAGE"`
+
+  - `"AE_STORAGE"`
+
+  - `"AE_STORAGE_PROCESSING"`
 
 ### Returns
 
-- `Project object { id, created_at, object, 4 more }`
+- `Project object { id, created_at, object, 5 more }`
 
   Represents an individual project.
 
@@ -141,6 +194,34 @@ Create a new project in the organization. Projects can be created and archived, 
 
     The name of the project. This appears in reporting.
 
+  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+
+    The residency configuration for the project.
+
+    - `"GLOBAL"`
+
+    - `"US_STORAGE_PROCESSING"`
+
+    - `"EU_STORAGE_PROCESSING"`
+
+    - `"JP_STORAGE"`
+
+    - `"KR_STORAGE"`
+
+    - `"CA_STORAGE"`
+
+    - `"SG_STORAGE"`
+
+    - `"IN_STORAGE"`
+
+    - `"AU_STORAGE"`
+
+    - `"GB_STORAGE"`
+
+    - `"AE_STORAGE"`
+
+    - `"AE_STORAGE_PROCESSING"`
+
   - `status: optional string or null`
 
     `active` or `archived`
@@ -166,6 +247,7 @@ curl https://api.openai.com/v1/organization/projects \
   "archived_at": 0,
   "external_key_id": "external_key_id",
   "name": "name",
+  "residency": "GLOBAL",
   "status": "status"
 }
 ```
@@ -244,6 +326,34 @@ Returns a list of projects.
 
     The name of the project. This appears in reporting.
 
+  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+
+    The residency configuration for the project.
+
+    - `"GLOBAL"`
+
+    - `"US_STORAGE_PROCESSING"`
+
+    - `"EU_STORAGE_PROCESSING"`
+
+    - `"JP_STORAGE"`
+
+    - `"KR_STORAGE"`
+
+    - `"CA_STORAGE"`
+
+    - `"SG_STORAGE"`
+
+    - `"IN_STORAGE"`
+
+    - `"AU_STORAGE"`
+
+    - `"GB_STORAGE"`
+
+    - `"AE_STORAGE"`
+
+    - `"AE_STORAGE_PROCESSING"`
+
   - `status: optional string or null`
 
     `active` or `archived`
@@ -277,6 +387,7 @@ curl https://api.openai.com/v1/organization/projects \
       "archived_at": 0,
       "external_key_id": "external_key_id",
       "name": "name",
+      "residency": "GLOBAL",
       "status": "status"
     }
   ],
@@ -328,7 +439,7 @@ Retrieves a project.
 
 ### Returns
 
-- `Project object { id, created_at, object, 4 more }`
+- `Project object { id, created_at, object, 5 more }`
 
   Represents an individual project.
 
@@ -358,6 +469,34 @@ Retrieves a project.
 
     The name of the project. This appears in reporting.
 
+  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+
+    The residency configuration for the project.
+
+    - `"GLOBAL"`
+
+    - `"US_STORAGE_PROCESSING"`
+
+    - `"EU_STORAGE_PROCESSING"`
+
+    - `"JP_STORAGE"`
+
+    - `"KR_STORAGE"`
+
+    - `"CA_STORAGE"`
+
+    - `"SG_STORAGE"`
+
+    - `"IN_STORAGE"`
+
+    - `"AU_STORAGE"`
+
+    - `"GB_STORAGE"`
+
+    - `"AE_STORAGE"`
+
+    - `"AE_STORAGE_PROCESSING"`
+
   - `status: optional string or null`
 
     `active` or `archived`
@@ -379,6 +518,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
   "archived_at": 0,
   "external_key_id": "external_key_id",
   "name": "name",
+  "residency": "GLOBAL",
   "status": "status"
 }
 ```
@@ -420,17 +560,13 @@ Modifies a project in the organization.
 
   External key ID to associate with the project.
 
-- `geography: optional string or null`
-
-  Geography for the project.
-
 - `name: optional string or null`
 
   The updated name of the project, this name appears in reports.
 
 ### Returns
 
-- `Project object { id, created_at, object, 4 more }`
+- `Project object { id, created_at, object, 5 more }`
 
   Represents an individual project.
 
@@ -459,6 +595,34 @@ Modifies a project in the organization.
   - `name: optional string or null`
 
     The name of the project. This appears in reporting.
+
+  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+
+    The residency configuration for the project.
+
+    - `"GLOBAL"`
+
+    - `"US_STORAGE_PROCESSING"`
+
+    - `"EU_STORAGE_PROCESSING"`
+
+    - `"JP_STORAGE"`
+
+    - `"KR_STORAGE"`
+
+    - `"CA_STORAGE"`
+
+    - `"SG_STORAGE"`
+
+    - `"IN_STORAGE"`
+
+    - `"AU_STORAGE"`
+
+    - `"GB_STORAGE"`
+
+    - `"AE_STORAGE"`
+
+    - `"AE_STORAGE_PROCESSING"`
 
   - `status: optional string or null`
 
@@ -483,6 +647,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
   "archived_at": 0,
   "external_key_id": "external_key_id",
   "name": "name",
+  "residency": "GLOBAL",
   "status": "status"
 }
 ```
@@ -502,7 +667,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc \
 
 ### Project
 
-- `Project object { id, created_at, object, 4 more }`
+- `Project object { id, created_at, object, 5 more }`
 
   Represents an individual project.
 
@@ -531,6 +696,34 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc \
   - `name: optional string or null`
 
     The name of the project. This appears in reporting.
+
+  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+
+    The residency configuration for the project.
+
+    - `"GLOBAL"`
+
+    - `"US_STORAGE_PROCESSING"`
+
+    - `"EU_STORAGE_PROCESSING"`
+
+    - `"JP_STORAGE"`
+
+    - `"KR_STORAGE"`
+
+    - `"CA_STORAGE"`
+
+    - `"SG_STORAGE"`
+
+    - `"IN_STORAGE"`
+
+    - `"AU_STORAGE"`
+
+    - `"GB_STORAGE"`
+
+    - `"AE_STORAGE"`
+
+    - `"AE_STORAGE_PROCESSING"`
 
   - `status: optional string or null`
 

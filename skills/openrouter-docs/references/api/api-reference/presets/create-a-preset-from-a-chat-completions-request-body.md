@@ -2293,6 +2293,7 @@ components:
         - Inferact vLLM
         - Inflection
         - Liquid
+        - Makora
         - Mara
         - Mancer 2
         - Meta
@@ -4204,6 +4205,7 @@ components:
         - openai-responses-v1
         - azure-openai-responses-v1
         - bedrock-openai-responses-v1
+        - bedrock-xai-responses-v1
         - xai-responses-v1
         - meta-responses-v1
         - anthropic-claude-v1

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # ​Purge cache by prefix (URL)
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/purge%5Fby%5Fprefix/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/purge%5Fby%5Fprefix/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can instantly purge their cache by URL prefix or path separators in their URL. For an example URL like `https://www.example.com/foo/bar/baz/qux.jpg`, valid purge requests include:
 
@@ -34,7 +34,7 @@ Purging by prefix is useful in different scenarios, such as:
 4. Follow the syntax instructions.
 
   * One prefix per line.
-  * Maximum 30 prefixes per API call.
+  * Maximum 100 prefixes per request.
 5. Enter the appropriate value(s) in the text field using the format shown in the example.
 6. Select **Purge**.
 
@@ -55,7 +55,7 @@ If [tiered cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/) 
 There are several limitations regarding purge by prefix:
 
 * Path separators are limited to 31 for a prefix `(example.com/a/b/c/d/e/f/g/h/i/j/k/l/m…)`.
-* Purge requests are limited to 30 prefixes per request.
+* Purge requests are limited to 100 prefixes per request.
 * [Purge rate-limits apply](https://developers.cloudflare.com/api/resources/cache/methods/purge/).
 * URI query strings & fragments cannot purge by prefix:
   * `www.example.com/foo?a=b` (query string)
@@ -88,8 +88,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/#page","headline":"​Purge cache by prefix (URL) · Cloudflare Cache (CDN) docs","description":"Purge cached resources by URL prefix.","url":"https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/#page","headline":"​Purge cache by prefix (URL) · Cloudflare Cache (CDN) docs","description":"Purge cached resources by URL prefix.","url":"https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

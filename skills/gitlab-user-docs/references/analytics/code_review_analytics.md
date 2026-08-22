@@ -5,8 +5,6 @@ Learn how long your open merge requests have spent in code review, and what dist
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Moved to GitLab Premium in 13.9.
-
 Code review analytics displays a table of open merge requests that have at least one non-author comment.
 The review time is the amount of time since the first comment by a non-author in a merge request.
 

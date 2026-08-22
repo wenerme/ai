@@ -244,6 +244,46 @@
     "size": 18062,
     "updatedAt": "2026-08-13T02:58:15.377Z"
   },
+  "grafana-azureprometheus-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/alerting.md",
+    "size": 7440,
+    "updatedAt": "2026-08-22T02:15:37.698Z"
+  },
+  "grafana-azureprometheus-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/annotations.md",
+    "size": 8886,
+    "updatedAt": "2026-08-22T02:15:37.897Z"
+  },
+  "grafana-azureprometheus-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/configure.md",
+    "size": 22833,
+    "updatedAt": "2026-08-22T02:15:38.092Z"
+  },
+  "grafana-azureprometheus-datasource/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest.md",
+    "size": 6284,
+    "updatedAt": "2026-08-22T02:15:38.290Z"
+  },
+  "grafana-azureprometheus-datasource/install.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/install.md",
+    "size": 9891,
+    "updatedAt": "2026-08-22T02:15:38.485Z"
+  },
+  "grafana-azureprometheus-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/query-editor.md",
+    "size": 13216,
+    "updatedAt": "2026-08-22T02:15:38.699Z"
+  },
+  "grafana-azureprometheus-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/template-variables.md",
+    "size": 10298,
+    "updatedAt": "2026-08-22T02:15:38.922Z"
+  },
+  "grafana-azureprometheus-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azureprometheus-datasource/latest/troubleshooting.md",
+    "size": 18651,
+    "updatedAt": "2026-08-22T02:15:39.118Z"
+  },
   "grafana-bigquery-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/alerting.md",
     "size": 7681,
@@ -2041,8 +2081,8 @@
   },
   "index.md": {
     "url": "https://grafana.com/docs/plugins.md",
-    "size": 8968,
-    "updatedAt": "2026-08-21T02:25:05.843Z"
+    "size": 9146,
+    "updatedAt": "2026-08-22T02:16:49.745Z"
   },
   "marcusolsson-calendar-panel/basic-config.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/basic-config.md",

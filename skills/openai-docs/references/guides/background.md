@@ -10,6 +10,14 @@ Background requests from Zero Data Retention (ZDR) projects run with
   `store=false`. Response data is temporarily stored to disk for roughly 10
   minutes to enable asynchronous execution and polling.
 
+For projects using [Modified Abuse
+Monitoring](https://developers.openai.com/api/docs/guides/your-data#modified-abuse-monitoring), including
+enhanced Modified Abuse Monitoring, foreground requests follow standard
+retention when `store` is omitted or set to `true`. Background responses are
+retained after the polling period only when `store=true` is explicitly provided.
+If `store` is omitted or set to `false` for a background request, the response
+is deleted after roughly 10 minutes.
+
 Generate a response in the background
 
 ```bash

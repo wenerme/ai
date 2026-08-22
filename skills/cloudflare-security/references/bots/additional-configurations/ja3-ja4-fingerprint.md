@@ -22,10 +22,10 @@ Note
 
 JA3 and JA4 fingerprints are only available to Enterprise customers who have purchased Bot Management.
 
-If you want to use JA4 fingerprints and Signals Intelligence, your Workers script must be able to handle the absence of any field in the array, including:
+If you want to use JA4 fingerprints and Signals Intelligence, your Workers script should be able to handle missing fields when Bot Management isn't able to calculate or populate JA4 Signals (for example, non-TLS traffic or when Bot Management is skipped). For Orange-to-Orange (O2O) scenarios where Bot Management is in effect, JA4 Signals correspond to the eyeball (end-user) connection and are preserved through the O2O chain, including O2O zone requests and any corresponding subrequests.
 
 * The possibility that the JA4 fingerprint could be missing.
-* The possibility that the `ja4Signals` array could be missing.
+* The possibility that the `ja4Signals` array could be missing (for example, if JA4 isn't available for the request).
 * Results with `NaN` or `Infinity` values will be excluded from the array.
 
 ```json
@@ -84,11 +84,11 @@ This sample was generated using [Workers' Cloudflare Object script](https://deve
 The JA3 or JA4 fingerprint is an SSL/TLS-based identifier and can be null or empty in logs under specific circumstances:
 
 * Since JA3 and JA4 are calculated during the TLS (SSL) handshake, they will not be present for non-encrypted HTTP traffic.
-* The field may be empty when a [Worker](https://developers.cloudflare.com/workers/) sends a request to a zone that is either internal to Cloudflare's network (O2O traffic that is not proxied) or to a third-party origin, or when a Worker is routing traffic to the target zone.
+* The field may be empty when a [Worker](https://developers.cloudflare.com/workers/) sends a request to a zone that is either internal to Cloudflare's network (for example, non-proxied/internal O2O) or to a third-party origin, or when a Worker is routing traffic to the target zone.
 * The fingerprints may be absent when Bot Management itself is skipped for a request, as the feature is responsible for calculating and populating these values.
 * With [TLS Session Resumption ↗](https://blog.cloudflare.com/tls-session-resumption-full-speed-and-secure/), once the initial TLS handshake is successfully completed, subsequent connections will be streamlined. This results in no further fingerprint calculation.
 
-Generally, [O2O traffic](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/) should include JA3 or JA4 fingerprints unless a Worker is used to route traffic from the eyeball (client-facing) zone to the target zone.
+In [Orange-to-Orange (O2O)](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/) scenarios where Bot Management is in effect, JA3/JA4 fingerprints are preserved through the O2O chain and represent the eyeball (end-user) connection. This includes requests on the O2O zone and any corresponding subrequests.
 
 ## Analytics
 
@@ -129,7 +129,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/#page","headline":"JA3/JA4 fingerprint · Cloudflare bot solutions docs","description":"Profile SSL/TLS clients across requests using JA3 and JA4 fingerprints.","url":"https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

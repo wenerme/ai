@@ -208,6 +208,14 @@ To configure SAML Group Sync:
    ]
    ```
 
+   In this example, `groups_attribute` is a key of the provider hash, at the same level as
+   `name` and `label`, not inside `args`.
+   If it's inside `args`, group sync does not run.
+   Users still sign in and the SAML response still carries the groups, but GitLab changes no
+   memberships and logs no error.
+   For more information, see
+   [SAML group links exist but no memberships change](troubleshooting.md#saml-group-links-exist-but-no-memberships-change).
+
 The value for `Groups` or `groups` in the SAML response may be either the group name or an ID.
 For example, Azure AD sends the Azure Group Object ID instead of the name. Use the ID value when configuring [SAML Group Links](#configure-saml-group-links).
 

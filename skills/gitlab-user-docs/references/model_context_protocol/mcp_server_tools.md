@@ -581,6 +581,36 @@ Examples:
   Delete pipeline 12345 in project gitlab-org/gitlab
   ```
 
+## `get_work_item`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605882) in GitLab 19.4.
+
+Retrieves a single work item (issue, epic, task, incident, objective, or key result) with its
+type, dates, assignees, labels, milestone, and parent. Optionally includes its notes or the
+merge requests related to it. Widgets the work item type does not support are omitted.
+
+| Parameter                       | Type    | Required | Description |
+|---------------------------------|---------|----------|-------------|
+| `url`                           | string  | No       | GitLab URL of the work item (a `/-/work_items/` URL). Provide this, or `work_item_iid` with `group_id` or `project_id`. |
+| `group_id`                      | string  | No       | ID or path of the group. Required if `url` and `project_id` are missing. |
+| `project_id`                    | string  | No       | ID or path of the project. Required if `url` and `group_id` are missing. |
+| `work_item_iid`                 | integer | No       | Internal ID of the work item. Required if `url` is missing. |
+| `include`                       | array   | No       | Associated data to return. One of `notes` or `related_merge_requests`, one facet per call. |
+| `related_merge_requests_first`  | integer | No       | Number of related merge requests to return. Default 20, maximum 100. |
+| `related_merge_requests_after`  | string  | No       | Cursor for forward pagination of related merge requests. |
+| `mr_page_size`                  | integer | No       | Deprecated: use `related_merge_requests_first` instead. |
+| `mr_pagination_cursor`          | string  | No       | Deprecated: use `related_merge_requests_after` instead. |
+
+The `notes` facet returns the first 100 notes. Use `get_workitem_notes` for full note
+pagination. The `related_merge_requests` facet is empty for group-level work items such
+as epics.
+
+Example:
+
+```plaintext
+Get issue 42 in project gitlab-org/gitlab with its related merge requests
+```
+
 ## `create_workitem_note`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/581890) in GitLab 18.7.
@@ -708,6 +738,47 @@ Example:
 
 ```plaintext
 Create a task "Update the onboarding guide" in project gitlab-org/gitlab and assign it to me
+```
+
+## `list_work_items`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605850) in GitLab 19.4.
+
+Lists or searches work items (issues, incidents, test cases, requirements, tasks, tickets,
+objectives, key results, epics) in a group or project. Group scope includes work items of
+descendant projects and subgroups. Each result contains only the ID, IID, title, state, web URL,
+full reference, created and updated timestamps, and work item type, with cursor pagination.
+Use `get_work_item` to read one work item in depth.
+
+| Parameter               | Type    | Required | Description |
+|-------------------------|---------|----------|-------------|
+| `url`                   | string  | No       | GitLab URL for the project or group. Provide exactly one of `url`, `group_id`, or `project_id`. |
+| `group_id`              | string  | No       | ID or path of the group. Required if `url` and `project_id` are missing. |
+| `project_id`            | string  | No       | ID or path of the project. Required if `url` and `group_id` are missing. |
+| `state`                 | string  | No       | Filter by state: `opened`, `closed`, or `all` (default). |
+| `search`                | string  | No       | Free-text search in title and description. |
+| `author_username`       | string  | No       | Username of the author. |
+| `assignee_usernames`    | array   | No       | Usernames of assignees. A work item must match all of them. Maximum 100 values. |
+| `label_name`            | array   | No       | Label names. A work item must have all of them. Maximum 100 values. |
+| `milestone_title`       | array   | No       | Milestone titles. Cannot be combined with `milestone_wildcard_id`. Maximum 100 values. |
+| `milestone_wildcard_id` | string  | No       | `NONE`, `ANY`, `STARTED`, or `UPCOMING`. Cannot be combined with `milestone_title`. |
+| `types`                 | array   | No       | Work item types to include, for example `["ISSUE", "TASK"]`. |
+| `created_after`         | string  | No       | Created after this time (ISO 8601; date-only means start of day, offsets honored). |
+| `created_before`        | string  | No       | Created before this time (ISO 8601; date-only means start of day, offsets honored). |
+| `updated_after`         | string  | No       | Updated after this time (ISO 8601; date-only means start of day, offsets honored). |
+| `updated_before`        | string  | No       | Updated before this time (ISO 8601; date-only means start of day, offsets honored). |
+| `due_after`             | string  | No       | Due after this time (ISO 8601; date-only means start of day, offsets honored). |
+| `due_before`            | string  | No       | Due before this time (ISO 8601; date-only means start of day, offsets honored). |
+| `sort`                  | string  | No       | Sort order, for example `UPDATED_DESC`. Default `CREATED_DESC`. |
+| `first`                 | integer | No       | Number of work items to return. Default 20, maximum 100. |
+| `after`                 | string  | No       | Cursor for forward pagination. |
+| `health_status_filter`  | string  | No       | Ultimate only. `onTrack`, `needsAttention`, or `atRisk`. |
+| `status`                | object  | No       | Ultimate only. Filter by custom status name, for example `{"name": "In progress"}`. |
+
+Example:
+
+```plaintext
+List my open tasks in the gitlab-org group updated this month.
 ```
 
 ## `search`

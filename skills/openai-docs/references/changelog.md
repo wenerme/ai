@@ -8,6 +8,18 @@ Upcoming deprecations are listed on the [deprecations page](/api/docs/deprecatio
 
 ## August, 2026
 
+### Aug 21
+
+Feature
+
+API customers can now select regional processing for an individual request by using a prefixed domain with an API key from a project having Global geography. Existing eligibility, data retention control, endpoint, and model support requirements continue to apply. Learn more in the [data controls guide](https://developers.openai.com/api/docs/guides/your-data#select-a-processing-region-per-request).
+
+### Aug 21
+
+Update · Model: gpt-5.6-sol
+
+GPT-5.6 Sol now costs $4 per million input tokens and $20 per million output tokens, representing 20% lower input pricing and 33% lower output pricing. GPT-5.6 Sol’s promotional pricing is available at least through November 21, 2026. See [pricing details](https://developers.openai.com/api/docs/pricing).
+
 ### Aug 20
 
 Feature

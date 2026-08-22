@@ -576,13 +576,63 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 * `--profile` `string`
 Use a specific auth profile
 
+## `workflows instances delete`
+
+Delete workflow instances
+
+npmyarnpnpm
+
+```
+npx wrangler workflows instances delete [NAME] [ID]
+```
+
+```
+yarn wrangler workflows instances delete [NAME] [ID]
+```
+
+```
+pnpm wrangler workflows instances delete [NAME] [ID]
+```
+
+* `--local` `boolean`
+Interact with local dev session
+* `--port` `number` default: 8787
+Port of the local dev session (default: 8787)
+* `[NAME]` `string` required
+Name of the workflow
+* `[ID]` `string`
+IDs of the instances - you can type 'latest' to get the latest instance and delete it
+* `--filename` `string`
+Path to a JSON file containing an array of instance IDs
+
+Global flags
+
+* `--v` `boolean` alias: --version
+Show version number
+* `--cwd` `string`
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` `string` alias: --c
+Path to Wrangler configuration file
+* `--env` `string` alias: --e
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` `string`
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
+Automatically provision draft bindings with new resources
+* `--install-skills` `boolean` default: false
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` `string`
+Use a specific auth profile
+
 Was this helpful?
 
 YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workflows/#page","headline":"Workflows · Cloudflare Workers docs","description":"Wrangler commands for managing and configuring Cloudflare Workflows.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

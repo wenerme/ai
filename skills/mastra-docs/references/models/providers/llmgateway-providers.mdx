@@ -1,11 +1,11 @@
 ---
 title: "LLM Gateway | Models"
-description: "Use LLM Gateway models with Mastra. 367 models available."
+description: "Use LLM Gateway models with Mastra. 369 models available."
 ---
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 367 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 369 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -3664,6 +3664,18 @@ for await (const chunk of stream) {
     "outputCost": 12
   },
   {
+    "model": "llmgateway-providers/ranoai/deepseek-v4-flash",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 393216,
+    "inputCost": 0.14,
+    "outputCost": 0.28
+  },
+  {
     "model": "llmgateway-providers/runware/deepseek-v4-flash",
     "imageInput": false,
     "audioInput": false,
@@ -4094,6 +4106,18 @@ for await (const chunk of stream) {
     "maxOutput": 30000,
     "inputCost": 1.25,
     "outputCost": 2.5
+  },
+  {
+    "model": "llmgateway-providers/vertex-openai/grok-4-6",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 500000,
+    "maxOutput": 500000,
+    "inputCost": 2,
+    "outputCost": 6
   },
   {
     "model": "llmgateway-providers/vertex-openai/kimi-k2-thinking",

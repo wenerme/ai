@@ -432,7 +432,7 @@ Get file search calls usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -467,6 +467,32 @@ Get file search calls usage details for the organization.
       - `quantity: optional number or null`
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+        The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+        - `string`
+
+        - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `"tokens"`
+
+          - `"1000_tokens"`
+
+          - `"duration_seconds"`
+
+          - `"duration_minutes"`
+
+          - `"duration_hours"`
+
+          - `"gibibyte_hours"`
+
+          - `"images"`
+
+          - `"characters"`
 
   - `start_time: number`
 

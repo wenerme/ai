@@ -1318,7 +1318,7 @@ data and systems:
 
          ## **RULE 2: Default Behavior (ACTUATE)**
 
-         If an action does **NOT** fall under the conditions for `USER_CONFIRMATION`,
+         If an action does **NOT** fall under the conditions for \`USER_CONFIRMATION\`,
          your default behavior is to **Actuate**.
 
          **Actuation Means:**  You MUST proactively perform all necessary steps to move

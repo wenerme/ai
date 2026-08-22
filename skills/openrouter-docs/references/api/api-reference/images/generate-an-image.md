@@ -1314,6 +1314,7 @@ components:
         - Inferact vLLM
         - Inflection
         - Liquid
+        - Makora
         - Mara
         - Mancer 2
         - Meta
@@ -1590,6 +1591,9 @@ components:
           additionalProperties: {}
           type: object
         lynn-private:
+          additionalProperties: {}
+          type: object
+        makora:
           additionalProperties: {}
           type: object
         mancer:
