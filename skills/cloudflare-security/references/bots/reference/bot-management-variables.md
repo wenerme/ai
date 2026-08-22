@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Bot Management variables
 
-Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/reference/bot-management-variables/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/reference/bot-management-variables/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Ruleset Engine fields
 
@@ -42,6 +42,12 @@ These variables are also available as part of the [request.cf](https://developer
 * `request.cf.botManagement.signedAgent`
 * `request.cf.verifiedBotCategory`
 
+## O2O and subrequests
+
+For Orange-to-Orange (O2O) traffic and any related subrequests where Bot Management is in effect, Bot Management fields (including bot score, verified bot, and JA3/JA4) represent the eyeball (end-user) connection to your platform.
+
+Eyeball signals are preserved through the O2O chain, so the fields must be present regardless of which O2O request path you reach.
+
 ## Corporate Proxy
 
 The Bot Management Corporate Proxy field contains identified cloud-based corporate proxies and secure web gateways that are Enterprise-only, and provide outbound security services to their clients.
@@ -70,8 +76,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/bot-management-variables/#page","headline":"Bot Management variables · Cloudflare bot solutions docs","description":"Ruleset Engine fields and Workers variables available for bot detection rules.","url":"https://developers.cloudflare.com/bots/reference/bot-management-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/bot-management-variables/#page","headline":"Bot Management variables · Cloudflare bot solutions docs","description":"Ruleset Engine fields and Workers variables available for bot detection rules.","url":"https://developers.cloudflare.com/bots/reference/bot-management-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

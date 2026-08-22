@@ -431,6 +431,7 @@ components:
         - ionstream
         - krea
         - liquid
+        - makora
         - mancer
         - mara
         - meta

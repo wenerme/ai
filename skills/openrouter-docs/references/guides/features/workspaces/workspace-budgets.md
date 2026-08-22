@@ -194,7 +194,7 @@ Enterprise org admins can also set budgets when creating a new workspace. The wo
   </Accordion>
 
   <Accordion title="Who gets notified when a budget is exceeded?">
-    Users receive a `403 Forbidden` error on the blocked request with a message naming the exceeded budget. There are no proactive email or webhook notifications yet — budget status is visible in the workspace settings dashboard.
+    Users receive a `403 Forbidden` error on the blocked request with a message naming the exceeded budget. To hear about it before that happens, turn on the [workspace budget limit alert](/docs/guides/features/notifications), which fires at chosen percentages of the budget. Budget status is also visible in the workspace settings dashboard.
   </Accordion>
 
   <Accordion title="Can workspace members override a budget?">

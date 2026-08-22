@@ -2533,6 +2533,7 @@ components:
         - Inferact vLLM
         - Inflection
         - Liquid
+        - Makora
         - Mara
         - Mancer 2
         - Meta
@@ -4394,6 +4395,7 @@ components:
                 - Inferact vLLM
                 - Inflection
                 - Liquid
+                - Makora
                 - Mara
                 - Mancer 2
                 - Meta

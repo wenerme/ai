@@ -2,13 +2,13 @@
 
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed
-- Status: Beta
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/16319) in GitLab 18.3 [with the feature flags](../../../development/feature_flags/_index.md) `secrets_manager` and `ci_tanukey_ui`. Disabled by default.
 - Feature flag `ci_tanukey_ui` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/549940) in GitLab 18.4.
 - Made available to some users in a closed beta in GitLab 18.8.
 - Group secrets manager [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/17904) and made available to closed beta users in 18.10 [with the feature flag](../../../development/feature_flags/_index.md) `group_secrets_manager`.
 - [Changed](https://gitlab.com/groups/gitlab-org/-/work_items/21731) from closed beta to public beta in GitLab 19.0.
+- [Changed](https://gitlab.com/groups/gitlab-org/-/work_items/10723) to limited availability on GitLab.com in GitLab 19.3.
 
 Secrets represent sensitive information your CI/CD jobs need to function. Secrets could be access tokens,
 database credentials, private keys, or similar.
@@ -17,9 +17,13 @@ Unlike CI/CD variables, which are always available to jobs by default, secrets m
 
 Use GitLab Secrets Manager to securely store and manage secrets and credentials for your projects and groups.
 
-GitLab Secrets Manager is free during public beta, but will consume GitLab credits when
-released as generally available. To avoid a service interruption, you will be notified
-before general availability to give you time to opt into on-demand billing for GitLab credits.
+For GitLab.com, you can start a 30-day trial to try GitLab Secrets Manager with trial credits.
+After the trial expires, GitLab Secrets Manager consumes GitLab credits.
+To avoid a service interruption, opt into on-demand billing for GitLab credits before the trial ends.
+For more information, see [GitLab Secrets Manager usage and billing](secrets_manager_billing.md).
+
+For GitLab Self-Managed, GitLab Secrets Manager is free during public beta.
+You will be notified before general availability to give you time to opt into on-demand billing for GitLab credits.
 
 For a click-through demo, see [GitLab Secrets Manager](https://click-through-demo-generator-27bd12.gitlab.io/demos/demo-20260506-094904/).
 
@@ -33,7 +37,23 @@ On GitLab Self-Managed, an administrator must first [install and enable GitLab S
 for the instance. After Secrets Manager is installed and enabled, you can enable it
 for specific groups and projects on the instance.
 
-### For a project
+### For GitLab.com
+
+Status: Limited Availability
+
+Prerequisites:
+
+- You must have the Owner role for the top-level group.
+
+1. In the top bar, select **Search or go to** and find your top-level group.
+1. In the left sidebar, select **Secure** > **Secrets Manager**.
+1. Select **Start 30-day trial**.
+
+### For GitLab Self-Managed
+
+- Status: Beta
+
+#### For a project
 
 Prerequisites:
 
@@ -52,7 +72,7 @@ To enable or disable GitLab Secrets Manager for a project:
 
 Secrets defined for a project can only be accessed by pipelines from the same project.
 
-### For a group
+#### For a group
 
 Prerequisites:
 
@@ -242,6 +262,7 @@ For more information, see [Access secrets from non-CI/CD workloads](non_cicd_acc
 
 ## Related topics
 
+- [GitLab Secrets Manager usage and billing](secrets_manager_billing.md)
 - [Secret Audit Tool for Variables](https://gitlab.com/guided-explorations/secrets-management/secret-audit-tool-for-variables):
   A community tool that scans a GitLab group hierarchy for CI/CD variables whose names suggest they may hold credentials
   (passwords, tokens, API keys, and similar). It generates an HTML report to help you identify

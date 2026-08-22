@@ -14,9 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Mount R2 buckets as filesystems using FUSE in Containers
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/examples/r2-fuse-mount/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/examples/r2-fuse-mount/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 FUSE (Filesystem in Userspace) allows you to mount [R2 buckets](https://developers.cloudflare.com/r2/) as filesystems within Containers. Applications can then interact with R2 using standard filesystem operations rather than object storage APIs.
+
+To run a FUSE container locally, refer to [FUSE support during local development](https://developers.cloudflare.com/containers/local-dev/#fuse-support).
 
 Common use cases include:
 
@@ -195,8 +197,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/examples/r2-fuse-mount/#page","headline":"Mount R2 buckets with FUSE · Cloudflare Containers docs","description":"Mount R2 buckets as filesystems using FUSE in Containers","url":"https://developers.cloudflare.com/containers/examples/r2-fuse-mount/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/examples/r2-fuse-mount/#page","headline":"Mount R2 buckets with FUSE · Cloudflare Containers docs","description":"Mount R2 buckets as filesystems using FUSE in Containers","url":"https://developers.cloudflare.com/containers/examples/r2-fuse-mount/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

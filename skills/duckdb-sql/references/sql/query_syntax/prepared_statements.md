@@ -9,7 +9,7 @@ There are three syntaxes for denoting parameters in prepared statements:
 auto-incremented (`?`),
 positional (`$1`),
 and named (`$param`).
-Note that not all clients support all of these syntaxes, e.g., the [JDBC client](https://duckdb.org/docs/current/clients/java.html) only supports auto-incremented parameters in prepared statements.
+Note that not all clients support all of these syntaxes, e.g., the [JDBC client](https://duckdb.org/docs/current/clients/java/querying.html) only supports auto-incremented parameters in prepared statements.
 
 ### Example Dataset
 

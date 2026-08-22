@@ -1,11 +1,11 @@
 ---
 title: "CrossModel | Models"
-description: "Use CrossModel models with Mastra. 52 models available."
+description: "Use CrossModel models with Mastra. 53 models available."
 ---
 
 # [CrossModel logo]CrossModel
 
-Access 52 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
+Access 53 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
 
 Learn more in the [CrossModel documentation](https://www.crossmodel.ai/docs).
 
@@ -126,6 +126,18 @@ for await (const chunk of stream) {
   {
     "model": "crossmodel/deepseek/deepseek-v4-flash",
     "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 0.405,
+    "outputCost": 1.215
+  },
+  {
+    "model": "crossmodel/deepseek/deepseek-v4-flash-vision-exp",
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,

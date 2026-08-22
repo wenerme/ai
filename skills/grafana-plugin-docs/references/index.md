@@ -24,6 +24,7 @@ Documentation for data source and app plugins built and maintained by Grafana La
 - [AWS IoT TwinMaker app](/docs/plugins/grafana-iot-twinmaker-app/latest/ "AWS IoT TwinMaker app")
 - [Azure Cosmos DB data source](/docs/plugins/grafana-azurecosmosdb-datasource/latest/ "Azure Cosmos DB data source")
 - [Azure DevOps data source](/docs/plugins/grafana-azuredevops-datasource/latest/ "Azure DevOps data source")
+- [Azure Monitor Managed Service for Prometheus data source](/docs/plugins/grafana-azureprometheus-datasource/latest/ "Azure Monitor Managed Service for Prometheus data source")
 - [Business Calendar](/docs/plugins/marcusolsson-calendar-panel/latest/ "Business Calendar")
 - [Business Charts](/docs/plugins/volkovlabs-echarts-panel/latest/ "Business Charts")
 - [Business Forms](/docs/plugins/volkovlabs-form-panel/latest/ "Business Forms")

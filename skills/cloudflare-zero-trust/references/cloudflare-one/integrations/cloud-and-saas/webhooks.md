@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Webhooks
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Availability
 
@@ -92,6 +92,8 @@ Cloudflare queues webhook sends in the background. A success message means that 
 
 For more information on finding workflows, refer to [Manage findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/).
 
+To automatically send a webhook for matching findings without sending each one manually, refer to [Remediation Policies](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/).
+
 ## Payload format
 
 CASB sends a JSON payload that describes the posture finding instance.
@@ -129,8 +131,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/#page","headline":"Webhooks · Cloudflare One docs","description":"Configure CASB webhooks to send posture finding instances from Cloudflare One to external HTTPS endpoints.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/#page","headline":"Webhooks · Cloudflare One docs","description":"Configure CASB webhooks to send posture finding instances from Cloudflare One to external HTTPS endpoints.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

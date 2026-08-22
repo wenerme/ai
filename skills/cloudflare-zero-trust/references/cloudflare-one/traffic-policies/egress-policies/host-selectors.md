@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Host selectors
 
-Last updated Aug 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Feature availability
 
@@ -33,7 +33,16 @@ Egress policies are evaluated at Layer 4 ([https://www.cloudflare.com/learning/d
 
 1. When Gateway receives a DNS query for a hostname that matches one of these selectors, it initially resolves the query to a temporary initial resolved IP. By default, this IP is drawn from a Cloudflare-owned public range (`172.64.128.0/20` for IPv4, or `2606:4700:0cf1:4000::/64` for IPv6). You can [configure a custom IPv4 range](https://developers.cloudflare.com/cloudflare-one/networks/routes/configure-initial-resolved-ips/) if it conflicts with your existing network.
 2. When traffic arrives with this temporary destination IP, Gateway can identify which hostname the connection belongs to, apply the correct egress policy, then replace the temporary IP with the real destination IP before forwarding the traffic.
-![Example egress policy flow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1940,height=1011,format=webp/_astro/host-selector-diagram.MWSMsbT4.png)
+
+1. [Client device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+Requests `bank.example.com`
+2. DNS query↓
+3. [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+Returns a temporary initial resolved IP, matches the connection to a Host egress policy, then rewrites the destination to the real IP.
+`172.64.128.0/20`
+4. Host selector match↓
+5. ↗Public Internet
+`bank.example.com` · real destination IP
 
 These selectors require additional configuration before they work.
 
@@ -159,5 +168,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/#page","headline":"Host selectors · Cloudflare One docs","description":"Configure Host selectors in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/#page","headline":"Host selectors · Cloudflare One docs","description":"Configure Host selectors in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 ```

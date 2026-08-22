@@ -61,9 +61,9 @@ Follow these steps to provide the Bearer token with `APISEC_OVERRIDES_ENV`:
 1. [Create a CI/CD variable](../../../../ci/variables/_index.md#for-a-project),
    for example `TEST_API_BEARERAUTH`, with the value
    `{"headers":{"Authorization":"Bearer dXNlcm5hbWU6cGFzc3dvcmQ="}}` (substitute your token). You
-   can create CI/CD variables from the GitLab projects page at **Settings** > **CI/CD**, in the
+   can create CI/CD variables from the GitLab project's page at **Settings** > **CI/CD**, in the
    **Variables** section.
-   Due to the format of `TEST_API_BEARERAUTH` it's not possible to mask the variable.
+   Due to the format of `TEST_API_BEARERAUTH`, it's not possible to mask the variable.
    To mask the token's value, you can create a second variable with the token values, and define
    `TEST_API_BEARERAUTH` with the value `{"headers":{"Authorization":"Bearer $MASKED_VARIABLE"}}`.
 1. In your `.gitlab-ci.yml` file, set `APISEC_OVERRIDES_ENV` to the variable you just created:
@@ -325,7 +325,7 @@ to generate the JSON document. The command can run at intervals to support value
 
 ### Using a file
 
-To provide the overrides JSON as a file, the `APISEC_OVERRIDES_FILE` CI/CD variable is set. The path is relative to the job current working directory.
+To provide the overrides JSON as a file, the `APISEC_OVERRIDES_FILE` CI/CD variable is set. The path is relative to the job's current working directory.
 
 Here's an example `.gitlab-ci.yml`:
 
@@ -390,7 +390,7 @@ container that has Python 3 and Bash installed.
 You have to set the environment variable `APISEC_OVERRIDES_CMD` to the program or script you would like
 to execute. The provided command creates the overrides JSON file as defined previously.
 
-You might want to install other scripting runtimes like NodeJS or Ruby, or maybe you need to install a dependency for your overrides command. In this case, you should set the `APISEC_PRE_SCRIPT` to the file path of a script which provides those prerequisites. The script provided by `APISEC_PRE_SCRIPT` is executed once before the analyzer starts.
+You might want to install other scripting runtimes like Node.js or Ruby, or maybe you need to install a dependency for your overrides command. In this case, you should set the `APISEC_PRE_SCRIPT` to the file path of a script which provides those prerequisites. The script provided by `APISEC_PRE_SCRIPT` is executed once before the analyzer starts.
 
 > [!note]
 > When performing actions that require elevated permissions, make use of the `sudo` command.
@@ -437,7 +437,7 @@ Adding some basic logging to your overrides script is useful in case the script 
 
 The example provides `renew_token.py` in the environment variable `APISEC_OVERRIDES_CMD`. Notice two things in the script:
 
-- Log file is saved in the location indicated by the environmental variable `CI_PROJECT_DIR`.
+- Log file is saved in the location indicated by the environment variable `CI_PROJECT_DIR`.
 - Log filename should match `gl-*.log`.
 
 ```python
@@ -543,7 +543,7 @@ logging.info("Override file has been updated")
 ```
 
 In the overrides command example, the Python script depends on the `backoff` library. To make sure the library is installed before executing the Python script, the `APISEC_PRE_SCRIPT` is set to a script that installs the dependencies of your overrides command.
-As for example, the following script `user-pre-scan-set-up.sh`
+For example, see the following script `user-pre-scan-set-up.sh`:
 
 ```shell
 #!/bin/bash
@@ -641,7 +641,7 @@ Consider using `APISEC_REQUEST_HEADERS_BASE64` when storing secret header values
 
 ## Exclude Paths
 
-When testing an API it can be useful to exclude certain paths. For example, you might exclude testing of an authentication service or an older version of the API. To exclude paths, use the `APISEC_EXCLUDE_PATHS` CI/CD variable. This variable is specified in your `.gitlab-ci.yml` file. To exclude multiple paths, separate entries using the `;` character. In the provided paths you can use a single character wildcard `?` and `*` for a multiple character wildcard.
+When testing an API it can be useful to exclude certain paths. For example, you might exclude testing of an authentication service or an older version of the API. To exclude paths, use the `APISEC_EXCLUDE_PATHS` CI/CD variable. This variable is specified in your `.gitlab-ci.yml` file. To exclude multiple paths, separate entries using the `;` character. In the provided paths, you can use a single character wildcard `?` and `*` for a multiple character wildcard.
 
 To verify the paths are excluded, review the `Tested Operations` and `Excluded Operations` portion of the job output. You should not see any excluded paths listed under `Tested Operations`.
 
@@ -697,13 +697,13 @@ variables:
 
 ### Exclude parameters
 
-While testing an API you may might want to exclude a parameter (query string, header, or body element) from testing. This may be needed because a parameter always causes a failure, slows down testing, or for other reasons. To exclude parameters, you can set one of the following variables: `APISEC_EXCLUDE_PARAMETER_ENV` or `APISEC_EXCLUDE_PARAMETER_FILE`.
+While testing an API, you might want to exclude a parameter (query string, header, or body element) from testing. This may be needed because a parameter always causes a failure, slows down testing, or for other reasons. To exclude parameters, you can set one of the following variables: `APISEC_EXCLUDE_PARAMETER_ENV` or `APISEC_EXCLUDE_PARAMETER_FILE`.
 
 The `APISEC_EXCLUDE_PARAMETER_ENV` allows providing a JSON string containing excluded parameters. This is a good option if the JSON is short and does not change often. Another option is the variable `APISEC_EXCLUDE_PARAMETER_FILE`. This variable is set to a file path that can be checked into the repository, created by another job as an artifact, or generated at runtime with a pre-script using `APISEC_PRE_SCRIPT`.
 
 #### Exclude parameters using a JSON document
 
-The JSON document contains a JSON object, this object uses specific properties to identify which parameter should be excluded.
+The JSON document contains a JSON object. This object uses specific properties to identify which parameter should be excluded.
 You can provide the following properties to exclude specific parameters during the scanning process:
 
 - `headers`: Use this property to exclude specific headers. The property's value is an array of header names to be excluded. Names are case-insensitive.
@@ -779,7 +779,7 @@ To exclude the `password` field in a request that uses `application/x-www-form-u
 }
 ```
 
-The exclude parameters uses `body-form` when the request uses a content type `application/x-www-form-urlencoded`.
+The exclude parameters feature uses `body-form` when the request uses a content type `application/x-www-form-urlencoded`.
 
 ##### Excluding a specific JSON nodes using JSON Path
 
@@ -794,7 +794,7 @@ For instance, the JSON document looks like this:
 }
 ```
 
-The exclude parameters uses `body-json` when the request uses a content type `application/json`. Each entry in `body-json` is expected to be a [JSON Path expression](https://goessner.net/articles/JsonPath/). In JSON Path characters like `$`, `*`, `.` among others have special meaning.
+The exclude parameters feature uses `body-json` when the request uses a content type `application/json`. Each entry in `body-json` is expected to be a [JSON Path expression](https://goessner.net/articles/JsonPath/). In JSON Path, characters like `$`, `*`, `.` among others have special meaning.
 
 ##### Excluding multiple JSON nodes using JSON Path
 
@@ -810,13 +810,13 @@ For instance, the JSON document looks like this:
 }
 ```
 
-The exclude parameters uses `body-json` when the request uses a content type `application/json`. Each entry in `body-json` is expected to be a [JSON Path expression](https://goessner.net/articles/JsonPath/). In JSON Path characters like `$`, `*`, `.` among others have special meaning.
+The exclude parameters feature uses `body-json` when the request uses a content type `application/json`. Each entry in `body-json` is expected to be a [JSON Path expression](https://goessner.net/articles/JsonPath/). In JSON Path, characters like `$`, `*`, `.` among others have special meaning.
 
-##### Excluding a XML attribute
+##### Excluding an XML attribute
 
 To exclude an attribute named `isEnabled` located in the root element `credentials`, set the `body-xml` property's value to an array with the XPath expression `[ "/credentials/@isEnabled" ]`.
 
-The XPath expression `/credentials/@isEnabled`, starts with `/` to indicate the root of the XML document, then it is followed by the word `credentials` which indicates the name of the element to match. It uses a `/` to refer to a node of the previous XML element, and the character `@` to indicate that the name `isEnable` is an attribute.
+The XPath expression `/credentials/@isEnabled`, starts with `/` to indicate the root of the XML document, then it is followed by the word `credentials` which indicates the name of the element to match. It uses a `/` to refer to a node of the previous XML element, and the character `@` to indicate that the name `isEnabled` is an attribute.
 
 For instance, the JSON document looks like this:
 
@@ -828,13 +828,13 @@ For instance, the JSON document looks like this:
 }
 ```
 
-The exclude parameters uses `body-xml` when the request uses a content type `application/xml`. Each entry in `body-xml` is expected to be a [XPath v2 expression](https://www.w3.org/TR/xpath20/). In XPath expressions characters like `@`, `/`, `:`, `[`, `]` among others have special meanings.
+The exclude parameters feature uses `body-xml` when the request uses a content type `application/xml`. Each entry in `body-xml` is expected to be an [XPath v2 expression](https://www.w3.org/TR/xpath20/). In XPath expressions, characters like `@`, `/`, `:`, `[`, `]` among others have special meanings.
 
-##### Excluding a XML text's element
+##### Excluding an XML text's element
 
 To exclude the text of the `username` element contained in root node `credentials`, set the `body-xml` property's value to an array with the XPath expression `[/credentials/username/text()" ]`.
 
-In the XPath expression `/credentials/username/text()`, the first character `/` refers to the root XML node, and then after it indicates an XML element's name `credentials`. Similarly, the character `/` refers to the current element, followed by a new XML element's name `username`. Last part has a `/` that refers to the current element, and uses a XPath function called `text()` which identifies the text of the current element.
+In the XPath expression `/credentials/username/text()`, the first character `/` refers to the root XML node, and then after it indicates an XML element's name `credentials`. Similarly, the character `/` refers to the current element, followed by a new XML element's name `username`. Last part has a `/` that refers to the current element, and uses an XPath function called `text()` which identifies the text of the current element.
 
 For instance, the JSON document looks like this:
 
@@ -846,7 +846,7 @@ For instance, the JSON document looks like this:
 }
 ```
 
-The exclude parameters uses `body-xml` when the request uses a content type `application/xml`. Each entry in `body-xml` is expected to be a [XPath v2 expression](https://www.w3.org/TR/xpath20/). In XPath expressions characters like `@`, `/`, `:`, `[`, `]` among others have special meanings.
+The exclude parameters feature uses `body-xml` when the request uses a content type `application/xml`. Each entry in `body-xml` is expected to be an [XPath v2 expression](https://www.w3.org/TR/xpath20/). In XPath expressions, characters like `@`, `/`, `:`, `[`, `]` among others have special meanings.
 
 ##### Excluding an XML element
 
@@ -864,13 +864,13 @@ For instance, the JSON document looks like this:
 }
 ```
 
-The exclude parameters uses `body-xml` when the request uses a content type `application/xml`. Each entry in `body-xml` is expected to be a [XPath v2 expression](https://www.w3.org/TR/xpath20/). In XPath expressions characters like `@`, `/`, `:`, `[`, `]` among others have special meanings.
+The exclude parameters feature uses `body-xml` when the request uses a content type `application/xml`. Each entry in `body-xml` is expected to be an [XPath v2 expression](https://www.w3.org/TR/xpath20/). In XPath expressions, characters like `@`, `/`, `:`, `[`, `]` among others have special meanings.
 
 ##### Excluding an XML node with namespaces
 
 To exclude anXML element `login` which is defined in namespace `s`, and contained in `credentials` root node, set the `body-xml` property's value to an array with the XPath expression `[ "/credentials/s:login" ]`.
 
-In the XPath expression `/credentials/s:login`, the first character `/` refers to the root XML node, and then after it indicates an XML element's name `credentials`. Similarly, the character `/` refers to the current element, followed by a new XML element's name `s:login`. Notice that name contains the character `:`, this character separates the namespace from the node name.
+In the XPath expression `/credentials/s:login`, the first character `/` refers to the root XML node, and then after it indicates an XML element's name `credentials`. Similarly, the character `/` refers to the current element, followed by a new XML element's name `s:login`. The name contains the character `:`. This character separates the namespace from the node name.
 
 The namespace name should have been defined in the XML document which is part of the body request. You may check the namespace in the specification document HAR, OpenAPI, or Postman Collection file.
 
@@ -882,7 +882,7 @@ The namespace name should have been defined in the XML document which is part of
 }
 ```
 
-The exclude parameters uses `body-xml` when the request uses a content type `application/xml`. Each entry in `body-xml` is expected to be an [XPath v2 expression](https://www.w3.org/TR/xpath20/). In XPath, expressions characters like `@`, `/`, `:`, `[`, `]` among others have special meanings.
+The exclude parameters feature uses `body-xml` when the request uses a content type `application/xml`. Each entry in `body-xml` is expected to be an [XPath v2 expression](https://www.w3.org/TR/xpath20/). In XPath expressions, characters like `@`, `/`, `:`, `[`, `]` among others have special meanings.
 
 #### Using a JSON string
 
@@ -904,7 +904,7 @@ variables:
 
 #### Using a file
 
-To provide the exclusion JSON document set the variable `APISEC_EXCLUDE_PARAMETER_FILE` with the JSON file path. The file path is relative to the job current working directory. In the following example `.gitlab-ci.yml` content, the `APISEC_EXCLUDE_PARAMETER_FILE` variable is set to a JSON file path:
+To provide the exclusion JSON document, set the variable `APISEC_EXCLUDE_PARAMETER_FILE` with the JSON file path. The file path is relative to the job's current working directory. In the following example `.gitlab-ci.yml` content, the `APISEC_EXCLUDE_PARAMETER_FILE` variable is set to a JSON file path:
 
 ```yaml
 stages:

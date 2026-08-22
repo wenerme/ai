@@ -77,7 +77,7 @@ More information about this can be found [in the README](https://github.com/duck
 
 ### `BUILD_JDBC`
 
-When this flag is set, the [Java](https://duckdb.org/docs/current/clients/java.html) package is built.
+When this flag is set, the [Java](https://duckdb.org/docs/current/clients/java/overview.html) package is built.
 
 ### `BUILD_ODBC`
 

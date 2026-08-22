@@ -152,6 +152,7 @@ Example response:
   "security_scan_stale_after_days": 90,
   "bulk_import_concurrent_pipeline_batch_limit": 25,
   "concurrent_relation_batch_export_limit": 25,
+  "concurrent_relation_export_limit": 25,
   "relation_export_batch_size": 50,
   "concurrent_github_import_jobs_limit": 1000,
   "concurrent_bitbucket_import_jobs_limit": 100,
@@ -382,6 +383,7 @@ Example response:
   "security_scan_stale_after_days": 90,
   "bulk_import_concurrent_pipeline_batch_limit": 25,
   "concurrent_relation_batch_export_limit": 25,
+  "concurrent_relation_export_limit": 25,
   "relation_export_batch_size": 50,
   "downstream_pipeline_trigger_limit_per_project_user_sha": 0,
   "concurrent_github_import_jobs_limit": 1000,
@@ -815,9 +817,9 @@ to configure other related settings. These requirements are in the `Required` co
 | `throttle_authenticated_git_http_enabled`             | boolean | conditionally | If `true`, enforces the authenticated Git HTTP request rate limit. Default value: `false`. |
 | `throttle_authenticated_git_http_period_in_seconds`   | integer | no            | Rate limit period in seconds. `throttle_authenticated_git_http_enabled` must be `true`. Default value: `3600`. |
 | `throttle_authenticated_git_http_requests_per_period` | integer | no            | Maximum requests per period per user. `throttle_authenticated_git_http_enabled` must be `true`. Default value: `3600`. |
-| `throttle_authenticated_packages_api_enabled`             | boolean | no                                                              | (**If enabled, requires**: `throttle_authenticated_packages_api_period_in_seconds` and `throttle_authenticated_packages_api_requests_per_period`) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View [package registry rate limits](../administration/settings/package_registry_rate_limits.md) for more details. |
-| `throttle_authenticated_packages_api_period_in_seconds`   | integer | required by:`throttle_authenticated_packages_api_enabled`   | Rate limit period (in seconds). View [package registry rate limits](../administration/settings/package_registry_rate_limits.md) for more details. |
-| `throttle_authenticated_packages_api_requests_per_period` | integer | required by:`throttle_authenticated_packages_api_enabled`   | Maximum requests per period per user. View [package registry rate limits](../administration/settings/package_registry_rate_limits.md) for more details. |
+| `throttle_authenticated_packages_api_enabled`             | boolean | no                                                              | (**If enabled, requires**: `throttle_authenticated_packages_api_period_in_seconds` and `throttle_authenticated_packages_api_requests_per_period`) Enable authenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View [package registry rate limits](../rate_limits/api/package-registry.md) for more details. |
+| `throttle_authenticated_packages_api_period_in_seconds`   | integer | required by:`throttle_authenticated_packages_api_enabled`   | Rate limit period (in seconds). View [package registry rate limits](../rate_limits/api/package-registry.md) for more details. |
+| `throttle_authenticated_packages_api_requests_per_period` | integer | required by:`throttle_authenticated_packages_api_enabled`   | Maximum requests per period per user. View [package registry rate limits](../rate_limits/api/package-registry.md) for more details. |
 | `throttle_authenticated_web_enabled`                      | boolean | no                                                              | (**If enabled, requires**: `throttle_authenticated_web_period_in_seconds` and `throttle_authenticated_web_requests_per_period`) Enable authenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). |
 | `throttle_authenticated_web_period_in_seconds`            | integer | required by:`throttle_authenticated_web_enabled`            | Rate limit period (in seconds). |
 | `throttle_authenticated_web_requests_per_period`          | integer | required by:`throttle_authenticated_web_enabled`            | Maximum requests per period per user. |
@@ -830,9 +832,9 @@ to configure other related settings. These requirements are in the `Required` co
 | `throttle_unauthenticated_git_http_enabled`             | boolean | conditionally | If `true`, enforces the unauthenticated Git HTTP request rate limit. Default value: `false`. |
 | `throttle_unauthenticated_git_http_period_in_seconds`   | integer | no            | Rate limit period in seconds. `throttle_unauthenticated_git_http_enabled` must be `true`. Default value: `3600`. |
 | `throttle_unauthenticated_git_http_requests_per_period` | integer | no            | Maximum requests per period per IP. `throttle_unauthenticated_git_http_enabled` must be `true`. Default value: `3600`. |
-| `throttle_unauthenticated_packages_api_enabled`           | boolean | no                                                              | (**If enabled, requires**: `throttle_unauthenticated_packages_api_period_in_seconds` and `throttle_unauthenticated_packages_api_requests_per_period`) Enable unauthenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View [package registry rate limits](../administration/settings/package_registry_rate_limits.md) for more details. |
-| `throttle_unauthenticated_packages_api_period_in_seconds` | integer | required by:`throttle_unauthenticated_packages_api_enabled` | Rate limit period (in seconds). View [package registry rate limits](../administration/settings/package_registry_rate_limits.md) for more details. |
-| `throttle_unauthenticated_packages_api_requests_per_period` | integer | required by:`throttle_unauthenticated_packages_api_enabled` | Maximum requests per period per user. View [package registry rate limits](../administration/settings/package_registry_rate_limits.md) for more details. |
+| `throttle_unauthenticated_packages_api_enabled`           | boolean | no                                                              | (**If enabled, requires**: `throttle_unauthenticated_packages_api_period_in_seconds` and `throttle_unauthenticated_packages_api_requests_per_period`) Enable unauthenticated API request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). View [package registry rate limits](../rate_limits/api/package-registry.md) for more details. |
+| `throttle_unauthenticated_packages_api_period_in_seconds` | integer | required by:`throttle_unauthenticated_packages_api_enabled` | Rate limit period (in seconds). View [package registry rate limits](../rate_limits/api/package-registry.md) for more details. |
+| `throttle_unauthenticated_packages_api_requests_per_period` | integer | required by:`throttle_unauthenticated_packages_api_enabled` | Maximum requests per period per user. View [package registry rate limits](../rate_limits/api/package-registry.md) for more details. |
 | `throttle_unauthenticated_web_enabled`                    | boolean | no                                                              | (**If enabled, requires**: `throttle_unauthenticated_web_period_in_seconds` and `throttle_unauthenticated_web_requests_per_period`) Enable unauthenticated web request rate limit. Helps reduce request volume (for example, from crawlers or abusive bots). |
 | `throttle_unauthenticated_web_period_in_seconds`          | integer | required by:`throttle_unauthenticated_web_enabled`          | Rate limit period in seconds. |
 | `throttle_unauthenticated_web_requests_per_period`        | integer | required by:`throttle_unauthenticated_web_enabled`          | Maximum requests per period per IP. |
@@ -865,6 +867,7 @@ to configure other related settings. These requirements are in the `Required` co
 | `wiki_page_max_content_bytes`            | integer          | no                                   | Maximum wiki page content size in **bytes**. Default: 5242880 Bytes (5 MB). The minimum value is 1024 bytes. |
 | `bulk_import_concurrent_pipeline_batch_limit` | integer     | no                                   | Maximum simultaneous direct transfer batch exports to process. |
 | `concurrent_relation_batch_export_limit` | integer          | no                                   | Maximum number of simultaneous batch export jobs to process. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/169122) in GitLab 17.6. |
+| `concurrent_relation_export_limit`       | integer          | no                                   | Maximum number of simultaneous project file exports to process. Default: 25. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/599092) in GitLab 19.4. |
 | `asciidoc_max_includes`                  | integer          | no                                   | Maximum limit of AsciiDoc include directives being processed in any one document. Default: 32. Maximum: 64. |
 | `duo_custom_agents_enabled`              | boolean          | no                                   | Indicates whether custom agents are allowed for this instance. Default: `true`. GitLab Self-Managed, Premium and Ultimate only. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/594615) in GitLab 19.0. |
 | `duo_custom_flows_enabled`               | boolean          | no                                   | Indicates whether custom flows are allowed for this instance. Default: `true`. GitLab Self-Managed, Premium and Ultimate only. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/594615) in GitLab 19.0. |

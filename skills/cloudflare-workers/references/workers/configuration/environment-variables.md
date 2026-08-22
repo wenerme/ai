@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Environment variables
 
-Last updated Jun 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/environment-variables/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/environment-variables/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -264,7 +264,9 @@ The values of `process.env.FOO` and `process.env.BAR` will each be the JavaScrip
 
 The value of `process.env.BAZ` will be the JSON-encoded string `"{ \"a\": 123 }"`.
 
-:::note Note also that because secrets are a form of environment variable within the runtime, secrets are also exposed via `process.env`.
+Note
+
+Note also that because secrets are a form of environment variable within the runtime, secrets are also exposed via `process.env`.
 
 ## Related resources
 
@@ -276,8 +278,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/environment-variables/#page","headline":"Environment variables · Cloudflare Workers docs","description":"You can add environment variables, which are a type of binding, to attach text strings or JSON values to your Worker.","url":"https://developers.cloudflare.com/workers/configuration/environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/environment-variables/#page","headline":"Environment variables · Cloudflare Workers docs","description":"You can add environment variables, which are a type of binding, to attach text strings or JSON values to your Worker.","url":"https://developers.cloudflare.com/workers/configuration/environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

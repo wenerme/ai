@@ -78,7 +78,7 @@ The Appender is also available in the following client APIs:
 
 * [C](https://duckdb.org/docs/current/clients/c/appender.html)
 * [Go](https://duckdb.org/docs/current/clients/go.html#appender)
-* [Java (JDBC)](https://duckdb.org/docs/current/clients/java.html#appender)
+* [Java (JDBC)](https://duckdb.org/docs/current/clients/java/data_import.html#appender)
 * [Julia](https://duckdb.org/docs/current/clients/tertiary_clients/julia.html#appender-api)
 * [Rust](https://duckdb.org/docs/current/clients/rust.html#appender)
 * [Node.js](https://duckdb.org/docs/current/clients/node_neo/overview.html#append-to-table)

@@ -16,6 +16,45 @@ Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
 
+## 2026-08-21
+
+[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
+
+
+**Automatically remediate Microsoft 365 and Google Workspace findings with API-based CASB remediation policies**
+
+[Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) is an API-based (agentless) tool that continuously scans your SaaS and cloud applications for security misconfigurations and data exposure. You can now use **CASB remediation policies** to automatically fix a finding or send a webhook the moment CASB detects it, without manual triage.
+
+#### Remediate Microsoft 365 and Google Workspace findings
+
+A policy can perform a first-party remediation action directly against the SaaS integration API. When a policy triggers, Cloudflare revokes the external sharing configuration without human intervention.
+
+Remediation is currently supported for file-sharing findings in Microsoft 365 and Google Workspace. Support for additional finding types and integrations is coming soon. For the full list of supported finding types, refer to [Run remediations](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/#run-remediations) in the CASB remediation policies documentation.
+
+#### Send webhooks
+
+A policy can send posture finding data to Slack, ServiceNow, or any other webhook destination. Webhook actions are supported for all posture finding types across CASB integrations.
+
+A single policy can perform both actions: remediate a finding and send a webhook.
+
+#### Get started
+
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** \> **Policies**.
+2. Select **Create a policy**.
+3. Under **Basic information**, enter a **Policy name** and, optionally, a **Description**.
+4. Under **Choose how you want to trigger the policy**, select a **Vendor**, **Integration**, and **Finding type**.
+5. Under **Define what to do with findings that match your trigger**, choose **Run Remediation**, **Send webhooks**, or both.
+6. Under **Status**, turn on **Enable policy**.
+7. Select **Create policy**.
+
+#### Learn more
+
+* Learn how to [create and manage CASB remediation policies](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/) in Cloudflare One.
+* Configure [CASB webhooks](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/) as a policy destination.
+* Learn how to [manage findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/) in Cloudflare One.
+
+CASB remediation policies are now available in Cloudflare One.
+
 ## 2026-08-19
 
 [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
@@ -5177,33 +5216,6 @@ To aid in incident investigation, an optional setting in your Gateway policy all
 ![DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=728,height=444,format=webp/_astro/ai-prompt-log.ywQDc5qN.png)
 
 AI prompt protection is now available in open beta. To learn more about it, read the [blog ↗](https://blog.cloudflare.com/ai-prompt-protection/#closing-the-loop-logging) or refer to [AI prompt topics](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#ai-prompt-topics).
-
-## 2025-08-21
-
-[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
-
-
-**WARP client for Windows (version 2025.6.1400.0)**
-
-A new GA release for the Windows WARP client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
-
-This release contains a hotfix for pre-login for multi-user for the 2025.6.1135.0 release.
-
-**Changes and improvements**
-
-* Fixes an issue where new pre-login registrations were not being properly created.
-
-**Known issues**
-
-* For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-* Devices with KB5055523 installed may receive a warning about Win32/ClickFix.ABA being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:
-
-  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  * A custom DNS server address is configured on the primary network adapter.
-  * The custom DNS server address on the primary network adapter is changed while WARP is connected.
-To work around this issue, please reconnect the WARP client by toggling off and back on.
 
 ## 2025-08-21
 

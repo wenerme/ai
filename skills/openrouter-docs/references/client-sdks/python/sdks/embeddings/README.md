@@ -68,6 +68,8 @@ with OpenRouter(
 | errors.UnauthorizedResponseError       | 401         | application/json |
 | errors.PaymentRequiredResponseError    | 402         | application/json |
 | errors.NotFoundResponseError           | 404         | application/json |
+| errors.RequestTimeoutResponseError     | 408         | application/json |
+| errors.PayloadTooLargeResponseError    | 413         | application/json |
 | errors.TooManyRequestsResponseError    | 429         | application/json |
 | errors.InternalServerResponseError     | 500         | application/json |
 | errors.BadGatewayResponseError         | 502         | application/json |
@@ -110,7 +112,7 @@ with OpenRouter(
 | `http_referer`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |         |
 | `x_open_router_title`      | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |         |
 | `x_open_router_categories` | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |         |
-| `offset`                   | *Optional\[int]*                                                    | :heavy\_minus\_sign: | Number of records to skip for pagination. When both offset and limit are omitted, the full list is returned                                                 | 0       |
+| `offset`                   | *OptionalNullable\[int]*                                            | :heavy\_minus\_sign: | Number of records to skip for pagination. When both offset and limit are omitted, the full list is returned                                                 | 0       |
 | `limit`                    | *Optional\[int]*                                                    | :heavy\_minus\_sign: | Maximum number of records to return (max 1000). When both offset and limit are omitted, the full list is returned                                           | 500     |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |         |
 

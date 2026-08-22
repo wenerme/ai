@@ -10,7 +10,7 @@ Retrieves a project.
 
 ### Returns
 
-- `Project object { id, created_at, object, 4 more }`
+- `Project object { id, created_at, object, 5 more }`
 
   Represents an individual project.
 
@@ -40,6 +40,34 @@ Retrieves a project.
 
     The name of the project. This appears in reporting.
 
+  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+
+    The residency configuration for the project.
+
+    - `"GLOBAL"`
+
+    - `"US_STORAGE_PROCESSING"`
+
+    - `"EU_STORAGE_PROCESSING"`
+
+    - `"JP_STORAGE"`
+
+    - `"KR_STORAGE"`
+
+    - `"CA_STORAGE"`
+
+    - `"SG_STORAGE"`
+
+    - `"IN_STORAGE"`
+
+    - `"AU_STORAGE"`
+
+    - `"GB_STORAGE"`
+
+    - `"AE_STORAGE"`
+
+    - `"AE_STORAGE_PROCESSING"`
+
   - `status: optional string or null`
 
     `active` or `archived`
@@ -61,6 +89,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
   "archived_at": 0,
   "external_key_id": "external_key_id",
   "name": "name",
+  "residency": "GLOBAL",
   "status": "status"
 }
 ```

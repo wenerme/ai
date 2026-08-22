@@ -18324,6 +18324,30 @@ Fields:
 | <a id="mutation-workitemexport-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-workitemexport-message"></a>`message` | [`String`](#string) | Export request result message. |
 
+### `Mutation.workItemGenerateWorkplan`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Generates a workplan for a work item asynchronously through a Duo Agent Platform flow, instead of Duo Chat. Available only when the `duo_workplan_async_flow` feature flag is enabled; returns an error otherwise.
+
+Input type: `WorkItemGenerateWorkplanInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-workitemgenerateworkplan-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-workitemgenerateworkplan-id"></a>`id` | [`WorkItemID!`](#workitemid) | Global ID of the work item to generate a workplan for. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-workitemgenerateworkplan-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-workitemgenerateworkplan-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-workitemgenerateworkplan-workflow"></a>`workflow` | [`DuoWorkflow`](#duoworkflow) | Duo Agent Platform workflow started to generate the workplan. |
+
 ### `Mutation.workItemHierarchyAddChildrenItems`
 
 - Introduced in GitLab 18.2.
@@ -42532,6 +42556,30 @@ Fields:
 | <a id="googlecloudloggingconfigurationtype-logidname"></a>`logIdName` | [`String!`](#string) | Log ID. |
 | <a id="googlecloudloggingconfigurationtype-name"></a>`name` | [`String!`](#string) | Name of the external destination to send audit events to. |
 
+### `GovernPolicy`
+
+Policy stored in the policy store.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="governpolicy-actions"></a>`actions`  | [`[JSON!]`](#json) | Introduced in GitLab 19.4. Status: Experiment. Actions of the policy. |
+| <a id="governpolicy-createdat"></a>`createdAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp of when the policy was created. |
+| <a id="governpolicy-description"></a>`description`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Description of the policy. |
+| <a id="governpolicy-id"></a>`id`  | [`Int!`](#int) | Introduced in GitLab 19.4. Status: Experiment. ID of the policy. |
+| <a id="governpolicy-lifecyclestate"></a>`lifecycleState`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Lifecycle state of the policy. |
+| <a id="governpolicy-mode"></a>`mode`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Enforcement mode of the policy. |
+| <a id="governpolicy-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Name of the policy. |
+| <a id="governpolicy-namespaceid"></a>`namespaceId`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. ID of the namespace the policy is scoped to. Null for organization-wide policies. |
+| <a id="governpolicy-organizationid"></a>`organizationId`  | [`Int!`](#int) | Introduced in GitLab 19.4. Status: Experiment. ID of the organization the policy belongs to. |
+| <a id="governpolicy-policyscope"></a>`policyScope`  | [`JSON`](#json) | Introduced in GitLab 19.4. Status: Experiment. Scope of the policy. |
+| <a id="governpolicy-rules"></a>`rules`  | [`[JSON!]`](#json) | Introduced in GitLab 19.4. Status: Experiment. Rules of the policy. |
+| <a id="governpolicy-scoperego"></a>`scopeRego`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Rego expression scoping the policy. Mutually exclusive with policyScope. |
+| <a id="governpolicy-triggertype"></a>`triggerType`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Trigger the policy responds to. |
+| <a id="governpolicy-updatedat"></a>`updatedAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp of when the policy was last updated. |
+| <a id="governpolicy-version"></a>`version`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. Version of the policy. |
+
 ### `GpgSignature`
 
 GPG signature for a signed commit.
@@ -42662,7 +42710,6 @@ Fields:
 | <a id="group-permanentdeletiondate"></a>`permanentDeletionDate`  | [`String`](#string) | Introduced in GitLab 16.11. Status: Experiment. For groups pending deletion, returns the group's scheduled deletion date. For groups not pending deletion, returns a theoretical date based on current settings if marked for deletion today. |
 | <a id="group-plan"></a>`plan`  | [`NamespacePlan`](#namespaceplan) | Introduced in GitLab 18.2. Status: Experiment. Subscription plan associated with the namespace. |
 | <a id="group-policystore"></a>`policyStore`  | [`PolicyStore`](#policystore) | Introduced in GitLab 19.4. Status: Experiment. Policy store catalogs. Returns `null` when the policy store experiment is not active for the group. |
-| <a id="group-productanalyticsstoredeventslimit"></a>`productAnalyticsStoredEventsLimit`  | [`Int`](#int) | Introduced in GitLab 16.9. Status: Experiment. Number of product analytics events namespace is permitted to store per cycle. |
 | <a id="group-projectcreationlevel"></a>`projectCreationLevel` | [`String`](#string) | Permission level required to create projects in the group. |
 | <a id="group-projectstatistics"></a>`projectStatistics`  | [`NamespaceProjectStatistics`](#namespaceprojectstatistics) | Introduced in GitLab 18.2. Status: Experiment. Statistics of the projects in the group. Only available from [Query.groups](#querygroups). |
 | <a id="group-projectscount"></a>`projectsCount` | [`Int!`](#int) | Count of direct projects in the group. |
@@ -49474,7 +49521,6 @@ Fields:
 | <a id="namespace-packagesettings"></a>`packageSettings` | [`PackageSettings`](#packagesettings) | Package settings for the namespace. |
 | <a id="namespace-path"></a>`path` | [`String!`](#string) | Path of the namespace. |
 | <a id="namespace-plan"></a>`plan`  | [`NamespacePlan`](#namespaceplan) | Introduced in GitLab 18.2. Status: Experiment. Subscription plan associated with the namespace. |
-| <a id="namespace-productanalyticsstoredeventslimit"></a>`productAnalyticsStoredEventsLimit`  | [`Int`](#int) | Introduced in GitLab 16.9. Status: Experiment. Number of product analytics events namespace is permitted to store per cycle. |
 | <a id="namespace-repositorysizeexcessprojectcount"></a>`repositorySizeExcessProjectCount` | [`Int`](#int) | Number of projects in the root namespace where the repository size exceeds the limit. This only applies to namespaces under Project limit enforcement. |
 | <a id="namespace-requestaccessenabled"></a>`requestAccessEnabled` | [`Boolean`](#boolean) | Indicates if users can request access to namespace. |
 | <a id="namespace-rootnamespace"></a>`rootNamespace` | [`Namespace!`](#namespace) | Top-level namespace of the namespace. |
@@ -50302,6 +50348,7 @@ Fields:
 | <a id="note-bodyhtml"></a>`bodyHtml` | [`String`](#string) | GitLab Flavored Markdown rendering of the content of the note. |
 | <a id="note-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of the note creation. |
 | <a id="note-discussion"></a>`discussion` | [`Discussion`](#discussion) | Discussion the note is a part of. |
+| <a id="note-duocreatedsession"></a>`duoCreatedSession` | [`DuoWorkflow`](#duoworkflow) | GitLab Duo Agent Platform session that created the note. |
 | <a id="note-duotriggeredsession"></a>`duoTriggeredSession` | [`DuoWorkflow`](#duoworkflow) | Duo Agent Platform session triggered by the note. Returns nil for system notes or when no triggered session exists. |
 | <a id="note-externalauthor"></a>`externalAuthor` | [`String`](#string) | Email address of non-GitLab user adding the note. For guests, the email address is obfuscated. |
 | <a id="note-id"></a>`id` | [`NoteID!`](#noteid) | ID of the note. |
@@ -52363,6 +52410,23 @@ Fields:
 | <a id="policystore-actions"></a>`actions`  | [`[PolicyStoreAction!]!`](#policystoreaction) | Introduced in GitLab 19.4. Status: Experiment. Actions available when creating a policy in the policy store. |
 | <a id="policystore-rules"></a>`rules`  | [`[PolicyStoreRule!]!`](#policystorerule) | Introduced in GitLab 19.4. Status: Experiment. Rule kinds available when creating a policy in the policy store. |
 | <a id="policystore-triggers"></a>`triggers`  | [`[PolicyStoreTrigger!]!`](#policystoretrigger) | Introduced in GitLab 19.4. Status: Experiment. Triggers available when creating a policy in the policy store. |
+
+#### Fields with arguments
+
+##### `PolicyStore.policies`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Policies stored in the policy store for the organization. Returns `null` for groups and when the current user cannot read the policies of the organization.
+
+Returns [`[GovernPolicy!]`](#governpolicy).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="policystore-policies-triggertype"></a>`triggerType`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Return only the policies that respond to this trigger. Valid values are the ids in the policy store triggers catalog. |
 
 ### `PolicyStoreAction`
 

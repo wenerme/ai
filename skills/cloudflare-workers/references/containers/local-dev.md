@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Local Development
 
-Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/local-dev/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/local-dev/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can run both your container and your Worker locally by simply running [npx wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) (or `vite dev` for Vite projects using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/)) in your project's directory.
 
@@ -41,6 +41,14 @@ If your Worker app creates many container instances, your local machine may not 
 Also, `max_instances` configuration option does not apply during local development.
 
 Additionally, if you regularly rebuild containers locally, you may want to clear out old container images (using `docker image prune` or similar) to reduce disk used.
+
+## FUSE support
+
+Miniflare automatically grants local containers the Docker privileges required for Filesystem in Userspace (FUSE). This applies to `wrangler dev`, the Cloudflare Vite plugin, and direct Miniflare use.
+
+Miniflare grants these privileges when the local Docker daemon runs inside a virtual machine (VM). This includes Docker engines on macOS and through Windows Subsystem for Linux (WSL). On Linux, Miniflare grants the privileges for local rootless Docker when `/dev/fuse` is available.
+
+Rootful Docker on Linux does not support FUSE by default during local development. Miniflare does not grant FUSE privileges when the Docker daemon does not meet these conditions or cannot be inspected.
 
 ## Iterating on Container code
 
@@ -101,8 +109,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/local-dev/#page","headline":"Local Development · Cloudflare Containers docs","description":"Learn how to run Container-enabled Workers locally with wrangler dev and vite dev.","url":"https://developers.cloudflare.com/containers/local-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/local-dev/#page","headline":"Local Development · Cloudflare Containers docs","description":"Learn how to run Container-enabled Workers locally with wrangler dev and vite dev.","url":"https://developers.cloudflare.com/containers/local-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

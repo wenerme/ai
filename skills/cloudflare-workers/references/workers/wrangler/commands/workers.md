@@ -774,7 +774,7 @@ Date to use for compatibility checks
 * `--compatibility-flags` `string` alias: --compatibility-flag
 Flags to use for compatibility checks
 * `--latest` `boolean` default: false
-Use the latest version of the Workers runtime
+Use the latest compatibility date supported by this version of Wrangler
 * `--assets` `string`
 Static assets to be served. Replaces Workers Sites.
 * `--var` `string`
@@ -1156,7 +1156,7 @@ Name of the worker
 cron schedules to attach
 * `--routes` `string` alias: --route
 Routes to upload
-* `--dry-run` `boolean`
+* `--dry-run` `boolean` default: false
 Don't actually deploy
 
 Global flags

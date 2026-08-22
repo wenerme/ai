@@ -7349,7 +7349,7 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
 ### Returns
 
-- `Project object { id, created_at, object, 4 more }`
+- `Project object { id, created_at, object, 5 more }`
 
   Represents an individual project.
 
@@ -7379,6 +7379,34 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
     The name of the project. This appears in reporting.
 
+  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+
+    The residency configuration for the project.
+
+    - `"GLOBAL"`
+
+    - `"US_STORAGE_PROCESSING"`
+
+    - `"EU_STORAGE_PROCESSING"`
+
+    - `"JP_STORAGE"`
+
+    - `"KR_STORAGE"`
+
+    - `"CA_STORAGE"`
+
+    - `"SG_STORAGE"`
+
+    - `"IN_STORAGE"`
+
+    - `"AU_STORAGE"`
+
+    - `"GB_STORAGE"`
+
+    - `"AE_STORAGE"`
+
+    - `"AE_STORAGE_PROCESSING"`
+
   - `status: optional string or null`
 
     `active` or `archived`
@@ -7401,6 +7429,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/archive \
   "archived_at": 0,
   "external_key_id": "external_key_id",
   "name": "name",
+  "residency": "GLOBAL",
   "status": "status"
 }
 ```
@@ -7442,13 +7471,37 @@ Create a new project in the organization. Projects can be created and archived, 
 
   External key ID to associate with the project.
 
-- `geography: optional string or null`
+- `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more or null`
 
-  Create the project with the specified data residency region. Your organization must have access to Data residency functionality in order to use. See [data residency controls](/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
+  Create the project with the specified residency configuration. Your organization must have access to the requested residency configuration in order to use it. See [data residency controls](/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
+
+  - `"GLOBAL"`
+
+  - `"US_STORAGE_PROCESSING"`
+
+  - `"EU_STORAGE_PROCESSING"`
+
+  - `"JP_STORAGE"`
+
+  - `"KR_STORAGE"`
+
+  - `"CA_STORAGE"`
+
+  - `"SG_STORAGE"`
+
+  - `"IN_STORAGE"`
+
+  - `"AU_STORAGE"`
+
+  - `"GB_STORAGE"`
+
+  - `"AE_STORAGE"`
+
+  - `"AE_STORAGE_PROCESSING"`
 
 ### Returns
 
-- `Project object { id, created_at, object, 4 more }`
+- `Project object { id, created_at, object, 5 more }`
 
   Represents an individual project.
 
@@ -7478,6 +7531,34 @@ Create a new project in the organization. Projects can be created and archived, 
 
     The name of the project. This appears in reporting.
 
+  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+
+    The residency configuration for the project.
+
+    - `"GLOBAL"`
+
+    - `"US_STORAGE_PROCESSING"`
+
+    - `"EU_STORAGE_PROCESSING"`
+
+    - `"JP_STORAGE"`
+
+    - `"KR_STORAGE"`
+
+    - `"CA_STORAGE"`
+
+    - `"SG_STORAGE"`
+
+    - `"IN_STORAGE"`
+
+    - `"AU_STORAGE"`
+
+    - `"GB_STORAGE"`
+
+    - `"AE_STORAGE"`
+
+    - `"AE_STORAGE_PROCESSING"`
+
   - `status: optional string or null`
 
     `active` or `archived`
@@ -7503,6 +7584,7 @@ curl https://api.openai.com/v1/organization/projects \
   "archived_at": 0,
   "external_key_id": "external_key_id",
   "name": "name",
+  "residency": "GLOBAL",
   "status": "status"
 }
 ```
@@ -7581,6 +7663,34 @@ Returns a list of projects.
 
     The name of the project. This appears in reporting.
 
+  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+
+    The residency configuration for the project.
+
+    - `"GLOBAL"`
+
+    - `"US_STORAGE_PROCESSING"`
+
+    - `"EU_STORAGE_PROCESSING"`
+
+    - `"JP_STORAGE"`
+
+    - `"KR_STORAGE"`
+
+    - `"CA_STORAGE"`
+
+    - `"SG_STORAGE"`
+
+    - `"IN_STORAGE"`
+
+    - `"AU_STORAGE"`
+
+    - `"GB_STORAGE"`
+
+    - `"AE_STORAGE"`
+
+    - `"AE_STORAGE_PROCESSING"`
+
   - `status: optional string or null`
 
     `active` or `archived`
@@ -7614,6 +7724,7 @@ curl https://api.openai.com/v1/organization/projects \
       "archived_at": 0,
       "external_key_id": "external_key_id",
       "name": "name",
+      "residency": "GLOBAL",
       "status": "status"
     }
   ],
@@ -7665,7 +7776,7 @@ Retrieves a project.
 
 ### Returns
 
-- `Project object { id, created_at, object, 4 more }`
+- `Project object { id, created_at, object, 5 more }`
 
   Represents an individual project.
 
@@ -7695,6 +7806,34 @@ Retrieves a project.
 
     The name of the project. This appears in reporting.
 
+  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+
+    The residency configuration for the project.
+
+    - `"GLOBAL"`
+
+    - `"US_STORAGE_PROCESSING"`
+
+    - `"EU_STORAGE_PROCESSING"`
+
+    - `"JP_STORAGE"`
+
+    - `"KR_STORAGE"`
+
+    - `"CA_STORAGE"`
+
+    - `"SG_STORAGE"`
+
+    - `"IN_STORAGE"`
+
+    - `"AU_STORAGE"`
+
+    - `"GB_STORAGE"`
+
+    - `"AE_STORAGE"`
+
+    - `"AE_STORAGE_PROCESSING"`
+
   - `status: optional string or null`
 
     `active` or `archived`
@@ -7716,6 +7855,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
   "archived_at": 0,
   "external_key_id": "external_key_id",
   "name": "name",
+  "residency": "GLOBAL",
   "status": "status"
 }
 ```
@@ -7757,17 +7897,13 @@ Modifies a project in the organization.
 
   External key ID to associate with the project.
 
-- `geography: optional string or null`
-
-  Geography for the project.
-
 - `name: optional string or null`
 
   The updated name of the project, this name appears in reports.
 
 ### Returns
 
-- `Project object { id, created_at, object, 4 more }`
+- `Project object { id, created_at, object, 5 more }`
 
   Represents an individual project.
 
@@ -7796,6 +7932,34 @@ Modifies a project in the organization.
   - `name: optional string or null`
 
     The name of the project. This appears in reporting.
+
+  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+
+    The residency configuration for the project.
+
+    - `"GLOBAL"`
+
+    - `"US_STORAGE_PROCESSING"`
+
+    - `"EU_STORAGE_PROCESSING"`
+
+    - `"JP_STORAGE"`
+
+    - `"KR_STORAGE"`
+
+    - `"CA_STORAGE"`
+
+    - `"SG_STORAGE"`
+
+    - `"IN_STORAGE"`
+
+    - `"AU_STORAGE"`
+
+    - `"GB_STORAGE"`
+
+    - `"AE_STORAGE"`
+
+    - `"AE_STORAGE_PROCESSING"`
 
   - `status: optional string or null`
 
@@ -7820,6 +7984,7 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID \
   "archived_at": 0,
   "external_key_id": "external_key_id",
   "name": "name",
+  "residency": "GLOBAL",
   "status": "status"
 }
 ```
@@ -7839,7 +8004,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc \
 
 ### Project
 
-- `Project object { id, created_at, object, 4 more }`
+- `Project object { id, created_at, object, 5 more }`
 
   Represents an individual project.
 
@@ -7868,6 +8033,34 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc \
   - `name: optional string or null`
 
     The name of the project. This appears in reporting.
+
+  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+
+    The residency configuration for the project.
+
+    - `"GLOBAL"`
+
+    - `"US_STORAGE_PROCESSING"`
+
+    - `"EU_STORAGE_PROCESSING"`
+
+    - `"JP_STORAGE"`
+
+    - `"KR_STORAGE"`
+
+    - `"CA_STORAGE"`
+
+    - `"SG_STORAGE"`
+
+    - `"IN_STORAGE"`
+
+    - `"AU_STORAGE"`
+
+    - `"GB_STORAGE"`
+
+    - `"AE_STORAGE"`
+
+    - `"AE_STORAGE_PROCESSING"`
 
   - `status: optional string or null`
 
@@ -17276,7 +17469,7 @@ Get audio speeches usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -17311,6 +17504,32 @@ Get audio speeches usage details for the organization.
       - `quantity: optional number or null`
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+        The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+        - `string`
+
+        - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `"tokens"`
+
+          - `"1000_tokens"`
+
+          - `"duration_seconds"`
+
+          - `"duration_minutes"`
+
+          - `"duration_hours"`
+
+          - `"gibibyte_hours"`
+
+          - `"images"`
+
+          - `"characters"`
 
   - `start_time: number`
 
@@ -17842,7 +18061,7 @@ Get audio transcriptions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -17877,6 +18096,32 @@ Get audio transcriptions usage details for the organization.
       - `quantity: optional number or null`
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+        The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+        - `string`
+
+        - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `"tokens"`
+
+          - `"1000_tokens"`
+
+          - `"duration_seconds"`
+
+          - `"duration_minutes"`
+
+          - `"duration_hours"`
+
+          - `"gibibyte_hours"`
+
+          - `"images"`
+
+          - `"characters"`
 
   - `start_time: number`
 
@@ -18390,7 +18635,7 @@ Get code interpreter sessions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -18425,6 +18670,32 @@ Get code interpreter sessions usage details for the organization.
       - `quantity: optional number or null`
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+        The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+        - `string`
+
+        - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `"tokens"`
+
+          - `"1000_tokens"`
+
+          - `"duration_seconds"`
+
+          - `"duration_minutes"`
+
+          - `"duration_hours"`
+
+          - `"gibibyte_hours"`
+
+          - `"images"`
+
+          - `"characters"`
 
   - `start_time: number`
 
@@ -18960,7 +19231,7 @@ Get completions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -18995,6 +19266,32 @@ Get completions usage details for the organization.
       - `quantity: optional number or null`
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+        The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+        - `string`
+
+        - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `"tokens"`
+
+          - `"1000_tokens"`
+
+          - `"duration_seconds"`
+
+          - `"duration_minutes"`
+
+          - `"duration_hours"`
+
+          - `"gibibyte_hours"`
+
+          - `"images"`
+
+          - `"characters"`
 
   - `start_time: number`
 
@@ -19523,7 +19820,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -19558,6 +19855,32 @@ Get costs details for the organization.
       - `quantity: optional number or null`
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+        The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+        - `string`
+
+        - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `"tokens"`
+
+          - `"1000_tokens"`
+
+          - `"duration_seconds"`
+
+          - `"duration_minutes"`
+
+          - `"duration_hours"`
+
+          - `"gibibyte_hours"`
+
+          - `"images"`
+
+          - `"characters"`
 
   - `start_time: number`
 
@@ -19647,7 +19970,8 @@ curl "https://api.openai.com/v1/organization/costs?start_time=1730419200&limit=1
                     "line_item": null,
                     "project_id": null,
                     "api_key_id": null,
-                    "quantity": null
+                    "quantity": null,
+                    "quantity_unit": null
                 }
             ]
         }
@@ -20091,7 +20415,7 @@ Get embeddings usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -20126,6 +20450,32 @@ Get embeddings usage details for the organization.
       - `quantity: optional number or null`
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+        The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+        - `string`
+
+        - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `"tokens"`
+
+          - `"1000_tokens"`
+
+          - `"duration_seconds"`
+
+          - `"duration_minutes"`
+
+          - `"duration_hours"`
+
+          - `"gibibyte_hours"`
+
+          - `"images"`
+
+          - `"characters"`
 
   - `start_time: number`
 
@@ -20657,7 +21007,7 @@ Get file search calls usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -20692,6 +21042,32 @@ Get file search calls usage details for the organization.
       - `quantity: optional number or null`
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+        The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+        - `string`
+
+        - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `"tokens"`
+
+          - `"1000_tokens"`
+
+          - `"duration_seconds"`
+
+          - `"duration_minutes"`
+
+          - `"duration_hours"`
+
+          - `"gibibyte_hours"`
+
+          - `"images"`
+
+          - `"characters"`
 
   - `start_time: number`
 
@@ -21250,7 +21626,7 @@ Get images usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -21285,6 +21661,32 @@ Get images usage details for the organization.
       - `quantity: optional number or null`
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+        The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+        - `string`
+
+        - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `"tokens"`
+
+          - `"1000_tokens"`
+
+          - `"duration_seconds"`
+
+          - `"duration_minutes"`
+
+          - `"duration_hours"`
+
+          - `"gibibyte_hours"`
+
+          - `"images"`
+
+          - `"characters"`
 
   - `start_time: number`
 
@@ -21818,7 +22220,7 @@ Get moderations usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -21853,6 +22255,32 @@ Get moderations usage details for the organization.
       - `quantity: optional number or null`
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+        The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+        - `string`
+
+        - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `"tokens"`
+
+          - `"1000_tokens"`
+
+          - `"duration_seconds"`
+
+          - `"duration_minutes"`
+
+          - `"duration_hours"`
+
+          - `"gibibyte_hours"`
+
+          - `"images"`
+
+          - `"characters"`
 
   - `start_time: number`
 
@@ -22366,7 +22794,7 @@ Get vector stores usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -22401,6 +22829,32 @@ Get vector stores usage details for the organization.
       - `quantity: optional number or null`
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+        The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+        - `string`
+
+        - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `"tokens"`
+
+          - `"1000_tokens"`
+
+          - `"duration_seconds"`
+
+          - `"duration_minutes"`
+
+          - `"duration_hours"`
+
+          - `"gibibyte_hours"`
+
+          - `"images"`
+
+          - `"characters"`
 
   - `start_time: number`
 
@@ -22940,7 +23394,7 @@ Get web search calls usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -22975,6 +23429,32 @@ Get web search calls usage details for the organization.
       - `quantity: optional number or null`
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+        The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+        - `string`
+
+        - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `"tokens"`
+
+          - `"1000_tokens"`
+
+          - `"duration_seconds"`
+
+          - `"duration_minutes"`
+
+          - `"duration_hours"`
+
+          - `"gibibyte_hours"`
+
+          - `"images"`
+
+          - `"characters"`
 
   - `start_time: number`
 
@@ -23445,7 +23925,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -23480,6 +23960,32 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `quantity: optional number or null`
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `string`
+
+          - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+            The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+            - `"tokens"`
+
+            - `"1000_tokens"`
+
+            - `"duration_seconds"`
+
+            - `"duration_minutes"`
+
+            - `"duration_hours"`
+
+            - `"gibibyte_hours"`
+
+            - `"images"`
+
+            - `"characters"`
 
     - `start_time: number`
 
@@ -23861,7 +24367,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -23896,6 +24402,32 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `quantity: optional number or null`
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `string`
+
+          - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+            The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+            - `"tokens"`
+
+            - `"1000_tokens"`
+
+            - `"duration_seconds"`
+
+            - `"duration_minutes"`
+
+            - `"duration_hours"`
+
+            - `"gibibyte_hours"`
+
+            - `"images"`
+
+            - `"characters"`
 
     - `start_time: number`
 
@@ -24277,7 +24809,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -24312,6 +24844,32 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `quantity: optional number or null`
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `string`
+
+          - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+            The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+            - `"tokens"`
+
+            - `"1000_tokens"`
+
+            - `"duration_seconds"`
+
+            - `"duration_minutes"`
+
+            - `"duration_hours"`
+
+            - `"gibibyte_hours"`
+
+            - `"images"`
+
+            - `"characters"`
 
     - `start_time: number`
 
@@ -24693,7 +25251,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -24728,6 +25286,32 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `quantity: optional number or null`
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `string`
+
+          - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+            The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+            - `"tokens"`
+
+            - `"1000_tokens"`
+
+            - `"duration_seconds"`
+
+            - `"duration_minutes"`
+
+            - `"duration_hours"`
+
+            - `"gibibyte_hours"`
+
+            - `"images"`
+
+            - `"characters"`
 
     - `start_time: number`
 
@@ -25109,7 +25693,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -25144,6 +25728,32 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `quantity: optional number or null`
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `string`
+
+          - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+            The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+            - `"tokens"`
+
+            - `"1000_tokens"`
+
+            - `"duration_seconds"`
+
+            - `"duration_minutes"`
+
+            - `"duration_hours"`
+
+            - `"gibibyte_hours"`
+
+            - `"images"`
+
+            - `"characters"`
 
     - `start_time: number`
 
@@ -25525,7 +26135,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -25560,6 +26170,32 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `quantity: optional number or null`
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `string`
+
+          - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+            The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+            - `"tokens"`
+
+            - `"1000_tokens"`
+
+            - `"duration_seconds"`
+
+            - `"duration_minutes"`
+
+            - `"duration_hours"`
+
+            - `"gibibyte_hours"`
+
+            - `"images"`
+
+            - `"characters"`
 
     - `start_time: number`
 
@@ -25941,7 +26577,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -25976,6 +26612,32 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `quantity: optional number or null`
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `string`
+
+          - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+            The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+            - `"tokens"`
+
+            - `"1000_tokens"`
+
+            - `"duration_seconds"`
+
+            - `"duration_minutes"`
+
+            - `"duration_hours"`
+
+            - `"gibibyte_hours"`
+
+            - `"images"`
+
+            - `"characters"`
 
     - `start_time: number`
 
@@ -26357,7 +27019,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -26392,6 +27054,32 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `quantity: optional number or null`
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `string`
+
+          - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+            The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+            - `"tokens"`
+
+            - `"1000_tokens"`
+
+            - `"duration_seconds"`
+
+            - `"duration_minutes"`
+
+            - `"duration_hours"`
+
+            - `"gibibyte_hours"`
+
+            - `"images"`
+
+            - `"characters"`
 
     - `start_time: number`
 
@@ -26773,7 +27461,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -26808,6 +27496,32 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `quantity: optional number or null`
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `string`
+
+          - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+            The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+            - `"tokens"`
+
+            - `"1000_tokens"`
+
+            - `"duration_seconds"`
+
+            - `"duration_minutes"`
+
+            - `"duration_hours"`
+
+            - `"gibibyte_hours"`
+
+            - `"images"`
+
+            - `"characters"`
 
     - `start_time: number`
 
@@ -27189,7 +27903,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -27224,6 +27938,32 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `quantity: optional number or null`
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `string`
+
+          - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+            The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+            - `"tokens"`
+
+            - `"1000_tokens"`
+
+            - `"duration_seconds"`
+
+            - `"duration_minutes"`
+
+            - `"duration_hours"`
+
+            - `"gibibyte_hours"`
+
+            - `"images"`
+
+            - `"characters"`
 
     - `start_time: number`
 
@@ -27605,7 +28345,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 3 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -27640,6 +28380,32 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
         - `quantity: optional number or null`
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
+
+        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+
+          The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+          - `string`
+
+          - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+            The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+            - `"tokens"`
+
+            - `"1000_tokens"`
+
+            - `"duration_seconds"`
+
+            - `"duration_minutes"`
+
+            - `"duration_hours"`
+
+            - `"gibibyte_hours"`
+
+            - `"images"`
+
+            - `"characters"`
 
     - `start_time: number`
 

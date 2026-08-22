@@ -743,6 +743,9 @@ components:
         lynn-private:
           additionalProperties: {}
           type: object
+        makora:
+          additionalProperties: {}
+          type: object
         mancer:
           additionalProperties: {}
           type: object
