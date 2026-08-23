@@ -39,7 +39,7 @@ Once your compute instance is running, you can access its terminal directly from
 2.  Find your compute instance in the top dropdown menu.
 3.  Click on the **Terminal** option below the file browser to open a command-line interface to your instance.
 
-![Azure ML open terminal button location](https://cdn.jsdelivr.net/gh/ultralytics/assets@main/docs/open-terminal-arrow.avif)
+![Azure ML open terminal button location](https://cdn.ul.run/i/2d2ab78c21a8b2285e8291249e1aed40.avif)
 
 ## Setup and Run YOLOv5
 

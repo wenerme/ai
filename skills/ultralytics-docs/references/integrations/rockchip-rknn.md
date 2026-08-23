@@ -187,7 +187,7 @@ Once installed, run inference and validation on your Rockchip device exactly as 
 
     If you encounter a log message indicating that the RKNN runtime version does not match the RKNN Toolkit version and the inference fails, please replace `/usr/lib/librknnrt.so` with official [librknnrt.so file](https://github.com/airockchip/rknn-toolkit2/blob/master/rknpu2/runtime/Linux/librknn_api/aarch64/librknnrt.so).
 
-    ![RKNN export screenshot](https://cdn.jsdelivr.net/gh/ultralytics/assets@main/docs/rockchip-rknn-export-log.avif)
+    ![RKNN export screenshot](https://cdn.ul.run/i/90077c647a22b3a29612d2701c6f2108.avif)
 
 ## Real-World Applications
 

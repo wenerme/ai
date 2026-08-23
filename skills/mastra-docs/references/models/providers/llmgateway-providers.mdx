@@ -1,11 +1,11 @@
 ---
 title: "LLM Gateway | Models"
-description: "Use LLM Gateway models with Mastra. 369 models available."
+description: "Use LLM Gateway models with Mastra. 371 models available."
 ---
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 369 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 371 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -1552,6 +1552,30 @@ for await (const chunk of stream) {
     "outputCost": 0.18
   },
   {
+    "model": "llmgateway-providers/deepinfra/mimo-v2.5",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 16384,
+    "inputCost": 0.4,
+    "outputCost": 2
+  },
+  {
+    "model": "llmgateway-providers/deepinfra/mimo-v2.5-pro",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 16384,
+    "inputCost": 1,
+    "outputCost": 3
+  },
+  {
     "model": "llmgateway-providers/deepinfra/nemotron-3-ultra-550b",
     "imageInput": true,
     "audioInput": false,
@@ -3004,6 +3028,30 @@ for await (const chunk of stream) {
     "outputCost": 0.59
   },
   {
+    "model": "llmgateway-providers/novita/mimo-v2.5",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.168,
+    "outputCost": 0.336
+  },
+  {
+    "model": "llmgateway-providers/novita/mimo-v2.5-pro",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.522,
+    "outputCost": 1.044
+  },
+  {
     "model": "llmgateway-providers/novita/minimax-m2.1",
     "imageInput": false,
     "audioInput": false,
@@ -3304,18 +3352,6 @@ for await (const chunk of stream) {
     "outputCost": 0.6
   },
   {
-    "model": "llmgateway-providers/openai/gpt-4o-mini-search-preview",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 16384,
-    "inputCost": 0.15,
-    "outputCost": 0.6
-  },
-  {
     "model": "llmgateway-providers/openai/gpt-4o-mini-transcribe",
     "imageInput": false,
     "audioInput": true,
@@ -3326,18 +3362,6 @@ for await (const chunk of stream) {
     "maxOutput": 2000,
     "inputCost": 1.25,
     "outputCost": 5
-  },
-  {
-    "model": "llmgateway-providers/openai/gpt-4o-search-preview",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 16384,
-    "inputCost": 2.5,
-    "outputCost": 10
   },
   {
     "model": "llmgateway-providers/openai/gpt-4o-transcribe",

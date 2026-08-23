@@ -33,7 +33,7 @@ Albumentations offers many useful features that simplify complex image augmentat
 
 - **Three Levels of Augmentation**: Albumentations supports three levels of augmentation: pixel-level transformations, spatial-level transformations, and mixing-level transformations. Pixel-level transformations only affect the input images without altering masks, bounding boxes, or key points. Meanwhile, both the image and its elements, like masks and bounding boxes, are transformed using spatial-level transformations. Furthermore, mixing-level transformations are a unique way to augment data as they combine multiple images into one.
 
-![Overview of the Different Levels of Augmentations](https://cdn.jsdelivr.net/gh/ultralytics/assets@main/docs/levels-of-augmentation.avif)
+![Overview of the Different Levels of Augmentations](https://cdn.ul.run/i/e71e1aeead5b4c131194f203814f6810.avif)
 
 - **[Benchmarking Results](https://albumentations.ai/docs/benchmarks/image-benchmarks/)**: When it comes to benchmarking, Albumentations consistently outperforms other libraries, especially with large datasets.
 

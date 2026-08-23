@@ -20,7 +20,7 @@ pip install -r requirements.txt # Install dependencies
 
 ## Train On Custom Data
 
-[![Ultralytics active learning loop diagram](https://cdn.jsdelivr.net/gh/ultralytics/assets@main/docs/ultralytics-active-learning-loop.avif)](https://platform.ultralytics.com)
+[![Ultralytics active learning loop diagram](https://cdn.ul.run/i/f874ab850f33f361d01a01e9a8c98655.avif)](https://platform.ultralytics.com)
 
 Developing a custom [object detection](../../tasks/detect.md) model is an iterative process:
 
