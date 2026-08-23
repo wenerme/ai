@@ -1432,7 +1432,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 911 | 8.1 MiB |
 | [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 21 KiB |
 | [glab-docs](./skills/glab-docs/SKILL.md) | 305 | 496 KiB |
-| [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 782 KiB |
+| [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 713 KiB |
 | [google-ai-docs](./skills/google-ai-docs/SKILL.md) | 94 | 2.1 MiB |
 | [grafana-docs](./skills/grafana-docs/SKILL.md) | 631 | 6.3 MiB |
 | [grafana-plugin-docs](./skills/grafana-plugin-docs/SKILL.md) | 645 | 4.4 MiB |

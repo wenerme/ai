@@ -49,7 +49,7 @@ Format: `models/{model}`. It takes the form `models/{model}`.
 ### Request body
 
 The request body contains data with the following structure:
-Fields `contents[]` ``object (`Content`)`` Required. The content of the current conversation with the model.
+Fields `contents[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Required. The content of the current conversation with the model.
 
 For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://ai.google.dev/gemini-api/docs/text-generation#chat), this is a repeated field that contains the conversation history and the latest request.
 `tools[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.Tool`)`` Optional. A list of `Tools` the `Model` may use to generate the next response.
@@ -59,10 +59,10 @@ A `Tool` is a piece of code that enables the system to interact with external sy
 `safetySettings[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.SafetySetting`)`` Optional. A list of unique `SafetySetting` instances for blocking unsafe content.
 
 This will be enforced on the `GenerateContentRequest.contents` and `GenerateContentResponse.candidates`. There should not be more than one setting for each `SafetyCategory` type. The API will block any contents and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each `SafetyCategory` specified in the safetySettings. If there is no `SafetySetting` for a given `SafetyCategory` provided in the list, the API will use the default safety setting for that category. Harm categories HARM_CATEGORY_HATE_SPEECH, HARM_CATEGORY_SEXUALLY_EXPLICIT, HARM_CATEGORY_DANGEROUS_CONTENT, HARM_CATEGORY_HARASSMENT, HARM_CATEGORY_CIVIC_INTEGRITY, HARM_CATEGORY_JAILBREAK are supported. Refer to the [guide](https://ai.google.dev/gemini-api/docs/safety-settings) for detailed information on available safety settings. Also refer to the [Safety guidance](https://ai.google.dev/gemini-api/docs/safety-guidance) to learn how to incorporate safety considerations in your AI applications.
-`systemInstruction` ``object (`Content`)`` Optional. Developer set [system instruction(s)](https://ai.google.dev/gemini-api/docs/system-instructions). Currently, text only.
+`systemInstruction` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Optional. Developer set [system instruction(s)](https://ai.google.dev/gemini-api/docs/system-instructions). Currently, text only.
 `generationConfig` ``object (`https://ai.google.dev/api/generate-content#GenerationConfig`)`` Optional. Configuration options for model generation and outputs.
 `cachedContent` `string` Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
-`serviceTier` ``enum (`ServiceTier`)`` Optional. The service tier of the request.
+`serviceTier` ``enum (`https://ai.google.dev/api/generate-content#v1beta.ServiceTier`)`` Optional. The service tier of the request.
 `store` `boolean` Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
 
 ### Example request
@@ -75,7 +75,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     response = client.models.generate_content(
-        model="gemini-3.5-flash", contents="Write a story about a magic backpack."
+        model="gemini-3.7-flash", contents="Write a story about a magic backpack."
     )
     print(response.text)
 
@@ -86,7 +86,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.7-flash",
       contents: "Write a story about a magic backpack.",
     });
     console.log(response.text);
@@ -104,7 +104,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     contents := []*genai.Content{
     	genai.NewContentFromText("Write a story about a magic backpack.", genai.RoleUser),
     }
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -127,7 +127,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-3.5-flash",
+                    "gemini-3.7-flash",
                     "Write a story about a magic backpack.",
                     null);
 
@@ -143,7 +143,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     organ = PIL.Image.open(media / "organ.jpg")
     response = client.models.generate_content(
-        model="gemini-3.5-flash", contents=["Tell me about this instrument", organ]
+        model="gemini-3.7-flash", contents=["Tell me about this instrument", organ]
     )
     print(response.text)
 
@@ -158,7 +158,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     });
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.7-flash",
       contents: [
         createUserContent([
           "Tell me about this instrument", 
@@ -197,7 +197,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -247,7 +247,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
                     Part.fromText("Tell me about this instrument."),
                     Part.fromBytes(imageData, "image/jpeg"));
 
-    GenerateContentResponse response = client.models.generateContent("gemini-3.5-flash", content, null);
+    GenerateContentResponse response = client.models.generateContent("gemini-3.7-flash", content, null);
 
     System.out.println(response.text());
 
@@ -260,7 +260,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     sample_audio = client.files.upload(file=media / "sample.mp3")
     response = client.models.generate_content(
-        model="gemini-3.5-flash",
+        model="gemini-3.7-flash",
         contents=["Give me a summary of this audio file.", sample_audio],
     )
     print(response.text)
@@ -276,7 +276,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     });
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.7-flash",
       contents: [
         createUserContent([
           "Give me a summary of this audio file.",
@@ -317,7 +317,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -392,7 +392,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         myfile = client.files.get(name=myfile.name)
 
     response = client.models.generate_content(
-        model="gemini-3.5-flash", contents=[myfile, "Describe this video clip"]
+        model="gemini-3.7-flash", contents=[myfile, "Describe this video clip"]
     )
     print(f"{response.text=}")
 
@@ -415,7 +415,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     }
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.7-flash",
       contents: [
         createUserContent([
           "Describe this video clip",
@@ -468,7 +468,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -545,7 +545,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     sample_pdf = client.files.upload(file=media / "test.pdf")
     response = client.models.generate_content(
-        model="gemini-3.5-flash",
+        model="gemini-3.7-flash",
         contents=["Give me a summary of this document:", sample_pdf],
     )
     print(f"{response.text=}")
@@ -581,7 +581,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -648,7 +648,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     # Pass initial history using the "history" argument
     chat = client.chats.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.7-flash",
         history=[
             types.Content(role="user", parts=[types.Part(text="Hello")]),
             types.Content(
@@ -672,7 +672,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     // import {GoogleGenAI} from '@google/genai';
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const chat = ai.chats.create({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.7-flash",
       history: [
         {
           role: "user",
@@ -712,7 +712,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	genai.NewContentFromText("Great to meet you. What would you like to know?", genai.RoleModel),
     }
 
-    chat, err := client.Chats.Create(ctx, "gemini-3.5-flash", nil, history)
+    chat, err := client.Chats.Create(ctx, "gemini-3.7-flash", nil, history)
     if err != nil {
     	log.Fatal(err)
     }
@@ -763,7 +763,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
                     ).build();
 
     Chat chat = client.chats.create(
-            "gemini-3.5-flash",
+            "gemini-3.7-flash",
             GenerateContentConfig.builder()
                     .systemInstruction(userContent)
                     .systemInstruction(modelContent)
@@ -785,7 +785,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     document = client.files.upload(file=media / "a11.txt")
-    model_name = "gemini-3.5-flash"
+    model_name = "gemini-3.7-flash"
 
     cache = client.caches.create(
         model=model_name,
@@ -814,7 +814,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
       config: { mimeType: "text/plain" },
     });
     console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-3.5-flash";
+    const modelName = "gemini-3.7-flash";
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -847,7 +847,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	log.Fatal(err)
     }
 
-    modelName := "gemini-3.5-flash"
+    modelName := "gemini-3.7-flash"
     document, err := client.Files.UploadFromPath(
     	ctx, 
     	filepath.Join(getMedia(), "a11.txt"), 
@@ -911,7 +911,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     result = client.models.generate_content(
-        model="gemini-3.5-flash",
+        model="gemini-3.7-flash",
         contents="List a few popular cookie recipes.",
         config=types.GenerateContentConfig(
             response_mime_type="application/json", response_schema=list[Recipe]
@@ -925,7 +925,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     // import {GoogleGenAI} from '@google/genai';
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.7-flash",
       contents: "List a few popular cookie recipes.",
       config: {
         responseMimeType: "application/json",
@@ -977,7 +977,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     response, err := client.Models.GenerateContent(
     	ctx,
-    	"gemini-3.5-flash",
+    	"gemini-3.7-flash",
     	genai.Text("List a few popular cookie recipes."),
     	config,
     )
@@ -1041,7 +1041,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-3.5-flash",
+                    "gemini-3.7-flash",
                     "List a few popular cookie recipes.",
                     config);
 
@@ -1056,7 +1056,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     response = client.models.generate_content(
-        model="gemini-3.5-flash",
+        model="gemini-3.7-flash",
         contents=(
             "Write and execute code that calculates the sum of the first 50 prime numbers. "
             "Ensure that only the executable code and its resulting output are generated."
@@ -1083,7 +1083,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     response, err := client.Models.GenerateContent(
     	ctx,
-    	"gemini-3.5-flash",
+    	"gemini-3.7-flash",
     	genai.Text(
     		`Write and execute code that calculates the sum of the first 50 prime numbers.
     		 Ensure that only the executable code and its resulting output are generated.`,
@@ -1111,7 +1111,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-3.5-flash",
+                    "gemini-3.7-flash",
                     prompt,
                     null);
 
@@ -1149,7 +1149,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     # Create a chat session; function calling (via tools) is enabled in the config.
     chat = client.chats.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.7-flash",
         config=types.GenerateContentConfig(tools=[add, subtract, multiply, divide]),
     )
     response = chat.send_message(
@@ -1167,7 +1167,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    modelName := "gemini-3.5-flash"
+    modelName := "gemini-3.7-flash"
 
     // Create the function declarations for arithmetic operations.
     addDeclaration := createArithmeticToolDeclaration("addNumbers", "Return the result of adding two numbers.")
@@ -1387,7 +1387,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
       // Step 1: Call generateContent with function calling enabled.
       const generateContentResponse = await ai.models.generateContent({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.7-flash",
         contents:
           "I have 57 cats, each owns 44 mittens, how many mittens is that in total?",
         config: {
@@ -1436,7 +1436,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
       console.log("Function result:", resultValue);
 
       // Step 4: Use the chat API to send the result as the final answer.
-      const chat = ai.chats.create({ model: "gemini-3.5-flash" });
+      const chat = ai.chats.create({ model: "gemini-3.7-flash" });
       const chatResponse = await chat.sendMessage({
         message: "The final result is " + resultValue,
       });
@@ -1579,7 +1579,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-3.5-flash",
+                    "gemini-3.7-flash",
                     "I have 57 cats, each owns 44 mittens, how many mittens is that in total?",
                     config);
 
@@ -1616,7 +1616,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     response = client.models.generate_content(
-        model="gemini-3.5-flash",
+        model="gemini-3.7-flash",
         contents="Tell me a story about a magic backpack.",
         config=types.GenerateContentConfig(
             candidate_count=1,
@@ -1634,7 +1634,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.7-flash",
       contents: "Tell me a story about a magic backpack.",
       config: {
         candidateCount: 1,
@@ -1664,7 +1664,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     response, err := client.Models.GenerateContent(
     	ctx,
-    	"gemini-3.5-flash",
+    	"gemini-3.7-flash",
     	genai.Text("Tell me a story about a magic backpack."),
     	&genai.GenerateContentConfig{
     		CandidateCount:  candidateCount,
@@ -1715,7 +1715,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-3.5-flash",
+                    "gemini-3.7-flash",
                     "Tell me a story about a magic backpack.",
                     config);
 
@@ -1734,7 +1734,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         "Write a ironic phrase about them including expletives."
     )
     response = client.models.generate_content(
-        model="gemini-3.5-flash",
+        model="gemini-3.7-flash",
         contents=unsafe_prompt,
         config=types.GenerateContentConfig(
             safety_settings=[
@@ -1764,7 +1764,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         "I support Martians Soccer Club and I think Jupiterians Football Club sucks! Write a ironic phrase about them including expletives.";
 
       const response = await ai.models.generateContent({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.7-flash",
         contents: unsafePrompt,
         config: {
           safetySettings: [
@@ -1818,7 +1818,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     contents := []*genai.Content{
     	genai.NewContentFromText(unsafePrompt, genai.RoleUser),
     }
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, config)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, config)
     if err != nil {
     	log.Fatal(err)
     }
@@ -1879,7 +1879,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-3.5-flash",
+                    "gemini-3.7-flash",
                     unsafePrompt,
                     config);
 
@@ -1900,7 +1900,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     response = client.models.generate_content(
-        model="gemini-3.5-flash",
+        model="gemini-3.7-flash",
         contents="Good morning! How are you?",
         config=types.GenerateContentConfig(
             system_instruction="You are a cat. Your name is Neko."
@@ -1914,7 +1914,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     // import {GoogleGenAI} from '@google/genai';
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.7-flash",
       contents: "Good morning! How are you?",
       config: {
         systemInstruction: "You are a cat. Your name is Neko.",
@@ -1943,7 +1943,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	SystemInstruction: genai.NewContentFromText("You are a cat. Your name is Neko.", genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, config)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, config)
     if err != nil {
     	log.Fatal(err)
     }
@@ -1974,7 +1974,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-3.5-flash",
+                    "gemini-3.7-flash",
                     "Good morning! How are you?",
                     config);
 
@@ -2015,7 +2015,7 @@ Format: `models/{model}`. It takes the form `models/{model}`.
 ### Request body
 
 The request body contains data with the following structure:
-Fields `contents[]` ``object (`Content`)`` Required. The content of the current conversation with the model.
+Fields `contents[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Required. The content of the current conversation with the model.
 
 For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://ai.google.dev/gemini-api/docs/text-generation#chat), this is a repeated field that contains the conversation history and the latest request.
 `tools[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.Tool`)`` Optional. A list of `Tools` the `Model` may use to generate the next response.
@@ -2025,10 +2025,10 @@ A `Tool` is a piece of code that enables the system to interact with external sy
 `safetySettings[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.SafetySetting`)`` Optional. A list of unique `SafetySetting` instances for blocking unsafe content.
 
 This will be enforced on the `GenerateContentRequest.contents` and `GenerateContentResponse.candidates`. There should not be more than one setting for each `SafetyCategory` type. The API will block any contents and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each `SafetyCategory` specified in the safetySettings. If there is no `SafetySetting` for a given `SafetyCategory` provided in the list, the API will use the default safety setting for that category. Harm categories HARM_CATEGORY_HATE_SPEECH, HARM_CATEGORY_SEXUALLY_EXPLICIT, HARM_CATEGORY_DANGEROUS_CONTENT, HARM_CATEGORY_HARASSMENT, HARM_CATEGORY_CIVIC_INTEGRITY, HARM_CATEGORY_JAILBREAK are supported. Refer to the [guide](https://ai.google.dev/gemini-api/docs/safety-settings) for detailed information on available safety settings. Also refer to the [Safety guidance](https://ai.google.dev/gemini-api/docs/safety-guidance) to learn how to incorporate safety considerations in your AI applications.
-`systemInstruction` ``object (`Content`)`` Optional. Developer set [system instruction(s)](https://ai.google.dev/gemini-api/docs/system-instructions). Currently, text only.
+`systemInstruction` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Optional. Developer set [system instruction(s)](https://ai.google.dev/gemini-api/docs/system-instructions). Currently, text only.
 `generationConfig` ``object (`https://ai.google.dev/api/generate-content#GenerationConfig`)`` Optional. Configuration options for model generation and outputs.
 `cachedContent` `string` Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
-`serviceTier` ``enum (`ServiceTier`)`` Optional. The service tier of the request.
+`serviceTier` ``enum (`https://ai.google.dev/api/generate-content#v1beta.ServiceTier`)`` Optional. The service tier of the request.
 `store` `boolean` Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
 
 ### Example request
@@ -2041,7 +2041,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     response = client.models.generate_content_stream(
-        model="gemini-3.5-flash", contents="Write a story about a magic backpack."
+        model="gemini-3.7-flash", contents="Write a story about a magic backpack."
     )
     for chunk in response:
         print(chunk.text)
@@ -2054,7 +2054,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
     const response = await ai.models.generateContentStream({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.7-flash",
       contents: "Write a story about a magic backpack.",
     });
     let text = "";
@@ -2078,7 +2078,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     }
     for response, err := range client.Models.GenerateContentStream(
     	ctx,
-    	"gemini-3.5-flash",
+    	"gemini-3.7-flash",
     	contents,
     	nil,
     ) {
@@ -2101,7 +2101,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     ResponseStream<GenerateContentResponse> responseStream =
             client.models.generateContentStream(
-                    "gemini-3.5-flash",
+                    "gemini-3.7-flash",
                     "Write a story about a magic backpack.",
                     null);
 
@@ -2123,7 +2123,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     organ = PIL.Image.open(media / "organ.jpg")
     response = client.models.generate_content_stream(
-        model="gemini-3.5-flash", contents=["Tell me about this instrument", organ]
+        model="gemini-3.7-flash", contents=["Tell me about this instrument", organ]
     )
     for chunk in response:
         print(chunk.text)
@@ -2140,7 +2140,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     });
 
     const response = await ai.models.generateContentStream({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.7-flash",
       contents: [
         createUserContent([
           "Tell me about this instrument", 
@@ -2183,7 +2183,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     }
     for response, err := range client.Models.GenerateContentStream(
     	ctx,
-    	"gemini-3.5-flash",
+    	"gemini-3.7-flash",
     	contents,
     	nil,
     ) {
@@ -2231,7 +2231,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     ResponseStream<GenerateContentResponse> responseStream =
             client.models.generateContentStream(
-                    "gemini-3.5-flash",
+                    "gemini-3.7-flash",
                     content,
                     null);
 
@@ -2252,7 +2252,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     sample_audio = client.files.upload(file=media / "sample.mp3")
     response = client.models.generate_content_stream(
-        model="gemini-3.5-flash",
+        model="gemini-3.7-flash",
         contents=["Give me a summary of this audio file.", sample_audio],
     )
     for chunk in response:
@@ -2292,7 +2292,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     for result, err := range client.Models.GenerateContentStream(
     	ctx,
-    	"gemini-3.5-flash",
+    	"gemini-3.7-flash",
     	contents,
     	nil,
     ) {
@@ -2369,7 +2369,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         myfile = client.files.get(name=myfile.name)
 
     response = client.models.generate_content_stream(
-        model="gemini-3.5-flash", contents=[myfile, "Describe this video clip"]
+        model="gemini-3.7-flash", contents=[myfile, "Describe this video clip"]
     )
     for chunk in response:
         print(chunk.text)
@@ -2394,7 +2394,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     }
 
     const response = await ai.models.generateContentStream({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.7-flash",
       contents: [
         createUserContent([
           "Describe this video clip",
@@ -2453,7 +2453,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     for result, err := range client.Models.GenerateContentStream(
     	ctx,
-    	"gemini-3.5-flash",
+    	"gemini-3.7-flash",
     	contents,
     	nil,
     ) {
@@ -2529,7 +2529,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     sample_pdf = client.files.upload(file=media / "test.pdf")
     response = client.models.generate_content_stream(
-        model="gemini-3.5-flash",
+        model="gemini-3.7-flash",
         contents=["Give me a summary of this document:", sample_pdf],
     )
 
@@ -2570,7 +2570,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     for result, err := range client.Models.GenerateContentStream(
     	ctx,
-    	"gemini-3.5-flash",
+    	"gemini-3.7-flash",
     	contents,
     	nil,
     ) {
@@ -2638,7 +2638,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     chat = client.chats.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.7-flash",
         history=[
             types.Content(role="user", parts=[types.Part(text="Hello")]),
             types.Content(
@@ -2668,7 +2668,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     // import {GoogleGenAI} from '@google/genai';
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const chat = ai.chats.create({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.7-flash",
       history: [
         {
           role: "user",
@@ -2716,7 +2716,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	genai.NewContentFromText("Hello", genai.RoleUser),
     	genai.NewContentFromText("Great to meet you. What would you like to know?", genai.RoleModel),
     }
-    chat, err := client.Chats.Create(ctx, "gemini-3.5-flash", nil, history)
+    chat, err := client.Chats.Create(ctx, "gemini-3.7-flash", nil, history)
     if err != nil {
     	log.Fatal(err)
     }
@@ -2824,11 +2824,11 @@ Fields `promptTokenCount` `integer` Number of tokens in the prompt. When `cached
 `cacheTokensDetails[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`)`` Output only. List of modalities of the cached content in the request input.
 `candidatesTokensDetails[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`)`` Output only. List of modalities that were returned in the response.
 `toolUsePromptTokensDetails[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`)`` Output only. List of modalities that were processed for tool-use request inputs.
-`serviceTier` ``enum (`ServiceTier`)`` Output only. Service tier of the request.
+`serviceTier` ``enum (`https://ai.google.dev/api/generate-content#v1beta.ServiceTier`)`` Output only. Service tier of the request.
 
 | JSON representation |
 |---|
-| ``` { "promptTokenCount": integer, "cachedContentTokenCount": integer, "candidatesTokenCount": integer, "toolUsePromptTokenCount": integer, "thoughtsTokenCount": integer, "totalTokenCount": integer, "promptTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ], "cacheTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ], "candidatesTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ], "toolUsePromptTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ], "serviceTier": enum (`ServiceTier`) } ``` |
+| ``` { "promptTokenCount": integer, "cachedContentTokenCount": integer, "candidatesTokenCount": integer, "toolUsePromptTokenCount": integer, "thoughtsTokenCount": integer, "totalTokenCount": integer, "promptTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ], "cacheTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ], "candidatesTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ], "toolUsePromptTokensDetails": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ModalityTokenCount`) } ], "serviceTier": enum (`https://ai.google.dev/api/generate-content#v1beta.ServiceTier`) } ``` |
 
 ## ModelStatus
 
@@ -2911,7 +2911,7 @@ Defines the stage of the underlying model.
 - [UrlRetrievalStatus](https://ai.google.dev/api/generate-content#UrlRetrievalStatus)
 
 A response candidate generated from the model.
-Fields `content` ``object (`Content`)`` Output only. Generated content returned from the model.
+Fields `content` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Output only. Generated content returned from the model.
 `finishReason` ``enum (`https://ai.google.dev/api/generate-content#FinishReason`)`` Optional. Output only. The reason why the model stopped generating tokens.
 
 If empty, the model has not stopped generating tokens.
@@ -2936,7 +2936,7 @@ This field is populated for `GenerateContent` calls.
 
 | JSON representation |
 |---|
-| ``` { "content": { object (`Content`) }, "finishReason": enum (`https://ai.google.dev/api/generate-content#FinishReason`), "safetyRatings": [ { object (`https://ai.google.dev/api/generate-content#v1beta.SafetyRating`) } ], "citationMetadata": { object (`https://ai.google.dev/api/generate-content#v1beta.CitationMetadata`) }, "tokenCount": integer, "groundingAttributions": [ { object (`https://ai.google.dev/api/generate-content#GroundingAttribution`) } ], "groundingMetadata": { object (`https://ai.google.dev/api/generate-content#GroundingMetadata`) }, "avgLogprobs": number, "logprobsResult": { object (`https://ai.google.dev/api/generate-content#LogprobsResult`) }, "urlContextMetadata": { object (`https://ai.google.dev/api/generate-content#UrlContextMetadata`) }, "index": integer, "finishMessage": string } ``` |
+| ``` { "content": { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) }, "finishReason": enum (`https://ai.google.dev/api/generate-content#FinishReason`), "safetyRatings": [ { object (`https://ai.google.dev/api/generate-content#v1beta.SafetyRating`) } ], "citationMetadata": { object (`https://ai.google.dev/api/generate-content#v1beta.CitationMetadata`) }, "tokenCount": integer, "groundingAttributions": [ { object (`https://ai.google.dev/api/generate-content#GroundingAttribution`) } ], "groundingMetadata": { object (`https://ai.google.dev/api/generate-content#GroundingMetadata`) }, "avgLogprobs": number, "logprobsResult": { object (`https://ai.google.dev/api/generate-content#LogprobsResult`) }, "urlContextMetadata": { object (`https://ai.google.dev/api/generate-content#UrlContextMetadata`) }, "index": integer, "finishMessage": string } ``` |
 
 ## FinishReason
 
@@ -2970,11 +2970,11 @@ Defines the reason why the model stopped generating tokens.
 
 Attribution for a source that contributed to an answer.
 Fields `sourceId` ``object (`https://ai.google.dev/api/generate-content#AttributionSourceId`)`` Output only. Identifier for the source contributing to this attribution.
-`content` ``object (`Content`)`` Grounding source content that makes up this attribution.
+`content` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Grounding source content that makes up this attribution.
 
 | JSON representation |
 |---|
-| ``` { "sourceId": { object (`https://ai.google.dev/api/generate-content#AttributionSourceId`) }, "content": { object (`Content`) } } ``` |
+| ``` { "sourceId": { object (`https://ai.google.dev/api/generate-content#AttributionSourceId`) }, "content": { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) } } ``` |
 
 ## AttributionSourceId
 
@@ -3262,21 +3262,25 @@ License info is required for code citations.
 
 ## HarmCategory
 
-Harm categories that can be detected in user input and model responses.
+The category of a rating.
+
+These categories cover various kinds of harms that developers may wish to adjust.
 
 | Enums ||
 |---|---|
-| `HARM_CATEGORY_UNSPECIFIED` | Default value. This value is unused. |
-| `HARM_CATEGORY_HATE_SPEECH` | Content that promotes violence or incites hatred against individuals or groups based on certain attributes. |
-| `HARM_CATEGORY_DANGEROUS_CONTENT` | Content that promotes, facilitates, or enables dangerous activities. |
-| `HARM_CATEGORY_HARASSMENT` | Abusive, threatening, or content intended to bully, torment, or ridicule. |
-| `HARM_CATEGORY_SEXUALLY_EXPLICIT` | Content that contains sexually explicit material. |
-| `HARM_CATEGORY_CIVIC_INTEGRITY` | Deprecated: Election filter is not longer supported. The harm category is civic integrity. > [!WARNING] > This item is deprecated! |
-| `HARM_CATEGORY_IMAGE_HATE` | Images that contain hate speech. |
-| `HARM_CATEGORY_IMAGE_DANGEROUS_CONTENT` | Images that contain dangerous content. |
-| `HARM_CATEGORY_IMAGE_HARASSMENT` | Images that contain harassment. |
-| `HARM_CATEGORY_IMAGE_SEXUALLY_EXPLICIT` | Images that contain sexually explicit content. |
-| `HARM_CATEGORY_JAILBREAK` | Prompts designed to bypass safety filters. |
+| `HARM_CATEGORY_UNSPECIFIED` | Category is unspecified. |
+| `HARM_CATEGORY_DEROGATORY` | **PaLM** - Negative or harmful comments targeting identity and/or protected attribute. |
+| `HARM_CATEGORY_TOXICITY` | **PaLM** - Content that is rude, disrespectful, or profane. |
+| `HARM_CATEGORY_VIOLENCE` | **PaLM** - Describes scenarios depicting violence against an individual or group, or general descriptions of gore. |
+| `HARM_CATEGORY_SEXUAL` | **PaLM** - Contains references to sexual acts or other lewd content. |
+| `HARM_CATEGORY_MEDICAL` | **PaLM** - Promotes unchecked medical advice. |
+| `HARM_CATEGORY_DANGEROUS` | **PaLM** - Dangerous content that promotes, facilitates, or encourages harmful acts. |
+| `HARM_CATEGORY_HARASSMENT` | **Gemini** - Harassment content. |
+| `HARM_CATEGORY_HATE_SPEECH` | **Gemini** - Hate speech and content. |
+| `HARM_CATEGORY_SEXUALLY_EXPLICIT` | **Gemini** - Sexually explicit content. |
+| `HARM_CATEGORY_DANGEROUS_CONTENT` | **Gemini** - Dangerous content. |
+| `HARM_CATEGORY_CIVIC_INTEGRITY` | **Gemini** - Content that may be used to harm civic integrity. DEPRECATED: use enableEnhancedCivicAnswers instead. > [!WARNING] > This item is deprecated! |
+| `HARM_CATEGORY_JAILBREAK` | **Gemini** - Prompts attempting to bypass or subvert the model's safety guidelines (jailbreak attempts). |
 
 ## ModalityTokenCount
 
@@ -3312,13 +3316,13 @@ Content Part modality
 Safety rating for a piece of content.
 
 The safety rating contains the category of harm and the harm probability level in that category for a piece of content. Content is classified for safety across a number of harm categories and the probability of the harm classification is included here.
-Fields `category` ``enum (`HarmCategory`)`` Required. The category for this rating.
+Fields `category` ``enum (`https://ai.google.dev/api/generate-content#v1beta.HarmCategory`)`` Required. The category for this rating.
 `probability` ``enum (`https://ai.google.dev/api/generate-content#HarmProbability`)`` Required. The probability of harm for this content.
 `blocked` `boolean` Was this content blocked because of this rating?
 
 | JSON representation |
 |---|
-| ``` { "category": enum (`HarmCategory`), "probability": enum (`https://ai.google.dev/api/generate-content#HarmProbability`), "blocked": boolean } ``` |
+| ``` { "category": enum (`https://ai.google.dev/api/generate-content#v1beta.HarmCategory`), "probability": enum (`https://ai.google.dev/api/generate-content#HarmProbability`), "blocked": boolean } ``` |
 
 ## HarmProbability
 
@@ -3342,12 +3346,12 @@ The classification system gives the probability of the content being unsafe. Thi
 Safety setting, affecting the safety-blocking behavior.
 
 Passing a safety setting for a category changes the allowed probability that content is blocked.
-Fields `category` ``enum (`HarmCategory`)`` Required. The category for this setting.
+Fields `category` ``enum (`https://ai.google.dev/api/generate-content#v1beta.HarmCategory`)`` Required. The category for this setting.
 `threshold` ``enum (`https://ai.google.dev/api/generate-content#HarmBlockThreshold`)`` Required. Controls the probability threshold at which harm is blocked.
 
 | JSON representation |
 |---|
-| ``` { "category": enum (`HarmCategory`), "threshold": enum (`https://ai.google.dev/api/generate-content#HarmBlockThreshold`) } ``` |
+| ``` { "category": enum (`https://ai.google.dev/api/generate-content#v1beta.HarmCategory`), "threshold": enum (`https://ai.google.dev/api/generate-content#HarmBlockThreshold`) } ``` |
 
 ## HarmBlockThreshold
 
@@ -3364,1547 +3368,193 @@ Block at and beyond a specified harm probability.
 
 ## ServiceTier
 
-The service tier of the interaction.
+Service tier of the request.
 
 | Enums ||
 |---|---|
-| `SERVICE_TIER_UNSPECIFIED` | Default service tier, which is standard. |
-| `SERVICE_TIER_FLEX` | Flex service tier. |
-| `SERVICE_TIER_STANDARD` | Standard service tier. |
-| `SERVICE_TIER_PRIORITY` | Priority service tier. |
-
-## AllowedTools
-
-- [JSON representation](https://ai.google.dev/api/generate-content#SCHEMA_REPRESENTATION)
-
-The configuration for allowed tools.
-Fields `mode` ``enum (`https://ai.google.dev/api/generate-content#v1beta.ToolChoiceType`)`` The mode of the tool choice.
-`tools[]` `string` The names of the allowed tools.
-
-| JSON representation |
-|---|
-| ``` { "mode": enum (`https://ai.google.dev/api/generate-content#v1beta.ToolChoiceType`), "tools": [ string ] } ``` |
-
-## Annotation
-
-- [JSON representation](https://ai.google.dev/api/generate-content#SCHEMA_REPRESENTATION)
-- [UrlCitation](https://ai.google.dev/api/generate-content#UrlCitation)
-  - [JSON representation](https://ai.google.dev/api/generate-content#UrlCitation.SCHEMA_REPRESENTATION)
-- [FileCitation](https://ai.google.dev/api/generate-content#FileCitation)
-  - [JSON representation](https://ai.google.dev/api/generate-content#FileCitation.SCHEMA_REPRESENTATION)
-- [PlaceCitation](https://ai.google.dev/api/generate-content#PlaceCitation)
-  - [JSON representation](https://ai.google.dev/api/generate-content#PlaceCitation.SCHEMA_REPRESENTATION)
-
-Citation information for model-generated content.
-Fields `startIndex` `integer` Start of segment of the response that is attributed to this source.
-
-Index indicates the start of the segment, measured in bytes.
-`endIndex` `integer` End of the attributed segment, exclusive.
-`type` `Union type` The type of annotation. `type` can be only one of the following: `urlCitation` ``object (`https://ai.google.dev/api/generate-content#UrlCitation`)`` A URL citation annotation.
-`fileCitation` ``object (`https://ai.google.dev/api/generate-content#FileCitation`)`` A file citation annotation.
-`placeCitation` ``object (`https://ai.google.dev/api/generate-content#PlaceCitation`)`` A place citation annotation.
-
-| JSON representation |
-|---|
-| ``` { "startIndex": integer, "endIndex": integer, // type "urlCitation": { object (`https://ai.google.dev/api/generate-content#UrlCitation`) }, "fileCitation": { object (`https://ai.google.dev/api/generate-content#FileCitation`) }, "placeCitation": { object (`https://ai.google.dev/api/generate-content#PlaceCitation`) } // Union type } ``` |
-
-## UrlCitation
-
-A URL citation annotation.
-Fields `url` `string` The URL.
-`title` `string` The title of the URL.
-
-| JSON representation |
-|---|
-| ``` { "url": string, "title": string } ``` |
-
-## FileCitation
-
-A file citation annotation.
-Fields `documentUri` `string` The URI of the file.
-`fileName` `string` The name of the file.
-`source` `string` Source attributed for a portion of the text.
-`customMetadata` ``object (`https://ai.google.dev/api/generate-content#v1beta.Struct`)`` User provided metadata about the retrieved context.
-`pageNumber` `integer` Page number of the cited document, if applicable.
-`mediaId` `string` Media ID in-case of image citations, if applicable.
-
-| JSON representation |
-|---|
-| ``` { "documentUri": string, "fileName": string, "source": string, "customMetadata": { object (`https://ai.google.dev/api/generate-content#v1beta.Struct`) }, "pageNumber": integer, "mediaId": string } ``` |
-
-## PlaceCitation
-
-A place citation annotation.
-Fields `placeId` `string` The ID of the place, in `places/{placeId}` format.
-`name` `string` Title of the place.
-`url` `string` URI reference of the place.
-`reviewSnippets[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.ReviewSnippet`)`` Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
-
-| JSON representation |
-|---|
-| ``` { "placeId": string, "name": string, "url": string, "reviewSnippets": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ReviewSnippet`) } ] } ``` |
-
-## AspectRatio
-
-Supported aspect ratios for image output.
-
-| Enums ||
-|---|---|
-| `ASPECT_RATIO_UNSPECIFIED` | Default value. This value is unused. |
-| `ASPECT_RATIO_ONE_BY_ONE` | 1:1 aspect ratio. |
-| `ASPECT_RATIO_TWO_BY_THREE` | 2:3 aspect ratio. |
-| `ASPECT_RATIO_THREE_BY_TWO` | 3:2 aspect ratio. |
-| `ASPECT_RATIO_THREE_BY_FOUR` | 3:4 aspect ratio. |
-| `ASPECT_RATIO_FOUR_BY_THREE` | 4:3 aspect ratio. |
-| `ASPECT_RATIO_FOUR_BY_FIVE` | 4:5 aspect ratio. |
-| `ASPECT_RATIO_FIVE_BY_FOUR` | 5:4 aspect ratio. |
-| `ASPECT_RATIO_NINE_BY_SIXTEEN` | 9:16 aspect ratio. |
-| `ASPECT_RATIO_SIXTEEN_BY_NINE` | 16:9 aspect ratio. |
-| `ASPECT_RATIO_TWENTY_ONE_BY_NINE` | 21:9 aspect ratio. |
-| `ASPECT_RATIO_ONE_BY_EIGHT` | 1:8 aspect ratio. |
-| `ASPECT_RATIO_EIGHT_BY_ONE` | 8:1 aspect ratio. |
-| `ASPECT_RATIO_ONE_BY_FOUR` | 1:4 aspect ratio. |
-| `ASPECT_RATIO_FOUR_BY_ONE` | 4:1 aspect ratio. |
-
-## AudioResponseFormat
-
-- [JSON representation](https://ai.google.dev/api/generate-content#SCHEMA_REPRESENTATION)
-
-Configuration for audio output format.
-Fields `mimeType` ``enum (`MimeType`)`` The MIME type of the audio output.
-`delivery` ``enum (`https://ai.google.dev/api/generate-content#v1beta.Delivery`)`` The delivery mode for the audio output.
-`sampleRate` `integer` Sample rate in Hz.
-`bitRate` `integer` Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
-
-| JSON representation |
-|---|
-| ``` { "mimeType": enum (`MimeType`), "delivery": enum (`https://ai.google.dev/api/generate-content#v1beta.Delivery`), "sampleRate": integer, "bitRate": integer } ``` |
-
-## CodeExecution
-
-This type has no fields.
-A tool that can be used by the model to execute code.
-
-## CodeExecutionCallStep
-
-- [JSON representation](https://ai.google.dev/api/generate-content#SCHEMA_REPRESENTATION)
-- [CodeExecutionCallStepArguments](https://ai.google.dev/api/generate-content#CodeExecutionCallStepArguments)
-  - [JSON representation](https://ai.google.dev/api/generate-content#CodeExecutionCallStepArguments.SCHEMA_REPRESENTATION)
-
-Code execution call step.
-Fields `arguments` ``object (`https://ai.google.dev/api/generate-content#CodeExecutionCallStepArguments`)`` Required. The arguments to pass to the code execution.
-
-| JSON representation |
-|---|
-| ``` { "arguments": { object (`https://ai.google.dev/api/generate-content#CodeExecutionCallStepArguments`) } } ``` |
-
-## CodeExecutionCallStepArguments
-
-The arguments to pass to the code execution.
-Fields `language` ``enum (`Language`)`` Programming language of the `code`.
-`code` `string` The code to be executed.
-
-| JSON representation |
-|---|
-| ``` { "language": enum (`Language`), "code": string } ``` |
-
-## CodeExecutionResultStep
-
-- [JSON representation](https://ai.google.dev/api/generate-content#SCHEMA_REPRESENTATION)
-
-Code execution result step.
-Fields `result` `string` Required. The output of the code execution.
-`isError` `boolean` Whether the code execution resulted in an error.
-
-| JSON representation |
-|---|
-| ``` { "result": string, "isError": boolean } ``` |
-
-## ComputerUse
-
-- [JSON representation](https://ai.google.dev/api/generate-content#SCHEMA_REPRESENTATION)
-
-A tool that can be used by the model to interact with the computer.
-Fields `environment` ``enum (`https://ai.google.dev/api/generate-content#v1beta.Environment`)`` The environment being operated.
-`excludedPredefinedFunctions[]` `string` The list of predefined functions that are excluded from the model call.
-`enablePromptInjectionDetection` `boolean` Whether enable the prompt injection detection check on computer-use request.
-`disabledSafetyPolicies[]` ``enum (`https://ai.google.dev/api/generate-content#v1beta.SafetyPolicy`)`` Optional. Disabled safety policies for computer use.
-
-| JSON representation |
-|---|
-| ``` { "environment": enum (`https://ai.google.dev/api/generate-content#v1beta.Environment`), "excludedPredefinedFunctions": [ string ], "enablePromptInjectionDetection": boolean, "disabledSafetyPolicies": [ enum (`https://ai.google.dev/api/generate-content#v1beta.SafetyPolicy`) ] } ``` |
+| `unspecified` | Default service tier, which is standard. |
+| `standard` | Standard service tier. |
+| `flex` | Flex service tier. |
+| `priority` | Priority service tier. |
 
 ## Content
 
 - [JSON representation](https://ai.google.dev/api/generate-content#SCHEMA_REPRESENTATION)
-- [TextContent](https://ai.google.dev/api/generate-content#TextContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#TextContent.SCHEMA_REPRESENTATION)
-- [ImageContent](https://ai.google.dev/api/generate-content#ImageContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#ImageContent.SCHEMA_REPRESENTATION)
-- [AudioContent](https://ai.google.dev/api/generate-content#AudioContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#AudioContent.SCHEMA_REPRESENTATION)
-- [DocumentContent](https://ai.google.dev/api/generate-content#DocumentContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#DocumentContent.SCHEMA_REPRESENTATION)
-- [VideoContent](https://ai.google.dev/api/generate-content#VideoContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#VideoContent.SCHEMA_REPRESENTATION)
-- [ThoughtContent](https://ai.google.dev/api/generate-content#ThoughtContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#ThoughtContent.SCHEMA_REPRESENTATION)
-- [ThoughtSummaryContent](https://ai.google.dev/api/generate-content#ThoughtSummaryContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#ThoughtSummaryContent.SCHEMA_REPRESENTATION)
-- [ToolCallContent](https://ai.google.dev/api/generate-content#ToolCallContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#ToolCallContent.SCHEMA_REPRESENTATION)
-- [FunctionCallContent](https://ai.google.dev/api/generate-content#FunctionCallContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#FunctionCallContent.SCHEMA_REPRESENTATION)
-- [CodeExecutionCallContent](https://ai.google.dev/api/generate-content#CodeExecutionCallContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#CodeExecutionCallContent.SCHEMA_REPRESENTATION)
-- [CodeExecutionCallArguments](https://ai.google.dev/api/generate-content#CodeExecutionCallArguments)
-  - [JSON representation](https://ai.google.dev/api/generate-content#CodeExecutionCallArguments.SCHEMA_REPRESENTATION)
-- [UrlContextCallContent](https://ai.google.dev/api/generate-content#UrlContextCallContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#UrlContextCallContent.SCHEMA_REPRESENTATION)
-- [UrlContextCallArguments](https://ai.google.dev/api/generate-content#UrlContextCallArguments)
-  - [JSON representation](https://ai.google.dev/api/generate-content#UrlContextCallArguments.SCHEMA_REPRESENTATION)
-- [McpServerToolCallContent](https://ai.google.dev/api/generate-content#McpServerToolCallContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#McpServerToolCallContent.SCHEMA_REPRESENTATION)
-- [GoogleSearchCallContent](https://ai.google.dev/api/generate-content#GoogleSearchCallContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GoogleSearchCallContent.SCHEMA_REPRESENTATION)
-- [GoogleSearchCallArguments](https://ai.google.dev/api/generate-content#GoogleSearchCallArguments)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GoogleSearchCallArguments.SCHEMA_REPRESENTATION)
-- [FileSearchCallContent](https://ai.google.dev/api/generate-content#FileSearchCallContent)
-- [GoogleMapsCallContent](https://ai.google.dev/api/generate-content#GoogleMapsCallContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GoogleMapsCallContent.SCHEMA_REPRESENTATION)
-- [GoogleMapsCallArguments](https://ai.google.dev/api/generate-content#GoogleMapsCallArguments)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GoogleMapsCallArguments.SCHEMA_REPRESENTATION)
-- [ToolResultContent](https://ai.google.dev/api/generate-content#ToolResultContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#ToolResultContent.SCHEMA_REPRESENTATION)
-- [FunctionResultContent](https://ai.google.dev/api/generate-content#FunctionResultContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#FunctionResultContent.SCHEMA_REPRESENTATION)
-- [FunctionResultSubcontentList](https://ai.google.dev/api/generate-content#FunctionResultSubcontentList)
-  - [JSON representation](https://ai.google.dev/api/generate-content#FunctionResultSubcontentList.SCHEMA_REPRESENTATION)
-- [FunctionResultSubcontent](https://ai.google.dev/api/generate-content#FunctionResultSubcontent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#FunctionResultSubcontent.SCHEMA_REPRESENTATION)
-- [CodeExecutionResultContent](https://ai.google.dev/api/generate-content#CodeExecutionResultContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#CodeExecutionResultContent.SCHEMA_REPRESENTATION)
-- [UrlContextResultContent](https://ai.google.dev/api/generate-content#UrlContextResultContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#UrlContextResultContent.SCHEMA_REPRESENTATION)
-- [UrlContextResult](https://ai.google.dev/api/generate-content#UrlContextResult)
-  - [JSON representation](https://ai.google.dev/api/generate-content#UrlContextResult.SCHEMA_REPRESENTATION)
-- [GoogleSearchResultContent](https://ai.google.dev/api/generate-content#GoogleSearchResultContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GoogleSearchResultContent.SCHEMA_REPRESENTATION)
-- [GoogleSearchResult](https://ai.google.dev/api/generate-content#GoogleSearchResult)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GoogleSearchResult.SCHEMA_REPRESENTATION)
-- [McpServerToolResultContent](https://ai.google.dev/api/generate-content#McpServerToolResultContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#McpServerToolResultContent.SCHEMA_REPRESENTATION)
-- [FileSearchResultContent](https://ai.google.dev/api/generate-content#FileSearchResultContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#FileSearchResultContent.SCHEMA_REPRESENTATION)
-- [FileSearchResult](https://ai.google.dev/api/generate-content#FileSearchResult)
-- [GoogleMapsResultContent](https://ai.google.dev/api/generate-content#GoogleMapsResultContent)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GoogleMapsResultContent.SCHEMA_REPRESENTATION)
-- [GoogleMapsResult](https://ai.google.dev/api/generate-content#GoogleMapsResult)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GoogleMapsResult.SCHEMA_REPRESENTATION)
-- [Places](https://ai.google.dev/api/generate-content#Places)
-  - [JSON representation](https://ai.google.dev/api/generate-content#Places.SCHEMA_REPRESENTATION)
+- [Part](https://ai.google.dev/api/generate-content#Part)
+  - [JSON representation](https://ai.google.dev/api/generate-content#Part.SCHEMA_REPRESENTATION)
+- [Blob](https://ai.google.dev/api/generate-content#Blob)
+  - [JSON representation](https://ai.google.dev/api/generate-content#Blob.SCHEMA_REPRESENTATION)
+- [FunctionCall](https://ai.google.dev/api/generate-content#FunctionCall)
+  - [JSON representation](https://ai.google.dev/api/generate-content#FunctionCall.SCHEMA_REPRESENTATION)
+- [FunctionResponse](https://ai.google.dev/api/generate-content#FunctionResponse)
+  - [JSON representation](https://ai.google.dev/api/generate-content#FunctionResponse.SCHEMA_REPRESENTATION)
+- [FunctionResponsePart](https://ai.google.dev/api/generate-content#FunctionResponsePart)
+  - [JSON representation](https://ai.google.dev/api/generate-content#FunctionResponsePart.SCHEMA_REPRESENTATION)
+- [FunctionResponseBlob](https://ai.google.dev/api/generate-content#FunctionResponseBlob)
+  - [JSON representation](https://ai.google.dev/api/generate-content#FunctionResponseBlob.SCHEMA_REPRESENTATION)
+- [Scheduling](https://ai.google.dev/api/generate-content#Scheduling)
+- [FileData](https://ai.google.dev/api/generate-content#FileData)
+  - [JSON representation](https://ai.google.dev/api/generate-content#FileData.SCHEMA_REPRESENTATION)
+- [ExecutableCode](https://ai.google.dev/api/generate-content#ExecutableCode)
+  - [JSON representation](https://ai.google.dev/api/generate-content#ExecutableCode.SCHEMA_REPRESENTATION)
+- [Language](https://ai.google.dev/api/generate-content#Language)
+- [CodeExecutionResult](https://ai.google.dev/api/generate-content#CodeExecutionResult)
+  - [JSON representation](https://ai.google.dev/api/generate-content#CodeExecutionResult.SCHEMA_REPRESENTATION)
+- [Outcome](https://ai.google.dev/api/generate-content#Outcome)
+- [ToolCall](https://ai.google.dev/api/generate-content#ToolCall)
+  - [JSON representation](https://ai.google.dev/api/generate-content#ToolCall.SCHEMA_REPRESENTATION)
+- [ToolType](https://ai.google.dev/api/generate-content#ToolType)
+- [ToolResponse](https://ai.google.dev/api/generate-content#ToolResponse)
+  - [JSON representation](https://ai.google.dev/api/generate-content#ToolResponse.SCHEMA_REPRESENTATION)
+- [VideoMetadata](https://ai.google.dev/api/generate-content#VideoMetadata)
+  - [JSON representation](https://ai.google.dev/api/generate-content#VideoMetadata.SCHEMA_REPRESENTATION)
+- [MediaResolution](https://ai.google.dev/api/generate-content#MediaResolution)
+  - [JSON representation](https://ai.google.dev/api/generate-content#MediaResolution.SCHEMA_REPRESENTATION)
+- [Level](https://ai.google.dev/api/generate-content#Level)
+- [MediaProcessing](https://ai.google.dev/api/generate-content#MediaProcessing)
 
-The content of the response.
-Fields `type` `Union type` `type` can be only one of the following: `text` ``object (`https://ai.google.dev/api/generate-content#TextContent`)`` `image` ``object (`https://ai.google.dev/api/generate-content#ImageContent`)`` `audio` ``object (`https://ai.google.dev/api/generate-content#AudioContent`)`` `document` ``object (`https://ai.google.dev/api/generate-content#DocumentContent`)`` `video` ``object (`https://ai.google.dev/api/generate-content#VideoContent`)`` `thought
-(deprecated)` ``object (`https://ai.google.dev/api/generate-content#ThoughtContent`)``
+The base structured datatype containing multi-part content of a message.
 
-> [!WARNING]
-> This item is deprecated!
+A `Content` includes a `role` field designating the producer of the `Content` and a `parts` field containing multi-part data that contains the content of the message turn.
+Fields `parts[]` ``object (`https://ai.google.dev/api/generate-content#Part`)`` Ordered `Parts` that constitute a single message. Parts may have different MIME types.
+`role` `string` Optional. The producer of the content. Must be either 'user' or 'model'.
 
-`toolCall
-(deprecated)` ``object (`https://ai.google.dev/api/generate-content#ToolCallContent`)``
-
-> [!WARNING]
-> This item is deprecated!
-
-`toolResult
-(deprecated)` ``object (`https://ai.google.dev/api/generate-content#ToolResultContent`)``
-
-> [!WARNING]
-> This item is deprecated!
+Useful to set for multi-turn conversations, otherwise can be left blank or unset.
 
 | JSON representation |
 |---|
-| ``` { // type "text": { object (`https://ai.google.dev/api/generate-content#TextContent`) }, "image": { object (`https://ai.google.dev/api/generate-content#ImageContent`) }, "audio": { object (`https://ai.google.dev/api/generate-content#AudioContent`) }, "document": { object (`https://ai.google.dev/api/generate-content#DocumentContent`) }, "video": { object (`https://ai.google.dev/api/generate-content#VideoContent`) }, "thought": { object (`https://ai.google.dev/api/generate-content#ThoughtContent`) }, "toolCall": { object (`https://ai.google.dev/api/generate-content#ToolCallContent`) }, "toolResult": { object (`https://ai.google.dev/api/generate-content#ToolResultContent`) } // Union type } ``` |
+| ``` { "parts": [ { object (`https://ai.google.dev/api/generate-content#Part`) } ], "role": string } ``` |
 
-## TextContent
+## Part
 
-A text content block.
-Fields `text` `string` Required. The text content.
-`annotations[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.Annotation`)`` Citation information for model-generated content.
+A datatype containing media that is part of a multi-part `Content` message.
 
-| JSON representation |
-|---|
-| ``` { "text": string, "annotations": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Annotation`) } ] } ``` |
+A `Part` consists of data which has an associated datatype. A `Part` can only contain one of the accepted types in `Part.data`.
 
-## ImageContent
-
-An image content block.
-Fields `mimeType` ``enum (`MimeType`)`` The mime type of the image.
-`resolution` ``enum (`https://ai.google.dev/api/generate-content#v1beta.MediaResolution`)`` The resolution of the media.
-`data_or_uri` `Union type` The image content. `data_or_uri` can be only one of the following: `data` `string (https://developers.google.com/discovery/v1/type-format format)` The image content.
+A `Part` must have a fixed IANA MIME type identifying the type and subtype of the media if the `inlineData` field is filled with raw bytes.
+Fields `thought` `boolean` Optional. Indicates if the part is thought from the model.
+`thoughtSignature` `string (https://developers.google.com/discovery/v1/type-format format)` Optional. An opaque signature for the thought so it can be reused in subsequent requests.
 
 A base64-encoded string.
-`uri` `string` The URI of the image.
+`partMetadata` ``object (`https://protobuf.dev/reference/protobuf/google.protobuf#struct` format)`` Custom metadata associated with the Part. Agents using genai.Part as content representation may need to keep track of the additional information. For example it can be name of a file/source from which the Part originates or a way to multiplex multiple Part streams.
+`mediaResolution` ``object (`https://ai.google.dev/api/generate-content#MediaResolution`)`` Optional. Media resolution for the input media.
+`mediaProcessing` ``enum (`https://ai.google.dev/api/generate-content#MediaProcessing`)`` Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inlineData` or `fileData` with video mime). Non-video parts ignore this field.
+`data` `Union type` `data` can be only one of the following: `text` `string` Inline text.
+`inlineData` ``object (`https://ai.google.dev/api/generate-content#Blob`)`` Inline media bytes.
+`functionCall` ``object (`https://ai.google.dev/api/generate-content#FunctionCall`)`` A predicted `FunctionCall` returned from the model that contains a string representing the `FunctionDeclaration.name` with the arguments and their values.
+`functionResponse` ``object (`https://ai.google.dev/api/generate-content#FunctionResponse`)`` The result output of a `FunctionCall` that contains a string representing the `FunctionDeclaration.name` and a structured JSON object containing any output from the function is used as context to the model.
+`fileData` ``object (`https://ai.google.dev/api/generate-content#FileData`)`` URI based data.
+`executableCode` ``object (`https://ai.google.dev/api/generate-content#ExecutableCode`)`` Code generated by the model that is meant to be executed.
+`codeExecutionResult` ``object (`https://ai.google.dev/api/generate-content#CodeExecutionResult`)`` Result of executing the `ExecutableCode`.
+`toolCall` ``object (`https://ai.google.dev/api/generate-content#ToolCall`)`` Server-side tool call. This field is populated when the model predicts a tool invocation that should be executed on the server. The client is expected to echo this message back to the API.
+`toolResponse` ``object (`https://ai.google.dev/api/generate-content#ToolResponse`)`` The output from a server-side `ToolCall` execution. This field is populated by the client with the results of executing the corresponding `ToolCall`.
+`metadata` `Union type` Controls extra preprocessing of data. `metadata` can be only one of the following: `videoMetadata` ``object (`https://ai.google.dev/api/generate-content#VideoMetadata`)`` Optional. Video metadata. The metadata should only be specified while the video data is presented in inlineData or fileData.
 
 | JSON representation |
 |---|
-| ``` { "mimeType": enum (`MimeType`), "resolution": enum (`https://ai.google.dev/api/generate-content#v1beta.MediaResolution`), // data_or_uri "data": string, "uri": string // Union type } ``` |
+| ``` { "thought": boolean, "thoughtSignature": string, "partMetadata": { object }, "mediaResolution": { object (`https://ai.google.dev/api/generate-content#MediaResolution`) }, "mediaProcessing": enum (`https://ai.google.dev/api/generate-content#MediaProcessing`), // data "text": string, "inlineData": { object (`https://ai.google.dev/api/generate-content#Blob`) }, "functionCall": { object (`https://ai.google.dev/api/generate-content#FunctionCall`) }, "functionResponse": { object (`https://ai.google.dev/api/generate-content#FunctionResponse`) }, "fileData": { object (`https://ai.google.dev/api/generate-content#FileData`) }, "executableCode": { object (`https://ai.google.dev/api/generate-content#ExecutableCode`) }, "codeExecutionResult": { object (`https://ai.google.dev/api/generate-content#CodeExecutionResult`) }, "toolCall": { object (`https://ai.google.dev/api/generate-content#ToolCall`) }, "toolResponse": { object (`https://ai.google.dev/api/generate-content#ToolResponse`) } // Union type // metadata "videoMetadata": { object (`https://ai.google.dev/api/generate-content#VideoMetadata`) } // Union type } ``` |
 
-## AudioContent
+## Blob
 
-An audio content block.
-Fields `mimeType` ``enum (`https://ai.google.dev/api/generate-content#v1beta.MimeType`)`` The mime type of the audio.
-`channels` `integer` The number of audio channels.
-`sampleRate` `integer` The sample rate of the audio.
-`data_or_uri` `Union type` The audio content. `data_or_uri` can be only one of the following: `data` `string (https://developers.google.com/discovery/v1/type-format format)` The audio content.
+Raw media bytes.
 
-A base64-encoded string.
-`uri` `string` The URI of the audio.
-
-| JSON representation |
-|---|
-| ``` { "mimeType": enum (`https://ai.google.dev/api/generate-content#v1beta.MimeType`), "channels": integer, "sampleRate": integer, // data_or_uri "data": string, "uri": string // Union type } ``` |
-
-## DocumentContent
-
-A document content block.
-Fields `mimeType` ``enum (`MimeType`)`` The mime type of the document.
-`data_or_uri` `Union type` The document content. `data_or_uri` can be only one of the following: `data` `string (https://developers.google.com/discovery/v1/type-format format)` The document content.
-
-A base64-encoded string.
-`uri` `string` The URI of the document.
-
-| JSON representation |
-|---|
-| ``` { "mimeType": enum (`MimeType`), // data_or_uri "data": string, "uri": string // Union type } ``` |
-
-## VideoContent
-
-A video content block.
-Fields `mimeType` ``enum (`MimeType`)`` The mime type of the video.
-`resolution` ``enum (`https://ai.google.dev/api/generate-content#v1beta.MediaResolution`)`` The resolution of the media.
-`data_or_uri` `Union type` The video content. `data_or_uri` can be only one of the following: `data` `string (https://developers.google.com/discovery/v1/type-format format)` The video content.
+Text should not be sent as raw bytes, use the 'text' field.
+Fields `mimeType` `string` The IANA standard MIME type of the source data. Examples of supported types: - Images: image/png, image/jpeg, image/jpg, image/webp, image/heic, image/heif, image/gif, image/avif - Audio: audio/\*, video/audio/s16le, video/audio/wav - Video: video/\* - Text: text/plain, text/html, text/css, text/javascript, text/x-typescript, text/csv, text/markdown, text/x-python, text/xml, text/rtf, video/text/timestamp - Applications: application/x-javascript, application/x-typescript, application/x-python-code, application/json, application/x-ipynb+json, application/rtf, application/pdf For additional context, see [Supported file formats](https://ai.google.dev/gemini-api/docs/file-input-methods#supported-content-types). //
+`data` `string (https://developers.google.com/discovery/v1/type-format format)` Raw bytes for media formats.
 
 A base64-encoded string.
-`uri` `string` The URI of the video.
 
 | JSON representation |
 |---|
-| ``` { "mimeType": enum (`MimeType`), "resolution": enum (`https://ai.google.dev/api/generate-content#v1beta.MediaResolution`), // data_or_uri "data": string, "uri": string // Union type } ``` |
+| ``` { "mimeType": string, "data": string } ``` |
 
-## ThoughtContent
+## FunctionCall
 
-> [!WARNING]
-> This item is deprecated!
-
-A thought content block.
-Fields `signature` `string (https://developers.google.com/discovery/v1/type-format format)` Signature to match the backend source to be part of the generation.
-
-A base64-encoded string.
-`summary[]` ``object (`https://ai.google.dev/api/generate-content#ThoughtSummaryContent`)`` A summary of the thought.
+A predicted `FunctionCall` returned from the model that contains a string representing the `FunctionDeclaration.name` with the arguments and their values.
+Fields `id` `string` Optional. Unique identifier of the function call. If populated, the client to execute the `functionCall` and return the response with the matching `id`.
+`name` `string` Required. The name of the function to call. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 128.
+`args` ``object (`https://protobuf.dev/reference/protobuf/google.protobuf#struct` format)`` Optional. The function parameters and values in JSON object format.
 
 | JSON representation |
 |---|
-| ``` { "signature": string, "summary": [ { object (`https://ai.google.dev/api/generate-content#ThoughtSummaryContent`) } ] } ``` |
+| ``` { "id": string, "name": string, "args": { object } } ``` |
 
-## ThoughtSummaryContent
+## FunctionResponse
 
-Fields `type` `Union type` `type` can be only one of the following: `text` ``object (`https://ai.google.dev/api/generate-content#TextContent`)`` `image` ``object (`https://ai.google.dev/api/generate-content#ImageContent`)``
+The result output from a `FunctionCall` that contains a string representing the `FunctionDeclaration.name` and a structured JSON object containing any output from the function is used as context to the model. This should contain the result of a`FunctionCall` made based on model prediction.
+Fields `id` `string` Optional. The identifier of the function call this response is for. Populated by the client to match the corresponding function call `id`.
+`name` `string` Required. The name of the function to call. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 128.
+`response` ``object (`https://protobuf.dev/reference/protobuf/google.protobuf#struct` format)`` Required. The function response in JSON object format. Callers can use any keys of their choice that fit the function's syntax to return the function output, e.g. "output", "result", etc. In particular, if the function call failed to execute, the response can have an "error" key to return error details to the model.
 
-| JSON representation |
-|---|
-| ``` { // type "text": { object (`https://ai.google.dev/api/generate-content#TextContent`) }, "image": { object (`https://ai.google.dev/api/generate-content#ImageContent`) } // Union type } ``` |
-
-## ToolCallContent
-
-> [!WARNING]
-> This item is deprecated!
-
-Tool call content.
-Fields `id` `string` Required. A unique ID for this specific tool call.
-`signature` `string (https://developers.google.com/discovery/v1/type-format format)` A signature hash for backend validation.
-
-A base64-encoded string.
-`type` `Union type` `type` can be only one of the following: `functionCall` ``object (`https://ai.google.dev/api/generate-content#FunctionCallContent`)`` `codeExecutionCall` ``object (`https://ai.google.dev/api/generate-content#CodeExecutionCallContent`)`` `urlContextCall` ``object (`https://ai.google.dev/api/generate-content#UrlContextCallContent`)`` `mcpServerToolCall` ``object (`https://ai.google.dev/api/generate-content#McpServerToolCallContent`)`` `googleSearchCall` ``object (`https://ai.google.dev/api/generate-content#GoogleSearchCallContent`)`` `fileSearchCall` ``object (`https://ai.google.dev/api/generate-content#FileSearchCallContent`)`` `googleMapsCall` ``object (`https://ai.google.dev/api/generate-content#GoogleMapsCallContent`)``
+Multimedia can be included by using a subobject containing a single "$ref" key whose value is the `inlineData.display_name` of a `FunctionResponsePart` holding the multimedia. See <https://ai.google.dev/gemini-api/docs/function-calling#multimodal>.
+`parts[]` ``object (`https://ai.google.dev/api/generate-content#FunctionResponsePart`)`` Optional. Ordered `Parts` that constitute a function response. Parts may have different IANA MIME types.
+`willContinue` `boolean` Optional. Signals that function call continues, and more responses will be returned, turning the function call into a generator. Is only applicable to NON_BLOCKING function calls, is ignored otherwise. If set to false, future responses will not be considered. It is allowed to return empty `response` with `willContinue=False` to signal that the function call is finished. This may still trigger the model generation. To avoid triggering the generation and finish the function call, additionally set `scheduling` to `SILENT`.
+`scheduling` ``enum (`https://ai.google.dev/api/generate-content#Scheduling`)`` Optional. Specifies how the response should be scheduled in the conversation. Only applicable to NON_BLOCKING function calls, is ignored otherwise. Defaults to WHEN_IDLE.
 
 | JSON representation |
 |---|
-| ``` { "id": string, "signature": string, // type "functionCall": { object (`https://ai.google.dev/api/generate-content#FunctionCallContent`) }, "codeExecutionCall": { object (`https://ai.google.dev/api/generate-content#CodeExecutionCallContent`) }, "urlContextCall": { object (`https://ai.google.dev/api/generate-content#UrlContextCallContent`) }, "mcpServerToolCall": { object (`https://ai.google.dev/api/generate-content#McpServerToolCallContent`) }, "googleSearchCall": { object (`https://ai.google.dev/api/generate-content#GoogleSearchCallContent`) }, "fileSearchCall": { object (`https://ai.google.dev/api/generate-content#FileSearchCallContent`) }, "googleMapsCall": { object (`https://ai.google.dev/api/generate-content#GoogleMapsCallContent`) } // Union type } ``` |
+| ``` { "id": string, "name": string, "response": { object }, "parts": [ { object (`https://ai.google.dev/api/generate-content#FunctionResponsePart`) } ], "willContinue": boolean, "scheduling": enum (`https://ai.google.dev/api/generate-content#Scheduling`) } ``` |
 
-## FunctionCallContent
+## FunctionResponsePart
 
-> [!WARNING]
-> This item is deprecated!
+A datatype containing media that is part of a `FunctionResponse` message.
 
-A function tool call content block.
-Fields `name` `string` Required. The name of the tool to call.
-`arguments` ``object (`https://ai.google.dev/api/generate-content#v1beta.Struct`)`` Required. The arguments to pass to the function.
+A `FunctionResponsePart` consists of data which has an associated datatype. A `FunctionResponsePart` can only contain one of the accepted types in `FunctionResponsePart.data`.
 
-| JSON representation |
-|---|
-| ``` { "name": string, "arguments": { object (`https://ai.google.dev/api/generate-content#v1beta.Struct`) } } ``` |
-
-## CodeExecutionCallContent
-
-> [!WARNING]
-> This item is deprecated!
-
-Code execution content.
-Fields `arguments` ``object (`https://ai.google.dev/api/generate-content#CodeExecutionCallArguments`)`` Required. The arguments to pass to the code execution.
+A `FunctionResponsePart` must have a fixed IANA MIME type identifying the type and subtype of the media if the `inlineData` field is filled with raw bytes.
+Fields `data` `Union type` The data of the function response part. `data` can be only one of the following: `inlineData` ``object (`https://ai.google.dev/api/generate-content#FunctionResponseBlob`)`` Inline media bytes.
 
 | JSON representation |
 |---|
-| ``` { "arguments": { object (`https://ai.google.dev/api/generate-content#CodeExecutionCallArguments`) } } ``` |
+| ``` { // data "inlineData": { object (`https://ai.google.dev/api/generate-content#FunctionResponseBlob`) } // Union type } ``` |
 
-## CodeExecutionCallArguments
+## FunctionResponseBlob
 
-The arguments to pass to the code execution.
-Fields `language` ``enum (`https://ai.google.dev/api/generate-content#v1beta.Language`)`` Programming language of the `code`.
-`code` `string` The code to be executed.
+Raw media bytes for function response.
 
-| JSON representation |
-|---|
-| ``` { "language": enum (`https://ai.google.dev/api/generate-content#v1beta.Language`), "code": string } ``` |
-
-## UrlContextCallContent
-
-> [!WARNING]
-> This item is deprecated!
-
-URL context content.
-Fields `arguments` ``object (`https://ai.google.dev/api/generate-content#UrlContextCallArguments`)`` Required. The arguments to pass to the URL context.
-
-| JSON representation |
-|---|
-| ``` { "arguments": { object (`https://ai.google.dev/api/generate-content#UrlContextCallArguments`) } } ``` |
-
-## UrlContextCallArguments
-
-The arguments to pass to the URL context.
-Fields `urls[]` `string` The URLs to fetch.
-
-| JSON representation |
-|---|
-| ``` { "urls": [ string ] } ``` |
-
-## McpServerToolCallContent
-
-MCPServer tool call content.
-Fields `name` `string` Required. The name of the tool which was called.
-`serverName` `string` Required. The name of the used MCP server.
-`arguments` ``object (`https://ai.google.dev/api/generate-content#v1beta.Struct`)`` Required. The JSON object of arguments for the function.
-
-| JSON representation |
-|---|
-| ``` { "name": string, "serverName": string, "arguments": { object (`https://ai.google.dev/api/generate-content#v1beta.Struct`) } } ``` |
-
-## GoogleSearchCallContent
-
-> [!WARNING]
-> This item is deprecated!
-
-Google Search content.
-Fields `arguments` ``object (`https://ai.google.dev/api/generate-content#GoogleSearchCallArguments`)`` Required. The arguments to pass to Google Search.
-`searchType` ``enum (`https://ai.google.dev/api/generate-content#v1beta.SearchType`)`` The type of search grounding enabled.
-
-| JSON representation |
-|---|
-| ``` { "arguments": { object (`https://ai.google.dev/api/generate-content#GoogleSearchCallArguments`) }, "searchType": enum (`https://ai.google.dev/api/generate-content#v1beta.SearchType`) } ``` |
-
-## GoogleSearchCallArguments
-
-The arguments to pass to Google Search.
-Fields `queries[]` `string` Web search queries for the following-up web search.
-
-| JSON representation |
-|---|
-| ``` { "queries": [ string ] } ``` |
-
-## FileSearchCallContent
-
-This type has no fields.
-
-> [!WARNING]
-> This item is deprecated!
-
-File Search content.
-
-## GoogleMapsCallContent
-
-> [!WARNING]
-> This item is deprecated!
-
-Google Maps content.
-Fields `arguments` ``object (`https://ai.google.dev/api/generate-content#GoogleMapsCallArguments`)`` The arguments to pass to the Google Maps tool.
-
-| JSON representation |
-|---|
-| ``` { "arguments": { object (`https://ai.google.dev/api/generate-content#GoogleMapsCallArguments`) } } ``` |
-
-## GoogleMapsCallArguments
-
-The arguments to pass to the Google Maps tool.
-Fields `queries[]` `string` The queries to be executed.
-
-| JSON representation |
-|---|
-| ``` { "queries": [ string ] } ``` |
-
-## ToolResultContent
-
-> [!WARNING]
-> This item is deprecated!
-
-Tool result content.
-Fields `callId` `string` Required. ID to match the ID from the function call block.
-`signature` `string (https://developers.google.com/discovery/v1/type-format format)` A signature hash for backend validation.
+Text should not be sent as raw bytes, use the 'FunctionResponse.response' field.
+Fields `mimeType` `string` The IANA standard MIME type of the source data. Examples: - image/png - image/jpeg If an unsupported MIME type is provided, an error will be returned. For a complete list of supported types, see [Supported file formats](https://ai.google.dev/gemini-api/docs/prompting_with_media#supported_file_formats).
+`data` `string (https://developers.google.com/discovery/v1/type-format format)` Raw bytes for media formats.
 
 A base64-encoded string.
-`type` `Union type` `type` can be only one of the following: `functionResult` ``object (`https://ai.google.dev/api/generate-content#FunctionResultContent`)`` `codeExecutionResult` ``object (`https://ai.google.dev/api/generate-content#CodeExecutionResultContent`)`` `urlContextResult` ``object (`https://ai.google.dev/api/generate-content#UrlContextResultContent`)`` `googleSearchResult` ``object (`https://ai.google.dev/api/generate-content#GoogleSearchResultContent`)`` `mcpServerToolResult` ``object (`https://ai.google.dev/api/generate-content#McpServerToolResultContent`)`` `fileSearchResult` ``object (`https://ai.google.dev/api/generate-content#FileSearchResultContent`)`` `googleMapsResult` ``object (`https://ai.google.dev/api/generate-content#GoogleMapsResultContent`)``
 
 | JSON representation |
 |---|
-| ``` { "callId": string, "signature": string, // type "functionResult": { object (`https://ai.google.dev/api/generate-content#FunctionResultContent`) }, "codeExecutionResult": { object (`https://ai.google.dev/api/generate-content#CodeExecutionResultContent`) }, "urlContextResult": { object (`https://ai.google.dev/api/generate-content#UrlContextResultContent`) }, "googleSearchResult": { object (`https://ai.google.dev/api/generate-content#GoogleSearchResultContent`) }, "mcpServerToolResult": { object (`https://ai.google.dev/api/generate-content#McpServerToolResultContent`) }, "fileSearchResult": { object (`https://ai.google.dev/api/generate-content#FileSearchResultContent`) }, "googleMapsResult": { object (`https://ai.google.dev/api/generate-content#GoogleMapsResultContent`) } // Union type } ``` |
+| ``` { "mimeType": string, "data": string } ``` |
 
-## FunctionResultContent
+## Scheduling
 
-> [!WARNING]
-> This item is deprecated!
-
-A function tool result content block.
-Fields `name` `string` The name of the tool that was called.
-`isError` `boolean` Whether the tool call resulted in an error.
-`result` `Union type` The result of the tool call. `result` can be only one of the following: `structResult` ``object (`https://ai.google.dev/api/generate-content#v1beta.Struct`)`` `contentList` ``object (`https://ai.google.dev/api/generate-content#FunctionResultSubcontentList`)`` `stringResult` `string`
-
-| JSON representation |
-|---|
-| ``` { "name": string, "isError": boolean, // result "structResult": { object (`https://ai.google.dev/api/generate-content#v1beta.Struct`) }, "contentList": { object (`https://ai.google.dev/api/generate-content#FunctionResultSubcontentList`) }, "stringResult": string // Union type } ``` |
-
-## FunctionResultSubcontentList
-
-Fields `contents[]` ``object (`https://ai.google.dev/api/generate-content#FunctionResultSubcontent`)``
-
-| JSON representation |
-|---|
-| ``` { "contents": [ { object (`https://ai.google.dev/api/generate-content#FunctionResultSubcontent`) } ] } ``` |
-
-## FunctionResultSubcontent
-
-Fields `type` `Union type` `type` can be only one of the following: `text` ``object (`https://ai.google.dev/api/generate-content#TextContent`)`` `image` ``object (`https://ai.google.dev/api/generate-content#ImageContent`)``
-
-| JSON representation |
-|---|
-| ``` { // type "text": { object (`https://ai.google.dev/api/generate-content#TextContent`) }, "image": { object (`https://ai.google.dev/api/generate-content#ImageContent`) } // Union type } ``` |
-
-## CodeExecutionResultContent
-
-> [!WARNING]
-> This item is deprecated!
-
-Code execution result content.
-Fields `result` `string` Required. The output of the code execution.
-`isError` `boolean` Whether the code execution resulted in an error.
-
-| JSON representation |
-|---|
-| ``` { "result": string, "isError": boolean } ``` |
-
-## UrlContextResultContent
-
-> [!WARNING]
-> This item is deprecated!
-
-URL context result content.
-Fields `result[]` ``object (`https://ai.google.dev/api/generate-content#UrlContextResult`)`` Required. The results of the URL context.
-`isError` `boolean` Whether the URL context resulted in an error.
-
-| JSON representation |
-|---|
-| ``` { "result": [ { object (`https://ai.google.dev/api/generate-content#UrlContextResult`) } ], "isError": boolean } ``` |
-
-## UrlContextResult
-
-The result of the URL context.
-Fields `url` `string` The URL that was fetched.
-`status` ``enum (`Status`)`` The status of the URL retrieval.
-
-| JSON representation |
-|---|
-| ``` { "url": string, "status": enum (`Status`) } ``` |
-
-## GoogleSearchResultContent
-
-> [!WARNING]
-> This item is deprecated!
-
-Google Search result content.
-Fields `result[]` ``object (`https://ai.google.dev/api/generate-content#GoogleSearchResult`)`` Required. The results of the Google Search.
-`isError` `boolean` Whether the Google Search resulted in an error.
-
-| JSON representation |
-|---|
-| ``` { "result": [ { object (`https://ai.google.dev/api/generate-content#GoogleSearchResult`) } ], "isError": boolean } ``` |
-
-## GoogleSearchResult
-
-The result of the Google Search.
-Fields `searchSuggestions` `string` Web content snippet that can be embedded in a web page or an app webview.
-
-| JSON representation |
-|---|
-| ``` { "searchSuggestions": string } ``` |
-
-## McpServerToolResultContent
-
-MCPServer tool result content.
-Fields `name` `string` Name of the tool which is called for this specific tool call.
-`serverName` `string` The name of the used MCP server.
-`result` `Union type` The output from the MCP server call. Can be simple text or rich content. `result` can be only one of the following: `structResult` ``object (`https://ai.google.dev/api/generate-content#v1beta.Struct`)`` `contentList` ``object (`https://ai.google.dev/api/generate-content#FunctionResultSubcontentList`)`` `stringResult` `string`
-
-| JSON representation |
-|---|
-| ``` { "name": string, "serverName": string, // result "structResult": { object (`https://ai.google.dev/api/generate-content#v1beta.Struct`) }, "contentList": { object (`https://ai.google.dev/api/generate-content#FunctionResultSubcontentList`) }, "stringResult": string // Union type } ``` |
-
-## FileSearchResultContent
-
-> [!WARNING]
-> This item is deprecated!
-
-File Search result content.
-Fields `result[]` ``object (`https://ai.google.dev/api/generate-content#FileSearchResult`)`` Optional. The results of the File Search.
-
-| JSON representation |
-|---|
-| ``` { "result": [ { object (`https://ai.google.dev/api/generate-content#FileSearchResult`) } ] } ``` |
-
-## FileSearchResult
-
-This type has no fields.
-The result of the File Search.
-
-## GoogleMapsResultContent
-
-> [!WARNING]
-> This item is deprecated!
-
-Google Maps result content.
-Fields `result[]` ``object (`https://ai.google.dev/api/generate-content#GoogleMapsResult`)`` Required. The results of the Google Maps.
-
-| JSON representation |
-|---|
-| ``` { "result": [ { object (`https://ai.google.dev/api/generate-content#GoogleMapsResult`) } ] } ``` |
-
-## GoogleMapsResult
-
-The result of the Google Maps.
-Fields `places[]` ``object (`https://ai.google.dev/api/generate-content#Places`)`` The places that were found.
-`widgetContextToken` `string` Resource name of the Google Maps widget context token.
-
-| JSON representation |
-|---|
-| ``` { "places": [ { object (`https://ai.google.dev/api/generate-content#Places`) } ], "widgetContextToken": string } ``` |
-
-## Places
-
-Fields `placeId` `string` The ID of the place, in `places/{placeId}` format.
-`name` `string` Title of the place.
-`url` `string` URI reference of the place.
-`reviewSnippets[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.ReviewSnippet`)`` Snippets of reviews that are used to generate answers about the features of a given place in Google Maps.
-
-| JSON representation |
-|---|
-| ``` { "placeId": string, "name": string, "url": string, "reviewSnippets": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ReviewSnippet`) } ] } ``` |
-
-## ContentList
-
-- [JSON representation](https://ai.google.dev/api/generate-content#SCHEMA_REPRESENTATION)
-
-A list of Content.
-Fields `contents[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` The contents of the list.
-
-| JSON representation |
-|---|
-| ``` { "contents": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) } ] } ``` |
-
-## CreateInteractionRequest
-
-- [JSON representation](https://ai.google.dev/api/generate-content#SCHEMA_REPRESENTATION)
-- [Interaction](https://ai.google.dev/api/generate-content#Interaction)
-  - [JSON representation](https://ai.google.dev/api/generate-content#Interaction.SCHEMA_REPRESENTATION)
-- [TurnList](https://ai.google.dev/api/generate-content#TurnList)
-  - [JSON representation](https://ai.google.dev/api/generate-content#TurnList.SCHEMA_REPRESENTATION)
-- [Turn](https://ai.google.dev/api/generate-content#Turn)
-  - [JSON representation](https://ai.google.dev/api/generate-content#Turn.SCHEMA_REPRESENTATION)
-- [StepList](https://ai.google.dev/api/generate-content#StepList)
-  - [JSON representation](https://ai.google.dev/api/generate-content#StepList.SCHEMA_REPRESENTATION)
-- [Step](https://ai.google.dev/api/generate-content#Step)
-  - [JSON representation](https://ai.google.dev/api/generate-content#Step.SCHEMA_REPRESENTATION)
-- [ThoughtStep](https://ai.google.dev/api/generate-content#ThoughtStep)
-  - [JSON representation](https://ai.google.dev/api/generate-content#ThoughtStep.SCHEMA_REPRESENTATION)
-- [ToolCallStep](https://ai.google.dev/api/generate-content#ToolCallStep)
-  - [JSON representation](https://ai.google.dev/api/generate-content#ToolCallStep.SCHEMA_REPRESENTATION)
-- [FunctionCallStep](https://ai.google.dev/api/generate-content#FunctionCallStep)
-  - [JSON representation](https://ai.google.dev/api/generate-content#FunctionCallStep.SCHEMA_REPRESENTATION)
-- [UrlContextCallStep](https://ai.google.dev/api/generate-content#UrlContextCallStep)
-  - [JSON representation](https://ai.google.dev/api/generate-content#UrlContextCallStep.SCHEMA_REPRESENTATION)
-- [UrlContextCallStepArguments](https://ai.google.dev/api/generate-content#UrlContextCallStepArguments)
-  - [JSON representation](https://ai.google.dev/api/generate-content#UrlContextCallStepArguments.SCHEMA_REPRESENTATION)
-- [McpServerToolCallStep](https://ai.google.dev/api/generate-content#McpServerToolCallStep)
-  - [JSON representation](https://ai.google.dev/api/generate-content#McpServerToolCallStep.SCHEMA_REPRESENTATION)
-- [GoogleSearchCallStep](https://ai.google.dev/api/generate-content#GoogleSearchCallStep)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GoogleSearchCallStep.SCHEMA_REPRESENTATION)
-- [GoogleSearchCallStepArguments](https://ai.google.dev/api/generate-content#GoogleSearchCallStepArguments)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GoogleSearchCallStepArguments.SCHEMA_REPRESENTATION)
-- [FileSearchCallStep](https://ai.google.dev/api/generate-content#FileSearchCallStep)
-- [GoogleMapsCallStep](https://ai.google.dev/api/generate-content#GoogleMapsCallStep)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GoogleMapsCallStep.SCHEMA_REPRESENTATION)
-- [GoogleMapsCallStepArguments](https://ai.google.dev/api/generate-content#GoogleMapsCallStepArguments)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GoogleMapsCallStepArguments.SCHEMA_REPRESENTATION)
-- [ToolResultStep](https://ai.google.dev/api/generate-content#ToolResultStep)
-  - [JSON representation](https://ai.google.dev/api/generate-content#ToolResultStep.SCHEMA_REPRESENTATION)
-- [FunctionResultStep](https://ai.google.dev/api/generate-content#FunctionResultStep)
-  - [JSON representation](https://ai.google.dev/api/generate-content#FunctionResultStep.SCHEMA_REPRESENTATION)
-- [UrlContextResultStep](https://ai.google.dev/api/generate-content#UrlContextResultStep)
-  - [JSON representation](https://ai.google.dev/api/generate-content#UrlContextResultStep.SCHEMA_REPRESENTATION)
-- [UrlContextResultItem](https://ai.google.dev/api/generate-content#UrlContextResultItem)
-  - [JSON representation](https://ai.google.dev/api/generate-content#UrlContextResultItem.SCHEMA_REPRESENTATION)
-- [GoogleSearchResultStep](https://ai.google.dev/api/generate-content#GoogleSearchResultStep)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GoogleSearchResultStep.SCHEMA_REPRESENTATION)
-- [GoogleSearchResultItem](https://ai.google.dev/api/generate-content#GoogleSearchResultItem)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GoogleSearchResultItem.SCHEMA_REPRESENTATION)
-- [McpServerToolResultStep](https://ai.google.dev/api/generate-content#McpServerToolResultStep)
-  - [JSON representation](https://ai.google.dev/api/generate-content#McpServerToolResultStep.SCHEMA_REPRESENTATION)
-- [FileSearchResultStep](https://ai.google.dev/api/generate-content#FileSearchResultStep)
-- [GoogleMapsResultStep](https://ai.google.dev/api/generate-content#GoogleMapsResultStep)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GoogleMapsResultStep.SCHEMA_REPRESENTATION)
-- [GoogleMapsResultItem](https://ai.google.dev/api/generate-content#GoogleMapsResultItem)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GoogleMapsResultItem.SCHEMA_REPRESENTATION)
-- [GoogleMapsResultPlaces](https://ai.google.dev/api/generate-content#GoogleMapsResultPlaces)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GoogleMapsResultPlaces.SCHEMA_REPRESENTATION)
-- [UserInputStep](https://ai.google.dev/api/generate-content#UserInputStep)
-  - [JSON representation](https://ai.google.dev/api/generate-content#UserInputStep.SCHEMA_REPRESENTATION)
-- [ModelOutputStep](https://ai.google.dev/api/generate-content#ModelOutputStep)
-  - [JSON representation](https://ai.google.dev/api/generate-content#ModelOutputStep.SCHEMA_REPRESENTATION)
-- [ResponseFormatList](https://ai.google.dev/api/generate-content#ResponseFormatList)
-  - [JSON representation](https://ai.google.dev/api/generate-content#ResponseFormatList.SCHEMA_REPRESENTATION)
-- [ResponseFormat](https://ai.google.dev/api/generate-content#ResponseFormat)
-  - [JSON representation](https://ai.google.dev/api/generate-content#ResponseFormat.SCHEMA_REPRESENTATION)
-- [TextResponseFormat](https://ai.google.dev/api/generate-content#TextResponseFormat)
-  - [JSON representation](https://ai.google.dev/api/generate-content#TextResponseFormat.SCHEMA_REPRESENTATION)
-- [ImageResponseFormat](https://ai.google.dev/api/generate-content#ImageResponseFormat)
-  - [JSON representation](https://ai.google.dev/api/generate-content#ImageResponseFormat.SCHEMA_REPRESENTATION)
-- [VideoResponseFormat](https://ai.google.dev/api/generate-content#VideoResponseFormat)
-  - [JSON representation](https://ai.google.dev/api/generate-content#VideoResponseFormat.SCHEMA_REPRESENTATION)
-- [ModelInteraction](https://ai.google.dev/api/generate-content#ModelInteraction)
-  - [JSON representation](https://ai.google.dev/api/generate-content#ModelInteraction.SCHEMA_REPRESENTATION)
-- [GenerationConfig](https://ai.google.dev/api/generate-content#GenerationConfig)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GenerationConfig.SCHEMA_REPRESENTATION)
-- [ToolChoiceConfig](https://ai.google.dev/api/generate-content#ToolChoiceConfig)
-  - [JSON representation](https://ai.google.dev/api/generate-content#ToolChoiceConfig.SCHEMA_REPRESENTATION)
-- [SpeechConfig](https://ai.google.dev/api/generate-content#SpeechConfig)
-  - [JSON representation](https://ai.google.dev/api/generate-content#SpeechConfig.SCHEMA_REPRESENTATION)
-- [ImageConfig](https://ai.google.dev/api/generate-content#ImageConfig)
-  - [JSON representation](https://ai.google.dev/api/generate-content#ImageConfig.SCHEMA_REPRESENTATION)
-- [VideoConfig](https://ai.google.dev/api/generate-content#VideoConfig)
-  - [JSON representation](https://ai.google.dev/api/generate-content#VideoConfig.SCHEMA_REPRESENTATION)
-- [EnvironmentConfig](https://ai.google.dev/api/generate-content#EnvironmentConfig)
-  - [JSON representation](https://ai.google.dev/api/generate-content#EnvironmentConfig.SCHEMA_REPRESENTATION)
-- [EnvironmentNetworkEgressAllowlist](https://ai.google.dev/api/generate-content#EnvironmentNetworkEgressAllowlist)
-  - [JSON representation](https://ai.google.dev/api/generate-content#EnvironmentNetworkEgressAllowlist.SCHEMA_REPRESENTATION)
-- [EgressRule](https://ai.google.dev/api/generate-content#EgressRule)
-  - [JSON representation](https://ai.google.dev/api/generate-content#EgressRule.SCHEMA_REPRESENTATION)
-- [Source](https://ai.google.dev/api/generate-content#Source)
-  - [JSON representation](https://ai.google.dev/api/generate-content#Source.SCHEMA_REPRESENTATION)
-- [LocalEnvironmentConfig](https://ai.google.dev/api/generate-content#LocalEnvironmentConfig)
-- [Tool](https://ai.google.dev/api/generate-content#Tool)
-  - [JSON representation](https://ai.google.dev/api/generate-content#Tool.SCHEMA_REPRESENTATION)
-- [Function](https://ai.google.dev/api/generate-content#Function)
-  - [JSON representation](https://ai.google.dev/api/generate-content#Function.SCHEMA_REPRESENTATION)
-- [UrlContext](https://ai.google.dev/api/generate-content#UrlContext)
-- [McpServer](https://ai.google.dev/api/generate-content#McpServer)
-  - [JSON representation](https://ai.google.dev/api/generate-content#McpServer.SCHEMA_REPRESENTATION)
-- [GoogleSearch](https://ai.google.dev/api/generate-content#GoogleSearch)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GoogleSearch.SCHEMA_REPRESENTATION)
-- [FileSearch](https://ai.google.dev/api/generate-content#FileSearch)
-  - [JSON representation](https://ai.google.dev/api/generate-content#FileSearch.SCHEMA_REPRESENTATION)
-- [GoogleMaps](https://ai.google.dev/api/generate-content#GoogleMaps)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GoogleMaps.SCHEMA_REPRESENTATION)
-- [Usage](https://ai.google.dev/api/generate-content#Usage)
-  - [JSON representation](https://ai.google.dev/api/generate-content#Usage.SCHEMA_REPRESENTATION)
-- [ModalityTokens](https://ai.google.dev/api/generate-content#ModalityTokens)
-  - [JSON representation](https://ai.google.dev/api/generate-content#ModalityTokens.SCHEMA_REPRESENTATION)
-- [GroundingToolCount](https://ai.google.dev/api/generate-content#GroundingToolCount)
-  - [JSON representation](https://ai.google.dev/api/generate-content#GroundingToolCount.SCHEMA_REPRESENTATION)
-- [WebhookConfig](https://ai.google.dev/api/generate-content#WebhookConfig)
-  - [JSON representation](https://ai.google.dev/api/generate-content#WebhookConfig.SCHEMA_REPRESENTATION)
-- [SafetySetting](https://ai.google.dev/api/generate-content#SafetySetting)
-  - [JSON representation](https://ai.google.dev/api/generate-content#SafetySetting.SCHEMA_REPRESENTATION)
-
-Configuration parameters for creating an interaction.
-Fields `stream` `boolean` Input only. Whether the interaction will be streamed.
-`store` `boolean` Input only. Whether to store the response and request for later retrieval.
-`interaction` ``object (`https://ai.google.dev/api/generate-content#Interaction`)`` The interaction to create.
-`background` `boolean` Input only. Whether to run the model interaction in the background.
-
-| JSON representation |
-|---|
-| ``` { "stream": boolean, "store": boolean, "interaction": { object (`https://ai.google.dev/api/generate-content#Interaction`) }, "background": boolean } ``` |
-
-## Interaction
-
-Response for InteractionService.CreateInteraction.
-Fields `id` `string` Required. Output only. A unique identifier for the interaction completion.
-`status` ``enum (`https://ai.google.dev/api/files#v1beta.Status`)`` Required. Output only. The status of the interaction.
-`created` `string` Required. Output only. The time at which the response was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
-`updated` `string` Required. Output only. The time at which the response was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
-`role
-(deprecated)` `string`
-
-> [!WARNING]
-> This item is deprecated!
-
-Output only. The role of the interaction.
-`outputs[]
-(deprecated)` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)``
-
-> [!WARNING]
-> This item is deprecated!
-
-Output only. Responses from the model.
-`systemInstruction` `string` System instruction for the interaction.
-`tools[]` ``object (`https://ai.google.dev/api/generate-content#Tool`)`` A list of tool declarations the model may call during interaction.
-`usage` ``object (`https://ai.google.dev/api/generate-content#Usage`)`` Output only. Statistics on the interaction request's token usage.
-`responseModalities[]
-(deprecated)` ``enum (`https://ai.google.dev/api/generate-content#v1beta.ResponseModality`)``
-
-> [!WARNING]
-> This item is deprecated!
-
-The requested modalities of the response (TEXT, IMAGE, AUDIO).
-`responseMimeType
-(deprecated)` `string`
-
-> [!WARNING]
-> This item is deprecated!
-
-The mime type of the response. This is required if responseFormat is set.
-`previousInteractionId` `string` The ID of the previous interaction, if any.
-`environmentId` `string` Output only. The environment ID for the interaction. Only populated if environment config is set in the request.
-`serviceTier` ``enum (`https://ai.google.dev/api/generate-content#v1beta.ServiceTier`)`` The service tier for the interaction.
-`webhookConfig` ``object (`https://ai.google.dev/api/generate-content#WebhookConfig`)`` Optional. Webhook configuration for receiving notifications when the interaction completes.
-`steps[]` ``object (`https://ai.google.dev/api/generate-content#Step`)`` Required. Output only. The steps that make up the interaction.
-`input` `Union type` The input for the interaction. `input` can be only one of the following: `contentList
-(deprecated)` ``object (`https://ai.google.dev/api/generate-content#v1beta.ContentList`)``
-
-> [!WARNING]
-> This item is deprecated!
-
-The inputs for the interaction.
-`stringContent` `string` A string input for the interaction, it will be processed as a single text input.
-`turnList
-(deprecated)` ``object (`https://ai.google.dev/api/generate-content#TurnList`)``
-
-> [!WARNING]
-> This item is deprecated!
-
-The turns for the interaction.
-`stepList` ``object (`https://ai.google.dev/api/generate-content#StepList`)`` Input only. The steps for the interaction.
-`content` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` The content for the interaction.
-`response_format_config` `Union type` `response_format_config` can be only one of the following: `responseFormat
-(deprecated)` ``object (`https://ai.google.dev/api/generate-content#v1beta.Value`)``
-
-> [!WARNING]
-> This item is deprecated!
-
-Enforces that the generated response is a JSON object that complies with the JSON schema specified in this field.
-`responseFormatList` ``object (`https://ai.google.dev/api/generate-content#ResponseFormatList`)`` `responseFormatSingleton` ``object (`https://ai.google.dev/api/generate-content#ResponseFormat`)`` `request_type` `Union type` The request type for the interaction. `request_type` can be only one of the following: `modelInteraction` ``object (`https://ai.google.dev/api/generate-content#ModelInteraction`)`` Interaction for generating the completion using models.
-`agentInteraction` ``object (`AgentInteraction`)`` Interaction for generating the completion using agents.
-`environment` `Union type` The environment configuration for the interaction. `environment` can be only one of the following: `envId` `string` The environment ID for the interaction. Can be 'remote' for default environment.
-`remoteEnvironment` ``object (`https://ai.google.dev/api/generate-content#EnvironmentConfig`)`` `localEnvironment` ``object (`https://ai.google.dev/api/generate-content#LocalEnvironmentConfig`)`` The agent's environment lives on the client connection: its built-in environment operations (filesystem ops and running commands) are yielded to the client to execute, instead of running in a server-managed sandbox. Mutually exclusive with `remoteEnvironment`. (Independent of any client-declared function tools, which are always executed on the client regardless of this field.)
-
-| JSON representation |
-|---|
-| ``` { "id": string, "status": enum (`https://ai.google.dev/api/files#v1beta.Status`), "created": string, "updated": string, "role": string, "outputs": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) } ], "systemInstruction": string, "tools": [ { object (`https://ai.google.dev/api/generate-content#Tool`) } ], "usage": { object (`https://ai.google.dev/api/generate-content#Usage`) }, "responseModalities": [ enum (`https://ai.google.dev/api/generate-content#v1beta.ResponseModality`) ], "responseMimeType": string, "previousInteractionId": string, "environmentId": string, "serviceTier": enum (`https://ai.google.dev/api/generate-content#v1beta.ServiceTier`), "webhookConfig": { object (`https://ai.google.dev/api/generate-content#WebhookConfig`) }, "steps": [ { object (`https://ai.google.dev/api/generate-content#Step`) } ], // input "contentList": { object (`https://ai.google.dev/api/generate-content#v1beta.ContentList`) }, "stringContent": string, "turnList": { object (`https://ai.google.dev/api/generate-content#TurnList`) }, "stepList": { object (`https://ai.google.dev/api/generate-content#StepList`) }, "content": { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) } // Union type // response_format_config "responseFormat": { object (`https://ai.google.dev/api/generate-content#v1beta.Value`) }, "responseFormatList": { object (`https://ai.google.dev/api/generate-content#ResponseFormatList`) }, "responseFormatSingleton": { object (`https://ai.google.dev/api/generate-content#ResponseFormat`) } // Union type // request_type "modelInteraction": { object (`https://ai.google.dev/api/generate-content#ModelInteraction`) }, "agentInteraction": { object (`AgentInteraction`) } // Union type // environment "envId": string, "remoteEnvironment": { object (`https://ai.google.dev/api/generate-content#EnvironmentConfig`) }, "localEnvironment": { object (`https://ai.google.dev/api/generate-content#LocalEnvironmentConfig`) } // Union type } ``` |
-
-## TurnList
-
-> [!WARNING]
-> This item is deprecated!
-
-A list of Turns.
-Fields `turns[]` ``object (`https://ai.google.dev/api/generate-content#Turn`)``
-
-| JSON representation |
-|---|
-| ``` { "turns": [ { object (`https://ai.google.dev/api/generate-content#Turn`) } ] } ``` |
-
-## Turn
-
-> [!WARNING]
-> This item is deprecated!
-
-Fields `role` `string` The originator of this turn. Must be user for input or model for model output.
-`content` `Union type` `content` can be only one of the following: `contentList` ``object (`https://ai.google.dev/api/generate-content#v1beta.ContentList`)`` The content of the turn. An array of Content objects.
-`contentString` `string` The content of the turn. A single string.
-
-| JSON representation |
-|---|
-| ``` { "role": string, // content "contentList": { object (`https://ai.google.dev/api/generate-content#v1beta.ContentList`) }, "contentString": string // Union type } ``` |
-
-## StepList
-
-A list of Steps.
-Fields `steps[]` ``object (`https://ai.google.dev/api/generate-content#Step`)`` The steps of the list.
-
-| JSON representation |
-|---|
-| ``` { "steps": [ { object (`https://ai.google.dev/api/generate-content#Step`) } ] } ``` |
-
-## Step
-
-A step in the interaction.
-Fields `type` `Union type` `type` can be only one of the following: `thought` ``object (`https://ai.google.dev/api/generate-content#ThoughtStep`)`` `toolCall` ``object (`https://ai.google.dev/api/generate-content#ToolCallStep`)`` `toolResult` ``object (`https://ai.google.dev/api/generate-content#ToolResultStep`)`` `userInput` ``object (`https://ai.google.dev/api/generate-content#UserInputStep`)`` DO NOT USE -- These are for 3P JSON only
-`modelOutput` ``object (`https://ai.google.dev/api/generate-content#ModelOutputStep`)`` `text
-(deprecated)` ``object (`LegacyTextContent`)``
-
-> [!WARNING]
-> This item is deprecated!
-
-`image
-(deprecated)` ``object (`LegacyImageContent`)``
-
-> [!WARNING]
-> This item is deprecated!
-
-`audio
-(deprecated)` ``object (`LegacyAudioContent`)``
-
-> [!WARNING]
-> This item is deprecated!
-
-`document
-(deprecated)` ``object (`LegacyDocumentContent`)``
-
-> [!WARNING]
-> This item is deprecated!
-
-`video
-(deprecated)` ``object (`LegacyVideoContent`)``
-
-> [!WARNING]
-> This item is deprecated!
-
-| JSON representation |
-|---|
-| ``` { // type "thought": { object (`https://ai.google.dev/api/generate-content#ThoughtStep`) }, "toolCall": { object (`https://ai.google.dev/api/generate-content#ToolCallStep`) }, "toolResult": { object (`https://ai.google.dev/api/generate-content#ToolResultStep`) }, "userInput": { object (`https://ai.google.dev/api/generate-content#UserInputStep`) }, "modelOutput": { object (`https://ai.google.dev/api/generate-content#ModelOutputStep`) }, "text": { object (`LegacyTextContent`) }, "image": { object (`LegacyImageContent`) }, "audio": { object (`LegacyAudioContent`) }, "document": { object (`LegacyDocumentContent`) }, "video": { object (`LegacyVideoContent`) } // Union type } ``` |
-
-## ThoughtStep
-
-A thought step.
-Fields `signature` `string (https://developers.google.com/discovery/v1/type-format format)` A signature hash for backend validation.
-
-A base64-encoded string.
-`summary[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` A summary of the thought.
-
-| JSON representation |
-|---|
-| ``` { "signature": string, "summary": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) } ] } ``` |
-
-## ToolCallStep
-
-Tool call step.
-Fields `id` `string` Required. A unique ID for this specific tool call.
-`signature` `string (https://developers.google.com/discovery/v1/type-format format)` A signature hash for backend validation.
-
-A base64-encoded string.
-`type` `Union type` `type` can be only one of the following: `functionCall` ``object (`https://ai.google.dev/api/generate-content#FunctionCallStep`)`` `codeExecutionCall` ``object (`https://ai.google.dev/api/generate-content#v1beta.CodeExecutionCallStep`)`` `urlContextCall` ``object (`https://ai.google.dev/api/generate-content#UrlContextCallStep`)`` `mcpServerToolCall` ``object (`https://ai.google.dev/api/generate-content#McpServerToolCallStep`)`` `googleSearchCall` ``object (`https://ai.google.dev/api/generate-content#GoogleSearchCallStep`)`` `fileSearchCall` ``object (`https://ai.google.dev/api/generate-content#FileSearchCallStep`)`` `googleMapsCall` ``object (`https://ai.google.dev/api/generate-content#GoogleMapsCallStep`)`` `retrievalCall` ``object (`RetrievalCallStep`)``
-
-| JSON representation |
-|---|
-| ``` { "id": string, "signature": string, // type "functionCall": { object (`https://ai.google.dev/api/generate-content#FunctionCallStep`) }, "codeExecutionCall": { object (`https://ai.google.dev/api/generate-content#v1beta.CodeExecutionCallStep`) }, "urlContextCall": { object (`https://ai.google.dev/api/generate-content#UrlContextCallStep`) }, "mcpServerToolCall": { object (`https://ai.google.dev/api/generate-content#McpServerToolCallStep`) }, "googleSearchCall": { object (`https://ai.google.dev/api/generate-content#GoogleSearchCallStep`) }, "fileSearchCall": { object (`https://ai.google.dev/api/generate-content#FileSearchCallStep`) }, "googleMapsCall": { object (`https://ai.google.dev/api/generate-content#GoogleMapsCallStep`) }, "retrievalCall": { object (`RetrievalCallStep`) } // Union type } ``` |
-
-## FunctionCallStep
-
-A function tool call step.
-Fields `name` `string` Required. The name of the tool to call.
-`arguments` ``object (`https://ai.google.dev/api/generate-content#v1beta.Struct`)`` Required. The arguments to pass to the function.
-
-| JSON representation |
-|---|
-| ``` { "name": string, "arguments": { object (`https://ai.google.dev/api/generate-content#v1beta.Struct`) } } ``` |
-
-## UrlContextCallStep
-
-URL context call step.
-Fields `arguments` ``object (`https://ai.google.dev/api/generate-content#UrlContextCallStepArguments`)`` Required. The arguments to pass to the URL context.
-
-| JSON representation |
-|---|
-| ``` { "arguments": { object (`https://ai.google.dev/api/generate-content#UrlContextCallStepArguments`) } } ``` |
-
-## UrlContextCallStepArguments
-
-The arguments to pass to the URL context.
-Fields `urls[]` `string` The URLs to fetch.
-
-| JSON representation |
-|---|
-| ``` { "urls": [ string ] } ``` |
-
-## McpServerToolCallStep
-
-MCPServer tool call step.
-Fields `name` `string` Required. The name of the tool which was called.
-`serverName` `string` Required. The name of the used MCP server.
-`arguments` ``object (`https://ai.google.dev/api/generate-content#v1beta.Struct`)`` Required. The JSON object of arguments for the function.
-
-| JSON representation |
-|---|
-| ``` { "name": string, "serverName": string, "arguments": { object (`https://ai.google.dev/api/generate-content#v1beta.Struct`) } } ``` |
-
-## GoogleSearchCallStep
-
-Google Search call step.
-Fields `arguments` ``object (`https://ai.google.dev/api/generate-content#GoogleSearchCallStepArguments`)`` Required. The arguments to pass to Google Search.
-`searchType` ``enum (`https://ai.google.dev/api/generate-content#v1beta.SearchType`)`` The type of search grounding enabled.
-
-| JSON representation |
-|---|
-| ``` { "arguments": { object (`https://ai.google.dev/api/generate-content#GoogleSearchCallStepArguments`) }, "searchType": enum (`https://ai.google.dev/api/generate-content#v1beta.SearchType`) } ``` |
-
-## GoogleSearchCallStepArguments
-
-The arguments to pass to Google Search.
-Fields `queries[]` `string` Web search queries for the following-up web search.
-
-| JSON representation |
-|---|
-| ``` { "queries": [ string ] } ``` |
-
-## FileSearchCallStep
-
-This type has no fields.
-File Search call step.
-
-## GoogleMapsCallStep
-
-Google Maps call step.
-Fields `arguments` ``object (`https://ai.google.dev/api/generate-content#GoogleMapsCallStepArguments`)`` The arguments to pass to the Google Maps tool.
-
-| JSON representation |
-|---|
-| ``` { "arguments": { object (`https://ai.google.dev/api/generate-content#GoogleMapsCallStepArguments`) } } ``` |
-
-## GoogleMapsCallStepArguments
-
-The arguments to pass to the Google Maps tool.
-Fields `queries[]` `string` The queries to be executed.
-
-| JSON representation |
-|---|
-| ``` { "queries": [ string ] } ``` |
-
-## ToolResultStep
-
-Tool result step.
-Fields `callId` `string` Required. ID to match the ID from the function call block.
-`signature` `string (https://developers.google.com/discovery/v1/type-format format)` A signature hash for backend validation.
-
-A base64-encoded string.
-`type` `Union type` `type` can be only one of the following: `functionResult` ``object (`https://ai.google.dev/api/generate-content#FunctionResultStep`)`` `codeExecutionResult` ``object (`https://ai.google.dev/api/generate-content#v1beta.CodeExecutionResultStep`)`` `urlContextResult` ``object (`https://ai.google.dev/api/generate-content#UrlContextResultStep`)`` `googleSearchResult` ``object (`https://ai.google.dev/api/generate-content#GoogleSearchResultStep`)`` `mcpServerToolResult` ``object (`https://ai.google.dev/api/generate-content#McpServerToolResultStep`)`` `fileSearchResult` ``object (`https://ai.google.dev/api/generate-content#FileSearchResultStep`)`` `googleMapsResult` ``object (`https://ai.google.dev/api/generate-content#GoogleMapsResultStep`)`` `retrievalResult` ``object (`RetrievalResultStep`)``
-
-| JSON representation |
-|---|
-| ``` { "callId": string, "signature": string, // type "functionResult": { object (`https://ai.google.dev/api/generate-content#FunctionResultStep`) }, "codeExecutionResult": { object (`https://ai.google.dev/api/generate-content#v1beta.CodeExecutionResultStep`) }, "urlContextResult": { object (`https://ai.google.dev/api/generate-content#UrlContextResultStep`) }, "googleSearchResult": { object (`https://ai.google.dev/api/generate-content#GoogleSearchResultStep`) }, "mcpServerToolResult": { object (`https://ai.google.dev/api/generate-content#McpServerToolResultStep`) }, "fileSearchResult": { object (`https://ai.google.dev/api/generate-content#FileSearchResultStep`) }, "googleMapsResult": { object (`https://ai.google.dev/api/generate-content#GoogleMapsResultStep`) }, "retrievalResult": { object (`RetrievalResultStep`) } // Union type } ``` |
-
-## FunctionResultStep
-
-Result of a function tool call.
-Fields `name` `string` The name of the tool that was called.
-`isError` `boolean` Whether the tool call resulted in an error.
-`result` ``object (`https://ai.google.dev/api/generate-content#v1beta.Value`)`` Required. The result of the tool call.
-
-| JSON representation |
-|---|
-| ``` { "name": string, "isError": boolean, "result": { object (`https://ai.google.dev/api/generate-content#v1beta.Value`) } } ``` |
-
-## UrlContextResultStep
-
-URL context result step.
-Fields `result[]` ``object (`https://ai.google.dev/api/generate-content#UrlContextResultItem`)`` Required. The results of the URL context.
-`isError` `boolean` Whether the URL context resulted in an error.
-
-| JSON representation |
-|---|
-| ``` { "result": [ { object (`https://ai.google.dev/api/generate-content#UrlContextResultItem`) } ], "isError": boolean } ``` |
-
-## UrlContextResultItem
-
-The result of the URL context.
-Fields `url` `string` The URL that was fetched.
-`status` ``enum (`Status`)`` The status of the URL retrieval.
-
-| JSON representation |
-|---|
-| ``` { "url": string, "status": enum (`Status`) } ``` |
-
-## GoogleSearchResultStep
-
-Google Search result step.
-Fields `result[]` ``object (`https://ai.google.dev/api/generate-content#GoogleSearchResultItem`)`` Required. The results of the Google Search.
-`isError` `boolean` Whether the Google Search resulted in an error.
-
-| JSON representation |
-|---|
-| ``` { "result": [ { object (`https://ai.google.dev/api/generate-content#GoogleSearchResultItem`) } ], "isError": boolean } ``` |
-
-## GoogleSearchResultItem
-
-The result of the Google Search.
-Fields `searchSuggestions` `string` Web content snippet that can be embedded in a web page or an app webview.
-
-| JSON representation |
-|---|
-| ``` { "searchSuggestions": string } ``` |
-
-## McpServerToolResultStep
-
-MCPServer tool result step.
-Fields `name` `string` Name of the tool which is called for this specific tool call.
-`serverName` `string` The name of the used MCP server.
-`result` ``object (`https://ai.google.dev/api/generate-content#v1beta.Value`)`` Required. The output from the MCP server call. Can be simple text or rich content.
-
-| JSON representation |
-|---|
-| ``` { "name": string, "serverName": string, "result": { object (`https://ai.google.dev/api/generate-content#v1beta.Value`) } } ``` |
-
-## FileSearchResultStep
-
-This type has no fields.
-File Search result step.
-
-## GoogleMapsResultStep
-
-Google Maps result step.
-Fields `result[]` ``object (`https://ai.google.dev/api/generate-content#GoogleMapsResultItem`)``
-
-| JSON representation |
-|---|
-| ``` { "result": [ { object (`https://ai.google.dev/api/generate-content#GoogleMapsResultItem`) } ] } ``` |
-
-## GoogleMapsResultItem
-
-The result of the Google Maps.
-Fields `places[]` ``object (`https://ai.google.dev/api/generate-content#GoogleMapsResultPlaces`)`` `widgetContextToken` `string`
-
-| JSON representation |
-|---|
-| ``` { "places": [ { object (`https://ai.google.dev/api/generate-content#GoogleMapsResultPlaces`) } ], "widgetContextToken": string } ``` |
-
-## GoogleMapsResultPlaces
-
-Fields `placeId` `string` `name` `string` `url` `string` `reviewSnippets[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.ReviewSnippet`)``
-
-| JSON representation |
-|---|
-| ``` { "placeId": string, "name": string, "url": string, "reviewSnippets": [ { object (`https://ai.google.dev/api/generate-content#v1beta.ReviewSnippet`) } ] } ``` |
-
-## UserInputStep
-
-Input provided by the user.
-Fields `content` `Union type` `content` can be only one of the following: `contentList` ``object (`https://ai.google.dev/api/generate-content#v1beta.ContentList`)`` The content of the step. An array of Content objects.
-`contentString` `string` The content of the step. A single string.
-
-| JSON representation |
-|---|
-| ``` { // content "contentList": { object (`https://ai.google.dev/api/generate-content#v1beta.ContentList`) }, "contentString": string // Union type } ``` |
-
-## ModelOutputStep
-
-Output generated by the model.
-Fields `content[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)``
-
-| JSON representation |
-|---|
-| ``` { "content": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) } ] } ``` |
-
-## ResponseFormatList
-
-Fields `responseFormats[]` ``object (`https://ai.google.dev/api/generate-content#ResponseFormat`)``
-
-| JSON representation |
-|---|
-| ``` { "responseFormats": [ { object (`https://ai.google.dev/api/generate-content#ResponseFormat`) } ] } ``` |
-
-## ResponseFormat
-
-Fields `type` `Union type` `type` can be only one of the following: `audio` ``object (`https://ai.google.dev/api/generate-content#v1beta.AudioResponseFormat`)`` `text` ``object (`https://ai.google.dev/api/generate-content#TextResponseFormat`)`` `image` ``object (`https://ai.google.dev/api/generate-content#ImageResponseFormat`)`` `video` ``object (`https://ai.google.dev/api/generate-content#VideoResponseFormat`)`` `structValue` ``object (`https://ai.google.dev/api/generate-content#v1beta.Struct`)`` Multi-discriminator values is already enabled in GAOS
-
-| JSON representation |
-|---|
-| ``` { // type "audio": { object (`https://ai.google.dev/api/generate-content#v1beta.AudioResponseFormat`) }, "text": { object (`https://ai.google.dev/api/generate-content#TextResponseFormat`) }, "image": { object (`https://ai.google.dev/api/generate-content#ImageResponseFormat`) }, "video": { object (`https://ai.google.dev/api/generate-content#VideoResponseFormat`) }, "structValue": { object (`https://ai.google.dev/api/generate-content#v1beta.Struct`) } // Union type } ``` |
-
-## TextResponseFormat
-
-Configuration for text output format.
-Fields `mimeType` ``enum (`MimeType`)`` The MIME type of the text output.
-`schema` ``object (`https://ai.google.dev/api/generate-content#v1beta.Struct`)`` The JSON schema that the output should conform to. Only applicable when mimeType is application/json.
-
-| JSON representation |
-|---|
-| ``` { "mimeType": enum (`MimeType`), "schema": { object (`https://ai.google.dev/api/generate-content#v1beta.Struct`) } } ``` |
-
-## ImageResponseFormat
-
-Configuration for image output format.
-Fields `mimeType` ``enum (`MimeType`)`` The MIME type of the image output.
-`delivery` ``enum (`Delivery`)`` The delivery mode for the image output.
-`aspectRatio` ``enum (`https://ai.google.dev/api/generate-content#v1beta.AspectRatio`)`` The aspect ratio for the image output.
-`imageSize` ``enum (`https://ai.google.dev/api/generate-content#v1beta.ImageSize`)`` The size of the image output.
-
-| JSON representation |
-|---|
-| ``` { "mimeType": enum (`MimeType`), "delivery": enum (`Delivery`), "aspectRatio": enum (`https://ai.google.dev/api/generate-content#v1beta.AspectRatio`), "imageSize": enum (`https://ai.google.dev/api/generate-content#v1beta.ImageSize`) } ``` |
-
-## VideoResponseFormat
-
-Configuration for video output format.
-Fields `delivery` ``enum (`Delivery`)`` The delivery mode for the video output.
-`aspectRatio` ``enum (`AspectRatio`)`` The aspect ratio for the video output.
-`duration` ``string (`https://protobuf.dev/reference/protobuf/google.protobuf#duration` format)`` The duration for the video output.
-
-A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: `"3.5s"`.
-
-| JSON representation |
-|---|
-| ``` { "delivery": enum (`Delivery`), "aspectRatio": enum (`AspectRatio`), "duration": string } ``` |
-
-## ModelInteraction
-
-Interaction for generating the completion using models.
-Fields `model` `string` The name of the `Model` used for generating the completion.
-`generationConfig` ``object (`https://ai.google.dev/api/generate-content#GenerationConfig`)`` Input only. Configuration parameters for the model interaction.
-
-| JSON representation |
-|---|
-| ``` { "model": string, "generationConfig": { object (`https://ai.google.dev/api/generate-content#GenerationConfig`) } } ``` |
-
-## GenerationConfig
-
-Configuration parameters for model interactions.
-Fields `temperature` `number` Controls the randomness of the output.
-`topP` `number` The maximum cumulative probability of tokens to consider when sampling.
-`seed` `integer` Seed used in decoding for reproducibility.
-`stopSequences[]` `string` A list of character sequences that will stop output interaction.
-`thinkingLevel` ``enum (`https://ai.google.dev/api/generate-content#v1beta.ThinkingLevel`)`` The level of thought tokens that the model should generate.
-`thinkingSummaries` ``enum (`https://ai.google.dev/api/generate-content#v1beta.ThinkingSummaries`)`` Whether to include thought summaries in the response.
-`maxOutputTokens` `integer` The maximum number of tokens to include in the response.
-`speechConfig[]` ``object (`https://ai.google.dev/api/generate-content#SpeechConfig`)`` Configuration for speech interaction.
-`imageConfig
-(deprecated)` ``object (`https://ai.google.dev/api/generate-content#ImageConfig`)``
-
-> [!WARNING]
-> This item is deprecated!
-
-Configuration for image interaction.
-`videoConfig` ``object (`https://ai.google.dev/api/generate-content#VideoConfig`)`` Configuration for video generation.
-`tool_choice` `Union type` The tool choice configuration. `tool_choice` can be only one of the following: `toolChoiceMode` ``enum (`https://ai.google.dev/api/generate-content#v1beta.ToolChoiceType`)`` The mode of the tool choice.
-`toolChoiceConfig` ``object (`https://ai.google.dev/api/generate-content#ToolChoiceConfig`)`` The config for the tool choice.
-
-| JSON representation |
-|---|
-| ``` { "temperature": number, "topP": number, "seed": integer, "stopSequences": [ string ], "thinkingLevel": enum (`https://ai.google.dev/api/generate-content#v1beta.ThinkingLevel`), "thinkingSummaries": enum (`https://ai.google.dev/api/generate-content#v1beta.ThinkingSummaries`), "maxOutputTokens": integer, "speechConfig": [ { object (`https://ai.google.dev/api/generate-content#SpeechConfig`) } ], "imageConfig": { object (`https://ai.google.dev/api/generate-content#ImageConfig`) }, "videoConfig": { object (`https://ai.google.dev/api/generate-content#VideoConfig`) }, // tool_choice "toolChoiceMode": enum (`https://ai.google.dev/api/generate-content#v1beta.ToolChoiceType`), "toolChoiceConfig": { object (`https://ai.google.dev/api/generate-content#ToolChoiceConfig`) } // Union type } ``` |
-
-## ToolChoiceConfig
-
-The tool choice configuration containing allowed tools.
-Fields `allowedTools` ``object (`https://ai.google.dev/api/generate-content#v1beta.AllowedTools`)`` The allowed tools.
-
-| JSON representation |
-|---|
-| ``` { "allowedTools": { object (`https://ai.google.dev/api/generate-content#v1beta.AllowedTools`) } } ``` |
-
-## SpeechConfig
-
-The configuration for speech interaction.
-Fields `voice` `string` The voice of the speaker.
-`language` `string` The language of the speech.
-`speaker` `string` The speaker's name, it should match the speaker name given in the prompt.
-
-| JSON representation |
-|---|
-| ``` { "voice": string, "language": string, "speaker": string } ``` |
-
-## ImageConfig
-
-The configuration for image interaction.
-Fields `aspectRatio` `string` The aspect ratio of the image to generate. Supported aspect ratios: 1:1, 2:3, 3:2, 3:4, 4:3, 9:16, 16:9, 21:9.
-
-If not specified, the model will choose a default aspect ratio based on any reference images provided.
-`imageSize` `string` Specifies the size of generated images. Supported values are `1K`, `2K`, `4K`. If not specified, the model will use default value `1K`.
-
-| JSON representation |
-|---|
-| ``` { "aspectRatio": string, "imageSize": string } ``` |
-
-## VideoConfig
-
-Configuration options for video generation.
-Fields `task` ``enum (`https://ai.google.dev/api/generate-content#v1beta.Task`)`` Optional task mode for video generation. If not specified, the model automatically determines the appropriate mode based on the provided text prompt and input media.
-
-| JSON representation |
-|---|
-| ``` { "task": enum (`https://ai.google.dev/api/generate-content#v1beta.Task`) } ``` |
-
-## EnvironmentConfig
-
-Configuration for a custom environment.
-Fields `sources[]` ``object (`https://ai.google.dev/api/generate-content#Source`)`` `environmentId` `string` Optional. The environment ID for the interaction. If specified, the request will update the existing environment instead of creating a new one.
-`network` `Union type` Network configuration for the environment. `network` can be only one of the following: `networkAllowlist` ``object (`https://ai.google.dev/api/generate-content#EnvironmentNetworkEgressAllowlist`)`` Allow only specific domains.
-`networkMode` ``enum (`https://ai.google.dev/api/generate-content#v1beta.NetworkMode`)`` Network egress mode.
-
-| JSON representation |
-|---|
-| ``` { "sources": [ { object (`https://ai.google.dev/api/generate-content#Source`) } ], "environmentId": string, // network "networkAllowlist": { object (`https://ai.google.dev/api/generate-content#EnvironmentNetworkEgressAllowlist`) }, "networkMode": enum (`https://ai.google.dev/api/generate-content#v1beta.NetworkMode`) // Union type } ``` |
-
-## EnvironmentNetworkEgressAllowlist
-
-Network egress configuration for the environment.
-Fields `allowlist[]` ``object (`https://ai.google.dev/api/generate-content#EgressRule`)`` List of allowed domains and their configurations.
-
-| JSON representation |
-|---|
-| ``` { "allowlist": [ { object (`https://ai.google.dev/api/generate-content#EgressRule`) } ] } ``` |
-
-## EgressRule
-
-A network egress rule that controls which external domains the environment is allowed to reach. Each rule identifies a target domain and, optionally, a set of HTTP headers to inject into every matching outbound request.
-Fields `domain` `string` The domain pattern to match for this rule. Use an exact hostname (e.g., `github.com`), a wildcard prefix (e.g., `*.googleapis.com`), or `*` to match all domains.
-`transform` `map (key: string, value: string)` Headers to inject into requests matching this rule. Key: header name (e.g., "Authorization"). Value: header value (e.g., "Bearer your-token").
-
-An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-
-| JSON representation |
-|---|
-| ``` { "domain": string, "transform": { string: string, ... } } ``` |
-
-## Source
-
-A source to be mounted into the environment.
-Fields `type` ``enum (`Type`)`` `source` `string` The source of the environment. For GCS, this is the GCS path. For GitHub, this is the GitHub path.
-`target` `string` Where the source should appear in the environment.
-`content` `string` The inline content if `type` is `INLINE`.
-`encoding` `string` Optional encoding for inline content (e.g. `base64`).
-
-| JSON representation |
-|---|
-| ``` { "type": enum (`Type`), "source": string, "target": string, "content": string, "encoding": string } ``` |
-
-## LocalEnvironmentConfig
-
-This type has no fields.
-Configuration for an environment that lives on the client connection rather than in a server-managed sandbox.
-
-When set (via Interaction.local_environment), the agent's filesystem and shell are treated as living on the client: the agent's built-in environment operations (e.g. reading/listing/editing files and running commands) are suspended on the server and yielded back to the client to execute, with their results returned on a subsequent turn. This is mutually exclusive with a server-managed `EnvironmentConfig` (remoteEnvironment), since the environment is either on the client or in a server sandbox, never both.
-
-This governs only the agent's built-in environment. Client-declared function tools are always executed on the client regardless of this field.
-
-## Tool
-
-A tool that can be used by the model.
-Fields `type` `Union type` The tool to use. `type` can be only one of the following: `function` ``object (`https://ai.google.dev/api/generate-content#Function`)`` A function that can be used by the model.
-`codeExecution` ``object (`https://ai.google.dev/api/generate-content#v1beta.CodeExecution`)`` A tool that can be used by the model to execute code.
-`urlContext` ``object (`https://ai.google.dev/api/generate-content#UrlContext`)`` A tool that can be used by the model to fetch URL context.
-`computerUse` ``object (`https://ai.google.dev/api/generate-content#v1beta.ComputerUse`)`` Tool to support the model interacting directly with the computer.
-`mcpServer` ``object (`https://ai.google.dev/api/generate-content#McpServer`)`` A MCPServer is a server that can be called by the model to perform actions.
-`googleSearch` ``object (`https://ai.google.dev/api/generate-content#GoogleSearch`)`` A tool that can be used by the model to search Google.
-`fileSearch` ``object (`https://ai.google.dev/api/generate-content#FileSearch`)`` A tool that can be used by the model to search files.
-`googleMaps` ``object (`https://ai.google.dev/api/generate-content#GoogleMaps`)`` A tool that can be used by the model to search Google Maps.
-`retrieval` ``object (`Retrieval`)`` A tool that can be used by the model to retrieve files.
-
-| JSON representation |
-|---|
-| ``` { // type "function": { object (`https://ai.google.dev/api/generate-content#Function`) }, "codeExecution": { object (`https://ai.google.dev/api/generate-content#v1beta.CodeExecution`) }, "urlContext": { object (`https://ai.google.dev/api/generate-content#UrlContext`) }, "computerUse": { object (`https://ai.google.dev/api/generate-content#v1beta.ComputerUse`) }, "mcpServer": { object (`https://ai.google.dev/api/generate-content#McpServer`) }, "googleSearch": { object (`https://ai.google.dev/api/generate-content#GoogleSearch`) }, "fileSearch": { object (`https://ai.google.dev/api/generate-content#FileSearch`) }, "googleMaps": { object (`https://ai.google.dev/api/generate-content#GoogleMaps`) }, "retrieval": { object (`Retrieval`) } // Union type } ``` |
-
-## Function
-
-A tool that can be used by the model.
-Fields `name` `string` The name of the function.
-`description` `string` A description of the function.
-`parameters` ``object (`https://ai.google.dev/api/generate-content#v1beta.Value`)`` The JSON Schema for the function's parameters.
-
-| JSON representation |
-|---|
-| ``` { "name": string, "description": string, "parameters": { object (`https://ai.google.dev/api/generate-content#v1beta.Value`) } } ``` |
-
-## UrlContext
-
-This type has no fields.
-A tool that can be used by the model to fetch URL context.
-
-## McpServer
-
-A MCPServer is a server that can be called by the model to perform actions.
-Fields `name` `string` The name of the MCPServer.
-`url` `string` The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
-`headers` `map (key: string, value: string)` Optional: Fields for authentication headers, timeouts, etc., if needed.
-
-An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-`allowedTools[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.AllowedTools`)`` The allowed tools.
-
-| JSON representation |
-|---|
-| ``` { "name": string, "url": string, "headers": { string: string, ... }, "allowedTools": [ { object (`https://ai.google.dev/api/generate-content#v1beta.AllowedTools`) } ] } ``` |
-
-## GoogleSearch
-
-A tool that can be used by the model to search Google.
-Fields `searchTypes[]` ``enum (`https://ai.google.dev/api/generate-content#v1beta.SearchType`)`` The types of search grounding to enable.
-
-| JSON representation |
-|---|
-| ``` { "searchTypes": [ enum (`https://ai.google.dev/api/generate-content#v1beta.SearchType`) ] } ``` |
-
-## FileSearch
-
-A tool that can be used by the model to search files.
-Fields `fileSearchStoreNames[]` `string` The file search store names to search.
-`topK` `integer` The number of semantic retrieval chunks to retrieve.
-`metadataFilter` `string` Metadata filter to apply to the semantic retrieval documents and chunks.
-
-| JSON representation |
-|---|
-| ``` { "fileSearchStoreNames": [ string ], "topK": integer, "metadataFilter": string } ``` |
-
-## GoogleMaps
-
-A tool that can be used by the model to call Google Maps.
-Fields `enableWidget` `boolean` Whether to return a widget context token in the tool call result of the response.
-`latitude` `number` The latitude of the user's location.
-`longitude` `number` The longitude of the user's location.
-
-| JSON representation |
-|---|
-| ``` { "enableWidget": boolean, "latitude": number, "longitude": number } ``` |
-
-## Usage
-
-Statistics on the interaction request's token usage.
-Fields `totalInputTokens` `integer` Number of tokens in the prompt (context).
-`inputTokensByModality[]` ``object (`https://ai.google.dev/api/generate-content#ModalityTokens`)`` A breakdown of input token usage by modality.
-`totalCachedTokens` `integer` Number of tokens in the cached part of the prompt (the cached content).
-`cachedTokensByModality[]` ``object (`https://ai.google.dev/api/generate-content#ModalityTokens`)`` A breakdown of cached token usage by modality.
-`totalOutputTokens` `integer` Total number of tokens across all the generated responses.
-`outputTokensByModality[]` ``object (`https://ai.google.dev/api/generate-content#ModalityTokens`)`` A breakdown of output token usage by modality.
-`totalToolUseTokens` `integer` Number of tokens present in tool-use prompt(s).
-`toolUseTokensByModality[]` ``object (`https://ai.google.dev/api/generate-content#ModalityTokens`)`` A breakdown of tool-use token usage by modality.
-`totalThoughtTokens` `integer` Number of tokens of thoughts for thinking models.
-`totalTokens` `integer` Total token count for the interaction request (prompt + responses + other internal tokens).
-`groundingToolCount[]` ``object (`https://ai.google.dev/api/generate-content#GroundingToolCount`)`` Grounding tool count.
-
-| JSON representation |
-|---|
-| ``` { "totalInputTokens": integer, "inputTokensByModality": [ { object (`https://ai.google.dev/api/generate-content#ModalityTokens`) } ], "totalCachedTokens": integer, "cachedTokensByModality": [ { object (`https://ai.google.dev/api/generate-content#ModalityTokens`) } ], "totalOutputTokens": integer, "outputTokensByModality": [ { object (`https://ai.google.dev/api/generate-content#ModalityTokens`) } ], "totalToolUseTokens": integer, "toolUseTokensByModality": [ { object (`https://ai.google.dev/api/generate-content#ModalityTokens`) } ], "totalThoughtTokens": integer, "totalTokens": integer, "groundingToolCount": [ { object (`https://ai.google.dev/api/generate-content#GroundingToolCount`) } ] } ``` |
-
-## ModalityTokens
-
-The token count for a single response modality.
-Fields `modality` ``enum (`https://ai.google.dev/api/generate-content#v1beta.ResponseModality`)`` The modality associated with the token count.
-`tokens` `integer` Number of tokens for the modality.
-
-| JSON representation |
-|---|
-| ``` { "modality": enum (`https://ai.google.dev/api/generate-content#v1beta.ResponseModality`), "tokens": integer } ``` |
-
-## GroundingToolCount
-
-The number of grounding tool counts.
-Fields `type` ``enum (`Type`)`` The grounding tool type associated with the count.
-`count` `integer` The number of grounding tool counts.
-
-| JSON representation |
-|---|
-| ``` { "type": enum (`Type`), "count": integer } ``` |
-
-## WebhookConfig
-
-Message for configuring webhook events for a request.
-Fields `uris[]` `string` Optional. If set, these webhook URIs will be used for webhook events instead of the registered webhooks.
-`userMetadata` ``object (`https://protobuf.dev/reference/protobuf/google.protobuf#struct` format)`` Optional. The user metadata that will be returned on each event emission to the webhooks.
-
-| JSON representation |
-|---|
-| ``` { "uris": [ string ], "userMetadata": { object } } ``` |
-
-## SafetySetting
-
-A safety setting that affects the safety-blocking behavior.
-
-A \[SafetySetting\]\[google.cloud.aiplatform.master.SafetySetting\] consists of a harm \[category\]\[google.cloud.aiplatform.master.SafetySetting.category\] and a \[threshold\]\[google.cloud.aiplatform.master.SafetySetting.threshold\] for that category.
-Fields `type` ``enum (`https://ai.google.dev/api/generate-content#v1beta.HarmCategory`)`` Required. The type of harm category to be blocked.
-`threshold` ``enum (`https://ai.google.dev/api/generate-content#v1beta.HarmBlockThreshold`)`` Required. The threshold for blocking content. If the harm probability exceeds this threshold, the content will be blocked.
-`method` ``enum (`https://ai.google.dev/api/generate-content#v1beta.HarmBlockMethod`)`` Optional. The method for blocking content. If not specified, the default behavior is to use the probability score.
-
-| JSON representation |
-|---|
-| ``` { "type": enum (`https://ai.google.dev/api/generate-content#v1beta.HarmCategory`), "threshold": enum (`https://ai.google.dev/api/generate-content#v1beta.HarmBlockThreshold`), "method": enum (`https://ai.google.dev/api/generate-content#v1beta.HarmBlockMethod`) } ``` |
-
-## Delivery
-
-Delivery mode for audio output.
+Specifies how the response should be scheduled in the conversation.
 
 | Enums ||
 |---|---|
-| `DELIVERY_UNSPECIFIED` | Default value. This value is unused. |
-| `INLINE` | Audio data is returned inline in the response. |
-| `URI` | Audio data is returned as a URI. |
+| `SCHEDULING_UNSPECIFIED` | This value is unused. |
+| `SILENT` | Only add the result to the conversation context, do not interrupt or trigger generation. |
+| `WHEN_IDLE` | Add the result to the conversation context, and prompt to generate output without interrupting ongoing generation. |
+| `INTERRUPT` | Add the result to the conversation context, interrupt ongoing generation and prompt to generate output. |
 
-## Environment
+## FileData
 
-Represents the environment being operated, such as a web browser.
+URI based data.
+Fields `mimeType` `string` Optional. The IANA standard MIME type of the source data.
+`fileUri` `string` Required. URI.
 
-| Enums ||
-|---|---|
-| `ENVIRONMENT_UNSPECIFIED` | Defaults to browser. |
-| `BROWSER` | Operates in a web browser. |
-| `MOBILE` | Operates in a mobile environment. |
-| `DESKTOP` | Operates in a desktop environment. |
+| JSON representation |
+|---|
+| ``` { "mimeType": string, "fileUri": string } ``` |
 
-## HarmBlockMethod
+## ExecutableCode
 
-The method for blocking content.
+Code generated by the model that is meant to be executed, and the result returned to the model.
 
-| Enums ||
-|---|---|
-| `HARM_BLOCK_METHOD_UNSPECIFIED` | The harm block method is unspecified. |
-| `SEVERITY` | The harm block method uses both probability and severity scores. |
-| `PROBABILITY` | The harm block method uses the probability score. |
+Only generated when using the `CodeExecution` tool, in which the code will be automatically executed, and a corresponding `CodeExecutionResult` will also be generated.
+Fields `id` `string` Optional. Unique identifier of the `ExecutableCode` part. The server returns the `CodeExecutionResult` with the matching `id`.
+`language` ``enum (`https://ai.google.dev/api/generate-content#Language`)`` Required. Programming language of the `code`.
+`code` `string` Required. The code to be executed.
 
-## HarmBlockThreshold
-
-Thresholds for blocking content based on harm probability.
-
-| Enums ||
-|---|---|
-| `HARM_BLOCK_THRESHOLD_UNSPECIFIED` | The harm block threshold is unspecified. |
-| `BLOCK_LOW_AND_ABOVE` | Block content with a low harm probability or higher. |
-| `BLOCK_MEDIUM_AND_ABOVE` | Block content with a medium harm probability or higher. |
-| `BLOCK_ONLY_HIGH` | Block content with a high harm probability. |
-| `BLOCK_NONE` | Do not block any content, regardless of its harm probability. |
-| `OFF` | Turn off the safety filter entirely. |
-
-## ImageSize
-
-Supported image sizes for image output.
-
-| Enums ||
-|---|---|
-| `IMAGE_SIZE_UNSPECIFIED` | Default value. This value is unused. |
-| `IMAGE_SIZE_FIVE_TWELVE` | 512px image size. |
-| `IMAGE_SIZE_ONE_K` | 1K image size. |
-| `IMAGE_SIZE_TWO_K` | 2K image size. |
-| `IMAGE_SIZE_FOUR_K` | 4K image size. |
+| JSON representation |
+|---|
+| ``` { "id": string, "language": enum (`https://ai.google.dev/api/generate-content#Language`), "code": string } ``` |
 
 ## Language
 
@@ -4913,47 +3563,147 @@ Supported programming languages for the generated code.
 | Enums ||
 |---|---|
 | `LANGUAGE_UNSPECIFIED` | Unspecified language. This value should not be used. |
-| `PYTHON` | Python \>= 3.10, with numpy and simpy available. |
+| `PYTHON` | Python \>= 3.10, with numpy and simpy available. Python is the default language. |
+
+## CodeExecutionResult
+
+Result of executing the `ExecutableCode`.
+
+Generated only when the `CodeExecution` tool is used.
+Fields `id` `string` Optional. The identifier of the `ExecutableCode` part this result is for. Only populated if the corresponding `ExecutableCode` has an id.
+`outcome` ``enum (`https://ai.google.dev/api/generate-content#Outcome`)`` Required. Outcome of the code execution.
+`output` `string` Optional. Contains stdout when code execution is successful, stderr or other description otherwise.
+
+| JSON representation |
+|---|
+| ``` { "id": string, "outcome": enum (`https://ai.google.dev/api/generate-content#Outcome`), "output": string } ``` |
+
+## Outcome
+
+Enumeration of possible outcomes of the code execution.
+
+| Enums ||
+|---|---|
+| `OUTCOME_UNSPECIFIED` | Unspecified status. This value should not be used. |
+| `OUTCOME_OK` | Code execution completed successfully. `output` contains the stdout, if any. |
+| `OUTCOME_FAILED` | Code execution failed. `output` contains the stderr and stdout, if any. |
+| `OUTCOME_DEADLINE_EXCEEDED` | Code execution ran for too long, and was cancelled. There may or may not be a partial `output` present. |
+
+## ToolCall
+
+A predicted server-side `ToolCall` returned from the model. This message contains information about a tool that the model wants to invoke. The client is NOT expected to execute this `ToolCall`. Instead, the client should pass this `ToolCall` back to the API in a subsequent turn within a `Content` message, along with the corresponding `ToolResponse`.
+Fields `id` `string` Optional. Unique identifier of the tool call. The server returns the tool response with the matching `id`.
+`toolName` `string` Optional. The name of the tool that was called.
+`toolType` ``enum (`https://ai.google.dev/api/generate-content#ToolType`)`` Required. The type of tool that was called.
+`args` ``object (`https://protobuf.dev/reference/protobuf/google.protobuf#struct` format)`` Optional. The tool call arguments. Example: {"arg1" : "value1", "arg2" : "value2" , ...}
+
+| JSON representation |
+|---|
+| ``` { "id": string, "toolName": string, "toolType": enum (`https://ai.google.dev/api/generate-content#ToolType`), "args": { object } } ``` |
+
+## ToolType
+
+The type of tool in the function call.
+
+| Enums ||
+|---|---|
+| `TOOL_TYPE_UNSPECIFIED` | Unspecified tool type. |
+| `GOOGLE_SEARCH_WEB` | Google search tool, maps to Tool.google_search.search_types.web_search. |
+| `GOOGLE_SEARCH_IMAGE` | Image search tool, maps to Tool.google_search.search_types.image_search. |
+| `URL_CONTEXT` | URL context tool, maps to Tool.url_context. |
+| `GOOGLE_MAPS` | Google maps tool, maps to Tool.google_maps. |
+| `FILE_SEARCH` | File search tool, maps to Tool.file_search. |
+
+## ToolResponse
+
+The output from a server-side `ToolCall` execution. This message contains the results of a tool invocation that was initiated by a `ToolCall` from the model. The client should pass this `ToolResponse` back to the API in a subsequent turn within a `Content` message, along with the corresponding `ToolCall`.
+Fields `id` `string` Optional. The identifier of the tool call this response is for.
+`toolType` ``enum (`https://ai.google.dev/api/generate-content#ToolType`)`` Required. The type of tool that was called, matching the `toolType` in the corresponding `ToolCall`.
+`response` ``object (`https://protobuf.dev/reference/protobuf/google.protobuf#struct` format)`` Optional. The tool response.
+
+| JSON representation |
+|---|
+| ``` { "id": string, "toolType": enum (`https://ai.google.dev/api/generate-content#ToolType`), "response": { object } } ``` |
+
+## VideoMetadata
+
+> [!WARNING]
+> This item is deprecated!
+
+Deprecated: Use `GenerateContentRequest.processing_options` instead. Metadata describes the input video content.
+Fields `startOffset` ``string (`https://protobuf.dev/reference/protobuf/google.protobuf#duration` format)`` Optional. The start offset of the video.
+
+A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: `"3.5s"`.
+`endOffset` ``string (`https://protobuf.dev/reference/protobuf/google.protobuf#duration` format)`` Optional. The end offset of the video.
+
+A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: `"3.5s"`.
+`fps` `number` Optional. The frame rate of the video sent to the model. If not specified, the default value will be 1.0. The fps range is (0.0, 24.0\].
+
+| JSON representation |
+|---|
+| ``` { "startOffset": string, "endOffset": string, "fps": number } ``` |
 
 ## MediaResolution
 
-Resolution for input media (images/video).
+Media resolution for tokenization.
+Fields `value` `Union type` The media resolution level. `value` can be only one of the following: `level` ``enum (`https://ai.google.dev/api/generate-content#Level`)`` The tokenization quality used for given media. for Gemini API support .
+
+| JSON representation |
+|---|
+| ``` { // value "level": enum (`https://ai.google.dev/api/generate-content#Level`) // Union type } ``` |
+
+## Level
+
+The media resolution level.
 
 | Enums ||
 |---|---|
-| `MEDIA_RESOLUTION_UNSPECIFIED` | Default value. This value is unused. |
-| `LOW` | Low resolution. |
-| `MEDIUM` | Medium resolution. |
-| `HIGH` | High resolution. |
-| `ULTRA_HIGH` | Ultra high resolution. |
+| `MEDIA_RESOLUTION_UNSPECIFIED` | Media resolution has not been set. |
+| `MEDIA_RESOLUTION_LOW` | Media resolution set to low. |
+| `MEDIA_RESOLUTION_MEDIUM` | Media resolution set to medium. |
+| `MEDIA_RESOLUTION_HIGH` | Media resolution set to high. |
+| `MEDIA_RESOLUTION_ULTRA_HIGH` | Media resolution set to ultra high. |
 
-## MimeType
+## MediaProcessing
 
-| Enums ||
-|---|---|
-| `TYPE_UNSPECIFIED` |   |
-| `TYPE_WAV` | WAV audio format |
-| `TYPE_MP3` | MP3 audio format |
-| `TYPE_AIFF` | AIFF audio format |
-| `TYPE_AAC` | AAC audio format |
-| `TYPE_OGG` | OGG audio format |
-| `TYPE_FLAC` | FLAC audio format |
-| `TYPE_MPEG` | MPEG audio format |
-| `TYPE_M4A` | M4A audio format |
-| `TYPE_L16` | L16 audio format |
-| `TYPE_OPUS` | OPUS audio format |
-| `TYPE_ALAW` | ALAW audio format |
-| `TYPE_MULAW` | MULAW audio format |
-
-## Mode
-
-Defines the depth and thoroughness of the find session.
+How the model processes input media for understanding.
 
 | Enums ||
 |---|---|
-| `MODE_UNSPECIFIED` | Default value. This value is unused. |
-| `MODE_SCAN` | Fast scan using only the initial classifier. |
-| `MODE_VERIFY` | Performs classification followed by detailed investigation. |
+| `MEDIA_PROCESSING_UNSPECIFIED` | Default. Uses model-specific processing (3.5 Pro+ -\> `AGENTIC`, older models -\> `STATIC`). |
+| `STATIC` | Fixed-rate frame extraction. All frames placed in context. |
+| `AGENTIC` | Model-driven dynamic navigation. Recommended for most use cases. |
+
+## Environment
+
+- [JSON representation](https://ai.google.dev/api/generate-content#SCHEMA_REPRESENTATION)
+- [Status](https://ai.google.dev/api/generate-content#Status)
+
+An execution environment for an agent.
+Fields `id` `string` Required. Output only. The ID of the environment.
+`sources[]` ``object (`Source`)`` Sources to be mounted into the environment.
+`created` `string` Output only. The time at which the environment was created in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
+`updated` `string` Output only. The time at which the environment was last updated in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
+`lastAccessed` `string` Output only. The time at which the environment was last accessed in ISO 8601 format (YYYY-MM-DDThh:mm:ssZ).
+`status` ``enum (`https://ai.google.dev/api/generate-content#Status`)`` Output only. The status of the environment container.
+`fileCount` `string (https://developers.google.com/discovery/v1/type-format format)` Output only. The number of files in the environment, output only.
+`sizeBytes` `string (https://developers.google.com/discovery/v1/type-format format)` Output only. The total size of the environment files in bytes, output only.
+`network` `Union type` Network configuration for the environment. `network` can be only one of the following: `networkAllowlist` ``object (`EnvironmentNetworkEgressAllowlist`)`` Allow only specific domains.
+`networkMode` ``enum (`https://ai.google.dev/api/generate-content#v1beta.NetworkMode`)`` Network egress mode.
+
+| JSON representation |
+|---|
+| ``` { "id": string, "sources": [ { object (`Source`) } ], "created": string, "updated": string, "lastAccessed": string, "status": enum (`https://ai.google.dev/api/generate-content#Status`), "fileCount": string, "sizeBytes": string, // network "networkAllowlist": { object (`EnvironmentNetworkEgressAllowlist`) }, "networkMode": enum (`https://ai.google.dev/api/generate-content#v1beta.NetworkMode`) // Union type } ``` |
+
+## Status
+
+Status of the environment.
+
+| Enums ||
+|---|---|
+| `STATUS_UNSPECIFIED` |   |
+| `ACTIVE` |   |
+| `EXPIRED` |   |
 
 ## NetworkMode
 
@@ -4963,45 +3713,6 @@ Network egress mode for non-allowlist configurations.
 |---|---|
 | `NETWORK_MODE_UNSPECIFIED` | Default value. Unused. |
 | `DISABLED` | All network egress is blocked. |
-
-## ResponseModality
-
-The modality of the response.
-
-| Enums ||
-|---|---|
-| `RESPONSE_MODALITY_UNSPECIFIED` | Default value. This value is unused. |
-| `TEXT` | Indicates the model should return text. |
-| `IMAGE` | Indicates the model should return images. |
-| `AUDIO` | Indicates the model should return audio. |
-| `VIDEO` | Indicates the model should return video. |
-| `DOCUMENT` | Indicates the model should return documents. |
-
-## ReviewSnippet
-
-- [JSON representation](https://ai.google.dev/api/generate-content#SCHEMA_REPRESENTATION)
-
-Encapsulates a snippet of a user review that answers a question about the features of a specific place in Google Maps.
-Fields `title` `string` Title of the review.
-`url` `string` A link that corresponds to the user review on Google Maps.
-`reviewId` `string` The ID of the review snippet.
-
-| JSON representation |
-|---|
-| ``` { "title": string, "url": string, "reviewId": string } ``` |
-
-## SafetyPolicy
-
-| Enums ||
-|---|---|
-| `SAFETY_POLICY_UNSPECIFIED` | Unspecified safety policy. |
-| `FINANCIAL_TRANSACTIONS` | Safety policy for financial transactions. |
-| `SENSITIVE_DATA_MODIFICATION` | Safety policy for sensitive data modification. |
-| `COMMUNICATION_TOOL` | Safety policy for communication tools (e.g. Gmail, Chat, Meet). |
-| `ACCOUNT_CREATION` | Safety policy for account creation. |
-| `DATA_MODIFICATION` | Safety policy for data modification. |
-| `USER_CONSENT_MANAGEMENT` | Safety policy for user consent management. |
-| `LEGAL_TERMS_AND_AGREEMENTS` | Safety policy for legal terms and agreements. |
 
 ## Schema
 
@@ -5053,72 +3764,6 @@ Type contains the list of OpenAPI data types as defined by <https://spec.openapi
 | `OBJECT` | Object type. |
 | `NULL` | Null type. |
 
-## SearchType
-
-The types of search grounding to enable.
-
-| Enums ||
-|---|---|
-| `SEARCH_TYPE_UNSPECIFIED` | Unspecified search type. This value should not be used. |
-| `SEARCH_TYPE_WEB_SEARCH` | Setting this field enables web search. Only text results are returned. |
-| `SEARCH_TYPE_IMAGE_SEARCH` | Setting this field enables image search. Image bytes are returned. |
-
-## Struct
-
-- [JSON representation](https://ai.google.dev/api/generate-content#SCHEMA_REPRESENTATION)
-- [Field](https://ai.google.dev/api/generate-content#Field)
-  - [JSON representation](https://ai.google.dev/api/generate-content#Field.SCHEMA_REPRESENTATION)
-
-`Struct` represents a structured data value, consisting of fields which map to dynamically typed values.
-Fields `fields[]` ``object (`https://ai.google.dev/api/generate-content#Field`)`` Dynamically typed fields. List instead of map because LLMs are sensitive to ordering, and we want to give users full control.
-
-| JSON representation |
-|---|
-| ``` { "fields": [ { object (`https://ai.google.dev/api/generate-content#Field`) } ] } ``` |
-
-## Field
-
-Represents a single field in a struct.
-Fields `name` `string` `value` ``object (`https://ai.google.dev/api/generate-content#v1beta.Value`)``
-
-| JSON representation |
-|---|
-| ``` { "name": string, "value": { object (`https://ai.google.dev/api/generate-content#v1beta.Value`) } } ``` |
-
-## Task
-
-Supported video generation tasks.
-
-| Enums ||
-|---|---|
-| `TASK_UNSPECIFIED` | Unspecified task. The task is inferred from the input prompt and media. |
-| `TEXT_TO_VIDEO` | Generates video solely from a text prompt. |
-| `IMAGE_TO_VIDEO` | Generates video from one or two source images. The first image defines the starting frame, and the optional second image defines the ending frame. |
-| `REFERENCE_TO_VIDEO` | Generates video using reference media (such as images, audio, or video). |
-| `EDIT` | Modifies an existing input video. |
-
-## ThinkingLevel
-
-The level of thought tokens that the model should generate.
-
-| Enums ||
-|---|---|
-| `THINKING_LEVEL_UNSPECIFIED` | Default value. This value is unused. |
-| `THINKING_LEVEL_MINIMAL` | Little to no thinking. |
-| `THINKING_LEVEL_LOW` | Low thinking level. |
-| `THINKING_LEVEL_MEDIUM` | Medium thinking level. |
-| `THINKING_LEVEL_HIGH` | High thinking level. |
-
-## ThinkingSummaries
-
-Whether to include thought summaries in the response.
-
-| Enums ||
-|---|---|
-| `THINKING_SUMMARIES_UNSPECIFIED` | Default value. This value is unused. |
-| `THINKING_SUMMARIES_AUTO` | Auto thinking summaries. |
-| `THINKING_SUMMARIES_NONE` | No thinking summaries. |
-
 ## Tool
 
 - [JSON representation](https://ai.google.dev/api/generate-content#SCHEMA_REPRESENTATION)
@@ -5157,10 +3802,10 @@ Tool details that the model may use to generate response.
 
 A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the model.
 
-Next ID: 16
+Next ID: 17
 Fields `functionDeclarations[]` ``object (`https://ai.google.dev/api/generate-content#FunctionDeclaration`)`` Optional. A list of `FunctionDeclarations` available to the model that can be used for function calling.
 
-The model or system does not execute the function. Instead the defined function may be returned as a `FunctionCall` with arguments to the client side for execution. The model may decide to call a subset of these functions by populating `FunctionCall` in the response. The next conversation turn may contain a `FunctionResponse` with the `Content.role` "function" generation context for the next model turn.
+The model or system does not execute the function. Instead the defined function may be returned as a `https://ai.google.dev/api/generate-content#Part.FIELDS.function_call` with arguments to the client side for execution. The model may decide to call a subset of these functions by populating `https://ai.google.dev/api/generate-content#Part.FIELDS.function_call` in the response. The next conversation turn may contain a `https://ai.google.dev/api/generate-content#Part.FIELDS.function_response` with the `https://ai.google.dev/api/generate-content#FIELDS.role` "function" generation context for the next model turn.
 `googleSearchRetrieval` ``object (`https://ai.google.dev/api/generate-content#GoogleSearchRetrieval`)`` Optional. Retrieval tool that is powered by Google search.
 `codeExecution` ``object (`https://ai.google.dev/api/generate-content#CodeExecution`)`` Optional. Enables the model to execute code as part of generation.
 `googleSearch` ``object (`https://ai.google.dev/api/generate-content#GoogleSearch`)`` Optional. GoogleSearch tool type. Tool to support Google Search in Model. Powered by Google.
@@ -5391,56 +4036,6 @@ Fields `enableWidget` `boolean` Optional. Whether to return a widget context tok
 |---|
 | ``` { "enableWidget": boolean } ``` |
 
-## ToolChoiceType
-
-The type of tool choice.
-
-| Enums ||
-|---|---|
-| `TOOL_CHOICE_TYPE_UNSPECIFIED` | Default value. This value is unused. |
-| `AUTO` | Auto tool choice. |
-| `ANY` | Any tool choice. |
-| `NONE` | No tool choice. |
-| `VALIDATED` | Validated tool choice. |
-
-## Value
-
-- [JSON representation](https://ai.google.dev/api/generate-content#SCHEMA_REPRESENTATION)
-- [ListValue](https://ai.google.dev/api/generate-content#ListValue)
-  - [JSON representation](https://ai.google.dev/api/generate-content#ListValue.SCHEMA_REPRESENTATION)
-
-`Value` represents a dynamically typed value which can be either null, a number, a string, a boolean, a recursive struct value, or a list of values. A producer of value is expected to set one of these variants. Absence of any variant indicates an error.
-Fields `kind` `Union type` The kind of value. `kind` can be only one of the following: `nullValue` `null` Represents a null value.
-`numberValue` `number` Represents a double value.
-`stringValue` `string` Represents a string value.
-`boolValue` `boolean` Represents a boolean value.
-`structValue` ``object (`https://ai.google.dev/api/generate-content#v1beta.Struct`)`` Represents a structured value.
-`listValue` ``object (`https://ai.google.dev/api/generate-content#ListValue`)`` Represents a repeated `Value`.
-`contentValue` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Represents rich content (text, image, etc.).
-
-| JSON representation |
-|---|
-| ``` { // kind "nullValue": null, "numberValue": number, "stringValue": string, "boolValue": boolean, "structValue": { object (`https://ai.google.dev/api/generate-content#v1beta.Struct`) }, "listValue": { object (`https://ai.google.dev/api/generate-content#ListValue`) }, "contentValue": { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) } // Union type } ``` |
-
-## ListValue
-
-`ListValue` is a wrapper around a repeated field of values.
-Fields `values[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.Value`)`` Repeated field of dynamically typed values.
-
-| JSON representation |
-|---|
-| ``` { "values": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Value`) } ] } ``` |
-
-## VisualizationMode
-
-Enum for visualization mode. Eventually we will support an interactive mode where the user can choose whether to include HTML visualizations in the response.
-
-| Enums ||
-|---|---|
-| `UNSPECIFIED` | The default visualization mode. Will default to AUTO. |
-| `OFF` | Do not include visualizations. |
-| `AUTO` | Automatically include visualizations. |
-
 ## REST Resource: auth_tokens
 
 - [Resource: AuthToken](https://ai.google.dev/api/generate-content#AuthToken)
@@ -5483,6 +4078,11 @@ Enum for visualization mode. Eventually we will support an interactive mode wher
 - [ImageSize](https://ai.google.dev/api/generate-content#ImageSize)
 - [TranslationConfig](https://ai.google.dev/api/generate-content#TranslationConfig)
   - [JSON representation](https://ai.google.dev/api/generate-content#TranslationConfig.SCHEMA_REPRESENTATION)
+- [AudioTranscriptionConfig](https://ai.google.dev/api/generate-content#AudioTranscriptionConfig)
+  - [JSON representation](https://ai.google.dev/api/generate-content#AudioTranscriptionConfig.SCHEMA_REPRESENTATION)
+- [LanguageAuto](https://ai.google.dev/api/generate-content#LanguageAuto)
+- [LanguageHints](https://ai.google.dev/api/generate-content#LanguageHints)
+  - [JSON representation](https://ai.google.dev/api/generate-content#LanguageHints.SCHEMA_REPRESENTATION)
 - [RealtimeInputConfig](https://ai.google.dev/api/generate-content#RealtimeInputConfig)
   - [JSON representation](https://ai.google.dev/api/generate-content#RealtimeInputConfig.SCHEMA_REPRESENTATION)
 - [AutomaticActivityDetection](https://ai.google.dev/api/generate-content#AutomaticActivityDetection)
@@ -5497,11 +4097,6 @@ Enum for visualization mode. Eventually we will support an interactive mode wher
   - [JSON representation](https://ai.google.dev/api/generate-content#ContextWindowCompressionConfig.SCHEMA_REPRESENTATION)
 - [SlidingWindow](https://ai.google.dev/api/generate-content#SlidingWindow)
   - [JSON representation](https://ai.google.dev/api/generate-content#SlidingWindow.SCHEMA_REPRESENTATION)
-- [AudioTranscriptionConfig](https://ai.google.dev/api/generate-content#AudioTranscriptionConfig)
-  - [JSON representation](https://ai.google.dev/api/generate-content#AudioTranscriptionConfig.SCHEMA_REPRESENTATION)
-- [LanguageAuto](https://ai.google.dev/api/generate-content#LanguageAuto)
-- [LanguageHints](https://ai.google.dev/api/generate-content#LanguageHints)
-  - [JSON representation](https://ai.google.dev/api/generate-content#LanguageHints.SCHEMA_REPRESENTATION)
 - [HistoryConfig](https://ai.google.dev/api/generate-content#HistoryConfig)
   - [JSON representation](https://ai.google.dev/api/generate-content#HistoryConfig.SCHEMA_REPRESENTATION)
 - [Methods](https://ai.google.dev/api/generate-content#METHODS_SUMMARY)
@@ -5555,7 +4150,7 @@ The following fields are not supported:
 - `skipResponseCache`
 - `routing_config`
 - `audio_timestamp`
-`systemInstruction` ``object (`Content`)`` Optional. The user provided system instructions for the model.
+`systemInstruction` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Optional. The user provided system instructions for the model.
 
 Note: Only text should be used in parts and content in each part will be in a separate paragraph.
 `tools[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.Tool`)`` Optional. A list of `Tools` the model may use to generate the next response.
@@ -5574,7 +4169,7 @@ If included, the server will automatically reduce the size of the context when i
 
 | JSON representation |
 |---|
-| ``` { "model": string, "generationConfig": { object (`https://ai.google.dev/api/generate-content#GenerationConfig`) }, "systemInstruction": { object (`Content`) }, "tools": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Tool`) } ], "realtimeInputConfig": { object (`https://ai.google.dev/api/generate-content#RealtimeInputConfig`) }, "sessionResumption": { object (`https://ai.google.dev/api/generate-content#SessionResumptionConfig`) }, "contextWindowCompression": { object (`https://ai.google.dev/api/generate-content#ContextWindowCompressionConfig`) }, "inputAudioTranscription": { object (`https://ai.google.dev/api/generate-content#AudioTranscriptionConfig`) }, "outputAudioTranscription": { object (`https://ai.google.dev/api/generate-content#AudioTranscriptionConfig`) }, "historyConfig": { object (`https://ai.google.dev/api/generate-content#HistoryConfig`) } } ``` |
+| ``` { "model": string, "generationConfig": { object (`https://ai.google.dev/api/generate-content#GenerationConfig`) }, "systemInstruction": { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) }, "tools": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Tool`) } ], "realtimeInputConfig": { object (`https://ai.google.dev/api/generate-content#RealtimeInputConfig`) }, "sessionResumption": { object (`https://ai.google.dev/api/generate-content#SessionResumptionConfig`) }, "contextWindowCompression": { object (`https://ai.google.dev/api/generate-content#ContextWindowCompressionConfig`) }, "inputAudioTranscription": { object (`https://ai.google.dev/api/generate-content#AudioTranscriptionConfig`) }, "outputAudioTranscription": { object (`https://ai.google.dev/api/generate-content#AudioTranscriptionConfig`) }, "historyConfig": { object (`https://ai.google.dev/api/generate-content#HistoryConfig`) } } ``` |
 
 ## GenerationConfig
 
@@ -5676,10 +4271,11 @@ Caution: A *negative* penalty will encourage the model to reuse tokens proportio
 `enableAffectiveDialog` `boolean` Optional. If enabled, the model will detect emotions and adapt its responses accordingly.
 `responseFormat` ``object (`https://ai.google.dev/api/generate-content#ResponseFormatConfig`)`` Optional. Configuration for the response output format. Allows specifying output configuration per modality (text, audio, image) in a flat structure.
 `translationConfig` ``object (`https://ai.google.dev/api/generate-content#TranslationConfig`)`` Optional. Config for translation.
+`audioTranscriptionConfig` ``object (`https://ai.google.dev/api/generate-content#AudioTranscriptionConfig`)`` Optional. Config for audio transcription (speech recognition).
 
 | JSON representation |
 |---|
-| ``` { "stopSequences": [ string ], "responseMimeType": string, "responseSchema": { object (`https://ai.google.dev/api/generate-content#v1beta.Schema`) }, "_responseJsonSchema": value, "responseJsonSchema": value, "responseModalities": [ enum (`https://ai.google.dev/api/generate-content#Modality`) ], "candidateCount": integer, "maxOutputTokens": integer, "temperature": number, "topP": number, "topK": integer, "seed": integer, "presencePenalty": number, "frequencyPenalty": number, "responseLogprobs": boolean, "logprobs": integer, "enableEnhancedCivicAnswers": boolean, "speechConfig": { object (`https://ai.google.dev/api/generate-content#SpeechConfig`) }, "thinkingConfig": { object (`https://ai.google.dev/api/generate-content#ThinkingConfig`) }, "imageConfig": { object (`https://ai.google.dev/api/generate-content#ImageConfig`) }, "mediaResolution": enum (`https://ai.google.dev/api/generate-content#MediaResolution`), "enableAffectiveDialog": boolean, "responseFormat": { object (`https://ai.google.dev/api/generate-content#ResponseFormatConfig`) }, "translationConfig": { object (`https://ai.google.dev/api/generate-content#TranslationConfig`) } } ``` |
+| ``` { "stopSequences": [ string ], "responseMimeType": string, "responseSchema": { object (`https://ai.google.dev/api/generate-content#v1beta.Schema`) }, "_responseJsonSchema": value, "responseJsonSchema": value, "responseModalities": [ enum (`https://ai.google.dev/api/generate-content#Modality`) ], "candidateCount": integer, "maxOutputTokens": integer, "temperature": number, "topP": number, "topK": integer, "seed": integer, "presencePenalty": number, "frequencyPenalty": number, "responseLogprobs": boolean, "logprobs": integer, "enableEnhancedCivicAnswers": boolean, "speechConfig": { object (`https://ai.google.dev/api/generate-content#SpeechConfig`) }, "thinkingConfig": { object (`https://ai.google.dev/api/generate-content#ThinkingConfig`) }, "imageConfig": { object (`https://ai.google.dev/api/generate-content#ImageConfig`) }, "mediaResolution": enum (`https://ai.google.dev/api/generate-content#MediaResolution`), "enableAffectiveDialog": boolean, "responseFormat": { object (`https://ai.google.dev/api/generate-content#ResponseFormatConfig`) }, "translationConfig": { object (`https://ai.google.dev/api/generate-content#TranslationConfig`) }, "audioTranscriptionConfig": { object (`https://ai.google.dev/api/generate-content#AudioTranscriptionConfig`) } } ``` |
 
 ## Modality
 
@@ -5930,6 +4526,66 @@ Fields `targetLanguageCode` `string` Required. The target language for translati
 |---|
 | ``` { "targetLanguageCode": string, "echoTargetLanguage": boolean } ``` |
 
+## AudioTranscriptionConfig
+
+The audio transcription configuration.
+Fields `languageCodes[]` `string` Optional. BCP-47 language codes providing hints about the languages present in the audio. If omitted or empty, defaults to automatic language detection.
+`adaptationPhrases[]
+(deprecated)` `string`
+
+> [!WARNING]
+> This item is deprecated!
+
+Optional. A list of phrases used for speech adaptation, which biases the ASR model to improve recognition of these specific terms.
+`customVocabulary[]` `string` Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms (product names, proper nouns, jargon).
+`wordTimestamp` `boolean` Optional. Configures word-level timestamp generation.
+`diarization` `boolean` Optional. Configures speaker diarization.
+`language_config` `Union type` Deprecated: Use top-level `language_codes` instead. `language_config` can be only one of the following: `languageAuto
+(deprecated)` ``object (`https://ai.google.dev/api/generate-content#LanguageAuto`)``
+
+> [!WARNING]
+> This item is deprecated!
+
+Optional. The model will detect the language automatically.
+`languageHints
+(deprecated)` ``object (`https://ai.google.dev/api/generate-content#LanguageHints`)``
+
+> [!WARNING]
+> This item is deprecated!
+
+Optional. Specifies one or more languages in the audio.
+
+| JSON representation |
+|---|
+| ``` { "languageCodes": [ string ], "adaptationPhrases": [ string ], "customVocabulary": [ string ], "wordTimestamp": boolean, "diarization": boolean, // language_config "languageAuto": { object (`https://ai.google.dev/api/generate-content#LanguageAuto`) }, "languageHints": { object (`https://ai.google.dev/api/generate-content#LanguageHints`) } // Union type } ``` |
+
+## LanguageAuto
+
+This type has no fields.
+
+> [!WARNING]
+> This item is deprecated!
+
+Indicates the language of the audio should be automatically detected.
+
+## LanguageHints
+
+> [!WARNING]
+> This item is deprecated!
+
+Provides hints to the model about possible languages present in the audio.
+Fields `languageCodes[]
+(deprecated)` `string`
+
+> [!WARNING]
+> This item is deprecated!
+
+Required. BCP-47 language codes.
+
+| JSON representation |
+|---|
+| ``` { "languageCodes": [ string ] } ``` |
+
 ## RealtimeInputConfig
 
 Configures the realtime input behavior in `BidiGenerateContent`.
@@ -6032,38 +4688,6 @@ Discarding parts of the context window causes a temporary latency increase so th
 | JSON representation |
 |---|
 | ``` { "targetTokens": string } ``` |
-
-## AudioTranscriptionConfig
-
-The audio transcription configuration.
-Fields `adaptationPhrases[]
-(deprecated)` `string`
-
-> [!WARNING]
-> This item is deprecated!
-
-Optional. A list of phrases used for speech adaptation, which biases the ASR model to improve recognition of these specific terms.
-`customVocabulary[]` `string` Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms (product names, proper nouns, jargon).
-`language_config` `Union type` The language config for the audio transcription. For ASR models, it is required, an error will be returned if not set. `language_config` can be only one of the following: `languageAuto` ``object (`https://ai.google.dev/api/generate-content#LanguageAuto`)`` Optional. The model will detect the language automatically.
-`languageHints` ``object (`https://ai.google.dev/api/generate-content#LanguageHints`)`` Optional. Specifies one or more languages in the audio.
-
-| JSON representation |
-|---|
-| ``` { "adaptationPhrases": [ string ], "customVocabulary": [ string ], // language_config "languageAuto": { object (`https://ai.google.dev/api/generate-content#LanguageAuto`) }, "languageHints": { object (`https://ai.google.dev/api/generate-content#LanguageHints`) } // Union type } ``` |
-
-## LanguageAuto
-
-This type has no fields.
-Indicates the language of the audio should be automatically detected.
-
-## LanguageHints
-
-Provides hints to the model about possible languages present in the audio.
-Fields `languageCodes[]` `string` Required. BCP-47 language codes.
-
-| JSON representation |
-|---|
-| ``` { "languageCodes": [ string ] } ``` |
 
 ## HistoryConfig
 

@@ -2491,13 +2491,13 @@ for await (const chunk of stream) {
     "model": "nano-gpt/google/gemini-flash-latest",
     "imageInput": true,
     "audioInput": true,
-    "videoInput": false,
-    "toolUsage": false,
+    "videoInput": true,
+    "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1048756,
+    "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 0.75,
-    "outputCost": 3.75
+    "inputCost": 0.375,
+    "outputCost": 1.875
   },
   {
     "model": "nano-gpt/google/gemini-flash-lite-latest",
