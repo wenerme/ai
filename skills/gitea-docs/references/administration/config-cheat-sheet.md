@@ -1098,6 +1098,12 @@ Synchronize external user data (only LDAP user synchronization is supported)
 - `RUN_AT_START`: **true**: Run job at start time (if ENABLED).
 - `SCHEDULE`: **@midnight** : Cron syntax for the job.
 
+#### Cron - Delete Old Action Runs (`cron.cleanup_action_runs`)
+
+- `ENABLED`: **true**: Enable the job deleting action runs older than `RUN_RETENTION_DAYS`. Deletes nothing while that is 0.
+- `RUN_AT_START`: **false**: Run job at start time (if ENABLED).
+- `SCHEDULE`: **@midnight**: Cron syntax for the job.
+
 #### Cron - Cleanup Deleted Branches (`cron.deleted_branches_cleanup`)
 
 - `ENABLED`: **true**: Enable deleted branches cleanup.
@@ -1649,13 +1655,16 @@ PROXY_HOSTS = *.github.com
 - `DEFAULT_ACTIONS_URL`: **github**: Default platform to get action plugins, `github` for `https://github.com`, `self` for the current Gitea instance.
 - `STORAGE_TYPE`: **local**: Storage type for actions logs, `local` for local disk or `minio` for s3 compatible object storage service, default is `local` or other name defined with `[storage.xxx]`
 - `MINIO_BASE_PATH`: **actions_log/**: Minio base path on the bucket only available when STORAGE_TYPE is `minio`
-- `LOG_RETENTION_DAYS`: **365**: Logs retention time in days. Old logs will be deleted after this period.
+- `LOG_RETENTION_DAYS`: **365**: Days to keep logs. Old logs will be deleted after this period. 0 means keep forever.
 - `LOG_COMPRESSION`: **zstd**: Log compression type, `none` for no compression, `zstd` for zstd compression.
   Other compression types like `gzip` are NOT supported, since seekable stream is required for log view.
   It's always recommended to use compression when using local disk as log storage if CPU or memory is not a bottleneck.
   And for object storage services like S3, which is billed for requests, it would cause extra 2 times of get requests for each log view.
   But it will save storage space and network bandwidth, so it's still recommended to use compression.
-- `ARTIFACT_RETENTION_DAYS`: **90**: Default number of days to keep artifacts. Artifacts could have their own retention periods by setting the `retention-days` option in `actions/upload-artifact` step.
+- `ARTIFACT_RETENTION_DAYS`: **90**: Days to keep artifacts. Old artifacts will be deleted after this period. 0 means keep forever.
+  Changes only apply to newly uploaded artifacts, existing ones keep the expiry stored when they were uploaded.
+  Artifacts could have their own retention periods by setting the `retention-days` option in `actions/upload-artifact` step.
+- `RUN_RETENTION_DAYS`: **400**: Days to keep completed runs. Old runs and everything under them will be deleted after this period. 0 means keep forever.
 - `ZOMBIE_TASK_TIMEOUT`: **10m**: Timeout to stop the task which have running status, but haven't been updated for a long time
 - `ENDLESS_TASK_TIMEOUT`: **3h**: Timeout to stop the tasks which have running status and continuous updates, but don't end for a long time
 - `ABANDONED_JOB_TIMEOUT`: **24h**: Timeout to cancel the jobs which have waiting status, but haven't been picked by a runner for a long time

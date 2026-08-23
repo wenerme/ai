@@ -35,7 +35,7 @@ Paperspace Gradient makes training a YOLO26 model possible with a few clicks. Th
 
 Sign in and then click on the "Start Machine" button shown in the image below. In a few seconds, a managed GPU environment will start up, and then you can run the notebook's cells.
 
-![Training YOLO26 Using Paperspace Gradient](https://cdn.jsdelivr.net/gh/ultralytics/assets@main/docs/start-machine-button.avif)
+![Training YOLO26 Using Paperspace Gradient](https://cdn.ul.run/i/4eada3e27f5e3ad8c84e8abf3a1494d3.avif)
 
 Explore more capabilities of YOLO26 and Paperspace Gradient in a discussion with Glenn Jocher, Ultralytics founder, and James Skelton from Paperspace. Watch the discussion below.
 

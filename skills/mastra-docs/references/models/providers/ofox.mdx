@@ -1,11 +1,11 @@
 ---
 title: "Ofox | Models"
-description: "Use Ofox models with Mastra. 110 models available."
+description: "Use Ofox models with Mastra. 111 models available."
 ---
 
 # [Ofox logo]Ofox
 
-Access 110 Ofox models through Mastra's model router. Authentication is handled automatically using the `OFOX_API_KEY` environment variable.
+Access 111 Ofox models through Mastra's model router. Authentication is handled automatically using the `OFOX_API_KEY` environment variable.
 
 Learn more in the [Ofox documentation](https://ofox.ai/docs).
 
@@ -449,6 +449,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "ofox/deepseek/deepseek-v4-flash",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 0.44,
+    "outputCost": 1.32
+  },
+  {
+    "model": "ofox/deepseek/deepseek-v4-flash-0731",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
