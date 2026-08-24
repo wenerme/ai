@@ -231,8 +231,8 @@ curl --request POST \
       },{
         "access_level": 40
       }
-    ]}'
-    --url "https://gitlab.example.com/api/v4/groups/5/protected_branches"
+    ]}' \
+  --url "https://gitlab.example.com/api/v4/groups/5/protected_branches"
 ```
 
 Example response:
@@ -404,10 +404,11 @@ The custom role referenced by `member_role_id` must belong to the same top-level
 ### Example: create a `push_access_level` record
 
 ```shell
-curl --header 'Content-Type: application/json' --request PATCH \
-  --data '{"allowed_to_push": [{access_level: 40}]}' \
+curl --request PATCH \
   --header "PRIVATE-TOKEN: <your_access_token>" \
-  --url "https://gitlab.example.com/api/v4/groups/22034114/protected_branches/main"
+  --header "Content-Type: application/json" \
+  --data '{"allowed_to_push": [{"access_level": 40}]}' \
+  --url "https://gitlab.example.com/api/v4/groups/5/protected_branches/main"
 ```
 
 Example response:
@@ -430,10 +431,11 @@ Example response:
 ### Example: update a `push_access_level` record
 
 ```shell
-curl --header 'Content-Type: application/json' --request PATCH \
-  --data '{"allowed_to_push": [{"id": 12, "access_level": 0}]' \
+curl --request PATCH \
   --header "PRIVATE-TOKEN: <your_access_token>" \
-  --url "https://gitlab.example.com/api/v4/groups/22034114/protected_branches/main"
+  --header "Content-Type: application/json" \
+  --data '{"allowed_to_push": [{"id": 12, "access_level": 0}]}' \
+  --url "https://gitlab.example.com/api/v4/groups/5/protected_branches/main"
 ```
 
 Example response:
@@ -456,10 +458,11 @@ Example response:
 ### Example: delete a `push_access_level` record
 
 ```shell
-curl --header 'Content-Type: application/json' --request PATCH \
-  --data '{"allowed_to_push": [{"id": 12, "_destroy": true}]}' \
+curl --request PATCH \
   --header "PRIVATE-TOKEN: <your_access_token>" \
-  --url "https://gitlab.example.com/api/v4/groups/22034114/protected_branches/main"
+  --header "Content-Type: application/json" \
+  --data '{"allowed_to_push": [{"id": 12, "_destroy": true}]}' \
+  --url "https://gitlab.example.com/api/v4/groups/5/protected_branches/main"
 ```
 
 Example response:

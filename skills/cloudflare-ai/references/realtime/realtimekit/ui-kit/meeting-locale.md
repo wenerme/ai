@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Meeting Locale
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 RealtimeKit's UI Kit allows you to customize all the text within the video call interface. You can personalize the text to align with your specific locale needs.
 
@@ -29,8 +29,6 @@ ReactWeb ComponentsAngular
 ## Customize the language pack
 
 RealtimeKit's default language pack can be customized to match your application's locale requirements. You can override any text string used in the UI Kit components.
-
-The Flutter UI Kit loads string overrides from an ARB (Application Resource Bundle) JSON file. You provide the asset path when building the UI Kit, and the SDK replaces all matching string keys with your custom values.
 
 The React Native UI Kit uses a language dictionary object to store all UI strings. You can override any key by passing a partial dictionary to the `useLanguage()` function, then pass the result to the `RtkMeeting` component via the `t` prop.
 
@@ -61,12 +59,6 @@ import {
 	useLanguage,
 } from "@cloudflare/realtimekit-angular-ui";
 ```
-
-```dart
-import 'package:realtimekit_ui/realtimekit_ui.dart';
-```
-
-No additional imports are required. The `arbPath` parameter is available on `RealtimeKitUIBuilder.build()`.
 
 ```typescript
 import {
@@ -195,47 +187,6 @@ export class MeetingComponent implements OnInit {
 ```
 
 The `useLanguage` function takes in your custom locale object as an argument and generates a function that retrieves the value associated with the provided key.
-
-Create an ARB JSON file with a `@locale` key and the string keys you want to override. Add the file to your Flutter assets.
-
-**1\. Create the ARB file** at `assets/lang/es.arb`:
-
-```json
-{
-	"@locale": "es",
-	"join": "Unirse",
-	"leave": "Salir",
-	"cancel": "Cancelar",
-	"micOn": "Mic Encendido",
-	"micOff": "Mic Apagado",
-	"videoOn": "Video Encendido",
-	"videoOff": "Video Apagado",
-	"mute": "Silenciar",
-	"participants": "Participantes",
-	"chat": "Chat",
-	"settings": "Configuración"
-}
-```
-
-**2\. Register the asset** in `pubspec.yaml`:
-
-```yaml
-flutter:
-  assets:
-    - assets/lang/
-```
-
-**3\. Pass `arbPath`** when building the UI Kit:
-
-```dart
-final rtkUI = RealtimeKitUIBuilder.build(
-  uiKitInfo: uiKitInfo,
-  arbPath: 'assets/lang/es.arb',
-);
-Navigator.push(context, MaterialPageRoute(builder: (_) => rtkUI));
-```
-
-You only need to include the keys you want to override. Any key not present in the ARB file falls back to its English default.
 
 Spread the `defaultLanguage` object and override specific keys. Pass the result to `RtkMeeting` via the `t` prop.
 
@@ -817,82 +768,6 @@ const spanishLanguagePack = useLanguage({
 });
 ```
 
-The following table lists all overridable string keys for the Flutter UI Kit. Use these keys in your ARB file to override the corresponding UI text.
-
-| Key                             | Default                                  |
-| ------------------------------- | ---------------------------------------- |
-| join                            | Join                                     |
-| joinInAs                        | Join in as                               |
-| enterYourName                   | Enter your name                          |
-| micOn                           | Mic On                                   |
-| micOff                          | Mic Off                                  |
-| leave                           | Leave                                    |
-| cancel                          | Cancel                                   |
-| areYouSureYouWantToLeaveTheCall | Are you sure you want to leave the call? |
-| more                            | more                                     |
-| selectAudioDevice               | Select Audio Device                      |
-| selectVideoDevice               | Select Video Device                      |
-| videoOn                         | Video On                                 |
-| videoOff                        | Video Off                                |
-| mute                            | Mute                                     |
-| unmute                          | Muted                                    |
-| unpin                           | Unpin                                    |
-| pin                             | Pin                                      |
-| kick                            | Kick                                     |
-| removeFromStage                 | Remove from stage                        |
-| inviteToStage                   | Invite to stage                          |
-| screenShare                     | Screen Share                             |
-| plugins                         | Plugins                                  |
-| createPoll                      | Create Poll                              |
-| question                        | Question                                 |
-| askAQuestion                    | Ask a question                           |
-| options                         | Options                                  |
-| enterAnOption                   | Enter an option                          |
-| addOption                       | Add an Option                            |
-| anonymous                       | Anonymous                                |
-| hideResultsBeforeVoting         | Hide Results before voting               |
-| questionAndOptionsCantBeEmpty   | Question and options can not be empty!   |
-| polls                           | Polls                                    |
-| pollBy                          | Poll by                                  |
-| vote                            | Vote                                     |
-| voted                           | Voted                                    |
-| viewVoters                      | View Voters                              |
-| stopRecording                   | Stop Recording                           |
-| startRecording                  | Start Recording                          |
-| muteAll                         | Mute All                                 |
-| disableAllVideos                | Disable all videos                       |
-| settings                        | Settings                                 |
-| rec                             | REC                                      |
-| camera                          | Camera                                   |
-| microphoneInput                 | Microphone (input)                       |
-| chat                            | Chat                                     |
-| noMessages                      | No messages                              |
-| chatMessagesWillAppearHere      | Chat messages will appear here           |
-| file                            | File                                     |
-| image                           | Image                                    |
-| send                            | Send                                     |
-| participants                    | Participants                             |
-| waitlisted                      | Waitlisted                               |
-| inCall                          | In Call                                  |
-| you                             | you                                      |
-| turnOffVideo                    | Turn off video                           |
-| videoAlreadyOff                 | Video already off                        |
-| back                            | Back                                     |
-| waitingForTheHostToLetYouIn     | Wait for the host to let you in!         |
-| shareScreen                     | Share Screen                             |
-| stopSharing                     | Stop Sharing                             |
-| endMeetingForAll                | End Meeting for All                      |
-| message                         | Message                                  |
-| newPollCreated                  | New Poll created                         |
-| waitingToGoLive                 | Waiting to go live                       |
-| frontCamera                     | Front Camera                             |
-| rearCamera                      | Rear Camera                              |
-| externalCamera                  | External Camera                          |
-| headset                         | Headset                                  |
-| speaker                         | Speaker                                  |
-| bluetooth                       | Bluetooth                                |
-| earpiece                        | Earpiece                                 |
-
 The React Native UI Kit exposes approximately 195 overridable string keys via the `defaultLanguage` object. The table below lists commonly used keys. For the full list, refer to the `defaultLanguage` export from `@cloudflare/realtimekit-react-native-ui`.
 
 | Key                        | Default                                  |
@@ -932,8 +807,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/#page","headline":"Meeting Locale · Cloudflare Realtime docs","description":"Customize text and localize the RealtimeKit UI Kit meeting interface for different languages.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/#page","headline":"Meeting Locale · Cloudflare Realtime docs","description":"Customize text and localize the RealtimeKit UI Kit meeting interface for different languages.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/meeting-locale/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

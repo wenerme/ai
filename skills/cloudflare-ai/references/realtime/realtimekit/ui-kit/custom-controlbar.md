@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Add Custom Controlbar
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-controlbar/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-controlbar/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Prerequisite
 
@@ -704,120 +704,6 @@ Note
 
 Call `activate(meeting)` on each button after the meeting room is joined. Buttons will not function until they are activated with a valid `RealtimeKitClient` instance.
 
-The Flutter UI Kit provides individual toggle button widgets that you can compose into a custom controlbar using standard Flutter layout widgets.
-
-### Available controlbar button widgets
-
-| Widget                   | Required parameter | Description                                   |
-| ------------------------ | ------------------ | --------------------------------------------- |
-| RtkSelfAudioToggleButton | RealtimekitClient  | Microphone toggle with permission handling    |
-| RtkSelfVideoToggleButton | RealtimekitClient  | Camera toggle with permission handling        |
-| RtkLeaveButton           | RealtimekitClient  | Leave meeting button with confirmation dialog |
-
-### Build a custom controlbar
-
-Wrap the button widgets in a `Row` or any custom layout:
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:realtimekit_ui/realtimekit_ui.dart';
-
-class CustomControlBar extends StatelessWidget {
-  final RealtimekitClient meeting;
-
-  const CustomControlBar({required this.meeting, super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black,
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          RtkSelfAudioToggleButton(meeting: meeting),
-          RtkSelfVideoToggleButton(meeting: meeting),
-          RtkLeaveButton(meeting: meeting),
-        ],
-      ),
-    );
-  }
-}
-```
-
-### Use the custom controlbar in your meeting screen
-
-Replace the default controlbar in your `Scaffold`:
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:realtimekit_ui/realtimekit_ui.dart';
-
-class CustomMeetingScreen extends StatelessWidget {
-  final RealtimekitClient meeting;
-
-  const CustomMeetingScreen({required this.meeting, super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return RtkProvider(
-      meeting: meeting,
-      uiKitInfo: uiKitInfo,
-      child: Scaffold(
-        backgroundColor: Colors.black,
-        body: Column(
-          children: [
-            RtkMeetingTitle(meeting: meeting),
-            // Your participant grid here
-            const Spacer(),
-          ],
-        ),
-        bottomNavigationBar: CustomControlBar(meeting: meeting),
-      ),
-    );
-  }
-}
-```
-
-### Add custom buttons alongside RealtimeKit widgets
-
-Add your own `IconButton` or any Flutter widget next to the RealtimeKit buttons:
-
-```dart
-Row(
-  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  children: [
-    RtkSelfAudioToggleButton(meeting: meeting),
-    RtkSelfVideoToggleButton(meeting: meeting),
-    // Custom raise hand button
-    IconButton(
-      onPressed: () {
-        // Custom raise hand logic
-      },
-      icon: const Icon(Icons.back_hand, color: Colors.white),
-    ),
-    RtkLeaveButton(meeting: meeting),
-  ],
-)
-```
-
-### Customize button appearance with design tokens
-
-Pass `individualDesignToken` to style buttons individually:
-
-```dart
-RtkSelfAudioToggleButton(
-  meeting: meeting,
-  iconSize: 28.0,
-  iconColor: Colors.cyan,
-  showLabel: true,
-)
-```
-
-Note
-
-All Flutter controlbar widgets require [RtkProvider](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/flutter/rtk-provider/) as an ancestor in the widget tree.
-
 The React Native UI Kit provides individual toggle components that you can compose into a custom controlbar.
 
 ### Available controlbar components
@@ -920,8 +806,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-controlbar/#page","headline":"Add Custom Controlbar · Cloudflare Realtime docs","description":"Add a custom controlbar to your RealtimeKit meeting UI with individual components.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-controlbar/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-controlbar/#page","headline":"Add Custom Controlbar · Cloudflare Realtime docs","description":"Add a custom controlbar to your RealtimeKit meeting UI with individual components.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-controlbar/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

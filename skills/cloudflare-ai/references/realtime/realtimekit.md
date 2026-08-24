@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RealtimeKit
 
-Last updated Aug 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare RealtimeKit lets you build your own audio and video experiences inside web and mobile apps. It routes media on [Cloudflare's global WebRTC infrastructure](https://developers.cloudflare.com/realtime/sfu/calls-vs-sfus/), so you can deliver low-latency experiences to a global audience without scaling media servers or choosing regions.
 
 Your application controls who can join and what they can do. RealtimeKit provides the SDKs and infrastructure that connect participants inside your web or mobile app.
 
-[Get started](https://developers.cloudflare.com/realtime/realtimekit/quickstart/)[Try a demo meeting](https://examples.realtime.cloudflare.com/meeting?demo=Default)[View code examples](https://github.com/cloudflare/realtimekit-web-examples)
+[Get started](https://developers.cloudflare.com/realtime/realtimekit/quickstart/)[Try a demo meeting](https://examples.realtime.cloudflare.com/meeting?demo=Default)[View code examples](https://github.com/cloudflare/realtimekit-web-examples)[Run a pre-call test](https://test.realtime.cloudflare.com/)
 
 ## What you can build
 
@@ -127,5 +127,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/#page","headline":"Overview · Cloudflare Realtime docs","description":"Build in-app audio and video with RealtimeKit SDKs and customizable UI components.","url":"https://developers.cloudflare.com/realtime/realtimekit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/#page","headline":"Overview · Cloudflare Realtime docs","description":"Build in-app audio and video with RealtimeKit SDKs and customizable UI components.","url":"https://developers.cloudflare.com/realtime/realtimekit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -14358,7 +14358,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_7006a9228543"
+              "$ref": "#/components/schemas/RequestBody_a3f99c49163e"
   "/api/v4/admin/active_context/code/enabled_namespaces":
     put:
       operationId: putApiV4AdminActiveContextCodeEnabledNamespaces
@@ -100304,12 +100304,13 @@ components:
           type: integer
           description: Connection ID (defaults to active connection)
           nullable: true
-    RequestBody_7006a9228543:
+    RequestBody_a3f99c49163e:
       type: object
       properties:
         queue:
           type: string
-          description: Target queue name (e.g. retry_queue, code, code_backfill)
+          description: Target queue name (e.g. retry_queue, second_retry_queue, code,
+            code_backfill)
           nullable: true
       required:
       - queue

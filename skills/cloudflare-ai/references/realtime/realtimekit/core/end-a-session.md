@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # End a session
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/end-a-session/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/end-a-session/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Prerequisites
 
@@ -62,13 +62,6 @@ let canEndSession = meeting.localUser.permissions.host.canKickParticipant
 if !canEndSession {
     // Disable the "End meeting/session" control in your UI.
     // You can also show a message to explain why the action is not available.
-}
-```
-```dart
-final canEndSession = meeting.localUser.permissions.host.canKickParticipant;
-if (!canEndSession) {
-  // Disable the "End meeting/session" control in your UI.
-  // You can also show a message to explain why the action is not available.
 }
 ```
 ```javascript
@@ -148,16 +141,6 @@ if let error = error {
     // Successfully initiated session end
 }
 ```
-```dart
-meeting.participants.kickAll(onResult: (error) {
-  if (error != null) {
-    // The participant does not have permission to end the session.
-    // Update your UI to indicate that the action is not allowed.
-  } else {
-    // Successfully initiated session end
-  }
-});
-```
 If the participant does not have the required permission, `kickAll()` throws a ClientError with error code `1201`.
 ```javascript
 try {
@@ -212,18 +195,7 @@ extension MeetingViewModel: RtkMeetingRoomEventListener {
       // Update your UI to show that the meeting session has ended.
   }
 }
-meeting.addMeetingRoomEventListener(self)
-```
-When the session ends, all participants leave the session. You can subscribe to the event listeners to handle the session end.
-```dart
-class MeetingRoomListener extends RtkMeetingRoomEventListener {
-  @override
-  void onMeetingEnded() {
-    // Update your UI to show that the meeting session has ended.
-  }
-}
-// Add the listener
-meeting.addMeetingRoomEventListener(MeetingRoomListener());
+meeting.addMeetingRoomEventListener(meetingRoomEventListener: self)
 ```
 When the session ends, all participants leave the session. The SDK emits a `roomLeft` event with `state` set to `ended`.
 ```javascript
@@ -307,8 +279,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/end-a-session/#page","headline":"End a session · Cloudflare Realtime docs","description":"End a RealtimeKit session for all participants and stop active recordings.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/end-a-session/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/end-a-session/#page","headline":"End a session · Cloudflare Realtime docs","description":"End a RealtimeKit session for all participants and stop active recordings.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/end-a-session/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

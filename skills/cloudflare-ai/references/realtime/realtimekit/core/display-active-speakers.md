@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Display active speakers
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/display-active-speakers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/display-active-speakers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 WebMobile
 
@@ -160,25 +160,6 @@ extension MeetingViewModel: RtkParticipantsEventListener {
 
 meeting.addParticipantsEventListener(self)
 ```
-
-Use `activeSpeaker` to show the most recently active participant in your UI.
-
-The Flutter SDK tracks active speakers through the `onActiveSpeakerChanged` event listener:
-
-```dart
-class ParticipantsNotifier extends RtkParticipantsEventListener {
-	@override
-	void onActiveSpeakerChanged(RtkRemoteParticipant? participant) {
-		if (participant != null) {
-			// Update your UI to display the new active speaker
-		}
-	}
-}
-
-meeting.addParticipantsEventListener(ParticipantsNotifier());
-```
-
-Refer to [Display participant videos](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/#display-participant-videos) to learn how to render the participant video in your UI.
 
 Use `lastActiveSpeaker` to show the most recently active participant in your UI. Access the current active speaker with the `useRealtimeKitSelector` hook:
 
@@ -363,32 +344,6 @@ extension MeetingViewModel: RtkParticipantsEventListener {
 meeting.addParticipantsEventListener(self)
 ```
 
-Use the `active` list to show multiple participants with prominent audio activity, typically in a grid layout:
-
-```dart
-final activeParticipants = meeting.participants.active;
-
-// Render active participants in your grid
-for (var participant in activeParticipants) {
-	// Render participant video tile
-}
-```
-
-Refer to [Display participant videos](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/#display-participant-videos) to learn how to render the participant video in your UI.
-
-The SDK emits an event when the set of active speakers changes. Listen to this event using `RtkParticipantsEventListener`:
-
-```dart
-class ParticipantsNotifier extends RtkParticipantsEventListener {
-	@override
-	void onActiveParticipantsChanged(List<RtkRemoteParticipant> active) {
-		// Update your grid UI with the new active participants
-	}
-}
-
-meeting.addParticipantsEventListener(ParticipantsNotifier());
-```
-
 Use the `active` map to show multiple participants with prominent audio activity, typically in a grid layout. Access the current active participants with the `useRealtimeKitSelector` hook:
 
 ```tsx
@@ -441,8 +396,6 @@ Audio activity visualization is not supported on Android.
 
 Audio activity visualization is not supported on iOS.
 
-Audio activity visualization is not supported on Flutter.
-
 Audio activity visualization is not supported on React Native.
 
 ## Related resources
@@ -456,8 +409,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/display-active-speakers/#page","headline":"Display active speakers · Cloudflare Realtime docs","description":"Detect and display active speakers in RealtimeKit meetings using the Core SDK.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/display-active-speakers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/display-active-speakers/#page","headline":"Display active speakers · Cloudflare Realtime docs","description":"Detect and display active speakers in RealtimeKit meetings using the Core SDK.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/display-active-speakers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

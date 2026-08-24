@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error Codes
 
-Last updated May 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/error-codes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/error-codes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page describes RealtimeKit error codes to help you identify and troubleshoot issues.
 
@@ -570,8 +570,6 @@ Note
 
 React Native shares the same error codes as Web Frameworks. Refer to the Web Frameworks tab for the complete list of error codes and solutions.
 
-All mobile platforms (iOS, Android, Flutter) share the same error codes. All fallible APIs in RealtimeKit mobile SDKs return an operation-specific error type that implements the `RtkError` interface with `code: Int` (or `ErrorCode` for iOS) and `message: String` fields.
-
 ## Meeting
 
 #### Error code: 1000
@@ -880,8 +878,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/error-codes/#page","headline":"Error Codes · Cloudflare Realtime docs","description":"RealtimeKit error codes for identifying and troubleshooting SDK and API issues.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/error-codes/#page","headline":"Error Codes · Cloudflare Realtime docs","description":"RealtimeKit error codes for identifying and troubleshooting SDK and API issues.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

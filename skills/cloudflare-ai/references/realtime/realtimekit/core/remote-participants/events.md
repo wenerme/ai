@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Events
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/events/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/events/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page provides an overview of the events emitted by `meeting.participants` and related participant maps, which you can use to keep your UI in sync with changes such as participants joining or leaving, pinning updates, active speaker changes, and grid view mode or page changes.
 
@@ -152,19 +152,6 @@ extension MeetingViewModel: RtkParticipantsEventListener {
 meeting.addParticipantsEventListener(self)
 ```
 
-```dart
-class ParticipantsNotifier extends RtkParticipantsEventListener {
-	@override
-	void onActiveSpeakerChanged(RtkRemoteParticipant? participant) {
-		if (participant != null) {
-			print('${participant.id} is currently speaking');
-		}
-	}
-}
-
-meeting.addParticipantsEventListener(ParticipantsNotifier());
-```
-
 ```tsx
 const activeSpeaker = useRealtimeKitSelector(
 	(m) => m.participants.lastActiveSpeaker,
@@ -223,17 +210,6 @@ extension MeetingViewModel: RtkParticipantsEventListener {
 meeting.addParticipantsEventListener(self)
 ```
 
-```dart
-class ParticipantsNotifier extends RtkParticipantsEventListener {
-	@override
-	void onParticipantJoin(RtkRemoteParticipant participant) {
-		print('A participant with id ${participant.id} has joined');
-	}
-}
-
-meeting.addParticipantsEventListener(ParticipantsNotifier());
-```
-
 ```tsx
 const joinedParticipants = useRealtimeKitSelector((m) => m.participants.joined);
 ```
@@ -286,17 +262,6 @@ extension MeetingViewModel: RtkParticipantsEventListener {
 meeting.addParticipantsEventListener(self)
 ```
 
-```dart
-class ParticipantsNotifier extends RtkParticipantsEventListener {
-	@override
-	void onParticipantLeave(RtkRemoteParticipant participant) {
-		print('A participant with id ${participant.id} has left the meeting');
-	}
-}
-
-meeting.addParticipantsEventListener(ParticipantsNotifier());
-```
-
 ```tsx
 const joinedParticipants = useRealtimeKitSelector((m) => m.participants.joined);
 ```
@@ -343,17 +308,6 @@ extension MeetingViewModel: RtkParticipantsEventListener {
 meeting.addParticipantsEventListener(self)
 ```
 
-```dart
-class ParticipantsNotifier extends RtkParticipantsEventListener {
-	@override
-	void onActiveParticipantsChanged(List<RtkRemoteParticipant> active) {
-		// Called when active participants change
-	}
-}
-
-meeting.addParticipantsEventListener(ParticipantsNotifier());
-```
-
 ### Participant pinned
 
 Triggered when a participant is pinned.
@@ -392,17 +346,6 @@ extension MeetingViewModel: RtkParticipantsEventListener {
 }
 
 meeting.addParticipantsEventListener(self)
-```
-
-```dart
-class ParticipantsNotifier extends RtkParticipantsEventListener {
-	@override
-	void onParticipantPinned(RtkRemoteParticipant participant) {
-		print('Participant with id ${participant.id} was pinned');
-	}
-}
-
-meeting.addParticipantsEventListener(ParticipantsNotifier());
 ```
 
 ```tsx
@@ -455,17 +398,6 @@ extension MeetingViewModel: RtkParticipantsEventListener {
 }
 
 meeting.addParticipantsEventListener(self)
-```
-
-```dart
-class ParticipantsNotifier extends RtkParticipantsEventListener {
-	@override
-	void onParticipantUnpinned(RtkRemoteParticipant participant) {
-		print('Participant with id ${participant.id} was unpinned');
-	}
-}
-
-meeting.addParticipantsEventListener(ParticipantsNotifier());
 ```
 
 ```tsx
@@ -532,17 +464,6 @@ extension MeetingViewModel: RtkParticipantEventListener {
 meeting.addParticipantEventListener(self)
 ```
 
-```dart
-class ParticipantUpdateHandler extends RtkParticipantUpdateListener {
-	@override
-	void onVideoUpdate(RtkRemoteParticipant participant, bool isEnabled) {
-		print('Participant ${participant.id} video is now ${isEnabled ? "enabled" : "disabled"}');
-	}
-}
-
-participant.addParticipantUpdateListener(ParticipantUpdateHandler());
-```
-
 ```tsx
 // Check for one participant
 const videoEnabled = useRealtimeKitSelector(
@@ -603,17 +524,6 @@ extension MeetingViewModel: RtkParticipantEventListener {
 meeting.addParticipantEventListener(self)
 ```
 
-```dart
-class ParticipantUpdateHandler extends RtkParticipantUpdateListener {
-	@override
-	void onAudioUpdate(RtkRemoteParticipant participant, bool isEnabled) {
-		print('Participant ${participant.id} audio is now ${isEnabled ? "enabled" : "disabled"}');
-	}
-}
-
-participant.addParticipantUpdateListener(ParticipantUpdateHandler());
-```
-
 ```tsx
 // Check for one participant
 const audioEnabled = useRealtimeKitSelector(
@@ -672,17 +582,6 @@ extension MeetingViewModel: RtkParticipantEventListener {
 }
 
 meeting.addParticipantEventListener(self)
-```
-
-```dart
-class ParticipantUpdateHandler extends RtkParticipantUpdateListener {
-	@override
-	void onScreenShareUpdate(RtkRemoteParticipant participant, bool isEnabled) {
-		print('Participant ${participant.id} screen share is now ${isEnabled ? "enabled" : "disabled"}');
-	}
-}
-
-participant.addParticipantUpdateListener(ParticipantUpdateHandler());
 ```
 
 ```tsx
@@ -908,49 +807,6 @@ extension MeetingViewModel: RtkParticipantEventListener {
 meeting.addParticipantEventListener(self)
 ```
 
-Implement the `RtkParticipantUpdateListener` interface and add the listener on a participant:
-
-```dart
-class ParticipantUpdateHandler extends RtkParticipantUpdateListener {
-	@override
-	void onVideoUpdate(RtkRemoteParticipant participant, bool isEnabled) {
-		print("${participant.name}'s video is now ${isEnabled ? 'on' : 'off'}");
-	}
-
-	@override
-	void onAudioUpdate(RtkRemoteParticipant participant, bool isEnabled) {
-		print("${participant.name}'s audio is now ${isEnabled ? 'on' : 'off'}");
-	}
-
-	@override
-	void onPinned(RtkRemoteParticipant participant) {
-		print("${participant.name} was pinned");
-	}
-
-	@override
-	void onUnpinned(RtkRemoteParticipant participant) {
-		print("${participant.name} was unpinned");
-	}
-
-	@override
-	void onScreenShareUpdate(RtkRemoteParticipant participant, bool isEnabled) {
-		print("${participant.name}'s screen-share is now ${isEnabled ? 'on' : 'off'}");
-	}
-
-	@override
-	void onUpdate(RtkRemoteParticipant participant) {
-		print("${participant.name} was updated");
-	}
-}
-
-// Register the listener with a specific participant
-final listener = ParticipantUpdateHandler();
-participant.addParticipantUpdateListener(listener);
-
-// When done listening, remove the listener
-participant.removeParticipantUpdateListener(listener);
-```
-
 ```tsx
 import { useRealtimeKitClient } from "@cloudflare/realtimekit-react-native";
 import { useEffect } from "react";
@@ -994,8 +850,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/events/#page","headline":"Events · Cloudflare Realtime docs","description":"Events emitted by RealtimeKit participants for join, leave, pin, and grid changes.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/events/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/events/#page","headline":"Events · Cloudflare Realtime docs","description":"Events emitted by RealtimeKit participants for join, leave, pin, and grid changes.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/events/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

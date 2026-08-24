@@ -11,3 +11,4 @@ interactively using the [GraphiQL explorer](../../getting_started.md#graphiql).
 ## Reference
 
 - [Enums](enums.md)
+- [Scalars](scalars.md)

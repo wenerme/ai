@@ -89,7 +89,7 @@ Enable logging on your Worker by adding a new property, `logpush = true`, to you
 	"name": "my-worker",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-08-22",
+	"compatibility_date": "2026-08-24",
 	"workers_dev": false,
 	"logpush": true,
 	"route": {
@@ -104,7 +104,7 @@ Enable logging on your Worker by adding a new property, `logpush = true`, to you
 name = "my-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-08-22"
+compatibility_date = "2026-08-24"
 workers_dev = false
 logpush = true
 

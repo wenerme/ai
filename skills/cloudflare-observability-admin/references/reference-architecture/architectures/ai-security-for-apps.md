@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # AI Security for Apps Reference Architecture
 
-Last updated Mar 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Abstract
 
@@ -205,9 +205,9 @@ Figure 17: Filtering logs based on AI-specific threats
 
 Within discovered endpoints, under the **Endpoints** tab and within **Security** \> **Web assets**, users can also easily filter on the `cf-llm` label for discovered LLM-specific endpoints as shown below.
 
-Here, the power of the Cloudflare platform and cross-product integration is on full display. Not only are the respective discovered LLM endpoints labeled with `cf-llm`, but [Cloudflare API Security capabilities has also automatically attached managed risk labels](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/) of `cf-risk-missing-auth` and `cf-risk-missing-schema`, signifying identified risks associated with the respective endpoint.
+Here, the power of the Cloudflare platform and cross-product integration is on full display. Not only are the respective discovered LLM endpoints labeled with `cf-llm`, but [Cloudflare API Security capabilities has also automatically attached managed risk labels](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/) such as `cf-risk-missing-auth`, signifying identified risks associated with the respective endpoint.
 
-![The Cloudflare dashboard showing an endpoint that was automatically labelled with "cf-llm", "cf-risk-missing-auth", and "cf-risk-missing-schema"](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2274,height=1196,format=webp/_astro/fig18-auto-endpoint-labeling.Cdr7M0br.png "Figure 18: LLM discovery and auto labeling of API endpoint security risks")
+![The Cloudflare dashboard showing an endpoint that was automatically labelled with "cf-llm", "cf-risk-missing-auth"](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2274,height=1196,format=webp/_astro/fig18-auto-endpoint-labeling.Cdr7M0br.png "Figure 18: LLM discovery and auto labeling of API endpoint security risks")
 
 Figure 18: LLM discovery and auto labeling of API endpoint security risks
 
@@ -246,5 +246,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/#page","headline":"AI Security for Apps Reference Architecture · Cloudflare Reference Architecture docs","description":"This article highlights how Cloudflare's AI Security for Apps complements Cloudflare WAF by providing an AI protection layer for detecting and mitigating threats to AI-powered applications.","url":"https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/#page","headline":"AI Security for Apps Reference Architecture · Cloudflare Reference Architecture docs","description":"This article highlights how Cloudflare's AI Security for Apps complements Cloudflare WAF by providing an AI protection layer for detecting and mitigating threats to AI-powered applications.","url":"https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

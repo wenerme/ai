@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # /crawl - Crawl web content
 
-Last updated Jul 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `/crawl` endpoint scrapes content from a starting URL and follows links across the site, up to a configurable depth or page limit. Responses can be returned as HTML, Markdown, or JSON.
 
@@ -231,12 +231,14 @@ When `render` is `true` (the default), crawl jobs also support all standard Brow
 
 ### Viewing skipped URLs
 
-To view URLs that were discovered but skipped, query the crawl job results with `status=skipped`. URLs can be skipped due to `includeExternalLinks`, `includeSubdomains`, `includePatterns`/`excludePatterns`, or the `modifiedSince` parameter. Skipped URLs will also be visible in the dashboard in a future release.
+The `skipped` status applies to URLs that the crawler discovered and evaluated individually, but then chose not to fetch because they were excluded by your crawl configuration, such as `includeExternalLinks`, `includeSubdomains`, or `includePatterns`/`excludePatterns`. To view these URLs, query the crawl job results with `status=skipped`.
 
 ```bash
 curl -X GET 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl/{job_id}?status=skipped' \
   -H 'Authorization: Bearer YOUR_API_TOKEN'
 ```
+
+Because `skipped` only tracks URLs that were evaluated one by one, it applies mainly to crawls that use `source: links` (or `source: all`), where the crawler follows links scraped from pages and checks each one against your configuration. When crawling from a sitemap (`source: sitemaps`), URLs that fall outside your configuration are filtered out in bulk before they are evaluated individually, so they are omitted from the job entirely rather than recorded as `skipped`. As a result, the set of `skipped` URLs is not an exhaustive list of every URL that was left out of the crawl.
 
 ### `render` parameter
 
@@ -564,8 +566,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/#page","headline":"/crawl - Crawl web content · Cloudflare Browser Run docs","description":"Scrape and follow links across a website using the Browser Run /crawl endpoint, with configurable depth and output formats.","url":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/#page","headline":"/crawl - Crawl web content · Cloudflare Browser Run docs","description":"Scrape and follow links across a website using the Browser Run /crawl endpoint, with configurable depth and output formats.","url":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

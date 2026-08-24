@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Meeting Object Explained
 
-Last updated Jun 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The meeting object is the core interface for interacting with a RealtimeKit session. It provides access to participants, local user controls, chat, polls, plugins, and more. This object is returned when you initialize the SDK.
 
@@ -344,72 +344,6 @@ meeting.localUser.canDoParticipantHostControls() // Check if local user can perf
 // Setup screen
 meeting.localUser.shouldShowSetupScreen() // Check if setup screen should be shown
 meeting.localUser.shouldJoinMediaRoom() // Check if local user should join media room
-```
-
-The `meeting.localUser` represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
-
-**Key Properties:**
-
-```dart
-// Participant identifiers
-meeting.localUser.id; // ID of the local user participant
-meeting.localUser.userId; // Persistent user ID across sessions
-meeting.localUser.name; // Name of the local user
-meeting.localUser.picture; // URL to the picture of the local user (optional)
-meeting.localUser.customParticipantId; // User provided participant ID (optional)
-meeting.localUser.permissions; // Permissions related to various capabilities within a meeting context for the local user
-
-// Media state
-meeting.localUser.audioEnabled; // Boolean: Is audio currently enabled for the local user
-meeting.localUser.videoEnabled; // Boolean: Is video currently enabled for the local user
-meeting.localUser.screenShareEnabled; // Boolean: Is screenshare currently enabled for the local user
-meeting.localUser.isCameraPermissionGranted; // Boolean: Does local user have access to device Camera permission
-meeting.localUser.isMicrophonePermissionGranted; // Boolean: Does local user have access to device Microphone permission
-
-// Participant metadata
-meeting.localUser.isHost; // Boolean: Is the local user the host
-meeting.localUser.isPinned; // Boolean: Is the local user pinned
-meeting.localUser.flags; // Participant flags (recorder, hiddenParticipant, webinarHiddenParticipant)
-
-// Preset Info
-meeting.localUser.presetName; // String value representing name of preset for local user
-meeting.localUser.presetInfo; // Typed object representing the preset information for local user
-
-// Stage and room state
-meeting.localUser.stageStatus; // Stage status of the local user
-meeting.localUser.roomJoined; // Boolean: Has local user joined the room
-meeting.localUser.waitListStatus; // Waitlist status of the local user (None, Waiting, Accepted, or Rejected)
-```
-
-**Common Methods:**
-
-```dart
-// Update Name
-await meeting.localUser.setDisplayName("New Name"); // Name change is visible only if it occurs before joinRoom() and after init()
-
-// Mute/Unmute Audio
-meeting.localUser.disableAudio(onResult: (error) {});
-meeting.localUser.enableAudio(onResult: (error) {});
-
-// Enable/Disable Video
-meeting.localUser.disableVideo(onResult: (error) {});
-meeting.localUser.enableVideo(onResult: (error) {});
-
-// Enable/Disable Screenshare
-meeting.localUser.enableScreenShare();
-meeting.localUser.disableScreenShare();
-
-// Device management
-final audioDevices = await meeting.localUser.getAudioDevices(); // Get all available audio devices
-final videoDevices = await meeting.localUser.getVideoDevices(); // Get all available video devices
-
-await meeting.localUser.setAudioDevice(audioDevices[0]); // Switch audio device
-await meeting.localUser.setVideoDevice(videoDevices[0]); // Switch video device
-
-final selectedAudio = await meeting.localUser.getSelectedAudioDevice(); // Get currently selected audio device
-final selectedVideo = await meeting.localUser.getSelectedVideoDevice(); // Get currently selected video device
-
-meeting.localUser.switchCamera(); // Switch between front and back camera
 ```
 
 The [meeting.self ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKSelf) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
@@ -905,110 +839,6 @@ participant.stageStatus // Stage status
 participant.flags // Participant flags (recorder, hiddenParticipant, webinarHiddenParticipant)
 ```
 
-The `meeting.participants` contains lists of all remote participants in the meeting, organized by their state.
-
-**Participant Lists:**
-
-```dart
-// All participants who have joined
-final joined = meeting.participants.joined; // List<RtkRemoteParticipant>
-
-// Participants with active media
-final active = meeting.participants.active; // List<RtkRemoteParticipant>
-
-// Participants in waiting room
-final waitlisted = meeting.participants.waitlisted; // List<RtkRemoteParticipant>
-
-// Pinned participant
-final pinned = meeting.participants.pinned; // RtkRemoteParticipant?
-
-// Participants sharing screen
-final screenshares = meeting.participants.screenshares; // List<RtkRemoteParticipant>
-```
-
-**Accessing Participant Data:**
-
-```dart
-// Get all joined participants
-final joinedParticipants = meeting.participants.joined;
-
-// Access first participant
-final firstParticipant = joinedParticipants.firstOrNull;
-firstParticipant?.id; // Participant ID (aka peerId)
-firstParticipant?.userId; // User ID
-firstParticipant?.name; // Display name
-firstParticipant?.picture; // Participant picture (if any)
-firstParticipant?.customParticipantId; // Custom participant ID
-firstParticipant?.audioEnabled; // Audio state
-firstParticipant?.videoEnabled; // Video state
-firstParticipant?.screenShareEnabled; // Screen share state
-firstParticipant?.isPinned; // Pin state
-firstParticipant?.isHost; // Host state
-firstParticipant?.presetName; // Preset name
-firstParticipant?.stageStatus; // Stage status
-firstParticipant?.flags; // Participant flags (recorder, hiddenParticipant, webinarHiddenParticipant)
-
-// Get participant video view
-firstParticipant?.videoView; // Returns a Widget that renders video stream
-
-// Access pagination info
-final grid = meeting.participants.grid;
-grid.pageCount; // Total number of pages
-grid.currentPageNumber; // Current page number
-grid.shouldShowPaginator; // Whether to show paginator
-grid.isNextPagePossible; // Can navigate to next page
-grid.isPreviousPagePossible; // Can navigate to previous page
-meeting.participants.setPage(1); // Switch to specific page
-```
-
-**Participant Control Methods:**
-
-```dart
-// Individual participant controls (host only)
-firstParticipant?.disableAudio(onResult: (error) {}); // Disable participant's audio
-firstParticipant?.disableVideo(onResult: (error) {}); // Disable participant's video
-firstParticipant?.kick(onResult: (error) {}); // Remove participant from meeting
-
-// Pin/Unpin participants
-final error: HostError? = firstParticipant?.pin(); // Pin participant
-final error: HostError? = firstParticipant?.unpin(); // Unpin participant
-
-// Waiting room management
-firstParticipant?.acceptWaitListedRequest(participantId); // Accept from waiting room
-firstParticipant?.rejectWaitListedRequest(participantId); // Reject from waiting room
-
-// Bulk operations (host only)
-meeting.participants.disableAllAudio(onResult: (error) {}); // Disable all participants' audio
-meeting.participants.disableAllVideo(onResult: (error) {}); // Disable all participants' video
-meeting.participants.kickAll(onResult: (error) {}); // Remove all participants
-
-// Waiting room bulk operations
-meeting.participants.acceptWaitlistedParticipant(participant); // Accept specific participant
-meeting.participants.rejectWaitlistedParticipant(participant); // Reject specific participant
-meeting.participants.acceptAllWaitingRoomRequests(); // Accept all waiting participants
-
-// Broadcast custom message
-meeting.participants.broadcastMessage("custom-event", {"key": "value"});
-```
-
-**Participant Properties:**
-
-```dart
-participant.id; // Participant ID (aka peerId, unique per session)
-participant.userId; // User ID (persistent across sessions)
-participant.name; // Display name
-participant.picture; // Participant picture URL
-participant.customParticipantId; // Custom participant ID
-participant.audioEnabled; // Audio state
-participant.videoEnabled; // Video state
-participant.screenShareEnabled; // Screen share state
-participant.isPinned; // Pin state
-participant.isHost; // Host state
-participant.presetName; // Preset name
-participant.stageStatus; // Stage status
-participant.flags; // Participant flags (recorder, hiddenParticipant, webinarHiddenParticipant)
-```
-
 The [meeting.participants ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKParticipants) contains maps of all remote participants in the meeting, organized by their state.
 
 Note
@@ -1162,29 +992,6 @@ meeting.meta.syncTab(
   id: "plugin-id-or-screenshare-id", // Identifier for unique plugin/screen share
   tabType: .plugin // or .screenshare
 )
-```
-
-The `meeting.meta` contains information about the meeting room itself.
-
-**Properties:**
-
-```dart
-meeting.meta.meetingId; // Meeting identifier
-meeting.meta.meetingTitle; // Meeting title
-meeting.meta.meetingStartedTimeStamp; // Meeting start time
-meeting.meta.meetingType; // Meeting type (groupCall, webinar, or livestream)
-meeting.meta.activeTab; // Currently active tab for the local participant (ActiveTab?)
-meeting.meta.designToken; // Design tokens for UI customization (RtkDesignTokens)
-```
-
-**Methods:**
-
-```dart
-// Sync active tab (for plugins or screen share)
-meeting.meta.syncTab(
-  "plugin-id-or-screenshare-id", // Identifier for unique plugin/screen share
-  RtkActiveTabType.plugin // or RtkActiveTabType.screenshare
-);
 ```
 
 The [meeting.meta ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKMeta) contains information about the meeting room itself.
@@ -1363,70 +1170,6 @@ default:
 }
 ```
 
-The `meeting.chat` manages text messages, images, and files shared in the meeting.
-
-```dart
-// Get all chat messages
-final messages = meeting.chat.messages;
-
-// Send a text message
-final message = "Hello everyone!";
-meeting.chat.sendTextMessage(message); // Returns ChatTextError if fails, null if successful
-
-// Send an image
-meeting.chat.sendImageMessage(imageUri, (err) {
-  // Handle ChatFileError if any
-});
-
-// Send a file
-meeting.chat.sendFileMessage(fileUri, (err) {
-  // Handle ChatFileError if any
-});
-
-// Listen to chat messages
-class ChatListener extends RtkChatEventListener {
-  @override
-  void onChatUpdates(List<ChatMessage> messages) {
-    // Called whenever there is a change in chat messages
-  }
-
-  @override
-  void onNewChatMessage(ChatMessage message) {
-    // Called when a new chat message is shared
-  }
-
-  @override
-  void onMessageRateLimitReset() {
-    // Called when rate limit for sending messages is reset
-  }
-}
-
-// Add listener
-final chatListener = ChatListener();
-meeting.addChatEventListener(chatListener);
-
-// Handle errors
-switch (err.runtimeType) {
-  case ChatFileError.FileFormatNotAllowed:
-    // File format not allowed
-    break;
-  case ChatFileError.PermissionDenied:
-    // No permission to send file
-    break;
-  case ChatFileError.RateLimitBreached:
-    // Rate limit breached
-    break;
-  case ChatFileError.ReadFailed:
-    // File could not be read
-    break;
-  case ChatFileError.UploadFailed:
-    // File could not be uploaded
-    break;
-  default:
-    break;
-}
-```
-
 The [meeting.chat ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
 
 ```javascript
@@ -1577,48 +1320,6 @@ extension MeetingViewModel: RtkPollsEventListener {
 
 // Add listener
 meeting.addPollsEventListener(self)
-```
-
-The `meeting.polls` manages polls in the meeting.
-
-```dart
-// Get all polls
-final polls = meeting.polls.items;
-
-// Create a poll
-final pollsCreateError = meeting.polls.create(
-  question: "What time works best?",
-  options: ["9 AM", "2 PM", "5 PM"],
-  anonymous: false,
-  hideVotes: false
-);
-
-// Vote on a poll
-final poll = meeting.polls.items.first;
-final selectedPollOption = poll.options.first;
-final pollsError = meeting.polls.vote(poll.id, selectedPollOption);
-
-// Listen to poll updates
-class PollsListener extends RtkPollsEventListener {
-  @override
-  void onNewPoll(Poll poll) {
-    // Called when a new poll is created
-  }
-
-  @override
-  void onPollUpdate(Poll poll) {
-    // Called when a poll is updated (votes, details changed)
-  }
-
-  @override
-  void onPollUpdates(List<Poll> pollItems) {
-    // Called when there are updates to the list of polls
-  }
-}
-
-// Add listener
-final pollsListener = PollsListener();
-meeting.addPollsEventListener(pollsListener);
 ```
 
 The [meeting.polls ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKPolls) manages polls in the meeting.
@@ -1796,60 +1497,6 @@ extension MeetingViewModel: RtkPluginsEventListener {
 meeting.addPluginsEventListener(self)
 ```
 
-The `meeting.plugins` manages meeting plugins (collaborative apps).
-
-```dart
-// Get all available plugins
-final plugins = meeting.plugins.all;
-
-// Get active plugins
-final activePlugins = meeting.plugins.active;
-
-// Activate a plugin
-meeting.plugins.all.first.activate();
-
-// Deactivate a plugin
-meeting.plugins.active.first.deactivate();
-
-// Get plugin view
-final pluginView = meeting.plugins.active.first.getPluginView(); // Returns a Widget
-
-// Send data to a plugin
-final pluginId = "";
-final plugin = meeting.plugins.active.firstWhere((p) => p.id == pluginId, orElse: () => null);
-plugin?.sendData(
-  eventName: "my-custom-event",
-  data: "Hello world"
-);
-
-// Listen to plugin events
-class PluginsListener extends RtkPluginsEventListener {
-  @override
-  void onPluginActivated(RtkPlugin plugin) {
-    // Called when a plugin is activated
-  }
-
-  @override
-  void onPluginDeactivated(RtkPlugin plugin) {
-    // Called when a plugin is deactivated
-  }
-
-  @override
-  void onPluginMessage(RtkPlugin plugin, String eventName, dynamic data) {
-    // Called when a plugin sends a message
-  }
-
-  @override
-  void onPluginFileRequest(RtkPlugin plugin) {
-    // Called when a plugin requests a file
-  }
-}
-
-// Add listener
-final pluginsListener = PluginsListener();
-meeting.addPluginsEventListener(pluginsListener);
-```
-
 The [meeting.plugins ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKPlugins) manages meeting plugins (collaborative apps).
 
 ```javascript
@@ -1894,8 +1541,6 @@ The `meeting.ai` provides access to AI-powered features like live transcription.
 // Access live transcriptions
 meeting.ai.transcripts; // Shows only when transcription is enabled in Preset
 ```
-
-`meeting.ai` is not supported on this mobile platform.
 
 `meeting.ai` is not supported on this mobile platform.
 
@@ -1973,28 +1618,6 @@ meeting.leave(
 )
 ```
 
-```dart
-// Join the meeting room
-meeting.joinRoom(
-  onSuccess: () {
-    // Room Joined
-  },
-  onFailure: (err) {
-    // Handle error
-  }
-);
-
-// Leave the meeting room
-meeting.leave(
-  onSuccess: () {
-    // Room Left
-  },
-  onFailure: (err) {
-    // Handle error
-  }
-);
-```
-
 ```javascript
 // Join the meeting room
 await meeting.join(); // Emits a `roomJoined` event on `meeting.self` when successful
@@ -2032,8 +1655,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/#page","headline":"Meeting Object Explained · Cloudflare Realtime docs","description":"Explore the RealtimeKit meeting object and its namespaces for participants, chat, polls, and media.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/#page","headline":"Meeting Object Explained · Cloudflare Realtime docs","description":"Explore the RealtimeKit meeting object and its namespaces for participants, chat, polls, and media.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
