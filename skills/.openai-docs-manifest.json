@@ -898,10 +898,10 @@
   "openai-docs/guides/safety-best-practices.md": {
     "url": "https://developers.openai.com/api/docs/guides/safety-best-practices.md",
     "skill": "openai-docs",
-    "etag": "W/\"870112156f481d5984461a1babcedbf2\"",
-    "lastModified": "Fri, 21 Aug 2026 01:54:31 GMT",
-    "size": 8159,
-    "updatedAt": "2026-08-21T01:54:31.752Z"
+    "etag": "W/\"312007038e604129a6956f06727f251b\"",
+    "lastModified": "Mon, 24 Aug 2026 10:09:51 GMT",
+    "size": 8402,
+    "updatedAt": "2026-08-24T10:52:00.824Z"
   },
   "openai-docs/guides/safety-checks.md": {
     "url": "https://developers.openai.com/api/docs/guides/safety-checks.md",

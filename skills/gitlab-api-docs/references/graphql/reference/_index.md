@@ -439,6 +439,8 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="query-aichatcontextpresets-foundationalagentreference"></a>`foundationalAgentReference` | [`String`](#string) | Reference of the selected foundational chat agent. |
+| <a id="query-aichatcontextpresets-namespaceid"></a>`namespaceId` | [`NamespaceID`](#namespaceid) | Global ID of the namespace the user is acting on. |
 | <a id="query-aichatcontextpresets-projectid"></a>`projectId` | [`ProjectID`](#projectid) | Global ID of the project the user is acting on. |
 | <a id="query-aichatcontextpresets-questioncount"></a>`questionCount` | [`Int`](#int) | Number of questions for the default screen. |
 | <a id="query-aichatcontextpresets-resourceid"></a>`resourceId` | [`AiModelID`](#aimodelid) | Global ID of the resource from the current page. |
@@ -57271,8 +57273,8 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="secretsmanagerentitlement-betaprogramended"></a>`betaProgramEnded`  | [`Boolean`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Indicates whether the free-beta program has ended for the namespace. Set only when state is TRIAL_ELIGIBLE; null otherwise. |
 | <a id="secretsmanagerentitlement-blockedreason"></a>`blockedReason`  | [`SecretsManagerEntitlementBlockedReason`](#secretsmanagerentitlementblockedreason) | Introduced in GitLab 19.2. Status: Experiment. Reason the entitlement is blocked; null when state is not BLOCKED. |
-| <a id="secretsmanagerentitlement-creditsremaining"></a>`creditsRemaining`  | [`Int`](#int) | Introduced in GitLab 19.2. Status: Experiment. Number of trial credits remaining. |
-| <a id="secretsmanagerentitlement-creditstotal"></a>`creditsTotal`  | [`Int`](#int) | Introduced in GitLab 19.2. Status: Experiment. Initial trial credit allocation for the current trial period. |
+| <a id="secretsmanagerentitlement-creditsremaining"></a>`creditsRemaining`  | [`Float`](#float) | Introduced in GitLab 19.2. Status: Experiment. Number of trial credits remaining. |
+| <a id="secretsmanagerentitlement-creditstotal"></a>`creditsTotal`  | [`Float`](#float) | Introduced in GitLab 19.2. Status: Experiment. Initial trial credit allocation for the current trial period. |
 | <a id="secretsmanagerentitlement-ondemandenabled"></a>`onDemandEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.2. Status: Experiment. Indicates whether on-demand purchasing is enabled for the namespace. |
 | <a id="secretsmanagerentitlement-state"></a>`state`  | [`SecretsManagerEntitlementState!`](#secretsmanagerentitlementstate) | Introduced in GitLab 19.2. Status: Experiment. Resolved entitlement state. |
 | <a id="secretsmanagerentitlement-trialexpiresat"></a>`trialExpiresAt`  | [`Time`](#time) | Introduced in GitLab 19.2. Status: Experiment. Timestamp when the Secrets Manager trial expires. |

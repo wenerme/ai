@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Stage Management
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/stage-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/stage-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how to use stage management APIs for Webinar (WebRTC) use cases in Cloudflare RealtimeKit.
 
@@ -52,10 +52,6 @@ Log.d("Stage", "Stage object: ${meeting.stage}")
 print("Stage object: \(meeting.stage)")
 ```
 
-```dart
-print("Stage object: ${meeting.stage}");
-```
-
 ```tsx
 console.log("Stage object:", meeting.stage);
 ```
@@ -84,10 +80,6 @@ Log.d("Stage", "Stage status: ${meeting.stage.stageStatus}")
 
 ```swift
 print("Stage status: \(meeting.stage.stageStatus)")
-```
-
-```dart
-print("Stage status: ${meeting.stage.status}");
 ```
 
 ```tsx
@@ -133,10 +125,6 @@ meeting.stage.join()
 meeting.stage.join()
 ```
 
-```dart
-meeting.stage.join();
-```
-
 ```tsx
 await meeting.stage.join();
 ```
@@ -163,10 +151,6 @@ meeting.stage.leave()
 
 ```swift
 meeting.stage.leave()
-```
-
-```dart
-meeting.stage.leave();
 ```
 
 ```tsx
@@ -197,10 +181,6 @@ meeting.stage.grantAccess(userIds)
 meeting.stage.grantAccess(userIds: userIds)
 ```
 
-```dart
-meeting.stage.grantAccess(userIds);
-```
-
 ```tsx
 await meeting.stage.grantAccess(userIds);
 ```
@@ -216,8 +196,6 @@ await meeting.stage.grantAccess(userIds);
 * `userIds` (`List<String>`) - List of user IDs to grant stage access. You can retrieve user IDs using `meeting.participants.map { it.userId }`
 
 * `userIds` (`[String]`) - Array of user IDs to grant stage access. You can retrieve user IDs using `meeting.participants.map { $0.userId }`
-
-* `userIds` (`List<String>`) - List of user IDs to grant stage access. You can retrieve user IDs using `meeting.participants.map((p) => p.userId).toList()`
 
 * `userIds` (`string[]`) - Array of user IDs to grant stage access. You can retrieve user IDs using `meeting.participants.toArray().map(p => p.userId)`
 
@@ -245,10 +223,6 @@ meeting.stage.denyAccess(userIds)
 meeting.stage.denyAccess(userIds: userIds)
 ```
 
-```dart
-meeting.stage.denyAccess(userIds);
-```
-
 ```tsx
 await meeting.stage.denyAccess(userIds);
 ```
@@ -264,8 +238,6 @@ await meeting.stage.denyAccess(userIds);
 * `userIds` (`List<String>`) - List of user IDs to deny stage access. You can retrieve user IDs using `meeting.participants.map { it.userId }`
 
 * `userIds` (`[String]`) - Array of user IDs to deny stage access. You can retrieve user IDs using `meeting.participants.map { $0.userId }`
-
-* `userIds` (`List<String>`) - List of user IDs to deny stage access. You can retrieve user IDs using `meeting.participants.map((p) => p.userId).toList()`
 
 * `userIds` (`string[]`) - Array of user IDs to deny stage access. You can retrieve user IDs using `meeting.participants.toArray().map(p => p.userId)`
 
@@ -293,10 +265,6 @@ meeting.stage.kick(userIds)
 meeting.stage.kick(userIds: userIds)
 ```
 
-```dart
-meeting.stage.kick(userIds);
-```
-
 ```tsx
 await meeting.stage.kick(userIds);
 ```
@@ -312,8 +280,6 @@ await meeting.stage.kick(userIds);
 * `userIds` (`List<String>`) - List of user IDs to remove from stage. You can retrieve user IDs using `meeting.participants.map { it.userId }`
 
 * `userIds` (`[String]`) - Array of user IDs to remove from stage. You can retrieve user IDs using `meeting.participants.map { $0.userId }`
-
-* `userIds` (`List<String>`) - List of user IDs to remove from stage. You can retrieve user IDs using `meeting.participants.map((p) => p.userId).toList()`
 
 * `userIds` (`string[]`) - Array of user IDs to remove from stage. You can retrieve user IDs using `meeting.participants.toArray().map(p => p.userId)`
 
@@ -347,10 +313,6 @@ meeting.stage.requestAccess()
 meeting.stage.requestAccess()
 ```
 
-```dart
-meeting.stage.requestAccess();
-```
-
 ```tsx
 await meeting.stage.requestAccess();
 ```
@@ -377,10 +339,6 @@ meeting.stage.cancelRequestAccess()
 
 ```swift
 meeting.stage.cancelRequestAccess()
-```
-
-```dart
-meeting.stage.cancelRequestAccess();
 ```
 
 ```tsx
@@ -440,18 +398,6 @@ extension WebinarViewModel: RtkStageEventListener {
 }
 ```
 
-```dart
-class StageEventListener extends RtkStageEventListener {
-	@override
-	void onStageAccessRequestsUpdated(List<RtkRemoteParticipant> accessRequests) {
-		// Stage access requests list updated
-		print("Access requests updated: ${accessRequests.length}");
-	}
-}
-
-meeting.addStageEventListener(StageEventListener());
-```
-
 ```tsx
 meeting.stage.on("stageAccessRequestUpdate", (data) => {
 	console.log("Stage access request updated:", data);
@@ -507,18 +453,6 @@ extension WebinarViewModel: RtkStageEventListener {
 }
 ```
 
-```dart
-class StageEventListener extends RtkStageEventListener {
-	@override
-	void onStageAccessRequestAccepted() {
-		// Host accepted the join stage request or invited user directly to stage
-		print("Access request accepted");
-	}
-}
-
-meeting.addStageEventListener(StageEventListener());
-```
-
 ```tsx
 meeting.stage.on("acceptPresentRequests", (data) => {
 	console.log("Present requests accepted:", data);
@@ -563,18 +497,6 @@ extension WebinarViewModel: RtkStageEventListener {
 		print("Status updated from \(oldStatus) to \(newStatus)")
 	}
 }
-```
-
-```dart
-class StageEventListener extends RtkStageEventListener {
-	@override
-	void onStageStatusUpdated(StageStatus oldStatus, StageStatus newStatus) {
-		// Local user's stage status changed
-		print("Status updated from $oldStatus to $newStatus");
-	}
-}
-
-meeting.addStageEventListener(StageEventListener());
 ```
 
 ```tsx
@@ -623,18 +545,6 @@ extension WebinarViewModel: RtkStageEventListener {
 }
 ```
 
-```dart
-class StageEventListener extends RtkStageEventListener {
-	@override
-	void onNewStageAccessRequest(RtkRemoteParticipant participant) {
-		// New participant requested to join the stage
-		print("New stage request from: ${participant.name}");
-	}
-}
-
-meeting.addStageEventListener(StageEventListener());
-```
-
 ```tsx
 meeting.stage.on("newStageRequest", (request) => {
 	console.log("New stage request:", request);
@@ -679,18 +589,6 @@ extension WebinarViewModel: RtkStageEventListener {
 		print("Stage request approved")
 	}
 }
-```
-
-```dart
-class StageEventListener extends RtkStageEventListener {
-	@override
-	void onStageAccessRequestAccepted() {
-		// Host accepted the join stage request or invited user directly to stage
-		print("Stage request approved");
-	}
-}
-
-meeting.addStageEventListener(StageEventListener());
 ```
 
 ```tsx
@@ -739,18 +637,6 @@ extension WebinarViewModel: RtkStageEventListener {
 }
 ```
 
-```dart
-class StageEventListener extends RtkStageEventListener {
-	@override
-	void onStageAccessRequestRejected() {
-		// Host rejected the join stage request
-		print("Stage request rejected");
-	}
-}
-
-meeting.addStageEventListener(StageEventListener());
-```
-
 ```tsx
 meeting.stage.on("stageRequestRejected", (data) => {
 	console.log("Stage request rejected:", data);
@@ -763,8 +649,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/stage-management/#page","headline":"Stage Management · Cloudflare Realtime docs","description":"Manage webinar stage access and publish permissions in RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/stage-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/stage-management/#page","headline":"Stage Management · Cloudflare Realtime docs","description":"Manage webinar stage access and publish permissions in RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/stage-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage Participants in a Session
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/manage-participants-in-a-session/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/manage-participants-in-a-session/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Prerequisites
 
@@ -73,16 +73,6 @@ let joinedParticipants = meeting.participants.joined
 guard let participant = joinedParticipants.first else {
 	// No remote participants are currently joined.
 	return
-}
-```
-
-To perform actions on a specific participant, retrieve their participant object from the `participants` property. Remote participants are available in `meeting.participants.joined`. The local participant is available in `meeting.localUser`.
-
-```dart
-final joinedParticipants = meeting.participants.joined;
-final participant = joinedParticipants.firstOrNull;
-if (participant == null) {
-	// No remote participants are currently joined.
 }
 ```
 
@@ -309,44 +299,6 @@ meeting.addParticipantsEventListener(participantsEventListener: self)
 
 1. Check that the local participant has permission to mute other participants' audio.
 
-```dart
-final canMuteAudio = meeting.localUser.permissions.host.canMuteAudio;
-if (!canMuteAudio) {
-	// Disable the control in your UI.
-}
-```
-
-1. Call `disableAudio()` on the target participant.
-
-```dart
-participant.disableAudio(
-	onResult: (error) {
-		if (error != null) {
-			// Handle error - permission denied or other issue.
-			return;
-		}
-		// Audio disabled successfully.
-	},
-);
-```
-
-1. Handle the result by listening for updates. After the call succeeds, the target participant's `audioEnabled` becomes `false`.
-
-```dart
-class ParticipantsEventsListener extends RtkParticipantsEventListener {
-	@override
-	void onAudioUpdate(RtkRemoteParticipant participant, bool isEnabled) {
-		// audioEnabled is false
-		// Update UI for the participant
-	}
-}
-
-// Register the listener
-meeting.addParticipantsEventListener(ParticipantsEventsListener());
-```
-
-1. Check that the local participant has permission to mute other participants' audio.
-
 ```jsx
 const canDisableParticipantAudio = meeting.self.permissions.canDisableParticipantAudio;
 if (!canDisableParticipantAudio) {
@@ -559,44 +511,6 @@ extension MeetingViewModel: RtkParticipantsEventListener {
 
 // Register the listener
 meeting.addParticipantsEventListener(participantsEventListener: self)
-```
-
-1. Check that the local participant has permission to mute other participants' audio.
-
-```dart
-final canMuteAudio = meeting.localUser.permissions.host.canMuteAudio;
-if (!canMuteAudio) {
-	// Disable the control in your UI.
-}
-```
-
-1. Call `disableAllAudio()` on the participants object.
-
-```dart
-meeting.participants.disableAllAudio(
-	onResult: (error) {
-		if (error != null) {
-			// Handle error - permission denied or other issue.
-			return;
-		}
-		// All audio disabled successfully.
-	},
-);
-```
-
-1. Handle the result by listening for updates. After the call succeeds, each participant's `audioEnabled` becomes `false`.
-
-```dart
-class ParticipantsEventsListener extends RtkParticipantsEventListener {
-	@override
-	void onAudioUpdate(RtkRemoteParticipant participant, bool isEnabled) {
-		// audioEnabled is false
-		// Update UI for the participant
-	}
-}
-
-// Register the listener
-meeting.addParticipantsEventListener(ParticipantsEventsListener());
 ```
 
 1. Check that the local participant has permission to mute other participants' audio.
@@ -827,44 +741,6 @@ meeting.addParticipantsEventListener(participantsEventListener: self)
 
 1. Check that the local participant has permission to disable other participants' video.
 
-```dart
-final canMuteVideo = meeting.localUser.permissions.host.canMuteVideo;
-if (!canMuteVideo) {
-	// Disable the control in your UI.
-}
-```
-
-1. Call `disableVideo()` on the target participant.
-
-```dart
-participant.disableVideo(
-	onResult: (error) {
-		if (error != null) {
-			// Handle error - permission denied or other issue.
-			return;
-		}
-		// Video disabled successfully.
-	},
-);
-```
-
-1. Handle the result by listening for updates. After the call succeeds, the target participant's `videoEnabled` becomes `false`.
-
-```dart
-class ParticipantsEventsListener extends RtkParticipantsEventListener {
-	@override
-	void onVideoUpdate(RtkRemoteParticipant participant, bool isEnabled) {
-		// videoEnabled is false
-		// Update UI for the participant
-	}
-}
-
-// Register the listener
-meeting.addParticipantsEventListener(ParticipantsEventsListener());
-```
-
-1. Check that the local participant has permission to disable other participants' video.
-
 ```jsx
 const canDisableParticipantVideo = meeting.self.permissions.canDisableParticipantVideo;
 if (!canDisableParticipantVideo) {
@@ -1077,44 +953,6 @@ extension MeetingViewModel: RtkParticipantsEventListener {
 
 // Register the listener
 meeting.addParticipantsEventListener(participantsEventListener: self)
-```
-
-1. Check that the local participant has permission to disable other participants' video.
-
-```dart
-final canMuteVideo = meeting.localUser.permissions.host.canMuteVideo;
-if (!canMuteVideo) {
-	// Disable the control in your UI.
-}
-```
-
-1. Call `disableAllVideo()` on the participants object.
-
-```dart
-meeting.participants.disableAllVideo(
-	onResult: (error) {
-		if (error != null) {
-			// Handle error - permission denied or other issue.
-			return;
-		}
-		// All video disabled successfully.
-	},
-);
-```
-
-1. Handle the result by listening for updates. After the call succeeds, each participant's `videoEnabled` becomes `false`.
-
-```dart
-class ParticipantsEventsListener extends RtkParticipantsEventListener {
-	@override
-	void onVideoUpdate(RtkRemoteParticipant participant, bool isEnabled) {
-		// videoEnabled is false
-		// Update UI for the participant
-	}
-}
-
-// Register the listener
-meeting.addParticipantsEventListener(ParticipantsEventsListener());
 ```
 
 1. Check that the local participant has permission to disable other participants' video.
@@ -1370,36 +1208,6 @@ meeting.addParticipantsEventListener(participantsEventListener: self)
 
 1. Check that the local participant has permission to pin participants.
 
-```dart
-final canPinParticipant = meeting.localUser.permissions.host.canPinParticipant;
-if (!canPinParticipant) {
-	// Disable the control in your UI.
-}
-```
-
-1. Call `pin()` on the target participant.
-
-```dart
-participant.pin();
-```
-
-1. Handle the result by listening for updates. After the call succeeds, the target participant's `isPinned` becomes `true` and the participant is available in `meeting.participants.pinned`.
-
-```dart
-class ParticipantsEventsListener extends RtkParticipantsEventListener {
-	@override
-	void onParticipantPinned(RtkRemoteParticipant participant) {
-		// participant.isPinned is true
-		// Update your UI.
-	}
-}
-
-// Register the listener
-meeting.addParticipantsEventListener(ParticipantsEventsListener());
-```
-
-1. Check that the local participant has permission to pin participants.
-
 ```jsx
 const canPinParticipant = meeting.self.permissions.pinParticipant;
 if (!canPinParticipant) {
@@ -1635,36 +1443,6 @@ meeting.addParticipantsEventListener(participantsEventListener: self)
 
 1. Check that the local participant has permission to unpin participants.
 
-```dart
-final canPinParticipant = meeting.localUser.permissions.host.canPinParticipant;
-if (!canPinParticipant) {
-	// Disable the control in your UI.
-}
-```
-
-1. Call `unpin()` on the target participant.
-
-```dart
-participant.unpin();
-```
-
-1. Handle the result by listening for updates. After the call succeeds, the target participant's `isPinned` becomes `false`.
-
-```dart
-class ParticipantsEventsListener extends RtkParticipantsEventListener {
-	@override
-	void onParticipantUnpinned(RtkRemoteParticipant participant) {
-		// participant.isPinned is false
-		// Update your UI.
-	}
-}
-
-// Register the listener
-meeting.addParticipantsEventListener(ParticipantsEventsListener());
-```
-
-1. Check that the local participant has permission to unpin participants.
-
 ```jsx
 const canPinParticipant = meeting.self.permissions.pinParticipant;
 if (!canPinParticipant) {
@@ -1878,43 +1656,6 @@ meeting.addParticipantsEventListener(participantsEventListener: self)
 
 1. Check that the local participant has permission to remove participants.
 
-```dart
-final canKickParticipant = meeting.localUser.permissions.host.canKickParticipant;
-if (!canKickParticipant) {
-	// Disable the control in your UI.
-}
-```
-
-1. Call `kick()` on the target participant.
-
-```dart
-participant.kick(
-	onResult: (error) {
-		if (error != null) {
-			// Handle error - permission denied or other issue.
-			return;
-		}
-		// Participant removed successfully.
-	},
-);
-```
-
-1. Handle the result by listening for updates. After the call succeeds, the kicked participant is removed from `meeting.participants.joined`.
-
-```dart
-class ParticipantsEventsListener extends RtkParticipantsEventListener {
-	@override
-	void onParticipantLeave(RtkRemoteParticipant participant) {
-		// Remove the participant tile from the UI.
-	}
-}
-
-// Register the listener
-meeting.addParticipantsEventListener(ParticipantsEventsListener());
-```
-
-1. Check that the local participant has permission to remove participants.
-
 ```jsx
 const canKickParticipant = meeting.self.permissions.kickParticipant;
 if (!canKickParticipant) {
@@ -2099,43 +1840,6 @@ meeting.addMeetingRoomEventListener(meetingRoomEventListener: self)
 
 1. Check that the local participant has permission to remove participants.
 
-```dart
-final canKickParticipant = meeting.localUser.permissions.host.canKickParticipant;
-if (!canKickParticipant) {
-	// Disable the control in your UI.
-}
-```
-
-1. Call `kickAll()` on the participants object.
-
-```dart
-meeting.participants.kickAll(
-	onResult: (error) {
-		if (error != null) {
-			// Handle error - permission denied or other issue.
-			return;
-		}
-		// All participants removed successfully.
-	},
-);
-```
-
-1. Handle the result by listening for updates. After the call succeeds, all participants exit the session.
-
-```dart
-class MeetingRoomEventsListener extends RtkMeetingRoomEventListener {
-	@override
-	void onMeetingEnded() {
-		// Show a message and navigate the user out of the meeting UI.
-	}
-}
-
-// Register the listener
-meeting.addMeetingRoomEventListener(MeetingRoomEventsListener());
-```
-
-1. Check that the local participant has permission to remove participants.
-
 ```jsx
 const canKickParticipant = meeting.self.permissions.kickParticipant;
 if (!canKickParticipant) {
@@ -2175,8 +1879,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/manage-participants-in-a-session/#page","headline":"Manage Participants in a Session · Cloudflare Realtime docs","description":"Use RealtimeKit host controls to mute, pin, or remove participants in a live session.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/manage-participants-in-a-session/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/manage-participants-in-a-session/#page","headline":"Manage Participants in a Session · Cloudflare Realtime docs","description":"Use RealtimeKit host controls to mute, pin, or remove participants in a live session.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/manage-participants-in-a-session/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

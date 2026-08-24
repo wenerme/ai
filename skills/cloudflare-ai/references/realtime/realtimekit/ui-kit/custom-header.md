@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Add Custom Header
 
-Last updated Apr 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-header/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-header/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Prerequisite
 
@@ -644,182 +644,6 @@ class MeetingActivity : AppCompatActivity() {
 }
 ```
 
-RealtimeKit UI provides the `RtkAppBar` widget for a default header.
-
-If you need additional controls, replace `RtkAppBar` with individual UI Kit widgets and custom elements.
-
-Import the required components:
-
-```dart
-import 'package:realtimekit/realtimekit.dart';
-import 'package:realtimekit_ui/realtimekit_ui.dart';
-```
-
-#### Create custom header widget
-
-Create a custom header widget that uses the RealtimeKit Flutter components directly. These widgets must be used within an `RtkMeetingUiProvider` context:
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:realtimekit_ui/realtimekit_ui.dart';
-
-class CustomHeader extends StatelessWidget {
-  final VoidCallback? onReportBugPressed;
-
-  const CustomHeader({
-    Key? key,
-    this.onReportBugPressed,
-  }) : super(key: key);
-
-  void _handleReportBugPressed() {
-    debugPrint('Report Bug Pressed');
-    onReportBugPressed?.call();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 48,
-      color: Colors.black,
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      child: Row(
-        children: [
-          // Left section
-          Expanded(
-            child: Row(
-              children: const [
-                RtkRecordingIndicator(),
-                SizedBox(width: 8),
-                RtkLivestreamIndicator(),
-              ],
-            ),
-          ),
-
-          // Center section
-          const RtkMeetingTitle(),
-
-          // Right section
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                const RtkParticipantCount(),
-                const SizedBox(width: 8),
-                const RtkClock(),
-                const SizedBox(width: 8),
-                OutlinedButton(
-                  onPressed: _handleReportBugPressed,
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    side: const BorderSide(color: Colors.white),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 4,
-                    ),
-                  ),
-                  child: const Text('Report Bug'),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-```
-
-#### Use in your meeting screen
-
-In your meeting screen, replace the default `RtkAppBar` with your custom header:
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:realtimekit/realtimekit.dart';
-import 'package:realtimekit_ui/realtimekit_ui.dart';
-import 'custom_header.dart';
-
-class MeetingScreen extends StatefulWidget {
-  const MeetingScreen({Key? key}) : super(key: key);
-
-  @override
-  State<MeetingScreen> createState() => _MeetingScreenState();
-}
-
-class _MeetingScreenState extends State<MeetingScreen> {
-  RealtimeKitClient? _meeting;
-
-  @override
-  void initState() {
-    super.initState();
-    _initializeMeeting();
-  }
-
-  Future<void> _initializeMeeting() async {
-    try {
-      final meeting = await RealtimeKitClient.init(
-        authToken: '<PARTICIPANT_AUTH_TOKEN>',
-      );
-      setState(() {
-        _meeting = meeting;
-      });
-    } catch (e) {
-      debugPrint('Failed to initialize meeting: $e');
-    }
-  }
-
-  void _handleReportBug() {
-    // Add your custom logic here
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Report Bug'),
-        content: const Text('Bug reporting form goes here.'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (_meeting == null) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      );
-    }
-
-    return RtkMeetingUiProvider(
-      meeting: _meeting!,
-      child: Scaffold(
-        body: Column(
-          children: [
-            // Custom header replaces RtkAppBar
-            CustomHeader(onReportBugPressed: _handleReportBug),
-
-            // Meeting grid
-            const Expanded(child: RtkGrid()),
-
-            // Control bar
-            const RtkControlBar(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    _meeting?.leave();
-    super.dispose();
-  }
-}
-```
-
 RealtimeKit UI provides the `RtkHeader` component for a default header.
 
 If you need additional controls, replace `RtkHeader` with individual UI Kit components and custom elements.
@@ -1036,8 +860,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-header/#page","headline":"Add Custom Header · Cloudflare Realtime docs","description":"Add a custom header to your RealtimeKit meeting UI with individual components.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-header/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-header/#page","headline":"Add Custom Header · Cloudflare Realtime docs","description":"Add a custom header to your RealtimeKit meeting UI with individual components.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/custom-header/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

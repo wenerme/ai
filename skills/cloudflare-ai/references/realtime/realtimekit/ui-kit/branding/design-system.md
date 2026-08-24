@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Design System
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/branding/design-system/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/branding/design-system/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 RealtimeKit's UI Kit provides all the necessary UI components to allow complete customization of all its UI Kit components. You can customize your brand colours, fonts, logo and more.
 
@@ -55,11 +55,6 @@ import com.cloudflare.realtimekit.ui.RealtimeKitUIBuilder
 import com.cloudflare.realtimekit.ui.RealtimeKitUIInfo
 import com.cloudflare.realtimekit.ui.token.*
 import com.cloudflare.realtimekit.models.RtkMeetingInfo
-```
-
-```dart
-import 'package:realtimekit_ui/realtimekit_ui.dart';
-import 'package:flutter/material.dart';
 ```
 
 ```typescript
@@ -212,63 +207,6 @@ val uiKitInfo = RealtimeKitUIInfo(
 RealtimeKitUIBuilder.build(uiKitInfo).startMeeting()
 ```
 
-Construct an `RtkDesignTokens` object and pass it to `RealtimeKitUIInfo` via the `designToken` parameter.
-
-Flutter supports two approaches for color configuration:
-
-* **Simple** — provide a single base color and the SDK auto-generates all shades
-* **Advanced** — provide an explicit `RtkColorSwatch` with all shade values
-
-**Simple color configuration:**
-
-```dart
-final designTokens = RtkDesignTokens(
-  colorToken: RtkColorToken(
-    backgroundColor: const Color(0xFF0B0B0B),
-    brandColor: const Color(0xFFF17F1F),
-    textOnBrand: Colors.white,
-    textOnBackground: Colors.white,
-  ),
-  borderRadius: RtkBorderRadius.rounded,
-  borderWidth: RtkBorderWidth.none,
-);
-
-final uiKitInfo = RealtimeKitUIInfo(meetingInfo, designToken: designTokens);
-final rtkUI = RealtimeKitUIBuilder.build(uiKitInfo: uiKitInfo);
-Navigator.push(context, MaterialPageRoute(builder: (_) => rtkUI));
-```
-
-**Advanced color configuration** — use `RtkColorSwatch` for precise control over each shade:
-
-```dart
-final designTokens = RtkDesignTokens(
-  colorToken: RtkColorToken(
-    brandColorSwatch: RtkColorSwatch(500, {
-      300: const Color(0xFFFF9A6C),
-      400: const Color(0xFFFF8552),
-      500: const Color(0xFFFF6B35),
-      600: const Color(0xFFE55A24),
-      700: const Color(0xFFCC4A14),
-    }),
-    backgroundColorSwatch: RtkColorSwatch(1000, {
-      600: const Color(0xFF666666),
-      700: const Color(0xFF4C4C4C),
-      800: const Color(0xFF333333),
-      900: const Color(0xFF1A1A1A),
-      1000: const Color(0xFF080808),
-    }),
-    textOnBrand: Colors.white,
-    textOnBackground: Colors.white,
-  ),
-  borderRadius: RtkBorderRadius.extrarounded,
-  borderWidth: RtkBorderWidth.thin,
-);
-```
-
-Note
-
-You cannot mix `brandColor` and `brandColorSwatch` for the same color type. Use one approach or the other.
-
 Call `provideRtkDesignSystem()` with a `DesignTokens` object before or during rendering. Wrap your meeting components in `RtkUIProvider`.
 
 ```typescript
@@ -338,15 +276,15 @@ These design tokens are stored and shared among components with the help of [CSS
 
 The token system covers colors, borders, typography, and spacing. The table below shows the default values across all mobile platforms.
 
-| Token              | Android | Flutter | iOS     | React Native |
-| ------------------ | ------- | ------- | ------- | ------------ |
-| Brand color        | #2160FD | #2160FD | #0246FD | #2160FD      |
-| Background         | #080808 | #080808 | #050505 | #080808      |
-| Text on background | #FFFFFF | #FFFFFF | #FFFFFF | #FFFFFF      |
-| Text on brand      | #111111 | —       | #111111 | #FFFFFF      |
-| Danger             | #FF2D2D | #FF2D2D | #FF2D2D | #FF2D2D      |
-| Success            | #83D017 | #83D017 | #83D017 | #83D017      |
-| Warning            | #FFCD07 | #FFCD07 | #FFCD07 | #FFCD07      |
+| Token              | Android | iOS     | React Native |
+| ------------------ | ------- | ------- | ------------ |
+| Brand color        | #2160FD | #0246FD | #2160FD      |
+| Background         | #080808 | #050505 | #080808      |
+| Text on background | #FFFFFF | #FFFFFF | #FFFFFF      |
+| Text on brand      | #111111 | #111111 | #FFFFFF      |
+| Danger             | #FF2D2D | #FF2D2D | #FF2D2D      |
+| Success            | #83D017 | #83D017 | #83D017      |
+| Warning            | #FFCD07 | #FFCD07 | #FFCD07      |
 
 ### Typography
 
@@ -372,8 +310,6 @@ const designTokens = {
 ```
 
 Font customization is not available through the `RtkDesignTokens` API. The UI Kit uses the system font by default.
-
-The Flutter UI Kit bundles the Inter font and uses it by default. Custom font configuration is not available through the `RtkDesignTokens` API.
 
 Pass a `fontFamily` string to `provideRtkDesignSystem()` to use a custom font. You must load the font in your app before calling this function.
 
@@ -557,7 +493,7 @@ All mobile platforms support the same border radius and border width options.
 
 Note
 
-Flutter and iOS use the enum value `extrarounded` (no hyphen). React Native uses the string `'extra-rounded'` (with hyphen).
+iOS uses the enum value `extrarounded` (no hyphen). React Native uses the string `extra-rounded` (with a hyphen).
 
 Pass `borderRadius` and `borderWidth` directly to the `RtkDesignTokens` constructor.
 
@@ -567,16 +503,6 @@ val designTokens = RtkDesignTokens(
     borderRadius = RtkBorderRadiusToken.Circular,
     borderWidth = RtkBorderWidthToken.Thin,
 )
-```
-
-Pass `borderRadius` and `borderWidth` to the `RtkDesignTokens` constructor.
-
-```dart
-final designTokens = RtkDesignTokens(
-  colorToken: colorToken,
-  borderRadius: RtkBorderRadius.rounded,
-  borderWidth: RtkBorderWidth.thin,
-);
 ```
 
 Pass `borderRadius` and `borderWidth` to `provideRtkDesignSystem()`.
@@ -613,8 +539,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/branding/design-system/#page","headline":"Design System · Cloudflare Realtime docs","description":"Override RealtimeKit UI Kit design tokens for colors, fonts, borders, and spacing.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/branding/design-system/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/branding/design-system/#page","headline":"Design System · Cloudflare Realtime docs","description":"Override RealtimeKit UI Kit design tokens for colors, fonts, borders, and spacing.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/branding/design-system/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

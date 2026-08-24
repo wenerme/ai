@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Meeting Metadata
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/meeting-metadata/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/meeting-metadata/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 All metadata pertaining to a meeting is stored in `meeting.meta`. This includes important information about the meeting state, type, and connections.
 
@@ -70,14 +70,6 @@ The `meeting.meta` object contains the following properties:
 
 The `meeting.meta` object contains the following properties:
 
-* **`meetingId`** \- The unique identifier of the meeting
-* **`meetingTitle`** \- The title of the meeting
-* **`meetingStartedTimestamp`** \- The timestamp when the meeting started
-* **`meetingType`** \- Indicates the meeting type, which can be one of `groupCall`, `webinar`, or `livestream` from the `RtkMeetingType` enum
-* **`activeTab`** \- Information about the currently active tab for the local participant
-
-The `meeting.meta` object contains the following properties:
-
 * **`viewType`** \- Indicates the type of the meeting. Possible values are `WEBINAR`, `GROUP_CALL`
 * **`roomType`** \- Indicates whether the meeting is a group-call or a webinar
 * **`meetingTitle`** \- The title of the meeting
@@ -128,11 +120,6 @@ val meetingTitle = meeting.meta.meetingTitle
 
 ```swift
 let meetingTitle = meeting.meta.meetingTitle
-```
-
-```dart
-final meetingTitle = meeting.meta.meetingTitle;
-print("The local user has joined ${meetingTitle}.");
 ```
 
 ```tsx
@@ -221,8 +208,6 @@ You can access the current media connection state directly from the metadata.
 ```swift
 let mediaConnectionState = meeting.meta.mediaConnectionState
 ```
-
-Media connection events are not available in Flutter. Monitor the connection state through the meeting state changes.
 
 Updates to the media connection (WebRTC connection used for the transfer of actual media) are sent via the `mediaConnectionUpdate` event.
 
@@ -328,8 +313,6 @@ You can access the current socket connection state directly from the metadata.
 let socketConnectionState = meeting.meta.socketConnectionState
 ```
 
-Socket connection events are not available in Flutter. Monitor the connection state through the meeting state changes.
-
 Updates to the WebSocket connection (used for chat, polls, and other basic signaling) are sent via the `socketConnectionUpdate` event.
 
 ```tsx
@@ -370,8 +353,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/meeting-metadata/#page","headline":"Meeting Metadata · Cloudflare Realtime docs","description":"Access meeting state, type, and connection metadata in the RealtimeKit Core SDK.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/meeting-metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/meeting-metadata/#page","headline":"Meeting Metadata · Cloudflare Realtime docs","description":"Access meeting state, type, and connection metadata in the RealtimeKit Core SDK.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/meeting-metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

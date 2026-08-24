@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Remote Participants
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how to access participant data, display videos, handle events, and manage participant permissions in your RealtimeKit meetings.
 
@@ -61,18 +61,6 @@ The participant object contains all information related to a particular particip
 * `isPinned` \- Whether this participant is currently pinned in the meeting
 * `presetName` \- Name of the preset applied to this participant while adding to meeting
 * `stageStatus` \- Indicates the participant's current stage status (applicable only in stage-enabled meetings)
-
-#### Metadata properties
-
-* `id` \- Session-specific identifier generated when the participant joins meeting session (also known as `peerId`)
-* `userId` \- Permanent identifier of the participant generated when adding the participant to a meeting
-* `name` \- Display name of the participant
-* `picture` \- String URL to the participant's display picture (if any)
-* `isHost` \- Boolean value whether this participant has host privileges
-* `customParticipantId` \- Custom identifier that can be set while adding participant to a meeting by customer
-* `stageStatus` \- Indicates the participant's current stage status (applicable only in stage-enabled meetings)
-* `isPinned` \- Whether this participant is currently pinned in the meeting
-* `presetName` \- Name of the preset applied to this participant while adding to meeting
 
 #### Media properties
 
@@ -149,17 +137,6 @@ let canGoNextPage = meeting.participants.canGoNextPage
 let canGoPreviousPage = meeting.participants.canGoPreviousPage
 ```
 
-```dart
-// Number of participants joined in the meeting
-final participantCount = meeting.participants.joined.length;
-
-// Access pagination properties
-final currentPageNumber = meeting.participants.currentPageNumber;
-final pageCount = meeting.participants.pageCount;
-final canGoNextPage = meeting.participants.isNextPagePossible;
-final canGoPreviousPage = meeting.participants.isPreviousPagePossible;
-```
-
 Use the `useRealtimeKitSelector` hook to access properties:
 
 ```tsx
@@ -227,20 +204,6 @@ if let participant = meeting.participants.joined.first(where: { $0.id == partici
 }
 ```
 
-```dart
-// Find a participant by peer ID
-final participant = meeting.participants.joined
-	.where((p) => p.id == "<peerId>")
-	.firstOrNull;
-
-// Access participant properties
-if (participant != null) {
-	print('Participant: ${participant.name} (ID: ${participant.id})');
-	print('Audio: ${participant.audioEnabled ? "On" : "Off"}');
-	print('Video: ${participant.videoEnabled ? "On" : "Off"}');
-}
-```
-
 ```tsx
 // Get a specific participant
 const participant = useRealtimeKitSelector((m) =>
@@ -279,19 +242,6 @@ The `meeting.participants` object contains the following lists:
 * **`screenShares`** \- All participants who are sharing their screen
 
 If you are building a video/audio grid, use the `active` list. To display a list of all participants, use the `joined` list.
-
-All participants are stored under `meeting.participants`. These do not include the local user.
-
-The `meeting.participants` object contains the following lists:
-
-* **`joined`** \- All participants currently in the meeting (excluding the local user)
-* **`waitlisted`** \- All participants waiting to join the meeting
-* **`active`** \- All participants whose media is subscribed to (participants that should be displayed on screen)
-* **`pinned`** \- All pinned participants in the meeting
-
-If you are building a video/audio grid, use the `active` list. To display a list of all participants, use the `joined` list.
-
-Each participant in these lists is of type `RtkRemoteParticipant`.
 
 ```js
 // Get all joined participants
@@ -361,20 +311,6 @@ let waitlistedParticipants: [RtkRemoteParticipant] = meeting.participants.waitli
 let screenShareParticipants: [RtkRemoteParticipant] = meeting.participants.screenShares
 ```
 
-```dart
-// Get all joined participants
-final joinedParticipants = meeting.participants.joined;
-
-// Get active participants (those on screen)
-final activeParticipants = meeting.participants.active;
-
-// Get pinned participants
-final pinnedParticipants = meeting.participants.pinned;
-
-// Get waitlisted participants
-final waitlistedParticipants = meeting.participants.waitlisted;
-```
-
 Use the `useRealtimeKitSelector` hook to access participant maps:
 
 ```tsx
@@ -430,8 +366,6 @@ Android SDK uses active grid mode by default on page 0\. If you switch to the ne
 
 iOS SDK uses active grid mode by default on page 0\. If you switch to the next page, it automatically switches to paginated mode.
 
-Flutter SDK uses active grid mode by default on page 0\. If you switch to the next page, it automatically switches to paginated mode.
-
 ```tsx
 // Set the view mode to paginated
 await meeting.participants.setViewMode("PAGINATED");
@@ -465,8 +399,6 @@ meeting.participants.setPage(1)
 // Switch to first page
 meeting.participants.setPage(1)
 ```
-
-Flutter SDK automatically manages participant pagination.
 
 ```tsx
 // Switch to second page
@@ -557,23 +489,6 @@ if let participant = meeting.participants.joined.first(where: { $0.id == partici
 }
 ```
 
-```dart
-// Disable a remote participant's video
-participant.disableVideo(onResult: (e) {
-	// handle error if any
-});
-
-// Disable a remote participant's audio
-participant.disableAudio(onResult: (e) {
-	// handle error if any
-});
-
-// Remove the participant from the meeting
-participant.kick();
-```
-
-**Required Permission**: `permissions.host.canDisableVideo`, `permissions.host.canDisableAudio` must be `true`
-
 ```tsx
 const participant = meeting.participants.joined.get(participantId);
 
@@ -615,11 +530,6 @@ meeting.participants.acceptWaitingRoomRequest(participantId)
 meeting.participants.acceptWaitingRoomRequest(id: participantId)
 ```
 
-```dart
-final participant = meeting.participants.waitlisted[0];
-meeting.participants.acceptWaitlistedParticipant(participant);
-```
-
 ```tsx
 await meeting.participants.acceptWaitingRoomRequest(participantId);
 ```
@@ -644,11 +554,6 @@ meeting.participants.rejectWaitingRoomRequest(participantId)
 
 ```swift
 meeting.participants.rejectWaitingRoomRequest(participantId)
-```
-
-```dart
-final participant = meeting.participants.waitlisted[0];
-meeting.participants.rejectWaitlistedParticipant(participant);
 ```
 
 ```tsx
@@ -703,16 +608,6 @@ if let participant = meeting.participants.joined.first(where: { $0.id == partici
 	let unpinError: HostError? = participant.unpin()
 }
 ```
-
-```dart
-// Pin a remote participant
-participant.pin();
-
-// Unpin a previously pinned participant
-participant.unpin();
-```
-
-**Required Permission**: `permissions.host.canPinParticipant` must be `true`
 
 ```tsx
 const participant = meeting.participants.joined.get(participantId);
@@ -862,16 +757,6 @@ let videoView = participant.getVideoView()
 let screenShareView = participant.getScreenShareVideoView()
 ```
 
-Use the video view methods which return a `Widget` that you can place directly in your UI hierarchy:
-
-```dart
-// Create a widget to display the participant's camera video
-final cameraView = VideoView(meetingParticipant: participant);
-
-// Create a widget to display the participant's screen share
-final screenShareView = ScreenshareView(meetingParticipant: participant);
-```
-
 Use `useRealtimeKitSelector` to get the video track and render it with `RTCView`:
 
 ```tsx
@@ -904,8 +789,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/#page","headline":"Remote Participants · Cloudflare Realtime docs","description":"Access participant data, display videos, and handle events for remote participants in RealtimeKit.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/#page","headline":"Remote Participants · Cloudflare Realtime docs","description":"Access participant data, display videos, and handle events for remote participants in RealtimeKit.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

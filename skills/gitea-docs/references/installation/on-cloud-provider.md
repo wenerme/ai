@@ -39,3 +39,9 @@ Exoscale is a European cloud service provider.
 The package is maintained and update via the open source [Glasskube Kubernetes Operator](https://github.com/glasskube/operator).
 
 To deploy Gitea to Exoscale, have a look at the [Exoscale Marketplace](https://www.exoscale.com/marketplace/listing/glasskube-gitea/).
+
+## Sealos
+
+Gitea is available as a one-click deployment on [Sealos](https://sealos.io/products/app-store/gitea).
+
+The community-maintained template source is available [here](https://github.com/labring-actions/templates/tree/kb-0.9/template/gitea).

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Polls
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/polls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/polls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how to create, vote on, and interact with polls in a meeting using Cloudflare RealtimeKit.
 
@@ -49,10 +49,6 @@ console.log("All polls:", meeting.polls.items);
 You can access the polls functionality in a meeting using the `meeting.polls` object. This object provides methods to create polls, vote, and perform other poll-related actions.
 
 To retrieve all polls created during a meeting, use `meeting.polls.items`. This returns an array where each element is an object of type `com.cloudflare.realtimekit.polls.Poll`.
-
-The meetings polls object can be accessed using `meeting.polls`. It provides methods to create polls, vote, and more.
-
-`meeting.polls.items` returns an array of all polls created in a meeting, where each element is an object of type `Poll`.
 
 The meetings polls object can be accessed using `meeting.polls`. It provides methods to create polls, vote, and more.
 
@@ -176,45 +172,6 @@ class PollVote {
 
 The `Poll` type is defined as follows:
 
-```dart
-class Poll {
-  final String id;
-  final String question;
-  final bool anonymous;
-  final bool hideVotes;
-  final String createdBy;
-  final List<PollOption> options;
-  final List<String> voted;
-}
-```
-
-The `Poll` class has the following properties:
-
-* `id`: Unique ID assigned to each poll.
-* `question`: Question of the poll.
-* `anonymous`: To hide the votes of each user even after completion. (false by default)
-* `hideVotes`: Hide votes until the voting is complete. (enabled if anonymous is enabled)
-* `createdBy`: Name of creator the poll.
-* `options`: Array of `PollOption` object, contains all the options to the poll question.
-* `voted`: Array of String which contains User IDs that have voted.
-
-The type `Poll` represents a poll in a RealtimeKit meeting. It also contains list of `PollOption` which are options for a given poll. And every `PollOption` has list of votes inside of it. Votes are objects of class `PollVote` which internally has id and name of the vote.
-
-```dart
-class PollOption(
-  final String text;   // Option text.
-  final List<PollVote> votes;   // List of votes.
-  final int count;    // Number of votes.
-);
-
-class PollVote {
-  final String id;    // ID of the voter.
-  final String name;  // Name of the voter.
-}
-```
-
-The `Poll` type is defined as follows:
-
 ```ts
 interface Poll {
 	id: string;
@@ -313,26 +270,6 @@ let pollsCreateError: PollsError? = meeting.polls.createPoll(
 )
 ```
 
-A new poll can be created using the `create` method from the `meeting.polls` object. The `meeting.polls.create(...)` method accepts the following parameters:
-
-| Param     | Type         | Default Value | Required | Description                                |
-| --------- | ------------ | ------------- | -------- | ------------------------------------------ |
-| question  | String       | \-            | yes      | The question that is to be voted for.      |
-| options   | List<String> | \-            | yes      | The options of the poll.                   |
-| anonymous | bool         | \-            | yes      | If true, the poll votes are anonymous.     |
-| hideVotes | bool         | \-            | yes      | If true, the votes on the poll are hidden. |
-
-The following snippet creates a poll where votes are anonymous.
-
-```dart
-meeting.polls.create(
-    question: "Are you an early bird or a night owl?",
-    options: ["Early bird", "Night owl"],
-    anonymous: true,
-    hideVotes: false,
-);
-```
-
 A new poll can be created using the `create` method from the `meeting.polls` object. The `meeting.polls.create()` method accepts the following parameters:
 
 | Param     | Type       | Default Value | Required | Description                                |
@@ -408,22 +345,6 @@ let poll: Poll = meeting.polls.items[0]
 let selectedPollOption: PollOption = poll.options[0]
 
 meeting.poll.vote(poll, selectedPollOption)
-```
-
-The `meeting.polls.vote()` method can be used to register a vote on a poll. It accepts the following parameters:
-
-| Param       | Type       | Default Value | Required | Description                                                |
-| ----------- | ---------- | ------------- | -------- | ---------------------------------------------------------- |
-| pollMessage | Poll       | \-            | yes      | Contains all the poll properties (question, options, etc.) |
-| pollOption  | PollOption | yes           | yes      | Option on which the user voted                             |
-
-The following snippet votes for the first option on the first poll created in the meeting.
-
-```dart
-final poll = meeting.polls.items[0];
-final selectedPollOption = poll.options[0];
-
-meeting.polls.vote(poll: poll, pollOption: selectedPollOption);
 ```
 
 The `meeting.polls.vote()` method can be used to register a vote on a poll. It accepts the following parameters:
@@ -512,24 +433,6 @@ The total votes on a poll option can be accessed in the following manner:
 ```swift
 let poll = meeting.polls.items[0]
 let options = poll.options
-```
-
-`options` returns an array of objects, where each object is of type `PollOption`.
-
-The total votes on a poll can be accessed in the following manner:
-
-```dart
-final poll = meeting.polls.items.first;
-final votes = poll.voted;
-```
-
-`votes` is an array of participant IDs (`meeting.participant.id`).
-
-The total votes on a poll option can be accessed in the following manner:
-
-```dart
-final poll = meeting.polls.items.first;
-final options = poll.options;
 ```
 
 `options` returns an array of objects, where each object is of type `PollOption`.
@@ -634,38 +537,14 @@ extension MeetingViewModel: RtkPollsEventListener {
 }
 ```
 
-To be able to receive new poll messages you need to implement a method `onPollUpdates()` method from callback `RtkPollsEventListener`:
-
-To get poll updates, listen to `onPollUpdates()` callback:
-
-```dart
-class PollEventsListener extends RtkPollsEventListener {
-  @override
-  void onPollUpdates(List<Poll> pollItems) {
-    /// code to handle polls
-  }
-
-  @override
-  void onNewPoll(Poll poll) {
-    /// code to handle new poll
-  }
-}
-```
-
-You can subscribe to these events as follows:
-
-```dart
-meeting.addPollsEventListener(PollEventsListener());
-```
-
 Was this helpful?
 
 YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/polls/#page","headline":"Polls · Cloudflare Realtime docs","description":"Create, vote on, and manage polls in RealtimeKit meetings using the Core SDK.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/polls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/polls/#page","headline":"Polls · Cloudflare Realtime docs","description":"Create, vote on, and manage polls in RealtimeKit meetings using the Core SDK.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/polls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

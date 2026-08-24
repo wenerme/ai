@@ -1,0 +1,194 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Containers
+
+> Containers endpoints
+
+## Overview
+
+Containers endpoints
+
+### Available Operations
+
+* [ListContainerFiles](#listcontainerfiles) - List container files
+* [GetContainerFile](#getcontainerfile) - Retrieve a container file
+* [DownloadContainerFileContent](#downloadcontainerfilecontent) - Download container file content
+
+## ListContainerFiles
+
+Lists the files in a container, in lexicographic path order. The container id is the canonical id returned in bash/shell tool results; a restarted session is a separate container with its own id. Paginate with `limit` and `after` (pass the previous page’s `last_id`); `has_more: true` always means the next page is fetchable that way.
+
+### Example Usage
+
+```go theme={null}
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Containers.ListContainerFiles(ctx, "sess_abc123", openrouter.Pointer[int64](100), nil)
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter     | Type                                                       | Required             | Description                                                                                                                                                                                                                                                           | Example                    |
+| ------------- | ---------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| `ctx`         | [context.Context](https://pkg.go.dev/context#Context)      | :heavy\_check\_mark: | The context to use for the request.                                                                                                                                                                                                                                   |                            |
+| `containerID` | `string`                                                   | :heavy\_check\_mark: | The canonical container id, exactly as returned in a bash/shell tool result — a restarted session has its own `-r<nonce>`-suffixed id. A session-derived id is always `sess_` + the sanitized session key, which is not necessarily the raw session id that was sent. | sess\_abc123               |
+| `limit`       | `*int64`                                                   | :heavy\_minus\_sign: | Maximum number of files to return (1-1000). Defaults to 100 when absent.                                                                                                                                                                                              | 100                        |
+| `after`       | `*string`                                                  | :heavy\_minus\_sign: | Forward cursor: a container file id from a previous page (typically `last_id`); listing resumes strictly after that file.                                                                                                                                             | cfile\_b3V0L3JlcG9ydC5jc3Y |
+| `opts`        | \[][operations.Option](../../models/operations/option.mdx) | :heavy\_minus\_sign: | The options for this request.                                                                                                                                                                                                                                         |                            |
+
+### Response
+
+**[\*components.ContainerFileListResponse](../../models/components/containerfilelistresponse.mdx), error**
+
+### Errors
+
+| Error Type                                | Status Code | Content Type     |
+| ----------------------------------------- | ----------- | ---------------- |
+| sdkerrors.BadRequestResponseError         | 400         | application/json |
+| sdkerrors.UnauthorizedResponseError       | 401         | application/json |
+| sdkerrors.ForbiddenResponseError          | 403         | application/json |
+| sdkerrors.TooManyRequestsResponseError    | 429         | application/json |
+| sdkerrors.InternalServerResponseError     | 500         | application/json |
+| sdkerrors.ServiceUnavailableResponseError | 503         | application/json |
+| sdkerrors.APIError                        | 4XX, 5XX    | \*/\*            |
+
+## GetContainerFile
+
+Returns the metadata of a single file in a container.
+
+### Example Usage
+
+```go theme={null}
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Containers.GetContainerFile(ctx, "sess_abc123", "cfile_b3V0L3JlcG9ydC5jc3Y")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter     | Type                                                       | Required             | Description                                                                                                                                                                                                                                                           | Example                    |
+| ------------- | ---------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| `ctx`         | [context.Context](https://pkg.go.dev/context#Context)      | :heavy\_check\_mark: | The context to use for the request.                                                                                                                                                                                                                                   |                            |
+| `containerID` | `string`                                                   | :heavy\_check\_mark: | The canonical container id, exactly as returned in a bash/shell tool result — a restarted session has its own `-r<nonce>`-suffixed id. A session-derived id is always `sess_` + the sanitized session key, which is not necessarily the raw session id that was sent. | sess\_abc123               |
+| `fileID`      | `string`                                                   | :heavy\_check\_mark: | Container file id (`cfile_` + base64url of the file path).                                                                                                                                                                                                            | cfile\_b3V0L3JlcG9ydC5jc3Y |
+| `opts`        | \[][operations.Option](../../models/operations/option.mdx) | :heavy\_minus\_sign: | The options for this request.                                                                                                                                                                                                                                         |                            |
+
+### Response
+
+**[\*components.ContainerFile](../../models/components/containerfile.mdx), error**
+
+### Errors
+
+| Error Type                                | Status Code | Content Type     |
+| ----------------------------------------- | ----------- | ---------------- |
+| sdkerrors.BadRequestResponseError         | 400         | application/json |
+| sdkerrors.UnauthorizedResponseError       | 401         | application/json |
+| sdkerrors.ForbiddenResponseError          | 403         | application/json |
+| sdkerrors.NotFoundResponseError           | 404         | application/json |
+| sdkerrors.TooManyRequestsResponseError    | 429         | application/json |
+| sdkerrors.InternalServerResponseError     | 500         | application/json |
+| sdkerrors.ServiceUnavailableResponseError | 503         | application/json |
+| sdkerrors.APIError                        | 4XX, 5XX    | \*/\*            |
+
+## DownloadContainerFileContent
+
+Streams the raw bytes of a file in a container.
+
+### Example Usage
+
+```go theme={null}
+package main
+
+import(
+	"context"
+	"os"
+	openrouter "github.com/OpenRouterTeam/go-sdk"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := openrouter.New(
+        openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
+    )
+
+    res, err := s.Containers.DownloadContainerFileContent(ctx, "sess_abc123", "cfile_b3V0L3JlcG9ydC5jc3Y")
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter     | Type                                                       | Required             | Description                                                                                                                                                                                                                                                           | Example                    |
+| ------------- | ---------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| `ctx`         | [context.Context](https://pkg.go.dev/context#Context)      | :heavy\_check\_mark: | The context to use for the request.                                                                                                                                                                                                                                   |                            |
+| `containerID` | `string`                                                   | :heavy\_check\_mark: | The canonical container id, exactly as returned in a bash/shell tool result — a restarted session has its own `-r<nonce>`-suffixed id. A session-derived id is always `sess_` + the sanitized session key, which is not necessarily the raw session id that was sent. | sess\_abc123               |
+| `fileID`      | `string`                                                   | :heavy\_check\_mark: | Container file id (`cfile_` + base64url of the file path).                                                                                                                                                                                                            | cfile\_b3V0L3JlcG9ydC5jc3Y |
+| `opts`        | \[][operations.Option](../../models/operations/option.mdx) | :heavy\_minus\_sign: | The options for this request.                                                                                                                                                                                                                                         |                            |
+
+### Response
+
+**[io.ReadCloser](../../.mdx), error**
+
+### Errors
+
+| Error Type                                | Status Code | Content Type     |
+| ----------------------------------------- | ----------- | ---------------- |
+| sdkerrors.BadRequestResponseError         | 400         | application/json |
+| sdkerrors.UnauthorizedResponseError       | 401         | application/json |
+| sdkerrors.ForbiddenResponseError          | 403         | application/json |
+| sdkerrors.NotFoundResponseError           | 404         | application/json |
+| sdkerrors.TooManyRequestsResponseError    | 429         | application/json |
+| sdkerrors.InternalServerResponseError     | 500         | application/json |
+| sdkerrors.ServiceUnavailableResponseError | 503         | application/json |
+| sdkerrors.APIError                        | 4XX, 5XX    | \*/\*            |

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # State Management
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Prerequisites
 
@@ -35,8 +35,6 @@ The UI Kit components are able to understand and synchronize with each other bec
 The Android UI Kit manages component communication internally. When you build the UI Kit using `RealtimeKitUIBuilder`, it creates and coordinates all the necessary UI components. To observe meeting state changes from your application, attach event listeners to the Core SDK's `meeting` object.
 
 The iOS UI Kit manages component communication internally through the `RealtimeKitUI` module. To observe meeting state changes from your application, implement event listener protocols and register them on the Core SDK's `meeting` object.
-
-The Flutter UI Kit manages component communication internally through the `RealtimeKitUIBuilder`. To observe meeting state changes from your application, create event listener classes and attach them to the Core SDK's meeting object.
 
 The React Native UI Kit components communicate and synchronize with each other because they are nested under the `RtkMeeting` component, wrapped in `RealtimeKitProvider` and `RtkUIProvider`. To observe state changes, use hooks from the Core SDK such as `useRealtimeKitSelector`.
 
@@ -89,7 +87,7 @@ Attach event listeners to the Core SDK's `meeting` object to observe meeting sta
 
 Note
 
-Use your platform's state management (for example, LiveData or StateFlow on Android, `@Published` properties on iOS, Riverpod or ChangeNotifier on Flutter) to propagate state changes to your UI.
+Use your platform state management, such as LiveData or StateFlow on Android and `@Published` properties on iOS, to propagate state changes to your UI.
 
 Use the `useRealtimeKitSelector` hook from `@cloudflare/realtimekit-react-native` to observe specific properties on the meeting object. This hook re-renders your component whenever the selected value changes, similar to how selectors work in state management libraries.
 
@@ -457,97 +455,6 @@ meeting.addMeetingRoomEventListener(meetingRoomEventListener: self)
 meeting.addSelfEventListener(selfEventListener: self)
 ```
 
-For Flutter, create event listener classes and attach them to the `meeting` object. Use `RtkMeetingRoomEventListener` for meeting lifecycle events and `RtkSelfEventListener` for local participant state changes.
-
-```dart
-import 'package:realtimekit_ui/realtimekit_ui.dart';
-import 'package:flutter/material.dart';
-
-// Create a listener for meeting room state changes
-class MeetingRoomListener extends RtkMeetingRoomEventListener {
-  final Function(String) onStateChange;
-
-  MeetingRoomListener({required this.onStateChange});
-
-  @override
-  void onMeetingRoomJoinStarted() {
-    onStateChange('joining');
-  }
-
-  @override
-  void onMeetingRoomJoinCompleted() {
-    onStateChange('joined');
-  }
-
-  @override
-  void onMeetingRoomJoinFailed(exception) {
-    onStateChange('failed');
-  }
-
-  @override
-  void onMeetingRoomLeaveStarted() {
-    onStateChange('leaving');
-  }
-
-  @override
-  void onMeetingRoomLeft() {
-    onStateChange('left');
-  }
-
-  @override
-  void onMeetingEnded() {
-    onStateChange('ended');
-  }
-
-  @override
-  void onActiveTabUpdate(activeTab) {
-    // Sidebar/tab state changed (chat, polls, participants)
-  }
-}
-
-// Create a listener for local participant state changes
-class SelfListener extends RtkSelfEventListener {
-  final Function(bool) onAudioChange;
-  final Function(bool) onVideoChange;
-
-  SelfListener({
-    required this.onAudioChange,
-    required this.onVideoChange,
-  });
-
-  @override
-  void onAudioUpdate(bool isEnabled) {
-    onAudioChange(isEnabled);
-  }
-
-  @override
-  void onVideoUpdate(bool isEnabled) {
-    onVideoChange(isEnabled);
-  }
-
-  @override
-  void onRemovedFromMeeting() {
-    // Local user was removed by host
-  }
-}
-
-// Register listeners after building the UI Kit
-final meeting = realtimeKitUI.meeting;
-meeting.addMeetingRoomEventListener(MeetingRoomListener(
-  onStateChange: (state) {
-    debugPrint('Meeting state: $state');
-  },
-));
-meeting.addSelfEventListener(SelfListener(
-  onAudioChange: (enabled) {
-    debugPrint('Audio: ${enabled ? "on" : "off"}');
-  },
-  onVideoChange: (enabled) {
-    debugPrint('Video: ${enabled ? "on" : "off"}');
-  },
-));
-```
-
 For React Native, use the `useRealtimeKitSelector` hook to observe specific properties on the meeting object. This pattern is similar to the web Core SDK.
 
 ```tsx
@@ -732,11 +639,6 @@ For the full list of available properties, refer to the [Core SDK meeting object
 * **Handle threading**: Event listener callbacks may fire on background threads. Use `DispatchQueue.main.async` when updating UI elements from callbacks.
 * **Understand the difference**: Event listeners provide **meeting lifecycle and participant state** changes. The UI Kit manages its own internal UI state separately.
 
-* **Remove listeners on cleanup**: Always remove event listeners in your widget's `dispose()` method to prevent memory leaks.
-* **Use Riverpod or ChangeNotifier**: Propagate meeting state changes through Riverpod providers or `ChangeNotifier` classes to keep your widget tree in sync.
-* **Rebuild only what changed**: Use `Consumer` widgets or `select` on Riverpod providers to minimize unnecessary widget rebuilds when meeting state changes.
-* **Understand the difference**: Event listeners provide **meeting lifecycle and participant state** changes. The UI Kit manages its own internal UI state separately.
-
 * **Use selectors for efficiency**: The `useRealtimeKitSelector` hook only re-renders your component when the selected value changes. Select only the specific properties you need rather than the entire meeting object.
 * **Clean up event listeners**: When using `meeting.self.on()` event listeners, always return a cleanup function from `useEffect` that calls `removeListener`.
 * **Combine with `useMemo` and `useCallback`**: Use React memoization hooks to prevent unnecessary re-renders when meeting state changes frequently.
@@ -748,8 +650,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/#page","headline":"State Management · Cloudflare Realtime docs","description":"Manage and synchronize meeting state across RealtimeKit UI Kit components.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/#page","headline":"State Management · Cloudflare Realtime docs","description":"Manage and synchronize meeting state across RealtimeKit UI Kit components.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

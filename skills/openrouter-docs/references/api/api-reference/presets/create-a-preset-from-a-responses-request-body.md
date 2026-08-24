@@ -3535,8 +3535,45 @@ components:
             - 'null'
         command:
           type: string
+        container_id:
+          description: >-
+            The canonical container id the command ran under — the
+            `{container_id}` for the Container Files API, reusable as a
+            `container_reference` in later requests. Present on every
+            sandbox-executed call, even when no files changed.
+          type: string
         exitCode:
           type: integer
+        files:
+          description: >-
+            Citations for the files the sandbox command created or modified,
+            most-recently-touched first (at most 10). Retrieve them via the
+            Container Files API.
+          items:
+            properties:
+              container_id:
+                type: string
+              end_index:
+                type: integer
+              file_id:
+                type: string
+              filename:
+                type: string
+              start_index:
+                type: integer
+              type:
+                enum:
+                  - container_file_citation
+                type: string
+            required:
+              - type
+              - container_id
+              - file_id
+              - filename
+              - start_index
+              - end_index
+            type: object
+          type: array
         id:
           type: string
         status:
@@ -4052,6 +4089,43 @@ components:
           type:
             - string
             - 'null'
+        container_id:
+          description: >-
+            The canonical container id the command ran under — the
+            `{container_id}` for the Container Files API, reusable as a
+            `container_reference` in later requests. Present on every
+            sandbox-executed call, even when no files changed.
+          type: string
+        files:
+          description: >-
+            Citations for the files the sandbox command created or modified,
+            most-recently-touched first (at most 10). Retrieve them via the
+            Container Files API.
+          items:
+            properties:
+              container_id:
+                type: string
+              end_index:
+                type: integer
+              file_id:
+                type: string
+              filename:
+                type: string
+              start_index:
+                type: integer
+              type:
+                enum:
+                  - container_file_citation
+                type: string
+            required:
+              - type
+              - container_id
+              - file_id
+              - filename
+              - start_index
+              - end_index
+            type: object
+          type: array
         id:
           type: string
         output:
@@ -7335,15 +7409,28 @@ components:
         - type
       type: object
     ContainerReferenceEnvironment:
-      description: Reference to a previously created container to reuse.
+      description: >-
+        Reference to a container by its canonical id — a previously returned
+        container_id or a fresh name to create a persistent container.
       example:
-        container_id: cntr_abc123
+        container_id: sess_abc123
         type: container_reference
       properties:
         container_id:
-          description: Identifier of an existing container to reuse (max 20 characters).
-          example: cntr_abc123
-          maxLength: 20
+          description: >-
+            Canonical container id to reuse (max 40 characters,
+            letters/digits/underscores/hyphens). Any container_id previously
+            returned by a bash or shell tool result works here and reattaches to
+            the same container and files — including session-derived ids
+            (sess_...) and generation-derived ids (gen_...). Note that a
+            session-derived id is always sess_ + the sanitized session key,
+            which is not necessarily the raw session id you sent. Using the same
+            container_id from both the bash and shell tools shares the same
+            files, with last-write-wins when both flush concurrently. A fresh
+            name creates a new persistent container. Containers are always
+            scoped to your account and workspace.
+          example: sess_abc123
+          maxLength: 40
           minLength: 1
           pattern: ^[\w-]+$
           type: string

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Local Participant
 
-Last updated Jul 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Manage local user media devices, control audio, video, and screenshare, and handle events in RealtimeKit meetings.
 
@@ -85,15 +85,6 @@ const customParticipantId = useRealtimeKitSelector(
 );
 const name = useRealtimeKitSelector((m) => m.self.name);
 const picture = useRealtimeKitSelector((m) => m.self.picture);
-```
-
-```dart
-// Participant identifiers
-meeting.localUser.id // Peer ID (unique per session)
-meeting.localUser.userId // User ID (persistent across sessions)
-meeting.localUser.customParticipantId // Custom identifier set by developer
-meeting.localUser.name // Display name
-meeting.localUser.picture // Display picture URL
 ```
 
 ### Media Properties
@@ -173,17 +164,6 @@ const screenShareTracks = useRealtimeKitSelector(
 
 // Permissions granted by user
 const mediaPermissions = useRealtimeKitSelector((m) => m.self.mediaPermissions);
-```
-
-```dart
-// Media state flags
-meeting.localUser.audioEnabled // Boolean: Is audio enabled?
-meeting.localUser.videoEnabled // Boolean: Is video enabled?
-meeting.localUser.screenShareEnabled // Boolean: Is screen share active?
-
-// Permissions granted by user
-meeting.localUser.isCameraPermissionGranted // Camera permission status
-meeting.localUser.isMicrophonePermissionGranted // Microphone permission status
 ```
 
 ### State Properties
@@ -308,16 +288,6 @@ return (
 * `'ended'` \- Meeting has ended
 * `'disconnected'` \- Disconnected from meeting
 
-```dart
-// Room state
-meeting.localUser.isHost // Boolean: Is the local user a host?
-meeting.localUser.isPinned // Boolean: Is the local user pinned?
-meeting.localUser.stageStatus // Stage status of the local user
-
-// Permissions and flags
-meeting.localUser.flags // ParticipantFlags (recorder, hidden)
-```
-
 ## Media Controls
 
 ### Audio control
@@ -405,21 +375,6 @@ function AudioControls() {
 }
 ```
 
-```dart
-// Enable audio (unmute)
-meeting.localUser.enableAudio(onResult: (e) {
-  // handle error if any
-});
-
-// Disable audio (mute)
-meeting.localUser.disableAudio(onResult: (e) {
-  // handle error if any
-});
-
-// Check current status
-final isAudioEnabled = meeting.localUser.audioEnabled;
-```
-
 ### Video control
 
 Enable and disable the camera:
@@ -497,21 +452,6 @@ function VideoControls() {
 		</TouchableHighlight>
 	);
 }
-```
-
-```dart
-// Enable video
-meeting.localUser.enableVideo(onResult: (e) {
-  // handle error if any
-});
-
-// Disable video
-meeting.localUser.disableVideo(onResult: (e) {
-  // handle error if any
-});
-
-// Check current status
-final isVideoEnabled = meeting.localUser.videoEnabled;
 ```
 
 ### Screen share control
@@ -606,24 +546,6 @@ function ScreenShareControls() {
 }
 ```
 
-```dart
-// Enable screen share
-meeting.localUser.enableScreenShare();
-
-// Disable screen share
-meeting.localUser.disableScreenShare();
-```
-
-Platform-specific setup
-
-**Android:** Declare the following permission in your app's AndroidManifest.xml to use screenshare on Android devices running Android API 14 and above:
-
-```xml
-<uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
-```
-
-**iOS:** Refer to the [Screen Share Setup (iOS)](#screen-share-setup-ios) section for additional configuration.
-
 ### Change display name
 
 Update the display name before joining the meeting:
@@ -667,16 +589,6 @@ await meeting.self.setName("New Name");
 Note
 
 Name changes only reflect across all participants if done before joining the meeting.
-
-```dart
-if (meeting.permissions.miscellaneous.canEditDisplayName) {
-  meeting.localUser.setDisplayName("New Name");
-}
-```
-
-Note
-
-Name changes only reflect across all participants if done before joining the meeting and the local user has preset permission to change the name.
 
 ## Manage media devices
 
@@ -835,20 +747,6 @@ const currentDevices = meeting.self.getCurrentDevices();
 // Returns: { audio: MediaDeviceInfo, video: MediaDeviceInfo, speaker: MediaDeviceInfo }
 ```
 
-```dart
-// Get all audio devices
-final audioDevices = await meeting.localUser.getAudioDevices();
-
-// Get all video devices
-final videoDevices = await meeting.localUser.getVideoDevices();
-
-// Get currently selected audio device
-final selectedAudioDevice = meeting.localUser.getSelectedAudioDevice();
-
-// Get currently selected video device
-final selectedVideoDevice = meeting.localUser.getSelectedVideoDevice();
-```
-
 ### Change device
 
 Switch to a different media device:
@@ -897,23 +795,6 @@ Use the device selector example from the previous section. The `handleDeviceChan
 const handleDeviceChange = async (device) => {
 	await meeting.self.setDevice(device);
 };
-```
-
-```dart
-// Get all available audio devices
-final audioDevices = await meeting.localUser.getAudioDevices();
-
-// Switch audio device
-await meeting.localUser.setAudioDevice(audioDevices[1]);
-
-// Get all available video devices
-final videoDevices = await meeting.localUser.getVideoDevices();
-
-// Switch video device
-await meeting.localUser.setVideoDevice(videoDevices[1]);
-
-// Switch between available camera sources
-meeting.localUser.switchCamera();
 ```
 
 ## Display local video
@@ -1155,75 +1036,6 @@ export default function VideoView() {
 }
 ```
 
-### VideoView widget
-
-Display video streams with the `VideoView` widget:
-
-```dart
-import 'package:realtimekit_core/realtimekit_core.dart';
-import 'package:flutter/material.dart';
-
-class LocalVideoView extends StatelessWidget {
-  final RtkMeetingParticipant localUser;
-
-  const LocalVideoView({Key? key, required this.localUser}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return VideoView(
-      meetingParticipant: localUser,
-      isSelfParticipant: true,
-    );
-  }
-}
-```
-
-### VideoView parameters
-
-The `VideoView` widget accepts the following parameters:
-
-* `meetingParticipant` (required): The `RtkMeetingParticipant` whose video should be displayed
-* `isSelfParticipant` (optional): Set to `true` for the local participant's self-preview, defaults to `false`
-* `key` (optional): Widget key for Flutter's widget tree management
-
-### Example
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:realtimekit_core/realtimekit_core.dart';
-
-class MeetingScreen extends StatelessWidget {
-  final RtkMeeting meeting;
-
-  const MeetingScreen({Key? key, required this.meeting}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Video Preview')),
-      body: Container(
-        child: VideoView(
-          meetingParticipant: meeting.localUser,
-          isSelfParticipant: true,
-        ),
-      ),
-    );
-  }
-}
-```
-
-For displaying other participants' video:
-
-```dart
-// Display remote participant video
-VideoView(
-  meetingParticipant: remoteParticipant,
-  isSelfParticipant: false,
-)
-```
-
-The `VideoView` widget automatically handles video rendering and resource cleanup based on Flutter's widget lifecycle.
-
 ## Screen share setup (iOS)
 
 ### Add broadcast upload extension
@@ -1276,61 +1088,6 @@ meeting.localUser.enableScreenShare()
 To stop the screen share:
 
 ```swift
-meeting.localUser.disableScreenShare()
-```
-
-### Add broadcast upload extension
-
-In Xcode, add a Broadcast Upload Extension through `File` → `New` → `Target`. Choose `iOS` → `Broadcast Upload Extension` and fill out the required information.
-
-### Configure app groups
-
-Add your extension to an app group:
-
-1. Go to your extension's target in the project
-2. In the Signings & Capabilities tab, click the + button in the top left
-3. Add App Groups
-4. Add App Groups to your main app as well, ensuring the App Group identifier is the same for both
-
-### Configure SampleHandler
-
-1. Place the `RtkSampleHandler.swift` file from [GitHub ↗](https://github.com/dyte-io/iOS-ScreenShare/blob/main/RtkSampleHandler.swift) in the `ios/<screenshare-folder>/` folder
-2. Create or replace `SampleHandler.swift`:
-
-```swift
-import ReplayKit
-
-class SampleHandler: RtkSampleHandler {
-}
-```
-
-### Update Info.plist
-
-Ensure **both** App and Extension Info.plist files contain these keys:
-
-```xml
-<key>RTKRTCAppGroupIdentifier</key>
-<string>(name of the group you have created)</string>
-```
-
-Add this key inside the Info.plist of the main App:
-
-```xml
-<key>RTKRTCScreenSharingExtension</key>
-<string>(Bundle Identifier of the Broadcast upload extension)</string>
-```
-
-### Enable screen share
-
-Launch the broadcast extension and enable screen share:
-
-```dart
-meeting.localUser.enableScreenShare()
-```
-
-To stop the screen share:
-
-```dart
 meeting.localUser.disableScreenShare()
 ```
 
@@ -1500,8 +1257,6 @@ useEffect(() => {
 }, [meeting]);
 ```
 
-Flutter SDK uses a different event model. Monitor `roomJoined` property changes or use listeners for state changes.
-
 ### Room left
 
 Fires when the local user leaves the meeting:
@@ -1581,19 +1336,6 @@ meeting.self.on("roomLeft", ({ state }) => {
 });
 ```
 
-```dart
-class MeetingSelfListener extends RtkSelfEventListener {
-  @override
-  void onRemovedFromMeeting() {
-    // User was removed from the meeting (kicked or meeting ended)
-    // Display alert or navigate to exit screen
-  }
-}
-
-// Add the listener
-meeting.addSelfEventListener(MeetingSelfListener());
-```
-
 ### Video update
 
 Fires when video is enabled or disabled:
@@ -1661,8 +1403,6 @@ useEffect(() => {
 }, [videoEnabled, videoTrack]);
 ```
 
-Flutter SDK uses a different event model. Monitor `videoEnabled` property changes.
-
 ### Audio update
 
 Fires when audio is enabled or disabled:
@@ -1725,8 +1465,6 @@ useEffect(() => {
 	}
 }, [audioEnabled, audioTrack]);
 ```
-
-Flutter SDK uses a different event model. Monitor `audioEnabled` property changes.
 
 ### Screen share update
 
@@ -1823,8 +1561,6 @@ useEffect(() => {
 }, [screenShareEnabled, screenShareTracks]);
 ```
 
-Flutter SDK uses a different event model. Monitor `screenShareEnabled` property changes.
-
 ### Device update
 
 Fires when the active device changes:
@@ -1911,25 +1647,6 @@ useEffect(() => {
 }, [meeting]);
 ```
 
-```dart
-class DeviceChangeListener extends RtkSelfEventListener {
-  @override
-  void onAudioDeviceChanged(AudioDevice audioDevice) {
-    // Handle audio device change
-    print('Audio device changed: ${audioDevice.label}');
-  }
-
-  @override
-  void onVideoDeviceChanged(VideoDevice videoDevice) {
-    // Handle video device change
-    print('Video device changed: ${videoDevice.label}');
-  }
-}
-
-// Add the listener
-meeting.addSelfEventListener(DeviceChangeListener());
-```
-
 ### Device List Update
 
 Triggered when the list of available devices changes (device plugged in or out):
@@ -1999,29 +1716,6 @@ useEffect(() => {
 		meeting.self.off("deviceListUpdate", handleDeviceListUpdate);
 	};
 }, [meeting]);
-```
-
-```dart
-class DeviceListListener extends RtkSelfEventListener {
-  final RealtimekitClient meeting;
-
-  DeviceListListener(this.meeting);
-
-  @override
-  void onAudioDevicesUpdated(List<AudioDevice> devices) {
-    // Triggered when audio devices are added or removed
-    // Update UI with new audio device list
-  }
-
-  @override
-  void onVideoDeviceChanged(VideoDevice videoDevice) {
-    // Handle video device change
-    print('Video device changed to: ${videoDevice.label}');
-  }
-}
-
-// Add the listener
-meeting.addSelfEventListener(DeviceListListener(meeting));
 ```
 
 ### Network Quality Score
@@ -2153,8 +1847,6 @@ useEffect(() => {
 }, [meeting]);
 ```
 
-Flutter SDK does not currently expose network quality scores.
-
 ### Permission Updates
 
 Triggered when permissions are updated dynamically:
@@ -2203,8 +1895,6 @@ useEffect(() => {
 	console.log("Permissions updated:", permissions);
 }, [permissions]);
 ```
-
-Flutter SDK uses a different permissions model. Refer to the Flutter-specific documentation.
 
 ### Media Permission Errors
 
@@ -2303,30 +1993,6 @@ useEffect(() => {
 }, [meeting]);
 ```
 
-```dart
-class PermissionListener extends RtkSelfEventListener {
-  @override
-  void onMeetingRoomJoinedWithoutCameraPermission() {
-    // Meeting joined without camera permission
-  }
-
-  @override
-  void onMeetingRoomJoinedWithoutMicPermission() {
-    // Meeting joined without microphone permission
-  }
-}
-
-// Add the listener
-meeting.addSelfEventListener(PermissionListener());
-```
-
-You can also check permission status using properties:
-
-```dart
-final hasCameraPermission = meeting.localUser.isCameraPermissionGranted;
-final hasMicPermission = meeting.localUser.isMicrophonePermissionGranted;
-```
-
 ### Waitlist Status
 
 For meetings with waiting room enabled:
@@ -2376,8 +2042,6 @@ useEffect(() => {
 	}
 }, [roomState]);
 ```
-
-Flutter SDK uses a different event model. Monitor `stageStatus` or relevant properties for waitlist status.
 
 ### iOS-Specific Events
 
@@ -2456,8 +2120,6 @@ await meeting.self.unpin();
 const isPinned = meeting.self.isPinned;
 ```
 
-Flutter SDK does not currently support pinning the local participant.
-
 ## Update Media Constraints
 
 Update video or screenshare resolution at runtime:
@@ -2492,16 +2154,14 @@ meeting.self.updateScreenshareConstraints({
 });
 ```
 
-Flutter SDK does not currently expose runtime constraint updates.
-
 Was this helpful?
 
 YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/#page","headline":"Local Participant · Cloudflare Realtime docs","description":"Manage local user media devices, audio, video, and screenshare in RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/#page","headline":"Local Participant · Cloudflare Realtime docs","description":"Manage local user media devices, audio, video, and screenshare in RealtimeKit meetings.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

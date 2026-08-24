@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Waiting Room
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/waiting-room/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/waiting-room/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Prerequisites
 
@@ -118,17 +118,6 @@ extension MeetingViewModel: RtkMeetingRoomEventListener {
 		// Local user is in the meeting
 	}
 }
-```
-
-```dart
-class MeetingRoomNotifier extends RtkMeetingRoomEventListener {
-	@override
-	void onMeetingRoomJoinCompleted() {
-		// Local user is in the meeting
-	}
-}
-
-meeting.addMeetingRoomEventListener(MeetingRoomNotifier());
 ```
 
 Monitor when the local user joins the meeting:
@@ -250,26 +239,6 @@ extension MeetingViewModel: RtkSelfEventListener {
 		}
 	}
 }
-```
-
-```dart
-class WaitingRoomNotifier extends RtkSelfEventListener {
-	@override
-	void onWaitListStatusUpdate(WaitlistStatus waitListStatus) {
-		switch (waitListStatus) {
-			case WaitlistStatus.waiting:
-			// Local user is in the waiting room
-			case WaitlistStatus.rejected:
-			// Local user's join room request was rejected by the host
-			case WaitlistStatus.accepted:
-			// Local user's join room request was accepted by the host
-			default:
-				break;
-		}
-	}
-}
-
-meeting.addSelfEventListener(WaitingRoomNotifier());
 ```
 
 Monitor when the local user is in the waiting room:
@@ -400,31 +369,6 @@ extension MeetingViewModel: RtkSelfEventListener {
 }
 ```
 
-When the host rejects the entry request, the `onWaitListStatusUpdate` callback is triggered with `WaitlistStatus.rejected`:
-
-```dart
-class WaitingRoomNotifier extends RtkSelfEventListener {
-	@override
-	void onWaitListStatusUpdate(WaitlistStatus waitListStatus) {
-		switch (waitListStatus) {
-			case WaitlistStatus.rejected:
-				// Local user's join room request was rejected by the host
-				print("Your entry request was rejected");
-			case WaitlistStatus.waiting:
-				// Local user is in the waiting room
-				break;
-			case WaitlistStatus.accepted:
-				// Local user's join room request was accepted by the host
-				break;
-			default:
-				break;
-		}
-	}
-}
-
-meeting.addSelfEventListener(WaitingRoomNotifier());
-```
-
 Monitor when the host rejects the entry request:
 
 ```tsx
@@ -506,8 +450,6 @@ if (currentState === "waitlisted") {
 	console.log("Entry was rejected");
 }
 ```
-
-Use the event listeners shown above to monitor state changes.
 
 Use the event listeners shown above to monitor state changes.
 
@@ -671,51 +613,6 @@ extension MeetingViewModel: RtkWaitlistEventListener {
 }
 ```
 
-```dart
-// Get waitlisted participants
-final waitlistedParticipants = meeting.participants.waitlisted;
-
-// Accept a participant from the waiting room
-if (waitlistedParticipants.isNotEmpty) {
-	final participant = waitlistedParticipants[0];
-	meeting.participants.acceptWaitlistedParticipant(participant);
-}
-
-// Reject a participant's entry request
-if (waitlistedParticipants.isNotEmpty) {
-	final participant = waitlistedParticipants[0];
-	meeting.participants.rejectWaitlistedParticipant(participant);
-}
-
-// Accept all waitlisted participants at once
-meeting.participants.acceptAllWaitingRoomRequests();
-
-// Listen for waiting room events
-class WaitlistStatusNotifier extends RtkWaitlistEventListener {
-	@override
-	void onWaitListParticipantJoined(RtkRemoteParticipant participant) {
-		// Called when a new participant joins the waiting room
-	}
-
-	@override
-	void onWaitListParticipantAccepted(RtkRemoteParticipant participant) {
-		// Called when a waitlisted participant is accepted into the meeting
-	}
-
-	@override
-	void onWaitListParticipantRejected(RtkRemoteParticipant participant) {
-		// Called when a waitlisted participant is denied entry
-	}
-
-	@override
-	void onWaitListParticipantClosed(RtkRemoteParticipant participant) {
-		// Called when a waitlisted participant leaves the waiting room
-	}
-}
-
-meeting.addWaitlistEventListener(WaitlistStatusNotifier());
-```
-
 ```tsx
 import {
 	useRealtimeKitClient,
@@ -772,8 +669,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/waiting-room/#page","headline":"Waiting Room · Cloudflare Realtime docs","description":"Control meeting access with a waiting room that requires host approval in RealtimeKit.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/waiting-room/#page","headline":"Waiting Room · Cloudflare Realtime docs","description":"Control meeting access with a waiting room that requires host approval in RealtimeKit.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

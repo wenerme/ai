@@ -163,3 +163,9 @@ If you believe an API key has been exposed, misused, or otherwise compromised,
 revoke it promptly and replace it with a new key. Go to your [Security
 settings](https://platform.openai.com/settings/profile/security) to view all API
 keys and revoke any compromised keys.
+
+### CSAM guidance
+
+OpenAI has worked with child safety experts, including NCMEC and Thorn, to offer
+developers practical guidance for protecting children. [Read the CSAM
+guidance](https://developers.openai.com/api/docs/guides/csam-guidance).

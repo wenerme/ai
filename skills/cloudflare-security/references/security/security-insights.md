@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Security Insights
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security/security-insights/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security/security-insights/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 User permission
 
@@ -46,7 +46,6 @@ Listed below are the specific insights currently available:
 | [Overprovisioned Access Policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)                                                                         | We detect an Access policy to allow everyone access to your application.                                                                                                                                                                             |
 | [Client-side security not enabled](https://developers.cloudflare.com/client-side-security/get-started/)                                                                               | Client-side security (formerly known as Page Shield) helps meet PCI DSS v4.0 compliance regarding requirement 6.4.3.                                                                                                                                 |
 | [SPF Record Errors](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#spf)                                                                         | We detect an incorrect or missing SPF record.                                                                                                                                                                                                        |
-| [Schema Validation missing from eligible API endpoints](https://developers.cloudflare.com/api-shield/security/schema-validation/)                                                     | Apply the learned schema to protect your API against fuzzing attacks.                                                                                                                                                                                |
 | [Sensitive data in API response](https://developers.cloudflare.com/api-shield/management-and-monitoring/#sensitive-data-detection)                                                    | Sensitive data in API responses detected.                                                                                                                                                                                                            |
 | [Turn on JavaScript Detection](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/)                                                               | One or more of your Bot Management enabled zones does not have JavaScript Detection enabled, which is a critical part of our bot detection suite.                                                                                                    |
 | [Unassigned Access seats](https://developers.cloudflare.com/cloudflare-one/)                                                                                                          | We detect a Zero Trust subscription that is not configured yet.                                                                                                                                                                                      |
@@ -84,8 +83,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/security-insights/#page","headline":"Security Insights · Security dashboard docs","description":"Scan your account for misconfigurations and potential security risks across all domains.","url":"https://developers.cloudflare.com/security/security-insights/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/security-insights/#page","headline":"Security Insights · Security dashboard docs","description":"Scan your account for misconfigurations and potential security risks across all domains.","url":"https://developers.cloudflare.com/security/security-insights/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

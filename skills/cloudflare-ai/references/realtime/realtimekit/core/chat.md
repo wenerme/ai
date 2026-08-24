@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Chat
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/chat/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/chat/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how to send and receive chat messages in a meeting using Cloudflare RealtimeKit.
 
@@ -92,24 +92,6 @@ The `meeting.chat.messages` array contains all the messages that have been sent 
 
 ```plaintext
 meeting.chat.messages
-```
-
-There are three types of messages that can be sent in chat:
-
-* Text messages
-* Images
-* Files
-
-The meeting chat object is stored in `meeting.chat`, which has methods for sending and receiving messages.
-
-```plaintext
-meeting.chat;
-```
-
-The `meeting.chat.messages` array contains all the messages that have been sent in the chat. This is an array of objects, where each object is of type `ChatMessage`.
-
-```plaintext
-meeting.chat.messages;
 ```
 
 There are three types of messages that can be sent in chat:
@@ -264,35 +246,6 @@ public final class FileMessage: ChatMessage {
 }
 ```
 
-The `ChatMessage` class is defined as follows:
-
-```dart
-enum MessageType { text, image, file }
-
-class ChatMessage {
-  final String displayName;
-  final MessageType type;
-  final bool read;
-  final String userId;
-  final String? pluginId;
-  final String time;
-}
-
-class TextMessage extends ChatMessage {
-  final String message;
-}
-
-class ImageMessage extends ChatMessage {
-  final String link;
-}
-
-class FileMessage extends ChatMessage {
-  final String name;
-  final String link;
-  final int size;
-}
-```
-
 The `Message` type is defined as follows:
 
 ```typescript
@@ -370,15 +323,6 @@ There is a method in `meeting.chat` to send a message of each type.
 
 To send a text message, use the `meeting.chat.sendTextMessage()` method. This accepts a string message and sends it to the room.
 
-```dart
-final message = "Is this the real life?";
-meeting.chat.sendTextMessage(message);
-```
-
-There is a method in `meeting.chat` to send a message of each type.
-
-To send a text message, use the `meeting.chat.sendTextMessage()` method. This accepts a string message and sends it to the room.
-
 ```jsx
 const message = "Is this the real life?";
 await meeting.chat.sendTextMessage(message);
@@ -446,15 +390,6 @@ You can send an image with the help of `meeting.chat.sendImageMessage()` and sen
 meeting.chat.sendImageMessage(imageURL: url) { err in
   // Handle error if any
 }
-```
-
-You can send an image with the help of `meeting.chat.sendImageMessage()` which sends it to the participants in the meeting. It takes a string filePath as argument.
-
-```dart
-final filePath = "file_path_of_image";
-meeting.chat.sendImageMessage(filePath, (error) {
-  // Handle error if any
-});
 ```
 
 You can send an image with the help of `meeting.chat.sendImageMessage()`. This accepts an image of type File, and sends it to the participants in the meeting.
@@ -533,15 +468,6 @@ Sending a file is similar to sending an image. The only difference is that when 
 meeting.chat.sendFileMessage(fileURL: url) { err in
   // Handle error if any
 }
-```
-
-You can send a file with the help of `meeting.chat.sendFileMessage()` which sends it to the participants in the meeting. It takes a string filePath as argument.
-
-```dart
-final filePath = "file_path_of_pdf";
-meeting.chat.sendFileMessage(filePath, (error) {
-  // Handle error if any
-});
 ```
 
 Sending a file is similar to sending an image. The only difference is that when you send an image, a preview will be shown in the meeting chat, which is not the case for sending files. That being said, an image can be sent as a file too using `meeting.chat.sendFileMessage()`.
@@ -726,48 +652,6 @@ The `onChatUpdates()` method will be called whenever there is a change in the ch
 The `onNewChatMessage()` method will be called whenever a new chat message is shared in the meeting. The `message` parameter is a `ChatMessage` object that has been sent in the chat.
 
 The `onMessageRateLimitReset()` method will be called when the rate limit for sending messages of self is reset and you can send messages again. The default rate limit is 180 messages within 60 seconds.
-
-To be able to receive chat messages you need to implement a method `onChatUpdates()` method from callback `RtkChatEventListener`. You can subscribe to this events by calling `meeting.addChatEventListener(rtkChatEventListener)`.
-
-```dart
-class ChatEventListener extends RtkChatEventListener {
-  @override
-  void onChatUpdates(List<ChatMessage> messages) {
-    messages.map((msg) {
-      switch (msg.type) {
-        case MessageType.text:
-          print((msg as TextMessage).displayName);
-          print((msg).message);
-
-          // Show message/return state to show text message UI.
-
-          break;
-        case MessageType.image:
-          print((msg as ImageMessage).displayName);
-          print((msg).link);
-
-          // Show message/return state to show image message UI.
-          break;
-        case MessageType.file:
-          print((msg as FileMessage).name);
-          print((msg).link);
-          print((msg).size);
-          // Show message/return state to show file message UI.
-
-          break;
-      }
-    });
-  }
-
-  void onNewChatMessage(ChatMessage message) {
-    // your code to handle new chat message
-  }
-}
-```
-
-In this context, `messages` refers to a list of all the chat messages in the meeting. The type of message used is `ChatMessage`, which was introduced earlier in the introduction to Chat topic.
-
-Whenever a chat message is received, the `meeting.chat.messages` list is automatically updated.
 
 The `meeting.chat` object emits events when new chat messages are received. You can listen for the `chatUpdate` event to log when a new chat message is received.
 
@@ -1311,8 +1195,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/chat/#page","headline":"Chat · Cloudflare Realtime docs","description":"Send and receive chat messages in RealtimeKit meetings using the Core SDK.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/chat/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/chat/#page","headline":"Chat · Cloudflare Realtime docs","description":"Send and receive chat messages in RealtimeKit meetings using the Core SDK.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/chat/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

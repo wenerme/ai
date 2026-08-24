@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build using Core SDK
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ### Initialize Core SDK
 
@@ -177,34 +177,6 @@ Initialize the meeting by calling the `doInit()` method. This establishes a conn
 
 ```swift
 meeting.doInit(meetingInfo: meetingInfo, onSuccess: {}, onFailure: {_ in})
-```
-
-Initialize the RealtimeKit SDK by creating an instance of `RealtimeKitClient`.
-
-```dart
-final meeting = RealtimeKitClient();
-```
-
-Configure the meeting properties in the `RtkMeetingInfo` class with a valid participant `authToken` from the [Add participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/).
-
-```dart
-final meetingInfo = RtkMeetingInfo(
-                    authToken: authToken,
-                    enableAudio: false,
-                    enableVideo: false,
-                  );
-```
-
-Initialize the connection by calling the `init()` method. This establishes a connection with the RealtimeKit meeting server.
-
-```dart
-meeting.init(meetingInfo);
-```
-
-Subscribe to the `RtkMeetingRoomEventListener` to receive callbacks for meeting events.
-
-```dart
-meeting.addMeetingRoomEventListener(RoomStateNotifier());
 ```
 
 Initialize the RealtimeKit SDK using the `useRealtimeKitClient` hook.
@@ -396,8 +368,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/#page","headline":"Build using Core SDK · Cloudflare Realtime docs","description":"Initialize and build with the RealtimeKit Core SDK for full control over video calls.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/#page","headline":"Build using Core SDK · Cloudflare Realtime docs","description":"Initialize and build with the RealtimeKit Core SDK for full control over video calls.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
