@@ -68,6 +68,8 @@ tags:
     name: Chat
   - description: Task classification market-share endpoints
     name: Classifications
+  - description: Containers endpoints
+    name: Containers
   - description: Credit management endpoints
     name: Credits
   - description: >-

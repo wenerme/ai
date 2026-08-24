@@ -102,6 +102,8 @@ Create an issue on repository
 
 **--description, -d**="": 
 
+**--description-file**="": Read description from file ('-' for stdin)
+
 **--labels, -L**="": Comma-separated list of labels to assign
 
 **--login, -l**="": Use a different Gitea Login. Optional
@@ -127,6 +129,8 @@ Edit one or more issues
 **--deadline, -D**="": Deadline timestamp to assign
 
 **--description, -d**="": 
+
+**--description-file**="": Read description from file ('-' for stdin)
 
 **--login, -l**="": Use a different Gitea Login. Optional
 

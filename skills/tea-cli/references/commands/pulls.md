@@ -88,6 +88,8 @@ Create a pull-request
 
 **--description, -d**="": 
 
+**--description-file**="": Read description from file ('-' for stdin)
+
 **--draft**: Create as a draft (prepends "WIP: " to the title; Gitea treats WIP-prefixed PRs as drafts)
 
 **--head**="": Branch name of the PR source (default is current one). To specify a different head repo, use <user>:<branch>
@@ -145,6 +147,8 @@ Edit one or more pull requests
 **--deadline, -D**="": Deadline timestamp to assign
 
 **--description, -d**="": 
+
+**--description-file**="": Read description from file ('-' for stdin)
 
 **--draft**: Mark as draft by prepending "WIP: " to the title (idempotent)
 

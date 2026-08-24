@@ -14,6 +14,10 @@ keywords: Ultralytics, engine results, BaseTensor, Results class, Boxes, Masks, 
 
 <hr>
 
+## ::: ultralytics.engine.results._DenseResultTensor
+
+<hr>
+
 ## ::: ultralytics.engine.results.SemanticMask
 
 <hr>

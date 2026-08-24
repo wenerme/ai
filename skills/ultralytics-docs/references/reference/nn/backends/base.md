@@ -14,4 +14,4 @@ keywords: Ultralytics, BaseBackend, inference backend, abstract class, model loa
 
 <hr>
 
-## ::: ultralytics.nn.backends.base.read_tflite_metadata
+## ::: ultralytics.nn.backends.base._read_proto_map
