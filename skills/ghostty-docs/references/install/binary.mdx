@@ -113,6 +113,15 @@ Additionally, prerelease builds are also available on the AUR
 under `ghostty-git`. See the ["Prerelease Builds"](/docs/install/pre#aur)
 for specific details.
 
+### conda-forge
+
+Ghostty is available on [`conda-forge`](https://conda-forge.org), a cross-platform, community-driven packaging system.
+It can be installed using [`pixi`](https://pixi.prefix.dev/latest/#installation).
+
+```sh
+pixi global install ghostty
+```
+
 ### Gentoo
 
 Ghostty is available in the official Gentoo repository.
@@ -178,11 +187,16 @@ without extra setup. This is because graphical programs compiled for Nixpkgs
 expect OpenGL drivers to be located in a different location than traditional
 distros, and will fail to find them if not manually worked around.
 
-There are multiple ways to fix this, either by running Ghostty with a
-wrapper program like [`nixGL`] or [`nix-gl-host`] that sets up the correct
-OpenGL driver paths, or use a more permanent solution like
-[`nix-system-graphics`].
+There are multiple ways to fix this: if you use Home Manager, you can 
+[`modify your system`] and put your graphics drivers where they are located on NixOS, 
+or [`wrap your programs`] and point them at the correct drivers.
 
+If you use neither NixOS nor Home Manager, you can also use standalone wrapper tools 
+like [`nixGL`], [`nix-gl-host`] and [`nix-system-graphics`], who all achieve 
+the same end goal in slightly different ways.
+
+[`modify your system`]: https://nix-community.github.io/home-manager/index.xhtml#sec-usage-gpu-sudo
+[`wrap your programs`]: https://nix-community.github.io/home-manager/index.xhtml#sec-usage-gpu-nosudo
 [`nixGL`]: https://github.com/nix-community/nixGL
 [`nix-gl-host`]: https://github.com/numtide/nix-gl-host
 [`nix-system-graphics`]: https://github.com/soupglasses/nix-system-graphics
@@ -190,6 +204,28 @@ OpenGL driver paths, or use a more permanent solution like
 Other than that, instructions are nearly identical to NixOS.
 
 ### openSUSE
+
+Ghostty is available from official openSUSE `repo-oss` repository:
+
+```sh
+sudo zypper in ghostty
+```
+
+You can check the package's details if you want:
+
+```sh
+sudo zypper info ghostty
+```
+
+In the past, <code>ghostty</code> was removed from the official repo because of a mismatch between Zig versions. <strong>If your install command is not working, see here.</strong>
+
+#### Removed from official repo: end of 2025 to ~March 2026
+
+> This note is kept for future reference, to provide relevant info to users
+> in case it happens again. Right now (July 2026) Ghostty should be back in
+> [the official repo.](https://build.opensuse.org/package/show/openSUSE%3AFactory/ghostty)
+
+---
 
 openSUSE has [dropped][opensuse-dropped] Ghostty from its official repositories
 as it does not allow packages to depend on a specific version of Zig. This is a
@@ -221,6 +257,20 @@ Ghostty is available in the official package repository.
 
 ```sh
 eopkg install ghostty
+```
+
+### Ubuntu
+
+Ghostty is available in the official package repository starting from Ubuntu 26.04.
+
+> [!NOTE]
+> The official repository might not always package the most recent version of
+> Ghostty. If your Ghostty version is not up to date, you could also consider
+> installing the [community .deb package](#debian-and-ubuntu) instead, though
+> the usual risks of using unofficial packages still apply.
+
+```sh
+apt install ghostty
 ```
 
 ### Void Linux
@@ -286,9 +336,16 @@ rpm-ostree refresh-md && \
 rpm-ostree install ghostty
 ```
 
-### Ubuntu
+### Debian and Ubuntu
 
-An Ubuntu package (.deb) is available from
+> [!NOTE]
+> Ghostty is included in the official Ubuntu package repository starting
+> from Ubuntu 26.04, and you can install it by following the instructions for
+> the [official Ubuntu package](#ubuntu). However, the community package could
+> be in some cases more up-to-date than the official package, and is also the
+> only prebuilt option for older Ubuntu versions.
+
+Ghostty is available as a community-built .deb package for Ubuntu and Debian from
 [ghostty-ubuntu](https://github.com/mkasberg/ghostty-ubuntu) on GitHub. You can install it using the following command:
 
 ```sh

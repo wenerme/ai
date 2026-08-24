@@ -167,6 +167,7 @@ doas apk add \
 sudo pacman -S \
   gtk4 \
   gtk4-layer-shell \
+  pkgconf \
   libadwaita \
   gettext
 ```
@@ -228,7 +229,8 @@ sudo zypper install \
   pkgconf \
   ncurses-devel \
   zig \
-  gettext
+  gettext \
+  gtk4-layer-shell-devel
 ```
 
 #### openSUSE Leap
@@ -288,6 +290,16 @@ If Ghostty fails to launch using an app icon in your app launcher,
 ensure that `~/.local/bin` is on your _system_ `PATH`. The desktop environment
 itself must have that path in the `PATH`. Google for your specific desktop
 environment and distribution to learn how to do that.
+
+If you built Ghostty with the `-fno-sys=gtk4-layer-shell` flag, you may
+additionally require the `LD_LIBRARY_PATH` environment variable to be set to
+`$HOME/.local/lib`. To avoid globally polluting `LD_LIBRARY_PATH` when launching
+from a desktop environment, you can simply patch the installed Ghostty elf with
+`patchelf`:
+
+```shell-session
+patchelf --set-rpath '$ORIGIN/../lib' $HOME/.local/bin/ghostty
+```
 
 For system-wide installs, we recommend `/usr` (likely requires `sudo`):
 
