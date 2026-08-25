@@ -28,7 +28,7 @@ When using the API you must either set the `asset_name` or set both the `content
 
 ### Response code
 
-API name: **`status_code`** `Integer`Optional
+API name: **`status_code`** `Integer` Optional
 
 The HTTP status code of the response. If provided, this value will override the current response status code.
 
@@ -36,7 +36,7 @@ The status code must be between `400` and `999`.
 
 ### Asset
 
-API name: **`asset_name`** `String`Optional
+API name: **`asset_name`** `String` Optional
 
 The name of the [custom error asset](#custom-error-assets) you previously uploaded (in the dashboard, you can create an asset when creating the rule). The asset may include [error tokens](https://developers.cloudflare.com/rules/custom-errors/reference/error-tokens/) that will be replaced with real values before sending the error response to the visitor.
 
@@ -48,7 +48,7 @@ When using the API, you must provide either the `asset_name` or the `content` pa
 
 ### JSON response / HTML response / Text response / XML response
 
-API names: **`content`** `String`Optional and **`content_type`** `String`Required
+API names: **`content`** `String` Optional and **`content_type`** `String` Required
 
 The response body to return. It can include [error tokens](https://developers.cloudflare.com/rules/custom-errors/reference/error-tokens/) that will be replaced with real values before sending the error response to the visitor.
 
@@ -79,7 +79,7 @@ Custom error assets have the following parameters:
 
 ### Asset name
 
-API name: **`name`** `String`Required
+API name: **`name`** `String` Required
 
 The name of the custom error asset. Example value: `"500_error_template"`.
 
@@ -93,13 +93,13 @@ The maximum length is 200 characters.
 
 ### Description
 
-API name: **`description`** `String`Optional
+API name: **`description`** `String` Optional
 
 A string describing the custom error asset. Example value: `"Standard 5xx error template page"`.
 
 ### Asset address
 
-API name: **`url`** `String`Required
+API name: **`url`** `String` Required
 
 The URL of the page you want Cloudflare to fetch and store, to be served later to visitors as error pages according to the configured [custom error rules](#custom-error-rules). Example value: `"https://example.com/errors/500.html"`.
 
@@ -119,8 +119,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/custom-errors/reference/parameters/#page","headline":"Custom Errors parameters · Cloudflare Rules docs","description":"Configurable parameters for custom error rules.","url":"https://developers.cloudflare.com/rules/custom-errors/reference/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/custom-errors/reference/parameters/#page","headline":"Custom Errors parameters · Cloudflare Rules docs","description":"Configurable parameters for custom error rules.","url":"https://developers.cloudflare.com/rules/custom-errors/reference/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

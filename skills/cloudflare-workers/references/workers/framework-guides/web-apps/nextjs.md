@@ -1,5 +1,5 @@
 ---
-description: Create an Next.js application and deploy it to Cloudflare Workers with Workers Assets.
+description: Create a Next.js application with vinext and deploy it to Cloudflare Workers.
 title: Next.js
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,59 +12,202 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Next.js
 
-Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-**Start from CLI** \- scaffold a Next.js project on Workers.
+Use vinext to create or migrate a Next.js application and deploy it to Cloudflare Workers.
 
-npmyarnpnpm
+Cloudflare recommends [vinext ↗](https://vinext.dev/) as the default way to run Next.js applications on Cloudflare Workers. vinext gives you two starting points: scaffold a new Workers-ready app with `create-vinext-app`, or add vinext to an existing Next.js 16 app with a single non-destructive `vinext init` (your existing `next dev` keeps working). You do not need a Cloudflare-specific template either way.
 
-```
-npm create cloudflare@latest -- my-next-app --framework=next
-```
-
-```
-yarn create cloudflare my-next-app --framework=next
-```
-
-```
-pnpm create cloudflare@latest my-next-app --framework=next
-```
-
-This is a simple getting started guide. For detailed documentation on how to use the Cloudflare OpenNext adapter, visit the [OpenNext website ↗](https://opennext.js.org/cloudflare).
+Already on OpenNext? See [other Next.js deployment paths](#use-another-nextjs-deployment-path).
 
 ## What is Next.js?
 
-[Next.js ↗](https://nextjs.org/) is a [React ↗](https://react.dev/) framework for building full stack applications.
+[Next.js ↗](https://nextjs.org/) is a [React ↗](https://react.dev/) framework for building full-stack applications.
 
-Next.js supports Server-side and Client-side rendering, as well as Partial Prerendering which lets you combine static and dynamic components in the same route.
+Next.js supports server-side rendering, client-side rendering, static generation, React Server Components, Server Actions, route handlers, and middleware.
 
-You can deploy your Next.js app to Cloudflare Workers using the OpenNext adapter.
+## What is vinext?
 
-## Next.js supported features
+[vinext ↗](https://github.com/cloudflare/vinext) is a Vite plugin that reimplements the Next.js API surface. You can keep your existing `app/`, `pages/`, `next.config.js`, and `public/` directories while using the Vite toolchain.
 
-Most Next.js features are supported by the Cloudflare OpenNext adapter:
+vinext is in beta. Before adopting it for an existing production application, run the compatibility check from your project directory and review the [vinext compatibility dashboard ↗](https://vinext.dev/compatibility).
 
-| Feature                               | Cloudflare adapter  | Notes                                                                        |
-| ------------------------------------- | ------------------- | ---------------------------------------------------------------------------- |
-| App Router                            | 🟢 supported        |                                                                              |
-| Pages Router                          | 🟢 supported        |                                                                              |
-| Route Handlers                        | 🟢 supported        |                                                                              |
-| React Server Components               | 🟢 supported        |                                                                              |
-| Static Site Generation (SSG)          | 🟢 supported        |                                                                              |
-| Server-Side Rendering (SSR)           | 🟢 supported        |                                                                              |
-| Incremental Static Regeneration (ISR) | 🟢 supported        |                                                                              |
-| Server Actions                        | 🟢 supported        |                                                                              |
-| Response streaming                    | 🟢 supported        |                                                                              |
-| asynchronous work with next/after     | 🟢 supported        |                                                                              |
-| Middleware                            | 🟢 supported        |                                                                              |
-| Image optimization                    | 🟢 supported        | Supported via [Cloudflare Images](https://developers.cloudflare.com/images/) |
-| Partial Prerendering (PPR)            | 🟢 supported        | PPR is experimental in Next.js                                               |
-| Composable Caching ('use cache')      | 🟢 supported        | Composable Caching is experimental in Next.js                                |
-| Node.js in Middleware                 | ⚪ not yet supported | Node.js middleware introduced in 15.2 are not yet supported                  |
+npmyarnpnpm
 
-## Deploy a new Next.js project on Workers
+```
+npx vinext check
+```
 
-1. **Create a new project with the create-cloudflare CLI (C3).**
+```
+yarn dlx vinext check
+```
+
+```
+pnpx vinext check
+```
+
+## Supported features
+
+vinext supports most commonly used Next.js features on Cloudflare Workers:
+
+| Feature                               | vinext support      | Notes                                                                                                                                                                                                                                                  |
+| ------------------------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| App Router                            | Supported           | Includes layouts, route handlers, metadata, loading, error, and not-found routes.                                                                                                                                                                      |
+| Pages Router                          | Supported           | Includes getStaticProps, getStaticPaths, and getServerSideProps.                                                                                                                                                                                       |
+| React Server Components               | Supported           | Uses Vite's React Server Components support.                                                                                                                                                                                                           |
+| Server Actions                        | Supported           | Works with forms and server mutations.                                                                                                                                                                                                                 |
+| Server-side rendering                 | Supported           | Includes streaming rendering.                                                                                                                                                                                                                          |
+| Static generation and static export   | Supported           | Use output: "export" for static exports.                                                                                                                                                                                                               |
+| Incremental Static Regeneration (ISR) | Supported           | Uses a stale-while-revalidate caching model so Workers can serve cached content while refreshing it in the background. Refer to [asynchronous revalidation](https://developers.cloudflare.com/cache/concepts/revalidation/#asynchronous-revalidation). |
+| Middleware and proxy routes           | Supported           | Includes middleware.ts and proxy.ts.                                                                                                                                                                                                                   |
+| next/\* imports                       | Mostly supported    | Review the compatibility dashboard for module-level details.                                                                                                                                                                                           |
+| Cloudflare bindings                   | Supported           | Use cloudflare:workers in server components, route handlers, and server actions.                                                                                                                                                                       |
+| Image optimization                    | Partially supported | Cloudflare image optimization is available at request time.                                                                                                                                                                                            |
+
+For detailed compatibility results, refer to [vinext compatibility ↗](https://vinext.dev/compatibility).
+
+## Choose a setup path
+
+Most Next.js projects can start from the same workflow: open a Next.js app, check compatibility, add vinext, then deploy to Workers.
+
+* Use [Add vinext with an agent](#add-vinext-with-an-agent) if you want an agent to inspect the project and apply the migration.
+* Use [Add vinext with the CLI](#add-vinext-with-the-cli) if you want a direct, repeatable command-line setup.
+* Use [Create a Cloudflare-ready project](#create-a-cloudflare-ready-project) if you want to scaffold a new project already configured for Workers.
+
+## Add vinext with an agent
+
+Use the vinext Agent Skill when you want a coding agent to inspect your Next.js project, run compatibility checks, update configuration, and start the vinext development server.
+
+1. **Open your Next.js project.**
+Use an existing project, or create a project with your preferred Next.js setup flow.
+2. **Install the vinext Agent Skill.**
+npmyarnpnpm
+```
+npx skills add cloudflare/vinext
+```
+```
+yarn dlx skills add cloudflare/vinext
+```
+```
+pnpx skills add cloudflare/vinext
+```
+3. **Prompt your agent.**
+In your coding agent, run the following prompt:
+```txt
+migrate this project to vinext
+```
+The skill runs vinext compatibility checks, applies the migration, and flags issues that need manual attention.
+4. **Develop with vinext.**
+Start the vinext development server.
+npmyarnpnpm
+```
+npm run dev:vinext
+```
+```
+yarn run dev:vinext
+```
+```
+pnpm run dev:vinext
+```
+5. **Build with vinext.**
+Build the production output with vinext.
+npmyarnpnpm
+```
+npm run build:vinext
+```
+```
+yarn run build:vinext
+```
+```
+pnpm run build:vinext
+```
+6. **Deploy to Workers.**
+Deploy with the vinext Cloudflare deploy command.
+npmyarnpnpm
+```
+npx @vinext/cloudflare deploy
+```
+```
+yarn dlx @vinext/cloudflare deploy
+```
+```
+pnpx @vinext/cloudflare deploy
+```
+
+## Add vinext with the CLI
+
+Use `vinext init` when you want a direct command-line setup. The migration is non-destructive: your existing Next.js setup continues to work alongside vinext while you test the Cloudflare Workers deployment.
+
+1. **Open your Next.js project.**
+Use an existing project, or create a project with your preferred Next.js setup flow.
+2. **Check compatibility.**
+Run the vinext compatibility check from your Next.js project directory.
+npmyarnpnpm
+```
+npx vinext check
+```
+```
+yarn dlx vinext check
+```
+```
+pnpx vinext check
+```
+Review any reported compatibility issues before continuing.
+3. **Initialize vinext.**
+Run the vinext initializer and choose Cloudflare Workers as the deployment target when prompted.
+npmyarnpnpm
+```
+npx vinext init
+```
+```
+yarn dlx vinext init
+```
+```
+pnpx vinext init
+```
+`vinext init` installs vinext and Vite dependencies, adds vinext scripts, generates the Vite configuration, and creates the Cloudflare Workers configuration.
+4. **Develop with vinext.**
+Start the vinext development server.
+npmyarnpnpm
+```
+npm run dev:vinext
+```
+```
+yarn run dev:vinext
+```
+```
+pnpm run dev:vinext
+```
+5. **Build with vinext.**
+Build the production output with vinext.
+npmyarnpnpm
+```
+npm run build:vinext
+```
+```
+yarn run build:vinext
+```
+```
+pnpm run build:vinext
+```
+6. **Deploy to Workers.**
+Deploy with the vinext Cloudflare deploy command.
+npmyarnpnpm
+```
+npx @vinext/cloudflare deploy
+```
+```
+yarn dlx @vinext/cloudflare deploy
+```
+```
+pnpx @vinext/cloudflare deploy
+```
+
+## Create a Cloudflare-ready project
+
+Use the create-cloudflare CLI (C3) when you want to scaffold a new Next.js project already configured for Cloudflare Workers.
+
+1. **Create a new project with C3.**
 npmyarnpnpm
 ```
 npm create cloudflare@latest -- my-next-app --framework=next
@@ -75,10 +218,10 @@ yarn create cloudflare my-next-app --framework=next
 ```
 pnpm create cloudflare@latest my-next-app --framework=next
 ```
-What's happening behind the scenes?
-When you run this command, C3 creates a new project directory, initiates [Next.js's official setup tool ↗](https://nextjs.org/docs/app/api-reference/cli/create-next-app), and configures the project for Cloudflare. It then offers the option to instantly deploy your application to Cloudflare.
-2. **Develop locally.**
-After creating your project, run the following command in your project directory to start a local development server. The command uses the Next.js development server. It offers the best developer experience by quickly reloading your app every time the source code is updated.
+Command behavior
+C3 creates a new Next.js project, configures vinext for Cloudflare Workers, installs the required dependencies, and offers to deploy the application.
+2. **Develop with vinext.**
+Change to your project directory and start the local development server.
 npmyarnpnpm
 ```
 npm run dev
@@ -89,21 +232,20 @@ yarn run dev
 ```
 pnpm run dev
 ```
-3. **Test and preview your site with the Cloudflare adapter.**
+3. **Build your application.**
+Run the generated build script before deploying or testing a production build.
 npmyarnpnpm
 ```
-npm run preview
+npm run build
 ```
 ```
-yarn run preview
+yarn run build
 ```
 ```
-pnpm run preview
+pnpm run build
 ```
-What's the difference between dev and preview?
-The command used in the previous step uses the Next.js development server, which runs in Node.js. However, your deployed application will run on Cloudflare Workers, which uses the `workerd` runtime. Therefore when running integration tests and previewing your application, you should use the preview command, which is more accurate to production, as it executes your application in the `workerd` runtime using `wrangler dev`.
 4. **Deploy your project.**
-You can deploy your project to a [\*.workers.dev subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) or a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) from your local machine or any CI/CD system (including [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/#workers-builds)). Use the following command to build and deploy. If you're using a CI service, be sure to update your "deploy command" accordingly.
+Deploy your project to a [\*.workers.dev subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) or a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
 npmyarnpnpm
 ```
 npm run deploy
@@ -114,184 +256,21 @@ yarn run deploy
 ```
 pnpm run deploy
 ```
-Note
-[**Workers Builds**](https://developers.cloudflare.com/workers/ci-cd/builds/) requires you to configure environment variables in the ["Build Variables and secrets"](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#:~:text=Build%20variables%20and%20secrets) section.
-This ensures the Next build has the necessary access to both public `NEXT_PUBLIC_...` variables and [non-NEXT\_PUBLIC\_... ↗](https://nextjs.org/docs/pages/guides/environment-variables#bundling-environment-variables-for-the-browser), which are essential for tasks like inlining and building SSG pages.
-Learn more in the [OpenNext environment variable guide ↗](https://opennext.js.org/cloudflare/howtos/env-vars#workers-builds)
 
-## Deploy an existing Next.js project on Workers
+## Access Cloudflare bindings
 
-Automatic configuration
+In vinext applications deployed to Workers, use `cloudflare:workers` to access bindings from server components, route handlers, and server actions. Define bindings in your Wrangler configuration, then generate types with [wrangler types](https://developers.cloudflare.com/workers/wrangler/commands/workers/#types).
 
-Run `wrangler deploy` in a project without a Wrangler configuration file and Wrangler will automatically detect Next.js, generate the necessary configuration, and deploy your project.
+For example, you can import `env` from `cloudflare:workers` in server-side application code to access D1, R2, KV, Durable Objects, Workers AI, Queues, Vectorize, and other bindings.
 
-npmyarnpnpm
+## Use another Next.js deployment path
 
-```
-npx wrangler deploy
-```
+vinext is the recommended path for Next.js applications on Cloudflare Workers, but other deployment paths remain documented:
 
-```
-yarn wrangler deploy
-```
-
-```
-pnpm wrangler deploy
-```
-
-Learn more about [automatic project configuration](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/).
-
-Next.jsDetected
-
-Generated configuration
-
-wrangler.jsonc
-
-main:.open-next/worker.js
-
-wrangler.jsonc
-
-assets:directory: .open-next/assets
-
-wrangler.jsonc
-
-compatibility\_flags:nodejs\_compat
-
-wrangler.jsonc
-
-observability:enabled: true
-
-package.json
-
-adapter:@opennextjs/cloudflare
-
-WorkersDeployed
-
-Wrangler handles configuration automatically
-
-## Manual configuration
-
-If you prefer to configure your project manually, follow the steps below.
-
-1. **Install [@opennextjs/cloudflare ↗](https://www.npmjs.com/package/@opennextjs/cloudflare)**
-npmyarnpnpmbun
-```
-npm i @opennextjs/cloudflare@latest
-```
-```
-yarn add @opennextjs/cloudflare@latest
-```
-```
-pnpm add @opennextjs/cloudflare@latest
-```
-```
-bun add @opennextjs/cloudflare@latest
-```
-2. **Install [wrangler CLI ↗](https://developers.cloudflare.com/workers/wrangler) as a devDependency**
-npmyarnpnpmbun
-```
-npm i -D wrangler@latest
-```
-```
-yarn add -D wrangler@latest
-```
-```
-pnpm add -D wrangler@latest
-```
-```
-bun add -d wrangler@latest
-```
-3. **Add a Wrangler configuration file**
-In your project root, create a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) with the following content:
-```jsonc
-{
-	"$schema": "./node_modules/wrangler/config-schema.json",
-	"main": ".open-next/worker.js",
-	"name": "my-app",
-	// Set this to today's date
-	"compatibility_date": "2026-07-22",
-	"compatibility_flags": [
-		"nodejs_compat"
-	],
-	"assets": {
-		"directory": ".open-next/assets",
-		"binding": "ASSETS"
-	}
-}
-```
-```toml
-"$schema" = "./node_modules/wrangler/config-schema.json"
-main = ".open-next/worker.js"
-name = "my-app"
-# Set this to today's date
-compatibility_date = "2026-07-22"
-compatibility_flags = [ "nodejs_compat" ]
-[assets]
-directory = ".open-next/assets"
-binding = "ASSETS"
-```
-Note
-As shown above, you must enable the [nodejs\_compat compatibility flag](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) _and_ set your [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) to `2024-09-23` or later for your Next.js app to work with @opennextjs/cloudflare.
-4. **Add a configuration file for OpenNext**
-In your project root, create an OpenNext configuration file named `open-next.config.ts` with the following content:
-```ts
-import { defineCloudflareConfig } from "@opennextjs/cloudflare";
-export default defineCloudflareConfig();
-```
-Note
-`open-next.config.ts` is where you can configure the caching, see the [adapter documentation ↗](https://opennext.js.org/cloudflare/caching) for more information
-5. **Update `package.json`**
-You can add the following scripts to your `package.json`:
-```json
-"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-"deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-"cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
-```
-Usage
-
-  * `preview`: Builds your app and serves it locally, allowing you to quickly preview your app running locally in the Workers runtime, via a single command.
-  * `deploy`: Builds your app, and then deploys it to Cloudflare
-  * `cf-typegen`: Generates a `cloudflare-env.d.ts` file at the root of your project containing the types for the env.
-6. **Develop locally.**
-After creating your project, run the following command in your project directory to start a local development server. The command uses the Next.js development server. It offers the best developer experience by quickly reloading your app after your source code is updated.
-npmyarnpnpm
-```
-npm run dev
-```
-```
-yarn run dev
-```
-```
-pnpm run dev
-```
-7. **Test your site with the Cloudflare adapter.**
-The command used in the previous step uses the Next.js development server to offer a great developer experience. However your application will run on Cloudflare Workers so you want to run your integration tests and verify that your application works correctly in this environment.
-npmyarnpnpm
-```
-npm run preview
-```
-```
-yarn run preview
-```
-```
-pnpm run preview
-```
-8. **Deploy your project.**
-You can deploy your project to a [\*.workers.dev subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) or a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) from your local machine or any CI/CD system (including [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/#workers-builds)). Use the following command to build and deploy. If you're using a CI service, be sure to update your "deploy command" accordingly.
-npmyarnpnpm
-```
-npm run deploy
-```
-```
-yarn run deploy
-```
-```
-pnpm run deploy
-```
-Note
-[**Workers Builds**](https://developers.cloudflare.com/workers/ci-cd/builds/) requires you to configure environment variables in the ["Build Variables and secrets"](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#:~:text=Build%20variables%20and%20secrets) section.
-This ensures the Next build has the necessary access to both public `NEXT_PUBLIC_...` variables and [non-NEXT\_PUBLIC\_... ↗](https://nextjs.org/docs/pages/guides/environment-variables#bundling-environment-variables-for-the-browser), which are essential for tasks like inlining and building SSG pages.
-Learn more in the [OpenNext environment variable guide ↗](https://opennext.js.org/cloudflare/howtos/env-vars#workers-builds)
+| Path                                                                                                                    | Use when                                                                                                        |
+| ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| [OpenNext adapter](https://developers.cloudflare.com/workers/framework-guides/web-apps/opennext/)                       | You maintain an existing OpenNext application that cannot yet migrate to vinext because of a compatibility gap. |
+| [Static Next.js on Pages](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/) | Your application is a static export and you specifically want to deploy it to Cloudflare Pages.                 |
 
 Was this helpful?
 
@@ -299,8 +278,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/#page","headline":"Next.js · Cloudflare Workers docs","description":"Create an Next.js application and deploy it to Cloudflare Workers with Workers Assets.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/#page","headline":"Next.js · Cloudflare Workers docs","description":"Create a Next.js application with vinext and deploy it to Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}
 ```

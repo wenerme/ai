@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Network segmentation
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/network-segmentation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/network-segmentation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can define policies in your Cloudflare One Appliance (formerly Magic WAN Connector) to either allow traffic to flow between your LANs without it leaving your local premises or to forward it via the Cloudflare network where you can add additional security features. The default behavior is to drop all LAN-to-LAN traffic. These policies can be created for specific subnets, and link two LANs.
 
@@ -49,24 +49,25 @@ The following guide assumes you have already created a site and configured your 
 
 Follow these steps to create a new LAN policy to segment your network. Only the fields marked **required** are mandatory.
 
-1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Appliances** \> **Profiles**.
-1. Select the Cloudflare One Appliance you want to configure > **Edit**.
-2. Go to **Network Configuration** \> **LAN configuration**.
-3. Select **LAN policies** \> **Create**.
-4. In **Policy name**, enter a descriptive name for the policy you are creating.
-5. From the drop-down menu **Origin (required)**, select your origin LAN.
-6. Specify a subnet for your first LAN in **Subnets**.
-7. In **Ports** specify the TCP/UDP ports you want to use. Valid ports range from `1` to `65535`. Zero (`0`) is not a valid port number. Add a comma to separate each of the ports or add a port range. For example, `2,5,6,9-14`.
-8. In **Destination (required)**, select the destination LAN and repeat the above process to configure it.
-9. In **Protocols**, select the type of traffic you want to allow. You can choose **TCP**, **UDP**, and **ICMP**. You can also select **Any** to choose all types of traffic.
-10. In **Traffic direction** you can choose between bidirectional traffic (the default) and unidirectional traffic. What you can choose depends on the protocol that you chose for the policy:
+3. Select the Cloudflare One Appliance you want to configure > **Edit**.
+4. Go to **Network Configuration** \> **LAN configuration**.
+5. Select **LAN policies** \> **Create**.
+6. In **Policy name**, enter a descriptive name for the policy you are creating.
+7. From the drop-down menu **Origin (required)**, select your origin LAN.
+8. Specify a subnet for your first LAN in **Subnets**.
+9. In **Ports** specify the TCP/UDP ports you want to use. Valid ports range from `1` to `65535`. Zero (`0`) is not a valid port number. Add a comma to separate each of the ports or add a port range. For example, `2,5,6,9-14`.
+10. In **Destination (required)**, select the destination LAN and repeat the above process to configure it.
+11. In **Protocols**, select the type of traffic you want to allow. You can choose **TCP**, **UDP**, and **ICMP**. You can also select **Any** to choose all types of traffic.
+12. In **Traffic direction** you can choose between bidirectional traffic (the default) and unidirectional traffic. What you can choose depends on the protocol that you chose for the policy:
+
   * **Any**: If **Any** is selected and you choose **Unidirectional**, the system will alert you that this will break TCP traffic.
   * **TCP**: You can only select **Bidirectional**.
   * **UDP**: The system defaults to **Bidirectional** but you can choose **Unidirectional**.
   * **ICMP**: The system defaults to **Bidirectional** but you can choose **Unidirectional**.
-11. In **Traffic path**, select **Forwarded via Cloudflare** if you want traffic to be forwarded to Cloudflare to be processed. If you do not select this option, traffic will flow locally in your premises, without passing through Cloudflare.
-12. Select **Save**.
+13. In **Traffic path**, select **Forwarded via Cloudflare** if you want traffic to be forwarded to Cloudflare to be processed. If you do not select this option, traffic will flow locally in your premises, without passing through Cloudflare.
+14. Select **Save**.
 
 Note
 
@@ -176,13 +177,13 @@ The new policy will ensure that traffic between the specified LANs flows locally
 
 ## Edit a policy
 
-1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Appliances** \> **Profiles**.
-1. Select the Cloudflare One Appliance you want to configure > **Edit**.
-2. Go to **Network Configuration** \> **LAN configuration**.
-3. Select **LAN policies**.
-4. Select the policy you need to edit > **Edit**.
-5. Make your changes, and select **Update policy**.
+3. Select the Cloudflare One Appliance you want to configure > **Edit**.
+4. Go to **Network Configuration** \> **LAN configuration**.
+5. Select **LAN policies**.
+6. Select the policy you need to edit > **Edit**.
+7. Make your changes, and select **Update policy**.
 
 Note
 
@@ -264,14 +265,14 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 
 ## Delete a policy
 
-1. Log in to [Cloudflare One](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** \> **Appliances** \> **Profiles**.
-1. Select the Cloudflare One Appliance you want to configure > **Edit**.
-2. Go to **Network Configuration** \> **LAN configuration**.
-3. Select **LAN policies**.
-4. Select the policy you need to edit > **Edit**.
-5. Select **Delete**.
-6. Select **I understand that deleting a policy is permanent** in the dialog box > **Delete**.
+3. Select the Cloudflare One Appliance you want to configure > **Edit**.
+4. Go to **Network Configuration** \> **LAN configuration**.
+5. Select **LAN policies**.
+6. Select the policy you need to edit > **Edit**.
+7. Select **Delete**.
+8. Select **I understand that deleting a policy is permanent** in the dialog box > **Delete**.
 
 Note
 
@@ -299,8 +300,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/network-segmentation/#page","headline":"Network segmentation · Cloudflare One docs","description":"Define policies to define if traffic should flow between your LANs without leaving your local premises, or if traffic should be forwarded to Cloudflare for additional security configurations.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/network-segmentation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/network-segmentation/#page","headline":"Network segmentation · Cloudflare One docs","description":"Define policies to define if traffic should flow between your LANs without leaving your local premises, or if traffic should be forwarded to Cloudflare for additional security configurations.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/network-segmentation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

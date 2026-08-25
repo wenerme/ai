@@ -52,11 +52,11 @@ This is the structure returned by `getCodeCallback` to represent a worker.
 
 The [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) for the Worker. This has the same meaning as the `compatibility_date` setting in a Wrangler config file.
 
-#### `` compatibilityFlags `string[]`Optional ``
+#### `` compatibilityFlags `string[]` Optional ``
 
 An optional list of [compatibility flags](https://developers.cloudflare.com/workers/configuration/compatibility-flags) augmenting the compatibility date. This has the same meaning as the `compatibility_flags` setting in a Wrangler config file.
 
-#### `` allowExperimental `boolean`Optional ``
+#### `` allowExperimental `boolean` Optional ``
 
 If true, then experimental compatibility flags will be permitted in `compatibilityFlags`. In order to set this, the worker calling the loader must itself have the compatibility flag `"experimental"` set. Experimental flags cannot be enabled in production.
 
@@ -81,7 +81,7 @@ Warning
 
 While Dynamic Workers support Python, Python Workers are currently much slower to start than JavaScript Workers. For one-off AI-generated code, we strongly recommend using JavaScript. AI can write either language equally well.
 
-#### `` globalOutbound `ServiceStub | null`Optional ``
+#### `` globalOutbound `ServiceStub | null` Optional ``
 
 Controls whether the dynamic Worker has access to the network. The global `fetch()` and `connect()` functions (for making HTTP requests and TCP connections, respectively) can be blocked or redirected to isolate the Worker.
 
@@ -166,7 +166,7 @@ export default {
 };
 ```
 
-#### `` tails `ServiceStub[]`Optional ``
+#### `` tails `ServiceStub[]` Optional ``
 
 You may specify one or more [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/) which will observe console logs, errors, and other details about the dynamically-loaded worker's execution. A tail event will be delivered to the Tail Worker upon completion of a request to the dynamically-loaded Worker. As always, you can implement the Tail Worker as an alternative entrypoint in your parent Worker, referring to it using `ctx.exports`:
 
@@ -213,8 +213,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/api-reference/#page","headline":"API reference · Cloudflare Dynamic Workers docs","description":"Reference for the Worker Loader binding and the WorkerCode object.","url":"https://developers.cloudflare.com/dynamic-workers/api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/api-reference/#page","headline":"API reference · Cloudflare Dynamic Workers docs","description":"Reference for the Worker Loader binding and the WorkerCode object.","url":"https://developers.cloudflare.com/dynamic-workers/api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

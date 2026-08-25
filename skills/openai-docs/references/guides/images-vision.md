@@ -1131,10 +1131,14 @@ D. Apply a multiplier based on the model to get the total tokens:
 
 | Model           | Multiplier |
 | --------------- | ---------- |
-| `gpt-5.4-mini`  | 1.62       |
-| `gpt-5.4-nano`  | 2.46       |
-| `gpt-5-mini`    | 1.62       |
-| `gpt-5-nano`    | 2.46       |
+| `gpt-5.6-sol`   | 1.2        |
+| `gpt-5.6-terra` | 1.2        |
+| `gpt-5.6-luna`  | 1.2        |
+| `gpt-5.5`       | 1.2        |
+| `gpt-5.4-mini`  | 1.2        |
+| `gpt-5.4-nano`  | 1.2        |
+| `gpt-5-mini`    | 1.2        |
+| `gpt-5-nano`    | 1.5        |
 | `gpt-4.1-mini*` | 1.62       |
 | `gpt-4.1-nano*` | 2.46       |
 | `o4-mini`       | 1.72       |

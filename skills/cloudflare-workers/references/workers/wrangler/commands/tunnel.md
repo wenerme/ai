@@ -30,7 +30,7 @@ Create a new remotely managed [Cloudflare Tunnel](https://developers.cloudflare.
 wrangler tunnel create <NAME>
 ```
 
-* `NAME` `string`required
+* `NAME` `string` required
   * A name for your tunnel. Must be unique within your account.
 
 Tunnels created via Wrangler are always **remotely managed** — configure them in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/tunnels) or via the API.
@@ -70,9 +70,9 @@ Delete a Cloudflare Tunnel from your account.
 wrangler tunnel delete <TUNNEL> [OPTIONS]
 ```
 
-* `TUNNEL` `string`required
+* `TUNNEL` `string` required
   * The name or UUID of the tunnel to delete.
-* `--force` `boolean`optional
+* `--force` `boolean` optional
   * Skip the confirmation prompt.
 
 Caution
@@ -108,7 +108,7 @@ Display details about a Cloudflare Tunnel, including its ID, name, status, and c
 wrangler tunnel info <TUNNEL>
 ```
 
-* `TUNNEL` `string`required
+* `TUNNEL` `string` required
   * The name or UUID of the tunnel to inspect.
 
 ```sh
@@ -176,11 +176,11 @@ Run a Cloudflare Tunnel using the [cloudflared](https://developers.cloudflare.co
 wrangler tunnel run [TUNNEL] [OPTIONS]
 ```
 
-* `TUNNEL` `string`optional
+* `TUNNEL` `string` optional
   * The name or UUID of the tunnel to run. Required unless `--token` is provided.
-* `--token` `string`optional
+* `--token` `string` optional
   * A tunnel token to use directly. Skips API authentication.
-* `--log-level` `string`(default: info) optional
+* `--log-level` `string` (default: info) optional
   * Log level for `cloudflared`. Does not affect Wrangler logs (controlled by `WRANGLER_LOG`). One of: `debug`, `info`, `warn`, `error`, `fatal`.
 
 Named tunnels are **remotely managed** — configure ingress rules (which local services to expose) in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/tunnels) or via the API before running the tunnel.
@@ -224,7 +224,7 @@ Start a free, temporary tunnel without a Cloudflare account using [Quick Tunnels
 wrangler tunnel quick-start <URL>
 ```
 
-* `URL` `string`required
+* `URL` `string` required
   * The local URL to expose (for example, `http://localhost:8080`).
 
 The tunnel is assigned a random `*.trycloudflare.com` subdomain and lasts for the duration of the process.
@@ -257,8 +257,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/tunnel/#page","headline":"Tunnel · Cloudflare Workers docs","description":"Wrangler commands for managing Cloudflare Tunnels.","url":"https://developers.cloudflare.com/workers/wrangler/commands/tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/tunnel/#page","headline":"Tunnel · Cloudflare Workers docs","description":"Wrangler commands for managing Cloudflare Tunnels.","url":"https://developers.cloudflare.com/workers/wrangler/commands/tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

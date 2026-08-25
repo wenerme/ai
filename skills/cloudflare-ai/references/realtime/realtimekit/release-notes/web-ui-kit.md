@@ -16,6 +16,20 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/realtime/realtimekit/release-notes/web-ui-kit/index.xml)
 
+## 2026-08-24
+
+**RealtimeKit Web UI Kit 2.0.2**
+
+**Fixes**
+
+* Restored Safari 16.x compatibility by incorporating an [upstream Stencil fix](https://github.com/stenciljs/core/pull/6236).
+* Fixed `rtk-idle-screen` incorrectly displaying non-fatal `preJoinError` events, such as declining to share media, as fatal errors.
+* Starting a recording while one is already in progress now displays a specific message instead of a generic internal error.
+
+**New localization keys**
+
+* `recording.error.already_recording` — "A recording is already in progress."
+
 ## 2026-07-17
 
 **RealtimeKit Web UI Kit 2.0.1**
@@ -304,8 +318,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/web-ui-kit/#page","headline":"Web UI Kit · Cloudflare Realtime docs","description":"Release notes and changelog for the RealtimeKit Web UI Kit SDK.","url":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/web-ui-kit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/web-ui-kit/#page","headline":"Web UI Kit · Cloudflare Realtime docs","description":"Release notes and changelog for the RealtimeKit Web UI Kit SDK.","url":"https://developers.cloudflare.com/realtime/realtimekit/release-notes/web-ui-kit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1073,6 +1073,24 @@ components:
         prompt:
           description: Overridden price in USD per token for prompt (input) processing
           type: string
+        utc_days:
+          description: >-
+            Condition: UTC weekdays the entry applies on, evaluated at the
+            request instant. Scopes the utc_start/utc_end window (or, without a
+            window, the whole UTC day) to the listed days. Absent means every
+            day.
+          items:
+            enum:
+              - monday
+              - tuesday
+              - wednesday
+              - thursday
+              - friday
+              - saturday
+              - sunday
+            type: string
+          minItems: 1
+          type: array
         utc_end:
           description: >-
             Condition: exclusive end of a daily UTC time window as an HHMM clock

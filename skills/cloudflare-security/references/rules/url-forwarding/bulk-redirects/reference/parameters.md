@@ -40,7 +40,7 @@ For more information on the supported URL components, refer to [Supported URL co
 
 ## Subpath matching
 
-API field: `subpath_matching` `Boolean`default: false
+API field: `subpath_matching` `Boolean` default: false
 
 If `true`, the current redirect will apply the subpath matching algorithm to the request URL when determining if there is a match for the current URL redirect.
 
@@ -50,7 +50,7 @@ For more information, refer to [Matching the source URL of redirects](https://de
 
 ## Include subdomains
 
-API field: `include_subdomains` `Boolean`default: false
+API field: `include_subdomains` `Boolean` default: false
 
 If `true`, the source URL hostname will also apply to any subdomains — the redirect will match for all subdomains to the left of the domain portion of the source URL, as well as the specified domain.
 
@@ -60,7 +60,7 @@ For more information, refer to [Matching the source URL of redirects](https://de
 
 ## Preserve query string
 
-API field: `preserve_query_string` `Boolean`default: false
+API field: `preserve_query_string` `Boolean` default: false
 
 If `true`, the redirect URL will keep the query string of the original request.
 
@@ -72,7 +72,7 @@ When **Preserve query string** is enabled, the final redirect URL uses the origi
 
 ## Preserve path suffix
 
-API field: `preserve_path_suffix` `Boolean`default: true
+API field: `preserve_path_suffix` `Boolean` default: true
 
 Applicable only when [**Subpath matching**](#subpath-matching) is enabled. If `true`, defines that the redirect URL will include the remaining (non-matched) path elements of the source URL, if any.
 
@@ -80,7 +80,7 @@ For example, when both **Subpath matching** and **Preserve path suffix** are ena
 
 ## Status code
 
-API field: `status_code` `Integer`default: 301
+API field: `status_code` `Integer` default: 301
 API values: `301`, `302`, `307`, or `308`.
 
 The HTTP status code returned to the client when redirecting:
@@ -96,8 +96,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/parameters/#page","headline":"URL redirect parameters · Cloudflare Rules docs","description":"Configurable parameters for Bulk Redirect rules.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/parameters/#page","headline":"URL redirect parameters · Cloudflare Rules docs","description":"Configurable parameters for Bulk Redirect rules.","url":"https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}
 ```

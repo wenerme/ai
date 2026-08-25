@@ -545,6 +545,32 @@ Time-dependent prices (peak and off-peak rates) follow the same pattern as cache
 
 Time windows are accepted on input and output pricing entries. Like `ttl_seconds`, the window is part of the entry's effective identity, so entries with different windows are separate SKUs and two entries with the same window are invalid.
 
+**Weekly schedules** add the optional `utc_days` qualifier — a non-empty array of UTC weekday names (`"monday"`, `"tuesday"`, `"wednesday"`, `"thursday"`, `"friday"`, `"saturday"`, `"sunday"`, no repeats), evaluated at the request instant in UTC. With a `utc_start`/`utc_end` window it scopes the window to those days; without one it covers the listed whole days. `utc_days` joins the entry's effective identity alongside the window. A peak window that applies only on weekdays:
+
+```json lines theme={null}
+{
+  "type": "text",
+  "pricing": [
+    { "type": "prompt", "unit": "token", "cost_usd": "0.000004" },
+    {
+      "type": "prompt",
+      "unit": "token",
+      "utc_days": ["monday", "tuesday", "wednesday", "thursday", "friday"],
+      "utc_start": 800,
+      "utc_end": 1630,
+      "cost_usd": "0.000008"
+    }
+  ]
+}
+```
+
+Limitations:
+
+* Up to 2 time windows per model, and all windowed entries must share one set of non-base prices.
+* All windowed entries must carry the same `utc_days` set (or none). Day-scoped entries without a `utc_start`/`utc_end` window — i.e. a whole day priced differently from base — are not billable yet.
+* Declarations beyond these shapes are accepted by the schema but produce translation warnings and are not billed.
+* Your base pricing must be your cheapest (off-peak) rate. Unsupported schedule declarations fall back to the base pricing, so a base price that is the cheapest rate guarantees users are never overcharged while your declaration is reviewed.
+
 ### 4. Capacity
 
 Capacity uses the same typed, scoped placement as pricing. Each input and output modality may carry its own `capacity` array as a sibling of `pricing`. The root `capacity` array holds request-scoped entries only. This adds no new root structure.

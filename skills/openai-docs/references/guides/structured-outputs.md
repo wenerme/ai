@@ -1733,7 +1733,9 @@ text.format
 
 
 
-Step 1: Define your schema
+## Step 1: Define your schema
+
+
 
 First you must design the JSON Schema that the model should be constrained to follow. See the [examples](https://developers.openai.com/api/docs/guides/structured-outputs#examples) at the top of this guide for reference.
 
@@ -1747,7 +1749,17 @@ To maximize the quality of model generations, we recommend the following:
 - Create clear titles and descriptions for important keys in your structure
 - Create and use evals to determine the structure that works best for your use case
 
-Step 2: Supply your schema in the API call
+
+
+
+
+
+
+## Step 2: Supply your schema in the API call
+
+
+
+
 
 To use Structured Outputs, simply specify
 
@@ -2070,7 +2082,17 @@ curl https://api.openai.com/v1/responses \
 
 **Note:** the first request you make with any schema will have additional latency as our API processes the schema, but subsequent requests with the same schema will not have additional latency.
 
-Step 3: Handle edge cases
+
+
+
+
+
+
+## Step 3: Handle edge cases
+
+
+
+
 
 In some cases, the model might not generate a valid response that matches the provided JSON schema.
 
@@ -3524,7 +3546,13 @@ Important notes:
 - JSON mode will not guarantee the output matches any specific schema, only that it is valid and parses without errors. You should use Structured Outputs to ensure it matches your schema, or if that is not possible, you should use a validation library and potentially retries to ensure that the output matches your desired schema.
 - Your application must detect and handle the edge cases that can result in the model output not being a complete JSON object (see below)
 
-Handling edge cases
+
+
+### Handling edge cases
+
+
+
+
 
 ```javascript
 const we_did_not_specify_stop_tokens = true;
@@ -3799,6 +3827,12 @@ else
   end
 end
 ```
+
+
+
+
+
+
 
 ## Resources
 

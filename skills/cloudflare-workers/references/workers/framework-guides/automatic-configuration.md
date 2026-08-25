@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deploy an existing project
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler can automatically detect your framework and configure your project for Cloudflare Workers. This allows you to deploy existing projects with a single command, without manually setting up configuration files or installing adapters.
 
@@ -35,21 +35,21 @@ When you run `wrangler deploy` or `wrangler setup` in a project directory withou
 
 Automatic configuration supports the following frameworks:
 
-| Framework                                                                                                     | Adapter/Tool                 | Notes                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| [Next.js](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/)                        | @opennextjs/cloudflare       | Runs @opennextjs/cloudflare migrate automatically. [R2 caching](#nextjs-caching) is configured if available. |
-| [Astro](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/)                           | @astrojs/cloudflare          | Runs astro add cloudflare automatically                                                                      |
-| [SvelteKit](https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/)                   | @sveltejs/adapter-cloudflare | Runs sv add sveltekit-adapter automatically                                                                  |
-| [Nuxt](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/nuxt/)         | Built-in Cloudflare preset   |                                                                                                              |
-| [React Router](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/)             | Cloudflare Vite plugin       |                                                                                                              |
-| [Solid Start](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/solid/) | Built-in Cloudflare preset   |                                                                                                              |
-| [TanStack Start](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/)         | Cloudflare Vite plugin       |                                                                                                              |
-| [Angular](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/angular/)   |                              |                                                                                                              |
-| [Analog](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/analog/)     | Built-in Cloudflare preset   |                                                                                                              |
-| [Vite](https://developers.cloudflare.com/workers/vite-plugin/)                                                | Cloudflare Vite plugin       |                                                                                                              |
-| [Vike](https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/)                             |                              |                                                                                                              |
-| [Waku](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/waku/)         |                              |                                                                                                              |
-| Static sites                                                                                                  | None                         | Any directory with an index.html                                                                             |
+| Framework                                                                                                     | Adapter/Tool                 | Notes                                                                                           |
+| ------------------------------------------------------------------------------------------------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------- |
+| [Next.js](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/)                        | vinext                       | Configures vinext for Cloudflare Workers and adds the required Vite and Wrangler configuration. |
+| [Astro](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/)                           | @astrojs/cloudflare          | Runs astro add cloudflare automatically                                                         |
+| [SvelteKit](https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/)                   | @sveltejs/adapter-cloudflare | Runs sv add sveltekit-adapter automatically                                                     |
+| [Nuxt](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/nuxt/)         | Built-in Cloudflare preset   |                                                                                                 |
+| [React Router](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/)             | Cloudflare Vite plugin       |                                                                                                 |
+| [Solid Start](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/solid/) | Built-in Cloudflare preset   |                                                                                                 |
+| [TanStack Start](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/)         | Cloudflare Vite plugin       |                                                                                                 |
+| [Angular](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/angular/)   |                              |                                                                                                 |
+| [Analog](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/analog/)     | Built-in Cloudflare preset   |                                                                                                 |
+| [Vite](https://developers.cloudflare.com/workers/vite-plugin/)                                                | Cloudflare Vite plugin       |                                                                                                 |
+| [Vike](https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/)                             |                              |                                                                                                 |
+| [Waku](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/waku/)         |                              |                                                                                                 |
+| Static sites                                                                                                  | None                         | Any directory with an index.html                                                                |
 
 Automatic configuration may also work with other projects, such as React or Vue SPAs. Try running `wrangler deploy` or `wrangler setup` to see if your project is detected.
 
@@ -67,7 +67,7 @@ A new Wrangler configuration file is created with settings appropriate for your 
 	"name": "my-project",
 	"main": "dist/_worker.js/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-25",
 	"compatibility_flags": ["nodejs_compat"],
 	"assets": {
 		"binding": "ASSETS",
@@ -84,7 +84,7 @@ A new Wrangler configuration file is created with settings appropriate for your 
 name = "my-project"
 main = "dist/_worker.js/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [assets]
@@ -227,14 +227,13 @@ If you do not want automatic configuration to run, ensure you have a valid Wrang
 
 You can also manually configure your project by following the framework-specific guides in the [Framework guides](https://developers.cloudflare.com/workers/framework-guides/).
 
-## Next.js caching
+## Next.js configuration
 
-For Next.js projects, automatic configuration will set up [R2](https://developers.cloudflare.com/r2/) for caching if your Cloudflare account has R2 enabled. R2 caching improves performance for [Incremental Static Regeneration (ISR) ↗](https://opennext.js.org/cloudflare/caching) and other Next.js caching features.
+For Next.js projects, automatic configuration uses [vinext](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/) as the default deployment path for Cloudflare Workers. The generated configuration adds the vinext and Vite dependencies, creates the Cloudflare Workers configuration, and adds package scripts for development, builds, and deployment.
 
-* **If R2 is enabled on your account**: Automatic configuration creates an R2 bucket and configures caching automatically.
-* **If R2 is not enabled**: Your project will be configured without caching. You can [enable R2](https://developers.cloudflare.com/r2/get-started/) later and manually configure caching by following the [OpenNext caching documentation ↗](https://opennext.js.org/cloudflare/caching).
+vinext supports Next.js caching features such as Incremental Static Regeneration (ISR), `"use cache"`, and `unstable_cache`. For production applications, configure the generated Workers project with the cache backend your application requires. For more information, refer to [vinext caching ↗](https://github.com/cloudflare/vinext#caching).
 
-To check if R2 is enabled or to enable it, go to **Storage & Databases** \> **R2** in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+If you need the OpenNext adapter instead of vinext, configure it manually by following the [OpenNext adapter guide](https://developers.cloudflare.com/workers/framework-guides/web-apps/opennext/).
 
 ## Troubleshooting
 
@@ -264,8 +263,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/#page","headline":"Deploy an existing project · Cloudflare Workers docs","description":"Learn how Wrangler automatically detects and configures your project for Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/#page","headline":"Deploy an existing project · Cloudflare Workers docs","description":"Learn how Wrangler automatically detects and configures your project for Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

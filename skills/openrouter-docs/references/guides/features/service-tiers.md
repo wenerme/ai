@@ -50,11 +50,25 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
 ## Service Tiers
 
-The `service_tier` parameter lets you control cost and latency tradeoffs when sending requests through OpenRouter. You can pass it in your request to select a specific processing tier, and the response will indicate which tier was actually used. Your request is billed at the actual served tier's rate.
+Many providers sell more than one grade of capacity for the same model: a discounted `flex` tier that trades latency and availability for a lower price, and a `priority` tier that costs more for faster, more reliable service. OpenRouter exposes each of these as its own endpoint, so you can reach them either by letting them compete for your traffic or by asking for one explicitly. Whichever way you route, the response reports the tier that actually served the request, and you are billed at that tier's rate.
+
+### The `:nitro` and `:floor` Variants
+
+The simplest way to use service tiers is to append a variant to the model ID. `:nitro` sorts every endpoint for the model by throughput and admits priority tier endpoints into that sort. `:floor` sorts by price and admits flex endpoints.
+
+```json lines theme={null}
+{
+  "model": "openai/gpt-5:nitro"
+}
+```
+
+Because a tier endpoint has to win that sort like any other endpoint, you pay a priority rate only when the priority endpoint is genuinely the fastest option, and a flex endpoint serves only when it is genuinely the cheapest. Nothing else about the request changes, and fallbacks keep working: if the tier endpoint is unavailable, the next endpoint in the sorted pool serves the request at its own rate.
+
+This is the recommended starting point for most traffic. Reach for the `service_tier` parameter below when you need a specific tier regardless of how it compares to the alternatives. See [Nitro](/docs/guides/routing/model-variants/nitro) and [Floor](/docs/guides/routing/model-variants/floor) for the variants in full.
 
 ### Using Service Tiers
 
-Pass `service_tier` as a top-level parameter in your request body. Supported values are `flex` (lower cost, higher latency) and `priority` (faster, higher cost). `fast` is also accepted as an alias for `priority` (see [Fast mode](#fast-mode) below). The example below requests the `flex` tier from OpenAI's `gpt-5` for a 50% discount in exchange for higher latency and lower availability.
+To pin a tier explicitly, pass `service_tier` as a top-level parameter in your request body. Supported values are `flex` (lower cost, higher latency) and `priority` (faster, higher cost). `fast` is also accepted as an alias for `priority` (see [Fast mode](#fast-mode) below). The example below requests the `flex` tier from OpenAI's `gpt-5` for a 50% discount in exchange for higher latency and lower availability.
 
 <Template
   data={{
@@ -198,11 +212,11 @@ Anthropic itself has deprecated its priority tier. Per [Anthropic's service tier
 
 Non-default tier endpoints (`flex`, `priority`) are only considered when your request asks for them. There are three ways to do that:
 
-1. **The `service_tier` parameter.** For `priority`, matching endpoints are tried first (sorted by throughput), with fallback to other endpoints if none succeed; billing always follows the endpoint actually used, so a priority request that falls back off-tier is charged at that endpoint's standard rate, not the tier rate. For `flex`, routing is restricted to flex endpoints (sorted by price). Flex never falls back to a default-tier endpoint, since that would cost more than the tier you requested, so a flex capacity error surfaces instead. If the pool contains no flex endpoints at all (for example, the model has no flex-capable provider), the request routes normally at standard rates. Combine with [`allow_fallbacks: false`](/docs/guides/routing/provider-selection#disabling-fallbacks) to route only to the top endpoint of that tier.
+1. **The [`:nitro`](/docs/guides/routing/model-variants/nitro) and [`:floor`](/docs/guides/routing/model-variants/floor) model variants.** `:nitro` makes priority endpoints eligible and `:floor` makes flex endpoints eligible, but unlike the `service_tier` parameter, tier endpoints get no special treatment: the whole pool is sorted by the variant's metric (throughput for `:nitro`, price for `:floor`), so a tier endpoint is used only when it wins that sort. Because admission depends on that sort, setting `provider.order` (which replaces sorting with your explicit ordering) disables the variant's tier admission; name a tier endpoint slug in the order list to include it. An explicit `service_tier: "default"` also disables the variant's tier admission, so you can use `:nitro`/`:floor` purely for their sorting while pinning the standard tier.
 
-2. **Tier endpoint slugs in [`provider.order` or `provider.only`](/docs/guides/routing/provider-selection).** Each tier has its own endpoint slug, formed by appending the tier to the provider slug, e.g. `openai/priority` or `google-vertex/flex`. For example, `"provider": { "only": ["openai/priority"] }` restricts routing to OpenAI's priority tier.
+2. **The `service_tier` parameter.** For `priority`, matching endpoints are tried first (sorted by throughput), with fallback to other endpoints if none succeed; billing always follows the endpoint actually used, so a priority request that falls back off-tier is charged at that endpoint's standard rate, not the tier rate. For `flex`, routing is restricted to flex endpoints (sorted by price). Flex never falls back to a default-tier endpoint, since that would cost more than the tier you requested, so a flex capacity error surfaces instead. If the pool contains no flex endpoints at all (for example, the model has no flex-capable provider), the request routes normally at standard rates. Combine with [`allow_fallbacks: false`](/docs/guides/routing/provider-selection#disabling-fallbacks) to route only to the top endpoint of that tier.
 
-3. **The [`:nitro`](/docs/guides/routing/model-variants/nitro) and [`:floor`](/docs/guides/routing/model-variants/floor) model variants.** `:nitro` makes priority endpoints eligible and `:floor` makes flex endpoints eligible, but unlike the `service_tier` parameter, tier endpoints get no special treatment: the whole pool is sorted by the variant's metric (throughput for `:nitro`, price for `:floor`), so a tier endpoint is used only when it wins that sort. Because admission depends on that sort, setting `provider.order` (which replaces sorting with your explicit ordering) disables the variant's tier admission; name a tier endpoint slug in the order list to include it. An explicit `service_tier: "default"` also disables the variant's tier admission, so you can use `:nitro`/`:floor` purely for their sorting while pinning the standard tier.
+3. **Tier endpoint slugs in [`provider.order` or `provider.only`](/docs/guides/routing/provider-selection).** Each tier has its own endpoint slug, formed by appending the tier to the provider slug, e.g. `openai/fast` or `google-vertex/flex`. For example, `"provider": { "only": ["openai/fast"] }` restricts routing to OpenAI's Fast tier. The `fast` and `priority` slug suffixes are interchangeable, so `openai/priority` matches the same endpoint.
 
 Requests that don't use any of these are never routed to a non-default service tier.
 
@@ -210,25 +224,27 @@ Requests that don't use any of these are never routed to a non-default service t
 
 | Option                                       | Eligible pool                                                   | Ordering                                                  | Fallback                                                  |
 | -------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| `:nitro` variant                             | Default + priority endpoints                                    | Entire pool sorted by throughput, no tier preference      | Next-fastest endpoint of any tier                         |
+| `:floor` variant                             | Default + flex endpoints                                        | Entire pool sorted by price, no tier preference           | Next-cheapest endpoint of any tier                        |
 | `service_tier: "priority"` (or `"fast"`)     | Default + priority endpoints                                    | Priority endpoints first, each group sorted by throughput | Falls back to non-priority endpoints                      |
 | `service_tier: "flex"`                       | Flex endpoints only (when any exist)                            | Sorted by price                                           | No fallback to default endpoints, capacity errors surface |
 | `provider.only` with a tier slug             | Only the endpoints the slugs name (tier slugs opt in that tier) | Default load-balanced ordering unless a sort is set       | Within the named endpoints only                           |
 | `provider.order` with a tier slug            | Unchanged (tier slugs opt in the named tier endpoints)          | Listed endpoints first, in your order                     | Falls back to unlisted endpoints unless disabled          |
-| `:nitro` variant                             | Default + priority endpoints                                    | Entire pool sorted by throughput, no tier preference      | Next-fastest endpoint of any tier                         |
-| `:floor` variant                             | Default + flex endpoints                                        | Entire pool sorted by price, no tier preference           | Next-cheapest endpoint of any tier                        |
 | `provider.sort` (`"throughput"` / `"price"`) | Unchanged (does not opt into any tier)                          | Entire pool sorted by the chosen metric                   | Next endpoint in sorted order                             |
 
 In every case, billing follows the tier that actually served the request: if a provider sheds a tier request to its default tier, you're billed the default rate.
 
+The variants are the recommended default, since a tier endpoint serves only when it wins on the metric you asked for. The `service_tier` parameter is the right choice when the tier itself matters more than how it compares, for example when you want flex pricing even where a default endpoint would be faster.
+
 ### Tier Endpoints in the API
 
-Tier endpoints are listed in the [model endpoints API](/docs/api/api-reference/endpoints/list-all-endpoints-for-a-model) alongside standard endpoints. Each appears as its own entry with a tier-suffixed `tag` (e.g. `openai/priority`) and pricing with the tier multiplier already applied (the same pricing used for billing). Their presence in the listing doesn't change routing: they remain opt-in as described above.
+Tier endpoints are listed in the [model endpoints API](/docs/api/api-reference/endpoints/list-all-endpoints-for-a-model) alongside standard endpoints. Each appears as its own entry with a tier-suffixed `tag` (e.g. `openai/fast`) and pricing with the tier multiplier already applied (the same pricing used for billing). Their presence in the listing doesn't change routing: they remain opt-in as described above.
 
 ### Supported Providers
 
 The following providers support `flex` and `priority` service tiers for select models:
 
-* **OpenAI**
+* **OpenAI** (the priority tier is branded [Fast mode](https://developers.openai.com/api/docs/guides/fast-mode))
 * **Google Vertex**
 * **Google AI Studio**
 * **SpaceXAI** (`priority` only)
@@ -237,7 +253,7 @@ The response's `service_tier` field reports which tier was actually used. Possib
 
 Provider documentation:
 
-* **OpenAI**: [Chat Completions](https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create#\(resource\)%20chat.completions%20%3E%20\(method\)%20create%20%3E%20\(params\)%200.non_streaming%20%3E%20\(param\)%20service_tier%20%3E%20\(schema\)), [Responses](https://developers.openai.com/api/reference/resources/responses/methods/create#\(resource\)%20responses%20%3E%20\(method\)%20create%20%3E%20\(params\)%200.non_streaming%20%3E%20\(param\)%20service_tier%20%3E%20\(schema\)), and [pricing](https://developers.openai.com/api/docs/pricing)
+* **OpenAI**: [Flex](https://developers.openai.com/api/docs/guides/flex-processing) and [Fast mode](https://developers.openai.com/api/docs/guides/fast-mode)
 * **Google Vertex**: [Flex](https://cloud.google.com/vertex-ai/generative-ai/docs/flex-paygo) and [Priority](https://cloud.google.com/vertex-ai/generative-ai/docs/priority-paygo)
 * **Google AI Studio**: [Flex](https://ai.google.dev/gemini-api/docs/flex-inference) and [Priority](https://ai.google.dev/gemini-api/docs/priority-inference)
 * **SpaceXAI**: [Priority Processing](https://docs.x.ai/developers/advanced-api-usage/priority-processing)

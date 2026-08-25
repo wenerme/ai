@@ -164,7 +164,7 @@ Cloudflare recommends using the `httpEtag` field when returning an etag in a res
 * `customMetadata` `Record<string, string>`
 
   * A map of custom, user-defined metadata associated with the object.
-* `range` `R2Range`optional
+* `range` `R2Range` optional
 
   * A `R2Range` object containing the returned range of the object.
 * `checksums` `R2Checksums`
@@ -176,7 +176,7 @@ Cloudflare recommends using the `httpEtag` field when returning an etag in a res
 * `storageClass` `'Standard' | 'InfrequentAccess'`
 
   * The storage class associated with the object. Refer to [Storage Classes](#storage-class).
-* `ssecKeyMd5` `string`optional
+* `ssecKeyMd5` `string` optional
 
   * Hex-encoded MD5 hash of the [SSE-C](https://developers.cloudflare.com/r2/examples/ssec) key used for encryption (if one was provided). Hash can be used to identify which key is needed to decrypt object.
 
@@ -240,7 +240,7 @@ A multipart upload can be completed or aborted at any time, either through the S
 * `onlyIf` `R2Conditional | Headers`
 
   * Specifies that the object should only be returned given satisfaction of certain conditions in the `R2Conditional` or in the conditional Headers. Refer to [Conditional operations](#conditional-operations).
-* `range` `R2Range | Headers`optional
+* `range` `R2Range | Headers` optional
 
   * Specifies that only a specific length (from an optional offset) or suffix of bytes from the object should be returned given the range in the `R2Range` or in the range `Headers`. Refer to [Ranged reads](#ranged-reads).
 * `ssecKey` `ArrayBuffer | string`
@@ -271,10 +271,10 @@ There are 3 variations of arguments that can be used in a range:
 * `onlyIf` `R2Conditional | Headers`
 
   * Specifies that the object should only be stored given satisfaction of certain conditions in the `R2Conditional`. Refer to [Conditional operations](#conditional-operations).
-* `httpMetadata` `R2HTTPMetadata | Headers`optional
+* `httpMetadata` `R2HTTPMetadata | Headers` optional
 
   * Various HTTP headers associated with the object. Refer to [HTTP Metadata](#http-metadata).
-* `customMetadata` `Record<string, string>`optional
+* `customMetadata` `Record<string, string>` optional
 
   * A map of custom, user-defined metadata that will be stored with the object.
 
@@ -282,19 +282,19 @@ Note
 
 Only a single hashing algorithm can be specified at once.
 
-* `md5` `ArrayBuffer | string`optional
+* `md5` `ArrayBuffer | string` optional
 
   * A md5 hash to use to check the received object's integrity.
-* `sha1` `ArrayBuffer | string`optional
+* `sha1` `ArrayBuffer | string` optional
 
   * A SHA-1 hash to use to check the received object's integrity.
-* `sha256` `ArrayBuffer | string`optional
+* `sha256` `ArrayBuffer | string` optional
 
   * A SHA-256 hash to use to check the received object's integrity.
-* `sha384` `ArrayBuffer | string`optional
+* `sha384` `ArrayBuffer | string` optional
 
   * A SHA-384 hash to use to check the received object's integrity.
-* `sha512` `ArrayBuffer | string`optional
+* `sha512` `ArrayBuffer | string` optional
 
   * A SHA-512 hash to use to check the received object's integrity.
 * `storageClass` `'Standard' | 'InfrequentAccess'`
@@ -306,10 +306,10 @@ Only a single hashing algorithm can be specified at once.
 
 ### R2MultipartOptions
 
-* `httpMetadata` `R2HTTPMetadata | Headers`optional
+* `httpMetadata` `R2HTTPMetadata | Headers` optional
 
   * Various HTTP headers associated with the object. Refer to [HTTP Metadata](#http-metadata).
-* `customMetadata` `Record<string, string>`optional
+* `customMetadata` `Record<string, string>` optional
 
   * A map of custom, user-defined metadata that will be stored with the object.
 * `storageClass` `string`
@@ -321,20 +321,20 @@ Only a single hashing algorithm can be specified at once.
 
 ### R2ListOptions
 
-* `limit` `number`optional
+* `limit` `number` optional
 
   * The number of results to return. Defaults to `1000`, with a maximum of `1000`.
   * If `include` is set, you may receive fewer than `limit` results in your response to accommodate metadata.
-* `prefix` `string`optional
+* `prefix` `string` optional
 
   * The prefix to match keys against. Keys will only be returned if they start with given prefix.
-* `cursor` `string`optional
+* `cursor` `string` optional
 
   * An opaque token that indicates where to continue listing objects from. A cursor can be retrieved from a previous list operation.
-* `delimiter` `string`optional
+* `delimiter` `string` optional
 
   * The character to use when grouping keys.
-* `include` `Array<string>`optional
+* `include` `Array<string>` optional
 
   * Can include `httpMetadata` and/or `customMetadata`. If included, items returned by the list will include the specified metadata.
   * Note that there is a limit on the total amount of data that a single `list` operation can return. If you request data, you may receive fewer than `limit` results in your response to accommodate metadata.
@@ -406,7 +406,7 @@ An object containing an `R2Object` array, returned by `BUCKET_BINDING.list()`.
 * `truncated` boolean
 
   * If true, indicates there are more results to be retrieved for the current `list` request.
-* `cursor` `string`optional
+* `cursor` `string` optional
 
   * A token that can be passed to future `list` calls to resume listing from that point. Only present if truncated is true.
 * `delimitedPrefixes` `Array<string>`
@@ -420,16 +420,16 @@ You can pass an `R2Conditional` object to `R2GetOptions` and `R2PutOptions`. If 
 
 If the condition check for `put()` fails, `null` will be returned instead of the `R2Object`.
 
-* `etagMatches` `string`optional
+* `etagMatches` `string` optional
 
   * Performs the operation if the object's etag matches the given string.
-* `etagDoesNotMatch` `string`optional
+* `etagDoesNotMatch` `string` optional
 
   * Performs the operation if the object's etag does not match the given string.
-* `uploadedBefore` `Date`optional
+* `uploadedBefore` `Date` optional
 
   * Performs the operation if the object was uploaded before the given date.
-* `uploadedAfter` `Date`optional
+* `uploadedAfter` `Date` optional
 
   * Performs the operation if the object was uploaded after the given date.
 
@@ -441,30 +441,30 @@ For more specific information about conditional requests, refer to [RFC 7232 ↗
 
 Generally, these fields match the HTTP metadata passed when the object was created. They can be overridden when issuing `GET` requests, in which case, the given values will be echoed back in the response.
 
-* `contentType` `string`optional
-* `contentLanguage` `string`optional
-* `contentDisposition` `string`optional
-* `contentEncoding` `string`optional
-* `cacheControl` `string`optional
-* `cacheExpiry` `Date`optional
+* `contentType` `string` optional
+* `contentLanguage` `string` optional
+* `contentDisposition` `string` optional
+* `contentEncoding` `string` optional
+* `cacheControl` `string` optional
+* `cacheExpiry` `Date` optional
 
 ### Checksums
 
 If a checksum was provided when using the `put()` binding, it will be available on the returned object under the `checksums` property. The MD5 checksum will be included by default for non-multipart objects.
 
-* `md5` `ArrayBuffer`optional
+* `md5` `ArrayBuffer` optional
 
   * The MD5 checksum of the object.
-* `sha1` `ArrayBuffer`optional
+* `sha1` `ArrayBuffer` optional
 
   * The SHA-1 checksum of the object.
-* `sha256` `ArrayBuffer`optional
+* `sha256` `ArrayBuffer` optional
 
   * The SHA-256 checksum of the object.
-* `sha384` `ArrayBuffer`optional
+* `sha384` `ArrayBuffer` optional
 
   * The SHA-384 checksum of the object.
-* `sha512` `ArrayBuffer`optional
+* `sha512` `ArrayBuffer` optional
 
   * The SHA-512 checksum of the object.
 
@@ -489,8 +489,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#page","headline":"Workers API reference · Cloudflare R2 docs","description":"Complete reference for the R2 in-Worker API, including bucket and object operations.","url":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#page","headline":"Workers API reference · Cloudflare R2 docs","description":"Complete reference for the R2 in-Worker API, including bucket and object operations.","url":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

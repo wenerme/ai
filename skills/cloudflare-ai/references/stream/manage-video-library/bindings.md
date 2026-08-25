@@ -545,7 +545,7 @@ export default {
 * `size` `number`
 
   * The size of the video in bytes.
-* `preview` `string`optional
+* `preview` `string` optional
 
   * The preview URL for the video.
 * `allowedOrigins` `Array<string>`
@@ -581,7 +581,7 @@ export default {
 * `watermark` `StreamWatermark | null`
 
   * The watermark applied to the video, if any. Refer to [StreamWatermark](#streamwatermark).
-* `liveInputId` `string | null`optional
+* `liveInputId` `string | null` optional
 
   * The live input ID associated with the video, if any.
 * `clippedFromId` `string | null`
@@ -598,10 +598,10 @@ Processing status information for a video.
 * `state` `string`
 
   * The current processing state.
-* `step` `string`optional
+* `step` `string` optional
 
   * The current processing step.
-* `pctComplete` `string`optional
+* `pctComplete` `string` optional
 
   * The percent complete as a string.
 * `errorReasonCode` `string`
@@ -660,7 +660,7 @@ Returned by `createDirectUpload()`. Contains the upload URL and video identifier
 
 Represents a caption or subtitle track for a video.
 
-* `generated` `boolean`optional
+* `generated` `boolean` optional
 
   * Whether the caption was generated via AI.
 * `label` `string`
@@ -669,7 +669,7 @@ Represents a caption or subtitle track for a video.
 * `language` `string`
 
   * The language tag in BCP 47 format.
-* `status` `'ready' | 'inprogress' | 'error'`optional
+* `status` `'ready' | 'inprogress' | 'error'` optional
 
   * The status of a generated caption.
 
@@ -677,10 +677,10 @@ Represents a caption or subtitle track for a video.
 
 An object with download type keys. Each key is optional and only present if that download type has been created.
 
-* `default` `StreamDownload`optional
+* `default` `StreamDownload` optional
 
   * The default video download. Only present if this download type has been created. Refer to [StreamDownload](#streamdownload).
-* `audio` `StreamDownload`optional
+* `audio` `StreamDownload` optional
 
   * The audio-only download. Only present if this download type has been created. Refer to [StreamDownload](#streamdownload).
 
@@ -694,7 +694,7 @@ Represents a generated download for a video.
 * `status` `StreamDownloadStatus`
 
   * The status of a generated download.
-* `url` `string`optional
+* `url` `string` optional
 
   * The URL to access the generated download.
 
@@ -768,25 +768,25 @@ The type of download to generate.
 
 Parameters for uploading a video from a URL.
 
-* `allowedOrigins` `Array<string>`optional
+* `allowedOrigins` `Array<string>` optional
 
   * Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
-* `creator` `string`optional
+* `creator` `string` optional
 
   * A user-defined identifier for the media creator.
-* `meta` `Record<string, string>`optional
+* `meta` `Record<string, string>` optional
 
   * A user modifiable key-value store used to reference other systems of record for managing videos.
-* `requireSignedURLs` `boolean`optional
+* `requireSignedURLs` `boolean` optional
 
   * Indicates whether the video can be accessed using the ID. When set to `true`, a signed token must be generated with a signing key to view the video.
-* `scheduledDeletion` `string | null`optional
+* `scheduledDeletion` `string | null` optional
 
   * Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
-* `thumbnailTimestampPct` `number`optional
+* `thumbnailTimestampPct` `number` optional
 
   * The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video.
-* `watermarkId` `string`optional
+* `watermarkId` `string` optional
 
   * The identifier for the watermark profile.
 
@@ -797,28 +797,28 @@ Parameters for creating a direct upload.
 * `maxDurationSeconds` `number`
 
   * The maximum duration in seconds for a video upload.
-* `expiry` `string`optional
+* `expiry` `string` optional
 
   * The date and time after upload when videos will not be accepted.
-* `creator` `string`optional
+* `creator` `string` optional
 
   * A user-defined identifier for the media creator.
-* `meta` `Record<string, string>`optional
+* `meta` `Record<string, string>` optional
 
   * A user modifiable key-value store used to reference other systems of record for managing videos.
-* `allowedOrigins` `Array<string>`optional
+* `allowedOrigins` `Array<string>` optional
 
   * Lists the origins allowed to display the video.
-* `requireSignedURLs` `boolean`optional
+* `requireSignedURLs` `boolean` optional
 
   * Indicates whether the video can be accessed using the ID. When set to `true`, a signed token must be generated with a signing key to view the video.
-* `thumbnailTimestampPct` `number`optional
+* `thumbnailTimestampPct` `number` optional
 
   * The timestamp for a thumbnail image calculated as a percentage value of the video's duration.
-* `scheduledDeletion` `string | null`optional
+* `scheduledDeletion` `string | null` optional
 
   * The date and time at which the video will be deleted. Include `null` to remove a scheduled deletion.
-* `watermark` `StreamDirectUploadWatermark`optional
+* `watermark` `StreamDirectUploadWatermark` optional
 
   * The watermark profile to apply. Refer to [StreamDirectUploadWatermark](#streamdirectuploadwatermark).
 
@@ -834,25 +834,25 @@ Watermark configuration for a direct upload.
 
 Parameters for updating a video.
 
-* `allowedOrigins` `Array<string>`optional
+* `allowedOrigins` `Array<string>` optional
 
   * Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
-* `creator` `string`optional
+* `creator` `string` optional
 
   * A user-defined identifier for the media creator.
-* `maxDurationSeconds` `number`optional
+* `maxDurationSeconds` `number` optional
 
   * The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
-* `meta` `Record<string, string>`optional
+* `meta` `Record<string, string>` optional
 
   * A user modifiable key-value store used to reference other systems of record for managing videos.
-* `requireSignedURLs` `boolean`optional
+* `requireSignedURLs` `boolean` optional
 
   * Indicates whether the video can be accessed using the ID. When set to `true`, a signed token must be generated with a signing key to view the video.
-* `scheduledDeletion` `string | null`optional
+* `scheduledDeletion` `string | null` optional
 
   * Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
-* `thumbnailTimestampPct` `number`optional
+* `thumbnailTimestampPct` `number` optional
 
   * The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video.
 
@@ -860,19 +860,19 @@ Parameters for updating a video.
 
 Parameters for listing videos.
 
-* `limit` `number`optional
+* `limit` `number` optional
 
   * The maximum number of videos to return.
-* `before` `string`optional
+* `before` `string` optional
 
   * Return videos created before this timestamp (RFC3339/RFC3339Nano).
-* `beforeComp` `StreamPaginationComparison`optional
+* `beforeComp` `StreamPaginationComparison` optional
 
   * Comparison operator for the `before` field. Defaults to `lt`. Refer to [StreamPaginationComparison](#streampaginationcomparison).
-* `after` `string`optional
+* `after` `string` optional
 
   * Return videos created after this timestamp (RFC3339/RFC3339Nano).
-* `afterComp` `StreamPaginationComparison`optional
+* `afterComp` `StreamPaginationComparison` optional
 
   * Comparison operator for the `after` field. Defaults to `gte`. Refer to [StreamPaginationComparison](#streampaginationcomparison).
 
@@ -891,19 +891,19 @@ Comparison operators for pagination queries.
 
 Parameters for creating a watermark profile.
 
-* `name` `string`optional
+* `name` `string` optional
 
   * A short description of the watermark profile.
-* `opacity` `number`optional
+* `opacity` `number` optional
 
   * The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.
-* `padding` `number`optional
+* `padding` `number` optional
 
   * The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length.
-* `scale` `number`optional
+* `scale` `number` optional
 
   * The size of the image relative to the overall size of the video. `0.0` indicates no scaling, and `1.0` fills the entire video.
-* `position` `StreamWatermarkPosition`optional
+* `position` `StreamWatermarkPosition` optional
 
   * The location of the image. Refer to [StreamWatermarkPosition](#streamwatermarkposition).
 
@@ -973,8 +973,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/manage-video-library/bindings/#page","headline":"Bind to Workers API · Cloudflare Stream docs","description":"A binding connects your Worker to external resources on the Developer Platform, like Stream, R2 buckets, or KV namespaces.","url":"https://developers.cloudflare.com/stream/manage-video-library/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/manage-video-library/bindings/#page","headline":"Bind to Workers API · Cloudflare Stream docs","description":"A binding connects your Worker to external resources on the Developer Platform, like Stream, R2 buckets, or KV namespaces.","url":"https://developers.cloudflare.com/stream/manage-video-library/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -4,7 +4,7 @@
 
 # Create a new API key
 
-> Create a new API key for the authenticated user. The plaintext `key` is returned only in this response. Treat it as a write-only, sensitive value; it cannot be retrieved later. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+> Create a new API key for the authenticated user. The plaintext `key` is returned only in this response. Treat it as a write-only, sensitive value; it cannot be retrieved later. Authenticate with a [management key](/docs/guides/overview/auth/management-api-keys), or with a Connect client secret. `external_user` and `external_api_key` are accepted only with a client secret, and `external_user` is required there; supplying either field with a management key is rejected with 403.
 
 
 
@@ -106,8 +106,11 @@ paths:
       description: >-
         Create a new API key for the authenticated user. The plaintext `key` is
         returned only in this response. Treat it as a write-only, sensitive
-        value; it cannot be retrieved later. [Management
-        key](/docs/guides/overview/auth/management-api-keys) required.
+        value; it cannot be retrieved later. Authenticate with a [management
+        key](/docs/guides/overview/auth/management-api-keys), or with a Connect
+        client secret. `external_user` and `external_api_key` are accepted only
+        with a client secret, and `external_user` is required there; supplying
+        either field with a management key is rejected with 403.
       operationId: createKeys
       requestBody:
         content:
@@ -149,7 +152,17 @@ paths:
                   description: >-
                     Optional partner-supplied API key. Stored as a SHA-256 hash
                     and never returned. Accepted only when authenticating with a
-                    Connect client secret.
+                    Connect client secret; supplying it with a management key is
+                    rejected with 403.
+                  maxLength: 512
+                  minLength: 1
+                  type: string
+                external_user:
+                  description: >-
+                    Partner's end-user identifier for attribution, between 1 and
+                    512 characters. Accepted only when authenticating with a
+                    Connect client secret, where it is required; supplying it
+                    with a management key is rejected with 403.
                   maxLength: 512
                   minLength: 1
                   type: string
@@ -208,6 +221,7 @@ paths:
                   creator_user_id: user_2dHFtVWx2n56w6HkM0000000000
                   disabled: false
                   expires_at: '2027-12-31T23:59:59Z'
+                  external_user: null
                   hash: >-
                     f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943
                   include_byok_in_limit: true
@@ -235,6 +249,7 @@ paths:
                     creator_user_id: user_2dHFtVWx2n56w6HkM0000000000
                     disabled: false
                     expires_at: '2027-12-31T23:59:59Z'
+                    external_user: null
                     hash: >-
                       f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943
                     include_byok_in_limit: true
@@ -263,6 +278,7 @@ paths:
                       creator_user_id: user_2dHFtVWx2n56w6HkM0000000000
                       disabled: false
                       expires_at: '2027-12-31T23:59:59Z'
+                      external_user: null
                       hash: >-
                         f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943
                       include_byok_in_limit: false
@@ -323,6 +339,12 @@ paths:
                           null if no expiration
                         example: '2027-12-31T23:59:59Z'
                         format: date-time
+                        type:
+                          - string
+                          - 'null'
+                      external_user:
+                        description: Partner's end-user identifier used for attribution.
+                        example: null
                         type:
                           - string
                           - 'null'
@@ -422,6 +444,7 @@ paths:
                       - byok_usage_monthly
                       - created_at
                       - updated_at
+                      - external_user
                       - creator_user_id
                       - workspace_id
                     type: object

@@ -51,7 +51,7 @@ Detect when a column value changes over time, such as a deployment (`service.ver
 - **Map Key**: shown when the watch column is a `Map`. Pick the key to track, such as `service.version`.
 - **Group By**: track each value of this column independently. Defaults to `ServiceName`.
 
-The generated query buckets rows into 30-second intervals, takes the dominant value in each bucket, and uses `lagInFrame()` to compare each bucket with the previous one per group. Taking the dominant value keeps a service that runs two versions at once, during a rolling deploy or canary, from flapping between them. It emits one annotation per transition, so a rollback (`v1.0` to `v1.1` back to `v1.0`) produces three annotations rather than two:
+The generated query buckets rows into 30-second intervals, takes the dominant value in each bucket, and uses `lagInFrame()` to compare each bucket with the previous one per group. Taking the dominant value keeps a service that runs two versions at once, during a rolling deploy or canary, from flapping between them. It emits one annotation per transition, so a rollback (`v1.0` to `v1.1` and back to `v1.0`) produces a separate annotation for the return to `v1.0`, which a simple `DISTINCT` on version would hide:
 
 SQL [Copy code to clipboard] Copy
 
@@ -124,7 +124,23 @@ The Change Detection preset keeps its generated SQL editable, so you can build t
 
 The following examples show common patterns. Replace the table and column names with your own.
 
-**Application events (e.g. deployments or status changes):**
+**OpenTelemetry log errors (mark error and fatal log lines from the standard OTel schema):**
+
+SQL [Copy code to clipboard] Copy
+
+```sql
+SELECT
+  Timestamp AS time,
+  concat(SeverityText, ': ', Body) AS text,
+  ServiceName AS tags
+FROM otel_logs
+WHERE $__timeFilter(Timestamp)
+  AND SeverityText IN ('ERROR', 'FATAL')
+ORDER BY Timestamp DESC
+LIMIT 100
+```
+
+**Application events (for example, deployments or status changes):**
 
 SQL [Copy code to clipboard] Copy
 
@@ -140,7 +156,7 @@ ORDER BY event_time DESC
 LIMIT 100
 ```
 
-**Query log events (e.g. long-running or failed queries from ClickHouse system tables):**
+**Query log events (for example, long-running or failed queries from ClickHouse system tables):**
 
 SQL [Copy code to clipboard] Copy
 
@@ -216,14 +232,14 @@ If this is not the desired behavior and you want the annotation to always show a
 
 ## Best practices
 
-1. **Use a time filter** — Include `$__timeFilter(your_time_column)` in the WHERE clause so the query only returns data in the dashboard time range.
-2. **Limit results** — Use `LIMIT` (for example, 100) so the query stays fast and the dashboard does not show too many markers.
-3. **Meaningful text** — Use `concat()` or similar so the text column is clear (e.g. event type plus a short description).
-4. **Use tags** — Return one or more tag columns (e.g. environment, service, user) so users can filter annotations in the dashboard.
-5. **Descriptive names** — Give the annotation a clear name (e.g. “Production deployments”, “Query errors”) so dashboard users know what it represents.
+1. **Use a time filter**: Include `$__timeFilter(your_time_column)` in the WHERE clause so the query only returns data in the dashboard time range.
+2. **Limit results**: Use `LIMIT` (for example, 100) so the query stays fast and the dashboard does not show too many markers.
+3. **Meaningful text**: Use `concat()` or similar so the text column is clear (for example, event type plus a short description).
+4. **Use tags**: Return one or more tag columns (for example, environment, service, or user) so users can filter annotations in the dashboard.
+5. **Descriptive names**: Give the annotation a clear name (for example, “Production deployments” or “Query errors”) so dashboard users know what it represents.
 
 ## Next steps
 
-- [ClickHouse query editor](/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/) — Macros such as `$__timeFilter` and building queries.
-- [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/) — Grafana annotation options (colors, which panels show annotations, filters).
-- [Troubleshoot ClickHouse data source issues](/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/) — Common errors and solutions.
+- [ClickHouse query editor](/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/): Macros such as `$__timeFilter` and building queries.
+- [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/): Grafana annotation options (colors, which panels show annotations, filters).
+- [Troubleshoot ClickHouse data source issues](/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/): Common errors and solutions.

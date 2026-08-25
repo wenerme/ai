@@ -174,7 +174,7 @@ Refer to the [source code ↗](https://github.com/cloudflare/workerd/blob/4c42a4
 
 * `query`: `string`
   * The SQL query string to be executed. `query` can contain `?` placeholders for parameter bindings. Multiple SQL statements, separated with a semicolon, can be executed in the `query`. With multiple SQL statements, any parameter bindings are applied to the last SQL statement in the `query`, and the returned cursor is only for the last SQL statement.
-* `...bindings`: `any[]`Optional
+* `...bindings`: `any[]` Optional
   * Optional variable number of arguments that correspond to the `?` placeholders in `query`.
 
 #### Returns
@@ -448,7 +448,7 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
 
 ### `list`
 
-* `` ctx.storage.kv.list(options `Object`optional) ``: `Iterable<string, any>`
+* `` ctx.storage.kv.list(options `Object` optional) ``: `Iterable<string, any>`
   * Returns all keys and values associated with the current Durable Object in ascending sorted order based on the keys' UTF-8 encodings.
   * The type of each returned value in the [Iterable ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration%5Fprotocols#the%5Fiterable%5Fprotocol) will be whatever was previously written for the corresponding key.
   * Be aware of how much data may be stored in your Durable Object before calling this version of `list` without options because all the data will be loaded into the Durable Object's memory, potentially hitting its [limit](https://developers.cloudflare.com/durable-objects/platform/limits/). If that is a concern, pass options to `list` as documented below.
@@ -482,7 +482,7 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
 * `` ctx.storage.get(key `string`, options `Object` optional) ``: `Promise<any>`
 
   * Retrieves the value associated with the given key. The type of the returned value will be whatever was previously written for the key, or undefined if the key does not exist.
-* `` ctx.storage.get(keys `Array<string>`, options `Object`optional) ``: `Promise<Map<string, any>>`
+* `` ctx.storage.get(keys `Array<string>`, options `Object` optional) ``: `Promise<Map<string, any>>`
 
   * Retrieves the values associated with each of the provided keys. The type of each returned value in the [Map ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Map) will be whatever was previously written for the corresponding key. Results in the `Map` will be sorted in increasing order of their UTF-8 encodings, with any requested keys that do not exist being omitted. Supports up to 128 keys at a time.
 
@@ -497,7 +497,7 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
 
 ### put
 
-* `` put(key `string`, value `any`, options `Object`optional) ``: `Promise`
+* `` put(key `string`, value `any`, options `Object` optional) ``: `Promise`
 
   * Stores the value and associates it with the given key. The value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm), which is true of most types.
   The size of keys and values have different limits depending on the Durable Object storage backend you are using. Refer to either:
@@ -505,7 +505,7 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
     * [SQLite-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#sqlite-backed-durable-objects-general-limits)
     * [KV-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#key-value-backed-durable-objects-general-limits).
   On a KV-backed Durable Object, if the serialized value exceeds the 128 KiB (131072 bytes) value-size limit, `put()` throws a `RangeError` (for example, `Values cannot be larger than 131072 bytes.`) before the write is applied.
-* `` put(entries `Object`, options `Object`optional) ``: `Promise`
+* `` put(entries `Object`, options `Object` optional) ``: `Promise`
 
   * Takes an Object and stores each of its keys and values to storage.
   * Each value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm), which is true of most types.
@@ -515,10 +515,10 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
 
 ### delete
 
-* `` delete(key `string`, options `Object`optional) ``: `Promise<boolean>`
+* `` delete(key `string`, options `Object` optional) ``: `Promise<boolean>`
 
   * Deletes the key and associated value. Returns `true` if the key existed or `false` if it did not.
-* `` delete(keys `Array<string>`, options `Object`optional) ``: `Promise<number>`
+* `` delete(keys `Array<string>`, options `Object` optional) ``: `Promise<number>`
 
   * Deletes the provided keys and their associated values. Supports up to 128 keys at a time. Returns a count of the number of key-value pairs deleted.
 
@@ -547,7 +547,7 @@ The `put()` method returns a `Promise`, but most applications can discard this p
 
 ### list
 
-* `` list(options `Object`optional) ``: `Promise<Map<string, any>>`
+* `` list(options `Object` optional) ``: `Promise<Map<string, any>>`
   * Returns all keys and values associated with the current Durable Object in ascending sorted order based on the keys' UTF-8 encodings.
   * The type of each returned value in the [Map ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Map) will be whatever was previously written for the corresponding key.
   * Be aware of how much data may be stored in your Durable Object before calling this version of `list` without options because all the data will be loaded into the Durable Object's memory, potentially hitting its [limit](https://developers.cloudflare.com/durable-objects/platform/limits/). If that is a concern, pass options to `list` as documented below.
@@ -584,7 +584,7 @@ The `put()` method returns a `Promise`, but most applications can discard this p
 
 ### `getAlarm`
 
-* `` getAlarm(options `Object`optional) ``: `Promise<Number | null>`
+* `` getAlarm(options `Object` optional) ``: `Promise<Number | null>`
   * Retrieves the current alarm time (if set) as integer milliseconds since epoch. The alarm is considered to be set if it has not started, or if it has failed and any retry has not begun. If no alarm is set, `getAlarm()` returns `null`.
 
 #### Supported options
@@ -593,14 +593,14 @@ The `put()` method returns a `Promise`, but most applications can discard this p
 
 ### `setAlarm`
 
-* `` setAlarm(scheduledTime `Date | number`, options `Object`optional) ``: `Promise`
+* `` setAlarm(scheduledTime `Date | number`, options `Object` optional) ``: `Promise`
 
   * Sets the current alarm time, accepting either a JavaScript `Date`, or integer milliseconds since epoch.
 If `setAlarm()` is called with a time equal to or before `Date.now()`, the alarm will be scheduled for asynchronous execution in the immediate future. If the alarm handler is currently executing in this case, it will not be canceled. Alarms can be set to millisecond granularity and will usually execute within a few milliseconds after the set time, but can be delayed by up to a minute due to maintenance or failures while failover takes place.
 
 ### `deleteAlarm`
 
-* `` deleteAlarm(options `Object`optional) ``: `Promise`
+* `` deleteAlarm(options `Object` optional) ``: `Promise`
   * Deletes the alarm if one exists. Does not cancel the alarm handler if it is currently executing.
 
 #### Supported options
@@ -611,7 +611,7 @@ If `setAlarm()` is called with a time equal to or before `Date.now()`, the alarm
 
 ### `deleteAll`
 
-* `` deleteAll(options `Object`optional) ``: `Promise`
+* `` deleteAll(options `Object` optional) ``: `Promise`
   * Deletes all stored data, effectively deallocating all storage used by the Durable Object. For Durable Objects with a key-value storage backend, `deleteAll()` removes all keys and associated values for an individual Durable Object. For Durable Objects with a [SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class), `deleteAll()` removes the entire contents of a Durable Object's private SQLite database, including both SQL data and key-value data.
   * For Durable Objects with a key-value storage backend, an in-progress `deleteAll()` operation can fail, which may leave a subset of data undeleted. Durable Objects with a SQLite storage backend do not have a partial `deleteAll()` issue because `deleteAll()` operations are atomic (all or nothing).
   * For Workers with a compatibility date of `2026-02-24` or later, `deleteAll()` also deletes any active [alarm](https://developers.cloudflare.com/durable-objects/api/alarms/). For earlier compatibility dates, `deleteAll()` does not delete alarms. Use [deleteAlarm()](https://developers.cloudflare.com/durable-objects/api/alarms/#deletealarm) separately, or enable the `delete_all_deletes_alarm` [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/).
@@ -661,8 +661,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#page","headline":"SQLite-backed Durable Object Storage · Cloudflare Durable Objects docs","description":"API reference for SQLite-backed Durable Object storage, including the SQL API and key-value methods.","url":"https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#page","headline":"SQLite-backed Durable Object Storage · Cloudflare Durable Objects docs","description":"API reference for SQLite-backed Durable Object storage, including the SQL API and key-value methods.","url":"https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

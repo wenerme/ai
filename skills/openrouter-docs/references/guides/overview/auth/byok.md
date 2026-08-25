@@ -188,13 +188,13 @@ Filters are evaluated before routing. A key is only used when all of its active 
 
 #### Managing Filters via the Management API
 
-You can set and update all three filters programmatically using the [BYOK management endpoints](/docs/api/api-reference/byok/list-byok-provider-credentials). The API uses these field names:
+You can set and update all three filters programmatically using the [BYOK management endpoints](/docs/api/api-reference/byok). The API uses these field names:
 
-| UI filter      | API field                | Type               | Semantics                                                                                                                                                     |
-| -------------- | ------------------------ | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Model filter   | `allowed_models`         | `string[] \| null` | Allowlist of model slugs (e.g. `["openai/gpt-4o"]`). `null` means no restriction.                                                                             |
-| API key filter | `allowed_api_key_hashes` | `string[] \| null` | Allowlist of OpenRouter API key hashes (the `hash` field from the [Keys API](/docs/api/api-reference/api-keys/create-a-new-api-key)). `null` means no restriction. |
-| Member filter  | `allowed_user_ids`       | `string[] \| null` | Allowlist of user IDs (Clerk user IDs). `null` means no restriction.                                                                                          |
+| UI filter      | API field                | Type               | Semantics                                                                                                                            |
+| -------------- | ------------------------ | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Model filter   | `allowed_models`         | `string[] \| null` | Allowlist of model slugs (e.g. `["openai/gpt-4o"]`). `null` means no restriction.                                                    |
+| API key filter | `allowed_api_key_hashes` | `string[] \| null` | Allowlist of OpenRouter API key hashes (the `hash` field from the [Keys API](/docs/api/api-reference/keys)). `null` means no restriction. |
+| Member filter  | `allowed_user_ids`       | `string[] \| null` | Allowlist of user IDs (Clerk user IDs). `null` means no restriction.                                                                 |
 
 Each field accepts up to 100 entries. Omission and `null` mean different things, and omission itself means something different depending on whether you're creating or updating:
 
@@ -257,7 +257,7 @@ curl https://openrouter.ai/api/v1/byok/11111111-2222-3333-4444-555555555555 \
 
 **Validation rules for `allowed_api_key_hashes`:**
 
-* Must be an array of strings (the SHA-256 `hash` values returned by the [Keys API](/docs/api/api-reference/api-keys/create-a-new-api-key)).
+* Must be an array of strings (the SHA-256 `hash` values returned by the [Keys API](/docs/api/api-reference/keys)).
 * Each hash must be exactly 64 lowercase hexadecimal characters. Hashes in any other format are rejected with a `400` error.
 * Maximum 100 entries.
 * Must contain at least one hash if provided — an empty array (`[]`) is rejected with a `400` error. Pass `null` to clear the restriction instead, or omit the field to leave it unset (create) or unchanged (update).

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Device metrics
 
@@ -25,7 +25,7 @@ Cloudflare customers can inspect metrics for a specific Cloudflare One Appliance
 
 To find the information above and start troubleshooting your Cloudflare One Appliance:
 
-1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
 2. Go to **Appliances** \> **Profiles**.
 3. Select your Appliance > **View analytics**.
 
@@ -41,10 +41,10 @@ In Performance analytics you can review your Cloudflare One Appliance's performa
 
 To access performance analytics:
 
-1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
 2. Go to **Appliances** \> **Profiles**.
 3. Select your Appliance > **View analytics**.
-1. Select **Performance analytics**.
+4. Select **Performance analytics**.
 
 ### Port analytics
 
@@ -55,10 +55,10 @@ Port analytics gives you access to information related to the packets sent and r
 
 The dashboard provides this information for all active ports in your Cloudflare One Appliance. To access port analytics:
 
-1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
 2. Go to **Appliances** \> **Profiles**.
 3. Select your Appliance > **View analytics**.
-1. Select **Port analytics**.
+4. Select **Port analytics**.
 
 ### Event logs
 
@@ -83,20 +83,20 @@ Use Event logs to identify general patterns and changes over time. This is usefu
 
 To access event logs:
 
-1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
 2. Go to **Appliances** \> **Profiles**.
 3. Select your Appliance > **View analytics**.
-1. Select **Events**.
-2. You can filter results by specific events, and by time.
+4. Select **Events**.
+5. You can filter results by specific events, and by time.
 
 ### DHCP leasing
 
 The DHCP leasing section identifies DHCP assigned leases and their expiration dates. To access DHCP leasing:
 
-1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
 2. Go to **Appliances** \> **Profiles**.
 3. Select your Appliance > **View analytics**.
-1. Select **DHCP leasing**.
+4. Select **DHCP leasing**.
 
 ## Troubleshooting tips
 
@@ -134,8 +134,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/troubleshooting/#page","headline":"Troubleshooting · Cloudflare One docs","description":"Troubleshoot Troubleshooting issues in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/troubleshooting/#page","headline":"Troubleshooting · Cloudflare One docs","description":"Troubleshoot Troubleshooting issues in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

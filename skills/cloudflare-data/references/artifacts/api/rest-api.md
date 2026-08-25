@@ -164,8 +164,8 @@ Use the account-level base URL.
 
 Request body:
 
-* `namespace` `NamespaceName`required
-* `jurisdiction` `"eu" | "us"`optional (default: unrestricted)
+* `namespace` `NamespaceName` required
+* `jurisdiction` `"eu" | "us"` optional (default: unrestricted)
 
 ```bash
 curl --request POST "$ARTIFACTS_ACCOUNT_BASE_URL/namespaces" \
@@ -209,10 +209,10 @@ Route: `POST /artifacts/namespaces/:namespace/repos`
 
 Request body:
 
-* `name` `RepoName`required
-* `description` `string`optional
-* `default_branch` `BranchName`optional
-* `read_only` `boolean`optional
+* `name` `RepoName` required
+* `description` `string` optional
+* `default_branch` `BranchName` optional
+* `read_only` `boolean` optional
 
 Response type:
 
@@ -272,11 +272,11 @@ Route: `GET /artifacts/namespaces/:namespace/repos?limit=&cursor=&search=&sort=&
 
 Query parameters:
 
-* `limit` `number`optional (default: 50, max: 200)
-* `cursor` `Cursor`optional
-* `search` `string`optional
-* `sort` `"created_at" | "updated_at" | "last_push_at" | "name"`optional (default: "created\_at")
-* `direction` `"asc" | "desc"`optional (default: "desc")
+* `limit` `number` optional (default: 50, max: 200)
+* `cursor` `Cursor` optional
+* `search` `string` optional
+* `sort` `"created_at" | "updated_at" | "last_push_at" | "name"` optional (default: "created\_at")
+* `direction` `"asc" | "desc"` optional (default: "desc")
 
 Response type:
 
@@ -397,10 +397,10 @@ Route: `POST /artifacts/namespaces/:namespace/repos/:name/fork`
 
 Request body:
 
-* `name` `RepoName`required
-* `description` `string`optional
-* `read_only` `boolean`optional
-* `default_branch_only` `boolean`optional
+* `name` `RepoName` required
+* `description` `string` optional
+* `read_only` `boolean` optional
+* `default_branch_only` `boolean` optional
 
 Response type:
 
@@ -454,10 +454,10 @@ Route: `POST /artifacts/namespaces/:namespace/repos/:name/import`
 
 Request body:
 
-* `url` `string`required
-* `branch` `string`optional
-* `depth` `number`optional
-* `read_only` `boolean`optional
+* `url` `string` required
+* `branch` `string` optional
+* `depth` `number` optional
+* `read_only` `boolean` optional
 
 Response type:
 
@@ -577,9 +577,9 @@ Route: `GET /artifacts/namespaces/:namespace/repos/:name/tokens?state=&per_page=
 
 Query parameters:
 
-* `state` `"active" | "expired" | "revoked" | "all"`optional (default: "active")
-* `per_page` `number`optional (default: 30, max: 100)
-* `page` `number`optional (default: 1)
+* `state` `"active" | "expired" | "revoked" | "all"` optional (default: "active")
+* `per_page` `number` optional (default: 30, max: 100)
+* `page` `number` optional (default: 1)
 
 Response type:
 
@@ -628,9 +628,9 @@ Route: `POST /artifacts/namespaces/:namespace/tokens`
 
 Request body:
 
-* `repo` `RepoName`required
-* `scope` `"read" | "write"`optional (default: "write")
-* `ttl` `number`optional — Token time-to-live in seconds. Minimum 60 (1 minute), maximum 31,536,000 (1 year). Defaults to 86,400 (24 hours).
+* `repo` `RepoName` required
+* `scope` `"read" | "write"` optional (default: "write")
+* `ttl` `number` optional — Token time-to-live in seconds. Minimum 60 (1 minute), maximum 31,536,000 (1 year). Defaults to 86,400 (24 hours).
 
 Response type:
 
@@ -740,5 +740,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/rest-api/#page","headline":"REST API · Artifacts · Cloudflare Artifacts docs","description":"Manage Artifacts repos and tokens over HTTP.","url":"https://developers.cloudflare.com/artifacts/api/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/rest-api/#page","headline":"REST API · Artifacts · Cloudflare Artifacts docs","description":"Manage Artifacts repos and tokens over HTTP.","url":"https://developers.cloudflare.com/artifacts/api/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

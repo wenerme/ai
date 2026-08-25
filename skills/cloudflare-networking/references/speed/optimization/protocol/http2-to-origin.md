@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # HTTP/2 to Origin
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A protocol is a set of rules governing the exchange or transmission of data between devices. One of the most important protocols that run on the human-computer interaction layer, where applications can access the network services, is HTTP (Hypertext Transfer Protocol).
 
@@ -134,7 +134,7 @@ During the HTTP/2 handshake, our edge reads the SETTINGS\_MAX\_CONCURRENT\_STREA
 
 | Condition               | Default / Range                   | Error code | Description                                                |
 | ----------------------- | --------------------------------- | ---------- | ---------------------------------------------------------- |
-| Proxy Read Timeout      | 100s (up to 6000s for Enterprise) | 524        | Origin took too long to respond.                           |
+| Proxy Read Timeout      | 125s (up to 6000s for Enterprise) | 524        | Origin took too long to respond.                           |
 | Proxy Idle Timeout      | 900s (fixed)                      | 520        | Connection closed due to idleness.                         |
 | TCP Keep-Alive Interval | 30s initial, 15s between probes   | 520        | After two missed probes, Cloudflare resets the connection. |
 | TCP Handshake Timeout   | 19s                               | 522        | Origin did not complete the SYN handshake.                 |
@@ -148,7 +148,7 @@ When traffic shifts suddenly (for example, during origin failover), Cloudflare r
 
 **Long-Lived or idle requests**
 
-* If your requests exceed 100 seconds (for example, streaming), increase the Proxy Read Timeout (Enterprise only).
+* If your requests exceed 125 seconds (for example, streaming), increase the Proxy Read Timeout (Enterprise only).
 * Origins that close connections faster than 900 seconds may experience connection churn, but Cloudflare automatically reestablishes new connections as needed.
 
 **Potential 5xx errors**
@@ -201,8 +201,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/#page","headline":"HTTP/2 to Origin · Cloudflare Speed docs","description":"Use HTTP/2 for connections between Cloudflare and your origin.","url":"https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/#page","headline":"HTTP/2 to Origin · Cloudflare Speed docs","description":"Use HTTP/2 for connections between Cloudflare and your origin.","url":"https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
 ```

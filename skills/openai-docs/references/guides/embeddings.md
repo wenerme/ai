@@ -241,7 +241,11 @@ df["ada_embedding"] = df.ada_embedding.apply(eval).apply(np.array)
 ```
 
 
-Reducing embedding dimensions
+
+
+#### Reducing embedding dimensions
+
+
 
 Using larger embeddings, for example storing them in a vector store for retrieval, generally costs more and consumes more compute, memory and storage than using smaller embeddings.
 
@@ -306,7 +310,15 @@ System.out.println(normalizeL2(shortened));
 
 Dynamically changing the dimensions enables very flexible usage. For example, when using a vector data store that only supports embeddings up to 1024 dimensions long, developers can now still use our best embedding model `text-embedding-3-large` and specify a value of 1024 for the `dimensions` API parameter, which will shorten the embedding down from 3072 dimensions, trading off some accuracy in exchange for the smaller vector size.
 
-Question answering using embeddings-based search
+
+
+
+
+
+
+#### Question answering using embeddings-based search
+
+
 
 
 
@@ -368,7 +380,15 @@ client.chat().completions().create(params).choices().stream()
 ```
 
 
-Text search using embeddings
+
+
+
+
+
+
+#### Text search using embeddings
+
+
 
 
 
@@ -437,7 +457,15 @@ IntStream.range(0, reviews.size())
 ```
 
 
-Code search using embeddings
+
+
+
+
+
+
+#### Code search using embeddings
+
+
 
 
 
@@ -509,7 +537,15 @@ IntStream.range(0, functions.size())
 ```
 
 
-Recommendations using embeddings
+
+
+
+
+
+
+#### Recommendations using embeddings
+
+
 
 
 
@@ -594,7 +630,15 @@ System.out.println(nearestNeighbors);
 ```
 
 
-Data visualization in 2D
+
+
+
+
+
+
+#### Data visualization in 2D
+
+
 
 
 
@@ -640,7 +684,15 @@ plt.title("Amazon ratings visualized in language using t-SNE")
 ```
 
 
-Embedding as a text feature encoder for ML algorithms
+
+
+
+
+
+
+#### Embedding as a text feature encoder for ML algorithms
+
+
 
 
 
@@ -677,7 +729,15 @@ preds = rfr.predict(X_test)
 ```
 
 
-Classification using the embedding features
+
+
+
+
+
+
+#### Classification using the embedding features
+
+
 
 
 
@@ -698,7 +758,15 @@ preds = clf.predict(X_test)
 ```
 
 
-Zero-shot classification
+
+
+
+
+
+
+#### Zero-shot classification
+
+
 
 
 
@@ -751,7 +819,15 @@ System.out.println(positive > negative ? "positive" : "negative");
 ```
 
 
-Obtaining user and product embeddings for cold-start recommendation
+
+
+
+
+
+
+#### Obtaining user and product embeddings for cold-start recommendation
+
+
 
 
 
@@ -768,7 +844,15 @@ prod_embeddings = df.groupby("ProductId").ada_embedding.apply(np.mean)
 ```
 
 
-Clustering
+
+
+
+
+
+
+#### Clustering
+
+
 
 
 
@@ -790,6 +874,10 @@ kmeans = KMeans(n_clusters=n_clusters, init="k-means++", random_state=42)
 kmeans.fit(matrix)
 df["Cluster"] = kmeans.labels_
 ```
+
+
+
+
 
 
 ## FAQ

@@ -89,7 +89,7 @@ Enable logging on your Worker by adding a new property, `logpush = true`, to you
 	"name": "my-worker",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-08-24",
+	"compatibility_date": "2026-08-25",
 	"workers_dev": false,
 	"logpush": true,
 	"route": {
@@ -104,7 +104,7 @@ Enable logging on your Worker by adding a new property, `logpush = true`, to you
 name = "my-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-08-24"
+compatibility_date = "2026-08-25"
 workers_dev = false
 logpush = true
 
@@ -217,5 +217,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/logs/logpush/#page","headline":"Workers Logpush · Cloudflare Workers docs","description":"Send Workers Trace Event Logs to a supported third party, such as a storage or logging provider.","url":"https://developers.cloudflare.com/workers/observability/logs/logpush/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/logs/logpush/#page","headline":"Workers Logpush · Cloudflare Workers docs","description":"Send Workers Trace Event Logs to a supported third party, such as a storage or logging provider.","url":"https://developers.cloudflare.com/workers/observability/logs/logpush/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

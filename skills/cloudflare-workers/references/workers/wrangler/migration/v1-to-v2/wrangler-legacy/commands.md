@@ -924,10 +924,10 @@ In order to save JSON data, cast `value` to a string:
 
 The schema below is the full schema for key-value entries uploaded via the bulk API:
 
-* `key` `string`required
+* `key` `string` required
 
   * The key’s name. The name may be 512 bytes maximum. All printable, non-whitespace characters are valid.
-* `value` `string`required
+* `value` `string` required
 
   * The UTF-8 encoded string to be stored, up to 25 MB in length.
 * `expiration` int optional
@@ -985,10 +985,10 @@ This command takes a JSON file as an argument with a list of key-value pairs to 
 ]
 ```
 
-* `key` `string`required
+* `key` `string` required
 
   * The key’s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.
-* `value` `string`required
+* `value` `string` required
 
   * This field must be specified for deserialization purposes, but is unused because the provided keys are being deleted, not written.
 
@@ -1059,8 +1059,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/#page","headline":"Commands - Wrangler v1 (deprecated) · Cloudflare Workers docs","description":"Reference for all Wrangler v1 CLI commands, including generate, publish, and preview. Now deprecated.","url":"https://developers.cloudflare.com/workers/wrangler/commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/#page","headline":"Commands - Wrangler v1 (deprecated) · Cloudflare Workers docs","description":"Reference for all Wrangler v1 CLI commands, including generate, publish, and preview. Now deprecated.","url":"https://developers.cloudflare.com/workers/wrangler/commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

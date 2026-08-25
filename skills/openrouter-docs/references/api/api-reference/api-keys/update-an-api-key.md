@@ -4,7 +4,7 @@
 
 # Update an API key
 
-> Update an existing API key. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+> Update an existing API key. Authenticate with a [management key](/docs/guides/overview/auth/management-api-keys), or with a Connect client secret. A client secret reaches only the keys that same client created; any other key responds as if it does not exist.
 
 
 
@@ -104,8 +104,10 @@ paths:
         - API Keys
       summary: Update an API key
       description: >-
-        Update an existing API key. [Management
-        key](/docs/guides/overview/auth/management-api-keys) required.
+        Update an existing API key. Authenticate with a [management
+        key](/docs/guides/overview/auth/management-api-keys), or with a Connect
+        client secret. A client secret reaches only the keys that same client
+        created; any other key responds as if it does not exist.
       operationId: updateKeys
       parameters:
         - description: The hash identifier of the API key to update
@@ -207,6 +209,7 @@ paths:
                     creator_user_id: user_2dHFtVWx2n56w6HkM0000000000
                     disabled: false
                     expires_at: null
+                    external_user: null
                     hash: >-
                       f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943
                     include_byok_in_limit: true
@@ -233,6 +236,7 @@ paths:
                       creator_user_id: user_2dHFtVWx2n56w6HkM0000000000
                       disabled: false
                       expires_at: '2027-12-31T23:59:59Z'
+                      external_user: null
                       hash: >-
                         f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943
                       include_byok_in_limit: false
@@ -293,6 +297,12 @@ paths:
                           null if no expiration
                         example: '2027-12-31T23:59:59Z'
                         format: date-time
+                        type:
+                          - string
+                          - 'null'
+                      external_user:
+                        description: Partner's end-user identifier used for attribution.
+                        example: null
                         type:
                           - string
                           - 'null'
@@ -392,6 +402,7 @@ paths:
                       - byok_usage_monthly
                       - created_at
                       - updated_at
+                      - external_user
                       - creator_user_id
                       - workspace_id
                     type: object

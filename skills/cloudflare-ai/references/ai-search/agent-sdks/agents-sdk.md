@@ -93,7 +93,7 @@ Replace your [Wrangler configuration file](https://developers.cloudflare.com/wor
   "name": "ai-search-agent",
   "main": "src/server.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-30",
+  "compatibility_date": "2026-08-25",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -130,7 +130,7 @@ Replace your [Wrangler configuration file](https://developers.cloudflare.com/wor
 name = "ai-search-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-30"
+compatibility_date = "2026-08-25"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]
@@ -454,8 +454,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/#page","headline":"Agents SDK · Cloudflare AI Search docs","description":"Build a Cloudflare Agent that provisions an AI Search instance, indexes content, and searches it with a tool.","url":"https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/#page","headline":"Agents SDK · Cloudflare AI Search docs","description":"Build a Cloudflare Agent that provisions an AI Search instance, indexes content, and searches it with a tool.","url":"https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

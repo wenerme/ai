@@ -36,7 +36,7 @@ Get a working platform running in minutes. Choose a template based on what you a
 
 An example of a platform where users can deploy code at scale. Each snippet becomes its own isolated Worker, served at `example.com/{app-name}`. Deploying this starter kit automatically configures Workers for Platforms with routing handled for you.
 
-[View demo](https://worker-publisher-template.templates.workers.dev/)[View on GitHub](https://github.com/cloudflare/templates/tree/main/worker-publisher-template)
+[View demo](https://worker-publisher-template.templates.workers.dev/) [View on GitHub](https://github.com/cloudflare/templates/tree/main/worker-publisher-template)
 
 ### AI vibe coding platform
 
@@ -46,7 +46,7 @@ Build an [AI vibe coding platform](https://developers.cloudflare.com/reference-a
 
 [VibeSDK ↗](https://github.com/cloudflare/vibesdk) handles AI code generation, code execution in secure sandboxes, live previews, and deployment at scale.
 
-[View demo](https://build.cloudflare.dev/)[View on GitHub](https://github.com/cloudflare/vibesdk)
+[View demo](https://build.cloudflare.dev/) [View on GitHub](https://github.com/cloudflare/vibesdk)
 
 ---
 
@@ -65,8 +65,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/#page","headline":"Cloudflare for Platforms · Cloudflare for Platforms docs","description":"Build platforms on Cloudflare where your customers can deploy code with their own subdomains or custom domains.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/#page","headline":"Cloudflare for Platforms · Cloudflare for Platforms docs","description":"Build platforms on Cloudflare where your customers can deploy code with their own subdomains or custom domains.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

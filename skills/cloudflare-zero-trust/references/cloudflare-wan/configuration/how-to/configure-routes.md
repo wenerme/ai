@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure routes
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Virtual Network uses a routing table to steer your traffic from Cloudflare's global network to your connected networks via next-hop. You can add entries to the Cloudflare Virtual Network routing table through static route configuration or routes learned from BGP peering (beta) (available over CNI with Dataplane v2, as well as IPsec and GRE tunnels).
 
@@ -31,7 +31,7 @@ The dashboard **Routes** page shows the routes for all of your connectors — in
 
 The following IPv4 address ranges are allowed in the Cloudflare Virtual Network routing table:
 
-* [RFC 1918](https://datatracker.ietf.org/doc/html/rfc1918) address space, specifically `10.0.0.0/8`, `172.16.0.0/12`, and `192.168.0.0/16`.
+* [RFC 1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) address space, specifically `10.0.0.0/8`, `172.16.0.0/12`, and `192.168.0.0/16`.
 
 When using Cloudflare WAN and Cloudflare Tunnel together, consider the IP ranges utilized in the static routes of Cloudflare Tunnel when selecting static routes for Cloudflare WAN. For more information, refer to [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-tunnel/).
 
@@ -41,18 +41,17 @@ For prefixes outside RFC 1918, contact your Cloudflare customer service manager.
 
 1. Go to **Routes** page.
 [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
-1. From the **Routes** tab, select **Create route**, then choose **WAN** as the route type.
-1. Enter a descriptive name for your route in **Description**.
-2. In **Prefix**, enter your range of IP addresses. For example, `10.10.10.100/24`.
-3. In **Tunnel/Next hop**, select a tunnel for your route from the tunnels you created in [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/).
-4. Choose the **Priority** for your route. Lower numbers have higher priorities.
+2. From the **Routes** tab, select **Create route**, then choose **WAN** as the route type.
+3. Enter a descriptive name for your route in **Description**.
+4. In **Prefix**, enter your range of IP addresses. For example, `10.10.10.100/24`.
+5. In **Tunnel/Next hop**, select a tunnel for your route from the tunnels you created in [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/).
+6. Choose the **Priority** for your route. Lower numbers have higher priorities.
 Note
-Cloudflare routing applies longest-prefix match. A more specific static route (like `/30`) always takes precedence over a less specific one (like `/29`), regardless of tunnel priority — unless you remove the more specific route.
- Keep this in mind when configuring priorities for your routes. Refer to [Route prioritization](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#route-prioritization) for more information.
-5. (Optional) Choose a **Weight** for your route. Refer to [Set priority and weights for static routes](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#set-priority-and-weights-for-static-routes) for examples.
-6. (Optional) If you need to scope your route to a specific region, you can do it in **Region code**.
-7. (Optional) We highly recommend testing your route before adding it by selecting **Test routes**.
-8. Select **Add routes**.
+Cloudflare routing applies longest-prefix match. A more specific static route (like `/30`) always takes precedence over a less specific one (like `/29`), regardless of tunnel priority — unless you remove the more specific route. Keep this in mind when configuring priorities for your routes. Refer to [Route prioritization](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#route-prioritization) for more information.
+7. (Optional) Choose a **Weight** for your route. Refer to [Set priority and weights for static routes](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#set-priority-and-weights-for-static-routes) for examples.
+8. (Optional) If you need to scope your route to a specific region, you can do it in **Region code**.
+9. (Optional) We highly recommend testing your route before adding it by selecting **Test routes**.
+10. Select **Add routes**.
 
 Note
 
@@ -132,9 +131,9 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes" \
 
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
-1. Enter the updated route information.
-2. (Optional) We highly recommend testing your route before adding it by selecting **Test routes**.
-3. Select **Edit routes**.
+3. Enter the updated route information.
+4. (Optional) We highly recommend testing your route before adding it by selecting **Test routes**.
+5. Select **Edit routes**.
 
 Note
 
@@ -213,7 +212,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.
-1. Confirm the action by selecting the checkbox and select **Delete**.
+3. Confirm the action by selecting the checkbox and select **Delete**.
 
 Note
 
@@ -326,9 +325,9 @@ To set this ASN:
 
 1. Go to the Routes page.
 [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
-1. Select **WAN configuration**.
-2. In **CF Account ASN**, enter Cloudflare's ASN.
-3. Select **Update**.
+2. Select **WAN configuration**.
+3. In **CF Account ASN**, enter Cloudflare's ASN.
+4. Select **Update**.
 
 Cloudflare WAN customers should also be aware of the following:
 
@@ -356,41 +355,41 @@ BGP over CNI is in closed beta and is not currently available to new customers. 
 
 1. Go to the Routes page.
 [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
-1. Select **WAN configuration**.
-2. In **CF Account ASN**, enter Cloudflare's ASN, and select **Update**.
-3. Go to **Interconnects**.
+2. Select **WAN configuration**.
+3. In **CF Account ASN**, enter Cloudflare's ASN, and select **Update**.
+4. Go to **Interconnects**.
 [Go to **Interconnects** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections/cni-tunnels)
-1. Locate the CNI interconnect with Dataplane v2 to configure with BGP > select the **three dots** next to it > **Configure BGP**.
-2. In **Customer device ASN**, enter the ASN for your network.
+5. Locate the CNI interconnect with Dataplane v2 to configure with BGP > select the **three dots** next to it > **Configure BGP**.
+6. In **Customer device ASN**, enter the ASN for your network.
 Note
 Multiple tunnels or interconnects with the same ASN will not exchange routes if standard BGP loop prevention is enabled. Consider using a different ASN per session, or enabling duplicate ASNs (like Cisco's `allowas-in` feature) to exchange routes between networks.
-3. In **MD5 key**, you can optionally enter the key for your network. Note that this is meant to prevent accidental misconfigurations and is not a security mechanism.
-4. (Optional) In **Additional Advertised prefix list**, input any additional prefixes you want to advertise alongside your existing routes. Leave this blank if you do not want to advertise extra routes. Typical prefixes to configure here include:
+7. In **MD5 key**, you can optionally enter the key for your network. Note that this is meant to prevent accidental misconfigurations and is not a security mechanism.
+8. (Optional) In **Additional Advertised prefix list**, input any additional prefixes you want to advertise alongside your existing routes. Leave this blank if you do not want to advertise extra routes. Typical prefixes to configure here include:
 
   * A route to `0.0.0.0/0`, the default route — to attract all Internet-bound traffic if using Cloudflare WAN with Gateway.
   * A route to `100.96.0.0/12`, the portion of CGNAT space [used by default with Cloudflare One Clients](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#return-traffic-routing).
   * A route to `100.64.0.0/12`, the portion of CGNAT space [used by default for Cloudflare Source IPs](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/).
-5. Select **Save**.
+9. Select **Save**.
 
 #### Set up BGP for IPsec/GRE tunnels
 
 1. Go to the Routes page.
 [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
-1. Select **WAN configuration**.
-2. In **CF Account ASN**, enter Cloudflare's ASN, and select **Update**.
-3. Go to **Connectors**.
+2. Select **WAN configuration**.
+3. In **CF Account ASN**, enter Cloudflare's ASN, and select **Update**.
+4. Go to **Connectors**.
 [Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
-1. In **IPsec/GRE tunnels**, locate the tunnel you want to configure with BGP > select the **three dots** next to it > **Configure BGP**.
-2. In **Customer device ASN**, enter the ASN for your network.
+5. In **IPsec/GRE tunnels**, locate the tunnel you want to configure with BGP > select the **three dots** next to it > **Configure BGP**.
+6. In **Customer device ASN**, enter the ASN for your network.
 Note
 Multiple tunnels or interconnects with the same ASN will not exchange routes if standard BGP loop prevention is enabled. Consider using a different ASN per session, or enabling duplicate ASNs (like Cisco's `allowas-in` feature) to exchange routes between networks.
-3. In **MD5 key**, you can optionally enter the key for your network. Note that this is meant to prevent accidental misconfigurations and is not a security mechanism.
-4. (Optional) In **Additional Advertised prefix list**, input any additional prefixes you want to advertise alongside your existing routes. Leave this blank if you do not want to advertise extra routes. Typical prefixes to configure here include:
+7. In **MD5 key**, you can optionally enter the key for your network. Note that this is meant to prevent accidental misconfigurations and is not a security mechanism.
+8. (Optional) In **Additional Advertised prefix list**, input any additional prefixes you want to advertise alongside your existing routes. Leave this blank if you do not want to advertise extra routes. Typical prefixes to configure here include:
 
   * A route to `0.0.0.0/0`, the default route — to attract all Internet-bound traffic if using Cloudflare WAN with Gateway.
   * A route to `100.96.0.0/12`, the portion of CGNAT space [used by default with Cloudflare One Clients](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#return-traffic-routing).
   * A route to `100.64.0.0/12`, the portion of CGNAT space [used by default for Cloudflare Source IPs](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/).
-5. Select **Save**.
+9. Select **Save**.
 
 ### Important remarks for GRE/IPsec tunnels
 
@@ -410,9 +409,7 @@ When MD5 is enabled, you cannot use Telnet to test BGP connectivity (Telnet does
 
 ## Next steps
 
-Now that you have configured your tunnels and routes, the next step is to create a site.
-
-Sites represent the local network of a data center, office, or other physical location, and combine all on-ramps available there. Sites also allow you to check, at a glance, the state of your on-ramps and set up health alert settings so that Cloudflare notifies you when there are issues with the site's on-ramps.
+Now that you have configured your tunnels and routes, the next step is to create a site. Sites represent the local network of a data center, office, or other physical location, and combine all on-ramps available there. Sites also allow you to check, at a glance, the state of your on-ramps and set up health alert settings so that Cloudflare notifies you when there are issues with the site's on-ramps.
 
 Refer to [Set up a site](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/sites/) for more information.
 
@@ -422,8 +419,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#page","headline":"Configure routes · Cloudflare WAN docs","description":"Cloudflare WAN uses a static configuration to route your traffic through anycast tunnels from Cloudflare's global network to your locations. If you are connected through CNI with Dataplane v2, you also have access to BGP peering (beta). Learn how to configure routing.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#page","headline":"Configure routes · Cloudflare WAN docs","description":"Cloudflare WAN uses a static configuration to route your traffic through anycast tunnels from Cloudflare's global network to your locations. If you are connected through CNI with Dataplane v2, you also have access to BGP peering (beta). Learn how to configure routing.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

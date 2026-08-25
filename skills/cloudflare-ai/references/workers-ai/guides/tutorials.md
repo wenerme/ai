@@ -19,8 +19,8 @@ View tutorials to help you get started with Workers AI.
 | Name                                                                                                                                                                                   | Last Updated | Difficulty |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ---------- |
 | [Whisper-large-v3-turbo with Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/)                           | last year    | Beginner   |
-| [Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/llama-vision-tutorial/)                                   | last year    | Beginner   |
-| [Store and Catalog AI Generated Images with R2 (Part 3)](https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/image-generator-store-and-catalog/) | last year    | Beginner   |
+| [Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/llama-vision-tutorial/)                                   | 2 years ago  | Beginner   |
+| [Store and Catalog AI Generated Images with R2 (Part 3)](https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/image-generator-store-and-catalog/) | 2 years ago  | Beginner   |
 | [Build a Retrieval Augmented Generation (RAG) AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/)                            | 2 years ago  | Beginner   |
 | [Using BigQuery with Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/)                                                        | 2 years ago  | Beginner   |
 | [How to Build an Image Generator using Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/)                                         | 2 years ago  | Beginner   |
@@ -28,8 +28,8 @@ View tutorials to help you get started with Workers AI.
 | [Add New AI Models to your Playground (Part 2)](https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/image-generator-flux-newmodels/)             | 2 years ago  | Beginner   |
 | [Explore Workers AI Models Using a Jupyter Notebook](https://developers.cloudflare.com/workers-ai/guides/tutorials/explore-workers-ai-models-using-a-jupyter-notebook/)                | 2 years ago  | Beginner   |
 | [Fine Tune Models With AutoTrain from HuggingFace](https://developers.cloudflare.com/workers-ai/guides/tutorials/fine-tune-models-with-autotrain/)                                     | 2 years ago  | Beginner   |
-| [Explore Code Generation Using DeepSeek Coder Models](https://developers.cloudflare.com/workers-ai/guides/tutorials/explore-code-generation-using-deepseek-coder-models/)              | 2 years ago  | Beginner   |
-| [Choose the Right Text Generation Model](https://developers.cloudflare.com/workers-ai/guides/tutorials/how-to-choose-the-right-text-generation-model/)                                 | 2 years ago  | Beginner   |
+| [Explore Code Generation Using DeepSeek Coder Models](https://developers.cloudflare.com/workers-ai/guides/tutorials/explore-code-generation-using-deepseek-coder-models/)              | 3 years ago  | Beginner   |
+| [Choose the Right Text Generation Model](https://developers.cloudflare.com/workers-ai/guides/tutorials/how-to-choose-the-right-text-generation-model/)                                 | 3 years ago  | Beginner   |
 
 Was this helpful?
 
@@ -37,8 +37,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/#page","headline":"Tutorials · Cloudflare Workers AI docs","description":"Step-by-step Workers AI tutorials for building AI-powered applications on Cloudflare.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/#page","headline":"Tutorials · Cloudflare Workers AI docs","description":"Step-by-step Workers AI tutorials for building AI-powered applications on Cloudflare.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

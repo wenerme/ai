@@ -188,222 +188,222 @@ const instance = await env.AI_SEARCH.create({
 
 #### Parameters
 
-`id` `string`required
+`id` `string` required
 
 The unique identifier for the AI Search instance. Must be 1-64 characters and match the pattern `^[a-z0-9_]+(?:-[a-z0-9_]+)*$`.
 
 ---
 
-`type` `string`optional
+`type` `string` optional
 
 The type of data source. Valid values: `r2`, `web-crawler`. Required when creating an instance with a data source. Omit when creating an empty instance for use with the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/).
 
 ---
 
-`source` `string`optional
+`source` `string` optional
 
 The data source location. For `r2` type, this is the R2 bucket name. For `web-crawler` type, this is the website domain. Required when `type` is specified.
 
 ---
 
-`source_params` `object`optional
+`source_params` `object` optional
 
 Additional parameters for the data source.
 
-* `prefix` `string`optional
+* `prefix` `string` optional
   * For R2 sources, limits indexing to objects with this key prefix.
-* `r2_jurisdiction` `string`optional
+* `r2_jurisdiction` `string` optional
   * The jurisdiction for the R2 bucket, for example `eu`.
-* `include_items` `array`optional
+* `include_items` `array` optional
   * Glob patterns for paths to include in indexing. For example: `["/blog/**", "/docs/**/*.html"]`.
-* `exclude_items` `array`optional
+* `exclude_items` `array` optional
   * Glob patterns for paths to exclude from indexing. For example: `["/admin/**", "/private/**"]`.
-* `web_crawler` `object`optional
+* `web_crawler` `object` optional
   * Configuration for web crawler sources.
-  * `parse_type` `string`optional
+  * `parse_type` `string` optional
     * How pages are discovered. Valid values: `sitemap` (reads XML sitemaps), `discover` (starts at the source URL and, by default, uses both sitemaps and links found on crawled pages). Defaults to `sitemap`. Refer to [Parse types](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/).
-  * `parse_options` `object`optional
-    * `include_headers` `object`optional
+  * `parse_options` `object` optional
+    * `include_headers` `object` optional
       * Custom HTTP headers to include when crawling.
-    * `include_images` `boolean`optional
+    * `include_images` `boolean` optional
       * Whether to include images in the index.
-    * `specific_sitemaps` `array`optional
+    * `specific_sitemaps` `array` optional
       * Specific sitemap URLs to crawl. For example: `["https://example.com/sitemap.xml"]`. Only valid when `parse_type` is `sitemap`.
-    * `use_browser_rendering` `boolean`optional
+    * `use_browser_rendering` `boolean` optional
       * Use Browser Run (formerly Browser Rendering) to crawl JavaScript-rendered pages.
-  * `discover_options` `object`optional
+  * `discover_options` `object` optional
     * Crawl settings that apply when `parse_type` is `discover`.
-    * `source` `string`optional
+    * `source` `string` optional
       * Where the crawler looks for candidate URLs. Valid values: `all`, `sitemaps`, `links`. Defaults to `all`.
-    * `limit` `number`optional
+    * `limit` `number` optional
       * Maximum number of pages to crawl. Valid values: `1` to `100000`. Defaults to `100000`.
-    * `depth` `number`optional
+    * `depth` `number` optional
       * Maximum number of link hops to follow from the source URL. Valid values: `1` to `100000`. Defaults to `5`.
-    * `max_age` `number`optional
+    * `max_age` `number` optional
       * How long, in seconds, the crawler reuses cached page content before it re-fetches from the origin. Valid values: `0` to `604800`. Defaults to `86400`.
-    * `include_external_links` `boolean`optional
+    * `include_external_links` `boolean` optional
       * Whether to follow links that point to other domains. Defaults to `false`.
-    * `include_subdomains` `boolean`optional
+    * `include_subdomains` `boolean` optional
       * Whether to follow links that point to subdomains of the source URL. Defaults to `false`.
-  * `store_options` `object`optional
-    * `storage_type` `string`optional
+  * `store_options` `object` optional
+    * `storage_type` `string` optional
       * The storage type. Valid value: `r2`.
-    * `storage_id` `string`optional
+    * `storage_id` `string` optional
       * The storage bucket ID.
-    * `r2_jurisdiction` `string`optional
+    * `r2_jurisdiction` `string` optional
       * The jurisdiction for the storage bucket.
 
 ---
 
-`index_method` `object`optional
+`index_method` `object` optional
 
 Configures which indexing methods are enabled for the instance. Determines whether vector (semantic) search, keyword search, or both are available. At least one must be `true`.
 
-* `vector` `boolean`optional
+* `vector` `boolean` optional
   * Enable vector-based semantic search. Defaults to `true`.
-* `keyword` `boolean`optional
+* `keyword` `boolean` optional
   * Enable keyword-based search. Defaults to `false`.
 
 Set both to `true` for hybrid search.
 
 ---
 
-`fusion_method` `string`optional
+`fusion_method` `string` optional
 
 Controls how vector and keyword scores are combined when using hybrid search. Valid values: `rrf` (Reciprocal Rank Fusion), `max` (takes the maximum score). Defaults to `rrf`.
 
 ---
 
-`indexing_options` `object`optional
+`indexing_options` `object` optional
 
 Configuration for how content is indexed.
 
-* `keyword_tokenizer` `string`optional
+* `keyword_tokenizer` `string` optional
   * The tokenizer used for keyword search indexing. Valid values: `porter` (stemming-based), `trigram` (character n-gram). Defaults to `porter`.
 
 ---
 
-`retrieval_options` `object`optional
+`retrieval_options` `object` optional
 
 Default retrieval configuration for the instance. These defaults can be overridden per-request using `ai_search_options`.
 
-* `keyword_match_mode` `string`optional
+* `keyword_match_mode` `string` optional
   * Controls how keyword (BM25) matching selects candidate documents. `and` requires all terms to match. `or` requires any term to match. Defaults to `and`.
-* `boost_by` `array`optional
+* `boost_by` `array` optional
   * Default boost fields applied to all search queries. Maximum 3 items. Each item has:
-    * `field` `string`required \- The metadata field name to boost by. Maximum 64 characters.
-    * `direction` `string`optional \- The boost direction. Valid values: `asc`, `desc`, `exists`, `not_exists`.
+    * `field` `string` required \- The metadata field name to boost by. Maximum 64 characters.
+    * `direction` `string` optional \- The boost direction. Valid values: `asc`, `desc`, `exists`, `not_exists`.
 
 ---
 
-`sync_interval` `number`optional
+`sync_interval` `number` optional
 
 Seconds between automatic data source syncs. Valid values: `3600`, `7200`, `14400`, `21600`, `43200`, `86400`. Defaults to `21600` (6 hours).
 
 ---
 
-`token_id` `string`optional
+`token_id` `string` optional
 
 The UUID of the [service API token](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/) to use for this instance. Only required if you have never created an AI Search instance before. Refer to the [API get started guide](https://developers.cloudflare.com/ai-search/get-started/api/) for how to create and register a service token.
 
 ---
 
-`ai_gateway_id` `string`optional
+`ai_gateway_id` `string` optional
 
 The AI Gateway ID to route requests through for logging and analytics.
 
 ---
 
-`embedding_model` `string`optional
+`embedding_model` `string` optional
 
 The embedding model to use for vectorizing content.
 
 ---
 
-`ai_search_model` `string`optional
+`ai_search_model` `string` optional
 
 The text-generation model to use for generating responses.
 
 ---
 
-`rewrite_query` `boolean`optional
+`rewrite_query` `boolean` optional
 
 Enable query rewriting to improve retrieval accuracy. Defaults to `false`.
 
 ---
 
-`rewrite_model` `string`optional
+`rewrite_model` `string` optional
 
 The model to use for query rewriting.
 
 ---
 
-`reranking` `boolean`optional
+`reranking` `boolean` optional
 
 Enable reranking to reorder retrieved results by semantic relevance. Defaults to `false`.
 
 ---
 
-`reranking_model` `string`optional
+`reranking_model` `string` optional
 
 The reranking model to use. Valid value: `@cf/baai/bge-reranker-base`.
 
 ---
 
-`chunk_size` `number`optional
+`chunk_size` `number` optional
 
 The size of chunks when splitting documents. Minimum value: `64`.
 
 ---
 
-`chunk_overlap` `number`optional
+`chunk_overlap` `number` optional
 
 The overlap between chunks. Minimum value: `0`.
 
 ---
 
-`max_num_results` `number`optional
+`max_num_results` `number` optional
 
 The default maximum number of results to return. Minimum value: `1`.
 
 ---
 
-`score_threshold` `number`optional
+`score_threshold` `number` optional
 
 The default minimum score threshold for results. Minimum value: `0`.
 
 ---
 
-`cache` `boolean`optional
+`cache` `boolean` optional
 
 Enable response caching. Defaults to `true`.
 
 ---
 
-`cache_threshold` `string`optional
+`cache_threshold` `string` optional
 
 The cache matching threshold. Valid values: `super_strict_match`, `close_enough`, `flexible_friend`, `anything_goes`. Defaults to `close_enough`.
 
 ---
 
-`cache_ttl` `number`optional
+`cache_ttl` `number` optional
 
 The cache entry TTL in seconds. Valid values are `600`, `1800`, `3600`, `7200`, `21600`, `43200`, `86400`, `172800`, `259200`, and `518400`. Defaults to `172800`.
 
 ---
 
-`custom_metadata` `array`optional
+`custom_metadata` `array` optional
 
 Custom metadata fields to extract and index from documents.
 
-* `field_name` `string`required
+* `field_name` `string` required
   * The name of the metadata field.
-* `data_type` `string`required
+* `data_type` `string` required
   * The data type of the field. Valid values: `text`, `number`, `boolean`, `datetime`.
 
 ---
 
-`enable` `boolean`optional
+`enable` `boolean` optional
 
 Whether the instance is enabled. Defaults to `true`.
 
@@ -568,8 +568,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#page","headline":"Workers binding · Cloudflare AI Search docs","description":"Manage AI Search instances from a Cloudflare Worker using the Instances Workers binding.","url":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#page","headline":"Workers binding · Cloudflare AI Search docs","description":"Manage AI Search instances from a Cloudflare Worker using the Instances Workers binding.","url":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

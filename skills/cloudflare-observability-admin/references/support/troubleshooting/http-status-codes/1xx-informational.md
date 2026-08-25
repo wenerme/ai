@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # 1xx Informational
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/1xx-informational/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/1xx-informational/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The 1xx Informational status codes serve as interim responses that provide connection status updates without completing the request-response cycle. These codes are not intended for final actions but rather to indicate that the request is being processed or additional steps are required.
 
@@ -59,7 +59,7 @@ The 102 Processing status code is commonly used in scenarios requiring long-runn
 
 ### Cloudflare-specific information
 
-If Cloudflare receives a 102 Processing response, it expects a final response within 120 seconds. Failure to receive this response results in an [Error 522: Connection Timed Out](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/). However, sending interim 102 Processing responses can help prevent [Error 524: A timeout occurred](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-524/), ensuring that the connection remains active while the server processes the request.
+If Cloudflare receives a 102 Processing response, it expects a final response within 125 seconds. Failure to receive this response results in an [Error 522: Connection Timed Out](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/). However, sending interim 102 Processing responses can help prevent [Error 524: A timeout occurred](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-524/), ensuring that the connection remains active while the server processes the request.
 
 Was this helpful?
 
@@ -67,8 +67,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/1xx-informational/#page","headline":"1xx Informational · Cloudflare Support docs","description":"Understand 1xx informational HTTP status codes.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/1xx-informational/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/1xx-informational/#page","headline":"1xx Informational · Cloudflare Support docs","description":"Understand 1xx informational HTTP status codes.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/1xx-informational/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

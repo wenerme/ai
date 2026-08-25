@@ -812,7 +812,7 @@ components:
         config:
           apiKey: '************...AbCd'
           mlApp: my-llm-app
-          url: https://api.us5.datadoghq.com
+          url: https://api.datadoghq.com
         created_at: '2025-08-24T10:30:00Z'
         enabled: true
         filter_rules: null
@@ -865,11 +865,11 @@ components:
               minLength: 1
               type: string
             url:
-              default: https://api.us5.datadoghq.com
+              default: https://api.datadoghq.com
               description: >-
                 Datadog API URL for your region (e.g.,
                 https://api.datadoghq.com, https://api.us3.datadoghq.com,
-                https://api.datadoghq.eu)
+                https://api.us5.datadoghq.com, https://api.datadoghq.eu)
               type: string
           required:
             - apiKey

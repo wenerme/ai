@@ -105,7 +105,7 @@ You keep your usual agent flags, and you can pick a model from any provider in t
 For Pi (`ori pi`), Prime Agent (`ori prime-agent`), and DeepSeek Harness (`ori dsh`), Ori hooks the agent up to your own OpenRouter model catalog:
 
 * The `/model` list comes from your catalog, so it stays current and leaves out models your organization's policies block.
-* You turn on fast routing with `/fast`: Anthropic fast mode for Claude models, the priority service tier for OpenAI models, and throughput-sorted (`:nitro`) routing for the rest. On Prime Agent, use `/speed` instead, because Prime Agent has its own `/fast` command.
+* You turn on fast routing with `/fast`: Anthropic fast mode for Claude models, the Fast service tier for OpenAI models, and throughput-sorted (`:nitro`) routing for the rest. On Prime Agent, use `/speed` instead, because Prime Agent has its own `/fast` command.
 * You turn on ZDR-only mode with `/zdr`, so your requests go only to providers that keep no data.
 
 Grok Build (`ori grok`) loads the same catalog into its own model picker, so you don't need to run `grok login`, and its model IDs are OpenRouter model IDs. It doesn't have the `/fast` and `/zdr` toggles.

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # WARP
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -22,7 +22,7 @@ When a device is behind Cloudflare WAN, avoid enabling the Cloudflare One Client
 
 If you do want to use the Cloudflare One Client on a device behind Cloudflare WAN and connect to its virtual IP (within the `100.96.0.0/12` range), you will need to adjust your Cloudflare One Client profiles. Specifically, exclude the `100.96.0.0/12` subnet from the on-premises Cloudflare One Client profiles, and include it in the off-premises profile.
 
-Use [WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) as an on-ramp to Cloudflare WAN (formerly Magic WAN) and route traffic from user devices with the Cloudflare One Client installed to any network connected with Cloudflare Tunnel or IP-layer tunnels (anycast[GRE, IPsec](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels), or [CNI](https://developers.cloudflare.com/network-interconnect/)). Take advantage of the integration between Cloudflare WAN and [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) and enforce policies at Cloudflare's global network.
+Use [WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) as an on-ramp to Cloudflare WAN (formerly Magic WAN) and route traffic from user devices with the Cloudflare One Client installed to any network connected with Cloudflare Tunnel or IP-layer tunnels (anycast [GRE, IPsec](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels), or [CNI](https://developers.cloudflare.com/network-interconnect/)). Take advantage of the integration between Cloudflare WAN and [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) and enforce policies at Cloudflare's global network.
 
 ## Prerequisites
 
@@ -115,8 +115,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/#page","headline":"Use the Cloudflare One Client as an on-ramp · Cloudflare WAN docs","description":"Use the Cloudflare One Client as an on-ramp to Cloudflare WAN and route traffic from user devices with the Cloudflare One Client installed to any network connected with Cloudflare Tunnel or Magic IP-layer tunnels (anycast GRE, IPsec, or CNI).","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/#page","headline":"Use the Cloudflare One Client as an on-ramp · Cloudflare WAN docs","description":"Use the Cloudflare One Client as an on-ramp to Cloudflare WAN and route traffic from user devices with the Cloudflare One Client installed to any network connected with Cloudflare Tunnel or Magic IP-layer tunnels (anycast GRE, IPsec, or CNI).","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

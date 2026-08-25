@@ -48,7 +48,7 @@ Returns a list of projects.
 
     The name of the project. This appears in reporting.
 
-  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+  - `residency: optional ProjectResidency`
 
     The residency configuration for the project.
 

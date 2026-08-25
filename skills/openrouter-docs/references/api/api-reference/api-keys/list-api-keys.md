@@ -180,6 +180,7 @@ paths:
                       creator_user_id: user_2dHFtVWx2n56w6HkM0000000000
                       disabled: false
                       expires_at: '2027-12-31T23:59:59Z'
+                      external_user: null
                       hash: >-
                         f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943
                       include_byok_in_limit: false
@@ -207,6 +208,7 @@ paths:
                         creator_user_id: user_2dHFtVWx2n56w6HkM0000000000
                         disabled: false
                         expires_at: '2027-12-31T23:59:59Z'
+                        external_user: null
                         hash: >-
                           f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943
                         include_byok_in_limit: false
@@ -268,6 +270,12 @@ paths:
                             null if no expiration
                           example: '2027-12-31T23:59:59Z'
                           format: date-time
+                          type:
+                            - string
+                            - 'null'
+                        external_user:
+                          description: Partner's end-user identifier used for attribution.
+                          example: null
                           type:
                             - string
                             - 'null'
@@ -369,6 +377,7 @@ paths:
                         - byok_usage_monthly
                         - created_at
                         - updated_at
+                        - external_user
                         - creator_user_id
                         - workspace_id
                       type: object

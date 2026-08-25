@@ -89,7 +89,7 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "cloudflare-vite-tutorial",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-25",
 	"assets": {
 		"not_found_handling": "single-page-application"
 	}
@@ -100,7 +100,7 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "cloudflare-vite-tutorial"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-25"
 
 [assets]
 not_found_handling = "single-page-application"
@@ -180,7 +180,7 @@ bun add -d @cloudflare/workers-types
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "cloudflare-vite-tutorial",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-25",
 	"assets": {
 		"not_found_handling": "single-page-application"
 	},
@@ -192,7 +192,7 @@ bun add -d @cloudflare/workers-types
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "cloudflare-vite-tutorial"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-25"
 main = "./worker/index.ts"
 
 [assets]
@@ -232,7 +232,7 @@ If you would instead like to define the routes that invoke your Worker explicitl
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "cloudflare-vite-tutorial",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-25",
 	"assets": {
 		"not_found_handling": "single-page-application",
 		"run_worker_first": [
@@ -247,7 +247,7 @@ If you would instead like to define the routes that invoke your Worker explicitl
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "cloudflare-vite-tutorial"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-25"
 main = "./worker/index.ts"
 
 [assets]
@@ -371,8 +371,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/#page","headline":"Tutorial - React SPA with an API · Cloudflare Workers docs","description":"Create a React SPA with an API Worker using the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/#page","headline":"Tutorial - React SPA with an API · Cloudflare Workers docs","description":"Create a React SPA with an API Worker using the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -69,7 +69,7 @@ An object containing properties that you want to apply to the request.
 * `cf` RequestInitCfProperties optional
 
   * Cloudflare-specific properties that can be set on the `Request` that control how Cloudflare’s global network handles the request.
-* `method` `string`optional
+* `method` `string` optional
 
   * The HTTP request method. The default is `GET`. In Workers, all [HTTP request methods ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods) are supported, except for [CONNECT ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/CONNECT).
 * `headers` Headers optional
@@ -79,7 +79,7 @@ An object containing properties that you want to apply to the request.
 
   * The request body, if any.
   * Note that a request using the GET or HEAD method cannot have a body.
-* `redirect` `string`optional
+* `redirect` `string` optional
 
   * The redirect mode to use: `follow`, `error`, or `manual`. The default for a new `Request` object is `follow`. Note, however, that the incoming `Request` property of a `FetchEvent` will have redirect mode `manual`.
 * `signal` AbortSignal optional
@@ -97,40 +97,40 @@ fetch(event.request, { cf: { scrapeShield: false } })
 
 Invalid or incorrectly-named keys in the `cf` object will be silently ignored. Consider using TypeScript and generating types by running [wrangler types](https://developers.cloudflare.com/workers/languages/typescript/#generate-types) to ensure proper use of the `cf` object.
 
-* `apps` `boolean`optional
+* `apps` `boolean` optional
 
   * Whether [Cloudflare Apps ↗](https://www.cloudflare.com/apps/) should be enabled for this request. Defaults to `true`.
-* `cacheEverything` `boolean`optional
+* `cacheEverything` `boolean` optional
 
   * Treats all content as static and caches all [file types](https://developers.cloudflare.com/cache/concepts/default-cache-behavior#default-cached-file-extensions) beyond the Cloudflare default cached content. Respects cache headers from the origin web server. This is equivalent to setting the Page Rule [**Cache Level** (to **Cache Everything**)](https://developers.cloudflare.com/rules/page-rules/reference/settings/). Defaults to `false`. This option applies to `GET` and `HEAD` request methods only.
-* `cacheKey` `string`optional
+* `cacheKey` `string` optional
 
   * A request’s cache key is what determines if two requests are the same for caching purposes. If a request has the same cache key as some previous request, then Cloudflare can serve the same cached response for both.
 * `cacheTags` Array<string> optional
 
   * This option appends additional [**Cache-Tag**](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/) headers to the response from the origin server. This allows for purges of cached content based on tags provided by the Worker, without modifications to the origin server. This is performed using the [**Purge by Tag**](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/#purge-using-cache-tags) feature.
-* `cacheTtl` `number`optional
+* `cacheTtl` `number` optional
 
   * This option forces Cloudflare to cache the response for this request, regardless of what headers are seen on the response. This is equivalent to setting two Page Rules: [**Edge Cache TTL**](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/) and [**Cache Level** (to **Cache Everything**)](https://developers.cloudflare.com/rules/page-rules/reference/settings/). The value must be zero or a positive number. A value of `0` indicates that the cache asset expires immediately. This option applies to `GET` and `HEAD` request methods only.
 * `cacheTtlByStatus` `{ [key: string]: number }` optional
 
   * This option is a version of the `cacheTtl` feature which chooses a TTL based on the response’s status code. If the response to this request has a status code that matches, Cloudflare will cache for the instructed time and override cache instructives sent by the origin. For example: `{ "200-299": 86400, "404": 1, "500-599": 0 }`. The value can be any integer, including zero and negative integers. A value of `0` indicates that the cache asset expires immediately. Any negative value instructs Cloudflare not to cache at all. This option applies to `GET` and `HEAD` request methods only.
-* `vary` `RequestInitCfPropertiesVary`optional
+* `vary` `RequestInitCfPropertiesVary` optional
 
   * Controls how Cloudflare caches origin responses with a `Vary` header for a single `fetch()` request. If both `cf.vary` and [Cache Rules Vary](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#vary) apply, `cf.vary` takes precedence for this subrequest.
 * `image` Object | null optional
 
   * Enables [Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/overview/) for this request. The possible values are described in [Transform images via Workers](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/) documentation.
-* `polish` `string`optional
+* `polish` `string` optional
 
   * Sets [Polish ↗](https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati/) mode. The possible values are `lossy`, `lossless` or `off`.
-* `resolveOverride` `string`optional
+* `resolveOverride` `string` optional
 
   * Directs the request to an alternate origin server by overriding the DNS lookup. The value of `resolveOverride` specifies an alternate hostname which will be used when determining the origin IP address, instead of using the hostname specified in the URL. The `Host` header of the request will still match what is in the URL. Thus, `resolveOverride` allows a request to be sent to a different server than the URL / `Host` header specifies. However, `resolveOverride` will only take effect if both the URL host and the host specified by `resolveOverride` are within your zone. If either specifies a host from a different zone / domain, then the option will be ignored for security reasons. If you need to direct a request to a host outside your zone (while keeping the `Host` header pointing within your zone), first create a CNAME record within your zone pointing to the outside host, and then set `resolveOverride` to point at the CNAME record. Note that, for security reasons, it is not possible to set the `Host` header to specify a host outside of your zone unless the request is actually being sent to that host.
-* `scrapeShield` `boolean`optional
+* `scrapeShield` `boolean` optional
 
   * Whether [ScrapeShield ↗](https://blog.cloudflare.com/introducing-scrapeshield-discover-defend-dete/) should be enabled for this request, if otherwise configured for this zone. Defaults to `true`.
-* `webp` `boolean`optional
+* `webp` `boolean` optional
 
   * Enables or disables [WebP ↗](https://blog.cloudflare.com/a-very-webp-new-year-from-cloudflare/) image format in [Polish](https://developers.cloudflare.com/images/polish/).
 
@@ -510,8 +510,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/request/#page","headline":"Request · Cloudflare Workers docs","description":"Interface that represents an HTTP request.","url":"https://developers.cloudflare.com/workers/runtime-apis/request/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/request/#page","headline":"Request · Cloudflare Workers docs","description":"Interface that represents an HTTP request.","url":"https://developers.cloudflare.com/workers/runtime-apis/request/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

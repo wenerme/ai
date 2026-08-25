@@ -1124,7 +1124,7 @@ Returns [`DuoSettings`](#duosettings).
 - Introduced in GitLab 19.3.
 - Status: Experiment.
 
-Other attempts at a turn in a Duo Agent Platform session, created when the user retried it. Always empty until branch reconstruction is released.
+The alternative branches to the provided user message. Multiple branches can be created when a user retries a message. Returns an empty list if the `dw_read_blobs_graphql` feature flag is disabled, or if the session does not store incremental checkpoints.
 
 Returns [`[DuoWorkflowBranch!]`](#duoworkflowbranch).
 
@@ -31881,7 +31881,8 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="aicatalogitemconsumer-enabled"></a>`enabled` | [`Boolean`](#boolean) | Indicates if the configuration item is enabled. |
-| <a id="aicatalogitemconsumer-flowtrigger"></a>`flowTrigger` | [`AiFlowTriggerType`](#aiflowtriggertype) | Trigger associated with the configured catalog item. |
+| <a id="aicatalogitemconsumer-flowtrigger"></a>`flowTrigger`  | [`AiFlowTriggerType`](#aiflowtriggertype) | Deprecated in GitLab 19.4. Use `flowTriggers`. |
+| <a id="aicatalogitemconsumer-flowtriggers"></a>`flowTriggers`  | [`[AiFlowTriggerType!]`](#aiflowtriggertype) | Introduced in GitLab 19.4. Status: Experiment. Triggers associated with the configured catalog item. |
 | <a id="aicatalogitemconsumer-group"></a>`group` | [`Group`](#group) | Group in which the catalog item is configured. |
 | <a id="aicatalogitemconsumer-id"></a>`id` | [`ID!`](#id) | ID of the configuration item. |
 | <a id="aicatalogitemconsumer-item"></a>`item` | [`AiCatalogItem`](#aicatalogitem) | Configuration catalog item. |
@@ -33119,6 +33120,18 @@ Fields:
 | <a id="approvalscanresultpolicy-approvalsrequired"></a>`approvalsRequired` | [`Int!`](#int) | Represents the required approvals defined in the policy. |
 | <a id="approvalscanresultpolicy-name"></a>`name` | [`String!`](#string) | Represents the name of the policy. |
 | <a id="approvalscanresultpolicy-reporttype"></a>`reportType` | [`ApprovalReportType!`](#approvalreporttype) | Represents the report_type of the approval rule. |
+
+### `ArtifactRegistry`
+
+Artifact Registry an organization is activated for.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistry-createdat"></a>`createdAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp the registry was provisioned, presented as the active-since date. `null` when the status is `unknown`. |
+| <a id="artifactregistry-slug"></a>`slug`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Registry slug, Artifact Registry's immutable identifier for the namespace. `null` when the status is `unknown`. |
+| <a id="artifactregistry-status"></a>`status`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Status Artifact Registry returned, one of `active`, `suspended`, `disabled`, `blocked`, `deleted`, or `purged`, or `unknown` when the mapped namespace did not resolve. Deliberately a string rather than an enum so a status Artifact Registry adds within its API version reaches the response instead of raising. |
 
 ### `ArtifactRegistryMavenPackage`
 
@@ -34692,6 +34705,7 @@ Fields:
 | <a id="cdrollout-awaitingapproval"></a>`awaitingApproval`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Indicates whether the rollout has an open approval gate awaiting a decision, derived from its transition journal. |
 | <a id="cdrollout-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the rollout was created. |
 | <a id="cdrollout-finishedat"></a>`finishedAt` | [`Time`](#time) | Timestamp of when the rollout finished. |
+| <a id="cdrollout-gates"></a>`gates`  | [`[CdRolloutGate!]`](#cdrolloutgate) | Introduced in GitLab 19.4. Status: Experiment. Approval gates recorded against the rollout, in the order they were opened, derived from its transition journal. |
 | <a id="cdrollout-id"></a>`id` | [`CdRolloutID!`](#cdrolloutid) | Global ID of the rollout. |
 | <a id="cdrollout-iid"></a>`iid` | [`Int!`](#int) | Internal ID of the rollout, unique and user-facing within its application. |
 | <a id="cdrollout-rolloutenvironments"></a>`rolloutEnvironments`  | [`CdRolloutEnvironmentConnection`](#cdrolloutenvironmentconnection) | Introduced in GitLab 19.2. Status: Experiment. Rollout environments of the rollout. |
@@ -34722,6 +34736,22 @@ Fields:
 | <a id="cdrolloutenvironment-startedat"></a>`startedAt` | [`Time`](#time) | Timestamp of when the rollout environment started. |
 | <a id="cdrolloutenvironment-state"></a>`state` | [`CdRolloutEnvironmentState!`](#cdrolloutenvironmentstate) | State of the rollout environment. |
 | <a id="cdrolloutenvironment-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the rollout environment was last updated. |
+
+### `CdRolloutGate`
+
+Continuous deployment rollout approval gate, derived from its transition journal.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="cdrolloutgate-id"></a>`id` | [`CdRolloutTransitionID!`](#cdrollouttransitionid) | Global ID of the transition that opened the gate. |
+| <a id="cdrolloutgate-name"></a>`name` | [`String`](#string) | Label of the gate, derived from the step it was opened for. |
+| <a id="cdrolloutgate-reason"></a>`reason` | [`String`](#string) | Reason given when the gate was resolved, if any. |
+| <a id="cdrolloutgate-resolvedat"></a>`resolvedAt` | [`Time`](#time) | Timestamp of when the gate was resolved, null while still pending. |
+| <a id="cdrolloutgate-resolvedby"></a>`resolvedBy` | [`UserCore`](#usercore) | User that resolved the gate, when the resolving principal identifies a user that still exists; null while pending or for other principal kinds. |
+| <a id="cdrolloutgate-state"></a>`state` | [`CdRolloutGateState!`](#cdrolloutgatestate) | State of the gate. |
+| <a id="cdrolloutgate-step"></a>`step` | [`CdRolloutStep`](#cdrolloutstep) | Rollout step the gate was opened for, null for a gate opened for a non-step reason. |
 
 ### `CdRolloutStep`
 
@@ -39905,7 +39935,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="duomessage-additionalcontext"></a>`additionalContext` | [`[AiAdditionalContext!]`](#aiadditionalcontext) | Additional context items attached to the message. |
-| <a id="duomessage-alternativecount"></a>`alternativeCount`  | [`Int`](#int) | Introduced in GitLab 19.3. Status: Experiment. Number of other versions of the turn, from the user retrying it, excluding the one shown. Set on the user message anchoring the turn, `0` when it has no alternatives. Returns `null` on every message, if the `dw_read_blobs_graphql` feature flag is disabled, or if the session does not store incremental checkpoints. |
+| <a id="duomessage-alternativecount"></a>`alternativeCount`  | [`Int`](#int) | Introduced in GitLab 19.3. Status: Experiment. The count of alternative branches for a user message -1 (the currently displayed branch). A thread can have multiple branches when a message is retried, and a new branch is created with the same parent_ts as the message being retried.Returns `null` on every message, if the `dw_read_blobs_graphql` feature flag is disabled, or if the session does not store incremental checkpoints. |
 | <a id="duomessage-componentname"></a>`componentName`  | [`String`](#string) | Introduced in GitLab 19.0. Status: Experiment. Component name associated with the message. |
 | <a id="duomessage-content"></a>`content` | [`String!`](#string) | Content of the message. |
 | <a id="duomessage-correlationid"></a>`correlationId` | [`String`](#string) | Optional client-supplied identifier echoed back to correlate this message with the request that initiated it. |
@@ -40231,6 +40261,7 @@ Fields:
 | <a id="duoworkflowevent-checkpointns"></a>`checkpointNs`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. LangGraph checkpoint namespace this checkpoint belongs to. Blank for the session's own top-level checkpoint lineage; this field only ever surfaces that lineage (via first_checkpoint/latest_checkpoint), never a nested subgraph invocation's own. |
 | <a id="duoworkflowevent-checkpointwrites"></a>`checkpointWrites`  | [`[DuoWorkflowCheckpointWrite!]`](#duoworkflowcheckpointwrite) | Introduced in GitLab 19.3. Status: Experiment. Pending writes associated with the checkpoint, e.g. interrupts awaiting resumption. |
 | <a id="duoworkflowevent-compressedcheckpoint"></a>`compressedCheckpoint` | [`String`](#string) | Checkpoint of the event, zlib-compressed and Base64-encoded. |
+| <a id="duoworkflowevent-currentthread"></a>`currentThread`  | [`Int!`](#int) | Introduced in GitLab 19.4. Status: Experiment. Compaction group this checkpoint belongs to. The writer bumps it on every compaction and resets it when its process restarts, so a client that resumes a session must read it back from here to keep numbering the groups correctly. |
 | <a id="duoworkflowevent-duomessages"></a>`duoMessages` | [`[DuoMessage!]`](#duomessage) | Messages from the ui_chat_log for the checkpoint. |
 | <a id="duoworkflowevent-errors"></a>`errors` | [`[String!]`](#string) | Message errors. |
 | <a id="duoworkflowevent-executionstatus"></a>`executionStatus`  | [`String!`](#string) | Introduced in GitLab 17.10. Status: Experiment. Granular status of the session's execution. |
@@ -50499,6 +50530,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="organization-analytics"></a>`analytics`  | [`Analytics`](#analytics) | Introduced in GitLab 19.3. Status: Experiment. Analytics aggregation endpoints scoped to groups and projects of the organization. |
+| <a id="organization-artifactregistry"></a>`artifactRegistry`  | [`ArtifactRegistry`](#artifactregistry) | Introduced in GitLab 19.4. Status: Experiment. Artifact Registry the organization is activated for. Returns `null` when the organization has no registry, or when the `artifact_registry_ui` feature flag is disabled. |
 | <a id="organization-avatarurl"></a>`avatarUrl`  | [`String`](#string) | Introduced in GitLab 16.7. Status: Experiment. Avatar URL of the organization. |
 | <a id="organization-cdavailableagents"></a>`cdAvailableAgents`  | [`ClusterAgentConnection`](#clusteragentconnection) | Introduced in GitLab 19.2. Status: Experiment. GitLab agents for Kubernetes available in the organization. |
 | <a id="organization-cdavailabledeploydrivers"></a>`cdAvailableDeployDrivers`  | [`[String!]`](#string) | Introduced in GitLab 19.2. Status: Experiment. Reference of continuous deployment deploy drivers available in the organization. |
@@ -56589,6 +56621,8 @@ Arguments:
 | <a id="repository-commits-author"></a>`author` | [`String`](#string) | Name or email of the author. |
 | <a id="repository-commits-committedafter"></a>`committedAfter` | [`Time`](#time) | Commits created after an ISO8601 formatted time or date. |
 | <a id="repository-commits-committedbefore"></a>`committedBefore` | [`Time`](#time) | Commits created before an ISO8601 formatted time or date. |
+| <a id="repository-commits-firstparent"></a>`firstParent` | [`Boolean`](#boolean) | Follow only the first parent of merge commits. |
+| <a id="repository-commits-order"></a>`order` | [`CommitOrder`](#commitorder) | Order the commits are returned in. Defaults to reverse chronological. |
 | <a id="repository-commits-path"></a>`path` | [`String`](#string) | File path to filter commits by. |
 | <a id="repository-commits-query"></a>`query` | [`UntrustedRegexp`](#untrustedregexp) | Regular expression to filter the commits. |
 | <a id="repository-commits-ref"></a>`ref` | [`String!`](#string) | Branch or tag to search for commits. |
@@ -63621,6 +63655,16 @@ State of a continuous deployment rollout environment.
 | <a id="cdrolloutenvironmentstate-paused"></a>`PAUSED` | Rollout environment is paused. |
 | <a id="cdrolloutenvironmentstate-pending"></a>`PENDING` | Rollout environment is pending. |
 
+### `CdRolloutGateState`
+
+State of a continuous deployment rollout approval gate.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="cdrolloutgatestate-approved"></a>`APPROVED` | Rollout gate is approved. |
+| <a id="cdrolloutgatestate-pending"></a>`PENDING` | Rollout gate is pending. |
+| <a id="cdrolloutgatestate-rejected"></a>`REJECTED` | Rollout gate is rejected. |
+
 ### `CdRolloutGateStatus`
 
 Decision recorded when resolving a continuous deployment rollout approval gate.
@@ -63859,6 +63903,7 @@ Values for sorting CI/CD job analytics.
 | <a id="cijobfailurereason-downstream_bridge_project_not_found"></a>`DOWNSTREAM_BRIDGE_PROJECT_NOT_FOUND` | A job that failed due to downstream bridge project not found. |
 | <a id="cijobfailurereason-downstream_pipeline_creation_failed"></a>`DOWNSTREAM_PIPELINE_CREATION_FAILED` | A job that failed due to downstream pipeline creation failed. |
 | <a id="cijobfailurereason-downstream_project_trigger_resolved_to_empty"></a>`DOWNSTREAM_PROJECT_TRIGGER_RESOLVED_TO_EMPTY` | A job that failed due to downstream project trigger resolved to empty. |
+| <a id="cijobfailurereason-duo_workflow_connection_failure"></a>`DUO_WORKFLOW_CONNECTION_FAILURE` | A job that failed due to duo workflow connection failure. |
 | <a id="cijobfailurereason-duo_workflow_not_allowed"></a>`DUO_WORKFLOW_NOT_ALLOWED` | A job that failed due to duo workflow not allowed. |
 | <a id="cijobfailurereason-environment_creation_failure"></a>`ENVIRONMENT_CREATION_FAILURE` | A job that failed due to environment creation failure. |
 | <a id="cijobfailurereason-failed_outdated_deployment_job"></a>`FAILED_OUTDATED_DEPLOYMENT_JOB` | A job that failed due to failed outdated deployment job. |
@@ -64193,6 +64238,15 @@ Mode of a commit action.
 | ----- | ----------- |
 | <a id="commitencoding-base64"></a>`BASE64` | Base64 encoding. |
 | <a id="commitencoding-text"></a>`TEXT` | Text encoding. |
+
+### `CommitOrder`
+
+Ordering strategy for a list of commits. Defaults to reverse chronological when omitted.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="commitorder-date"></a>`DATE` | Date order: commits are shown strictly by commit date. |
+| <a id="commitorder-topo"></a>`TOPO` | Topological order: children are shown before their parents. |
 
 ### `ComparableSecurityReportType`
 

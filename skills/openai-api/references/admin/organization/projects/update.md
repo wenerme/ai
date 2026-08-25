@@ -14,6 +14,11 @@ Modifies a project in the organization.
 
   External key ID to associate with the project.
 
+- `geography: optional string or null`
+
+  Geography for the project.
+  Deprecated: use `residency` when creating a project to configure data residency. This field is retained for backward compatibility.
+
 - `name: optional string or null`
 
   The updated name of the project, this name appears in reports.
@@ -50,7 +55,7 @@ Modifies a project in the organization.
 
     The name of the project. This appears in reporting.
 
-  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+  - `residency: optional ProjectResidency`
 
     The residency configuration for the project.
 
