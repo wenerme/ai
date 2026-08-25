@@ -48,7 +48,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**
 Open Cascade and try a prompt — for example:
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ## Cloudflare platform access
@@ -126,23 +126,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
-```
-
-```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
-```
-
-```txt
 Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
 Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+```
+
+```txt
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
+```
+
+```txt
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ## Tips

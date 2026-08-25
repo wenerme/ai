@@ -1,3 +1,7 @@
+---
+description: "Enable Stash by importing a Stash/Clash configuration file. Covers downloading a provider subscription by URL and importing a local file from iCloud or OneDrive."
+---
+
 # Quick Start
 
 To enable Stash on your iOS device, simply import a Stash/Clash formatted configuration file. Stash requires a configuration file to specify the proxy server and network policies. You can download the configuration from the service provider's URL, or import a local file stored in iCloud/OneDrive to use Stash.

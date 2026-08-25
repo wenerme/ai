@@ -1,3 +1,7 @@
+---
+description: "A remote proxy provider updates its proxy list from a URL in the background, so the configuration file does not have to be edited by hand."
+---
+
 # Remote Proxy Set
 
 Proxies declared directly in the configuration file cannot be automatically updated in the background. We recommend using remote proxy sets (proxy-provider), which can automatically update the strategy group from the URL in the background.

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # MCP server portals
 
-Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An MCP server portal centralizes multiple [Model Context Protocol (MCP) servers ↗](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) onto a single HTTP endpoint.
 
@@ -25,6 +25,7 @@ This guide explains how to add MCP servers to Cloudflare Access, create an MCP p
 MCP server portals provide the following capabilities:
 
 * **Streamlined access to multiple MCP servers**: MCP server portals support both unauthenticated MCP servers and MCP servers secured using OAuth (for example, via [Access for SaaS](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/) or a [third-party OAuth provider](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/)). Users log in to the portal URL through Cloudflare Access and are prompted to authenticate separately to each server that requires OAuth.
+* **MCP protocol compatibility**: The portal supports stateless MCP `2026-07-28` and earlier 2025 Streamable HTTP clients and servers. The portal selects the supported protocol for each connection without requiring protocol settings.
 * **Customized tools per portal**: Admins can tailor an MCP portal to a particular use case by choosing the specific tools and prompt templates that they want to make available to users through the portal. This allows users to access a curated set of tools and prompts — the less external context exposed to the AI model, the better the AI responses tend to be.
 * **Tool and prompt aliases**: Admins can [rename tools and prompts](#rename-tools-and-prompts-with-aliases) and edit their descriptions at the portal or server level without modifying the upstream MCP server. Aliases help end users find the right tool and help AI agents select the correct one.
 * **Context optimization**: Portals support query parameter options that reduce context window usage by minimizing or hiding tool definitions. Refer to [Optimize context](#optimize-context) for details.
@@ -39,7 +40,7 @@ The following diagram shows how requests flow through an MCP server portal.
 ![Request flow diagram showing how an MCP client connects through Cloudflare Access and the MCP server portal to reach upstream MCP servers, with an optional Gateway path for DLP inspection.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=960,height=540,format=svg/_astro/mcp-portal-request-flow.BUmz6ikP.svg)
 1. An MCP client connects to the portal URL and receives a `401` response with OAuth discovery metadata.
 2. The user authenticates through Cloudflare Access via their identity provider or uses [service token](#connect-with-a-service-token) headers.
-3. Access validates the user's identity, and the portal establishes an MCP session and returns the tools available from enabled upstream servers.
+3. Access validates the user's identity, and the portal returns the tools available from enabled upstream servers.
 4. When the user calls a tool, the portal identifies the target server from the [tool namespace](#tool-namespacing), attaches the appropriate credentials, and proxies the request. If [Gateway routing](#route-portal-traffic-through-gateway) is turned on, the request passes through Cloudflare Gateway for HTTP logging and DLP inspection.
 5. The upstream server processes the request and returns a response through the same path.
 
@@ -47,7 +48,13 @@ For servers that use automatic OAuth registration, background synchronization of
 
 ### Transport
 
-The portal connects to upstream MCP servers using [Streamable HTTP ↗](https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports/#streamable-http) or [SSE ↗](https://spec.modelcontextprotocol.io/specification/2024-11-05/basic/transports/#server-sent-events-sse-deprecated) transport. You do not need to specify which transport your upstream server uses. The portal automatically detects the correct transport by trying multiple connection strategies in order:
+The portal accepts stateless [MCP 2026-07-28 ↗](https://modelcontextprotocol.io/specification/2026-07-28) and earlier 2025 Streamable HTTP clients at its `/mcp` endpoint. The portal selects the protocol from each request. You do not need to configure a protocol version.
+
+The portal connects to upstream MCP servers using [Streamable HTTP ↗](https://modelcontextprotocol.io/specification/2026-07-28/basic/transports/streamable-http) or [SSE ↗](https://spec.modelcontextprotocol.io/specification/2024-11-05/basic/transports/#server-sent-events-sse-deprecated) transport. For Streamable HTTP servers, the portal checks for MCP `2026-07-28` support and uses the stateless protocol when available. If the upstream server does not support it, the portal falls back to the 2025 handshake on the same connection. SSE connections always use the legacy protocol.
+
+Client and upstream protocol selection are independent. For example, a 2025 client can connect through a portal to a stateless upstream server. A stateless client can also connect to a legacy upstream server.
+
+You do not need to specify which transport your upstream server uses. The portal automatically detects the correct transport by trying multiple connection strategies in order:
 
 | Upstream URL pattern | Connection strategies (in order)                                                                                    |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -76,9 +83,11 @@ When [context optimization](#optimize-context) is turned on, additional tools ar
 
 ### Session lifecycle
 
-Each MCP client connection creates a session that persists until the user disconnects or the session expires due to inactivity. Sessions expire after 24 hours of inactivity.
+MCP `2026-07-28` requests are stateless and do not create an MCP protocol session. The portal retains authentication, server selection, and upstream OAuth state for the user's portal authorization grant.
 
-Within a session, users can turn individual servers on or off without disconnecting. Server toggles are scoped to the session and do not affect other users or sessions on the same portal.
+Earlier 2025 clients create a session that persists until the user disconnects or the session expires after 24 hours of inactivity.
+
+Users can turn individual servers on or off without disconnecting. For stateless requests, server toggles apply to every request that uses the same portal authorization grant. For legacy clients, toggles are scoped to the MCP session. Toggles do not affect other users.
 
 ### Naming
 
@@ -1115,5 +1124,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

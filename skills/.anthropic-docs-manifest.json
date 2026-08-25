@@ -494,8 +494,8 @@
   "anthropic-docs/build-with-claude/claude-platform-on-aws.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/claude-platform-on-aws",
     "skill": "anthropic-docs",
-    "size": 84522,
-    "updatedAt": "2026-08-22T01:44:29.242Z"
+    "size": 84709,
+    "updatedAt": "2026-08-25T10:44:46.639Z"
   },
   "anthropic-docs/build-with-claude/claude-on-vertex-ai.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/claude-on-vertex-ai",
@@ -566,8 +566,8 @@
   "anthropic-docs/managed-agents/environments.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/environments",
     "skill": "anthropic-docs",
-    "size": 22998,
-    "updatedAt": "2026-08-22T01:44:33.233Z"
+    "size": 23404,
+    "updatedAt": "2026-08-25T10:44:51.005Z"
   },
   "anthropic-docs/managed-agents/cloud-sandboxes-reference.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/cloud-sandboxes-reference",
@@ -1382,8 +1382,8 @@
   "anthropic-api/api/claude-platform-on-aws-iam-actions.md": {
     "url": "https://platform.claude.com/docs/en/api/claude-platform-on-aws-iam-actions",
     "skill": "anthropic-api",
-    "size": 45649,
-    "updatedAt": "2026-08-13T02:35:50.329Z"
+    "size": 45627,
+    "updatedAt": "2026-08-25T10:45:44.416Z"
   },
   "anthropic-api/api/versioning.md": {
     "url": "https://platform.claude.com/docs/en/api/versioning",

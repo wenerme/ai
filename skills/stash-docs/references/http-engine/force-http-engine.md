@@ -1,3 +1,7 @@
+---
+description: "配置 force-http-engine 让来自 Tunnel 的 TCP 连接同样经由 HTTP 引擎处理，以便使用改写与脚本功能。"
+---
+
 # Force HTTP Engine
 
 默认地，所有经由 HTTP Proxy 的请求会由 HTTP 引擎处理，以使用改写、脚本等功能。若希望来自 Tunnel 的 TCP 连接经由 HTTP 引擎处理，需要配置 `force-http-engine`。

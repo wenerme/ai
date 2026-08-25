@@ -1,3 +1,7 @@
+---
+description: "Stash 支持通过 stash:// 与 clash:// URL Schema 控制应用。介绍可用的 URL 指令，以及参数的 Encode 要求。"
+---
+
 # URL Schema
 
 Stash 支持使用 URL Schema `stash://` 和 `clash://` 来控制 Stash， 包含的 URL **需要 Encode 。**

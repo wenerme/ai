@@ -1,3 +1,7 @@
+---
+description: "Stash runs JavaScript scheduled tasks in the background, which require the Network Extension to be connected."
+---
+
 # Scheduled Tasks
 
 Stash can execute scheduled tasks in the background, currently only supporting JavaScript scripts. Scheduled tasks require Network Extension (VPN) to be connected.

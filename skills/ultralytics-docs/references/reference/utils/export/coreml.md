@@ -18,4 +18,8 @@ keywords: Ultralytics, CoreML, model export, PyTorch to CoreML, Apple iOS, macOS
 
 <hr>
 
+## ::: ultralytics.utils.export.coreml._coreml_gather
+
+<hr>
+
 ## ::: ultralytics.utils.export.coreml.torch2coreml

@@ -10,4 +10,12 @@ keywords: Ultralytics, LiteRT, model export, PyTorch to LiteRT, TFLite, edge dep
 
     This page is sourced from [https://github.com/ultralytics/ultralytics/blob/main/ultralytics/utils/export/litert.py](https://github.com/ultralytics/ultralytics/blob/main/ultralytics/utils/export/litert.py). Have an improvement or example to add? Open a [Pull Request](https://docs.ultralytics.com/help/contributing) — thank you! 🙏
 
+## ::: ultralytics.utils.export.litert._litert_grouped_topk
+
+<hr>
+
+## ::: ultralytics.utils.export.litert._litert_gather
+
+<hr>
+
 ## ::: ultralytics.utils.export.litert.torch2litert

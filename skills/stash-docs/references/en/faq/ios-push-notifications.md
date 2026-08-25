@@ -1,3 +1,7 @@
+---
+description: "Why some overseas apps stop receiving push notifications on mainland China networks, and what to do about it — the cause lies with APNs and your network egress."
+---
+
 # Unable to Receive Push Notifications from Some Apps
 
 Some overseas apps might not receive push notifications on mainland China networks, while notifications resume after switching to a non-mainland network exit. This is usually not caused by the app's notification permission. The cause is that the APNs service in mainland China cannot deliver push notifications for some overseas apps to the device.

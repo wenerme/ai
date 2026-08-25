@@ -1,3 +1,7 @@
+---
+description: "Configure force-http-engine so TCP connections arriving from the Tunnel also pass through the HTTP engine, making rewrites and scripts available to them."
+---
+
 # Force HTTP Engine
 
 By default, all requests routed through the HTTP Proxy will be handled by the HTTP Engine, allowing for features such as rewriting and scripting. If you wish for TCP connections originating from the tunnel to be handled by the HTTP Engine, you'll need to configure the `force-http-engine`.

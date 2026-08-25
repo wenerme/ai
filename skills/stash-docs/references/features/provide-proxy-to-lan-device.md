@@ -1,3 +1,7 @@
+---
+description: "Stash iOS、tvOS 与 Stash Mac 均可为局域网中的其他设备提供代理服务。介绍开启方式与客户端配置方法。"
+---
+
 # 为局域网设备提供代理
 
 Stash iOS、Stash tvOS 与 Stash Mac 均支持为局域网设备提供代理服务。

@@ -1,3 +1,7 @@
+---
+description: "The full set of rule types Stash supports. Match connections by IP, domain, process name or a combination of conditions, and choose their outbound path."
+---
+
 # Rule Types
 
 By writing rules, you can specify different outbound methods for connections, such as forwarding through a specific proxy or interception. Rules can match connections based on IP, domain, process name, or a combination of multiple conditions.

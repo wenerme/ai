@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ## Cloudflare platform access
@@ -134,11 +134,11 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
@@ -146,11 +146,11 @@ Build a multi-tenant SaaS backend where each customer gets an isolated D1 databa
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ## Tips

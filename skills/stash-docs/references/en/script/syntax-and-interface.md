@@ -1,3 +1,7 @@
+---
+description: "Syntax and available interfaces for Stash scripts, including the $done(value) call every script must make to release resources."
+---
+
 # Syntax and Interface
 
 ## Basic Methods

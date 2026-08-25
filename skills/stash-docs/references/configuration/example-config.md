@@ -1,3 +1,7 @@
+---
+description: "完整的 Stash YAML 配置文件样例，逐段说明各字段的作用与写法，可直接作为编写自有配置的起点。"
+---
+
 # 配置样例
 
 Stash 所有的配置文件均使用 [YAML](https://yaml.org/) 格式。在 YAML 格式中，缩进影响了整个配置的结构，用户可以在 [www.yamllint.com](http://www.yamllint.com/) 检查配置是否符合 YAML 格式。

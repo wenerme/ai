@@ -1,3 +1,7 @@
+---
+description: "Customise the Tile panel on the Stash home screen with JavaScript to surface the information you care about."
+---
+
 # Panel (Tile)
 
 Users can customize the Stash homepage Tile panel through JavaScript scripts.

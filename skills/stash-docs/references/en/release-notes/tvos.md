@@ -1,3 +1,6 @@
+---
+description: "Release notes for Stash on tvOS, listing new features, improvements and fixes in each version."
+---
 
 ## 3.3.3
 

@@ -1,3 +1,7 @@
+---
+description: "Modify the HTTP requests and responses flowing through Stash with JavaScript. Covers how to write these scripts and what makes them take effect."
+---
+
 # Rewrite HTTP
 
 Users can modify the HTTP requests and responses flowing through Stash via JavaScript scripts.

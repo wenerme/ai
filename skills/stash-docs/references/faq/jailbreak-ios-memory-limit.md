@@ -1,3 +1,7 @@
+---
+description: "在越狱 iOS 设备上修改 Jetsam 内存限制的方法，用于提升 Network Extension 可用的内存上限。"
+---
+
 # 越狱 iOS 系统内存限制修改
 
 Jetsam 在 iOS 中负责监控内存并进行 OOM kill。在系统默认配置中，不同类型的进程有不同的内存限制。在 iOS 14 及之前的系统中，Network Extension 的内存限制为 15 MB；而在 iOS 15 及以后，Network Extension 的内存限制增加到了 50 MB。

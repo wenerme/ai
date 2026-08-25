@@ -1,3 +1,7 @@
+---
+description: "iOS Network Extension 有 15 MB / 50 MB 的内存限制。介绍如何编写高效的配置文件，避免 Stash 因超出内存被系统关闭。"
+---
+
 # 编写高效的配置文件
 
 由于 iOS Network Extension 在 iOS 14 限制使用 15 MB 内存，在 iOS 15+ 限制使用 50 MB 内存，不合理的配置文件可能会导致 Stash 被 iOS 关闭。以下是一些建议，帮助您编写高效的配置文件。

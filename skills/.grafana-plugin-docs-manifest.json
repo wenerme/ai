@@ -636,8 +636,8 @@
   },
   "grafana-exploretraces-app/concepts.md": {
     "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/concepts.md",
-    "size": 2746,
-    "updatedAt": "2026-06-25T05:41:59.396Z"
+    "size": 2741,
+    "updatedAt": "2026-08-25T10:55:21.699Z"
   },
   "grafana-exploretraces-app/determine-use-case.md": {
     "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/determine-use-case.md",
@@ -646,8 +646,8 @@
   },
   "grafana-exploretraces-app/get-started.md": {
     "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/get-started.md",
-    "size": 6323,
-    "updatedAt": "2026-06-25T05:42:00.153Z"
+    "size": 6321,
+    "updatedAt": "2026-08-25T10:55:22.048Z"
   },
   "grafana-exploretraces-app/get-started/example-investigation.md": {
     "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/get-started/example-investigation.md",
@@ -666,13 +666,13 @@
   },
   "grafana-exploretraces-app/investigate/add-filters.md": {
     "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/add-filters.md",
-    "size": 2946,
-    "updatedAt": "2026-06-25T05:42:01.579Z"
+    "size": 2925,
+    "updatedAt": "2026-08-25T10:55:22.761Z"
   },
   "grafana-exploretraces-app/investigate/analyze-tracing-data.md": {
     "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/analyze-tracing-data.md",
-    "size": 9952,
-    "updatedAt": "2026-06-25T05:42:01.948Z"
+    "size": 10549,
+    "updatedAt": "2026-08-25T10:55:22.936Z"
   },
   "grafana-exploretraces-app/investigate/choose-red-metric.md": {
     "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/choose-red-metric.md",
@@ -681,8 +681,8 @@
   },
   "grafana-exploretraces-app/investigate/choose-span-data.md": {
     "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/choose-span-data.md",
-    "size": 2984,
-    "updatedAt": "2026-06-25T05:42:02.666Z"
+    "size": 3823,
+    "updatedAt": "2026-08-25T10:55:23.270Z"
   },
   "grafana-exploretraces-app/investigate/save-load-queries.md": {
     "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/save-load-queries.md",
@@ -691,13 +691,13 @@
   },
   "grafana-exploretraces-app/investigate/view-exemplars.md": {
     "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/investigate/view-exemplars.md",
-    "size": 2399,
-    "updatedAt": "2026-06-25T05:42:03.388Z"
+    "size": 2597,
+    "updatedAt": "2026-08-25T10:55:23.616Z"
   },
   "grafana-exploretraces-app/ui-reference.md": {
     "url": "https://grafana.com/docs/plugins/grafana-exploretraces-app/latest/ui-reference.md",
-    "size": 4451,
-    "updatedAt": "2026-06-25T05:42:03.738Z"
+    "size": 5280,
+    "updatedAt": "2026-08-25T10:55:23.782Z"
   },
   "grafana-falconlogscale-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-falconlogscale-datasource/latest/configure.md",

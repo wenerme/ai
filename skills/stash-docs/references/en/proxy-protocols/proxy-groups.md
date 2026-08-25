@@ -1,3 +1,7 @@
+---
+description: "A proxy group (proxy-groups) combines proxies or other groups and can be referenced by rules like a single proxy. Covers each group type and how to configure it."
+---
+
 # Strategy Group
 
 A strategy group (`proxy-groups`) is a combination of a series of proxies (or strategy groups). A strategy group can be referenced by the diversion rules like a single proxy, and special strategies can be specified to improve availability.

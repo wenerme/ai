@@ -4933,8 +4933,8 @@ components:
       description: >-
         How long (in seconds) the container stays warm after its last command
         before sleeping, freeing its capacity slot. Idle-based: each command
-        renews the timer. Defaults to 900 (15 minutes); capped at 2592000 (30
-        days).
+        renews the timer. Defaults to 900 (15 minutes); capped at 14400 (4
+        hours).
       example: 900
       type: integer
     WebFetchEngineEnum:
@@ -5744,6 +5744,10 @@ components:
       example:
         type: container_auto
       properties:
+        file_ids:
+          $ref: '#/components/schemas/ContainerFileIds'
+        network_policy:
+          $ref: '#/components/schemas/ContainerNetworkPolicy'
         type:
           enum:
             - container_auto
@@ -5777,6 +5781,10 @@ components:
           minLength: 1
           pattern: ^[\w-]+$
           type: string
+        file_ids:
+          $ref: '#/components/schemas/ContainerFileIds'
+        network_policy:
+          $ref: '#/components/schemas/ContainerNetworkPolicy'
         type:
           enum:
             - container_reference
@@ -6013,6 +6021,76 @@ components:
       type:
         - object
         - 'null'
+    ContainerFileIds:
+      description: >-
+        Workspace file ids (or_file_…) to attach into the container before the
+        first command runs. Each file is copied to the container home as a
+        writable copy named {last 8 characters of the file id}-{base filename}
+        (a file stored as data/report.csv with id or_file_…NR6q4V8w attaches to
+        ~/NR6q4V8w-report.csv), so same-named files never collide; the source
+        document is never modified. Unknown, foreign, or malformed ids fail the
+        request with a 400 before any command executes. Max 20 ids.
+      example:
+        - or_file_011CNha8iCJcU1wXNR6q4V8w
+      items:
+        minLength: 1
+        type: string
+      maxItems: 20
+      type: array
+    ContainerNetworkPolicy:
+      anyOf:
+        - properties:
+            type:
+              description: No outbound internet access.
+              enum:
+                - disabled
+              type: string
+          required:
+            - type
+          type: object
+        - properties:
+            allowed_domains:
+              description: >-
+                Hostnames the container may reach over ports 80/443 (max 50).
+                Entries are lowercase hostnames or glob patterns where * matches
+                any run of characters (e.g. *.example.com). An exact hostname
+                does not cover its subdomains — use a glob or list each
+                hostname. pip needs both pypi.org and files.pythonhosted.org (or
+                *.pythonhosted.org).
+              example:
+                - pypi.org
+                - files.pythonhosted.org
+              items:
+                maxLength: 253
+                minLength: 1
+                pattern: >-
+                  ^[a-z0-9*]([a-z0-9*-]{0,61}[a-z0-9*])?(\.[a-z0-9*]([a-z0-9*-]{0,61}[a-z0-9*])?)*$
+                type: string
+              maxItems: 50
+              minItems: 1
+              type: array
+            type:
+              description: Outbound access restricted to the listed domains.
+              enum:
+                - allowlist
+              type: string
+          required:
+            - type
+            - allowed_domains
+          type: object
+      description: >-
+        Network egress policy for the container. "disabled" blocks all outbound
+        internet; "allowlist" permits only hosts matching the listed hostnames
+        or * glob patterns (ports 80/443, DNS via Cloudflare resolvers). The
+        policy is fixed when a container starts: sending a different policy to a
+        warm container fails the request with a 409. Omitted: defaults to
+        "disabled" (no outbound internet). For unrestricted egress, use an
+        allowlist of ["*"].
+      example:
+        allowed_domains:
+          - pypi.org
+          - files.pythonhosted.org
+        type: allowlist
     AnthropicBashCodeExecutionResult:
       example:
         content: []

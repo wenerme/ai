@@ -1,3 +1,7 @@
+---
+description: "Stash 内置高效的 HTTP 引擎，可对系统中的 HTTP 请求进行改写、拦截、抓取与重放，并通过 MitM 方式解密 HTTPS 请求。"
+---
+
 # Stash HTTP Engine
 
 Stash 内置高效的 HTTP 引擎，允许用户对系统中的 HTTP 请求进行改写、拦截、抓取、重放，以及对 HTTPS 请求通过 MitM 方式进行解密。

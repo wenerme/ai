@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limitations
 
-Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/cache/limitations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/cache/limitations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page lists the scenarios where Workers Caching does not apply, followed by notes on how it relates to other caches you may already be using.
 
@@ -77,7 +77,7 @@ Limits on the number, length, and character set of `Cache-Tag` values are the sa
 
 ### Purge rate limits
 
-`ctx.cache.purge()` uses the same rate-limiting system as the zone purge API. Refer to [Availability and limits](https://developers.cloudflare.com/cache/how-to/purge-cache/#availability-and-limits) for the rates that apply to your account.
+`ctx.cache.purge()` uses the same rate-limiting system as the zone purge API. However, because Workers Caching is associated with the Worker rather than the zone, Workers Caching always uses the **Free tier limits** described in [Availability and limits](https://developers.cloudflare.com/cache/how-to/purge-cache/#availability-and-limits), regardless of your account or zone plan.
 
 ## Relationship to other caches
 
@@ -137,5 +137,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/limitations/#page","headline":"Limitations · Cloudflare Workers docs","description":"Current limitations, unsupported scenarios, and how Workers Caching relates to other Cloudflare caches.","url":"https://developers.cloudflare.com/workers/cache/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/limitations/#page","headline":"Limitations · Cloudflare Workers docs","description":"Current limitations, unsupported scenarios, and how Workers Caching relates to other Cloudflare caches.","url":"https://developers.cloudflare.com/workers/cache/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

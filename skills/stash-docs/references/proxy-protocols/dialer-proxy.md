@@ -1,3 +1,7 @@
+---
+description: "代理链（dialer-proxy）用于指定上游代理，使连接先经由另一个代理转发，可中继 TCP 与 UDP。"
+---
+
 # 代理链
 
 <VersionRequirement ios="3.2.5" mac="4.1" />

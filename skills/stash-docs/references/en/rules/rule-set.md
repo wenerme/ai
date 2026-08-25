@@ -1,3 +1,7 @@
+---
+description: "Rule sets (rule-providers) reference large rule lists with low resource use and update silently in the background without reloading Stash."
+---
+
 # Rule Sets
 
 The rule set feature allows referencing a large number of rules with low resource consumption and supports silent updates in the background without reloading Stash. To use rule sets, you need to declare them under `rule-providers`, and then reference the sets under `rules`.

@@ -95,6 +95,22 @@ var result =
 System.out.println(result.asTranscription().text());
 ```
 
+```csharp
+using OpenAI.Audio;
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+string model = "gpt-transcribe";
+AudioClient client = new(model, key);
+
+await using FileStream audio = File.OpenRead("audio.wav");
+AudioTranscription transcription = await client.TranscribeAudioAsync(
+    audio,
+    "audio.wav"
+);
+
+Console.WriteLine(transcription.Text);
+```
+
 ```ruby
 require "openai"
 require "pathname"
@@ -586,6 +602,21 @@ var result =
                 .build());
 
 System.out.println(result.asTranslation().text());
+```
+
+```csharp
+using OpenAI.Audio;
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+AudioClient client = new("whisper-1", key);
+
+await using FileStream audio = File.OpenRead("german.wav");
+AudioTranslation translation = await client.TranslateAudioAsync(
+    audio,
+    "german.wav"
+);
+
+Console.WriteLine(translation.Text);
 ```
 
 ```ruby

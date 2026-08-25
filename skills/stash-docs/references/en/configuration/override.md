@@ -1,3 +1,7 @@
+---
+description: "Override files modify individual fields in a managed or subscribed configuration. Covers how to declare them and the top-to-bottom order in which multiple overrides apply."
+---
+
 # Override
 
 Override allows users to modify certain fields in configuration files, commonly used to modify the content of managed or subscribed configurations. Stash allows multiple override files to be enabled simultaneously, and they will override the original configuration from top to bottom.

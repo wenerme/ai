@@ -430,11 +430,12 @@ using OpenAI.Responses;
 #pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+string vectorStoreId = "<vector_store_id>";
 ResponsesClient client = new(key);
 
 CreateResponseOptions options = new() { Model = "gpt-5.6" };
 options.Tools.Add(
-    ResponseTool.CreateFileSearchTool(["<vector_store_id>"])
+    ResponseTool.CreateFileSearchTool([vectorStoreId])
 );
 options.InputItems.Add(
     ResponseItem.CreateUserMessageItem("What is deep research by OpenAI?")

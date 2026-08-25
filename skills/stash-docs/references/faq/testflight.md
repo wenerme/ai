@@ -1,3 +1,7 @@
+---
+description: "Stash 通过 TestFlight 分发 Beta 版本。介绍购买用户如何申请参与测试，以及 TestFlight 版本的常见问题。"
+---
+
 # TestFlight 相关问题
 
 Stash 通过在 TestFlight 分发 Beta 版本进行灰度测试。所有购买用户均可申请参与 TestFlight 测试。在 **App Store 安装的 Stash** 内，您可以在「设置 - 更多设置」中输入邮箱，即可收到 TestFlight 发出的邀请。

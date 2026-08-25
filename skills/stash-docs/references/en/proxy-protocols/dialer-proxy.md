@@ -1,3 +1,7 @@
+---
+description: "Dialer proxy chains connections through an upstream proxy before reaching the target server, relaying both TCP and UDP."
+---
+
 # Dialer Proxy
 
 <VersionRequirement ios="3.2.5" mac="4.1" />

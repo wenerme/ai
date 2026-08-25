@@ -1,3 +1,7 @@
+---
+description: "How Stash optimises each layer of the network connection to deliver low latency and high throughput."
+---
+
 # Network Performance Enhancement
 
 Stash has optimized performance at every level of network connection, aiming to provide a low-latency, high-throughput access experience.

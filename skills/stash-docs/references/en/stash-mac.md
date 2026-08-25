@@ -1,3 +1,7 @@
+---
+description: "Stash Mac includes every feature of the iOS version, plus capabilities built specifically for macOS. Covers what the Mac app adds and how to use it."
+---
+
 # Stash Mac
 
 Stash Mac includes all the features of the iOS version. Additionally, designed specifically for the macOS platform, Stash Mac will support even more features than the iOS version.

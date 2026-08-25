@@ -1,3 +1,7 @@
+---
+description: "Why Stash Mac keeps asking to install the Helper, and how to resolve it. The Helper is what sets the system proxy with administrator privileges."
+---
+
 # Unable to Install Stash Mac Helper
 
 Some users may encounter repeated prompts to install the Helper. Stash requires administrative privileges to install a Helper, otherwise Stash will not be able to set up the system proxy.

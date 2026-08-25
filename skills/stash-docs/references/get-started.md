@@ -1,3 +1,7 @@
+---
+description: "导入 Stash/Clash 格式的配置文件即可启用 Stash。介绍通过 URL 下载服务商订阅配置，以及导入 iCloud/OneDrive 本地文件两种方式。"
+---
+
 # 快速上手
 
 要在你的 iOS 设备上启用 Stash，只需导入一份 Stash/Clash 格式的配置文件。Stash 需要配置文件来指定代理服务器和网络策略，你可以通过 URL 下载服务提供商的配置，或者导入存放在 iCloud/OneDrive 中的本地文件来使用 Stash。

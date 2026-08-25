@@ -1,3 +1,7 @@
+---
+description: "Stash 可在后台执行 JavaScript 定时任务，需要 Network Extension 处于已连接状态。"
+---
+
 # 定时任务
 
 Stash 可以在后台执行定时任务，目前仅支持执行 JavaScript 脚本，定时任务需要依赖 Network Extension（VPN） 在已连接状态。

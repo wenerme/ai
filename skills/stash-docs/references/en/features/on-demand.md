@@ -1,3 +1,7 @@
+---
+description: "On-Demand activation keeps Stash running continuously. Covers how the option behaves and how to stop Stash once it is enabled."
+---
+
 # On-Demand Activation
 
 ## Keep Stash Running

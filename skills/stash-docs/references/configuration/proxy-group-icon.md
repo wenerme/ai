@@ -1,3 +1,7 @@
+---
+description: "在配置文件的 proxy-groups 中通过 icon 字段为策略组指定图标，支持 JPG 与 PNG 格式的图片 URL。"
+---
+
 # 策略组图标
 
 为了区分不同的策略组，您可以为每个策略组指定一个图标。在配置文件的 `proxy-groups` 章节中，为策略组添加 `icon` 字段，并输入图片的 URL，支持 JPG 和 PNG 格式的图片。

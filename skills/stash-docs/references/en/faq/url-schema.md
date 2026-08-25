@@ -1,3 +1,7 @@
+---
+description: "Stash can be controlled through the stash:// and clash:// URL schemas. Covers the available commands and the encoding required for parameters."
+---
+
 # URL Schema
 
 Stash supports using URL Schema `stash://` and `clash://` to control Stash, and the included URL **needs to be encoded.**

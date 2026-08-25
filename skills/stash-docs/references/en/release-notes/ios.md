@@ -1,3 +1,6 @@
+---
+description: "Release notes for Stash on iOS, listing new features, improvements and fixes in each version."
+---
 
 ## 3.4.0
 
