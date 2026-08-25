@@ -1,3 +1,7 @@
+---
+description: "Stash on iOS, tvOS and macOS can serve as a proxy for other devices on your local network. Covers enabling it and configuring the client devices."
+---
+
 # Providing Proxy for Local Area Network Devices
 
 Stash iOS, Stash tvOS, and Stash Mac all support providing proxy for local area network devices.

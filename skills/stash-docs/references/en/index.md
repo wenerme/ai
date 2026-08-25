@@ -1,3 +1,7 @@
+---
+description: "Stash is a full implementation of the Clash Premium kernel on Apple devices, covering iOS, tvOS, macOS and visionOS. Documentation for configuration, rules, proxy groups, the HTTP engine and scripting."
+---
+
 # Welcome to Stash App 👋
 
 Stash is the best implementation client for the Clash Premium kernel on Apple devices, fully adapting Clash features for iOS, tvOS, macOS, and visionOS platforms.

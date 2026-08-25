@@ -9,10 +9,10 @@ description: "Use root span or full span data for your investigation."
 
 Tracing data is highly structured and annotated and reflects events that happen in your services. You can choose the type of services you want to observe and think about.
 
-By default, Traces Drilldown displays information about root spans. You can change this by using the selector in the filter bar.
+By default, Traces Drilldown displays information about root spans. You can change this by using the primary signal selector in the filter bar. **Root spans** and **All spans** appear as buttons, and the remaining primary signals are available from the adjacent drop-down.
 
-- Use **Root spans** for trace‑level insights and faster performance (one span/trace). Root spans show only traces where the root span has an error value.
-- Use **All spans** when you need to drill down into every operation within those traces. All spans show traces containing errors anywhere in the call chain, for example, database errors or downstream service failures.
+- Use **Root spans** for trace‑level insights and faster performance (one span per trace). When you select the **Errors** metric, this shows traces whose root span has an error status.
+- Use **All spans** when you need to drill down into every operation within those traces. When you select the **Errors** metric, this shows traces that contain errors anywhere in the call chain, for example, database errors or downstream service failures.
 
 For most observability use cases, start with root spans to get accurate service-level metrics, then switch to all spans when you need to investigate specific internal operations or errors deeper in the call chain.
 
@@ -48,3 +48,13 @@ Trade‑offs:
 > Note
 >
 > Errors can cascade through downstream services, and error counts differ from error rates. When using **All spans**, verify the error type on spans and consider rate (errors/requests) to avoid overestimating the impact.
+
+## Use other primary signals
+
+**Root spans** and **All spans** appear as buttons in the filter bar. Select the drop-down next to them to choose one of these additional primary signals:
+
+- **Server spans**: Explore server-specific segments of traces (spans where `kind` is `server`).
+- **Consumer spans**: Analyze interactions initiated by consumer services (spans where `kind` is `consumer`).
+- **Database calls**: Evaluate performance issues in database interactions (spans that have a `span.db.system.name` attribute).
+
+Each primary signal applies a filter that scopes every metric, tab, and breakdown to the matching spans.

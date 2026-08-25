@@ -1,3 +1,7 @@
+---
+description: "IPv6 compatibility in Stash. Stash picks the best connection strategy automatically from the IPv4 / IPv6 status the system reports, so enabling it by hand is rarely needed."
+---
+
 # IPv6 Compatibility
 
 In most cases, you do not need to manually enable IPv6. Stash will automatically select the best connection strategy based on the IPv4/IPv6 status returned by the iOS/macOS system. When both IPv4 and IPv6 are available, Stash will initiate TCP handshakes with both IPv4 and IPv6 simultaneously, and select the first successful handshake connection for subsequent data transmission.

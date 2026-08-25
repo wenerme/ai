@@ -1,3 +1,7 @@
+---
+description: "Stash supports configurations managed by a service provider, updating them on a schedule and showing remaining traffic and expiry information."
+---
+
 # Service Provider Subscription
 
 Stash supports configurations managed by service providers, which can be updated periodically and display information about remaining service traffic and expiration.

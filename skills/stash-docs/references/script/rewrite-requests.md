@@ -1,3 +1,7 @@
+---
+description: "使用 JavaScript 脚本修改流经 Stash 的 HTTP 请求与响应。介绍脚本的编写方式与生效条件。"
+---
+
 # 改写 HTTP
 
 用户可以通过 JavaScript 脚本修改流经 Stash 的 HTTP 请求、响应。

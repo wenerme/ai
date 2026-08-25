@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**
 For example:
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ## Cloudflare platform access
@@ -114,7 +114,15 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+```
+
+```txt
+Build an image upload and transformation service using R2 and Cloudflare Images.
+```
+
+```txt
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
@@ -122,15 +130,7 @@ Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
-```
-
-```txt
-Check my Workers deployment logs for errors and suggest fixes.
-```
-
-```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Tips

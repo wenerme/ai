@@ -15,6 +15,7 @@ Containers endpoints
 * [list\_container\_files](#list_container_files) - List container files
 * [get\_container\_file](#get_container_file) - Retrieve a container file
 * [download\_container\_file\_content](#download_container_file_content) - Download container file content
+* [promote\_container\_file](#promote_container_file) - Promote a container file into workspace documents
 
 ## list\_container\_files
 
@@ -170,6 +171,60 @@ with OpenRouter(
 | errors.UnauthorizedResponseError       | 401         | application/json |
 | errors.ForbiddenResponseError          | 403         | application/json |
 | errors.NotFoundResponseError           | 404         | application/json |
+| errors.TooManyRequestsResponseError    | 429         | application/json |
+| errors.InternalServerResponseError     | 500         | application/json |
+| errors.ServiceUnavailableResponseError | 503         | application/json |
+| errors.OpenRouterDefaultError          | 4XX, 5XX    | \*/\*            |
+
+## promote\_container\_file
+
+Copies a file from the container's sandbox prefix into the workspace's durable document storage, so it outlives the container. Returns the new document in the Files API shape, with a durable file id in the documents namespace. The copy counts against the workspace's storage quota exactly like an upload.
+
+### Example Usage
+
+```python theme={null}
+from openrouter import OpenRouter
+import os
+
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.containers.promote_container_file(container_id="sess_abc123", file_id="cfile_b3V0L3JlcG9ydC5jc3Y")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                                | Required             | Description                                                                                                                                                                                                                                                           | Example                    |
+| -------------------------- | ------------------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| `container_id`             | *str*                                                               | :heavy\_check\_mark: | The canonical container id, exactly as returned in a bash/shell tool result — a restarted session has its own `-r<nonce>`-suffixed id. A session-derived id is always `sess_` + the sanitized session key, which is not necessarily the raw session id that was sent. | sess\_abc123               |
+| `file_id`                  | *str*                                                               | :heavy\_check\_mark: | Container file id (`cfile_` + base64url of the file path).                                                                                                                                                                                                            | cfile\_b3V0L3JlcG9ydC5jc3Y |
+| `http_referer`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br />                                                                                                           |                            |
+| `x_open_router_title`      | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                                                                                                                                    |                            |
+| `x_open_router_categories` | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                                                                                                                           |                            |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                                                                                                                                   |                            |
+
+### Response
+
+**[components.FileResponse](../../components/fileresponse.mdx)**
+
+### Errors
+
+| Error Type                             | Status Code | Content Type     |
+| -------------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError         | 400         | application/json |
+| errors.UnauthorizedResponseError       | 401         | application/json |
+| errors.ForbiddenResponseError          | 403         | application/json |
+| errors.NotFoundResponseError           | 404         | application/json |
+| errors.PayloadTooLargeResponseError    | 413         | application/json |
 | errors.TooManyRequestsResponseError    | 429         | application/json |
 | errors.InternalServerResponseError     | 500         | application/json |
 | errors.ServiceUnavailableResponseError | 503         | application/json |

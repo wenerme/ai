@@ -1,11 +1,11 @@
 ---
 title: "Weights & Biases | Models"
-description: "Use Weights & Biases models with Mastra. 29 models available."
+description: "Use Weights & Biases models with Mastra. 30 models available."
 ---
 
 # [Weights & Biases logo]Weights & Biases
 
-Access 29 Weights & Biases models through Mastra's model router. Authentication is handled automatically using the `WANDB_API_KEY` environment variable.
+Access 30 Weights & Biases models through Mastra's model router. Authentication is handled automatically using the `WANDB_API_KEY` environment variable.
 
 Learn more in the [Weights & Biases documentation](https://docs.wandb.ai).
 
@@ -110,6 +110,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.05,
     "outputCost": 0.1
+  },
+  {
+    "model": "wandb/ibm-granite/granite-4.2-8b",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 131072,
+    "inputCost": 0.1,
+    "outputCost": 0.15
   },
   {
     "model": "wandb/JetBrains/Mellum2-12B-A2.5B-Instruct",

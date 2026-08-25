@@ -39,7 +39,7 @@ https://mcp.cloudflare.com/mcp
 Ask Bionic to investigate a task, make changes, and run relevant tests. Review its diffs and command output before keeping changes.
 For example:
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ## Cloudflare platform access
@@ -117,15 +117,11 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
-```
-
-```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ```txt
@@ -133,7 +129,11 @@ Optimize my Worker to serve WebP images with responsive resizing using Cloudflar
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
+```
+
+```txt
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ## Tips

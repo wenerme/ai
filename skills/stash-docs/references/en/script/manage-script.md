@@ -1,3 +1,7 @@
+---
+description: "Manage scripts through script-providers. Once declared, a script can be referenced from rewrites, tiles and scheduled tasks."
+---
+
 # Manage Scripts
 
 Similar to remote proxy providers and rule providers, you need `script-providers`

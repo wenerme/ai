@@ -92,6 +92,20 @@ var embedding =
 System.out.println(embedding.data().get(0).embedding());
 ```
 
+```csharp
+using OpenAI.Embeddings;
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+string model = "text-embedding-3-small";
+EmbeddingClient client = new(model, key);
+
+OpenAIEmbedding embedding = await client.GenerateEmbeddingAsync(
+    "The food was delicious and the waiter was friendly."
+);
+
+Console.WriteLine($"Dimensions: {embedding.ToFloats().Length}");
+```
+
 ```ruby
 require "openai"
 
@@ -305,6 +319,29 @@ var embedding =
 
 List<Float> shortened = embedding.data().get(0).embedding().subList(0, 256);
 System.out.println(normalizeL2(shortened));
+```
+
+```csharp
+using OpenAI.Embeddings;
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+string model = "text-embedding-3-small";
+EmbeddingClient client = new(model, key);
+
+OpenAIEmbedding embedding = await client.GenerateEmbeddingAsync("Testing 123");
+
+float[] shortened = embedding.ToFloats().Span[..256].ToArray();
+double magnitude = Math.Sqrt(shortened.Sum(value => value * value));
+float[] normalized =
+    magnitude == 0
+        ? shortened
+        : shortened.Select(value => (float)(value / magnitude)).ToArray();
+
+Console.WriteLine($"Dimensions: {normalized.Length}");
+Console.WriteLine($"First value: {normalized[0]:F6}");
+Console.WriteLine(
+    $"L2 norm: {Math.Sqrt(normalized.Sum(value => value * value)):F3}"
+);
 ```
 
 

@@ -1,3 +1,7 @@
+---
+description: "Stash ships beta builds through TestFlight. How purchasers join the test, and the questions that come up most often with TestFlight builds."
+---
+
 # TestFlight Related Issues
 
 Stash conducts grayscale testing by distributing beta versions through TestFlight. All purchasing users can apply to participate in TestFlight testing. Inside **Stash installed from the App Store**, you can enter your email in "Settings - More Settings" to receive invitations sent out by TestFlight.

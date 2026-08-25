@@ -1,3 +1,7 @@
+---
+description: "Stash's built-in DNS service queries multiple servers at once and takes the fastest response. Covers the supported DNS protocols and how to configure them."
+---
+
 # Built-in DNS Service
 
 ## Custom Upstream DNS Servers

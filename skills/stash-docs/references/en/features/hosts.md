@@ -1,3 +1,7 @@
+---
+description: "Hostname mapping resolves a domain to a specific IP address, or maps one domain's resolution to another. Covers the syntax of the hosts field."
+---
+
 # Hostname Mapping
 
 Stash comes with built-in hostname mapping capabilities, allowing users to resolve domain names to specific IP addresses or map the resolution of domain A to that of domain B.

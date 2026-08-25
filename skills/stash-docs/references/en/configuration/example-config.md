@@ -1,3 +1,7 @@
+---
+description: "A complete Stash YAML configuration example, explaining each field section by section — a working starting point for writing your own."
+---
+
 # Configuration Example
 
 All configuration files in Stash use [YAML](https://yaml.org/) format. In the YAML format, indentation affects the entire structure of the configuration, and users can check whether the configuration meets the YAML format on [www.yamllint.com](http://www.yamllint.com/).

@@ -1,3 +1,7 @@
+---
+description: "Stash 的 IPv6 兼容性说明。Stash 会根据系统返回的 IPv4 / IPv6 状态自动选择最佳连接策略，通常无需手动启用。"
+---
+
 # IPv6 兼容性
 
 在绝大多数情况下，您无需手动启用 IPv6。Stash 会根据 iOS / macOS 系统返回的 IPv4 / IPv6 状态，自动选择最佳的连接策略。当 IPv4 / IPv6 都可用时，Stash 会同时向 IPv4 / IPv6 发起 TCP 握手，并选择第一个成功握手的连接进行后续数据传输。

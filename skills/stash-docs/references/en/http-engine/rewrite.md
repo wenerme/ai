@@ -1,3 +1,7 @@
+---
+description: "HTTP rewriting matches URLs with regular expressions to reject or redirect HTTP(S) requests — commonly used to block ads and privacy tracking."
+---
+
 # HTTP Rewrite
 
 HTTP rewriting allows users to match URLs using regular expressions to reject or redirect HTTP(S) requests, commonly used to block ads, prevent privacy tracking, etc.

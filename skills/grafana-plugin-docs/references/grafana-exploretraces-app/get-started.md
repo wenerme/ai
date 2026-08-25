@@ -74,10 +74,10 @@ Check the span attributes and error details. They’ll tell you what really happ
 
 Use the **Comparison** tab to correlate attributes values with errors. The results are ordered by the difference in those attributes by the highest ones first. This helps you see what’s causing the errors immediately. The **Comparison** tab analyzes the difference between two sets of traces:
 
-- Green bars (Baseline): Normal/healthy trace behavior
+- Blue bars (Baseline): Normal/healthy trace behavior
 - Red bars (Selection): Current selection with status = error filter
 
-The view compares your selection (red) to the baseline (green) and ranks attributes by the largest difference. This indicates a significant spike in `HTTP 500` (Internal Server Error) responses during your selected time range. The visualization highlights that:
+The view compares your selection (red) to the baseline (blue) and ranks attributes by the largest difference. This indicates a significant spike in `HTTP 500` (Internal Server Error) responses during your selected time range. The visualization highlights that:
 
 - 500 errors aren’t normal for this system, they don’t appear in the baseline comparison
 - There were 500 traces containing HTTP 500 status codes during the error period

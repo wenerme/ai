@@ -185,6 +185,56 @@ client.responses().create(params).output().stream()
     .forEach(text -> System.out.println(text.text()));
 ```
 
+```csharp
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(key);
+
+BinaryData schema = BinaryData.FromString(
+    """
+    {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "date": { "type": "string" },
+        "participants": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["name", "date", "participants"],
+      "additionalProperties": false
+    }
+    """
+);
+CreateResponseOptions options = new()
+{
+    Model = "gpt-5.6",
+    TextOptions = new ResponseTextOptions
+    {
+        TextFormat = ResponseTextFormat.CreateJsonSchemaFormat(
+            "event",
+            schema,
+            jsonSchemaIsStrict: true
+        ),
+    },
+};
+options.InputItems.Add(
+    ResponseItem.CreateSystemMessageItem("Extract the event information.")
+);
+options.InputItems.Add(
+    ResponseItem.CreateUserMessageItem(
+        "Alice and Bob are going to a science fair on Friday."
+    )
+);
+
+ResponseResult response = await client.CreateResponseAsync(options);
+
+Console.WriteLine(response.GetOutputText());
+```
+
 ```ruby
 require "openai"
 

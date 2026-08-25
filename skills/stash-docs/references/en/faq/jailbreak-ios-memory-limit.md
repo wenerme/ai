@@ -1,3 +1,7 @@
+---
+description: "How to change the Jetsam memory limit on jailbroken iOS devices to raise the ceiling available to the Network Extension."
+---
+
 # Modify the memory limit of the iOS system for jailbroken devices
 
 Jetsam is responsible for monitoring memory and performing OOM kills in iOS. In the default system configuration, different types of processes have different memory limits. In iOS 14 and earlier systems, the memory limit for Network Extension is 15 MB; while in iOS 15 and later, the memory limit for Network Extension has been increased to 50 MB.

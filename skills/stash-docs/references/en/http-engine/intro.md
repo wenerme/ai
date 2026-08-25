@@ -1,3 +1,7 @@
+---
+description: "Stash's built-in HTTP engine rewrites, intercepts, captures and replays HTTP requests, and decrypts HTTPS requests through MitM."
+---
+
 # Stash HTTP Engine
 
 Stash has a built-in efficient HTTP engine that allows users to rewrite, intercept, fetch, replay, and decrypt HTTPS requests using a MitM approach.

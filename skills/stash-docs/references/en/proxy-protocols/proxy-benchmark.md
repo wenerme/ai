@@ -1,3 +1,7 @@
+---
+description: "Set latency test parameters per proxy, including the target URL used for the test and its timeout."
+---
+
 # Delayed Testing
 
 In Stash, you can specify separate delay testing parameters for each proxy, including the target URL for delay testing and the timeout for the test.

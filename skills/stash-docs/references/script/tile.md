@@ -1,3 +1,7 @@
+---
+description: "通过 JavaScript 脚本自定义 Stash 首页的 Tile 面板，展示你需要的信息。"
+---
+
 # 面板 (Tile)
 
 用户可以通过 JavaScript 脚本自定义 Stash 首页的 Tile 面板。

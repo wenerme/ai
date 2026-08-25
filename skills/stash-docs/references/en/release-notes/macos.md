@@ -1,3 +1,6 @@
+---
+description: "Release notes for Stash on macOS, listing new features, improvements and fixes in each version."
+---
 
 ## 4.2.0
 

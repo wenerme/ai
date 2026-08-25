@@ -1,3 +1,7 @@
+---
+description: "How Stash licenses are activated, the device limit that applies to each one, and how to manage the devices already activated."
+---
+
 # Authorization and Activation
 
 To prevent commercial account sharing and other piracy behaviors, Stash currently imposes device usage limits on each purchase license.

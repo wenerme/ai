@@ -1,3 +1,7 @@
+---
+description: "Stash 是 Clash Premium 内核在 Apple 设备上的完整实现，支持 iOS、tvOS、macOS 与 visionOS。文档涵盖配置文件、分流规则、策略组、HTTP 引擎与脚本的完整说明。"
+---
+
 # 欢迎使用 Stash App 👋
 
 Stash 是 Clash Premium 内核在 Apple 设备上的最佳实现客户端，为 iOS、tvOS、macOS 与 visionOS 平台完整适配 Clash 功能。

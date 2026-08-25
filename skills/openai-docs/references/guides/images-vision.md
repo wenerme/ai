@@ -158,6 +158,37 @@ String imageResult =
 Files.write(Path.of("cat_and_otter.png"), Base64.getDecoder().decode(imageResult));
 ```
 
+```csharp
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(key);
+
+CreateResponseOptions options = new()
+{
+    Model = "gpt-5.6",
+};
+options.InputItems.Add(
+    ResponseItem.CreateUserMessageItem(
+        "Generate an image of a gray tabby cat hugging an otter with an orange scarf."
+    )
+);
+options.Tools.Add(
+    ResponseTool.CreateImageGenerationTool(model: "gpt-image-2")
+);
+
+ResponseResult response = await client.CreateResponseAsync(options);
+ImageGenerationCallResponseItem image = response
+    .OutputItems.OfType<ImageGenerationCallResponseItem>()
+    .FirstOrDefault()
+    ?? throw new InvalidOperationException("No generated image was returned.");
+await File.WriteAllBytesAsync(
+    "cat_and_otter.png",
+    image.ImageResultBytes.ToArray()
+);
+```
+
 ```ruby
 require "base64"
 require "openai"

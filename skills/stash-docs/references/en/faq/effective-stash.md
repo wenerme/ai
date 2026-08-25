@@ -1,3 +1,7 @@
+---
+description: "The iOS Network Extension is capped at 15 MB / 50 MB of memory. How to write an efficient configuration file so iOS does not terminate Stash for exceeding it."
+---
+
 # Writing Efficient Configuration Files
 
 Due to the memory limitations of iOS Network Extension, which restricts usage to 15 MB in iOS 14 and 50 MB in iOS 15+, having an unreasonable configuration file may cause Stash to be closed by iOS. Here are some suggestions to help you write efficient configuration files.

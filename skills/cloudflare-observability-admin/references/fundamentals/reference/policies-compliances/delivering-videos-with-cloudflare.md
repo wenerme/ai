@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Delivering Videos with Cloudflare
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/delivering-videos-with-cloudflare/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/delivering-videos-with-cloudflare/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Using Cloudflare's Services
 
@@ -20,9 +20,15 @@ Cloudflare launched in 2010 believing everyone deserves a secure, fast, reliable
 
 Over time we recognized that some of our customers wanted to stream video using our network. To accommodate them, we developed our [Stream ↗](https://www.cloudflare.com/products/cloudflare-stream/) product. Stream delivers great performance at an affordable rate charged based on how much load you place on our network.
 
-Unfortunately, while most people respect these limitations and understand they exist to ensure high quality of service for all Cloudflare customers, some users attempt to misconfigure our service to stream video in violation of our [Terms of Service ↗](https://www.cloudflare.com/en-gb/website-terms/). We want to make sure our service is great for everyone, including public service initiatives we run like [Project Galileo ↗](https://www.cloudflare.com/galileo/), [The Athenian Project ↗](https://www.cloudflare.com/athenian/), and [Project Fair Shot ↗](https://www.cloudflare.com/fair-shot/). A handful of people misusing our service limits our ability to run these initiatives.
+Unfortunately, while most people respect these limitations and understand they exist to ensure high quality of service for all Cloudflare customers, some users attempt to misconfigure our service to stream video in violation of our [service-specific terms ↗](https://www.cloudflare.com/service-specific-terms-application-services/#content-delivery-network-free-pro-or-business). We want to make sure our service is great for everyone, including public service initiatives we run like [Project Galileo ↗](https://www.cloudflare.com/galileo/), [The Athenian Project ↗](https://www.cloudflare.com/athenian/), and [Project Fair Shot ↗](https://www.cloudflare.com/fair-shot/). A handful of people misusing our service limits our ability to run these initiatives.
 
 The following are some recommendations for using Cloudflare's services based on what may have brought you to this page.
+
+Cloudflare Tunnel
+
+Cloudflare Tunnel public hostname routes proxy traffic through Cloudflare. On Free, Pro, and Business plans, this traffic is subject to the terms described on this page.
+
+The restriction does not apply to private network routes. Refer to [Private networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/) to route large-file or high-traffic workloads privately.
 
 ---
 
@@ -76,5 +82,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/delivering-videos-with-cloudflare/#page","headline":"Delivering Videos with Cloudflare · Cloudflare Fundamentals docs","description":"Understand Cloudflare's video delivery policies, resolve Terms of Service redirects, and choose the right paid product for streaming video.","url":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/delivering-videos-with-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/delivering-videos-with-cloudflare/#page","headline":"Delivering Videos with Cloudflare · Cloudflare Fundamentals docs","description":"Understand Cloudflare's video delivery policies, resolve Terms of Service redirects, and choose the right paid product for streaming video.","url":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/delivering-videos-with-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

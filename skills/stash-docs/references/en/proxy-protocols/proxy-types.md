@@ -1,3 +1,7 @@
+---
+description: "The full list of proxy protocols Stash supports, covering both TCP and UDP proxies along with the configuration fields for each."
+---
+
 # Protocol Types
 
 Stash supports multiple types of proxy protocols, capable of handling TCP/UDP protocols.
