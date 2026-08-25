@@ -26,7 +26,7 @@ Click the edit icon next to **Datadog** and enter:
 
 * **Api Key**: Your Datadog API key
 * **Ml App**: A name for your application (e.g., "production-app")
-* **Url** (optional): Default is `https://api.us5.datadoghq.com`. Change for other regions
+* **Url** (optional): Default is `https://api.datadoghq.com` (US1). Change for other regions
 
 <Frame>
   <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/guides/features/broadcast/datadog/broadcast-datadog-config.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=c4430ee6ac51388c192246329cce2355" alt="Datadog Configuration" width="1196" height="1039" data-path="assets/guides/features/broadcast/datadog/broadcast-datadog-config.png" />

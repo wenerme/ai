@@ -1,11 +1,11 @@
 ---
 title: "LLM Gateway | Models"
-description: "Use LLM Gateway models with Mastra. 371 models available."
+description: "Use LLM Gateway models with Mastra. 377 models available."
 ---
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 371 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 377 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -192,8 +192,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 1000000,
     "maxOutput": 66000,
-    "inputCost": 6,
-    "outputCost": 60
+    "inputCost": 1,
+    "outputCost": 5
   },
   {
     "model": "llmgateway-providers/alibaba/qwen3-max",
@@ -204,8 +204,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 256000,
     "maxOutput": 32800,
-    "inputCost": 3,
-    "outputCost": 15
+    "inputCost": 1.2,
+    "outputCost": 6
   },
   {
     "model": "llmgateway-providers/alibaba/qwen3-vl-flash",
@@ -240,8 +240,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 65536,
-    "inputCost": 0.248,
-    "outputCost": 1.485
+    "inputCost": 0.375,
+    "outputCost": 2.25
   },
   {
     "model": "llmgateway-providers/alibaba/qwen3.6-flash",
@@ -274,7 +274,7 @@ for await (const chunk of stream) {
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 262144,
+    "contextWindow": 1000000,
     "maxOutput": 65536,
     "inputCost": 0.5,
     "outputCost": 3
@@ -770,6 +770,78 @@ for await (const chunk of stream) {
     "maxOutput": 8192,
     "inputCost": 1.25,
     "outputCost": 2.5
+  },
+  {
+    "model": "llmgateway-providers/azure-anthropic/claude-fable-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 10,
+    "outputCost": 50
+  },
+  {
+    "model": "llmgateway-providers/azure-anthropic/claude-opus-4-6",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 5,
+    "outputCost": 25
+  },
+  {
+    "model": "llmgateway-providers/azure-anthropic/claude-opus-4-7",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 5,
+    "outputCost": 25
+  },
+  {
+    "model": "llmgateway-providers/azure-anthropic/claude-opus-4-8",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 5,
+    "outputCost": 25
+  },
+  {
+    "model": "llmgateway-providers/azure-anthropic/claude-opus-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 5,
+    "outputCost": 25
+  },
+  {
+    "model": "llmgateway-providers/azure-anthropic/claude-sonnet-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
   },
   {
     "model": "llmgateway-providers/azure/gpt-3.5-turbo",

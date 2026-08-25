@@ -756,7 +756,11 @@ GPT models like [`gpt-5.6`](https://developers.openai.com/api/docs/models/gpt-5.
 
 For the full current treatment, use the [latest GPT-5 prompting best practices](https://developers.openai.com/api/docs/guides/latest-model#prompting-best-practices). The practical reminders below still apply.
 
-Coding
+
+
+#### Coding
+
+
 
 #### Coding
 
@@ -776,7 +780,15 @@ Guide the model to generate clean, semantically correct markdown using inline co
 
 For detailed guidance and prompt samples specific to coding, see the [latest GPT-5 prompting best practices](https://developers.openai.com/api/docs/guides/latest-model#prompting-best-practices).
 
-Front-end engineering
+
+
+
+
+
+
+#### Front-end engineering
+
+
 
 [GPT-5.6](https://developers.openai.com/api/docs/models/gpt-5.6-sol)
 performs well at building front ends from scratch as well as contributing to
@@ -813,7 +825,15 @@ For front-end engineering work in larger codebases, we've found that adding thes
 
 For detailed guidance and prompt samples specific to frontend development, see the [latest GPT-5 prompting best practices](https://developers.openai.com/api/docs/guides/latest-model#prompting-best-practices).
 
-Agentic tasks
+
+
+
+
+
+
+#### Agentic tasks
+
+
 
 For agentic and long-running rollouts with `gpt-5.6`, focus your prompts on three core practices: plan tasks thoroughly to ensure complete resolution, provide clear preambles for major tool usage decisions, and use a TODO tool to track workflow and progress in an organized manner.
 
@@ -850,6 +870,10 @@ Before you call a tool explain why you are calling it
 Use a TODO list tool or rubric to enforce structured planning and avoid missed steps.
 
 For detailed guidance and prompt samples specific to building agents, see the [latest GPT-5 prompting best practices](https://developers.openai.com/api/docs/guides/latest-model#prompting-best-practices).
+
+
+
+
 
 ## Prompting reasoning models
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure routes
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Magic Transit Virtual Network uses a routing table to steer your traffic from Cloudflare's global network to your connected networks via next-hop. You can add entries to the Magic Transit Virtual Network routing table through static route configuration or routes learned from BGP peering (beta) (available over CNI with Dataplane v2, as well as IPsec and GRE tunnels).
 
@@ -37,17 +37,16 @@ The dashboard **Routes** page shows the routes for all of your connectors — in
 1. Go to **Routes** page.
 [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 1. From the **Routes** tab, select **Create route**, then choose **WAN** as the route type.
-1. Enter a descriptive name for your route in **Description**.
-2. In **Prefix**, enter your range of IP addresses. For example, `10.10.10.100/24`.
-3. In **Tunnel/Next hop**, select a tunnel for your route from the tunnels you created in [Configure tunnel endpoints](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/).
-4. Choose the **Priority** for your route. Lower numbers have higher priorities.
+2. Enter a descriptive name for your route in **Description**.
+3. In **Prefix**, enter your range of IP addresses. For example, `10.10.10.100/24`.
+4. In **Tunnel/Next hop**, select a tunnel for your route from the tunnels you created in [Configure tunnel endpoints](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/).
+5. Choose the **Priority** for your route. Lower numbers have higher priorities.
 Note
-Cloudflare routing applies longest-prefix match. A more specific static route (like `/30`) always takes precedence over a less specific one (like `/29`), regardless of tunnel priority — unless you remove the more specific route.
- Keep this in mind when configuring priorities for your routes. Refer to [Route prioritization](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#route-prioritization) for more information.
-5. (Optional) Choose a **Weight** for your route. Refer to [Set priority and weights for static routes](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#set-priority-and-weights-for-static-routes) for examples.
-6. (Optional) If you need to scope your route to a specific region, you can do it in **Region code**.
-7. (Optional) We highly recommend testing your route before adding it by selecting **Test routes**.
-8. Select **Add routes**.
+Cloudflare routing applies longest-prefix match. A more specific static route (like `/30`) always takes precedence over a less specific one (like `/29`), regardless of tunnel priority — unless you remove the more specific route. Keep this in mind when configuring priorities for your routes. Refer to [Route prioritization](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#route-prioritization) for more information.
+6. (Optional) Choose a **Weight** for your route. Refer to [Set priority and weights for static routes](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#set-priority-and-weights-for-static-routes) for examples.
+7. (Optional) If you need to scope your route to a specific region, you can do it in **Region code**.
+8. (Optional) We highly recommend testing your route before adding it by selecting **Test routes**.
+9. Select **Add routes**.
 
 Note
 
@@ -127,9 +126,9 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes" \
 
 1. From the **Routes** tab, locate the route to modify.
 2. Select the three dots next to it > **Edit**.
-1. Enter the updated route information.
-2. (Optional) We highly recommend testing your route before adding it by selecting **Test routes**.
-3. Select **Edit routes**.
+3. Enter the updated route information.
+4. (Optional) We highly recommend testing your route before adding it by selecting **Test routes**.
+5. Select **Edit routes**.
 
 Note
 
@@ -208,7 +207,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/routes/$RO
 
 1. From the **Routes** tab, locate the static route to delete.
 2. Select the three dots next to it > **Delete**.
-1. Confirm the action by selecting the checkbox and select **Delete**.
+3. Confirm the action by selecting the checkbox and select **Delete**.
 
 Note
 
@@ -366,8 +365,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/#page","headline":"Configure routes · Cloudflare Learning Paths","description":"Set up Magic Transit static routes.","url":"https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/#page","headline":"Configure routes · Cloudflare Learning Paths","description":"Set up Magic Transit static routes.","url":"https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -361,43 +361,43 @@
   },
   "grafana-clickhouse-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/alerting.md",
-    "size": 11449,
-    "updatedAt": "2026-06-25T05:41:44.087Z"
+    "size": 12785,
+    "updatedAt": "2026-08-25T01:54:28.460Z"
   },
   "grafana-clickhouse-datasource/annotations.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/annotations.md",
-    "size": 11521,
-    "updatedAt": "2026-07-08T04:04:29.785Z"
+    "size": 11980,
+    "updatedAt": "2026-08-25T01:54:28.628Z"
   },
   "grafana-clickhouse-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/configure.md",
-    "size": 28354,
-    "updatedAt": "2026-07-21T06:49:56.282Z"
+    "size": 38139,
+    "updatedAt": "2026-08-25T01:54:28.809Z"
   },
   "grafana-clickhouse-datasource/dashboards.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/dashboards.md",
-    "size": 9276,
-    "updatedAt": "2026-07-08T04:04:30.165Z"
+    "size": 10580,
+    "updatedAt": "2026-08-25T01:54:28.975Z"
   },
   "grafana-clickhouse-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest.md",
-    "size": 4970,
-    "updatedAt": "2026-07-08T04:04:30.381Z"
+    "size": 4908,
+    "updatedAt": "2026-08-25T01:54:29.150Z"
   },
   "grafana-clickhouse-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/query-editor.md",
-    "size": 25164,
-    "updatedAt": "2026-07-08T04:04:30.572Z"
+    "size": 32068,
+    "updatedAt": "2026-08-25T01:54:29.328Z"
   },
   "grafana-clickhouse-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/template-variables.md",
-    "size": 15387,
-    "updatedAt": "2026-06-25T05:41:45.951Z"
+    "size": 15404,
+    "updatedAt": "2026-08-25T01:54:29.476Z"
   },
   "grafana-clickhouse-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting.md",
-    "size": 29232,
-    "updatedAt": "2026-06-25T05:41:46.338Z"
+    "size": 35113,
+    "updatedAt": "2026-08-25T01:54:29.647Z"
   },
   "grafana-cloudflare-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/alerting.md",

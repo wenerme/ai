@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits, timeouts and quotas
 
-Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/sfu/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/sfu/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Understanding the limits and timeouts of Cloudflare Realtime is crucial for optimizing the performance and reliability of your applications. This section outlines the key constraints and behaviors you should be aware of when integrating Cloudflare Realtime into your app.
 
@@ -31,7 +31,7 @@ Understanding the limits and timeouts of Cloudflare Realtime is crucial for opti
 ## Inactivity Timeout
 
 * **Track Timeout**: Tracks will automatically timeout and be garbage collected after 30 seconds of inactivity, where inactivity is defined as no media packets being received by Cloudflare. This mechanism ensures efficient use of resources and session cleanliness across all Sessions that use a track.
-* **DataChannel acknowledgment timeout**: When `waitForAck` is enabled on a remote DataChannel, the subscriber must send its first message (the acknowledgment) within 15 seconds of creating the channel. If it does not, the SFU tears down the gated channel and forwards no messages. Create the remote DataChannel again to retry.
+* **DataChannel acknowledgment timeout**: When `waitForAck` is enabled on a remote DataChannel, the subscriber must send its first message (the acknowledgment) within 30 seconds of creating the channel. If it does not, the SFU tears down the gated channel and forwards no messages. Create the remote DataChannel again to retry.
 
 ## PeerConnection Requirements
 
@@ -71,8 +71,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/limits/#page","headline":"Limits, timeouts and quotas · Cloudflare Realtime docs","description":"Realtime SFU rate limits, track timeouts, session constraints, and free tier quotas.","url":"https://developers.cloudflare.com/realtime/sfu/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/limits/#page","headline":"Limits, timeouts and quotas · Cloudflare Realtime docs","description":"Realtime SFU rate limits, track timeouts, session constraints, and free tier quotas.","url":"https://developers.cloudflare.com/realtime/sfu/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

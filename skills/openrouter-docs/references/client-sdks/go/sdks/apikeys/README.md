@@ -131,7 +131,7 @@ func main() {
 
 ## Create
 
-Create a new API key for the authenticated user. The plaintext `key` is returned only in this response. Treat it as a write-only, sensitive value; it cannot be retrieved later. [Management key](/docs/client-sdks/go/docs/guides/overview/auth/management-api-keys) required.
+Create a new API key for the authenticated user. The plaintext `key` is returned only in this response. Treat it as a write-only, sensitive value; it cannot be retrieved later. Authenticate with a [management key](/docs/client-sdks/go/docs/guides/overview/auth/management-api-keys), or with a Connect client secret. `external_user` and `external_api_key` are accepted only with a client secret, and `external_user` is required there; supplying either field with a management key is rejected with 403.
 
 ### Example Usage
 
@@ -157,7 +157,7 @@ func main() {
 
     res, err := s.APIKeys.Create(ctx, operations.CreateKeysRequest{
         ExpiresAt: optionalnullable.From(openrouter.Pointer(types.MustNewTimeFromString("2027-12-31T23:59:59Z"))),
-        IncludeByokInLimit: openrouter.Pointer(true),
+        IncludeBYOKInLimit: openrouter.Pointer(true),
         Limit: optionalnullable.From(openrouter.Pointer[float64](50.0)),
         LimitReset: optionalnullable.From(openrouter.Pointer(operations.CreateKeysLimitResetMonthly)),
         Name: "My New API Key",
@@ -196,7 +196,7 @@ func main() {
 
 ## Delete
 
-Delete an existing API key. [Management key](/docs/client-sdks/go/docs/guides/overview/auth/management-api-keys) required.
+Delete an existing API key. Authenticate with a [management key](/docs/client-sdks/go/docs/guides/overview/auth/management-api-keys), or with a Connect client secret. A client secret reaches only the keys that same client created; any other key responds as if it does not exist.
 
 ### Example Usage
 
@@ -306,7 +306,7 @@ func main() {
 
 ## Update
 
-Update an existing API key. [Management key](/docs/client-sdks/go/docs/guides/overview/auth/management-api-keys) required.
+Update an existing API key. Authenticate with a [management key](/docs/client-sdks/go/docs/guides/overview/auth/management-api-keys), or with a Connect client secret. A client secret reaches only the keys that same client created; any other key responds as if it does not exist.
 
 ### Example Usage
 
@@ -331,7 +331,7 @@ func main() {
 
     res, err := s.APIKeys.Update(ctx, "f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943", operations.UpdateKeysRequestBody{
         Disabled: openrouter.Pointer(false),
-        IncludeByokInLimit: openrouter.Pointer(true),
+        IncludeBYOKInLimit: openrouter.Pointer(true),
         Limit: optionalnullable.From(openrouter.Pointer[float64](75.0)),
         LimitReset: optionalnullable.From(openrouter.Pointer(operations.UpdateKeysLimitResetDaily)),
         Name: openrouter.Pointer("Updated API Key Name"),

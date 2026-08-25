@@ -42,12 +42,12 @@ Expand table
 
 Start by configuring a connection to your ClickHouse server, then use the query editor to build queries for dashboards and alerts.
 
-1. [Configure the ClickHouse data source](/docs/plugins/grafana-clickhouse-datasource/latest/configure/) — Set up the connection, authentication, TLS, and optional features like logs and traces.
-2. [ClickHouse query editor](/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/) — Write SQL queries or use the visual query builder. Includes macros, query types, and examples.
-3. [ClickHouse template variables](/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/) — Create dynamic dashboards with variables and ad hoc filters.
-4. [ClickHouse annotations](/docs/plugins/grafana-clickhouse-datasource/latest/annotations/) — Overlay event markers on dashboard panels from ClickHouse data.
-5. [ClickHouse alerting](/docs/plugins/grafana-clickhouse-datasource/latest/alerting/) — Create alert rules and recording rules from ClickHouse queries.
-6. [Troubleshoot ClickHouse data source issues](/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/) — Solutions for common connection, query, and configuration errors.
+1. [Configure the ClickHouse data source](/docs/plugins/grafana-clickhouse-datasource/latest/configure/): Set up the connection, authentication, TLS, and optional features like logs and traces.
+2. [ClickHouse query editor](/docs/plugins/grafana-clickhouse-datasource/latest/query-editor/): Write SQL queries or use the visual query builder. Includes macros, query types, and examples.
+3. [ClickHouse template variables](/docs/plugins/grafana-clickhouse-datasource/latest/template-variables/): Create dynamic dashboards with variables and ad hoc filters.
+4. [ClickHouse annotations](/docs/plugins/grafana-clickhouse-datasource/latest/annotations/): Overlay event markers on dashboard panels from ClickHouse data.
+5. [ClickHouse alerting](/docs/plugins/grafana-clickhouse-datasource/latest/alerting/): Create alert rules and recording rules from ClickHouse queries.
+6. [Troubleshoot ClickHouse data source issues](/docs/plugins/grafana-clickhouse-datasource/latest/troubleshooting/): Solutions for common connection, query, and configuration errors.
 
 ## Additional features
 
@@ -61,13 +61,13 @@ After configuring the data source, you can:
 
 The plugin includes the following pre-built dashboards:
 
-- **ClickHouse - Query Analysis** — Query performance, time distribution, top users, and memory usage.
-- **ClickHouse - Data Analysis** — Disk usage, table and database summary, parts over time, and dictionaries.
-- **ClickHouse - Cluster Analysis** — Cluster overview, merges, mutations, and replicated table delay.
+- **Query Analysis**: Query performance, time distribution, top users, and memory usage.
+- **Data Analysis**: Disk usage, table and database summary, parts over time, and dictionaries.
+- **Cluster Analysis**: Cluster overview, merges, mutations, and replicated table delay.
 - **OpenTelemetry Logs Explorer**: stacked log volume, services, and per-service samples for OpenTelemetry data exported to `otel_logs`. See the [OpenTelemetry dashboards guide](/docs/plugins/grafana-clickhouse-datasource/latest/dashboards/).
 - **OpenTelemetry Traces Explorer**: service map, trace search, and per-service performance for OpenTelemetry data exported to `otel_traces`.
 - **OpenTelemetry Service Dashboard**: single-service deep dive with RED metrics, top errors, slowest operations, related logs, and trace detail.
-- **Advanced ClickHouse Monitoring Dashboard** — System metrics (CPU, queries/sec, IO, memory) similar to ClickHouse built-in monitoring.
+- **ClickHouse System Dashboards**: System metrics (CPU, queries/sec, IO, memory) similar to ClickHouse built-in monitoring.
 
 To import a pre-built dashboard:
 
@@ -87,5 +87,5 @@ Always ensure that your plugin version is up-to-date so you have access to all c
 ## Related resources
 
 - [ClickHouse documentation](https://clickhouse.com/docs)
-- [grafana-clickhouse-datasource on GitHub](https://github.com/grafana/clickhouse-datasource) — Source code, issues, and changelog.
+- [grafana-clickhouse-datasource on GitHub](https://github.com/grafana/clickhouse-datasource): Source code, issues, and changelog.
 - [Grafana community forum](https://community.grafana.com/)

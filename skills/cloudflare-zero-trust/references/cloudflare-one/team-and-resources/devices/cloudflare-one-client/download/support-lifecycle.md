@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare One Client lifecycle and support policy
 
-Last updated Jun 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page details the technical support policies for the Cloudflare One Client (formerly WARP), which operating systems and their versions are supported and for how long, and the process by which Cloudflare One Client features will be deprecated.
 
@@ -121,14 +121,14 @@ As of December 2025, the following versions of Ubuntu are supported:
 
 Cloudflare One Client support for RHEL is pending. Once testing is complete, our policy will be to support all major versions of RHEL within their [Full Support window ↗](https://access.redhat.com/product-life-cycles). Devices must be updated to the latest minor release (for example, `9.4`) to receive support.
 
-As of April 2026, only RHEL 8 has completed full compatibility testing, which is now out of the Red Hat Full Support window. Starting with Cloudflare One Client version 2026.3.846.0, RHEL 9 is supported for [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) functionality only.
+As of April 2026, only RHEL 8 has completed full compatibility testing, which is now out of the Red Hat Full Support window. Starting with Cloudflare One Client version 2026.6.822.0, RHEL 9 and RHEL 10 are supported for [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) functionality only.
 
 This section will be updated as we add RHEL support to match Red Hat's support lifecycle.
 
-| RHEL version | Supported until                                                        |
-| ------------ | ---------------------------------------------------------------------- |
-| RHEL 10      | Pending full testing. Once complete, will be supported until May 2030. |
-| RHEL 9       | Pending full testing. Once complete, will be supported until May 2027. |
+| RHEL version | Supported until                                                     |
+| ------------ | ------------------------------------------------------------------- |
+| RHEL 10      | Pending full testing. Supported for Cloudflare Mesh until May 2030. |
+| RHEL 9       | Pending full testing. Supported for Cloudflare Mesh until May 2027. |
 
 ### iOS and iPadOS
 
@@ -172,8 +172,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/#page","headline":"Cloudflare One Client lifecycle and support policy · Cloudflare One docs","description":"Reference information for Cloudflare One Client lifecycle and support policy in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/#page","headline":"Cloudflare One Client lifecycle and support policy · Cloudflare One docs","description":"Reference information for Cloudflare One Client lifecycle and support policy in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/support-lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

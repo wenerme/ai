@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Use the R2 multipart API from Workers
 
-Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By following this guide, you will create a Worker through which your applications can perform multipart uploads. This example worker could serve as a basis for your own use case where you can add authentication to the worker, or even add extra validation logic when uploading each part. This guide also contains an example Python application that uploads files to this worker.
 
@@ -26,9 +26,9 @@ In this example, each request is routed based on the HTTP method and the action 
 
 The following example Worker includes any new information about the state of the multipart upload in the response to each request. For the request which creates the multipart upload, the `uploadId` is returned. For requests uploading a part, the part number and `etag` are returned. In turn, the client keeps track of this state, and includes the uploadId in subsequent requests, and the `etag` and part number of each part when completing a multipart upload.
 
-Add the following code to your project's `index.js` file and replace `MY_BUCKET` with your bucket's name:
+Add the following code to your project's `index.ts` file and replace `MY_BUCKET` with your bucket's name:
 
-```js
+```ts
 interface Env {
   MY_BUCKET: R2Bucket;
 }
@@ -382,8 +382,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/#page","headline":"Use the R2 multipart API from Workers · Cloudflare R2 docs","description":"Upload large objects to R2 using the multipart API through a Cloudflare Worker.","url":"https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/#page","headline":"Use the R2 multipart API from Workers · Cloudflare R2 docs","description":"Upload large objects to R2 using the multipart API through a Cloudflare Worker.","url":"https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -44,11 +44,11 @@ const server = createTestHarness(options);
 
 ### Parameters
 
-* `options` `object`optional
+* `options` `object` optional
 
   * Test harness options. If you call `createTestHarness()` without options, call `server.update(options)` before `server.listen()`.
 
-    * `root` `string`optional
+    * `root` `string` optional
       Base directory used to resolve relative Worker configuration paths. Defaults to `process.cwd()`.
     * `workers` `WorkerInput[]`
       Workers to run in the test server. The first Worker is the primary Worker.
@@ -77,13 +77,13 @@ Configuration file inputs support these fields:
 
 * `configPath` `string | URL`
   * Path to a Wrangler configuration file. Relative paths resolve from `root`.
-* `env` `string`optional
+* `env` `string` optional
   * Wrangler environment to load from the configuration file.
-* `vars` `Record<string, Json>`optional
+* `vars` `Record<string, Json>` optional
   * Test-only variables that override variables from the Wrangler configuration file.
-* `secrets` `Record<string, string>`optional
+* `secrets` `Record<string, string>` optional
   * Test-only secrets that override values loaded from `.dev.vars` and `.env` files.
-* `bindingOverrides` `Record<string, string>`optional
+* `bindingOverrides` `Record<string, string>` optional
   * Test-only service binding overrides. Keys are binding names in this Worker's environment. Values are Worker names in this test harness.
 
 Each `WorkerInput` can also use `config` to provide an inline Wrangler configuration object:
@@ -280,7 +280,7 @@ const result = await experimental_generateTypes(options);
 
 ### Parameters
 
-* `options` `object`optional
+* `options` `object` optional
 
   * Optional options object mirroring the `wrangler types` CLI flags:
 
@@ -410,7 +410,7 @@ const worker = await unstable_dev(script, options);
 * `script` `string`
 
   * A string containing a path to your Worker script, relative to your Worker project's root directory.
-* `options` `object`optional
+* `options` `object` optional
 
   * Optional options object containing `wrangler dev` configuration settings.
   * Include an `experimental` object inside `options` to access experimental features such as `disableExperimentalWarning`.
@@ -590,7 +590,7 @@ const platform = await getPlatformProxy(options);
 
 ### Parameters
 
-* `options` `object`optional
+* `options` `object` optional
   * Optional options object containing preferences for the bindings:
     * `environment` string
       The environment to use.
@@ -759,8 +759,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/api/#page","headline":"API · Cloudflare Workers docs","description":"A set of programmatic APIs that can be integrated with local Cloudflare Workers-related workflows.","url":"https://developers.cloudflare.com/workers/wrangler/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/api/#page","headline":"API · Cloudflare Workers docs","description":"A set of programmatic APIs that can be integrated with local Cloudflare Workers-related workflows.","url":"https://developers.cloudflare.com/workers/wrangler/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

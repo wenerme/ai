@@ -48,27 +48,27 @@ Note
 
 At a minimum, the `main_module` key is required to upload a Worker.
 
-* `main_module` `string`required
+* `main_module` `string` required
 
   * The part name that contains the module entry point of the Worker that will be executed. For example, `main.js`.
-* `assets` `object`optional
+* `assets` `object` optional
 
   * [Asset](https://developers.cloudflare.com/workers/static-assets/) configuration for a Worker.
-  * `config` `object`optional
+  * `config` `object` optional
     * [html\_handling](https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/) determines the redirects and rewrites of requests for HTML content.
     * [not\_found\_handling](https://developers.cloudflare.com/workers/static-assets/#routing-behavior) determines the response when a request does not match a static asset.
   * `jwt` field provides a token authorizing assets to be attached to a Worker.
-* `keep_assets` `boolean`optional
+* `keep_assets` `boolean` optional
 
   * Specifies whether assets should be retained from a previously uploaded Worker version; used in lieu of providing a completion token.
 * `bindings` array\[object\] optional
 
   * [Bindings](#bindings) to expose in the Worker.
-* `placement` `object`optional
+* `placement` `object` optional
 
   * [Smart placement](https://developers.cloudflare.com/workers/configuration/placement/) object for the Worker.
   * `mode` field only supports `smart` for automatic placement.
-* `compatibility_date` `string`optional
+* `compatibility_date` `string` optional
 
   * [Compatibility Date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/#setting-compatibility-date) indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. Highly recommended to set a `compatibility_date`, otherwise if on upload via the API, it defaults to the oldest compatibility date before any flags took effect (2021-11-02).
 * `compatibility_flags` array\[string\] optional
@@ -86,7 +86,7 @@ Except for `annotations`, these attributes are **not available** for version upl
 * `migrations` array\[object\] optional
 
   * [Durable Objects migrations](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) to apply.
-* `logpush` `boolean`optional
+* `logpush` `boolean` optional
 
   * Whether [Logpush](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/hostname-analytics/#logpush) is turned on for the Worker.
 * `tail_consumers` array\[object\] optional
@@ -95,7 +95,7 @@ Except for `annotations`, these attributes are **not available** for version upl
 * `tags` array\[string\] optional
 
   * List of strings to use as tags for this Worker.
-* `annotations` `object`optional
+* `annotations` `object` optional
 
   * Annotations object for the Worker version created by this upload. Also available on the [Version Upload API](#additional-attributes-version-upload-api).
   * `workers/message` specifies a custom message for the version.
@@ -105,7 +105,7 @@ Except for `annotations`, these attributes are **not available** for version upl
 
 For [version uploads](https://developers.cloudflare.com/workers/versions-and-deployments/#upload-a-new-version-to-be-gradually-deployed-or-deployed-at-a-later-time), the following **additional** attributes are configurable at the top-level.
 
-* `annotations` `object`optional
+* `annotations` `object` optional
   * Annotations object specific to the Worker version.
   * `workers/message` specifies a custom message for the version.
   * `workers/tag` specifies a custom identifier for the version.
@@ -205,8 +205,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#page","headline":"Multipart upload metadata · Cloudflare Workers docs","description":"Define Workers configuration in JSON metadata for multipart form-data script uploads.","url":"https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#page","headline":"Multipart upload metadata · Cloudflare Workers docs","description":"Define Workers configuration in JSON metadata for multipart form-data script uploads.","url":"https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

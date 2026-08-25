@@ -205,7 +205,14 @@ Some endpoints charge different rates under certain conditions. Examples include
 
   // Condition: applies when current UTC time is within this daily window
   "utc_start": 1630,  // Inclusive start as HHMM clock (16:30 UTC)
-  "utc_end": 30,      // Exclusive end as HHMM clock (00:30 UTC; the window may wrap past midnight)
+  "utc_end": 30,      // Exclusive end as HHMM clock (00:30 UTC). A window whose end is not
+                      // after its start wraps past midnight, so 0 as the end means end of day;
+                      // match wrap-aware: t >= start || t < end
+
+  // Condition: applies only on these UTC weekdays, evaluated at the request instant.
+  // Scopes the utc_start/utc_end window (or, without a window, the whole UTC day).
+  // Absent means every day.
+  "utc_days": ["monday", "tuesday", "wednesday", "thursday", "friday"],
 
   // Overridden prices, same keys and units as the base pricing object
   "prompt": "0.000005",
@@ -233,7 +240,7 @@ For example, a model that charges \$2.50/M input tokens normally and \$5/M beyon
 }
 ```
 
-Time-window conditions express peak/off-peak pricing. The `overrides` array always lists every window (peak and off-peak), tiling the full 24-hour day. That means the complete schedule is recoverable regardless of when the response was generated. For example, a model that charges half price between 16:30 and 00:30 UTC:
+Time-window conditions express peak/off-peak pricing. The `overrides` array always lists every window (peak and off-peak), tiling the full 24-hour day (or, with `utc_days`, the full week): the time-scheduled entries are non-overlapping and exhaustive, so exactly one of them matches any instant and consumers never need a fallback path. That also means the complete schedule is recoverable regardless of when the response was generated. For example, a model that charges half price between 16:30 and 00:30 UTC:
 
 ```json lines theme={null}
 "pricing": {
@@ -257,6 +264,38 @@ Time-window conditions express peak/off-peak pricing. The `overrides` array alwa
   ]
 }
 ```
+
+Entries scoped with `utc_days` express weekly schedules — for example, peak windows that apply only on some days of the week. The day set groups days with identical daily schedules, so a model whose peak window applies Monday through Friday but not on the weekend looks like this:
+
+```json lines theme={null}
+"pricing": {
+  "prompt": "0.00000028",
+  "completion": "0.00000042",
+  "overrides": [
+    {
+      "utc_days": ["monday", "tuesday", "wednesday", "thursday", "friday"],
+      "utc_start": 30,
+      "utc_end": 1630,
+      "prompt": "0.00000056",
+      "completion": "0.00000084"
+    },
+    {
+      "utc_days": ["monday", "tuesday", "wednesday", "thursday", "friday"],
+      "utc_start": 1630,
+      "utc_end": 30,
+      "prompt": "0.00000028",
+      "completion": "0.00000042"
+    },
+    {
+      "utc_days": ["saturday", "sunday"],
+      "prompt": "0.00000028",
+      "completion": "0.00000042"
+    }
+  ]
+}
+```
+
+New condition fields may be added to the override grammar over time. Consumers should skip entries containing condition fields they do not recognize rather than apply their prices; the top-level pricing keys always reflect the price under default conditions.
 
 #### Top Provider Object
 

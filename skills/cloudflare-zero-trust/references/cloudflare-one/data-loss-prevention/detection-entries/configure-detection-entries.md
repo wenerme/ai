@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure detection entries
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Detection entries are the reusable detection logic that Cloudflare DLP uses to identify sensitive content in your web traffic and SaaS applications. You can create and manage detection entries independently of [DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/), then add the same entry to one or more custom profiles. You can also use detection entries in [data classes](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/build-a-data-class/).
 
@@ -32,6 +32,12 @@ In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Tr
 The Detection entries section includes dedicated views for different entry types, including **All**, **Pattern**, **Predefined**, **Datasets**, **Documents**, and **AI prompt topics**. You can use search and filters to find specific entries and review details such as type, status, and last updated time.
 
 You can add the same detection entry to multiple custom DLP profiles. When you delete a custom detection entry, Cloudflare lists the profiles that currently use it.
+
+## Test a detection entry
+
+To test whether a detection entry identifies sample content, add the entry to a [DLP profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/#build-a-custom-profile), then use [Test scan](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/test-scan/). Test scan confirms whether the selected profile detects the sample. It does not test a Gateway policy or traffic flowing through Gateway.
+
+If the profile does not match the sample, review the detection entry configuration, the profile [match count](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/#match-count), and [confidence threshold](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/#confidence-thresholds).
 
 ## Predefined detection entries
 
@@ -212,8 +218,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#page","headline":"Configure detection entries · Cloudflare One docs","description":"Create and manage detection entries in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#page","headline":"Configure detection entries · Cloudflare One docs","description":"Create and manage detection entries in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```

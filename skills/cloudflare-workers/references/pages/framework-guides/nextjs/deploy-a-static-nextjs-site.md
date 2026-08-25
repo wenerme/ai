@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Static site
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
-Do not use this guide unless you have a specific use case for static exports. Cloudflare recommends using Workers to deploy your Next.js site, for more instructions refer the [Next.js Workers guide](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs).
+Use this guide when you specifically want to deploy a Next.js static export to Cloudflare Pages. For Next.js on Workers, Cloudflare recommends [vinext](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/), which also supports static exports.
 
-[Next.js ↗](https://nextjs.org) is an open-source React framework for creating websites and applications. In this guide, you will create a new Next.js application and deploy it using Cloudflare Pages.
+[Next.js ↗](https://nextjs.org) is an open-source React framework for creating websites and applications. In this guide, you will create a static Next.js application and deploy it using Cloudflare Pages.
 
 This guide will instruct you how to deploy a static site Next.js project with [static exports ↗](https://nextjs.org/docs/app/building-your-application/deploying/static-exports).
 
@@ -87,8 +87,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/#page","headline":"Get started · Cloudflare Pages docs","description":"Deploy a static site built using Next.js to Cloudflare Pages","url":"https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/#page","headline":"Get started · Cloudflare Pages docs","description":"Deploy a static site built using Next.js to Cloudflare Pages","url":"https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

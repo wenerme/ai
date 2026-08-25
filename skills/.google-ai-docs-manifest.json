@@ -116,8 +116,8 @@
   "google-ai-docs/function-calling.md": {
     "url": "https://ai.google.dev/gemini-api/docs/function-calling",
     "skill": "google-ai-docs",
-    "size": 52604,
-    "updatedAt": "2026-08-05T03:42:11.994Z"
+    "size": 52606,
+    "updatedAt": "2026-08-25T01:53:03.968Z"
   },
   "google-ai-docs/code-execution.md": {
     "url": "https://ai.google.dev/gemini-api/docs/code-execution",
@@ -278,8 +278,8 @@
   "google-ai-docs/image-generation.md": {
     "url": "https://ai.google.dev/gemini-api/docs/image-generation",
     "skill": "google-ai-docs",
-    "size": 106894,
-    "updatedAt": "2026-07-31T04:10:14.230Z"
+    "size": 106888,
+    "updatedAt": "2026-08-25T01:53:23.704Z"
   },
   "google-ai-docs/speech-generation.md": {
     "url": "https://ai.google.dev/gemini-api/docs/speech-generation",

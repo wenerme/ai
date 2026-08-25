@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Network policies
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -92,52 +92,6 @@ Policies with Allow actions allow network traffic to reach certain IPs or ports.
 | -------------- | -------- | -------------- | ----- | ------ |
 | Destination IP | in       | 92.100.02.102  | And   | Allow  |
 | Email          | in       | \*@example.com |       |        |
-
-### Audit SSH Deprecated
-
-API value: `audit_ssh`
-
-Available selectors
-
-**Traffic**
-
-* [Application](#application)
-* [Destination Continent IP Geolocation](#destination-continent)
-* [Destination Country IP Geolocation](#destination-country)
-* [Destination IP](#destination-ip)
-* [Source Continent IP Geolocation](#source-continent)
-* [Source Country IP Geolocation](#source-country)
-* [Source Internal IP](#source-internal-ip)
-* [Source IP](#source-ip)
-* [Source Port](#source-port)
-* [Virtual Network](#virtual-network)
-
-**Identity**
-
-* [SAML Attributes](#users)
-* [User Email](#users)
-* [User Group Emails](#users)
-* [User Group IDs](#users)
-* [User Group Names](#users)
-* [User Name](#users)
-
-**Device Posture**
-
-* [Passed Device Posture Checks](#device-posture)
-
-Caution
-
-Gateway no longer supports the Audit SSH action for new policies. To log your SSH traffic, Cloudflare recommends deploying [Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/) for your SSH server and configuring [SSH command logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#ssh-command-logs).
-
-Policies with Audit SSH actions allow administrators to log SSH traffic. Gateway will detect SSH traffic over port `22`. For example, the following configuration logs SSH commands sent to a given IP address:
-
-| Selector       | Operator | Value        | Action    |
-| -------------- | -------- | ------------ | --------- |
-| Destination IP | in       | 203.0.113.83 | Audit SSH |
-
-Gateway only audits SSH traffic over port `22`. Non-standard ports, including those specified with the [Destination Port selector](#destination-port), are not supported.
-
-For more information on SSH logging, refer to [Configure SSH proxy and command logs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/ssh-logging/).
 
 ### Block
 
@@ -577,5 +531,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#page","headline":"Network policies · Cloudflare One docs","description":"Configure Network policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Geolocation"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#page","headline":"Network policies · Cloudflare One docs","description":"Configure Network policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Geolocation"]}
 ```

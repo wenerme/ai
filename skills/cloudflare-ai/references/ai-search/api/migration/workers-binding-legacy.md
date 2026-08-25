@@ -39,59 +39,59 @@ const answer = await env.AI.autorag("my-autorag").aiSearch({
 
 #### Parameters
 
-`query` `string`required
+`query` `string` required
 
 The input query.
 
 ---
 
-`model` `string`optional
+`model` `string` optional
 
 The text-generation model used to generate the response for the query. For a list of valid options, check the AI Search generation model settings. Defaults to the generation model selected in the AI Search settings.
 
 ---
 
-`system_prompt` `string`optional
+`system_prompt` `string` optional
 
 The system prompt for generating the answer.
 
 ---
 
-`rewrite_query` `boolean`optional
+`rewrite_query` `boolean` optional
 
 Rewrites the original query into a search optimized query to improve retrieval accuracy. Defaults to `false`.
 
 ---
 
-`max_num_results` `number`optional
+`max_num_results` `number` optional
 
 The maximum number of results that can be returned from the Vectorize database. Defaults to `10`. Must be between `1` and `50`.
 
 ---
 
-`ranking_options` `object`optional
+`ranking_options` `object` optional
 
 Configurations for customizing result ranking. Defaults to `{}`.
 
-* `score_threshold` `number`optional
+* `score_threshold` `number` optional
   * The minimum match score required for a result to be considered a match. Defaults to `0`. Must be between `0` and `1`.
 
-`reranking` `object`optional
+`reranking` `object` optional
 
 Configurations for customizing reranking. Defaults to `{}`.
 
-* `enabled` `boolean`optional
+* `enabled` `boolean` optional
 
   * Enables or disables reranking, which reorders retrieved results based on semantic relevance using a reranking model. Defaults to `false`.
-* `model` `string`optional
+* `model` `string` optional
 
   * The reranking model to use when reranking is enabled.
 
-`stream` `boolean`optional
+`stream` `boolean` optional
 
 Returns a stream of results as they are available. Defaults to `false`.
 
-`filters` `object`optional
+`filters` `object` optional
 
 Narrow down search results based on metadata, like folder and date, so only relevant content is retrieved. For more details, refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).
 
@@ -164,7 +164,7 @@ const answer = await env.AI.autorag("my-autorag").search({
 
 #### Parameters
 
-`messages` `array`required
+`messages` `array` required
 
 An array of message objects. Each message has:
 
@@ -173,7 +173,7 @@ An array of message objects. Each message has:
 
 ---
 
-`ai_search_options` `object`optional
+`ai_search_options` `object` optional
 
 Per-request overrides for retrieval and model behavior. Supports the following nested options:
 
@@ -239,8 +239,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/migration/workers-binding-legacy/#page","headline":"Workers binding (legacy) · Cloudflare AI Search docs","description":"Reference for the legacy env.AI.autorag() Workers binding used by earlier AI Search instances.","url":"https://developers.cloudflare.com/ai-search/api/migration/workers-binding-legacy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/migration/workers-binding-legacy/#page","headline":"Workers binding (legacy) · Cloudflare AI Search docs","description":"Reference for the legacy env.AI.autorag() Workers binding used by earlier AI Search instances.","url":"https://developers.cloudflare.com/ai-search/api/migration/workers-binding-legacy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

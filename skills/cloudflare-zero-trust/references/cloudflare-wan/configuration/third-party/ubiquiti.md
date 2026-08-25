@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Ubiquiti
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/ubiquiti/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/ubiquiti/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Connect a Ubiquiti UniFi Gateway to Cloudflare's network using Cloudflare WAN (formerly Magic WAN). These steps use the Cloud Gateway Max (UCG-Max) but work with other UniFi gateways supporting route-based IPsec (Internet Protocol Security) VPNs (Virtual Private Networks), like the Dream Machine series.
 
@@ -30,7 +30,8 @@ Connect a Ubiquiti UniFi Gateway to Cloudflare's network using Cloudflare WAN (f
 ## 1\. Configure Cloudflare WAN
 
 1. Refer to [Add tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) to learn how to add IPsec tunnels.
-1. Select **IPsec tunnel** \> **Next**, and fill in the following settings:
+2. Select **IPsec tunnel** \> **Next**, and fill in the following settings:
+
   * **Name**: `unifi-gw-primary`
   * **IPv4 Interface Address**: `10.252.2.28/31` or refer to the [Tunnel endpoints documentation](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/)
   * **Customer Endpoint**: This should be your UniFi Gateway's WAN IP (for example, `203.0.113.10`)
@@ -77,20 +78,21 @@ Connect a Ubiquiti UniFi Gateway to Cloudflare's network using Cloudflare WAN (f
 1. Go to the **Connectors** page.
 [Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. In the **IPsec/GRE tunnels** tab, find the IPsec tunnel you have just created.
-1. Select your tunnel and then **Edit**.
-2. Paste the preshared key from [Step 2](#2-configure-site-to-site-vpn-on-unifi).
-3. Select **Save**.
+2. Select your tunnel and then **Edit**.
+3. Paste the preshared key from [Step 2](#2-configure-site-to-site-vpn-on-unifi).
+4. Select **Save**.
 
 ## 4\. Configure Routes
 
 1. Go to the **Routes** page.
 [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 1. Select **Create static route**.
-1. Enter the following settings:
+2. Enter the following settings:
+
   * **Prefix**: Your local network (for example, `192.168.1.0/24`).
   * **Tunnel/Next hop**: Select your tunnel.
   * **Priority**: `100`.
-2. Select **Add routes** to add your static route.
+3. Select **Add routes** to add your static route.
 
 ## Verify connections
 
@@ -156,8 +158,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/ubiquiti/#page","headline":"Ubiquiti · Cloudflare WAN docs","description":"Connect Ubiquiti to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/ubiquiti/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/ubiquiti/#page","headline":"Ubiquiti · Cloudflare WAN docs","description":"Connect Ubiquiti to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/ubiquiti/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

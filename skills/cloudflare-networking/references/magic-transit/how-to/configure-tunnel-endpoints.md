@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure tunnel endpoints
 
-Last updated May 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare assigns an IPv4 anycast address to your account for use as the tunnel destination for your network's routers. You can find this address in the Cloudflare dashboard under **Address Space** \> [**Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space). To request additional endpoint addresses, contact your account team.
 
@@ -73,11 +73,11 @@ Cloudflare Network Firewall rules apply to Internet Control Message Protocol (IC
 
 1. Go to **Connectors** page.
 [Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
-1. From the **IPsec/GRE tunnels** tab, select **Create a tunnel**.
-2. On the **Add tunnels** page, choose either a **GRE tunnel** or **IPsec tunnel**.
-1. In **Name**, give your tunnel a descriptive name. This name must be unique, cannot contain spaces or special characters, and cannot be shared with other tunnels.
-2. _(Optional)_ Give your tunnel a description in **Description**.
-3. In **IPv4 Interface address**, enter the internal IP address for your tunnel along with the interface's prefix length (`/31` or `/30`). This is used to route traffic through the tunnel on the Cloudflare side. We recommend using a `/31` subnet, as it provides the most efficient use of IP address space.
+2. From the **IPsec/GRE tunnels** tab, select **Create a tunnel**.
+3. On the **Add tunnels** page, choose either a **GRE tunnel** or **IPsec tunnel**.
+4. In **Name**, give your tunnel a descriptive name. This name must be unique, cannot contain spaces or special characters, and cannot be shared with other tunnels.
+5. _(Optional)_ Give your tunnel a description in **Description**.
+6. In **IPv4 Interface address**, enter the internal IP address for your tunnel along with the interface's prefix length (`/31` or `/30`). This is used to route traffic through the tunnel on the Cloudflare side. We recommend using a `/31` subnet, as it provides the most efficient use of IP address space.
 
 Expand the section below for your tunnel type to complete the configuration:
 
@@ -95,9 +95,9 @@ Health check options
   * **Health check direction**: Defaults to **unidirectional** for Magic Transit. Refer to [Bidirectional vs unidirectional health checks](#bidirectional-vs-unidirectional-health-checks) for more details.
   * **Health check target**: The customer end of the tunnel. This field is only visible when **Health check direction** is set to _Unidirectional_.
 5. _(Optional)_ We recommend you test your tunnel before officially adding it. To test the tunnel, select **Test tunnels**.
-1. To add multiple tunnels, select **Add GRE tunnel** for each new tunnel.
-1. After adding your tunnel information, select **Add tunnels**.
-1. (_Optional_) Select **Allow BGP (Border Gateway Protocol) peering** (beta) if you want to dynamically exchange routes between your network and Cloudflare. This feature requires [Unified Routing (beta)](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#unified-routing-mode-beta).
+6. To add multiple tunnels, select **Add GRE tunnel** for each new tunnel.
+7. After adding your tunnel information, select **Add tunnels**.
+8. (_Optional_) Select **Allow BGP (Border Gateway Protocol) peering** (beta) if you want to dynamically exchange routes between your network and Cloudflare. This feature requires [Unified Routing (beta)](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#unified-routing-mode-beta).
  BGP is recommended for environments with frequently changing routes or when you need automatic failover. Refer to [Configure BGP routes](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes) for more information.
 
 IPsec tunnel
@@ -128,9 +128,9 @@ IPsec tunnels will not function without a pre-shared key (PSK).
   3. _(Optional)_ We recommend you test your tunnel before officially adding it. To test the tunnel, select **Test tunnels**.
   4. Select **Add tunnels**.
 6. _(Optional)_ Enable **Replay protection** if you have devices that do not support disabling it. Refer to [Anti-replay protection](https://developers.cloudflare.com/magic-transit/reference/anti-replay-protection/) for more information.
-1. To add multiple tunnels, select **Add IPsec tunnel** for each new tunnel.
-1. After adding your tunnel information, select **Add tunnels**.
-1. (_Optional_) Select **Allow BGP (Border Gateway Protocol) peering** (beta) if you want to dynamically exchange routes between your network and Cloudflare. This feature requires [Unified Routing (beta)](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#unified-routing-mode-beta).
+7. To add multiple tunnels, select **Add IPsec tunnel** for each new tunnel.
+8. After adding your tunnel information, select **Add tunnels**.
+9. (_Optional_) Select **Allow BGP (Border Gateway Protocol) peering** (beta) if you want to dynamically exchange routes between your network and Cloudflare. This feature requires [Unified Routing (beta)](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#unified-routing-mode-beta).
  BGP is recommended for environments with frequently changing routes or when you need automatic failover. Refer to [Configure BGP routes](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes) for more information.
 
 Note
@@ -417,8 +417,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/#page","headline":"Configure tunnel endpoints · Cloudflare Magic Transit docs","description":"Learn how to configure IPsec or GRE tunnels for Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec","ICMP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/#page","headline":"Configure tunnel endpoints · Cloudflare Magic Transit docs","description":"Learn how to configure IPsec or GRE tunnels for Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec","ICMP"]}
 ```

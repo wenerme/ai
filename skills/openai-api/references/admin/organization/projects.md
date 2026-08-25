@@ -42,7 +42,7 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
     The name of the project. This appears in reporting.
 
-  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+  - `residency: optional ProjectResidency`
 
     The residency configuration for the project.
 
@@ -134,7 +134,12 @@ Create a new project in the organization. Projects can be created and archived, 
 
   External key ID to associate with the project.
 
-- `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more or null`
+- `geography: optional string or null`
+
+  Create the project with the specified data residency region. Your organization must have access to Data residency functionality in order to use. See [data residency controls](/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
+  Deprecated: use `residency` instead. Do not provide both `geography` and `residency`.
+
+- `residency: optional ProjectResidency or null`
 
   Create the project with the specified residency configuration. Your organization must have access to the requested residency configuration in order to use it. See [data residency controls](/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
 
@@ -194,7 +199,7 @@ Create a new project in the organization. Projects can be created and archived, 
 
     The name of the project. This appears in reporting.
 
-  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+  - `residency: optional ProjectResidency`
 
     The residency configuration for the project.
 
@@ -326,7 +331,7 @@ Returns a list of projects.
 
     The name of the project. This appears in reporting.
 
-  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+  - `residency: optional ProjectResidency`
 
     The residency configuration for the project.
 
@@ -469,7 +474,7 @@ Retrieves a project.
 
     The name of the project. This appears in reporting.
 
-  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+  - `residency: optional ProjectResidency`
 
     The residency configuration for the project.
 
@@ -560,6 +565,11 @@ Modifies a project in the organization.
 
   External key ID to associate with the project.
 
+- `geography: optional string or null`
+
+  Geography for the project.
+  Deprecated: use `residency` when creating a project to configure data residency. This field is retained for backward compatibility.
+
 - `name: optional string or null`
 
   The updated name of the project, this name appears in reports.
@@ -596,7 +606,7 @@ Modifies a project in the organization.
 
     The name of the project. This appears in reporting.
 
-  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+  - `residency: optional ProjectResidency`
 
     The residency configuration for the project.
 
@@ -697,7 +707,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc \
 
     The name of the project. This appears in reporting.
 
-  - `residency: optional "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+  - `residency: optional ProjectResidency`
 
     The residency configuration for the project.
 
@@ -728,6 +738,34 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc \
   - `status: optional string or null`
 
     `active` or `archived`
+
+### Project Residency
+
+- `ProjectResidency = "GLOBAL" or "US_STORAGE_PROCESSING" or "EU_STORAGE_PROCESSING" or 9 more`
+
+  - `"GLOBAL"`
+
+  - `"US_STORAGE_PROCESSING"`
+
+  - `"EU_STORAGE_PROCESSING"`
+
+  - `"JP_STORAGE"`
+
+  - `"KR_STORAGE"`
+
+  - `"CA_STORAGE"`
+
+  - `"SG_STORAGE"`
+
+  - `"IN_STORAGE"`
+
+  - `"AU_STORAGE"`
+
+  - `"GB_STORAGE"`
+
+  - `"AE_STORAGE"`
+
+  - `"AE_STORAGE_PROCESSING"`
 
 # API Keys
 

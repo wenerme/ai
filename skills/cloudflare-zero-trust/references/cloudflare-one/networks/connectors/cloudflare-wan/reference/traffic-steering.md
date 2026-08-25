@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Traffic steering
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Cloudflare Virtual Network routing table
 
@@ -33,7 +33,7 @@ For a conceptual overview of virtual networks, including how they work across Cl
 
 The following IPv4 address ranges are allowed in the Cloudflare Virtual Network routing table:
 
-* [RFC 1918](https://datatracker.ietf.org/doc/html/rfc1918) address space, specifically `10.0.0.0/8`, `172.16.0.0/12`, and `192.168.0.0/16`.
+* [RFC 1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) address space, specifically `10.0.0.0/8`, `172.16.0.0/12`, and `192.168.0.0/16`.
 
 When using Cloudflare WAN and Cloudflare Tunnel together, consider the IP ranges utilized in the static routes of Cloudflare Tunnel when selecting static routes for Cloudflare WAN. For more information, refer to [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/cloudflare-tunnel/).
 
@@ -162,14 +162,14 @@ Automatic Return Routing applies when:
 
 * Traffic is received on a tunnel or network interconnect where the feature is enabled.
 * The received traffic is one of:
-* New TCP connections (TCP SYN)
-* UDP
-* ICMP echo (ping) requests
+  * New TCP connections (TCP SYN)
+  * UDP
+  * ICMP echo (ping) requests
 * The traffic is destined for:
-* Internet egress through Cloudflare
-* A Cloudflare One Client
-* A private network connected to Cloudflare through Cloudflare Tunnel
-* A private network connected to Cloudflare through Cloudflare Mesh
+  * Internet egress through Cloudflare
+  * A Cloudflare One Client
+  * A private network connected to Cloudflare through Cloudflare Tunnel
+  * A private network connected to Cloudflare through Cloudflare Mesh
 
 In this initial release, ARR does not change routing for traffic between Cloudflare WAN connections (for example, traffic from one IPsec/GRE tunnel or interconnect to another). That traffic continues to follow your configured Cloudflare WAN routes.
 
@@ -288,8 +288,8 @@ To determine the routing mode for your account:
 1. Go to **Routes**.
 [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 1. Check the banner at the top of the page:
-* **Your account is using Unified Routing mode.** — Your account uses Unified Routing.
-* **Unified routing is available.** — Your account uses Legacy Routing.
+  * **Your account is using Unified Routing mode.** — Your account uses Unified Routing.
+  * **Unified routing is available.** — Your account uses Legacy Routing.
 
 To migrate to Unified Routing, contact your account team.
 
@@ -554,7 +554,9 @@ You need to enable [legacy health checks](https://developers.cloudflare.com/clou
 
 ## Application-aware policies
 
-By default, Cloudflare balances and steers traffic based on network-layer characteristics (IP, port etc). If you are using the Cloudflare WAN Connector, you can also steer traffic based on well-known applications. Application-aware policies provide easier management and more granularity over traffic flows. For more information, refer to [Applications and app types](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/).
+By default, Cloudflare balances and steers traffic based on network-layer characteristics (IP, port etc). If you are using the Cloudflare WAN Connector, you can also steer traffic based on well-known applications. Application-aware policies provide easier management and more granularity over traffic flows.
+
+For more information, refer to [Applications and app types](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/).
 
 Was this helpful?
 
@@ -562,8 +564,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#page","headline":"Traffic steering · Cloudflare One docs","description":"Cloudflare WAN uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#page","headline":"Traffic steering · Cloudflare One docs","description":"Cloudflare WAN uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

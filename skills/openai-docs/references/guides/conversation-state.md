@@ -748,9 +748,12 @@ The connection-local cache keeps recent previous responses in memory for low-lat
 
 
 
-  Data retention for model responses
+  
 
-Response objects are saved for 30 days by default. They can be viewed in the dashboard 
+##### Data retention for model responses
+
+
+      Response objects are saved for 30 days by default. They can be viewed in the dashboard 
       [logs](https://platform.openai.com/logs?api=responses) page or 
       [retrieved](https://developers.openai.com/api/reference/resources/responses/methods/retrieve) via the API. 
       You can disable this behavior by setting `store` to `false`
@@ -759,6 +762,9 @@ Response objects are saved for 30 days by default. They can be viewed in the das
       Conversation objects and items in them are not subject to the 30 day TTL. Any response attached to a conversation will have its items persisted with no 30 day TTL.
 
       OpenAI does not use data sent via API to train our models without your explicit consent—[learn more](https://developers.openai.com/api/docs/guides/your-data).
+  
+
+
 
 
 

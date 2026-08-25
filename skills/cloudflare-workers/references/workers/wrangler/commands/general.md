@@ -70,19 +70,19 @@ If you prefer to use API tokens for authentication, such as in headless or conti
 wrangler login [OPTIONS]
 ```
 
-* `--scopes-list` `string`optional
+* `--scopes-list` `string` optional
   * List all the available OAuth scopes with descriptions.
-* `--scopes` `string`optional
+* `--scopes` `string` optional
   * Allows to choose your set of OAuth scopes. The set of scopes must be entered in a whitespace-separated list, for example, `npx wrangler login --scopes account:read user:read`.
-* `--browser` `boolean`optional
+* `--browser` `boolean` optional
   * Defaults to `true`. Automatically opens the OAuth link in your default browser. Use `--browser=false` to print the link instead of opening it.
-* `--callback-host` `string`optional
+* `--callback-host` `string` optional
   * Defaults to `localhost`. Sets the IP or hostname where Wrangler should listen for the OAuth callback. Cannot be combined with `--device`.
-* `--callback-port` `number`optional
+* `--callback-port` `number` optional
   * Defaults to `8976`. Sets the port where Wrangler should listen for the OAuth callback. Cannot be combined with `--device`.
-* `--use-keyring` `boolean`optional
+* `--use-keyring` `boolean` optional
   * Stores the OAuth credentials in your operating system keychain instead of the default plaintext TOML file. Refer to [Storing OAuth credentials in the OS keychain](#storing-oauth-credentials-in-the-os-keychain) for details. Use `--no-use-keyring` to opt back out. The choice is persisted across Wrangler invocations.
-* `--device` `boolean`optional
+* `--device` `boolean` optional
   * Defaults to `false`. Uses the OAuth 2.0 Device Authorization Grant ([RFC 8628 ↗](https://www.rfc-editor.org/rfc/rfc8628)) instead of the default `localhost` callback flow. Refer to [Use wrangler login without a local callback server](#use-wrangler-login-without-a-local-callback-server).
 
 Note
@@ -302,7 +302,7 @@ Retrieve your current authentication token or credentials for use with other too
 wrangler auth token [OPTIONS]
 ```
 
-* `--json` `boolean`optional
+* `--json` `boolean` optional
   * Return output as JSON with token type information. This also enables retrieving API key/email credentials.
 
 The command returns whichever authentication method is currently configured, in the following order of precedence:
@@ -666,7 +666,7 @@ Generate shell completion scripts for Wrangler commands. Shell completions allow
 wrangler complete <SHELL>
 ```
 
-* `SHELL` `string`required
+* `SHELL` `string` required
   * The shell to generate completions for. Supported values: `bash`, `zsh`, `fish`, `powershell`.
 
 ### Setup
@@ -724,5 +724,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/general/#page","headline":"General commands · Cloudflare Workers docs","description":"General Wrangler commands for authentication, telemetry, and shell completions.","url":"https://developers.cloudflare.com/workers/wrangler/commands/general/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/general/#page","headline":"General commands · Cloudflare Workers docs","description":"General Wrangler commands for authentication, telemetry, and shell completions.","url":"https://developers.cloudflare.com/workers/wrangler/commands/general/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

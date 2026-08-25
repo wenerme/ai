@@ -270,7 +270,7 @@ For example, if the value of `http.host` is `"example.com"`, then `len(http.host
 
 ### `lookup_json_integer`
 
-`` lookup_json_integer(field `String`, key `String | Integer`, key `String | Integer`optional, ...) ``: `Integer`
+`` lookup_json_integer(field `String`, key `String | Integer`, key `String | Integer` optional, ...) ``: `Integer`
 
 Returns the integer value associated with the supplied `key` in `field`.
 
@@ -300,7 +300,7 @@ Then `lookup_json_integer(http.request.body.raw, 1, "product_id")` will return `
 
 ### `lookup_json_string`
 
-`` lookup_json_string(field `String`, key `String | Integer`, key `String | Integer`optional, ...) ``: `String`
+`` lookup_json_string(field `String`, key `String | Integer`, key `String | Integer` optional, ...) ``: `String`
 
 Returns the string value associated with the supplied `key` in `field`.
 
@@ -488,7 +488,7 @@ For example, if `http.request.uri.path` is `"/blog/first-post"`, then `starts_wi
 
 ### `substring`
 
-`` substring(field `String | Bytes`, start `Integer`, end `Integer`optional) ``: `String`
+`` substring(field `String | Bytes`, start `Integer`, end `Integer` optional) ``: `String`
 
 Returns part of the `field` value (the value of a String or Bytes [field](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/)) from the `start` byte index up to (but excluding) the `end` byte index. The first byte in `field` has index `0`. If you do not provide the optional `end` index, the function returns the part of the string from `start` index to the end of the string.
 
@@ -535,7 +535,7 @@ For example, if `http.host` is`"www.cloudflare.com"`, then `upper(http.host)` wi
 
 ### `url_decode`
 
-`` url_decode(source `String`, options `String`optional) ``: `String`
+`` url_decode(source `String`, options `String` optional) ``: `String`
 
 Decodes a URL-formatted string defined in `source`, as in the following:
 
@@ -578,7 +578,7 @@ You can only use the `uuidv4()` function in [rewrite expressions of Transform Ru
 
 ### `wildcard_replace`
 
-`` wildcard_replace(source `Bytes`, wildcard_pattern `Bytes`, replacement `Bytes`, flags `Bytes`optional) ``: `String`
+`` wildcard_replace(source `Bytes`, wildcard_pattern `Bytes`, replacement `Bytes`, flags `Bytes` optional) ``: `String`
 
 Replaces a `source` string, matched by a literal with zero or more `*` wildcard metacharacters, with a replacement string, returning the result. The replacement string can contain references to wildcard capture groups (for example, `${1}` and `${2}`), up to eight replacement references.
 
@@ -668,10 +668,10 @@ The `is_timed_hmac_valid_v0()` function has these parameter definitions:
 * `currentTimeStamp` `Integer`
 
   * Represents the UNIX timestamp when Cloudflare received the request, expressed in seconds. Pass the `http.request.timestamp.sec` field as an approximate value to this argument.
-* `lengthOfSeparator` `Integer literal`optional
+* `lengthOfSeparator` `Integer literal` optional
 
   * Specifies the length of the `separator` between the `timestamp` and the `message` in the `MessageMAC`. Expressed in bytes, with a default value of `0`.
-* `flags` `String literal`optional
+* `flags` `String literal` optional
 
   * When you set this optional argument to `'s'`, the function expects the value of the Base64-encoded `mac` in the `MessageMAC` argument to use the URL-safe character set with no padding.
   * When you do **not** set the value of `flags` to `'s'`, you must URL encode the Base64 value for `mac` in the `MessageMAC` argument.
@@ -771,8 +771,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#page","headline":"Functions reference · Cloudflare Ruleset Engine docs","description":"Functions available for transforming values in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#page","headline":"Functions reference · Cloudflare Ruleset Engine docs","description":"Functions available for transforming values in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

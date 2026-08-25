@@ -794,6 +794,7 @@ All reasoning detail objects share these common fields:
   * `"openai-responses-v1"` - OpenAI responses format version 1
   * `"azure-openai-responses-v1"` - Azure OpenAI responses format version 1
   * `"bedrock-openai-responses-v1"` - Amazon Bedrock OpenAI responses format version 1
+  * `"bedrock-xai-responses-v1"` - Amazon Bedrock xAI responses format version 1
   * `"xai-responses-v1"` - SpaceXAI responses format version 1
   * `"meta-responses-v1"` - Meta responses format version 1
   * `"anthropic-claude-v1"` - Anthropic Claude format version 1 (default)

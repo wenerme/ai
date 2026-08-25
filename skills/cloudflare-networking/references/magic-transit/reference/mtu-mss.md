@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Maximum transmission unit and maximum segment size
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/reference/mtu-mss/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/reference/mtu-mss/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Because Magic Transit wraps your traffic in additional headers (encapsulation), the effective space available for your original data in each packet is reduced. If you do not account for this overhead, packets may be too large for the network path and will be dropped or fragmented — leading to performance loss or failed connections. This page explains the two key values you need to configure: maximum transmission unit (MTU) and maximum segment size (MSS).
 
@@ -82,7 +82,7 @@ Cloudflare only recommends applying a MSS clamp to adjust the size of TCP packet
 
 ## MSS with Magic Transit and Direct Server Return
 
-Asymmetric [routing](https://www.cloudflare.com/learning/network-layer/what-is-routing/) is a common scenario especially with Magic Transit. Ingress traffic from the Internet enters the Cloudflare network, then traverses a GRE tunnel (MTU of 1,476 bytes), and egress traffic from the datacenter is sent through Direct Server Return (DSR) over the Internet (MTU of 1,500 bytes).
+Asymmetric [routing ↗](https://www.cloudflare.com/learning/network-layer/what-is-routing/) is a common scenario especially with Magic Transit. Ingress traffic from the Internet enters the Cloudflare network, then traverses a GRE tunnel (MTU of 1,476 bytes), and egress traffic from the datacenter is sent through Direct Server Return (DSR) over the Internet (MTU of 1,500 bytes).
 
 In an asymmetric scenario, you need to reduce the MSS value of packets sent by Magic Transit users to the Internet to reduce the size of packets sent from the Internet towards their network. To accomplish this, you must configure either the customer's end-hosts or an MSS clamp on an intermediary device on the egress path of traffic leaving their network. The following chart details how MSS values affect payload sizes on both routing paths.
 
@@ -137,5 +137,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/mtu-mss/#page","headline":"Maximum transmission unit and maximum segment size · Cloudflare Magic Transit docs","description":"MTU and MSS values for Magic Transit tunnels.","url":"https://developers.cloudflare.com/magic-transit/reference/mtu-mss/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","IPsec","UDP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/mtu-mss/#page","headline":"Maximum transmission unit and maximum segment size · Cloudflare Magic Transit docs","description":"MTU and MSS values for Magic Transit tunnels.","url":"https://developers.cloudflare.com/magic-transit/reference/mtu-mss/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","IPsec","UDP"]}
 ```

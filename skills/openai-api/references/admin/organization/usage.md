@@ -470,7 +470,7 @@ Get audio speeches usage details for the organization.
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+      - `quantity_unit: optional CostQuantityUnit or null`
 
         The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -1062,7 +1062,7 @@ Get audio transcriptions usage details for the organization.
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+      - `quantity_unit: optional CostQuantityUnit or null`
 
         The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -1636,7 +1636,7 @@ Get code interpreter sessions usage details for the organization.
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+      - `quantity_unit: optional CostQuantityUnit or null`
 
         The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -2232,7 +2232,7 @@ Get completions usage details for the organization.
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+      - `quantity_unit: optional CostQuantityUnit or null`
 
         The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -2821,7 +2821,7 @@ Get costs details for the organization.
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+      - `quantity_unit: optional CostQuantityUnit or null`
 
         The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -3416,7 +3416,7 @@ Get embeddings usage details for the organization.
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+      - `quantity_unit: optional CostQuantityUnit or null`
 
         The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -4008,7 +4008,7 @@ Get file search calls usage details for the organization.
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+      - `quantity_unit: optional CostQuantityUnit or null`
 
         The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -4627,7 +4627,7 @@ Get images usage details for the organization.
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+      - `quantity_unit: optional CostQuantityUnit or null`
 
         The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -5221,7 +5221,7 @@ Get moderations usage details for the organization.
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+      - `quantity_unit: optional CostQuantityUnit or null`
 
         The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -5795,7 +5795,7 @@ Get vector stores usage details for the organization.
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+      - `quantity_unit: optional CostQuantityUnit or null`
 
         The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -6395,7 +6395,7 @@ Get web search calls usage details for the organization.
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-      - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+      - `quantity_unit: optional CostQuantityUnit or null`
 
         The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -6519,6 +6519,34 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 ```
 
 ## Domain Types
+
+### Cost Quantity Unit
+
+- `CostQuantityUnit = string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+  The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+  - `string`
+
+  - `"tokens" or "1000_tokens" or "duration_seconds" or 5 more`
+
+    The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
+
+    - `"tokens"`
+
+    - `"1000_tokens"`
+
+    - `"duration_seconds"`
+
+    - `"duration_minutes"`
+
+    - `"duration_hours"`
+
+    - `"gibibyte_hours"`
+
+    - `"images"`
+
+    - `"characters"`
 
 ### Usage Audio Speeches Response
 
@@ -6926,7 +6954,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+        - `quantity_unit: optional CostQuantityUnit or null`
 
           The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -7368,7 +7396,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+        - `quantity_unit: optional CostQuantityUnit or null`
 
           The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -7810,7 +7838,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+        - `quantity_unit: optional CostQuantityUnit or null`
 
           The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -8252,7 +8280,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+        - `quantity_unit: optional CostQuantityUnit or null`
 
           The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -8694,7 +8722,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+        - `quantity_unit: optional CostQuantityUnit or null`
 
           The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -9136,7 +9164,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+        - `quantity_unit: optional CostQuantityUnit or null`
 
           The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -9578,7 +9606,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+        - `quantity_unit: optional CostQuantityUnit or null`
 
           The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -10020,7 +10048,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+        - `quantity_unit: optional CostQuantityUnit or null`
 
           The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -10462,7 +10490,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+        - `quantity_unit: optional CostQuantityUnit or null`
 
           The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -10904,7 +10932,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+        - `quantity_unit: optional CostQuantityUnit or null`
 
           The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 
@@ -11346,7 +11374,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
-        - `quantity_unit: optional string or "tokens" or "1000_tokens" or "duration_seconds" or 5 more or null`
+        - `quantity_unit: optional CostQuantityUnit or null`
 
           The unit of the `quantity` value. If no single supported unit applies to the result, this field is `null`.
 

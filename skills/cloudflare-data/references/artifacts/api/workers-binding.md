@@ -61,10 +61,10 @@ Use namespace methods on `env.ARTIFACTS` to create, list, inspect, import, or de
 
 ### `create(name, opts?)`
 
-* `name` `RepoName`required
-* `opts.readOnly` `boolean`optional
-* `opts.description` `string`optional
-* `opts.setDefaultBranch` `string`optional
+* `name` `RepoName` required
+* `opts.readOnly` `boolean` optional
+* `opts.description` `string` optional
+* `opts.setDefaultBranch` `string` optional
 * Returns `Promise<ArtifactsCreateRepoResult>`
 
 `create()` returns repo metadata including `name`, `remote`, `defaultBranch`, and an initial token. Save these values if you need them later.
@@ -105,7 +105,7 @@ async function createRepo(artifacts: Artifacts) {
 
 ### `get(name)`
 
-* `name` `RepoName`required
+* `name` `RepoName` required
 * Returns `Promise<ArtifactsRepo>`
 * Throws if the repo does not exist or is not ready yet.
 
@@ -129,8 +129,8 @@ async function getRepoHandle(artifacts: Artifacts) {
 
 ### `list(opts?)`
 
-* `opts.limit` `number`optional
-* `opts.cursor` `Cursor`optional
+* `opts.limit` `number` optional
+* `opts.cursor` `Cursor` optional
 * Returns `Promise<ArtifactsRepoListResult>`
 
 ```js
@@ -167,12 +167,12 @@ Each listed repo includes a `status` value of `ready`, `importing`, or `forking`
 
 Import a repository from an external git remote.
 
-* `params.source.url` `string`required — HTTPS URL of the source repository.
-* `params.source.branch` `string`optional — Branch to import (defaults to the remote's default branch).
-* `params.source.depth` `number`optional — Shallow clone depth.
-* `params.target.name` `RepoName`required — Name for the imported repo.
-* `params.target.opts.description` `string`optional
-* `params.target.opts.readOnly` `boolean`optional
+* `params.source.url` `string` required — HTTPS URL of the source repository.
+* `params.source.branch` `string` optional — Branch to import (defaults to the remote's default branch).
+* `params.source.depth` `number` optional — Shallow clone depth.
+* `params.target.name` `RepoName` required — Name for the imported repo.
+* `params.target.opts.description` `string` optional
+* `params.target.opts.readOnly` `boolean` optional
 * Returns `Promise<ArtifactsCreateRepoResult>`
 
 `import()` returns repo metadata including `name`, `remote`, `defaultBranch`, and an initial token. Save the `remote` and `name` values if you need them later.
@@ -219,7 +219,7 @@ async function importFromGitHub(artifacts: Artifacts) {
 
 ### `delete(name)`
 
-* `name` `RepoName`required
+* `name` `RepoName` required
 * Returns `Promise<boolean>`
 
 ```js
@@ -240,8 +240,8 @@ Call `await artifacts.get(name)` to get a repo handle. Use the handle to call as
 
 ### `createToken(scope?, ttl?)`
 
-* `scope` `"read" | "write"`optional (default: "write")
-* `ttl` `number`optional (seconds)
+* `scope` `"read" | "write"` optional (default: "write")
+* `ttl` `number` optional (seconds)
 * Returns `Promise<ArtifactsCreateTokenResult>`
 
 ```js
@@ -288,7 +288,7 @@ async function listRepoTokens(artifacts: Artifacts) {
 
 ### `revokeToken(tokenOrId)`
 
-* `tokenOrId` `string`required
+* `tokenOrId` `string` required
 * Returns `Promise<boolean>`
 
 ```js
@@ -307,10 +307,10 @@ async function revokeToken(artifacts: Artifacts, tokenOrId: string) {
 
 ### `fork(name, opts?)`
 
-* `name` `RepoName`required
-* `opts.description` `string`optional
-* `opts.readOnly` `boolean`optional
-* `opts.defaultBranchOnly` `boolean`optional
+* `name` `RepoName` required
+* `opts.description` `string` optional
+* `opts.readOnly` `boolean` optional
+* `opts.defaultBranchOnly` `boolean` optional
 * Returns `Promise<ArtifactsCreateRepoResult>`
 
 `fork()` returns metadata for the new repo. Save the `remote` and `name` values if you need them later.
@@ -343,9 +343,9 @@ async function forkRepo(artifacts: Artifacts) {
 
 ### `log(opts?)`
 
-* `opts.ref` `string`optional — Branch, tag, or commit hash.
-* `opts.limit` `number`optional
-* `opts.offset` `number`optional
+* `opts.ref` `string` optional — Branch, tag, or commit hash.
+* `opts.limit` `number` optional
+* `opts.offset` `number` optional
 * Returns `Promise<ArtifactsLogResult>`
 
 ```js
@@ -366,7 +366,7 @@ async function readCommitHistory(artifacts: Artifacts) {
 
 ### `readCommit(hash)`
 
-* `hash` `string`required — Commit SHA-1 hash.
+* `hash` `string` required — Commit SHA-1 hash.
 * Returns `Promise<ArtifactsCommit>`
 
 ```js
@@ -385,7 +385,7 @@ async function readCommit(artifacts: Artifacts, hash: string) {
 
 ### `readTree(hash)`
 
-* `hash` `string`required — Tree SHA-1 hash.
+* `hash` `string` required — Tree SHA-1 hash.
 * Returns `Promise<ArtifactsTree>`
 
 ```js
@@ -492,8 +492,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/workers-binding/#page","headline":"Workers binding · Artifacts · Cloudflare Artifacts docs","description":"Call Artifacts from a Worker binding.","url":"https://developers.cloudflare.com/artifacts/api/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/workers-binding/#page","headline":"Workers binding · Artifacts · Cloudflare Artifacts docs","description":"Call Artifacts from a Worker binding.","url":"https://developers.cloudflare.com/artifacts/api/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

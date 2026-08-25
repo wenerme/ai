@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure Virtual Appliance
 
-Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Register a virtual appliance and generate a license key
 
@@ -44,7 +44,7 @@ This is also available via Terraform.
 
 Cloudflare One Virtual Appliance is a virtual device alternative to the hardware based Cloudflare One Appliance. These two versions of Cloudflare One Appliance are identical otherwise.
 
-Currently, you can set up Cloudflare One Virtual Appliance on VMWare ESXi and Proxmox Virtual Environment. Support for Proxmox is in beta.
+Currently, you can set up Cloudflare One Virtual Appliance on VMware ESXi and Proxmox Virtual Environment. Support for Proxmox is in beta.
 
 In this page you will find instructions on how to configure Cloudflare One Appliance. This guide provides a step-by-step guide for Cloudflare One Appliance initial setup. You can either return here after setting up your Cloudflare One Appliance, or refer to the [Maintenance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/) section where you will find instructions on how to update your settings.
 
@@ -60,9 +60,9 @@ Before you can install Cloudflare One Virtual Appliance, you need an Enterprise 
 * One vSwitch port group or VLAN with access to the Internet (for example, through a WAN)
 * One or more vSwitch port group or VLAN that will be the internal LAN
 
- For details on installing ESXi and configuring a virtual machine, refer to [VMware's documentation](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.esxi.install.doc/GUID-B2F01BF5-078A-4C7E-B505-5DFFED0B8C38.html).
+For details on installing ESXi and configuring a virtual machine, refer to [VMware's documentation ↗](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.esxi.install.doc/GUID-B2F01BF5-078A-4C7E-B505-5DFFED0B8C38.html).
 
-For details on installing Virtual environment and configuring a virtual machine, refer to [Proxmox documentation](https://www.proxmox.com/en/products/proxmox-virtual-environment/get-started).
+For details on installing Virtual environment and configuring a virtual machine, refer to [Proxmox documentation ↗](https://www.proxmox.com/en/products/proxmox-virtual-environment/get-started).
 
 ---
 
@@ -99,15 +99,15 @@ Cloudflare One Virtual Appliance uses a DHCP connection at first boot to downloa
 
 ## Configure a virtual machine
 
-Select the appropriate tab to configure Cloudflare One Virtual Appliance on VMWare ESXi or Proxmox Virtual Environment.
+Select the appropriate tab to configure Cloudflare One Virtual Appliance on VMware ESXi or Proxmox Virtual Environment.
 
-**1\. Obtain the VMWare image**
+**1\. Obtain the VMware image**
 
-Contact your account team at Cloudflare to obtain the Cloudflare One Virtual Appliance OVA package and license keys. The OVA image includes the files required to install and configure the virtual machine (VM) for Cloudflare One Virtual Appliance with the appropriate settings. For details, refer to [VMWare VMs documentation](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm%5Fadmin.doc/GUID-AE61948B-C2EE-436E-BAFB-3C7209088552.html).
+Download the Cloudflare One Virtual Appliance OVA image from [https://assets.magic-wan-connector.cloudflare.com/stable/mconn.ova ↗](https://assets.magic-wan-connector.cloudflare.com/stable/mconn.ova). You can also download it from the dashboard when you register a virtual appliance, in the **Add an appliance** \> **Virtual appliance** step. The OVA image includes the files required to install and configure the virtual machine (VM) for Cloudflare One Virtual Appliance with the appropriate settings. For details, refer to [VMware VMs documentation ↗](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm%5Fadmin.doc/GUID-AE61948B-C2EE-436E-BAFB-3C7209088552.html).
 
 This image can be deployed multiple times to create several instances of a Cloudflare One Virtual Appliance, in different locations or on the same ESXi host.
 
-You will consume one license key for each instance created. For example, if you want to deploy 10 Cloudflare One Virtual Appliances you should request 10 license keys, and your account team will create 10 Cloudflare One Virtual Appliance instances in your Cloudflare dashboard.
+You consume one license key for each instance created. Generate a license key for each instance from the [Connectors page](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#register-a-virtual-appliance-and-generate-a-license-key). For example, to deploy 10 Cloudflare One Virtual Appliances, generate 10 license keys.
 
 **2\. Deploy the Cloudflare One Virtual Appliance on VMware**
 
@@ -129,12 +129,12 @@ Use VLAN ID `0` when:
 
 You can also configure subinterfaces on the Cloudflare One Virtual Appliance by associating the network interface with a Port Group or Distributed Port Group trunk and specifying a VLAN ID in addition to the port associated with the network interface (VLAN ID `1`\-`4094`).
 
-Refer to [VMware's documentation](https://kb.vmware.com/s/article/1003825) for more information.
+Refer to [VMware's documentation ↗](https://kb.vmware.com/s/article/1003825) for more information.
 
-1. Extract the files in the OVA image provided by your Cloudflare account team. For example:
+1. Extract the files in the OVA image you downloaded. For example:
 
 ```sh
-tar -xvf mconn-2024-1-3.ova
+tar -xvf mconn.ova
 ```
 
 Take note of the folder where you are extracting the files to, as you will need to refer to that folder when creating the VM.
@@ -151,7 +151,7 @@ Take note of the folder where you are extracting the files to, as you will need 
   3. Take note of your configuration. You will need this information to configure your network in the Cloudflare dashboard.
 7. In **Disk provisioning**, select **Thin**.
 8. Before completing the deployment wizard, disable **Power on automatically**. This is important so that you can configure the license key prior to boot.
-9. Configure the virtual machine with the license key your account team provided you:
+9. Configure the virtual machine with the license key you generated:
 
   1. Select the Cloudflare One Virtual Appliance's VM > **Settings**.
   2. Go to **VM Options** \> **Advanced** \> **Edit Configuration**.
@@ -161,32 +161,42 @@ Take note of the folder where you are extracting the files to, as you will need 
 
 Note
 
-You cannot use the same license key twice, or reuse a key once the virtual machine has been registered with Cloudflare. You need a new key from your account team for every new Cloudflare One Virtual Appliance.
+You cannot use the same license key twice, or reuse a key once the virtual machine has been registered with Cloudflare. Generate a new key for every new Cloudflare One Virtual Appliance from the [Connectors page](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#register-a-virtual-appliance-and-generate-a-license-key).
 
 1. Select **Save** to finish configuring your Cloudflare One Virtual Appliance.
 2. Continue setup in your [Cloudflare dashboard.](#set-up-cloudflare-dashboard)
 
 **1\. Obtain the Cloudflare One Virtual Appliance script**
 
-Contact your account team at Cloudflare to obtain your license keys and the Cloudflare One Virtual Appliance script for Proxmox. The script will set up and configure a Proxmox virtual machine with the appropriate settings for Cloudflare One Virtual Appliance. For details on system requirements, refer to [Prerequisites](#prerequisites).
+Download the Cloudflare One Virtual Appliance helper script for Proxmox to your Proxmox server. The script sets up and configures a Proxmox virtual machine with the appropriate settings for Cloudflare One Virtual Appliance. For details on system requirements, refer to [Prerequisites](#prerequisites).
 
-The script can be deployed multiple times to create several instances of a Cloudflare One Virtual Appliance, in different locations or on the same Proxmox host. You will consume one license key for each instance created. For example, if you want to deploy 10 Cloudflare One Virtual Appliances you should request 10 license keys, and your account team will create 10 Cloudflare One Virtual Appliance instances in your Cloudflare dashboard.
+The script can be deployed multiple times to create several instances of a Cloudflare One Virtual Appliance, in different locations or on the same Proxmox host. You consume one license key for each instance created. Generate a license key for each instance from the [Connectors page](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#register-a-virtual-appliance-and-generate-a-license-key). For example, to deploy 10 Cloudflare One Virtual Appliances, generate 10 license keys.
+
+```sh
+curl -OL https://assets.magic-wan-connector.cloudflare.com/stable/proxmox_mconn_vm.sh
+```
 
 **2\. Deploy the Cloudflare One Virtual Appliance on Proxmox**
 
 The following instructions assume you already have Proxmox Virtual Environment installed with sufficient resources. For details, refer to [Prerequisites](#prerequisites).
 
-1. In the terminal prompt of your Proxmox server, load the script provided by your account team. For example: `bash YOUR_SCRIPT`. You need elevated privileges to run the script.
-2. You will be prompted to create a new Cloudflare One Virtual Appliance. Select **yes** to proceed.
-3. Set up your Virtual Appliance name.
-4. Enter your license key.
+1. In the terminal prompt of your Proxmox server, run the script with elevated privileges:
+
+```sh
+bash ./proxmox_mconn_vm.sh
+```
+
+1. You will be prompted to create a new Cloudflare One Virtual Appliance. Select **yes** to proceed.
+2. Enter your license key.
 
 Note
 
-You cannot use the same license key twice, or reuse a key once the virtual machine has been registered with Cloudflare. You need a new key from your account team for every new Cloudflare One Virtual Appliance.
+You cannot use the same license key twice, or reuse a key once the virtual machine has been registered with Cloudflare. Generate a new key for every new Cloudflare One Virtual Appliance from the [Connectors page](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#register-a-virtual-appliance-and-generate-a-license-key).
 
-1. Select the network interface card (NIC) you want to use with Cloudflare One Virtual Appliance.
-2. Select the network bridge that corresponds to the physical network interface card (NIC) on your host machine. This bridge allows the network adapter in the virtual machine to communicate through the NIC in the host, as if it were directly connected to the physical network.
+The script applies default settings and configures the virtual machine for Cloudflare One Virtual Appliance. After the script finishes, adjust the VM for your environment. The new VM has all network interface cards (NICs) on the same bridge, and only the first NIC has an active link.
+
+1. In the **Hardware settings** for the new VM, select the NIC you want to use with Cloudflare One Virtual Appliance.
+2. Select the network bridge that corresponds to the physical NIC on your host machine. This bridge allows the network adapter in the virtual machine to communicate through the NIC in the host, as if it were directly connected to the physical network.
 3. (Optional) Configure your VLAN setting if needed.
 
 VLAN tagging
@@ -200,12 +210,46 @@ Use VLAN ID `0` when:
 
 You can also configure subinterfaces on the Cloudflare One Virtual Appliance by associating the network interface with a Port Group or Distributed Port Group trunk and specifying a VLAN ID in addition to the port associated with the network interface (VLAN ID `1`\-`4094`).
 
-Refer to [Proxmox documentation](https://www.proxmox.com/en/products/proxmox-virtual-environment/get-started) for more information.
+Refer to [Proxmox documentation ↗](https://www.proxmox.com/en/products/proxmox-virtual-environment/get-started) for more information.
 
-1. Finish your configuration.
-2. The script will apply your settings and configure the virtual machine template for Cloudflare One Virtual Appliance.
-3. In the **Hardware settings** for the new VM, make sure the hardware settings match the minimum requirements for running Cloudflare One Virtual Appliance. Make changes to the RAM and CPU if needed.
-4. Continue setup in your [Cloudflare dashboard](#set-up-cloudflare-dashboard).
+1. Make sure the hardware settings match the minimum requirements for running Cloudflare One Virtual Appliance. Make changes to the RAM and CPU if needed.
+2. Continue setup in your [Cloudflare dashboard](#set-up-cloudflare-dashboard).
+
+**1\. Obtain the Cloudflare One Virtual Appliance script**
+
+Download the Cloudflare One Virtual Appliance helper script for libvirt/KVM to your host. The script deploys the virtual machine with the appropriate settings for Cloudflare One Virtual Appliance. For details on system requirements, refer to [Prerequisites](#prerequisites).
+
+The deployment assumes the use of libvirt. The virtual machine manager graphical interface is not required. The VM uses the `OVMF_CODE.fd` file from the `ovmf` package on Debian or Ubuntu.
+
+The script can be deployed multiple times to create several instances of a Cloudflare One Virtual Appliance, in different locations or on the same host. You consume one license key for each instance created. Generate a license key for each instance from the [Connectors page](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#register-a-virtual-appliance-and-generate-a-license-key). For example, to deploy 10 Cloudflare One Virtual Appliances, generate 10 license keys.
+
+```sh
+curl -OL https://assets.magic-wan-connector.cloudflare.com/stable/libvirt_mconn_vm.sh
+```
+
+**2\. Deploy the Cloudflare One Virtual Appliance on libvirt/KVM**
+
+The following instructions assume you already have libvirt installed with sufficient resources. For details, refer to [Prerequisites](#prerequisites).
+
+1. In the terminal prompt of your host, run the script with elevated privileges. The script takes one optional argument, the name of the VM. If you do not provide a name, the VM defaults to `vmconn`:
+
+```sh
+sudo bash ./libvirt_mconn_vm.sh
+```
+
+1. When prompted, enter a name for the VM. This name is used for the VM definition, the disk name, and the nvram file name. If the name already exists, the script exits with an error and you must use a different name.
+2. Select the storage pool for the VM disk.
+3. Choose whether to enable the graphics console in addition to the serial console.
+4. Enter your license key.
+
+Note
+
+You cannot use the same license key twice, or reuse a key once the virtual machine has been registered with Cloudflare. Generate a new key for every new Cloudflare One Virtual Appliance from the [Connectors page](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#register-a-virtual-appliance-and-generate-a-license-key).
+
+The script deploys the virtual machine with the appropriate settings. NICs are named based on the defined PCI path of each NIC. Changing the PCI path of a NIC breaks functionality. NICs are configured in an inactive state with the `default` network source.
+
+1. Configure the NICs for your environment. Configure the WAN-associated NICs as macvtap devices to avoid potential connectivity issues.
+2. Continue setup in your [Cloudflare dashboard](#set-up-cloudflare-dashboard).
 
 ---
 
@@ -220,17 +264,17 @@ To create a profile:
 1. Go to the **Connectors** page.
 [Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Go to the **Appliances** tab > **Profiles** \> **Create a new profile**.
-1. In **Name**, enter a descriptive name for your Cloudflare One Virtual Appliance. Optionally, you can also add a description for it.
-2. You need to decide if you want to turn on high availability for the Cloudflare One Virtual Appliance. For details, refer to [About high availability configurations](#about-high-availability-configurations).
-3. Select **Create and continue**.
-4. Select **Add Appliance**. This will display a list of devices associated with your account. For a Virtual Appliance to appear you need to:
+3. In **Name**, enter a descriptive name for your Cloudflare One Virtual Appliance. Optionally, you can also add a description for it.
+4. You need to decide if you want to turn on high availability for the Cloudflare One Virtual Appliance. For details, refer to [About high availability configurations](#about-high-availability-configurations).
+5. Select **Create and continue**.
+6. Select **Add Appliance**. This will display a list of devices associated with your account. For a Virtual Appliance to appear you need to:
   * **VMware:** Have already obtained your OVA package and license keys if you are installing on VMware.
   * **Proxmox:** Have already obtained your Virtual Appliance Script and license keys if you are installing on Proxmox.
-For details, refer to [Configure a virtual machine](#configure-a-virtual-machine) and select the appropriate tab.
-5. If you have more than one Cloudflare One Virtual Appliance, choose the one that corresponds to the on-ramp you are creating. Cloudflare One Virtual Appliance devices are identified by a serial number, also known as a service tag. Use this information to choose the right Cloudflare One Virtual Appliance.
+ For details, refer to [Configure a virtual machine](#configure-a-virtual-machine) and select the appropriate tab.
+7. If you have more than one Cloudflare One Virtual Appliance, choose the one that corresponds to the on-ramp you are creating. Cloudflare One Virtual Appliance devices are identified by a serial number, also known as a service tag. Use this information to choose the right Cloudflare One Virtual Appliance.
  Select **Add Appliance** when you are ready to proceed.
-6. Cloudflare One Virtual Appliance will be added to your account with an **Interrupt window** defined. The interrupt window is the time period when the Cloudflare One Virtual Appliance software can update, which may result in interruption to existing connections. You can change this later. Refer to [Interrupt window](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/interrupt-service-window/) for more details on how to define when the Cloudflare One Virtual Appliance can update its systems.
-7. Select **Continue** to proceed to creating your WAN and LAN networks.
+8. Cloudflare One Virtual Appliance will be added to your account with an **Interrupt window** defined. The interrupt window is the time period when the Cloudflare One Virtual Appliance software can update, which may result in interruption to existing connections. You can change this later. Refer to [Interrupt window](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/interrupt-service-window/) for more details on how to define when the Cloudflare One Virtual Appliance can update its systems.
+9. Select **Continue** to proceed to creating your WAN and LAN networks.
 
 ### Create a WAN
 
@@ -329,9 +373,7 @@ Cloudflare One Virtual Appliance supports different types of DHCP configurations
 
 ### Add your Cloudflare One Virtual Appliance to a site
 
-After finishing your Cloudflare One Virtual Appliance configuration, you need to add it to a site.
-
-Sites represent the local network of a data center, office, or other physical location, and combine all on-ramps available there. Sites also allow you to check, at a glance, the state of your on-ramps and set up health alert settings so that Cloudflare notifies you when there are issues with the site's on-ramps.
+After finishing your Cloudflare One Virtual Appliance configuration, you need to add it to a site. Sites represent the local network of a data center, office, or other physical location, and combine all on-ramps available there. Sites also allow you to check, at a glance, the state of your on-ramps and set up health alert settings so that Cloudflare notifies you when there are issues with the site's on-ramps.
 
 Refer to [Set up a site](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/sites/) for more information.
 
@@ -349,11 +391,11 @@ When you are ready to connect your Cloudflare One Virtual Appliance to the Cloud
 
 1. Go to the **Connectors** page.
 [Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
-1. Go to the **Appliances** tab > **Appliances**.
-2. Find the Cloudflare One Virtual Appliance you want to activate, select the three dots next to it > **Edit**. Make sure you verify the serial number to choose the right Cloudflare One Virtual Appliance you want to activate.
-3. In the new window, the **Status** dropdown will show as **Deactivated**. Select it to change the status to **Activated**.
-4. The **Interrupt window** is the time period when the Cloudflare One Virtual Appliance software can update, which may result in interruption to existing connections. Choose a time period to minimize disruption to your sites. For details on defining when the Cloudflare One Virtual Appliance can update its systems, refer to [Interrupt window](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/interrupt-service-window/).
-5. Select **Update**.
+2. Go to the **Appliances** tab > **Appliances**.
+3. Find the Cloudflare One Virtual Appliance you want to activate, select the three dots next to it > **Edit**. Make sure you verify the serial number to choose the right Cloudflare One Virtual Appliance you want to activate.
+4. In the new window, the **Status** dropdown will show as **Deactivated**. Select it to change the status to **Activated**.
+5. The **Interrupt window** is the time period when the Cloudflare One Virtual Appliance software can update, which may result in interruption to existing connections. Choose a time period to minimize disruption to your sites. For details on defining when the Cloudflare One Virtual Appliance can update its systems, refer to [Interrupt window](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/interrupt-service-window/).
+6. Select **Update**.
 
 ## Boot your Virtual Appliance
 
@@ -406,20 +448,20 @@ You cannot enable high availability for an existing site. To add high availabili
 To set up a high availability configuration:
 
 1. Follow the steps in [Create a new profile](#create-a-new-profile) up until step 4.
-1. After naming your site, select **Turn on high availability**.
-2. Select **Create and continue**.
-3. Select **Add Appliance**.
-4. From the list, choose your first Cloudflare One Virtual Appliance > **Add Appliance**.
-5. Back on the previous screen, select **Add secondary appliance**.
-6. From the list, choose your second Cloudflare One Virtual Appliance > **Add Appliance**.
-7. Select **Continue** to create a WAN. If you are configuring a static IP, configure the IP for the primary node as the static address, and the IP for the secondary node as the secondary static address.
-8. To create a LAN, follow the steps in [Create a LAN](#create-a-lan) up until step 4.
-9. In **Static address**, enter the IP for the primary node in your site. For example, `192.168.10.1/24`.
-10. In **Secondary static address**, enter the IP for the secondary node in your site. For example, `192.168.10.2/24`.
-11. In **Virtual static address**, enter the IP that the LAN south of the Cloudflare One Virtual Appliance device will forward traffic to. For example, `192.168.10.3/24`.
-12. Select **Save**.
-13. From the **High availability probing link** drop-down menu, select the port that should be used to monitor the node's health. Cloudflare recommends you choose a reliable interface as the HA probing link. The primary and secondary node's probing link should be connected over a switch, and cannot be a direct connection.
-14. Follow the instructions in [Activate appliance](#activate-appliance) to finish setting up your Appliances.
+2. After naming your site, select **Turn on high availability**.
+3. Select **Create and continue**.
+4. Select **Add Appliance**.
+5. From the list, choose your first Cloudflare One Virtual Appliance > **Add Appliance**.
+6. Back on the previous screen, select **Add secondary appliance**.
+7. From the list, choose your second Cloudflare One Virtual Appliance > **Add Appliance**.
+8. Select **Continue** to create a WAN. If you are configuring a static IP, configure the IP for the primary node as the static address, and the IP for the secondary node as the secondary static address.
+9. To create a LAN, follow the steps in [Create a LAN](#create-a-lan) up until step 4.
+10. In **Static address**, enter the IP for the primary node in your site. For example, `192.168.10.1/24`.
+11. In **Secondary static address**, enter the IP for the secondary node in your site. For example, `192.168.10.2/24`.
+12. In **Virtual static address**, enter the IP that the LAN south of the Cloudflare One Virtual Appliance device will forward traffic to. For example, `192.168.10.3/24`.
+13. Select **Save**.
+14. From the **High availability probing link** drop-down menu, select the port that should be used to monitor the node's health. Cloudflare recommends you choose a reliable interface as the HA probing link. The primary and secondary node's probing link should be connected over a switch, and cannot be a direct connection.
+15. Follow the instructions in [Activate appliance](#activate-appliance) to finish setting up your Appliances.
 
 ---
 
@@ -431,10 +473,10 @@ To check the IPsec tunnels and static routes created by your Cloudflare One Virt
 
 1. Go to the **Connectors** page.
 [Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
-1. The **IPsec/GRE tunnels** tab shows a list of all the IPsec tunnels created by your Cloudflare One Virtual Appliance.
-2. Go to the **Routes** page.
+2. The **IPsec/GRE tunnels** tab shows a list of all the IPsec tunnels created by your Cloudflare One Virtual Appliance.
+3. Go to the **Routes** page.
 [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
-1. Here you can inspect the static routes created by your Cloudflare One Virtual Appliance.
+4. Here you can inspect the static routes created by your Cloudflare One Virtual Appliance.
 
 ---
 
@@ -451,8 +493,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#page","headline":"Configure Virtual Appliance · Cloudflare WAN docs","description":"Learn how to configure Cloudflare One Virtual Appliance on VMware ESXi or Proxmox Virtual Environment","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#page","headline":"Configure Virtual Appliance · Cloudflare WAN docs","description":"Learn how to configure Cloudflare One Virtual Appliance on VMware ESXi or Proxmox Virtual Environment","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
