@@ -127,7 +127,7 @@ Discovering a tool does not disturb the tools already in the conversation, so pr
 
 ## Supported APIs
 
-Tool search is available through the [Responses API](/docs/api_reference/responses/overview) and the [Messages API](/docs/api_reference/messages/overview). Requesting it on the Chat Completions API returns a `400` error.
+Tool search is available through the [Responses API](/docs/api_reference/responses/overview) and the [Messages API](/docs/api/api-reference/anthropic-messages/create-a-message). Requesting it on the Chat Completions API returns a `400` error.
 
 Each API's native spelling is accepted as an alias and answered in kind, so an existing integration does not need rewriting:
 

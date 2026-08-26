@@ -1,5 +1,7 @@
 # Rate limits on issue and epic creation
 
+Set the per-user rate limit on issue and epic creation requests, in maximum requests per minute.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed
 
@@ -28,7 +30,7 @@ The limit for [epic](../../user/group/epics/_index.md) creation is the same limi
 
 - Is applied independently per project and per user.
 - Is not applied per IP address.
-- Is disabled by default.
-- Can be set to `0` to disable the rate limit.
+- Is turned off by default.
+- Can be set to `0` to turn off the rate limit.
 
 Requests over the rate limit are logged into the `auth.log` file.

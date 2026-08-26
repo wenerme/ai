@@ -26156,6 +26156,29 @@ Fields:
 | <a id="mergerequestrevieweredge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="mergerequestrevieweredge-node"></a>`node` | [`MergeRequestReviewer`](#mergerequestreviewer) | The item at the end of the edge. |
 
+#### `MergeRequestSavedViewConnection`
+
+The connection type for [`MergeRequestSavedView`](#mergerequestsavedview).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestsavedviewconnection-edges"></a>`edges` | [`[MergeRequestSavedViewEdge]`](#mergerequestsavedviewedge) | A list of edges. |
+| <a id="mergerequestsavedviewconnection-nodes"></a>`nodes` | [`[MergeRequestSavedView]`](#mergerequestsavedview) | A list of nodes. |
+| <a id="mergerequestsavedviewconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `MergeRequestSavedViewEdge`
+
+The edge type for [`MergeRequestSavedView`](#mergerequestsavedview).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestsavedviewedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="mergerequestsavedviewedge-node"></a>`node` | [`MergeRequestSavedView`](#mergerequestsavedview) | The item at the end of the edge. |
+
 #### `MergeRequestWorkItemRelationConnection`
 
 The connection type for [`MergeRequestWorkItemRelation`](#mergerequestworkitemrelation).
@@ -33009,6 +33032,7 @@ Arguments:
 | <a id="analytics-pipelines-startedatfrom"></a>`startedAtFrom` | [`Time`](#time) | Filter by pipeline start timestamp. Start of the range. |
 | <a id="analytics-pipelines-startedatto"></a>`startedAtTo` | [`Time`](#time) | Filter by pipeline start timestamp. End of the range. |
 | <a id="analytics-pipelines-status"></a>`status` | [`[String!]`](#string) | Filter by one or many pipeline statuses. |
+| <a id="analytics-pipelines-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
 
 ### `AnalyzerGroupStatusType`
 
@@ -33184,6 +33208,7 @@ Fields:
 | <a id="approvalrule-invalid"></a>`invalid` | [`Boolean`](#boolean) | Indicates if the rule is invalid and cannot be approved. |
 | <a id="approvalrule-name"></a>`name` | [`String`](#string) | Name of the rule. |
 | <a id="approvalrule-overridden"></a>`overridden` | [`Boolean`](#boolean) | Indicates if the rule was overridden for the merge request. |
+| <a id="approvalrule-patterns"></a>`patterns`  | [`[String!]`](#string) | Introduced in GitLab 19.4. Status: Experiment. CODEOWNERS patterns grouped into this rule. Returns null when the rule is not a grouped Code Owner rule. |
 | <a id="approvalrule-scanresultpolicies"></a>`scanResultPolicies` | [`[ApprovalScanResultPolicy!]`](#approvalscanresultpolicy) | List of scan result policies associated with the rule. |
 | <a id="approvalrule-section"></a>`section` | [`String`](#string) | Named section of the Code Owners file that the rule applies to. |
 | <a id="approvalrule-sourcerule"></a>`sourceRule` | [`ApprovalRule`](#approvalrule) | Source rule used to create the rule. |
@@ -33250,6 +33275,22 @@ Fields:
 | <a id="artifactregistrynpmpackage-scope"></a>`scope`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. npm scope of the package. Null for an unscoped package. |
 | <a id="artifactregistrynpmpackage-versionscount"></a>`versionsCount`  | [`Int!`](#int) | Introduced in GitLab 19.3. Status: Experiment. Number of versions of the package. Buffered, so it can lag the version list. |
 
+### `ArtifactRegistryRemoteSettings`
+
+Upstream configuration of a remote Artifact Registry repository.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryremotesettings-cachevalidityhours"></a>`cacheValidityHours`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. Revalidation window for cached artifacts, in hours. Zero means cached artifacts never revalidate. |
+| <a id="artifactregistryremotesettings-hascredentials"></a>`hasCredentials`  | [`Boolean`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Indicates upstream credentials are stored. Reported in place of the credentials themselves, which are write-only and exposed by no field. |
+| <a id="artifactregistryremotesettings-lasthealthcheckedat"></a>`lastHealthCheckedAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp of the most recent health probe of the upstream. Null until the first probe. |
+| <a id="artifactregistryremotesettings-lasthealthstatus"></a>`lastHealthStatus`  | [`ArtifactRegistryHealthStatus`](#artifactregistryhealthstatus) | Introduced in GitLab 19.4. Status: Experiment. Health verdict the most recent probe of the upstream stored. `UNKNOWN` before the first probe, and for a status this schema does not recognize. |
+| <a id="artifactregistryremotesettings-metadatacachevalidityhours"></a>`metadataCacheValidityHours`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. Revalidation window for cached metadata, in hours. Null for a format that caches no metadata, such as Docker and OCI. |
+| <a id="artifactregistryremotesettings-snapshotmetadataalwaysrevalidate"></a>`snapshotMetadataAlwaysRevalidate`  | [`Boolean`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Indicates snapshot metadata revalidates on every read instead of on the metadata window. Null for a format without snapshot metadata, so non-null only for Maven. |
+| <a id="artifactregistryremotesettings-url"></a>`url`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Base URL of the upstream registry, in the canonical form Artifact Registry stores. |
+
 ### `ArtifactRegistryRepository`
 
 Repository in Artifact Registry.
@@ -33267,7 +33308,7 @@ Fields:
 | <a id="artifactregistryrepository-kind"></a>`kind`  | [`ArtifactRegistryRepositoryKind!`](#artifactregistryrepositorykind) | Introduced in GitLab 19.3. Status: Experiment. How the repository sources its artifacts. |
 | <a id="artifactregistryrepository-lastupdatedat"></a>`lastUpdatedAt`  | [`Time`](#time) | Introduced in GitLab 19.3. Status: Experiment. Time the repository content last changed. Null when the content never changed. |
 | <a id="artifactregistryrepository-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.3. Status: Experiment. Name of the repository, unique within its namespace. |
-| <a id="artifactregistryrepository-settings"></a>`settings`  | [`JSON!`](#json) | Introduced in GitLab 19.3. Status: Experiment. Kind-specific configuration, discriminated by format and kind. Empty for hosted repositories. |
+| <a id="artifactregistryrepository-settings"></a>`settings`  | [`ArtifactRegistryRemoteSettings`](#artifactregistryremotesettings) | Introduced in GitLab 19.3. Status: Experiment. Upstream configuration Artifact Registry returned for the repository. Null when it returned none, so null on a hosted or virtual repository. |
 | <a id="artifactregistryrepository-sizebytes"></a>`sizeBytes`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.3. Status: Experiment. Storage the repository occupies, in bytes. Buffered, so it can lag. |
 | <a id="artifactregistryrepository-updatedby"></a>`updatedBy`  | [`UserCore`](#usercore) | Introduced in GitLab 19.4. Status: Experiment. User who last changed the repository. Null when the editor is unknown or no longer exists. |
 | <a id="artifactregistryrepository-visibility"></a>`visibility`  | [`ArtifactRegistryRepositoryVisibility!`](#artifactregistryrepositoryvisibility) | Introduced in GitLab 19.3. Status: Experiment. Who can read the repository. |
@@ -33291,7 +33332,7 @@ Fields:
 | <a id="artifactregistryrepositorydetails-lastupdatedat"></a>`lastUpdatedAt`  | [`Time`](#time) | Introduced in GitLab 19.3. Status: Experiment. Time the repository content last changed. Null when the content never changed. |
 | <a id="artifactregistryrepositorydetails-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.3. Status: Experiment. Name of the repository, unique within its namespace. |
 | <a id="artifactregistryrepositorydetails-packages"></a>`packages`  | [`ArtifactRegistryPackageConnection`](#artifactregistrypackageconnection) | Introduced in GitLab 19.3. Status: Experiment. Packages the repository holds, ordered by name. Can be selected once per operation, so one operation reads packages for one repository. Returns `null` for a repository holding images, for a repository that is gone, and when Artifact Registry rejects the read. |
-| <a id="artifactregistryrepositorydetails-settings"></a>`settings`  | [`JSON!`](#json) | Introduced in GitLab 19.3. Status: Experiment. Kind-specific configuration, discriminated by format and kind. Empty for hosted repositories. |
+| <a id="artifactregistryrepositorydetails-settings"></a>`settings`  | [`ArtifactRegistryRemoteSettings`](#artifactregistryremotesettings) | Introduced in GitLab 19.3. Status: Experiment. Upstream configuration Artifact Registry returned for the repository. Null when it returned none, so null on a hosted or virtual repository. |
 | <a id="artifactregistryrepositorydetails-sizebytes"></a>`sizeBytes`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.3. Status: Experiment. Storage the repository occupies, in bytes. Buffered, so it can lag. |
 | <a id="artifactregistryrepositorydetails-updatedby"></a>`updatedBy`  | [`UserCore`](#usercore) | Introduced in GitLab 19.4. Status: Experiment. User who last changed the repository. Null when the editor is unknown or no longer exists. |
 | <a id="artifactregistryrepositorydetails-visibility"></a>`visibility`  | [`ArtifactRegistryRepositoryVisibility!`](#artifactregistryrepositoryvisibility) | Introduced in GitLab 19.3. Status: Experiment. Who can read the repository. |
@@ -37721,6 +37762,7 @@ Fields:
 | <a id="currentuser-lastactivityon"></a>`lastActivityOn` | [`Date`](#date) | Date the user last performed any actions. |
 | <a id="currentuser-linkedin"></a>`linkedin` | [`String`](#string) | LinkedIn profile name of the user. |
 | <a id="currentuser-location"></a>`location` | [`String`](#string) | Location of the user. |
+| <a id="currentuser-mergerequestsavedviews"></a>`mergeRequestSavedViews`  | [`MergeRequestSavedViewConnection`](#mergerequestsavedviewconnection) | Introduced in GitLab 19.4. Status: Experiment. Saved views on the merge request dashboard for the current user. Returns an empty result if the `mr_dashboard_saved_views` feature flag is disabled. |
 | <a id="currentuser-name"></a>`name` | [`String!`](#string) | Human-readable name of the user. Returns `****` if the user is a project bot and the requester does not have permission to view the project. |
 | <a id="currentuser-namespace"></a>`namespace` | [`Namespace`](#namespace) | Personal namespace of the user. |
 | <a id="currentuser-namespacecommitemails"></a>`namespaceCommitEmails` | [`NamespaceCommitEmailConnection`](#namespacecommitemailconnection) | User's custom namespace commit emails. (see [Connections](#connections)) |
@@ -46976,6 +47018,8 @@ Fields:
 | <a id="mergerequest-duodependencybumpbreakingchangesavailable"></a>`duoDependencyBumpBreakingChangesAvailable`  | [`Boolean`](#boolean) | Introduced in GitLab 19.2. Status: Experiment. Indicates whether the GitLab Duo resolve dependency bump breaking changes flow can be triggered for the merge request. |
 | <a id="mergerequest-duoworkflows"></a>`duoWorkflows`  | [`DuoWorkflowConnection`](#duoworkflowconnection) | Introduced in GitLab 18.10. Status: Experiment. Duo Workflow sessions associated with the merge request. |
 | <a id="mergerequest-forceremovesourcebranch"></a>`forceRemoveSourceBranch` | [`Boolean`](#boolean) | Indicates if the project settings will lead to source branch deletion after merge. |
+| <a id="mergerequest-groupedapprovalsleft"></a>`groupedApprovalsLeft`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. Number of approvals left, counting Code Owner rules that share a section and approvers as a single rule. |
+| <a id="mergerequest-groupedapprovalsrequired"></a>`groupedApprovalsRequired`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. Number of approvals required, counting Code Owner rules that share a section and approvers as a single rule. |
 | <a id="mergerequest-hasci"></a>`hasCi` | [`Boolean!`](#boolean) | Indicates if the merge request has CI. |
 | <a id="mergerequest-hassecurityreports"></a>`hasSecurityReports` | [`Boolean!`](#boolean) | Indicates if the source branch has any security reports. |
 | <a id="mergerequest-headpipeline"></a>`headPipeline` | [`Pipeline`](#pipeline) | Pipeline running on the branch HEAD of the merge request. |
@@ -49239,6 +49283,30 @@ Arguments:
 | <a id="mergerequestreviewer-workspaces-includeactualstates"></a>`includeActualStates`  | [`[String!]`](#string) | Deprecated in GitLab 16.7. Use actual_states instead. |
 | <a id="mergerequestreviewer-workspaces-projectids"></a>`projectIds` | [`[ProjectID!]`](#projectid) | Filter workspaces by project GlobalIDs. |
 
+### `MergeRequestSavedView`
+
+Saved view on the merge request dashboard.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestsavedview-filters"></a>`filters` | [`JSON!`](#json) | Merge request filters stored in the saved view. |
+| <a id="mergerequestsavedview-id"></a>`id` | [`MergeRequestsSavedViewID!`](#mergerequestssavedviewid) | Global ID of the saved view. |
+| <a id="mergerequestsavedview-name"></a>`name` | [`String!`](#string) | Name of the saved view. |
+| <a id="mergerequestsavedview-userpermissions"></a>`userPermissions` | [`MergeRequestSavedViewPermissions!`](#mergerequestsavedviewpermissions) | Permissions for the current user on the resource. |
+
+### `MergeRequestSavedViewPermissions`
+
+Check permissions for the current user on a merge request saved view.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestsavedviewpermissions-deletesavedview"></a>`deleteSavedView` | [`Boolean!`](#boolean) | If `true`, the user can perform `delete_saved_view` on this resource. |
+| <a id="mergerequestsavedviewpermissions-updatesavedview"></a>`updateSavedView` | [`Boolean!`](#boolean) | If `true`, the user can perform `update_saved_view` on this resource. |
+
 ### `MergeRequestWorkItemRelation`
 
 A relation between a merge request and a work item.
@@ -50811,6 +50879,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="organization-cdenvironments-applicationid"></a>`applicationId` | [`CdApplicationID`](#cdapplicationid) | Filter environments to those where the application has services deployed. |
 | <a id="organization-cdenvironments-search"></a>`search` | [`String`](#string) | Search environments by name or description. |
 | <a id="organization-cdenvironments-tier"></a>`tier` | [`CdEnvironmentTier`](#cdenvironmenttier) | Filter environments by tier. |
 
@@ -52338,6 +52407,7 @@ Fields:
 | <a id="pipelinesaggregationresponsedimensions-ref"></a>`ref` | [`String`](#string) | Pipeline ref. |
 | <a id="pipelinesaggregationresponsedimensions-source"></a>`source` | [`String`](#string) | Pipeline source. |
 | <a id="pipelinesaggregationresponsedimensions-status"></a>`status` | [`String`](#string) | Pipeline status. |
+| <a id="pipelinesaggregationresponsedimensions-user"></a>`user` | [`UserCore`](#usercore) | User who triggered the pipeline. |
 
 #### Fields with arguments
 
@@ -63581,6 +63651,16 @@ The kind of an approval rule.
 | <a id="approvalruletype-regular"></a>`REGULAR` | A `regular` approval rule. |
 | <a id="approvalruletype-report_approver"></a>`REPORT_APPROVER` | A `report_approver` approval rule. |
 
+### `ArtifactRegistryHealthStatus`
+
+Stored health verdict for a remote Artifact Registry repository upstream.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="artifactregistryhealthstatus-healthy"></a>`HEALTHY` | Most recent probe reached the upstream. |
+| <a id="artifactregistryhealthstatus-unhealthy"></a>`UNHEALTHY` | Consecutive probe failures reached the threshold Artifact Registry sets. |
+| <a id="artifactregistryhealthstatus-unknown"></a>`UNKNOWN` | No health probe has recorded a result yet, or Artifact Registry reported a status this schema does not recognize. |
+
 ### `ArtifactRegistryRepositoryFormat`
 
 Package format an Artifact Registry repository holds.
@@ -70064,6 +70144,12 @@ An example `MergeRequestsClosingIssuesID` is: `"gid://gitlab/MergeRequestsClosin
 A `MergeRequestsExternalStatusCheckID` is a global ID. It is encoded as a string.
 
 An example `MergeRequestsExternalStatusCheckID` is: `"gid://gitlab/MergeRequests::ExternalStatusCheck/1"`.
+
+### `MergeRequestsSavedViewID`
+
+A `MergeRequestsSavedViewID` is a global ID. It is encoded as a string.
+
+An example `MergeRequestsSavedViewID` is: `"gid://gitlab/MergeRequests::SavedView/1"`.
 
 ### `MergeTrainsCarID`
 

@@ -1,5 +1,7 @@
 # Rate limits on note creation
 
+Set the per-user rate limit on note creation requests, and exclude specific users from the limit.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed
 
@@ -14,8 +16,8 @@ To change the note creation rate limit:
 1. In the upper-right corner, select **Admin**.
 1. In the left sidebar, select **Settings** > **Network**.
 1. Expand **Notes rate limit**.
-1. In the **Maximum requests per minute** box, enter the new value.
-1. Optional. In the **Users to exclude from the rate limit** box, list users allowed to exceed the limit.
+1. In the **Maximum requests per minute** text box, enter the new value.
+1. Optional. In the **Users to exclude from the rate limit** text box, list users allowed to exceed the limit.
 1. Select **Save changes**.
 
 This limit is:

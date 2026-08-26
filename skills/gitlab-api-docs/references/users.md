@@ -141,6 +141,7 @@ GET /users?without_project_bots=true
 - Offering: GitLab Self-Managed, GitLab Dedicated
 
 - The `email_reset_offered_at` field in the response was [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/197491) in GitLab 18.3.
+- The `provisioned_by_project_id` field in the response was [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248245) in GitLab 19.3.
 
 ```plaintext
 GET /users
@@ -209,6 +210,7 @@ Example response:
     "current_sign_in_ip": "196.165.1.102",
     "last_sign_in_ip": "172.127.2.22",
     "namespace_id": 1,
+    "provisioned_by_project_id": null,
     "created_by": null
   },
   {
@@ -247,6 +249,7 @@ Example response:
     "current_sign_in_ip": "10.165.1.102",
     "last_sign_in_ip": "172.127.2.22",
     "namespace_id": 2,
+    "provisioned_by_project_id": null,
     "created_by": null
   }
 ]
@@ -468,6 +471,7 @@ Example response:
   "trial": true,
   "sign_in_count": 1337,
   "namespace_id": 1,
+  "provisioned_by_project_id": null,
   "created_by": null
 }
 ```
@@ -664,6 +668,7 @@ Supported attributes:
   "current_sign_in_ip": "196.165.1.102",
   "last_sign_in_ip": "172.127.2.22",
   "namespace_id": 1,
+  "provisioned_by_project_id": null,
   "created_by": null,
   "note": null
 }

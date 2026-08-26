@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Go SDK
 
-Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/sdk/go/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/sdk/go/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Go SDK provides an OpenFeature-compatible server provider for Go applications. It evaluates flags over HTTP and does not support the Cloudflare Workers binding.
 
@@ -26,7 +26,7 @@ go get github.com/cloudflare/flagship/sdks/go
 
 ## Setup
 
-Configure the provider with your Flagship app ID, Cloudflare account ID, and an API token with Flagship Evaluate permission.
+Configure the provider with your Flagship app ID, Cloudflare account ID, and an [API token](https://developers.cloudflare.com/flagship/api-tokens/) with Flagship Evaluate or Flagship App Evaluate permission.
 
 ```go
 package main
@@ -138,5 +138,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/go/#page","headline":"Go SDK · Cloudflare Flagship docs","description":"Set up the Flagship OpenFeature provider to evaluate Flagship feature flags from Go server applications.","url":"https://developers.cloudflare.com/flagship/sdk/go/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/go/#page","headline":"Go SDK · Cloudflare Flagship docs","description":"Set up the Flagship OpenFeature provider to evaluate Flagship feature flags from Go server applications.","url":"https://developers.cloudflare.com/flagship/sdk/go/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

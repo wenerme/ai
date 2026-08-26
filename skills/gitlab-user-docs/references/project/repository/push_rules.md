@@ -8,7 +8,7 @@ Use push rules to control the content and format of Git commits your repository 
 Push rules are [`pre-receive` Git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks#:~:text=pre%2Dreceive,with%20the%20push.) you
 can enable in a user-friendly interface. Push rules give you more control over what
 can and can't be pushed to your repository. While GitLab offers
-[protected branches](branches/protected.md), you may need more specific rules, such as:
+[protected branches](branches/protected.md), you might need more specific rules, such as:
 
 - Evaluating the contents of a commit.
 - Confirming commit messages match expected formats.
@@ -164,7 +164,7 @@ Use these rules for your commit messages:
     The word boundary character (`\b`) prevents false negatives, because Git adds a
     newline character (`\n`) to the end of the commit message.
 
-  Commit messages created in GitLab UI set `\r\n` as a newline character.
+  Commit messages created in the GitLab UI set `\r\n` as a newline character.
   Use `(\r\n?|\n)` instead of `\n` in your regular expression to correctly match
   it.
 
@@ -338,7 +338,7 @@ These examples use common regex string boundary patterns:
     ^directory-name\/config\.yml$
     ```
 
-- In any location - This example prevents pushing any file named `install.exe`:
+- In any location, this example prevents pushing any file named `install.exe`:
 
   ```plaintext
   (^|\/)install\.exe$

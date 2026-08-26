@@ -58,7 +58,7 @@ User tracking enables you to specify an arbitrary string identifier for your end
 
 ## How It Works
 
-Include a `user` parameter in chat-completions requests with a stable identifier for your end-user. This can be a user ID, client-side hash, pseudonym, or another stable identifier. OpenRouter folds it into the hashed identity sent upstream and never forwards it raw.
+Include a `user` parameter in chat-completions or image-generation requests with a stable identifier for your end-user. This can be a user ID, client-side hash, pseudonym, or another stable identifier. OpenRouter folds it into the hashed identity sent upstream and never forwards it raw.
 
 ```json lines theme={null}
 {
@@ -158,7 +158,7 @@ MODEL: "~openai/gpt-latest"
 
 ## Per-User Abuse Isolation
 
-Send a stable per-end-user identifier with every request: `user` on chat completions, or `safety_identifier` on the Responses API. A client-side hash or pseudonym works — when a provider requires a user identity, OpenRouter folds it into the hashed identity sent upstream and never forwards the raw value. Requests that include neither field share a single account-level identity upstream, so a provider policy block triggered by one end-user can affect your whole account.
+Send a stable per-end-user identifier with every request: `user` on chat completions and image generation, or `safety_identifier` on the Responses API. A client-side hash or pseudonym works — when a provider requires a user identity, OpenRouter folds it into the hashed identity sent upstream and never forwards the raw value. Requests that include neither field share a single account-level identity upstream, so a provider policy block triggered by one end-user can affect your whole account.
 
 ## Best Practices
 

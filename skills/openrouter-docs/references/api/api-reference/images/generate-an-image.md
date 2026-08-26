@@ -387,6 +387,14 @@ components:
             (currently OpenAI). Non-streaming providers ignore this flag and
             return a buffered response.
           type: boolean
+        user:
+          description: >-
+            A stable identifier for your end-users. Used to help detect and
+            prevent abuse. Never sent to providers verbatim: for providers whose
+            data policy requires user IDs, it is folded into a hashed,
+            per-account upstream user identifier.
+          example: end-user-abc123
+          type: string
       required:
         - model
         - prompt
