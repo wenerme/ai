@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # PlanetScale Postgres & MySQL
 
-Last updated Jul 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/planetscale/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/planetscale/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create PlanetScale Postgres or MySQL databases with globally distributed Workers applications.
 
@@ -21,6 +21,49 @@ Cloudflare partners with [PlanetScale ↗](https://planetscale.com/) to provide 
 Get the best of both products, build for Workers global distribution and optimize for regional data access. Get started by creating a PlanetScale database in the Cloudflare dashboard.
 
 [Go to **Create a PlanetScale database** ↗](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive?modal=1&type=planetscale&step=1)
+
+## Create a database from the command line
+
+Note
+
+The `wrangler hyperdrive planetscale signature` command is experimental, and its interface may change.
+
+You can also create a Cloudflare-billed PlanetScale database from the command line with the [PlanetScale CLI ↗](https://planetscale.com/docs/reference/planetscale-cli) (`pscale`), using [Wrangler](https://developers.cloudflare.com/workers/wrangler/) to authorize the Cloudflare billing side of the request. This requires `pscale` v0.313.0 or newer.
+
+Generate the billing authorization:
+
+```sh
+npx wrangler hyperdrive planetscale signature
+```
+
+This prints a JSON payload:
+
+```json
+{
+	"account_id": "<ACCOUNT_ID>",
+	"timestamp": "<TIMESTAMP>",
+	"signature": "<SIGNATURE>"
+}
+```
+
+`pscale database create` accepts this payload through its `--cloudflare-billing` flag. Passing `@-` makes the PlanetScale CLI read it from standard input, which we recommend over passing the signature as a command line argument:
+
+```sh
+npx wrangler hyperdrive planetscale signature | \
+  pscale database create <DATABASE_NAME> \
+    --org <PLANETSCALE_ORG> \
+    --engine postgresql \
+    --cloudflare-billing @- \
+    --format json
+```
+
+`pscale database create` defaults to Vitess, so pass `--engine postgresql` for a Postgres database, and `--format json` is recommended when the output is consumed by an agent.
+
+Your PlanetScale credentials stay between you and `pscale`. Wrangler authorizes the Cloudflare billing side only.
+
+The signature is a cryptographically signed token that authorizes creating a database billed to your Cloudflare account. Treat it as a credential and do not share it.
+
+Refer to [PlanetScale's documentation ↗](https://planetscale.com/docs/reference/database#create-a-database) for the options `pscale database create` supports.
 
 ## Workers + PlanetScale
 
@@ -93,5 +136,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/hyperdrive/planetscale/#page","headline":"PlanetScale Postgres & MySQL · Cloudflare Hyperdrive docs","description":"Learn how Cloudflare partners with PlanetScale to provide managed Postgres and MySQL databases for Workers applications with Hyperdrive acceleration.","url":"https://developers.cloudflare.com/hyperdrive/planetscale/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/hyperdrive/planetscale/#page","headline":"PlanetScale Postgres & MySQL · Cloudflare Hyperdrive docs","description":"Learn how Cloudflare partners with PlanetScale to provide managed Postgres and MySQL databases for Workers applications with Hyperdrive acceleration.","url":"https://developers.cloudflare.com/hyperdrive/planetscale/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

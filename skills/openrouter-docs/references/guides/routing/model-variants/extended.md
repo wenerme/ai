@@ -6,18 +6,12 @@
 
 > Extended context windows with :extended
 
-The `:extended` variant provides access to model versions with extended context windows.
+<Warning>
+  **Deprecated**
 
-## Usage
+  The `:extended` variant is deprecated and no model on OpenRouter currently offers it. Requests to a `model:extended` slug have no endpoints to route to and will fail.
 
-Append `:extended` to any model ID:
+  Use the base model slug instead and pick a model whose standard context length fits your input. The [models browser](https://openrouter.ai/models) and the [models API](https://openrouter.ai/api/v1/models) list each model's `context_length`, and the static variants a model does support appear as their own entries there.
+</Warning>
 
-```json lines theme={null}
-{
-  "model": "openai/gpt-4o:extended"
-}
-```
-
-## Details
-
-Extended variants offer larger context windows than the standard model versions, allowing you to process longer inputs and maintain more conversation history.
+The `:extended` variant provided access to model versions with larger context windows than the standard version, appended to a model ID as `model:extended`. The models that offered it have since been retired, and no replacement variant exists.

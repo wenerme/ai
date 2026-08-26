@@ -4886,7 +4886,7 @@ Retrieves a model response with the given ID.
 
           The namespace of the custom tool being called.
 
-      - `CompactionTrigger object { type, agent }`
+      - `CompactionTrigger object { type, id, agent }`
 
         Compacts the current context. Must be the final input item.
 
@@ -4895,6 +4895,10 @@ Retrieves a model response with the given ID.
           The type of the item. Always `compaction_trigger`.
 
           - `"compaction_trigger"`
+
+        - `id: optional string or null`
+
+          The unique ID of this compaction trigger.
 
         - `agent: optional object { agent_name }  or null`
 

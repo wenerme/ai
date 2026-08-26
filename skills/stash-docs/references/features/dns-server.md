@@ -11,39 +11,36 @@ Stash 支持同时配置多个 DNS 服务器。在进行查询时，Stash 会并
 - 使用系统提供的 DNS：`system`
 - DNS over UDP：`8.8.8.8` 或 `udp://8.8.8.8`
 - DNS over TCP：`tcp://8.8.8.8`
-- [DNS over TLS](https://www.rfc-editor.org/rfc/rfc7858)：`tls://8.8.8.8:853` 或 `dot://8.8.8.8:853`
-- [DNS over HTTPS](https://www.rfc-editor.org/rfc/rfc8484)：`https://1.1.1.1/dns-query` 或 `doh://1.1.1.1/dns-query`
-- DNS over HTTP/3：`http3://1.1.1.1/dns-query` 或 `doh3://1.1.1.1/dns-query`
-- [DNS over QUIC](https://www.rfc-editor.org/rfc/rfc9250)：`quic://dns.adguard.com:853` 或 `doq://dns.adguard.com:853`
+- [DNS over TLS](https://www.rfc-editor.org/rfc/rfc7858)：`tls://8.8.8.8:853`
+- [DNS over HTTPS](https://www.rfc-editor.org/rfc/rfc8484)：`https://1.1.1.1/dns-query`
+- DNS over HTTP/3：`'https://1.1.1.1/dns-query#h3=true'`
+- [DNS over QUIC](https://www.rfc-editor.org/rfc/rfc9250)：`quic://dns.adguard.com:853`
 
-`default-nameserver` 将用于解析 DNS 服务的域名，仅支持填写 DNS 服务器的 IP 地址。
+Stash 会对 DNS 查询使用 LRU 算法进行本地缓存。当本地缓存过期时，Stash 会继续沿用缓存结果，并在后台静默更新记录，这会有效降低 DNS 缓存过期引发的请求延迟。
+
+### DNS over HTTP/3
+
+DNS over HTTP/3 使用 QUIC 传输 DoH 请求。它与普通 DNS over HTTPS 使用相同的 URL 格式，在末尾添加 `#h3=true` 即可指定使用 HTTP/3；该片段不会成为 DNS 查询路径的一部分。
 
 ```yaml
 dns:
-  # 以下填写的 DNS 服务器将用于解析 DNS 服务的域名
-  # 仅填写 DNS 服务器的 IP 地址
-  default-nameserver:
-    - 223.5.5.5
-    - 114.114.114.114
-  # 支持 UDP / TCP / DoT / DoH / DoQ 协议的 DNS 服务，可以指明具体的连接端口号。
-  # 所有 DNS 请求将直接发送到服务器，不经过任何代理。
-  # Stash 会使用最先获得的解析记录回复 DNS 请求
   nameserver:
-    # 不建议配置超过 2 个 DNS 服务器，会增加系统功耗
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
-    - quic://dns.adguard.com:853
-    - doq://test.dns.nextdns.io:853
-    - system # 使用 iOS 系统 DNS
-
-  # 跳过证书验证，解决部分兼容性问题 https://help.nextdns.io/t/g9hdkjz
-  skip-cert-verify: true
-
-  # DNS 查询跟随代理规则
-  follow-rule: false
+    - 'https://1.1.1.1/dns-query#h3=true'
 ```
 
-Stash 会对 DNS 查询使用 LRU 算法进行本地缓存。当本地缓存过期时，Stash 会继续沿用缓存结果，并在后台静默更新记录，这会有效降低 DNS 缓存过期引发的请求延迟。
+配置时必须用引号包裹完整地址，否则 YAML 会将 `#h3=true` 识别为注释。
+
+### 加密 DNS Bootstrap
+
+<VersionRequirement ios="3.6" mac="4.3" />
+
+`default-nameserver` 可以使用加密 DNS 解析其他 DNS 服务器的域名。除 `system` 外，服务器地址必须使用 IP。
+
+```yaml
+dns:
+  default-nameserver:
+    - 'https://1.1.1.1/dns-query#h3=true'
+```
 
 ## 代理服务器域名解析
 

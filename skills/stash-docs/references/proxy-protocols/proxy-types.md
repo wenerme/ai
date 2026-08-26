@@ -1,5 +1,5 @@
 ---
-description: "Stash 支持的代理协议类型完整列表，涵盖 TCP 与 UDP 代理，以及各协议的配置字段说明。"
+description: 'Stash 支持的代理协议类型完整列表，涵盖 TCP 与 UDP 代理，以及各协议的配置字段说明。'
 ---
 
 # 协议类型
@@ -282,19 +282,39 @@ type: snell
 server: server
 port: 443
 psk: yourpsk
-udp: true # 需要 v3 以上服务端
 version: 3
-# obfs-opts:
-# mode: http # 或 tls
-# host: bing.com
+obfs-opts:
+  mode: http
+  host: bing.com
 ```
 
-Snell UDP 需要 v3 版本以上的服务端支持。
+支持以下参数：
 
-支持的混淆模式（obfs-opts.mode）：
+- `server`：Snell 服务器地址。
+- `port`：Snell 服务器端口。
+- `psk`：预共享密钥，必须与服务端一致。
+- `version`：协议版本，支持 `1` 至 `5`，默认为 `1`。该值必须与服务端版本一致。
+- `obfs-opts`：可选的 simple-obfs 设置。`mode` 支持 `http` 和 `tls`；启用混淆但省略 `host` 时，默认使用 `bing.com`。
 
-- http
-- tls
+Snell v3 至 v5 自动支持 UDP 转发，UDP 数据通过 TCP 连接承载。
+
+### V4 与 V5
+
+<VersionRequirement ios="3.6" mac="4.3" />
+
+使用 Snell v4 或 v5 时，可以通过 `reuse` 复用连接：
+
+```yaml
+name: snell-v5
+type: snell
+server: server
+port: 443
+psk: yourpsk
+version: 5
+reuse: true
+```
+
+`reuse` 默认为 `false`，仅在 Snell v4 和 v5 中生效。
 
 ## Trojan
 
@@ -436,7 +456,7 @@ type: vless
 server: server
 port: 443
 uuid: d0529668-8835-11ec-a8a3-0242ac120002
-# flow: xtls-rprx-direct
+# flow: xtls-rprx-vision
 # skip-cert-verify: true
 # tls: true
 # client-fingerprint: chrome
@@ -444,6 +464,25 @@ uuid: d0529668-8835-11ec-a8a3-0242ac120002
 #   public-key:
 #   short-id:
 ```
+
+### VLESS Encryption
+
+<VersionRequirement ios="3.6" mac="4.3" />
+
+VLESS Encryption 使用 `mlkem768x25519plus` 为 VLESS 数据流增加独立的认证加密记录层。它不依赖底层 TLS，可以直接用于明文承载，也可以与 TLS、Reality 及现有承载网络组合使用。
+
+将服务端生成的完整 Encryption 值填写到 `encryption` 字段：
+
+```yaml
+name: vless-encryption
+type: vless
+server: server
+port: 443
+uuid: d0529668-8835-11ec-a8a3-0242ac120002
+encryption: 'mlkem768x25519plus.native.1rtt.<server-public-key>'
+```
+
+Encryption 值以 `mlkem768x25519plus` 开头，支持 `native`、`xorpub` 和 `random` 三种模式。服务端生成的值还可以包含握手填充参数及一个或多个 X25519、ML-KEM-768 密钥；使用时应保留服务端提供的完整内容。
 
 VLESS 支持以下承载网络，通过 `network` 指定：
 
@@ -553,12 +592,17 @@ xhttp-opts:
 
 `download-settings` 支持覆盖 `server`、`port`、`path`、`host`、`headers`、`tls`、`sni`、`alpn`、`skip-cert-verify`、`server-cert-fingerprint`、`client-fingerprint` 和 `reality-opts`。`stream-one` 模式使用同一条连接传输上下行流量，不能与 `download-settings` 同时使用。
 
-支持的 XTLS 模式（flow）：
+### XTLS Vision
 
-- `xtls-rprx-origin`
-- `xtls-rprx-direct`
-- `xtls-rprx-splice`
-- `xtls-rprx-vision`
+VLESS 支持在 TCP 承载上使用 `xtls-rprx-vision`：
+
+```yaml
+network: tcp
+flow: xtls-rprx-vision
+tls: true
+```
+
+`xtls-rprx-vision` 也可以与 VLESS Encryption 组合使用。此时 Encryption 记录层可以独立提供加密，无需同时启用 TLS。
 
 ## TUIC
 
@@ -707,7 +751,7 @@ Tailscale 节点可以直接作为一个 `type: tailscale` 代理加入 Stash。
 目前支持两种接入方式：
 
 - 填写 `auth-key`，由 Stash 自动完成首次接入。
-- 不填写 `auth-key`，在 Stash 的代理列表中打开对应节点菜单，进入 `Tailscale 认证` 页面显式触发交互认证。
+- 不填写 `auth-key`，在 Stash 的代理列表中打开对应节点菜单，进入 `Tailscale` 页面完成交互认证。
 
 ```yaml
 # 方式一：使用 auth-key 自动接入
@@ -716,52 +760,48 @@ type: tailscale
 auth-key: TAILSCALE_AUTH_KEY_EXAMPLE
 hostname: ts-main
 control-url: https://controlplane.tailscale.com
-ephemeral: false
 exit-node: exit-gateway.example.ts.net
+# auto-route-disabled: false
 ```
 
 支持以下参数：
 
-- `auth-key`：可选。Tailscale 预认证密钥。你可以在 Tailscale 管理后台生成，具体可参考官方文档 [Auth keys](https://tailscale.com/docs/features/access-control/auth-keys)。如果填写该字段，Stash 会按现有方式自动完成首次接入；如果不填写，也可以在 Stash 的 `Tailscale 认证` 页面里显式触发交互认证。如果你准备在多个设备上复用同一个 `auth-key`，生成时请开启 `Reusable`，不要使用 `One-off`，否则其他设备将无法继续使用这个密钥完成接入。
-- `hostname`：节点机器名。只能使用小写字母、数字和 `-`。如果不填写，Stash 会使用 Stash Device ID 作为 `hostname`。
-- `control-url`：自定义 control plane 地址。默认使用官方 control plane，一般无需填写。
-- `ephemeral`：是否使用临时节点。根据 Tailscale 官方文档 [Ephemeral nodes](https://tailscale.com/docs/features/ephemeral-nodes)，这类节点会在离线后一段时间自动从网络中移除，并在下次创建时获得新的 IP 地址。启用该选项并希望自动接入时，请使用 ephemeral auth key。
-- `exit-node`：可选，指定优先使用的 exit node。支持填写 exit node 的 Stable ID、MagicDNS/FQDN、hostname 或 Tailscale IP。若填写的节点当前不可用，Stash 会回退到当前可用的 exit node 中自动选择一个；若留空或省略，也会采用同样的自动选择逻辑。
+- `auth-key`：可选。用于首次接入 Tailnet 的预认证密钥，可以在 Tailscale 管理后台生成，具体可参考官方文档 [Auth keys](https://tailscale.com/docs/features/access-control/auth-keys)。填写后，Stash 会自动完成首次接入；省略时，Stash 会继续使用已保存的节点身份，尚未认证的节点也可以通过 `Tailscale` 页面完成登录。如果多个节点需要使用同一个密钥，请在生成密钥时开启 `Reusable`。
+- `hostname`：可选。向控制服务器报告的节点名称。省略时，Stash 会使用系统报告的设备主机名；如果系统未提供主机名，则由控制服务器命名。
+- `control-url`：可选。Tailscale 控制服务器地址。省略时使用 Tailscale 官方控制服务器。切换地址后，Stash 会使用新控制服务器对应的独立节点身份，首次接入时需要重新认证。
+- `exit-node`：可选。启动时优先使用的出口节点，支持填写 Stable ID、MagicDNS/FQDN、hostname 或 Tailscale IP。省略时，Stash 会从当前在线且可作为出口节点的 Peer 中自动选择；指定的节点不可用或无法唯一匹配时，也会回退到自动选择。在 `Tailscale` 页面作出的选择会持久保存并优先于此参数，恢复默认选择后才会重新使用配置值或自动选择。
+- `auto-route-disabled`：可选。设为 `true` 时关闭自动 Tailnet 路由；默认值为 `false`，Stash 会自动将当前 Tailnet 的 MagicDNS 后缀和 Peer 地址路由到该节点。关闭后仍可通过自己的规则将流量交给该节点。
 
 如果你选择不填写 `auth-key`，推荐的使用流程如下：
 
 1. 在 Stash 中导入或保存该 `type: tailscale` 节点配置。
 2. 打开代理列表，找到对应 Tailscale 节点。
-3. 打开节点菜单，进入 `Tailscale 认证` 页面。
+3. 打开节点菜单，进入 `Tailscale` 页面。
 4. 点击开始认证，打开授权页面完成登录。
 5. 返回 Stash 后等待状态刷新；认证完成后，该节点即可正常承载流量。
 
 如果该节点已经完成过认证，通常不需要再次填写 `auth-key` 或重新完成认证。
 
-和其他代理协议一样，`tailscale` 只是一个可选代理节点。只有当你通过规则、策略组或其他路由方式把流量指向这个节点时，对应流量才会走 Tailscale。
+### 自动 Tailnet 路由
 
-你可以直接把流量路由到 Tailscale 网络中的目标：
+<VersionRequirement ios="3.6" mac="4.3" />
+
+Tailscale 节点默认会自动路由其所属 Tailnet。节点运行后，Stash 会将以下目标交给对应的 `tailscale` 代理：
+
+- 当前 Tailnet 的 MagicDNS 域名后缀。
+- Tailnet 中各个 Peer 的 Tailscale IPv4 和 IPv6 地址。
+
+自动路由会随 Tailnet 的节点信息更新，离线 Peer 的地址也会继续归属原 Tailnet。它会优先于配置文件中的 `rules` 进行匹配，保证这些目标由其所属 Tailnet 处理。因此，访问同一 Tailnet 内的域名或节点地址时，无需再为每个目标编写规则。
+
+如果你希望完全使用自己的规则控制路由，可以在对应节点上关闭自动路由：
 
 ```yaml
 proxies:
   - name: ts-main
     type: tailscale
-    # 二选一：填写 auth-key 自动接入，或先在认证页面完成一次 Tailscale 认证
     auth-key: TAILSCALE_AUTH_KEY_EXAMPLE
-
-rules:
-  - DOMAIN,app.example.ts.net,ts-main
-  - IP-CIDR,100.64.0.0/10,ts-main,no-resolve
+    auto-route-disabled: true
 ```
-
-常见注意事项：
-
-- 如果既没有 `auth-key`，也尚未完成交互认证，则该节点在真正承载流量前不可用。
-- 如果节点已经完成过认证，通常不需要再次认证。
-- 根据 Tailscale 的限制，`auth-key` 受 Key Expiry 机制影响。请在 Tailscale 后台的 Machines 页面为对应的 Stash 设备开启 `Expiry disabled`，避免后续节点过期失效。
-- 如果省略 `exit-node`，Stash 会自动选择当前可用的 exit node；如果当前没有可用 exit node，则保持不选。
-- 如果 `exit-node` 指向的节点当前不可用或无法唯一匹配，Stash 会回退到自动选择，而不是固定失败。
-- 如果目标设备未授权、待机器审批，或控制平面要求登录，请先在 `Tailscale 认证` 页面完成对应认证流程。
 
 ## SSH
 

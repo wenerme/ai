@@ -11,39 +11,36 @@ Stash supports configuring multiple DNS servers simultaneously. When making quer
 - Use the system-provided DNS: `system`
 - DNS over UDP: `8.8.8.8` or `udp://8.8.8.8`
 - DNS over TCP: `tcp://8.8.8.8`
-- [DNS over TLS](https://www.rfc-editor.org/rfc/rfc7858): `tls://8.8.8.8:853` or `dot://8.8.8.8:853`
-- [DNS over HTTPS](https://www.rfc-editor.org/rfc/rfc8484): `https://1.1.1.1/dns-query` or `doh://1.1.1.1/dns-query`
-- DNS over HTTP/3: `http3://1.1.1.1/dns-query` or `doh3://1.1.1.1/dns-query`
-- [DNS over QUIC](https://www.rfc-editor.org/rfc/rfc9250): `quic://dns.adguard.com:853` or `doq://dns.adguard.com:853`
+- [DNS over TLS](https://www.rfc-editor.org/rfc/rfc7858): `tls://8.8.8.8:853`
+- [DNS over HTTPS](https://www.rfc-editor.org/rfc/rfc8484): `https://1.1.1.1/dns-query`
+- DNS over HTTP/3: `'https://1.1.1.1/dns-query#h3=true'`
+- [DNS over QUIC](https://www.rfc-editor.org/rfc/rfc9250): `quic://dns.adguard.com:853`
 
-`default-nameserver` will be used to resolve domain names for DNS services, and only IP addresses of DNS servers are supported.
+Stash uses the LRU algorithm for local caching of DNS queries. When the local cache expires, Stash continues using the cached result while silently refreshing the record in the background, reducing latency caused by DNS cache expiration.
+
+### DNS over HTTP/3
+
+DNS over HTTP/3 carries DoH requests over QUIC. It uses the same URL format as regular DNS over HTTPS; append `#h3=true` to select HTTP/3. This fragment does not become part of the DNS query path.
 
 ```yaml
 dns:
-  # The DNS servers listed below will be used to resolve domain names for DNS services
-  # Only fill in the IP addresses of DNS servers
-  default-nameserver:
-    - 223.5.5.5
-    - 114.114.114.114
-  # DNS services supporting UDP / TCP / DoT / DoH / DoQ protocols, with specific connection port numbers if needed.
-  # All DNS requests will be sent directly to the servers without going through any proxies.
-  # Stash will reply to DNS requests with the first obtained resolution record
   nameserver:
-    # It is not recommended to configure more than 2 DNS servers as it may increase system power consumption
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
-    - quic://dns.adguard.com:853
-    - doq://test.dns.nextdns.io:853
-    - system # Use iOS system DNS
-
-  # Skip certificate verification to resolve some compatibility issues https://help.nextdns.io/t/g9hdkjz
-  skip-cert-verify: true
-
-  # DNS queries follow proxy rules
-  follow-rule: false
+    - 'https://1.1.1.1/dns-query#h3=true'
 ```
 
-Stash uses the LRU algorithm for local caching of DNS queries. When the local cache expires, Stash will continue to use the cached result and silently update the records in the background, effectively reducing the request delay caused by DNS cache expiration.
+The complete address must be quoted; otherwise, YAML treats `#h3=true` as a comment.
+
+### Encrypted DNS bootstrap
+
+<VersionRequirement ios="3.6" mac="4.3" />
+
+`default-nameserver` can use encrypted DNS to resolve the hostnames of other DNS servers. Except for `system`, the server address must use an IP.
+
+```yaml
+dns:
+  default-nameserver:
+    - 'https://1.1.1.1/dns-query#h3=true'
+```
 
 ## Proxy Server Domain Resolution
 

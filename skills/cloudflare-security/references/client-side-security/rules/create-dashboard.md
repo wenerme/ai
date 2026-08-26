@@ -30,6 +30,7 @@ Only available to customers with Client-Side Security Advanced.
   Note
   Cloudflare provides suggestions for **Default**, **Scripts**, and **Connections** directives. For the **Default** directive, suggestions are based on monitored scripts and connections resources.
 6. Under **Then take action**, select the desired action:
+
   * _Allow_: Enforces the CSP directives configured in the rule, blocking any other resources from being loaded on your website, and logging any [rule violations](https://developers.cloudflare.com/client-side-security/rules/violations/).
   * _Log_: Logs any content security rule violations without blocking any resources not covered by the rule.
 7. To save and deploy your rule, select **Deploy**. If you are not ready to deploy your rule, select **Save as Draft**.

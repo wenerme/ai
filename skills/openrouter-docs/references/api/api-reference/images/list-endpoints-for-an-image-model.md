@@ -381,6 +381,7 @@ components:
           type: number
         unit:
           enum:
+            - request
             - image
             - megapixel
             - token

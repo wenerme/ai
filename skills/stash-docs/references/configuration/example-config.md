@@ -1,5 +1,5 @@
 ---
-description: "完整的 Stash YAML 配置文件样例，逐段说明各字段的作用与写法，可直接作为编写自有配置的起点。"
+description: '完整的 Stash YAML 配置文件样例，逐段说明各字段的作用与写法，可直接作为编写自有配置的起点。'
 ---
 
 # 配置样例
@@ -83,13 +83,11 @@ hosts:
 
 # DNS 服务器配置
 dns:
-  # 以下填写的 DNS 服务器将会被用来解析 DNS 服务的域名
-  # 仅填写 DNS 服务器的 IP 地址
+  # 用于解析其他 DNS 服务器的域名；除 system 外，服务器地址必须使用 IP
   default-nameserver:
-    - 223.5.5.5
-    - 114.114.114.114
+    - 'https://1.1.1.1/dns-query#h3=true' # DNS over HTTP/3
     - system # 使用 iOS 系统 DNS
-  # 支持 UDP / TCP / DoT / DoH 协议的 DNS 服务，可以指明具体的连接端口号。
+  # 支持 UDP / TCP / DoT / DoH / DoH3 / DoQ 协议的 DNS 服务，可以指明具体的连接端口号。
   # 所有 DNS 请求将会直接发送到服务器，不经过任何代理。
   # Stash 会使用最先获得的解析记录回复 DNS 请求
   nameserver:
@@ -214,16 +212,14 @@ proxies:
     auth-key: TAILSCALE_AUTH_KEY_EXAMPLE
     hostname: ts-main
     control-url: https://controlplane.tailscale.com
-    ephemeral: false
     exit-node: exit-gateway.example.ts.net # 可选，留空或省略时自动选择可用 exit node
 
   # tailscale（不填写 auth-key，通过认证页面完成首次认证）
   - name: 'ts-main-interactive'
     type: tailscale
-    # 省略 auth-key 后，请在 Stash 的节点菜单中打开 Tailscale 认证页面完成登录
+    # 省略 auth-key 后，请在 Stash 的节点菜单中打开 Tailscale 页面完成登录
     hostname: ts-main-interactive
     control-url: https://controlplane.tailscale.com
-    ephemeral: false
     exit-node: exit-gateway.example.ts.net # 可选，留空或省略时自动选择可用 exit node
 
   # socks5
@@ -258,7 +254,8 @@ proxies:
     benchmark-url: http://www.apple.com
     benchmark-timeout: 5
     psk: yourpsk
-    version: 3
+    version: 5
+    reuse: true
     obfs-opts:
       mode: http # 或 tls
       host: bing.com

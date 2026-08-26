@@ -84,7 +84,7 @@ Employees who use coding agent CLIs can run them through [Ori Harness](/docs/gui
 curl -fsSL https://openrouter.ai/labs/ori/install.sh | bash
 ```
 
-Then sign in with OAuth on your company OpenRouter organization, and there are no API keys to distribute. Employees can run `ori claude`, `ori codex`, `ori hermes`, or `ori opencode`; your organization's allowlists, budgets, and workspace permissions apply to every agent, with usage on one bill.
+Then sign in with OAuth on your company OpenRouter organization, and there are no API keys to distribute. Employees can run `ori claude`, `ori codex`, `ori hermes`, or `ori opencode`, among others. This is not the full list, see [Bring your own agent](/docs/guides/ori/harness#bring-your-own-agent) for every supported harness. Your organization's allowlists, budgets, and workspace permissions apply to every agent, with usage on one bill.
 
 ### Zero Data Retention (ZDR)
 

@@ -92,6 +92,18 @@ Benchmark results are public:
 
 OpenRouter has measured improvements in [tau-bench](https://github.com/sierra-research/tau-bench) scores and tool-calling success rates on tool-calling requests routed through Auto Exacto. See the AutoExacto Benchmarks card on each enrolled model page for per-endpoint numbers.
 
+## Interaction with Prompt Caching
+
+Auto Exacto reorders providers on every tool-calling request, which can conflict with the sticky routing used by [prompt caching](/docs/guides/best-practices/prompt-caching). Sticky routing pins subsequent requests to the same provider endpoint to keep KV caches warm, while Auto Exacto may deprioritize that pinned provider mid-session when another endpoint's throughput or tool-calling success rate improves. In tool-calling agent loops, this can cause cache misses mid-conversation.
+
+**When to opt out of Auto Exacto:**
+
+If your agent loop sends large tool definitions on every turn and cache hit rate is your primary concern, disable Auto Exacto by setting `sort: "price"` in the `provider` object or using the `:floor` model variant. Without Auto Exacto, sticky routing keeps the same provider across turns without being overridden by performance reordering.
+
+**When both matter:**
+
+If you need Auto Exacto's provider optimization *and* warm caches, use [Tool Search](/docs/guides/features/server-tools/tool-search) to defer the bulk of your tool definitions with `defer_loading: true`. A smaller cached prefix means a cold-start collision is far less expensive, making the interaction between Exacto and caching tolerable.
+
 ## Opting out
 
 Without Auto Exacto, OpenRouter's default routing is primarily [price-weighted](/docs/guides/routing/provider-selection#price-based-load-balancing-default-strategy). Requests are load balanced across providers with a strong preference for lower cost. Auto Exacto changes this for tool-calling requests by reordering providers based on quality signals instead of price.

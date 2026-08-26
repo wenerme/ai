@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Headers
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/configuration/headers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/configuration/headers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Custom headers
 
@@ -56,13 +56,13 @@ https://myproject.pages.dev/*
 
 An incoming request which matches multiple rules' URL patterns will inherit all rules' headers. Using the previous `_headers` file, the following requests will have the following headers applied:
 
-| Request URL                                   | Headers                                                                                                  |
-| --------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| https://custom.domain/secure/page             | X-Frame-Options: DENY X-Content-Type-Options: nosniff Referrer-Policy: no-referrer                       |
-| https://custom.domain/static/image.jpg        | Access-Control-Allow-Origin: \* X-Robots-Tag: nosnippet                                                  |
-| https://myproject.pages.dev/home              | X-Robots-Tag: noindex                                                                                    |
-| https://myproject.pages.dev/secure/page       | X-Frame-Options: DENY X-Content-Type-Options: nosniff Referrer-Policy: no-referrer X-Robots-Tag: noindex |
-| https://myproject.pages.dev/static/styles.css | Access-Control-Allow-Origin: \* X-Robots-Tag: nosnippet, noindex                                         |
+| Request URL                                                                                      | Headers                                                                                                  |
+| ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| https://custom.domain/secure/page                                                                | X-Frame-Options: DENY X-Content-Type-Options: nosniff Referrer-Policy: no-referrer                       |
+| https://custom.domain/static/image.jpg                                                           | Access-Control-Allow-Origin: \* X-Robots-Tag: nosnippet                                                  |
+| [https://myproject.pages.dev/home ↗](https://myproject.pages.dev/home)                           | X-Robots-Tag: noindex                                                                                    |
+| [https://myproject.pages.dev/secure/page ↗](https://myproject.pages.dev/secure/page)             | X-Frame-Options: DENY X-Content-Type-Options: nosniff Referrer-Policy: no-referrer X-Robots-Tag: noindex |
+| [https://myproject.pages.dev/static/styles.css ↗](https://myproject.pages.dev/static/styles.css) | Access-Control-Allow-Origin: \* X-Robots-Tag: nosnippet, noindex                                         |
 
 You may define up to 100 header rules. Each line in the `_headers` file has a 2,000 character limit. The entire line, including spacing, header name, and value, counts towards this limit.
 
@@ -112,7 +112,7 @@ To enable other domains to fetch every static asset from your Pages project, the
   Access-Control-Allow-Origin: *
 ```
 
-This applies the \`Access-Control-Allow-Origin\` header to any incoming URL. To be more restrictive, you can define a URL pattern that applies to a `*.pages.dev` subdomain, which then only allows access from its `staging` branch's subdomain:
+This applies the `Access-Control-Allow-Origin` header to any incoming URL. To be more restrictive, you can define a URL pattern that applies to a `*.pages.dev` subdomain, which then only allows access from its `staging` branch's subdomain:
 
 ```txt
 https://:project.pages.dev/*
@@ -123,7 +123,7 @@ https://:project.pages.dev/*
 
 [Google ↗](https://developers.google.com/search/docs/advanced/robots/robots%5Fmeta%5Ftag#directives) and other search engines often support the `X-Robots-Tag` header to instruct its crawlers how your website should be indexed.
 
-For example, to prevent your `\*.pages.dev` and `\*.\*.pages.dev` URLs from being indexed, add the following to your `_headers` file:
+For example, to prevent your `*.pages.dev` and `*.*.pages.dev` URLs from being indexed, add the following to your `_headers` file:
 
 ```txt
 https://:project.pages.dev/*
@@ -176,5 +176,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/headers/#page","headline":"Headers · Cloudflare Pages docs","description":"Set custom HTTP response headers for your Cloudflare Pages site using a \\_headers file.","url":"https://developers.cloudflare.com/pages/configuration/headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/headers/#page","headline":"Headers · Cloudflare Pages docs","description":"Set custom HTTP response headers for your Cloudflare Pages site using a \\_headers file.","url":"https://developers.cloudflare.com/pages/configuration/headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

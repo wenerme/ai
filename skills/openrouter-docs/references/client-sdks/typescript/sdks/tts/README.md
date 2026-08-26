@@ -2,7 +2,7 @@
 > Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Tts
+# TTS
 
 > Text-to-speech endpoints
 
@@ -104,6 +104,7 @@ run();
 | errors.UnauthorizedResponseError       | 401         | application/json |
 | errors.PaymentRequiredResponseError    | 402         | application/json |
 | errors.NotFoundResponseError           | 404         | application/json |
+| errors.PayloadTooLargeResponseError    | 413         | application/json |
 | errors.TooManyRequestsResponseError    | 429         | application/json |
 | errors.InternalServerResponseError     | 500         | application/json |
 | errors.BadGatewayResponseError         | 502         | application/json |

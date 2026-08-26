@@ -15,7 +15,7 @@ info:
   title: GitLab REST API
   description: GitLab REST API used to interact with a GitLab installation.
   termsOfService: https://handbook.gitlab.com/handbook/legal/api-terms/
-  version: v4
+  version: '19.3'
   license:
     name: CC BY-SA 4.0
     url: https://gitlab.com/gitlab-org/gitlab/-/blob/master/LICENSE
@@ -143,6 +143,8 @@ tags:
   x-displayName: Audit events
   externalDocs:
     url: https://docs.gitlab.com/api/audit_events/
+- name: Authn
+  description: Operations related to authn.
 - name: Avatars
   description: Use this API to retrieve and upload avatars for [users](https://docs.gitlab.com/user/profile/),
     [groups](https://docs.gitlab.com/user/group/), and [projects](https://docs.gitlab.com/user/project/).
@@ -2151,11 +2153,11 @@ paths:
         in: path
         example: 1
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_af2d93c7f7ea"
+              "$ref": "#/components/schemas/RequestBody_2d9be0e2518e"
   "/api/v4/jobs/{id}/sbom_scans/authorize":
     post:
       operationId: postApiV4JobsIdSbomScansAuthorize
@@ -3495,6 +3497,8 @@ paths:
           description: OK
         '401':
           description: Unauthorized
+        '403':
+          description: Forbidden
         '404':
           description: Not found
         '429':
@@ -20189,6 +20193,42 @@ paths:
           nullable: true
         in: query
   "/api/v4/projects/{id}/service_accounts/{user_id}":
+    get:
+      operationId: getApiV4ProjectsIdServiceAccountsUserId
+      summary: Get a single project service account
+      description: Gets a specified service account in a specified project.
+      tags:
+      - Service accounts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesServiceAccount"
+        '400':
+          description: 400 Bad request
+        '401':
+          description: 401 Unauthorized
+        '403':
+          description: 403 Forbidden
+        '404':
+          description: 404 User not found
+      parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the project
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      - name: user_id
+        required: true
+        description: The ID of the service account
+        schema:
+          type: integer
+        in: path
     delete:
       operationId: deleteApiV4ProjectsIdServiceAccountsUserId
       summary: Delete a project service account
@@ -23087,6 +23127,42 @@ paths:
           nullable: true
         in: query
   "/api/v4/groups/{id}/service_accounts/{user_id}":
+    get:
+      operationId: getApiV4GroupsIdServiceAccountsUserId
+      summary: Get a single group service account
+      description: Gets a specified service account in a specified group.
+      tags:
+      - Service accounts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesServiceAccount"
+        '400':
+          description: 400 Bad request
+        '401':
+          description: 401 Unauthorized
+        '403':
+          description: 403 Forbidden
+        '404':
+          description: 404 User not found
+      parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the group
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+      - name: user_id
+        required: true
+        description: The ID of the service account
+        schema:
+          type: integer
+        in: path
     delete:
       operationId: deleteApiV4GroupsIdServiceAccountsUserId
       summary: Delete a group service account
@@ -31722,6 +31798,78 @@ paths:
         in: query
         example: 1000
       x-gitlab-lifecycle: experiment
+  "/api/v4/projects/{id}/repository/diff_stats":
+    get:
+      operationId: getApiV4ProjectsIdRepositoryDiffStats
+      summary: Get diff statistics between two commits
+      description: Returns the number of added and deleted lines for every file that
+        differs between two refs.
+      tags:
+      - Repositories
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesDiffStat"
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '429':
+          description: Too many requests
+      parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the project
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      - name: from
+        required: true
+        description: The commit SHA or branch/tag to compare from
+        schema:
+          type: string
+          nullable: true
+          maxLength: 255
+        in: query
+        example: main
+      - name: to
+        required: true
+        description: The commit SHA or branch/tag to compare to
+        schema:
+          type: string
+          nullable: true
+          maxLength: 255
+        in: query
+        example: feature
+      - name: page
+        required: false
+        description: Current page number
+        schema:
+          type: integer
+          default: 1
+          nullable: true
+        in: query
+        example: 1
+      - name: per_page
+        required: false
+        description: Number of items per page
+        schema:
+          type: integer
+          default: 20
+          nullable: true
+        in: query
+        example: 20
+      x-gitlab-lifecycle: beta
   "/api/v4/projects/{id}/repository/changelog":
     get:
       operationId: getApiV4ProjectsIdRepositoryChangelog
@@ -40213,7 +40361,8 @@ paths:
       summary: Create an organization
       description: Creates an organization. This feature was introduced in GitLab
         17.5. This feature is behind the `allow_organization_creation` feature flag.
-        In GitLab 18.3, the feature flag changed to `organization_switching`.
+        In GitLab 18.3, the feature flag changed to `organization_switching`. In GitLab
+        19.4, the feature flag changed to `org_stage_experimental`.
       tags:
       - Organizations
       responses:
@@ -76346,6 +76495,23 @@ paths:
           type: integer
           nullable: true
         in: query
+  "/api/v4/iam/userinfo":
+    get:
+      operationId: getApiV4IamUserinfo
+      summary: Return the OIDC ID-token claims for the caller identified by an IAM
+        OAuth token
+      description: Authenticates exclusively via an IAM-issued OAuth JWT and returns
+        the subset of OIDC claims documented as "Included in ID Token" in the OpenID
+        Connect provider docs
+      tags:
+      - Authn
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
   "/api/v4/applications":
     post:
       operationId: postApiV4Applications
@@ -78856,8 +79022,7 @@ components:
         malware:
           type: boolean
           description: 'Malware status: true if a GLAM identifier is present, false
-            if the SSCS add-on is active but none found, null if the SSCS add-on is
-            inactive.'
+            otherwise. Omitted when malware detection is not enabled for the project.'
     APIEntitiesProjectAlias:
       type: object
       properties:
@@ -88928,6 +89093,21 @@ components:
         ahead:
           type: integer
           example: 5
+    APIEntitiesDiffStat:
+      type: object
+      properties:
+        path:
+          type: string
+          example: app/models/user.rb
+        old_path:
+          type: string
+          example: app/models/user.rb
+        additions:
+          type: integer
+          example: 10
+        deletions:
+          type: integer
+          example: 3
     APIEntitiesChangelog:
       type: object
       properties:
@@ -92360,6 +92540,8 @@ components:
           "$ref": "#/components/schemas/APIEntitiesUserBasic"
         expires_at:
           type: string
+        two_factor_enabled:
+          type: boolean
         group_saml_identity:
           "$ref": "#/components/schemas/APIEntitiesIdentity"
         group_scim_identity:
@@ -96089,15 +96271,13 @@ components:
       required:
       - started_on
       - expires_on
-    RequestBody_af2d93c7f7ea:
+    RequestBody_2d9be0e2518e:
       type: object
       properties:
         topic:
           type: string
-          enum:
-          - com.gitlab.cd.deployment
           description: The event topic
-          minLength: 1
+          nullable: true
         type:
           type: string
           description: The event type
@@ -96143,10 +96323,32 @@ components:
               nullable: true
               maxLength: 2000
           nullable: true
-      required:
-      - topic
-      - type
-      - data
+        value:
+          type: object
+          description: AutoFlow Value (protojson), decoded into the same topic/type/data
+            shape as `data` above
+          nullable: true
+        channel_tokens:
+          type: array
+          description: AutoFlow channels opened alongside this event, for posting
+            a value back into them later
+          items:
+            type: object
+            properties:
+              channel_name:
+                type: string
+                description: Name of the AutoFlow channel
+                nullable: true
+                maxLength: 255
+              token:
+                type: string
+                description: Token used to post a value into the channel
+                nullable: true
+                maxLength: 4096
+            required:
+            - channel_name
+            - token
+          nullable: true
     RequestBody_c172efdc6039:
       type: object
       properties:

@@ -877,7 +877,11 @@ components:
           example: true
           type: boolean
         max_completion_tokens:
-          description: Maximum completion tokens from the top provider
+          description: >-
+            Maximum completion tokens from the top provider. Input and output
+            tokens share the context window, so the effective maximum output for
+            a request is further limited by the context remaining after input
+            tokens.
           example: 4096
           type:
             - integer

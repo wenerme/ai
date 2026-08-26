@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Mutual TLS
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Mutual TLS (mTLS) authentication ↗](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) requires both the client and the server to present certificates during the TLS handshake. In the Cloudflare Access implementation, the CA you upload is used to verify the client certificate (server certificate verification is handled by standard TLS). Access mTLS serves two purposes:
 
@@ -62,25 +62,25 @@ If the client certificate is directly signed by the root CA, you only need to up
 -----END CERTIFICATE-----
 ```
 Do not include any SSL/TLS server certificates; Access only uses the CA chain to verify the connection between the user's device and Cloudflare.
-1. In **Associated hostnames**, enter the fully-qualified domain names (FQDN) that will use this certificate.
+5. In **Associated hostnames**, enter the fully-qualified domain names (FQDN) that will use this certificate.
 These FQDNs will be the hostnames used for the resources being protected in the [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/). You must associate the Root CA with the FQDN that the application being protected uses.
-2. Save the policy.
-3. Go to **Access controls** \> **Policies**.
-4. [Create an Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/#create-a-policy) using one of the following [selectors](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors):
+6. Save the policy.
+7. Go to **Access controls** \> **Policies**.
+8. [Create an Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/#create-a-policy) using one of the following [selectors](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors):
 
   * **Valid Certificate**: Any client certificate that can authenticate with the Root CA will be allowed to proceed.
   * **Common Name**: Only client certificates with a specific common name will be allowed to proceed.
-5. If this is for a client who does not need to log in through an IdP, set the policy **Action** to _Service Auth_.
+9. If this is for a client who does not need to log in through an IdP, set the policy **Action** to _Service Auth_.
 
 **Example mTLS policy**
 
 | Action       | Rule type | Selector    | Value    |
 | ------------ | --------- | ----------- | -------- |
 | Service Auth | Include   | Common Name | John Doe |
-6. Save the policy, then go to **Access controls** \> **Applications**.
-7. Select the application you would like to enforce mTLS on and select **Configure**. The application must be included in the **Associated hostnames** list from Step 5.
-8. In the **Policies** tab, add your mTLS policy.
-9. Save the application.
+10. Save the policy, then go to **Access controls** \> **Applications**.
+11. Select the application you would like to enforce mTLS on and select **Configure**. The application must be included in the **Associated hostnames** list from Step 5.
+12. In the **Policies** tab, add your mTLS policy.
+13. Save the application.
 
 You can now authenticate to the application using a client certificate. For instructions on how to present a client certificate, refer to [Test mTLS](#test-mtls).
 
@@ -529,5 +529,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#page","headline":"Mutual TLS · Cloudflare One docs","description":"Mutual TLS in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#page","headline":"Mutual TLS · Cloudflare One docs","description":"Mutual TLS in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
 ```

@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Preset
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Preset is a **re-usable configuration** that defines a participant’s experience in a Meeting. It determines:
 
-* The meeting type they join (Video, Audio, or Webinar)
+* The meeting type they join (Video, Audio, Webinar, or Livestream Beta)
 * Actions they can perform (permissions and controls)
 * The UI’s look and feel, including colors and themes, so the experience matches your application's branding.
 
@@ -63,7 +63,7 @@ Users can request to join the stage, host can add/remove users from the stage at
 You can control which plugins a participant is allowed to view, open, or close.
 * **Waiting Room:** A waiting room allows participants to join a meeting before they’re admitted, giving hosts control over who enters and when. It helps manage access, reduce interruptions, and ensure the meeting starts smoothly.
 Hosts can admit or remove participants at any time, and you can configure who should bypass the waiting room automatically. Read more about waiting rooms in [Meetings](https://developers.cloudflare.com/realtime/realtimekit/concepts/meeting#waiting-room).
-* **Connected Meetings:** Beta Connected Meetings let you meeting spaces linked to a main meeting, enabling smaller group discussions or parallel sessions. Participants can be given permission to move between meetings or return to the parent meeting. Hosts can create, update, or delete these connected spaces.
+* **Connected Meetings:** Connected Meetings let you split a main meeting into linked spaces for smaller group discussions or parallel sessions. Permissions determine whether participants can move between connected meetings, return to the parent meeting, or create, update, and delete those meetings.
 Read more about connected meetings in [Meetings](https://developers.cloudflare.com/realtime/realtimekit/concepts/meeting#connected-meetings).
 * **Miscellaneous:** Miscellaneous permissions let you fine-tune additional aspects of the participant experience that don’t fall under specific categories.
 These options control capabilities like - editing names, viewing the participant list, syncing tab views, enabling transcriptions, and other supplementary features that enhance how users interact within the meeting.
@@ -84,5 +84,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/#page","headline":"Preset · Cloudflare Realtime docs","description":"Configure participant roles, permissions, and meeting experience with RealtimeKit presets.","url":"https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/#page","headline":"Preset · Cloudflare Realtime docs","description":"Configure participant roles, permissions, and meeting experience with RealtimeKit presets.","url":"https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

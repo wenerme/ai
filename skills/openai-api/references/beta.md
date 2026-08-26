@@ -13153,7 +13153,7 @@ the `background` parameter set to `true` can be cancelled.
 
           The namespace of the custom tool being called.
 
-      - `CompactionTrigger object { type, agent }`
+      - `CompactionTrigger object { type, id, agent }`
 
         Compacts the current context. Must be the final input item.
 
@@ -13162,6 +13162,10 @@ the `background` parameter set to `true` can be cancelled.
           The type of the item. Always `compaction_trigger`.
 
           - `"compaction_trigger"`
+
+        - `id: optional string or null`
+
+          The unique ID of this compaction trigger.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -24435,7 +24439,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         The namespace of the custom tool being called.
 
-    - `CompactionTrigger object { type, agent }`
+    - `CompactionTrigger object { type, id, agent }`
 
       Compacts the current context. Must be the final input item.
 
@@ -24444,6 +24448,10 @@ Learn when and how to compact long-running conversations in the [conversation st
         The type of the item. Always `compaction_trigger`.
 
         - `"compaction_trigger"`
+
+      - `id: optional string or null`
+
+        The unique ID of this compaction trigger.
 
       - `agent: optional object { agent_name }  or null`
 
@@ -34390,7 +34398,7 @@ as input for the model's response.
 
         The namespace of the custom tool being called.
 
-    - `CompactionTrigger object { type, agent }`
+    - `CompactionTrigger object { type, id, agent }`
 
       Compacts the current context. Must be the final input item.
 
@@ -34399,6 +34407,10 @@ as input for the model's response.
         The type of the item. Always `compaction_trigger`.
 
         - `"compaction_trigger"`
+
+      - `id: optional string or null`
+
+        The unique ID of this compaction trigger.
 
       - `agent: optional object { agent_name }  or null`
 
@@ -41180,7 +41192,7 @@ as input for the model's response.
 
           The namespace of the custom tool being called.
 
-      - `CompactionTrigger object { type, agent }`
+      - `CompactionTrigger object { type, id, agent }`
 
         Compacts the current context. Must be the final input item.
 
@@ -41189,6 +41201,10 @@ as input for the model's response.
           The type of the item. Always `compaction_trigger`.
 
           - `"compaction_trigger"`
+
+        - `id: optional string or null`
+
+          The unique ID of this compaction trigger.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -53125,7 +53141,7 @@ Retrieves a model response with the given ID.
 
           The namespace of the custom tool being called.
 
-      - `CompactionTrigger object { type, agent }`
+      - `CompactionTrigger object { type, id, agent }`
 
         Compacts the current context. Must be the final input item.
 
@@ -53134,6 +53150,10 @@ Retrieves a model response with the given ID.
           The type of the item. Always `compaction_trigger`.
 
           - `"compaction_trigger"`
+
+        - `id: optional string or null`
+
+          The unique ID of this compaction trigger.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -69996,7 +70016,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The namespace of the custom tool being called.
 
-      - `CompactionTrigger object { type, agent }`
+      - `CompactionTrigger object { type, id, agent }`
 
         Compacts the current context. Must be the final input item.
 
@@ -70005,6 +70025,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           The type of the item. Always `compaction_trigger`.
 
           - `"compaction_trigger"`
+
+        - `id: optional string or null`
+
+          The unique ID of this compaction trigger.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -81164,7 +81188,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace of the custom tool being called.
 
-        - `CompactionTrigger object { type, agent }`
+        - `CompactionTrigger object { type, id, agent }`
 
           Compacts the current context. Must be the final input item.
 
@@ -81173,6 +81197,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             The type of the item. Always `compaction_trigger`.
 
             - `"compaction_trigger"`
+
+          - `id: optional string or null`
+
+            The unique ID of this compaction trigger.
 
           - `agent: optional object { agent_name }  or null`
 
@@ -92793,7 +92821,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace of the custom tool being called.
 
-        - `CompactionTrigger object { type, agent }`
+        - `CompactionTrigger object { type, id, agent }`
 
           Compacts the current context. Must be the final input item.
 
@@ -92802,6 +92830,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             The type of the item. Always `compaction_trigger`.
 
             - `"compaction_trigger"`
+
+          - `id: optional string or null`
+
+            The unique ID of this compaction trigger.
 
           - `agent: optional object { agent_name }  or null`
 
@@ -103869,7 +103901,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace of the custom tool being called.
 
-        - `CompactionTrigger object { type, agent }`
+        - `CompactionTrigger object { type, id, agent }`
 
           Compacts the current context. Must be the final input item.
 
@@ -103878,6 +103910,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             The type of the item. Always `compaction_trigger`.
 
             - `"compaction_trigger"`
+
+          - `id: optional string or null`
+
+            The unique ID of this compaction trigger.
 
           - `agent: optional object { agent_name }  or null`
 
@@ -115258,7 +115294,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace of the custom tool being called.
 
-        - `CompactionTrigger object { type, agent }`
+        - `CompactionTrigger object { type, id, agent }`
 
           Compacts the current context. Must be the final input item.
 
@@ -115267,6 +115303,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             The type of the item. Always `compaction_trigger`.
 
             - `"compaction_trigger"`
+
+          - `id: optional string or null`
+
+            The unique ID of this compaction trigger.
 
           - `agent: optional object { agent_name }  or null`
 
@@ -126203,7 +126243,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace of the custom tool being called.
 
-        - `CompactionTrigger object { type, agent }`
+        - `CompactionTrigger object { type, id, agent }`
 
           Compacts the current context. Must be the final input item.
 
@@ -126212,6 +126252,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             The type of the item. Always `compaction_trigger`.
 
             - `"compaction_trigger"`
+
+          - `id: optional string or null`
+
+            The unique ID of this compaction trigger.
 
           - `agent: optional object { agent_name }  or null`
 
@@ -137055,7 +137099,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The namespace of the custom tool being called.
 
-    - `CompactionTrigger object { type, agent }`
+    - `CompactionTrigger object { type, id, agent }`
 
       Compacts the current context. Must be the final input item.
 
@@ -137064,6 +137108,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         The type of the item. Always `compaction_trigger`.
 
         - `"compaction_trigger"`
+
+      - `id: optional string or null`
+
+        The unique ID of this compaction trigger.
 
       - `agent: optional object { agent_name }  or null`
 
@@ -141933,7 +141981,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The namespace of the custom tool being called.
 
-    - `CompactionTrigger object { type, agent }`
+    - `CompactionTrigger object { type, id, agent }`
 
       Compacts the current context. Must be the final input item.
 
@@ -141942,6 +141990,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         The type of the item. Always `compaction_trigger`.
 
         - `"compaction_trigger"`
+
+      - `id: optional string or null`
+
+        The unique ID of this compaction trigger.
 
       - `agent: optional object { agent_name }  or null`
 
@@ -162565,7 +162617,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace of the custom tool being called.
 
-        - `CompactionTrigger object { type, agent }`
+        - `CompactionTrigger object { type, id, agent }`
 
           Compacts the current context. Must be the final input item.
 
@@ -162574,6 +162626,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             The type of the item. Always `compaction_trigger`.
 
             - `"compaction_trigger"`
+
+          - `id: optional string or null`
+
+            The unique ID of this compaction trigger.
 
           - `agent: optional object { agent_name }  or null`
 
@@ -174343,7 +174399,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The namespace of the custom tool being called.
 
-          - `CompactionTrigger object { type, agent }`
+          - `CompactionTrigger object { type, id, agent }`
 
             Compacts the current context. Must be the final input item.
 
@@ -174352,6 +174408,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               The type of the item. Always `compaction_trigger`.
 
               - `"compaction_trigger"`
+
+            - `id: optional string or null`
+
+              The unique ID of this compaction trigger.
 
             - `agent: optional object { agent_name }  or null`
 
@@ -187614,7 +187674,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The namespace of the custom tool being called.
 
-        - `CompactionTrigger object { type, agent }`
+        - `CompactionTrigger object { type, id, agent }`
 
           Compacts the current context. Must be the final input item.
 
@@ -187623,6 +187683,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             The type of the item. Always `compaction_trigger`.
 
             - `"compaction_trigger"`
+
+          - `id: optional string or null`
+
+            The unique ID of this compaction trigger.
 
           - `agent: optional object { agent_name }  or null`
 
@@ -193450,7 +193514,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The namespace of the custom tool being called.
 
-      - `CompactionTrigger object { type, agent }`
+      - `CompactionTrigger object { type, id, agent }`
 
         Compacts the current context. Must be the final input item.
 
@@ -193459,6 +193523,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           The type of the item. Always `compaction_trigger`.
 
           - `"compaction_trigger"`
+
+        - `id: optional string or null`
+
+          The unique ID of this compaction trigger.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -198981,7 +199049,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The namespace of the custom tool being called.
 
-      - `CompactionTrigger object { type, agent }`
+      - `CompactionTrigger object { type, id, agent }`
 
         Compacts the current context. Must be the final input item.
 
@@ -198990,6 +199058,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           The type of the item. Always `compaction_trigger`.
 
           - `"compaction_trigger"`
+
+        - `id: optional string or null`
+
+          The unique ID of this compaction trigger.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -213795,7 +213867,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         The namespace of the custom tool being called.
 
-    - `CompactionTrigger object { type, agent }`
+    - `CompactionTrigger object { type, id, agent }`
 
       Compacts the current context. Must be the final input item.
 
@@ -213804,6 +213876,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         The type of the item. Always `compaction_trigger`.
 
         - `"compaction_trigger"`
+
+      - `id: optional string or null`
+
+        The unique ID of this compaction trigger.
 
       - `agent: optional object { agent_name }  or null`
 

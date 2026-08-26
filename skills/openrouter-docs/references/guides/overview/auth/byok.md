@@ -54,12 +54,35 @@ By default, if all keys in both sections encounter a
 rate limit or failure, OpenRouter will fall back to
 using shared OpenRouter endpoints.
 
-You can toggle **"Always use for this provider"** on
-individual prioritized keys to prevent any fallback to
-OpenRouter endpoints. When enabled, OpenRouter will only
-use your keys for requests to that provider, which may
-result in rate limit errors if your keys are exhausted,
-but ensures all requests go through your account.
+Each prioritized key has a **Shared capacity fallback**
+setting that controls what happens when your key can't
+serve a request on that provider, either because the key
+failed or because the requested model is outside the
+key's **Models** selection (under **This key applies
+to**). Shared capacity spends
+OpenRouter credits. The three levels, from weakest to
+strongest:
+
+* **Use shared capacity** (default): OpenRouter tries
+  your key first, then falls back to OpenRouter
+  endpoints on failures.
+* **Use shared capacity only for models this key doesn't
+  apply to**: models selected in the key's Models filter
+  (which defaults to All) never fall back to OpenRouter
+  endpoints on this provider, which may result in rate
+  limit errors if your keys are exhausted, but ensures
+  those requests go through your account. Models outside
+  the filter can still fall back to OpenRouter endpoints
+  on this provider.
+* **Never use shared capacity on this provider**: never
+  spend OpenRouter credits on this provider, even for
+  models outside the key's Models filter. Requests to
+  that provider only run through your keys: if no key
+  allows the requested model, or all matching keys fail,
+  that provider is skipped instead of falling back to
+  OpenRouter endpoints. Other providers can still serve
+  the request unless you restrict them (e.g. with
+  `provider.only`).
 
 When you have multiple keys for the same provider,
 OpenRouter tries them in priority order (see
@@ -115,8 +138,9 @@ The routing order will be:
 Note that even though Amazon Bedrock is listed first in the `order` array, the Google Vertex AI BYOK endpoint takes priority.
 
 If you want to prevent fallback to OpenRouter endpoints
-entirely, enable **"Always use for this provider"** on
-your BYOK keys in your
+entirely, set **Shared capacity fallback** to **"Never
+use shared capacity on this provider"** on your
+BYOK keys in your
 [workspace BYOK settings](https://openrouter.ai/workspaces/default/byok).
 
 ### BYOK with Data Policies
@@ -178,7 +202,7 @@ then OpenRouter endpoints, then Backup key.
 
 #### Key Filters
 
-Each BYOK key supports optional filters to control when it is used:
+Each BYOK key supports optional filters (shown as **This key applies to** on the key card) to control when it is used:
 
 * **Model filter**, restrict the key to specific models (e.g. only use this key for `openai/gpt-4o`). When set, the key is only used for requests to the listed models. Other models for the same provider will skip this key.
 * **API key filter**, restrict which of your OpenRouter API keys can use this BYOK key. Useful for isolating BYOK usage to specific applications or environments.
@@ -267,12 +291,12 @@ curl https://openrouter.ai/api/v1/byok/11111111-2222-3333-4444-555555555555 \
 
 Filters and multiple keys work together to enable flexible routing strategies. For example:
 
-* **Key A**: OpenAI, model filter = `[openai/gpt-4o]`, "Always use for this provider" enabled
+* **Key A**: OpenAI, model filter = `[openai/gpt-4o]`, Shared capacity fallback set to "Use shared capacity only for models this key doesn't apply to"
 * **Key B**: OpenAI, no model filter (matches all models)
 
 In this setup:
 
-* Requests for `openai/gpt-4o` try **Key A** first, then **Key B** if Key A fails (shared capacity is skipped because "Always use for this provider" is enabled on Key A)
+* Requests for `openai/gpt-4o` try **Key A** first, then **Key B** if Key A fails (shared capacity is skipped because Key A covers `openai/gpt-4o` and restricts fallback for the models it covers)
 * Requests for other OpenAI models (e.g. `openai/gpt-4o-mini`) use **Key B** only, with shared capacity as fallback
 
 #### Key Names

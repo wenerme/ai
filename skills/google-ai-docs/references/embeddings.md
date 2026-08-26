@@ -1,5 +1,3 @@
-# Embeddings
-
 <br />
 
 The Gemini API offers embedding models to generate embeddings for text, images,
@@ -122,6 +120,11 @@ intended relationships, maximizing accuracy and efficiency.
 For text-only tasks with `gemini-embedding-2`, we strongly recommend you
 add the task instruction in your prompt. This can be done by formatting the
 query and the document with the correct task prefix.
+
+When generating a [single embedding based on multimodal
+input](https://ai.google.dev/gemini-api/docs/embeddings#embedding-aggregation), we generally don't recommend prefixing the text
+portion of the input with a task instruction. In some cases it improves
+performance, but in others it reduces performance.
 
 The following tables show examples of how to format queries and documents for
 symmetric and asymmetric use cases using the `gemini-embedding-2` model.
@@ -698,6 +701,9 @@ image input. Simply add multiple inputs to the `contents` parameter:
             }
         }'
 
+> [!NOTE]
+> **Note:** The text portion of the multimodal input shouldn't include task type information.
+
 On the other hand, if you use `Content` objects inside the `contents` parameter,
 it returns separate embeddings. This example creates multiple embeddings in one
 embedding call:
@@ -715,7 +721,7 @@ embedding call:
     result = client.models.embed_content(
         model="gemini-embedding-2",
         contents=[
-            types.Content(parts=[types.Part.from_text(text="An image of a dog")]),
+            types.Content(parts=[types.Part.from_text(text="task: classification | query: An image of a dog")]),
             types.Content(
                 parts=[
                     types.Part.from_bytes(
@@ -744,7 +750,7 @@ embedding call:
         const response = await ai.models.embedContent({
             model: 'gemini-embedding-2',
             contents: [
-                { parts: [{ text: 'An image of a dog' }] },
+                { parts: [{ text: 'task: classification | query: An image of a dog' }] },
                 {
                     parts: [{
                         inlineData: {
@@ -776,7 +782,7 @@ embedding call:
             "requests": [
                 {
                     "model": "models/gemini-embedding-2",
-                    "content": {"parts": [{"text": "An image of a dog"}]}
+                    "content": {"parts": [{"text": "task: classification | query: An image of a dog"}]}
                 },
                 {
                     "model": "models/gemini-embedding-2",

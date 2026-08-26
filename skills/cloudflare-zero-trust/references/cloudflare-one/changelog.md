@@ -18,6 +18,32 @@ Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 ## 2026-08-25
 
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+
+**Grace periods for service token rotation**
+
+Cloudflare Access administrators can now choose a grace period when rotating a service token secret. Both secrets remain valid during the grace period, giving administrators time to update services without interrupting authentication.
+
+The dashboard offers grace periods from one hour to 30 days. Administrators can also revoke the previous secret immediately. The API accepts an RFC 3339 expiration time for custom rotation schedules.
+
+For configuration instructions, refer to [Rotate service token secrets](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#rotate-service-token-secrets).
+
+## 2026-08-25
+
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+
+
+**Temporarily turn off Access service tokens**
+
+Cloudflare Access administrators can now temporarily turn off service tokens without deleting them. A disabled token cannot authenticate, but its configuration remains available so administrators can turn it on again later.
+
+Turning off a token also stops any previous secret in an active rotation grace period. Use this control to contain suspected credential exposure or pause an automated service.
+
+For configuration instructions, refer to [Turn a service token on or off](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#turn-a-service-token-on-or-off).
+
+## 2026-08-25
+
 [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
 
 

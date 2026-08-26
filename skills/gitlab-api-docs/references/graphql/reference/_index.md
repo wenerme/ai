@@ -9463,6 +9463,39 @@ Fields:
 | <a id="mutation-googlecloudloggingconfigurationupdate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-googlecloudloggingconfigurationupdate-googlecloudloggingconfiguration"></a>`googleCloudLoggingConfiguration` | [`GoogleCloudLoggingConfigurationType`](#googlecloudloggingconfigurationtype) | configuration updated. |
 
+### `Mutation.governPolicyCreate`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Creates a policy in the policy store for an organization.
+
+Input type: `GovernPolicyCreateInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-governpolicycreate-actions"></a>`actions` | [`[JSON!]`](#json) | Actions the policy takes. No more than 1000 actions. |
+| <a id="mutation-governpolicycreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-governpolicycreate-description"></a>`description` | [`String`](#string) | Description of the policy. |
+| <a id="mutation-governpolicycreate-lifecyclestate"></a>`lifecycleState` | [`String`](#string) | Lifecycle state of the policy. |
+| <a id="mutation-governpolicycreate-mode"></a>`mode` | [`String`](#string) | Enforcement mode of the policy. |
+| <a id="mutation-governpolicycreate-name"></a>`name` | [`String!`](#string) | Name of the policy. |
+| <a id="mutation-governpolicycreate-organizationid"></a>`organizationId` | [`OrganizationsOrganizationID!`](#organizationsorganizationid) | Global ID of the organization to create the policy in. |
+| <a id="mutation-governpolicycreate-policyscope"></a>`policyScope` | [`JSON`](#json) | Authored scope of the policy. Mutually exclusive with scopeRego. |
+| <a id="mutation-governpolicycreate-rules"></a>`rules` | [`[JSON!]!`](#json) | Rules of the policy, at least one. No more than 1000 rules. |
+| <a id="mutation-governpolicycreate-scoperego"></a>`scopeRego` | [`String`](#string) | Rego expression scoping the policy. Mutually exclusive with policyScope. |
+| <a id="mutation-governpolicycreate-triggertype"></a>`triggerType` | [`String!`](#string) | Trigger the policy responds to. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-governpolicycreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-governpolicycreate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-governpolicycreate-policy"></a>`policy` | [`GovernPolicy`](#governpolicy) | Policy created in the policy store. |
+
 ### `Mutation.groupAuditEventStreamingDestinationsCreate`
 
 - Introduced in GitLab 16.11.
@@ -20088,6 +20121,29 @@ Fields:
 | <a id="approvalprojectruleedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="approvalprojectruleedge-node"></a>`node` | [`ApprovalProjectRule`](#approvalprojectrule) | The item at the end of the edge. |
 
+#### `ArtifactRegistryImageConnection`
+
+The connection type for [`ArtifactRegistryImage`](#artifactregistryimage).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryimageconnection-edges"></a>`edges` | [`[ArtifactRegistryImageEdge]`](#artifactregistryimageedge) | A list of edges. |
+| <a id="artifactregistryimageconnection-nodes"></a>`nodes` | [`[ArtifactRegistryImage]`](#artifactregistryimage) | A list of nodes. |
+| <a id="artifactregistryimageconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `ArtifactRegistryImageEdge`
+
+The edge type for [`ArtifactRegistryImage`](#artifactregistryimage).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryimageedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="artifactregistryimageedge-node"></a>`node` | [`ArtifactRegistryImage`](#artifactregistryimage) | The item at the end of the edge. |
+
 #### `ArtifactRegistryPackageConnection`
 
 The connection type for [`ArtifactRegistryPackage`](#artifactregistrypackage).
@@ -24127,6 +24183,29 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="duoworkflownotelinkedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="duoworkflownotelinkedge-node"></a>`node` | [`DuoWorkflowNoteLink`](#duoworkflownotelink) | The item at the end of the edge. |
+
+#### `DuoWorkflowPipelineLinkConnection`
+
+The connection type for [`DuoWorkflowPipelineLink`](#duoworkflowpipelinelink).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowpipelinelinkconnection-edges"></a>`edges` | [`[DuoWorkflowPipelineLinkEdge]`](#duoworkflowpipelinelinkedge) | A list of edges. |
+| <a id="duoworkflowpipelinelinkconnection-nodes"></a>`nodes` | [`[DuoWorkflowPipelineLink]`](#duoworkflowpipelinelink) | A list of nodes. |
+| <a id="duoworkflowpipelinelinkconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `DuoWorkflowPipelineLinkEdge`
+
+The edge type for [`DuoWorkflowPipelineLink`](#duoworkflowpipelinelink).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowpipelinelinkedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="duoworkflowpipelinelinkedge-node"></a>`node` | [`DuoWorkflowPipelineLink`](#duoworkflowpipelinelink) | The item at the end of the edge. |
 
 #### `DuoWorkflowSessionArtifactConnection`
 
@@ -31151,8 +31230,10 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="addonuser-organizations-excludedefault"></a>`excludeDefault`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Excludes the Default organization from results. |
 | <a id="addonuser-organizations-search"></a>`search` | [`String`](#string) | Search query, which can be for the organization name or a path. |
 | <a id="addonuser-organizations-soloowned"></a>`soloOwned` | [`Boolean`](#boolean) | When true, returns only organizations solely owned by the user. |
+| <a id="addonuser-organizations-state"></a>`state`  | [`OrganizationState`](#organizationstate) | Introduced in GitLab 19.1. Status: Experiment. Filter organizations by state. |
 
 ##### `AddOnUser.personalAccessTokens`
 
@@ -33133,6 +33214,17 @@ Fields:
 | <a id="artifactregistry-slug"></a>`slug`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Registry slug, Artifact Registry's immutable identifier for the namespace. `null` when the status is `unknown`. |
 | <a id="artifactregistry-status"></a>`status`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Status Artifact Registry returned, one of `active`, `suspended`, `disabled`, `blocked`, `deleted`, or `purged`, or `unknown` when the mapped namespace did not resolve. Deliberately a string rather than an enum so a status Artifact Registry adds within its API version reaches the response instead of raising. |
 
+### `ArtifactRegistryImage`
+
+Image in an Artifact Registry repository.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryimage-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.4. Status: Experiment. ID of the image in Artifact Registry. |
+| <a id="artifactregistryimage-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Name of the image. |
+
 ### `ArtifactRegistryMavenPackage`
 
 Maven package in an Artifact Registry repository.
@@ -33166,6 +33258,9 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="artifactregistryrepository-artifactscount"></a>`artifactsCount`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.4. Status: Experiment. Number of artifacts the repository holds. Buffered, so it can lag. |
+| <a id="artifactregistryrepository-createdat"></a>`createdAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp of when the repository was created. Null when the time is unknown. |
+| <a id="artifactregistryrepository-createdby"></a>`createdBy`  | [`UserCore`](#usercore) | Introduced in GitLab 19.4. Status: Experiment. User who created the repository. Null when the creator is unknown or no longer exists. |
 | <a id="artifactregistryrepository-description"></a>`description`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Human-readable description of the repository. Null when unset. |
 | <a id="artifactregistryrepository-downloadscount"></a>`downloadsCount`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.3. Status: Experiment. Number of artifact downloads from the repository. Buffered, so it can lag. |
 | <a id="artifactregistryrepository-format"></a>`format`  | [`ArtifactRegistryRepositoryFormat!`](#artifactregistryrepositoryformat) | Introduced in GitLab 19.3. Status: Experiment. Package format the repository holds. |
@@ -33174,25 +33269,31 @@ Fields:
 | <a id="artifactregistryrepository-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.3. Status: Experiment. Name of the repository, unique within its namespace. |
 | <a id="artifactregistryrepository-settings"></a>`settings`  | [`JSON!`](#json) | Introduced in GitLab 19.3. Status: Experiment. Kind-specific configuration, discriminated by format and kind. Empty for hosted repositories. |
 | <a id="artifactregistryrepository-sizebytes"></a>`sizeBytes`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.3. Status: Experiment. Storage the repository occupies, in bytes. Buffered, so it can lag. |
+| <a id="artifactregistryrepository-updatedby"></a>`updatedBy`  | [`UserCore`](#usercore) | Introduced in GitLab 19.4. Status: Experiment. User who last changed the repository. Null when the editor is unknown or no longer exists. |
 | <a id="artifactregistryrepository-visibility"></a>`visibility`  | [`ArtifactRegistryRepositoryVisibility!`](#artifactregistryrepositoryvisibility) | Introduced in GitLab 19.3. Status: Experiment. Who can read the repository. |
 
 ### `ArtifactRegistryRepositoryDetails`
 
-Repository in Artifact Registry, with the packages it holds.
+Repository in Artifact Registry, with the packages or images it holds.
 
 Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="artifactregistryrepositorydetails-artifactscount"></a>`artifactsCount`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.4. Status: Experiment. Number of artifacts the repository holds. Buffered, so it can lag. |
+| <a id="artifactregistryrepositorydetails-createdat"></a>`createdAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp of when the repository was created. Null when the time is unknown. |
+| <a id="artifactregistryrepositorydetails-createdby"></a>`createdBy`  | [`UserCore`](#usercore) | Introduced in GitLab 19.4. Status: Experiment. User who created the repository. Null when the creator is unknown or no longer exists. |
 | <a id="artifactregistryrepositorydetails-description"></a>`description`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Human-readable description of the repository. Null when unset. |
 | <a id="artifactregistryrepositorydetails-downloadscount"></a>`downloadsCount`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.3. Status: Experiment. Number of artifact downloads from the repository. Buffered, so it can lag. |
 | <a id="artifactregistryrepositorydetails-format"></a>`format`  | [`ArtifactRegistryRepositoryFormat!`](#artifactregistryrepositoryformat) | Introduced in GitLab 19.3. Status: Experiment. Package format the repository holds. |
+| <a id="artifactregistryrepositorydetails-images"></a>`images`  | [`ArtifactRegistryImageConnection`](#artifactregistryimageconnection) | Introduced in GitLab 19.4. Status: Experiment. Images the repository holds. Can be selected once per operation, so one operation reads images for one repository. Returns `null` for a repository holding packages and for a repository that is gone. Also `null` when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx. |
 | <a id="artifactregistryrepositorydetails-kind"></a>`kind`  | [`ArtifactRegistryRepositoryKind!`](#artifactregistryrepositorykind) | Introduced in GitLab 19.3. Status: Experiment. How the repository sources its artifacts. |
 | <a id="artifactregistryrepositorydetails-lastupdatedat"></a>`lastUpdatedAt`  | [`Time`](#time) | Introduced in GitLab 19.3. Status: Experiment. Time the repository content last changed. Null when the content never changed. |
 | <a id="artifactregistryrepositorydetails-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.3. Status: Experiment. Name of the repository, unique within its namespace. |
 | <a id="artifactregistryrepositorydetails-packages"></a>`packages`  | [`ArtifactRegistryPackageConnection`](#artifactregistrypackageconnection) | Introduced in GitLab 19.3. Status: Experiment. Packages the repository holds, ordered by name. Can be selected once per operation, so one operation reads packages for one repository. Returns `null` for a repository holding images, for a repository that is gone, and when Artifact Registry rejects the read. |
 | <a id="artifactregistryrepositorydetails-settings"></a>`settings`  | [`JSON!`](#json) | Introduced in GitLab 19.3. Status: Experiment. Kind-specific configuration, discriminated by format and kind. Empty for hosted repositories. |
 | <a id="artifactregistryrepositorydetails-sizebytes"></a>`sizeBytes`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.3. Status: Experiment. Storage the repository occupies, in bytes. Buffered, so it can lag. |
+| <a id="artifactregistryrepositorydetails-updatedby"></a>`updatedBy`  | [`UserCore`](#usercore) | Introduced in GitLab 19.4. Status: Experiment. User who last changed the repository. Null when the editor is unknown or no longer exists. |
 | <a id="artifactregistryrepositorydetails-visibility"></a>`visibility`  | [`ArtifactRegistryRepositoryVisibility!`](#artifactregistryrepositoryvisibility) | Introduced in GitLab 19.3. Status: Experiment. Who can read the repository. |
 
 ### `ArtifactRegistryRoleAssignment`
@@ -33664,8 +33765,10 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="autocompleteduser-organizations-excludedefault"></a>`excludeDefault`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Excludes the Default organization from results. |
 | <a id="autocompleteduser-organizations-search"></a>`search` | [`String`](#string) | Search query, which can be for the organization name or a path. |
 | <a id="autocompleteduser-organizations-soloowned"></a>`soloOwned` | [`Boolean`](#boolean) | When true, returns only organizations solely owned by the user. |
+| <a id="autocompleteduser-organizations-state"></a>`state`  | [`OrganizationState`](#organizationstate) | Introduced in GitLab 19.1. Status: Experiment. Filter organizations by state. |
 
 ##### `AutocompletedUser.personalAccessTokens`
 
@@ -37443,7 +37546,7 @@ Fields:
 | <a id="countablevulnerability-latestsecurityreportfinding"></a>`latestSecurityReportFinding`  | [`PipelineSecurityReportFinding`](#pipelinesecurityreportfinding) | Introduced in GitLab 18.4. Status: Experiment. Latest security report finding for the vulnerability. |
 | <a id="countablevulnerability-links"></a>`links` | [`[VulnerabilityLink!]!`](#vulnerabilitylink) | List of links associated with the vulnerability. |
 | <a id="countablevulnerability-location"></a>`location` | [`VulnerabilityLocation`](#vulnerabilitylocation) | Location metadata for the vulnerability. Its fields depend on the type of security scan that found the vulnerability. |
-| <a id="countablevulnerability-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Indicates whether the vulnerability is associated with a malware package. Returns `true` if a malware package is identified (regardless of add-on status). Returns `false` when the SSCS add-on is active and the package is not a malware package. Returns `null` when the add-on is not active. |
+| <a id="countablevulnerability-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Indicates whether the vulnerability is associated with a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. Returns `null` when malware detection is not enabled for the namespace. |
 | <a id="countablevulnerability-mergerequest"></a>`mergeRequest` | [`MergeRequest`](#mergerequest) | Merge request that fixes the vulnerability. |
 | <a id="countablevulnerability-mergerequests"></a>`mergeRequests` | [`MergeRequestConnection`](#mergerequestconnection) | Merge requests that are linked to fix the vulnerability. (see [Connections](#connections)) |
 | <a id="countablevulnerability-name"></a>`name` | [`String`](#string) | Name or title of the object. |
@@ -37892,8 +37995,10 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="currentuser-organizations-excludedefault"></a>`excludeDefault`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Excludes the Default organization from results. |
 | <a id="currentuser-organizations-search"></a>`search` | [`String`](#string) | Search query, which can be for the organization name or a path. |
 | <a id="currentuser-organizations-soloowned"></a>`soloOwned` | [`Boolean`](#boolean) | When true, returns only organizations solely owned by the user. |
+| <a id="currentuser-organizations-state"></a>`state`  | [`OrganizationState`](#organizationstate) | Introduced in GitLab 19.1. Status: Experiment. Filter organizations by state. |
 
 ##### `CurrentUser.personalAccessTokens`
 
@@ -38381,6 +38486,7 @@ Fields:
 | <a id="customizabledashboard-status"></a>`status`  | [`String`](#string) | Introduced in GitLab 17.0. Status: Experiment. Status of the dashboard. |
 | <a id="customizabledashboard-title"></a>`title` | [`String`](#string) | Title of the dashboard. |
 | <a id="customizabledashboard-userdefined"></a>`userDefined` | [`Boolean!`](#boolean) | Indicates whether the dashboard is user-defined or provided by GitLab. |
+| <a id="customizabledashboard-views"></a>`views`  | [`[CustomizableDashboardView!]`](#customizabledashboardview) | Introduced in GitLab 19.4. Status: Experiment. Views the user can switch between on the dashboard, each with its own panels. |
 
 ### `CustomizableDashboardPanel`
 
@@ -38419,6 +38525,17 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="customizabledashboardpanelview-text"></a>`text` | [`String`](#string) | Label shown in the segmented control for the view. |
 | <a id="customizabledashboardpanelview-visualization"></a>`visualization` | [`CustomizableDashboardVisualization`](#customizabledashboardvisualization) | Visualization rendered when the view is selected. |
+
+### `CustomizableDashboardView`
+
+Represents a view that can be selected within a customizable dashboard.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="customizabledashboardview-panels"></a>`panels` | [`CustomizableDashboardPanelConnection`](#customizabledashboardpanelconnection) | Panels shown when the view is selected. (see [Connections](#connections)) |
+| <a id="customizabledashboardview-title"></a>`title` | [`String`](#string) | Title of the view. |
 
 ### `CustomizableDashboardVisualization`
 
@@ -38675,7 +38792,7 @@ Fields:
 | <a id="dependency-id"></a>`id` | [`GlobalID!`](#globalid) | ID of the dependency. |
 | <a id="dependency-licenses"></a>`licenses` | [`[License!]`](#license) | Licenses associated to the dependency. |
 | <a id="dependency-location"></a>`location` | [`Location`](#location) | Information about where the dependency is located. |
-| <a id="dependency-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Indicates whether the dependency is a malware package. Returns `true` if a malware package is identified (regardless of add-on status). Returns `false` when the SSCS add-on is active and the package is not a malware package. Returns `null` when the add-on is not active. |
+| <a id="dependency-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Indicates whether the dependency is a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. Returns `null` when malware detection is not enabled for the project. |
 | <a id="dependency-name"></a>`name` | [`String!`](#string) | Name of the dependency. |
 | <a id="dependency-packager"></a>`packager` | [`PackageManager`](#packagemanager) | Description of the tool used to manage the dependency. |
 | <a id="dependency-reachability"></a>`reachability` | [`ReachabilityType`](#reachabilitytype) | Information about reachability of a dependency. |
@@ -38715,7 +38832,7 @@ Fields:
 | <a id="dependencyaggregation-id"></a>`id` | [`GlobalID!`](#globalid) | ID of the dependency. |
 | <a id="dependencyaggregation-licenses"></a>`licenses` | [`[License!]`](#license) | Licenses associated to the dependency. |
 | <a id="dependencyaggregation-location"></a>`location` | [`Location`](#location) | Information about where the dependency is located. |
-| <a id="dependencyaggregation-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Indicates whether the dependency is a malware package. Returns `true` if a malware package is identified (regardless of add-on status). Returns `false` when the SSCS add-on is active and the package is not a malware package. Returns `null` when the add-on is not active. |
+| <a id="dependencyaggregation-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Indicates whether the dependency is a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. Returns `null` when malware detection is not enabled for the project. |
 | <a id="dependencyaggregation-name"></a>`name` | [`String!`](#string) | Name of the dependency. |
 | <a id="dependencyaggregation-occurrencecount"></a>`occurrenceCount` | [`Int!`](#int) | Number of occurrences of the dependency across projects. |
 | <a id="dependencyaggregation-packager"></a>`packager` | [`PackageManager`](#packagemanager) | Description of the tool used to manage the dependency. |
@@ -40150,6 +40267,22 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="duoworkflow-notelinks-linktype"></a>`linkType` | [`DuoWorkflowNoteLinkType`](#duoworkflownotelinktype) | Filter links by their link type. |
 
+##### `DuoWorkflow.pipelineLinks`
+
+Pipelines linked to the session.
+
+Returns [`DuoWorkflowPipelineLinkConnection`](#duoworkflowpipelinelinkconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflow-pipelinelinks-linktype"></a>`linkType` | [`DuoWorkflowPipelineLinkType`](#duoworkflowpipelinelinktype) | Filter links by their link type. |
+
 ##### `DuoWorkflow.toolCallApprovalMatch`
 
 - Introduced in GitLab 19.3.
@@ -40312,6 +40445,19 @@ Fields:
 | <a id="duoworkflowpermissions-resumeduoworkflow"></a>`resumeDuoWorkflow` | [`Boolean!`](#boolean) | If `true`, the user can perform `resume_duo_workflow` on this resource. |
 | <a id="duoworkflowpermissions-updateduoworkflow"></a>`updateDuoWorkflow` | [`Boolean!`](#boolean) | If `true`, the user can perform `update_duo_workflow` on this resource. |
 
+### `DuoWorkflowPipelineLink`
+
+Link between a GitLab Duo Agent Platform session and a pipeline.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowpipelinelink-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the link was created. |
+| <a id="duoworkflowpipelinelink-linktype"></a>`linkType` | [`DuoWorkflowPipelineLinkType!`](#duoworkflowpipelinelinktype) | How the pipeline relates to the session. |
+| <a id="duoworkflowpipelinelink-pipeline"></a>`pipeline` | [`Pipeline`](#pipeline) | Linked pipeline. |
+| <a id="duoworkflowpipelinelink-workflow"></a>`workflow` | [`DuoWorkflow`](#duoworkflow) | Linked GitLab Duo Agent Platform session. |
+
 ### `DuoWorkflowSessionArtifact`
 
 A Duo Agent Platform session artifact.
@@ -40322,6 +40468,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="duoworkflowsessionartifact-auditevents"></a>`auditEvents` | [`AiAuditEventConnection`](#aiauditeventconnection) | Audit events recorded for the session. Readable with `read_agent_artifacts` on the parent group or project; does not require access to the underlying workflow. (see [Connections](#connections)) |
 | <a id="duoworkflowsessionartifact-auditeventscount"></a>`auditEventsCount` | [`Int!`](#int) | Number of audit events recorded for the session. |
+| <a id="duoworkflowsessionartifact-creditsused"></a>`creditsUsed`  | [`Float`](#float) | Introduced in GitLab 19.4. Status: Experiment. Total GitLab Credits consumed by the session. Readable with `read_agent_artifacts` on the parent group or project. Requires ClickHouse to be configured for analytics; ingestion is gated by the `duo_workflow_session_credits_ingestion` feature flag. Null until credit data has been ingested for the session, including sessions that failed before ingestion. |
 | <a id="duoworkflowsessionartifact-downloadpath"></a>`downloadPath` | [`String`](#string) | Path to download the session artifact as a JSON file. |
 | <a id="duoworkflowsessionartifact-id"></a>`id` | [`ID!`](#id) | Global ID of the session, as an `Ai::DuoWorkflows::Workflow`. |
 | <a id="duoworkflowsessionartifact-project"></a>`project` | [`Project`](#project) | Project the session belongs to. |
@@ -47353,8 +47500,10 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="mergerequestassignee-organizations-excludedefault"></a>`excludeDefault`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Excludes the Default organization from results. |
 | <a id="mergerequestassignee-organizations-search"></a>`search` | [`String`](#string) | Search query, which can be for the organization name or a path. |
 | <a id="mergerequestassignee-organizations-soloowned"></a>`soloOwned` | [`Boolean`](#boolean) | When true, returns only organizations solely owned by the user. |
+| <a id="mergerequestassignee-organizations-state"></a>`state`  | [`OrganizationState`](#organizationstate) | Introduced in GitLab 19.1. Status: Experiment. Filter organizations by state. |
 
 ##### `MergeRequestAssignee.personalAccessTokens`
 
@@ -47824,8 +47973,10 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="mergerequestauthor-organizations-excludedefault"></a>`excludeDefault`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Excludes the Default organization from results. |
 | <a id="mergerequestauthor-organizations-search"></a>`search` | [`String`](#string) | Search query, which can be for the organization name or a path. |
 | <a id="mergerequestauthor-organizations-soloowned"></a>`soloOwned` | [`Boolean`](#boolean) | When true, returns only organizations solely owned by the user. |
+| <a id="mergerequestauthor-organizations-state"></a>`state`  | [`OrganizationState`](#organizationstate) | Introduced in GitLab 19.1. Status: Experiment. Filter organizations by state. |
 
 ##### `MergeRequestAuthor.personalAccessTokens`
 
@@ -48371,8 +48522,10 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="mergerequestparticipant-organizations-excludedefault"></a>`excludeDefault`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Excludes the Default organization from results. |
 | <a id="mergerequestparticipant-organizations-search"></a>`search` | [`String`](#string) | Search query, which can be for the organization name or a path. |
 | <a id="mergerequestparticipant-organizations-soloowned"></a>`soloOwned` | [`Boolean`](#boolean) | When true, returns only organizations solely owned by the user. |
+| <a id="mergerequestparticipant-organizations-state"></a>`state`  | [`OrganizationState`](#organizationstate) | Introduced in GitLab 19.1. Status: Experiment. Filter organizations by state. |
 
 ##### `MergeRequestParticipant.personalAccessTokens`
 
@@ -48861,8 +49014,10 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="mergerequestreviewer-organizations-excludedefault"></a>`excludeDefault`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Excludes the Default organization from results. |
 | <a id="mergerequestreviewer-organizations-search"></a>`search` | [`String`](#string) | Search query, which can be for the organization name or a path. |
 | <a id="mergerequestreviewer-organizations-soloowned"></a>`soloOwned` | [`Boolean`](#boolean) | When true, returns only organizations solely owned by the user. |
+| <a id="mergerequestreviewer-organizations-state"></a>`state`  | [`OrganizationState`](#organizationstate) | Introduced in GitLab 19.1. Status: Experiment. Filter organizations by state. |
 
 ##### `MergeRequestReviewer.personalAccessTokens`
 
@@ -51536,7 +51691,7 @@ Fields:
 | <a id="personalaccesstoken-granular"></a>`granular` | [`Boolean!`](#boolean) | Whether the personal access token is granular. |
 | <a id="personalaccesstoken-id"></a>`id` | [`ID!`](#id) | ID of the personal access token. |
 | <a id="personalaccesstoken-lastusedat"></a>`lastUsedAt` | [`Time`](#time) | Timestamp of when the personal access token was last used. |
-| <a id="personalaccesstoken-lastusedips"></a>`lastUsedIps` | [`[String!]!`](#string) | IP addresses where the personal access token was recently used. |
+| <a id="personalaccesstoken-lastusedips"></a>`lastUsedIps` | [`[String!]!`](#string) | Five most recent unique IP addresses that authenticated with the personal access token. |
 | <a id="personalaccesstoken-name"></a>`name` | [`String!`](#string) | Name of the personal access token. |
 | <a id="personalaccesstoken-revoked"></a>`revoked` | [`Boolean!`](#boolean) | Whether the personal access token has been revoked. |
 | <a id="personalaccesstoken-scopes"></a>`scopes` | [`[PersonalAccessTokenScope!]!`](#personalaccesstokenscope) | List of scopes applied to a personal access token. |
@@ -51645,6 +51800,22 @@ Fields:
 | <a id="pipeline-yamlerrors"></a>`yamlErrors` | [`Boolean!`](#boolean) | If the pipeline has YAML errors. |
 
 #### Fields with arguments
+
+##### `Pipeline.duoWorkflowLinks`
+
+GitLab Duo Agent Platform sessions linked to the pipeline.
+
+Returns [`DuoWorkflowPipelineLinkConnection`](#duoworkflowpipelinelinkconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="pipeline-duoworkflowlinks-linktype"></a>`linkType` | [`DuoWorkflowPipelineLinkType`](#duoworkflowpipelinelinktype) | Filter links by their link type. |
 
 ##### `Pipeline.job`
 
@@ -59070,8 +59241,10 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="usercore-organizations-excludedefault"></a>`excludeDefault`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Excludes the Default organization from results. |
 | <a id="usercore-organizations-search"></a>`search` | [`String`](#string) | Search query, which can be for the organization name or a path. |
 | <a id="usercore-organizations-soloowned"></a>`soloOwned` | [`Boolean`](#boolean) | When true, returns only organizations solely owned by the user. |
+| <a id="usercore-organizations-state"></a>`state`  | [`OrganizationState`](#organizationstate) | Introduced in GitLab 19.1. Status: Experiment. Filter organizations by state. |
 
 ##### `UserCore.personalAccessTokens`
 
@@ -59857,7 +60030,7 @@ Fields:
 | <a id="vulnerability-latestsecurityreportfinding"></a>`latestSecurityReportFinding`  | [`PipelineSecurityReportFinding`](#pipelinesecurityreportfinding) | Introduced in GitLab 18.4. Status: Experiment. Latest security report finding for the vulnerability. |
 | <a id="vulnerability-links"></a>`links` | [`[VulnerabilityLink!]!`](#vulnerabilitylink) | List of links associated with the vulnerability. |
 | <a id="vulnerability-location"></a>`location` | [`VulnerabilityLocation`](#vulnerabilitylocation) | Location metadata for the vulnerability. Its fields depend on the type of security scan that found the vulnerability. |
-| <a id="vulnerability-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Indicates whether the vulnerability is associated with a malware package. Returns `true` if a malware package is identified (regardless of add-on status). Returns `false` when the SSCS add-on is active and the package is not a malware package. Returns `null` when the add-on is not active. |
+| <a id="vulnerability-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Indicates whether the vulnerability is associated with a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. Returns `null` when malware detection is not enabled for the namespace. |
 | <a id="vulnerability-mergerequest"></a>`mergeRequest` | [`MergeRequest`](#mergerequest) | Merge request that fixes the vulnerability. |
 | <a id="vulnerability-mergerequests"></a>`mergeRequests` | [`MergeRequestConnection`](#mergerequestconnection) | Merge requests that are linked to fix the vulnerability. (see [Connections](#connections)) |
 | <a id="vulnerability-name"></a>`name` | [`String`](#string) | Name or title of the object. |
@@ -64963,6 +65136,14 @@ Type of link between a GitLab Duo Agent Platform session and a note.
 | ----- | ----------- |
 | <a id="duoworkflownotelinktype-created"></a>`CREATED` | Link of type `created` between a session and a note. |
 | <a id="duoworkflownotelinktype-triggered"></a>`TRIGGERED` | Link of type `triggered` between a session and a note. |
+
+### `DuoWorkflowPipelineLinkType`
+
+Type of link between a GitLab Duo Agent Platform session and a pipeline.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="duoworkflowpipelinelinktype-source"></a>`SOURCE` | Link of type `source` between a session and a pipeline. |
 
 ### `DuoWorkflowStatus`
 
@@ -71206,7 +71387,7 @@ Fields:
 | <a id="dependencyinterface-id"></a>`id` | [`GlobalID!`](#globalid) | ID of the dependency. |
 | <a id="dependencyinterface-licenses"></a>`licenses` | [`[License!]`](#license) | Licenses associated to the dependency. |
 | <a id="dependencyinterface-location"></a>`location` | [`Location`](#location) | Information about where the dependency is located. |
-| <a id="dependencyinterface-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Indicates whether the dependency is a malware package. Returns `true` if a malware package is identified (regardless of add-on status). Returns `false` when the SSCS add-on is active and the package is not a malware package. Returns `null` when the add-on is not active. |
+| <a id="dependencyinterface-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Indicates whether the dependency is a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. Returns `null` when malware detection is not enabled for the project. |
 | <a id="dependencyinterface-name"></a>`name` | [`String!`](#string) | Name of the dependency. |
 | <a id="dependencyinterface-packager"></a>`packager` | [`PackageManager`](#packagemanager) | Description of the tool used to manage the dependency. |
 | <a id="dependencyinterface-reachability"></a>`reachability` | [`ReachabilityType`](#reachabilitytype) | Information about reachability of a dependency. |
@@ -72150,8 +72331,10 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="user-organizations-excludedefault"></a>`excludeDefault`  | [`Boolean`](#boolean) | Introduced in GitLab 19.1. Status: Experiment. Excludes the Default organization from results. |
 | <a id="user-organizations-search"></a>`search` | [`String`](#string) | Search query, which can be for the organization name or a path. |
 | <a id="user-organizations-soloowned"></a>`soloOwned` | [`Boolean`](#boolean) | When true, returns only organizations solely owned by the user. |
+| <a id="user-organizations-state"></a>`state`  | [`OrganizationState`](#organizationstate) | Introduced in GitLab 19.1. Status: Experiment. Filter organizations by state. |
 
 ###### `User.personalAccessTokens`
 

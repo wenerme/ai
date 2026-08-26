@@ -495,6 +495,7 @@ Depending on your installation type, slightly different components can be skippe
 - `packages` (Packages)
 - `ci_secure_files` (Project-level secure files)
 - `agent_plan_content` (Agent plan content for work items)
+- `ci_catalog_bundles` (CI catalog component bundles)
 - `external_diffs` (External merge request diffs)
 
 ### Helm chart (Kubernetes)

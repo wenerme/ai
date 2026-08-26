@@ -148,7 +148,7 @@ In addition, there is _`StaticRootPath`_ which can be set as a built-in at build
 - `ALLOW_DELETION_OF_UNADOPTED_REPOSITORIES`: **false**: Allow non-admin users to delete unadopted repositories
 - `DISABLE_DOWNLOAD_SOURCE_ARCHIVES`: **false**: Don't allow download source archive files from UI
 - `ALLOW_FORK_WITHOUT_MAXIMUM_LIMIT`: **true**: Allow to fork repositories without maximum number limit
-- `ALLOW_FORK_INTO_SAME_OWNER`: **false**: Allow to fork repositories into the same owner (user or organization). This feature is experimental, not fully tested, and may be changed in the future
+- `ALLOW_FORK_INTO_SAME_OWNER`: **false**: Allow to fork repositories into the same owner (user or organization).
 
 ### Repository - Editor (`repository.editor`)
 

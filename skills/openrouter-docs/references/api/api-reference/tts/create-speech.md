@@ -174,6 +174,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotFoundResponse'
           description: Not Found - Resource does not exist
+        '413':
+          content:
+            application/json:
+              example:
+                error:
+                  code: 413
+                  message: Request payload too large
+              schema:
+                $ref: '#/components/schemas/PayloadTooLargeResponse'
+          description: Payload Too Large - Request payload exceeds size limits
         '429':
           content:
             application/json:
@@ -370,6 +380,27 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/NotFoundResponseErrorData'
+        openrouter_metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      type: object
+    PayloadTooLargeResponse:
+      description: Payload Too Large - Request payload exceeds size limits
+      example:
+        error:
+          code: 413
+          message: Request payload too large
+      properties:
+        error:
+          $ref: '#/components/schemas/PayloadTooLargeResponseErrorData'
         openrouter_metadata:
           additionalProperties: {}
           type:
@@ -1000,6 +1031,25 @@ components:
       example:
         code: 404
         message: Resource not found
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+      required:
+        - code
+        - message
+      type: object
+    PayloadTooLargeResponseErrorData:
+      description: Error data for PayloadTooLargeResponse
+      example:
+        code: 413
+        message: Request payload too large
       properties:
         code:
           type: integer

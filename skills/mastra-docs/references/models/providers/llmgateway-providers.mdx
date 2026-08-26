@@ -1,11 +1,11 @@
 ---
 title: "LLM Gateway | Models"
-description: "Use LLM Gateway models with Mastra. 377 models available."
+description: "Use LLM Gateway models with Mastra. 378 models available."
 ---
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 377 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 378 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -1212,8 +1212,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": 0.14,
-    "outputCost": 0.28
+    "inputCost": 0.44,
+    "outputCost": 1.32
   },
   {
     "model": "llmgateway-providers/baidu/deepseek-v4-pro",
@@ -1224,8 +1224,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": 1.69,
-    "outputCost": 3.38
+    "inputCost": 1.32,
+    "outputCost": 3.96
   },
   {
     "model": "llmgateway-providers/baidu/glm-5",
@@ -1253,6 +1253,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "llmgateway-providers/baidu/glm-5.2",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 1.4,
+    "outputCost": 4.4
+  },
+  {
+    "model": "llmgateway-providers/baidu/glm-5.3",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,

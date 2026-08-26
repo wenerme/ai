@@ -8,13 +8,13 @@ you can create a workflow that promotes transparency, accountability, and effici
 
 The process of planning work is part of a larger workflow:
 
-[Diagram of the main things to do in GitLab with the "Plan and track work" section highlighted.]
+[The main things to do in GitLab, with the "Plan and track work" section highlighted.]
 
 ## Step 1: Define timelines
 
 Start by thinking about how your team wants to approach your project goals and tasks.
 
-Define your releases by using milestones, like `1.0`, `2.0`, and `3.0`. Decide if you will release both major and minor
+Define your releases by using milestones, like `1.0`, `2.0`, and `3.0`. Decide whether to release both major and minor
 releases.
 
 Then, if you want your team to use a standard cadence for planning, use iterations.
@@ -118,7 +118,7 @@ For more information, see:
 
 Throughout the process, you can document your progress and procedures.
 
-While you will add comments and notes in issues and merge requests,
+While you add comments and notes in issues and merge requests,
 requirements are another essential aspect of documentation in a GitLab workflow.
 They define the expected outcomes, acceptance criteria, and constraints
 for specific features or tasks. Requirements can be documented in issues or

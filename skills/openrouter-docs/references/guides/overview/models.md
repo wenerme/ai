@@ -88,7 +88,7 @@ GET /api/v1/model/{author}/{slug}
 
 The endpoint resolves aliases automatically. For example, `anthropic/claude-3-5-sonnet` redirects to the canonical `anthropic/claude-3.5-sonnet` and returns its data.
 
-Variant suffixes are also supported. Append `:free`, `:thinking`, etc. to the slug:
+Variant suffixes are also supported. Append a suffix such as `:free` to the slug:
 
 ```bash lines theme={null}
 # Look up a specific model
@@ -306,6 +306,8 @@ New condition fields may be added to the override grammar over time. Consumers s
   "is_moderated": boolean         // Whether content moderation is applied
 }
 ```
+
+Input and output tokens share the model's context window, so `max_completion_tokens` is a ceiling for `max_tokens`, not a guaranteed output size. The effective maximum output for a request is limited by the context remaining after input tokens.
 
 #### Benchmarks Object
 
