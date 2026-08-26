@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # PII detection
 
-Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Security for Apps (formerly Firewall for AI) can detect personally identifiable information (PII) in incoming LLM prompts. There are two approaches to PII detection, and you can use them together for layered protection:
 
-* [Fuzzy detection (AI-powered)](#fuzzy-pii-detection) — AI Security for Apps uses an AI model to identify common PII types in the prompt content. This approach catches PII even when it appears in natural language or unexpected formats.
+* [AI-based detection](#ai-based-pii-detection) — AI Security for Apps uses an AI model to identify common PII types in the prompt content. This approach catches PII even when it appears in natural language or unexpected formats.
 * [Exact detection (regex)](#exact-pii-detection-regex) — You write a WAF custom rule with a regular expression on the raw request body. This approach is ideal for organization-specific identifiers with a known, predictable format.
 
-## Fuzzy PII detection
+## AI-based PII detection
 
 When AI Security for Apps is enabled and a request arrives at a `cf-llm` labeled endpoint, it scans the prompt for PII and populates two fields:
 
@@ -56,7 +56,7 @@ The `cf.llm.prompt.pii_detected` field returns `true` when any PII category is d
 
 Instead, build rules against `cf.llm.prompt.pii_categories` and list only the categories that matter for your use case. For example, a customer support chatbot may need to block credit card numbers and SSNs but can safely ignore person names and dates. Start with the narrowest set of categories, monitor matches in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/), and expand only as needed.
 
-### Example rules — fuzzy detection
+### Example rules — AI-based detection
 
 #### Block any request containing PII
 
@@ -93,7 +93,7 @@ Create two [custom rules](https://developers.cloudflare.com/waf/custom-rules/cre
 
 If you need to detect **custom PII formats** specific to your organization — such as internal employee IDs, patient record numbers, or proprietary account identifiers — you can create a WAF [custom rule](https://developers.cloudflare.com/waf/custom-rules/) using a regex match on the raw body ([http.request.body.raw](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.raw/) field).
 
-This approach complements fuzzy detection by covering formats the AI model does not natively recognize.
+This approach complements AI-based detection by matching predefined patterns, including organization-specific identifiers.
 
 ### Example: Detect employee IDs
 
@@ -142,7 +142,7 @@ Expression when using the editor:
 
 ## Combine both approaches
 
-You can use fuzzy and exact detection together for layered protection:
+You can use AI-based and exact detection together for layered protection:
 
 `(cf.llm.prompt.pii_detected or http.request.body.raw matches "EMP-[0-9]{6}")`
 
@@ -157,5 +157,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/#page","headline":"PII detection · Cloudflare Web Application Firewall (WAF) docs","description":"Detect personally identifiable information in AI request and response bodies.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/#page","headline":"PII detection · Cloudflare Web Application Firewall (WAF) docs","description":"Detect personally identifiable information in AI request and response bodies.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

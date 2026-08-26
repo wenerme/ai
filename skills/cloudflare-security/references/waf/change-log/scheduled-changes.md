@@ -16,18 +16,14 @@ Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
 
-## 2026-08-17
+## 2026-08-25
 
 
-**WAF Release - Scheduled changes for 2026-08-24**
+**WAF Release - Scheduled changes for 2026-09-01**
 
-| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                                       | Comments                                                                                              |
-| ----------------- | ------------ | ---------------- | -------------- | ----------- | ------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| 2026-08-17        | 2026-08-24   | Log              | N/A            | ...1489d892 | HTTP/2 Request Smuggling - Request Body Anomaly   | This is a new detection.                                                                              |
-| 2026-08-17        | 2026-08-24   | Log              | N/A            | ...20646260 | XSS - JavaScript Event Handler Coercion - Headers | This is a new detection.                                                                              |
-| 2026-08-17        | 2026-08-24   | Log              | N/A            | ...d706d517 | XSS - JavaScript Event Handler Coercion - Body    | This is a new detection.                                                                              |
-| 2026-08-17        | 2026-08-24   | Log              | N/A            | ...660886c8 | XSS - JavaScript Event Handler Coercion - URI     | This is a new detection.                                                                              |
-| 2026-08-17        | 2026-08-24   | Log              | N/A            | ...c293b926 | XSS, HTML Injection - Script Tag - Beta           | This rule will be merged into the original rule "XSS, HTML Injection - Script Tag" (ID: ...7b58420b). |
+| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                              | Comments                 |
+| ----------------- | ------------ | ---------------- | -------------- | ----------- | ---------------------------------------- | ------------------------ |
+| 2026-08-25        | 2026-09-01   | Log              | N/A            | ...bcfa0966 | SQLi - WHERE Comparison With WITH Clause | This is a new detection. |
 
 For other WAF updates, refer to the [changelog](https://developers.cloudflare.com/waf/change-log/changelog/).
 

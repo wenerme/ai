@@ -1,5 +1,5 @@
 ---
-description: Leaked credentials detection now scans the Authorization request header for Basic Authentication credentials. Previously, the detection only inspected request bodies, query strings, and headers for well-known web applications or custom detection locations, which meant credentials sent through HTTP Basic Authentication were not covered by default.
+description: This release moves four new detections from Log to Block, merges the XSS, HTML Injection - Script Tag - Beta rule into the original rule, and adds a Generic Rules - Remote Code Execution rule in Block mode.
 title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -11,6 +11,28 @@ image: https://developers.cloudflare.com/og-docs.png
 Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/change-log/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-08-25
+
+
+**WAF Release - 2026-08-25**
+
+This release moves four new detections from Log to Block, merges the XSS, HTML Injection - Script Tag - Beta rule into the original rule, and adds a Generic Rules - Remote Code Execution rule in Block mode.
+
+**Key Findings**
+
+* Four new detections move from Log to Block: HTTP/2 Request Smuggling - Request Body Anomaly and XSS - JavaScript Event Handler Coercion across Headers, Body, and URI.
+* The XSS, HTML Injection - Script Tag - Beta rule is merged into the original rule.
+* A Generic Rules - Remote Code Execution detection is added in Block mode.
+
+| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                       | Previous Action | New Action | Comments                                                                                         |
+| -------------------------- | ----------- | -------------- | ------------------------------------------------- | --------------- | ---------- | ------------------------------------------------------------------------------------------------ |
+| Cloudflare Managed Ruleset | ...1489d892 | N/A            | HTTP/2 Request Smuggling - Request Body Anomaly   | Log             | Block      | This is a new detection.                                                                         |
+| Cloudflare Managed Ruleset | ...20646260 | N/A            | XSS - JavaScript Event Handler Coercion - Headers | Log             | Block      | This is a new detection.                                                                         |
+| Cloudflare Managed Ruleset | ...d706d517 | N/A            | XSS - JavaScript Event Handler Coercion - Body    | Log             | Block      | This is a new detection.                                                                         |
+| Cloudflare Managed Ruleset | ...660886c8 | N/A            | XSS - JavaScript Event Handler Coercion - URI     | Log             | Block      | This is a new detection.                                                                         |
+| Cloudflare Managed Ruleset | ...c293b926 | N/A            | XSS, HTML Injection - Script Tag - Beta           | Log             | Block      | This rule is merged into the original rule "XSS, HTML Injection - Script Tag" (ID: ...7b58420b). |
+| Cloudflare Managed Ruleset | ...2ca6cce3 | N/A            | Generic Rules - Remote Code Execution             | N/A             | Block      | This is a new detection.                                                                         |
 
 ## 2026-08-20
 
@@ -628,19 +650,8 @@ Successful exploitation of these vulnerabilities could allow unauthenticated att
 | Cloudflare Managed Ruleset | ...ebd81645 | N/A            | XSS, HTML Injection - Link Tag - URI (beta)                          | N/A             | Disabled   | This is a new detection.                                                                                         |
 | Cloudflare Managed Ruleset | ...0af34bba | N/A            | XSS, HTML Injection - Embed Tag - URI (beta)                         | N/A             | Disabled   | This is a new detection.                                                                                         |
 
-## 2026-04-14
-
-
-**Email obfuscation decode script is now non-render-blocking**
-
-The decode script injected by [Email Address Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/) now loads with the `defer` attribute. This means the script no longer blocks page rendering. It downloads in parallel with HTML parsing and executes after the document is fully parsed, before the `DOMContentLoaded` event.
-
-This improves page loading performance, contributing to better Core Web Vitals, for all zones with Email Address Obfuscation on. No action is required.
-
-If you have custom JavaScript that depends on email addresses being decoded at a specific point during page load, note that the decode script now executes after HTML parsing completes rather than inline during parsing.
-
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog · Cloudflare Web Application Firewall (WAF) docs","description":"Leaked credentials detection now scans the Authorization request header for Basic Authentication credentials. Previously, the detection only inspected request bodies, query strings, and headers for well-known web applications or custom detection locations, which meant credentials sent through HTTP Basic Authentication were not covered by default.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog · Cloudflare Web Application Firewall (WAF) docs","description":"This release moves four new detections from Log to Block, merges the XSS, HTML Injection - Script Tag - Beta rule into the original rule, and adds a Generic Rules - Remote Code Execution rule in Block mode.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

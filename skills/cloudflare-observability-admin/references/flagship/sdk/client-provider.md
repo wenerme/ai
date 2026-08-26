@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # TypeScript Client SDK
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/sdk/client-provider/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/sdk/client-provider/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `FlagshipClientProvider` implements the OpenFeature web provider interface for browser applications. It pre-fetches a declared set of flag values on initialization and resolves evaluations synchronously from an in-memory cache.
 
@@ -96,16 +96,16 @@ Note
 
 ## Configuration options
 
-| Option        | Type        | Required | Description                                                                                                                            |
-| ------------- | ----------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| appId         | string      | Yes      | The Flagship app ID from the Cloudflare dashboard.                                                                                     |
-| accountId     | string      | Yes      | Your Cloudflare account ID.                                                                                                            |
-| authToken     | string      | Yes      | A Cloudflare [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with Flagship read permissions. |
-| fetchOptions  | RequestInit | No       | Custom fetch options applied to HTTP requests.                                                                                         |
-| timeout       | number      | No       | Request timeout in milliseconds. Defaults to 5000.                                                                                     |
-| retries       | number      | No       | Retry attempts on transient errors. Defaults to 1 and is capped at 10.                                                                 |
-| retryDelay    | number      | No       | Delay between retries in milliseconds. Defaults to 1000 and is capped at 30000.                                                        |
-| prefetchFlags | string\[\]  | Yes      | Flag keys to fetch on initialization and on every context change. Flags not in this list return FLAG\_NOT\_FOUND at evaluation time.   |
+| Option        | Type        | Required | Description                                                                                                                                  |
+| ------------- | ----------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| appId         | string      | Yes      | The Flagship app ID from the Cloudflare dashboard.                                                                                           |
+| accountId     | string      | Yes      | Your Cloudflare account ID.                                                                                                                  |
+| authToken     | string      | Yes      | A Cloudflare [API token](https://developers.cloudflare.com/flagship/api-tokens/) with Flagship Evaluate or Flagship App Evaluate permission. |
+| fetchOptions  | RequestInit | No       | Custom fetch options applied to HTTP requests.                                                                                               |
+| timeout       | number      | No       | Request timeout in milliseconds. Defaults to 5000.                                                                                           |
+| retries       | number      | No       | Retry attempts on transient errors. Defaults to 1 and is capped at 10.                                                                       |
+| retryDelay    | number      | No       | Delay between retries in milliseconds. Defaults to 1000 and is capped at 30000.                                                              |
+| prefetchFlags | string\[\]  | Yes      | Flag keys to fetch on initialization and on every context change. Flags not in this list return FLAG\_NOT\_FOUND at evaluation time.         |
 
 ## When to use the client provider
 
@@ -122,5 +122,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/client-provider/#page","headline":"TypeScript Client SDK · Cloudflare Flagship docs","description":"Set up the FlagshipClientProvider to evaluate feature flags synchronously in browser applications using the OpenFeature web SDK.","url":"https://developers.cloudflare.com/flagship/sdk/client-provider/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/sdk/client-provider/#page","headline":"TypeScript Client SDK · Cloudflare Flagship docs","description":"Set up the FlagshipClientProvider to evaluate feature flags synchronously in browser applications using the OpenFeature web SDK.","url":"https://developers.cloudflare.com/flagship/sdk/client-provider/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

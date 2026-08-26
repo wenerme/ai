@@ -379,9 +379,9 @@
   },
   "api/api-reference/images/generate-an-image.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/images/generate-an-image.md",
-    "lastModified": "Mon, 24 Aug 2026 02:21:20 GMT",
-    "size": 56576,
-    "updatedAt": "2026-08-24T02:21:20.566Z"
+    "lastModified": "Wed, 26 Aug 2026 10:53:16 GMT",
+    "size": 56952,
+    "updatedAt": "2026-08-26T10:53:17.088Z"
   },
   "api/api-reference/images/list-endpoints-for-an-image-model.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/images/list-endpoints-for-an-image-model.md",
@@ -1069,9 +1069,9 @@
   },
   "client-sdks/python/sdks/images/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/images/README.md",
-    "lastModified": "Tue, 14 Jul 2026 03:54:00 GMT",
-    "size": 21527,
-    "updatedAt": "2026-07-14T03:54:00.279Z"
+    "lastModified": "Wed, 26 Aug 2026 10:54:23 GMT",
+    "size": 22184,
+    "updatedAt": "2026-08-26T10:54:23.929Z"
   },
   "client-sdks/python/sdks/models/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/models/README.md",
@@ -1375,9 +1375,9 @@
   },
   "cookbook/administration/user-tracking.md": {
     "url": "https://openrouter.ai/docs/cookbook/administration/user-tracking.md",
-    "lastModified": "Thu, 23 Jul 2026 04:01:50 GMT",
-    "size": 6042,
-    "updatedAt": "2026-07-23T04:01:50.659Z"
+    "lastModified": "Wed, 26 Aug 2026 10:54:55 GMT",
+    "size": 6083,
+    "updatedAt": "2026-08-26T10:54:55.947Z"
   },
   "cookbook/building-agents/advisor-server-tool.md": {
     "url": "https://openrouter.ai/docs/cookbook/building-agents/advisor-server-tool.md",
@@ -1999,9 +1999,9 @@
   },
   "guides/features/server-tools/shell.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/shell.md",
-    "lastModified": "Fri, 14 Aug 2026 03:05:58 GMT",
-    "size": 10019,
-    "updatedAt": "2026-08-14T03:05:58.325Z"
+    "lastModified": "Wed, 26 Aug 2026 10:55:50 GMT",
+    "size": 12971,
+    "updatedAt": "2026-08-26T10:55:50.718Z"
   },
   "guides/features/server-tools/subagent.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/subagent.md",
@@ -2011,9 +2011,9 @@
   },
   "guides/features/server-tools/tool-search.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/tool-search.md",
-    "lastModified": "Sat, 22 Aug 2026 11:03:18 GMT",
-    "size": 8657,
-    "updatedAt": "2026-08-22T11:03:18.404Z"
+    "lastModified": "Wed, 26 Aug 2026 10:55:51 GMT",
+    "size": 8679,
+    "updatedAt": "2026-08-26T10:55:51.455Z"
   },
   "guides/features/server-tools/web-fetch.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/web-fetch.md",

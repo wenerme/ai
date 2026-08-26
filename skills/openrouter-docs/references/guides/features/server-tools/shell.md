@@ -52,12 +52,17 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
   **Beta**
 
   Server tools are currently in beta. The API and behavior may change.
+
+  The shell tool is available on the global endpoint (`openrouter.ai`) only.
+  Requests through the
+  [in-region endpoints](/docs/guides/privacy/provider-logging#enterprise-in-region-routing)
+  (`eu.openrouter.ai`, `us.openrouter.ai`) are rejected.
 </Note>
 
 <Warning>
   **Responses and Messages APIs only**
 
-  The shell server tool is available through the [Responses API](/docs/api_reference/responses/overview) and the [Messages API](/docs/api_reference/messages/overview). Requesting it on the Chat Completions API returns a `400` error.
+  The shell server tool is available through the [Responses API](/docs/api_reference/responses/overview) and the [Messages API](/docs/api/api-reference/anthropic-messages/create-a-message). Requesting it on the Chat Completions API returns a `400` error.
 
   The two APIs surface a shell run differently. On the Responses API the call becomes an `openrouter:shell` output item (or a native `shell_call` when you send OpenAI's tool shape). On the Messages API it becomes a `server_tool_use` content block named `openrouter:shell`, paired with an `openrouter_shell_tool_result` block carrying each command's output. Anthropic defines no native shell result block, so this OpenRouter-namespaced one is where the output arrives.
 </Warning>
@@ -154,13 +159,50 @@ The shell tool accepts optional `parameters` to choose its execution engine and 
 }
 ```
 
-| Parameter             | Type    | Default          | Description                                                                                                                                                                                                                                   |
-| --------------------- | ------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `engine`              | string  | `auto`           | Which shell engine to use: `openrouter` runs commands server-side in the OpenRouter sandbox; `auto` keeps the provider's native hosted shell when available (OpenAI) and routes to the OpenRouter sandbox on other providers                  |
-| `environment`         | object  | `container_auto` | Execution environment. Use `{ "type": "container_auto" }` for an OpenRouter-managed ephemeral container, or `{ "type": "container_reference", "container_id": "..." }` to reuse an existing container. `local` environments are not supported |
-| `sleep_after_seconds` | integer | `900`            | How long the container stays warm after its last command before sleeping. Idle-based: each command renews the timer. Capped at 2592000 (30 days)                                                                                              |
+| Parameter             | Type    | Default          | Description                                                                                                                                                                                                                                                                                               |
+| --------------------- | ------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `engine`              | string  | `auto`           | Which shell engine to use: `openrouter` runs commands server-side in the OpenRouter sandbox; `auto` keeps the provider's native hosted shell when available (OpenAI) and routes to the OpenRouter sandbox on other providers                                                                              |
+| `environment`         | object  | `container_auto` | Execution environment. Use `{ "type": "container_auto" }` for an OpenRouter-managed ephemeral container, or `{ "type": "container_reference", "container_id": "..." }` to reuse an existing container. `local` environments are not supported. See [Containers](/docs/guides/features/server-tools/containers) |
+| `sleep_after_seconds` | integer | `900`            | How long the container stays warm after its last command before sleeping. Idle-based: each command renews the timer. Capped at 14400 (4 hours)                                                                                                                                                            |
 
 Defaults and caps reflect current server-enforced limits and may change while the tool is in beta.
+
+### Network Policy
+
+Containers have **no outbound internet access by default**. The container configuration objects accept a `network_policy` field:
+
+```json lines theme={null}
+{
+  "type": "openrouter:shell",
+  "parameters": {
+    "engine": "openrouter",
+    "environment": {
+      "type": "container_auto",
+      "network_policy": {
+        "type": "allowlist",
+        "allowed_domains": ["pypi.org", "files.pythonhosted.org"]
+      }
+    }
+  }
+}
+```
+
+| Policy                                              | Behavior                                                                                                   |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `{ "type": "disabled" }`                            | No outbound internet access                                                                                |
+| `{ "type": "allowlist", "allowed_domains": [...] }` | Outbound access restricted to hosts matching the listed hostnames or glob patterns (max 50)                |
+| omitted                                             | Defaults to `disabled` — no outbound internet access. For unrestricted egress, use an allowlist of `["*"]` |
+
+The policy is **fixed when a container starts**: sending a different `network_policy` to a warm container fails the request with a `409`. Do not try to change a running container's policy — send the same policy for the container's lifetime.
+
+Platform constraints for allowlisted traffic:
+
+* Only ports 80 and 443 are reachable.
+* DNS resolution is provided by the platform and cannot be overridden by container configuration.
+* Entries are lowercase hostnames or glob patterns — no schemes, paths, or ports. `*` matches any run of characters (`*.example.com`, `google.*.com`). An exact hostname does not cover its subdomains: `example.com` does not allow `api.example.com`; use `*.example.com` or list each hostname.
+* `pip install` needs both `pypi.org` and `files.pythonhosted.org` (or `*.pythonhosted.org`) in the allowlist.
+
+Requests to hosts outside the policy fail inside the container with a connection error (HTTP traffic sees a `520` status), which the model can read on `stderr` and react to.
 
 ### Call Arguments
 
@@ -206,5 +248,6 @@ Shell execution is sandboxed by design:
 ## Next Steps
 
 * [Server Tools Overview](/docs/guides/features/server-tools). Learn about server tools
+* [Containers](/docs/guides/features/server-tools/containers). How sandbox containers work
 * [Bash](/docs/guides/features/server-tools/bash). Sandboxed shell for the Anthropic Messages API
 * [Tool Calling](/docs/guides/features/tool-calling). Learn about user-defined tool calling

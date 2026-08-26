@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # WAF changelog overview
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/change-log/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/change-log/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [WAF changelog](https://developers.cloudflare.com/waf/change-log/changelog/) provides information about changes to [managed rulesets](https://developers.cloudflare.com/waf/managed-rules/) and general updates to WAF protection.
 
@@ -29,6 +29,10 @@ New and updated rules follow a seven-day release cycle, typically on Monday or T
 **Week 1 — Logging only:** Cloudflare deploys new or updated rules in logging-only mode with the _Log_ action. Rules in this mode record matching requests but do not block traffic. Most newly created rules carry both the `beta` and `new` tags. Use this period to review your security events for unexpected matches that could be false positives.
 
 **Week 2 — Default action:** On the following release day, the rules change from the _Log_ action to their intended default action (shown in the **New Action** column of the changelog table). The `beta` and `new` tags are removed.
+
+Note
+
+In some cases, the `beta` tag may persist beyond the standard seven-day review period — for example, when a rule is replacing an older deprecated rule that has not yet been retired. Use the `last_updated` field in the changelog to understand when a rule was last modified, rather than relying on the `beta` tag alone to infer its lifecycle stage.
 
 For updates to existing rules, Cloudflare first deploys the updated version as a separate `BETA` rule (noted in the rule description) with a `beta` tag, before updating the original rule on the next release cycle.
 
@@ -59,5 +63,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/waf/change-log/#page","headline":"Overview of the WAF changelog · Cloudflare Web Application Firewall (WAF) docs","description":"Overview of WAF changelog, scheduled changes, and historical updates.","url":"https://developers.cloudflare.com/waf/change-log/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/waf/change-log/#page","headline":"Overview of the WAF changelog · Cloudflare Web Application Firewall (WAF) docs","description":"Overview of WAF changelog, scheduled changes, and historical updates.","url":"https://developers.cloudflare.com/waf/change-log/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

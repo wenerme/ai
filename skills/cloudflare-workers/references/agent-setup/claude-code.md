@@ -45,7 +45,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**
 For example:
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ## Cloudflare platform access
@@ -123,23 +123,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ## Tips
