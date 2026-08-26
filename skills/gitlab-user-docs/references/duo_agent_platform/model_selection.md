@@ -25,6 +25,7 @@ This table lists the default model for each feature in the Agent Platform.
 
 - GPT-5.2 and GPT-5.3 Codex [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/5652) as supported models for Code Review Flow in GitLab 19.1.
 - Claude Sonnet 5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6383) as a supported model for Code Review Flow in GitLab 19.3.
+- Claude Sonnet 4.5 as a supported model for Code Review Flow [deprecated](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6483) in GitLab 19.3 and [removed](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6621) in GitLab 19.4.
 
 This table lists the models you can select for features
 in the Agent Platform.
@@ -32,7 +33,7 @@ in the Agent Platform.
 | Model                       | GitLab Duo Agentic Chat | Code Review Flow | Security Review Flow | All other agents |
 |-----------------------------|-------------------------|------------------|----------------------|------------------|
 | Claude Fable 5 <sup>1</sup> | Yes             | No       | No           | Yes      |
-| Claude Sonnet 4.5           | Yes             | Yes <sup>2</sup>      | Yes          | Yes      |
+| Claude Sonnet 4.5           | Yes             | No      | Yes          | Yes      |
 | Claude Sonnet 4.6           | Yes             | Yes      | Yes          | Yes      |
 | Claude Sonnet 5             | Yes             | Yes      | No           | Yes      |
 | Claude Haiku 4.5            | Yes             | No       | No           | Yes      |
@@ -61,7 +62,6 @@ in the Agent Platform.
 **Footnotes**:
 
 1. This model is subject to [limited vendor-side data retention](../gitlab_duo/data_usage.md#data-retention).
-1. Support for Claude Sonnet 4.5 with Code Review Flow was [deprecated](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6483) in GitLab 19.3 and is planned for removal in 19.4.
 
 ## Select a model for a feature
 

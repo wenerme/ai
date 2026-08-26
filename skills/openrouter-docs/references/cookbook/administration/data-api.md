@@ -252,7 +252,7 @@ Notes:
 
 ### Examples
 
-<CodeBlocks>
+<CodeGroup>
   ```bash title="cURL" lines theme={null}
   # Most popular coding apps
   curl -G https://openrouter.ai/api/v1/datasets/app-rankings \
@@ -301,7 +301,7 @@ Notes:
     console.log(`#${app.rank} ${app.app_name} — ${app.total_tokens} tokens`);
   }
   ```
-</CodeBlocks>
+</CodeGroup>
 
 ## Benchmarks
 
@@ -451,7 +451,7 @@ OpenRouter's own web-search benchmarks (`search_browsecomp`, `search_hle`, `sear
 
 ### Examples
 
-<CodeBlocks>
+<CodeGroup>
   ```bash title="cURL" lines theme={null}
   # Artificial Analysis — all models
   curl -G https://openrouter.ai/api/v1/benchmarks \
@@ -511,7 +511,7 @@ OpenRouter's own web-search benchmarks (`search_browsecomp`, `search_hle`, `sear
     console.log(`${model.display_name}: coding=${model.coding_index}`);
   }
   ```
-</CodeBlocks>
+</CodeGroup>
 
 ## Task Classifications
 
@@ -623,7 +623,7 @@ Notes:
 
 ### Examples
 
-<CodeBlocks>
+<CodeGroup>
   ```bash title="cURL" lines theme={null}
   curl -G https://openrouter.ai/api/v1/classifications/task \
     -H "Authorization: Bearer $OPENROUTER_API_KEY" \
@@ -695,7 +695,7 @@ Notes:
     console.log(`${cls.display_name}: ${(cls.usage_share * 100).toFixed(1)}% requests (top model: ${topModel})`);
   }
   ```
-</CodeBlocks>
+</CodeGroup>
 
 ### Acceptable use and attribution
 

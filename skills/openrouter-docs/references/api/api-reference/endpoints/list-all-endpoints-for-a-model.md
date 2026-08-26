@@ -563,6 +563,11 @@ components:
         latency_last_30m:
           $ref: '#/components/schemas/PercentileStats'
         max_completion_tokens:
+          description: >-
+            Maximum completion tokens for this endpoint. Input and output tokens
+            share the context window, so the effective maximum output for a
+            request is further limited by the context remaining after input
+            tokens.
           type:
             - integer
             - 'null'

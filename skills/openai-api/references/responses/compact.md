@@ -4259,7 +4259,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         The namespace of the custom tool being called.
 
-    - `CompactionTrigger object { type }`
+    - `CompactionTrigger object { type, id }`
 
       Compacts the current context. Must be the final input item.
 
@@ -4268,6 +4268,10 @@ Learn when and how to compact long-running conversations in the [conversation st
         The type of the item. Always `compaction_trigger`.
 
         - `"compaction_trigger"`
+
+      - `id: optional string or null`
+
+        The unique ID of this compaction trigger.
 
     - `ItemReference object { id, type }`
 

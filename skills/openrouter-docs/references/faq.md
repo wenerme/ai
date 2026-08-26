@@ -120,8 +120,6 @@ export const BYOK_ENTERPRISE_MONTHLY_LIST_PRICE_THRESHOLD_USD = '$200,000';
     Static variants can only be used with specific models and these are listed in our [models api](https://openrouter.ai/api/v1/models).
 
     1. `:free` - The model is always provided for free and has low rate limits. [Learn more](/docs/guides/routing/model-variants/free).
-    2. `:extended` - The model has longer than usual context length. [Learn more](/docs/guides/routing/model-variants/extended).
-    3. `:thinking` - The model supports reasoning by default. [Learn more](/docs/guides/routing/model-variants/thinking).
 
     Dynamic variants can be used on all models and they change the behavior of how the request is routed or used.
 

@@ -21,7 +21,7 @@ During local development, bindings connect to locally simulated resources by def
 The following bindings are available today:
 
 * [AI](https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/#2-connect-your-worker-to-workers-ai)
-* [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine)
+* [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/)
 * [Assets](https://developers.cloudflare.com/workers/static-assets/binding/)
 * [Browser Run](https://developers.cloudflare.com/browser-run/)
 * [D1](https://developers.cloudflare.com/d1/worker-api/)
@@ -29,7 +29,7 @@ The following bindings are available today:
 * [Durable Objects](https://developers.cloudflare.com/durable-objects/api/)
 * [Dynamic Worker Loaders](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/)
 * [Environment Variables](https://developers.cloudflare.com/workers/configuration/environment-variables/)
-* [Hyperdrive](https://developers.cloudflare.com/hyperdrive)
+* [Hyperdrive](https://developers.cloudflare.com/hyperdrive/)
 * [Images](https://developers.cloudflare.com/images/optimization/binding/)
 * [KV](https://developers.cloudflare.com/kv/api/)
 * [Media Transformations](https://developers.cloudflare.com/stream/transform-videos/bindings/)

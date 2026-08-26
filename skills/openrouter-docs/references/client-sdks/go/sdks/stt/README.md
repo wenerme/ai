@@ -2,7 +2,7 @@
 > Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Stt
+# STT
 
 > Speech-to-text endpoints
 
@@ -39,7 +39,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Stt.CreateTranscription(ctx, components.STTRequest{
+    res, err := s.STT.CreateTranscription(ctx, components.STTRequest{
         InputAudio: components.STTInputAudio{
             Data: "UklGRiQA...",
             Format: "wav",
@@ -76,6 +76,7 @@ func main() {
 | sdkerrors.UnauthorizedResponseError       | 401         | application/json |
 | sdkerrors.PaymentRequiredResponseError    | 402         | application/json |
 | sdkerrors.NotFoundResponseError           | 404         | application/json |
+| sdkerrors.PayloadTooLargeResponseError    | 413         | application/json |
 | sdkerrors.TooManyRequestsResponseError    | 429         | application/json |
 | sdkerrors.InternalServerResponseError     | 500         | application/json |
 | sdkerrors.BadGatewayResponseError         | 502         | application/json |
@@ -113,7 +114,7 @@ func main() {
         panic(fileErr)
     }
 
-    res, err := s.Stt.CreateTranscriptionMultipart(ctx, operations.CreateAudioTranscriptionsMultipartRequest{
+    res, err := s.STT.CreateTranscriptionMultipart(ctx, operations.CreateAudioTranscriptionsMultipartRequest{
         File: operations.CreateAudioTranscriptionsMultipartFile{
             FileName: "example.file",
             Content: example,
@@ -150,6 +151,7 @@ func main() {
 | sdkerrors.UnauthorizedResponseError       | 401         | application/json |
 | sdkerrors.PaymentRequiredResponseError    | 402         | application/json |
 | sdkerrors.NotFoundResponseError           | 404         | application/json |
+| sdkerrors.PayloadTooLargeResponseError    | 413         | application/json |
 | sdkerrors.TooManyRequestsResponseError    | 429         | application/json |
 | sdkerrors.InternalServerResponseError     | 500         | application/json |
 | sdkerrors.BadGatewayResponseError         | 502         | application/json |

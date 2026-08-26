@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Which email headers you can set, which are auto-generated, and how they are validated
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/reference/headers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/reference/headers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When sending emails with Cloudflare Email Service, you can set custom headers using the `headers` field in the [Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) or [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/). The Email Service uses a **allowlist-based approach** — only explicitly approved headers are accepted. Any header not on the allowlist (and not an `X-` prefixed custom header) is rejected at API time with a clear error.
 
@@ -48,12 +48,16 @@ Headers that correspond to first-class API fields — `From`, `To`, `Cc`, `Bcc`,
 
 These headers can be set via the `headers` field. Any header not listed here and not starting with `X-` is rejected with `E_HEADER_NOT_ALLOWED`.
 
+Email Service rejects the entire send request if it contains a disallowed header. It does not remove the header and continue sending the message.
+
 ### Threading and reply headers
 
-| Header      | RFC                                                         | Notes                                       |
-| ----------- | ----------------------------------------------------------- | ------------------------------------------- |
-| In-Reply-To | [RFC 5322 ↗](https://datatracker.ietf.org/doc/html/rfc5322) | Critical for email threading in all clients |
-| References  | [RFC 5322 ↗](https://datatracker.ietf.org/doc/html/rfc5322) | Critical for email threading in all clients |
+| Header       | RFC                                                         | Notes                                                    |
+| ------------ | ----------------------------------------------------------- | -------------------------------------------------------- |
+| In-Reply-To  | [RFC 5322 ↗](https://datatracker.ietf.org/doc/html/rfc5322) | Critical for email threading in all clients              |
+| References   | [RFC 5322 ↗](https://datatracker.ietf.org/doc/html/rfc5322) | Critical for email threading in all clients              |
+| Thread-Index | Microsoft (non-standard)                                    | Conversation index used by Outlook and Exchange Online   |
+| Thread-Topic | Microsoft (non-standard)                                    | Conversation subject used by Outlook and Exchange Online |
 
 ### List management headers
 
@@ -83,14 +87,17 @@ These headers can be set via the `headers` field. Any header not listed here and
 | Keywords         | [RFC 5322 ↗](https://datatracker.ietf.org/doc/html/rfc5322) | Message keywords (comma-separated for multiple values)    |
 | Comments         | [RFC 5322 ↗](https://datatracker.ietf.org/doc/html/rfc5322) | Additional comments (comma-separated for multiple values) |
 | Importance       | [RFC 2156 ↗](https://datatracker.ietf.org/doc/html/rfc2156) | Values: high, normal, low                                 |
+| Priority         | [RFC 2156 ↗](https://datatracker.ietf.org/doc/html/rfc2156) | Values: normal, non-urgent, urgent                        |
 | Sensitivity      | [RFC 2156 ↗](https://datatracker.ietf.org/doc/html/rfc2156) | Values: personal, private, company-confidential           |
 | Organization     | [RFC 4021 ↗](https://datatracker.ietf.org/doc/html/rfc4021) | Sender's organization name                                |
 
 ### Delivery and notification
 
-| Header                        | RFC                                                         | Notes                    |
-| ----------------------------- | ----------------------------------------------------------- | ------------------------ |
-| Require-Recipient-Valid-Since | [RFC 7293 ↗](https://datatracker.ietf.org/doc/html/rfc7293) | Address reuse protection |
+| Header                        | RFC                                                         | Notes                                                    |
+| ----------------------------- | ----------------------------------------------------------- | -------------------------------------------------------- |
+| Require-Recipient-Valid-Since | [RFC 7293 ↗](https://datatracker.ietf.org/doc/html/rfc7293) | Address reuse protection                                 |
+| Expires                       | [RFC 2156 ↗](https://datatracker.ietf.org/doc/html/rfc2156) | Date and time after which the message is no longer valid |
+| Reply-By                      | [RFC 2156 ↗](https://datatracker.ietf.org/doc/html/rfc2156) | Date and time by which a reply is requested              |
 
 ### Modern standards
 
@@ -190,5 +197,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/headers/#page","headline":"Email headers · Cloudflare Email Service docs","description":"Allowed, platform-controlled, and custom email headers for Email Service with validation rules.","url":"https://developers.cloudflare.com/email-service/reference/headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/headers/#page","headline":"Email headers · Cloudflare Email Service docs","description":"Allowed, platform-controlled, and custom email headers for Email Service with validation rules.","url":"https://developers.cloudflare.com/email-service/reference/headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

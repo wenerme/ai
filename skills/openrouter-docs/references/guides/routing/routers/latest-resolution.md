@@ -190,5 +190,5 @@ You can see the exact slug your last request resolved to in the response's `mode
 
 * [Auto Router](/docs/guides/routing/routers/auto-router) - Cross-model intelligent selection (paid models)
 * [Free Models Router](/docs/guides/routing/routers/free-router) - Route to available free models
-* [Model Variants](/docs/guides/routing/model-variants/free) - `:free`, `:nitro`, `:thinking`, and other suffixes
+* [Model Variants](/docs/guides/routing/model-variants/free) - `:free`, `:nitro`, and other suffixes
 * [API Reference: Chat Completions](/docs/api/api-reference/chat/create-a-chat-completion)

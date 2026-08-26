@@ -16,11 +16,19 @@ curl -fsSL https://openrouter.ai/labs/ori/install.sh | bash
 
 That's the only install command you need. If you run an agent that isn't on your machine, Ori asks to install it, then starts it.
 
-To have a coding agent do this for you, use the [install-ori-harness skill](https://openrouter.ai/skills/install-ori-harness):
+### Let your coding agent set it up
+
+You don't need to run the setup yourself. Give this instruction to the coding agent you already use:
 
 ```text theme={null}
 run curl -fsSL https://openrouter.ai/skills/install-ori-harness and follow the instructions in its output to get started
 ```
+
+That command fetches the [`install-ori-harness`](https://openrouter.ai/skills/install-ori-harness) skill, and the skill gives the agent each step. The agent installs Ori, checks that the `ori` command works, signs you in with OAuth, and then starts your agent CLI through Ori.
+
+If your agent is connected to the [OpenRouter MCP server](/docs/guides/overview/mcp-server), you can run `/install-ori-harness` in the agent instead of pasting the command above.
+
+## Update Ori
 
 To update Ori, run:
 

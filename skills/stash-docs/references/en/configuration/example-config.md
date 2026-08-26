@@ -1,5 +1,5 @@
 ---
-description: "A complete Stash YAML configuration example, explaining each field section by section — a working starting point for writing your own."
+description: 'A complete Stash YAML configuration example, explaining each field section by section — a working starting point for writing your own.'
 ---
 
 # Configuration Example
@@ -90,13 +90,11 @@ hosts:
 
 # DNS server configuration
 dns:
-  # The DNS servers below are used to resolve DNS server hostnames
-  # Only enter DNS server IP addresses
+  # Resolves other DNS server hostnames; except for system, the server address must use an IP
   default-nameserver:
-    - 223.5.5.5
-    - 114.114.114.114
+    - 'https://1.1.1.1/dns-query#h3=true' # DNS over HTTP/3
     - system # Use iOS system DNS
-  # DNS services over UDP / TCP / DoT / DoH are supported, and specific connection ports can be specified.
+  # DNS services over UDP / TCP / DoT / DoH / DoH3 / DoQ are supported, and specific connection ports can be specified.
   # All DNS requests are sent directly to the server without going through any proxy.
   # Stash replies to DNS requests with the first resolved record it receives.
   nameserver:
@@ -244,16 +242,14 @@ proxies:
     auth-key: TAILSCALE_AUTH_KEY_EXAMPLE
     hostname: ts-main
     control-url: https://controlplane.tailscale.com
-    ephemeral: false
     exit-node: exit-gateway.example.ts.net # optional, auto-selects an available exit node when omitted
 
-  # tailscale (leave auth-key empty and complete first-time authentication from the authentication page)
+  # tailscale (leave auth-key empty and complete first-time authentication from the Tailscale page)
   - name: 'ts-main-interactive'
     type: tailscale
-    # When auth-key is omitted, open the Tailscale Authentication page from the node menu in Stash and finish login there
+    # When auth-key is omitted, open the Tailscale page from the node menu in Stash and finish login there
     hostname: ts-main-interactive
     control-url: https://controlplane.tailscale.com
-    ephemeral: false
     exit-node: exit-gateway.example.ts.net # optional, auto-selects an available exit node when omitted
 
   - name: 'vmess-http'
@@ -323,7 +319,8 @@ proxies:
     benchmark-url: http://www.apple.com
     benchmark-timeout: 5
     psk: yourpsk
-    version: 3
+    version: 5
+    reuse: true
     obfs-opts:
       mode: http # or tls
       host: bing.com

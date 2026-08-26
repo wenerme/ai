@@ -1,11 +1,11 @@
 ---
 title: "Agnes AI | Models"
-description: "Use Agnes AI models with Mastra. 2 models available."
+description: "Use Agnes AI models with Mastra. 3 models available."
 ---
 
 # [Agnes AI logo]Agnes AI
 
-Access 2 Agnes AI models through Mastra's model router. Authentication is handled automatically using the `AGNES_API_KEY` environment variable.
+Access 3 Agnes AI models through Mastra's model router. Authentication is handled automatically using the `AGNES_API_KEY` environment variable.
 
 Learn more in the [Agnes AI documentation](https://agnes-ai.com/doc).
 
@@ -62,6 +62,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": null,
     "outputCost": null
+  },
+  {
+    "model": "agnes/agnes-2.5-pro-alpha",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 65536,
+    "inputCost": 0.45,
+    "outputCost": 0.9
   }
 ]}
 />
@@ -94,7 +106,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "agnes/agnes-2.5-flash"
+      ? "agnes/agnes-2.5-pro-alpha"
       : "agnes/agnes-2.0-flash";
   }
 });

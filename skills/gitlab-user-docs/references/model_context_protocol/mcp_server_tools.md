@@ -65,31 +65,48 @@ Example:
 Get details for issue 42 in project 123
 ```
 
-## `create_merge_request`
+## `save_merge_request`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/571243) in GitLab 18.5.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/571243) as `create_merge_request` in GitLab 18.5.
 - `assignee_ids`, `reviewer_ids`, `description`, `labels`, and `milestone_id` [added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/217458) in GitLab 18.8.
+- Renamed to `save_merge_request` and extended to update merge requests in GitLab 19.3. The `create_merge_request` and `update_merge_request` names remain as aliases.
 
-Creates a merge request in a GitLab project.
+Creates or updates a merge request in a GitLab project.
+The presence of `merge_request_iid` selects the operation: omit it to create a merge request, or provide it to update an existing one.
 
-| Parameter           | Type              | Required | Description |
-|---------------------|-------------------|----------|-------------|
-| `id`                | string            | Yes      | ID or URL-encoded path of the project. |
-| `title`             | string            | Yes      | Title of the merge request. |
-| `source_branch`     | string            | Yes      | Name of the source branch. |
-| `target_branch`     | string            | Yes      | Name of the target branch. |
-| `target_project_id` | integer           | No       | ID of the target project. |
-| `assignee_ids`      | array of integers | No       | Array of IDs of merge request assignees. Set to `0` or an empty value to unassign all assignees. |
-| `reviewer_ids`      | array of integers | No       | Array of IDs of merge request reviewers. Set to `0` or an empty value to unassign all reviewers. |
-| `description`       | string            | No       | Description of the merge request. |
-| `labels`            | array of strings  | No       | Array of label names. Set to an empty string to unassign all labels. |
-| `milestone_id`      | integer           | No       | ID of the milestone. |
+| Parameter              | Type              | Required | Description |
+|------------------------|-------------------|----------|-------------|
+| `project_id`           | string            | Yes      | ID or full path of the project. |
+| `merge_request_iid`    | integer           | No       | Internal ID of the merge request. Provide to update an existing merge request; omit to create one. |
+| `title`                | string            | No       | Title of the merge request. Required when creating. |
+| `source_branch`        | string            | No       | Name of the source branch. Required when creating. |
+| `target_branch`        | string            | No       | Name of the target branch. Required when creating. |
+| `target_project_id`    | integer           | No       | ID of the target project. Applies when creating. |
+| `description`          | string            | No       | Description of the merge request. |
+| `labels`               | array of strings  | No       | Label names. Replaces all existing labels. Pass an empty array to remove all labels. |
+| `add_labels`           | array of strings  | No       | Label names to add. Applies when updating. |
+| `remove_labels`        | array of strings  | No       | Label names to remove. Applies when updating. |
+| `assignees`            | array of strings  | No       | Usernames to assign. Alternative to `assignee_ids`; provide one. Pass an empty array to remove all assignees. |
+| `assignee_ids`         | array of integers | No       | User IDs to assign. Alternative to `assignees`; provide one. Pass an empty array to remove all assignees. |
+| `reviewers`            | array of strings  | No       | Usernames to request review from. Alternative to `reviewer_ids`; provide one. Pass an empty array to remove all reviewers. |
+| `reviewer_ids`         | array of integers | No       | User IDs to request review from. Alternative to `reviewers`; provide one. Pass an empty array to remove all reviewers. |
+| `milestone_id`         | integer           | No       | ID of the milestone. |
+| `milestone`            | string            | No       | Title of a project or ancestor-group milestone to assign. Mutually exclusive with `milestone_id`. |
+| `remove_source_branch` | boolean           | No       | Remove the source branch when the merge request is merged. |
+| `squash`               | boolean           | No       | Squash commits into a single commit when merging. |
+| `state_event`          | string            | No       | State transition to perform. One of `close` or `reopen`. Applies when updating. |
+| `discussion_locked`    | boolean           | No       | Lock the merge request discussion. Applies when updating. |
+| `allow_collaboration`  | boolean           | No       | Allow commits from members who can merge to the target branch. Applies when updating. |
 
-Example:
+Examples:
 
 ```plaintext
 Create a merge request in project gitlab-org/gitlab titled "Bug fix broken specs"
 from branch "fix/specs-broken" into "master" and enable squash
+```
+
+```plaintext
+Update merge request 42 in project gitlab-org/gitlab to add the "bug" label and close it
 ```
 
 ## `get_merge_request`
@@ -314,6 +331,33 @@ Example:
 
 ```plaintext
 Review merge request 42 in project gitlab-org/gitlab and leave your findings as diff comments with a summary
+```
+
+## `list_project_members`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251379) in GitLab 19.4.
+
+Lists the members of a GitLab project with their role and access level.
+
+| Parameter           | Type    | Required | Description |
+|---------------------|---------|----------|-------------|
+| `project_id`        | string  | Yes      | Full path or numeric ID of the project (for example, `gitlab-org/gitlab` or `278964`). |
+| `include_inherited` | boolean | No       | Also return members who inherit their role from a parent group or a subgroup of the project. Defaults to `false`. |
+| `query`             | string  | No       | Return only members whose name or username contains this text. |
+| `first`             | integer | No       | Number of members to return for forward pagination (default 20, maximum 100). |
+| `after`             | string  | No       | Cursor for forward pagination. |
+
+For each member, the response returns the user ID, username, name, numeric `access_level`,
+the matching `access_level_name` (for example, `Maintainer`), and the membership `expires_at` date.
+Members who were invited by email but have not accepted their invitation yet are not returned.
+
+Each call returns a single page of results.
+If more pages exist, the response `metadata` includes an `end_cursor` you can pass as `after` to fetch the next page.
+
+Example:
+
+```plaintext
+Who are the maintainers of gitlab-org/gitlab?
 ```
 
 ## `add_branch`
@@ -705,14 +749,15 @@ Show me the work items in this saved view: <URL>
 
 Creates or updates a GitLab work item, such as an issue, task, or epic. Omit `work_item_iid`
 to create a new work item. Provide `work_item_iid` or a work item URL to update an existing
-one. The tool names `create_work_item` and `update_work_item` are aliases for this tool.
+one. Send only the fields you intend to set, and omit the rest. The tool names
+`create_work_item` and `update_work_item` are aliases for this tool.
 
 | Parameter          | Type              | Required | Description |
 |--------------------|-------------------|----------|-------------|
 | `url`              | string            | No       | GitLab URL for the project, group, or work item. Provide exactly one of `url`, `project_id`, or `group_id`. |
 | `group_id`         | string            | No       | ID or path of the group. Required if `url` and `project_id` are missing. |
 | `project_id`       | string            | No       | ID or path of the project. Required if `url` and `group_id` are missing. |
-| `work_item_iid`    | integer           | No       | Internal ID of the work item to update. Omit to create a new work item. |
+| `work_item_iid`    | integer           | No       | Positive internal ID of the work item to update. Omit to create a new work item. |
 | `title`            | string            | No       | Title of the work item. Required when creating a work item. |
 | `type_name`        | string            | No       | Work item type name, for example `Issue`, `Task`, or `Epic`. Required when creating a work item. Valid types depend on the namespace and license. |
 | `description`      | string            | No       | Description in GitLab Flavored Markdown. Maximum 1,048,576 characters. |

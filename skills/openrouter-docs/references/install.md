@@ -121,7 +121,7 @@ from openrouter import OpenRouter
 
 client = OpenRouter(api_key=os.environ.get("OPENROUTER_API_KEY"))
 
-completion = client.chat.completions.create(
+completion = client.chat.send(
     model="openai/gpt-4o-mini",
     messages=[
         {

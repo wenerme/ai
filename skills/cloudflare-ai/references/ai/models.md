@@ -16,7 +16,7 @@ Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 228 modelsClear filters
+We found 232 modelsClear filters
 
 No models found
 
@@ -48,6 +48,8 @@ Try a different search term, or broaden your search by removing filters.
 
 [![Alibaba logo](https://developers.cloudflare.com/_astro/alibaba.BK31NAJz.svg)wan-2.7-i2vAlibabaImage-to-VideoAlibaba's Wan 2.7 image-to-video model that generates videos from a reference image with optional text prompts. Supports 720P and 1080P output with durations from 2 to 15 seconds.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/alibaba/wan-2.7-i2v/)
 
+[![Alibaba logo](https://developers.cloudflare.com/_astro/alibaba.BK31NAJz.svg)wan-3.0AlibabaText-to-VideoAlibaba's Wan 3.0 text-to-video model. Generates cinematic videos from text prompts with adaptive aspect ratio, 480P, 720P, or 1080P resolution, and configurable duration.Third-party](https://developers.cloudflare.com/ai/models/alibaba/wan-3.0/)
+
 [![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)claude-fable-5AnthropicText GenerationClaude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.Third-party](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/)
 
 [![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)claude-haiku-4.5AnthropicText GenerationClaude Haiku 4.5 delivers similar levels of coding performance at one-third the cost and more than twice the speed of larger models.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/)
@@ -70,6 +72,12 @@ Try a different search term, or broaden your search by removing filters.
 
 [![AssemblyAI logo](https://developers.cloudflare.com/_astro/assemblyai.DKrad3Z3.svg)universal-3-proAssemblyAIAutomatic Speech RecognitionAssemblyAI's Universal 3 Pro speech recognition model for high-accuracy transcription.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/)
 
+[![AssemblyAI logo](https://developers.cloudflare.com/_astro/assemblyai.DKrad3Z3.svg)universal-3.5-proAssemblyAIAutomatic Speech RecognitionAssemblyAI's Universal-3.5 Pro speech recognition model for fast, high-accuracy transcription.Third-party](https://developers.cloudflare.com/ai/models/assemblyai/universal-3.5-pro/)
+
+[![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)flux-1-kontext-maxBlack Forest LabsText-to-ImageFLUX.1 Kontext \[max\] is Black Forest Labs' highest-quality Kontext model for text-to-image generation and context-aware image editing.Third-party](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-1-kontext-max/)
+
+[![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)flux-1-kontext-proBlack Forest LabsText-to-ImageFLUX.1 Kontext \[pro\] creates and edits images from text prompts with strong character and style consistency.Third-party](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-1-kontext-pro/)
+
 [![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)flux-2-flexBlack Forest LabsText-to-ImageFLUX.2 \[flex\] is Black Forest Labs' fine-grained control variant of FLUX.2 — exposes tunable inference steps, guidance, and prompt upsampling for typography-heavy and production workflows.Third-party](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-flex/)
 
 [![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)flux-2-maxBlack Forest LabsText-to-ImageFLUX.2 \[max\] is Black Forest Labs' highest-quality image model — top editing consistency, strongest prompt following, and grounding search for visualizations of real-time information.Third-party](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-max/)
@@ -77,6 +85,8 @@ Try a different search term, or broaden your search by removing filters.
 [![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)flux-2-pro-previewBlack Forest LabsText-to-ImageFLUX.2 \[pro\] Preview is Black Forest Labs' recommended default for production image generation and editing — tracks the latest \[pro\] weights with strong multi-reference support.Third-party](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/)
 
 [![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)flux-3-videoBlack Forest LabsText-to-VideoFLUX 3 Video is Black Forest Labs' video generation model. It generates video from a text prompt (t2v), animates one or more reference images (i2v), or continues an existing clip (v2v), with synchronized audio, up to fhd resolution, and 5-20 second durations.Third-party](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-3-video/)
+
+[![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)flux-video-upscaleBlack Forest Labsvideo-to-videoFLUX Video Upscale increases video resolution with a precise mode for source-faithful results and a creative mode for stronger detail enhancement. It accepts clips up to 20 seconds and preserves audio.Third-party](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-video-upscale/)
 
 [![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)seedance-2.0ByteDanceText-to-VideoByteDance's next-generation video model with a unified multimodal architecture. Generates high-quality video with synchronized audio from text, images, video clips, and audio inputs. Supports multimodal references (up to 9 images, 3 videos, 3 audio files), native audio generation, video editing, video extension, intelligent duration, and adaptive aspect ratio.Third-party](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/)
 
@@ -127,8 +137,6 @@ Try a different search term, or broaden your search by removing filters.
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)gemini-3.6-flashGoogleText GenerationGemini 3.6 Flash provides sustained frontier-level intelligence optimized for real-world tasks at a higher speed and lower cost, excelling at code generation, agentic execution, and spatial reasoning.Third-party](https://developers.cloudflare.com/ai/models/google/gemini-3.6-flash/)
 
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)gemini-3.7-flashGoogleText GenerationGemini 3.7 Flash is a highly capable, natively multimodal reasoning model optimized for agentic workflows and real-world tasks.Third-party](https://developers.cloudflare.com/ai/models/google/gemini-3.7-flash/)
-
-[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)imagen-4GoogleText-to-ImageGoogle's latest image generation model producing high-quality, photorealistic images from text prompts with support for multiple aspect ratios.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/google/imagen-4/)
 
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)nano-bananaGoogleText-to-ImageGoogle's fast image generation model producing high-quality images from text prompts.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/google/nano-banana/)
 
@@ -364,9 +372,9 @@ Try a different search term, or broaden your search by removing filters.
 
 [agemma-sea-lion-v4-27b-itaisingaporeText GenerationSEA-LION stands for Southeast Asian Languages In One Network, which is a collection of Large Language Models (LLMs) which have been pretrained and instruct-tuned for the Southeast Asia (SEA) region.Cloudflare-hosted](https://developers.cloudflare.com/ai/models/@cf/aisingapore/gemma-sea-lion-v4-27b-it/)
 
-[Pinned![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)glm-4.7-flashZhipu AIText GenerationGLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
+[Pinned![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)glm-4.7-flashZhipu AIText GenerationGLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)glm-5.2Zhipu AIText GenerationZ.ai's flagship agentic coding modelCloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)glm-5.2Zhipu AIText GenerationZ.ai's flagship agentic coding modelCloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
 
 [Pinned![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)gpt-oss-120bOpenAIText GenerationOpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-120b/)
 

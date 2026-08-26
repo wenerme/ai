@@ -117,6 +117,7 @@ For example, you can ask GitLab Duo to do the following:
 ### Prerequisites
 
 - [Turn on the GitLab Duo Agent Platform](../../duo_agent_platform/turn_on_off.md#turn-gitlab-duo-agent-platform-on-or-off).
+- [Turn on beta and experimental features](../../gitlab_duo/turn_on_off.md#turn-on-beta-and-experimental-features).
 - Link a Slack account to your GitLab account.
   If your accounts are not linked, GitLab sends you a message
   with a link to authorize the connection on first mention.

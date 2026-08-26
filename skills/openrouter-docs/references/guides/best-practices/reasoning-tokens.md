@@ -931,8 +931,6 @@ The latest Claude models, such as [`~anthropic/claude-sonnet-latest`](https://op
 
 You can enable reasoning on Anthropic models **only** using the unified `reasoning` parameter with either `effort` or `max_tokens`.
 
-**Note:** The `:thinking` variant is no longer supported for Anthropic models. Use the `reasoning` parameter instead.
-
 #### Reasoning Max Tokens for Anthropic Models
 
 When using Anthropic models with reasoning:

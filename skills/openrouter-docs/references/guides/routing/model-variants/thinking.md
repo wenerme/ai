@@ -6,20 +6,12 @@
 
 > Enable extended reasoning with :thinking
 
-The `:thinking` variant enables extended reasoning capabilities for complex problem-solving tasks.
+<Warning>
+  **Deprecated**
 
-## Usage
+  The `:thinking` variant is deprecated and is being removed. Use the [`reasoning` parameter](/docs/guides/best-practices/reasoning-tokens) instead, which works across models and lets you control the reasoning budget per request.
+</Warning>
 
-Append `:thinking` to any model ID:
-
-```json lines theme={null}
-{
-  "model": "deepseek/deepseek-r1:thinking"
-}
-```
-
-## Details
-
-Thinking variants provide access to models with extended reasoning capabilities, allowing for more thorough analysis and step-by-step problem solving. This is particularly useful for complex tasks that benefit from chain-of-thought reasoning.
+The `:thinking` variant enabled reasoning by default on models that shipped a dedicated reasoning endpoint. Reasoning is now requested per call through the `reasoning` parameter, so no new models will carry this suffix.
 
 See also: [Reasoning Tokens](/docs/guides/best-practices/reasoning-tokens)

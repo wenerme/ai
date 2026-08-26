@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Explore the GraphQL schema
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Many GraphQL clients support browsing the GraphQL schema by taking care of [introspection](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/introspection/). In this page, we will cover GraphiQL and Altair clients.
 
@@ -28,11 +28,11 @@ The screenshots below are done from GraphiQL. However, Altair provides the same 
 
 To open the GraphiQL Documentation Explorer, select the **Docs** link in the header of the response pane:
 
-![Clicking GraphiQL Docs link to open Documentation Explorer](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/~/assets/images/analytics/graphiql-docs-link.png)
+![Clicking GraphiQL Docs link to open Documentation Explorer](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=870,height=622,format=webp/_astro/graphiql-docs-link.EkyLJzjS.png)
 
 The **Documentation Explorer** opens and displays a list of available objects:
 
-![GraphiQL Doc Explorer pane](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/~/assets/images/analytics/graphiql-doc-explorer.png)
+![GraphiQL Doc Explorer pane](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1026,height=586,format=webp/_astro/graphiql-doc-explorer.Bd9kpJrN.png)
 
 Objects in the **Documentation Explorer** use this syntax:
 
@@ -44,7 +44,7 @@ Objects in the **Documentation Explorer** use this syntax:
 
 When you first open the **Documentation Explorer** pane, the `mutation` and `query` root types display:
 
-![Documentation Explorer displaying mutation and query nodes](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/~/assets/images/analytics/graphiql-doc-explorer-query-mutations.png)
+![Documentation Explorer displaying mutation and query nodes](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=383,height=270,format=webp/_astro/graphiql-doc-explorer-query-mutations.BbRcxejs.png)
 
 In this example, `query` is the name of a root, and `Query` is the type definition.
 
@@ -54,7 +54,7 @@ Click on the **type definition** of a node to view the fields that it provides. 
 
 For example, select the **Query** type definition. The **Documentation Explorer**displays the fields that `Query` provides. In this example, the fields are `cost` and `viewer`:
 
-![Documentation Explorer displaying cost and viewer fields](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/~/assets/images/analytics/graphiql-doc-explorer-view-cost.png)
+![Documentation Explorer displaying cost and viewer fields](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=388,height=237,format=webp/_astro/graphiql-doc-explorer-view-cost.CT9nC44o.png)
 
 To explore the schema, select the names of objects and definitions. You can also use the search input (magnifying glass icon) and breadcrumb links in the header.
 
@@ -62,7 +62,7 @@ To explore the schema, select the names of objects and definitions. You can also
 
 Click the type definition of the `viewer` field (gold text) to list its sub-fields. The `viewer` field provides sub-fields that allow you to query `accounts` or `zones` data:
 
-![Displaying viewer fields](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/~/assets/images/analytics/graphiql-doc-explorer-viewer-fields.png)
+![Displaying viewer fields](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=392,height=274,format=webp/_astro/graphiql-doc-explorer-viewer-fields.BKFriIIB.png)
 
 The `accounts` and `zones` nodes take arguments to specify which dataset to query.
 
@@ -72,21 +72,21 @@ For example, `zones` can take a filter of `ZoneFilter_InputObject` type as an ar
 
 To view a list of the datasets available to query, select the **zone** type definition (gold text):
 
-![Clicking zone type definition](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/~/assets/images/analytics/graphiql-doc-explorer-zones.png)
+![Clicking zone type definition](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=389,height=136,format=webp/_astro/graphiql-doc-explorer-zones.DMRVzjxA.png)
 
 A list of datasets displays in the **Fields** section, each with list of valid arguments and a brief description. Arguments that end with an exclamation mark (`!`) are required.
 
-![Fields section displaying datasets available](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/~/assets/images/analytics/graphiql-doc-explorer-zone-fields.png)
+![Fields section displaying datasets available](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=464,height=535,format=webp/_astro/graphiql-doc-explorer-zone-fields.OMeSzfCd.png)
 
 Use the search input (magnifying glass icon) to find specific datasets:
 
-![Searching a dataset in the Documentation Explorer](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/~/assets/images/analytics/graphiql-doc-explorer-find-firewall.png)
+![Searching a dataset in the Documentation Explorer](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=460,height=566,format=webp/_astro/graphiql-doc-explorer-find-firewall.CkSNHI_E.png)
 
 To select a dataset, select its name.
 
 The definition for the dataset displays. This example shows the `firewallEventsAdaptive` dataset:
 
-![Example of a dataset definition](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/~/assets/images/analytics/graphiql-doc-explorer-firewallevents-definition.png)
+![Example of a dataset definition](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=463,height=334,format=webp/_astro/graphiql-doc-explorer-firewallevents-definition.CsFujHwT.png)
 
 ## Find the fields available for a dataset
 
@@ -94,11 +94,11 @@ To view the fields available for a particular dataset, select on its type defini
 
 For example, select the **ZoneFirewallEventsAdaptive** type definition to view the fields available for the `firewallEventsAdaptive` dataset:
 
-![Clicking type definition to visualize fields available for a dataset](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/~/assets/images/analytics/graphiql-doc-explorer-firewall-type-definition.png)
+![Clicking type definition to visualize fields available for a dataset](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=460,height=185,format=webp/_astro/graphiql-doc-explorer-firewall-type-definition.CKad-SDm.png)
 
 The list of fields displays:
 
-![Displaying available fields for a dataset](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/~/assets/images/analytics/graphiql-doc-explorer-firewall-fields.png)
+![Displaying available fields for a dataset](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=461,height=579,format=webp/_astro/graphiql-doc-explorer-firewall-fields.K45OyD1Z.png)
 
 For more information on using GraphiQL, please visit this [guide](https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/).
 
@@ -111,5 +111,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/#page","headline":"Explore the GraphQL schema · Cloudflare Analytics docs","description":"Browse available datasets and fields via introspection.","url":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/#page","headline":"Explore the GraphQL schema · Cloudflare Analytics docs","description":"Browse available datasets and fields via introspection.","url":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

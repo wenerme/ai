@@ -1,11 +1,11 @@
 ---
 title: "evroc | Models"
-description: "Use evroc models with Mastra. 15 models available."
+description: "Use evroc models with Mastra. 16 models available."
 ---
 
 # [evroc logo]evroc
 
-Access 15 evroc models through Mastra's model router. Authentication is handled automatically using the `EVROC_API_KEY` environment variable.
+Access 16 evroc models through Mastra's model router. Authentication is handled automatically using the `EVROC_API_KEY` environment variable.
 
 Learn more in the [evroc documentation](https://docs.evroc.com/products/think/overview.html).
 
@@ -196,7 +196,7 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "evroc/Qwen/Qwen3.6-35B-A3B-FP8",
+    "model": "evroc/Qwen/Qwen3.6-35B-A3B",
     "imageInput": true,
     "audioInput": true,
     "videoInput": true,
@@ -206,6 +206,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.345,
     "outputCost": 1.38
+  },
+  {
+    "model": "evroc/Qwen/Qwen3.8-27B",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": 0.87,
+    "outputCost": 3.5
   },
   {
     "model": "evroc/zai-org/GLM-5.2",

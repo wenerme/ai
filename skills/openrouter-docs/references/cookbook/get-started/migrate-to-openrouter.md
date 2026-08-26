@@ -28,7 +28,7 @@ done-criteria so the agent runs the migration to completion instead of stopping
 at advice. Use the **Without /goal** tab to paste the migration prompt on its
 own.
 
-<CodeBlocks>
+<CodeGroup>
   ```text title="With /goal" expandable lines theme={null}
   /goal Migrate this project to OpenRouter end to end (pausing for the agent sdk decision if there is one). Done means the project is migrated, the Agent SDK decision gate is handled, verification passes or blockers are documented, evidence is written, and any dev servers are stopped.
 
@@ -378,7 +378,7 @@ own.
 
   Do the migration now. Do not stop after giving advice. Make the code changes, update docs/config/tests, run verification, and report only the actionable result.
   ```
-</CodeBlocks>
+</CodeGroup>
 
 ## Prerequisites
 

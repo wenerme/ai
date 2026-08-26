@@ -100,7 +100,7 @@ Below are drop-in request configurations for common developer experience (DX) op
 
 ### Recipe 3: Autonomous Agent Loops & Large Contexts
 
-**Scenario:** Autonomous agent harnesses send 20,000 to 90,000+ input tokens per turn. Re-computing attention over large contexts without a warm cache adds significant prefill delay on every step.
+**Scenario:** Autonomous agent harnesses send 20,000 to 90,000+ input tokens per turn — often dominated by tool definitions when 80+ tools are registered. Re-computing attention over large contexts without a warm cache typically adds 5–10 seconds of prefill delay on every step.
 
 **Solution:** Preserve sticky routing and provider KV caching across turns.
 
@@ -120,7 +120,8 @@ Below are drop-in request configurations for common developer experience (DX) op
 1. **Pass a Consistent `session_id`:** OpenRouter stores a 10-minute best-effort pin directing follow-up turns back to the exact provider endpoint holding the warm KV cache.
 2. **Keep the Prefix Static:** Ensure system prompts, repository maps, and tool definitions appear at the beginning of the prompt and remain byte-identical across turns. Dynamic timestamps or session metadata should be placed at the end.
 3. **Keep the Model Slug Identical:** Changing from `claude-3.7-sonnet` to `claude-3.7-sonnet:nitro` mid-conversation invalidates the sticky key.
-4. **Avoid Hardcoded `provider.order`:** Setting explicit `provider.order` disables sticky-session reordering and load balancing.
+4. **Avoid Hardcoded `provider.order`:** Setting explicit `provider.order` disables sticky-session reordering and load balancing. Note that [**Auto Exacto**](/docs/guides/routing/auto-exacto#interaction-with-prompt-caching) can also change providers mid-session on tool-calling requests, overriding sticky routing when it deprioritizes the pinned provider.
+5. **Shrink the Cached Prefix with Tool Search:** If your agent carries 80+ tool definitions, use the [`openrouter:tool_search`](/docs/guides/features/server-tools/tool-search) server tool with `defer_loading: true` on all but your most frequently used tools. Only the loaded tools enter the prompt prefix, keeping the cacheable region small and reducing the cost of cold starts when routing changes providers.
 
 ***
 
@@ -153,9 +154,10 @@ Below are drop-in request configurations for common developer experience (DX) op
 
 ## Quick Reference Summary
 
-| Goal                               | Recommended Configuration                                         | Latency Impact                                                       |
-| :--------------------------------- | :---------------------------------------------------------------- | :------------------------------------------------------------------- |
-| **Bound Worst-Case Peak Delays**   | `preferred_max_latency: { p90: 2.5 }`                             | Evades congested queues; evaluates 5-min rolling percentiles.        |
-| **Fastest Generation on a Budget** | `sort: "price"` + `preferred_min_throughput: { p90: 40 }`         | Prevents routing to oversubscribed slow commodity hosts.             |
-| **Agent Loops / Long Contexts**    | Stable `session_id` + static prompt prefix                        | Substantially reduces prefill time and cost via provider KV caching. |
-| **Global Speed Across Models**     | `models: [...]` + `sort: { by: "throughput", partition: "none" }` | Routes to fastest available endpoint across all candidate models.    |
+| Goal                               | Recommended Configuration                                         | Latency Impact                                                                                      |
+| :--------------------------------- | :---------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------- |
+| **Bound Worst-Case Peak Delays**   | `preferred_max_latency: { p90: 2.5 }`                             | Evades congested queues; evaluates 5-min rolling percentiles.                                       |
+| **Fastest Generation on a Budget** | `sort: "price"` + `preferred_min_throughput: { p90: 40 }`         | Prevents routing to oversubscribed slow commodity hosts.                                            |
+| **Agent Loops / Long Contexts**    | Stable `session_id` + static prompt prefix                        | Slashes prefill time and cost (up to 80–90%) via provider KV cache.                                 |
+| **Shrink Tool-Heavy Prefixes**     | `openrouter:tool_search` + `defer_loading: true`                  | Defer most tool definitions out of the prompt; keeps cacheable prefix lean and stable across turns. |
+| **Global Speed Across Models**     | `models: [...]` + `sort: { by: "throughput", partition: "none" }` | Routes to fastest available endpoint across all candidate models.                                   |
