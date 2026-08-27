@@ -194,25 +194,40 @@
     "size": 13373,
     "updatedAt": "2026-06-25T05:41:37.106Z"
   },
+  "grafana-azurecosmosdb-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest/alerting.md",
+    "size": 4629,
+    "updatedAt": "2026-08-27T09:07:58.271Z"
+  },
   "grafana-azurecosmosdb-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest/configure.md",
-    "size": 2023,
-    "updatedAt": "2026-06-25T05:41:37.471Z"
-  },
-  "grafana-azurecosmosdb-datasource/editor.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest/editor.md",
-    "size": 2192,
-    "updatedAt": "2026-06-25T05:41:37.828Z"
+    "size": 6496,
+    "updatedAt": "2026-08-27T09:07:58.453Z"
   },
   "grafana-azurecosmosdb-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest.md",
-    "size": 1782,
-    "updatedAt": "2026-06-25T05:41:38.188Z"
+    "size": 4663,
+    "updatedAt": "2026-08-27T09:07:58.645Z"
   },
-  "grafana-azurecosmosdb-datasource/templates-and-variables.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest/templates-and-variables.md",
-    "size": 1937,
-    "updatedAt": "2026-06-25T05:41:38.548Z"
+  "grafana-azurecosmosdb-datasource/install.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest/install.md",
+    "size": 6897,
+    "updatedAt": "2026-08-27T09:07:58.824Z"
+  },
+  "grafana-azurecosmosdb-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest/query-editor.md",
+    "size": 7888,
+    "updatedAt": "2026-08-27T09:07:59.006Z"
+  },
+  "grafana-azurecosmosdb-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest/template-variables.md",
+    "size": 4863,
+    "updatedAt": "2026-08-27T09:07:59.184Z"
+  },
+  "grafana-azurecosmosdb-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest/troubleshooting.md",
+    "size": 13258,
+    "updatedAt": "2026-08-27T09:07:59.360Z"
   },
   "grafana-azuredevops-datasource/annotations.md": {
     "url": "https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/annotations.md",
@@ -914,10 +929,40 @@
     "size": 1070,
     "updatedAt": "2026-06-25T05:42:18.368Z"
   },
+  "grafana-iot-sitewise-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/alerting.md",
+    "size": 4921,
+    "updatedAt": "2026-08-27T09:08:26.482Z"
+  },
+  "grafana-iot-sitewise-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/annotations.md",
+    "size": 3310,
+    "updatedAt": "2026-08-27T09:08:26.707Z"
+  },
+  "grafana-iot-sitewise-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/configure.md",
+    "size": 20041,
+    "updatedAt": "2026-08-27T09:08:26.910Z"
+  },
   "grafana-iot-sitewise-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest.md",
-    "size": 3664,
-    "updatedAt": "2026-06-25T05:42:18.729Z"
+    "size": 3527,
+    "updatedAt": "2026-08-27T09:08:27.113Z"
+  },
+  "grafana-iot-sitewise-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/query-editor.md",
+    "size": 19317,
+    "updatedAt": "2026-08-27T09:08:27.297Z"
+  },
+  "grafana-iot-sitewise-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/template-variables.md",
+    "size": 4620,
+    "updatedAt": "2026-08-27T09:08:27.519Z"
+  },
+  "grafana-iot-sitewise-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-iot-sitewise-datasource/latest/troubleshooting.md",
+    "size": 17972,
+    "updatedAt": "2026-08-27T09:08:27.707Z"
   },
   "grafana-iot-twinmaker-app/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-iot-twinmaker-app/latest/alerting.md",
@@ -1021,13 +1066,13 @@
   },
   "grafana-lokiexplore-app/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest.md",
-    "size": 3745,
-    "updatedAt": "2026-08-14T03:08:20.977Z"
+    "size": 3742,
+    "updatedAt": "2026-08-27T09:08:31.805Z"
   },
   "grafana-lokiexplore-app/labels-and-fields.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/labels-and-fields.md",
-    "size": 5125,
-    "updatedAt": "2026-08-14T03:08:21.195Z"
+    "size": 5137,
+    "updatedAt": "2026-08-27T09:08:31.989Z"
   },
   "grafana-lokiexplore-app/ordering.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/ordering.md",
@@ -1036,8 +1081,8 @@
   },
   "grafana-lokiexplore-app/patterns.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/patterns.md",
-    "size": 5913,
-    "updatedAt": "2026-08-14T03:08:21.483Z"
+    "size": 5925,
+    "updatedAt": "2026-08-27T09:08:32.451Z"
   },
   "grafana-lokiexplore-app/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/troubleshooting.md",
@@ -1046,13 +1091,18 @@
   },
   "grafana-lokiexplore-app/view-logs.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs.md",
-    "size": 8378,
-    "updatedAt": "2026-08-14T03:08:21.786Z"
+    "size": 8967,
+    "updatedAt": "2026-08-27T09:08:32.881Z"
   },
-  "grafana-lokiexplore-app/viewing-json-logs.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/viewing-json-logs.md",
-    "size": 2491,
-    "updatedAt": "2026-08-14T03:08:21.930Z"
+  "grafana-lokiexplore-app/view-logs/json.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs/json.md",
+    "size": 2495,
+    "updatedAt": "2026-08-27T09:08:33.062Z"
+  },
+  "grafana-lokiexplore-app/view-logs/table.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs/table.md",
+    "size": 8537,
+    "updatedAt": "2026-08-27T09:08:33.249Z"
   },
   "grafana-lokioperational-app/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokioperational-app.md",
@@ -1626,8 +1676,8 @@
   },
   "grafana-slo-app/create.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/create.md",
-    "size": 11671,
-    "updatedAt": "2026-08-15T02:11:13.818Z"
+    "size": 12550,
+    "updatedAt": "2026-08-27T09:08:56.455Z"
   },
   "grafana-slo-app/dashboard.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/dashboard.md",
@@ -1676,8 +1726,8 @@
   },
   "grafana-slo-app/set-up/api.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/api.md",
-    "size": 2962,
-    "updatedAt": "2026-08-15T02:11:15.555Z"
+    "size": 3445,
+    "updatedAt": "2026-08-27T09:08:58.444Z"
   },
   "grafana-slo-app/set-up/configure-burn-rate-notifications.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/configure-burn-rate-notifications.md",
@@ -1691,8 +1741,8 @@
   },
   "grafana-slo-app/set-up/terraform.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/terraform.md",
-    "size": 11377,
-    "updatedAt": "2026-08-15T02:11:16.085Z"
+    "size": 12354,
+    "updatedAt": "2026-08-27T09:08:59.046Z"
   },
   "grafana-slo-app/sli-examples.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/sli-examples.md",
@@ -2081,8 +2131,8 @@
   },
   "index.md": {
     "url": "https://grafana.com/docs/plugins.md",
-    "size": 9146,
-    "updatedAt": "2026-08-22T02:16:49.745Z"
+    "size": 9265,
+    "updatedAt": "2026-08-27T09:09:14.037Z"
   },
   "marcusolsson-calendar-panel/basic-config.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/basic-config.md",

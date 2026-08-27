@@ -35,7 +35,6 @@ This model is not available through standard Workers Free billing. To use it, up
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/)   | 1,048,576 tokens                                                                      |
 | Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes                                                                                   |
 | Reasoning                                                                             | Yes                                                                                   |
-| Vision                                                                                | Yes                                                                                   |
 | Unit Pricing                                                                          | $1.32 per M input tokens, $3.96 per M output tokens, $0.044 per M cached input tokens |
 
 ## Playground
@@ -209,7 +208,7 @@ presence\_penalty
 
 reasoning\_effort
 
-`string | null`Constrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
+`string | null`enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
 
 ▶chat\_template\_kwargs{}
 
@@ -225,7 +224,7 @@ seed
 
 service\_tier
 
-`string | null`Specifies the processing type used for serving the request.
+`string | null`enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
 
 ▶stop
 
@@ -305,7 +304,7 @@ system\_fingerprint
 
 service\_tier
 
-`string | null`
+`string | null`enum: auto, default, flex, scale, priority
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events
 
@@ -381,7 +380,7 @@ presence\_penalty
 
 reasoning\_effort
 
-`string | null`Constrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
+`string | null`enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
 
 ▶chat\_template\_kwargs{}
 
@@ -397,7 +396,7 @@ seed
 
 service\_tier
 
-`string | null`Specifies the processing type used for serving the request.
+`string | null`enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
 
 ▶stop
 
@@ -495,7 +494,7 @@ system\_fingerprint
 
 service\_tier
 
-`string | null`
+`string | null`enum: auto, default, flex, scale, priority
 
 ## API Schemas (Raw)
 

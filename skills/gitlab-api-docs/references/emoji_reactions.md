@@ -1,5 +1,7 @@
 # Emoji reactions API
 
+REST API to add, retrieve, and delete emoji reactions on issues, merge requests, snippets, and comments.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

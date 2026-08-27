@@ -32,7 +32,7 @@ This model is not available through standard Workers Free billing. To use it, up
 
 | Model Info                                                                            |                                                                                       |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/)   | 1,048,576 tokens                                                                      |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/)   | 1,310,720 tokens                                                                      |
 | Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes                                                                                   |
 | Reasoning                                                                             | Yes                                                                                   |
 | Unit Pricing                                                                          | $0.44 per M input tokens, $1.32 per M output tokens, $0.014 per M cached input tokens |
@@ -208,7 +208,7 @@ presence\_penalty
 
 reasoning\_effort
 
-`string | null`Constrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
+`string | null`enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
 
 ▶chat\_template\_kwargs{}
 
@@ -224,7 +224,7 @@ seed
 
 service\_tier
 
-`string | null`Specifies the processing type used for serving the request.
+`string | null`enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
 
 ▶stop
 
@@ -304,7 +304,7 @@ system\_fingerprint
 
 service\_tier
 
-`string | null`
+`string | null`enum: auto, default, flex, scale, priority
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events
 
@@ -380,7 +380,7 @@ presence\_penalty
 
 reasoning\_effort
 
-`string | null`Constrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
+`string | null`enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
 
 ▶chat\_template\_kwargs{}
 
@@ -396,7 +396,7 @@ seed
 
 service\_tier
 
-`string | null`Specifies the processing type used for serving the request.
+`string | null`enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
 
 ▶stop
 
@@ -494,7 +494,7 @@ system\_fingerprint
 
 service\_tier
 
-`string | null`
+`string | null`enum: auto, default, flex, scale, priority
 
 ## API Schemas (Raw)
 

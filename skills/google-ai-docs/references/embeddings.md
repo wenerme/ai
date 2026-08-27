@@ -53,6 +53,23 @@ Use the `embedContent` method to generate text embeddings:
 
     main();
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.types.EmbedContentResponse;
+    import java.util.Collections;
+
+    Client client = new Client();
+
+    EmbedContentResponse response =
+        client.models.embedContent("text-embedding-004", "Why is the sky blue?", null);
+
+    response.embeddings().ifPresent(list -> {
+      for (var emb : list) {
+        System.out.println("Embedding values: " + emb.values().orElse(Collections.emptyList()));
+      }
+    });
+
 ### Go
 
     package main
@@ -260,6 +277,23 @@ similar in meaning strings of texts are.
 
     main();
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.types.EmbedContentResponse;
+    import java.util.Collections;
+
+    Client client = new Client();
+
+    EmbedContentResponse response =
+        client.models.embedContent("text-embedding-004", "Why is the sky blue?", null);
+
+    response.embeddings().ifPresent(list -> {
+      for (var emb : list) {
+        System.out.println("Embedding values: " + emb.values().orElse(Collections.emptyList()));
+      }
+    });
+
 ### Go
 
     package main
@@ -419,6 +453,23 @@ output dimensions.
     }
 
     main();
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.types.EmbedContentResponse;
+    import java.util.Collections;
+
+    Client client = new Client();
+
+    EmbedContentResponse response =
+        client.models.embedContent("text-embedding-004", "Why is the sky blue?", null);
+
+    response.embeddings().ifPresent(list -> {
+      for (var emb : list) {
+        System.out.println("Embedding values: " + emb.values().orElse(Collections.emptyList()));
+      }
+    });
 
 ### Go
 
@@ -592,6 +643,23 @@ through the [Files API](https://ai.google.dev/gemini-api/docs/files).
 
     main();
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.types.EmbedContentResponse;
+    import java.util.Collections;
+
+    Client client = new Client();
+
+    EmbedContentResponse response =
+        client.models.embedContent("text-embedding-004", "Why is the sky blue?", null);
+
+    response.embeddings().ifPresent(list -> {
+      for (var emb : list) {
+        System.out.println("Embedding values: " + emb.values().orElse(Collections.emptyList()));
+      }
+    });
+
 ### REST
 
     IMG_PATH="/path/to/your/image.png"
@@ -678,6 +746,23 @@ image input. Simply add multiple inputs to the `contents` parameter:
     }
 
     main();
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.types.EmbedContentResponse;
+    import java.util.Collections;
+
+    Client client = new Client();
+
+    EmbedContentResponse response =
+        client.models.embedContent("text-embedding-004", "Why is the sky blue?", null);
+
+    response.embeddings().ifPresent(list -> {
+      for (var emb : list) {
+        System.out.println("Embedding values: " + emb.values().orElse(Collections.emptyList()));
+      }
+    });
 
 ### REST
 
@@ -770,6 +855,23 @@ embedding call:
 
     main();
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.types.EmbedContentResponse;
+    import java.util.Collections;
+
+    Client client = new Client();
+
+    EmbedContentResponse response =
+        client.models.embedContent("text-embedding-004", "Why is the sky blue?", null);
+
+    response.embeddings().ifPresent(list -> {
+      for (var emb : list) {
+        System.out.println("Embedding values: " + emb.values().orElse(Collections.emptyList()));
+      }
+    });
+
 ### REST
 
     IMG_PATH="/path/to/your/dog.png"
@@ -846,6 +948,23 @@ through the [Files API](https://ai.google.dev/gemini-api/docs/files).
 
     main();
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.types.EmbedContentResponse;
+    import java.util.Collections;
+
+    Client client = new Client();
+
+    EmbedContentResponse response =
+        client.models.embedContent("text-embedding-004", "Why is the sky blue?", null);
+
+    response.embeddings().ifPresent(list -> {
+      for (var emb : list) {
+        System.out.println("Embedding values: " + emb.values().orElse(Collections.emptyList()));
+      }
+    });
+
 ### REST
 
     AUDIO_PATH="/path/to/your/example.mp3"
@@ -919,6 +1038,23 @@ through the [Files API](https://ai.google.dev/gemini-api/docs/files).
     }
 
     main();
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.types.EmbedContentResponse;
+    import java.util.Collections;
+
+    Client client = new Client();
+
+    EmbedContentResponse response =
+        client.models.embedContent("text-embedding-004", "Why is the sky blue?", null);
+
+    response.embeddings().ifPresent(list -> {
+      for (var emb : list) {
+        System.out.println("Embedding values: " + emb.values().orElse(Collections.emptyList()));
+      }
+    });
 
 ### REST
 
@@ -1015,6 +1151,23 @@ The following example shows how to embed a PDF using `gemini-embedding-2`:
     }
 
     main();
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.types.EmbedContentResponse;
+    import java.util.Collections;
+
+    Client client = new Client();
+
+    EmbedContentResponse response =
+        client.models.embedContent("text-embedding-004", "Why is the sky blue?", null);
+
+    response.embeddings().ifPresent(list -> {
+      for (var emb : list) {
+        System.out.println("Embedding values: " + emb.values().orElse(Collections.emptyList()));
+      }
+    });
 
 ### REST
 

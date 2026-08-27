@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ## Cloudflare platform access
@@ -134,23 +134,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
-```
-
-```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
-```
-
-```txt
-Configure Zero Trust access policies to protect my internal staging environment.
-```
-
-```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
-```
-
-```txt
 Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+```
+
+```txt
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+```
+
+```txt
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+```
+
+```txt
+Set up rate limiting and WAF rules to block abuse on my public API.
+```
+
+```txt
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ## Tips

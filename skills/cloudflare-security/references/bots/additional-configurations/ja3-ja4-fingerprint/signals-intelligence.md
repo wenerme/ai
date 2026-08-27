@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Signals Intelligence
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/signals-intelligence/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/signals-intelligence/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Bot Management customers can view aggregate intelligence data for each [JA4 fingerprint](https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/) based on traffic across the Cloudflare network. Use this data to understand why a request received a specific bot score or to feed into your own machine learning models running in [Cloudflare Workers](https://developers.cloudflare.com/workers/) or at your origin.
 
@@ -49,6 +49,10 @@ If you want to use JA4 fingerprints and Signals Intelligence, your Workers scrip
 * The possibility that the `ja4Signals` array could be missing (for example, if JA4 isn't available for the request).
 * Results with `NaN` or `Infinity` values will be excluded from the array.
 
+Note
+
+Signals Intelligence fields are available for analysis in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) and [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/). They cannot be used as filter fields in WAF custom rule expressions.
+
 Was this helpful?
 
 YesNo
@@ -58,5 +62,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/signals-intelligence/#page","headline":"Signals Intelligence · Cloudflare bot solutions docs","description":"View aggregate intelligence data for JA4 fingerprints across Cloudflare traffic.","url":"https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/signals-intelligence/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/signals-intelligence/#page","headline":"Signals Intelligence · Cloudflare bot solutions docs","description":"View aggregate intelligence data for JA4 fingerprints across Cloudflare traffic.","url":"https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/signals-intelligence/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

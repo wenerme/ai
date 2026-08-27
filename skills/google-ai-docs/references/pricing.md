@@ -37,12 +37,12 @@ For large-scale deployments with custom needs for security, support, and complia
 
 [Contact Sales](https://cloud.google.com/contact)
 
-## Gemini 3.7 Flash
+## [Gemini 3.7 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.7-flash)
 
 *`gemini-3.7-flash`*
 
 
-[Try it in Google AI Studio](https://aistudio.google.com?model=gemini-3.7-flash)
+[Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-3.7-flash)
 
 Our most capable Flash model for agentic workflows and multimodal reasoning.
 
@@ -86,14 +86,14 @@ Our most capable Flash model for agentic workflows and multimodal reasoning.
 | Grounding with Google Maps | Not available^\*\*^ | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemini 3.6 Flash
+## [Gemini 3.6 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash)
 
 *`gemini-3.6-flash`*
 
 
-[Try it in Google AI Studio](https://aistudio.google.com?model=gemini-3.6-flash)
+[Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-3.6-flash)
 
-Our most intelligent model built for speed, combining frontier intelligence with
+A Flash model built for speed, combining frontier intelligence with
 superior search and grounding.
 
 ### Standard
@@ -146,14 +146,14 @@ performed.
 
 ^\*\*^ Can be tested in Google AI Studio.
 
-## Gemini 3.5 Flash
+## [Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash)
 
 *`gemini-3.5-flash`*
 
 
-[Try it in Google AI Studio](https://aistudio.google.com?model=gemini-3.5-flash)
+[Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-3.5-flash)
 
-Our most intelligent model built for speed, combining frontier intelligence with
+A Flash model built for speed, combining frontier intelligence with
 superior search and grounding.
 
 ### Standard
@@ -206,7 +206,7 @@ performed.
 
 ^\*\*^ Can be tested in Google AI Studio.
 
-## Gemini 3.5 Live Translate
+## [Gemini 3.5 Live Translate](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-preview)
 
 *`gemini-3.5-live-translate-preview`*
 
@@ -225,14 +225,58 @@ Our low-latency, real-time speech to speech translation model that supports 70+ 
 
 ^\*^ Billing is based on total input and output audio token consumption, calculated at a rate of 25 tokens per second of audio, equating to an effective price of approximately $0.0368 per minute.
 
-## Gemini 3.5 Flash-Lite
+## [Gemini 3.5 Transcribe Live](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe)
+
+*`gemini-3.5-transcribe-live`*
+
+
+[Try it in Google AI Studio](https://aistudio.google.com?model=gemini-3.5-transcribe-live)
+
+Our low-latency, real-time speech-to-text model for bidirectional streaming audio transcription over WebSockets.
+
+### Standard
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $3.50 or $0.005/min^\*^ (audio) |
+| Output price (including thinking tokens) | Free of charge | $21.00 or $0.004/min^\*^ (text) |
+| Grounding with Google Search | Not Supported |   |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+^\*^ Estimated pricing is based on 25 audio tokens per second for input
+and 175 text tokens per minute for output, for an effective blended rate of
+\~$0.009 per min for Live Transcribe.
+
+## [Gemini 3.5 Transcribe](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe)
+
+*`gemini-3.5-transcribe`*
+
+
+[Try it in Google AI Studio](https://aistudio.google.com?model=gemini-3.5-transcribe)
+
+Our speech-to-text model with automatic language detection, speaker diarization, word-level timestamps, and custom vocabulary biasing.
+
+### Standard
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $2.00 or $0.003/min^\*^ (audio) |
+| Output price (including thinking tokens) | Free of charge | $12.00 or $0.002/min^\*^ (text) |
+| Grounding with Google Search | Not Supported |   |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+^\*^ Estimated pricing is based on 25 audio tokens per second for input
+and 175 text tokens per minute for output, for an effective blended rate of
+\~$0.005 per min for Transcribe.
+
+## [Gemini 3.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite)
 
 *`gemini-3.5-flash-lite`*
 
 
 [Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-3.5-flash-lite)
 
-Our most cost-efficient GA model, optimized for high-volume agentic tasks,
+A cost-efficient model, optimized for high-volume agentic tasks,
 translation, and simple data processing.
 
 ### Standard
@@ -287,14 +331,14 @@ performed.
 
 ^\*\*^ Can be tested in Google AI Studio.
 
-## Gemini 3.1 Flash-Lite
+## [Gemini 3.1 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite)
 
 *`gemini-3.1-flash-lite`*
 
 
 [Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-3.1-flash-lite)
 
-Our most cost-efficient model, optimized for high-volume agentic tasks,
+A cost-efficient model, optimized for high-volume agentic tasks,
 translation, and simple data processing.
 
 ### Standard
@@ -347,14 +391,14 @@ performed.
 
 ^\*\*^ Can be tested in Google AI Studio.
 
-## Gemini Omni Flash Preview
+## [Gemini Omni Flash Preview](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 
 *`gemini-omni-flash-preview`*
 
 
 [Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-omni-flash-preview)
 
-Our next-generation video generation and editing model, available to developers on the paid tier of the Gemini API.
+Our next-generation video generation and editing model.
 
 ### Standard
 
@@ -366,15 +410,14 @@ Our next-generation video generation and editing model, available to developers 
 
 ^\*^ Billing is based on total output token consumption, calculated at a rate of 5,792 tokens per second of 720p video. Under Standard pricing, this equates to an effective price of approximately $0.10 per second.
 
-## Gemini 3.1 Pro Preview
+## [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview)
 
 *`gemini-3.1-pro-preview` and `gemini-3.1-pro-preview-customtools`*
 
 
 [Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-3.1-pro-preview)
 
-The latest performance, intelligence, and usability improvements to the best
-model family in the world for multimodal understanding,
+Our 3rd generation Pro model, built for multimodal understanding,
 agentic capabilities, and vibe-coding.
 
 ### Standard
@@ -427,7 +470,7 @@ performed.
 
 ^\*\*^ Can be tested in Google AI Studio.
 
-## Gemini 3.1 Flash Live Preview
+## [Gemini 3.1 Flash Live Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview)
 
 *`gemini-3.1-flash-live-preview`*
 
@@ -448,7 +491,7 @@ acoustic nuance detection, numeric precision, and multimodal awareness.
 queries to Google Search. You will be charged for each individual search query
 performed.
 
-## Gemini 3.1 Flash Image (Nano Banana 2) 🍌
+## [Gemini 3.1 Flash Image (Nano Banana 2) 🍌](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image)
 
 *`gemini-3.1-flash-image`*
 
@@ -489,7 +532,7 @@ Search is not charged as input tokens.
 
 ^\*\*\*^ Can be tested in Google AI Studio.
 
-## Gemini 3.1 Flash Lite Image (Nano Banana 2 Lite) 🍌
+## [Gemini 3.1 Flash Lite Image (Nano Banana 2 Lite) 🍌](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image)
 
 *`gemini-3.1-flash-lite-image`*
 
@@ -518,7 +561,7 @@ generation and editing.
 
 ^\*^ Image output is priced at $30 per 1,000,000 tokens. Output images at 1K (1024x1024px) consume 1120 tokens and are equivalent to $0.0336 per image.
 
-## Gemini 3.1 Flash TTS Preview
+## [Gemini 3.1 Flash TTS Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-preview)
 
 *`gemini-3.1-flash-tts-preview`*
 
@@ -527,9 +570,6 @@ generation and editing.
 
 Our 3.1 Flash Text-to-Speech audio model optimized for price-performant,
 low-latency, controllable speech generation.
-
-Preview models may change before becoming stable and have more restrictive rate
-limits.
 
 ### Standard
 
@@ -549,15 +589,15 @@ limits.
 
 ^\*^ Audio tokens correspond to 25 tokens per second of audio.
 
-## Gemini 3 Flash Preview
+## [Gemini 3 Flash Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview)
 
 *`gemini-3-flash-preview`*
 
 
 [Try it in Google AI Studio](https://aistudio.google.com?model=gemini-3-flash-preview)
 
-Our most intelligent model built for speed, combining frontier intelligence with
-superior search and grounding.
+An intelligent model built for speed, combining intelligence with search and
+grounding.
 
 ### Standard
 
@@ -609,7 +649,7 @@ performed.
 
 ^\*\*^ Can be tested in Google AI Studio.
 
-## Gemini 3 Pro Image (Nano Banana Pro) 🍌
+## [Gemini 3 Pro Image (Nano Banana Pro) 🍌](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image)
 
 *`gemini-3-pro-image`*
 
@@ -667,15 +707,14 @@ performed.
 
 ^\*\*\*\*^ Can be tested in Google AI Studio.
 
-## Gemini 2.5 Pro
+## [Gemini 2.5 Pro](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro)
 
 *`gemini-2.5-pro`*
 
 
 [Try it in Google AI Studio](https://aistudio.google.com?model=gemini-2.5-pro)
 
-Our state-of-the-art multipurpose model, which excels at coding and complex
-reasoning tasks.
+A Pro model which excels at coding and complex reasoning tasks.
 
 ### Standard
 
@@ -721,7 +760,7 @@ reasoning tasks.
 | Grounding with Google Maps | Not available | 10,000 RPD (free), then $25 / 1,000 grounded prompts |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemini 2.5 Flash
+## [Gemini 2.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash)
 
 *`gemini-2.5-flash`*
 
@@ -775,14 +814,14 @@ has thinking budgets.
 | Grounding with Google Maps | 500 RPD | 1,500 RPD (free), then $25 / 1,000 grounded prompts |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemini 2.5 Flash-Lite
+## [Gemini 2.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-lite)
 
 *`gemini-2.5-flash-lite`*
 
 
 [Try it in Google AI Studio](https://aistudio.google.com?model=gemini-2.5-flash-lite)
 
-Our smallest and most cost effective model, built for at scale usage.
+A small and cost effective model, built for at scale usage.
 
 ### Standard
 
@@ -828,37 +867,7 @@ Our smallest and most cost effective model, built for at scale usage.
 | Grounding with Google Maps | 500 RPD | 1,500 RPD (free), then $25 / 1,000 grounded prompts |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemini 2.5 Flash-Lite Preview
-
-*`gemini-2.5-flash-lite-preview-09-2025`*
-
-
-[Try it in Google AI Studio](https://aistudio.google.com?model=gemini-2.5-flash-lite-preview-09-2025)
-
-The latest model based on Gemini 2.5 Flash lite optimized for cost-efficiency,
-high throughput and high quality.
-
-### Standard
-
-|   | Free Tier | Paid Tier, per 1M tokens in USD |
-|---|---|---|
-| Input price (text, image, video) | Free of charge | $0.10 (text / image / video) $0.30 (audio) |
-| Output price (including thinking tokens) | Free of charge | $0.40 |
-| Context caching price | Not available | $0.01 (text / image / video) $0.03 (audio) $1.00 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search | Free of charge, up to 500 RPD (limit shared with Flash RPD) | 1,500 RPD (free, limit shared with Flash RPD), then $35 / 1,000 grounded prompts |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-### Batch
-
-|   | Free Tier | Paid Tier, per 1M tokens in USD |
-|---|---|---|
-| Input price (text, image, video) | Not available | $0.05 (text / image / video) $0.15 (audio) |
-| Output price (including thinking tokens) | Not available | $0.20 |
-| Context caching price | Not available | $0.01 (text / image / video) $0.03 (audio) $1.00 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search | Not available | 1,500 RPD (free, limit shared with Flash RPD), then $35 / 1,000 grounded prompts |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-## Gemini 2.5 Flash Native Audio (Live API)
+## [Gemini 2.5 Flash Native Audio (Live API)](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-native-audio-preview-12-2025)
 
 *`gemini-2.5-flash-native-audio-preview-12-2025`*
 
@@ -869,28 +878,22 @@ Our [Live API](https://ai.google.dev/gemini-api/docs/live) native audio models o
 quality audio outputs with better pacing, voice naturalness, verbosity, and
 mood.
 
-Preview models may change before becoming stable and have more restrictive rate
-limits.
-
 |   | Free Tier | Paid Tier, per 1M tokens in USD |
 |---|---|---|
 | Input price | Free of charge | $0.50 (text) $3.00 (audio / video) |
 | Output price (including thinking tokens) | Free of charge | $2.00 (text) $12.00 (audio) |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemini 2.5 Flash Image (Nano Banana) 🍌
+## [Gemini 2.5 Flash Image (Nano Banana) 🍌](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image)
 
 *`gemini-2.5-flash-image`*
 
 
 [Try it in Google AI Studio](https://aistudio.google.com?model=gemini-2.5-flash-image)
 
-Our native image generation model, optimized for speed, flexibility, and
+A native image generation model, optimized for speed, flexibility, and
 contextual understanding. Text input and output is priced the same as
 [2.5 Flash](https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-flash).
-
-Preview models may change before becoming stable and have more restrictive rate
-limits.
 
 ### Standard
 
@@ -927,7 +930,7 @@ limits.
 \[\*\] Image output is priced at $30 per 1,000,000 tokens. Output images up to
 1024x1024px consume 1290 tokens and are equivalent to $0.039 per image.
 
-## Gemini 2.5 Flash Preview TTS
+## [Gemini 2.5 Flash Preview TTS](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-preview-tts)
 
 *`gemini-2.5-flash-preview-tts`*
 
@@ -936,9 +939,6 @@ limits.
 
 Our 2.5 Flash text-to-speech audio model optimized for price-performant,
 low-latency, controllable speech generation.
-
-Preview models may change before becoming stable and have more restrictive rate
-limits.
 
 ### Standard
 
@@ -956,7 +956,7 @@ limits.
 | Output price | Not available | $5.00 (audio) |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemini 2.5 Pro Preview TTS
+## [Gemini 2.5 Pro Preview TTS](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro-preview-tts)
 
 *`gemini-2.5-pro-preview-tts`*
 
@@ -965,9 +965,6 @@ limits.
 
 Our 2.5 Pro text-to-speech audio model optimized for powerful, low-latency
 speech generation for more natural outputs and easier to steer prompts.
-
-Preview models may change before becoming stable and have more restrictive rate
-limits.
 
 ### Standard
 
@@ -985,110 +982,14 @@ limits.
 | Output price | Not available | $10.00 (audio) |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemini 2.0 Flash
-
-*`gemini-2.0-flash`*
-
-> [!WARNING]
-> **Warning:** Gemini 2.0 Flash is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and has been shut down June 1, 2026. Migrate to [a newer model](https://ai.google.dev/gemini-api/docs/models) to avoid service disruption.
-
-### Standard
-
-|   | Free Tier | Paid Tier, per 1M tokens in USD |
-|---|---|---|
-| Input price | Free of charge | $0.10 (text / image / video) $0.70 (audio) |
-| Output price | Free of charge | $0.40 |
-| Context caching price | Free of charge | $0.025 / 1,000,000 tokens (text/image/video) $0.175 / 1,000,000 tokens (audio) |
-| Context caching (storage) | Not available | $1.00 / 1,000,000 tokens per hour |
-| Image generation pricing | Not available ([shut down](https://ai.google.dev/gemini-api/docs/deprecations#gemini-2.0-models)) | Not available ([shut down](https://ai.google.dev/gemini-api/docs/deprecations#gemini-2.0-models)) |
-| Tuning price | Not available | Not available |
-| Grounding with Google Search | Free of charge, up to 500 RPD | 1,500 RPD (free), then $35 / 1,000 grounded prompts |
-| Grounding with Google Maps | 500 RPD | 1,500 RPD (free), then $25 / 1,000 grounded prompts |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-### Batch
-
-|   | Free Tier | Paid Tier, per 1M tokens in USD |
-|---|---|---|
-| Input price | Not available | $0.05 (text / image / video) $0.35 (audio) |
-| Output price | Not available | $0.20 |
-| Context caching price | Not available | $0.025 / 1,000,000 tokens (text/image/video) $0.175 / 1,000,000 tokens (audio) |
-| Context caching (storage) | Not available | $1.00 / 1,000,000 tokens per hour |
-| Image generation pricing | Not available ([shut down](https://ai.google.dev/gemini-api/docs/deprecations#gemini-2.0-models)) | Not available ([shut down](https://ai.google.dev/gemini-api/docs/deprecations#gemini-2.0-models)) |
-| Tuning price | Not available | Not available |
-| Grounding with Google Search | Not available | 1,500 RPD (free), then $35 / 1,000 grounded prompts |
-| Grounding with Google Maps | Not available | Not available |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-\[\*\] Image output is priced at $30 per 1,000,000 tokens. Output images up to
-1024x1024px consume 1290 tokens and are equivalent to $0.039 per image.
-
-## Gemini 2.0 Flash-Lite
-
-*`gemini-2.0-flash-lite`*
-
-> [!WARNING]
-> **Warning:** Gemini 2.0 Flash-Lite is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and has been shut down June 1, 2026. Migrate to [a newer model](https://ai.google.dev/gemini-api/docs/models) to avoid service disruption.
-
-### Standard
-
-|   | Free Tier | Paid Tier, per 1M tokens in USD |
-|---|---|---|
-| Input price | Free of charge | $0.075 |
-| Output price | Free of charge | $0.30 |
-| Context caching price | Not available | Not available |
-| Context caching (storage) | Not available | Not available |
-| Tuning price | Not available | Not available |
-| Grounding with Google Search | Not available | Not available |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-### Batch
-
-|   | Free Tier | Paid Tier, per 1M tokens in USD |
-|---|---|---|
-| Input price | Not available | $0.0375 |
-| Output price | Not available | $0.15 |
-| Context caching price | Not available | Not available |
-| Context caching (storage) | Not available | Not available |
-| Tuning price | Not available | Not available |
-| Grounding with Google Search | Not available | Not available |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-## Imagen 4
-
-*`imagen-4.0-generate-001`, `imagen-4.0-ultra-generate-001`, `imagen-4.0-fast-generate-001`*
-
-
-[Try it in Google AI Studio](https://aistudio.google.com/generate-image)
-
-> [!WARNING]
-> **Warning:** Imagen 4 models (\`imagen-4.0-generate-001\`, \`imagen-4.0-ultra-generate-001\`, \`imagen-4.0-fast-generate-001\`) are [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down on August 17, 2026; migrate to [Gemini 2.5 Flash Image](https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-flash) to avoid service disruption.
-
-Our latest image generation model, with significantly better text rendering and
-better overall image quality.
-
-Preview models may change before becoming stable and have more restrictive rate
-limits.
-
-|   | Free Tier | Paid Tier, per Image in USD |
-|---|---|---|
-| Imagen 4 Fast image price | Not available | $0.02 |
-| Imagen 4 Standard image price | Not available | $0.04 |
-| Imagen 4 Ultra image price | Not available | $0.06 |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-## Veo 3.1
+## [Veo 3.1](https://ai.google.dev/gemini-api/docs/models/veo-3.1-generate-preview)
 
 *`veo-3.1-generate-preview`, `veo-3.1-fast-generate-preview`, `veo-3.1-lite-generate-preview`*
 
 
 [Try Veo 3.1](https://deepmind.google/models/veo/)
 
-Our latest video generation model, available to developers on the
-paid tier of the Gemini API.
-
-Preview models may change before becoming stable and have more restrictive rate
-limits.
+A fast video generation model.
 
 |   | Free Tier | Paid Tier, per second in USD |
 |---|---|---|
@@ -1100,52 +1001,11 @@ limits.
 > [!NOTE]
 > **Note:** In some cases, an audio processing issue may prevent a video from being generated. You will only be charged if your video is successfully generated.
 
-## Veo 3
-
-*`veo-3.0-generate-001`, `veo-3.0-fast-generate-001`*
-
-
-[Try Veo 3](https://deepmind.google/models/veo/)
-
-> [!WARNING]
-> **Warning:** Veo 3 models (\`veo-3.0-generate-001\`, \`veo-3.0-fast-generate-001\`) are [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down on June 30, 2026; migrate to [Veo 3.1 Preview](https://ai.google.dev/gemini-api/docs/pricing#veo-3.1) or the GA models available through the [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-1-generate) to avoid service disruption.
-
-Our stable video generation model, available to developers on the
-paid tier of the Gemini API.
-
-|   | Free Tier | Paid Tier, per second in USD |
-|---|---|---|
-| Veo 3 Standard video with audio price (default) | Not available | $0.40 |
-| Veo 3 Fast video with audio price (default) | Not available | $0.10 (720p) $0.12 (1080p) $0.30 (4k) |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-> [!NOTE]
-> **Note:** In some cases, an audio processing issue may prevent a video from being generated. You will only be charged if your video is successfully generated.
-
-## Veo 2
-
-*`veo-2.0-generate-001`*
-
-
-[Try the API](https://ai.google.dev/gemini-api/docs/video)
-
-> [!WARNING]
-> **Warning:** Veo 2 (\`veo-2.0-generate-001\`) is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down on June 30, 2026; migrate to [Veo 3.1 Preview](https://ai.google.dev/gemini-api/docs/pricing#veo-3.1) or the GA models available through the [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/veo/3-1-generate) to avoid service disruption.
-
-Our state-of-the-art video generation model, available to developers on the
-paid tier of the Gemini API.
-
-|   | Free Tier | Paid Tier, per second in USD |
-|---|---|---|
-| Video price | Not available | $0.35 |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-## Lyria 3
+## [Lyria 3](https://ai.google.dev/gemini-api/docs/models/lyria-3-pro-preview)
 
 *`lyria-3-clip-preview` and `lyria-3-pro-preview`*
 
-Google's family of music generation models. Preview models may change
-before becoming stable and have more restrictive rate limits.
+Google's family of music generation models.
 
 |   | Free Tier | Paid Tier, per request in USD |
 |---|---|---|
@@ -1153,7 +1013,7 @@ before becoming stable and have more restrictive rate limits.
 | Lyria 3 Pro Preview (Full Song) | Not available | $0.08 per song |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemini Embedding 2
+## [Gemini Embedding 2](https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2)
 
 *`gemini-embedding-2`*
 
@@ -1183,14 +1043,14 @@ PDFs into a unified embedding space.
 | Video input price | Not available | $6.00 ($0.000395 per frame) |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemini Embedding
+## [Gemini Embedding](https://ai.google.dev/gemini-api/docs/models/gemini-embedding-001)
 
 *`gemini-embedding-001`*
 
 
 [Try the API](https://ai.google.dev/gemini-api/docs/embeddings)
 
-Our Gemini Embeddings model for text-only use cases, available to developers on the free and paid tiers of the Gemini API.
+Our first Gemini Embeddings model for text-only use cases.
 
 ### Standard
 
@@ -1206,7 +1066,7 @@ Our Gemini Embeddings model for text-only use cases, available to developers on 
 | Input price | Not available | $0.075 |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemini Robotics ER 2 Preview
+## [Gemini Robotics ER 2 Preview](https://ai.google.dev/gemini-api/docs/models/gemini-robotics-er-2-preview)
 
 *`gemini-robotics-er-2-preview`*
 
@@ -1238,7 +1098,7 @@ understanding, multi-robot collaboration, and advanced spatial reasoning.
 | Grounding with Google Search | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemini Robotics ER 2 Streaming Preview
+## [Gemini Robotics ER 2 Streaming Preview](https://ai.google.dev/gemini-api/docs/models/gemini-robotics-er-2-streaming-preview)
 
 *`gemini-robotics-er-2-streaming-preview`*
 
@@ -1259,7 +1119,7 @@ function calling.
 | Grounding with Google Search | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemini Robotics ER 1.6 Preview
+## [Gemini Robotics ER 1.6 Preview](https://ai.google.dev/gemini-api/docs/models/gemini-robotics-er-1.6-preview)
 
 *`gemini-robotics-er-1.6-preview`*
 
@@ -1288,7 +1148,7 @@ physical world.
 | Grounding with Google Search | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemini 2.5 Computer Use Preview
+## [Gemini 2.5 Computer Use Preview](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025)
 
 *`gemini-2.5-computer-use-preview-10-2025`*
 
@@ -1301,7 +1161,7 @@ automate tasks.
 | Output price | Not available | $10.00, prompts \<= 200k tokens $15.00, prompts \> 200k |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemma 4
+## [Gemma 4](https://ai.google.dev/gemma/docs/core/model_card_4)
 
 Our lightweight, state-of the art, open model built from the same technology
 that powers our Gemini models.

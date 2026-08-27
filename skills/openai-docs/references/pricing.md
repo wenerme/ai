@@ -228,6 +228,8 @@ Multimodal models
 
 
 
+To estimate vision model input costs, use the [image input cost
+calculator](https://developers.openai.com/api/docs/guides/image-cost-calculator).
 
 
   

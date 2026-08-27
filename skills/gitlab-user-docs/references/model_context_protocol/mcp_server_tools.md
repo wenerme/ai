@@ -24,6 +24,45 @@ Example:
 What version of the GitLab MCP server am I connected to?
 ```
 
+## `add_commit`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605876) in GitLab 19.3.
+
+Adds a commit with one or more file actions to a branch in a single call.
+
+| Parameter        | Type             | Required | Description |
+|------------------|------------------|----------|-------------|
+| `commit_message` | string           | Yes      | Commit message. |
+| `actions`        | array of objects | Yes      | File actions to commit as a single batch. |
+| `branch`         | string           | Yes      | Name of the branch to commit into. |
+| `project_id`     | string           | No       | ID or path of the project. Required if `url` is not provided. |
+| `url`            | string           | No       | GitLab URL of the project. Required if `project_id` is not provided. |
+| `start_branch`   | string           | No       | Name of the branch to start the new branch from. Required when `branch` does not exist. |
+
+Each object in `actions` accepts the following fields:
+
+| Field              | Type    | Required | Description |
+|--------------------|---------|----------|-------------|
+| `action`           | string  | Yes      | The action to perform: `create`, `update`, `delete`, `move`, or `chmod`. |
+| `file_path`        | string  | Yes      | Full path to the file. |
+| `content`          | string  | No       | File content. Used by `create`, `update`, and `move`. Mutually exclusive with `old_str` and `new_str`. |
+| `old_str`          | string  | No       | Existing text to replace in an `update` action. Requires `new_str`. |
+| `new_str`          | string  | No       | Replacement text for `old_str` in an `update` action. |
+| `previous_path`    | string  | No       | Original file path. Required for `move`. |
+| `encoding`         | string  | No       | Encoding of `content`: `text` or `base64`. Default is `text`. |
+| `last_commit_id`   | string  | No       | Last known commit ID for the file, used for optimistic concurrency. |
+| `execute_filemode` | boolean | No       | Whether the file is executable. Required for `chmod`. |
+
+Partial edits replace exactly one occurrence of `old_str`. If it occurs more than once, provide more surrounding
+context. Partial edits read the complete file on the server and are subject to the 20 MB GraphQL blob request limit.
+
+Example:
+
+```plaintext
+In project gitlab-org/gitlab, create README.md on branch "docs-update"
+with the content "# New title" and commit message "Add README"
+```
+
 ## `create_issue`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/203055) in GitLab 18.4.
@@ -307,6 +346,12 @@ exactly one operation, selected with the `method` parameter:
 | `resolve_discussion` | Resolves or unresolves a discussion. |
 | `submit_review`      | Posts multiple diff comments and an optional summary in one call. |
 | `post_duo_review`    | Asks GitLab Duo to review the merge request. Requires GitLab Duo Code Review. |
+| `approve`            | Approves the merge request. Already-approved calls succeed with status `already_approved`. |
+| `unapprove`          | Removes your approval. Calls without a prior approval succeed with status `not_approved`. |
+
+Responses from `post_duo_review`, `approve`, and `unapprove` include the merge request's
+current `diff_head_sha`, so you can tell whether a standing approval or review still covers
+the latest commits.
 
 | Parameter           | Type    | Required | Description |
 |---------------------|---------|----------|-------------|
@@ -326,6 +371,7 @@ exactly one operation, selected with the `method` parameter:
 | `verdict`           | string  | No       | For `submit_review`, an overall verdict prefixed to the summary note. |
 | `summary`           | string  | No       | For `submit_review`, a summary note posted after the diff comments. |
 | `summary_internal`  | boolean | No       | For `submit_review`, marks the summary note as internal. |
+| `sha`               | string  | No       | For `approve`, a head SHA guard. When given and it no longer matches the merge request head, the approval is refused. Pass the full 40-character `diff_head_sha` returned by `get_merge_request`. |
 
 Example:
 
@@ -358,6 +404,37 @@ Example:
 
 ```plaintext
 Who are the maintainers of gitlab-org/gitlab?
+```
+
+## `accept_merge_request`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/617968) in GitLab 19.4.
+
+Merges a merge request, or schedules it to merge automatically. Without `strategy`, the merge
+starts immediately and completes asynchronously. With `strategy`, auto-merge is armed and the
+merge request merges once its checks pass. To approve a merge request instead, use the
+`save_merge_request_review` tool.
+
+Calls against a merge request that is already merged succeed with status `already_merged`,
+and calls with a `strategy` against a merge request that is already scheduled succeed with
+status `already_scheduled`.
+
+| Parameter                     | Type    | Required | Description |
+|-------------------------------|---------|----------|-------------|
+| `url`                         | string  | No       | GitLab URL of the merge request. Provide this, or `project_id` and `merge_request_iid`. |
+| `project_id`                  | string  | No       | ID or path of the project. Required if `url` is missing. |
+| `merge_request_iid`           | integer | No       | Internal ID of the merge request. Required if `url` is missing. |
+| `sha`                         | string  | Yes      | Head SHA guard. When it no longer matches the merge request head, the merge is refused. Pass the `diff_head_sha` returned by `get_merge_request`. |
+| `strategy`                    | string  | No       | Auto-merge strategy, for example `merge_when_checks_pass`. When given, arms auto-merge instead of merging immediately. |
+| `squash`                      | boolean | No       | Squash the commits into a single commit on merge. |
+| `commit_message`              | string  | No       | Custom merge commit message. |
+| `squash_commit_message`       | string  | No       | Custom squash commit message. Applies when `squash` is `true`. |
+| `should_remove_source_branch` | boolean | No       | Remove the source branch after merging. |
+
+Example:
+
+```plaintext
+Merge merge request 42 in project gitlab-org/gitlab once its checks pass, and remove the source branch
 ```
 
 ## `add_branch`
@@ -635,7 +712,7 @@ merge requests related to it. Widgets the work item type does not support are om
 
 | Parameter                       | Type    | Required | Description |
 |---------------------------------|---------|----------|-------------|
-| `url`                           | string  | No       | GitLab URL of the work item (a `/-/work_items/` URL). Provide this, or `work_item_iid` with `group_id` or `project_id`. |
+| `url`                           | string  | No       | GitLab URL of the work item (a `/-/work_items/`, `/-/issues/`, or `/-/epics/` URL). Provide this, or `work_item_iid` with `group_id` or `project_id`. |
 | `group_id`                      | string  | No       | ID or path of the group. Required if `url` and `project_id` are missing. |
 | `project_id`                    | string  | No       | ID or path of the project. Required if `url` and `group_id` are missing. |
 | `work_item_iid`                 | integer | No       | Internal ID of the work item. Required if `url` is missing. |

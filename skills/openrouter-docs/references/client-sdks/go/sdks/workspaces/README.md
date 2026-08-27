@@ -158,7 +158,7 @@ func main() {
 
 ## Delete
 
-Delete an existing workspace. Workspaces with active API keys cannot be deleted; remove the keys first. Deleting the default workspace is not yet generally available; callers not enabled for it receive a 403 while the capability rolls out. Deleting any workspace permanently deletes its budgets and guardrails and disables its classifiers and broadcast destinations. [Management key](/docs/client-sdks/go/docs/guides/overview/auth/management-api-keys) required.
+Delete an existing workspace. Workspaces with active API keys cannot be deleted; remove the keys first. Deleting the default workspace requires confirm\_default\_workspace\_deletion=true. Deleting any workspace permanently deletes its budgets and guardrails and disables its classifiers and broadcast destinations. [Management key](/docs/client-sdks/go/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -179,7 +179,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Workspaces.Delete(ctx, "production")
+    res, err := s.Workspaces.Delete(ctx, "production", nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -191,11 +191,12 @@ func main() {
 
 ### Parameters
 
-| Parameter | Type                                                       | Required             | Description                         | Example    |
-| --------- | ---------------------------------------------------------- | -------------------- | ----------------------------------- | ---------- |
-| `ctx`     | [context.Context](https://pkg.go.dev/context#Context)      | :heavy\_check\_mark: | The context to use for the request. |            |
-| `id`      | `string`                                                   | :heavy\_check\_mark: | The workspace ID (UUID) or slug     | production |
-| `opts`    | \[][operations.Option](../../models/operations/option.mdx) | :heavy\_minus\_sign: | The options for this request.       |            |
+| Parameter                         | Type                                                       | Required             | Description                                                                                                                                                                                                                                                                | Example    |
+| --------------------------------- | ---------------------------------------------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| `ctx`                             | [context.Context](https://pkg.go.dev/context#Context)      | :heavy\_check\_mark: | The context to use for the request.                                                                                                                                                                                                                                        |            |
+| `id`                              | `string`                                                   | :heavy\_check\_mark: | The workspace ID (UUID) or slug                                                                                                                                                                                                                                            | production |
+| `confirmDefaultWorkspaceDeletion` | `*bool`                                                    | :heavy\_minus\_sign: | Required to delete the default workspace. Deleting it permanently disables the account’s unscoped inference API keys (management/provisioning keys are retained) and its budgets, guardrails, classifiers, and broadcast destinations. Ignored for non-default workspaces. | false      |
+| `opts`                            | \[][operations.Option](../../models/operations/option.mdx) | :heavy\_minus\_sign: | The options for this request.                                                                                                                                                                                                                                              |            |
 
 ### Response
 

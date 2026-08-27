@@ -489,7 +489,7 @@ prompt\_cache\_key
 
 reasoning\_effort
 
-`string | null`
+`string | null`enum: low, medium, high
 
 ▶response\_format
 

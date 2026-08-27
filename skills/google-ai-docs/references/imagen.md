@@ -77,6 +77,25 @@ This example demonstrates generating images with an [Imagen model](https://deepm
 
     main();
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.types.GenerateImagesResponse;
+
+    Client client = new Client();
+
+    GenerateImagesResponse response = client.models.generateImages(
+        "imagen-3.0-generate-002",
+        "A cute golden retriever puppy sitting in a field of sunflowers",
+        null
+    );
+
+    if (response.generatedImages().isPresent()) {
+        for (var image : response.generatedImages().get()) {
+            System.out.println("Image MIME type: " + image.image().flatMap(i -> i.mimeType()).orElse(""));
+        }
+    }
+
 ### Go
 
     package main

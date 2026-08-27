@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Generic SAML 2.0
 
-Last updated Jun 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare One integrates with any identity provider that supports SAML 2.0\. If your identity provider is not listed in the integration list of login methods in Cloudflare One, it can be configured using SAML 2.0 (or OpenID if OIDC based). Generic SAML can also be used if you would like to pass additional SAML headers or claims for an IdP in the integration list.
 
@@ -90,6 +90,12 @@ You can now [test the IdP integration](https://developers.cloudflare.com/cloudfl
 
 The generic SAML integration allows you to synchronize user groups and automatically deprovision users using [SCIM](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/).
 
+SCIM affects Access and Gateway policy evaluation differently.
+
+Access evaluates a user's identity and group membership from the SAML assertion or OIDC token returned by the identity provider during authentication. SCIM provides readable group names in the Access policy builder, but Access does not use SCIM group membership to evaluate a login. If you turn on **Enable user deprovisioning**, removing a user from the SCIM application revokes their active Access sessions. You can also configure SCIM to revoke sessions after group membership changes. Access evaluates the updated identity provider data when the user authenticates again.
+
+Gateway evaluates identity-based policies against the [User Registry identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/users/). SCIM updates this identity when users or group memberships change, without waiting for the user to authenticate again. Cloudflare One Client device profiles use the same synchronized identity.
+
 ### Prerequisites
 
 Your identity provider must support SCIM version 2.0.
@@ -120,7 +126,7 @@ Setup instructions vary depending on the identity provider. In your identity pro
 If you would like to build policies based on IdP groups:
 
 * Ensure that your IdP sends a `groups` field. The naming must match exactly (case insensitive). All other values will be sent as a SAML attribute.
-* If your IdP requires creating a new SCIM application, ensure that the groups in the SCIM application match the groups in the [original SSO application](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#1-create-an-application-in-your-identity-provider). Because SCIM group membership updates will overwrite any groups in a user's identity, assigning the same groups to each app ensures consistent policy evaluation.
+* If your IdP requires a new SCIM application, ensure that its groups match the groups in the [original SSO application](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#1-create-an-application-in-your-identity-provider). Matching the groups keeps the Gateway identity synchronized with the groups that the IdP returns when the user authenticates to Access.
 
 ### 3\. Verify SCIM provisioning
 
@@ -238,5 +244,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#page","headline":"Generic SAML 2.0 · Cloudflare One docs","description":"Generic SAML 2.0 in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#page","headline":"Generic SAML 2.0 · Cloudflare One docs","description":"Generic SAML 2.0 in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}
 ```

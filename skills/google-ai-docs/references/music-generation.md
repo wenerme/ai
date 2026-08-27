@@ -69,6 +69,31 @@ the `steps` schema.
       console.log(`Lyrics:\n${lyrics}`);
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseModality;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("lyria-3-generate-001"))
+            .responseModalities(Arrays.asList(ResponseModality.AUDIO))
+            .input(InteractionsInput.of("Upbeat electronic synthwave track"))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Audio generated: " + interaction.outputAudio().isPresent());
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -110,6 +135,31 @@ using [timestamps](https://ai.google.dev/gemini-api/docs/music-generation#timing
         input: 'A beautiful piano melody.',
     });
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseModality;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("lyria-3-generate-001"))
+            .responseModalities(Arrays.asList(ResponseModality.AUDIO))
+            .input(InteractionsInput.of("Upbeat electronic synthwave track"))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Audio generated: " + interaction.outputAudio().isPresent());
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -143,6 +193,31 @@ the `response_format`.
             type: 'audio',
         },
     });
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseModality;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("lyria-3-generate-001"))
+            .responseModalities(Arrays.asList(ResponseModality.AUDIO))
+            .input(InteractionsInput.of("Upbeat electronic synthwave track"))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Audio generated: " + interaction.outputAudio().isPresent());
 
 ### REST
 
@@ -194,6 +269,31 @@ Content blocks with `audio` type contain the base64 encoded audio data.
     if (lyrics) {
         console.log("Lyrics:\n" + lyrics);
     }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseModality;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("lyria-3-generate-001"))
+            .responseModalities(Arrays.asList(ResponseModality.AUDIO))
+            .input(InteractionsInput.of("Upbeat electronic synthwave track"))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Audio generated: " + interaction.outputAudio().isPresent());
 
 ### REST
 
@@ -257,6 +357,31 @@ received), you can manually iterate over `steps` instead:
         fs.writeFileSync("output.mp3", audioData);
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseModality;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("lyria-3-generate-001"))
+            .responseModalities(Arrays.asList(ResponseModality.AUDIO))
+            .input(InteractionsInput.of("Upbeat electronic synthwave track"))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Audio generated: " + interaction.outputAudio().isPresent());
+
 ## Generate music from images
 
 Lyria 3 supports multimodal inputs --- you can provide up to **10 images**
@@ -306,6 +431,31 @@ inspired by the visual content.
             },
         ],
     });
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseModality;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("lyria-3-generate-001"))
+            .responseModalities(Arrays.asList(ResponseModality.AUDIO))
+            .input(InteractionsInput.of("Upbeat electronic synthwave track"))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Audio generated: " + interaction.outputAudio().isPresent());
 
 ### REST
 
@@ -385,6 +535,31 @@ song structure:
         input: prompt,
     });
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseModality;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("lyria-3-generate-001"))
+            .responseModalities(Arrays.asList(ResponseModality.AUDIO))
+            .input(InteractionsInput.of("Upbeat electronic synthwave track"))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Audio generated: " + interaction.outputAudio().isPresent());
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -435,6 +610,31 @@ are delivered, and how the song progresses:
         input: prompt,
     });
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseModality;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("lyria-3-generate-001"))
+            .responseModalities(Arrays.asList(ResponseModality.AUDIO))
+            .input(InteractionsInput.of("Upbeat electronic synthwave track"))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Audio generated: " + interaction.outputAudio().isPresent());
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -463,6 +663,31 @@ required, you can prompt the model to produce instrumental-only tracks:
         model: 'lyria-3-clip-preview',
         input: 'A bright chiptune melody in C Major, retro 8-bit video game style. Instrumental only, no vocals.',
     });
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseModality;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("lyria-3-generate-001"))
+            .responseModalities(Arrays.asList(ResponseModality.AUDIO))
+            .input(InteractionsInput.of("Upbeat electronic synthwave track"))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Audio generated: " + interaction.outputAudio().isPresent());
 
 ### REST
 
@@ -493,6 +718,31 @@ style and pronunciation to match the language.
         model: 'lyria-3-pro-preview',
         input: 'Crée une chanson pop romantique en français sur un coucher de soleil à Paris. Utilise du piano et de la guitare acoustique.',
     });
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseModality;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("lyria-3-generate-001"))
+            .responseModalities(Arrays.asList(ResponseModality.AUDIO))
+            .input(InteractionsInput.of("Upbeat electronic synthwave track"))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Audio generated: " + interaction.outputAudio().isPresent());
 
 ### REST
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers Bindings
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you through setting up and deploying your first Workers AI project. You will use [Workers](https://developers.cloudflare.com/workers/), a Workers AI binding, and a large language model (LLM) to deploy your first AI-powered application on the Cloudflare global network.
 
@@ -89,18 +89,30 @@ You can also bind Workers AI to a Pages Function. For more information, refer to
 
 ## 3\. Run an inference task in your Worker
 
-You are now ready to run an inference task in your Worker. In this case, you will use an LLM, [llama-3.1-8b-instruct](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct/), to answer a question.
+You are now ready to run an inference task in your Worker. In this case, you will use an LLM, [gemma-4-26b-a4b-it](https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/), to answer a question.
 
 Update the `index.ts` file in your `hello-ai` application directory with the following code:
 
 ```js
 export default {
 	async fetch(request, env) {
-		const response = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
-			prompt: "What is the origin of the phrase Hello, World",
+		const response = await env.AI.run("@cf/google/gemma-4-26b-a4b-it", {
+			messages: [
+				{
+					role: "system",
+					content: "You are a helpful assistant.",
+				},
+				{
+					role: "user",
+					content: "What is the origin of the phrase Hello, World",
+				},
+			],
+			chat_template_kwargs: {
+				enable_thinking: false,
+			},
 		});
 
-		return new Response(JSON.stringify(response));
+		return Response.json(response);
 	},
 };
 ```
@@ -114,16 +126,28 @@ export interface Env {
 
 export default {
 	async fetch(request, env): Promise<Response> {
-		const response = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
-			prompt: "What is the origin of the phrase Hello, World",
+		const response = await env.AI.run("@cf/google/gemma-4-26b-a4b-it", {
+			messages: [
+				{
+					role: "system",
+					content: "You are a helpful assistant.",
+				},
+				{
+					role: "user",
+					content: "What is the origin of the phrase Hello, World",
+				},
+			],
+			chat_template_kwargs: {
+				enable_thinking: false,
+			},
 		});
 
-		return new Response(JSON.stringify(response));
+		return Response.json(response);
 	},
 } satisfies ExportedHandler<Env>;
 ```
 
-Up to this point, you have created an AI binding for your Worker and configured your Worker to be able to execute the Llama 3.1 model. You can now test your project locally before you deploy globally.
+Up to this point, you have created an AI binding for your Worker and configured your Worker to execute the Gemma 4 26B A4B model with reasoning disabled. You can now test your project locally before you deploy globally.
 
 ## 4\. Develop locally with Wrangler
 
@@ -137,11 +161,26 @@ Workers AI local development usage charges
 
 Using Workers AI always accesses your Cloudflare account in order to run AI models and will incur usage charges even in local development.
 
-You will be prompted to log in after you run `wrangler dev`. When you run `npx wrangler dev`, Wrangler will give you a URL (most likely `localhost:8787`) to review your Worker. After you go to the URL Wrangler provides, a message will render that resembles the following example:
+You will be prompted to log in after you run `wrangler dev`. When you run `npx wrangler dev`, Wrangler will give you a URL (most likely `localhost:8787`) to review your Worker. After you go to the URL Wrangler provides, the response will have a shape similar to the following example:
 
 ```json
 {
-	"response": "Ah, a most excellent question, my dear human friend! *adjusts glasses*\n\nThe origin of the phrase \"Hello, World\" is a fascinating tale that spans several decades and multiple disciplines. It all began in the early days of computer programming, when a young man named Brian Kernighan was tasked with writing a simple program to demonstrate the basics of a new programming language called C.\nKernighan, a renowned computer scientist and author, was working at Bell Labs in the late 1970s when he created the program. He wanted to showcase the language's simplicity and versatility, so he wrote a basic \"Hello, World!\" program that printed the familiar greeting to the console.\nThe program was included in Kernighan and Ritchie's influential book \"The C Programming Language,\" published in 1978. The book became a standard reference for C programmers, and the \"Hello, World!\" program became a sort of \"Hello, World!\" for the programming community.\nOver time, the phrase \"Hello, World!\" became a shorthand for any simple program that demonstrated the basics"
+	"id": "<generated id>",
+	"object": "chat.completion",
+	"created": 0,
+	"model": "@cf/google/gemma-4-26b-a4b-it",
+	"choices": [
+		{
+			"index": 0,
+			"message": {
+				"role": "assistant",
+				"content": "<generated response>",
+				"refusal": null
+			},
+			"finish_reason": "stop",
+			"logprobs": null
+		}
+	]
 }
 ```
 
@@ -167,7 +206,7 @@ https://hello-ai.<YOUR_SUBDOMAIN>.workers.dev
 
 Your Worker will be deployed to your custom [workers.dev](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) subdomain. You can now visit the URL to run your AI Worker.
 
-By finishing this tutorial, you have created a Worker, connected it to Workers AI through an AI binding, and ran an inference task from the Llama 3 model.
+By finishing this tutorial, you have created a Worker, connected it to Workers AI through an AI binding, and run an inference task using the Gemma 4 26B A4B model.
 
 ## Related resources
 
@@ -184,5 +223,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/#page","headline":"Get started - Workers and Wrangler · Cloudflare Workers AI docs","description":"Deploy your first Cloudflare Workers AI project using the CLI.","url":"https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/#page","headline":"Get started - Workers and Wrangler · Cloudflare Workers AI docs","description":"Deploy your first Cloudflare Workers AI project using the CLI.","url":"https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -23,7 +23,7 @@ input types and limits.
 
     prompt = "Summarize this document"
     interaction = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         input=[
             {"type": "text", "text": prompt},
             {"type": "document", "data": base64.b64encode(filepath.read_bytes()).decode('utf-8'), "mime_type": "application/pdf"}
@@ -43,7 +43,7 @@ input types and limits.
         const filePath = 'my_local_file.pdf';
 
         const interaction = await client.interactions.create({
-            model: "gemini-3.6-flash",
+            model: "gemini-3.7-flash",
             input: [
                 { type: "text", text: prompt },
                 {
@@ -58,6 +58,43 @@ input types and limits.
 
     main();
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.DocumentContent;
+    import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.List;
+
+    Client client = new Client();
+
+    Content textContent = TextContent.builder().text("Summarize this document.").build();
+    Content docContent =
+        DocumentContent.builder()
+            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
+            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
+            .build();
+
+    List<Content> contents = Arrays.asList(textContent, docContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     # Encode the local file to base64
@@ -67,7 +104,7 @@ input types and limits.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.6-flash",
+        "model": "gemini-3.7-flash",
         "input": [
           {"type": "text", "text": "Summarize this document"},
           {
@@ -119,7 +156,7 @@ input.
     prompt = "Summarize this document"
 
     interaction = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         input=[
             {"type": "document", "data": base64.b64encode(doc_data).decode('utf-8'), "mime_type": "application/pdf"},
             {"type": "text", "text": prompt}
@@ -140,7 +177,7 @@ input.
           .then((response) => response.arrayBuffer());
 
         const interaction = await client.interactions.create({
-            model: "gemini-3.6-flash",
+            model: "gemini-3.7-flash",
             input: [
                 { type: "text", text: prompt },
                 {
@@ -154,6 +191,43 @@ input.
     }
 
     main();
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.DocumentContent;
+    import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.List;
+
+    Client client = new Client();
+
+    Content textContent = TextContent.builder().text("Summarize this document.").build();
+    Content docContent =
+        DocumentContent.builder()
+            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
+            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
+            .build();
+
+    List<Content> contents = Arrays.asList(textContent, docContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 
@@ -177,7 +251,7 @@ input.
     # Create JSON payload file
     cat <<EOF > payload.json
     {
-    "model": "gemini-3.6-flash",
+    "model": "gemini-3.7-flash",
     "input": [
     {"type": "document", "data": "${ENCODED_PDF}", "mime_type": "application/pdf"},
     {"type": "text", "text": "${PROMPT}"}
@@ -216,7 +290,7 @@ temporarily (48 hours) and processed for efficient retrieval by the model.
     prompt = "Summarize this document"
 
     interaction = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         input=[
             {"type": "text", "text": prompt},
             {"type": "document", "uri": doc_file.uri, "mime_type": doc_file.mime_type}
@@ -240,7 +314,7 @@ temporarily (48 hours) and processed for efficient retrieval by the model.
       });
 
       const interaction = await client.interactions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.7-flash",
         input: [
             { type: "text", text: prompt },
             { type: "document", uri: myfile.uri, mime_type: myfile.mimeType }
@@ -250,6 +324,43 @@ temporarily (48 hours) and processed for efficient retrieval by the model.
     }
 
     await main();
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.DocumentContent;
+    import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.List;
+
+    Client client = new Client();
+
+    Content textContent = TextContent.builder().text("Summarize this document.").build();
+    Content docContent =
+        DocumentContent.builder()
+            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
+            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
+            .build();
+
+    List<Content> contents = Arrays.asList(textContent, docContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 
@@ -288,7 +399,7 @@ temporarily (48 hours) and processed for efficient retrieval by the model.
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d '{
-          "model": "gemini-3.6-flash",
+          "model": "gemini-3.7-flash",
           "input": [
             {"type": "text", "text": "Summarize this document"},
             {"type": "document", "uri": '$file_uri', "mime_type": "'${MIME_TYPE}'"}
@@ -349,7 +460,7 @@ download and re-upload it. You can register it directly with the File API.
 
        from google.oauth2.service_account import Credentials
 
-       GCS_READ_SCOPES = [       
+       GCS_READ_SCOPES = [
          'https://www.googleapis.com/auth/devstorage.read_only',
          'https://www.googleapis.com/auth/cloud-platform'
        ]
@@ -399,7 +510,7 @@ download and re-upload it. You can register it directly with the File API.
 
        import google.auth
 
-       GCS_READ_SCOPES = [       
+       GCS_READ_SCOPES = [
          'https://www.googleapis.com/auth/devstorage.read_only',
          'https://www.googleapis.com/auth/cloud-platform'
        ]
@@ -421,20 +532,55 @@ download and re-upload it. You can register it directly with the File API.
          ]
        });
 
-   ### CLI
+### Java
 
-   This is an interactive command. For services like Compute Engine you can attach scopes to
-   the running service at the config level. See the [user-managed service
-   docs](https://docs.cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#using)
-   for an example.
+`java
+import com.google.genai.Client;
+import com.google.genai.gaos.models.interactions.Content;
+import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+import com.google.genai.gaos.models.interactions.DocumentContent;
+import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
+import com.google.genai.gaos.models.interactions.Interaction;
+import com.google.genai.gaos.models.interactions.InteractionsInput;
+import com.google.genai.gaos.models.interactions.Model;
+import com.google.genai.gaos.models.interactions.TextContent;
+import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+import java.util.Arrays;
+import java.util.List;
 
-       gcloud auth application-default login \
-       --scopes="https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/devstorage.read_only"
+Client client = new Client();
 
-3. File registration (Files API)
+Content textContent = TextContent.builder().text("Summarize this document.").build();
+Content docContent =
+DocumentContent.builder()
+.uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
+.mimeType(DocumentContentMimeType.APPLICATION_PDF)
+.build();
 
-   Use the Files API to register files and produce a Files API path that can
-   directly be used in the Gemini API.
+List<Content> contents = Arrays.asList(textContent, docContent);
+
+CreateModelInteraction params =
+CreateModelInteraction.builder()
+.model(Model.of("gemini-3.7-flash"))
+.input(InteractionsInput.ofContent(contents))
+.build();
+
+Interaction interaction =
+client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+System.out.println(interaction.outputText().orElse(""));`
+
+### CLI
+
+This is an interactive command. For services like Compute Engine you can attach scopes to
+the running service at the config level. See the [user-managed service
+docs](https://docs.cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#using)
+for an example.
+
+    gcloud auth application-default login \
+    --scopes="https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/devstorage.read_only"
+
+1. File registration (Files API) Use the Files API to register files and produce a Files API path that can directly be used in the Gemini API.
 
    ### Python
 
@@ -450,7 +596,7 @@ download and re-upload it. You can register it directly with the File API.
        for f in registered_gcs_files.files:
          print(f.name)
          interaction = client.interactions.create(
-           model="gemini-3.6-flash",
+           model="gemini-3.7-flash",
            input=[
              {"type": "text", "text": prompt},
              {"type": "document", "uri": f.uri, "mime_type": f.mime_type}
@@ -474,7 +620,7 @@ download and re-upload it. You can register it directly with the File API.
            for (const file of registeredGcsFiles.files) {
                console.log(file.name);
                const interaction = await ai.interactions.create({
-                   model: "gemini-3.6-flash",
+                   model: "gemini-3.7-flash",
                    input: [
                        { type: "text", text: prompt },
                        { type: "document", uri: file.uri, mime_type: file.mimeType }
@@ -487,15 +633,52 @@ download and re-upload it. You can register it directly with the File API.
 
        main();
 
-   ### CLI
+### Java
 
-       access_token=$(gcloud auth application-default print-access-token)
-       project_id=$(gcloud config get-value project)
-       curl -X POST https://generativelanguage.googleapis.com/v1beta/files:register \
-           -H 'Content-Type: application/json' \
-           -H "Authorization: Bearer ${access_token}" \
-           -H "x-goog-user-project: ${project_id}" \
-           -d '{"uris": ["gs://bucket/object1", "gs://bucket/object2"]}'
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.DocumentContent;
+    import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.List;
+
+    Client client = new Client();
+
+    Content textContent = TextContent.builder().text("Summarize this document.").build();
+    Content docContent =
+        DocumentContent.builder()
+            .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
+            .mimeType(DocumentContentMimeType.APPLICATION_PDF)
+            .build();
+
+    List<Content> contents = Arrays.asList(textContent, docContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
+### CLI
+
+    access_token=$(gcloud auth application-default print-access-token)
+    project_id=$(gcloud config get-value project)
+    curl -X POST https://generativelanguage.googleapis.com/v1beta/files:register \
+        -H 'Content-Type: application/json' \
+        -H "Authorization: Bearer ${access_token}" \
+        -H "x-goog-user-project: ${project_id}" \
+        -d '{"uris": ["gs://bucket/object1", "gs://bucket/object2"]}'
 
 ## External HTTP / Signed URLs
 
@@ -516,7 +699,7 @@ This is ideal for files up to 100MB that you don't want to re-upload.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         input=[
             {"type": "document", "uri": uri, "mime_type": "application/pdf"},
             {"type": "text", "text": prompt}
@@ -534,7 +717,7 @@ This is ideal for files up to 100MB that you don't want to re-upload.
 
     async function main() {
       const interaction = await client.interactions.create({
-        model: 'gemini-3.6-flash',
+        model: 'gemini-3.7-flash',
         input: [
           { type: "document", uri: uri, mime_type: "application/pdf" },
           { type: "text", text: "summarize this file" }
@@ -552,7 +735,7 @@ This is ideal for files up to 100MB that you don't want to re-upload.
           -H 'x-goog-api-key: $GEMINI_API_KEY' \
           -H 'Content-Type: application/json' \
           -d '{
-              "model": "gemini-3.6-flash",
+              "model": "gemini-3.7-flash",
               "input": [
                 {"type": "text", "text": "Summarize this pdf"},
                 {

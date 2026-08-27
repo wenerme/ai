@@ -1,93 +1,71 @@
 ---
-title: "| Grafana Plugins documentation"
-description: "Warning We recommend customers to use Grafana version 10.4.0 or higher for the AWS IoT SiteWise Datasource. Grafana instances with versions prior to 10.4.0 are unable to use AWS IoT SiteWise data source versions beyond 1.25.2."
+title: "AWS IoT SiteWise data source | Grafana Plugins documentation"
+description: "Use the AWS IoT SiteWise data source to query and visualize industrial equipment data from AWS IoT SiteWise in Grafana."
 ---
 
 > For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-# AWS IoT SiteWise Datasource
+# AWS IoT SiteWise data source
 
-This datasource supports reading data from [AWS IoT SiteWise](https://aws.amazon.com/iot-sitewise/) and showing it in a Grafana dashboard.
+The AWS IoT SiteWise data source lets you query and visualize data from [AWS IoT SiteWise](https://aws.amazon.com/iot-sitewise/) in Grafana. AWS IoT SiteWise is a managed service that collects, stores, organizes, and monitors data from industrial equipment at scale, so you can build dashboards for asset properties, aggregates, and time series without moving your data.
 
-## Add the data source
+> Warning
+>
+> Use Grafana version 10.4.0 or later with the AWS IoT SiteWise data source. Grafana instances earlier than 10.4.0 can’t use AWS IoT SiteWise data source versions later than 1.25.2.
 
-1. In the side menu under the **Configuration** link, click on **Data Sources**.
-2. Click the **Add data source** button.
-3. Select **IoT SiteWise** in the **Industrial &amp; IoT** section.
+## Supported features
 
-## Authentication
+The following table lists the features available with this data source.
 
-The IoT SiteWise plugin authentication matches the standard Cloudwatch plugin system. See the [grafana cloudwatch documentation](/docs/grafana/latest/datasources/cloudwatch/#authentication) for authentication options and setup.
+Expand table
 
-Once authentication is configured, click “Save and Test” to verify the service is working. Once this is configured, you can specify default values for the configuration.
+| Feature            | Supported |
+|--------------------|-----------|
+| Metrics            | Yes       |
+| Logs               | No        |
+| Traces             | No        |
+| Alerting           | Yes       |
+| Annotations        | Yes       |
+| Template variables | Yes       |
 
-## Querying data
+## Requirements
 
-Users can choose between the UI driven Query builder and the Query code editor, that uses [IoT SiteWise query language](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/sql.html) queries to fetch data. The Query builder offers a guided, less technical interface, whereas the Query code editor is more technical but also more powerful.
+To use the AWS IoT SiteWise data source, you need:
 
-### Query builder
+- A Grafana instance running version 10.4.0 or later.
+- An AWS account with AWS IoT SiteWise enabled in at least one Region, or a configured SiteWise Edge gateway.
+- AWS credentials or an IAM identity with read access to AWS IoT SiteWise.
 
-Use the “query type” selector to pick an appropriate query.
+## Get started
 
-Click on the “Explore” button to open an asset/model navigation interface:
+The following pages help you get started with the AWS IoT SiteWise data source.
 
-Multiple aggregations can be shown for a single property:
+- [Configure the AWS IoT SiteWise data source](/docs/plugins/grafana-iot-sitewise-datasource/latest/configure/)
+- [AWS IoT SiteWise query editor](/docs/plugins/grafana-iot-sitewise-datasource/latest/query-editor/)
+- [Template variables](/docs/plugins/grafana-iot-sitewise-datasource/latest/template-variables/)
+- [Annotations](/docs/plugins/grafana-iot-sitewise-datasource/latest/annotations/)
+- [Alerting](/docs/plugins/grafana-iot-sitewise-datasource/latest/alerting/)
+- [Troubleshooting](/docs/plugins/grafana-iot-sitewise-datasource/latest/troubleshooting/)
 
-### SQL Builder
+## Additional features
 
-Use the “Builder (SQL)” selector to switch to the SQL Builder mode.
+After you configure the data source, you can use the following Grafana features.
 
-Construct SQL queries step by step by specifying the FROM, SELECT, WHERE, ORDER BY, GROUP BY, and HAVING clauses.
+- Use [Explore](/docs/grafana/latest/explore/) to query data without building a dashboard.
+- Add [Transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Set up [Alerting](/docs/grafana/latest/alerting/) rules to get notified when data changes.
+- Configure and use [Template variables](/docs/grafana/latest/dashboards/variables/) to build dynamic dashboards.
 
-Queries must include at least one SELECT and FROM clause to be valid.
+## Plugin updates
 
-Once the clauses are defined, a data query preview is displayed:
+Always ensure that your plugin version is up-to-date so you have access to all current features and improvements. Navigate to **Plugins and data** &gt; **Plugins** to check for updates. Grafana recommends upgrading to the latest Grafana version, and this applies to plugins as well.
 
-## Alerting
+> Note
+>
+> Plugins are automatically updated in Grafana Cloud.
 
-Plugin supports standard Grafana Alerts; however note that alert queries may not include template variables. See the [Alerting](/docs/grafana/latest/alerting/alerts-overview/) documentation for more on Grafana alerts.
+## Related resources
 
-## Configure the data source with provisioning
-
-You can configure data sources using config files with Grafana’s provisioning system. You can read more about how it works and all the settings you can set for data sources on the [provisioning docs page](/docs/grafana/latest/administration/provisioning/).
-
-Here are some provisioning examples for this data source.
-
-### Using a credentials file
-
-If you are using Credentials file authentication type, then you should use a credentials file with a config like this.
-
-YAML [Copy code to clipboard] Copy
-
-```yaml
-apiVersion: 1
-
-datasources:
-  - name: IoT SiteWise
-    type: grafana-iot-sitewise-datasource
-    jsonData:
-      authType: credentials
-      defaultRegion: us-east-1
-```
-
-### Using `accessKey` and `secretKey`
-
-YAML [Copy code to clipboard] Copy
-
-```yaml
-apiVersion: 1
-
-datasources:
-  - name: IoT SiteWise
-    type: grafana-iot-sitewise-datasource
-    jsonData:
-      authType: keys
-      defaultRegion: us-east-1
-    secureJsonData:
-      accessKey: '<your access key>'
-      secretKey: '<your secret key>'
-```
-
-### Plugin repository
-
-You can request new features, report issues, or contribute code directly through the [Sitewise data source plugin Github repository](https://github.com/grafana/iot-sitewise-datasource)
+- [AWS IoT SiteWise documentation](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/what-is-sitewise.html)
+- [AWS IoT SiteWise data source plugin GitHub repository](https://github.com/grafana/iot-sitewise-datasource)
+- [Grafana community forum](https://community.grafana.com/)

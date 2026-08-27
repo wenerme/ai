@@ -12,24 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits & pricing
 
-Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/platform/limits-pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/platform/limits-pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Limits
 
 The following limits apply based on your [Workers plan](https://developers.cloudflare.com/workers/platform/pricing/):
 
-| Limit                                       | Workers Free             | Workers Paid                 |
-| ------------------------------------------- | ------------------------ | ---------------------------- |
-| AI Search instances per account             | 100                      | 5,000                        |
-| Namespaces per account                      | 100                      | 100                          |
-| Files per instance                          | 100,000                  | 1M or 500K for hybrid search |
-| Pages per crawl, discover parse type        | 100,000                  | 100,000                      |
-| Max file size                               | 4 MB                     | 4 MB                         |
-| Queries per month                           | 20,000                   | Unlimited                    |
-| Instances per cross-instance search request | 10                       | 10                           |
-| Maximum pages crawled per day               | 500                      | Unlimited                    |
-| Max custom metadata fields                  | 5 per AI Search instance | 5 per AI Search instance     |
-| Max text metadata value length              | 500 characters           | 500 characters               |
+| Limit                                       | Workers Free                            | Workers Paid                            |
+| ------------------------------------------- | --------------------------------------- | --------------------------------------- |
+| AI Search instances per account             | 100                                     | 5,000                                   |
+| Namespaces per account                      | 100                                     | 100                                     |
+| Files per instance                          | 100,000                                 | 1M or 500K for hybrid search            |
+| Pages per crawl, discover parse type        | 100,000                                 | 100,000                                 |
+| Max file size                               | 4 MB                                    | 4 MB                                    |
+| Queries per month                           | 20,000                                  | Unlimited                               |
+| Instances per cross-instance search request | 10                                      | 10                                      |
+| Maximum pages crawled per day               | 500                                     | Unlimited                               |
+| Max custom metadata fields                  | 5 per AI Search instance                | 5 per AI Search instance                |
+| Metadata per vector                         | 10 KiB total, including system overhead | 10 KiB total, including system overhead |
+| Filterable indexed string data              | First 64 UTF-8 bytes per string         | First 64 UTF-8 bytes per string         |
 
 Website crawling is bounded by several of these limits at once. A `discover` crawl accepts up to 100,000 pages, but the files per instance and maximum pages crawled per day limits also apply, so the number of pages you end up with is whichever of those values is lowest. On Workers Free, the daily limit of 500 pages is the binding one.
 
@@ -62,5 +63,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/#page","headline":"Limits & pricing · Cloudflare AI Search docs","description":"View AI Search usage limits and pricing details for Free and Paid Workers plans.","url":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/#page","headline":"Limits & pricing · Cloudflare AI Search docs","description":"View AI Search usage limits and pricing details for Free and Paid Workers plans.","url":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

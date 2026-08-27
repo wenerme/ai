@@ -16,7 +16,7 @@ Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 232 modelsClear filters
+We found 233 modelsClear filters
 
 No models found
 
@@ -372,11 +372,13 @@ Try a different search term, or broaden your search by removing filters.
 
 [agemma-sea-lion-v4-27b-itaisingaporeText GenerationSEA-LION stands for Southeast Asian Languages In One Network, which is a collection of Large Language Models (LLMs) which have been pretrained and instruct-tuned for the Southeast Asia (SEA) region.Cloudflare-hosted](https://developers.cloudflare.com/ai/models/@cf/aisingapore/gemma-sea-lion-v4-27b-it/)
 
-[Pinned![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)glm-4.7-flashZhipu AIText GenerationGLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)glm-4.7-flashZhipu AIText GenerationGLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
 
 [![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)glm-5.2Zhipu AIText GenerationZ.ai's flagship agentic coding modelCloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
 
-[Pinned![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)gpt-oss-120bOpenAIText GenerationOpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-120b/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)glm-5.3-flashZhipu AIText GenerationThe first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.Cloudflare-hostedFunction callingReasoningVision](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
+
+[![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)gpt-oss-120bOpenAIText GenerationOpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-120b/)
 
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)gpt-oss-20bOpenAIText GenerationOpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-20b is for lower latency, and local or specialized use-cases.Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-20b/)
 
@@ -390,7 +392,7 @@ Try a different search term, or broaden your search by removing filters.
 
 [![Moonshot AI logo](https://developers.cloudflare.com/_astro/moonshotai.DjWMkXUS.svg)kimi-k2.6Moonshot AIText GenerationKimi K2.6 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.Cloudflare-hostedFunction callingReasoningVision](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.6/)
 
-[Pinned![Moonshot AI logo](https://developers.cloudflare.com/_astro/moonshotai.DjWMkXUS.svg)kimi-k2.7-codeMoonshot AIText GenerationKimi K2.7 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.Cloudflare-hostedFunction callingReasoningVision](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.7-code/)
+[![Moonshot AI logo](https://developers.cloudflare.com/_astro/moonshotai.DjWMkXUS.svg)kimi-k2.7-codeMoonshot AIText GenerationKimi K2.7 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.Cloudflare-hostedFunction callingReasoningVision](https://developers.cloudflare.com/ai/models/@cf/moonshotai/kimi-k2.7-code/)
 
 [![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)llama-2-7b-chat-fp16MetaText GenerationFull precision (fp16) generative text model with 7 billion parameters from MetaCloudflare-hostedDeprecated](https://developers.cloudflare.com/ai/models/@cf/meta/llama-2-7b-chat-fp16/)
 
@@ -420,7 +422,7 @@ Try a different search term, or broaden your search by removing filters.
 
 [![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)llama-3.3-70b-instruct-fp8-fastMetaText GenerationLlama 3.3 70B quantized to fp8 precision, optimized to be faster.Cloudflare-hostedBatchFunction calling](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/)
 
-[Pinned![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)llama-4-scout-17b-16e-instructMetaText GenerationMeta's Llama 4 Scout is a 17 billion parameter model with 16 experts that is natively multimodal. These models leverage a mixture-of-experts architecture to offer industry-leading performance in text and image understanding.Cloudflare-hostedBatchFunction callingVision](https://developers.cloudflare.com/ai/models/@cf/meta/llama-4-scout-17b-16e-instruct/)
+[![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)llama-4-scout-17b-16e-instructMetaText GenerationMeta's Llama 4 Scout is a 17 billion parameter model with 16 experts that is natively multimodal. These models leverage a mixture-of-experts architecture to offer industry-leading performance in text and image understanding.Cloudflare-hostedBatchFunction callingVision](https://developers.cloudflare.com/ai/models/@cf/meta/llama-4-scout-17b-16e-instruct/)
 
 [![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)llama-guard-3-8bMetaText GenerationLlama Guard 3 is a Llama-3.1-8B pretrained model, fine-tuned for content safety classification. Similar to previous versions, it can be used to classify content in both LLM inputs (prompt classification) and in LLM responses (response classification). It acts as an LLM – it generates text in its output that indicates whether a given prompt or response is safe or unsafe, and if unsafe, it also lists the content categories violated.Cloudflare-hostedLoRA](https://developers.cloudflare.com/ai/models/@cf/meta/llama-guard-3-8b/)
 

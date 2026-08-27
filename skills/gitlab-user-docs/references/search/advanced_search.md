@@ -20,6 +20,7 @@ Advanced search works in:
 - Code
 - Comments
 - Commits
+- Groups
 - Work items
 - Merge requests
 - Milestones
@@ -51,6 +52,11 @@ You can also use advanced search in a project or group.
 - Searching comments on issues [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/191369) in GitLab 18.6. Feature flag `search_work_item_queries_notes` removed.
 - Searching comments on merge requests [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/572590) in GitLab 18.6 [with a feature flag](../../administration/feature_flags/_index.md) named `search_merge_request_queries_notes`. Disabled by default.
 - Searching comments on merge requests [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/573750) in GitLab 18.7. Feature flag `search_merge_request_queries_notes` removed.
+- Groups scope [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/249760) in GitLab 19.4 [with a feature flag](../../administration/feature_flags/_index.md) named `elasticsearch_group_search`. Disabled by default.
+
+> [!flag]
+> The availability of the Groups scope is controlled by a feature flag.
+> For more information, see the history.
 
 Scopes describe the type of data you're searching.
 The following scopes are available for advanced search:
@@ -60,6 +66,7 @@ The following scopes are available for advanced search:
 | Code                        | Yes                      | Yes | Yes |
 | Comments                    | Yes                      | Yes | Yes |
 | Commits                     | Yes                      | Yes | Yes |
+| Groups <sup>5</sup>         | Yes                      | Yes | No  |
 | Work items <sup>3</sup>     | Yes                      | Yes | Yes |
 | Merge requests <sup>3</sup> | Yes                      | Yes | Yes |
 | Milestones <sup>4</sup>     | Yes                      | Yes | Yes |
@@ -78,6 +85,9 @@ The following scopes are available for advanced search:
 1. Advanced search returns only project milestones because group milestones are not indexed
    in Elasticsearch. For more information, see
    [issue 428589](https://gitlab.com/gitlab-org/gitlab/-/issues/428589).
+1. Group search returns the subgroups of the group you're searching in, not the group itself.
+   The `backfill_groups_to_elasticsearch` advanced search migration must be complete before
+   this scope returns results.
 
 ## Syntax
 

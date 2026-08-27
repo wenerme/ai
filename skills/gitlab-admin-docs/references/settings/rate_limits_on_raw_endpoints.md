@@ -1,4 +1,4 @@
-# Rate limits on raw endpoints
+# Raw endpoints rate limits
 
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed

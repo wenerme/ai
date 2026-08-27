@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FastAPI
 
-Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/languages/python/packages/fastapi/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/languages/python/packages/fastapi/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The FastAPI package is supported in Python Workers.
 
@@ -35,12 +35,8 @@ app = FastAPI()
 def read_root():
     return {"Hello": "World"}
 
-import asgi
-from workers import WorkerEntrypoint
-
-class Default(WorkerEntrypoint):
-    async def fetch(self, request):
-        return await asgi.fetch(app, request, self.env)
+from workers import asgi
+Default = asgi.entrypoint(app)
 ```
 
 1. Create a `wrangler.jsonc` file to configure your Worker:
@@ -50,7 +46,7 @@ class Default(WorkerEntrypoint):
 	"name": "my-fastapi-app",
 	"main": "src/main.py",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-08-27",
 	"compatibility_flags": ["python_workers"],
 }
 ```
@@ -59,7 +55,7 @@ class Default(WorkerEntrypoint):
 name = "my-fastapi-app"
 main = "src/main.py"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-08-27"
 compatibility_flags = [ "python_workers" ]
 ```
 
@@ -102,7 +98,7 @@ Add a catch-all route at the end of your FastAPI app that proxies unmatched requ
 	"name": "my-fastapi-app",
 	"main": "src/worker.py",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-08-27",
 	"compatibility_flags": ["python_workers"],
 	"assets": {
 		"directory": "./public/",
@@ -116,7 +112,7 @@ Add a catch-all route at the end of your FastAPI app that proxies unmatched requ
 name = "my-fastapi-app"
 main = "src/worker.py"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-08-27"
 compatibility_flags = [ "python_workers" ]
 
 [assets]
@@ -146,16 +142,13 @@ dev = [
 Then write your worker:
 
 ```python
-from workers import WorkerEntrypoint
 from fastapi import FastAPI, Request
 from fastapi.responses import Response
-import asgi
+from workers import asgi
 
-class Default(WorkerEntrypoint):
-    async def fetch(self, request):
-        return await asgi.fetch(app, request, self.env)
 
 app = FastAPI()
+Default = asgi.entrypoint(app)
 
 @app.get("/api/hello")
 async def api_hello():
@@ -185,7 +178,7 @@ Clone the `cloudflare/python-workers-examples` repository and run the FastAPI ex
 
 ```bash
 git clone https://github.com/cloudflare/python-workers-examples
-cd python-workers-examples/03-fastapi
+cd python-workers-examples/fastapi
 uv run pywrangler dev
 ```
 
@@ -198,5 +191,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/packages/fastapi/#page","headline":"FastAPI · Cloudflare Workers docs","description":"Build Python Workers APIs using FastAPI with the built-in ASGI server.","url":"https://developers.cloudflare.com/workers/languages/python/packages/fastapi/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/packages/fastapi/#page","headline":"FastAPI · Cloudflare Workers docs","description":"Build Python Workers APIs using FastAPI with the built-in ASGI server.","url":"https://developers.cloudflare.com/workers/languages/python/packages/fastapi/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

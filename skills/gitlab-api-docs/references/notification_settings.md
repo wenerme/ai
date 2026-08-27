@@ -1,5 +1,7 @@
 # Notification settings API
 
+REST API to retrieve and update notification settings for your account, groups, and projects.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

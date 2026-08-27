@@ -1,11 +1,11 @@
 ---
 title: "EmpirioLabs AI | Models"
-description: "Use EmpirioLabs AI models with Mastra. 55 models available."
+description: "Use EmpirioLabs AI models with Mastra. 57 models available."
 ---
 
 # [EmpirioLabs AI logo]EmpirioLabs AI
 
-Access 55 EmpirioLabs AI models through Mastra's model router. Authentication is handled automatically using the `EMPIRIOLABS_API_KEY` environment variable.
+Access 57 EmpirioLabs AI models through Mastra's model router. Authentication is handled automatically using the `EMPIRIOLABS_API_KEY` environment variable.
 
 Learn more in the [EmpirioLabs AI documentation](https://docs.empiriolabs.ai).
 
@@ -206,6 +206,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 1.4,
     "outputCost": 4.4
+  },
+  {
+    "model": "empiriolabs/glm-5-3-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 0.075,
+    "outputCost": 0.25
   },
   {
     "model": "empiriolabs/kimi-k2-6",
@@ -578,6 +590,18 @@ for await (const chunk of stream) {
     "maxOutput": 32768,
     "inputCost": 0.17,
     "outputCost": 0.5
+  },
+  {
+    "model": "empiriolabs/qwen3-8-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 0.16,
+    "outputCost": 0.47
   },
   {
     "model": "empiriolabs/qwen3-8-max",

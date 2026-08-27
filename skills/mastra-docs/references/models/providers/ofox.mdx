@@ -646,8 +646,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 131000,
+    "contextWindow": 65536,
+    "maxOutput": 2048,
     "inputCost": 0.3,
     "outputCost": 1.2
   },
@@ -658,8 +658,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 196608,
-    "maxOutput": 128000,
+    "contextWindow": 204800,
+    "maxOutput": 131072,
     "inputCost": 0.3,
     "outputCost": 1.2
   },
@@ -742,8 +742,8 @@ for await (const chunk of stream) {
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 512000,
-    "maxOutput": 128000,
+    "contextWindow": 1048576,
+    "maxOutput": 512000,
     "inputCost": 0.6,
     "outputCost": 2.4
   },
@@ -1073,7 +1073,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "ofox/volcengine/doubao-seed-1-6-flash",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -1097,7 +1097,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "ofox/volcengine/doubao-seed-1-8",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,

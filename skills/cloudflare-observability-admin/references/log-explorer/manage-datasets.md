@@ -1,5 +1,5 @@
 ---
-description: Enable or disable Log Explorer datasets.
+description: Enable, disable, or delete Log Explorer datasets.
 title: Manage datasets
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage datasets
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/log-explorer/manage-datasets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/log-explorer/manage-datasets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Log Explorer allows you to enable or disable which datasets are available to query in Log Search.
+Log Explorer allows you to enable, disable, or delete datasets available to query in Log Search.
 
 Note
 
@@ -87,7 +87,8 @@ curl https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/explorer/datasets
 		"created_at": "2025-06-03T14:33:16Z",
 		"updated_at": "2025-06-03T14:33:16Z",
 		"dataset_id": "01973635f7e273a1964a02f4d4502499",
-		"enabled": true
+		"enabled": true,
+		"deletion_protection": true
 	},
 	"success": true,
 	"errors": [],
@@ -105,6 +106,23 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/explorer/da
 }'
 ```
 
+## Delete a dataset
+
+Deleting a dataset permanently removes the dataset and its stored data. Deletion runs asynchronously. You cannot recreate the same dataset for the account or zone while deletion is in progress.
+
+Caution
+
+Dataset deletion is irreversible. Deleted data cannot be recovered.
+
+1. In the Cloudflare dashboard, go to **Log Explorer** \> **Manage datasets**.
+[Go to **Manage datasets** ↗](https://dash.cloudflare.com/?to=/:account/log-explorer/manage-sources)
+2. Find the dataset and select **Actions** \> **Delete**.
+3. If deletion protection is enabled, disable it in the confirmation dialog.
+4. Enter the dataset name and select **Delete**.
+
+1. Set `deletion_protection` to `false` with the [Update an account or zone dataset](https://developers.cloudflare.com/api/resources/logs/subresources/log%5Fexplorer/subresources/datasets/methods/update/) method.
+2. Delete the dataset with the [Delete an account or zone dataset](https://developers.cloudflare.com/api/resources/logs/subresources/log%5Fexplorer/subresources/datasets/methods/delete/) method.
+
 Was this helpful?
 
 YesNo
@@ -114,5 +132,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/manage-datasets/#page","headline":"Manage datasets · Cloudflare Log Explorer docs","description":"Enable or disable Log Explorer datasets.","url":"https://developers.cloudflare.com/log-explorer/manage-datasets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/manage-datasets/#page","headline":"Manage datasets · Cloudflare Log Explorer docs","description":"Enable, disable, or delete Log Explorer datasets.","url":"https://developers.cloudflare.com/log-explorer/manage-datasets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

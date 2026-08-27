@@ -1,11 +1,11 @@
 ---
 title: "DevPass (LLM Gateway) | Models"
-description: "Use DevPass (LLM Gateway) models with Mastra. 187 models available."
+description: "Use DevPass (LLM Gateway) models with Mastra. 188 models available."
 ---
 
 # [DevPass (LLM Gateway) logo]DevPass (LLM Gateway)
 
-Access 187 DevPass (LLM Gateway) models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 188 DevPass (LLM Gateway) models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [DevPass (LLM Gateway) documentation](https://llmgateway.io/docs).
 
@@ -264,8 +264,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 384000,
-    "inputCost": 0.076,
-    "outputCost": 0.153
+    "inputCost": 0.051,
+    "outputCost": 0.104
   },
   {
     "model": "llmgateway/deepseek-v4-pro",
@@ -674,6 +674,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 1.4,
     "outputCost": 4.4
+  },
+  {
+    "model": "llmgateway/glm-5.3-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.15,
+    "outputCost": 0.5
   },
   {
     "model": "llmgateway/gpt-3.5-turbo",
@@ -1475,7 +1487,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 196608,
-    "maxOutput": 128000,
+    "maxOutput": 131072,
     "inputCost": 0.2,
     "outputCost": 1
   },
@@ -1559,7 +1571,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 128000,
+    "maxOutput": 512000,
     "inputCost": 0.3,
     "outputCost": 1.2
   },

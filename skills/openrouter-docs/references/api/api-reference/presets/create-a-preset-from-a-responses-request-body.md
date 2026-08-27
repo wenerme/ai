@@ -4314,6 +4314,43 @@ components:
       properties:
         call_id:
           type: string
+        container_id:
+          description: >-
+            The canonical container id the command ran under — the
+            `{container_id}` for the Container Files API, reusable as a
+            `container_reference` in later requests. Present on every
+            sandbox-executed call, even when no files changed.
+          type: string
+        files:
+          description: >-
+            Citations for the files the sandbox command created or modified,
+            most-recently-touched first (at most 10). Retrieve them via the
+            Container Files API.
+          items:
+            properties:
+              container_id:
+                type: string
+              end_index:
+                type: integer
+              file_id:
+                type: string
+              filename:
+                type: string
+              start_index:
+                type: integer
+              type:
+                enum:
+                  - container_file_citation
+                type: string
+            required:
+              - type
+              - container_id
+              - file_id
+              - filename
+              - start_index
+              - end_index
+            type: object
+          type: array
         id:
           type:
             - string

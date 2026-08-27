@@ -37,14 +37,51 @@ camera movement, lighting and mood for best results.
     import * as fs from 'fs';
     const ai = new GoogleGenAI({});
 
-    const interaction = await ai.interactions.create({  
-      model: 'gemini-omni-flash-preview',  
+    const interaction = await ai.interactions.create({
+      model: 'gemini-omni-flash-preview',
       input: 'A marble rolling fast on a chain reaction style track, continuous smooth shot.',
     });
 
     if (interaction.output_video?.data) {
       fs.writeFileSync('marble.mp4', Buffer.from(interaction.output_video.data, 'base64'));
     }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.List;
+
+    Client client = new Client();
+
+    Content textContent = TextContent.builder().text("Describe what you see in this image.").build();
+    Content imageContent =
+        ImageContent.builder()
+            .uri("gs://cloud-samples-data/generative-ai/image/scones.jpg")
+            .mimeType(ImageContentMimeType.IMAGE_JPEG)
+            .build();
+
+    List<Content> contents = Arrays.asList(textContent, imageContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 
@@ -127,6 +164,43 @@ is the default.
       fs.writeFileSync('example.mp4', Buffer.from(interaction.output_video.data, 'base64'));
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.List;
+
+    Client client = new Client();
+
+    Content textContent = TextContent.builder().text("Describe what you see in this image.").build();
+    Content imageContent =
+        ImageContent.builder()
+            .uri("gs://cloud-samples-data/generative-ai/image/scones.jpg")
+            .mimeType(ImageContentMimeType.IMAGE_JPEG)
+            .build();
+
+    List<Content> contents = Arrays.asList(textContent, imageContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions?key=$API_KEY" \
@@ -192,6 +266,43 @@ To generate a realistic video of the drawing.
       fs.writeFileSync('clownfish.mp4', Buffer.from(interaction.output_video.data, 'base64'));
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.List;
+
+    Client client = new Client();
+
+    Content textContent = TextContent.builder().text("Describe what you see in this image.").build();
+    Content imageContent =
+        ImageContent.builder()
+            .uri("gs://cloud-samples-data/generative-ai/image/scones.jpg")
+            .mimeType(ImageContentMimeType.IMAGE_JPEG)
+            .build();
+
+    List<Content> contents = Arrays.asList(textContent, imageContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions?key=$API_KEY" \
@@ -251,6 +362,43 @@ to generate a video of the cat playing with the yarn.
     if (interaction.output_video?.data) {
       fs.writeFileSync('cat.mp4', Buffer.from(interaction.output_video.data, 'base64'));
     }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.List;
+
+    Client client = new Client();
+
+    Content textContent = TextContent.builder().text("Describe what you see in this image.").build();
+    Content imageContent =
+        ImageContent.builder()
+            .uri("gs://cloud-samples-data/generative-ai/image/scones.jpg")
+            .mimeType(ImageContentMimeType.IMAGE_JPEG)
+            .build();
+
+    List<Content> contents = Arrays.asList(textContent, imageContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 
@@ -326,6 +474,43 @@ to video example.
     if (interaction.output_video?.data) {
       fs.writeFileSync('example.mp4', Buffer.from(interaction.output_video.data, 'base64'));
     }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.List;
+
+    Client client = new Client();
+
+    Content textContent = TextContent.builder().text("Describe what you see in this image.").build();
+    Content imageContent =
+        ImageContent.builder()
+            .uri("gs://cloud-samples-data/generative-ai/image/scones.jpg")
+            .mimeType(ImageContentMimeType.IMAGE_JPEG)
+            .build();
+
+    List<Content> contents = Arrays.asList(textContent, imageContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 
@@ -406,6 +591,43 @@ The following example demonstrates how to generate a first video then edit it:
     if (res2.output_video?.data) {
       fs.writeFileSync('example.mp4', Buffer.from(res2.output_video.data, 'base64'));
     }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.List;
+
+    Client client = new Client();
+
+    Content textContent = TextContent.builder().text("Describe what you see in this image.").build();
+    Content imageContent =
+        ImageContent.builder()
+            .uri("gs://cloud-samples-data/generative-ai/image/scones.jpg")
+            .mimeType(ImageContentMimeType.IMAGE_JPEG)
+            .build();
+
+    List<Content> contents = Arrays.asList(textContent, imageContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 
@@ -506,6 +728,43 @@ The following example shows how to edit the following original video:
     if (interaction.output_video?.data) {
       fs.writeFileSync('example.mp4', Buffer.from(interaction.output_video.data, 'base64'));
     }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.List;
+
+    Client client = new Client();
+
+    Content textContent = TextContent.builder().text("Describe what you see in this image.").build();
+    Content imageContent =
+        ImageContent.builder()
+            .uri("gs://cloud-samples-data/generative-ai/image/scones.jpg")
+            .mimeType(ImageContentMimeType.IMAGE_JPEG)
+            .build();
+
+    List<Content> contents = Arrays.asList(textContent, imageContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 
@@ -615,6 +874,43 @@ video is `ACTIVE` before downloading.
       downloadPath: 'output.mp4',
     });
     console.log("💾 Saved video to output.mp4");
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.List;
+
+    Client client = new Client();
+
+    Content textContent = TextContent.builder().text("Describe what you see in this image.").build();
+    Content imageContent =
+        ImageContent.builder()
+            .uri("gs://cloud-samples-data/generative-ai/image/scones.jpg")
+            .mimeType(ImageContentMimeType.IMAGE_JPEG)
+            .build();
+
+    List<Content> contents = Arrays.asList(textContent, imageContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 

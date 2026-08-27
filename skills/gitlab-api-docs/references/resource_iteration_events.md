@@ -1,5 +1,7 @@
 # Resource iteration events API
 
+REST API to retrieve iteration change events for issues.
+
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

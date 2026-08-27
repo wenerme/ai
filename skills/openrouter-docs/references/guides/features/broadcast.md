@@ -229,6 +229,8 @@ Each destination can be configured to only receive traces from specific API keys
 
 When adding or editing a destination, you can select one or more API keys from your account. Only requests made with those selected API keys will have their traces sent to that destination. If no API keys are selected, the destination will receive traces from all your API keys or chatroom requests.
 
+You can also select **excluded** API keys for a destination. Requests made with an excluded key are never sent to that destination, even if the key is also in the included list: exclusions take precedence. This is useful for keeping traces from internal or testing keys out of a production destination without having to enumerate every included key.
+
 ## Sampling Rate
 
 Each destination can be configured with a sampling rate to control what percentage of traces are sent. This is useful for high-volume applications where you want to reduce costs or data volume while still maintaining visibility into your LLM usage. A sampling rate of 1.0 sends all traces, while 0.5 would send approximately 50% of traces.

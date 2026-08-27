@@ -583,7 +583,7 @@ List user actions and configuration changes within this organization.
 
     Return only events whose `effective_at` (Unix seconds) is less than or equal to this value.
 
-- `event_types: optional array of "api_key.created" or "api_key.updated" or "api_key.deleted" or 142 more`
+- `event_types: optional array of "api_key.created" or "api_key.updated" or "api_key.deleted" or 144 more`
 
   Return only events with a `type` in one of these values. For example, `project.created`. For all options, see the documentation for the [audit log object](/docs/api-reference/audit-logs/object).
 
@@ -736,6 +736,10 @@ List user actions and configuration changes within this organization.
   - `"tenant.admin_api_key.deleted"`
 
   - `"tenant.project_api_key.created"`
+
+  - `"tenant.trusted_access.business_verification.started"`
+
+  - `"tenant.trusted_access.application.submitted"`
 
   - `"tenant.chatgpt_access_token.revoked"`
 
@@ -905,7 +909,7 @@ List user actions and configuration changes within this organization.
 
     The Unix timestamp (in seconds) of the event.
 
-  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 142 more`
+  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 144 more`
 
     The event type.
 
@@ -1058,6 +1062,10 @@ List user actions and configuration changes within this organization.
     - `"tenant.admin_api_key.deleted"`
 
     - `"tenant.project_api_key.created"`
+
+    - `"tenant.trusted_access.business_verification.started"`
+
+    - `"tenant.trusted_access.application.submitted"`
 
     - `"tenant.chatgpt_access_token.revoked"`
 
@@ -2633,7 +2641,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
     The Unix timestamp (in seconds) of the event.
 
-  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 142 more`
+  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 144 more`
 
     The event type.
 
@@ -2786,6 +2794,10 @@ curl https://api.openai.com/v1/organization/audit_logs \
     - `"tenant.admin_api_key.deleted"`
 
     - `"tenant.project_api_key.created"`
+
+    - `"tenant.trusted_access.business_verification.started"`
+
+    - `"tenant.trusted_access.application.submitted"`
 
     - `"tenant.chatgpt_access_token.revoked"`
 

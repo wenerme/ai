@@ -211,7 +211,7 @@ presence\_penalty
 
 reasoning\_effort
 
-`string | null`Constrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
+`string | null`enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
 
 ▶chat\_template\_kwargs{}
 
@@ -227,7 +227,7 @@ seed
 
 service\_tier
 
-`string | null`Specifies the processing type used for serving the request.
+`string | null`enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
 
 ▶stop
 
@@ -307,7 +307,7 @@ system\_fingerprint
 
 service\_tier
 
-`string | null`
+`string | null`enum: auto, default, flex, scale, priority
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events
 
@@ -383,7 +383,7 @@ presence\_penalty
 
 reasoning\_effort
 
-`string | null`Constrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
+`string | null`enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
 
 ▶chat\_template\_kwargs{}
 
@@ -399,7 +399,7 @@ seed
 
 service\_tier
 
-`string | null`Specifies the processing type used for serving the request.
+`string | null`enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
 
 ▶stop
 
@@ -497,7 +497,7 @@ system\_fingerprint
 
 service\_tier
 
-`string | null`
+`string | null`enum: auto, default, flex, scale, priority
 
 ## API Schemas (Raw)
 

@@ -1,4 +1,4 @@
-# Rate limits for imports and exports of project and groups
+# Import and export rate limits
 
 Configure rate limit settings for your GitLab instance when importing or exporting projects or groups.
 

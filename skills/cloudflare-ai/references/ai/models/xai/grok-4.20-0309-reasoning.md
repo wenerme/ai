@@ -8166,7 +8166,7 @@ presence\_penalty
 
 reasoning\_effort
 
-`string | null`
+`string | null`enum: low, high
 
 ▶response\_format
 

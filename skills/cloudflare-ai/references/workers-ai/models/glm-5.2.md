@@ -34,8 +34,18 @@ This model is not available through standard Workers Free billing. To use it, up
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/)   | 262,144 tokens                                                                       |
 | Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes                                                                                  |
-| Reasoning                                                                             | Yes                                                                                  |
+| Reasoning                                                                             | Off, High, Max                                                                       |
 | Unit Pricing                                                                          | $1.40 per M input tokens, $4.40 per M output tokens, $0.26 per M cached input tokens |
+
+## Reasoning effort
+
+GLM-5.2 supports `high` and `max` reasoning effort, or you can turn reasoning off. For compatibility with Chat Completions and other protocols in the ecosystem, other reasoning efforts will be mapped to these modes:
+
+* `none` and `minimal` turn reasoning off.
+* `low` and `medium` map to `high`.
+* `xhigh` maps to `max`.
+
+This is the same mapping used by Z.ai's API, and [in their reasoning\_effort documentation](https://docs.z.ai/api-reference/llm/chat-completion#body-one-of-0-reasoning-effort).
 
 ## Playground
 
@@ -208,7 +218,7 @@ presence\_penalty
 
 reasoning\_effort
 
-`string | null`Constrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
+`string | null`enum: none, high, maxConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
 
 ▶chat\_template\_kwargs{}
 
@@ -224,7 +234,7 @@ seed
 
 service\_tier
 
-`string | null`Specifies the processing type used for serving the request.
+`string | null`enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
 
 ▶stop
 
@@ -304,7 +314,7 @@ system\_fingerprint
 
 service\_tier
 
-`string | null`
+`string | null`enum: auto, default, flex, scale, priority
 
 Streaming — Send a request with \`stream: true\` and receive server-sent events
 
@@ -380,7 +390,7 @@ presence\_penalty
 
 reasoning\_effort
 
-`string | null`Constrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
+`string | null`enum: none, high, maxConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
 
 ▶chat\_template\_kwargs{}
 
@@ -396,7 +406,7 @@ seed
 
 service\_tier
 
-`string | null`Specifies the processing type used for serving the request.
+`string | null`enum: auto, default, flex, scale, prioritySpecifies the processing type used for serving the request.
 
 ▶stop
 
@@ -494,7 +504,7 @@ system\_fingerprint
 
 service\_tier
 
-`string | null`
+`string | null`enum: auto, default, flex, scale, priority
 
 ## API Schemas (Raw)
 

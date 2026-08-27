@@ -1,5 +1,3 @@
-# Gemini Live API overview
-
 > [!WARNING]
 > **Preview:** The Live API is in [Preview](https://cloud.google.com/products#product-launch-stages).
 
@@ -23,6 +21,7 @@ variety of industries, including:
 - **Financial services:** AI advisors for wealth management and investment guidance.
 - **Education:** AI mentors and learner companions that provide personalized instruction and feedback.
 - **Translation and localization:** Real-time, low-latency translation of spoken conversations, enabling seamless multilingual communication.
+- **Live transcription and captioning:** Real-time speech-to-text streaming for live subtitles, meeting transcription, voice dictation, and customer call logging.
 
 ## Key features
 
@@ -35,6 +34,7 @@ robust voice agents:
 - [**Audio transcriptions**](https://ai.google.dev/gemini-api/docs/live-guide#audio-transcription): Provides text transcripts of both user input and model output.
 - [**Proactive audio**](https://ai.google.dev/gemini-api/docs/live-guide#proactive-audio): Lets you control when the model responds and in what contexts.
 - [**Affective dialog**](https://ai.google.dev/gemini-api/docs/live-guide#affective-dialog): Adapts response style and tone to match the user's input expression.
+- [**Live Transcription**](https://ai.google.dev/gemini-api/docs/live-api/live-transcribe): Real-time, continuous speech-to-text streaming with automatic language detection and custom vocabulary.
 - [**Live Translation**](https://ai.google.dev/gemini-api/docs/live-api/live-translate): Real-time voice-to-voice translation in 70+ languages.
 
 ## Technical specifications

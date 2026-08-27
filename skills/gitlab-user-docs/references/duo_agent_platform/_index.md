@@ -110,3 +110,4 @@ but you require credits in your Monthly Commitment Pool to access them.
 | [External MCP servers](../gitlab_duo/model_context_protocol/ai_catalog_mcp_servers.md)  Connect custom agents to external data sources and third-party services using MCP servers. | No | Yes | Yes |
 | [Agentic Breaking Change Resolution Flow](flows/foundational_flows/agentic-breaking-change-resolution.md)  Analyze pipeline failures on dependency bump merge requests and create code fixes to resolve breaking changes introduced by the dependency update. | No | No | Yes |
 | [Support Assistant](agents/foundational_agents/support_assistant.md)  Diagnose and resolve GitLab product problems. | No | Yes | Yes |
+| [Recommend Reviewers Flow](../project/merge_requests/reviews/automatic_reviewer_assignment.md#assign-reviewers-with-the-recommend-reviewers-flow)  Recommend and assign the reviewers best suited to review a merge request. | No | Yes | Yes |

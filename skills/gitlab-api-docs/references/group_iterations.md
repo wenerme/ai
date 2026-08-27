@@ -1,5 +1,7 @@
 # Group iterations API
 
+REST API to retrieve iterations for a group.
+
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

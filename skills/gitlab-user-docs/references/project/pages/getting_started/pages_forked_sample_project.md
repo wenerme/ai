@@ -55,7 +55,7 @@ you can rename it to `<namespace>.gitlab.io`, where `<namespace>` is your GitLab
    [Change repository's path]
 
 1. Open your SSG configuration file and change the [base URL](../getting_started_part_one.md#urls-and-base-urls)
-   from `"project-name"` to `""`. The project name setting varies by SSG and may not be in the configuration file.
+   from `"project-name"` to `""`. The project name setting varies by SSG and might not be in the configuration file.
 
 ## Related topics
 

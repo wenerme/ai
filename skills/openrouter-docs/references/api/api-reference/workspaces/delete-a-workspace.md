@@ -4,7 +4,7 @@
 
 # Delete a workspace
 
-> Delete an existing workspace. Workspaces with active API keys cannot be deleted; remove the keys first. Deleting the default workspace is not yet generally available; callers not enabled for it receive a 403 while the capability rolls out. Deleting any workspace permanently deletes its budgets and guardrails and disables its classifiers and broadcast destinations. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+> Delete an existing workspace. Workspaces with active API keys cannot be deleted; remove the keys first. Deleting the default workspace requires confirm_default_workspace_deletion=true. Deleting any workspace permanently deletes its budgets and guardrails and disables its classifiers and broadcast destinations. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 
 
@@ -105,11 +105,10 @@ paths:
       summary: Delete a workspace
       description: >-
         Delete an existing workspace. Workspaces with active API keys cannot be
-        deleted; remove the keys first. Deleting the default workspace is not
-        yet generally available; callers not enabled for it receive a 403 while
-        the capability rolls out. Deleting any workspace permanently deletes its
-        budgets and guardrails and disables its classifiers and broadcast
-        destinations. [Management
+        deleted; remove the keys first. Deleting the default workspace requires
+        confirm_default_workspace_deletion=true. Deleting any workspace
+        permanently deletes its budgets and guardrails and disables its
+        classifiers and broadcast destinations. [Management
         key](/docs/guides/overview/auth/management-api-keys) required.
       operationId: deleteWorkspace
       parameters:
@@ -122,6 +121,28 @@ paths:
             example: production
             minLength: 1
             type: string
+        - description: >-
+            Required to delete the default workspace. Deleting it permanently
+            disables the account’s unscoped inference API keys
+            (management/provisioning keys are retained) and its budgets,
+            guardrails, classifiers, and broadcast destinations. Ignored for
+            non-default workspaces.
+          in: query
+          name: confirm_default_workspace_deletion
+          required: false
+          schema:
+            description: >-
+              Required to delete the default workspace. Deleting it permanently
+              disables the account’s unscoped inference API keys
+              (management/provisioning keys are retained) and its budgets,
+              guardrails, classifiers, and broadcast destinations. Ignored for
+              non-default workspaces.
+            enum:
+              - 'true'
+              - 'false'
+            example: 'false'
+            type: string
+            x-openrouter-type: boolean
       responses:
         '200':
           content:

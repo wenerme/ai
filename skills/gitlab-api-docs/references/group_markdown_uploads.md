@@ -1,5 +1,7 @@
 # Group Markdown uploads API
 
+REST API to upload, list, download, and delete Markdown file uploads for a group.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

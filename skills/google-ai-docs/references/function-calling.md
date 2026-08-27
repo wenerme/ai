@@ -82,6 +82,78 @@ This example shows how to define a function that schedules a meeting with attend
       }
     }
 
+### Java
+
+        import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.Map;
+
+    Client client = new Client();
+
+    Map<String, Object> attendeesProp = new HashMap<>();
+    attendeesProp.put("type", "array");
+    Map<String, Object> itemsMap = new HashMap<>(); itemsMap.put("type", "string"); attendeesProp.put("items", itemsMap);
+
+    Map<String, Object> dateProp = new HashMap<>();
+    dateProp.put("type", "string");
+    dateProp.put("description", "Date (e.g., \"2024-07-29\")");
+
+    Map<String, Object> timeProp = new HashMap<>();
+    timeProp.put("type", "string");
+    timeProp.put("description", "Time (e.g., \"15:00\")");
+
+    Map<String, Object> topicProp = new HashMap<>();
+    topicProp.put("type", "string");
+    topicProp.put("description", "The meeting topic.");
+
+    Map<String, Object> properties = new HashMap<>();
+    properties.put("attendees", attendeesProp);
+    properties.put("date", dateProp);
+    properties.put("time", timeProp);
+    properties.put("topic", topicProp);
+
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+    parameters.put("properties", properties);
+    parameters.put("required", Arrays.asList("attendees", "date", "time", "topic"));
+
+    Function scheduleMeetingFunction =
+        Function.builder()
+            .name("schedule_meeting")
+            .description("Schedules a meeting with specified attendees at a given time and date.")
+            .parameters(parameters)
+            .build();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.6-flash"))
+            .input(InteractionsInput.of("Schedule a meeting with Bob and Alice for 03/27/2025 at 10:00 AM about Q3 planning."))
+            .tools(Arrays.asList(scheduleMeetingFunction))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof FunctionCallStep) {
+          FunctionCallStep functionCall = (FunctionCallStep) step;
+          System.out.println("Function to call: " + functionCall.name().orElse(""));
+          System.out.println("Arguments: " + functionCall.arguments().orElse(null));
+        }
+      }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -179,6 +251,63 @@ This example shows how to define a function that retrieves temperature data for 
       }
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.Map;
+
+    Client client = new Client();
+
+    Map<String, Object> locationProp = new HashMap<>();
+    locationProp.put("type", "string");
+    locationProp.put("description", "The city name, e.g. San Francisco");
+
+    Map<String, Object> properties = new HashMap<>();
+    properties.put("location", locationProp);
+
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+    parameters.put("properties", properties);
+    parameters.put("required", Arrays.asList("location"));
+
+    Function weatherFunction =
+        Function.builder()
+            .name("get_current_temperature")
+            .description("Gets the current temperature for a given location.")
+            .parameters(parameters)
+            .build();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.6-flash"))
+            .input(InteractionsInput.of("What's the temperature in London?"))
+            .tools(Arrays.asList(weatherFunction))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof FunctionCallStep) {
+          FunctionCallStep functionCall = (FunctionCallStep) step;
+          System.out.println("Function to call: " + functionCall.name().orElse(""));
+          System.out.println("Arguments: " + functionCall.arguments().orElse(null));
+        }
+      }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -270,6 +399,60 @@ This example shows how to define a function that generates a bar chart from stru
       }
     }
 
+### Java
+
+        import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.Map;
+
+    Client client = new Client();
+
+    Map<String, Object> properties = new HashMap<>();
+    Map<String, Object> titleMap = new HashMap<>(); titleMap.put("type", "string"); titleMap.put("description", "The title for the chart."); properties.put("title", titleMap);
+    Map<String, Object> labelsMap = new HashMap<>(); labelsMap.put("type", "array"); labelsMap.put("items", Collections.singletonMap("type", "string")); properties.put("labels", labelsMap);
+    Map<String, Object> valuesMap = new HashMap<>(); valuesMap.put("type", "array"); valuesMap.put("items", Collections.singletonMap("type", "number")); properties.put("values", valuesMap);
+
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+    parameters.put("properties", properties);
+    parameters.put("required", Arrays.asList("title", "labels", "values"));
+
+    Function createChartFunction =
+        Function.builder()
+            .name("create_bar_chart")
+            .description("Creates a bar chart given a title, labels, and values.")
+            .parameters(parameters)
+            .build();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.6-flash"))
+            .input(InteractionsInput.of("Create a bar chart titled 'Quarterly Sales' with Q1: 50000, Q2: 75000, Q3: 60000."))
+            .tools(Arrays.asList(createChartFunction))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof FunctionCallStep) {
+          FunctionCallStep functionCall = (FunctionCallStep) step;
+          System.out.println(functionCall.name().orElse("") + "(" + functionCall.arguments().orElse(null) + ")");
+        }
+      }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -358,6 +541,50 @@ multiple functions in a single turn ([parallel function calling](https://ai.goog
       return { brightness: brightness, colorTemperature: color_temp };
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.Map;
+
+    Client client = new Client();
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+
+    Function function = Function.builder()
+        .name("custom_function")
+        .description("A custom function.")
+        .parameters(parameters)
+        .build();
+
+    CreateModelInteraction params = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.6-flash"))
+        .input(InteractionsInput.of("Call the function."))
+        .tools(Arrays.asList(function))
+        .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof FunctionCallStep) {
+          FunctionCallStep fc = (FunctionCallStep) step;
+          System.out.println("Function: " + fc.name().orElse(""));
+        }
+      }
+    }
+
 ### Step 2: Call the model with function declarations
 
 ### Python
@@ -390,11 +617,55 @@ multiple functions in a single turn ([parallel function calling](https://ai.goog
     const fcStep = interaction.steps.find(s => s.type === 'function_call');
     console.log(fcStep);
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.Map;
+
+    Client client = new Client();
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+
+    Function function = Function.builder()
+        .name("custom_function")
+        .description("A custom function.")
+        .parameters(parameters)
+        .build();
+
+    CreateModelInteraction params = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.6-flash"))
+        .input(InteractionsInput.of("Call the function."))
+        .tools(Arrays.asList(function))
+        .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof FunctionCallStep) {
+          FunctionCallStep fc = (FunctionCallStep) step;
+          System.out.println("Function: " + fc.name().orElse(""));
+        }
+      }
+    }
+
 The model returns a `function_call` step with `type`, `name`, and `arguments`:
 
     type='function_call'
     name='set_light_values'
-    arguments={'color_temp': 'warm', 'brightness': 25}
+    arguments={'color_temp': &#39;warm', 'brightness': 25}
 
 ### Step 3: Execute the function
 
@@ -414,6 +685,50 @@ The model returns a `function_call` step with `type`, `name`, and `arguments`:
     if (fcStep.name === 'set_light_values') {
       result = setLightValues(fcStep.arguments.brightness, fcStep.arguments.color_temp);
       console.log(`Function execution result: ${JSON.stringify(result)}`);
+    }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.Map;
+
+    Client client = new Client();
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+
+    Function function = Function.builder()
+        .name("custom_function")
+        .description("A custom function.")
+        .parameters(parameters)
+        .build();
+
+    CreateModelInteraction params = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.6-flash"))
+        .input(InteractionsInput.of("Call the function."))
+        .tools(Arrays.asList(function))
+        .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof FunctionCallStep) {
+          FunctionCallStep fc = (FunctionCallStep) step;
+          System.out.println("Function: " + fc.name().orElse(""));
+        }
+      }
     }
 
 ### Step 4: Send result back to model
@@ -451,6 +766,50 @@ The model returns a `function_call` step with `type`, `name`, and `arguments`:
     });
 
     console.log(finalInteraction.output_text);
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.Map;
+
+    Client client = new Client();
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+
+    Function function = Function.builder()
+        .name("custom_function")
+        .description("A custom function.")
+        .parameters(parameters)
+        .build();
+
+    CreateModelInteraction params = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.6-flash"))
+        .input(InteractionsInput.of("Call the function."))
+        .tools(Arrays.asList(function))
+        .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof FunctionCallStep) {
+          FunctionCallStep fc = (FunctionCallStep) step;
+          System.out.println("Function: " + fc.name().orElse(""));
+        }
+      }
+    }
 
 ### Stateless function calling
 
@@ -552,6 +911,50 @@ In stateless mode, you must pass the full history of the conversation in the `in
     }
 
     await main();
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.Map;
+
+    Client client = new Client();
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+
+    Function function = Function.builder()
+        .name("custom_function")
+        .description("A custom function.")
+        .parameters(parameters)
+        .build();
+
+    CreateModelInteraction params = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.6-flash"))
+        .input(InteractionsInput.of("Call the function."))
+        .tools(Arrays.asList(function))
+        .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof FunctionCallStep) {
+          FunctionCallStep fc = (FunctionCallStep) step;
+          System.out.println("Function: " + fc.name().orElse(""));
+        }
+      }
+    }
 
 ### REST
 
@@ -687,6 +1090,50 @@ Call multiple functions at once when they are independent:
     for (const step of interaction.steps) {
       if (step.type === 'function_call') {
         console.log(`${step.name}(${JSON.stringify(step.arguments)})`);
+      }
+    }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.Map;
+
+    Client client = new Client();
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+
+    Function function = Function.builder()
+        .name("custom_function")
+        .description("A custom function.")
+        .parameters(parameters)
+        .build();
+
+    CreateModelInteraction params = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.6-flash"))
+        .input(InteractionsInput.of("Call the function."))
+        .tools(Arrays.asList(function))
+        .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof FunctionCallStep) {
+          FunctionCallStep fc = (FunctionCallStep) step;
+          System.out.println("Function: " + fc.name().orElse(""));
+        }
       }
     }
 
@@ -852,6 +1299,50 @@ first, then get weather for that location).
       }
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.Map;
+
+    Client client = new Client();
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+
+    Function function = Function.builder()
+        .name("custom_function")
+        .description("A custom function.")
+        .parameters(parameters)
+        .build();
+
+    CreateModelInteraction params = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.6-flash"))
+        .input(InteractionsInput.of("Call the function."))
+        .tools(Arrays.asList(function))
+        .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof FunctionCallStep) {
+          FunctionCallStep fc = (FunctionCallStep) step;
+          System.out.println("Function: " + fc.name().orElse(""));
+        }
+      }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -919,6 +1410,50 @@ Control how the model uses tools using `tool_choice` in `generation_config`:
       }
     };
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.Map;
+
+    Client client = new Client();
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+
+    Function function = Function.builder()
+        .name("custom_function")
+        .description("A custom function.")
+        .parameters(parameters)
+        .build();
+
+    CreateModelInteraction params = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.6-flash"))
+        .input(InteractionsInput.of("Call the function."))
+        .tools(Arrays.asList(function))
+        .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof FunctionCallStep) {
+          FunctionCallStep fc = (FunctionCallStep) step;
+          System.out.println("Function: " + fc.name().orElse(""));
+        }
+      }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -981,7 +1516,7 @@ automatically circulates the built-in tool context.
 
     tools = [
         {"type": "google_search"},
-        get_weather               
+        get_weather
     ]
 
     interaction = client.interactions.create(
@@ -1060,6 +1595,50 @@ automatically circulates the built-in tool context.
         });
 
         console.log(interaction_2.output_text);
+      }
+    }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.Map;
+
+    Client client = new Client();
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+
+    Function function = Function.builder()
+        .name("custom_function")
+        .description("A custom function.")
+        .parameters(parameters)
+        .build();
+
+    CreateModelInteraction params = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.6-flash"))
+        .input(InteractionsInput.of("Call the function."))
+        .tools(Arrays.asList(function))
+        .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof FunctionCallStep) {
+          FunctionCallStep fc = (FunctionCallStep) step;
+          System.out.println("Function: " + fc.name().orElse(""));
+        }
       }
     }
 
@@ -1198,6 +1777,50 @@ The following example shows how to send a function response containing image dat
 
     console.log(finalInteraction.output_text);
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.Map;
+
+    Client client = new Client();
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+
+    Function function = Function.builder()
+        .name("custom_function")
+        .description("A custom function.")
+        .parameters(parameters)
+        .build();
+
+    CreateModelInteraction params = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.6-flash"))
+        .input(InteractionsInput.of("Call the function."))
+        .tools(Arrays.asList(function))
+        .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof FunctionCallStep) {
+          FunctionCallStep fc = (FunctionCallStep) step;
+          System.out.println("Function: " + fc.name().orElse(""));
+        }
+      }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -1283,6 +1906,50 @@ When using Remote MCP, be aware of the following constraints:
             }
         ]
     });
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.Map;
+
+    Client client = new Client();
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+
+    Function function = Function.builder()
+        .name("custom_function")
+        .description("A custom function.")
+        .parameters(parameters)
+        .build();
+
+    CreateModelInteraction params = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.6-flash"))
+        .input(InteractionsInput.of("Call the function."))
+        .tools(Arrays.asList(function))
+        .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof FunctionCallStep) {
+          FunctionCallStep fc = (FunctionCallStep) step;
+          System.out.println("Function: " + fc.name().orElse(""));
+        }
+      }
+    }
 
 ### REST
 
@@ -1442,6 +2109,50 @@ reconstruct the complete tool calls before executing them.
         }
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.Map;
+
+    Client client = new Client();
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+
+    Function function = Function.builder()
+        .name("custom_function")
+        .description("A custom function.")
+        .parameters(parameters)
+        .build();
+
+    CreateModelInteraction params = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.6-flash"))
+        .input(InteractionsInput.of("Call the function."))
+        .tools(Arrays.asList(function))
+        .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof FunctionCallStep) {
+          FunctionCallStep fc = (FunctionCallStep) step;
+          System.out.println("Function: " + fc.name().orElse(""));
+        }
+      }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions?alt=sse" \
@@ -1490,7 +2201,7 @@ reconstruct the complete tool calls before executing them.
 
 Instead of the original instruction:
 
-    Before calling a tool, in every response you MUST first output a single `<UPDATE>` part as specified, don't skip this part or any of required sub-tags within `<UPDATE>`.
+    Before calling a tool, in every response you MUST first output a single `<UPDATE>` part as specified, don't skip this part or any of required sub-tags with<in `UP>DATE`.
 
 Use this updated instruction:
 
@@ -1517,7 +2228,7 @@ And update all references to the old `<UPDATE>` XML format in the customer reque
             "description": "Brief explanation of the immediate next action according to the plan."
           },
           "external": {
-            "type": "STRING",
+            ";type": "STRING",
             "description": "A short, plain-language note shown to the User about what you are ABOUT TO DO next."
           }
         },

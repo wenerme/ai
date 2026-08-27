@@ -247,8 +247,8 @@ Issues created by users on GitLab Ultimate include the `health_status` property:
 ```
 
 > [!warning]
-> The `assignee` column is deprecated. We now show it as a single-sized array `assignees` to conform
-> to the GitLab EE API.
+> The `assignee` column is deprecated. GitLab returns it as a single-sized array `assignees` to
+> conform to the GitLab EE API.
 >
 > The `epic_iid` attribute is deprecated and [scheduled for removal](https://gitlab.com/gitlab-org/gitlab/-/issues/35157) in API version 5.
 > Use `iid` of the `epic` attribute instead.
@@ -454,7 +454,7 @@ Issues created by users on GitLab Ultimate include the `health_status` property:
 ```
 
 > [!warning]
-> The `assignee` column is deprecated. We now show it as a single-sized array `assignees` to conform to the GitLab EE API.
+> The `assignee` column is deprecated. GitLab returns it as a single-sized array `assignees` to conform to the GitLab EE API.
 >
 > The `epic_iid` attribute is deprecated and [scheduled for removal](https://gitlab.com/gitlab-org/gitlab/-/issues/35157) in API version 5.
 > Use `iid` of the `epic` attribute instead.
@@ -674,7 +674,7 @@ Issues created by users on GitLab Ultimate include the `health_status` property:
 ```
 
 > [!warning]
-> The `assignee` column is deprecated. We now show it as a single-sized array `assignees` to conform to the GitLab EE API.
+> The `assignee` column is deprecated. GitLab returns it as a single-sized array `assignees` to conform to the GitLab EE API.
 >
 > The `epic_iid` attribute is deprecated and [scheduled for removal](https://gitlab.com/gitlab-org/gitlab/-/issues/35157) in API version 5.
 > Use `iid` of the `epic` attribute instead.
@@ -844,8 +844,8 @@ property:
 ```
 
 > [!warning]
-> The `assignee` column is deprecated. We now show it as a single-sized array `assignees` to conform
-> to the GitLab EE API.
+> The `assignee` column is deprecated. GitLab returns it as a single-sized array `assignees` to
+> conform to the GitLab EE API.
 >
 > The `epic_iid` attribute is deprecated, and [scheduled for removal](https://gitlab.com/gitlab-org/gitlab/-/issues/35157) in API version 5.
 > Use `iid` of the `epic` attribute instead.
@@ -1009,7 +1009,7 @@ property:
 ```
 
 > [!warning]
-> The `assignee` column is deprecated. We now show it as a single-sized array `assignees` to conform to the GitLab EE API.
+> The `assignee` column is deprecated. GitLab returns it as a single-sized array `assignees` to conform to the GitLab EE API.
 >
 > The `epic_iid` attribute is deprecated and [scheduled for removal](https://gitlab.com/gitlab-org/gitlab/-/issues/35157) in API version 5.
 > Use `iid` of the `epic` attribute instead.
@@ -1172,7 +1172,7 @@ Issues created by users on GitLab Ultimate include the `health_status` property:
 ```
 
 > [!warning]
-> The `assignee` column is deprecated. We now show it as a single-sized array `assignees` to conform to the GitLab EE API.
+> The `assignee` column is deprecated. GitLab returns it as a single-sized array `assignees` to conform to the GitLab EE API.
 >
 > The `epic_iid` attribute is deprecated and [scheduled for removal](https://gitlab.com/gitlab-org/gitlab/-/issues/35157) in API version 5.
 > Use `iid` of the `epic` attribute instead.
@@ -1180,7 +1180,7 @@ Issues created by users on GitLab Ultimate include the `health_status` property:
 ### Rate limits
 
 To help avoid abuse, users can be limited to a specific number of `Create` requests per minute.
-For more information, see [rate limits on issue and epic creation](../administration/settings/rate_limit_on_issues_creation.md).
+For more information, see [content creation rate limits](../rate_limits/content_creation.md).
 
 ## Update an issue
 
@@ -1360,7 +1360,7 @@ Issues created by users on GitLab Ultimate include the `health_status` property:
 >
 > - The `epic_iid` attribute is deprecated and [scheduled for removal](https://gitlab.com/gitlab-org/gitlab/-/issues/35157) in API version 5.
 >   Use `iid` of the `epic` attribute instead.
-> - The `assignee` column is deprecated. We now show it as a single-sized array `assignees` to conform to the GitLab EE API.
+> - The `assignee` column is deprecated. GitLab returns it as a single-sized array `assignees` to conform to the GitLab EE API.
 
 ## Delete an issue
 
@@ -1393,7 +1393,7 @@ If successful, returns [`204 No Content`](rest/troubleshooting.md#status-codes).
 
 ## Reorder an issue
 
-Reorders a specified issue within a project. You can see the results when [sorting issues manually](../user/project/issues/sorting_issue_lists.md#manual-sorting).
+Reorders a specified issue in a project. You can see the results when [sorting issues manually](../user/project/issues/sorting_issue_lists.md#manual-sorting).
 
 ```plaintext
 PUT /projects/:id/issues/:issue_iid/reorder
@@ -1563,7 +1563,7 @@ Issues created by users on GitLab Ultimate include the `health_status` property:
 ```
 
 > [!warning]
-> The `assignee` column is deprecated. We now show it as a single-sized array `assignees` to conform to the GitLab EE API.
+> The `assignee` column is deprecated. GitLab returns it as a single-sized array `assignees` to conform to the GitLab EE API.
 >
 > The `epic_iid` attribute is deprecated and [scheduled for removal](https://gitlab.com/gitlab-org/gitlab/-/issues/35157) in API version 5.
 > Use `iid` of the `epic` attribute instead.
@@ -1827,7 +1827,7 @@ Issues created by users on GitLab Ultimate include the `health_status` property:
 ```
 
 > [!warning]
-> The `assignee` column is deprecated. We now show it as a single-sized array `assignees` to conform to the GitLab EE API.
+> The `assignee` column is deprecated. GitLab returns it as a single-sized array `assignees` to conform to the GitLab EE API.
 >
 > The `epic_iid` attribute is deprecated and [scheduled for removal](https://gitlab.com/gitlab-org/gitlab/-/issues/35157) in API version 5.
 > Use `iid` of the `epic` attribute instead.
@@ -2030,7 +2030,7 @@ Example response:
 ```
 
 > [!warning]
-> The `assignee` column is deprecated. We now show it as a single-sized array `assignees` to conform to the GitLab EE API.
+> The `assignee` column is deprecated. GitLab returns it as a single-sized array `assignees` to conform to the GitLab EE API.
 
 ## Promote an issue to an epic
 

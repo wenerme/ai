@@ -21,7 +21,7 @@ For organizations, all members are automatically added to the Default workspace.
 3. Name your workspace and add a description
 
 <Note>
-  Only organization admins can create and delete workspaces.
+  Organization admins and account owners can create and delete workspaces.
 </Note>
 
 <Tip>
@@ -55,7 +55,7 @@ Some settings apply globally across all workspaces:
 
 ## Organization Permissions
 
-* **Org admins** have admin permissions across all workspaces. Only org admins can create or delete workspaces and add or remove member access.
+* **Org admins** have admin permissions across all workspaces. Organization admins and account owners can create or delete workspaces. Only org admins can add or remove member access.
 * **Org members** have member permissions in each workspace they've been added to. Members can belong to multiple workspaces, and their API keys in each workspace are governed by that workspace's settings.
 * All org members automatically have member access to the **Default workspace**. Chat and Fusion requests run in the member's active workspace, which they can change via the [workspace switcher](/docs/guides/features/workspaces/switching). The Default workspace is the initial active workspace.
 
@@ -67,7 +67,7 @@ Some settings apply globally across all workspaces:
   </Accordion>
 
   <Accordion title="What can my organization admins see? What can they edit?">
-    Org admins have admin permissions across all workspaces: they can view and manage everything in every workspace, including API keys, guardrails, BYOK, routing, presets, plugins, observability, members, and settings. Only org admins can create or delete workspaces and control members' access to each workspace. At the account level, org admins manage billing and credits, organization membership and roles, management API keys, and account-level data policies and allowed providers/models.
+    Org admins have admin permissions across all workspaces: they can view and manage everything in every workspace, including API keys, guardrails, BYOK, routing, presets, plugins, observability, members, and settings. Organization admins and account owners can create or delete workspaces. Only org admins can control members' access to each workspace. At the account level, org admins manage billing and credits, organization membership and roles, management API keys, and account-level data policies and allowed providers/models.
   </Accordion>
 
   <Accordion title="Can management keys be used across workspaces?">
@@ -76,6 +76,10 @@ Some settings apply globally across all workspaces:
 
   <Accordion title="Can workspaces have different data policies?">
     Workspaces inherit account-level data policies and allowed providers/models. Within those constraints, each workspace can set more granular guardrails to further restrict API key and member activity. The account-level policy is the ceiling; individual workspaces can only be more restrictive.
+  </Accordion>
+
+  <Accordion title="Can I delete the Default workspace?">
+    Yes. Organization admins and account owners can delete the Default workspace. API requests must include `confirm_default_workspace_deletion=true`. Deleting it permanently disables the account's unscoped inference API keys along with the workspace's budgets, guardrails, classifiers, and broadcast destinations. Management keys are retained. The last remaining workspace cannot be deleted.
   </Accordion>
 
   <Accordion title="What happens when I remove someone from a workspace?">

@@ -4144,6 +4144,30 @@ Fields:
 | <a id="mutation-artifactdestroy-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-artifactdestroy-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 
+### `Mutation.artifactRegistryActivate`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Activates an Artifact Registry for an organization by claiming a slug.
+
+Input type: `ArtifactRegistryActivateInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryactivate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryactivate-slug"></a>`slug` | [`String!`](#string) | Slug to claim, Artifact Registry's immutable identifier for the namespace. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryactivate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryactivate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-artifactregistryactivate-registry"></a>`registry`  | [`ArtifactRegistry`](#artifactregistry) | Introduced in GitLab 19.4. Status: Experiment. Registry provisioned. Null when the request was refused. |
+
 ### `Mutation.artifactRegistryRepositoryCreate`
 
 - Introduced in GitLab 19.3.
@@ -9495,6 +9519,30 @@ Fields:
 | <a id="mutation-governpolicycreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-governpolicycreate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-governpolicycreate-policy"></a>`policy` | [`GovernPolicy`](#governpolicy) | Policy created in the policy store. |
+
+### `Mutation.governPolicyDelete`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Deletes a policy from the policy store for an organization.
+
+Input type: `GovernPolicyDeleteInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-governpolicydelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-governpolicydelete-id"></a>`id` | [`Int!`](#int) | ID of the policy to delete. |
+| <a id="mutation-governpolicydelete-organizationid"></a>`organizationId` | [`OrganizationsOrganizationID!`](#organizationsorganizationid) | Global ID of the organization the policy belongs to. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-governpolicydelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-governpolicydelete-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 
 ### `Mutation.groupAuditEventStreamingDestinationsCreate`
 
@@ -33003,6 +33051,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="analytics-mergerequests-authorid"></a>`authorId` | [`[String!]`](#string) | Filter by one or many author Global IDs. |
 | <a id="analytics-mergerequests-createdatfrom"></a>`createdAtFrom` | [`Time`](#time) | Filter by merge request creation timestamp. Start of the range. |
 | <a id="analytics-mergerequests-createdatto"></a>`createdAtTo` | [`Time`](#time) | Filter by merge request creation timestamp. End of the range. |
 | <a id="analytics-mergerequests-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
@@ -49355,6 +49404,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="mergerequestsaggregationresponsedimensions-author"></a>`author` | [`UserCore`](#usercore) | Merge request author. |
 | <a id="mergerequestsaggregationresponsedimensions-stateid"></a>`stateId` | [`String`](#string) | Merge request state. |
 | <a id="mergerequestsaggregationresponsedimensions-targetbranch"></a>`targetBranch` | [`String`](#string) | Target branch of the merge request. |
 
@@ -52701,6 +52751,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="policystore-policies-ids"></a>`ids`  | [`[Int!]`](#int) | Introduced in GitLab 19.4. Status: Experiment. Return only the policies with these IDs. Unknown IDs are ignored; an empty list returns no policies. Maximum is 1000 IDs. |
 | <a id="policystore-policies-triggertype"></a>`triggerType`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Return only the policies that respond to this trigger. Valid values are the ids in the policy store triggers catalog. |
 
 ### `PolicyStoreAction`

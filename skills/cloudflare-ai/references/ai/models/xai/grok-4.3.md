@@ -7672,7 +7672,7 @@ presence\_penalty
 
 reasoning\_effort
 
-`string | null`
+`string | null`enum: none, low, medium, high
 
 ▶response\_format
 

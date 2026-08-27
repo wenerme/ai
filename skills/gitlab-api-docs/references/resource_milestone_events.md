@@ -1,5 +1,7 @@
 # Resource milestone events API
 
+REST API to retrieve milestone change events for issues and merge requests.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

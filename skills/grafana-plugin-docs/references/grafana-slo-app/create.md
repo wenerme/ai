@@ -176,6 +176,21 @@ SLO names identify your SLO in dashboards and alert rules.
 
 Good SLO names, descriptions, and labeling practices are a critical part of SLO maintenance and alignment.
 
+### Link the SLO to RCA workbench entities
+
+You can associate the SLO with the set of Knowledge Graph entities it measures.
+
+In **RCA workbench entities**, enter a Knowledge Graph search expression, such as `checkout connected services`. The field suggests matching expressions as you type, and also accepts an expression you type in full.
+
+When an SLO has a search expression:
+
+- An **Open RCA workbench** link is available from the **Manage SLOs** page and the SLO performance page, already scoped to the matching entities.
+- The SLO alert rules carry a `workbench_troubleshoot_url` annotation that opens the same view.
+
+This field is optional. Leave it empty if you don’t use the RCA workbench.
+
+For the expression syntax, refer to [use predefined searches](/docs/grafana-cloud/platform/knowledge-graph/troubleshoot-infra-apps/explore-entity-graph/#use-predefined-searches).
+
 ## Add SLO alert rules and assistant investigations
 
 Enable SLO alert rules to receive notifications and act proactively before the SLO is breached.

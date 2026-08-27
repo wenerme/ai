@@ -39,6 +39,7 @@ Regex-based presets include:
 * Social Security numbers (SSNs)
 * Credit card numbers
 * IP addresses
+* Provider-prefixed API keys and secrets
 
 ### NLP-Based Detection
 
@@ -59,15 +60,24 @@ NLP-based presets include:
 
 The following presets are available out of the box. Each can be individually enabled and configured with either the **Redact** or **Block** action.
 
-| Preset                 | Detection Method | Redaction Label | Example Matches                                          |
-| ---------------------- | ---------------- | --------------- | -------------------------------------------------------- |
-| Email address          | Regex            | `[EMAIL]`       | `user@example.com`, `name+tag@domain.co`                 |
-| Phone number           | Regex            | `[PHONE]`       | `914-309-4996`, `914.309.4996`, `9143094996`             |
-| Social Security number | Regex            | `[SSN]`         | `123-45-6789`                                            |
-| Credit card number     | Regex            | `[CREDIT_CARD]` | `4265 5256 0839 8752`, `4265-5256-0839-8752`             |
-| IP address             | Regex            | `[IP_ADDRESS]`  | `192.168.0.1`, `10.0.0.1`                                |
-| Person name *(beta)*   | NLP              | `[PERSON_NAME]` | `John Smith`, `Dr. Sarah Johnson`, `Maria Garcia-Lopez`  |
-| Address *(beta)*       | NLP              | `[ADDRESS]`     | `123 Main Street, Springfield`, `London, United Kingdom` |
+| Preset                 | Detection Method | Redaction Label        | Example Matches                                          |
+| ---------------------- | ---------------- | ---------------------- | -------------------------------------------------------- |
+| Email address          | Regex            | `[EMAIL]`              | `user@example.com`, `name+tag@domain.co`                 |
+| Phone number           | Regex            | `[PHONE]`              | `914-309-4996`, `914.309.4996`, `9143094996`             |
+| Social Security number | Regex            | `[SSN]`                | `123-45-6789`                                            |
+| Credit card number     | Regex            | `[CREDIT_CARD]`        | `4265 5256 0839 8752`, `4265-5256-0839-8752`             |
+| IP address             | Regex            | `[IP_ADDRESS]`         | `192.168.0.1`, `10.0.0.1`                                |
+| API keys and secrets   | Regex            | `[SECRET:<format-id>]` | `sk-or-v1-...`, `ghp_...`, `pypi-...`                    |
+| Person name *(beta)*   | NLP              | `[PERSON_NAME]`        | `John Smith`, `Dr. Sarah Johnson`, `Maria Garcia-Lopez`  |
+| Address *(beta)*       | NLP              | `[ADDRESS]`            | `123 Main Street, Springfield`, `London, United Kingdom` |
+
+### Secrets Preset
+
+The **Secrets** preset detects well-known provider-prefixed API keys and credential formats
+with low false-positive rates. By default, matches are redacted as
+`[SECRET:<format-id>]`, such as `[SECRET:github-token]`. A custom label replaces
+the whole label verbatim without a format suffix. See the [complete list of detected
+secret formats](/docs/guides/features/guardrails/secret-formats).
 
 ### NLP Preset Limitations
 
@@ -139,13 +149,14 @@ Sensitive info filters are configured as part of the guardrail object using the 
     { "slug": "ssn", "action": "block" },
     { "slug": "credit-card", "action": "block" },
     { "slug": "ip-address", "action": "redact" },
+    { "slug": "secrets", "action": "redact" },
     { "slug": "person-name", "action": "redact" },
     { "slug": "address", "action": "redact" }
   ]
 }
 ```
 
-Available slugs: `email`, `phone`, `ssn`, `credit-card`, `ip-address`, `person-name`, `address`.
+Available slugs: `email`, `phone`, `ssn`, `credit-card`, `ip-address`, `secrets`, `person-name`, `address`.
 
 **Custom patterns** use the `content_filters` field:
 

@@ -44,9 +44,15 @@ tags:
     name: Chat
   - description: Task classification market-share endpoints
     name: Classifications
+  - description: Containers endpoints
+    name: Containers
   - description: Credit management endpoints
     name: Credits
-  - description: Datasets endpoints
+  - description: >-
+      Public OpenRouter usage datasets. Data returned by these endpoints is
+      licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/):
+      reuse and republish it, including commercially, with attribution to
+      OpenRouter.
     name: Datasets
   - description: Text embedding endpoints
     name: Embeddings
@@ -74,6 +80,10 @@ tags:
     name: Providers
   - description: Rerank endpoints
     name: Rerank
+  - description: OpenAI-compatible Responses API endpoints
+    name: Responses
+  - description: SCIM endpoints
+    name: SCIM
   - description: Speech-to-text endpoints
     name: STT
     x-displayName: Transcriptions
@@ -84,10 +94,6 @@ tags:
     name: Video Generation
   - description: Workspaces endpoints
     name: Workspaces
-  - description: beta.Analytics endpoints
-    name: beta.Analytics
-  - description: beta.responses endpoints
-    name: beta.responses
 externalDocs:
   description: OpenRouter Documentation
   url: https://openrouter.ai/docs
@@ -104,7 +110,10 @@ paths:
           name: file_id
           required: true
           schema:
-            example: file_011CNha8iCJcU1wXNR6q4V8w
+            example: or_file_011CNha8iCJcU1wXNR6q4V8w
+            maxLength: 256
+            minLength: 1
+            pattern: ^[\w-]+$
             type: string
         - description: >-
             Workspace to scope the request to. Defaults to the caller’s default
@@ -119,6 +128,15 @@ paths:
             example: a103d8b6-42f0-4e50-9a3c-bf41e2c3c1a7
             format: uuid
             type: string
+        - description: >-
+            Store or read this file on the named provider using your own API key
+            for it. Omit to use OpenRouter storage.
+          example: openai
+          in: query
+          name: provider
+          required: false
+          schema:
+            $ref: '#/components/schemas/FileProvider'
       responses:
         '200':
           content:
@@ -127,12 +145,12 @@ paths:
                 created_at: '2025-01-01T00:00:00Z'
                 downloadable: false
                 filename: document.pdf
-                id: file_011CNha8iCJcU1wXNR6q4V8w
+                id: or_file_011CNha8iCJcU1wXNR6q4V8w
                 mime_type: application/pdf
                 size_bytes: 1024000
                 type: file
               schema:
-                $ref: '#/components/schemas/FileMetadata'
+                $ref: '#/components/schemas/FileResponse'
           description: The file metadata.
         '401':
           content:
@@ -144,6 +162,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResponse'
           description: Unauthorized - Authentication required or invalid credentials
+        '403':
+          content:
+            application/json:
+              example:
+                error:
+                  code: 403
+                  message: Only management keys can perform this operation
+              schema:
+                $ref: '#/components/schemas/ForbiddenResponse'
+          description: Forbidden - Authentication successful but insufficient permissions
         '404':
           content:
             application/json:
@@ -174,44 +202,63 @@ paths:
               schema:
                 $ref: '#/components/schemas/InternalServerResponse'
           description: Internal Server Error - Unexpected server error
+        '502':
+          content:
+            application/json:
+              example:
+                error:
+                  code: 502
+                  message: Provider returned error
+              schema:
+                $ref: '#/components/schemas/BadGatewayResponse'
+          description: Bad Gateway - Provider/upstream API failure
+        '503':
+          content:
+            application/json:
+              example:
+                error:
+                  code: 503
+                  message: Service temporarily unavailable
+              schema:
+                $ref: '#/components/schemas/ServiceUnavailableResponse'
+          description: Service Unavailable - Service temporarily unavailable
 components:
   schemas:
-    FileMetadata:
-      description: Metadata describing a stored file.
+    FileProvider:
+      description: >-
+        Store or read this file on the named provider using your own API key for
+        it. Omit to use OpenRouter storage.
+      enum:
+        - openai
+        - anthropic
+      example: openai
+      type: string
+    FileResponse:
+      description: >-
+        A stored file. The shape is negotiated per request — see the endpoint
+        description.
+      discriminator:
+        mapping:
+          anthropic:
+            $ref: '#/components/schemas/AnthropicFile'
+          openai:
+            $ref: '#/components/schemas/OpenAIFile'
+          openrouter:
+            $ref: '#/components/schemas/OpenRouterFile'
+        propertyName: _shape
       example:
+        _shape: openrouter
         created_at: '2025-01-01T00:00:00Z'
         downloadable: false
         filename: document.pdf
-        id: file_011CNha8iCJcU1wXNR6q4V8w
+        id: or_file_011CNha8iCJcU1wXNR6q4V8w
         mime_type: application/pdf
         size_bytes: 1024000
         type: file
-      properties:
-        created_at:
-          type: string
-        downloadable:
-          type: boolean
-        filename:
-          type: string
-        id:
-          type: string
-        mime_type:
-          type: string
-        size_bytes:
-          type: integer
-        type:
-          enum:
-            - file
-          type: string
-      required:
-        - id
-        - type
-        - filename
-        - mime_type
-        - size_bytes
-        - created_at
-        - downloadable
-      type: object
+      oneOf:
+        - $ref: '#/components/schemas/OpenRouterFile'
+        - $ref: '#/components/schemas/OpenAIFile'
+        - $ref: '#/components/schemas/AnthropicFile'
     UnauthorizedResponse:
       description: Unauthorized - Authentication required or invalid credentials
       example:
@@ -221,6 +268,27 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/UnauthorizedResponseErrorData'
+        openrouter_metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      type: object
+    ForbiddenResponse:
+      description: Forbidden - Authentication successful but insufficient permissions
+      example:
+        error:
+          code: 403
+          message: Only management keys can perform this operation
+      properties:
+        error:
+          $ref: '#/components/schemas/ForbiddenResponseErrorData'
         openrouter_metadata:
           additionalProperties: {}
           type:
@@ -296,11 +364,212 @@ components:
       required:
         - error
       type: object
+    BadGatewayResponse:
+      description: Bad Gateway - Provider/upstream API failure
+      example:
+        error:
+          code: 502
+          message: Provider returned error
+      properties:
+        error:
+          $ref: '#/components/schemas/BadGatewayResponseErrorData'
+        openrouter_metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      type: object
+    ServiceUnavailableResponse:
+      description: Service Unavailable - Service temporarily unavailable
+      example:
+        error:
+          code: 503
+          message: Service temporarily unavailable
+      properties:
+        error:
+          $ref: '#/components/schemas/ServiceUnavailableResponseErrorData'
+        openrouter_metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      type: object
+    AnthropicFile:
+      description: A stored file in Anthropic's Files API shape.
+      example:
+        _shape: anthropic
+        created_at: '2025-01-01T00:00:00Z'
+        downloadable: false
+        filename: document.pdf
+        id: or_file_011CNha8iCJcU1wXNR6q4V8w
+        mime_type: application/pdf
+        size_bytes: 1024000
+        type: file
+      properties:
+        _shape:
+          enum:
+            - anthropic
+          type: string
+        created_at:
+          type: string
+        downloadable:
+          type: boolean
+        filename:
+          type: string
+        id:
+          type: string
+        mime_type:
+          type: string
+        size_bytes:
+          type: integer
+        type:
+          enum:
+            - file
+          type: string
+      required:
+        - _shape
+        - id
+        - type
+        - filename
+        - mime_type
+        - size_bytes
+        - created_at
+        - downloadable
+      type: object
+    OpenAIFile:
+      description: A stored file in OpenAI's Files API shape.
+      example:
+        _shape: openai
+        bytes: 1024000
+        created_at: 1735689600
+        filename: document.pdf
+        id: or_file_011CNha8iCJcU1wXNR6q4V8w
+        object: file
+        purpose: user_data
+        status: processed
+      properties:
+        _shape:
+          enum:
+            - openai
+          type: string
+        bytes:
+          type: integer
+        created_at:
+          type: integer
+        filename:
+          type: string
+        id:
+          type: string
+        object:
+          enum:
+            - file
+          type: string
+        purpose:
+          enum:
+            - assistants
+            - batch
+            - fine-tune
+            - vision
+            - user_data
+            - evals
+            - assistants_output
+            - batch_output
+            - fine-tune-results
+          type: string
+        status:
+          enum:
+            - processed
+          type: string
+      required:
+        - _shape
+        - id
+        - object
+        - bytes
+        - created_at
+        - filename
+        - purpose
+        - status
+      type: object
+    OpenRouterFile:
+      description: >-
+        A stored file in the OpenRouter superset shape: Anthropic-shaped, plus
+        OpenRouter-only fields.
+      example:
+        _shape: openrouter
+        created_at: '2025-01-01T00:00:00Z'
+        downloadable: false
+        filename: document.pdf
+        id: or_file_011CNha8iCJcU1wXNR6q4V8w
+        mime_type: application/pdf
+        size_bytes: 1024000
+        type: file
+      properties:
+        _shape:
+          enum:
+            - openrouter
+          type: string
+        created_at:
+          type: string
+        downloadable:
+          type: boolean
+        filename:
+          type: string
+        id:
+          type: string
+        mime_type:
+          type: string
+        size_bytes:
+          type: integer
+        type:
+          enum:
+            - file
+          type: string
+      required:
+        - _shape
+        - id
+        - type
+        - filename
+        - mime_type
+        - size_bytes
+        - created_at
+        - downloadable
+      type: object
     UnauthorizedResponseErrorData:
       description: Error data for UnauthorizedResponse
       example:
         code: 401
         message: Missing Authentication header
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+      required:
+        - code
+        - message
+      type: object
+    ForbiddenResponseErrorData:
+      description: Error data for ForbiddenResponse
+      example:
+        code: 403
+        message: Only management keys can perform this operation
       properties:
         code:
           type: integer
@@ -358,6 +627,44 @@ components:
       example:
         code: 500
         message: Internal Server Error
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+      required:
+        - code
+        - message
+      type: object
+    BadGatewayResponseErrorData:
+      description: Error data for BadGatewayResponse
+      example:
+        code: 502
+        message: Provider returned error
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+      required:
+        - code
+        - message
+      type: object
+    ServiceUnavailableResponseErrorData:
+      description: Error data for ServiceUnavailableResponse
+      example:
+        code: 503
+        message: Service temporarily unavailable
       properties:
         code:
           type: integer

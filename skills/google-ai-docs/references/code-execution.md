@@ -22,7 +22,7 @@ allows the model to generate and run code.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         input="What is the sum of the first 50 prime numbers? "
               "Generate and run code for the calculation, and make sure you get all 50.",
         tools=[{"type": "code_execution"}]
@@ -45,7 +45,7 @@ allows the model to generate and run code.
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.7-flash",
         input: "What is the sum of the first 50 prime numbers? " +
                "Generate and run code for the calculation, and make sure you get all 50.",
         tools: [{ type: "code_execution" }]
@@ -65,13 +65,38 @@ allows the model to generate and run code.
         }
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CodeExecution;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Calculate the 100th Fibonacci number using Python."))
+            .tools(Arrays.asList(new CodeExecution()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -d '{
-        "model": "gemini-3.6-flash",
+        "model": "gemini-3.7-flash",
         "input": "What is the sum of the first 50 prime numbers? Generate and run code for the calculation, and make sure you get all 50.",
         "tools": [{"type": "code_execution"}]
     }'
@@ -164,7 +189,7 @@ activate this behavior by enabling both Code Execution as a tool and Thinking.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         input=[
             {"type": "image", "data": base64.b64encode(image_bytes).decode('utf-8'), "mime_type": "image/jpeg"},
             {"type": "text", "text": "Zoom into the expression pedals and tell me how many pedals are there?"}
@@ -198,7 +223,7 @@ activate this behavior by enabling both Code Execution as a tool and Thinking.
       const base64ImageData = Buffer.from(imageArrayBuffer).toString('base64');
 
       const interaction = await client.interactions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.7-flash",
         input: [
           {
             type: "image",
@@ -227,10 +252,35 @@ activate this behavior by enabling both Code Execution as a tool and Thinking.
 
     main();
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CodeExecution;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Calculate the 100th Fibonacci number using Python."))
+            .tools(Arrays.asList(new CodeExecution()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     IMG_URL="https://goo.gle/instrument-img"
-    MODEL="gemini-3.6-flash"
+    MODEL="gemini-3.7-flash"
 
     MIME_TYPE=$(curl -sIL "$IMG_URL" | grep -i '^content-type:' | awk -F ': ' '{print $2}' | sed 's/\r$//' | head -n 1)
     if [[ -z "$MIME_TYPE" || ! "$MIME_TYPE" == image/* ]]; then
@@ -251,7 +301,7 @@ activate this behavior by enabling both Code Execution as a tool and Thinking.
       --rawfile b64 image_b64.txt \
       --arg mime "$MIME_TYPE" \
       '{
-        model: "gemini-3.6-flash",
+        model: "gemini-3.7-flash",
         input: [
           {type: "image", data: $b64, mime_type: $mime},
           {type: "text", text: "Zoom into the expression pedals and tell me how many pedals are there?"}
@@ -276,14 +326,14 @@ You can also use code execution as part of a multi-turn conversation using
     client = genai.Client()
 
     interaction1 = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         input="I have a math question for you.",
         tools=[{"type": "code_execution"}]
     )
     print(interaction1.output_text)
 
     interaction2 = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         previous_interaction_id=interaction1.id,
         input="What is the sum of the first 50 prime numbers? "
               "Generate and run code for the calculation, and make sure you get all 50.",
@@ -307,14 +357,14 @@ You can also use code execution as part of a multi-turn conversation using
     const client = new GoogleGenAI({});
 
     const interaction1 = await client.interactions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.7-flash",
         input: "I have a math question for you.",
         tools: [{ type: "code_execution" }]
     });
     console.log(interaction1.output_text);
 
     const interaction2 = await client.interactions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.7-flash",
         previous_interaction_id: interaction1.id,
         input: "What is the sum of the first 50 prime numbers? " +
                "Generate and run code for the calculation, and make sure you get all 50.",
@@ -335,6 +385,31 @@ You can also use code execution as part of a multi-turn conversation using
         }
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CodeExecution;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Calculate the 100th Fibonacci number using Python."))
+            .tools(Arrays.asList(new CodeExecution()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     # First turn
@@ -342,7 +417,7 @@ You can also use code execution as part of a multi-turn conversation using
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -d '{
-        "model": "gemini-3.6-flash",
+        "model": "gemini-3.7-flash",
         "input": "I have a math question for you.",
         "tools": [{"type": "code_execution"}]
     }')
@@ -354,7 +429,7 @@ You can also use code execution as part of a multi-turn conversation using
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -d '{
-        "model": "gemini-3.6-flash",
+        "model": "gemini-3.7-flash",
         "previous_interaction_id": "'"$INTERACTION_ID"'",
         "input": "What is the sum of the first 50 prime numbers? Generate and run code for the calculation, and make sure you get all 50.",
         "tools": [{"type": "code_execution"}]
@@ -363,7 +438,7 @@ You can also use code execution as part of a multi-turn conversation using
 ## Input/output (I/O)
 
 In current Gemini models such as
-[Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini#gemini-3.6-flash), code
+[Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini#gemini-3.5-flash), code
 execution supports file input and graph output. Using these input and output
 capabilities, you can upload CSV and text files, ask questions about the
 files, and have [Matplotlib](https://matplotlib.org/) graphs generated as part

@@ -911,6 +911,26 @@ client
     .forEach(text -> System.out.println(text.text()));
 ```
 
+```csharp
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(key);
+
+List<ResponseItem> history =
+[
+    ResponseItem.CreateUserMessageItem("What is the capital of France?"),
+];
+
+ResponseResult first = await client.CreateResponseAsync("gpt-5.6", history);
+history.AddRange(first.OutputItems);
+history.Add(ResponseItem.CreateUserMessageItem("And its population?"));
+
+ResponseResult second = await client.CreateResponseAsync("gpt-5.6", history);
+Console.WriteLine(second.GetOutputText());
+```
+
 ```ruby
 require "openai"
 
@@ -1953,6 +1973,23 @@ client.responses().create(params).output().stream()
     .flatMap(message -> message.content().stream())
     .flatMap(content -> content.outputText().stream())
     .forEach(text -> System.out.println(text.text()));
+```
+
+```csharp
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(key);
+
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
+options.Tools.Add(ResponseTool.CreateWebSearchTool());
+options.InputItems.Add(
+    ResponseItem.CreateUserMessageItem("Who is the current president of France?")
+);
+
+ResponseResult response = await client.CreateResponseAsync(options);
+Console.WriteLine(response.GetOutputText());
 ```
 
 ```ruby

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Bot Management variables
 
-Last updated Aug 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/reference/bot-management-variables/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/reference/bot-management-variables/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Ruleset Engine fields
 
@@ -70,6 +70,16 @@ Once you enable Bot Management, Cloudflare also surfaces bot information in its 
 * BotScoreSrc
 * BotTags
 
+## Ephemeral IDs
+
+[Ephemeral IDs](https://developers.cloudflare.com/turnstile/additional-configuration/ephemeral-id/) are short-lived device identifiers returned in the [Turnstile Siteverify API](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/) response under `metadata.ephemeral_id`. They are not Ruleset Engine fields and cannot be used in WAF custom rules or Workers directly.
+
+Note
+
+Ephemeral IDs require **Enterprise Bot Management** with the Turnstile Enterprise add-on, or a standalone **Enterprise Turnstile** subscription. The feature must be enabled by your Cloudflare account team and cannot be self-activated.
+
+Refer to [Ephemeral IDs](https://developers.cloudflare.com/turnstile/additional-configuration/ephemeral-id/) for implementation details and the full enablement process.
+
 Was this helpful?
 
 YesNo
@@ -79,5 +89,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/bot-management-variables/#page","headline":"Bot Management variables · Cloudflare bot solutions docs","description":"Ruleset Engine fields and Workers variables available for bot detection rules.","url":"https://developers.cloudflare.com/bots/reference/bot-management-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/bot-management-variables/#page","headline":"Bot Management variables · Cloudflare bot solutions docs","description":"Ruleset Engine fields and Workers variables available for bot detection rules.","url":"https://developers.cloudflare.com/bots/reference/bot-management-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
