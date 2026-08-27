@@ -9968,6 +9968,10 @@ Learn when and how to compact long-running conversations in the [conversation st
 
       The total number of tokens used.
 
+    - `compute_units: optional number or null`
+
+      Compute units for the request. Currently null when available.
+
 ### Example
 
 ```http
@@ -10018,7 +10022,8 @@ curl https://api.openai.com/v1/responses/compact \
     "output_tokens_details": {
       "reasoning_tokens": 0
     },
-    "total_tokens": 0
+    "total_tokens": 0,
+    "compute_units": 0
   }
 }
 ```

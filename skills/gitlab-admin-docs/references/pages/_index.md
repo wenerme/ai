@@ -66,9 +66,9 @@ Before configuring Pages for wildcard domains, you must:
 
    | GitLab domain        | Pages domain        | Does it work? |
    | -------------------- | ------------------- | ------------- |
-   | `example.com`        | `example.io`        |  Yes |
-   | `example.com`        | `pages.example.com` |  No <sup>1</sup> |
-   | `gitlab.example.com` | `pages.example.com` |  Yes |
+   | `example.com`        | `example.io`        | Yes   |
+   | `example.com`        | `pages.example.com` | No <sup>1</sup> |
+   | `gitlab.example.com` | `pages.example.com` | Yes   |
 
    **Footnotes**:
 
@@ -93,10 +93,10 @@ Before configuring Pages for single-domain sites, you must:
 1. Have a domain for Pages that is not a subdomain of your GitLab instance domain.
 
    | GitLab domain        | Pages domain        | Supported |
-   | -------------------- | ------------------- | ------------- |
-   | `example.com`        | `example.io`        |  Yes |
-   | `example.com`        | `pages.example.com` |  No <sup>1</sup> |
-   | `gitlab.example.com` | `pages.example.com` |  Yes |
+   | -------------------- | ------------------- | --------- |
+   | `example.com`        | `example.io`        | Yes |
+   | `example.com`        | `pages.example.com` | No <sup>1</sup> |
+   | `gitlab.example.com` | `pages.example.com` | Yes |
 
    **Footnotes**:
 

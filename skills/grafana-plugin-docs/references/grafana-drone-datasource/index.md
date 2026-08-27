@@ -1,127 +1,90 @@
 ---
-title: "Drone CI data source for Grafana | Grafana Enterprise Plugins documentation"
-description: "Drone CI Grafana data source Note Drone enterprise data source for Grafana is currently in public preview. Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available."
+title: "Drone CI data source | Grafana Enterprise Plugins documentation"
+description: "Use the Drone data source to query repositories and builds from your Drone CI instance in Grafana."
 ---
 
 > For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-# Drone CI Grafana data source
+# Drone CI data source
 
 > Note
 >
-> **Drone** enterprise data source for Grafana is currently in [public preview](/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
+> Drone data source plugin is currently in [public preview](/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
 
-The Drone data source plugin allows you to retrieve data for repositories and builds from your Drone instance.
+The Drone data source plugin lets you retrieve repository and build data from your Drone continuous integration (CI) instance and visualize it in Grafana. Use it to track build activity, monitor repository health, and correlate CI events with other data on your dashboards.
+
+> Note
+>
+> The Drone data source is an Enterprise plugin. It’s available with a Grafana Cloud Pro or Advanced plan and Grafana Enterprise. For installation instructions, refer to [Install the Drone data source](/docs/plugins/grafana-drone-datasource/latest/install/).
 
 ## Requirements
 
-This plugin has the following requirements:
+To use this data source, you need:
 
-- Working Drone instance
-- Any free or paid [Grafana Cloud](/pricing/) plan or an [activated on-prem Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/). Contracted Cloud customers should refer to their agreement.
+- A working Drone instance and a Drone API token.
+- A [Grafana Cloud Pro or Advanced](/pricing/) plan or an [activated Grafana Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/).
+- Grafana 10.3.3 or later.
 
-## Install the data source
-
-To install the data source, refer to [Installation](/grafana/plugins/grafana-adobeanalytics-datasource/?tab=installation).
-
-## Configure the data source in Grafana
-
-[Add a data source](/docs/grafana/latest/datasources/add-a-data-source/) by filling in the following information:
-
-### Connection
-
-**URL**
-
-This is your Drone instance URL. You should include protocol (e.g. `https://`) and remove the trailing `/`. You can find some examples below.
+## Version compatibility
 
 Expand table
 
-| URL                          | Is correct?                      |
-|------------------------------|----------------------------------|
-| `https://drone.company.com`  | ✅ correct                        |
-| `https://company.com/drone`  | ✅ correct                        |
-| `drone.company.com`          | ❌ incorrect - missing `https://` |
-| `https://drone.company.com/` | ❌ incorrect - has trailing `/`   |
+| Plugin version | Minimum Grafana version |
+|----------------|-------------------------|
+| 0.1.x          | 10.3.3                  |
 
-### Authentication
+## Supported features
 
-**API Token**
+Expand table
 
-The plugin supports API token authentication. You can find your API token on the `<YOUR_DRONE_URL>/account` page of your Drone instance.
+| Feature     | Supported |
+|-------------|-----------|
+| Metrics     | Yes       |
+| Logs        | No        |
+| Traces      | No        |
+| Alerting    | No        |
+| Annotations | Yes       |
 
-## Configure the data source with provisioning
+## Get started
 
-It is possible to configure data sources using configuration files with Grafana’s provisioning system. To read about how it works refer to [Provisioning Grafana data sources](/docs/grafana/latest/administration/provisioning/#data-sources).
+The following documents help you set up and use the Drone data source:
 
-Here is the provisioning example for this data source using API token authentication:
+- [Install the Drone data source](/docs/plugins/grafana-drone-datasource/latest/install/)
+- [Configure the Drone data source](/docs/plugins/grafana-drone-datasource/latest/configure/)
+- [Drone query editor](/docs/plugins/grafana-drone-datasource/latest/query-editor/)
+- [Drone template variables](/docs/plugins/grafana-drone-datasource/latest/template-variables/)
+- [Drone annotations](/docs/plugins/grafana-drone-datasource/latest/annotations/)
+- [Troubleshooting](/docs/plugins/grafana-drone-datasource/latest/troubleshooting/)
 
-YAML [Copy code to clipboard] Copy
+## Additional features
 
-```yaml
-apiVersion: 1
-datasources:
-  - name: Drone
-    type: grafana-drone-datasource
-    jsonData:
-      variables:
-        url: <YOUR_DRONE_URL>
-    secureJsonData:
-      drone.token: <YOUR_API_TOKEN>
-```
+After you configure the data source, you can:
 
-## Query the data source
+- Use [Explore](/docs/grafana/latest/explore/) to query data without building a dashboard.
+- Add [transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results.
+- Add [annotations](/docs/plugins/grafana-drone-datasource/latest/annotations/) to overlay Drone events on your graphs.
 
-Plugin allows querying repositories and builds data.
+## Pre-built dashboards
 
-### Getting repository list
+The plugin includes a pre-built dashboard that you can import to get started quickly. The dashboard has a repository variable and visualizes stats for the selected repository. It showcases the plugin’s functionality, so import it and adapt it to your needs.
 
-Getting repositories data doesn’t require any parameters. Plugin only returns repositories that are active in Drone and filters out inactive ones.
+To import the pre-built dashboard:
 
-### Getting data for a specific repository
+1. Click **Connections** in the left-side menu.
+2. Under **Connections**, click **Data sources**.
+3. Select your Drone data source.
+4. Select the **Dashboards** tab.
+5. Click **Import** next to the dashboard you want to use.
 
-When choosing `Repo Info` action you also need to select mandatory repository parameter from the dropdown list, dropdown only includes active repositories.
+## Plugin updates
 
-### Getting build list
-
-`Build List` action returns data for the recent builds of the specified repository which you need to choose from the dropdown list. Dropdown contains only active repositories.
-
-### Getting specific build data
-
-This action is similar to the build list action but only returns data for single build. You will need to provide mandatory repo `Repository` and `Build number` parameters from the dropdown lists. `Build number` parameter will only appear after you selected repository.
+Always ensure that your plugin version is up-to-date so you have access to all current features and improvements. Navigate to **Plugins and data** &gt; **Plugins** to check for updates. Grafana recommends upgrading to the latest Grafana version, and this applies to plugins as well.
 
 > Note
 >
-> `Build number` dropdown list contains at most 100 recent builds, but you can still type in build number that is not in the list and the plugin will return data for that build.
+> Plugins are automatically updated in Grafana Cloud.
 
-## Templates and variables
+## Additional resources
 
-To add a new Drone data source query variable, refer to [Add a query variable](/docs/grafana/latest/variables/variable-types/add-query-variable/). Use your Drone data source as your data source and fill out the fields in the query builder.
-
-After creating a variable, you can use it in your Drone queries using [Variable syntax](/docs/grafana/latest/variables/syntax/). For more information about variables, refer to [Templates and variables](/docs/grafana/latest/variables/).
-
-**Example**:
-You can create a variable that contains all repositories, use `slug` field as a variable value and `name` as a variable label when creating variable. You can then use created variable in other Drone data source queries that require repository parameter (e.g. to get data for specific repository or to get builds for the specific repository).
-
-## Annotations
-
-You can use annotations to visualize the relation between Drone data (e.g. builds) and other data on your dashboards. For a generic information on how to use annotations refer to the [documentation](/docs/grafana/latest/dashboards/annotations/).
-
-## Built-in dashboards
-
-Plugin has a built-in dashboard that has a repository variable and visualizes some stats for the selected repository. It is only included to showcase plugin’s functionality. Feel free to import dashboard and change it as you like.
-
-To view a list of pre-made Drone dashboards do the following:
-
-1. Go to **Connections** in the sidebar menu.
-2. Under Connections, click **Data sources**.
-3. Type `Drone` in the search bar and select the Drone data source.
-4. Go to **Dashboards** tab to view a list of pre-made dashboards.
-
-## Known limitations
-
-- `Build List` action currently only returns maximum 100 latest builds, not all builds.
-- At the moment plugin doesn’t support alerting.
-
-## Learn more
-
-- Add [Transformations](/docs/grafana/latest/panels/transformations/).
+- [Drone documentation](https://docs.drone.io/)
+- [Grafana community forum](https://community.grafana.com/)

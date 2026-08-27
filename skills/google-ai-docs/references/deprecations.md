@@ -132,6 +132,14 @@ Already-shutdown models are indicated with gray backgrounds.
 | `veo-3.0-generate-preview` | July 31, 2025 | November 12, 2025 | `veo-3.1-generate-preview` |
 | `veo-3.0-fast-generate-preview` | July 31, 2025 | November 12, 2025 | `veo-3.1-fast-generate-preview` |
 
+## Gemini Omni Flash models
+
+| **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
+|---|---|---|---|
+| `gemini-omni-1.1-flash` | August 27, 2026 | No shutdown date announced |   |
+| Deprecated models ||||
+| `gemini-omni-flash-preview` | June 30, 2026 | September 30, 2026 | `gemini-omni-1.1-flash` |
+
 ## Lyria models
 
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |

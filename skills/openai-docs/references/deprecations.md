@@ -109,15 +109,6 @@ On June 2, 2026, we notified developers using older GPT Image models of their de
 | Dec 1, 2026   | `gpt-image-1.5`        | `gpt-image-2`           |
 | Dec 1, 2026   | `chatgpt-image-latest` | `gpt-image-2`           |
 
-### 2026-05-08: gpt-5.2-chat-latest and gpt-5.3-chat-latest model snapshots
-
-On May 8th, 2026, we notified developers using `gpt-5.2-chat-latest` and `gpt-5.3-chat-latest` model snapshots of their deprecation and removal from the API.
-
-| Shutdown date | Model / system        | Recommended replacement |
-| ------------- | --------------------- | ----------------------- |
-| Aug 10, 2026  | `gpt-5.2-chat-latest` | `gpt-5.6-sol`           |
-| Aug 10, 2026  | `gpt-5.3-chat-latest` | `gpt-5.6-sol`           |
-
 ### Update to OpenAI’s self-serve fine-tuning
 
 On May 7th, 2026, we notified developers using OpenAI’s self-serve fine-tuning platform of updates to availability.
@@ -183,21 +174,18 @@ To improve reliability and make it easier for developers to choose the right mod
 | 2026-09-28    | `davinci-002`            | `gpt-5.6-terra`         |
 | 2026-09-28    | `gpt-3.5-turbo-1106`     | `gpt-5.6-terra`         |
 
-### 2025-08-20: Assistants API
-
-On August 26th, 2025, we notified developers using the Assistants API of its deprecation and removal from the API one year later, on August 26, 2026.
-
-When we released the [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create) in [March 2025](https://developers.openai.com/api/docs/changelog), we announced plans to bring all Assistants API features to the easier to use Responses API, with a sunset date in 2026.
-
-See the Assistants to Conversations [migration guide](https://developers.openai.com/api/docs/assistants/migration) to learn more about how to migrate your current integration to the Responses API and Conversations API.
-
-| Shutdown date | Model / system | Recommended replacement             |
-| ------------- | -------------- | ----------------------------------- |
-| 2026‑08‑26    | Assistants API | Responses API and Conversations API |
-
 ## Past deprecations
 
 Past deprecations are listed below, with the most recent announcements at the top.
+
+### 2026-05-08: gpt-5.2-chat-latest and gpt-5.3-chat-latest model snapshots
+
+On May 8th, 2026, we notified developers using `gpt-5.2-chat-latest` and `gpt-5.3-chat-latest` model snapshots of their deprecation and removal from the API.
+
+| Shutdown date | Model / system        | Recommended replacement |
+| ------------- | --------------------- | ----------------------- |
+| Aug 10, 2026  | `gpt-5.2-chat-latest` | `gpt-5.6-sol`           |
+| Aug 10, 2026  | `gpt-5.3-chat-latest` | `gpt-5.6-sol`           |
 
 ### 2026-04-22: Legacy GPT model snapshots (July 2026 shutdown)
 
@@ -279,6 +267,18 @@ In September, 2025, we notified developers using gpt-4o-realtime-preview models 
 | 2026-05-07    | gpt-4o-mini-realtime-preview       | gpt-realtime-mini       |
 | 2026-05-07    | gpt-4o-audio-preview               | gpt-audio-1.5           |
 | 2026-05-07    | gpt-4o-mini-audio-preview          | gpt-audio-mini          |
+
+### 2025-08-20: Assistants API
+
+The Assistants API was officially sunset on August 26, 2026, following its deprecation announcement on August 26, 2025.
+
+When we released the [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create) in [March 2025](https://developers.openai.com/api/docs/changelog), we announced plans to bring all Assistants API features to the easier to use Responses API, with a sunset date in 2026.
+
+See the Assistants to Conversations [migration guide](https://developers.openai.com/api/docs/assistants/migration) to learn more about how to migrate your current integration to the Responses API and Conversations API.
+
+| Shutdown date | Model / system | Recommended replacement             |
+| ------------- | -------------- | ----------------------------------- |
+| 2026‑08‑26    | Assistants API | Responses API and Conversations API |
 
 ### 2025-06-10: gpt-4o-realtime-preview-2024-10-01
 

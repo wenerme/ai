@@ -1,11 +1,11 @@
 ---
 title: "Eden AI | Models"
-description: "Use Eden AI models with Mastra. 233 models available."
+description: "Use Eden AI models with Mastra. 235 models available."
 ---
 
 # [Eden AI logo]Eden AI
 
-Access 233 Eden AI models through Mastra's model router. Authentication is handled automatically using the `EDENAI_API_KEY` environment variable.
+Access 235 Eden AI models through Mastra's model router. Authentication is handled automatically using the `EDENAI_API_KEY` environment variable.
 
 Learn more in the [Eden AI documentation](https://docs.edenai.co).
 
@@ -448,7 +448,31 @@ for await (const chunk of stream) {
     "outputCost": 0.59997
   },
   {
+    "model": "edenai/databricks/databricks-gpt-oss-120b@eu",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 32768,
+    "inputCost": 0.15001,
+    "outputCost": 0.59997
+  },
+  {
     "model": "edenai/databricks/databricks-gpt-oss-20b",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 32768,
+    "inputCost": 0.07,
+    "outputCost": 0.30002
+  },
+  {
+    "model": "edenai/databricks/databricks-gpt-oss-20b@eu",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,

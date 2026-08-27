@@ -8,6 +8,8 @@ Control GitLab Duo Agent Platform availability for groups, projects, and instanc
 GitLab Duo Agent Platform is on by default.
 Agent Platform includes a [set of features](_index.md).
 
+To use Agent Platform, [GitLab Credits](../../subscriptions/gitlab_credits.md) are required.
+
 You can turn Agent Platform on or off:
 
 - On GitLab.com: For top-level groups.

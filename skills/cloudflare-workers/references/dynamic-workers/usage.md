@@ -21,7 +21,7 @@ This section covers the main runtime controls for Dynamic Workers.
 * [Egress control](https://developers.cloudflare.com/dynamic-workers/usage/egress-control/)
 * [Observability](https://developers.cloudflare.com/dynamic-workers/usage/observability/)
 * [Durable Object Facets](https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/)
-* [Custom limits](https://developers.cloudflare.com/dynamic-workers/usage/limits/)
+* [Custom resource limits](https://developers.cloudflare.com/dynamic-workers/usage/limits/)
 * [Dynamic Workflows](https://developers.cloudflare.com/dynamic-workers/usage/dynamic-workflows/)
 
 Was this helpful?

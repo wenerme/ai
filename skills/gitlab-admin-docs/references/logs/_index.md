@@ -89,31 +89,31 @@ the included services:
 - The `logrotate` service built into GitLab [manages all other logs](https://docs.gitlab.com/omnibus/settings/logs/#logrotate).
   Their archived versions are compressed into `<original-name>.<number>.gz` files.
 
-| Log type                                        | Managed by logrotate    | Managed by svlogd/runit |
-|:------------------------------------------------|:------------------------|:------------------------|
-| [Alertmanager logs](#alertmanager-logs)         |  No  |  Yes  |
-| [Consul logs](#consul-logs)                     |  No  |  Yes  |
-| [crond logs](#crond-logs)                       |  No  |  Yes  |
-| [Gitaly](#gitaly-logs)                          |  Yes  |  Yes  |
-| [GitLab Exporter for Linux package installations](#gitlab-exporter-logs) |  No  |  Yes  |
-| [GitLab Pages logs](#pages-logs)                |  Yes  |  Yes  |
-| GitLab Rails                                    |  Yes  |  No  |
-| [GitLab Shell logs](#gitlab-shelllog)           |  Yes  |  No  |
-| [Grafana logs](#grafana-logs)                   |  No  |  Yes  |
-| [LogRotate logs](#logrotate-logs)               |  No  |  Yes  |
-| [Mailroom](#mail_room_jsonlog-default)          |  Yes  |  Yes  |
-| [NGINX](#nginx-logs)                            |  Yes  |  Yes  |
-| [Patroni logs](#patroni-logs)                   |  No  |  Yes  |
-| [PgBouncer logs](#pgbouncer-logs)               |  No  |  Yes  |
-| [PostgreSQL logs](#postgresql-logs)             |  No  |  Yes  |
-| [Praefect logs](#praefect-logs)                 |  Yes |  Yes  |
-| [Prometheus logs](#prometheus-logs)             |  No  |  Yes  |
-| [Puma](#puma-logs)                              |  Yes  |  Yes  |
-| [Redis logs](#redis-logs)                       |  No  |  Yes  |
-| [Registry logs](#registry-logs)                 |  No  |  Yes  |
-| [Sentinel logs](#sentinel-logs)                 |  No  |  Yes  |
-| [Sidekiq logs](#sidekiq-logs)                   |  No  |  Yes  |
-| [Workhorse logs](#workhorse-logs)               |  Yes  |  Yes  |
+| Log type                                                                 | Managed by logrotate | Managed by svlogd/runit |
+|:-------------------------------------------------------------------------|:---------------------|:------------------------|
+| [Alertmanager logs](#alertmanager-logs)                                  | No           | Yes |
+| [Consul logs](#consul-logs)                                              | No           | Yes |
+| [crond logs](#crond-logs)                                                | No           | Yes |
+| [Gitaly](#gitaly-logs)                                                   | Yes          | Yes |
+| [GitLab Exporter for Linux package installations](#gitlab-exporter-logs) | No           | Yes |
+| [GitLab Pages logs](#pages-logs)                                         | Yes          | Yes |
+| GitLab Rails                                                             | Yes          | No  |
+| [GitLab Shell logs](#gitlab-shelllog)                                    | Yes          | No  |
+| [Grafana logs](#grafana-logs)                                            | No           | Yes |
+| [LogRotate logs](#logrotate-logs)                                        | No           | Yes |
+| [Mailroom](#mail_room_jsonlog-default)                                   | Yes          | Yes |
+| [NGINX](#nginx-logs)                                                     | Yes          | Yes |
+| [Patroni logs](#patroni-logs)                                            | No           | Yes |
+| [PgBouncer logs](#pgbouncer-logs)                                        | No           | Yes |
+| [PostgreSQL logs](#postgresql-logs)                                      | No           | Yes |
+| [Praefect logs](#praefect-logs)                                          | Yes          | Yes |
+| [Prometheus logs](#prometheus-logs)                                      | No           | Yes |
+| [Puma](#puma-logs)                                                       | Yes          | Yes |
+| [Redis logs](#redis-logs)                                                | No           | Yes |
+| [Registry logs](#registry-logs)                                          | No           | Yes |
+| [Sentinel logs](#sentinel-logs)                                          | No           | Yes |
+| [Sidekiq logs](#sidekiq-logs)                                            | No           | Yes |
+| [Workhorse logs](#workhorse-logs)                                        | Yes          | Yes |
 
 For more information on the services that generate these logs, see the [GitLab architecture overview](../../development/architecture.md).
 

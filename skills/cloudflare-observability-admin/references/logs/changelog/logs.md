@@ -35,6 +35,26 @@ To migrate, follow the [Microsoft Sentinel integration setup guide](https://deve
 
 For more information, refer to Microsoft's [Azure Monitor HTTP Data Collector API deprecation notice ↗](https://learn.microsoft.com/en-us/previous-versions/azure/azure-monitor/logs/data-collector-api?tabs=powershell).
 
+## 2026-08-20
+
+
+**New Logpush datasets and updated fields across multiple Logpush datasets in Cloudflare Logs**
+
+Cloudflare has updated [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/):
+
+#### New datasets
+
+* **Account Abuse Protection Events**: A new dataset with fields including `AuthenticationIdentityProvider`, `AuthenticationMethod`, `AuthenticationStatus`, `BotScore`, `ClientASN`, `ClientCity`, `ClientCountry`, `ClientIP`, `Email`, `EphemeralID`, `EventSource`, `EventType`, `FraudEmailRisk`, `Host`, `JA4`, `RayID`, `Timestamp`, `UserAgent`, and `UserID`.
+* **Magic BGP Logs**: A new dataset with fields including `Direction`, `EventData`, `EventKind`, `EventTimestamp`, `TunnelID`, and `TunnelName`.
+
+#### Updated fields in existing datasets
+
+* **Firewall events** (added): `AISecurityCustomTopicCategories`, `WAFRequestSignatureCategories`, and `WAFRequestSignatureRefs`.
+* **Gateway HTTP** (added): `ExperimentalFeatures` and `PackageInfo`.
+* **HTTP requests** (added): `AISecurityCustomTopicCategories`, `ClientTLSKeyExchangeGroup`, `WAFRequestSignatureCategories`, and `WAFRequestSignatureRefs`.
+
+For the complete field definitions for each dataset, refer to [Logpush datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/).
+
 ## 2026-07-07
 
 

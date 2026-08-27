@@ -4168,6 +4168,52 @@ Fields:
 | <a id="mutation-artifactregistryactivate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-artifactregistryactivate-registry"></a>`registry`  | [`ArtifactRegistry`](#artifactregistry) | Introduced in GitLab 19.4. Status: Experiment. Registry provisioned. Null when the request was refused. |
 
+### `Mutation.artifactRegistryDisable`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Disables Artifact Registry for the organization resolved from the request context (the X-GitLab-Organization-ID header, or the user default organization).
+
+Input type: `ArtifactRegistryDisableInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistrydisable-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistrydisable-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistrydisable-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-artifactregistrydisable-registry"></a>`registry` | [`ArtifactRegistry`](#artifactregistry) | Registry after the transition. Null when the transition was rejected, for example an unknown namespace. |
+
+### `Mutation.artifactRegistryEnable`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Enables Artifact Registry for the organization resolved from the request context (the X-GitLab-Organization-ID header, or the user default organization).
+
+Input type: `ArtifactRegistryEnableInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryenable-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryenable-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryenable-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-artifactregistryenable-registry"></a>`registry` | [`ArtifactRegistry`](#artifactregistry) | Registry after the transition. Null when the transition was rejected, for example an unknown namespace. |
+
 ### `Mutation.artifactRegistryRepositoryCreate`
 
 - Introduced in GitLab 19.3.
@@ -37547,6 +37593,12 @@ Fields:
 
 Response dimensions for `Contributions` aggregation engine.
 
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="contributionsaggregationresponsedimensions-author"></a>`author` | [`UserCore`](#usercore) | Contribution author. |
+
 #### Fields with arguments
 
 ##### `ContributionsAggregationResponseDimensions.createdAt`
@@ -42846,6 +42898,7 @@ Fields:
 | <a id="governpolicy-organizationid"></a>`organizationId`  | [`Int!`](#int) | Introduced in GitLab 19.4. Status: Experiment. ID of the organization the policy belongs to. |
 | <a id="governpolicy-policyscope"></a>`policyScope`  | [`JSON`](#json) | Introduced in GitLab 19.4. Status: Experiment. Scope of the policy. |
 | <a id="governpolicy-rules"></a>`rules`  | [`[JSON!]`](#json) | Introduced in GitLab 19.4. Status: Experiment. Rules of the policy. |
+| <a id="governpolicy-scopedimensions"></a>`scopeDimensions`  | [`[String!]`](#string) | Introduced in GitLab 19.4. Status: Experiment. Dotted context paths scopeRego reads to decide whether the policy applies. Null when scopeRego was authored directly instead of compiled from policyScope. |
 | <a id="governpolicy-scoperego"></a>`scopeRego`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Rego expression scoping the policy. Mutually exclusive with policyScope. |
 | <a id="governpolicy-triggertype"></a>`triggerType`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Trigger the policy responds to. |
 | <a id="governpolicy-updatedat"></a>`updatedAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp of when the policy was last updated. |
@@ -47049,6 +47102,7 @@ Fields:
 | <a id="mergerequest-commits"></a>`commits` | [`CommitConnection`](#commitconnection) | Merge request commits. (see [Connections](#connections)) |
 | <a id="mergerequest-commitswithoutmergecommits"></a>`commitsWithoutMergeCommits` | [`CommitConnection`](#commitconnection) | Merge request commits excluding merge commits. (see [Connections](#connections)) |
 | <a id="mergerequest-committers"></a>`committers` | [`UserCoreConnection`](#usercoreconnection) | Users who have added commits to the merge request. (see [Connections](#connections)) |
+| <a id="mergerequest-conflictfiles"></a>`conflictFiles`  | [`[MergeRequestConflict!]`](#mergerequestconflict) | Introduced in GitLab 19.4. Status: Experiment. Files with conflicts that prevent the merge request from being merged, including raw Git conflict markers. Null unless the merge request cannot be merged and the current user can push to the source branch. This field can only be resolved once per request. |
 | <a id="mergerequest-conflicts"></a>`conflicts` | [`Boolean!`](#boolean) | Indicates if the merge request has conflicts. |
 | <a id="mergerequest-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the merge request was created. |
 | <a id="mergerequest-defaultmergecommitmessage"></a>`defaultMergeCommitMessage` | [`String`](#string) | Default merge commit message of the merge request. |
@@ -47111,6 +47165,7 @@ Fields:
 | <a id="mergerequest-resolveddiscussionscount"></a>`resolvedDiscussionsCount` | [`Int`](#int) | Number of user discussions that are resolved in the merge request. |
 | <a id="mergerequest-retargeted"></a>`retargeted` | [`Boolean`](#boolean) | Indicates if merge request was retargeted. |
 | <a id="mergerequest-reviewers"></a>`reviewers` | [`MergeRequestReviewerConnection`](#mergerequestreviewerconnection) | Users from whom a review has been requested. (see [Connections](#connections)) |
+| <a id="mergerequest-riskassessment"></a>`riskAssessment`  | [`MergeRequestRiskAssessment`](#mergerequestriskassessment) | Introduced in GitLab 19.4. Status: Experiment. Risk classification for the merge request. Ultimate only. |
 | <a id="mergerequest-securityautofix"></a>`securityAutoFix`  | [`Boolean`](#boolean) | Deprecated in GitLab 16.11. Security Auto Fix experiment feature was removed. It was always hidden behind `security_auto_fix` feature flag. |
 | <a id="mergerequest-securityreportsuptodateontargetbranch"></a>`securityReportsUpToDateOnTargetBranch` | [`Boolean!`](#boolean) | Indicates if the target branch security reports are out of date. |
 | <a id="mergerequest-shouldberebased"></a>`shouldBeRebased` | [`Boolean!`](#boolean) | Indicates if the merge request will be rebased. |
@@ -48291,6 +48346,18 @@ Arguments:
 | <a id="mergerequestauthor-workspaces-includeactualstates"></a>`includeActualStates`  | [`[String!]`](#string) | Deprecated in GitLab 16.7. Use actual_states instead. |
 | <a id="mergerequestauthor-workspaces-projectids"></a>`projectIds` | [`[ProjectID!]`](#projectid) | Filter workspaces by project GlobalIDs. |
 
+### `MergeRequestConflict`
+
+File with conflicts in a merge request that cannot be merged.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestconflict-content"></a>`content` | [`String`](#string) | Raw content of the conflicting file, including Git conflict markers. Returns null for files with unsupported encodings (binary, non-UTF-8). |
+| <a id="mergerequestconflict-ourpath"></a>`ourPath` | [`String`](#string) | Path of the conflicting file on the source branch. |
+| <a id="mergerequestconflict-theirpath"></a>`theirPath` | [`String`](#string) | Path of the conflicting file on the target branch. |
+
 ### `MergeRequestDiff`
 
 A diff version of a merge request.
@@ -49332,6 +49399,36 @@ Arguments:
 | <a id="mergerequestreviewer-workspaces-includeactualstates"></a>`includeActualStates`  | [`[String!]`](#string) | Deprecated in GitLab 16.7. Use actual_states instead. |
 | <a id="mergerequestreviewer-workspaces-projectids"></a>`projectIds` | [`[ProjectID!]`](#projectid) | Filter workspaces by project GlobalIDs. |
 
+### `MergeRequestRiskAssessment`
+
+Risk classification for a merge request.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestriskassessment-assessedat"></a>`assessedAt` | [`Time`](#time) | When the classification completed. |
+| <a id="mergerequestriskassessment-confidence"></a>`confidence` | [`Int`](#int) | Confidence in the score, from 0 to 100. Derived from how much of the change could be measured and whether the signals agreed. |
+| <a id="mergerequestriskassessment-domaintags"></a>`domainTags` | [`[String!]!`](#string) | Risk domains the change touches, used to route specialist review. |
+| <a id="mergerequestriskassessment-missingsignals"></a>`missingSignals` | [`[String!]!`](#string) | Signals that could not be measured, which is why confidence may be low. |
+| <a id="mergerequestriskassessment-rationale"></a>`rationale` | [`String`](#string) | Plain-language explanation of the assessment. |
+| <a id="mergerequestriskassessment-score"></a>`score` | [`Int`](#int) | Risk score from 0 to 100. Null until the classification completes. |
+| <a id="mergerequestriskassessment-signalbreakdown"></a>`signalBreakdown` | [`[MergeRequestRiskSignalContribution!]!`](#mergerequestrisksignalcontribution) | What each signal contributed to the score. |
+| <a id="mergerequestriskassessment-stale"></a>`stale` | [`Boolean!`](#boolean) | Whether the merge request has changed since it was classified. Classification runs once, so this is a notice rather than a trigger to re-run. |
+| <a id="mergerequestriskassessment-tier"></a>`tier` | [`MergeRequestRiskTier`](#mergerequestrisktier) | Tier derived from the score. Null until the scoring function and tier thresholds exist. |
+
+### `MergeRequestRiskSignalContribution`
+
+Contribution a single signal made to a merge request risk score.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestrisksignalcontribution-contribution"></a>`contribution` | [`Float!`](#float) | Points the signal added to the overall score. |
+| <a id="mergerequestrisksignalcontribution-detail"></a>`detail` | [`String`](#string) | Human-readable explanation of the contribution. |
+| <a id="mergerequestrisksignalcontribution-signal"></a>`signal` | [`String!`](#string) | Name of the signal or claim that contributed. |
+
 ### `MergeRequestSavedView`
 
 Saved view on the merge request dashboard.
@@ -49843,6 +49940,7 @@ Fields:
 | <a id="namespace-totalrepositorysizeexcess"></a>`totalRepositorySizeExcess` | [`Float`](#float) | Total excess repository size of all projects in the root namespace in bytes. This only applies to namespaces under Project limit enforcement. |
 | <a id="namespace-userpermissions"></a>`userPermissions` | [`NamespacePermissions!`](#namespacepermissions) | Permissions for the current user on the resource. |
 | <a id="namespace-visibility"></a>`visibility` | [`String`](#string) | Visibility of the namespace. |
+| <a id="namespace-webpath"></a>`webPath` | [`String`](#string) | Path of the namespace relative to the instance root. |
 | <a id="namespace-weburl"></a>`webUrl` | [`String`](#string) | URL of the namespace. |
 | <a id="namespace-workitemsettings"></a>`workItemSettings`  | [`WorkItemSettings`](#workitemsettings) | Introduced in GitLab 19.0. Status: Experiment. Work item settings for the namespace. |
 
@@ -66553,6 +66651,17 @@ State of a review of a GitLab merge request.
 | <a id="mergerequestreviewstate-review_started"></a>`REVIEW_STARTED` | Merge request reviewer has started a review. |
 | <a id="mergerequestreviewstate-unapproved"></a>`UNAPPROVED` | Merge request reviewer removed their approval of the changes. |
 | <a id="mergerequestreviewstate-unreviewed"></a>`UNREVIEWED` | Awaiting review from merge request reviewer. |
+
+### `MergeRequestRiskTier`
+
+Risk tier derived from a merge request risk score.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="mergerequestrisktier-critical"></a>`CRITICAL` | Critical risk. |
+| <a id="mergerequestrisktier-high"></a>`HIGH` | High risk. |
+| <a id="mergerequestrisktier-low"></a>`LOW` | Low risk. |
+| <a id="mergerequestrisktier-medium"></a>`MEDIUM` | Medium risk. |
 
 ### `MergeRequestSort`
 

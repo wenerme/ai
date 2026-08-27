@@ -14,6 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
+* [Account Abuse Protection Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/account%5Fabuse%5Fprotection%5Fevents/)
 * [DNS logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/dns%5Flogs/)
 * [Firewall events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/firewall%5Fevents/)
 * [HTTP requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/)

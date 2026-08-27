@@ -15,6 +15,7 @@ image: https://developers.cloudflare.com/og-docs.png
 Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 * [Access requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/access%5Frequests/)
+* [Account Abuse Protection Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/account%5Fabuse%5Fprotection%5Fevents/)
 * [Audit Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit%5Flogs/)
 * [Audit Logs V2](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit%5Flogs%5Fv2/)
 * [Browser Isolation User Actions](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/biso%5Fuser%5Factions/)
@@ -31,6 +32,7 @@ Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers
 * [Gateway HTTP](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fhttp/)
 * [Gateway Network](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fnetwork/)
 * [IPSec Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ipsec%5Flogs/)
+* [Magic BGP Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/magic%5Fbgp%5Flogs/)
 * [Magic IDS Detections](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/magic%5Fids%5Fdetections/)
 * [Magic Network Monitoring Flow Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/mnm%5Fflow%5Flogs/)
 * [MCP Portal Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/mcp%5Fportal%5Flogs/)

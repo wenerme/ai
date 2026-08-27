@@ -1,15 +1,17 @@
 # Engineering Workflow Management (EWM)
 
+Configure the Engineering Workflow Management (EWM) integration to link EWM work items mentioned in merge requests and commit messages.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-The EWM integration allows you to go from GitLab to EWM work items mentioned in merge request
+With the EWM integration, you can go from GitLab to EWM work items mentioned in merge request
 descriptions and commit messages.
 Each work item reference is automatically converted to a link to the work item.
 
 This IBM product was [formerly named Rational Team Concert (RTC)](https://jazz.net/blog/index.php/2019/04/23/renaming-the-ibm-continuous-engineering-portfolio/). This integration is compatible with all versions of RTC and EWM.
 
-To enable the EWM integration, in a project:
+To turn on the EWM integration in a project:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Settings** > **Integrations**.

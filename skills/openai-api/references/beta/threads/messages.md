@@ -1,2921 +1,504 @@
-# Messages
+# Assistants migration guide
 
-## Create message
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-**post** `/threads/{thread_id}/messages`
+The Assistants API was officially sunset on August 26, 2026, and is no longer available. Use the [Responses API](https://developers.openai.com/api/docs/guides/migrate-to-responses) for new integrations.
 
-Create a message.
 
-### Path Parameters
 
-- `thread_id: string`
 
-### Body Parameters
+Thank you to everyone who used the Assistants API. We appreciate everything you built and the feedback you shared along the way.
 
-- `content: string or array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlockParam`
+Use this guide to migrate your integration to the [Responses API](https://developers.openai.com/api/docs/guides/migrate-to-responses).
 
-  The text contents of the message.
+Responses are simpler—send input items and get output items back. With the Responses API, you also get better performance and new features like [deep research](https://developers.openai.com/api/docs/guides/deep-research), [MCP](https://developers.openai.com/api/docs/guides/tools-connectors-mcp), and [computer use](https://developers.openai.com/api/docs/guides/tools-computer-use). This change also lets you manage conversations instead of passing back `previous_response_id`.
 
-  - `TextContent = string`
+### What's changed?
 
-    The text contents of the message.
+<table>
+  <thead>
+    <tr>
+      <th>Before</th>
+      <th>Now</th>
+      <th>Why?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`Assistants`</td>
+      <td>`Prompts`</td>
+      <td>
+        Prompts hold configuration (model, tools, instructions) and are easier
+        to version and update
+      </td>
+    </tr>
+    <tr>
+      <td>`Threads`</td>
+      <td>`Conversations`</td>
+      <td>Streams of items instead of just messages</td>
+    </tr>
+    <tr>
+      <td>`Runs`</td>
+      <td>`Responses`</td>
+      <td>
+        Responses send input items or use a conversation object and receive
+        output items; tool call loops are explicitly managed
+      </td>
+    </tr>
+    <tr>
+      <td>`Run steps`</td>
+      <td>`Items`</td>
+      <td>
+        Generalized objects—can be messages, tool calls, outputs, and more
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-  - `ArrayOfContentParts = array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlockParam`
+## From assistants to prompts
 
-    An array of content parts with a defined type, each can be of type `text` or images can be passed with `image_url` or `image_file`. Image types are only supported on [Vision-compatible models](/docs/models).
+Assistants were persistent API objects that bundled model choice, instructions, and tool declarations—created and managed entirely through the API. Their replacement, prompts, can only be created in the dashboard, where you can version them as you develop your product.
 
-    - `ImageFileContentBlock object { image_file, type }`
+### Why this is helpful
 
-      References an image [File](/docs/api-reference/files) in the content of a message.
+- **Portability and versioning**: You can snapshot, review, diff, and roll back prompt specs. You can also version a prompt, so your code can just point the latest version.
+- **Separation of concerns**: Your application code now handles orchestration (history pruning, tool loop, retries) while your prompt focuses on high‑level behavior and constraints (system guidance, tool availability, structured output schema, temperature defaults).
+- **Realtime compatibility**: The same prompt configuration can be reused when you connect through the Realtime API, giving you a single definition of behavior across chat, streaming, and low‑latency interactive sessions.
+- **Tool and output consistency**: Using prompts, every Responses or Realtime session you start inherits a consistent contract because prompts encapsulate tool schemas and structured output expectations.
 
-      - `image_file: ImageFile`
+### Practical migration steps
 
-        - `file_id: string`
+1. Identify each existing Assistant’s _instruction + tool_ bundle.
+2. In the dashboard, recreate that bundle as a named prompt.
+3. Store the prompt ID (or its exported spec) in source control so application code can refer to a stable identifier.
+4. During rollout, run A/B tests by swapping prompt IDs—no need to create or delete assistant objects programmatically.
 
-          The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
+Think of a prompt as a **versioned behavioral profile** to plug into either Responses or Realtime API.
 
-        - `detail: optional "auto" or "low" or "high"`
+---
 
-          Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
+## From threads to conversations
 
-          - `"auto"`
+A thread was a collection of messages stored server-side. Threads could _only_ store messages. Conversations store items, which can include messages, tool calls, tool outputs, and other data.
 
-          - `"low"`
+### Request example
 
-          - `"high"`
+#### Python
 
-      - `type: "image_file"`
+#### Go
 
-        Always `image_file`.
+### Response example
 
-        - `"image_file"`
 
-    - `ImageURLContentBlock object { image_url, type }`
 
-      References an image URL in the content of a message.
-
-      - `image_url: ImageURL`
-
-        - `url: string`
-
-          The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-        - `detail: optional "auto" or "low" or "high"`
-
-          Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_url"`
-
-        The type of the content part.
-
-        - `"image_url"`
-
-    - `TextContentBlockParam object { text, type }`
-
-      The text content that is part of a message.
-
-      - `text: string`
-
-        Text content to be sent to the model
-
-      - `type: "text"`
-
-        Always `text`.
-
-        - `"text"`
-
-- `role: "user" or "assistant"`
-
-  The role of the entity that is creating the message. Allowed values include:
-
-  - `user`: Indicates the message is sent by an actual user and should be used in most cases to represent user-generated messages.
-  - `assistant`: Indicates the message is generated by the assistant. Use this value to insert messages from the assistant into the conversation.
-
-  - `"user"`
-
-  - `"assistant"`
-
-- `attachments: optional array of object { file_id, tools }  or null`
-
-  A list of files attached to the message, and the tools they should be added to.
-
-  - `file_id: optional string`
-
-    The ID of the file to attach to the message.
-
-  - `tools: optional array of CodeInterpreterTool or object { type }`
-
-    The tools to add this file to.
-
-    - `CodeInterpreterTool object { type }`
-
-      - `type: "code_interpreter"`
-
-        The type of tool being defined: `code_interpreter`
-
-        - `"code_interpreter"`
-
-    - `FileSearchTool object { type }`
-
-      - `type: "file_search"`
-
-        The type of tool being defined: `file_search`
-
-        - `"file_search"`
-
-- `metadata: optional Metadata or null`
-
-  Set of 16 key-value pairs that can be attached to an object. This can be
-  useful for storing additional information about the object in a structured
-  format, and querying for objects via API or the dashboard.
-
-  Keys are strings with a maximum length of 64 characters. Values are strings
-  with a maximum length of 512 characters.
-
-### Returns
-
-- `Message object { id, assistant_id, attachments, 11 more }`
-
-  Represents a message within a [thread](/docs/api-reference/threads).
-
-  - `id: string`
-
-    The identifier, which can be referenced in API endpoints.
-
-  - `assistant_id: string or null`
-
-    If applicable, the ID of the [assistant](/docs/api-reference/assistants) that authored this message.
-
-  - `attachments: array of object { file_id, tools }  or null`
-
-    A list of files attached to the message, and the tools they were added to.
-
-    - `file_id: optional string`
-
-      The ID of the file to attach to the message.
-
-    - `tools: optional array of CodeInterpreterTool or object { type }`
-
-      The tools to add this file to.
-
-      - `CodeInterpreterTool object { type }`
-
-        - `type: "code_interpreter"`
-
-          The type of tool being defined: `code_interpreter`
-
-          - `"code_interpreter"`
-
-      - `FileSearchTool object { type }`
-
-        - `type: "file_search"`
-
-          The type of tool being defined: `file_search`
-
-          - `"file_search"`
-
-  - `completed_at: number or null`
-
-    The Unix timestamp (in seconds) for when the message was completed.
-
-  - `content: array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlock or RefusalContentBlock`
-
-    The content of the message in array of text and/or images.
-
-    - `ImageFileContentBlock object { image_file, type }`
-
-      References an image [File](/docs/api-reference/files) in the content of a message.
-
-      - `image_file: ImageFile`
-
-        - `file_id: string`
-
-          The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-        - `detail: optional "auto" or "low" or "high"`
-
-          Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_file"`
-
-        Always `image_file`.
-
-        - `"image_file"`
-
-    - `ImageURLContentBlock object { image_url, type }`
-
-      References an image URL in the content of a message.
-
-      - `image_url: ImageURL`
-
-        - `url: string`
-
-          The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-        - `detail: optional "auto" or "low" or "high"`
-
-          Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_url"`
-
-        The type of the content part.
-
-        - `"image_url"`
-
-    - `TextContentBlock object { text, type }`
-
-      The text content that is part of a message.
-
-      - `text: Text`
-
-        - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
-
-          - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
-
-            A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-            - `end_index: number`
-
-            - `file_citation: object { file_id }`
-
-              - `file_id: string`
-
-                The ID of the specific File the citation is from.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_citation"`
-
-              Always `file_citation`.
-
-              - `"file_citation"`
-
-          - `FilePathAnnotation object { end_index, file_path, start_index, 2 more }`
-
-            A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-            - `end_index: number`
-
-            - `file_path: object { file_id }`
-
-              - `file_id: string`
-
-                The ID of the file that was generated.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_path"`
-
-              Always `file_path`.
-
-              - `"file_path"`
-
-        - `value: string`
-
-          The data that makes up the text.
-
-      - `type: "text"`
-
-        Always `text`.
-
-        - `"text"`
-
-    - `RefusalContentBlock object { refusal, type }`
-
-      The refusal content generated by the assistant.
-
-      - `refusal: string`
-
-      - `type: "refusal"`
-
-        Always `refusal`.
-
-        - `"refusal"`
-
-  - `created_at: number`
-
-    The Unix timestamp (in seconds) for when the message was created.
-
-  - `incomplete_at: number or null`
-
-    The Unix timestamp (in seconds) for when the message was marked as incomplete.
-
-  - `incomplete_details: object { reason }  or null`
-
-    On an incomplete message, details about why the message is incomplete.
-
-    - `reason: "content_filter" or "max_tokens" or "run_cancelled" or 2 more`
-
-      The reason the message is incomplete.
-
-      - `"content_filter"`
-
-      - `"max_tokens"`
-
-      - `"run_cancelled"`
-
-      - `"run_expired"`
-
-      - `"run_failed"`
-
-  - `metadata: Metadata or null`
-
-    Set of 16 key-value pairs that can be attached to an object. This can be
-    useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
-
-    Keys are strings with a maximum length of 64 characters. Values are strings
-    with a maximum length of 512 characters.
-
-  - `object: "thread.message"`
-
-    The object type, which is always `thread.message`.
-
-    - `"thread.message"`
-
-  - `role: "user" or "assistant"`
-
-    The entity that produced the message. One of `user` or `assistant`.
-
-    - `"user"`
-
-    - `"assistant"`
-
-  - `run_id: string or null`
-
-    The ID of the [run](/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
-
-  - `status: "in_progress" or "incomplete" or "completed"`
-
-    The status of the message, which can be either `in_progress`, `incomplete`, or `completed`.
-
-    - `"in_progress"`
-
-    - `"incomplete"`
-
-    - `"completed"`
-
-  - `thread_id: string`
-
-    The [thread](/docs/api-reference/threads) ID that this message belongs to.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/threads/$THREAD_ID/messages \
-    -H 'Content-Type: application/json' \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "content": "string",
-          "role": "user"
-        }'
-```
-
-#### Response
+#### Thread object
 
 ```json
 {
-  "id": "id",
-  "assistant_id": "assistant_id",
-  "attachments": [
-    {
-      "file_id": "file_id",
-      "tools": [
-        {
-          "type": "code_interpreter"
-        }
-      ]
-    }
-  ],
-  "completed_at": 0,
-  "content": [
-    {
-      "image_file": {
-        "file_id": "file_id",
-        "detail": "auto"
-      },
-      "type": "image_file"
-    }
-  ],
-  "created_at": 0,
-  "incomplete_at": 0,
-  "incomplete_details": {
-    "reason": "content_filter"
-  },
+  "id": "thread_CrXtCzcyEQbkAcXuNmVSKFs1",
+  "object": "thread",
+  "created_at": 1752855924,
   "metadata": {
-    "foo": "string"
+    "user_id": "peter_le_fleur"
   },
-  "object": "thread.message",
-  "role": "user",
-  "run_id": "run_id",
-  "status": "in_progress",
-  "thread_id": "thread_id"
+  "tool_resources": {}
 }
 ```
 
-### Example
-
-```http
-curl https://api.openai.com/v1/threads/thread_abc123/messages \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "OpenAI-Beta: assistants=v2" \
-  -d '{
-      "role": "user",
-      "content": "How does AI work? Explain it in simple terms."
-    }'
-```
-
-#### Response
+#### Conversation object
 
 ```json
 {
-  "id": "msg_abc123",
-  "object": "thread.message",
-  "created_at": 1713226573,
-  "assistant_id": null,
-  "thread_id": "thread_abc123",
-  "run_id": null,
-  "role": "user",
-  "content": [
-    {
-      "type": "text",
-      "text": {
-        "value": "How does AI work? Explain it in simple terms.",
-        "annotations": []
-      }
-    }
-  ],
-  "attachments": [],
-  "metadata": {}
+	"id": "conv_68542dc602388199a30af27d040cefd4087a04b576bfeb24",
+	"object": "conversation",
+	"created_at": 1752855924,
+	"metadata": {
+		"user_id": "peter_le_fleur"
+	}
 }
 ```
 
-## Delete message
 
-**delete** `/threads/{thread_id}/messages/{message_id}`
 
-Deletes a message.
+---
 
-### Path Parameters
+## From runs to responses
 
-- `thread_id: string`
+Runs were asynchronous processes that executed against threads. See the example below. Responses are simpler: provide a set of input items to execute, and get a list of output items back.
 
-- `message_id: string`
+Responses are designed to be used alone, but you can also use them with prompt and conversation objects for storing context and configuration.
 
-### Returns
+### Request example
 
-- `MessageDeleted object { id, deleted, object }`
+#### Python
 
-  - `id: string`
+#### Go
 
-  - `deleted: boolean`
+### Response example
 
-  - `object: "thread.message.deleted"`
 
-    - `"thread.message.deleted"`
 
-### Example
-
-```http
-curl https://api.openai.com/v1/threads/$THREAD_ID/messages/$MESSAGE_ID \
-    -X DELETE \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### Response
+#### Run object
 
 ```json
 {
-  "id": "id",
-  "deleted": true,
-  "object": "thread.message.deleted"
-}
-```
-
-### Example
-
-```http
-curl -X DELETE https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc123 \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "OpenAI-Beta: assistants=v2"
-```
-
-#### Response
-
-```json
-{
-  "id": "msg_abc123",
-  "object": "thread.message.deleted",
-  "deleted": true
-}
-```
-
-## List messages
-
-**get** `/threads/{thread_id}/messages`
-
-Returns a list of messages for a given thread.
-
-### Path Parameters
-
-- `thread_id: string`
-
-### Query Parameters
-
-- `after: optional string`
-
-  A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include after=obj_foo in order to fetch the next page of the list.
-
-- `before: optional string`
-
-  A cursor for use in pagination. `before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with obj_foo, your subsequent call can include before=obj_foo in order to fetch the previous page of the list.
-
-- `limit: optional number`
-
-  A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
-
-- `order: optional "asc" or "desc"`
-
-  Sort order by the `created_at` timestamp of the objects. `asc` for ascending order and `desc` for descending order.
-
-  - `"asc"`
-
-  - `"desc"`
-
-- `run_id: optional string`
-
-  Filter messages by the run ID that generated them.
-
-### Returns
-
-- `data: array of Message`
-
-  - `id: string`
-
-    The identifier, which can be referenced in API endpoints.
-
-  - `assistant_id: string or null`
-
-    If applicable, the ID of the [assistant](/docs/api-reference/assistants) that authored this message.
-
-  - `attachments: array of object { file_id, tools }  or null`
-
-    A list of files attached to the message, and the tools they were added to.
-
-    - `file_id: optional string`
-
-      The ID of the file to attach to the message.
-
-    - `tools: optional array of CodeInterpreterTool or object { type }`
-
-      The tools to add this file to.
-
-      - `CodeInterpreterTool object { type }`
-
-        - `type: "code_interpreter"`
-
-          The type of tool being defined: `code_interpreter`
-
-          - `"code_interpreter"`
-
-      - `FileSearchTool object { type }`
-
-        - `type: "file_search"`
-
-          The type of tool being defined: `file_search`
-
-          - `"file_search"`
-
-  - `completed_at: number or null`
-
-    The Unix timestamp (in seconds) for when the message was completed.
-
-  - `content: array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlock or RefusalContentBlock`
-
-    The content of the message in array of text and/or images.
-
-    - `ImageFileContentBlock object { image_file, type }`
-
-      References an image [File](/docs/api-reference/files) in the content of a message.
-
-      - `image_file: ImageFile`
-
-        - `file_id: string`
-
-          The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-        - `detail: optional "auto" or "low" or "high"`
-
-          Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_file"`
-
-        Always `image_file`.
-
-        - `"image_file"`
-
-    - `ImageURLContentBlock object { image_url, type }`
-
-      References an image URL in the content of a message.
-
-      - `image_url: ImageURL`
-
-        - `url: string`
-
-          The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-        - `detail: optional "auto" or "low" or "high"`
-
-          Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_url"`
-
-        The type of the content part.
-
-        - `"image_url"`
-
-    - `TextContentBlock object { text, type }`
-
-      The text content that is part of a message.
-
-      - `text: Text`
-
-        - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
-
-          - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
-
-            A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-            - `end_index: number`
-
-            - `file_citation: object { file_id }`
-
-              - `file_id: string`
-
-                The ID of the specific File the citation is from.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_citation"`
-
-              Always `file_citation`.
-
-              - `"file_citation"`
-
-          - `FilePathAnnotation object { end_index, file_path, start_index, 2 more }`
-
-            A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-            - `end_index: number`
-
-            - `file_path: object { file_id }`
-
-              - `file_id: string`
-
-                The ID of the file that was generated.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_path"`
-
-              Always `file_path`.
-
-              - `"file_path"`
-
-        - `value: string`
-
-          The data that makes up the text.
-
-      - `type: "text"`
-
-        Always `text`.
-
-        - `"text"`
-
-    - `RefusalContentBlock object { refusal, type }`
-
-      The refusal content generated by the assistant.
-
-      - `refusal: string`
-
-      - `type: "refusal"`
-
-        Always `refusal`.
-
-        - `"refusal"`
-
-  - `created_at: number`
-
-    The Unix timestamp (in seconds) for when the message was created.
-
-  - `incomplete_at: number or null`
-
-    The Unix timestamp (in seconds) for when the message was marked as incomplete.
-
-  - `incomplete_details: object { reason }  or null`
-
-    On an incomplete message, details about why the message is incomplete.
-
-    - `reason: "content_filter" or "max_tokens" or "run_cancelled" or 2 more`
-
-      The reason the message is incomplete.
-
-      - `"content_filter"`
-
-      - `"max_tokens"`
-
-      - `"run_cancelled"`
-
-      - `"run_expired"`
-
-      - `"run_failed"`
-
-  - `metadata: Metadata or null`
-
-    Set of 16 key-value pairs that can be attached to an object. This can be
-    useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
-
-    Keys are strings with a maximum length of 64 characters. Values are strings
-    with a maximum length of 512 characters.
-
-  - `object: "thread.message"`
-
-    The object type, which is always `thread.message`.
-
-    - `"thread.message"`
-
-  - `role: "user" or "assistant"`
-
-    The entity that produced the message. One of `user` or `assistant`.
-
-    - `"user"`
-
-    - `"assistant"`
-
-  - `run_id: string or null`
-
-    The ID of the [run](/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
-
-  - `status: "in_progress" or "incomplete" or "completed"`
-
-    The status of the message, which can be either `in_progress`, `incomplete`, or `completed`.
-
-    - `"in_progress"`
-
-    - `"incomplete"`
-
-    - `"completed"`
-
-  - `thread_id: string`
-
-    The [thread](/docs/api-reference/threads) ID that this message belongs to.
-
-- `first_id: string`
-
-- `has_more: boolean`
-
-- `last_id: string`
-
-- `object: string`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/threads/$THREAD_ID/messages \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### Response
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "assistant_id": "assistant_id",
-      "attachments": [
-        {
-          "file_id": "file_id",
-          "tools": [
-            {
-              "type": "code_interpreter"
-            }
-          ]
-        }
-      ],
-      "completed_at": 0,
-      "content": [
-        {
-          "image_file": {
-            "file_id": "file_id",
-            "detail": "auto"
-          },
-          "type": "image_file"
-        }
-      ],
-      "created_at": 0,
-      "incomplete_at": 0,
-      "incomplete_details": {
-        "reason": "content_filter"
-      },
-      "metadata": {
-        "foo": "string"
-      },
-      "object": "thread.message",
-      "role": "user",
-      "run_id": "run_id",
-      "status": "in_progress",
-      "thread_id": "thread_id"
-    }
-  ],
-  "first_id": "msg_abc123",
-  "has_more": false,
-  "last_id": "msg_abc123",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/threads/thread_abc123/messages \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "OpenAI-Beta: assistants=v2"
-```
-
-#### Response
-
-```json
-{
-  "object": "list",
-  "data": [
-    {
-      "id": "msg_abc123",
-      "object": "thread.message",
-      "created_at": 1699016383,
-      "assistant_id": null,
-      "thread_id": "thread_abc123",
-      "run_id": null,
-      "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": {
-            "value": "How does AI work? Explain it in simple terms.",
-            "annotations": []
-          }
-        }
-      ],
-      "attachments": [],
-      "metadata": {}
+  "id": "run_FKIpcs5ECSwuCmehBqsqkORj",
+  "assistant_id": "asst_8fVY45hU3IM6creFkVi5MBKB",
+  "cancelled_at": null,
+  "completed_at": 1752857327,
+  "created_at": 1752857322,
+  "expires_at": null,
+  "failed_at": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "last_error": null,
+  "max_completion_tokens": null,
+  "max_prompt_tokens": null,
+  "metadata": {},
+  "model": "gpt-4.1",
+  "object": "thread.run",
+  "parallel_tool_calls": true,
+  "required_action": null,
+  "response_format": "auto",
+  "started_at": 1752857324,
+  "status": "completed",
+  "thread_id": "thread_CrXtCzcyEQbkAcXuNmVSKFs1",
+  "tool_choice": "auto",
+  "tools": [],
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": null
+  },
+  "usage": {
+    "completion_tokens": 130,
+    "prompt_tokens": 34,
+    "total_tokens": 164,
+    "prompt_token_details": {
+      "cached_tokens": 0
     },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "tool_resources": {},
+  "reasoning_effort": null
+}
+```
+
+#### Response object
+
+```json
+{
+  "id": "resp_687a7b53036c819baad6012d58b39bcb074adcd9e24850fc",
+  "created_at": 1752857427,
+  "conversation": {
+    "id": "conv_689667905b048191b4740501625afd940c7533ace33a2dab"
+  },
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.5",
+  "object": "response",
+  "output": [
     {
-      "id": "msg_abc456",
-      "object": "thread.message",
-      "created_at": 1699016383,
-      "assistant_id": null,
-      "thread_id": "thread_abc123",
-      "run_id": null,
-      "role": "user",
+      "id": "msg_687a7b542948819ba79e77e14791ef83074adcd9e24850fc",
       "content": [
         {
-          "type": "text",
-          "text": {
-            "value": "Hello, what is AI?",
-            "annotations": []
-          }
+          "annotations": [],
+          "text": "The \"5 Ds of Dodgeball\" are a humorous set of rules made famous by the 2004 comedy film **\"Dodgeball: A True Underdog Story.\"** In the movie, dodgeball coach Patches O’Houlihan teaches these basics to his team. The **5 Ds** are:\n\n1. **Dodge**\n2. **Duck**\n3. **Dip**\n4. **Dive**\n5. **Dodge** (yes, dodge is listed twice for emphasis!)\n\nIn summary:  \n> **“If you can dodge a wrench, you can dodge a ball!”**\n\nThese 5 Ds are not official competitive rules, but have become a fun and memorable pop culture reference for the sport of dodgeball.",
+          "type": "output_text",
+          "logprobs": []
         }
       ],
-      "attachments": [],
-      "metadata": {}
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
     }
   ],
-  "first_id": "msg_abc123",
-  "last_id": "msg_abc456",
-  "has_more": false
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "max_output_tokens": null,
+  "previous_response_id": null,
+  "reasoning": {
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "service_tier": "scale",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    }
+  },
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 17,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 150,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 167
+  },
+  "user": null,
+  "max_tool_calls": null,
+  "store": true,
+  "top_logprobs": 0
 }
 ```
 
-## Retrieve message
 
-**get** `/threads/{thread_id}/messages/{message_id}`
 
-Retrieve a message.
+---
 
-### Path Parameters
+## Migrating your integration
 
-- `thread_id: string`
+Follow the migration steps below to move from the Assistants API to the Responses API, without losing any feature support.
 
-- `message_id: string`
+### 1. Create prompts from your assistants
 
-### Returns
+1. Identify the most important assistant objects in your application.
+1. Find these in the dashboard and click `Create prompt`.
 
-- `Message object { id, assistant_id, attachments, 11 more }`
+This will create a prompt object out of each existing assistant object.
 
-  Represents a message within a [thread](/docs/api-reference/threads).
+Reusable prompt objects are also being deprecated. If you use this migration
+  path, review the [prompts deprecation
+  timeline](https://developers.openai.com/api/docs/deprecations#2026-06-03-reusable-prompts) before adopting
+  prompt objects in a long-lived integration.
 
-  - `id: string`
+### 2. Move new user chats over to conversations and responses
 
-    The identifier, which can be referenced in API endpoints.
+Start new chats with the Conversations API and Responses API. To preserve earlier conversation history, use messages already stored by your application.
 
-  - `assistant_id: string or null`
+The example below shows how thread history could be migrated before the sunset. The Assistants API call that retrieves thread messages no longer works; use your stored messages instead.
 
-    If applicable, the ID of the [assistant](/docs/api-reference/assistants) that authored this message.
+```python
+import os
 
-  - `attachments: array of object { file_id, tools }  or null`
+from openai import OpenAI
 
-    A list of files attached to the message, and the tools they were added to.
+openai = OpenAI()
+messages = []
+thread_id = os.environ["OPENAI_THREAD_ID"]
 
-    - `file_id: optional string`
+for page in openai.beta.threads.messages.list(
+    thread_id=thread_id, order="asc"
+).iter_pages():
+    messages += page.data
 
-      The ID of the file to attach to the message.
+items = []
+for m in messages:
+    item = {"role": m.role}
+    item_content = []
 
-    - `tools: optional array of CodeInterpreterTool or object { type }`
+    for content in m.content:
+        match content.type:
+            case "text":
+                item_content_type = "input_text" if m.role == "user" else "output_text"
+                item_content += [
+                    {"type": item_content_type, "text": content.text.value}
+                ]
+            case "image_url":
+                item_content += [
+                    {
+                        "type": "input_image",
+                        "image_url": content.image_url.url,
+                        "detail": content.image_url.detail,
+                    }
+                ]
 
-      The tools to add this file to.
+    item |= {"content": item_content}
+    items.append(item)
 
-      - `CodeInterpreterTool object { type }`
-
-        - `type: "code_interpreter"`
-
-          The type of tool being defined: `code_interpreter`
-
-          - `"code_interpreter"`
-
-      - `FileSearchTool object { type }`
-
-        - `type: "file_search"`
-
-          The type of tool being defined: `file_search`
-
-          - `"file_search"`
-
-  - `completed_at: number or null`
-
-    The Unix timestamp (in seconds) for when the message was completed.
-
-  - `content: array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlock or RefusalContentBlock`
-
-    The content of the message in array of text and/or images.
-
-    - `ImageFileContentBlock object { image_file, type }`
-
-      References an image [File](/docs/api-reference/files) in the content of a message.
-
-      - `image_file: ImageFile`
-
-        - `file_id: string`
-
-          The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-        - `detail: optional "auto" or "low" or "high"`
-
-          Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_file"`
-
-        Always `image_file`.
-
-        - `"image_file"`
-
-    - `ImageURLContentBlock object { image_url, type }`
-
-      References an image URL in the content of a message.
-
-      - `image_url: ImageURL`
-
-        - `url: string`
-
-          The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-        - `detail: optional "auto" or "low" or "high"`
-
-          Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_url"`
-
-        The type of the content part.
-
-        - `"image_url"`
-
-    - `TextContentBlock object { text, type }`
-
-      The text content that is part of a message.
-
-      - `text: Text`
-
-        - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
-
-          - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
-
-            A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-            - `end_index: number`
-
-            - `file_citation: object { file_id }`
-
-              - `file_id: string`
-
-                The ID of the specific File the citation is from.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_citation"`
-
-              Always `file_citation`.
-
-              - `"file_citation"`
-
-          - `FilePathAnnotation object { end_index, file_path, start_index, 2 more }`
-
-            A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-            - `end_index: number`
-
-            - `file_path: object { file_id }`
-
-              - `file_id: string`
-
-                The ID of the file that was generated.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_path"`
-
-              Always `file_path`.
-
-              - `"file_path"`
-
-        - `value: string`
-
-          The data that makes up the text.
-
-      - `type: "text"`
-
-        Always `text`.
-
-        - `"text"`
-
-    - `RefusalContentBlock object { refusal, type }`
-
-      The refusal content generated by the assistant.
-
-      - `refusal: string`
-
-      - `type: "refusal"`
-
-        Always `refusal`.
-
-        - `"refusal"`
-
-  - `created_at: number`
-
-    The Unix timestamp (in seconds) for when the message was created.
-
-  - `incomplete_at: number or null`
-
-    The Unix timestamp (in seconds) for when the message was marked as incomplete.
-
-  - `incomplete_details: object { reason }  or null`
-
-    On an incomplete message, details about why the message is incomplete.
-
-    - `reason: "content_filter" or "max_tokens" or "run_cancelled" or 2 more`
-
-      The reason the message is incomplete.
-
-      - `"content_filter"`
-
-      - `"max_tokens"`
-
-      - `"run_cancelled"`
-
-      - `"run_expired"`
-
-      - `"run_failed"`
-
-  - `metadata: Metadata or null`
-
-    Set of 16 key-value pairs that can be attached to an object. This can be
-    useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
-
-    Keys are strings with a maximum length of 64 characters. Values are strings
-    with a maximum length of 512 characters.
-
-  - `object: "thread.message"`
-
-    The object type, which is always `thread.message`.
-
-    - `"thread.message"`
-
-  - `role: "user" or "assistant"`
-
-    The entity that produced the message. One of `user` or `assistant`.
-
-    - `"user"`
-
-    - `"assistant"`
-
-  - `run_id: string or null`
-
-    The ID of the [run](/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
-
-  - `status: "in_progress" or "incomplete" or "completed"`
-
-    The status of the message, which can be either `in_progress`, `incomplete`, or `completed`.
-
-    - `"in_progress"`
-
-    - `"incomplete"`
-
-    - `"completed"`
-
-  - `thread_id: string`
-
-    The [thread](/docs/api-reference/threads) ID that this message belongs to.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/threads/$THREAD_ID/messages/$MESSAGE_ID \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
+# create a conversation with your converted items
+conversation = openai.conversations.create(items=items)
 ```
 
-#### Response
+```ruby
+require "openai"
 
-```json
-{
-  "id": "id",
-  "assistant_id": "assistant_id",
-  "attachments": [
-    {
-      "file_id": "file_id",
-      "tools": [
-        {
-          "type": "code_interpreter"
-        }
-      ]
-    }
-  ],
-  "completed_at": 0,
-  "content": [
-    {
-      "image_file": {
-        "file_id": "file_id",
-        "detail": "auto"
-      },
-      "type": "image_file"
-    }
-  ],
-  "created_at": 0,
-  "incomplete_at": 0,
-  "incomplete_details": {
-    "reason": "content_filter"
-  },
-  "metadata": {
-    "foo": "string"
-  },
-  "object": "thread.message",
-  "role": "user",
-  "run_id": "run_id",
-  "status": "in_progress",
-  "thread_id": "thread_id"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc123 \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "OpenAI-Beta: assistants=v2"
-```
-
-#### Response
-
-```json
-{
-  "id": "msg_abc123",
-  "object": "thread.message",
-  "created_at": 1699017614,
-  "assistant_id": null,
-  "thread_id": "thread_abc123",
-  "run_id": null,
-  "role": "user",
-  "content": [
-    {
-      "type": "text",
-      "text": {
-        "value": "How does AI work? Explain it in simple terms.",
-        "annotations": []
+client = OpenAI::Client.new
+thread_id = ENV.fetch("OPENAI_THREAD_ID")
+messages = client.beta.threads.messages.list(thread_id, order: :asc)
+items = []
+messages.auto_paging_each do |message|
+  content = message.content.filter_map do |part|
+    case part
+    when OpenAI::Models::Beta::Threads::TextContentBlock
+      type = if message.role == OpenAI::Models::Beta::Threads::Message::Role::USER
+        :input_text
+      else
+        :output_text
+      end
+      {type: type, text: part.text.value}
+    when OpenAI::Models::Beta::Threads::ImageURLContentBlock
+      {
+        type: :input_image,
+        image_url: part.image_url.url,
+        detail: part.image_url.detail
       }
-    }
-  ],
-  "attachments": [],
-  "metadata": {}
-}
+    end
+  end
+  items << {role: message.role, content: content}
+end
+conversation = client.conversations.create(
+  items: items
+)
+puts(conversation.id)
 ```
 
-## Modify message
 
-**post** `/threads/{thread_id}/messages/{message_id}`
+## Comparing full examples
 
-Modifies a message.
+Here are a few examples of integrations using both the Assistants API and the Responses API so you can see how they compare.
 
-### Path Parameters
+### User chat app
 
-- `thread_id: string`
 
-- `message_id: string`
 
-### Body Parameters
+Assistants API
 
-- `metadata: optional Metadata or null`
+```python
+threads_by_session: dict[str, str] = {}
 
-  Set of 16 key-value pairs that can be attached to an object. This can be
-  useful for storing additional information about the object in a structured
-  format, and querying for objects via API or the dashboard.
 
-  Keys are strings with a maximum length of 64 characters. Values are strings
-  with a maximum length of 512 characters.
+@app.post("/messages")
+async def message(message: Message):
+    thread_id = threads_by_session.get(message.session_id)
+    if thread_id is None:
+        thread_id = openai.beta.threads.create().id
+        threads_by_session[message.session_id] = thread_id
 
-### Returns
+    openai.beta.threads.messages.create(
+        thread_id=thread_id,
+        role="user",
+        content=message.content,
+    )
 
-- `Message object { id, assistant_id, attachments, 11 more }`
+    run = openai.beta.threads.runs.create(
+        assistant_id=os.environ["OPENAI_ASSISTANT_ID"],
+        thread_id=thread_id,
+    )
+    while run.status in ("queued", "in_progress"):
+        await asyncio.sleep(1)
+        run = openai.beta.threads.runs.retrieve(
+            thread_id=thread_id,
+            run_id=run.id,
+        )
 
-  Represents a message within a [thread](/docs/api-reference/threads).
+    messages = openai.beta.threads.messages.list(
+        order="desc",
+        limit=1,
+        thread_id=thread_id,
+    )
 
-  - `id: string`
-
-    The identifier, which can be referenced in API endpoints.
-
-  - `assistant_id: string or null`
-
-    If applicable, the ID of the [assistant](/docs/api-reference/assistants) that authored this message.
-
-  - `attachments: array of object { file_id, tools }  or null`
-
-    A list of files attached to the message, and the tools they were added to.
-
-    - `file_id: optional string`
-
-      The ID of the file to attach to the message.
-
-    - `tools: optional array of CodeInterpreterTool or object { type }`
-
-      The tools to add this file to.
-
-      - `CodeInterpreterTool object { type }`
-
-        - `type: "code_interpreter"`
-
-          The type of tool being defined: `code_interpreter`
-
-          - `"code_interpreter"`
-
-      - `FileSearchTool object { type }`
-
-        - `type: "file_search"`
-
-          The type of tool being defined: `file_search`
-
-          - `"file_search"`
-
-  - `completed_at: number or null`
-
-    The Unix timestamp (in seconds) for when the message was completed.
-
-  - `content: array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlock or RefusalContentBlock`
-
-    The content of the message in array of text and/or images.
-
-    - `ImageFileContentBlock object { image_file, type }`
-
-      References an image [File](/docs/api-reference/files) in the content of a message.
-
-      - `image_file: ImageFile`
-
-        - `file_id: string`
-
-          The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-        - `detail: optional "auto" or "low" or "high"`
-
-          Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_file"`
-
-        Always `image_file`.
-
-        - `"image_file"`
-
-    - `ImageURLContentBlock object { image_url, type }`
-
-      References an image URL in the content of a message.
-
-      - `image_url: ImageURL`
-
-        - `url: string`
-
-          The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-        - `detail: optional "auto" or "low" or "high"`
-
-          Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_url"`
-
-        The type of the content part.
-
-        - `"image_url"`
-
-    - `TextContentBlock object { text, type }`
-
-      The text content that is part of a message.
-
-      - `text: Text`
-
-        - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
-
-          - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
-
-            A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-            - `end_index: number`
-
-            - `file_citation: object { file_id }`
-
-              - `file_id: string`
-
-                The ID of the specific File the citation is from.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_citation"`
-
-              Always `file_citation`.
-
-              - `"file_citation"`
-
-          - `FilePathAnnotation object { end_index, file_path, start_index, 2 more }`
-
-            A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-            - `end_index: number`
-
-            - `file_path: object { file_id }`
-
-              - `file_id: string`
-
-                The ID of the file that was generated.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_path"`
-
-              Always `file_path`.
-
-              - `"file_path"`
-
-        - `value: string`
-
-          The data that makes up the text.
-
-      - `type: "text"`
-
-        Always `text`.
-
-        - `"text"`
-
-    - `RefusalContentBlock object { refusal, type }`
-
-      The refusal content generated by the assistant.
-
-      - `refusal: string`
-
-      - `type: "refusal"`
-
-        Always `refusal`.
-
-        - `"refusal"`
-
-  - `created_at: number`
-
-    The Unix timestamp (in seconds) for when the message was created.
-
-  - `incomplete_at: number or null`
-
-    The Unix timestamp (in seconds) for when the message was marked as incomplete.
-
-  - `incomplete_details: object { reason }  or null`
-
-    On an incomplete message, details about why the message is incomplete.
-
-    - `reason: "content_filter" or "max_tokens" or "run_cancelled" or 2 more`
-
-      The reason the message is incomplete.
-
-      - `"content_filter"`
-
-      - `"max_tokens"`
-
-      - `"run_cancelled"`
-
-      - `"run_expired"`
-
-      - `"run_failed"`
-
-  - `metadata: Metadata or null`
-
-    Set of 16 key-value pairs that can be attached to an object. This can be
-    useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
-
-    Keys are strings with a maximum length of 64 characters. Values are strings
-    with a maximum length of 512 characters.
-
-  - `object: "thread.message"`
-
-    The object type, which is always `thread.message`.
-
-    - `"thread.message"`
-
-  - `role: "user" or "assistant"`
-
-    The entity that produced the message. One of `user` or `assistant`.
-
-    - `"user"`
-
-    - `"assistant"`
-
-  - `run_id: string or null`
-
-    The ID of the [run](/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
-
-  - `status: "in_progress" or "incomplete" or "completed"`
-
-    The status of the message, which can be either `in_progress`, `incomplete`, or `completed`.
-
-    - `"in_progress"`
-
-    - `"incomplete"`
-
-    - `"completed"`
-
-  - `thread_id: string`
-
-    The [thread](/docs/api-reference/threads) ID that this message belongs to.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/threads/$THREAD_ID/messages/$MESSAGE_ID \
-    -H 'Content-Type: application/json' \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{}'
+    return {"content": messages.data[0].content}
 ```
 
-#### Response
+```ruby
+require "openai"
 
-```json
-{
-  "id": "id",
-  "assistant_id": "assistant_id",
-  "attachments": [
-    {
-      "file_id": "file_id",
-      "tools": [
-        {
-          "type": "code_interpreter"
-        }
-      ]
-    }
-  ],
-  "completed_at": 0,
-  "content": [
-    {
-      "image_file": {
-        "file_id": "file_id",
-        "detail": "auto"
-      },
-      "type": "image_file"
-    }
-  ],
-  "created_at": 0,
-  "incomplete_at": 0,
-  "incomplete_details": {
-    "reason": "content_filter"
-  },
-  "metadata": {
-    "foo": "string"
-  },
-  "object": "thread.message",
-  "role": "user",
-  "run_id": "run_id",
-  "status": "in_progress",
-  "thread_id": "thread_id"
-}
+client = OpenAI::Client.new
+assistant_id = ENV.fetch("OPENAI_ASSISTANT_ID")
+threads_by_session = {}
+
+handle_message = lambda do |session_id:, content:|
+  thread_id = threads_by_session[session_id]
+  unless thread_id
+    thread_id = client.beta.threads.create.id
+    threads_by_session[session_id] = thread_id
+  end
+
+  client.beta.threads.messages.create(
+    thread_id,
+    role: :user,
+    content: content
+  )
+  run = client.beta.threads.runs.create(
+    thread_id,
+    assistant_id: assistant_id
+  )
+  while [:queued, :in_progress].include?(run.status)
+    sleep(1)
+    run = client.beta.threads.runs.retrieve(run.id, thread_id: thread_id)
+  end
+
+  messages = client.beta.threads.messages.list(
+    thread_id,
+    order: :desc,
+    limit: 1
+  )
+  {content: messages.data&.first&.content}
+end
+
+puts(handle_message.call(
+  session_id: "example-session",
+  content: "What are the five Ds of dodgeball?"
+))
 ```
 
-### Example
 
-```http
-curl https://api.openai.com/v1/threads/thread_abc123/messages/msg_abc123 \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "OpenAI-Beta: assistants=v2" \
-  -d '{
-      "metadata": {
-        "modified": "true",
-        "user": "abc123"
-      }
-    }'
+  
+
+  
+
+    
+Responses API
+
+```python
+conversations_by_session: dict[str, str] = {}
+
+
+@app.post("/messages")
+async def message(message: Message):
+    conversation_id = conversations_by_session.get(message.session_id)
+    if conversation_id is None:
+        conversation_id = openai.conversations.create().id
+        conversations_by_session[message.session_id] = conversation_id
+
+    response = openai.responses.create(
+        prompt={"id": os.environ["OPENAI_PROMPT_ID"]},
+        input=[{"role": "user", "content": message.content}],
+        conversation=conversation_id,
+    )
+
+    return {"content": response.output_text}
 ```
 
-#### Response
+```ruby
+require "openai"
 
-```json
-{
-  "id": "msg_abc123",
-  "object": "thread.message",
-  "created_at": 1699017614,
-  "assistant_id": null,
-  "thread_id": "thread_abc123",
-  "run_id": null,
-  "role": "user",
-  "content": [
-    {
-      "type": "text",
-      "text": {
-        "value": "How does AI work? Explain it in simple terms.",
-        "annotations": []
-      }
-    }
-  ],
-  "file_ids": [],
-  "metadata": {
-    "modified": "true",
-    "user": "abc123"
-  }
-}
+client = OpenAI::Client.new
+conversations_by_session = {}
+
+handle_message = lambda do |session_id:, content:|
+  conversation_id = conversations_by_session[session_id]
+  unless conversation_id
+    conversation_id = client.conversations.create.id
+    conversations_by_session[session_id] = conversation_id
+  end
+
+  response = client.responses.create(
+    prompt: {id: ENV.fetch("OPENAI_PROMPT_ID")},
+    input: [{role: :user, content: content}],
+    conversation: conversation_id
+  )
+  {content: response.output_text}
+end
+
+puts(handle_message.call(
+  session_id: "example-session",
+  content: "What are the five Ds of dodgeball?"
+))
 ```
-
-## Domain Types
-
-### File Citation Annotation
-
-- `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
-
-  A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-  - `end_index: number`
-
-  - `file_citation: object { file_id }`
-
-    - `file_id: string`
-
-      The ID of the specific File the citation is from.
-
-  - `start_index: number`
-
-  - `text: string`
-
-    The text in the message content that needs to be replaced.
-
-  - `type: "file_citation"`
-
-    Always `file_citation`.
-
-    - `"file_citation"`
-
-### File Citation Delta Annotation
-
-- `FileCitationDeltaAnnotation object { index, type, end_index, 3 more }`
-
-  A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-  - `index: number`
-
-    The index of the annotation in the text content part.
-
-  - `type: "file_citation"`
-
-    Always `file_citation`.
-
-    - `"file_citation"`
-
-  - `end_index: optional number`
-
-  - `file_citation: optional object { file_id, quote }`
-
-    - `file_id: optional string`
-
-      The ID of the specific File the citation is from.
-
-    - `quote: optional string`
-
-      The specific quote in the file.
-
-  - `start_index: optional number`
-
-  - `text: optional string`
-
-    The text in the message content that needs to be replaced.
-
-### File Path Annotation
-
-- `FilePathAnnotation object { end_index, file_path, start_index, 2 more }`
-
-  A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-  - `end_index: number`
-
-  - `file_path: object { file_id }`
-
-    - `file_id: string`
-
-      The ID of the file that was generated.
-
-  - `start_index: number`
-
-  - `text: string`
-
-    The text in the message content that needs to be replaced.
-
-  - `type: "file_path"`
-
-    Always `file_path`.
-
-    - `"file_path"`
-
-### File Path Delta Annotation
-
-- `FilePathDeltaAnnotation object { index, type, end_index, 3 more }`
-
-  A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-  - `index: number`
-
-    The index of the annotation in the text content part.
-
-  - `type: "file_path"`
-
-    Always `file_path`.
-
-    - `"file_path"`
-
-  - `end_index: optional number`
-
-  - `file_path: optional object { file_id }`
-
-    - `file_id: optional string`
-
-      The ID of the file that was generated.
-
-  - `start_index: optional number`
-
-  - `text: optional string`
-
-    The text in the message content that needs to be replaced.
-
-### Image File
-
-- `ImageFile object { file_id, detail }`
-
-  - `file_id: string`
-
-    The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-  - `detail: optional "auto" or "low" or "high"`
-
-    Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-    - `"auto"`
-
-    - `"low"`
-
-    - `"high"`
-
-### Image File Content Block
-
-- `ImageFileContentBlock object { image_file, type }`
-
-  References an image [File](/docs/api-reference/files) in the content of a message.
-
-  - `image_file: ImageFile`
-
-    - `file_id: string`
-
-      The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-    - `detail: optional "auto" or "low" or "high"`
-
-      Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-      - `"auto"`
-
-      - `"low"`
-
-      - `"high"`
-
-  - `type: "image_file"`
-
-    Always `image_file`.
-
-    - `"image_file"`
-
-### Image File Delta
-
-- `ImageFileDelta object { detail, file_id }`
-
-  - `detail: optional "auto" or "low" or "high"`
-
-    Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-    - `"auto"`
-
-    - `"low"`
-
-    - `"high"`
-
-  - `file_id: optional string`
-
-    The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-### Image File Delta Block
-
-- `ImageFileDeltaBlock object { index, type, image_file }`
-
-  References an image [File](/docs/api-reference/files) in the content of a message.
-
-  - `index: number`
-
-    The index of the content part in the message.
-
-  - `type: "image_file"`
-
-    Always `image_file`.
-
-    - `"image_file"`
-
-  - `image_file: optional ImageFileDelta`
-
-    - `detail: optional "auto" or "low" or "high"`
-
-      Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-      - `"auto"`
-
-      - `"low"`
-
-      - `"high"`
-
-    - `file_id: optional string`
-
-      The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-### Image URL
-
-- `ImageURL object { url, detail }`
-
-  - `url: string`
-
-    The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-  - `detail: optional "auto" or "low" or "high"`
-
-    Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
-
-    - `"auto"`
-
-    - `"low"`
-
-    - `"high"`
-
-### Image URL Content Block
-
-- `ImageURLContentBlock object { image_url, type }`
-
-  References an image URL in the content of a message.
-
-  - `image_url: ImageURL`
-
-    - `url: string`
-
-      The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-    - `detail: optional "auto" or "low" or "high"`
-
-      Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
-
-      - `"auto"`
-
-      - `"low"`
-
-      - `"high"`
-
-  - `type: "image_url"`
-
-    The type of the content part.
-
-    - `"image_url"`
-
-### Image URL Delta
-
-- `ImageURLDelta object { detail, url }`
-
-  - `detail: optional "auto" or "low" or "high"`
-
-    Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-    - `"auto"`
-
-    - `"low"`
-
-    - `"high"`
-
-  - `url: optional string`
-
-    The URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-### Image URL Delta Block
-
-- `ImageURLDeltaBlock object { index, type, image_url }`
-
-  References an image URL in the content of a message.
-
-  - `index: number`
-
-    The index of the content part in the message.
-
-  - `type: "image_url"`
-
-    Always `image_url`.
-
-    - `"image_url"`
-
-  - `image_url: optional ImageURLDelta`
-
-    - `detail: optional "auto" or "low" or "high"`
-
-      Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-      - `"auto"`
-
-      - `"low"`
-
-      - `"high"`
-
-    - `url: optional string`
-
-      The URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-### Message
-
-- `Message object { id, assistant_id, attachments, 11 more }`
-
-  Represents a message within a [thread](/docs/api-reference/threads).
-
-  - `id: string`
-
-    The identifier, which can be referenced in API endpoints.
-
-  - `assistant_id: string or null`
-
-    If applicable, the ID of the [assistant](/docs/api-reference/assistants) that authored this message.
-
-  - `attachments: array of object { file_id, tools }  or null`
-
-    A list of files attached to the message, and the tools they were added to.
-
-    - `file_id: optional string`
-
-      The ID of the file to attach to the message.
-
-    - `tools: optional array of CodeInterpreterTool or object { type }`
-
-      The tools to add this file to.
-
-      - `CodeInterpreterTool object { type }`
-
-        - `type: "code_interpreter"`
-
-          The type of tool being defined: `code_interpreter`
-
-          - `"code_interpreter"`
-
-      - `FileSearchTool object { type }`
-
-        - `type: "file_search"`
-
-          The type of tool being defined: `file_search`
-
-          - `"file_search"`
-
-  - `completed_at: number or null`
-
-    The Unix timestamp (in seconds) for when the message was completed.
-
-  - `content: array of ImageFileContentBlock or ImageURLContentBlock or TextContentBlock or RefusalContentBlock`
-
-    The content of the message in array of text and/or images.
-
-    - `ImageFileContentBlock object { image_file, type }`
-
-      References an image [File](/docs/api-reference/files) in the content of a message.
-
-      - `image_file: ImageFile`
-
-        - `file_id: string`
-
-          The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-        - `detail: optional "auto" or "low" or "high"`
-
-          Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_file"`
-
-        Always `image_file`.
-
-        - `"image_file"`
-
-    - `ImageURLContentBlock object { image_url, type }`
-
-      References an image URL in the content of a message.
-
-      - `image_url: ImageURL`
-
-        - `url: string`
-
-          The external URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-        - `detail: optional "auto" or "low" or "high"`
-
-          Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`. Default value is `auto`
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-      - `type: "image_url"`
-
-        The type of the content part.
-
-        - `"image_url"`
-
-    - `TextContentBlock object { text, type }`
-
-      The text content that is part of a message.
-
-      - `text: Text`
-
-        - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
-
-          - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
-
-            A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-            - `end_index: number`
-
-            - `file_citation: object { file_id }`
-
-              - `file_id: string`
-
-                The ID of the specific File the citation is from.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_citation"`
-
-              Always `file_citation`.
-
-              - `"file_citation"`
-
-          - `FilePathAnnotation object { end_index, file_path, start_index, 2 more }`
-
-            A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-            - `end_index: number`
-
-            - `file_path: object { file_id }`
-
-              - `file_id: string`
-
-                The ID of the file that was generated.
-
-            - `start_index: number`
-
-            - `text: string`
-
-              The text in the message content that needs to be replaced.
-
-            - `type: "file_path"`
-
-              Always `file_path`.
-
-              - `"file_path"`
-
-        - `value: string`
-
-          The data that makes up the text.
-
-      - `type: "text"`
-
-        Always `text`.
-
-        - `"text"`
-
-    - `RefusalContentBlock object { refusal, type }`
-
-      The refusal content generated by the assistant.
-
-      - `refusal: string`
-
-      - `type: "refusal"`
-
-        Always `refusal`.
-
-        - `"refusal"`
-
-  - `created_at: number`
-
-    The Unix timestamp (in seconds) for when the message was created.
-
-  - `incomplete_at: number or null`
-
-    The Unix timestamp (in seconds) for when the message was marked as incomplete.
-
-  - `incomplete_details: object { reason }  or null`
-
-    On an incomplete message, details about why the message is incomplete.
-
-    - `reason: "content_filter" or "max_tokens" or "run_cancelled" or 2 more`
-
-      The reason the message is incomplete.
-
-      - `"content_filter"`
-
-      - `"max_tokens"`
-
-      - `"run_cancelled"`
-
-      - `"run_expired"`
-
-      - `"run_failed"`
-
-  - `metadata: Metadata or null`
-
-    Set of 16 key-value pairs that can be attached to an object. This can be
-    useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
-
-    Keys are strings with a maximum length of 64 characters. Values are strings
-    with a maximum length of 512 characters.
-
-  - `object: "thread.message"`
-
-    The object type, which is always `thread.message`.
-
-    - `"thread.message"`
-
-  - `role: "user" or "assistant"`
-
-    The entity that produced the message. One of `user` or `assistant`.
-
-    - `"user"`
-
-    - `"assistant"`
-
-  - `run_id: string or null`
-
-    The ID of the [run](/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints.
-
-  - `status: "in_progress" or "incomplete" or "completed"`
-
-    The status of the message, which can be either `in_progress`, `incomplete`, or `completed`.
-
-    - `"in_progress"`
-
-    - `"incomplete"`
-
-    - `"completed"`
-
-  - `thread_id: string`
-
-    The [thread](/docs/api-reference/threads) ID that this message belongs to.
-
-### Message Deleted
-
-- `MessageDeleted object { id, deleted, object }`
-
-  - `id: string`
-
-  - `deleted: boolean`
-
-  - `object: "thread.message.deleted"`
-
-    - `"thread.message.deleted"`
-
-### Message Delta
-
-- `MessageDelta object { content, role }`
-
-  The delta containing the fields that have changed on the Message.
-
-  - `content: optional array of ImageFileDeltaBlock or TextDeltaBlock or RefusalDeltaBlock or ImageURLDeltaBlock`
-
-    The content of the message in array of text and/or images.
-
-    - `ImageFileDeltaBlock object { index, type, image_file }`
-
-      References an image [File](/docs/api-reference/files) in the content of a message.
-
-      - `index: number`
-
-        The index of the content part in the message.
-
-      - `type: "image_file"`
-
-        Always `image_file`.
-
-        - `"image_file"`
-
-      - `image_file: optional ImageFileDelta`
-
-        - `detail: optional "auto" or "low" or "high"`
-
-          Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-        - `file_id: optional string`
-
-          The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-    - `TextDeltaBlock object { index, type, text }`
-
-      The text content that is part of a message.
-
-      - `index: number`
-
-        The index of the content part in the message.
-
-      - `type: "text"`
-
-        Always `text`.
-
-        - `"text"`
-
-      - `text: optional TextDelta`
-
-        - `annotations: optional array of FileCitationDeltaAnnotation or FilePathDeltaAnnotation`
-
-          - `FileCitationDeltaAnnotation object { index, type, end_index, 3 more }`
-
-            A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-            - `index: number`
-
-              The index of the annotation in the text content part.
-
-            - `type: "file_citation"`
-
-              Always `file_citation`.
-
-              - `"file_citation"`
-
-            - `end_index: optional number`
-
-            - `file_citation: optional object { file_id, quote }`
-
-              - `file_id: optional string`
-
-                The ID of the specific File the citation is from.
-
-              - `quote: optional string`
-
-                The specific quote in the file.
-
-            - `start_index: optional number`
-
-            - `text: optional string`
-
-              The text in the message content that needs to be replaced.
-
-          - `FilePathDeltaAnnotation object { index, type, end_index, 3 more }`
-
-            A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-            - `index: number`
-
-              The index of the annotation in the text content part.
-
-            - `type: "file_path"`
-
-              Always `file_path`.
-
-              - `"file_path"`
-
-            - `end_index: optional number`
-
-            - `file_path: optional object { file_id }`
-
-              - `file_id: optional string`
-
-                The ID of the file that was generated.
-
-            - `start_index: optional number`
-
-            - `text: optional string`
-
-              The text in the message content that needs to be replaced.
-
-        - `value: optional string`
-
-          The data that makes up the text.
-
-    - `RefusalDeltaBlock object { index, type, refusal }`
-
-      The refusal content that is part of a message.
-
-      - `index: number`
-
-        The index of the refusal part in the message.
-
-      - `type: "refusal"`
-
-        Always `refusal`.
-
-        - `"refusal"`
-
-      - `refusal: optional string`
-
-    - `ImageURLDeltaBlock object { index, type, image_url }`
-
-      References an image URL in the content of a message.
-
-      - `index: number`
-
-        The index of the content part in the message.
-
-      - `type: "image_url"`
-
-        Always `image_url`.
-
-        - `"image_url"`
-
-      - `image_url: optional ImageURLDelta`
-
-        - `detail: optional "auto" or "low" or "high"`
-
-          Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-          - `"auto"`
-
-          - `"low"`
-
-          - `"high"`
-
-        - `url: optional string`
-
-          The URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-  - `role: optional "user" or "assistant"`
-
-    The entity that produced the message. One of `user` or `assistant`.
-
-    - `"user"`
-
-    - `"assistant"`
-
-### Message Delta Event
-
-- `MessageDeltaEvent object { id, delta, object }`
-
-  Represents a message delta i.e. any changed fields on a message during streaming.
-
-  - `id: string`
-
-    The identifier of the message, which can be referenced in API endpoints.
-
-  - `delta: MessageDelta`
-
-    The delta containing the fields that have changed on the Message.
-
-    - `content: optional array of ImageFileDeltaBlock or TextDeltaBlock or RefusalDeltaBlock or ImageURLDeltaBlock`
-
-      The content of the message in array of text and/or images.
-
-      - `ImageFileDeltaBlock object { index, type, image_file }`
-
-        References an image [File](/docs/api-reference/files) in the content of a message.
-
-        - `index: number`
-
-          The index of the content part in the message.
-
-        - `type: "image_file"`
-
-          Always `image_file`.
-
-          - `"image_file"`
-
-        - `image_file: optional ImageFileDelta`
-
-          - `detail: optional "auto" or "low" or "high"`
-
-            Specifies the detail level of the image if specified by the user. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-            - `"auto"`
-
-            - `"low"`
-
-            - `"high"`
-
-          - `file_id: optional string`
-
-            The [File](/docs/api-reference/files) ID of the image in the message content. Set `purpose="vision"` when uploading the File if you need to later display the file content.
-
-      - `TextDeltaBlock object { index, type, text }`
-
-        The text content that is part of a message.
-
-        - `index: number`
-
-          The index of the content part in the message.
-
-        - `type: "text"`
-
-          Always `text`.
-
-          - `"text"`
-
-        - `text: optional TextDelta`
-
-          - `annotations: optional array of FileCitationDeltaAnnotation or FilePathDeltaAnnotation`
-
-            - `FileCitationDeltaAnnotation object { index, type, end_index, 3 more }`
-
-              A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-              - `index: number`
-
-                The index of the annotation in the text content part.
-
-              - `type: "file_citation"`
-
-                Always `file_citation`.
-
-                - `"file_citation"`
-
-              - `end_index: optional number`
-
-              - `file_citation: optional object { file_id, quote }`
-
-                - `file_id: optional string`
-
-                  The ID of the specific File the citation is from.
-
-                - `quote: optional string`
-
-                  The specific quote in the file.
-
-              - `start_index: optional number`
-
-              - `text: optional string`
-
-                The text in the message content that needs to be replaced.
-
-            - `FilePathDeltaAnnotation object { index, type, end_index, 3 more }`
-
-              A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-              - `index: number`
-
-                The index of the annotation in the text content part.
-
-              - `type: "file_path"`
-
-                Always `file_path`.
-
-                - `"file_path"`
-
-              - `end_index: optional number`
-
-              - `file_path: optional object { file_id }`
-
-                - `file_id: optional string`
-
-                  The ID of the file that was generated.
-
-              - `start_index: optional number`
-
-              - `text: optional string`
-
-                The text in the message content that needs to be replaced.
-
-          - `value: optional string`
-
-            The data that makes up the text.
-
-      - `RefusalDeltaBlock object { index, type, refusal }`
-
-        The refusal content that is part of a message.
-
-        - `index: number`
-
-          The index of the refusal part in the message.
-
-        - `type: "refusal"`
-
-          Always `refusal`.
-
-          - `"refusal"`
-
-        - `refusal: optional string`
-
-      - `ImageURLDeltaBlock object { index, type, image_url }`
-
-        References an image URL in the content of a message.
-
-        - `index: number`
-
-          The index of the content part in the message.
-
-        - `type: "image_url"`
-
-          Always `image_url`.
-
-          - `"image_url"`
-
-        - `image_url: optional ImageURLDelta`
-
-          - `detail: optional "auto" or "low" or "high"`
-
-            Specifies the detail level of the image. `low` uses fewer tokens, you can opt in to high resolution using `high`.
-
-            - `"auto"`
-
-            - `"low"`
-
-            - `"high"`
-
-          - `url: optional string`
-
-            The URL of the image, must be a supported image types: jpeg, jpg, png, gif, webp.
-
-    - `role: optional "user" or "assistant"`
-
-      The entity that produced the message. One of `user` or `assistant`.
-
-      - `"user"`
-
-      - `"assistant"`
-
-  - `object: "thread.message.delta"`
-
-    The object type, which is always `thread.message.delta`.
-
-    - `"thread.message.delta"`
-
-### Refusal Content Block
-
-- `RefusalContentBlock object { refusal, type }`
-
-  The refusal content generated by the assistant.
-
-  - `refusal: string`
-
-  - `type: "refusal"`
-
-    Always `refusal`.
-
-    - `"refusal"`
-
-### Refusal Delta Block
-
-- `RefusalDeltaBlock object { index, type, refusal }`
-
-  The refusal content that is part of a message.
-
-  - `index: number`
-
-    The index of the refusal part in the message.
-
-  - `type: "refusal"`
-
-    Always `refusal`.
-
-    - `"refusal"`
-
-  - `refusal: optional string`
-
-### Text
-
-- `Text object { annotations, value }`
-
-  - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
-
-    - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
-
-      A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-      - `end_index: number`
-
-      - `file_citation: object { file_id }`
-
-        - `file_id: string`
-
-          The ID of the specific File the citation is from.
-
-      - `start_index: number`
-
-      - `text: string`
-
-        The text in the message content that needs to be replaced.
-
-      - `type: "file_citation"`
-
-        Always `file_citation`.
-
-        - `"file_citation"`
-
-    - `FilePathAnnotation object { end_index, file_path, start_index, 2 more }`
-
-      A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-      - `end_index: number`
-
-      - `file_path: object { file_id }`
-
-        - `file_id: string`
-
-          The ID of the file that was generated.
-
-      - `start_index: number`
-
-      - `text: string`
-
-        The text in the message content that needs to be replaced.
-
-      - `type: "file_path"`
-
-        Always `file_path`.
-
-        - `"file_path"`
-
-  - `value: string`
-
-    The data that makes up the text.
-
-### Text Content Block
-
-- `TextContentBlock object { text, type }`
-
-  The text content that is part of a message.
-
-  - `text: Text`
-
-    - `annotations: array of FileCitationAnnotation or FilePathAnnotation`
-
-      - `FileCitationAnnotation object { end_index, file_citation, start_index, 2 more }`
-
-        A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-        - `end_index: number`
-
-        - `file_citation: object { file_id }`
-
-          - `file_id: string`
-
-            The ID of the specific File the citation is from.
-
-        - `start_index: number`
-
-        - `text: string`
-
-          The text in the message content that needs to be replaced.
-
-        - `type: "file_citation"`
-
-          Always `file_citation`.
-
-          - `"file_citation"`
-
-      - `FilePathAnnotation object { end_index, file_path, start_index, 2 more }`
-
-        A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-        - `end_index: number`
-
-        - `file_path: object { file_id }`
-
-          - `file_id: string`
-
-            The ID of the file that was generated.
-
-        - `start_index: number`
-
-        - `text: string`
-
-          The text in the message content that needs to be replaced.
-
-        - `type: "file_path"`
-
-          Always `file_path`.
-
-          - `"file_path"`
-
-    - `value: string`
-
-      The data that makes up the text.
-
-  - `type: "text"`
-
-    Always `text`.
-
-    - `"text"`
-
-### Text Content Block Param
-
-- `TextContentBlockParam object { text, type }`
-
-  The text content that is part of a message.
-
-  - `text: string`
-
-    Text content to be sent to the model
-
-  - `type: "text"`
-
-    Always `text`.
-
-    - `"text"`
-
-### Text Delta
-
-- `TextDelta object { annotations, value }`
-
-  - `annotations: optional array of FileCitationDeltaAnnotation or FilePathDeltaAnnotation`
-
-    - `FileCitationDeltaAnnotation object { index, type, end_index, 3 more }`
-
-      A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-      - `index: number`
-
-        The index of the annotation in the text content part.
-
-      - `type: "file_citation"`
-
-        Always `file_citation`.
-
-        - `"file_citation"`
-
-      - `end_index: optional number`
-
-      - `file_citation: optional object { file_id, quote }`
-
-        - `file_id: optional string`
-
-          The ID of the specific File the citation is from.
-
-        - `quote: optional string`
-
-          The specific quote in the file.
-
-      - `start_index: optional number`
-
-      - `text: optional string`
-
-        The text in the message content that needs to be replaced.
-
-    - `FilePathDeltaAnnotation object { index, type, end_index, 3 more }`
-
-      A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-      - `index: number`
-
-        The index of the annotation in the text content part.
-
-      - `type: "file_path"`
-
-        Always `file_path`.
-
-        - `"file_path"`
-
-      - `end_index: optional number`
-
-      - `file_path: optional object { file_id }`
-
-        - `file_id: optional string`
-
-          The ID of the file that was generated.
-
-      - `start_index: optional number`
-
-      - `text: optional string`
-
-        The text in the message content that needs to be replaced.
-
-  - `value: optional string`
-
-    The data that makes up the text.
-
-### Text Delta Block
-
-- `TextDeltaBlock object { index, type, text }`
-
-  The text content that is part of a message.
-
-  - `index: number`
-
-    The index of the content part in the message.
-
-  - `type: "text"`
-
-    Always `text`.
-
-    - `"text"`
-
-  - `text: optional TextDelta`
-
-    - `annotations: optional array of FileCitationDeltaAnnotation or FilePathDeltaAnnotation`
-
-      - `FileCitationDeltaAnnotation object { index, type, end_index, 3 more }`
-
-        A citation within the message that points to a specific quote from a specific File associated with the assistant or the message. Generated when the assistant uses the "file_search" tool to search files.
-
-        - `index: number`
-
-          The index of the annotation in the text content part.
-
-        - `type: "file_citation"`
-
-          Always `file_citation`.
-
-          - `"file_citation"`
-
-        - `end_index: optional number`
-
-        - `file_citation: optional object { file_id, quote }`
-
-          - `file_id: optional string`
-
-            The ID of the specific File the citation is from.
-
-          - `quote: optional string`
-
-            The specific quote in the file.
-
-        - `start_index: optional number`
-
-        - `text: optional string`
-
-          The text in the message content that needs to be replaced.
-
-      - `FilePathDeltaAnnotation object { index, type, end_index, 3 more }`
-
-        A URL for the file that's generated when the assistant used the `code_interpreter` tool to generate a file.
-
-        - `index: number`
-
-          The index of the annotation in the text content part.
-
-        - `type: "file_path"`
-
-          Always `file_path`.
-
-          - `"file_path"`
-
-        - `end_index: optional number`
-
-        - `file_path: optional object { file_id }`
-
-          - `file_id: optional string`
-
-            The ID of the file that was generated.
-
-        - `start_index: optional number`
-
-        - `text: optional string`
-
-          The text in the message content that needs to be replaced.
-
-    - `value: optional string`
-
-      The data that makes up the text.
