@@ -113,8 +113,9 @@ Alternatively, you can write the SLO definition from scratch using the Terraform
 
 ```none
 resource "grafana_slo" "ratio" {
-  name        = "HTTP Requests Kubelet Success Rate Indicator"
-  description = "99.5% of  Kubelet HTTP Requests are not 5xx errors"
+  name              = "HTTP Requests Kubelet Success Rate Indicator"
+  description       = "99.5% of  Kubelet HTTP Requests are not 5xx errors"
+  search_expression = "kubelet connected services"
   query {
     ratio {
       success_metric  = "kubelet_http_requests_total{status!~\"5..\"}"
@@ -165,6 +166,17 @@ resource "grafana_slo" "ratio" {
 ```
 
 For details about the SLO schema fields, formats, and requirements, refer to the [Grafana SLO documentation](https://registry.terraform.io/providers/grafana/grafana/latest/docs/resources/slo) in the Terraform Registry.
+
+#### Link the SLO to RCA workbench entities
+
+The optional `search_expression` attribute holds a Knowledge Graph search expression, which scopes the SLO to a set of entities. When you set it:
+
+- An **Open RCA workbench** link appears on the **Manage SLOs** page and the SLO performance page, already scoped to the matching entities.
+- The generated burn-rate alert rules carry a `workbench_troubleshoot_url` annotation that opens the same view.
+
+Use an expression that matches entities in your Knowledge Graph, such as `kubelet connected services` or `Show all Services`. For the expression syntax, refer to [use predefined searches](/docs/grafana-cloud/platform/knowledge-graph/troubleshoot-infra-apps/explore-entity-graph/#use-predefined-searches).
+
+The attribute must be non-empty if you set it. Omit it entirely to leave the SLO unscoped. It requires version 3.10.0 or later of the Grafana Terraform provider.
 
 ## Provision SLO resources with Terraform
 

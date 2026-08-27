@@ -23,7 +23,7 @@ the Gemini model to use Google Maps data.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         input="What are the best Italian restaurants within a 15-minute walk from here?",
         tools=[{
             "type": "google_maps",
@@ -53,7 +53,7 @@ the Gemini model to use Google Maps data.
 
     async function main() {
       const interaction = await ai.interactions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.7-flash",
         input: "What are the best Italian restaurants within a 15-minute walk from here?",
         tools: [{
           type: "google_maps",
@@ -84,6 +84,31 @@ the Gemini model to use Google Maps data.
 
     main();
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.GoogleMaps;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Find the best coffee shops near Central Park."))
+            .tools(Arrays.asList(new GoogleMaps()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     # Specifies the API revision to avoid breaking changes when they become default
@@ -91,7 +116,7 @@ the Gemini model to use Google Maps data.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.6-flash",
+        "model": "gemini-3.7-flash",
         "input": "What are the best Italian restaurants within a 15-minute walk from here?",
         "tools": [{
           "type": "google_maps",
@@ -151,7 +176,7 @@ user reviews and other Maps data.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         input="Is there a cafe near the corner of 1st and Main that has outdoor seating?",
         tools=[{
             "type": "google_maps",
@@ -180,7 +205,7 @@ user reviews and other Maps data.
 
     async function main() {
       const interaction = await ai.interactions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.7-flash",
         input: "Is there a cafe near the corner of 1st and Main that has outdoor seating?",
         tools: [{
           type: "google_maps",
@@ -210,6 +235,31 @@ user reviews and other Maps data.
 
     main();
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.GoogleMaps;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Find the best coffee shops near Central Park."))
+            .tools(Arrays.asList(new GoogleMaps()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### Providing location-based personalization
 
 Get recommendations tailored to a user's preferences and a specific geographical
@@ -223,7 +273,7 @@ area.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         input="Which family-friendly restaurants near here have the best playground reviews?",
         tools=[{
             "type": "google_maps",
@@ -252,7 +302,7 @@ area.
 
     async function main() {
       const interaction = await ai.interactions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.7-flash",
         input: "Which family-friendly restaurants near here have the best playground reviews?",
         tools: [{
           type: "google_maps",
@@ -282,6 +332,31 @@ area.
 
     main();
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.GoogleMaps;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Find the best coffee shops near Central Park."))
+            .tools(Arrays.asList(new GoogleMaps()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### Assisting with itinerary planning
 
 Generate multi-day plans with directions and information about various
@@ -297,7 +372,7 @@ locations, perfect for travel applications.
     prompt = "Plan a day in San Francisco for me. I want to see the Golden Gate Bridge, visit a museum, and have a nice dinner."
 
     interaction = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         input=prompt,
         tools=[{
             "type": "google_maps",
@@ -316,7 +391,7 @@ locations, perfect for travel applications.
 
     async function main() {
       const interaction = await ai.interactions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.7-flash",
         input: "Plan a day in San Francisco for me. I want to see the Golden Gate Bridge, visit a museum, and have a nice dinner.",
         tools: [{
           type: "google_maps",
@@ -328,6 +403,31 @@ locations, perfect for travel applications.
 
     main();
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.GoogleMaps;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Find the best coffee shops near Central Park."))
+            .tools(Arrays.asList(new GoogleMaps()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     # Specifies the API revision to avoid breaking changes when they become default
@@ -335,7 +435,7 @@ locations, perfect for travel applications.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.6-flash",
+        "model": "gemini-3.7-flash",
         "input": "Plan a day in San Francisco for me. I want to see the Golden Gate Bridge, visit a museum, and have a nice dinner.",
         "tools": [{
           "type": "google_maps",

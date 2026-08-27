@@ -16,6 +16,15 @@ Input & Output Logging lets you privately save and review the full content of yo
 
 Navigate to your [**Observability**](https://openrouter.ai/workspaces/default/observability) settings and toggle **Input & Output Logging** to enable it. For organizations, only admins can view and toggle this setting.
 
+## Filtering by API Key
+
+By default, Input & Output Logging applies to requests from all of your API keys. In the **API Keys Filter** section of your Observability settings, you can narrow this down:
+
+* **Included API Keys**: only log requests made with these keys. If no keys are selected, all API keys are included.
+* **Excluded API Keys**: never log requests made with these keys. Exclusions take precedence over included keys.
+
+For organizations, admins can lock these filters so members cannot modify them.
+
 ## Viewing Stored Prompts
 
 Once Input & Output Logging is enabled, you can view your stored prompts and completions from the [Logs](https://openrouter.ai/logs) page:

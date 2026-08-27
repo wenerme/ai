@@ -511,6 +511,7 @@ Depending on your installation type, slightly different components can be skippe
 - `packages` (Package registry)
 - `ci_secure_files` (Project-level Secure Files)
 - `agent_plan_content` (Agent plan content for work items)
+- `ci_catalog_bundles` (CI catalog component bundles)
 - `external_diffs` (Merge request diffs)
 
 ### Linux package (Omnibus)
@@ -719,7 +720,7 @@ sudo -u git -H bundle exec rake gitlab:backup:create REPOSITORIES_PATHS=group-a,
 ### Helm chart (Kubernetes)
 
 ```shell
-REPOSITORIES_PATHS=group-a SKIP_REPOSITORIES_PATHS=group-a/project_a2 backup-utility --skip db,registry,uploads,artifacts,lfs,packages,external_diffs,terraform_state,ci_secure_files,agent_plan_content,pages
+REPOSITORIES_PATHS=group-a SKIP_REPOSITORIES_PATHS=group-a/project_a2 backup-utility --skip db,registry,uploads,artifacts,lfs,packages,external_diffs,terraform_state,ci_secure_files,agent_plan_content,ci_catalog_bundles,pages
 ```
 
 #### Upload backups to a remote (cloud) storage

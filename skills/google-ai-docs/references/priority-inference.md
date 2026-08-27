@@ -26,7 +26,7 @@ To use the Priority tier, set the `service_tier` field in your request to `prior
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         input="Triage this critical customer support ticket immediately.",
         service_tier='priority'
     )
@@ -40,7 +40,7 @@ To use the Priority tier, set the `service_tier` field in your request to `prior
 
     async function main() {
         const interaction = await ai.interactions.create({
-            model: "gemini-3.6-flash",
+            model: "gemini-3.7-flash",
             input: "Triage this critical customer support ticket immediately.",
             service_tier: "priority"
         });
@@ -49,13 +49,37 @@ To use the Priority tier, set the `service_tier` field in your request to `prior
 
     await main();
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ServiceTier;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Perform a priority inference task."))
+            .serviceTier(ServiceTier.PRIORITY)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "Content-Type: application/json" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -d '{
-        "model": "gemini-3.6-flash",
+        "model": "gemini-3.7-flash",
         "input": "Triage this critical customer support ticket immediately.",
         "service_tier": "priority"
       }'

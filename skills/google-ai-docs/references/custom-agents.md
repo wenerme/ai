@@ -20,7 +20,7 @@ Here is an example of passing all three inline:
     interaction = client.interactions.create(
         agent="antigravity-preview-05-2026",
         input="Analyze the Q1 revenue data and create a slide deck.",
-        system_instruction="You are a data analyst. Always include visualizations and export results as PDF.",        
+        system_instruction="You are a data analyst. Always include visualizations and export results as PDF.",
         environment={
             "type": "remote",
             "sources": [
@@ -49,7 +49,7 @@ Here is an example of passing all three inline:
     const interaction = await client.interactions.create({
         agent: "antigravity-preview-05-2026",
         input: "Analyze the Q1 revenue data and create a slide deck.",
-        system_instruction: "You are a data analyst. Always include visualizations and export results as PDF.",        
+        system_instruction: "You are a data analyst. Always include visualizations and export results as PDF.",
         environment: {
             type: "remote",
             sources: [
@@ -68,6 +68,28 @@ Here is an example of passing all three inline:
     }, { timeout: 300000 });
 
     console.log(interaction.output_text);
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("antigravity-preview-05-2026"))
+            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 
@@ -178,6 +200,28 @@ Mount an `AGENTS.md` using an inline source:
 
     console.log(interaction.output_text);
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("antigravity-preview-05-2026"))
+            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -258,6 +302,28 @@ Mount a skill using an inline source:
     }, { timeout: 300000 });
 
     console.log(interaction.output_text);
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("antigravity-preview-05-2026"))
+            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 
@@ -368,6 +434,28 @@ Specify `base_agent`, `id`, `agent_config`, `system_instruction` and `base_envir
 
     console.log(`Created agent: ${agent.id}`);
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("antigravity-preview-05-2026"))
+            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/agents" \
@@ -451,6 +539,28 @@ Iterate with the base Antigravity agent until the environment is right (packages
     });
 
     console.log(`Forked agent successfully: ${agent.id}`);
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("antigravity-preview-05-2026"))
+            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 
@@ -539,6 +649,28 @@ The following example creates an `issue-resolver` agent that can only access Git
 
     console.log(`Created issue-resolver agent successfully: ${agent.id}`);
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("antigravity-preview-05-2026"))
+            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/agents" \
@@ -595,6 +727,28 @@ Call your managed agent with your agent ID by creating a new interaction. Each i
 
     console.log(result.output_text);
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("antigravity-preview-05-2026"))
+            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -641,6 +795,28 @@ specific run without changing the stored agent definition.
     }, { timeout: 300000 });
 
     console.log(result.output_text);
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("antigravity-preview-05-2026"))
+            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 
@@ -711,6 +887,28 @@ environment's sources (files, repositories) are preserved.
 
     console.log(result.output_text);
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("antigravity-preview-05-2026"))
+            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -756,6 +954,28 @@ You can list, get, and delete agents.
         }
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("antigravity-preview-05-2026"))
+            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     curl -X GET "https://generativelanguage.googleapis.com/v1beta/agents" \
@@ -773,6 +993,28 @@ You can list, get, and delete agents.
     const agent = await client.agents.get("data-analyst");
     console.log(agent);
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("antigravity-preview-05-2026"))
+            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     curl -X GET "https://generativelanguage.googleapis.com/v1beta/agents/data-analyst" \
@@ -789,6 +1031,28 @@ Deleting removes the configuration. Existing environments and interactions creat
 ### JavaScript
 
     await client.agents.delete("data-analyst");
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("antigravity-preview-05-2026"))
+            .input(InteractionsInput.of("Build a simple REST API server in Node.js."))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 

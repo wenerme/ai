@@ -8,10 +8,17 @@
 
 export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
+<Badge color="blue">Beta</Badge>
+
 <Note>
   **Beta**
 
   Server tools are currently in beta. The API and behavior may change.
+
+  Sandboxed execution (`engine: "openrouter"`) is available on the global
+  endpoint (`openrouter.ai`) only. Requests through the
+  [in-region endpoints](/docs/guides/privacy/provider-logging#enterprise-in-region-routing)
+  (`eu.openrouter.ai`, `us.openrouter.ai`) are rejected.
 </Note>
 
 The `openrouter:bash` server tool gives a model the ability to run shell
@@ -25,8 +32,13 @@ returns the combined output and exit code.
   **Messages API only**
 
   `openrouter:bash` is only available on the Anthropic Messages API. Requesting
-  it on the Chat Completions or Responses API returns a `400` error. On those
-  APIs, use a client-side function tool instead.
+  it on the Chat Completions or Responses API returns a `400` error.
+
+  For **sandboxed** commands on those APIs, use
+  [Shell](/docs/guides/features/server-tools/shell), which runs server-side in the same
+  container infrastructure and is available on the Responses API. For
+  **client-side** execution, send a normal function tool and run the command
+  yourself.
 </Note>
 
 ## How It Works
@@ -43,7 +55,8 @@ returns the combined output and exit code.
 
 Server-side execution is opt-in: set `engine: "openrouter"` on the tool (see
 [Execution engine](#execution-engine)). With the default `engine` (`auto`), the
-tool call is returned to your application to run client-side instead.
+tool is a local, human-in-the-loop tool instead: the call is returned to your
+application to run client-side, and nothing executes on OpenRouter's servers.
 
 ## Quick Start
 
@@ -146,10 +159,47 @@ environment:
 }
 ```
 
-| Parameter     | Type   | Default          | Description                                                                                                                                                                                                            |
-| ------------- | ------ | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `environment` | object | `container_auto` | Execution environment. Use `{ "type": "container_auto" }` for an OpenRouter-managed container, or `{ "type": "container_reference", "container_id": "..." }` to reuse an existing container                            |
-| `engine`      | string | `auto`           | Where commands run: `openrouter` runs them server-side in the OpenRouter sandbox; `auto`/`native` (the default) return the tool call to your application to run client-side. See [Execution engine](#execution-engine) |
+| Parameter     | Type   | Default          | Description                                                                                                                                                                                                                                             |
+| ------------- | ------ | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `environment` | object | `container_auto` | Execution environment. Use `{ "type": "container_auto" }` for an OpenRouter-managed container, or `{ "type": "container_reference", "container_id": "..." }` to reuse an existing container. See [Containers](/docs/guides/features/server-tools/containers) |
+| `engine`      | string | `auto`           | Where commands run: `openrouter` runs them server-side in the OpenRouter sandbox; `auto`/`native` (the default) return the tool call to your application to run client-side. See [Execution engine](#execution-engine)                                  |
+
+### Network Policy
+
+When commands run in the OpenRouter sandbox (`engine: "openrouter"`), containers have **no outbound internet access by default**. The container configuration objects accept a `network_policy` field:
+
+```json lines theme={null}
+{
+  "type": "openrouter:bash",
+  "parameters": {
+    "engine": "openrouter",
+    "environment": {
+      "type": "container_auto",
+      "network_policy": {
+        "type": "allowlist",
+        "allowed_domains": ["pypi.org", "files.pythonhosted.org"]
+      }
+    }
+  }
+}
+```
+
+| Policy                                              | Behavior                                                                                                   |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `{ "type": "disabled" }`                            | No outbound internet access                                                                                |
+| `{ "type": "allowlist", "allowed_domains": [...] }` | Outbound access restricted to hosts matching the listed hostnames or glob patterns (max 50)                |
+| omitted                                             | Defaults to `disabled` — no outbound internet access. For unrestricted egress, use an allowlist of `["*"]` |
+
+The policy is **fixed when a container starts**: sending a different `network_policy` to a warm container fails the request with a `409`. Do not try to change a running container's policy — send the same policy for the container's lifetime.
+
+Platform constraints for allowlisted traffic:
+
+* Only ports 80 and 443 are reachable.
+* DNS resolution is provided by the platform and cannot be overridden by container configuration.
+* Entries are lowercase hostnames or glob patterns — no schemes, paths, or ports. `*` matches any run of characters (`*.example.com`, `google.*.com`). An exact hostname does not cover its subdomains: `example.com` does not allow `api.example.com`; use `*.example.com` or list each hostname.
+* `pip install` needs both `pypi.org` and `files.pythonhosted.org` (or `*.pythonhosted.org`) in the allowlist.
+
+Requests to hosts outside the policy fail inside the container with a connection error (HTTP traffic sees a `520` status), which the model can read on `stderr` and react to.
 
 ### Call Arguments
 
@@ -200,20 +250,25 @@ session. When the model emits `{ "restart": true }`, OpenRouter provisions a
 fresh sandbox container, so commands run after a restart start from a clean
 state. The reset applies for the remainder of the current agentic turn. To keep
 a container alive across separate API requests in a conversation, send a stable
-`session_id` on each request — the sandbox is keyed by it.
+`session_id` on each request; the sandbox is keyed by it.
 
 ## Execution engine
 
 The `engine` parameter controls where commands run:
 
-* `openrouter` — run commands server-side in the OpenRouter sandbox.
-* `auto` (default) / `native` — native passthrough: the tool call is returned to
-  your application to run client-side, and OpenRouter does not execute the
-  commands. The native `bash_20250124` tool always uses this behavior, since it
+* `openrouter`: run commands server-side in the OpenRouter sandbox.
+* `auto` (default) / `native`: local, human-in-the-loop execution. The tool
+  call is returned to your application, which runs the commands itself and
+  sends the results back on the next request — no commands are executed on any
+  server. The native `bash_20250124` tool always uses this behavior, since it
   has no `engine` field.
 
 This lets you opt into OpenRouter's sandboxed execution with `openrouter`, while
-the default leaves command execution to your own application.
+the default leaves command execution entirely to your own application.
+
+`engine` selects where commands run, not which APIs accept the tool: every
+engine, `openrouter` included, is Messages-API-only. For sandboxed commands on
+the Responses API, use [Shell](/docs/guides/features/server-tools/shell).
 
 ## Response Format
 
@@ -235,7 +290,7 @@ returned on `stderr` so the model can read and react to it.
 
 Running shell commands is powerful and is sandboxed by design:
 
-* Commands execute in an isolated container — not on OpenRouter
+* Commands execute in an isolated container, not on OpenRouter
   infrastructure or your machine. With `container_auto` the container is
   ephemeral; with `container_reference` it persists across requests.
 * Containers are scoped per account, so they are never shared across tenants.
@@ -246,9 +301,11 @@ Running shell commands is powerful and is sandboxed by design:
 
 ## Next Steps
 
-* [Server Tools Overview](/docs/guides/features/server-tools) — Learn about
+* [Server Tools Overview](/docs/guides/features/server-tools). Learn about
   server tools
-* [Web Fetch](/docs/guides/features/server-tools/web-fetch) — Fetch content
+* [Containers](/docs/guides/features/server-tools/containers). How sandbox
+  containers work
+* [Web Fetch](/docs/guides/features/server-tools/web-fetch). Fetch content
   from URLs
-* [Tool Calling](/docs/guides/features/tool-calling) — Learn about user-defined
+* [Tool Calling](/docs/guides/features/tool-calling). Learn about user-defined
   tool calling

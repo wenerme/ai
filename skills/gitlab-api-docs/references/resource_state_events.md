@@ -1,5 +1,7 @@
 # Resource state events API
 
+REST API to retrieve state change events for issues, merge requests, and epics.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

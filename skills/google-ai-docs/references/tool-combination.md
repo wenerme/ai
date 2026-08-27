@@ -37,7 +37,7 @@ Here's an example that enables built-in and custom tool combinations with
     # The Interactions API manages context automatically across tool calls.
     # The model will first use Google Search, then call getWeather.
     interaction = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         input="What is the northernmost city in the United States? What's the weather like there today?",
         tools=[
             {"type": "google_search"},
@@ -78,7 +78,7 @@ Here's an example that enables built-in and custom tool combinations with
     // The Interactions API manages context automatically across tool calls.
     // The model will first use Google Search, then call getWeather.
     const interaction = await client.interactions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.7-flash",
         input: "What is the northernmost city in the United States? What's the weather like there today?",
         tools: [
             { type: "google_search" },
@@ -95,6 +95,44 @@ Here's an example that enables built-in and custom tool combinations with
         }
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.GoogleSearch;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+    import java.util.HashMap;
+    import java.util.Map;
+
+    Client client = new Client();
+
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+
+    Function customFunc =
+        Function.builder()
+            .name("get_user_location")
+            .description("Retrieves user current location.")
+            .parameters(parameters)
+            .build();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("What is the weather like where I am right now?"))
+            .tools(Arrays.asList(customFunc, new GoogleSearch()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     # Specifies the API revision to avoid breaking changes when they become default
@@ -102,7 +140,7 @@ Here's an example that enables built-in and custom tool combinations with
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
-      "model": "gemini-3.6-flash",
+      "model": "gemini-3.7-flash",
       "input": "What is the northernmost city in the United States? What'\''s the weather like there today?",
       "tools": [
         { "type": "google_search" },

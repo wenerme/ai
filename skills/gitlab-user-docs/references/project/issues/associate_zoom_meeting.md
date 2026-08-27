@@ -3,7 +3,7 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-To communicate synchronously for incidents management,
+To communicate synchronously for incident management,
 you can associate a Zoom meeting with an issue.
 After you start a Zoom call for a fire-fight, you need a way to
 associate the conference call with an issue. This is so that your

@@ -7,7 +7,7 @@ When creating an Interaction, you can set `stream: true` to incrementally stream
     client = genai.Client()
 
     stream = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         input="Count from 1 to 25.",
         stream=True,
     )
@@ -23,7 +23,7 @@ When creating an Interaction, you can set `stream: true` to incrementally stream
     const client = new GoogleGenAI({});
 
     const stream = await client.interactions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.7-flash",
         input: "Count from 1 to 25.",
         stream: true,
     });
@@ -35,6 +35,45 @@ When creating an Interaction, you can set `stream: true` to incrementally stream
         }
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.InteractionSSEEvent;
+    import com.google.genai.gaos.models.interactions.InteractionSSEStreamEvent;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.StepDelta;
+    import com.google.genai.gaos.models.interactions.StepDeltaData;
+    import com.google.genai.gaos.models.interactions.TextDelta;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.CreateInteractionResponse;
+    import com.google.genai.gaos.utils.EventStream;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Count from 1 to 25."))
+            .stream(true)
+            .build();
+
+    CreateInteractionResponse response =
+        client.interactions.create(CreateInteractionRequestBody.of(params));
+
+    try (EventStream<InteractionSSEStreamEvent> events = response.events()) {
+      for (InteractionSSEStreamEvent streamEvent : events) {
+        InteractionSSEEvent event = streamEvent.data().orElse(null);
+        if (event instanceof StepDelta) {
+          StepDeltaData data = ((StepDelta) event).delta().orElse(null);
+          if (data instanceof TextDelta) {
+            ((TextDelta) data).text().ifPresent(System.out::print);
+          }
+        }
+      }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -42,7 +81,7 @@ When creating an Interaction, you can set `stream: true` to incrementally stream
       -H "Content-Type: application/json" \
       --no-buffer \
       -d '{
-        "model": "gemini-3.6-flash",
+        "model": "gemini-3.7-flash",
         "input": "Count from 1 to 25.",
         "stream": true
       }'
@@ -236,7 +275,7 @@ conversation:
 
     # Turn 1: Request function call
     stream = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         tools=[weather_tool],
         input="What is the weather in Paris right now?",
         stream=True,
@@ -267,7 +306,7 @@ conversation:
         }
 
         stream2 = client.interactions.create(
-            model="gemini-3.6-flash",
+            model="gemini-3.7-flash",
             previous_interaction_id=first_interaction_id,
             input=[{
                 "type": "function_result",
@@ -307,7 +346,7 @@ conversation:
 
     // Turn 1: Request function call
     const stream = await client.interactions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.7-flash",
         tools: [weatherTool],
         input: "What is the weather in Paris right now?",
         stream: true,
@@ -341,7 +380,7 @@ conversation:
         };
 
         const stream2 = await client.interactions.create({
-            model: "gemini-3.6-flash",
+            model: "gemini-3.7-flash",
             previous_interaction_id: firstInteractionId,
             input: [{
                 type: "function_result",
@@ -361,6 +400,45 @@ conversation:
         }
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.InteractionSSEEvent;
+    import com.google.genai.gaos.models.interactions.InteractionSSEStreamEvent;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.StepDelta;
+    import com.google.genai.gaos.models.interactions.StepDeltaData;
+    import com.google.genai.gaos.models.interactions.TextDelta;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.CreateInteractionResponse;
+    import com.google.genai.gaos.utils.EventStream;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Count from 1 to 25."))
+            .stream(true)
+            .build();
+
+    CreateInteractionResponse response =
+        client.interactions.create(CreateInteractionRequestBody.of(params));
+
+    try (EventStream<InteractionSSEStreamEvent> events = response.events()) {
+      for (InteractionSSEStreamEvent streamEvent : events) {
+        InteractionSSEEvent event = streamEvent.data().orElse(null);
+        if (event instanceof StepDelta) {
+          StepDeltaData data = ((StepDelta) event).delta().orElse(null);
+          if (data instanceof TextDelta) {
+            ((TextDelta) data).text().ifPresent(System.out::print);
+          }
+        }
+      }
+    }
+
 ### REST
 
 **Turn 1:** Request function call
@@ -370,7 +448,7 @@ conversation:
       -H "Content-Type: application/json" \
       --no-buffer \
       -d '{
-        "model": "gemini-3.6-flash",
+        "model": "gemini-3.7-flash",
         "input": "What is the weather in Paris right now?",
         "stream": true,
         "tools": [
@@ -399,7 +477,7 @@ conversation:
       -H "Content-Type: application/json" \
       --no-buffer \
       -d '{
-        "model": "gemini-3.6-flash",
+        "model": "gemini-3.7-flash",
         "previous_interaction_id": "v1_ChdGUVFJYXBXVUdLVEF4TjhQ...",
         "stream": true,
         "input": [
@@ -449,7 +527,7 @@ The following example uses both a `function` tool and `google_search` in one req
     ]
 
     stream = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         tools=tools,
         input="Search what is the largest mountain in Europe and what the weather is there right now?",
         stream=True,
@@ -503,7 +581,7 @@ The following example uses both a `function` tool and `google_search` in one req
     ];
 
     const stream = await client.interactions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.7-flash",
         tools: tools,
         input: "Search what is the largest mountain in Europe and what the weather is there right now?",
         stream: true,
@@ -536,6 +614,45 @@ The following example uses both a `function` tool and `google_search` in one req
         }
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.InteractionSSEEvent;
+    import com.google.genai.gaos.models.interactions.InteractionSSEStreamEvent;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.StepDelta;
+    import com.google.genai.gaos.models.interactions.StepDeltaData;
+    import com.google.genai.gaos.models.interactions.TextDelta;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.CreateInteractionResponse;
+    import com.google.genai.gaos.utils.EventStream;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Count from 1 to 25."))
+            .stream(true)
+            .build();
+
+    CreateInteractionResponse response =
+        client.interactions.create(CreateInteractionRequestBody.of(params));
+
+    try (EventStream<InteractionSSEStreamEvent> events = response.events()) {
+      for (InteractionSSEStreamEvent streamEvent : events) {
+        InteractionSSEEvent event = streamEvent.data().orElse(null);
+        if (event instanceof StepDelta) {
+          StepDeltaData data = ((StepDelta) event).delta().orElse(null);
+          if (data instanceof TextDelta) {
+            ((TextDelta) data).text().ifPresent(System.out::print);
+          }
+        }
+      }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -543,7 +660,7 @@ The following example uses both a `function` tool and `google_search` in one req
       -H "Content-Type: application/json" \
       --no-buffer \
       -d '{
-        "model": "gemini-3.6-flash",
+        "model": "gemini-3.7-flash",
         "input": "Search what is the largest mountain in Europe and what the weather is there right now?",
         "stream": true,
         "tools": [
@@ -625,7 +742,7 @@ When the model uses thinking, you'll receive `thought` steps with two distinct d
     client = genai.Client()
 
     stream = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         input="What is the greatest common divisor of 1071 and 462?",
         generation_config={
             "thinking_summaries": "auto"
@@ -649,7 +766,7 @@ When the model uses thinking, you'll receive `thought` steps with two distinct d
     const client = new GoogleGenAI({});
 
     const stream = await client.interactions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.7-flash",
         input: "What is the greatest common divisor of 1071 and 462?",
         generation_config: {
             thinking_summaries: "auto",
@@ -670,6 +787,45 @@ When the model uses thinking, you'll receive `thought` steps with two distinct d
         }
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.InteractionSSEEvent;
+    import com.google.genai.gaos.models.interactions.InteractionSSEStreamEvent;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.StepDelta;
+    import com.google.genai.gaos.models.interactions.StepDeltaData;
+    import com.google.genai.gaos.models.interactions.TextDelta;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.CreateInteractionResponse;
+    import com.google.genai.gaos.utils.EventStream;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Count from 1 to 25."))
+            .stream(true)
+            .build();
+
+    CreateInteractionResponse response =
+        client.interactions.create(CreateInteractionRequestBody.of(params));
+
+    try (EventStream<InteractionSSEStreamEvent> events = response.events()) {
+      for (InteractionSSEStreamEvent streamEvent : events) {
+        InteractionSSEEvent event = streamEvent.data().orElse(null);
+        if (event instanceof StepDelta) {
+          StepDeltaData data = ((StepDelta) event).delta().orElse(null);
+          if (data instanceof TextDelta) {
+            ((TextDelta) data).text().ifPresent(System.out::print);
+          }
+        }
+      }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -677,7 +833,7 @@ When the model uses thinking, you'll receive `thought` steps with two distinct d
       -H "Content-Type: application/json" \
       --no-buffer \
       -d '{
-        "model": "gemini-3.6-flash",
+        "model": "gemini-3.7-flash",
         "input": "What is the greatest common divisor of 1071 and 462?",
         "stream": true,
         "generation_config": {
@@ -770,6 +926,45 @@ The Interactions API supports agents like Deep Research. Agents use `background=
         } else if (event.event_type === "interaction.completed") {
             console.log(`\n\nTotal Tokens: ${event.interaction.usage.total_tokens}`);
         }
+    }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.InteractionSSEEvent;
+    import com.google.genai.gaos.models.interactions.InteractionSSEStreamEvent;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.StepDelta;
+    import com.google.genai.gaos.models.interactions.StepDeltaData;
+    import com.google.genai.gaos.models.interactions.TextDelta;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.CreateInteractionResponse;
+    import com.google.genai.gaos.utils.EventStream;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Count from 1 to 25."))
+            .stream(true)
+            .build();
+
+    CreateInteractionResponse response =
+        client.interactions.create(CreateInteractionRequestBody.of(params));
+
+    try (EventStream<InteractionSSEStreamEvent> events = response.events()) {
+      for (InteractionSSEStreamEvent streamEvent : events) {
+        InteractionSSEEvent event = streamEvent.data().orElse(null);
+        if (event instanceof StepDelta) {
+          StepDeltaData data = ((StepDelta) event).delta().orElse(null);
+          if (data instanceof TextDelta) {
+            ((TextDelta) data).text().ifPresent(System.out::print);
+          }
+        }
+      }
     }
 
 ### REST
@@ -876,6 +1071,45 @@ The following example uses `gemini-3.1-flash-image` (Nano Banana 2) to search fo
                 console.log(`\n[Image chunk: ${event.delta.data.length} bytes]`);
             }
         }
+    }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.InteractionSSEEvent;
+    import com.google.genai.gaos.models.interactions.InteractionSSEStreamEvent;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.StepDelta;
+    import com.google.genai.gaos.models.interactions.StepDeltaData;
+    import com.google.genai.gaos.models.interactions.TextDelta;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.gaos.models.operations.CreateInteractionResponse;
+    import com.google.genai.gaos.utils.EventStream;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Count from 1 to 25."))
+            .stream(true)
+            .build();
+
+    CreateInteractionResponse response =
+        client.interactions.create(CreateInteractionRequestBody.of(params));
+
+    try (EventStream<InteractionSSEStreamEvent> events = response.events()) {
+      for (InteractionSSEStreamEvent streamEvent : events) {
+        InteractionSSEEvent event = streamEvent.data().orElse(null);
+        if (event instanceof StepDelta) {
+          StepDeltaData data = ((StepDelta) event).delta().orElse(null);
+          if (data instanceof TextDelta) {
+            ((TextDelta) data).text().ifPresent(System.out::print);
+          }
+        }
+      }
     }
 
 ### REST

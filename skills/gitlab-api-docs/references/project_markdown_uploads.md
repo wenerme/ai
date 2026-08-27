@@ -1,5 +1,7 @@
 # Markdown uploads API
 
+REST API to upload, list, download, and delete Markdown file uploads for a project.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
@@ -8,7 +10,6 @@ in Markdown text in issues, merge requests, snippets, or wiki pages.
 
 ## Create an upload
 
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/112450) in GitLab 15.10. Feature flag `enforce_max_attachment_size_upload_api` removed.
 - `full_path` response attribute pattern [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/150939) in GitLab 17.1.
 - `id` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/161160) in GitLab 17.3.
 

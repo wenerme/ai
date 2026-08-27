@@ -16,6 +16,19 @@ Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/log-explorer.xml)
 
+## 2026-08-26
+
+
+**Delete Log Explorer datasets**
+
+Cloudflare Log Explorer customers can now permanently delete account and zone datasets from the Cloudflare dashboard or API.
+
+Deletion protection is enabled by default to prevent accidental data loss. In the dashboard, go to [Manage datasets](https://developers.cloudflare.com/log-explorer/manage-datasets/), disable deletion protection for the dataset, select **Delete**, and enter the dataset name to confirm.
+
+To delete a dataset through the API, first set `deletion_protection` to `false` with the [Update an account or zone dataset](https://developers.cloudflare.com/api/resources/logs/subresources/log%5Fexplorer/subresources/datasets/methods/update/) method. Then use the [Delete an account or zone dataset](https://developers.cloudflare.com/api/resources/logs/subresources/log%5Fexplorer/subresources/datasets/methods/delete/) method.
+
+Dataset deletion is irreversible and runs asynchronously. You cannot recreate the same dataset while deletion is in progress.
+
 ## 2026-04-22
 
 

@@ -1,6 +1,6 @@
 ---
 title: "Startup Flags"
-description: "Complete reference for ComfyUI main.py command-line arguments"
+description: "ComfyUI startup flags reference: every main.py command-line argument from comfy/cli_args.py, plus how to add flags to Windows Portable .bat launchers."
 ---
 
 ComfyUI accepts command-line arguments when started with `python main.py`. This page documents every flag defined in [`comfy/cli_args.py`](https://github.com/Comfy-Org/ComfyUI/blob/master/comfy/cli_args.py).
@@ -73,7 +73,7 @@ python main.py --disable-auto-launch
 | `--directml` `[DEVICE]` | — | Use torch-directml. Optional device index; defaults to `-1` when no value is given. |
 | `--oneapi-device-selector` `STRING` | — | oneAPI device selector string for Intel devices. |
 
-  On Windows, when multiple NVIDIA GPUs are detected, ComfyUI uses GPU 0 only by default. To restore all GPUs, pass `--cuda-device all --disable-pinned-memory`. Multiple visible GPUs with pinned memory enabled can cause CUDA host-transfer failures.
+  On Windows, ComfyUI uses GPU 0 only by default. To restore all GPUs, pass `--cuda-device all`.
 
 ## Precision & Inference
 

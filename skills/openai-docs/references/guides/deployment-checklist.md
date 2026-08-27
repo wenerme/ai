@@ -1162,6 +1162,27 @@ client.responses().create(params).output().stream()
     .forEach(text -> System.out.println(text.text()));
 ```
 
+```csharp
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(key);
+
+CreateResponseOptions options = new()
+{
+    Model = "gpt-5.6",
+    PromptCacheKey = "tenant-acme-support-agent",
+    Instructions = "Follow the Acme support policy and escalation rubric.",
+};
+options.InputItems.Add(
+    ResponseItem.CreateUserMessageItem("Summarize the current escalation for the on-call lead.")
+);
+
+ResponseResult response = await client.CreateResponseAsync(options);
+Console.WriteLine(response.GetOutputText());
+```
+
 ```ruby
 require "openai"
 

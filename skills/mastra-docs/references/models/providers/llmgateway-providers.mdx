@@ -1,11 +1,11 @@
 ---
 title: "LLM Gateway | Models"
-description: "Use LLM Gateway models with Mastra. 378 models available."
+description: "Use LLM Gateway models with Mastra. 380 models available."
 ---
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 378 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 380 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -1528,6 +1528,18 @@ for await (const chunk of stream) {
     "outputCost": 1.2
   },
   {
+    "model": "llmgateway-providers/consensusprotocol/deepseek-v4-flash",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 524288,
+    "maxOutput": 393216,
+    "inputCost": 0.13,
+    "outputCost": 0.27
+  },
+  {
     "model": "llmgateway-providers/deepinfra/deepseek-v3.2",
     "imageInput": false,
     "audioInput": false,
@@ -1896,8 +1908,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 390000,
     "maxOutput": 16384,
-    "inputCost": 0.075,
-    "outputCost": 0.175
+    "inputCost": 0.051,
+    "outputCost": 0.104
   },
   {
     "model": "llmgateway-providers/gonka24/kimi-k2.6",
@@ -2723,7 +2735,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 128000,
+    "maxOutput": 512000,
     "inputCost": 0.3,
     "outputCost": 1.2
   },
@@ -4574,6 +4586,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 1.4,
     "outputCost": 4.4
+  },
+  {
+    "model": "llmgateway-providers/zai/glm-5.3-flash",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.15,
+    "outputCost": 0.5
   }
 ]}
 />
@@ -4606,7 +4630,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "llmgateway-providers/zai/glm-5.3"
+      ? "llmgateway-providers/zai/glm-5.3-flash"
       : "llmgateway-providers/alibaba/deepseek-v4-flash";
   }
 });

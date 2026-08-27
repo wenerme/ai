@@ -133,7 +133,7 @@ if you cannot use environment variables.
     client = genai.Client(api_key="YOUR_API_KEY")
 
     interaction = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         input="Explain how AI works in a few words"
     )
     print(interaction.output_text)
@@ -146,7 +146,7 @@ if you cannot use environment variables.
 
     async function main() {
       const interaction = await ai.interactions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.7-flash",
         input: "Explain how AI works in a few words",
       });
       console.log(interaction.output_text);
@@ -154,80 +154,27 @@ if you cannot use environment variables.
 
     main();
 
-### Go
-
-    package main
-
-    import (
-        "context"
-        "fmt"
-        "log"
-        "google.golang.org/genai"
-        "google.golang.org/genai/interactions"
-    )
-
-    func main() {
-        ctx := context.Background()
-        client, err := genai.NewClient(ctx, &genai.ClientConfig{
-            APIKey:  "YOUR_API_KEY",
-            Backend: genai.BackendGeminiAPI,
-        })
-        if err != nil {
-            log.Fatal(err)
-        }
-
-        interaction, err := client.Interactions.NewModel(ctx, interactions.NewModelParams{
-            Model: "gemini-3.6-flash",
-            Input: interactions.Input{
-                String: "Explain how AI works in a few words",
-            },
-        })
-        if err != nil {
-            log.Fatal(err)
-        }
-
-        for _, step := range interaction.Steps {
-            if step.ModelOutput != nil {
-                for _, content := range step.ModelOutput.Content {
-                    if content.Text != nil {
-                        fmt.Println(content.Text.Text)
-                    }
-                }
-            }
-        }
-    }
-
 ### Java
 
-    package com.example;
-
     import com.google.genai.Client;
-    import com.google.genai.interactions.models.interactions.CreateModelInteractionParams;
-    import com.google.genai.interactions.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 
-    public class GenerateTextFromTextInput {
-      public static void main(String[] args) {
-        Client client = Client.builder().apiKey("YOUR_API_KEY").build();
+    Client client = Client.builder().apiKey("YOUR_API_KEY").build();
 
-        CreateModelInteractionParams params =
-            CreateModelInteractionParams.builder()
-                .input("Explain how AI works in a few words")
-                .model("gemini-3.6-flash")
-                .build();
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Explain how AI works in a few sentences."))
+            .build();
 
-        Interaction interaction = client.interactions.create(params);
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-        interaction.steps().forEach(step -> {
-          if (step.isModelOutput()) {
-            step.asModelOutput().content().ifPresent(contents -> {
-              contents.forEach(content -> {
-                content.text().ifPresent(text -> System.out.println(text.text()));
-              });
-            });
-          }
-        });
-      }
-    }
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 
@@ -236,7 +183,7 @@ if you cannot use environment variables.
       -H "x-goog-api-key: YOUR_API_KEY" \
       -X POST \
       -d '{
-        "model": "gemini-3.6-flash",
+        "model": "gemini-3.7-flash",
         "input": "Explain how AI works in a few words"
       }'
 

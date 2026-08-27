@@ -176,6 +176,26 @@ var response = client.responses().create(params);
 System.out.println(response.status().orElseThrow());
 ```
 
+```csharp
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(key);
+
+CreateResponseOptions options = new()
+{
+    Model = "gpt-5.6",
+    BackgroundModeEnabled = true,
+};
+options.InputItems.Add(
+    ResponseItem.CreateUserMessageItem("Write a very long novel about otters in space.")
+);
+
+ResponseResult response = await client.CreateResponseAsync(options);
+Console.WriteLine(response.Status);
+```
+
 ```ruby
 require "openai"
 

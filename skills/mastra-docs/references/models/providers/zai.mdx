@@ -1,11 +1,11 @@
 ---
 title: "Z.AI | Models"
-description: "Use Z.AI models with Mastra. 15 models available."
+description: "Use Z.AI models with Mastra. 16 models available."
 ---
 
 # [Z.AI logo]Z.AI
 
-Access 15 Z.AI models through Mastra's model router. Authentication is handled automatically using the `ZHIPU_API_KEY` environment variable.
+Access 16 Z.AI models through Mastra's model router. Authentication is handled automatically using the `ZHIPU_API_KEY` environment variable.
 
 Learn more in the [Z.AI documentation](https://docs.z.ai/guides/overview/pricing).
 
@@ -206,6 +206,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 1.4,
     "outputCost": 4.4
+  },
+  {
+    "model": "zai/glm-5.3-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 0.075,
+    "outputCost": 0.25
   },
   {
     "model": "zai/glm-5v-turbo",

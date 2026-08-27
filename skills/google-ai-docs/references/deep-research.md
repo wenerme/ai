@@ -1,4 +1,4 @@
-The Gemini Deep Research Agent autonomously plans, executes, and synthesizes
+The Gemini Deep Research agent autonomously plans, executes, and synthesizes
 multi-step research tasks. Powered by Gemini, it navigates complex
 information landscapes to produce detailed, cited reports. New
 capabilities allow you to collaboratively plan with the agent, connect to
@@ -11,7 +11,7 @@ to run the agent asynchronously and poll for results or stream updates. See
 [Handling long-running tasks](https://ai.google.dev/gemini-api/docs/deep-research#long-running-tasks) for more details.
 
 > [!WARNING]
-> **Preview:** The Gemini Deep Research Agent is currently in preview. The Deep Research agent is exclusively available using the [Interactions
+> **Preview:** The Gemini Deep Research agent is currently in preview. The Deep Research agent is exclusively available using the [Interactions
 > API](https://ai.google.dev/gemini-api/docs). You cannot access it through `generate_content`.
 
 The following example shows how to start a research task in the background
@@ -67,6 +67,29 @@ and poll for results.
         }
         await new Promise(resolve => setTimeout(resolve, 10000));
     }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
+            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .background(true)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
 
 ### REST
 
@@ -146,6 +169,29 @@ returns a research plan instead of a full report.
     }
     console.log(result.steps.at(-1).content[0].text);
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
+            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .background(true)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -207,6 +253,29 @@ mode.
     }
     console.log(result.steps.at(-1).content[0].text);
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
+            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .background(true)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -267,6 +336,29 @@ start the research.
         await new Promise(r => setTimeout(r, 5000));
     }
     console.log(result.steps.at(-1).content[0].text);
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
+            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .background(true)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
 
 ### REST
 
@@ -364,6 +456,29 @@ when the prompt requests them.
         }
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
+            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .background(true)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -416,6 +531,29 @@ Explicitly enable Google Search as the only tool:
         background: true
     });
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
+            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .background(true)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -450,6 +588,29 @@ Give the agent the ability to read and summarize specific web pages:
         background: true
     });
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
+            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .background(true)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -483,6 +644,29 @@ Allow the agent to execute code for calculations and data analysis:
         tools: [{ type: 'code_execution' }],
         background: true
     });
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
+            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .background(true)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
 
 ### REST
 
@@ -546,6 +730,29 @@ pass authentication credentials and restrict which tools the agent can call.
         background: true
     });
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
+            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .background(true)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -598,6 +805,29 @@ Give the agent access to your own data by using the [File Search](https://ai.goo
             { type: 'file_search', file_search_store_names: ['fileSearchStores/my-store-name'] },
         ]
     });
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
+            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .background(true)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
 
 ### REST
 
@@ -655,6 +885,29 @@ Define the desired output format explicitly in your input text.
         agent: 'deep-research-preview-04-2026',
         background: true,
     });
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
+            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .background(true)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
 
 ### REST
 
@@ -752,6 +1005,29 @@ contextualized by the provided inputs.
         await new Promise(resolve => setTimeout(resolve, 10000));
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
+            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .background(true)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
+
 ### REST
 
     # 1. Start the research task with image input
@@ -814,6 +1090,29 @@ provided documents and conducts research grounded in their content.
         ],
         background: true
     });
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
+            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .background(true)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
 
 ### REST
 
@@ -959,6 +1258,29 @@ resume from where it left off.
         await processStream(resumeStream);
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
+            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .background(true)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
+
 ### REST
 
     # 1. Start the stream (save the INTERACTION_ID from the interaction.start event
@@ -1012,6 +1334,29 @@ restarting the entire task.
     });
     console.log(interaction.steps.at(-1).content[0].text);
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
+            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .background(true)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -1023,12 +1368,12 @@ restarting the entire task.
         "previous_interaction_id": "COMPLETED_INTERACTION_ID"
     }'
 
-## When to use Gemini Deep Research Agent
+## When to use Gemini Deep Research agent
 
 Deep Research is an **agent**, not just a model. It is best suited for workloads
 that require an "analyst-in-a-box" approach rather than low-latency chat.
 
-| Feature | Standard Gemini Models | Gemini Deep Research Agent |
+| Feature | Standard Gemini Models | Gemini Deep Research agent |
 |---|---|---|
 | **Latency** | Seconds | Minutes (Async/Background) |
 | **Process** | Generate -\> Output | Plan -\> Search -\> Read -\> Iterate -\> Output |
@@ -1077,6 +1422,29 @@ Pass it as a dictionary with the following fields:
         background: true,
     });
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.AgentOption;
+    import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateAgentInteraction params =
+        CreateAgentInteraction.builder()
+            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
+            .input(InteractionsInput.of("I want to learn more about the history of Hadrian's Wall"))
+            .background(true)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println("Deep Research started. Interaction ID: " + interaction.id().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -1096,7 +1464,7 @@ Pass it as a dictionary with the following fields:
 
 ## Availability and pricing
 
-You can access the Gemini Deep Research Agent using the Interactions API in Google AI Studio and the Gemini API.
+You can access the Gemini Deep Research agent using the Interactions API in Google AI Studio and the Gemini API.
 
 Pricing follows a [pay-as-you-go model](https://ai.google.dev/gemini-api/docs/pricing#pricing-for-agents) based on the underlying Gemini models and the specific tools the agent utilizes. Unlike standard chat requests, where a request leads to one output, a Deep Research task is an agentic workflow. A single request triggers an autonomous loop of planning, searching, reading, and reasoning.
 
@@ -1128,12 +1496,12 @@ consideration of safety risks.
   estimating"* to your prompt.
 - **Provide context:** Ground the agent's research by providing background information or constraints directly in the input prompt.
 - **Use collaborative planning:** For complex queries, enable collaborative planning to review and refine the research plan before execution.
-- **Multimodal inputs:** Deep Research Agent supports multi-modal inputs. Use cautiously, as this increases costs and risks context window overflow.
+- **Multimodal inputs:** Deep Research agent supports multi-modal inputs. Use cautiously, as this increases costs and risks context window overflow.
 
 ## Limitations
 
 - **Custom tools:** You cannot currently provide custom Function Calling tools but you can use remote MCP (Model Context Protocol) servers with the Deep Research agent.
-- **Structured output:** The Deep Research Agent currently doesn't support structured outputs.
+- **Structured output:** The Deep Research agent currently doesn't support structured outputs.
 - **Max research time:** The Deep Research agent has a maximum research time of 60 minutes. Most tasks should complete within 20 minutes.
 - **Store requirement:** Agent execution using `background=True` requires `store=True`.
 - **Google search:** [Google

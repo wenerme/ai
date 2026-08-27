@@ -277,7 +277,7 @@ Check the model's `supported_parameters` to see which values each endpoint accep
 ```
 
 * `quality` — `auto`, `low`, `medium`, or `high`. Providers without a quality knob ignore this.
-* `output_format` — `png`, `jpeg`, `webp`, or `svg` (vectorization models only; SVG markup is base64-encoded in `b64_json`).
+* `output_format` — `png`, `jpeg`, `webp`, or `svg` (vectorization models only). If omitted, the provider's default applies.
 * `background` — `auto`, `transparent`, or `opaque`. `transparent` requires an alpha-capable format (png or webp).
 * `output_compression` — 0-100 for webp/jpeg. Ignored for png.
 
@@ -491,26 +491,27 @@ For streaming requests, any partial preview images delivered before the stream e
 
 ## Request Parameters
 
-| Parameter                  | Type             | Required | Description                                                                                                     |
-| -------------------------- | ---------------- | -------- | --------------------------------------------------------------------------------------------------------------- |
-| `model`                    | string           | Yes      | Model slug (e.g. `bytedance-seed/seedream-4.5`)                                                                 |
-| `prompt`                   | string           | Yes      | Text description of the desired image                                                                           |
-| `n`                        | integer          | No       | Upper bound on images to generate (1-10); providers may return fewer, and single-image providers reject `n > 1` |
-| `resolution`               | string           | No       | Resolution tier (`512`, `1K`, `2K`, `4K`)                                                                       |
-| `aspect_ratio`             | string           | No       | Aspect ratio (`1:1`, `16:9`, `9:16`, `4:3`, `3:4`, `1:4`, `4:1`, etc.)                                          |
-| `size`                     | string           | No       | Convenience shorthand — a tier or explicit pixels (`"2048x2048"`)                                               |
-| `quality`                  | string           | No       | `auto`, `low`, `medium`, or `high`                                                                              |
-| `output_format`            | string           | No       | `png`, `jpeg`, `webp`, or `svg`                                                                                 |
-| `background`               | string           | No       | `auto`, `transparent`, or `opaque`                                                                              |
-| `output_compression`       | integer          | No       | Compression level (0-100) for webp/jpeg                                                                         |
-| `seed`                     | integer          | No       | Seed for deterministic generation (where supported)                                                             |
-| `stream`                   | boolean          | No       | Stream partial images via SSE                                                                                   |
-| `input_references`         | array            | No       | Reference images for image-to-image generation                                                                  |
-| `provider.only`            | string\[]        | No       | Allow only these provider slugs                                                                                 |
-| `provider.order`           | string\[]        | No       | Try provider slugs in this order                                                                                |
-| `provider.ignore`          | string\[]        | No       | Exclude these provider slugs                                                                                    |
-| `provider.sort`            | string or object | No       | Sort eligible endpoints by price, throughput, or latency                                                        |
-| `provider.allow_fallbacks` | boolean          | No       | Allow another eligible provider when the primary fails                                                          |
-| `provider.options`         | object           | No       | Provider-specific parameters keyed by provider slug                                                             |
+| Parameter                  | Type             | Required | Description                                                                                                                                                  |
+| -------------------------- | ---------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `model`                    | string           | Yes      | Model slug (e.g. `bytedance-seed/seedream-4.5`)                                                                                                              |
+| `prompt`                   | string           | Yes      | Text description of the desired image                                                                                                                        |
+| `n`                        | integer          | No       | Upper bound on images to generate (1-10); providers may return fewer, and single-image providers reject `n > 1`                                              |
+| `resolution`               | string           | No       | Resolution tier (`512`, `1K`, `2K`, `4K`)                                                                                                                    |
+| `aspect_ratio`             | string           | No       | Aspect ratio (`1:1`, `16:9`, `9:16`, `4:3`, `3:4`, `1:4`, `4:1`, etc.)                                                                                       |
+| `size`                     | string           | No       | Convenience shorthand — a tier or explicit pixels (`"2048x2048"`)                                                                                            |
+| `quality`                  | string           | No       | `auto`, `low`, `medium`, or `high`                                                                                                                           |
+| `output_format`            | string           | No       | `png`, `jpeg`, `webp`, or `svg`. When omitted, the provider default applies.                                                                                 |
+| `background`               | string           | No       | `auto`, `transparent`, or `opaque`                                                                                                                           |
+| `output_compression`       | integer          | No       | Compression level (0-100) for webp/jpeg                                                                                                                      |
+| `seed`                     | integer          | No       | Seed for deterministic generation (where supported)                                                                                                          |
+| `stream`                   | boolean          | No       | Stream partial images via SSE                                                                                                                                |
+| `input_references`         | array            | No       | Reference images for image-to-image generation                                                                                                               |
+| `user`                     | string           | No       | Stable identifier for your end-user; folded into a hashed upstream identity and never sent raw (see [User Tracking](/docs/cookbook/administration/user-tracking)) |
+| `provider.only`            | string\[]        | No       | Allow only these provider slugs                                                                                                                              |
+| `provider.order`           | string\[]        | No       | Try provider slugs in this order                                                                                                                             |
+| `provider.ignore`          | string\[]        | No       | Exclude these provider slugs                                                                                                                                 |
+| `provider.sort`            | string or object | No       | Sort eligible endpoints by price, throughput, or latency                                                                                                     |
+| `provider.allow_fallbacks` | boolean          | No       | Allow another eligible provider when the primary fails                                                                                                       |
+| `provider.options`         | object           | No       | Provider-specific parameters keyed by provider slug                                                                                                          |
 
 Use the [Image Models API](#via-the-image-models-api) to check which parameters each model and endpoint supports.

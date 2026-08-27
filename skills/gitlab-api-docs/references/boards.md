@@ -1,5 +1,7 @@
 # Project issue boards API
 
+REST API to create, manage, and delete project issue boards and their lists.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

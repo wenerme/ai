@@ -22,7 +22,9 @@ Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) [##
 Ultra-low latency and cost-effective image generation and editing, designed for high-volume interactive use cases.
 Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image) [### Nano Banana Pro
 State-of-the-art image generation and editing models for highly contextual native image creation.
-Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image)
+Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image) [### Gemini 3.5 Transcribe
+Low-latency speech-to-text model with utterance-based language detection, speaker diarization, and word timestamps.
+New Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe)
 
 ### Preview
 
@@ -58,6 +60,7 @@ New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 | [Gemini 3.1 Flash Live](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview) | ``` gemini-3.1-flash-live-preview ``` |
 | [Gemini 3.1 Flash TTS](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-preview) | ``` gemini-3.1-flash-tts-preview ``` |
 | [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash) | ``` gemini-omni-flash ``` |
+| [Gemini 3.5 Transcribe](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe) | ``` gemini-3.5-transcribe gemini-3.5-transcribe-live ``` |
 
 ## Gemini 2.5 Flash
 
@@ -89,6 +92,7 @@ New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 |---|---|---|
 | [Gemini 3.1 Flash Live](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview) | Our high-quality, low-latency audio-to-audio (A2A) model designed for real-time dialogue and voice-first AI applications. | ``` gemini-3.1-flash-live-preview ``` |
 | [Gemini 3.1 Flash TTS](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-preview) | Powerful, low-latency speech generation, with natural outputs, steerable prompts, and new expressive audio tags for precise narration control. | ``` gemini-3.1-flash-tts-preview ``` |
+| [Gemini 3.5 Transcribe](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe) | Low-latency speech-to-text model with utterance-based language detection, speaker diarization, word-level timestamps, and custom vocabulary biasing. | ``` gemini-3.5-transcribe gemini-3.5-transcribe-live ``` |
 | [Gemini 2.5 Flash Live](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-native-audio-preview-12-2025) | Our flagship Live API model for low-latency, bidirectional voice and video agents with native audio reasoning. | ``` gemini-2.5-flash-native-audio-preview-12-2025 ``` |
 | [Gemini 2.5 Flash TTS](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-preview-tts) | Fast and controllable text-to-speech for low-latency, cost-efficient applications and real-time assistants. | ``` gemini-2.5-flash-preview-tts ``` |
 | [Gemini 2.5 Pro TTS](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-pro-preview-tts) | High-fidelity speech synthesis optimized for quality in structured workflows like podcasts and audiobooks. | ``` gemini-2.5-pro-preview-tts ``` |

@@ -10,12 +10,13 @@
 - [Changed](https://gitlab.com/groups/gitlab-org/-/work_items/21731) from closed beta to public beta in GitLab 19.0.
 - [Changed](https://gitlab.com/groups/gitlab-org/-/work_items/10723) to limited availability on GitLab.com in GitLab 19.3.
 
-Secrets represent sensitive information your CI/CD jobs need to function. Secrets could be access tokens,
-database credentials, private keys, or similar.
-
-Unlike CI/CD variables, which are always available to jobs by default, secrets must be explicitly requested by a job.
-
 Use GitLab Secrets Manager to securely store and manage secrets and credentials for your projects and groups.
+
+Secrets represent sensitive information your CI/CD jobs need to function. Secrets could be access tokens,
+database credentials, private keys, or similar. Unlike CI/CD variables, which are always available to jobs by default,
+secrets must be explicitly requested by a job.
+
+GitLab Secrets Manager [consumes GitLab Credits](secrets_manager_billing.md).
 
 Share your feedback during the public beta in [feedback issue 598100](https://gitlab.com/gitlab-org/gitlab/-/work_items/598100).
 

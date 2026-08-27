@@ -28,6 +28,8 @@ Here is an example request body to create an SLO. It runs the SLI query against 
 
 On stacks using legacy data source-managed recording rules, `sourceDatasourceUid` must be omitted or match `destinationDatasource.uid`.
 
+The optional top-level `searchExpression` field holds a Knowledge Graph search expression, which scopes the SLO to a set of entities. Setting it adds an **Open RCA workbench** link to the SLO in Grafana, and a `workbench_troubleshoot_url` annotation to the generated burn-rate alert rules. Refer to [link the SLO to RCA workbench entities](/docs/grafana-cloud/alerting-and-irm/slo/create/#link-the-slo-to-rca-workbench-entities).
+
 JSON [Copy code to clipboard] Copy
 
 ```json
@@ -43,6 +45,7 @@ JSON [Copy code to clipboard] Copy
       "window": "28d"
     }
   ],
+  "searchExpression": "kubelet connected services",
   "query": {
     "type": "ratio",
     "ratio": {

@@ -893,6 +893,7 @@ components:
         - ssn
         - credit-card
         - ip-address
+        - secrets
         - person-name
         - address
         - regex-prompt-injection
@@ -908,8 +909,9 @@ components:
       type: string
     ContentFilterBuiltinEntry:
       description: >-
-        A builtin content filter entry. Builtin filters include PII detectors
-        and the regex-based prompt injection detector.
+        A builtin content filter entry. Builtin filters include PII detectors,
+        API-key and secret detectors, and the regex-based prompt injection
+        detector.
       example:
         action: redact
         label: '[EMAIL]'

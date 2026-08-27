@@ -1,5 +1,7 @@
 # Identify issue boards by using GraphQL
 
+List a project's issue boards with the GraphQL API.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

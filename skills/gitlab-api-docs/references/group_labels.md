@@ -1,5 +1,7 @@
 # Group labels API
 
+REST API to create, manage, and delete labels for a group.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

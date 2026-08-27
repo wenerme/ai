@@ -1,11 +1,11 @@
 ---
 title: "Hugging Face | Models"
-description: "Use Hugging Face models with Mastra. 70 models available."
+description: "Use Hugging Face models with Mastra. 71 models available."
 ---
 
 # [Hugging Face logo]Hugging Face
 
-Access 70 Hugging Face models through Mastra's model router. Authentication is handled automatically using the `HF_TOKEN` environment variable.
+Access 71 Hugging Face models through Mastra's model router. Authentication is handled automatically using the `HF_TOKEN` environment variable.
 
 Learn more in the [Hugging Face documentation](https://huggingface.co).
 
@@ -215,7 +215,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 204800,
-    "maxOutput": 128000,
+    "maxOutput": 131072,
     "inputCost": 0.3,
     "outputCost": 1.2
   },
@@ -263,7 +263,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 524288,
-    "maxOutput": 128000,
+    "maxOutput": 512000,
     "inputCost": 0.3,
     "outputCost": 1.2
   },
@@ -878,6 +878,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 1.4,
     "outputCost": 4.4
+  },
+  {
+    "model": "huggingface/zai-org/GLM-5.3-Flash",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.15,
+    "outputCost": 0.5
   }
 ]}
 />
@@ -910,7 +922,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "huggingface/zai-org/GLM-5.2"
+      ? "huggingface/zai-org/GLM-5.3-Flash"
       : "huggingface/MiniMaxAI/MiniMax-M2";
   }
 });

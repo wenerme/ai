@@ -21,6 +21,7 @@ Documentation for data source and app plugins built and maintained by Grafana La
 - [AppDynamics data source](/docs/plugins/dlopes7-appdynamics-datasource/latest/ "AppDynamics data source")
 - [Atlassian Statuspage data source](/docs/plugins/grafana-atlassianstatuspage-datasource/latest/ "Atlassian Statuspage data source")
 - [AWS Application Signals data source](/docs/plugins/grafana-x-ray-datasource/latest/ "AWS Application Signals data source")
+- [AWS IoT SiteWise data source](/docs/plugins/grafana-iot-sitewise-datasource/latest/ "AWS IoT SiteWise data source")
 - [AWS IoT TwinMaker app](/docs/plugins/grafana-iot-twinmaker-app/latest/ "AWS IoT TwinMaker app")
 - [Azure Cosmos DB data source](/docs/plugins/grafana-azurecosmosdb-datasource/latest/ "Azure Cosmos DB data source")
 - [Azure DevOps data source](/docs/plugins/grafana-azuredevops-datasource/latest/ "Azure DevOps data source")

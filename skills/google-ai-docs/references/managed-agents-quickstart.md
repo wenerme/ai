@@ -42,6 +42,30 @@ A single call to the [Interactions API](https://ai.google.dev/gemini-api/docs) p
 
     console.log(`Output: ${interaction.output_text}`);
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionEnvironment;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateModelInteraction req =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Summarize the project structure."))
+            .environment(CreateModelInteractionEnvironment.of("remote"))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -85,6 +109,30 @@ Pass both in their respective place to resume:
     }, { timeout: 300_000 });
 
     console.log(interaction2.output_text);
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionEnvironment;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateModelInteraction req =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Summarize the project structure."))
+            .environment(CreateModelInteractionEnvironment.of("remote"))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 
@@ -150,6 +198,30 @@ For long-running tasks, you can stream the response to see the agent work in rea
             console.log(event.usage);
         }
     }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionEnvironment;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateModelInteraction req =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Summarize the project structure."))
+            .environment(CreateModelInteractionEnvironment.of("remote"))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 
@@ -222,6 +294,30 @@ When the agent creates files inside the sandbox. Download them using the Files A
 
     console.log(fs.readdirSync("extracted_snapshot"));
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionEnvironment;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateModelInteraction req =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Summarize the project structure."))
+            .environment(CreateModelInteractionEnvironment.of("remote"))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     curl -L -X GET "https://generativelanguage.googleapis.com/v1beta/files/environment-$ENV_ID:download?alt=media" \
@@ -245,7 +341,7 @@ When you save an agent, notice the architectural symmetry with inline interactio
         base_agent="antigravity-preview-05-2026",
         agent_config={
             "type": "antigravity",
-            "model": "gemini-3.6-flash",
+            "model": "gemini-3.7-flash",
         },
         system_instruction="You are a math analysis agent. Generate sequences, visualize them, and export results as PDF reports.",
         base_environment={
@@ -274,7 +370,7 @@ When you save an agent, notice the architectural symmetry with inline interactio
         base_agent: "antigravity-preview-05-2026",
         agent_config: {
             type: "antigravity",
-            model: "gemini-3.6-flash",
+            model: "gemini-3.7-flash",
         },
         system_instruction: "You are a math analysis agent. Generate sequences, visualize them, and export results as PDF reports.",
         base_environment: {
@@ -296,6 +392,30 @@ When you save an agent, notice the architectural symmetry with inline interactio
 
     console.log(`Saved agent: ${agent.id}`);
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionEnvironment;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateModelInteraction req =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Summarize the project structure."))
+            .environment(CreateModelInteractionEnvironment.of("remote"))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/agents" \
@@ -306,7 +426,7 @@ When you save an agent, notice the architectural symmetry with inline interactio
         "base_agent": "antigravity-preview-05-2026",
         "agent_config": {
             "type": "antigravity",
-            "model": "gemini-3.6-flash"
+            "model": "gemini-3.7-flash"
         },
         "system_instruction": "You are a math analysis agent. Generate sequences, visualize them, and export results as PDF reports.",
         "base_environment": {
@@ -351,6 +471,30 @@ Once you've saved a managed agent, you can invoke it by ID. Each invocation fork
     });
 
     console.log(result.output_text);
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionEnvironment;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateModelInteraction req =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Summarize the project structure."))
+            .environment(CreateModelInteractionEnvironment.of("remote"))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 

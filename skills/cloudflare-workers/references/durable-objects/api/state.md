@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Durable Object State
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/api/state/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/api/state/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Description
 
@@ -274,7 +274,11 @@ If no parameter or a parameter of `0` is provided and a timeout has been previou
 
 ### `abort`
 
-`abort` is used to forcibly reset a Durable Object. A JavaScript `Error` with the message passed as a parameter will be logged. This error is not able to be caught within the application code.
+Calling `abort` immediately resets a Durable Object. The runtime logs a JavaScript `Error` with the message passed to `abort`. Application code cannot catch this error.
+
+By default, an alarm interrupted by `abort` retries after the Durable Object resets. A Durable Object can run an alarm concurrently with another request, and that request can call `abort` while the alarm is still running.
+
+The default retry prevents an unrelated request from permanently canceling the alarm. Pass `{ retryAlarm: false }` on any abort call that should prevent an interrupted alarm from retrying, including abort calls outside the alarm handler.
 
 ```js
 // Durable Object
@@ -286,6 +290,11 @@ export class MyDurableObject extends DurableObject {
   async sayHello() {
     // Error: Hello, World! will be logged
     this.ctx.abort("Hello, World!");
+  }
+
+  async alarm() {
+    // Reset this instance without retrying the alarm
+    this.ctx.abort("Alarm complete", { retryAlarm: false });
   }
 }
 ```
@@ -301,13 +310,11 @@ class MyDurableObject(DurableObject):
 		self.ctx.abort("Hello, World!")
 ```
 
-Not available in local development
-
-`abort` is not available in local development with the `wrangler dev` CLI command.
-
 #### Parameters
 
-* An optional `string` .
+* An optional `string` containing the error message to log.
+* An optional `DurableObjectAbortOptions` object:
+  * `retryAlarm` `boolean`: Controls whether an alarm interrupted by this abort retries. It defaults to `true`.
 
 #### Return values
 
@@ -336,5 +343,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/state/#page","headline":"Durable Object State · Cloudflare Durable Objects docs","description":"API reference for DurableObjectState, which controls concurrency, WebSocket attachment, and storage access.","url":"https://developers.cloudflare.com/durable-objects/api/state/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/state/#page","headline":"Durable Object State · Cloudflare Durable Objects docs","description":"API reference for DurableObjectState, which controls concurrency, WebSocket attachment, and storage access.","url":"https://developers.cloudflare.com/durable-objects/api/state/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

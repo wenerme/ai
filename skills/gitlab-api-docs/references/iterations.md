@@ -1,5 +1,7 @@
 # Project iterations API
 
+REST API to retrieve iterations from a project's ancestor groups.
+
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
@@ -7,7 +9,7 @@ Use this API to access [project iterations](../user/group/iterations/_index.md).
 
 For group iterations, use the [group iterations API](group_iterations.md).
 
-We no longer have project-level iterations, but you can use this endpoint to fetch the iterations of the project's ancestor groups.
+Projects do not have their own iterations. Use this endpoint to list the iterations of a project's ancestor groups.
 
 ## List all project iterations
 

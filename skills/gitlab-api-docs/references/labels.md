@@ -1,5 +1,7 @@
 # Project labels API
 
+REST API to create, manage, and delete project labels, and promote them to group labels.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

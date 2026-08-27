@@ -50,6 +50,31 @@ Here's a minimal example of initializing the client and sending a prompt to the 
 
     console.log(interaction);
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.ComputerUse;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Click the Submit button on the screen."))
+            .tools(Arrays.asList(new ComputerUse()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 <br />
 
 > [!NOTE]
@@ -172,6 +197,31 @@ Use the `@google/genai` Node.js SDK to configure a request targeting the browser
 
     console.log(interaction);
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.ComputerUse;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Click the Submit button on the screen."))
+            .tools(Arrays.asList(new ComputerUse()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
 Use curl to send a request:
@@ -239,6 +289,31 @@ Use curl to send a request:
     });
 
     console.log(interaction);
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.ComputerUse;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Click the Submit button on the screen."))
+            .tools(Arrays.asList(new ComputerUse()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### 2. Receive the model response
 
@@ -453,6 +528,31 @@ The code below handles both legacy tool commands (`click_at`, `type_text_at`) an
         return results;
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.ComputerUse;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Click the Submit button on the screen."))
+            .tools(Arrays.asList(new ComputerUse()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### 4. Capture the new environment state
 
 After executing the actions, send the result of the function execution back to
@@ -516,6 +616,31 @@ multiple actions (parallel calls) were executed, you must send a
         }
         return functionResponses;
     }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.ComputerUse;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Click the Submit button on the screen."))
+            .tools(Arrays.asList(new ComputerUse()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 Once you have defined how to capture and format the environment state, you can
 combine all these steps into a continuous execution loop.
@@ -714,6 +839,31 @@ model responses and your function responses to the history at each step.
         await browser.close();
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.ComputerUse;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Click the Submit button on the screen."))
+            .tools(Arrays.asList(new ComputerUse()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ## Supported environments (Gemini 3.x)
 
 Gemini 3.x models support three environments specified in the `computer_use`
@@ -887,6 +1037,31 @@ Exclude standard predefined browser actions (such as `click`) and register a cus
         ]
     });
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.ComputerUse;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Click the Submit button on the screen."))
+            .tools(Arrays.asList(new ComputerUse()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 #### Gemini 2.5 (Legacy) Custom Tooling
 
 ### Python
@@ -963,6 +1138,31 @@ Exclude standard predefined browser actions (such as `click`) and register a cus
 
     console.log(interaction);
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.ComputerUse;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Click the Submit button on the screen."))
+            .tools(Arrays.asList(new ComputerUse()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ## Managing thinking levels (Gemini 3.x)
 
 For computer use agents, you can configure different thinking levels to balance action quality and execution speed. Lower thinking levels generally achieve a good balance for standard automation tasks.
@@ -1030,6 +1230,31 @@ You can override select policies by passing overrides:
         ]
     });
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.ComputerUse;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Click the Submit button on the screen."))
+            .tools(Arrays.asList(new ComputerUse()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
 ### Prompt injection detection (Gemini 3.x)
 
 Computer Use for Gemini 3.5 Flash or later supports an advanced safety
@@ -1078,6 +1303,31 @@ in your Computer Use tool configuration:
             }
         ]
     });
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.ComputerUse;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("Click the Submit button on the screen."))
+            .tools(Arrays.asList(new ComputerUse()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### cURL
 
@@ -1141,7 +1391,6 @@ in executing actions. Implement the following best practices to protect user
 data and systems:
 
 1. **Human-in-the-Loop (HITL):**
-
    - **Enforce user confirmation:** When the safety response indicates `require_confirmation` (or legacy safety decision requires it), prompt the user for approval.
    - **Provide custom safety instructions:** Implement a custom system instruction to define and enforce your own safety boundaries. For example:
 
@@ -1353,35 +1602,38 @@ data and systems:
              }]
          });
 
-2. **Secure execution environment:** Run your agent in a secure, sandboxed
-   environment to limit its potential impact. This can be a sandboxed virtual
-   machine (VM), a container (e.g., Docker), or a dedicated browser profile
-   with limited permissions. See the
-   [GitHub reference implementation](https://github.com/google/computer-use-preview/)
-   for sandbox setup guidance using Docker.
+### Java
 
-3. **Input sanitization:** Sanitize all user-generated text in prompts to
-   mitigate the risk of unintended instructions or prompt injection. This is a
-   helpful layer of security, but not a replacement for a secure execution
-   environment.
+`java
+import com.google.genai.Client;
+import com.google.genai.gaos.models.interactions.ComputerUse;
+import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+import com.google.genai.gaos.models.interactions.Interaction;
+import com.google.genai.gaos.models.interactions.InteractionsInput;
+import com.google.genai.gaos.models.interactions.Model;
+import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+import java.util.Arrays;
 
-4. **Content guardrails:** Use guardrails and content safety APIs to evaluate
-   user inputs, tool inputs and outputs, and the agent's responses for appropriateness,
-   prompt injection, and jailbreak detection.
+Client client = new Client();
 
-5. **Allowlists and blocklists:** Implement filtering mechanisms to control
-   where the model can navigate and what it can do. A blocklist of prohibited
-   websites is a good starting point, while a more restrictive allowlist is
-   even more secure.
+CreateModelInteraction params =
+CreateModelInteraction.builder()
+.model(Model.of("gemini-3.7-flash"))
+.input(InteractionsInput.of("Click the Submit button on the screen."))
+.tools(Arrays.asList(new ComputerUse()))
+.build();
 
-6. **Observability and logging:** Maintain detailed logs for debugging,
-   auditing, and incident response. Your client should log prompts,
-   screenshots, model-suggested actions (`function_call`), safety responses, and
-   all actions ultimately executed by the client.
+Interaction interaction =
+client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-7. **Environment management:** Ensure the GUI environment is consistent.
-   Unexpected pop-ups, notifications, or changes in layout can confuse the
-   model. Start from a known, clean state for each new task if possible.
+System.out.println(interaction.outputText().orElse(""));`
+
+1. **Secure execution environment:** Run your agent in a secure, sandboxed environment to limit its potential impact. This can be a sandboxed virtual machine (VM), a container (e.g., Docker), or a dedicated browser profile with limited permissions. See the [GitHub reference implementation](https://github.com/google/computer-use-preview/) for sandbox setup guidance using Docker.
+2. **Input sanitization:** Sanitize all user-generated text in prompts to mitigate the risk of unintended instructions or prompt injection. This is a helpful layer of security, but not a replacement for a secure execution environment.
+3. **Content guardrails:** Use guardrails and content safety APIs to evaluate user inputs, tool inputs and outputs, and the agent's responses for appropriateness, prompt injection, and jailbreak detection.
+4. **Allowlists and blocklists:** Implement filtering mechanisms to control where the model can navigate and what it can do. A blocklist of prohibited websites is a good starting point, while a more restrictive allowlist is even more secure.
+5. **Observability and logging:** Maintain detailed logs for debugging, auditing, and incident response. Your client should log prompts, screenshots, model-suggested actions (`function_call`), safety responses, and all actions ultimately executed by the client.
+6. **Environment management:** Ensure the GUI environment is consistent. Unexpected pop-ups, notifications, or changes in layout can confuse the model. Start from a known, clean state for each new task if possible.
 
 ## Model versions
 

@@ -17,7 +17,7 @@ Grounding helps you build applications that can:
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.6-flash",
+        model="gemini-3.7-flash",
         input="Who won the euro 2024?",
         tools=[{"type": "google_search"}]
     )
@@ -31,12 +31,37 @@ Grounding helps you build applications that can:
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.7-flash",
         input: "Who won the euro 2024?",
         tools: [{ type: "google_search" }]
     });
 
     console.log(interaction.output_text);
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.GoogleSearch;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("What is the current score of the Lakers game?"))
+            .tools(Arrays.asList(new GoogleSearch()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 
@@ -44,7 +69,7 @@ Grounding helps you build applications that can:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "gemini-3.6-flash",
+        "model": "gemini-3.7-flash",
         "input": "Who won the euro 2024?",
         "tools": [{"type": "google_search"}]
       }'
@@ -177,6 +202,59 @@ of the text it cites. Here's how to extract and display them.
       }
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Annotation;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.GoogleSearch;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ModelOutputStep;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.URLCitation;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.7-flash"))
+            .input(InteractionsInput.of("What happened in tech news today?"))
+            .tools(Arrays.asList(new GoogleSearch()))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.steps().isPresent()) {
+      for (Step step : interaction.steps().get()) {
+        if (step instanceof ModelOutputStep) {
+          ModelOutputStep outputStep = (ModelOutputStep) step;
+          if (outputStep.content().isPresent()) {
+            for (Content content : outputStep.content().get()) {
+              if (content instanceof TextContent) {
+                TextContent textContent = (TextContent) content;
+                System.out.println("Response: " + textContent.text().orElse(""));
+                if (textContent.annotations().isPresent()) {
+                  for (Annotation annotation : textContent.annotations().get()) {
+                    if (annotation instanceof URLCitation) {
+                      URLCitation citation = (URLCitation) annotation;
+                      System.out.printf("  [%s](%s)\n", citation.title().orElse(""), citation.url().orElse(""));
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
 The output will show the text followed by its citations:
 
     Spain won Euro 2024, defeating England 2-1 in the final. This victory marks Spain's record fourth European Championship title.
@@ -209,6 +287,7 @@ overview](https://ai.google.dev/gemini-api/docs/models) page.
 
 | Model | Grounding with Google Search |
 |---|---|
+| Gemini 3.7 Flash | ✔️ |
 | Gemini 3.6 Flash | ✔️ |
 | Gemini 3.5 Flash-Lite | ✔️ |
 | Gemini 3.5 Flash | ✔️ |

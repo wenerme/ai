@@ -44,8 +44,111 @@ Get started with a few lines of code:
 
     run();
 
-### REST
+### Java
 
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStepResultUnion;
+    import com.google.genai.gaos.models.interactions.FunctionResultSubcontent;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.Tool;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.io.InputStream;
+    import java.net.URL;
+    import java.util.ArrayList;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.List;
+    import java.util.Map;
+
+    Client client = new Client();
+
+    Map<String, Object> itemProp = new HashMap<>();
+    itemProp.put("type", "string");
+    itemProp.put("description", "The name or description of the item ordered (e.g., 'instrument').");
+
+    Map<String, Object> properties = new HashMap<>();
+    properties.put("item_name", itemProp);
+
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+    parameters.put("properties", properties);
+    parameters.put("required", Arrays.asList("item_name"));
+
+    Function getImageTool =
+        Function.builder()
+            .name("get_image")
+            .description("Retrieves the image file reference for a specific order item.")
+            .parameters(parameters)
+            .build();
+
+    CreateModelInteraction req1 =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3-flash-preview"))
+            .input(InteractionsInput.of("Use the get_image tool to show me the instrument I ordered last month."))
+            .tools(Arrays.asList(getImageTool))
+            .build();
+
+    Interaction interaction1 =
+        client.interactions.create(CreateInteractionRequestBody.of(req1)).interaction().get();
+
+    FunctionCallStep fcStep = null;
+    for (Step step : interaction1.steps().orElse(Collections.emptyList())) {
+      if (step instanceof FunctionCallStep) {
+        fcStep = (FunctionCallStep) step;
+        break;
+      }
+    }
+
+    if (fcStep != null) {
+      System.out.println("Tool Call: " + fcStep.name().orElse(""));
+
+      URL url = new URL("https://goo.gle/instrument-img");
+      byte[] imageBytes;
+      try (InputStream is = url.openStream()) {
+        imageBytes = is.readAllBytes();
+      }
+      String base64ImageData = Base64.getEncoder().encodeToString(imageBytes);
+
+      List<FunctionResultSubcontent> subcontents = new ArrayList<>();
+      subcontents.add(TextContent.builder().text("instrument.jpg").build());
+      subcontents.add(
+          ImageContent.builder()
+              .mimeType(ImageContentMimeType.IMAGE_JPEG)
+              .data(base64ImageData)
+              .build());
+
+      FunctionResultStep funcResult =
+          FunctionResultStep.builder()
+              .name(fcStep.name().orElse(""))
+              .callId(fcStep.id().orElse(""))
+              .result(FunctionResultStepResultUnion.of(subcontents))
+              .build();
+
+      CreateModelInteraction req2 =
+          CreateModelInteraction.builder()
+              .model(Model.of("gemini-3-flash-preview"))
+              .input(InteractionsInput.ofStep(Arrays.asList(funcResult)))
+              .tools(Arrays.asList(getImageTool))
+              .previousInteractionId(interaction1.id().orElse(""))
+              .build();
+
+      Interaction interaction2 =
+          client.interactions.create(CreateInteractionRequestBody.of(req2)).interaction().get();
+      System.out.println("Final model response: " + interaction2.outputText().orElse(""));
+    }
+    ```bash
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
@@ -139,8 +242,111 @@ constrain the model's thinking level to `low`.
 
     console.log(interaction.output_text);
 
-### REST
+### Java
 
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStepResultUnion;
+    import com.google.genai.gaos.models.interactions.FunctionResultSubcontent;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.Tool;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.io.InputStream;
+    import java.net.URL;
+    import java.util.ArrayList;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.List;
+    import java.util.Map;
+
+    Client client = new Client();
+
+    Map<String, Object> itemProp = new HashMap<>();
+    itemProp.put("type", "string");
+    itemProp.put("description", "The name or description of the item ordered (e.g., 'instrument').");
+
+    Map<String, Object> properties = new HashMap<>();
+    properties.put("item_name", itemProp);
+
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+    parameters.put("properties", properties);
+    parameters.put("required", Arrays.asList("item_name"));
+
+    Function getImageTool =
+        Function.builder()
+            .name("get_image")
+            .description("Retrieves the image file reference for a specific order item.")
+            .parameters(parameters)
+            .build();
+
+    CreateModelInteraction req1 =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3-flash-preview"))
+            .input(InteractionsInput.of("Use the get_image tool to show me the instrument I ordered last month."))
+            .tools(Arrays.asList(getImageTool))
+            .build();
+
+    Interaction interaction1 =
+        client.interactions.create(CreateInteractionRequestBody.of(req1)).interaction().get();
+
+    FunctionCallStep fcStep = null;
+    for (Step step : interaction1.steps().orElse(Collections.emptyList())) {
+      if (step instanceof FunctionCallStep) {
+        fcStep = (FunctionCallStep) step;
+        break;
+      }
+    }
+
+    if (fcStep != null) {
+      System.out.println("Tool Call: " + fcStep.name().orElse(""));
+
+      URL url = new URL("https://goo.gle/instrument-img");
+      byte[] imageBytes;
+      try (InputStream is = url.openStream()) {
+        imageBytes = is.readAllBytes();
+      }
+      String base64ImageData = Base64.getEncoder().encodeToString(imageBytes);
+
+      List<FunctionResultSubcontent> subcontents = new ArrayList<>();
+      subcontents.add(TextContent.builder().text("instrument.jpg").build());
+      subcontents.add(
+          ImageContent.builder()
+              .mimeType(ImageContentMimeType.IMAGE_JPEG)
+              .data(base64ImageData)
+              .build());
+
+      FunctionResultStep funcResult =
+          FunctionResultStep.builder()
+              .name(fcStep.name().orElse(""))
+              .callId(fcStep.id().orElse(""))
+              .result(FunctionResultStepResultUnion.of(subcontents))
+              .build();
+
+      CreateModelInteraction req2 =
+          CreateModelInteraction.builder()
+              .model(Model.of("gemini-3-flash-preview"))
+              .input(InteractionsInput.ofStep(Arrays.asList(funcResult)))
+              .tools(Arrays.asList(getImageTool))
+              .previousInteractionId(interaction1.id().orElse(""))
+              .build();
+
+      Interaction interaction2 =
+          client.interactions.create(CreateInteractionRequestBody.of(req2)).interaction().get();
+      System.out.println("Final model response: " + interaction2.outputText().orElse(""));
+    }
+    ```bash
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
@@ -254,8 +460,111 @@ Gemini 3 models allow you to combine [Structured Outputs](https://ai.google.dev/
 
     run();
 
-### REST
+### Java
 
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStepResultUnion;
+    import com.google.genai.gaos.models.interactions.FunctionResultSubcontent;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.Tool;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.io.InputStream;
+    import java.net.URL;
+    import java.util.ArrayList;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.List;
+    import java.util.Map;
+
+    Client client = new Client();
+
+    Map<String, Object> itemProp = new HashMap<>();
+    itemProp.put("type", "string");
+    itemProp.put("description", "The name or description of the item ordered (e.g., 'instrument').");
+
+    Map<String, Object> properties = new HashMap<>();
+    properties.put("item_name", itemProp);
+
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+    parameters.put("properties", properties);
+    parameters.put("required", Arrays.asList("item_name"));
+
+    Function getImageTool =
+        Function.builder()
+            .name("get_image")
+            .description("Retrieves the image file reference for a specific order item.")
+            .parameters(parameters)
+            .build();
+
+    CreateModelInteraction req1 =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3-flash-preview"))
+            .input(InteractionsInput.of("Use the get_image tool to show me the instrument I ordered last month."))
+            .tools(Arrays.asList(getImageTool))
+            .build();
+
+    Interaction interaction1 =
+        client.interactions.create(CreateInteractionRequestBody.of(req1)).interaction().get();
+
+    FunctionCallStep fcStep = null;
+    for (Step step : interaction1.steps().orElse(Collections.emptyList())) {
+      if (step instanceof FunctionCallStep) {
+        fcStep = (FunctionCallStep) step;
+        break;
+      }
+    }
+
+    if (fcStep != null) {
+      System.out.println("Tool Call: " + fcStep.name().orElse(""));
+
+      URL url = new URL("https://goo.gle/instrument-img");
+      byte[] imageBytes;
+      try (InputStream is = url.openStream()) {
+        imageBytes = is.readAllBytes();
+      }
+      String base64ImageData = Base64.getEncoder().encodeToString(imageBytes);
+
+      List<FunctionResultSubcontent> subcontents = new ArrayList<>();
+      subcontents.add(TextContent.builder().text("instrument.jpg").build());
+      subcontents.add(
+          ImageContent.builder()
+              .mimeType(ImageContentMimeType.IMAGE_JPEG)
+              .data(base64ImageData)
+              .build());
+
+      FunctionResultStep funcResult =
+          FunctionResultStep.builder()
+              .name(fcStep.name().orElse(""))
+              .callId(fcStep.id().orElse(""))
+              .result(FunctionResultStepResultUnion.of(subcontents))
+              .build();
+
+      CreateModelInteraction req2 =
+          CreateModelInteraction.builder()
+              .model(Model.of("gemini-3-flash-preview"))
+              .input(InteractionsInput.ofStep(Arrays.asList(funcResult)))
+              .tools(Arrays.asList(getImageTool))
+              .previousInteractionId(interaction1.id().orElse(""))
+              .build();
+
+      Interaction interaction2 =
+          client.interactions.create(CreateInteractionRequestBody.of(req2)).interaction().get();
+      System.out.println("Final model response: " + interaction2.outputText().orElse(""));
+    }
+    ```bash
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
@@ -356,8 +665,111 @@ options, see the [Image Generation guide](https://ai.google.dev/gemini-api/docs/
 
     run();
 
-### REST
+### Java
 
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStepResultUnion;
+    import com.google.genai.gaos.models.interactions.FunctionResultSubcontent;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.Tool;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.io.InputStream;
+    import java.net.URL;
+    import java.util.ArrayList;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.List;
+    import java.util.Map;
+
+    Client client = new Client();
+
+    Map<String, Object> itemProp = new HashMap<>();
+    itemProp.put("type", "string");
+    itemProp.put("description", "The name or description of the item ordered (e.g., 'instrument').");
+
+    Map<String, Object> properties = new HashMap<>();
+    properties.put("item_name", itemProp);
+
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+    parameters.put("properties", properties);
+    parameters.put("required", Arrays.asList("item_name"));
+
+    Function getImageTool =
+        Function.builder()
+            .name("get_image")
+            .description("Retrieves the image file reference for a specific order item.")
+            .parameters(parameters)
+            .build();
+
+    CreateModelInteraction req1 =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3-flash-preview"))
+            .input(InteractionsInput.of("Use the get_image tool to show me the instrument I ordered last month."))
+            .tools(Arrays.asList(getImageTool))
+            .build();
+
+    Interaction interaction1 =
+        client.interactions.create(CreateInteractionRequestBody.of(req1)).interaction().get();
+
+    FunctionCallStep fcStep = null;
+    for (Step step : interaction1.steps().orElse(Collections.emptyList())) {
+      if (step instanceof FunctionCallStep) {
+        fcStep = (FunctionCallStep) step;
+        break;
+      }
+    }
+
+    if (fcStep != null) {
+      System.out.println("Tool Call: " + fcStep.name().orElse(""));
+
+      URL url = new URL("https://goo.gle/instrument-img");
+      byte[] imageBytes;
+      try (InputStream is = url.openStream()) {
+        imageBytes = is.readAllBytes();
+      }
+      String base64ImageData = Base64.getEncoder().encodeToString(imageBytes);
+
+      List<FunctionResultSubcontent> subcontents = new ArrayList<>();
+      subcontents.add(TextContent.builder().text("instrument.jpg").build());
+      subcontents.add(
+          ImageContent.builder()
+              .mimeType(ImageContentMimeType.IMAGE_JPEG)
+              .data(base64ImageData)
+              .build());
+
+      FunctionResultStep funcResult =
+          FunctionResultStep.builder()
+              .name(fcStep.name().orElse(""))
+              .callId(fcStep.id().orElse(""))
+              .result(FunctionResultStepResultUnion.of(subcontents))
+              .build();
+
+      CreateModelInteraction req2 =
+          CreateModelInteraction.builder()
+              .model(Model.of("gemini-3-flash-preview"))
+              .input(InteractionsInput.ofStep(Arrays.asList(funcResult)))
+              .tools(Arrays.asList(getImageTool))
+              .previousInteractionId(interaction1.id().orElse(""))
+              .build();
+
+      Interaction interaction2 =
+          client.interactions.create(CreateInteractionRequestBody.of(req2)).interaction().get();
+      System.out.println("Final model response: " + interaction2.outputText().orElse(""));
+    }
+    ```bash
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
@@ -477,8 +889,111 @@ code to manipulate images when needed.
 
     main();
 
-### REST
+### Java
 
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStepResultUnion;
+    import com.google.genai.gaos.models.interactions.FunctionResultSubcontent;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.Tool;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.io.InputStream;
+    import java.net.URL;
+    import java.util.ArrayList;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.List;
+    import java.util.Map;
+
+    Client client = new Client();
+
+    Map<String, Object> itemProp = new HashMap<>();
+    itemProp.put("type", "string");
+    itemProp.put("description", "The name or description of the item ordered (e.g., 'instrument').");
+
+    Map<String, Object> properties = new HashMap<>();
+    properties.put("item_name", itemProp);
+
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+    parameters.put("properties", properties);
+    parameters.put("required", Arrays.asList("item_name"));
+
+    Function getImageTool =
+        Function.builder()
+            .name("get_image")
+            .description("Retrieves the image file reference for a specific order item.")
+            .parameters(parameters)
+            .build();
+
+    CreateModelInteraction req1 =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3-flash-preview"))
+            .input(InteractionsInput.of("Use the get_image tool to show me the instrument I ordered last month."))
+            .tools(Arrays.asList(getImageTool))
+            .build();
+
+    Interaction interaction1 =
+        client.interactions.create(CreateInteractionRequestBody.of(req1)).interaction().get();
+
+    FunctionCallStep fcStep = null;
+    for (Step step : interaction1.steps().orElse(Collections.emptyList())) {
+      if (step instanceof FunctionCallStep) {
+        fcStep = (FunctionCallStep) step;
+        break;
+      }
+    }
+
+    if (fcStep != null) {
+      System.out.println("Tool Call: " + fcStep.name().orElse(""));
+
+      URL url = new URL("https://goo.gle/instrument-img");
+      byte[] imageBytes;
+      try (InputStream is = url.openStream()) {
+        imageBytes = is.readAllBytes();
+      }
+      String base64ImageData = Base64.getEncoder().encodeToString(imageBytes);
+
+      List<FunctionResultSubcontent> subcontents = new ArrayList<>();
+      subcontents.add(TextContent.builder().text("instrument.jpg").build());
+      subcontents.add(
+          ImageContent.builder()
+              .mimeType(ImageContentMimeType.IMAGE_JPEG)
+              .data(base64ImageData)
+              .build());
+
+      FunctionResultStep funcResult =
+          FunctionResultStep.builder()
+              .name(fcStep.name().orElse(""))
+              .callId(fcStep.id().orElse(""))
+              .result(FunctionResultStepResultUnion.of(subcontents))
+              .build();
+
+      CreateModelInteraction req2 =
+          CreateModelInteraction.builder()
+              .model(Model.of("gemini-3-flash-preview"))
+              .input(InteractionsInput.ofStep(Arrays.asList(funcResult)))
+              .tools(Arrays.asList(getImageTool))
+              .previousInteractionId(interaction1.id().orElse(""))
+              .build();
+
+      Interaction interaction2 =
+          client.interactions.create(CreateInteractionRequestBody.of(req2)).interaction().get();
+      System.out.println("Final model response: " + interaction2.outputText().orElse(""));
+    }
+    ```bash
     IMG_URL="https://goo.gle/instrument-img"
     MODEL="gemini-3-flash-preview"
 
@@ -642,8 +1157,111 @@ function responses:
 
     console.log(`\nFinal model response: ${interaction2.output_text}`);
 
-### REST
+### Java
 
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStepResultUnion;
+    import com.google.genai.gaos.models.interactions.FunctionResultSubcontent;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.Tool;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.io.InputStream;
+    import java.net.URL;
+    import java.util.ArrayList;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.List;
+    import java.util.Map;
+
+    Client client = new Client();
+
+    Map<String, Object> itemProp = new HashMap<>();
+    itemProp.put("type", "string");
+    itemProp.put("description", "The name or description of the item ordered (e.g., 'instrument').");
+
+    Map<String, Object> properties = new HashMap<>();
+    properties.put("item_name", itemProp);
+
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+    parameters.put("properties", properties);
+    parameters.put("required", Arrays.asList("item_name"));
+
+    Function getImageTool =
+        Function.builder()
+            .name("get_image")
+            .description("Retrieves the image file reference for a specific order item.")
+            .parameters(parameters)
+            .build();
+
+    CreateModelInteraction req1 =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3-flash-preview"))
+            .input(InteractionsInput.of("Use the get_image tool to show me the instrument I ordered last month."))
+            .tools(Arrays.asList(getImageTool))
+            .build();
+
+    Interaction interaction1 =
+        client.interactions.create(CreateInteractionRequestBody.of(req1)).interaction().get();
+
+    FunctionCallStep fcStep = null;
+    for (Step step : interaction1.steps().orElse(Collections.emptyList())) {
+      if (step instanceof FunctionCallStep) {
+        fcStep = (FunctionCallStep) step;
+        break;
+      }
+    }
+
+    if (fcStep != null) {
+      System.out.println("Tool Call: " + fcStep.name().orElse(""));
+
+      URL url = new URL("https://goo.gle/instrument-img");
+      byte[] imageBytes;
+      try (InputStream is = url.openStream()) {
+        imageBytes = is.readAllBytes();
+      }
+      String base64ImageData = Base64.getEncoder().encodeToString(imageBytes);
+
+      List<FunctionResultSubcontent> subcontents = new ArrayList<>();
+      subcontents.add(TextContent.builder().text("instrument.jpg").build());
+      subcontents.add(
+          ImageContent.builder()
+              .mimeType(ImageContentMimeType.IMAGE_JPEG)
+              .data(base64ImageData)
+              .build());
+
+      FunctionResultStep funcResult =
+          FunctionResultStep.builder()
+              .name(fcStep.name().orElse(""))
+              .callId(fcStep.id().orElse(""))
+              .result(FunctionResultStepResultUnion.of(subcontents))
+              .build();
+
+      CreateModelInteraction req2 =
+          CreateModelInteraction.builder()
+              .model(Model.of("gemini-3-flash-preview"))
+              .input(InteractionsInput.ofStep(Arrays.asList(funcResult)))
+              .tools(Arrays.asList(getImageTool))
+              .previousInteractionId(interaction1.id().orElse(""))
+              .build();
+
+      Interaction interaction2 =
+          client.interactions.create(CreateInteractionRequestBody.of(req2)).interaction().get();
+      System.out.println("Final model response: " + interaction2.outputText().orElse(""));
+    }
+    ```shell
     IMG_URL="https://goo.gle/instrument-img"
 
     MIME_TYPE=$(curl -sIL "$IMG_URL" | grep -i '^content-type:' | awk -F ': ' '{print $2}' | sed 's/\r$//' | head -n 1)
@@ -794,6 +1412,107 @@ more complex workflows.
       });
 
       console.log(finalInteraction.output_text);
+    }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Function;
+    import com.google.genai.gaos.models.interactions.FunctionCallStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStep;
+    import com.google.genai.gaos.models.interactions.FunctionResultStepResultUnion;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Step;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.Tool;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.io.InputStream;
+    import java.net.URL;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.Collections;
+    import java.util.HashMap;
+    import java.util.Map;
+    import java.util.Optional;
+
+    Client client = new Client();
+
+    Map<String, Object> itemProp = new HashMap<>();
+    itemProp.put("type", "string");
+    itemProp.put("description", "The name or description of the item ordered (e.g., 'instrument').");
+
+    Map<String, Object> properties = new HashMap<>();
+    properties.put("item_name", itemProp);
+
+    Map<String, Object> parameters = new HashMap<>();
+    parameters.put("type", "object");
+    parameters.put("properties", properties);
+    parameters.put("required", Arrays.asList("item_name"));
+
+    Function getImageTool =
+        Function.builder()
+            .name("get_image")
+            .description("Retrieves the image file reference for a specific order item.")
+            .parameters(parameters)
+            .build();
+
+    CreateModelInteraction req1 =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3-flash-preview"))
+            .input(InteractionsInput.of("Use the get_image tool to show me the instrument I ordered last month."))
+            .tools(Arrays.asList(Tool.of(getImageTool)))
+            .build();
+
+    Interaction interaction1 =
+        client.interactions.create(CreateInteractionRequestBody.of(req1)).interaction().get();
+
+    Optional<FunctionCallStep> fcStepOpt =
+        interaction1.steps().orElse(Collections.emptyList()).stream()
+            .filter(Step::isFunctionCall)
+            .map(Step::asFunctionCall)
+            .findFirst();
+
+    if (fcStepOpt.isPresent()) {
+      FunctionCallStep fcStep = fcStepOpt.get();
+      System.out.println("Tool Call: " + fcStep.name().orElse(""));
+
+      URL url = new URL("https://goo.gle/instrument-img");
+      byte[] imageBytes;
+      try (InputStream is = url.openStream()) {
+        imageBytes = is.readAllBytes();
+      }
+      String base64ImageData = Base64.getEncoder().encodeToString(imageBytes);
+
+      FunctionResultStep funcResult =
+          FunctionResultStep.builder()
+              .name(fcStep.name().orElse(""))
+              .callId(fcStep.id().orElse(""))
+              .result(
+                  FunctionResultStepResultUnion.of(
+                      Arrays.asList(
+                          TextContent.builder().text("instrument.jpg").build(),
+                          ImageContent.builder()
+                              .mimeType("image/jpeg")
+                              .data(base64ImageData)
+                              .build())))
+              .build();
+
+      CreateModelInteraction req2 =
+          CreateModelInteraction.builder()
+              .model(Model.of("gemini-3-flash-preview"))
+              .input(InteractionsInput.ofStep(Arrays.asList(funcResult)))
+              .tools(Arrays.asList(Tool.of(getImageTool)))
+              .previousInteractionId(interaction1.id().orElse(""))
+              .build();
+
+      Interaction interaction2 =
+          client.interactions.create(CreateInteractionRequestBody.of(req2)).interaction().get();
+      System.out.println("
+    Final model response: " + interaction2.outputText().orElse(""));
     }
 
 ## Migration from Gemini 2.5

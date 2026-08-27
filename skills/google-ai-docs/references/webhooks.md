@@ -66,6 +66,23 @@ to verify signatures later. If you lose the signing secret, you'll have to
 
     createWebhook();
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+    CreateModelInteraction req = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.7-flash"))
+        .input(InteractionsInput.of("Hello world"))
+        .build();
+    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     curl -X POST \
@@ -113,6 +130,23 @@ Retrieve details about a specific webhook by its resource name.
 
     getWebhook();
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+    CreateModelInteraction req = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.7-flash"))
+        .input(InteractionsInput.of("Hello world"))
+        .build();
+    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     curl -X GET \
@@ -149,6 +183,23 @@ List all configured webhooks for the current project, with optional pagination.
     }
 
     listWebhooks();
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+    CreateModelInteraction req = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.7-flash"))
+        .input(InteractionsInput.of("Hello world"))
+        .build();
+    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 
@@ -193,6 +244,23 @@ subscribed events.
 
     updateWebhook();
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+    CreateModelInteraction req = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.7-flash"))
+        .input(InteractionsInput.of("Hello world"))
+        .build();
+    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     curl -X PATCH \
@@ -231,6 +299,23 @@ to that endpoint.
     }
 
     deleteWebhook();
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+    CreateModelInteraction req = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.7-flash"))
+        .input(InteractionsInput.of("Hello world"))
+        .build();
+    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 
@@ -280,6 +365,23 @@ time. Store it securely before updating your verification logic.
     }
 
     rotateSigningSecret();
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+    CreateModelInteraction req = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.7-flash"))
+        .input(InteractionsInput.of("Hello world"))
+        .build();
+    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+    System.out.println(interaction.outputText().orElse(""));
 
 ### REST
 
@@ -391,6 +493,23 @@ Here is an example using Flask for the HTTP listener:
       console.log("Webhook server is running on port 8000");
     });
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+    CreateModelInteraction req = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.7-flash"))
+        .input(InteractionsInput.of("Hello world"))
+        .build();
+    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+    System.out.println(interaction.outputText().orElse(""));
+
 ## Dynamic webhooks
 
 Dynamic webhooks allow you to bind a webhook endpoint to a **specific request
@@ -410,7 +529,7 @@ Batch).
     client = genai.Client()
 
     response = client.interactions.create(
-        model='gemini-3.6-flash',
+        model='gemini-3.7-flash',
         input='Tell me a short joke about programming.',
         background=True, # Required when webhook_config is specified
         webhook_config={
@@ -431,7 +550,7 @@ Batch).
 
     async function createInteractionWithWebhook() {
       const response = await client.interactions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.7-flash",
         input: "Tell me a short joke about programming.",
         background: true, // Required when webhook_config is specified
         webhook_config: {
@@ -446,6 +565,23 @@ Batch).
 
     createInteractionWithWebhook();
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+    CreateModelInteraction req = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.7-flash"))
+        .input(InteractionsInput.of("Hello world"))
+        .build();
+    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     # Specifies the API revision to avoid breaking changes when they become default
@@ -454,7 +590,7 @@ Batch).
       -H "Content-Type: application/json" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -d '{
-        "model": "gemini-3.6-flash",
+        "model": "gemini-3.7-flash",
         "input": "Tell me a short joke about programming.",
         "background": true,
         "webhook_config": {
@@ -563,6 +699,23 @@ endpoints](https://www.googleapis.com/oauth2/v3/certs).
         }
       );
     });
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+    CreateModelInteraction req = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.7-flash"))
+        .input(InteractionsInput.of("Hello world"))
+        .build();
+    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+    System.out.println(interaction.outputText().orElse(""));
 
 ## Webhook envelope
 

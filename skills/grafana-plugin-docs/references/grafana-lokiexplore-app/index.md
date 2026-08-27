@@ -67,7 +67,7 @@ Find solutions to common issues you might encounter when using Grafana Logs Dril
 
 [Engage with your JSON log lines
 \
-Drill down into your JSON log lines to better understand your log line data.](./viewing-json-logs/)
+Drill down into your JSON log lines to better understand your log line data.](./view-logs/json/)
 
 [Give feedback
 \

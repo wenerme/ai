@@ -24,6 +24,7 @@ RealtimeKit ships a Core SDK and UI Kit for each supported platform. Select your
 * [iOS UI Kit SDK](https://developers.cloudflare.com/realtime/realtimekit/release-notes/ios-ui-kit/)
 * [React Native Core SDK](https://developers.cloudflare.com/realtime/realtimekit/release-notes/react-native-core/)
 * [React Native UI Kit SDK](https://developers.cloudflare.com/realtime/realtimekit/release-notes/react-native-ui-kit/)
+* [Recording SDK](https://developers.cloudflare.com/realtime/realtimekit/release-notes/recording-sdk/)
 * [Flutter Core SDK](https://developers.cloudflare.com/realtime/realtimekit/release-notes/flutter-core/)
 * [Flutter UI Kit](https://developers.cloudflare.com/realtime/realtimekit/release-notes/flutter-ui-kit/)
 * [Notices](https://developers.cloudflare.com/realtime/realtimekit/release-notes/notice-board/)

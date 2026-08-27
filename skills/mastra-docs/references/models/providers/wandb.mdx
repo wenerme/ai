@@ -1,11 +1,11 @@
 ---
 title: "Weights & Biases | Models"
-description: "Use Weights & Biases models with Mastra. 30 models available."
+description: "Use Weights & Biases models with Mastra. 26 models available."
 ---
 
 # [Weights & Biases logo]Weights & Biases
 
-Access 30 Weights & Biases models through Mastra's model router. Authentication is handled automatically using the `WANDB_API_KEY` environment variable.
+Access 26 Weights & Biases models through Mastra's model router. Authentication is handled automatically using the `WANDB_API_KEY` environment variable.
 
 Learn more in the [Weights & Biases documentation](https://docs.wandb.ai).
 
@@ -142,8 +142,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 128000,
+    "contextWindow": 131072,
+    "maxOutput": 131072,
     "inputCost": 0.8,
     "outputCost": 0.8
   },
@@ -154,8 +154,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 128000,
+    "contextWindow": 131072,
+    "maxOutput": 131072,
     "inputCost": 0.22,
     "outputCost": 0.22
   },
@@ -170,18 +170,6 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 0.71,
     "outputCost": 0.71
-  },
-  {
-    "model": "wandb/MiniMaxAI/MiniMax-M2.5",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 196608,
-    "maxOutput": 196608,
-    "inputCost": 0.3,
-    "outputCost": 1.2
   },
   {
     "model": "wandb/MiniMaxAI/MiniMax-M3",
@@ -230,18 +218,6 @@ for await (const chunk of stream) {
     "maxOutput": 1048576,
     "inputCost": 3,
     "outputCost": 15
-  },
-  {
-    "model": "wandb/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-FP8",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": 0.2,
-    "outputCost": 0.8
   },
   {
     "model": "wandb/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B",
@@ -316,18 +292,6 @@ for await (const chunk of stream) {
     "outputCost": 0.3
   },
   {
-    "model": "wandb/Qwen/Qwen3-Coder-480B-A35B-Instruct",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": 1,
-    "outputCost": 1.5
-  },
-  {
     "model": "wandb/Qwen/Qwen3.5-35B-A3B",
     "imageInput": true,
     "audioInput": false,
@@ -376,26 +340,14 @@ for await (const chunk of stream) {
     "outputCost": 3
   },
   {
-    "model": "wandb/zai-org/GLM-5.1",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 202752,
-    "maxOutput": 202752,
-    "inputCost": 1.4,
-    "outputCost": 4.4
-  },
-  {
     "model": "wandb/zai-org/GLM-5.2",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
     "inputCost": 0.76,
     "outputCost": 2.42
   }

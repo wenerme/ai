@@ -1,5 +1,7 @@
 # Use custom emoji with GraphQL
 
+Create custom emoji for a group and query them with the GraphQL API.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

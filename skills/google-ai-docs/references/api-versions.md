@@ -60,7 +60,7 @@ by setting the API version as shown in the following code sample:
     client = genai.Client(http_options={'api_version': 'v1'})
 
     interaction = client.interactions.create(
-        model='gemini-3.6-flash',
+        model='gemini-3.7-flash',
         input="Explain how AI works",
     )
 
@@ -76,7 +76,7 @@ by setting the API version as shown in the following code sample:
 
     async function main() {
       const interaction = await ai.interactions.create({
-        model: "gemini-3.6-flash",
+        model: "gemini-3.7-flash",
         input: "Explain how AI works",
       });
       console.log(interaction.output_text);
@@ -84,12 +84,32 @@ by setting the API version as shown in the following code sample:
 
     await main();
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import com.google.genai.types.HttpOptions;
+
+    Client client = Client.builder()
+        .httpOptions(HttpOptions.builder().apiVersion("v1").build())
+        .build();
+
+    CreateModelInteraction req = CreateModelInteraction.builder()
+        .model(Model.of("gemini-3.6-flash"))
+        .input(InteractionsInput.of("Explain how AI works"))
+        .build();
+    var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
+    System.out.println(interaction.outputText().orElse(""));
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.6-flash",
+        "model": "gemini-3.7-flash",
         "input": "Explain how AI works",
       }'

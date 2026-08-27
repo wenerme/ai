@@ -1,5 +1,7 @@
 # GitLab To-Do List API
 
+REST API to retrieve to-do items and mark them as done.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

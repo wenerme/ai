@@ -16,6 +16,12 @@ Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 This release notes section covers regular updates and minor fixes. For major feature releases or significant updates, see the [changelog](https://developers.cloudflare.com/changelog).
 
+## 2026-08-25
+
+**Larger custom metadata values**
+
+AI Search supports larger custom metadata values within a shared 10 KiB metadata envelope for each vector. The envelope includes system metadata and JSON overhead, and the first 64 UTF-8 bytes of each indexed string remain filterable. Refer to [Metadata attributes](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/) for details.
+
 ## 2026-08-06
 
 **Custom domains, Cloudflare Access, and namespace public endpoints**

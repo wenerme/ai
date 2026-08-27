@@ -1,5 +1,7 @@
 # Group issue boards API
 
+REST API to create, manage, and delete group issue boards and their lists.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
@@ -79,7 +81,7 @@ Example response:
 ```
 
 Users on [GitLab Premium or Ultimate](https://about.gitlab.com/pricing/) see
-different parameters, due to the ability to have multiple group boards.
+different parameters, because those tiers support multiple group boards.
 
 Example response:
 
@@ -201,7 +203,7 @@ Example response:
 ```
 
 Users on [GitLab Premium or Ultimate](https://about.gitlab.com/pricing/) see
-different parameters, due to the ability to have multiple group issue boards.
+different parameters, because those tiers support multiple group issue boards.
 
 Example response:
 

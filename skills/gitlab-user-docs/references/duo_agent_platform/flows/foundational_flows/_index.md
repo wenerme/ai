@@ -20,6 +20,7 @@ The following foundational flows are available:
 | [Convert to GitLab CI/CD](convert_to_gitlab_ci.md) | Migrate Jenkins pipelines to CI/CD. |
 | [Developer](developer.md) | Create actionable merge requests from issues, or complete different tasks in GitLab Duo Agentic Chat. |
 | [Fix CI/CD Pipeline](fix_pipeline.md) | Diagnose and repair failed jobs. |
+| [Recommend Reviewers](../../../project/merge_requests/reviews/automatic_reviewer_assignment.md#assign-reviewers-with-the-recommend-reviewers-flow) | Recommend and assign the reviewers best suited to review a merge request. |
 | [SAST False Positive Detection](../../../application_security/vulnerabilities/false_positive_detection.md) | Automatically identify and filter false positives in SAST findings. |
 | [SAST Vulnerability Resolution](agentic_sast_vulnerability_resolution.md) | Automatically generate merge requests to resolve SAST vulnerabilities. |
 | [Secret False Positive Detection](secret_false_positive_detection.md) | Automatically identify and filter false positives in secret detection findings. |
@@ -73,6 +74,21 @@ You can turn foundational flows on or off:
 You can also turn flow execution on or off to control whether
 features that consume compute minutes can run in the GitLab UI.
 These features include external agents, foundational flows, and custom flows.
+
+These settings control the flows that run in GitLab, for example a flow you start
+from an issue or a merge request.
+
+These settings do not control a flow that you run yourself, either in an IDE or in a
+[GitLab Duo CLI](../../../gitlab_duo_cli/_index.md) session. In those sessions, you can run
+a foundational flow when:
+
+- [GitLab Duo Agent Platform is available](../../turn_on_off.md) for the project or group.
+- The flow is available for your subscription tier. Beta flows also require
+  [experiment and beta features](../../turn_on_off.md#turn-on-beta-and-experimental-features)
+  to be turned on.
+
+For example, if you turn off a foundational flow, you can no longer run that flow in GitLab,
+but users can still run it in an IDE or a GitLab Duo CLI session.
 
 ### On GitLab.com
 

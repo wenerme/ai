@@ -1,5 +1,7 @@
 # Resource weight events API
 
+REST API to retrieve weight change events for issues.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

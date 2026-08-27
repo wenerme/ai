@@ -1,4 +1,4 @@
-# Rate limits on webhook operations
+# Webhook operations rate limits
 
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
