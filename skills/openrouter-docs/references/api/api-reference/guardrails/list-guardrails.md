@@ -218,6 +218,9 @@ components:
             content_filters: null
             created_at: '2025-08-24T10:30:00Z'
             description: Guardrail for production environment
+            enable_free_model_publication: false
+            enable_free_model_training: true
+            enable_paid_model_training: true
             enforce_zdr: null
             enforce_zdr_anthropic: true
             enforce_zdr_google: false

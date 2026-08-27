@@ -10,6 +10,8 @@ REST API to manage security policies stored in the policy store for an organizat
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/604367) to persist policies to the database instead of per-process memory in GitLab 19.4.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/616505) to add the `policy_rego` response attribute in GitLab 19.4.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/612905) to reject rules that compile to a Rego module larger than 65536 bytes in GitLab 19.4.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/623359) to add the `scope_dimensions` response attribute in GitLab 19.4.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/612905) to limit `rules` and `actions` to 5 entries each, and each entry to 4096 bytes, in GitLab 19.4.
 
 > [!warning]
 > This feature is an [experiment](../policy/development_stages_support.md).
@@ -164,6 +166,14 @@ program that applies to every project.
 `policy_scope` is `null` when the Rego was authored directly, because a hand-written program
 has no structured form.
 
+`scope_dimensions` lists the dotted context paths, such as `compliance_frameworks` or
+`project.id`, that `scope_rego` reads to decide whether the policy applies. GitLab derives
+this list, so it ignores any value you send for the attribute. This value is always an
+array, empty when the policy is unscoped, unless `scope_rego` was authored directly instead
+of compiled from `policy_scope`. In that case, GitLab cannot derive the paths from a
+hand-written program, so `scope_dimensions` is `null`, meaning the paths are not known
+rather than empty.
+
 #### Policy scope structure
 
 `policy_scope` holds one or more criteria, and `match_mode` controls how they combine.
@@ -219,6 +229,10 @@ An entry cannot be blank.
 A blank entry returns `400 Bad Request`, and the error names each blank position,
 for example `rules[0] is blank`.
 
+Each array accepts at most 5 entries, and each entry cannot serialize to more than 4096 bytes.
+Exceeding either limit returns `400 Bad Request`. An oversized entry names each offending
+position, for example `rules has an entry exceeding maximum size of 4096 bytes at 0`.
+
 A request replaces the whole array.
 You cannot add or remove a single entry.
 
@@ -244,6 +258,7 @@ The policy endpoints return the following attributes:
 | `policy_rego`     | string          | The policy's rules, compiled to a single Rego module. `null` for a policy with no rules. |
 | `policy_scope`    | object          | Structured scope of the policy, or `null` when the Rego was authored directly. |
 | `rules`           | array           | Rules of the policy. |
+| `scope_dimensions`| array           | Dotted context paths `scope_rego` reads to decide whether the policy applies. GitLab derives this value, so it ignores any value you send for it. `null` when `scope_rego` was authored directly, otherwise an array, empty when the policy is unscoped. |
 | `scope_rego`      | string          | Compiled scope of the policy, as Rego. |
 | `trigger_type`    | string          | Trigger the policy responds to. |
 | `updated_at`      | string          | Date and time the policy was last changed. |
@@ -290,6 +305,7 @@ Example response:
     "policy_rego": "package governance\n",
     "actions": [{ "type": "block" }],
     "policy_scope": null,
+    "scope_dimensions": [],
     "scope_rego": "package gitlab.scope\n\napplicable := [result.policy | some result in results; result.applies]\n...",
     "mode": "enforce",
     "lifecycle_state": "active",
@@ -339,6 +355,7 @@ Example response:
   "policy_rego": "package governance\n",
   "actions": [{ "type": "block" }],
   "policy_scope": null,
+  "scope_dimensions": [],
   "scope_rego": "package gitlab.scope\n\napplicable := [result.policy | some result in results; result.applies]\n...",
   "mode": "enforce",
   "lifecycle_state": "active",
@@ -361,9 +378,9 @@ Supported attributes:
 | ----------------- | ------- | -------- | ----------- |
 | `id`              | integer | Yes      | ID of the organization. |
 | `name`            | string  | Yes      | Name of the policy. Maximum 255 characters. Must be unique in the organization. |
-| `rules`           | array   | Yes      | Rules of the policy. At least one entry is required. Rejected when the entries compile to a Rego module larger than 65536 bytes. That module is returned as `policy_rego`. |
+| `rules`           | array   | Yes      | Rules of the policy. At least one entry is required, up to 5. Each entry must serialize to at most 4096 bytes. Rejected when the entries compile to a Rego module larger than 65536 bytes. That module is returned as `policy_rego`. |
 | `trigger_type`    | string  | Yes      | Trigger the policy responds to. One of the IDs returned by [List all triggers](#list-all-triggers). |
-| `actions`         | array   | No       | Actions the policy takes. |
+| `actions`         | array   | No       | Actions the policy takes. Up to 5 entries. Each entry must serialize to at most 4096 bytes. |
 | `description`     | string  | No       | Description of the policy. Maximum 4096 characters. |
 | `lifecycle_state` | string  | No       | Either `active` or `disabled`. Defaults to `active`. |
 | `mode`            | string  | No       | One of `audit`, `warn`, or `enforce`. Defaults to `enforce`. |
@@ -379,6 +396,8 @@ The following conditions return `400 Bad Request`:
 - The name is already taken in the organization.
 - A compiled `scope_rego` exceeds 4096 characters.
 - The `rules` compile to more than 65536 bytes of Rego.
+- `rules` or `actions` carries more than 5 entries.
+- An entry in `rules` or `actions` serializes to more than 4096 bytes.
 
 Example request:
 
@@ -410,6 +429,7 @@ Example response:
   "policy_rego": "package governance\n",
   "actions": [{ "type": "block" }],
   "policy_scope": { "compliance_frameworks": [{ "id": 5 }] },
+  "scope_dimensions": ["compliance_frameworks"],
   "scope_rego": "package gitlab.scope\n\napplicable := [result.policy | some result in results; result.applies]\n...",
   "mode": "enforce",
   "lifecycle_state": "active",
@@ -436,13 +456,13 @@ Supported attributes:
 | ----------------- | ------- | -------- | ----------- |
 | `id`              | integer | Yes      | ID of the organization. |
 | `policy_id`       | integer | Yes      | ID of the policy. |
-| `actions`         | array   | No       | Actions the policy takes. Replaces the stored actions. |
+| `actions`         | array   | No       | Actions the policy takes. Replaces the stored actions, up to 5 entries. Each entry must serialize to at most 4096 bytes. |
 | `description`     | string  | No       | Description of the policy. Maximum 4096 characters. |
 | `lifecycle_state` | string  | No       | Either `active` or `disabled`. |
 | `mode`            | string  | No       | One of `audit`, `warn`, or `enforce`. |
 | `name`            | string  | No       | Name of the policy. Maximum 255 characters. Must be unique in the organization. |
 | `policy_scope`    | object  | No       | Structured scope of the policy. Cannot be combined with a non-empty `scope_rego`. Rejected when it compiles to more than 4096 characters of Rego. |
-| `rules`           | array   | No       | Rules of the policy. Replaces the stored rules. Rejected when the entries compile to a Rego module larger than 65536 bytes. That module is returned as `policy_rego`. |
+| `rules`           | array   | No       | Rules of the policy. Replaces the stored rules, up to 5 entries. Each entry must serialize to at most 4096 bytes. Rejected when the entries compile to a Rego module larger than 65536 bytes. That module is returned as `policy_rego`. |
 | `scope_rego`      | string  | No       | Scope of the policy, authored as Rego. Maximum 4096 characters. Send an empty value to retire an authored program and recompile from `policy_scope`. |
 | `trigger_type`    | string  | No       | Trigger the policy responds to. One of the IDs returned by [List all triggers](#list-all-triggers). |
 
@@ -460,6 +480,8 @@ The following conditions return `400 Bad Request`:
 - The new name is already taken in the organization.
 - A recompiled `scope_rego` exceeds 4096 characters.
 - The replacement `rules` compile to more than 65536 bytes of Rego.
+- The replacement `rules` or `actions` carries more than 5 entries.
+- An entry in the replacement `rules` or `actions` serializes to more than 4096 bytes.
 
 Example request:
 
@@ -484,6 +506,7 @@ Example response:
   "policy_rego": "package governance\n",
   "actions": [{ "type": "block" }],
   "policy_scope": null,
+  "scope_dimensions": [],
   "scope_rego": "package gitlab.scope\n\napplicable := [result.policy | some result in results; result.applies]\n...",
   "mode": "enforce",
   "lifecycle_state": "active",

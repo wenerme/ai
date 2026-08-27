@@ -10906,6 +10906,10 @@ the `background` parameter set to `true` can be cancelled.
 
       The total number of tokens used.
 
+    - `compute_units: optional number or null`
+
+      Compute units for the request. Currently null when available.
+
   - `user: optional string`
 
     This field is being replaced by `safety_identifier` and `prompt_cache_key`. Use `prompt_cache_key` instead to maintain caching optimizations.
@@ -11089,7 +11093,8 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID/cancel \
     "output_tokens_details": {
       "reasoning_tokens": 0
     },
-    "total_tokens": 0
+    "total_tokens": 0,
+    "compute_units": 0
   },
   "user": "user-1234"
 }
@@ -21126,6 +21131,10 @@ Learn when and how to compact long-running conversations in the [conversation st
 
       The total number of tokens used.
 
+    - `compute_units: optional number or null`
+
+      Compute units for the request. Currently null when available.
+
 ### Example
 
 ```http
@@ -21176,7 +21185,8 @@ curl https://api.openai.com/v1/responses/compact \
     "output_tokens_details": {
       "reasoning_tokens": 0
     },
-    "total_tokens": 0
+    "total_tokens": 0,
+    "compute_units": 0
   }
 }
 ```
@@ -38945,6 +38955,10 @@ as input for the model's response.
 
       The total number of tokens used.
 
+    - `compute_units: optional number or null`
+
+      Compute units for the request. Currently null when available.
+
   - `user: optional string`
 
     This field is being replaced by `safety_identifier` and `prompt_cache_key`. Use `prompt_cache_key` instead to maintain caching optimizations.
@@ -39136,7 +39150,8 @@ curl https://api.openai.com/v1/responses \
     "output_tokens_details": {
       "reasoning_tokens": 0
     },
-    "total_tokens": 0
+    "total_tokens": 0,
+    "compute_units": 0
   },
   "user": "user-1234"
 }
@@ -50894,6 +50909,10 @@ Retrieves a model response with the given ID.
 
       The total number of tokens used.
 
+    - `compute_units: optional number or null`
+
+      Compute units for the request. Currently null when available.
+
   - `user: optional string`
 
     This field is being replaced by `safety_identifier` and `prompt_cache_key`. Use `prompt_cache_key` instead to maintain caching optimizations.
@@ -51076,7 +51095,8 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID \
     "output_tokens_details": {
       "reasoning_tokens": 0
     },
-    "total_tokens": 0
+    "total_tokens": 0,
+    "compute_units": 0
   },
   "user": "user-1234"
 }
@@ -55984,6 +56004,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
     - `total_tokens: number`
 
       The total number of tokens used.
+
+    - `compute_units: optional number or null`
+
+      Compute units for the request. Currently null when available.
 
 ### Beta Computer Action
 
@@ -67769,6 +67793,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       The total number of tokens used.
 
+    - `compute_units: optional number or null`
+
+      Compute units for the request. Currently null when available.
+
   - `user: optional string`
 
     This field is being replaced by `safety_identifier` and `prompt_cache_key`. Use `prompt_cache_key` instead to maintain caching optimizations.
@@ -78940,6 +78968,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `total_tokens: number`
 
         The total number of tokens used.
+
+      - `compute_units: optional number or null`
+
+        Compute units for the request. Currently null when available.
 
     - `user: optional string`
 
@@ -90574,6 +90606,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The total number of tokens used.
 
+      - `compute_units: optional number or null`
+
+        Compute units for the request. Currently null when available.
+
     - `user: optional string`
 
       This field is being replaced by `safety_identifier` and `prompt_cache_key`. Use `prompt_cache_key` instead to maintain caching optimizations.
@@ -101653,6 +101689,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `total_tokens: number`
 
         The total number of tokens used.
+
+      - `compute_units: optional number or null`
+
+        Compute units for the request. Currently null when available.
 
     - `user: optional string`
 
@@ -113047,6 +113087,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The total number of tokens used.
 
+      - `compute_units: optional number or null`
+
+        Compute units for the request. Currently null when available.
+
     - `user: optional string`
 
       This field is being replaced by `safety_identifier` and `prompt_cache_key`. Use `prompt_cache_key` instead to maintain caching optimizations.
@@ -123995,6 +124039,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `total_tokens: number`
 
         The total number of tokens used.
+
+      - `compute_units: optional number or null`
+
+        Compute units for the request. Currently null when available.
 
     - `user: optional string`
 
@@ -160370,6 +160418,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The total number of tokens used.
 
+      - `compute_units: optional number or null`
+
+        Compute units for the request. Currently null when available.
+
     - `user: optional string`
 
       This field is being replaced by `safety_identifier` and `prompt_cache_key`. Use `prompt_cache_key` instead to maintain caching optimizations.
@@ -172152,6 +172204,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The total number of tokens used.
 
+        - `compute_units: optional number or null`
+
+          Compute units for the request. Currently null when available.
+
       - `user: optional string`
 
         This field is being replaced by `safety_identifier` and `prompt_cache_key`. Use `prompt_cache_key` instead to maintain caching optimizations.
@@ -174391,7 +174447,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Beta Response Usage
 
-- `BetaResponseUsage object { input_tokens, input_tokens_details, output_tokens, 2 more }`
+- `BetaResponseUsage object { input_tokens, input_tokens_details, output_tokens, 3 more }`
 
   Represents token usage details including input tokens, output tokens,
   a breakdown of output tokens, and the total tokens used.
@@ -174428,6 +174484,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
   - `total_tokens: number`
 
     The total number of tokens used.
+
+  - `compute_units: optional number or null`
+
+    Compute units for the request. Currently null when available.
 
 ### Beta Response Web Search Call Completed Event
 

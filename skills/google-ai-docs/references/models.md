@@ -34,13 +34,13 @@ Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) [#
 Frontier-class performance rivaling larger models at a fraction of the cost.
 Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) [### Gemini 3.5 Live Translate
 Low-latency, real-time speech to speech translation model that supports 70+ languages.
-New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-preview) [### Gemini 3.1 Flash Live
+New](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-preview) [### Gemini 3.1 Flash Live
 High-quality, low-latency Live API model for real-time dialogue and voice-first AI applications.
-New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview) [### Gemini 3.1 Flash TTS
+New](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview) [### Gemini 3.1 Flash TTS
 Powerful, low-latency speech generation.
-New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-preview) [### Gemini Omni Flash
-Fast, conversational video generation and editing. Turn text and images into video, and refine results through natural language.
-New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
+New](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-preview) [### Gemini Omni Flash
+Fast video generation, editing, keyframe interpolation, and extension with native audio.
+New](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 
 ### All Gemini 3 models
 
@@ -59,7 +59,7 @@ New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 | [Gemini 3.5 Live Translate](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-preview) | ``` gemini-3.5-live-translate-preview ``` |
 | [Gemini 3.1 Flash Live](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview) | ``` gemini-3.1-flash-live-preview ``` |
 | [Gemini 3.1 Flash TTS](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-preview) | ``` gemini-3.1-flash-tts-preview ``` |
-| [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash) | ``` gemini-omni-flash ``` |
+| [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash) | ``` gemini-omni-1.1-flash ``` |
 | [Gemini 3.5 Transcribe](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe) | ``` gemini-3.5-transcribe gemini-3.5-transcribe-live ``` |
 
 ## Gemini 2.5 Flash
@@ -108,7 +108,7 @@ New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 | [Veo 3.1](https://ai.google.dev/gemini-api/docs/models/veo-3.1-generate-preview) | State-of-the-art cinematic video generation with advanced creative controls and natively synchronized audio. | ``` veo-3.1-generate-preview ``` |
 | [Nano Banana Pro](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image) | A professional design engine with a reasoning core for studio-quality 4K visuals, complex layouts, and precise text rendering. | ``` gemini-3-pro-image ``` |
 | [Veo 3.1 Lite](https://ai.google.dev/gemini-api/docs/models/veo-3.1-lite-generate-preview) | High-efficiency, low-cost, developer-first video generation, editing, and cinematic control from the Veo 3.1 family. | ``` veo-3.1-lite-generate-preview ``` |
-| [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash) | Fast, conversational video generation and editing. Turn text and images into video, and refine results through natural language. | ``` gemini-omni-flash ``` |
+| [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash) | Fast video generation, editing, keyframe interpolation, and extension with native audio. | ``` gemini-omni-1.1-flash ``` |
 | [Nano Banana](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image) | State-of-the-art native image generation and editing designed for fast, creative workflows. | ``` gemini-2.5-flash-image ``` |
 | [Imagen 4 (Deprecated)](https://ai.google.dev/gemini-api/docs/models/imagen) | Text-to-image model featuring fast and ultra-fast generation and exceptional clarity up to 2K resolution. | ``` imagen-4.0-generate ``` |
 

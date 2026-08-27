@@ -1,5 +1,7 @@
 # Bugzilla
 
+Configure the Bugzilla integration to link a GitLab project to a Bugzilla issue tracker and reference Bugzilla issues in GitLab.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
@@ -9,7 +11,7 @@ tool.
 You can configure Bugzilla as an
 [external issue tracker](../../../integration/external-issue-tracker.md) in GitLab.
 
-To enable the Bugzilla integration in a project:
+To turn on the Bugzilla integration in a project:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Settings** > **Integrations**.
@@ -31,12 +33,14 @@ To enable the Bugzilla integration in a project:
 1. Optional. Select **Test settings**.
 1. Select **Save changes**.
 
-After you configure and enable Bugzilla, a link appears on the GitLab
+After you configure and turn on Bugzilla, a link appears on the GitLab
 project pages. This link takes you to the appropriate Bugzilla project.
 
-You can also disable [GitLab internal issue tracking](../issues/_index.md) in this project.
-For more information about the steps and consequences of disabling GitLab issues, see
-Configure project [visibility](../../public_access.md#change-project-visibility), [features, and permissions](../settings/_index.md#configure-project-features-and-permissions).
+You can also turn off [GitLab internal issue tracking](../issues/_index.md) in this project.
+For more information about the steps and consequences of turning off GitLab issues, see:
+
+- [Change project visibility](../../public_access.md#change-project-visibility).
+- [Configure project features and permissions](../settings/_index.md#configure-project-features-and-permissions).
 
 ## Reference Bugzilla issues in GitLab
 
@@ -49,8 +53,8 @@ You can reference issues in Bugzilla using:
 
 The `<PROJECT>` part is ignored in links, which always point to the address specified in **Issue URL**.
 
-We suggest using the longer format (`<PROJECT>-<ID>`) if you have both internal and external issue
-trackers enabled. If you use the shorter format, and an issue with the same ID exists in the
+Use the longer format (`<PROJECT>-<ID>`) if you have both internal and external issue
+trackers turned on. If you use the shorter format, and an issue with the same ID exists in the
 internal issue tracker, the internal issue is linked.
 
 ## Troubleshooting

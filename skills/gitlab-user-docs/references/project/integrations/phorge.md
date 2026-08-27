@@ -1,5 +1,7 @@
 # Phorge
 
+Configure the Phorge integration to link a GitLab project to a Phorge instance and reference Phorge tasks in GitLab.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

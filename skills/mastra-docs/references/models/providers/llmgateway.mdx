@@ -1,11 +1,11 @@
 ---
 title: "DevPass (LLM Gateway) | Models"
-description: "Use DevPass (LLM Gateway) models with Mastra. 188 models available."
+description: "Use DevPass (LLM Gateway) models with Mastra. 189 models available."
 ---
 
 # [DevPass (LLM Gateway) logo]DevPass (LLM Gateway)
 
-Access 188 DevPass (LLM Gateway) models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 189 DevPass (LLM Gateway) models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [DevPass (LLM Gateway) documentation](https://llmgateway.io/docs).
 
@@ -266,6 +266,18 @@ for await (const chunk of stream) {
     "maxOutput": 384000,
     "inputCost": 0.051,
     "outputCost": 0.104
+  },
+  {
+    "model": "llmgateway/deepseek-v4-flash-vision-exp",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 384000,
+    "inputCost": 0.14,
+    "outputCost": 0.28
   },
   {
     "model": "llmgateway/deepseek-v4-pro",

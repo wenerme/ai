@@ -12,9 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # HTTP requests
 
-Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The descriptions below detail the fields available for `http_requests`.
+
+## AISecurityCustomTopicCategories
+
+Type: `object`
+
+Customer-defined AI Security topic labels and their relevance scores. A score of 1 indicates the highest relevance, and 99 indicates the lowest relevance.
 
 ## AISecurityInjectionScore
 
@@ -260,6 +266,12 @@ Client source port.
 Type: `int`
 
 The smoothed average of TCP round-trip time (SRTT). For the initial request on a connection, this is measured only during connection setup. For a subsequent request on the same connection, it is measured over the entire connection lifetime up until the time that request is received.
+
+## ClientTLSKeyExchangeGroup
+
+Type: `string`
+
+TLS key exchange group between the client and Cloudflare (for example, 'X25519MLKEM768'). 'UNK' means it could not be determined. 'NONE' means TLS was not used.
 
 ## ClientXRequestedWith
 
@@ -674,6 +686,18 @@ Type: `int`
 
 WAF score for an RCE attack.
 
+## WAFRequestSignatureCategories
+
+Type: `array[string]`
+
+List of attack signature categories matched for the request.
+
+## WAFRequestSignatureRefs
+
+Type: `array[string]`
+
+List of attack signature rule references (refs) matched for the request.
+
 ## WAFSQLiAttackScore
 
 Type: `int`
@@ -749,5 +773,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/#page","headline":"HTTP requests · Cloudflare Logs docs","description":"The descriptions below detail the fields available for http_requests.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/#page","headline":"HTTP requests · Cloudflare Logs docs","description":"The descriptions below detail the fields available for http_requests.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

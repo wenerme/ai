@@ -1,635 +1,504 @@
-## List runs
+# Assistants migration guide
 
-**get** `/threads/{thread_id}/runs`
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Returns a list of runs belonging to a thread.
+The Assistants API was officially sunset on August 26, 2026, and is no longer available. Use the [Responses API](https://developers.openai.com/api/docs/guides/migrate-to-responses) for new integrations.
 
-### Path Parameters
 
-- `thread_id: string`
 
-### Query Parameters
 
-- `after: optional string`
+Thank you to everyone who used the Assistants API. We appreciate everything you built and the feedback you shared along the way.
 
-  A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include after=obj_foo in order to fetch the next page of the list.
+Use this guide to migrate your integration to the [Responses API](https://developers.openai.com/api/docs/guides/migrate-to-responses).
 
-- `before: optional string`
+Responses are simpler—send input items and get output items back. With the Responses API, you also get better performance and new features like [deep research](https://developers.openai.com/api/docs/guides/deep-research), [MCP](https://developers.openai.com/api/docs/guides/tools-connectors-mcp), and [computer use](https://developers.openai.com/api/docs/guides/tools-computer-use). This change also lets you manage conversations instead of passing back `previous_response_id`.
 
-  A cursor for use in pagination. `before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with obj_foo, your subsequent call can include before=obj_foo in order to fetch the previous page of the list.
+### What's changed?
 
-- `limit: optional number`
+<table>
+  <thead>
+    <tr>
+      <th>Before</th>
+      <th>Now</th>
+      <th>Why?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`Assistants`</td>
+      <td>`Prompts`</td>
+      <td>
+        Prompts hold configuration (model, tools, instructions) and are easier
+        to version and update
+      </td>
+    </tr>
+    <tr>
+      <td>`Threads`</td>
+      <td>`Conversations`</td>
+      <td>Streams of items instead of just messages</td>
+    </tr>
+    <tr>
+      <td>`Runs`</td>
+      <td>`Responses`</td>
+      <td>
+        Responses send input items or use a conversation object and receive
+        output items; tool call loops are explicitly managed
+      </td>
+    </tr>
+    <tr>
+      <td>`Run steps`</td>
+      <td>`Items`</td>
+      <td>
+        Generalized objects—can be messages, tool calls, outputs, and more
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-  A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
+## From assistants to prompts
 
-- `order: optional "asc" or "desc"`
+Assistants were persistent API objects that bundled model choice, instructions, and tool declarations—created and managed entirely through the API. Their replacement, prompts, can only be created in the dashboard, where you can version them as you develop your product.
 
-  Sort order by the `created_at` timestamp of the objects. `asc` for ascending order and `desc` for descending order.
+### Why this is helpful
 
-  - `"asc"`
+- **Portability and versioning**: You can snapshot, review, diff, and roll back prompt specs. You can also version a prompt, so your code can just point the latest version.
+- **Separation of concerns**: Your application code now handles orchestration (history pruning, tool loop, retries) while your prompt focuses on high‑level behavior and constraints (system guidance, tool availability, structured output schema, temperature defaults).
+- **Realtime compatibility**: The same prompt configuration can be reused when you connect through the Realtime API, giving you a single definition of behavior across chat, streaming, and low‑latency interactive sessions.
+- **Tool and output consistency**: Using prompts, every Responses or Realtime session you start inherits a consistent contract because prompts encapsulate tool schemas and structured output expectations.
 
-  - `"desc"`
+### Practical migration steps
 
-### Returns
+1. Identify each existing Assistant’s _instruction + tool_ bundle.
+2. In the dashboard, recreate that bundle as a named prompt.
+3. Store the prompt ID (or its exported spec) in source control so application code can refer to a stable identifier.
+4. During rollout, run A/B tests by swapping prompt IDs—no need to create or delete assistant objects programmatically.
 
-- `data: array of Run`
+Think of a prompt as a **versioned behavioral profile** to plug into either Responses or Realtime API.
 
-  - `id: string`
+---
 
-    The identifier, which can be referenced in API endpoints.
+## From threads to conversations
 
-  - `assistant_id: string`
+A thread was a collection of messages stored server-side. Threads could _only_ store messages. Conversations store items, which can include messages, tool calls, tool outputs, and other data.
 
-    The ID of the [assistant](/docs/api-reference/assistants) used for execution of this run.
+### Request example
 
-  - `cancelled_at: number or null`
+#### Python
 
-    The Unix timestamp (in seconds) for when the run was cancelled.
+#### Go
 
-  - `completed_at: number or null`
+### Response example
 
-    The Unix timestamp (in seconds) for when the run was completed.
 
-  - `created_at: number`
 
-    The Unix timestamp (in seconds) for when the run was created.
-
-  - `expires_at: number or null`
-
-    The Unix timestamp (in seconds) for when the run will expire.
-
-  - `failed_at: number or null`
-
-    The Unix timestamp (in seconds) for when the run failed.
-
-  - `incomplete_details: object { reason }  or null`
-
-    Details on why the run is incomplete. Will be `null` if the run is not incomplete.
-
-    - `reason: optional "max_completion_tokens" or "max_prompt_tokens"`
-
-      The reason why the run is incomplete. This will point to which specific token limit was reached over the course of the run.
-
-      - `"max_completion_tokens"`
-
-      - `"max_prompt_tokens"`
-
-  - `instructions: string`
-
-    The instructions that the [assistant](/docs/api-reference/assistants) used for this run.
-
-  - `last_error: object { code, message }  or null`
-
-    The last error associated with this run. Will be `null` if there are no errors.
-
-    - `code: "server_error" or "rate_limit_exceeded" or "invalid_prompt"`
-
-      One of `server_error`, `rate_limit_exceeded`, or `invalid_prompt`.
-
-      - `"server_error"`
-
-      - `"rate_limit_exceeded"`
-
-      - `"invalid_prompt"`
-
-    - `message: string`
-
-      A human-readable description of the error.
-
-  - `max_completion_tokens: number or null`
-
-    The maximum number of completion tokens specified to have been used over the course of the run.
-
-  - `max_prompt_tokens: number or null`
-
-    The maximum number of prompt tokens specified to have been used over the course of the run.
-
-  - `metadata: Metadata or null`
-
-    Set of 16 key-value pairs that can be attached to an object. This can be
-    useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
-
-    Keys are strings with a maximum length of 64 characters. Values are strings
-    with a maximum length of 512 characters.
-
-  - `model: string`
-
-    The model that the [assistant](/docs/api-reference/assistants) used for this run.
-
-  - `object: "thread.run"`
-
-    The object type, which is always `thread.run`.
-
-    - `"thread.run"`
-
-  - `parallel_tool_calls: boolean`
-
-    Whether to enable [parallel function calling](/docs/guides/function-calling#configuring-parallel-function-calling) during tool use.
-
-  - `required_action: object { submit_tool_outputs, type }  or null`
-
-    Details on the action required to continue the run. Will be `null` if no action is required.
-
-    - `submit_tool_outputs: object { tool_calls }`
-
-      Details on the tool outputs needed for this run to continue.
-
-      - `tool_calls: array of RequiredActionFunctionToolCall`
-
-        A list of the relevant tool calls.
-
-        - `id: string`
-
-          The ID of the tool call. This ID must be referenced when you submit the tool outputs in using the [Submit tool outputs to run](/docs/api-reference/runs/submitToolOutputs) endpoint.
-
-        - `function: object { arguments, name }`
-
-          The function definition.
-
-          - `arguments: string`
-
-            The arguments that the model expects you to pass to the function.
-
-          - `name: string`
-
-            The name of the function.
-
-        - `type: "function"`
-
-          The type of tool call the output is required for. For now, this is always `function`.
-
-          - `"function"`
-
-    - `type: "submit_tool_outputs"`
-
-      For now, this is always `submit_tool_outputs`.
-
-      - `"submit_tool_outputs"`
-
-  - `response_format: AssistantResponseFormatOption or null`
-
-    Specifies the format that the model must output. Compatible with [GPT-4o](/docs/models#gpt-4o), [GPT-4 Turbo](/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
-
-    Setting to `{ "type": "json_schema", "json_schema": {...} }` enables Structured Outputs which ensures the model will match your supplied JSON schema. Learn more in the [Structured Outputs guide](/docs/guides/structured-outputs).
-
-    Setting to `{ "type": "json_object" }` enables JSON mode, which ensures the message the model generates is valid JSON.
-
-    **Important:** when using JSON mode, you **must** also instruct the model to produce JSON yourself via a system or user message. Without this, the model may generate an unending stream of whitespace until the generation reaches the token limit, resulting in a long-running and seemingly "stuck" request. Also note that the message content may be partially cut off if `finish_reason="length"`, which indicates the generation exceeded `max_tokens` or the conversation exceeded the max context length.
-
-    - `"auto"`
-
-      `auto` is the default value
-
-      - `"auto"`
-
-    - `ResponseFormatText object { type }`
-
-      Default response format. Used to generate text responses.
-
-      - `type: "text"`
-
-        The type of response format being defined. Always `text`.
-
-        - `"text"`
-
-    - `ResponseFormatJSONObject object { type }`
-
-      JSON object response format. An older method of generating JSON responses.
-      Using `json_schema` is recommended for models that support it. Note that the
-      model will not generate JSON without a system or user message instructing it
-      to do so.
-
-      - `type: "json_object"`
-
-        The type of response format being defined. Always `json_object`.
-
-        - `"json_object"`
-
-    - `ResponseFormatJSONSchema object { json_schema, type }`
-
-      JSON Schema response format. Used to generate structured JSON responses.
-      Learn more about [Structured Outputs](/docs/guides/structured-outputs).
-
-      - `json_schema: object { name, description, schema, strict }`
-
-        Structured Outputs configuration options, including a JSON Schema.
-
-        - `name: string`
-
-          The name of the response format. Must be a-z, A-Z, 0-9, or contain
-          underscores and dashes, with a maximum length of 64.
-
-        - `description: optional string`
-
-          A description of what the response format is for, used by the model to
-          determine how to respond in the format.
-
-        - `schema: optional map[unknown]`
-
-          The schema for the response format, described as a JSON Schema object.
-          Learn how to build JSON schemas [here](https://json-schema.org/).
-
-        - `strict: optional boolean or null`
-
-          Whether to enable strict schema adherence when generating the output.
-          If set to true, the model will always follow the exact schema defined
-          in the `schema` field. Only a subset of JSON Schema is supported when
-          `strict` is `true`. To learn more, read the [Structured Outputs
-          guide](/docs/guides/structured-outputs).
-
-      - `type: "json_schema"`
-
-        The type of response format being defined. Always `json_schema`.
-
-        - `"json_schema"`
-
-  - `started_at: number or null`
-
-    The Unix timestamp (in seconds) for when the run was started.
-
-  - `status: "queued" or "in_progress" or "requires_action" or 6 more`
-
-    The status of the run, which can be either `queued`, `in_progress`, `requires_action`, `cancelling`, `cancelled`, `failed`, `completed`, `incomplete`, or `expired`.
-
-    - `"queued"`
-
-    - `"in_progress"`
-
-    - `"requires_action"`
-
-    - `"cancelling"`
-
-    - `"cancelled"`
-
-    - `"failed"`
-
-    - `"completed"`
-
-    - `"incomplete"`
-
-    - `"expired"`
-
-  - `thread_id: string`
-
-    The ID of the [thread](/docs/api-reference/threads) that was executed on as a part of this run.
-
-  - `tool_choice: AssistantToolChoiceOption or null`
-
-    Controls which (if any) tool is called by the model.
-    `none` means the model will not call any tools and instead generates a message.
-    `auto` is the default value and means the model can pick between generating a message or calling one or more tools.
-    `required` means the model must call one or more tools before responding to the user.
-    Specifying a particular tool like `{"type": "file_search"}` or `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool.
-
-    - `"none" or "auto" or "required"`
-
-      `none` means the model will not call any tools and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools before responding to the user.
-
-      - `"none"`
-
-      - `"auto"`
-
-      - `"required"`
-
-    - `AssistantToolChoice object { type, function }`
-
-      Specifies a tool the model should use. Use to force the model to call a specific tool.
-
-      - `type: "function" or "code_interpreter" or "file_search"`
-
-        The type of the tool. If type is `function`, the function name must be set
-
-        - `"function"`
-
-        - `"code_interpreter"`
-
-        - `"file_search"`
-
-      - `function: optional AssistantToolChoiceFunction`
-
-        - `name: string`
-
-          The name of the function to call.
-
-  - `tools: array of CodeInterpreterTool or FileSearchTool or FunctionTool`
-
-    The list of tools that the [assistant](/docs/api-reference/assistants) used for this run.
-
-    - `CodeInterpreterTool object { type }`
-
-      - `type: "code_interpreter"`
-
-        The type of tool being defined: `code_interpreter`
-
-        - `"code_interpreter"`
-
-    - `FileSearchTool object { type, file_search }`
-
-      - `type: "file_search"`
-
-        The type of tool being defined: `file_search`
-
-        - `"file_search"`
-
-      - `file_search: optional object { max_num_results, ranking_options }`
-
-        Overrides for the file search tool.
-
-        - `max_num_results: optional number`
-
-          The maximum number of results the file search tool should output. The default is 20 for `gpt-4*` models and 5 for `gpt-3.5-turbo`. This number should be between 1 and 50 inclusive.
-
-          Note that the file search tool may output fewer than `max_num_results` results. See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-        - `ranking_options: optional object { score_threshold, ranker }`
-
-          The ranking options for the file search. If not specified, the file search tool will use the `auto` ranker and a score_threshold of 0.
-
-          See the [file search tool documentation](/docs/assistants/tools/file-search#customizing-file-search-settings) for more information.
-
-          - `score_threshold: number`
-
-            The score threshold for the file search. All values must be a floating point number between 0 and 1.
-
-          - `ranker: optional "auto" or "default_2024_08_21"`
-
-            The ranker to use for the file search. If not specified will use the `auto` ranker.
-
-            - `"auto"`
-
-            - `"default_2024_08_21"`
-
-    - `FunctionTool object { function, type }`
-
-      - `function: FunctionDefinition`
-
-        - `name: string`
-
-          The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.
-
-        - `description: optional string`
-
-          A description of what the function does, used by the model to choose when and how to call the function.
-
-        - `parameters: optional FunctionParameters`
-
-          The parameters the functions accepts, described as a JSON Schema object. See the [guide](/docs/guides/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
-
-          Omitting `parameters` defines a function with an empty parameter list.
-
-        - `strict: optional boolean or null`
-
-          Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
-
-      - `type: "function"`
-
-        The type of tool being defined: `function`
-
-        - `"function"`
-
-  - `truncation_strategy: object { type, last_messages }  or null`
-
-    Controls for how a thread will be truncated prior to the run. Use this to control the initial context window of the run.
-
-    - `type: "auto" or "last_messages"`
-
-      The truncation strategy to use for the thread. The default is `auto`. If set to `last_messages`, the thread will be truncated to the n most recent messages in the thread. When set to `auto`, messages in the middle of the thread will be dropped to fit the context length of the model, `max_prompt_tokens`.
-
-      - `"auto"`
-
-      - `"last_messages"`
-
-    - `last_messages: optional number or null`
-
-      The number of most recent messages from the thread when constructing the context for the run.
-
-  - `usage: object { completion_tokens, prompt_tokens, total_tokens }  or null`
-
-    Usage statistics related to the run. This value will be `null` if the run is not in a terminal state (i.e. `in_progress`, `queued`, etc.).
-
-    - `completion_tokens: number`
-
-      Number of completion tokens used over the course of the run.
-
-    - `prompt_tokens: number`
-
-      Number of prompt tokens used over the course of the run.
-
-    - `total_tokens: number`
-
-      Total number of tokens used (prompt + completion).
-
-  - `temperature: optional number or null`
-
-    The sampling temperature used for this run. If not set, defaults to 1.
-
-  - `top_p: optional number or null`
-
-    The nucleus sampling value used for this run. If not set, defaults to 1.
-
-- `first_id: string`
-
-- `has_more: boolean`
-
-- `last_id: string`
-
-- `object: string`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/threads/$THREAD_ID/runs \
-    -H 'OpenAI-Beta: assistants=v2' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### Response
+#### Thread object
 
 ```json
 {
-  "data": [
-    {
-      "id": "id",
-      "assistant_id": "assistant_id",
-      "cancelled_at": 0,
-      "completed_at": 0,
-      "created_at": 0,
-      "expires_at": 0,
-      "failed_at": 0,
-      "incomplete_details": {
-        "reason": "max_completion_tokens"
-      },
-      "instructions": "instructions",
-      "last_error": {
-        "code": "server_error",
-        "message": "message"
-      },
-      "max_completion_tokens": 256,
-      "max_prompt_tokens": 256,
-      "metadata": {
-        "foo": "string"
-      },
-      "model": "model",
-      "object": "thread.run",
-      "parallel_tool_calls": true,
-      "required_action": {
-        "submit_tool_outputs": {
-          "tool_calls": [
-            {
-              "id": "id",
-              "function": {
-                "arguments": "arguments",
-                "name": "name"
-              },
-              "type": "function"
-            }
-          ]
-        },
-        "type": "submit_tool_outputs"
-      },
-      "response_format": "auto",
-      "started_at": 0,
-      "status": "queued",
-      "thread_id": "thread_id",
-      "tool_choice": "none",
-      "tools": [
-        {
-          "type": "code_interpreter"
-        }
-      ],
-      "truncation_strategy": {
-        "type": "auto",
-        "last_messages": 1
-      },
-      "usage": {
-        "completion_tokens": 0,
-        "prompt_tokens": 0,
-        "total_tokens": 0
-      },
-      "temperature": 0,
-      "top_p": 0
-    }
-  ],
-  "first_id": "run_abc123",
-  "has_more": false,
-  "last_id": "run_abc456",
-  "object": "list"
+  "id": "thread_CrXtCzcyEQbkAcXuNmVSKFs1",
+  "object": "thread",
+  "created_at": 1752855924,
+  "metadata": {
+    "user_id": "peter_le_fleur"
+  },
+  "tool_resources": {}
 }
 ```
 
-### Example
-
-```http
-curl https://api.openai.com/v1/threads/thread_abc123/runs \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "Content-Type: application/json" \
-  -H "OpenAI-Beta: assistants=v2"
-```
-
-#### Response
+#### Conversation object
 
 ```json
 {
-  "object": "list",
-  "data": [
-    {
-      "id": "run_abc123",
-      "object": "thread.run",
-      "created_at": 1699075072,
-      "assistant_id": "asst_abc123",
-      "thread_id": "thread_abc123",
-      "status": "completed",
-      "started_at": 1699075072,
-      "expires_at": null,
-      "cancelled_at": null,
-      "failed_at": null,
-      "completed_at": 1699075073,
-      "last_error": null,
-      "model": "gpt-4o",
-      "instructions": null,
-      "incomplete_details": null,
-      "tools": [
-        {
-          "type": "code_interpreter"
-        }
-      ],
-      "tool_resources": {
-        "code_interpreter": {
-          "file_ids": [
-            "file-abc123",
-            "file-abc456"
-          ]
-        }
-      },
-      "metadata": {},
-      "usage": {
-        "prompt_tokens": 123,
-        "completion_tokens": 456,
-        "total_tokens": 579
-      },
-      "temperature": 1.0,
-      "top_p": 1.0,
-      "max_prompt_tokens": 1000,
-      "max_completion_tokens": 1000,
-      "truncation_strategy": {
-        "type": "auto",
-        "last_messages": null
-      },
-      "response_format": "auto",
-      "tool_choice": "auto",
-      "parallel_tool_calls": true
+	"id": "conv_68542dc602388199a30af27d040cefd4087a04b576bfeb24",
+	"object": "conversation",
+	"created_at": 1752855924,
+	"metadata": {
+		"user_id": "peter_le_fleur"
+	}
+}
+```
+
+
+
+---
+
+## From runs to responses
+
+Runs were asynchronous processes that executed against threads. See the example below. Responses are simpler: provide a set of input items to execute, and get a list of output items back.
+
+Responses are designed to be used alone, but you can also use them with prompt and conversation objects for storing context and configuration.
+
+### Request example
+
+#### Python
+
+#### Go
+
+### Response example
+
+
+
+#### Run object
+
+```json
+{
+  "id": "run_FKIpcs5ECSwuCmehBqsqkORj",
+  "assistant_id": "asst_8fVY45hU3IM6creFkVi5MBKB",
+  "cancelled_at": null,
+  "completed_at": 1752857327,
+  "created_at": 1752857322,
+  "expires_at": null,
+  "failed_at": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "last_error": null,
+  "max_completion_tokens": null,
+  "max_prompt_tokens": null,
+  "metadata": {},
+  "model": "gpt-4.1",
+  "object": "thread.run",
+  "parallel_tool_calls": true,
+  "required_action": null,
+  "response_format": "auto",
+  "started_at": 1752857324,
+  "status": "completed",
+  "thread_id": "thread_CrXtCzcyEQbkAcXuNmVSKFs1",
+  "tool_choice": "auto",
+  "tools": [],
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": null
+  },
+  "usage": {
+    "completion_tokens": 130,
+    "prompt_tokens": 34,
+    "total_tokens": 164,
+    "prompt_token_details": {
+      "cached_tokens": 0
     },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "tool_resources": {},
+  "reasoning_effort": null
+}
+```
+
+#### Response object
+
+```json
+{
+  "id": "resp_687a7b53036c819baad6012d58b39bcb074adcd9e24850fc",
+  "created_at": 1752857427,
+  "conversation": {
+    "id": "conv_689667905b048191b4740501625afd940c7533ace33a2dab"
+  },
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.5",
+  "object": "response",
+  "output": [
     {
-      "id": "run_abc456",
-      "object": "thread.run",
-      "created_at": 1699063290,
-      "assistant_id": "asst_abc123",
-      "thread_id": "thread_abc123",
-      "status": "completed",
-      "started_at": 1699063290,
-      "expires_at": null,
-      "cancelled_at": null,
-      "failed_at": null,
-      "completed_at": 1699063291,
-      "last_error": null,
-      "model": "gpt-4o",
-      "instructions": null,
-      "incomplete_details": null,
-      "tools": [
+      "id": "msg_687a7b542948819ba79e77e14791ef83074adcd9e24850fc",
+      "content": [
         {
-          "type": "code_interpreter"
+          "annotations": [],
+          "text": "The \"5 Ds of Dodgeball\" are a humorous set of rules made famous by the 2004 comedy film **\"Dodgeball: A True Underdog Story.\"** In the movie, dodgeball coach Patches O’Houlihan teaches these basics to his team. The **5 Ds** are:\n\n1. **Dodge**\n2. **Duck**\n3. **Dip**\n4. **Dive**\n5. **Dodge** (yes, dodge is listed twice for emphasis!)\n\nIn summary:  \n> **“If you can dodge a wrench, you can dodge a ball!”**\n\nThese 5 Ds are not official competitive rules, but have become a fun and memorable pop culture reference for the sport of dodgeball.",
+          "type": "output_text",
+          "logprobs": []
         }
       ],
-      "tool_resources": {
-        "code_interpreter": {
-          "file_ids": [
-            "file-abc123",
-            "file-abc456"
-          ]
-        }
-      },
-      "metadata": {},
-      "usage": {
-        "prompt_tokens": 123,
-        "completion_tokens": 456,
-        "total_tokens": 579
-      },
-      "temperature": 1.0,
-      "top_p": 1.0,
-      "max_prompt_tokens": 1000,
-      "max_completion_tokens": 1000,
-      "truncation_strategy": {
-        "type": "auto",
-        "last_messages": null
-      },
-      "response_format": "auto",
-      "tool_choice": "auto",
-      "parallel_tool_calls": true
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
     }
   ],
-  "first_id": "run_abc123",
-  "last_id": "run_abc456",
-  "has_more": false
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 1.0,
+  "background": false,
+  "max_output_tokens": null,
+  "previous_response_id": null,
+  "reasoning": {
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "service_tier": "scale",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    }
+  },
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 17,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 150,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 167
+  },
+  "user": null,
+  "max_tool_calls": null,
+  "store": true,
+  "top_logprobs": 0
 }
+```
+
+
+
+---
+
+## Migrating your integration
+
+Follow the migration steps below to move from the Assistants API to the Responses API, without losing any feature support.
+
+### 1. Create prompts from your assistants
+
+1. Identify the most important assistant objects in your application.
+1. Find these in the dashboard and click `Create prompt`.
+
+This will create a prompt object out of each existing assistant object.
+
+Reusable prompt objects are also being deprecated. If you use this migration
+  path, review the [prompts deprecation
+  timeline](https://developers.openai.com/api/docs/deprecations#2026-06-03-reusable-prompts) before adopting
+  prompt objects in a long-lived integration.
+
+### 2. Move new user chats over to conversations and responses
+
+Start new chats with the Conversations API and Responses API. To preserve earlier conversation history, use messages already stored by your application.
+
+The example below shows how thread history could be migrated before the sunset. The Assistants API call that retrieves thread messages no longer works; use your stored messages instead.
+
+```python
+import os
+
+from openai import OpenAI
+
+openai = OpenAI()
+messages = []
+thread_id = os.environ["OPENAI_THREAD_ID"]
+
+for page in openai.beta.threads.messages.list(
+    thread_id=thread_id, order="asc"
+).iter_pages():
+    messages += page.data
+
+items = []
+for m in messages:
+    item = {"role": m.role}
+    item_content = []
+
+    for content in m.content:
+        match content.type:
+            case "text":
+                item_content_type = "input_text" if m.role == "user" else "output_text"
+                item_content += [
+                    {"type": item_content_type, "text": content.text.value}
+                ]
+            case "image_url":
+                item_content += [
+                    {
+                        "type": "input_image",
+                        "image_url": content.image_url.url,
+                        "detail": content.image_url.detail,
+                    }
+                ]
+
+    item |= {"content": item_content}
+    items.append(item)
+
+# create a conversation with your converted items
+conversation = openai.conversations.create(items=items)
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+thread_id = ENV.fetch("OPENAI_THREAD_ID")
+messages = client.beta.threads.messages.list(thread_id, order: :asc)
+items = []
+messages.auto_paging_each do |message|
+  content = message.content.filter_map do |part|
+    case part
+    when OpenAI::Models::Beta::Threads::TextContentBlock
+      type = if message.role == OpenAI::Models::Beta::Threads::Message::Role::USER
+        :input_text
+      else
+        :output_text
+      end
+      {type: type, text: part.text.value}
+    when OpenAI::Models::Beta::Threads::ImageURLContentBlock
+      {
+        type: :input_image,
+        image_url: part.image_url.url,
+        detail: part.image_url.detail
+      }
+    end
+  end
+  items << {role: message.role, content: content}
+end
+conversation = client.conversations.create(
+  items: items
+)
+puts(conversation.id)
+```
+
+
+## Comparing full examples
+
+Here are a few examples of integrations using both the Assistants API and the Responses API so you can see how they compare.
+
+### User chat app
+
+
+
+Assistants API
+
+```python
+threads_by_session: dict[str, str] = {}
+
+
+@app.post("/messages")
+async def message(message: Message):
+    thread_id = threads_by_session.get(message.session_id)
+    if thread_id is None:
+        thread_id = openai.beta.threads.create().id
+        threads_by_session[message.session_id] = thread_id
+
+    openai.beta.threads.messages.create(
+        thread_id=thread_id,
+        role="user",
+        content=message.content,
+    )
+
+    run = openai.beta.threads.runs.create(
+        assistant_id=os.environ["OPENAI_ASSISTANT_ID"],
+        thread_id=thread_id,
+    )
+    while run.status in ("queued", "in_progress"):
+        await asyncio.sleep(1)
+        run = openai.beta.threads.runs.retrieve(
+            thread_id=thread_id,
+            run_id=run.id,
+        )
+
+    messages = openai.beta.threads.messages.list(
+        order="desc",
+        limit=1,
+        thread_id=thread_id,
+    )
+
+    return {"content": messages.data[0].content}
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+assistant_id = ENV.fetch("OPENAI_ASSISTANT_ID")
+threads_by_session = {}
+
+handle_message = lambda do |session_id:, content:|
+  thread_id = threads_by_session[session_id]
+  unless thread_id
+    thread_id = client.beta.threads.create.id
+    threads_by_session[session_id] = thread_id
+  end
+
+  client.beta.threads.messages.create(
+    thread_id,
+    role: :user,
+    content: content
+  )
+  run = client.beta.threads.runs.create(
+    thread_id,
+    assistant_id: assistant_id
+  )
+  while [:queued, :in_progress].include?(run.status)
+    sleep(1)
+    run = client.beta.threads.runs.retrieve(run.id, thread_id: thread_id)
+  end
+
+  messages = client.beta.threads.messages.list(
+    thread_id,
+    order: :desc,
+    limit: 1
+  )
+  {content: messages.data&.first&.content}
+end
+
+puts(handle_message.call(
+  session_id: "example-session",
+  content: "What are the five Ds of dodgeball?"
+))
+```
+
+
+  
+
+  
+
+    
+Responses API
+
+```python
+conversations_by_session: dict[str, str] = {}
+
+
+@app.post("/messages")
+async def message(message: Message):
+    conversation_id = conversations_by_session.get(message.session_id)
+    if conversation_id is None:
+        conversation_id = openai.conversations.create().id
+        conversations_by_session[message.session_id] = conversation_id
+
+    response = openai.responses.create(
+        prompt={"id": os.environ["OPENAI_PROMPT_ID"]},
+        input=[{"role": "user", "content": message.content}],
+        conversation=conversation_id,
+    )
+
+    return {"content": response.output_text}
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+conversations_by_session = {}
+
+handle_message = lambda do |session_id:, content:|
+  conversation_id = conversations_by_session[session_id]
+  unless conversation_id
+    conversation_id = client.conversations.create.id
+    conversations_by_session[session_id] = conversation_id
+  end
+
+  response = client.responses.create(
+    prompt: {id: ENV.fetch("OPENAI_PROMPT_ID")},
+    input: [{role: :user, content: content}],
+    conversation: conversation_id
+  )
+  {content: response.output_text}
+end
+
+puts(handle_message.call(
+  session_id: "example-session",
+  content: "What are the five Ds of dodgeball?"
+))
 ```

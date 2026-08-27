@@ -142,11 +142,11 @@ The following table lists the valid `objects` that can be used:
 
 Within each object type, three parameters can be defined:
 
-| Setting          | Required?              | Description                         |
-|------------------|------------------------|-------------------------------------|
-| `bucket`         |  Yes\* | Bucket name for the object type. Not required if `enabled` is set to `false`. |
-| `enabled`        |  No | Overrides the [common parameter](#configure-the-common-parameters).     |
-| `proxy_download` |  No | Overrides the [common parameter](#configure-the-common-parameters).     |
+| Setting          | Required?   | Description |
+|------------------|-------------|-------------|
+| `bucket`         | Yes | Bucket name for the object type. Not required if `enabled` is set to `false`. |
+| `enabled`        | No  | Overrides the [common parameter](#configure-the-common-parameters). |
+| `proxy_download` | No  | Overrides the [common parameter](#configure-the-common-parameters). |
 
 For an example, see how to [use the consolidated form and Amazon S3](#full-example-using-the-consolidated-form-and-amazon-s3).
 
@@ -186,19 +186,19 @@ supported by the consolidated form, refer to the following guides:
 
 | Object storage type | Supported by consolidated form? |
 |---------------------|------------------------------------------|
-| [Backups](backup_restore/backup_gitlab.md#upload-backups-to-a-remote-cloud-storage) |  No |
-| [Container registry](packages/container_registry.md#use-object-storage) (optional feature) |  No |
-| [Mattermost](https://docs.mattermost.com/configure/file-storage-configuration-settings.html)|  No |
-| [Autoscale runner caching](https://docs.gitlab.com/runner/configuration/autoscale/#distributed-runners-caching) (optional for improved performance) |  No |
-| [Secure Files](cicd/secure_files.md#using-object-storage) |  Yes |
-| [Job artifacts](cicd/job_artifacts.md#using-object-storage) including archived job logs |  Yes |
-| [LFS objects](lfs/_index.md#storing-lfs-objects-in-remote-object-storage) |  Yes |
-| [Uploads](uploads.md#using-object-storage) |  Yes |
-| [Merge request diffs](merge_request_diffs.md#using-object-storage) |  Yes |
-| [Packages](packages/_index.md#migrate-packages-between-object-storage-and-local-storage) (optional feature) |  Yes |
-| [Dependency Proxy](packages/dependency_proxy.md#using-object-storage) (optional feature) |  Yes |
-| [Terraform state files](terraform_state.md#using-object-storage) |  Yes |
-| [Pages content](pages/_index.md#object-storage-settings) |  Yes |
+| [Backups](backup_restore/backup_gitlab.md#upload-backups-to-a-remote-cloud-storage) | No |
+| [Container registry](packages/container_registry.md#use-object-storage) (optional feature) | No |
+| [Mattermost](https://docs.mattermost.com/configure/file-storage-configuration-settings.html)| No |
+| [Autoscale runner caching](https://docs.gitlab.com/runner/configuration/autoscale/#distributed-runners-caching) (optional for improved performance) | No |
+| [Secure Files](cicd/secure_files.md#using-object-storage) | Yes |
+| [Job artifacts](cicd/job_artifacts.md#using-object-storage) including archived job logs | Yes |
+| [LFS objects](lfs/_index.md#storing-lfs-objects-in-remote-object-storage) | Yes |
+| [Uploads](uploads.md#using-object-storage) | Yes |
+| [Merge request diffs](merge_request_diffs.md#using-object-storage) | Yes |
+| [Packages](packages/_index.md#migrate-packages-between-object-storage-and-local-storage) (optional feature) | Yes |
+| [Dependency Proxy](packages/dependency_proxy.md#using-object-storage) (optional feature) | Yes |
+| [Terraform state files](terraform_state.md#using-object-storage) | Yes |
+| [Pages content](pages/_index.md#object-storage-settings) | Yes |
 
 ## Configure the connection settings
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Gateway HTTP
 
-Last updated Jul 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fhttp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fhttp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The descriptions below detail the fields available for `gateway_http`.
 
@@ -172,6 +172,12 @@ Type: `string`
 
 Email used to authenticate the client.
 
+## ExperimentalFeatures
+
+Type: `object`
+
+Experimental features which will be either permanently added to the schema or marked for deprecation. In that case, they will be removed 3 months after the notice. Current fields: 'mcp' - If MCP traffic was detected or not.
+
 ## FileInfo
 
 Type: `object`
@@ -213,6 +219,12 @@ Version name for the HTTP request.
 Type: `bool`
 
 If the requested was isolated with Cloudflare Browser Isolation or not.
+
+## PackageInfo
+
+Type: `object`
+
+Information about the software package detected in the HTTP request, including its ecosystem, namespace, name, version, and package URL (PURL).
 
 ## PolicyID
 
@@ -385,5 +397,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_http/#page","headline":"Gateway HTTP · Cloudflare Logs docs","description":"The descriptions below detail the fields available for gateway_http.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_http/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_http/#page","headline":"Gateway HTTP · Cloudflare Logs docs","description":"The descriptions below detail the fields available for gateway_http.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_http/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

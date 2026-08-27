@@ -391,6 +391,28 @@ performed.
 
 ^\*\*^ Can be tested in Google AI Studio.
 
+## [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
+
+*`gemini-omni-1.1-flash`*
+
+
+[Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-omni-1.1-flash)
+
+Our next-generation video generation and editing model, now generally available
+to developers on the paid tier of the Gemini API.
+
+### Standard
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Not available | $1.50 (text / image / video / audio) |
+| Output price (including thinking tokens) | Not available | $9.00 (text) $17.50 (video)^\*^ |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+^\*^ Billing is based on total output token consumption, calculated at
+a rate of 5,792 tokens per second of 720p video. Under Standard pricing, this
+equates to an effective price of approximately $0.10 per second.
+
 ## [Gemini Omni Flash Preview](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 
 *`gemini-omni-flash-preview`*

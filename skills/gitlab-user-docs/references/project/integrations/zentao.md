@@ -1,5 +1,7 @@
 # ZenTao
 
+Configure the ZenTao integration to connect a GitLab project to a ZenTao project management platform using an API secret key.
+
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

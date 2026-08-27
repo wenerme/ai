@@ -1,18 +1,20 @@
 # Redmine
 
+Configure the Redmine integration to link a GitLab project to a Redmine issue tracker and reference Redmine issues in GitLab.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 Prerequisites:
 
-- You must [disable GitLab internal issue tracking](../../../integration/external-issue-tracker.md#disable-the-gitlab-issue-tracker) in the project.
-  For more information about the steps and consequences of disabling
+- You must [turn off GitLab internal issue tracking](../../../integration/external-issue-tracker.md#disable-the-gitlab-issue-tracker) in the project.
+  For more information about the steps and consequences of turning off
   GitLab issues, see [change project visibility](../../public_access.md#change-project-visibility) and
   [configure project features and permissions](../settings/_index.md#configure-project-features-and-permissions).
 
 You can use [Redmine](https://www.redmine.org/) as an
 [external issue tracker](../../../integration/external-issue-tracker.md).
-To enable the Redmine integration in a project:
+To turn on the Redmine integration in a project:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Settings** > **Integrations**.
@@ -35,8 +37,8 @@ To enable the Redmine integration in a project:
 1. Optional. Select **Test settings**.
 1. Select **Save changes**.
 
-After you have configured and enabled Redmine, you see the Redmine link on the GitLab project pages,
-which takes you to your Redmine project.
+After you configure and turn on Redmine, a link appears on the GitLab project pages.
+The link directs you to your Redmine project.
 
 For example, this is a configuration for a project named `gitlab-ci`:
 
@@ -55,6 +57,6 @@ You can reference your Redmine issues using:
 
 In links, the `<PROJECT>` part is ignored, and they always point to the address specified in **Issue URL**.
 
-We suggest using the longer format (`<PROJECT>-<ID>`) if you have both internal and external issue
-trackers enabled. If you use the shorter format and an issue with the same ID exists in the
+Use the longer format (`<PROJECT>-<ID>`) if you have both internal and external issue
+trackers turned on. If you use the shorter format and an issue with the same ID exists in the
 internal issue tracker, the internal issue is linked.

@@ -32,8 +32,8 @@
   "google-ai-api/live.md": {
     "url": "https://ai.google.dev/api/live",
     "skill": "google-ai-api",
-    "size": 27468,
-    "updatedAt": "2026-06-24T01:21:42.872Z"
+    "size": 30925,
+    "updatedAt": "2026-08-27T20:32:57.825Z"
   },
   "google-ai-api/models.md": {
     "url": "https://ai.google.dev/api/models",
@@ -152,8 +152,8 @@
   "google-ai-docs/pricing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/pricing",
     "skill": "google-ai-docs",
-    "size": 69243,
-    "updatedAt": "2026-08-27T09:06:31.162Z"
+    "size": 70184,
+    "updatedAt": "2026-08-27T20:33:09.813Z"
   },
   "google-ai-docs/rate-limits.md": {
     "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
@@ -362,8 +362,8 @@
   "google-ai-docs/models.md": {
     "url": "https://ai.google.dev/gemini-api/docs/models",
     "skill": "google-ai-docs",
-    "size": 17176,
-    "updatedAt": "2026-08-27T09:06:55.474Z"
+    "size": 17072,
+    "updatedAt": "2026-08-27T20:33:34.126Z"
   },
   "google-ai-docs/priority-inference.md": {
     "url": "https://ai.google.dev/gemini-api/docs/priority-inference",
@@ -464,8 +464,8 @@
   "google-ai-docs/omni.md": {
     "url": "https://ai.google.dev/gemini-api/docs/omni",
     "skill": "google-ai-docs",
-    "size": 44751,
-    "updatedAt": "2026-08-27T09:07:04.462Z"
+    "size": 46167,
+    "updatedAt": "2026-08-27T20:33:43.783Z"
   },
   "google-ai-docs/veo.md": {
     "url": "https://ai.google.dev/gemini-api/docs/veo",
@@ -500,14 +500,14 @@
   "google-ai-docs/deprecations.md": {
     "url": "https://ai.google.dev/gemini-api/docs/deprecations",
     "skill": "google-ai-docs",
-    "size": 9105,
-    "updatedAt": "2026-08-27T09:07:09.619Z"
+    "size": 9435,
+    "updatedAt": "2026-08-27T20:33:49.485Z"
   },
   "google-ai-docs/models/gemini-omni-flash.md": {
     "url": "https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash",
     "skill": "google-ai-docs",
-    "size": 902,
-    "updatedAt": "2026-08-27T09:07:10.177Z"
+    "size": 1107,
+    "updatedAt": "2026-08-27T20:33:49.881Z"
   },
   "google-ai-docs/models/gemini-3-flash-preview.md": {
     "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview",

@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Realtime
 
-Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare Realtime is a comprehensive suite of products designed to help you build powerful, scalable real-time applications.
+Build live audio, video, and data applications with managed Realtime products.
 
 ### RealtimeKit
 
@@ -24,9 +24,11 @@ It sits on top of the Realtime SFU, abstracting away the heavy lifting of media 
 
 ### Realtime SFU
 
-The [Realtime SFU (Selective Forwarding Unit)](https://developers.cloudflare.com/realtime/sfu/) is a powerful media server that efficiently routes video and audio. The Realtime SFU runs on [Cloudflare's global cloud network ↗](https://www.cloudflare.com/network/) in hundreds of cities worldwide.
+The [Realtime SFU (Selective Forwarding Unit)](https://developers.cloudflare.com/realtime/sfu/) routes WebRTC audio, video, and DataChannels between application endpoints.
 
-For developers with WebRTC expertise, the SFU can be used independently to build highly custom applications that require full control over media streams. This is recommended only for those who want to leverage Cloudflare's network with their own WebRTC logic.
+Use Realtime SFU when your application needs custom media routing, signaling, state, permissions, or user interfaces. Common topologies include custom calls, interactive broadcasts, AI media pipelines, cloud gaming, device control, and media processing.
+
+Your application backend keeps the Realtime SFU credentials and decides which sessions can publish, subscribe, or control resources.
 
 ### TURN Service
 
@@ -36,17 +38,14 @@ The [TURN service](https://developers.cloudflare.com/realtime/turn/) is a manage
 
 Use this comparison table to quickly find the right Realtime product for your needs:
 
-|                               | **RealtimeKit**                                                                                                                 | **Realtime SFU**                                                                                                                                             | **TURN Service**                                                                                                        |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
-| **What is it**                | High-level SDKs and APIs with pre-built UI components for video/voice integration. Built on top of Realtime SFU.                | Low-level WebRTC media server (Selective Forwarding Unit) that routes audio/video/data streams between participants.                                         | Managed relay service for WebRTC traffic that ensures connectivity through restrictive firewalls and NATs.              |
-| **Who is it for**             | Developers who want to quickly add video/voice features without handling WebRTC complexities.                                   | Developers with WebRTC expertise who need full control over media streams and want to build highly custom applications.                                      | Any WebRTC application needing reliable connectivity in restrictive network environments.                               |
-| **Effort to get started**     | Low - Just a few lines of code with UI Kit and Core SDK.                                                                        | High - Requires deep WebRTC knowledge. No SDK provided (unopinionated). You manage sessions, tracks, and presence protocol. Works with every WebRTC library. | Low - Automatically used by WebRTC libraries (browser WebRTC, Pion, libwebrtc). No additional code needed.              |
-| **WebRTC expertise required** | None - Abstracts away WebRTC complexities.                                                                                      | Expert - You handle all WebRTC logic yourself.                                                                                                               | None - Used transparently by WebRTC libraries.                                                                          |
-| **Primitives**                | Meetings, Sessions, Participants, Presets (roles), Stage, Waiting Room                                                          | Sessions (PeerConnections), Tracks (MediaStreamTracks), pub/sub model - no rooms concept                                                                     | TURN allocations, relayed transport addresses, protocols (UDP/TCP/TLS)                                                  |
-| **Key use cases**             | Team meetings, virtual classrooms, webinars, live streaming with interactive features, social video chat                        | Highly custom real-time apps, unique WebRTC architectures that don't fit standard patterns, leveraging Cloudflare's network with custom logic                | Ensuring connectivity for all users regardless of firewall/NAT configuration, used alongside SFU or peer-to-peer WebRTC |
-| **Key features**              | Pre-built UI components, automatic track management, recording, chat, polls, breakout rooms, virtual backgrounds, transcription | Unopinionated architecture, no lock-in, globally scalable, full control over media routing, programmable "switchboard"                                       | Anycast routing to nearest location, multiple protocol options                                                          |
-| **Pricing**                   | Pricing by minute [view details ↗](https://workers.cloudflare.com/pricing#media)                                                | $0.05/GB egress                                                                                                                                              | Free when used with Realtime SFU, otherwise $0.05/GB egress                                                             |
-| **Free tier**                 | None                                                                                                                            | First 1,000 GB free each month                                                                                                                               | First 1,000 GB free each month                                                                                          |
+|                              | **RealtimeKit**                                                                  | **Realtime SFU**                                                                                        | **TURN Service**                                                            |
+| ---------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| **Choose it when**           | You want meeting SDKs, participant management, and pre-built UI components.      | You want to compose WebRTC media and data into a custom application topology.                           | You need a relay for peer-to-peer or self-hosted WebRTC connections.        |
+| **Provides**                 | Meetings, participants, presets, stage management, and UI components.            | Sessions, media tracks, DataChannels, and programmable publish and subscribe operations.                | TURN allocations and relayed UDP, TCP, or TLS transport.                    |
+| **Your application manages** | Product integration, branding, and application-specific behavior.                | Authentication, authorization, signaling, presence, state, and track discovery.                         | Peer connections, signaling, media routing, and application state.          |
+| **Example outcomes**         | Meetings, classrooms, webinars, and social video.                                | Custom calls, interactive broadcasts, AI pipelines, cloud gaming, device control, and media processing. | Connectivity through restrictive firewalls and network address translation. |
+| **Pricing**                  | Pricing by minute [view details ↗](https://workers.cloudflare.com/pricing#media) | $0.05/GB egress                                                                                         | Free when used with Realtime SFU, otherwise $0.05/GB egress                 |
+| **Free tier**                | None                                                                             | First 1,000 GB free each month                                                                          | First 1,000 GB free each month                                              |
 
 ## Related products
 
@@ -64,9 +63,9 @@ Cloudflare Stream lets you or your end users upload, store, encode, and deliver 
 
 Connect with the Realtime community on Discord to ask questions, show what you are building, and discuss the platform with other developers.
 
-### [Use cases](https://developers.cloudflare.com/realtime/realtimekit/#build-with-realtimekit)
+### [Build with Realtime SFU](https://developers.cloudflare.com/realtime/sfu/#what-you-can-build)
 
-Learn how you can build and deploy ambitious Realtime applications to Cloudflare's global network.
+Explore custom media and data application topologies.
 
 ### [@CloudflareDev](https://x.com/cloudflaredev)
 
@@ -81,5 +80,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/#page","headline":"Overview · Cloudflare Realtime docs","description":"Build scalable real-time applications with Cloudflare Realtime products including RealtimeKit, SFU, and TURN.","url":"https://developers.cloudflare.com/realtime/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/#page","headline":"Overview · Cloudflare Realtime docs","description":"Build scalable real-time applications with Cloudflare Realtime products including RealtimeKit, SFU, and TURN.","url":"https://developers.cloudflare.com/realtime/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

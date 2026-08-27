@@ -379,9 +379,9 @@
   },
   "api/api-reference/guardrails/create-a-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/create-a-guardrail.md",
-    "lastModified": "Thu, 27 Aug 2026 09:04:10 GMT",
-    "size": 31225,
-    "updatedAt": "2026-08-27T09:04:10.819Z"
+    "lastModified": "Thu, 27 Aug 2026 20:29:17 GMT",
+    "size": 31358,
+    "updatedAt": "2026-08-27T20:29:17.459Z"
   },
   "api/api-reference/guardrails/delete-a-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/delete-a-guardrail.md",
@@ -391,9 +391,9 @@
   },
   "api/api-reference/guardrails/get-a-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/get-a-guardrail.md",
-    "lastModified": "Thu, 27 Aug 2026 09:04:11 GMT",
-    "size": 20568,
-    "updatedAt": "2026-08-27T09:04:11.556Z"
+    "lastModified": "Thu, 27 Aug 2026 20:29:19 GMT",
+    "size": 20701,
+    "updatedAt": "2026-08-27T20:29:19.127Z"
   },
   "api/api-reference/guardrails/list-all-key-assignments.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/list-all-key-assignments.md",
@@ -409,9 +409,9 @@
   },
   "api/api-reference/guardrails/list-guardrails.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/list-guardrails.md",
-    "lastModified": "Thu, 27 Aug 2026 09:04:12 GMT",
-    "size": 21770,
-    "updatedAt": "2026-08-27T09:04:12.613Z"
+    "lastModified": "Thu, 27 Aug 2026 20:29:21 GMT",
+    "size": 21909,
+    "updatedAt": "2026-08-27T20:29:21.067Z"
   },
   "api/api-reference/guardrails/list-key-assignments-for-a-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/list-key-assignments-for-a-guardrail.md",
@@ -427,9 +427,9 @@
   },
   "api/api-reference/guardrails/update-a-guardrail.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/guardrails/update-a-guardrail.md",
-    "lastModified": "Thu, 27 Aug 2026 09:04:13 GMT",
-    "size": 29122,
-    "updatedAt": "2026-08-27T09:04:13.909Z"
+    "lastModified": "Thu, 27 Aug 2026 20:29:23 GMT",
+    "size": 29255,
+    "updatedAt": "2026-08-27T20:29:23.405Z"
   },
   "api/api-reference/images/generate-an-image.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/images/generate-an-image.md",

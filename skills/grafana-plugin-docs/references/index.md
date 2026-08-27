@@ -43,7 +43,7 @@ Documentation for data source and app plugins built and maintained by Grafana La
 - [CSV data source for Grafana](/docs/plugins/marcusolsson-csv-datasource/latest/ "CSV data source for Grafana")
 - [Databricks data source for Grafana](/docs/plugins/grafana-databricks-datasource/latest/ "Databricks data source for Grafana")
 - [Datadog data source](/docs/plugins/grafana-datadog-datasource/latest/ "Datadog data source")
-- [Drone CI data source for Grafana](/docs/plugins/grafana-drone-datasource/latest/ "Drone CI data source for Grafana")
+- [Drone CI data source](/docs/plugins/grafana-drone-datasource/latest/ "Drone CI data source")
 - [DynamoDB data source](/docs/plugins/grafana-dynamodb-datasource/latest/ "DynamoDB data source")
 - [Dynatrace data source for Grafana](/docs/plugins/grafana-dynatrace-datasource/latest/ "Dynatrace data source for Grafana")
 - [Falcon LogScale data source](/docs/plugins/grafana-falconlogscale-datasource/latest/ "Falcon LogScale data source")

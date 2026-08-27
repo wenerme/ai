@@ -569,10 +569,40 @@
     "size": 13559,
     "updatedAt": "2026-07-10T04:36:05.134Z"
   },
+  "grafana-drone-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-drone-datasource/latest/annotations.md",
+    "size": 3994,
+    "updatedAt": "2026-08-27T20:34:53.987Z"
+  },
+  "grafana-drone-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-drone-datasource/latest/configure.md",
+    "size": 4125,
+    "updatedAt": "2026-08-27T20:34:54.149Z"
+  },
   "grafana-drone-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-drone-datasource/latest.md",
-    "size": 5936,
-    "updatedAt": "2026-06-25T05:41:55.464Z"
+    "size": 3905,
+    "updatedAt": "2026-08-27T20:34:54.307Z"
+  },
+  "grafana-drone-datasource/install.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-drone-datasource/latest/install.md",
+    "size": 6664,
+    "updatedAt": "2026-08-27T20:34:54.472Z"
+  },
+  "grafana-drone-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-drone-datasource/latest/query-editor.md",
+    "size": 10417,
+    "updatedAt": "2026-08-27T20:34:54.646Z"
+  },
+  "grafana-drone-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-drone-datasource/latest/template-variables.md",
+    "size": 4157,
+    "updatedAt": "2026-08-27T20:34:54.812Z"
+  },
+  "grafana-drone-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-drone-datasource/latest/troubleshooting.md",
+    "size": 8562,
+    "updatedAt": "2026-08-27T20:34:54.992Z"
   },
   "grafana-dynamodb-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/alerting.md",
@@ -1041,8 +1071,8 @@
   },
   "grafana-jira-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-jira-datasource/latest/troubleshooting.md",
-    "size": 11975,
-    "updatedAt": "2026-06-25T05:42:21.970Z"
+    "size": 21251,
+    "updatedAt": "2026-08-27T20:35:10.641Z"
   },
   "grafana-logicmonitor-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-logicmonitor-datasource/latest.md",
@@ -2131,8 +2161,8 @@
   },
   "index.md": {
     "url": "https://grafana.com/docs/plugins.md",
-    "size": 9265,
-    "updatedAt": "2026-08-27T09:09:14.037Z"
+    "size": 9241,
+    "updatedAt": "2026-08-27T20:35:45.069Z"
   },
   "marcusolsson-calendar-panel/basic-config.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/basic-config.md",

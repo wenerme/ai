@@ -1,5 +1,7 @@
 # YouTrack
 
+Configure the YouTrack integration to link a GitLab project to a YouTrack instance and reference YouTrack issues in GitLab.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
@@ -9,7 +11,7 @@ management platform.
 You can configure YouTrack as an
 [external issue tracker](../../../integration/external-issue-tracker.md) in GitLab.
 
-To enable the YouTrack integration in a project:
+To turn on the YouTrack integration in a project:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Settings** > **Integrations**.
@@ -22,11 +24,11 @@ To enable the YouTrack integration in a project:
 1. Optional. Select **Test settings**.
 1. Select **Save changes**.
 
-After you configure and enable YouTrack, a link appears on the GitLab
+After you configure and turn on YouTrack, a link appears on the GitLab
 project pages. This link takes you to the appropriate YouTrack project.
 
-You can also disable [GitLab internal issue tracking](../issues/_index.md) in this project.
-For more information about the steps and consequences of disabling GitLab issues, see:
+You can also turn off [GitLab internal issue tracking](../issues/_index.md) in this project.
+For more information about the steps and consequences of turning off GitLab issues, see:
 
 - [Change project visibility](../../public_access.md#change-project-visibility).
 - [Configure project features and permissions](../settings/_index.md#configure-project-features-and-permissions).
