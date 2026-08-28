@@ -237,6 +237,11 @@ components:
           - top_p
           - max_tokens
         supports_implicit_caching: true
+        supports_tool_choice:
+          auto: true
+          function: true
+          none: true
+          required: true
         supports_voice_cloning: false
         tag: openai
         throughput_last_30m:
@@ -360,6 +365,8 @@ components:
           type: array
         supports_implicit_caching:
           type: boolean
+        supports_tool_choice:
+          $ref: '#/components/schemas/ToolChoiceSupport'
         supports_voice_cloning:
           default: false
           description: >-
@@ -412,6 +419,7 @@ components:
         - max_completion_tokens
         - max_prompt_tokens
         - supported_parameters
+        - supports_tool_choice
         - uptime_last_30m
         - uptime_last_5m
         - uptime_last_1d
@@ -738,6 +746,37 @@ components:
         - verbosity
       example: temperature
       type: string
+    ToolChoiceSupport:
+      description: >-
+        Per-variant `tool_choice` support. `tool_choice` in
+        `supported_parameters` only says the parameter is accepted; these flags
+        say which of its values passed testing.
+      example:
+        auto: true
+        function: true
+        none: true
+        required: true
+      properties:
+        auto:
+          description: 'Whether the endpoint supports `"tool_choice": "auto"`.'
+          type: boolean
+        function:
+          description: >-
+            Whether the endpoint supports naming a function, `"tool_choice":
+            {"type": "function", ...}`.
+          type: boolean
+        none:
+          description: 'Whether the endpoint supports `"tool_choice": "none"`.'
+          type: boolean
+        required:
+          description: 'Whether the endpoint supports `"tool_choice": "required"`.'
+          type: boolean
+      required:
+        - none
+        - auto
+        - required
+        - function
+      type: object
     ForbiddenResponseErrorData:
       description: Error data for ForbiddenResponse
       example:

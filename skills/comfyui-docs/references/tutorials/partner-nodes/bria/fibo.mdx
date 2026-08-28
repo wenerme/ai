@@ -5,67 +5,13 @@ description: "Learn how to use the Bria FIBO Edit Partner node for precision ima
 
 FIBO Edit is Bria AI's JSON-native image editing model, now available in ComfyUI through Partner Nodes. It lets you combine images with structured JSON prompts to make precise, targeted edits: no prompt guessing, no unwanted changes to the rest of your image.
 
-## About FIBO Edit
+## What Bria FIBO Edit is good at
 
-**Key features:**
 - **Surgical edits**: Change specific attributes (lighting, color, texture, materials) without breaking the rest of the scene
 - **Background swaps and object modifications**: Precise control over targeted areas
 - **Reproducible, auditable edits**: Structured JSON inputs for consistent results
 - **100% licensed data**: Full governance and legal clarity for commercial use
 - **Strong prompt adherence**: Validated on PRISM-style evaluations
-
-### Bria: Image Edit {#api_bria_image_edit}
-
-FIBO enables precise, predictable image editing through structured JSON control over lighting, composition, and camera settings.
-
-[Bria: Image Edit workflow preview]
-
-  
-    Open in Comfy Cloud
-  
-  
-    Download JSON or search &quot;Bria: Image Edit&quot; in Template Library
-  
-
-**Input materials**
-
-Upload this file to the matching `LoadImage` node:
-
-  
-    `LoadImage` node 5 · `sunlit_rooftop_capture.png`
-  
-
-<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
-  [Input image]
-  [Bria: Image Edit example output]
-</div>
-
-### Bria: Image Outpainting {#api_bria_image_outpainting}
-
-A professional Bria-powered outpainting template designed for seamless image extension and edge-aware scene expansion.
-
-[Bria: Image Outpainting workflow preview]
-
-  
-    Open in Comfy Cloud
-  
-  
-    Download JSON or search &quot;Bria: Image Outpainting&quot; in Template Library
-  
-
-**Input materials**
-
-Upload this file to the matching `LoadImage` node:
-
-  
-    `LoadImage` node 11 · `baby_otter.png`
-  
-
-<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
-  [Input image]
-</div>
-
-## Example outputs
 
 FIBO Edit excels at various editing tasks:
 
@@ -75,3 +21,13 @@ FIBO Edit excels at various editing tasks:
 - **Masked area editing**: Mask out a specific area to edit with precision
 - **Text adjustment**: Adjust the text in an image
 - **Art style transformation**: Re-imagine your image in a different art style
+
+## Example outputs
+
+Precision image editing with structured JSON control over lighting, composition, and camera settings:
+
+![Bria: Image Edit example output](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_bria_image_edit.png)
+
+## Use it in ComfyUI
+
+Run the image edit and image outpainting workflows in ComfyUI, locally or on Comfy Cloud

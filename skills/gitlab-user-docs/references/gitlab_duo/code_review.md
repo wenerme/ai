@@ -7,6 +7,7 @@
 ### Model information
 
 - [Default LLM](model_selection.md#default-models)
+- [Select a different model](model_selection.md#select-a-model-for-a-feature) using the **Code Review** setting.
 - Available on [GitLab Duo with self-hosted models](../../administration/gitlab_duo_self_hosted/_index.md)
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/14825) in GitLab 17.5 as an [experiment](../../policy/development_stages_support.md#experiment) behind two feature flags named [`ai_review_merge_request`](https://gitlab.com/gitlab-org/gitlab/-/issues/456106) and [`duo_code_review_chat`](https://gitlab.com/gitlab-org/gitlab/-/issues/508632), both disabled by default.
@@ -80,8 +81,9 @@ To reduce the risk of failed reviews on large merge requests:
 - Split large merge requests into smaller ones.
 - [Exclude context](context.md#exclude-context-from-code-review) for files that are not relevant to
   the review.
-- Ask a Maintainer or Owner to [select a different model](model_selection.md#select-a-model-for-a-feature)
-  for Code Review.
+- Ask a group Owner or instance administrator to select a different model using the **Code Review** setting.
+  See [GitLab.com](model_selection.md#select-a-model-for-a-feature) or
+  [GitLab Self-Managed and GitLab Dedicated](../../administration/gitlab_duo/model_selection.md#select-a-model-for-the-instance).
 
 ## Interact with GitLab Duo in reviews
 
@@ -292,6 +294,9 @@ To work around the failure:
 - Split the merge request into smaller merge requests.
 - [Exclude context](context.md#exclude-context-from-code-review) for files that are not relevant to
   the review.
+- Ask a group Owner or instance administrator to select a different model using the **Code Review** setting.
+  See [GitLab.com](model_selection.md#select-a-model-for-a-feature) or
+  [GitLab Self-Managed and GitLab Dedicated](../../administration/gitlab_duo/model_selection.md#select-a-model-for-the-instance).
 
 For more information, see [issue 596794](https://gitlab.com/gitlab-org/gitlab/-/work_items/596794).
 

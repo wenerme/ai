@@ -113,6 +113,7 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 | `musr` | [MuSR](../../benchmarks/musr.md) | `MCQ`, `Reasoning` |
 | `ncbi` | [NCBI](../../benchmarks/ncbi.md) | `Knowledge`, `NER` |
 | `needle_haystack` | [Needle-in-a-Haystack](../../benchmarks/needle_haystack.md) | `LongContext`, `Retrieval` |
+| `one_million_bench` | [$OneMillion-Bench](../../benchmarks/one_million_bench.md) | `Agent`, `Knowledge`, `MultiLingual`, `QA`, `Reasoning` |
 | `ontonotes5` | [OntoNotes5](../../benchmarks/ontonotes5.md) | `Knowledge`, `NER` |
 | `openai_mrcr` | [OpenAI MRCR](../../benchmarks/openai_mrcr.md) | `LongContext`, `Retrieval` |
 | `perspective_gap_prompt_writing` | [PerspectiveGap Prompt Writing](../../benchmarks/perspective_gap_prompt_writing.md) | `Agent`, `InstructionFollowing` |
@@ -120,6 +121,7 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 | `piqa` | [PIQA](../../benchmarks/piqa.md) | `Commonsense`, `MCQ`, `Reasoning` |
 | `plawbench` | [PLawBench](../../benchmarks/plawbench.md) | `Chinese`, `Knowledge`, `QA`, `Reasoning` |
 | `poly_math` | [PolyMath](../../benchmarks/poly_math.md) | `Math`, `MultiLingual`, `Reasoning` |
+| `prbench` | [PRBench](../../benchmarks/prbench.md) | `Knowledge`, `MultiTurn`, `QA`, `Reasoning` |
 | `process_bench` | [ProcessBench](../../benchmarks/process_bench.md) | `Math`, `Reasoning` |
 | `pubmedqa` | [PubMedQA](../../benchmarks/pubmedqa.md) | `Knowledge`, `Yes/No` |
 | `qasc` | [QASC](../../benchmarks/qasc.md) | `Knowledge`, `MCQ` |
@@ -259,6 +261,7 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 ../../benchmarks/musr.md
 ../../benchmarks/ncbi.md
 ../../benchmarks/needle_haystack.md
+../../benchmarks/one_million_bench.md
 ../../benchmarks/ontonotes5.md
 ../../benchmarks/openai_mrcr.md
 ../../benchmarks/perspective_gap_prompt_writing.md
@@ -266,6 +269,7 @@ Below is the list of supported LLM benchmarks. Click on a benchmark name for det
 ../../benchmarks/piqa.md
 ../../benchmarks/plawbench.md
 ../../benchmarks/poly_math.md
+../../benchmarks/prbench.md
 ../../benchmarks/process_bench.md
 ../../benchmarks/pubmedqa.md
 ../../benchmarks/qasc.md

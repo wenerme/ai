@@ -5,74 +5,24 @@ description: "Generate and edit images with Grok Imagine Image 2.0 in ComfyUI: A
 
 Grok Imagine Image 2.0 is xAI's latest image model, available in ComfyUI through the Grok partner nodes. Built on the Aurora engine, it excels at crisp short-text rendering and produces 1K or 2K images across 14 aspect ratios, making it well suited for posters, covers, product and brand visuals, and character-driven scenes where consistency matters.
 
-## Grok Imagine Image 2.0: Text to Image
+## What Grok Imagine Image 2.0 is good at
 
-Generate a full poster-style image from a single text prompt with the Aurora engine. This workflow excels at crisp short-text rendering, making it well suited for posters, covers, product and brand visuals, and character-driven scenes. It outputs 1K or 2K images across 14 aspect ratios, with low or medium quality options to control cost.
+- **Crisp short-text rendering**: the Aurora engine renders short text cleanly, making it well suited for posters, covers, and product and brand visuals
+- **Reference-guided image editing**: edits images with precise, natural-language instructions and up to 3 reference images to modify elements, swap backgrounds, or restyle scenes
+- **Character consistency**: keeps a character consistent across multiple outputs in character-driven scenes
+- **14 aspect ratios**: from `1:1` to `9:20`
+- **Cost control**: 1K or 2K resolution with low or medium quality options to balance cost and fidelity
 
-[Grok Imagine Image 2.0 text-to-image workflow preview]
+## Example outputs
 
-  
-    Open in Comfy Cloud
-  
-  
-    Download JSON or search "Grok Imagine Image 2.0" in Template Library
-  
+Poster-style text-to-image generation with crisp text rendering:
 
 ![Grok Imagine Image 2.0 text-to-image output](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_grok_imagine_image_2_t2i.png)
 
-### Workflow overview
-
-This workflow uses two nodes:
-
-- **GrokImageNode**: the core node, configured with the `grok-imagine-image-2.0` model
-- **SaveImageAdvanced**: saves the generated image as PNG
-
-### Steps to run
-
-1. **Enter your prompt**: describe the scene, style, and any text you want rendered in the **GrokImageNode**
-2. **Choose aspect ratio**: pick from 14 ratios, from `1:1` to `9:20`
-3. **Select resolution**: `1K` for faster results or `2K` for more detail
-4. **Set quality**: `low` or `medium` to control cost and fidelity
-5. **Set seed**: control whether the node re-runs; outputs are not reproducible regardless of seed
-6. **Click Queue**: press `Ctrl+Enter` to generate
-
-## Grok Imagine Image 2.0: Image Edit
-
-Edit images with precise, natural-language instructions and up to 3 reference images. Use this workflow to modify specific elements, swap backgrounds, restyle scenes, or keep a character consistent across multiple outputs. The Aurora engine delivers crisp short-text rendering at 1K or 2K resolution across 14 aspect ratios.
-
-[Grok Imagine Image 2.0 image edit workflow preview]
-
-  
-    Open in Comfy Cloud
-  
-  
-    Download JSON or search "Grok Imagine Image 2.0" in Template Library
-  
-
-Input materials
-
-Download these sample input images to try the workflow:
-
-  
-    A young woman in a cobalt blue textured outfit, used as the character reference
-  
-  
-    A square pink matte lipstick, used as the product reference
-  
+Image editing guided by character and product reference images:
 
 ![Grok Imagine Image 2.0 image edit output](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_grok_imagine_image_2_image_edit.png)
 
-### Workflow overview
+## Use it in ComfyUI
 
-This workflow uses four nodes:
-
-- **LoadImage** x2: provide the character and product reference images (the node accepts up to 3)
-- **GrokImageEditNodeV2**: the core node, configured with the `grok-imagine-image-2.0` model
-- **SaveImage**: saves the edited image
-
-### Steps to run
-
-1. **Load your references**: connect up to 3 reference images to the **LoadImage** nodes
-2. **Describe the edit**: tell the model what to keep, change, or restyle in the **GrokImageEditNodeV2** prompt
-3. **Set resolution**: `1K` or `2K`
-4. **Click Queue**: press `Ctrl+Enter` to generate
+Run the text-to-image and image edit workflows in ComfyUI, locally or on Comfy Cloud

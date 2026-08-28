@@ -1,11 +1,11 @@
 ---
 title: "Alibaba Token Plan (China) | Models"
-description: "Use Alibaba Token Plan (China) models with Mastra. 25 models available."
+description: "Use Alibaba Token Plan (China) models with Mastra. 26 models available."
 ---
 
 # [Alibaba Token Plan (China) logo]Alibaba Token Plan (China)
 
-Access 25 Alibaba Token Plan (China) models through Mastra's model router. Authentication is handled automatically using the `ALIBABA_TOKEN_PLAN_API_KEY` environment variable.
+Access 26 Alibaba Token Plan (China) models through Mastra's model router. Authentication is handled automatically using the `ALIBABA_TOKEN_PLAN_API_KEY` environment variable.
 
 Learn more in the [Alibaba Token Plan (China) documentation](https://www.alibabacloud.com/help/zh/model-studio/token-plan-overview).
 
@@ -288,6 +288,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 65536,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "alibaba-token-plan-cn/qwen3.8-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null
   },

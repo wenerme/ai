@@ -1,11 +1,11 @@
 ---
 title: "Vivgrid | Models"
-description: "Use Vivgrid models with Mastra. 21 models available."
+description: "Use Vivgrid models with Mastra. 22 models available."
 ---
 
 # [Vivgrid logo]Vivgrid
 
-Access 21 Vivgrid models through Mastra's model router. Authentication is handled automatically using the `VIVGRID_API_KEY` environment variable.
+Access 22 Vivgrid models through Mastra's model router. Authentication is handled automatically using the `VIVGRID_API_KEY` environment variable.
 
 Learn more in the [Vivgrid documentation](https://docs.vivgrid.com/models).
 
@@ -134,6 +134,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 1.2,
     "outputCost": 4.2
+  },
+  {
+    "model": "vivgrid/glm-5.3-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 0.15,
+    "outputCost": 0.5
   },
   {
     "model": "vivgrid/gpt-5-mini",

@@ -271,7 +271,7 @@ promote it to a workspace document:
   "mime_type": "text/csv",
   "size_bytes": 123,
   "created_at": "2026-08-25T00:00:00Z",
-  "downloadable": false
+  "downloadable": true
 }
 ```
 
@@ -279,7 +279,8 @@ promote it to a workspace document:
 file into your workspace documents. The response is the new document in the
 [Files API](/docs/guides/features/files-api) shape, with a new `or_file_` id. You
 can then use the new id like any uploaded file, for example in
-[`file_ids`](#attach-workspace-files).
+[`file_ids`](#attach-workspace-files), or download it through
+`GET /api/v1/files/{file_id}/content`.
 
 Rules:
 
@@ -289,9 +290,8 @@ Rules:
 * Files larger than 100 MiB return a `413` error.
 * Any content the sandbox produced is accepted. The file type is read from
   the content; unknown content is stored as binary data.
-* Like uploaded files, the new document cannot be downloaded through the
-  Files API. Download the container file through the
-  [content endpoint](#download-container-files) first if you need the bytes.
+* The promoted document remains downloadable through the Files API. Direct
+  workspace uploads remain non-downloadable.
 
 ## Network access
 

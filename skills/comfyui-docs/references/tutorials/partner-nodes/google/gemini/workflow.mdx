@@ -1,0 +1,48 @@
+---
+title: "Google Gemini Workflow in ComfyUI"
+description: "How to run the Google Gemini conversational workflow in ComfyUI, locally or on Comfy Cloud"
+---
+
+This guide shows how to run the Google Gemini workflow in ComfyUI. For what the model is and what it does best, see the [Google Gemini overview](/tutorials/partner-nodes/google/gemini).
+
+## Google Gemini {#api_google_gemini}
+
+Experience Google's multimodal AI with Gemini's reasoning capabilities.
+
+[Google Gemini workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Google Gemini&quot; in Template Library
+  
+
+**Input materials**
+
+Upload this file to the matching `LoadImage` node:
+
+  
+    `LoadImage` node 2 · `example.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [example.png]
+</div>
+
+## Complete the workflow execution step by step
+
+[OpenAI Chat Step Guide]
+
+In the corresponding template, we have built a prompt for analyzing and generating role prompts, used to interpret your images into corresponding drawing prompts
+
+You can refer to the numbers in the image to complete the basic text-to-image workflow execution:  
+1. In the `Load Image` node, load the image you need AI to interpret
+2. (Optional) If needed, you can modify the prompt in `Google Gemini` to have AI execute specific tasks
+3. Click the `Run` button, or use the shortcut `Ctrl(cmd) + Enter` to execute the conversation.
+4. After waiting for the API to return results, you can view the corresponding AI returned content in the `Preview Any` node.
+
+## Additional Notes
+
+- Currently, the file input node `Gemini Input Files` requires files to be uploaded to the `ComfyUI/input/` directory first. This node is being improved, and we will modify the template after updates
+- The workflow provides an example using `Batch Images` for input. If you have multiple images that need AI interpretation, you can refer to the step diagram and use right-click to set the corresponding node mode to `Always` to enable it

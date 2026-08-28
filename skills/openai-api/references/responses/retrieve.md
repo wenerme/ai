@@ -2432,7 +2432,7 @@ Retrieves a model response with the given ID.
 
           - `"incomplete"`
 
-      - `AdditionalTools object { role, tools, type, id }`
+      - `AdditionalTools object { role, tools, type, 2 more }`
 
         - `role: "developer"`
 
@@ -3279,6 +3279,16 @@ Retrieves a model response with the given ID.
         - `id: optional string or null`
 
           The unique ID of this additional tools item.
+
+        - `prompt_cache_breakpoint: optional object { mode }  or null`
+
+          An explicit cache breakpoint after these tool definitions. Requires a non-empty tools list.
+
+          - `mode: "explicit"`
+
+            The breakpoint mode. Always `explicit`.
+
+            - `"explicit"`
 
       - `Reasoning object { id, summary, type, 3 more }`
 
@@ -5951,7 +5961,7 @@ Retrieves a model response with the given ID.
 
         The identifier of the actor that created the item.
 
-    - `AdditionalTools object { id, role, tools, type }`
+    - `AdditionalTools object { id, role, tools, 2 more }`
 
       - `id: string`
 
@@ -6812,6 +6822,16 @@ Retrieves a model response with the given ID.
         The type of the item. Always `additional_tools`.
 
         - `"additional_tools"`
+
+      - `prompt_cache_breakpoint: optional object { mode }`
+
+        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+        - `mode: "explicit"`
+
+          The breakpoint mode. Always `explicit`.
+
+          - `"explicit"`
 
     - `Compaction object { id, encrypted_content, type, created_by }`
 

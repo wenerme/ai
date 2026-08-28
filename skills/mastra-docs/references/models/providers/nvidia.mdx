@@ -1,11 +1,11 @@
 ---
 title: "Nvidia | Models"
-description: "Use Nvidia models with Mastra. 102 models available."
+description: "Use Nvidia models with Mastra. 103 models available."
 ---
 
 # [Nvidia logo]Nvidia
 
-Access 102 Nvidia models through Mastra's model router. Authentication is handled automatically using the `NVIDIA_API_KEY` environment variable.
+Access 103 Nvidia models through Mastra's model router. Authentication is handled automatically using the `NVIDIA_API_KEY` environment variable.
 
 Learn more in the [Nvidia documentation](https://docs.api.nvidia.com/nim/).
 
@@ -158,6 +158,18 @@ for await (const chunk of stream) {
     "maxOutput": 393216,
     "inputCost": 0.435,
     "outputCost": 0.87
+  },
+  {
+    "model": "nvidia/deepseek-ai/deepseek-v4-pro-0813",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": null,
+    "outputCost": null
   },
   {
     "model": "nvidia/google/gemma-2-2b-it",

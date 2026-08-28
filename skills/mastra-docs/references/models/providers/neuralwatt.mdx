@@ -1,11 +1,11 @@
 ---
 title: "Neuralwatt | Models"
-description: "Use Neuralwatt models with Mastra. 25 models available."
+description: "Use Neuralwatt models with Mastra. 20 models available."
 ---
 
 # [Neuralwatt logo]Neuralwatt
 
-Access 25 Neuralwatt models through Mastra's model router. Authentication is handled automatically using the `NEURALWATT_API_KEY` environment variable.
+Access 20 Neuralwatt models through Mastra's model router. Authentication is handled automatically using the `NEURALWATT_API_KEY` environment variable.
 
 Learn more in the [Neuralwatt documentation](https://portal.neuralwatt.com/docs).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "neuralwatt/Qwen/Qwen3.5-397B-A17B-FP8"
+  model: "neuralwatt/deepseek-v4-flash"
 });
 
 // Generate a response
@@ -105,7 +105,7 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 1048560,
     "maxOutput": 1048560,
     "inputCost": 1.45,
@@ -120,8 +120,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048560,
     "maxOutput": 1048560,
-    "inputCost": 0.725,
-    "outputCost": 2.25
+    "inputCost": 0.9425,
+    "outputCost": 2.925
   },
   {
     "model": "neuralwatt/glm-5.2-short",
@@ -131,7 +131,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 199984,
-    "maxOutput": 199984,
+    "maxOutput": 32000,
     "inputCost": 1.45,
     "outputCost": 4.5
   },
@@ -141,9 +141,9 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 199984,
-    "maxOutput": 199984,
+    "maxOutput": 32000,
     "inputCost": 1.45,
     "outputCost": 4.5
   },
@@ -153,11 +153,11 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 199984,
-    "maxOutput": 199984,
-    "inputCost": 0.725,
-    "outputCost": 2.25
+    "maxOutput": 32000,
+    "inputCost": 0.9425,
+    "outputCost": 2.925
   },
   {
     "model": "neuralwatt/glm-5.2-short-flex",
@@ -167,36 +167,12 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 199984,
-    "maxOutput": 199984,
-    "inputCost": 0.725,
-    "outputCost": 2.25
+    "maxOutput": 32000,
+    "inputCost": 0.9425,
+    "outputCost": 2.925
   },
   {
-    "model": "neuralwatt/kimi-k2.5-fast",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 262128,
-    "maxOutput": 262128,
-    "inputCost": 0.52,
-    "outputCost": 2.59
-  },
-  {
-    "model": "neuralwatt/kimi-k2.6-fast",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 262128,
-    "maxOutput": 262128,
-    "inputCost": 0.69,
-    "outputCost": 3.22
-  },
-  {
-    "model": "neuralwatt/kimi-k2.6-flex",
+    "model": "neuralwatt/kimi-k2.7-code",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -204,8 +180,20 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262128,
     "maxOutput": 262128,
-    "inputCost": 0.345,
-    "outputCost": 1.61
+    "inputCost": 0.95,
+    "outputCost": 4
+  },
+  {
+    "model": "neuralwatt/kimi-k2.7-code-fast",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262128,
+    "maxOutput": 262128,
+    "inputCost": 0.95,
+    "outputCost": 4
   },
   {
     "model": "neuralwatt/kimi-k2.7-code-flex",
@@ -214,10 +202,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": 0.475,
-    "outputCost": 2
+    "contextWindow": 262128,
+    "maxOutput": 262128,
+    "inputCost": 0.6175,
+    "outputCost": 2.6
   },
   {
     "model": "neuralwatt/kimi-k3",
@@ -244,40 +232,16 @@ for await (const chunk of stream) {
     "outputCost": 15
   },
   {
-    "model": "neuralwatt/moonshotai/Kimi-K2.5",
+    "model": "neuralwatt/kimi-k3-flex",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 262128,
-    "maxOutput": 262128,
-    "inputCost": 0.52,
-    "outputCost": 2.59
-  },
-  {
-    "model": "neuralwatt/moonshotai/Kimi-K2.6",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262128,
-    "maxOutput": 262128,
-    "inputCost": 0.69,
-    "outputCost": 3.22
-  },
-  {
-    "model": "neuralwatt/moonshotai/Kimi-K2.7-Code",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": 0.95,
-    "outputCost": 4
+    "contextWindow": 1048560,
+    "maxOutput": 1048560,
+    "inputCost": 1.95,
+    "outputCost": 9.75
   },
   {
     "model": "neuralwatt/qwen-3.8-27b",
@@ -292,19 +256,7 @@ for await (const chunk of stream) {
     "outputCost": 3.2
   },
   {
-    "model": "neuralwatt/Qwen/Qwen3.5-397B-A17B-FP8",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262128,
-    "maxOutput": 262128,
-    "inputCost": 0.69,
-    "outputCost": 4.14
-  },
-  {
-    "model": "neuralwatt/Qwen/Qwen3.6-35B-A3B",
+    "model": "neuralwatt/qwen3.6-35b",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -314,18 +266,6 @@ for await (const chunk of stream) {
     "maxOutput": 131056,
     "inputCost": 0.29,
     "outputCost": 1.15
-  },
-  {
-    "model": "neuralwatt/qwen3.5-397b-fast",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 262128,
-    "maxOutput": 262128,
-    "inputCost": 0.69,
-    "outputCost": 4.14
   },
   {
     "model": "neuralwatt/qwen3.6-35b-fast",
@@ -352,7 +292,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://api.neuralwatt.com/v1",
-    id: "neuralwatt/Qwen/Qwen3.5-397B-A17B-FP8",
+    id: "neuralwatt/deepseek-v4-flash",
     apiKey: process.env.NEURALWATT_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -371,7 +311,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "neuralwatt/qwen3.6-35b-fast"
-      : "neuralwatt/Qwen/Qwen3.5-397B-A17B-FP8";
+      : "neuralwatt/deepseek-v4-flash";
   }
 });
 ```

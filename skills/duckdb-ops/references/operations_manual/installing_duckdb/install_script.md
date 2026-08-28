@@ -7,7 +7,7 @@ You can install the [DuckDB CLI client](https://duckdb.org/docs/current/clients/
 To use the [DuckDB install script](https://install.duckdb.org) on Linux and macOS, run:
 
 ```bash
-curl https://install.duckdb.org | sh
+curl https://install.duckdb.org | bash
 ```
 
 <!-- markdownlint-disable MD040 MD046 -->
@@ -60,7 +60,7 @@ export PATH="~/.duckdb/cli/latest":$PATH
 You can install [past DuckDB releases](https://duckdb.org/release_calendar.html#past-releases) (all the way back to v1.0.0) using the `DUCKDB_VERSION` variable. For example, to install v1.2.2, run:
 
 ```bash
-curl https://install.duckdb.org | DUCKDB_VERSION=1.2.2 sh
+curl https://install.duckdb.org | DUCKDB_VERSION=1.2.2 bash
 ```
 
 ## Windows

@@ -1,11 +1,11 @@
 ---
 title: "Modal | Models"
-description: "Use Modal models with Mastra. 2 models available."
+description: "Use Modal models with Mastra. 4 models available."
 ---
 
 # [Modal logo]Modal
 
-Access 2 Modal models through Mastra's model router. Authentication is handled automatically using the `MODAL_PROXY_TOKEN` environment variable.
+Access 4 Modal models through Mastra's model router. Authentication is handled automatically using the `MODAL_PROXY_TOKEN` environment variable.
 
 Learn more in the [Modal documentation](https://modal.com/docs/guide/endpoints).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "modal/moonshotai/Kimi-K3"
+  model: "modal/Qwen/Qwen3.8-2.4T-A95B"
 });
 
 // Generate a response
@@ -52,6 +52,18 @@ for await (const chunk of stream) {
     "outputCost": 15
   },
   {
+    "model": "modal/Qwen/Qwen3.8-2.4T-A95B",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1010000,
+    "maxOutput": 131072,
+    "inputCost": 2,
+    "outputCost": 6
+  },
+  {
     "model": "modal/thinkingmachines/Inkling-NVFP4",
     "imageInput": true,
     "audioInput": true,
@@ -62,6 +74,18 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": 1.2,
     "outputCost": 5
+  },
+  {
+    "model": "modal/zai-org/GLM-5.3-Flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 0.45,
+    "outputCost": 1.5
   }
 ]}
 />
@@ -76,7 +100,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://inference.us-west.modal.direct/v1",
-    id: "modal/moonshotai/Kimi-K3",
+    id: "modal/Qwen/Qwen3.8-2.4T-A95B",
     apiKey: process.env.MODAL_PROXY_TOKEN,
     headers: {
       "X-Custom-Header": "value"
@@ -94,8 +118,8 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "modal/thinkingmachines/Inkling-NVFP4"
-      : "modal/moonshotai/Kimi-K3";
+      ? "modal/zai-org/GLM-5.3-Flash"
+      : "modal/Qwen/Qwen3.8-2.4T-A95B";
   }
 });
 ```

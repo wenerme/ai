@@ -430,6 +430,10 @@ Conversations store items, which can be messages, tool calls, tool outputs, and 
 
   Create a conversation
 
+```javascript
+const conversation = await client.conversations.create();
+```
+
 ```python
 conversation = openai.conversations.create()
 ```
@@ -458,6 +462,16 @@ conversation = client.conversations.create
 In a multi-turn interaction, you can pass the `conversation` into subsequent responses to persist state and share context across subsequent responses, rather than having to chain multiple response items together.
 
   Manage conversation state with Conversations and Responses APIs
+
+```javascript
+const response = await client.responses.create({
+  model: "gpt-5.6",
+  input: [{ role: "user", content: "What are the five Ds of dodgeball?" }],
+  conversation: conversation.id,
+});
+
+console.log(response.output_text);
+```
 
 ```python
 response = openai.responses.create(
