@@ -159,10 +159,10 @@ environment:
 }
 ```
 
-| Parameter     | Type   | Default          | Description                                                                                                                                                                                                                                             |
-| ------------- | ------ | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `environment` | object | `container_auto` | Execution environment. Use `{ "type": "container_auto" }` for an OpenRouter-managed container, or `{ "type": "container_reference", "container_id": "..." }` to reuse an existing container. See [Containers](/docs/guides/features/server-tools/containers) |
-| `engine`      | string | `auto`           | Where commands run: `openrouter` runs them server-side in the OpenRouter sandbox; `auto`/`native` (the default) return the tool call to your application to run client-side. See [Execution engine](#execution-engine)                                  |
+| Parameter     | Type   | Default          | Description                                                                                                                                                                                                                                |
+| ------------- | ------ | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `environment` | object | `container_auto` | Execution environment. Use `{ "type": "container_auto" }` for an OpenRouter-managed container, or `{ "type": "container_reference", "container_id": "..." }` to reuse an existing container. See [Containers](/docs/guides/features/containers) |
+| `engine`      | string | `auto`           | Where commands run: `openrouter` runs them server-side in the OpenRouter sandbox; `auto`/`native` (the default) return the tool call to your application to run client-side. See [Execution engine](#execution-engine)                     |
 
 ### Network Policy
 
@@ -303,7 +303,7 @@ Running shell commands is powerful and is sandboxed by design:
 
 * [Server Tools Overview](/docs/guides/features/server-tools). Learn about
   server tools
-* [Containers](/docs/guides/features/server-tools/containers). How sandbox
+* [Containers](/docs/guides/features/containers). How sandbox
   containers work
 * [Web Fetch](/docs/guides/features/server-tools/web-fetch). Fetch content
   from URLs

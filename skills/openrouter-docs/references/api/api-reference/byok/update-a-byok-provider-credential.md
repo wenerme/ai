@@ -584,6 +584,7 @@ components:
         - cloudflare
         - cohere
         - coreweave
+        - cosine
         - crusoe
         - darkbloom
         - databricks
@@ -629,6 +630,7 @@ components:
         - nextbit
         - novita
         - nvidia
+        - ollama
         - open-inference
         - openai
         - parasail

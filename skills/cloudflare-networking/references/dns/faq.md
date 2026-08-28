@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQ
 
-Last updated Jul 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The sections below cover frequently asked questions about Cloudflare authoritative DNS. For DNS Firewall, refer to [DNS Firewall FAQ](https://developers.cloudflare.com/dns/dns-firewall/faq/).
 
@@ -133,6 +133,24 @@ Caution
 
 Cloudflare support is unable to restore DNS or settings for deleted domains.
 
+### Why does my new zone have different nameservers than my other zones?
+
+Nameserver assignments happen at zone creation and [cannot be changed](https://developers.cloudflare.com/dns/nameservers/nameserver-options/#assignment-method) afterwards, even by Cloudflare Support.
+
+A newly added zone can be assigned different nameservers from your other zones for a few reasons:
+
+* The same domain is (or was recently) active on another Cloudflare account.
+* The zone was previously deleted from Cloudflare and re-added.
+* A parent or child zone in the same account already uses the preferred nameservers.
+* The account uses [Foundation DNS advanced nameservers](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/), which use different sets (`blue`, `gold`, `orange`) and rotate to keep [directly descending zones](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/#nameservers-hosting-and-assignment) on different nameservers.
+
+To make future zones share the same nameservers, use one of the following options depending on your plan:
+
+* [Account custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/) — available on Enterprise (self-serve), or on Business after [contacting Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to enable them.
+* [DNS zone defaults](https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/) with advanced nameservers or account custom nameservers — available on Enterprise.
+
+Deleting and re-adding the zone does not force a specific nameserver assignment and can produce yet another different set.
+
 ---
 
 ## DNS records
@@ -184,5 +202,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/faq/#page","headline":"FAQ · Cloudflare DNS docs","description":"Find answers to common questions about Cloudflare's authoritative DNS.","url":"https://developers.cloudflare.com/dns/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/faq/#page","headline":"FAQ · Cloudflare DNS docs","description":"Find answers to common questions about Cloudflare's authoritative DNS.","url":"https://developers.cloudflare.com/dns/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -32,7 +32,7 @@ stateful workflows, and agent features.
 
 Choose a [GPT-5.6 model](https://developers.openai.com/api/docs/guides/latest-model) for the workload instead
 of routing every request to the most capable tier. Use `gpt-5.6` or
-`gpt-5.6-sol` for frontier capability, `gpt-5.6-terra` for strong performance
+`gpt-5.6-sol` for flagship capability, `gpt-5.6-terra` for strong performance
 at a lower price, and `gpt-5.6-luna` for efficient, high-volume workloads.
 
 When migrating, preserve the current model's workload role and effective
@@ -1018,7 +1018,7 @@ compacted = client.responses.compact(
   model: "gpt-5.6",
   input: long_window
 )
-input = compacted.output.map(&:to_h)
+input = compacted.output.dup
 input << {
   role: :user,
   content: "We found the bad cache invalidation path. Write the fix plan and the verification checklist."
@@ -1443,7 +1443,7 @@ first = client.responses.create(
   include: ["reasoning.encrypted_content"],
   input: history
 )
-history.concat(first.output.map(&:to_h))
+history.concat(first.output)
 history << {
   role: :user,
   content: "Now write the customer-facing explanation in plain English."

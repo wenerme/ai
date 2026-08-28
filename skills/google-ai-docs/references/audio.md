@@ -737,12 +737,23 @@ Count tokens in an audio file:
 
 ## Supported audio formats
 
+Gemini supports the following audio format MIME types:
+
 - WAV - `audio/wav`
 - MP3 - `audio/mp3`
 - AIFF - `audio/aiff`
 - AAC - `audio/aac`
-- OGG Vorbis - `audio/ogg`
+- OGG - `audio/ogg`
 - FLAC - `audio/flac`
+- MPEG - `audio/mpeg`
+- M4A - `audio/m4a`
+- L16 - `audio/l16`
+- Opus - `audio/opus`
+- ALAW - `audio/alaw`
+- MULAW - `audio/mulaw`
+- WebM - `audio/webm`
+
+For the complete list of supported MIME types and parameter schemas, see the [Interactions API reference](https://ai.google.dev/api/interactions-api#Resource:Content).
 
 ## Technical details about audio
 

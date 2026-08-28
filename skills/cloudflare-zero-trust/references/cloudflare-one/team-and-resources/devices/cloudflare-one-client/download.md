@@ -39,6 +39,18 @@ For more details on Cloudflare One Client support timelines and end-of-life (EOL
 
 Latest release
 
+**Version:** Windows 2026.7.1376.0**Date:** 2026-08-28**Size:** 59.4 MB
+
+[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.7.1376.0)
+
+#### Release notes
+
+Fixed a rare but critical issue where the client could fail to connect or switch organizations due to an invalid registration after switching installed client versions. Additionally, this hotfix resolves an issue where a small but noticeable percentage of DNS queries fail across platforms.
+
+Previous version history (13)
+
+Windows 2026.7.1343.0
+
 **Version:** Windows 2026.7.1343.0**Date:** 2026-08-19**Size:** 59.5 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.7.1343.0)
@@ -67,8 +79,6 @@ This release introduces multiple features from our previous beta release into st
 
 For Zero Trust documentation please see: <https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/>
 For Consumer documentation please see: <https://developers.cloudflare.com/warp-client/>
-
-Previous version history (12)
 
 Windows 2026.6.905.0
 
@@ -416,6 +426,18 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 Latest release
 
+**Version:** macOS 2026.7.1376.0**Date:** 2026-08-28**Size:** 153 MB
+
+[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.7.1376.0)
+
+#### Release notes
+
+This hotfix resolves an issue where a small but noticeable percentage of DNS queries fail across platforms.
+
+Previous version history (11)
+
+macOS 2026.7.1343.0
+
 **Version:** macOS 2026.7.1343.0**Date:** 2026-08-19**Size:** 153 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.7.1343.0)
@@ -442,8 +464,6 @@ This release introduces multiple features from our previous beta release into st
 
 For Zero Trust documentation please see: <https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/>
 For Consumer documentation please see: <https://developers.cloudflare.com/warp-client/>
-
-Previous version history (10)
 
 macOS 2026.6.880.0
 
@@ -682,6 +702,20 @@ This release contains minor fixes and improvements.
 
 Latest release
 
+**Version:** Linux 2026.7.1377.0**Date:** 2026-08-28**Size:** 75.2 MB
+
+AlmaLinux / RHEL 10 (arm64)AlmaLinux / RHEL 10 (x86-64)AlmaLinux / RHEL 9 (arm64)AlmaLinux / RHEL 9 (x86-64)Debian 12 (arm64)Debian 12 (x86-64)Debian 13 (arm64)Debian 13 (x86-64)Fedora 43 (arm64)Fedora 43 (x86-64)Fedora 44 (arm64)Fedora 44 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)Ubuntu 26.04 (arm64)Ubuntu 26.04 (x86-64)
+
+[Download](https://downloads.cloudflareclient.com/v1/download/almalinux10-arm/version/2026.7.1377.0)
+
+#### Release notes
+
+This hotfix resolves an issue where a small but noticeable percentage of DNS queries fail across platforms.
+
+Previous version history (12)
+
+Linux 2026.7.1343.0
+
 **Version:** Linux 2026.7.1343.0**Date:** 2026-08-19**Size:** 75.3 MB
 
 AlmaLinux / RHEL 10 (arm64)AlmaLinux / RHEL 10 (x86-64)AlmaLinux / RHEL 9 (arm64)AlmaLinux / RHEL 9 (x86-64)Debian 12 (arm64)Debian 12 (x86-64)Debian 13 (arm64)Debian 13 (x86-64)Fedora 43 (arm64)Fedora 43 (x86-64)Fedora 44 (arm64)Fedora 44 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)Ubuntu 26.04 (arm64)Ubuntu 26.04 (x86-64)
@@ -710,8 +744,6 @@ This release introduces multiple features from our previous beta release into st
 
 For Zero Trust documentation please see: <https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/>
 For Consumer documentation please see: <https://developers.cloudflare.com/warp-client/>
-
-Previous version history (11)
 
 Linux 2026.6.880.0
 

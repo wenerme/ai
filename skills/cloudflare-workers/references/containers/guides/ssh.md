@@ -1,0 +1,88 @@
+---
+description: Connect to running container instances with SSH.
+title: SSH
+image: https://developers.cloudflare.com/og-docs.png
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# SSH
+
+Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/guides/ssh/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Anyone with write access to a Container can SSH into it with Wrangler as long as a matching public key is listed in `authorized_keys`.
+
+SSH does not expose a publicly accessible port on the Container. The only way to connect is through Wrangler with [wrangler containers ssh](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers-ssh), which authenticates against your Cloudflare account.
+
+## Configure SSH
+
+SSH can be configured in your [Container's configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#containers) with the `ssh` and `authorized_keys` properties. Only the `ssh-ed25519` key type is supported.
+
+The `ssh.enabled` property only controls whether you can SSH into a Container through Wrangler. It defaults to `true`. Set it to `false` to disable SSH access completely.
+
+## Connect with Wrangler
+
+To SSH into a Container with Wrangler, add an `ssh-ed25519` public key to `authorized_keys` in your Container configuration. The following example shows a basic configuration:
+
+```jsonc
+{
+	"containers": [
+		{
+			// other options here...
+			"authorized_keys": [
+				{
+					"name": "<NAME>",
+					"public_key": "<YOUR_PUBLIC_KEY_HERE>"
+				}
+			]
+		}
+	]
+}
+```
+
+```toml
+[[containers]]
+[[containers.authorized_keys]]
+name = "<NAME>"
+public_key = "<YOUR_PUBLIC_KEY_HERE>"
+```
+
+For more information on configuring SSH, refer to [SSH configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#ssh).
+
+Find the instance ID for your Container by running [wrangler containers instances](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers-instances) or in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/containers). The instance you want to SSH into must be running. SSH will not start a stopped Container, and an active SSH connection alone will not keep a Container alive.
+
+Once SSH is configured and the Container is running, open the SSH connection with:
+
+```bash
+wrangler containers ssh <INSTANCE_ID>
+```
+
+## Use as SSH proxy
+
+You can use `wrangler containers ssh` as an OpenSSH `ProxyCommand`. This lets your local SSH client connect through Wrangler.
+
+```sh
+ssh -o ProxyCommand="wrangler containers ssh %h" cloudchamber@<INSTANCE_ID>
+```
+
+When used this way, Wrangler pipes standard input and output to the SSH server in the running Container. You can also pass `--stdio` to force this mode.
+
+## Process visibility
+
+Without the [containers\_pid\_namespace](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#use-an-isolated-pid-namespace-for-containers) compatibility flag, all processes inside the VM are visible when you connect to your Container through SSH. This flag is turned on by default for Workers with a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) of `2026-04-01` or later.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/guides/ssh/#page","headline":"SSH · Cloudflare Containers docs","description":"Connect to running container instances with SSH.","url":"https://developers.cloudflare.com/containers/guides/ssh/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

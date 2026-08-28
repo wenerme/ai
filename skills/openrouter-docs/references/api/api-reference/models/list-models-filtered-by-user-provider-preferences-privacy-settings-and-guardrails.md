@@ -4,7 +4,7 @@
 
 # List models filtered by user provider preferences, privacy settings, and guardrails
 
-> List models filtered by user provider preferences, [privacy settings](https://openrouter.ai/docs/guides/privacy/provider-logging), and [guardrails](https://openrouter.ai/docs/guides/features/guardrails). If requesting through a regional hostname, the results will be filtered to models that satisfy in-region routing for that region.
+> List models filtered by user provider preferences, [privacy settings](https://openrouter.ai/docs/guides/privacy/provider-logging), and [guardrails](https://openrouter.ai/docs/guides/features/guardrails). Returns text-output models by default; pass `output_modalities` (e.g. `image,audio,embeddings` or `all`) to include other modalities. If requesting through a regional hostname, the results will be filtered to models that satisfy in-region routing for that region.
 
 
 
@@ -109,8 +109,10 @@ paths:
         List models filtered by user provider preferences, [privacy
         settings](https://openrouter.ai/docs/guides/privacy/provider-logging),
         and [guardrails](https://openrouter.ai/docs/guides/features/guardrails).
-        If requesting through a regional hostname, the results will be filtered
-        to models that satisfy in-region routing for that region.
+        Returns text-output models by default; pass `output_modalities` (e.g.
+        `image,audio,embeddings` or `all`) to include other modalities. If
+        requesting through a regional hostname, the results will be filtered to
+        models that satisfy in-region routing for that region.
       operationId: listModelsUser
       parameters:
         - description: >-
@@ -144,6 +146,20 @@ paths:
             maximum: 1000
             minimum: 1
             type: integer
+        - description: >-
+            Filter models by output modality. Accepts a comma-separated list of
+            modalities (text, image, audio, embeddings) or "all" to include all
+            models. Defaults to "text".
+          in: query
+          name: output_modalities
+          required: false
+          schema:
+            description: >-
+              Filter models by output modality. Accepts a comma-separated list
+              of modalities (text, image, audio, embeddings) or "all" to include
+              all models. Defaults to "text".
+            example: text
+            type: string
       responses:
         '200':
           content:

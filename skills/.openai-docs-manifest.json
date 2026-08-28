@@ -338,10 +338,10 @@
   "openai-docs/guides/conversation-state.md": {
     "url": "https://developers.openai.com/api/docs/guides/conversation-state.md",
     "skill": "openai-docs",
-    "etag": "W/\"47de3347f8c4086549aeb560543939e1\"",
-    "lastModified": "Fri, 28 Aug 2026 07:22:52 GMT",
-    "size": 28475,
-    "updatedAt": "2026-08-28T11:15:33.229Z"
+    "etag": "W/\"ec4f409eecbc04af9703b4546e873125\"",
+    "lastModified": "Fri, 28 Aug 2026 20:53:04 GMT",
+    "size": 28463,
+    "updatedAt": "2026-08-28T21:20:52.137Z"
   },
   "openai-docs/guides/cost-optimization.md": {
     "url": "https://developers.openai.com/api/docs/guides/cost-optimization.md",
@@ -378,10 +378,10 @@
   "openai-docs/guides/deployment-checklist.md": {
     "url": "https://developers.openai.com/api/docs/guides/deployment-checklist.md",
     "skill": "openai-docs",
-    "etag": "W/\"0077f600c07f708f69b8678e8f6d6662\"",
-    "lastModified": "Thu, 27 Aug 2026 07:53:49 GMT",
-    "size": 58978,
-    "updatedAt": "2026-08-27T09:01:42.327Z"
+    "etag": "W/\"a56e0808f4dc9d76e4baaa3f2c25610d\"",
+    "lastModified": "Fri, 28 Aug 2026 21:20:53 GMT",
+    "size": 58958,
+    "updatedAt": "2026-08-28T21:20:53.405Z"
   },
   "openai-docs/guides/developer-mode.md": {
     "url": "https://developers.openai.com/api/docs/guides/developer-mode.md",
@@ -562,10 +562,10 @@
   "openai-docs/guides/migrate-to-responses.md": {
     "url": "https://developers.openai.com/api/docs/guides/migrate-to-responses.md",
     "skill": "openai-docs",
-    "etag": "W/\"ef8b9e11d85d59f542eb9a5649102509\"",
-    "lastModified": "Thu, 27 Aug 2026 20:21:13 GMT",
-    "size": 61198,
-    "updatedAt": "2026-08-27T20:26:22.119Z"
+    "etag": "W/\"f4c88bec3e4e4cdcfc4fa40e23a6bec7\"",
+    "lastModified": "Fri, 28 Aug 2026 21:20:58 GMT",
+    "size": 61186,
+    "updatedAt": "2026-08-28T21:20:58.948Z"
   },
   "openai-docs/guides/model-guidance.md": {
     "url": "https://developers.openai.com/api/docs/guides/model-guidance.md",
@@ -826,10 +826,10 @@
   "openai-docs/guides/reasoning.md": {
     "url": "https://developers.openai.com/api/docs/guides/reasoning.md",
     "skill": "openai-docs",
-    "etag": "W/\"f6adbe2f471f11764df7f1b160c55631\"",
-    "lastModified": "Thu, 27 Aug 2026 07:27:57 GMT",
-    "size": 61841,
-    "updatedAt": "2026-08-27T09:01:55.536Z"
+    "etag": "W/\"aa7dafed3841f093b8acfc602449e324\"",
+    "lastModified": "Fri, 28 Aug 2026 20:39:24 GMT",
+    "size": 61829,
+    "updatedAt": "2026-08-28T21:21:06.747Z"
   },
   "openai-docs/guides/red-teaming.md": {
     "url": "https://developers.openai.com/api/docs/guides/red-teaming.md",

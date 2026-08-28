@@ -114,10 +114,9 @@ Tools that run their own inner agent loops have separate, per-tool budgets confi
 | Tool                                               | Parameter        | Default          | Max  |
 | -------------------------------------------------- | ---------------- | ---------------- | ---- |
 | [Fusion](/docs/guides/features/server-tools/fusion)     | `max_tool_calls` | `4`              | `16` |
-| [Advisor](/docs/guides/features/server-tools/advisor)   | `max_tool_calls` | Provider default | `25` |
 | [Subagent](/docs/guides/features/server-tools/subagent) | `max_tool_calls` | Provider default | `25` |
 
-These inner budgets bound each panelist, advisor, or worker model's own tool loop and are independent of the outer request budget.
+These inner budgets bound each panelist or worker model's own tool loop and are independent of the outer request budget.
 
 ## Quick Start
 

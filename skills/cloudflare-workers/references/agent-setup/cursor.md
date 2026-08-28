@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**
 For example:
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ## Cloudflare platform access
@@ -114,11 +114,7 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
-```
-
-```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
@@ -126,11 +122,15 @@ Connect my Worker to an existing Postgres database using Hyperdrive for connecti
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+```
+
+```txt
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ## Tips

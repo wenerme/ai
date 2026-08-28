@@ -941,7 +941,7 @@ first = client.responses.create(
   model: "gpt-5.6",
   input: context
 )
-context.concat(first.output.map(&:to_h))
+context.concat(first.output)
 context << {role: :user, content: "And its population?"}
 
 second = client.responses.create(

@@ -12,7 +12,7 @@ The Gemini API supports uploading media files separately from the prompt input, 
 
 ## Resource: File
 
-A file uploaded to the API. Next ID: 15
+A file uploaded to the API.
 Fields `name` `string` Immutable. Identifier. The `File` resource name. The ID (name excluding the "files/" prefix) can contain up to 40 characters that are lowercase alphanumeric or dashes (-). The ID cannot start or end with a dash. If the name is empty on create, a unique name will be generated. Example: `files/123-456`
 `displayName` `string` Optional. The human-readable display name for the `File`. The display name must be no more than 512 characters in length, including spaces. Example: "Welcome Image"
 `mimeType` `string` Output only. MIME type of the file.
@@ -34,7 +34,8 @@ A base64-encoded string.
 `state` ``enum (`https://ai.google.dev/api/files#State`)`` Output only. Processing state of the File.
 `source` ``enum (`https://ai.google.dev/api/files#Source`)`` Source of the File.
 `error` ``object (`https://ai.google.dev/api/files#v1beta.Status`)`` Output only. Error status if File processing failed.
-`metadata` `Union type` Metadata for the File. `metadata` can be only one of the following: `videoMetadata` ``object (`https://ai.google.dev/api/files#VideoFileMetadata`)`` Output only. Metadata for a video.
+`metadata` `Union type` Metadata for the File. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `videoMetadata` ``object (`https://ai.google.dev/api/files#VideoFileMetadata`)`` Output only. Metadata for a video.
+End of mutually exclusive fields.
 
 | JSON representation |
 |---|

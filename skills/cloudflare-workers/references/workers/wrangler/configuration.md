@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler optionally uses a configuration file to customize the development and deployment setup for a Worker.
 
@@ -39,7 +39,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 	"name": "my-worker",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-08-28",
 	"workers_dev": false,
 	"route": {
 		"pattern": "example.org/*",
@@ -74,7 +74,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 name = "my-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-08-28"
 workers_dev = false
 
 [route]
@@ -1431,11 +1431,11 @@ You must also define a Durable Object to communicate with your Container via Wor
 The following options are available:
 
 * `image` `string` required
-  * The image to use for the container. This can either be a local path to a `Dockerfile`, in which case `wrangler deploy` will build and push the image, or it can be an image reference. Supported registries are the Cloudflare Registry, Docker Hub, Amazon ECR, and Google Artifact Registry. For more information, refer to [Image Management](https://developers.cloudflare.com/containers/platform-details/image-management/).
+  * The image to use for the container. This can either be a local path to a `Dockerfile`, in which case `wrangler deploy` will build and push the image, or it can be an image reference. Supported registries are the Cloudflare Registry, Docker Hub, Amazon ECR, and Google Artifact Registry. For more information, refer to [Image Management](https://developers.cloudflare.com/containers/guides/image-management/).
 * `class_name` `string` required
   * The corresponding Durable Object class name. This will make this Durable Object a container-enabled Durable Object and allow each instance to control a container. See [Durable Object Container Methods](https://developers.cloudflare.com/durable-objects/api/container/) for details.
 * `instance_type` `string` optional
-  * The instance type of the container. This determines the amount of memory, CPU, and disk given to the container instance. The current options are `"lite"`, `"basic"`, `"standard-1"`, `"standard-2"`, `"standard-3"`, and `"standard-4"`. The default is `"lite"`. For more information, the see [instance types documentation](https://developers.cloudflare.com/containers/platform-details#instance-types).
+  * The instance type of the container. This determines the amount of memory, CPU, and disk given to the container instance. The current options are `"lite"`, `"basic"`, `"standard-1"`, `"standard-2"`, `"standard-3"`, and `"standard-4"`. The default is `"lite"`. For more information, see the [instance types documentation](https://developers.cloudflare.com/containers/platform/limits/#instance-types).
   * To specify a custom instance type, see [here](#custom-instance-types).
 * `max_instances` `string` optional
   * The maximum number of concurrent container instances you want to run at any given moment. Stopped containers do not count towards this - you may have more container instances than this number overall, but only this many actively running containers at once. If a request to start a container will exceed this limit, that request will error.
@@ -1448,9 +1448,9 @@ The following options are available:
 * `image_vars` `Record<string, string>` optional
   * Build-time variables, equivalent to using `--build-arg` with `docker build`. If you want to provide environment variables to your container at _runtime_, you should [use secret bindings or envVars on the Container class](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/).
 * `rollout_active_grace_period` `number` optional
-  * During a [rollout](https://developers.cloudflare.com/containers/platform-details/rollouts/), minimum seconds a container instance must already have been connected to its Durable Object before it may be replaced. Defaults to `0`. Still applies with `--containers-rollout=immediate`.
+  * During a [rollout](https://developers.cloudflare.com/containers/configuration/rollouts/), minimum seconds a container instance must already have been connected to its Durable Object before it may be replaced. Defaults to `0`. Still applies with `--containers-rollout=immediate`.
 * `rollout_step_percentage` `number | number[]` optional
-  * Percentage of container instances to update at each [rollout](https://developers.cloudflare.com/containers/platform-details/rollouts/) step. A single number uses that step size (`5`, `10`, `20`, `25`, `50`, or `100`). An array must contain ascending integer values from `10` through `100`, end in `100`, contain at most 10 entries, and contain no more entries than `max_instances`; its values are cumulative. Defaults to `100` if `max_instances` is omitted or less than `2`; otherwise defaults to `[10, 100]`. Override for one deploy with `--containers-rollout=immediate` (single 100% step; does not override grace period).
+  * Percentage of container instances to update at each [rollout](https://developers.cloudflare.com/containers/configuration/rollouts/) step. A single number uses that step size (`5`, `10`, `20`, `25`, `50`, or `100`). An array must contain ascending integer values from `10` through `100`, end in `100`, contain at most 10 entries, and contain no more entries than `max_instances`; its values are cumulative. Defaults to `100` if `max_instances` is omitted or less than `2`; otherwise defaults to `[10, 100]`. Override for one deploy with `--containers-rollout=immediate` (single 100% step; does not override grace period).
 * `ssh` `object` optional
   * Configuration for SSH through Wrangler. Refer to [SSH](#ssh).
 * `wrangler_ssh` `object` optional deprecated, use \`ssh\`
@@ -1458,7 +1458,7 @@ The following options are available:
 * `authorized_keys` `object[]` optional
   * Public keys that should be added to the Container's `authorized_keys` file.
 * `constraints` `object` optional
-  * Placement constraints for the container. Refer to [Containers placement](https://developers.cloudflare.com/containers/platform-details/placement/) for details.
+  * Placement constraints for the container. Refer to [Containers placement](https://developers.cloudflare.com/containers/concepts/placement/) for details.
 * `constraints.regions` `string[]` optional
   * Limit container placement to specific geographic regions. Valid values: `"ENAM"`, `"WNAM"`, `"EEUR"`, `"WEUR"`, `"APAC"`, `"SAM"`, `"ME"`, `"OC"`, `"AFR"`.
 * `constraints.jurisdiction` `string` optional
@@ -1523,7 +1523,7 @@ new_sqlite_classes = [ "MyContainer" ]
 
 ### Custom Instance Types
 
-In place of the [named instance types](https://developers.cloudflare.com/containers/platform-details/limits/#instance-types), you can set a custom instance type by individually configuring vCPU, memory, and disk. See the [limits documentation](https://developers.cloudflare.com/containers/platform-details/limits/#custom-instance-types) for constraints on custom instance types.
+In place of the [named instance types](https://developers.cloudflare.com/containers/platform/limits/#instance-types), you can set a custom instance type by individually configuring vCPU, memory, and disk. See the [limits documentation](https://developers.cloudflare.com/containers/platform/limits/#custom-instance-types) for constraints on custom instance types.
 
 The following options are available:
 
@@ -1561,7 +1561,7 @@ image = "./Dockerfile"
 
 ### SSH
 
-Configuration for SSH access to a Container instance through Wrangler. For a guide on connecting to Containers via SSH, refer to [SSH](https://developers.cloudflare.com/containers/ssh/).
+Configuration for SSH access to a Container instance through Wrangler. For a guide on connecting to Containers via SSH, refer to [SSH](https://developers.cloudflare.com/containers/guides/ssh/).
 
 The following options are available:
 
@@ -1684,7 +1684,7 @@ You can configure various aspects of local development, such as the local protoc
 * `enable_containers` `boolean` optional
   * Determines whether to enable containers during a local dev session, if they have been configured. Defaults to `true`. If set to `false`, you can develop the rest of your application without requiring Docker or other container tool, as long as you do not invoke any code that interacts with containers.
 * `container_engine` `string` optional
-  * Used for local development of [Containers](https://developers.cloudflare.com/containers/local-dev). Wrangler will attempt to automatically find the correct socket to use to communicate with your container engine. If that does not work (usually surfacing as an `internal error` when attempting to connect to your Container), you can try setting the socket path using this option. You can also set this via the environment variable `DOCKER_HOST`.
+  * Used for local development of [Containers](https://developers.cloudflare.com/containers/guides/local-dev). Wrangler will attempt to automatically find the correct socket to use to communicate with your container engine. If that does not work (usually surfacing as an `internal error` when attempting to connect to your Container), you can try setting the socket path using this option. You can also set this via the environment variable `DOCKER_HOST`.
 * `generate_types` `boolean` optional
   * Generate types from your Worker configuration. Defaults to `false`.
 
@@ -2073,5 +2073,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration - Wrangler · Cloudflare Workers docs","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration - Wrangler · Cloudflare Workers docs","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

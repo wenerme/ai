@@ -386,8 +386,9 @@ Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 
 ## InputEmbedContentConfig
 
 Configures the input to the batch request.
-Fields `source` `Union type` Required. The source of the input. `source` can be only one of the following: `fileName` `string` The name of the `File` containing the input requests.
+Fields `source` `Union type` Required. The source of the input. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `fileName` `string` The name of the `File` containing the input requests.
 `requests` ``object (`https://ai.google.dev/api/embeddings#InlinedEmbedContentRequests`)`` The requests to be processed in the batch.
+End of mutually exclusive fields.
 
 | JSON representation |
 |---|
@@ -415,8 +416,9 @@ Fields `request` ``object (`https://ai.google.dev/api/batch-api#EmbedContentRequ
 ## EmbedContentBatchOutput
 
 The output of a batch request. This is returned in the `AsyncBatchEmbedContentResponse` or the `EmbedContentBatch.output` field.
-Fields `output` `Union type` The output of the batch request. `output` can be only one of the following: `responsesFile` `string` Output only. The file ID of the file containing the responses. The file will be a JSONL file with a single response per line. The responses will be `EmbedContentResponse` messages formatted as JSON. The responses will be written in the same order as the input requests.
+Fields `output` `Union type` The output of the batch request. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `responsesFile` `string` Output only. The file ID of the file containing the responses. The file will be a JSONL file with a single response per line. The responses will be `EmbedContentResponse` messages formatted as JSON. The responses will be written in the same order as the input requests.
 `inlinedResponses` ``object (`https://ai.google.dev/api/embeddings#InlinedEmbedContentResponses`)`` Output only. The responses to the requests in the batch. Returned when the batch was built using inlined requests. The responses will be in the same order as the input requests.
+End of mutually exclusive fields.
 
 | JSON representation |
 |---|
@@ -435,8 +437,9 @@ Fields `inlinedResponses[]` ``object (`https://ai.google.dev/api/embeddings#Inli
 
 The response to a single request in the batch.
 Fields `metadata` ``object (`https://protobuf.dev/reference/protobuf/google.protobuf#struct` format)`` Output only. The metadata associated with the request.
-`output` `Union type` The output of the request. `output` can be only one of the following: `error` ``object (`https://ai.google.dev/api/files#v1beta.Status`)`` Output only. The error encountered while processing the request.
+`output` `Union type` The output of the request. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `error` ``object (`https://ai.google.dev/api/files#v1beta.Status`)`` Output only. The error encountered while processing the request.
 `response` ``object (`https://ai.google.dev/api/embeddings#v1beta.EmbedContentResponse`)`` Output only. The response to the request.
+End of mutually exclusive fields.
 
 | JSON representation |
 |---|

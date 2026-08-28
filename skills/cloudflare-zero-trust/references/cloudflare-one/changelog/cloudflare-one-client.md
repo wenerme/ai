@@ -18,6 +18,33 @@ Review recent changes to the Cloudflare One Client (formerly WARP).
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-one-client.xml)
 
+## 2026-08-28
+
+
+**Cloudflare One Client for macOS (version 2026.7.1376.0)**
+
+A new GA release for the macOS Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This hotfix resolves an issue where a small but noticeable percentage of DNS queries fail across platforms.
+
+## 2026-08-28
+
+
+**Cloudflare One Client for Windows (version 2026.7.1376.0)**
+
+A new GA release for the Windows Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+Fixed a rare but critical issue where the client could fail to connect or switch organizations due to an invalid registration after switching installed client versions. Additionally, this hotfix resolves an issue where a small but noticeable percentage of DNS queries fail across platforms.
+
+## 2026-08-28
+
+
+**Cloudflare One Client for Linux (version 2026.7.1377.0)**
+
+A new GA release for the Linux Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This hotfix resolves an issue where a small but noticeable percentage of DNS queries fail across platforms.
+
 ## 2026-08-19
 
 

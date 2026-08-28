@@ -43,6 +43,7 @@ Create full-stack applications deployed to Cloudflare Workers.
   * [Expo](https://docs.expo.dev/eas/hosting/reference/worker-runtime/)
 * [APIs](https://developers.cloudflare.com/workers/framework-guides/apis/)
   * [FastAPI](https://developers.cloudflare.com/workers/languages/python/packages/fastapi/)
+  * [Flask](https://developers.cloudflare.com/workers/languages/python/packages/flask/)
   * [Hono](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)
 * [AI & agents](https://developers.cloudflare.com/workers/framework-guides/ai-and-agents/)
   * [Agents SDK](https://developers.cloudflare.com/agents/)

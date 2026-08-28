@@ -17,6 +17,7 @@ Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers
 Create full-stack applications deployed to Cloudflare Workers using APIs.
 
 * [FastAPI](https://developers.cloudflare.com/workers/languages/python/packages/fastapi/)
+* [Flask](https://developers.cloudflare.com/workers/languages/python/packages/flask/)
 * [Hono](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)
 
 Was this helpful?

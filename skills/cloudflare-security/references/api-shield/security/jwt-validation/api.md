@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure JWT validation via the API
 
-Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the Cloudflare API to configure [JWT validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/). A token configuration defines how Cloudflare finds and validates JWTs. You then use a WAF custom rule or a token validation rule to [act on the results](#act-on-validation-results).
 
@@ -32,7 +32,7 @@ Token configurations require the following information:
 | description    | A human-readable description that gives more details than title which serves as a means to allow customers to better document the use of the configuration. | This configuration checks the JWT in the authorization header.                                    | Limited to 500 characters.                        |
 | token\_sources | A list of possible locations where then JWT can be found on the request.                                                                                    | http.request.headers\[\\"authorization\\"\]\[0\] http.request.cookies\[\\"Authorization\\"\]\[0\] | Refer to the [information](#token-sources) below. |
 | token\_type    | This specifies the type of token to validate.                                                                                                               | jwt                                                                                               | Only jwt is currently supported.                  |
-| credentials    | This describes the cryptographic public keys that should be used to validate JWTs. This field must be a JSON web key.                                       | Refer to the example below.                                                                       | Refer to the [information](#credentials) below.   |
+| credentials    | This describes the cryptographic keys that should be used to validate JWTs. Each key must be a JSON Web Key (JWK).                                          | Refer to the example below.                                                                       | Refer to the [information](#credentials) below.   |
 
 ### Token sources
 
@@ -46,13 +46,25 @@ Refer to the [Ruleset Engine documentation](https://developers.cloudflare.com/ru
 
 ### Credentials
 
-API Shield supports credentials of type `RS256`, `RS384`, `RS512`, `PS256`, `PS384`, `PS512`, `ES256`, and `ES384`. RSA keys must be at least 2048-bit. Each JSON web key must have a “KID” which must be present in the JWT's header as well to allow API Shield to match them.
+API Shield supports asymmetric RSA and elliptic curve keys and symmetric hash-based message authentication code (HMAC) keys:
 
-Provide an `alg` value for every JSON web key. The effective algorithm, whether provided or defaulted, must match the `alg` value in the JWT header.
+| Key type | Supported algorithms                         | Requirements                                                          |
+| -------- | -------------------------------------------- | --------------------------------------------------------------------- |
+| RSA      | RS256, RS384, RS512, PS256, PS384, and PS512 | RSA keys must be at least 2,048 bits.                                 |
+| EC       | ES256 and ES384                              | Use curve P-256 with ES256 and curve P-384 with ES384.                |
+| HMAC     | HS256, HS384, and HS512                      | Use a symmetric secret of at least 32, 48, or 64 bytes, respectively. |
+
+Each JWK must have an `alg` and a `kid`. The JWT header must contain matching `alg` and `kid` values so API Shield can select the correct key.
+
+Provide an `alg` value for every JWK. The effective algorithm, whether provided or defaulted, must match the `alg` value in the JWT header. HMAC keys must always specify `alg`.
 
 For compatibility with identity providers that omit `alg`, API Shield defaults an RSA key without `alg` to `RS256`. RSA key size does not identify which signing algorithm an identity provider uses. Specify `alg` explicitly if the identity provider uses another supported algorithm.
 
-We allow up to 4 different keys in order to aid in key rollover.
+For an HMAC key, set `kty` to `oct`. Set `k` to the raw symmetric credential encoded with unpadded Base64url. The decoded credential must meet the minimum length for its algorithm.
+
+Caution
+
+Anyone with an HMAC credential can sign and validate JWTs. Treat the credential as a secret and do not expose it in source code or logs. Cloudflare never stores symmetric credentials in plaintext. API responses do not include the credential.
 
 Cloudflare will remove any fields that are unnecessary from each key and will drop keys that we do not support.
 
@@ -81,6 +93,45 @@ The example below shows a JSON object with all of the information necessary to c
 				"x": "QG3VFVwUX4IatQvBy7sqBvvmticCZ-eX5-nbtGKBOfI",
 				"y": "A3PXCshn7XcG7Ivvd2K_DerW4LHAlIVKdqhrUnczTD0",
 				"alg": "ES256"
+			}
+		]
+	}
+}
+```
+
+### Symmetric key example
+
+The following example configures JWT validation with an `HS256` symmetric key. Replace `<BASE64URL_ENCODED_SECRET>` with an unpadded Base64url-encoded credential containing at least 32 decoded bytes.
+
+```json
+{
+	"title": "Production HMAC JWT configuration",
+	"description": "This configuration checks the JWT in the authorization header.",
+	"token_sources": ["http.request.headers[\"authorization\"][0]"],
+	"token_type": "jwt",
+	"credentials": {
+		"keys": [
+			{
+				"kty": "oct",
+				"alg": "HS256",
+				"kid": "production-hmac-key",
+				"k": "<BASE64URL_ENCODED_SECRET>"
+			}
+		]
+	}
+}
+```
+
+The response includes `kty`, `alg`, and `kid`, but does not include `k`:
+
+```json
+{
+	"credentials": {
+		"keys": [
+			{
+				"kty": "oct",
+				"alg": "HS256",
+				"kid": "production-hmac-key"
 			}
 		]
 	}
@@ -526,7 +577,7 @@ The response will be in a Cloudflare `v4` response envelope and the result conta
 
 ### Update token configuration
 
-It is best practice to rotate keys after some time. To support updating the keys, Cloudflare allows up to four keys per configuration. This allows you to add a second, new key to an already existing key. You can start issuing JWTs with the new key only and remove the old key after some time. Additionally, this feature allows the deployment of testing or development keys next to production keys.
+It is best practice to rotate keys regularly. You can add a new key, start issuing JWTs with that key, and then remove the old key.
 
 The input to updating the keys is the same as when creating a configuration where you supplied the initial keys using the credentials key and needs to be a JWK.
 
@@ -538,7 +589,7 @@ It is highly recommended to validate the output of the API call to check that th
 
 Credential updates use the same algorithm compatibility behavior as configuration creation. The response includes normalized credentials and a message for each defaulted algorithm.
 
-Use the `PUT` command to update keys.
+Use `PUT` to replace the complete key set. Every symmetric key in a `PUT` request must include `k`. Keys omitted from the request are removed.
 
 ```bash
 curl --request PUT \
@@ -567,6 +618,59 @@ curl --request PUT \
 ```
 
 Make sure to replace `{zone_id}` with the relevant zone ID and add your [authentication credentials](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) header.
+
+#### Preserve or rotate a symmetric credential
+
+Use `PATCH` to update the complete key set without resubmitting stored symmetric credentials. Cloudflare matches an existing key using its `alg` and `kid` values.
+
+* Omit `k` for a matching symmetric key to preserve its credential.
+* Include a new `k` value to rotate the credential.
+* Include `k` when adding a symmetric key that does not already exist.
+* Omit a key from `keys` to remove it from the configuration.
+* Do not set `k` to `null`.
+
+This example preserves the credential for `production-hmac-key` while adding an EC key:
+
+```bash
+curl --request PATCH \
+'https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/config/{config_id}/credentials' \
+--header 'Content-Type: application/json' \
+--data '{
+    "keys": [
+        {
+            "kty": "oct",
+            "alg": "HS256",
+            "kid": "production-hmac-key"
+        },
+        {
+            "kty": "EC",
+            "alg": "ES256",
+            "crv": "P-256",
+            "kid": "production-ec-key",
+            "x": "<BASE64URL_ENCODED_X_COORDINATE>",
+            "y": "<BASE64URL_ENCODED_Y_COORDINATE>"
+        }
+    ]
+}'
+```
+
+This example rotates the credential for the existing HMAC key:
+
+```bash
+curl --request PATCH \
+'https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/config/{config_id}/credentials' \
+--header 'Content-Type: application/json' \
+--data '{
+    "keys": [
+        {
+            "kty": "oct",
+            "alg": "HS256",
+            "kid": "production-hmac-key",
+            "k": "<NEW_BASE64URL_ENCODED_SECRET>"
+        }
+    ]
+}'
+```
 
 ### Update token validation rules
 
@@ -664,5 +768,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/#page","headline":"Configure JWT validation via the API · Cloudflare API Shield docs","description":"Configure JWT validation and act on its results using the Cloudflare API.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/#page","headline":"Configure JWT validation via the API · Cloudflare API Shield docs","description":"Configure JWT validation and act on its results using the Cloudflare API.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
 ```

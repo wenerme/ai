@@ -4232,6 +4232,7 @@ Arguments:
 | <a id="mutation-artifactregistryrepositorycreate-format"></a>`format` | [`ArtifactRegistryRepositoryFormat!`](#artifactregistryrepositoryformat) | Package format the repository holds. Cannot be changed after creation. |
 | <a id="mutation-artifactregistryrepositorycreate-kind"></a>`kind` | [`ArtifactRegistryRepositoryKind`](#artifactregistryrepositorykind) | How the repository sources its artifacts. Defaults to hosted in Artifact Registry. |
 | <a id="mutation-artifactregistryrepositorycreate-name"></a>`name` | [`String!`](#string) | Name of the repository, unique within the organization. |
+| <a id="mutation-artifactregistryrepositorycreate-settings"></a>`settings`  | [`ArtifactRegistryRemoteSettingsInput`](#artifactregistryremotesettingsinput) | Introduced in GitLab 19.4. Status: Experiment. Upstream configuration. Required on a remote repository create, rejected on any other kind. |
 | <a id="mutation-artifactregistryrepositorycreate-visibility"></a>`visibility` | [`ArtifactRegistryRepositoryVisibility`](#artifactregistryrepositoryvisibility) | Who can read the repository. |
 
 Fields:
@@ -4270,7 +4271,7 @@ Fields:
 - Introduced in GitLab 19.3.
 - Status: Experiment.
 
-Updates a repository in Artifact Registry.
+Updates a repository in Artifact Registry. Artifact Registry writes the metadata fields and the settings in separate transactions, metadata first, so a failed update can leave a visibility or description change applied while the settings did not change. Re-sending the same mutation converges.
 
 Input type: `ArtifactRegistryRepositoryUpdateInput`
 
@@ -4281,6 +4282,7 @@ Arguments:
 | <a id="mutation-artifactregistryrepositoryupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-artifactregistryrepositoryupdate-description"></a>`description` | [`String`](#string) | Human-readable description of the repository. |
 | <a id="mutation-artifactregistryrepositoryupdate-name"></a>`name` | [`String!`](#string) | Name of the repository to update, unique within the organization. Cannot be changed. |
+| <a id="mutation-artifactregistryrepositoryupdate-settings"></a>`settings`  | [`ArtifactRegistryRemoteSettingsInput`](#artifactregistryremotesettingsinput) | Introduced in GitLab 19.4. Status: Experiment. Upstream configuration. Required on a remote repository create, rejected on any other kind. |
 | <a id="mutation-artifactregistryrepositoryupdate-visibility"></a>`visibility` | [`ArtifactRegistryRepositoryVisibility`](#artifactregistryrepositoryvisibility) | Who can read the repository. |
 
 Fields:
@@ -32430,8 +32432,8 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="aigovernancemetrics-agents"></a>`agents` | [`AiGovernanceKpi`](#aigovernancekpi) | Distinct AI agents with sessions in the timeframe. |
-| <a id="aigovernancemetrics-sessions"></a>`sessions` | [`AiGovernanceKpi`](#aigovernancekpi) | AI agent sessions in the timeframe. |
+| <a id="aigovernancemetrics-agents"></a>`agents` | [`AiGovernanceKpi`](#aigovernancekpi) | Distinct AI agent instances with sessions in the timeframe. Chat conversations are not counted. |
+| <a id="aigovernancemetrics-sessions"></a>`sessions` | [`AiGovernanceKpi`](#aigovernancekpi) | AI sessions in the timeframe, including Duo Chat conversations. |
 
 ### `AiInstanceUsageData`
 
@@ -33380,6 +33382,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="artifactregistryremotesettings-cachevalidityhours"></a>`cacheValidityHours`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. Revalidation window for cached artifacts, in hours. Zero means cached artifacts never revalidate. |
+| <a id="artifactregistryremotesettings-credentialscleared"></a>`credentialsCleared`  | [`Boolean`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Indicates the update that returned this repository cleared the stored upstream credentials. Null on any other response. |
 | <a id="artifactregistryremotesettings-hascredentials"></a>`hasCredentials`  | [`Boolean`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Indicates upstream credentials are stored. Reported in place of the credentials themselves, which are write-only and exposed by no field. |
 | <a id="artifactregistryremotesettings-lasthealthcheckedat"></a>`lastHealthCheckedAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp of the most recent health probe of the upstream. Null until the first probe. |
 | <a id="artifactregistryremotesettings-lasthealthstatus"></a>`lastHealthStatus`  | [`ArtifactRegistryHealthStatus`](#artifactregistryhealthstatus) | Introduced in GitLab 19.4. Status: Experiment. Health verdict the most recent probe of the upstream stored. `UNKNOWN` before the first probe, and for a status this schema does not recognize. |
@@ -51766,7 +51769,7 @@ Fields:
 | <a id="pagesdeployment-pathprefix"></a>`pathPrefix` | [`String`](#string) | URL path Prefix that points to the deployment. |
 | <a id="pagesdeployment-project"></a>`project` | [`Project!`](#project) | Project the deployment belongs to. |
 | <a id="pagesdeployment-rootdirectory"></a>`rootDirectory` | [`String`](#string) | Path within the build assets that functions as the root directory for Pages sites. |
-| <a id="pagesdeployment-size"></a>`size` | [`Int`](#int) | Size of the storage used. |
+| <a id="pagesdeployment-size"></a>`size` | [`BigInt`](#bigint) | Size of the storage used. |
 | <a id="pagesdeployment-updatedat"></a>`updatedAt` | [`ISO8601DateTime!`](#iso8601datetime) | Time the deployment was last updated. |
 | <a id="pagesdeployment-url"></a>`url` | [`String!`](#string) | Publicly accessible URL of the deployment. |
 
@@ -63285,6 +63288,7 @@ AI features that can be configured through the Duo self-hosted feature settings.
 | <a id="aifeatures-duo_chat_summarize_comments"></a>`DUO_CHAT_SUMMARIZE_COMMENTS` | Duo chat summarize comment feature setting. |
 | <a id="aifeatures-duo_chat_troubleshoot_job"></a>`DUO_CHAT_TROUBLESHOOT_JOB` | Duo chat troubleshoot job feature setting. |
 | <a id="aifeatures-duo_chat_write_tests"></a>`DUO_CHAT_WRITE_TESTS` | Duo chat write test feature setting. |
+| <a id="aifeatures-duo_developer"></a>`DUO_DEVELOPER` | Duo developer feature setting. |
 | <a id="aifeatures-feature_discovery_search"></a>`FEATURE_DISCOVERY_SEARCH` | Feature discovery search feature setting. |
 | <a id="aifeatures-generate_commit_message"></a>`GENERATE_COMMIT_MESSAGE` | Generate commit message feature setting. |
 | <a id="aifeatures-glab_ask_git_command"></a>`GLAB_ASK_GIT_COMMAND` | Glab ask git command feature setting. |
@@ -63371,6 +63375,7 @@ AI features that can be configured through the Model Selection feature settings.
 | <a id="aimodelselectionfeatures-duo_chat_summarize_comments"></a>`DUO_CHAT_SUMMARIZE_COMMENTS` | Duo chat summarize comment feature setting. |
 | <a id="aimodelselectionfeatures-duo_chat_troubleshoot_job"></a>`DUO_CHAT_TROUBLESHOOT_JOB` | Duo chat troubleshoot job feature setting. |
 | <a id="aimodelselectionfeatures-duo_chat_write_tests"></a>`DUO_CHAT_WRITE_TESTS` | Duo chat write test feature setting. |
+| <a id="aimodelselectionfeatures-duo_developer"></a>`DUO_DEVELOPER` | Duo developer feature setting. |
 | <a id="aimodelselectionfeatures-generate_commit_message"></a>`GENERATE_COMMIT_MESSAGE` | Generate commit message feature setting. |
 | <a id="aimodelselectionfeatures-glab_ask_git_command"></a>`GLAB_ASK_GIT_COMMAND` | Glab ask git command feature setting. |
 | <a id="aimodelselectionfeatures-resolve_dependency_bump"></a>`RESOLVE_DEPENDENCY_BUMP` | Resolve dependency bump feature setting. |
@@ -73106,6 +73111,32 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="analyzerfilterinput-analyzertype"></a>`analyzerType` | [`AnalyzerTypeEnum!`](#analyzertypeenum) | Type of analyzer to filter by. |
 | <a id="analyzerfilterinput-status"></a>`status` | [`AnalyzerStatusEnum!`](#analyzerstatusenum) | Status of the analyzer to filter by. |
+
+### `ArtifactRegistryRemoteCredentialsInput`
+
+Upstream credentials for a remote Artifact Registry repository. Write-only: no field returns them.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryremotecredentialsinput-authtoken"></a>`authToken`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Bearer token for the upstream. npm only. |
+| <a id="artifactregistryremotecredentialsinput-password"></a>`password`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Password for the upstream. Maven and the container formats only; pair it with a username. |
+| <a id="artifactregistryremotecredentialsinput-username"></a>`username`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Username for the upstream. Maven and the container formats only; pair it with a password. |
+
+### `ArtifactRegistryRemoteSettingsInput`
+
+Writable upstream configuration of a remote Artifact Registry repository.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryremotesettingsinput-cachevalidityhours"></a>`cacheValidityHours`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. Revalidation window for cached artifacts, in hours. Between 0 and 32767, where 0 means cached artifacts never revalidate. |
+| <a id="artifactregistryremotesettingsinput-credentials"></a>`credentials`  | [`ArtifactRegistryRemoteCredentialsInput`](#artifactregistryremotecredentialsinput) | Introduced in GitLab 19.4. Status: Experiment. Upstream credentials. Omit to leave the stored ones unchanged, supply an object to replace them, or, on an update, supply null to clear them. |
+| <a id="artifactregistryremotesettingsinput-metadatacachevalidityhours"></a>`metadataCacheValidityHours`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. Revalidation window for cached metadata, in hours. Between 1 and 32767, so metadata always revalidates on a schedule. Maven and npm only; other formats reject it. |
+| <a id="artifactregistryremotesettingsinput-snapshotmetadataalwaysrevalidate"></a>`snapshotMetadataAlwaysRevalidate`  | [`Boolean`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Whether snapshot metadata revalidates on every read instead of on the metadata window. Maven only; other formats reject it. |
+| <a id="artifactregistryremotesettingsinput-url"></a>`url`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Base URL of the upstream registry, at most 1024 characters. Changing it resets the health fields, evicts the cached artifacts, and clears the stored credentials unless the same request supplies new ones. |
 
 ### `ArtifactRegistryRoleAssignmentInput`
 

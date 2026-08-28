@@ -20,6 +20,10 @@ This is _different_ from [compatibility dates](https://developers.cloudflare.com
 
 [Subscribe to RSS](https://developers.cloudflare.com/workers/platform/changelog/index.xml)
 
+## 2026-08-28
+
+* Updated v8 to version 15.3.
+
 ## 2026-08-20
 
 * Increased the Durable Object Dynamic Worker concurrency limit from 4 to 10.

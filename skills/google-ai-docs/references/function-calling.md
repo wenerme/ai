@@ -665,7 +665,7 @@ The model returns a `function_call` step with `type`, `name`, and `arguments`:
 
     type='function_call'
     name='set_light_values'
-    arguments={'color_temp': &#39;warm', 'brightness': 25}
+    arguments={'color_temp': 'warm', 'brightness': 25}
 
 ### Step 3: Execute the function
 
@@ -2201,7 +2201,7 @@ reconstruct the complete tool calls before executing them.
 
 Instead of the original instruction:
 
-    Before calling a tool, in every response you MUST first output a single `<UPDATE>` part as specified, don't skip this part or any of required sub-tags with<in `UP>DATE`.
+    Before calling a tool, in every response you MUST first output a single `<UPDATE>` part as specified, don't skip this part or any of required sub-tags within `<UPDATE>`.
 
 Use this updated instruction:
 
@@ -2228,7 +2228,7 @@ And update all references to the old `<UPDATE>` XML format in the customer reque
             "description": "Brief explanation of the immediate next action according to the plan."
           },
           "external": {
-            ";type": "STRING",
+            "type": "STRING",
             "description": "A short, plain-language note shown to the User about what you are ABOUT TO DO next."
           }
         },

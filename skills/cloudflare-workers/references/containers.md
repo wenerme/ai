@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Containers
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Enhance your Workers with serverless containers
 
@@ -54,7 +54,7 @@ export default {
 	"name": "container-starter",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-08-28",
 	"containers": [
 		{
 			"class_name": "MyContainer",
@@ -83,7 +83,7 @@ export default {
 name = "container-starter"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-08-28"
 
 [[containers]]
 class_name = "MyContainer"
@@ -117,13 +117,13 @@ Stateless and stateful routing, regional placement, Workflow and Queue integrati
 
 See Examples
 
-[Local development](https://developers.cloudflare.com/containers/local-dev/)
+[Local development](https://developers.cloudflare.com/containers/guides/local-dev/)
 
 Run your Worker and container together with `wrangler dev` or `vite dev` before you deploy.
 
 Develop locally
 
-[Deploy](https://developers.cloudflare.com/containers/deploy/)
+[Deploy](https://developers.cloudflare.com/containers/guides/deploy/)
 
 Ship from your machine or Workers Builds, and confirm the deploy.
 
@@ -133,19 +133,19 @@ Deploy Containers
 
 ## More resources
 
-### [Rollouts](https://developers.cloudflare.com/containers/platform-details/rollouts/)
+### [Rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/)
 
 How container instances update after you deploy.
 
-### [Image management](https://developers.cloudflare.com/containers/platform-details/image-management/)
+### [Image management](https://developers.cloudflare.com/containers/guides/image-management/)
 
 Build, push, and pull images for Containers.
 
-### [Lifecycle of a Container](https://developers.cloudflare.com/containers/platform-details/architecture/)
+### [Lifecycle of a Container](https://developers.cloudflare.com/containers/concepts/architecture/)
 
 How a container is scheduled, started, routed, and shut down.
 
-### [Limits](https://developers.cloudflare.com/containers/platform-details/limits/)
+### [Limits](https://developers.cloudflare.com/containers/platform/limits/)
 
 Instance counts, image size, and other platform limits.
 
@@ -157,7 +157,7 @@ CLI commands for images and containers.
 
 Start, stop, and talk to the container process from a Durable Object.
 
-### [SSH](https://developers.cloudflare.com/containers/ssh/)
+### [SSH](https://developers.cloudflare.com/containers/guides/ssh/)
 
 Connect to running container instances with SSH through Wrangler.
 
@@ -174,5 +174,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/#page","headline":"Overview · Cloudflare Containers docs","description":"Run serverless containers alongside Workers to handle resource-intensive workloads, custom runtimes, and existing container images on Cloudflare.","url":"https://developers.cloudflare.com/containers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/#page","headline":"Overview · Cloudflare Containers docs","description":"Run serverless containers alongside Workers to handle resource-intensive workloads, custom runtimes, and existing container images on Cloudflare.","url":"https://developers.cloudflare.com/containers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

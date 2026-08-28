@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Builds
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare [Git integration](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/) lets you connect a new or existing Worker to a GitHub or GitLab repository, enabling automated builds and deployments for your Worker on push.
 
@@ -69,7 +69,7 @@ If a build succeeds, it is uploaded as a version. If the build is configured to 
 
 ## Workers with Containers
 
-For Workers that use [Containers](https://developers.cloudflare.com/containers/), use `wrangler deploy` on the production branch so container images and container instances can update. Preview builds still default to `wrangler versions upload`, which does not update container images. Preview URLs are not generated for these Workers because each container is managed from a Durable Object. Refer to [Deploy Containers](https://developers.cloudflare.com/containers/deploy/#before-production).
+For Workers that use [Containers](https://developers.cloudflare.com/containers/), use `wrangler deploy` on the production branch so container images and container instances can update. Preview builds still default to `wrangler versions upload`, which does not update container images. Preview URLs are not generated for these Workers because each container is managed from a Durable Object. Refer to [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/#before-production).
 
 ## Disconnecting builds
 
@@ -94,5 +94,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/#page","headline":"Builds · Cloudflare Workers docs","description":"Use Workers Builds to integrate with Git and automatically build and deploy your Worker when pushing a change","url":"https://developers.cloudflare.com/workers/ci-cd/builds/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/#page","headline":"Builds · Cloudflare Workers docs","description":"Use Workers Builds to integrate with Git and automatically build and deploy your Worker when pushing a change","url":"https://developers.cloudflare.com/workers/ci-cd/builds/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

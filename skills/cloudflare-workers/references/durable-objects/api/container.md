@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Durable Object Container
 
-Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/api/container/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/api/container/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Description
 
-Each [container](https://developers.cloudflare.com/containers/) is managed by a Durable Object. The [Container class](https://developers.cloudflare.com/containers/container-class/) from `@cloudflare/containers` extends `DurableObject` and handles lifecycle management, port readiness, and sleep timeouts for you. The Durable Object manages routing, persistent state, and lifecycle hooks, while the container process runs your image inside a Linux VM.
+Each [container](https://developers.cloudflare.com/containers/) is managed by a Durable Object. The [Container class](https://developers.cloudflare.com/containers/reference/container-class/) from `@cloudflare/containers` extends `DurableObject` and handles lifecycle management, port readiness, and sleep timeouts for you. The Durable Object manages routing, persistent state, and lifecycle hooks, while the container process runs your image inside a Linux VM.
 
 The low-level API documented on this page is available on `this.ctx.container` inside any Durable Object class that has a container binding. Use it when you need direct control over the container process or cannot use the `Container` class.
 
@@ -184,7 +184,7 @@ With `stderr: "combined"`, `stderr` is `null` on `ExecProcess` and an empty `Arr
 * Environment variable names cannot contain `=` or null characters. Environment values, `cwd`, and `user` cannot contain null characters.
 * `kill()` throws a `RangeError` when the signal is outside the supported range.
 
-For task-oriented examples, refer to [Execute commands](https://developers.cloudflare.com/containers/execute-commands/).
+For task-oriented examples, refer to [Execute commands](https://developers.cloudflare.com/containers/guides/execute-commands/).
 
 ### `destroy`
 
@@ -360,7 +360,7 @@ this.ctx.container.interceptOutboundHttps("*", worker);
 
 ## Related resources
 
-* [Container class reference](https://developers.cloudflare.com/containers/container-class/) — the recommended high-level API built on top of this interface
+* [Container class reference](https://developers.cloudflare.com/containers/reference/container-class/) — the recommended high-level API built on top of this interface
 * [Containers overview](https://developers.cloudflare.com/containers/)
 * [Get started with Containers](https://developers.cloudflare.com/containers/get-started/)
 * [SQLite storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) — persist state across container restarts
@@ -375,5 +375,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/container/#page","headline":"Durable Object Container · Cloudflare Durable Objects docs","description":"Access and manage containers associated with a Durable Object, including start, stop, and interaction methods.","url":"https://developers.cloudflare.com/durable-objects/api/container/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/container/#page","headline":"Durable Object Container · Cloudflare Durable Objects docs","description":"Access and manage containers associated with a Durable Object, including start, stop, and interaction methods.","url":"https://developers.cloudflare.com/durable-objects/api/container/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

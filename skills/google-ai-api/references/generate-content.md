@@ -2979,8 +2979,9 @@ Fields `sourceId` ``object (`https://ai.google.dev/api/generate-content#Attribut
 ## AttributionSourceId
 
 Identifier for the source contributing to this attribution.
-Fields `source` `Union type` `source` can be only one of the following: `groundingPassage` ``object (`https://ai.google.dev/api/generate-content#GroundingPassageId`)`` Identifier for an inline passage.
+Fields `source` `Union type` The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `groundingPassage` ``object (`https://ai.google.dev/api/generate-content#GroundingPassageId`)`` Identifier for an inline passage.
 `semanticRetrieverChunk` ``object (`https://ai.google.dev/api/generate-content#SemanticRetrieverChunk`)`` Identifier for a `Chunk` fetched via Semantic Retriever.
+End of mutually exclusive fields.
 
 | JSON representation |
 |---|
@@ -3036,10 +3037,11 @@ A base64-encoded string.
 ## GroundingChunk
 
 A `GroundingChunk` represents a segment of supporting evidence that grounds the model's response. It can be a chunk from the web, a retrieved context from a file, or information from Google Maps.
-Fields `chunk_type` `Union type` Chunk type. `chunk_type` can be only one of the following: `web` ``object (`https://ai.google.dev/api/generate-content#Web`)`` Grounding chunk from the web.
+Fields `chunk_type` `Union type` Chunk type. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `web` ``object (`https://ai.google.dev/api/generate-content#Web`)`` Grounding chunk from the web.
 `image` ``object (`https://ai.google.dev/api/generate-content#Image`)`` Optional. Grounding chunk from image search.
 `retrievedContext` ``object (`https://ai.google.dev/api/generate-content#RetrievedContext`)`` Optional. Grounding chunk from context retrieved by the file search tool.
 `maps` ``object (`https://ai.google.dev/api/generate-content#Maps`)`` Optional. Grounding chunk from Google Maps.
+End of mutually exclusive fields.
 
 | JSON representation |
 |---|
@@ -3086,9 +3088,10 @@ Fields `customMetadata[]` ``object (`https://ai.google.dev/api/generate-content#
 
 User provided metadata about the GroundingFact.
 Fields `key` `string` The key of the metadata.
-`value` `Union type` The value of the metadata. Can be a string, a list of strings, or a number. `value` can be only one of the following: `stringValue` `string` Optional. The string value of the metadata.
+`value` `Union type` The value of the metadata. Can be a string, a list of strings, or a number. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `stringValue` `string` Optional. The string value of the metadata.
 `stringListValue` ``object (`https://ai.google.dev/api/generate-content#StringList`)`` Optional. A list of string values for the metadata.
 `numericValue` `number` Optional. The numeric value of the metadata. The expected range for this value depends on the specific `key` used.
+End of mutually exclusive fields.
 
 | JSON representation |
 |---|
@@ -3439,7 +3442,7 @@ A base64-encoded string.
 `partMetadata` ``object (`https://protobuf.dev/reference/protobuf/google.protobuf#struct` format)`` Custom metadata associated with the Part. Agents using genai.Part as content representation may need to keep track of the additional information. For example it can be name of a file/source from which the Part originates or a way to multiplex multiple Part streams.
 `mediaResolution` ``object (`https://ai.google.dev/api/generate-content#MediaResolution`)`` Optional. Media resolution for the input media.
 `mediaProcessing` ``enum (`https://ai.google.dev/api/generate-content#MediaProcessing`)`` Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inlineData` or `fileData` with video mime). Non-video parts ignore this field.
-`data` `Union type` `data` can be only one of the following: `text` `string` Inline text.
+`data` `Union type` The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `text` `string` Inline text.
 `inlineData` ``object (`https://ai.google.dev/api/generate-content#Blob`)`` Inline media bytes.
 `functionCall` ``object (`https://ai.google.dev/api/generate-content#FunctionCall`)`` A predicted `FunctionCall` returned from the model that contains a string representing the `FunctionDeclaration.name` with the arguments and their values.
 `functionResponse` ``object (`https://ai.google.dev/api/generate-content#FunctionResponse`)`` The result output of a `FunctionCall` that contains a string representing the `FunctionDeclaration.name` and a structured JSON object containing any output from the function is used as context to the model.
@@ -3448,7 +3451,8 @@ A base64-encoded string.
 `codeExecutionResult` ``object (`https://ai.google.dev/api/generate-content#CodeExecutionResult`)`` Result of executing the `ExecutableCode`.
 `toolCall` ``object (`https://ai.google.dev/api/generate-content#ToolCall`)`` Server-side tool call. This field is populated when the model predicts a tool invocation that should be executed on the server. The client is expected to echo this message back to the API.
 `toolResponse` ``object (`https://ai.google.dev/api/generate-content#ToolResponse`)`` The output from a server-side `ToolCall` execution. This field is populated by the client with the results of executing the corresponding `ToolCall`.
-`metadata` `Union type` Controls extra preprocessing of data. `metadata` can be only one of the following: `videoMetadata` ``object (`https://ai.google.dev/api/generate-content#VideoMetadata`)`` Optional. Video metadata. The metadata should only be specified while the video data is presented in inlineData or fileData.
+End of mutually exclusive fields. `metadata` `Union type` Controls extra preprocessing of data. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `videoMetadata` ``object (`https://ai.google.dev/api/generate-content#VideoMetadata`)`` Optional. Video metadata. The metadata should only be specified while the video data is presented in inlineData or fileData.
+End of mutually exclusive fields.
 
 | JSON representation |
 |---|
@@ -3502,7 +3506,8 @@ A datatype containing media that is part of a `FunctionResponse` message.
 A `FunctionResponsePart` consists of data which has an associated datatype. A `FunctionResponsePart` can only contain one of the accepted types in `FunctionResponsePart.data`.
 
 A `FunctionResponsePart` must have a fixed IANA MIME type identifying the type and subtype of the media if the `inlineData` field is filled with raw bytes.
-Fields `data` `Union type` The data of the function response part. `data` can be only one of the following: `inlineData` ``object (`https://ai.google.dev/api/generate-content#FunctionResponseBlob`)`` Inline media bytes.
+Fields `data` `Union type` The data of the function response part. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `inlineData` ``object (`https://ai.google.dev/api/generate-content#FunctionResponseBlob`)`` Inline media bytes.
+End of mutually exclusive fields.
 
 | JSON representation |
 |---|
@@ -3646,7 +3651,8 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
 ## MediaResolution
 
 Media resolution for tokenization.
-Fields `value` `Union type` The media resolution level. `value` can be only one of the following: `level` ``enum (`https://ai.google.dev/api/generate-content#Level`)`` The tokenization quality used for given media. for Gemini API support .
+Fields `value` `Union type` The media resolution level. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `level` ``enum (`https://ai.google.dev/api/generate-content#Level`)`` The tokenization quality used for given media. for Gemini API support .
+End of mutually exclusive fields.
 
 | JSON representation |
 |---|
@@ -3670,7 +3676,7 @@ How the model processes input media for understanding.
 
 | Enums ||
 |---|---|
-| `MEDIA_PROCESSING_UNSPECIFIED` | Default. Uses model-specific processing (3.5 Pro+ -\> `AGENTIC`, older models -\> `STATIC`). |
+| `MEDIA_PROCESSING_UNSPECIFIED` | Defaults to model-specific processing. |
 | `STATIC` | Fixed-rate frame extraction. All frames placed in context. |
 | `AGENTIC` | Model-driven dynamic navigation. Recommended for most use cases. |
 
@@ -3688,8 +3694,9 @@ Fields `id` `string` Required. Output only. The ID of the environment.
 `status` ``enum (`https://ai.google.dev/api/generate-content#Status`)`` Output only. The status of the environment container.
 `fileCount` `string (https://developers.google.com/discovery/v1/type-format format)` Output only. The number of files in the environment, output only.
 `sizeBytes` `string (https://developers.google.com/discovery/v1/type-format format)` Output only. The total size of the environment files in bytes, output only.
-`network` `Union type` Network configuration for the environment. `network` can be only one of the following: `networkAllowlist` ``object (`EnvironmentNetworkEgressAllowlist`)`` Allow only specific domains.
+`network` `Union type` Network configuration for the environment. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `networkAllowlist` ``object (`EnvironmentNetworkEgressAllowlist`)`` Allow only specific domains.
 `networkMode` ``enum (`https://ai.google.dev/api/generate-content#v1beta.NetworkMode`)`` Network egress mode.
+End of mutually exclusive fields.
 
 | JSON representation |
 |---|
@@ -3802,7 +3809,8 @@ Tool details that the model may use to generate response.
 
 A `Tool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the model.
 
-Next ID: 17
+<br />
+
 Fields `functionDeclarations[]` ``object (`https://ai.google.dev/api/generate-content#FunctionDeclaration`)`` Optional. A list of `FunctionDeclarations` available to the model that can be used for function calling.
 
 The model or system does not execute the function. Instead the defined function may be returned as a `https://ai.google.dev/api/generate-content#Part.FIELDS.function_call` with arguments to the client side for execution. The model may decide to call a subset of these functions by populating `https://ai.google.dev/api/generate-content#Part.FIELDS.function_call` in the response. The next conversation turn may contain a `https://ai.google.dev/api/generate-content#Part.FIELDS.function_response` with the `https://ai.google.dev/api/generate-content#FIELDS.role` "function" generation context for the next model turn.
@@ -4000,9 +4008,10 @@ Fields `fileSearchStoreNames[]` `string` Required. The names of the fileSearchSt
 
 ## McpServer
 
-A MCPServer is a server that can be called by the model to perform actions. It is a server that implements the MCP protocol. Next ID: 6
+A MCPServer is a server that can be called by the model to perform actions. It is a server that implements the MCP protocol.
 Fields `name` `string` The name of the MCPServer.
-`transport` `Union type` The transport to use to connect to the MCPServer. `transport` can be only one of the following: `streamableHttpTransport` ``object (`https://ai.google.dev/api/generate-content#StreamableHttpTransport`)`` A transport that can stream HTTP requests and responses.
+`transport` `Union type` The transport to use to connect to the MCPServer. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `streamableHttpTransport` ``object (`https://ai.google.dev/api/generate-content#StreamableHttpTransport`)`` A transport that can stream HTTP requests and responses.
+End of mutually exclusive fields.
 
 | JSON representation |
 |---|
@@ -4010,7 +4019,7 @@ Fields `name` `string` The name of the MCPServer.
 
 ## StreamableHttpTransport
 
-A transport that can stream HTTP requests and responses. Next ID: 6
+A transport that can stream HTTP requests and responses.
 Fields `url` `string` The full URL for the MCPServer endpoint. Example: "https://api.example.com/mcp"
 `headers` `map (key: string, value: string)` Optional: Fields for authentication headers, timeouts, etc., if needed.
 
@@ -4083,6 +4092,7 @@ Fields `enableWidget` `boolean` Optional. Whether to return a widget context tok
 - [LanguageAuto](https://ai.google.dev/api/generate-content#LanguageAuto)
 - [LanguageHints](https://ai.google.dev/api/generate-content#LanguageHints)
   - [JSON representation](https://ai.google.dev/api/generate-content#LanguageHints.SCHEMA_REPRESENTATION)
+- [Mode](https://ai.google.dev/api/generate-content#Mode)
 - [RealtimeInputConfig](https://ai.google.dev/api/generate-content#RealtimeInputConfig)
   - [JSON representation](https://ai.google.dev/api/generate-content#RealtimeInputConfig.SCHEMA_REPRESENTATION)
 - [AutomaticActivityDetection](https://ai.google.dev/api/generate-content#AutomaticActivityDetection)
@@ -4122,8 +4132,8 @@ If fieldMask is empty, and `bidiGenerateContentSetup` *is* present, then the eff
 If fieldMask is not empty, then the corresponding fields from `bidiGenerateContentSetup` will overwrite the fields from the setup message in the Live API connection.
 
 This is a comma-separated list of fully qualified names of fields. Example: `"user.displayName,photo"`.
-`config` `Union type` The method-specific configuration for the resulting token. `config` can be only one of the following: `bidiGenerateContentSetup` ``object (`https://ai.google.dev/api/generate-content#BidiGenerateContentSetup`)`` Optional. Input only. Immutable. Configuration specific to `BidiGenerateContent`.
-`uses` `integer` Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
+`config` `Union type` The method-specific configuration for the resulting token. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `bidiGenerateContentSetup` ``object (`https://ai.google.dev/api/generate-content#BidiGenerateContentSetup`)`` Optional. Input only. Immutable. Configuration specific to `BidiGenerateContent`.
+End of mutually exclusive fields. `uses` `integer` Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
 
 | JSON representation |
 |---|
@@ -4304,7 +4314,8 @@ Valid values are: `de-DE`, `en-AU`, `en-GB`, `en-IN`, `en-US`, `es-US`, `fr-FR`,
 ## VoiceConfig
 
 The configuration for the voice to use.
-Fields `voice_config` `Union type` The configuration for the speaker to use. `voice_config` can be only one of the following: `prebuiltVoiceConfig` ``object (`https://ai.google.dev/api/generate-content#PrebuiltVoiceConfig`)`` The configuration for the prebuilt voice to use.
+Fields `voice_config` `Union type` The configuration for the speaker to use. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `prebuiltVoiceConfig` ``object (`https://ai.google.dev/api/generate-content#PrebuiltVoiceConfig`)`` The configuration for the prebuilt voice to use.
+End of mutually exclusive fields.
 
 | JSON representation |
 |---|
@@ -4313,7 +4324,7 @@ Fields `voice_config` `Union type` The configuration for the speaker to use. `vo
 ## PrebuiltVoiceConfig
 
 The configuration for the prebuilt speaker to use.
-Fields `voiceName` `string` The name of the preset voice to use.
+Fields `voiceName` `string` Optional. The name of the preset voice to use.
 
 | JSON representation |
 |---|
@@ -4540,7 +4551,8 @@ Optional. A list of phrases used for speech adaptation, which biases the ASR mod
 `customVocabulary[]` `string` Optional. A list of custom vocabulary phrases to bias the speech recognition model toward recognizing specific terms (product names, proper nouns, jargon).
 `wordTimestamp` `boolean` Optional. Configures word-level timestamp generation.
 `diarization` `boolean` Optional. Configures speaker diarization.
-`language_config` `Union type` Deprecated: Use top-level `language_codes` instead. `language_config` can be only one of the following: `languageAuto
+`mode` ``enum (`https://ai.google.dev/api/generate-content#Mode`)`` Optional. Configures transcription mode. Supported values: `VERBATIM`, `SMART`. If unspecified, defaults to `VERBATIM` transcription. In `SMART` mode, the model performs disfluency removal (eliminating filler words, repetitions, and false starts), light grammatical cleanup, automatic formatting (paragraphs, bullet points, numbered lists), and minor user edits (inline self-corrections). Timestamps and diarization are incompatible with mode `SMART`.
+`language_config` `Union type` Deprecated: Use top-level `language_codes` instead. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `languageAuto
 (deprecated)` ``object (`https://ai.google.dev/api/generate-content#LanguageAuto`)``
 
 > [!WARNING]
@@ -4554,10 +4566,11 @@ Optional. The model will detect the language automatically.
 > This item is deprecated!
 
 Optional. Specifies one or more languages in the audio.
+End of mutually exclusive fields.
 
 | JSON representation |
 |---|
-| ``` { "languageCodes": [ string ], "adaptationPhrases": [ string ], "customVocabulary": [ string ], "wordTimestamp": boolean, "diarization": boolean, // language_config "languageAuto": { object (`https://ai.google.dev/api/generate-content#LanguageAuto`) }, "languageHints": { object (`https://ai.google.dev/api/generate-content#LanguageHints`) } // Union type } ``` |
+| ``` { "languageCodes": [ string ], "adaptationPhrases": [ string ], "customVocabulary": [ string ], "wordTimestamp": boolean, "diarization": boolean, "mode": enum (`https://ai.google.dev/api/generate-content#Mode`), // language_config "languageAuto": { object (`https://ai.google.dev/api/generate-content#LanguageAuto`) }, "languageHints": { object (`https://ai.google.dev/api/generate-content#LanguageHints`) } // Union type } ``` |
 
 ## LanguageAuto
 
@@ -4585,6 +4598,16 @@ Required. BCP-47 language codes.
 | JSON representation |
 |---|
 | ``` { "languageCodes": [ string ] } ``` |
+
+## Mode
+
+Transcription mode.
+
+| Enums ||
+|---|---|
+| `MODE_UNSPECIFIED` | Unspecified transcription mode. |
+| `VERBATIM` | Verbatim transcription mode. |
+| `SMART` | Smart transcription mode. |
 
 ## RealtimeInputConfig
 
@@ -4667,8 +4690,8 @@ Session handles come from `SessionResumptionUpdate.token` values in previous con
 ## ContextWindowCompressionConfig
 
 Enables context window compression --- a mechanism for managing the model's context window so that it does not exceed a given length.
-Fields `compression_mechanism` `Union type` The context window compression mechanism used. `compression_mechanism` can be only one of the following: `slidingWindow` ``object (`https://ai.google.dev/api/generate-content#SlidingWindow`)`` A sliding-window mechanism.
-`triggerTokens` `string (https://developers.google.com/discovery/v1/type-format format)` The number of tokens (before running a turn) required to trigger a context window compression.
+Fields `compression_mechanism` `Union type` The context window compression mechanism used. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `slidingWindow` ``object (`https://ai.google.dev/api/generate-content#SlidingWindow`)`` A sliding-window mechanism.
+End of mutually exclusive fields. `triggerTokens` `string (https://developers.google.com/discovery/v1/type-format format)` The number of tokens (before running a turn) required to trigger a context window compression.
 
 This can be used to balance quality against latency as shorter context windows may result in faster model responses. However, any compression operation will cause a temporary latency increase, so they should not be triggered frequently.
 
@@ -4733,8 +4756,8 @@ If fieldMask is empty, and `bidiGenerateContentSetup` *is* present, then the eff
 If fieldMask is not empty, then the corresponding fields from `bidiGenerateContentSetup` will overwrite the fields from the setup message in the Live API connection.
 
 This is a comma-separated list of fully qualified names of fields. Example: `"user.displayName,photo"`.
-`config` `Union type` The method-specific configuration for the resulting token. `config` can be only one of the following: `bidiGenerateContentSetup` ``object (`https://ai.google.dev/api/generate-content#BidiGenerateContentSetup`)`` Optional. Input only. Immutable. Configuration specific to `BidiGenerateContent`.
-`uses` `integer` Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
+`config` `Union type` The method-specific configuration for the resulting token. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `bidiGenerateContentSetup` ``object (`https://ai.google.dev/api/generate-content#BidiGenerateContentSetup`)`` Optional. Input only. Immutable. Configuration specific to `BidiGenerateContent`.
+End of mutually exclusive fields. `uses` `integer` Optional. Input only. Immutable. The number of times the token can be used. If this value is zero then no limit is applied. Resuming a Live API session does not count as a use. If unspecified, the default is 1.
 
 ### Response body
 
