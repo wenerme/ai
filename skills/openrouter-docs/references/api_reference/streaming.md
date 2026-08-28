@@ -283,6 +283,20 @@ Some SSE client implementations might not parse the payload according to spec, w
 * [OpenAI SDK](https://www.npmjs.com/package/openai)
 * [Vercel AI SDK](https://www.npmjs.com/package/ai)
 
+### The final usage chunk (Chat Completions)
+
+On the Chat Completions endpoint (`/api/v1/chat/completions`), every stream ends with an extra chunk that carries the `usage` object for the request, sent just before the `[DONE]` message. OpenAI's spec emits this chunk with an empty `choices` array, but many clients crash when accessing `choices[0].delta` on it, so OpenRouter intentionally deviates: the usage chunk contains one choice with a content-free `delta` that repeats the `finish_reason` (and `native_finish_reason`) of the stream.
+
+```text lines theme={null}
+data: {"id":"gen-abc123",...,"choices":[{"index":0,"delta":{"content":"","role":"assistant"},"finish_reason":"stop","native_finish_reason":"stop"}]}
+data: {"id":"gen-abc123",...,"choices":[{"index":0,"delta":{"content":"","role":"assistant"},"finish_reason":"stop","native_finish_reason":"stop"}],"usage":{...}}
+data: [DONE]
+```
+
+This means the terminal `finish_reason` appears twice: once on the last content-bearing chunk and again on the usage chunk. Clients that validate streams should treat the usage chunk as an accounting frame rather than a second terminal event.
+
+This shape is specific to Chat Completions. Other endpoints follow their own specs: the Responses API (`/api/v1/responses`) reports usage in the `response.completed` event, and the Messages API (`/api/v1/messages`) reports it in the `message_delta` event before `message_stop`.
+
 ### Stream cancellation
 
 Streaming requests can be cancelled by aborting the connection. For supported providers, this immediately stops model processing and billing.

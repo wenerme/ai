@@ -13,6 +13,35 @@ If given no `[session-name]` and there is only one running session, it will atta
 
 The attach subcommand will also accept the optional `options` subcommand.
 
+### Starting a session with an initial command
+
+Trailing arguments given after `--` are run as a command in the first pane of the
+session:
+
+```
+$ zellij attach -c my-session -- htop
+```
+
+This works both when creating a session in the foreground (`-c`, `--create`) and in the
+background (`-b`, `--create-background`).
+
+The command only runs if the session is created by this invocation. When attaching to an
+already running session, the trailing command is ignored.
+
+If a [layout](./layouts.md) is used, the pane running the command is placed in the
+focused tab.
+
+Two flags change how the initial command behaves. Both require an initial command to be
+given:
+
+| Flag                                |  Description|
+|:------------------------------------|------------------|
+| --close-on-exit                     |  Close the initial command's pane as soon as the command exits. By default the pane is held open |
+| --start-suspended                   |  Start the command suspended - it is only run once ENTER is pressed for the first time |
+
+Initial commands are not supported for remote ([web client](./web-client.md)) sessions -
+the CLI will error out.
+
 ## `list-sessions`
 short: `ls`
 

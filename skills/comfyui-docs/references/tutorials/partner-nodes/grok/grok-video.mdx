@@ -7,152 +7,32 @@ Grok Imagine Video is xAI's video generation family, available in ComfyUI throug
 
 For the latest model, see [Grok Imagine Video 1.5](/tutorials/partner-nodes/grok/grok-imagine-video-1-5).
 
-## Grok: Video Generation
+## What Grok Imagine Video is good at
 
-Generate a short video from a text prompt, with an optional starting image. This workflow uses the `grok-imagine-video` model to produce up to 15-second clips with synchronized audio.
+- **Video generation with audio**: produces up to 15-second clips with synchronized audio from a text prompt, with an optional starting image
+- **Natural-language video editing**: restyles footage, changes the setting, or applies a new aesthetic while keeping the original motion and content
+- **Seamless video extension**: continues a short video with a new clip that follows on from the original footage, based on a natural-language description of the next scene
+- **Reference-to-video**: generates video guided by up to 7 reference images, keeping characters, products, or styles consistent
+- **Resolution options**: outputs at 480p or 720p
+
+## Example outputs
+
+Video generation from a text prompt with synchronized audio:
 
 <video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_grok_video.mp4"></video>
 
-  
-    Open in Comfy Cloud
-  
-  
-    Download JSON or search "Grok Imagine" in Template Library
-  
-
-Input materials
-
-Download this sample input image to try the workflow:
-
-  
-    A sci-fi mech suit used as the optional starting frame
-  
-
-### Workflow overview
-
-This workflow uses three nodes:
-
-- **LoadImage**: provides the optional starting image frame
-- **GrokVideoNode**: the core node, configured with the `grok-imagine-video` model
-- **SaveVideo**: saves the generated video with audio
-
-### Steps to run
-
-1. **Enter your prompt**: describe the motion, atmosphere, and scene dynamics in the **GrokVideoNode**
-2. **Optionally load a starting image**: connect an image to the **LoadImage** node
-3. **Set resolution**: `480p` or `720p`
-4. **Set duration**: choose a length from 1 to 15 seconds
-5. **Set seed**: control whether the node re-runs; outputs are not reproducible regardless of seed
-6. **Click Queue**: press `Ctrl+Enter` to generate
-
-## Grok: Video Edit
-
-Edit an uploaded video with natural-language instructions. Restyle the footage, change the setting, or apply a new aesthetic while keeping the original motion and content.
+Video editing with natural-language instructions, keeping the original motion:
 
 <video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_grok_video_edit.mp4"></video>
 
-  
-    Open in Comfy Cloud
-  
-  
-    Download JSON or search "Grok Imagine" in Template Library
-  
-
-Input materials
-
-Download this sample input video to try the workflow:
-
-  
-    A futuristic motorcycle clip used as the base video
-  
-
-### Workflow overview
-
-This workflow uses three nodes:
-
-- **LoadVideo**: provides the source video to edit
-- **GrokVideoEditNode**: the core node, configured with the `grok-imagine-video` model
-- **SaveVideo**: saves the edited video
-
-### Steps to run
-
-1. **Load a video**: connect your video to the **LoadVideo** node (1 to 8.7 seconds, up to 50MB)
-2. **Describe the edit**: tell the model how to transform the footage in the **GrokVideoEditNode** prompt
-3. **Click Queue**: press `Ctrl+Enter` to generate
-
-## Grok: Video Extend
-
-Extend a short video with a seamless continuation. Describe the next scene in natural language, and the model generates a new clip that follows on from the original footage.
+Video extension, continuing a short clip with a new scene:
 
 <video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_grok_video_extend.mp4"></video>
 
-  
-    Open in Comfy Cloud
-  
-  
-    Download JSON or search "Grok Imagine" in Template Library
-  
-
-Input materials
-
-Download this sample input video to try the workflow:
-
-  
-    A short deep-space clip used as the base video
-  
-
-### Workflow overview
-
-This workflow uses three nodes:
-
-- **LoadVideo**: provides the source video to extend
-- **GrokVideoExtendNode**: the core node, configured with the `grok-imagine-video` model
-- **SaveVideo**: saves the extended video
-
-### Steps to run
-
-1. **Load a video**: connect your video to the **LoadVideo** node (MP4, 2 to 15 seconds, up to 50MB)
-2. **Describe the next scene**: tell the model what should happen next in the **GrokVideoExtendNode** prompt
-3. **Set duration**: choose the extension length (2 to 10 seconds)
-4. **Click Queue**: press `Ctrl+Enter` to generate
-
-## Grok: Reference to Video
-
-Generate a video guided by up to 7 reference images. Use character, product, or style references to keep the subject consistent while the prompt describes the motion and scene.
+Reference-to-video, keeping the subject consistent from reference images:
 
 <video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_grok_reference_to_video.mp4"></video>
 
-  
-    Open in Comfy Cloud
-  
-  
-    Download JSON or search "Grok Imagine" in Template Library
-  
+## Use it in ComfyUI
 
-Input materials
-
-Download these sample input images to try the workflow:
-
-  
-    A calm female character used as the subject reference
-  
-  
-    A smartphone used as the object reference
-  
-
-### Workflow overview
-
-This workflow uses four nodes:
-
-- **LoadImage** x2: provide the character and object reference images
-- **GrokVideoReferenceNode**: the core node, configured with the `grok-imagine-video` model and reference images
-- **SaveVideo**: saves the generated video
-
-### Steps to run
-
-1. **Load your references**: connect up to 7 reference images to the **LoadImage** nodes
-2. **Enter your prompt**: describe the scene, motion, and how the references appear in the **GrokVideoReferenceNode**
-3. **Set resolution**: `480p` or `720p`
-4. **Set aspect ratio**: pick from `16:9` down to `9:16`
-5. **Set duration**: choose a length from 2 to 10 seconds
-6. **Click Queue**: press `Ctrl+Enter` to generate
+Run the video generation, video edit, video extend, and reference-to-video workflows in ComfyUI, locally or on Comfy Cloud

@@ -58,7 +58,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1048576,
+    "contextWindow": 1000000,
     "maxOutput": 384000,
     "inputCost": 0.44,
     "outputCost": 1.32
@@ -125,12 +125,12 @@ for await (const chunk of stream) {
   },
   {
     "model": "hyper/glm-5.2",
-    "imageInput": true,
+    "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1048576,
+    "contextWindow": 1000000,
     "maxOutput": 32768,
     "inputCost": 1.52432,
     "outputCost": 4.79072

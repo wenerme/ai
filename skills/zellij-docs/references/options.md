@@ -67,6 +67,8 @@ Configuration options can be set directly at the root of the [configuration file
 - [host_notification_protocol](#host_notification_protocol)
 - [nested_session_handling](#nested_session_handling)
 - [dangerously_enable_paste_buffer_read](#dangerously_enable_paste_buffer_read)
+- [scroll_mode_sync](#scroll_mode_sync)
+- [explicit_theme_hue](#explicit_theme_hue)
 
 ---
 
@@ -697,4 +699,30 @@ Options:
 
 ```javascript
 dangerously_enable_paste_buffer_read true
+```
+
+### scroll_mode_sync
+Whether scrolling a pane implicitly enters and exits [`scroll` mode](./keybindings-modes.md#a-note-about-scroll-mode). When false, scrolling a pane (eg. with the mouse wheel) leaves the current mode alone, and `scroll` mode is only entered through an explicit keybinding.
+
+Options:
+  - true (default)
+  - false
+
+```javascript
+scroll_mode_sync false
+```
+
+### explicit_theme_hue
+Pin the session to a dark or light appearance, ignoring the color scheme reported by the host terminal. It is resolved before the first render, so the session starts with the intended appearance rather than correcting itself once the terminal replies. See [themes](./themes.md#overriding-the-terminals-reported-hue).
+
+Options:
+  - "dark" - always treat the terminal as being in dark mode
+  - "light" - always treat the terminal as being in light mode
+
+Default: unset - the host terminal decides
+
+This only selects which of [`theme_dark`](#theme_dark) / [`theme_light`](#theme_light) applies. Both of those must be set for dark/light switching to happen at all - otherwise [`theme`](#theme) remains authoritative.
+
+```javascript
+explicit_theme_hue "dark"
 ```

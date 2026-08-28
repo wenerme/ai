@@ -193,12 +193,20 @@ Files that you upload cannot be downloaded again. A request to
 `GET /api/v1/files/{file_id}/content` for an uploaded file returns a `400`
 error. Keep your own copy of every file you upload.
 
-Files that a sandbox command creates are different. You download them
-through the
-[container files endpoints](/docs/guides/features/server-tools/containers#download-container-files),
-not through the Files API. You can also copy a container file into your
-workspace as a durable document — see
-[Save a container file to your workspace](/docs/guides/features/server-tools/containers#save-a-container-file-to-your-workspace).
+Files that a model creates are different:
+
+* Files that a sandbox command creates can be downloaded through the
+  [container files endpoints](/docs/guides/features/server-tools/containers#download-container-files),
+  or copied into your workspace as a durable document. A promoted document
+  has `"downloadable": true` and can be downloaded later through
+  `GET /api/v1/files/{file_id}/content`. See
+  [Save a container file to your workspace](/docs/guides/features/server-tools/containers#save-a-container-file-to-your-workspace).
+* Files that the [files tool](/docs/guides/features/server-tools/files) writes or
+  edits also have `"downloadable": true` and can be downloaded the same way.
+
+Files that a model created before this behavior launched keep
+`"downloadable": false`. Promote the container file again, or ask the model
+to write the file again, to get a downloadable copy.
 
 ## Delete a file
 

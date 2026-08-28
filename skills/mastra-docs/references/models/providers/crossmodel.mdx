@@ -1,11 +1,11 @@
 ---
 title: "CrossModel | Models"
-description: "Use CrossModel models with Mastra. 53 models available."
+description: "Use CrossModel models with Mastra. 55 models available."
 ---
 
 # [CrossModel logo]CrossModel
 
-Access 53 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
+Access 55 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
 
 Learn more in the [CrossModel documentation](https://www.crossmodel.ai/docs).
 
@@ -508,6 +508,18 @@ for await (const chunk of stream) {
     "outputCost": 1.125
   },
   {
+    "model": "crossmodel/qwen/qwen3.8-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 0.13,
+    "outputCost": 0.43
+  },
+  {
     "model": "crossmodel/qwen/qwen3.8-max",
     "imageInput": true,
     "audioInput": false,
@@ -674,6 +686,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 1.2,
     "outputCost": 4.4
+  },
+  {
+    "model": "crossmodel/z-ai/glm-5.3-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 0.075,
+    "outputCost": 0.25
   }
 ]}
 />
@@ -706,7 +730,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "crossmodel/z-ai/glm-5.3"
+      ? "crossmodel/z-ai/glm-5.3-flash"
       : "crossmodel/anthropic/claude-fable-5";
   }
 });

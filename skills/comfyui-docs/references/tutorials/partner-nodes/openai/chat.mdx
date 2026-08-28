@@ -5,47 +5,14 @@ description: "This article will introduce how to use OpenAI Chat Partner nodes i
 
 OpenAI is a company focused on generative AI, providing powerful conversational capabilities. Currently, ComfyUI has integrated the OpenAI API, allowing you to directly use the related nodes in ComfyUI to complete conversational functions.
 
-In this guide, we will walk you through completing the corresponding conversational functionality.
+## What OpenAI Chat is good at
 
-### OpenAI: ChatGPT {#api_openai_chat}
+- **Intelligent conversations**: engage with OpenAI's advanced language models directly inside ComfyUI
+- **Image understanding**: load an image for the AI to interpret and respond to
+- **Task control**: adjust `OpenAI Chat Advanced Options` to have the AI execute specific tasks, such as analyzing an image and generating a prompt
+- **Model choice**: select different OpenAI models from the `OpenAI Chat` node
+- **Multiple image input**: batch several images together when more than one image needs AI interpretation
 
-Engage with OpenAI's advanced language models for intelligent conversations.
+## Use it in ComfyUI
 
-[OpenAI: ChatGPT workflow preview]
-
-  
-    Open in Comfy Cloud
-  
-  
-    Download JSON or search &quot;OpenAI: ChatGPT&quot; in Template Library
-  
-
-**Input materials**
-
-Upload this file to the matching `LoadImage` node:
-
-  
-    `LoadImage` node 5 · `example.png`
-  
-
-<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
-  [example.png]
-</div>
-
-### Complete the workflow execution step by step
-
-[OpenAI Chat Step Guide]
-
-In the corresponding template, we have built a role setting for analyzing prompt generation.
-
-You can refer to the numbers in the image to complete the basic text-to-image workflow execution:  
-1. In the `Load Image` node, load the image you need AI to interpret
-2. (Optional) If needed, you can modify the settings in `OpenAI Chat Advanced Options` to have AI execute specific tasks
-3. In the `OpenAI Chat` node, you can modify `Prompt` to set the conversation prompt, or modify `model` to select different models
-4. Click the `Run` button, or use the shortcut `Ctrl(cmd) + Enter` to execute the conversation.
-5. After waiting for the API to return results, you can view the corresponding AI returned content in the `Preview Any` node.
-
-### 3. Additional Notes
-
-- Currently, the file input node `OpenAI Chat Input Files` requires files to be uploaded to the `ComfyUI/input/` directory first. This node is being improved, and we will modify the template after updates
-- The workflow provides an example using `Batch Images` for input. If you have multiple images that need AI interpretation, you can refer to the step diagram and use right-click to set the corresponding node mode to `Always` to enable it
+Run the ChatGPT conversation workflow in ComfyUI, locally or on Comfy Cloud

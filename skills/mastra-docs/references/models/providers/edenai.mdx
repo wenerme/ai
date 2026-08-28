@@ -1,11 +1,11 @@
 ---
 title: "Eden AI | Models"
-description: "Use Eden AI models with Mastra. 235 models available."
+description: "Use Eden AI models with Mastra. 238 models available."
 ---
 
 # [Eden AI logo]Eden AI
 
-Access 235 Eden AI models through Mastra's model router. Authentication is handled automatically using the `EDENAI_API_KEY` environment variable.
+Access 238 Eden AI models through Mastra's model router. Authentication is handled automatically using the `EDENAI_API_KEY` environment variable.
 
 Learn more in the [Eden AI documentation](https://docs.edenai.co).
 
@@ -488,7 +488,7 @@ for await (const chunk of stream) {
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": true,
     "contextWindow": 256000,
     "maxOutput": 131072,
@@ -500,7 +500,7 @@ for await (const chunk of stream) {
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": true,
     "contextWindow": 256000,
     "maxOutput": 32000,
@@ -868,18 +868,6 @@ for await (const chunk of stream) {
     "outputCost": 0.6
   },
   {
-    "model": "edenai/fireworks_ai/gpt-oss-20b",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 131072,
-    "maxOutput": 32768,
-    "inputCost": 0.07,
-    "outputCost": 0.3
-  },
-  {
     "model": "edenai/flexai/deepseek-v4-flash-0731",
     "imageInput": false,
     "audioInput": false,
@@ -1188,8 +1176,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 4096,
-    "inputCost": 0.758485,
-    "outputCost": 0.758485
+    "inputCost": 0.756925,
+    "outputCost": 0.756925
   },
   {
     "model": "edenai/ionos/openai/gpt-oss-120b",
@@ -1200,8 +1188,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 131072,
     "maxOutput": 32768,
-    "inputCost": 0.175035,
-    "outputCost": 0.758485
+    "inputCost": 0.174675,
+    "outputCost": 0.756925
   },
   {
     "model": "edenai/minimax/MiniMax-M2",
@@ -1394,6 +1382,18 @@ for await (const chunk of stream) {
     "maxOutput": 256000,
     "inputCost": 0.15,
     "outputCost": 0.6
+  },
+  {
+    "model": "edenai/mistral/voxtral-small-latest",
+    "imageInput": false,
+    "audioInput": true,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 32768,
+    "maxOutput": 32000,
+    "inputCost": 0.1,
+    "outputCost": 0.4
   },
   {
     "model": "edenai/moonshot/kimi-k2.6",
@@ -2268,8 +2268,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 256000,
     "maxOutput": 384000,
-    "inputCost": 0.46676,
-    "outputCost": 0.933521
+    "inputCost": 0.4658,
+    "outputCost": 0.9316
   },
   {
     "model": "edenai/scaleway/gpt-oss-120b",
@@ -2280,8 +2280,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 128000,
     "maxOutput": 32768,
-    "inputCost": 0.175035,
-    "outputCost": 0.70014
+    "inputCost": 0.174675,
+    "outputCost": 0.6987
   },
   {
     "model": "edenai/scaleway/llama-3.3-70b-instruct",
@@ -2292,8 +2292,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 4096,
-    "inputCost": 1.050211,
-    "outputCost": 1.050211
+    "inputCost": 1.04805,
+    "outputCost": 1.04805
   },
   {
     "model": "edenai/tensorx/deepseek/deepseek-v4-flash-0731",
@@ -2464,6 +2464,18 @@ for await (const chunk of stream) {
     "outputCost": 3
   },
   {
+    "model": "edenai/vertex/gemini-3.1-flash-lite",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 0.25,
+    "outputCost": 1.5
+  },
+  {
     "model": "edenai/vertex/gemini-3.1-flash-lite-image",
     "imageInput": true,
     "audioInput": false,
@@ -2472,6 +2484,30 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 65536,
     "maxOutput": 4096,
+    "inputCost": 0.25,
+    "outputCost": 1.5
+  },
+  {
+    "model": "edenai/vertex/gemini-3.1-flash-lite@eu",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 0.25,
+    "outputCost": 1.5
+  },
+  {
+    "model": "edenai/vertex/gemini-3.1-flash-lite@us",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
     "inputCost": 0.25,
     "outputCost": 1.5
   },

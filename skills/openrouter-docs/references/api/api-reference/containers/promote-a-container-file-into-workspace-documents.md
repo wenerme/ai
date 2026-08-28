@@ -4,7 +4,7 @@
 
 # Promote a container file into workspace documents
 
-> Copies a file from the container's sandbox prefix into the workspace's durable document storage, so it outlives the container. Returns the new document in the Files API shape, with a durable file id in the documents namespace. The copy counts against the workspace's storage quota exactly like an upload.
+> Copies a file from the container's sandbox prefix into the workspace's durable document storage, so it outlives the container. Returns the new document in the Files API shape, with a durable file id in the documents namespace. The copy counts against the workspace's storage quota. Unlike a direct upload, promoted files are downloadable.
 
 
 
@@ -107,8 +107,8 @@ paths:
         Copies a file from the container's sandbox prefix into the workspace's
         durable document storage, so it outlives the container. Returns the new
         document in the Files API shape, with a durable file id in the documents
-        namespace. The copy counts against the workspace's storage quota exactly
-        like an upload.
+        namespace. The copy counts against the workspace's storage quota. Unlike
+        a direct upload, promoted files are downloadable.
       operationId: promoteContainerFile
       parameters:
         - description: >-
@@ -142,7 +142,7 @@ paths:
               example:
                 _shape: openrouter
                 created_at: '2026-08-23T00:00:00Z'
-                downloadable: false
+                downloadable: true
                 filename: out/report.csv
                 id: or_file_011CNha8iCJcU1wXNR6q4V8w
                 mime_type: text/csv

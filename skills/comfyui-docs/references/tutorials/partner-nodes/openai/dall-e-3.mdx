@@ -7,41 +7,23 @@ OpenAI DALL·E 3 is part of the ComfyUI Partner Nodes series, allowing users to 
 
 [OpenAI DALL·E 3 node screenshot]
 
-## Node Overview
-
 DALL·E 3 is OpenAI's latest image generation model, capable of creating detailed and high-quality images based on text prompts. Through this node in ComfyUI, you can directly access DALL·E 3's generation capabilities without leaving the ComfyUI interface.
 
 The **OpenAI DALL·E 3** node generates images synchronously through OpenAI's image generation API. It receives text prompts and returns images that match the description.
 
-## Parameter Details
+## What DALL·E 3 is good at
 
-### Required Parameters
+- **Text-to-image generation**: creates detailed and high-quality images from text prompts, with support for multi-line prompts that describe the image content in detail
+- **Quality control**: choose between standard and hd output, with hd generating higher quality images
+- **Style control**: choose vivid for hyperrealistic and dramatic images, or natural for more natural, less exaggerated images
+- **Flexible sizes**: generate square or rectangular images in different orientations (1024x1024, 1024x1792, 1792x1024)
 
-| Parameter | Type | Description                                                                                                                  |
-|-----------|------|------------------------------------------------------------------------------------------------------------------------------|
-| prompt    | Text | Text prompt for generating images. Supports multi-line input, can describe in detail the image content you want to generate. |
+## Example outputs
 
-### Widget Parameters
+Text-to-image generation from a single text prompt:
 
-| Parameter | Type      | Options                         | Default Value | Description                                                                                                                               |
-|-----------|-----------|---------------------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| seed      | Integer   | 0-2147483647                    | 0             | Random seed used to control the generation result                                                                                         |
-| quality   | Option    | standard, hd                    | standard      | Image quality setting. The "hd" option generates higher quality images but may require more computational resources                       |
-| style     | Option    | natural, vivid                  | natural       | Image style. "Vivid" tends to generate hyperrealistic and dramatic images, while "natural" produces more natural, less exaggerated images |
-| size      | Option    | 1024x1024, 1024x1792, 1792x1024 | 1024x1024     | Size of the generated image. You can choose square or rectangular images in different orientations                                        |
-
-## Usage Examples
-
-You can download the image below and drag it into ComfyUI to load the corresponding workflow
 ![ComfyUI openai-dall-e-3 workflow](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/api_nodes/openai-dall-e-3/text2image.png)
 
-Since the corresponding workflow is very simple, you can also directly add the **OpenAI DALL·E 3** node in ComfyUI, input the description of the image you want to generate, and then run the workflow
+## Use it in ComfyUI
 
-[ComfyUI openai-dall-e-3 workflow]
-
-1. Add the **OpenAI DALL·E 3** node in ComfyUI
-2. Enter the description of the image you want to generate in the prompt text box
-3. Adjust optional parameters as needed (quality, style, size, etc.)
-4. Run the workflow to generate the image
-
-## FAQs
+Run the text-to-image workflow in ComfyUI, locally or on Comfy Cloud

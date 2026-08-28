@@ -6,7 +6,9 @@
 ### Model information
 
 - LLM: Anthropic Claude Sonnet 5 Vertex
-- [Select a different model](../../../model_selection.md) using the **Agentic Code Review** setting.
+- LLM for GitLab 19.0 or earlier: [Default LLM](../../../../gitlab_duo/model_selection.md#default-models) for **Code Review**
+- On GitLab.com, [select a different model](../../../model_selection.md#select-a-model-for-a-feature) using the **Agentic Code Review** setting.
+- On GitLab Self-Managed and GitLab Dedicated, [select a different model](../../../../../administration/gitlab_duo/model_selection.md#select-a-model-for-code-review-flow) using the setting appropriate for your GitLab version.
 - Available on [GitLab Duo with self-hosted models](../../../../../administration/gitlab_duo_self_hosted/_index.md)
 
 - Introduced as [a beta](../../../../../policy/development_stages_support.md) in GitLab [18.7](https://gitlab.com/groups/gitlab-org/-/epics/18645) [with a feature flag](../../../../../administration/feature_flags/_index.md) named `duo_code_review_on_agent_platform`. Disabled by default.
@@ -155,6 +157,9 @@ risk:
 - Split the merge request into smaller merge requests.
 - [Exclude context](../../../context.md#exclude-context-from-gitlab-duo) for files that are not
   relevant to the review.
+- Ask a group Owner or instance administrator to select a different model for
+  [GitLab.com](../../../model_selection.md#select-a-model-for-a-feature)
+  or [GitLab Self-Managed and GitLab Dedicated](../../../../../administration/gitlab_duo/model_selection.md#select-a-model-for-code-review-flow).
 
 ## Custom code review instructions
 

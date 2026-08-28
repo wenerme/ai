@@ -456,6 +456,62 @@ puts(handle_message.call(
     
 Responses API
 
+```javascript
+import express from "express";
+import OpenAI from "openai";
+
+const app = express();
+const client = new OpenAI();
+const conversationsBySession = new Map();
+
+app.use(express.json());
+
+app.post("/messages", async (request, response) => {
+  const { content, session_id: sessionId } = request.body ?? {};
+  if (
+    typeof content !== "string" ||
+    !content.trim() ||
+    typeof sessionId !== "string" ||
+    !sessionId.trim()
+  ) {
+    response.status(400).json({
+      error: "content and session_id must be non-empty strings.",
+    });
+    return;
+  }
+
+  let conversationIdPromise = conversationsBySession.get(sessionId);
+
+  if (!conversationIdPromise) {
+    conversationIdPromise = client.conversations
+      .create()
+      .then((conversation) => conversation.id)
+      .catch((error) => {
+        conversationsBySession.delete(sessionId);
+        throw error;
+      });
+    conversationsBySession.set(sessionId, conversationIdPromise);
+  }
+  const conversationId = await conversationIdPromise;
+
+  const promptId = process.env.OPENAI_PROMPT_ID;
+  if (!promptId) {
+    response.status(500).json({ error: "OPENAI_PROMPT_ID is required." });
+    return;
+  }
+
+  const result = await client.responses.create({
+    prompt: { id: promptId },
+    input: [{ role: "user", content }],
+    conversation: conversationId,
+  });
+
+  response.json({ content: result.output_text });
+});
+
+app.listen(Number(process.env.OPENAI_EXAMPLE_PORT ?? 8000), "127.0.0.1");
+```
+
 ```python
 conversations_by_session: dict[str, str] = {}
 

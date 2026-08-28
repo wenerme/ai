@@ -1,0 +1,92 @@
+---
+title: "Kling 3.0 Workflows in ComfyUI"
+description: "How to run the Kling 3.0 text-to-image, video generation, and first-last-frame workflows in ComfyUI, locally or on Comfy Cloud"
+---
+
+This guide shows how to run the Kling 3.0 workflows in ComfyUI. For what the models are and what they do best, see the [Kling 3.0 overview](/tutorials/partner-nodes/kling/kling-3-0).
+
+## Kling 3.0: Text to Image {#api_kling_v3_t2i}
+
+Generate an image from a text prompt using the Kling 3.0 model.
+
+[Kling 3.0: Text to Image workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Kling 3.0: Text to Image&quot; in Template Library
+  
+
+**Example output**
+
+![Kling 3.0: Text to Image example](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_kling_v3_t2i.png)
+
+## Kling 3.0: Video Generation {#api_kling_v3_video}
+
+Input text or image prompts to generate 15-second video sequences with multi-shot compositions, complex camera movements, and consistent subjects.
+
+[Kling 3.0: Video Generation workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Kling 3.0: Video Generation&quot; in Template Library
+  
+
+**Input materials**
+
+Upload this file to the matching `LoadImage` node:
+
+  
+    `LoadImage` node 1 · `boxing.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [boxing.png]
+</div>
+
+## Kling 3.0: First Last Frame to Video {#api_kling_v3_flf2v}
+
+Input a first and last frame image to generate a continuous video sequence with multi-shot generation and precise element control.
+
+[Kling 3.0: First Last Frame to Video workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Kling 3.0: First Last Frame to Video&quot; in Template Library
+  
+
+**Input materials**
+
+Upload these files to the matching `LoadImage` nodes:
+
+  
+    `LoadImage` node 1 · `goldenfish_in_bag.png`
+  
+  
+    `LoadImage` node 13 · `man_in_daydream.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [goldenfish_in_bag.png]
+  [man_in_daydream.png]
+</div>
+
+## Legacy Kling models (EOL)
+
+  **End of life (EOL)**: The following legacy Kling models and workflow templates are scheduled for retirement on **September 15, 2026**: Kling V1.5, V1.6, V2.1, V2.1 Master, and the Kolors Virtual Try-On API. Related Partner Nodes remain in ComfyUI but these model options will stop working after the retirement date.
+
+### Retired workflow templates and replacements
+
+| Removed template | Suggested replacement |
+| :--------------- | :-------------------- |
+| `api_kling_i2v` (V2.1 Master) | [`api_kling_o3_i2v`](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_kling_o3_i2v.json) or [`api_kling2_6_i2v`](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_kling2_6_i2v.json) |
+| `api_kling_effects` (V1.6) | Kling 3.0 effect workflows (`api_kling_v3_*`) |
+| `api_kling_flf` (V1.6) | [`api_kling_v3_flf2v`](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_kling_v3_flf2v.json) or [`api_kling_o3_flf2v`](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_kling_o3_flf2v.json) |
+| `api_kling_dual_characters_effects` (V1.6) | Kling 3.0 effect workflows (`api_kling_v3_*`) |
+
+For virtual try-on, use [Flux Virtual Try-On](/built-in-nodes/FluxVTONode) (`api_flux_vto`) or other supported alternatives. Flux VTO and Gemini-based fashion templates are not affected by this retirement.

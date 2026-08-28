@@ -25,6 +25,17 @@ The theme can also be switched manually, with these actions (bindable in the [`k
 
 Programs running inside panes can subscribe to color scheme changes themselves with `CSI ? 2031 h` and will receive `CSI ?997;1 n` (dark) or `CSI ?997;2 n` (light) whenever the mode changes.
 
+## Overriding the terminal's reported hue
+The [`explicit_theme_hue`](./options.md#explicit_theme_hue) option pins the session to a dark or light appearance, ignoring what the host terminal reports:
+
+```javascript
+explicit_theme_hue "dark"
+```
+
+It is resolved before the first render, so the session starts with the intended appearance instead of correcting itself once the terminal replies. This is useful for terminals that report the wrong color scheme, or that do not report one at all. When it is unset, the host terminal decides.
+
+Since it only selects which of `theme_dark` / `theme_light` applies, **both** of those must still be set - otherwise the static `theme` remains authoritative.
+
 ## Theme Definition Specification
 Themes in Zellij are defined according to UI components. These components are used in the various plugins that make up the Zellij interface, and can also be used dynamically in user plugins.
 
