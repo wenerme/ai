@@ -918,7 +918,7 @@ first = client.responses.create(
   input: history,
   reasoning: {context: :current_turn}
 )
-history.concat(first.output.map(&:to_h))
+history.concat(first.output)
 history << {role: :user, content: "Now patch the bug and explain the change."}
 
 second = client.responses.create(

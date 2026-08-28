@@ -48,7 +48,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**
 Open Cascade and try a prompt — for example:
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ## Cloudflare platform access
@@ -126,15 +126,15 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
@@ -142,7 +142,7 @@ Use Workers for Platforms to let my customers deploy their own code in isolated 
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ## Tips

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Dockerfile reference
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/configuration/dockerfile/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/configuration/dockerfile/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Coming soon: Sandbox SDK 1.0
 
@@ -175,7 +175,7 @@ If you have existing startup scripts that end with `exec bun /container-server/d
 
 ## Related resources
 
-* [Image Management](https://developers.cloudflare.com/containers/platform-details/image-management/) \- Building and pushing images to Cloudflare's registry
+* [Image Management](https://developers.cloudflare.com/containers/guides/image-management/) \- Building and pushing images to Cloudflare's registry
 * [Wrangler configuration](https://developers.cloudflare.com/sandbox/configuration/wrangler/) \- Using custom images in wrangler.jsonc
 * [Docker documentation ↗](https://docs.docker.com/reference/dockerfile/) \- Complete Dockerfile syntax
 * [Container concepts](https://developers.cloudflare.com/sandbox/concepts/containers/) \- Understanding the runtime environment
@@ -189,5 +189,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/dockerfile/#page","headline":"Dockerfile reference · Cloudflare Sandbox SDK docs","description":"Customize the Sandbox SDK container image with packages, tools, and configurations.","url":"https://developers.cloudflare.com/sandbox/configuration/dockerfile/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/dockerfile/#page","headline":"Dockerfile reference · Cloudflare Sandbox SDK docs","description":"Customize the Sandbox SDK container image with packages, tools, and configurations.","url":"https://developers.cloudflare.com/sandbox/configuration/dockerfile/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

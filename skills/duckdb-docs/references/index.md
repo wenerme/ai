@@ -16,7 +16,7 @@
 [ODBC](https://duckdb.org/docs/current/clients/odbc/overview.html)
 [Python](https://duckdb.org/docs/current/clients/python/overview.html)
 [R](https://duckdb.org/docs/current/clients/r.html)
-[Rust](https://duckdb.org/docs/current/clients/rust.html)
+[Rust](https://duckdb.org/docs/current/clients/rust/overview.html)
 [WebAssembly](https://duckdb.org/docs/current/clients/wasm/overview.html)
 [All client APIs](https://duckdb.org/docs/current/clients/overview.html)
 

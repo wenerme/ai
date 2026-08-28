@@ -22,13 +22,13 @@ post `https://generativelanguage.googleapis.com/v1beta/cachedContents`
 The request body contains an instance of `https://ai.google.dev/api/caching#CachedContent`.
 Fields `contents[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Optional. Input only. Immutable. The content to cache.
 `tools[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.Tool`)`` Optional. Input only. Immutable. A list of `Tools` the model may use to generate the next response
-`expiration` `Union type` Specifies when this resource will expire. `expiration` can be only one of the following: `expireTime` ``string (`https://protobuf.dev/reference/protobuf/google.protobuf#timestamp` format)`` Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
+`expiration` `Union type` Specifies when this resource will expire. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `expireTime` ``string (`https://protobuf.dev/reference/protobuf/google.protobuf#timestamp` format)`` Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
 
 Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"`, `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"`.
 `ttl` ``string (`https://protobuf.dev/reference/protobuf/google.protobuf#duration` format)`` Input only. New TTL for this resource, input only.
 
 A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: `"3.5s"`.
-`displayName` `string` Optional. Immutable. The user-generated meaningful display name of the cached content. Maximum 128 Unicode characters.
+End of mutually exclusive fields. `displayName` `string` Optional. Immutable. The user-generated meaningful display name of the cached content. Maximum 128 Unicode characters.
 `model` `string` Required. Immutable. The name of the `Model` to use for cached content Format: `models/{model}`
 `systemInstruction` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Optional. Input only. Immutable. Developer set system instruction. Currently text only.
 `toolConfig` ``object (`https://ai.google.dev/api/caching#ToolConfig`)`` Optional. Input only. Immutable. Tool config. This config is shared for all tools.
@@ -706,12 +706,13 @@ This is a comma-separated list of fully qualified names of fields. Example: `"us
 ### Request body
 
 The request body contains an instance of `https://ai.google.dev/api/caching#CachedContent`.
-Fields `expiration` `Union type` Specifies when this resource will expire. `expiration` can be only one of the following: `expireTime` ``string (`https://protobuf.dev/reference/protobuf/google.protobuf#timestamp` format)`` Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
+Fields `expiration` `Union type` Specifies when this resource will expire. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `expireTime` ``string (`https://protobuf.dev/reference/protobuf/google.protobuf#timestamp` format)`` Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
 
 Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"`, `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"`.
 `ttl` ``string (`https://protobuf.dev/reference/protobuf/google.protobuf#duration` format)`` Input only. New TTL for this resource, input only.
 
 A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: `"3.5s"`.
+End of mutually exclusive fields.
 
 ### Example request
 
@@ -1007,13 +1008,13 @@ Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 
 
 Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"`, `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"`.
 `usageMetadata` ``object (`https://ai.google.dev/api/caching#UsageMetadata`)`` Output only. Metadata on the usage of the cached content.
-`expiration` `Union type` Specifies when this resource will expire. `expiration` can be only one of the following: `expireTime` ``string (`https://protobuf.dev/reference/protobuf/google.protobuf#timestamp` format)`` Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
+`expiration` `Union type` Specifies when this resource will expire. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `expireTime` ``string (`https://protobuf.dev/reference/protobuf/google.protobuf#timestamp` format)`` Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
 
 Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"`, `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"`.
 `ttl` ``string (`https://protobuf.dev/reference/protobuf/google.protobuf#duration` format)`` Input only. New TTL for this resource, input only.
 
 A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: `"3.5s"`.
-`name` `string` Output only. Identifier. The resource name referring to the cached content. Format: `cachedContents/{id}`
+End of mutually exclusive fields. `name` `string` Output only. Identifier. The resource name referring to the cached content. Format: `cachedContents/{id}`
 `displayName` `string` Optional. Immutable. The user-generated meaningful display name of the cached content. Maximum 128 Unicode characters.
 `model` `string` Required. Immutable. The name of the `Model` to use for cached content Format: `models/{model}`
 `systemInstruction` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Optional. Input only. Immutable. Developer set system instruction. Currently text only.

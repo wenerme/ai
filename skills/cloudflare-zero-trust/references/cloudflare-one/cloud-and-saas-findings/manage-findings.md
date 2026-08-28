@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage findings
 
-Last updated Aug 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Findings are security issues detected within SaaS and cloud applications that involve users, data at rest (files stored in your apps), and other configuration settings. With Cloudflare CASB, you can review a comprehensive list of findings in Cloudflare One and take action on the issues found.
 
@@ -33,7 +33,7 @@ To view details about the posture findings that CASB found:
 
 Cloud & SaaS findings will display details about your posture finding, including the finding type, [severity level](#severity-levels), number of instances, associated integration, current status, and date detected. For more information on each instance of the finding, select **Manage**.
 
-To manage the finding's visibility, you can update the finding's [severity level](#severity-levels) or [hide the finding](#hide-findings) from view. You can also [send a posture finding instance to a webhook](#send-webhook). Some findings also provide a remediation guide to resolve the issue or support [creating a Gateway HTTP policy](#resolve-finding-with-a-gateway-policy) to block the traffic.
+To manage the finding's visibility, you can update the finding's [severity level](#severity-levels) or [hide the finding](#hide-findings) from view. You can also [send a posture finding instance to a webhook](#send-webhook). Some findings also provide a remediation guide to resolve the issue.
 
 ### Severity levels
 
@@ -173,37 +173,6 @@ CASB will log remediation actions in **Logs** \> **Admin**. For more information
 
 To automatically remediate matching findings without reviewing each one, refer to [Remediation Policies](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/).
 
-## Resolve finding with a Gateway policy
-
-CASB detects security issues that already exist in your SaaS environment. To prevent the same issues from recurring, you can create a [Gateway HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) directly from a CASB finding. For example, you can block users from sharing files publicly or accessing unsanctioned applications.
-
-CASB supports creating a Gateway policy for findings from the [Google Workspace integration](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/):
-
-Supported CASB findings for Gateway policies
-
-* Google Workspace: File publicly accessible with edit access
-* Google Workspace: File publicly accessible with view access
-* Google Workspace: File shared outside company with edit access
-* Google Workspace: File shared outside company with view access
-
-Before you begin
-
-Ensure that you have [enabled HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/) for your organization.
-
-To create a Gateway policy directly from a CASB finding:
-
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** \> **Posture Findings** or **Cloud & SaaS findings** \> **Content Findings**.
-2. Choose **SaaS** or **Cloud**.
-3. Choose the finding you want to modify, then select **Manage**.
-4. Find the instance you want to block and select its three-dot menu.
-5. Select **Block with Gateway HTTP policy**. A new browser tab will open with a pre-filled HTTP policy.
-Note
-Not all CASB findings will have the **Block with Gateway HTTP policy** option. Unsupported findings can only be resolved from your application dashboard or through your domain provider.
-6. (Optional) [Configure the HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/). For example, if the policy blocks an unsanctioned third-party app, you can apply the policy to some or all users, or only block uploads or downloads.
-7. Select **Save**.
-
-Your HTTP policy will now prevent future instances of the security finding.
-
 Was this helpful?
 
 YesNo
@@ -213,5 +182,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#page","headline":"Manage security findings · Cloudflare One docs","description":"Manage findings in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#page","headline":"Manage security findings · Cloudflare One docs","description":"Manage findings in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```

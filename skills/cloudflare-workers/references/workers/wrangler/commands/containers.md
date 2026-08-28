@@ -77,7 +77,7 @@ wrangler containers images delete [IMAGE] [OPTIONS]
 
 ### `registries`
 
-Configure and view registries available to your container. [Read more](https://developers.cloudflare.com/containers/platform-details/image-management/#using-amazon-ecr-container-images) about our currently supported external registries.
+Configure and view registries available to your container. [Read more](https://developers.cloudflare.com/containers/guides/image-management/#using-amazon-ecr-container-images) about our currently supported external registries.
 
 #### `registries list`
 
@@ -232,7 +232,7 @@ wrangler containers push [TAG] [OPTIONS]
 
 ### `ssh`
 
-Connect to a running Container instance using SSH. Refer to [SSH](https://developers.cloudflare.com/containers/ssh/) for configuration details.
+Connect to a running Container instance using SSH. Refer to [SSH](https://developers.cloudflare.com/containers/guides/ssh/) for configuration details.
 
 ```txt
 wrangler containers ssh <INSTANCE_ID>

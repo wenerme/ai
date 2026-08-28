@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migrate
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Path to Sandbox SDK 1.0
 
@@ -279,7 +279,7 @@ Before production:
 4. Treat process and terminal IDs from before the deploy as invalid. Start that work again and keep the new IDs.
 5. Run the checks in [Verify](#verify).
 
-For routine deploys after migration, refer to [Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/). For rollout options, refer to [Rollouts](https://developers.cloudflare.com/containers/platform-details/rollouts/).
+For routine deploys after migration, refer to [Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/). For rollout options, refer to [Rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/).
 
 ## Verify
 
@@ -313,8 +313,8 @@ Install [Cloudflare Skills ↗](https://github.com/cloudflare/skills) for your a
 * [Extensions](https://developers.cloudflare.com/sandbox/1-0-preview/extensions/)
 * [Troubleshooting](https://developers.cloudflare.com/sandbox/1-0-preview/troubleshooting/)
 * [Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/)
-* [Deploy Containers](https://developers.cloudflare.com/containers/deploy/)
-* [Rollouts](https://developers.cloudflare.com/containers/platform-details/rollouts/)
+* [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/)
+* [Rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/)
 
 Was this helpful?
 
@@ -325,5 +325,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/1-0-preview/migrate/#page","headline":"Migrate · Cloudflare Sandbox SDK docs","description":"Update an existing Sandbox SDK application from the stable package to @cloudflare/sandbox@next.","url":"https://developers.cloudflare.com/sandbox/1-0-preview/migrate/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/1-0-preview/migrate/#page","headline":"Migrate · Cloudflare Sandbox SDK docs","description":"Update an existing Sandbox SDK application from the stable package to @cloudflare/sandbox@next.","url":"https://developers.cloudflare.com/sandbox/1-0-preview/migrate/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

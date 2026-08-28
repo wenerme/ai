@@ -159,11 +159,11 @@ The shell tool accepts optional `parameters` to choose its execution engine and 
 }
 ```
 
-| Parameter             | Type    | Default          | Description                                                                                                                                                                                                                                                                                               |
-| --------------------- | ------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `engine`              | string  | `auto`           | Which shell engine to use: `openrouter` runs commands server-side in the OpenRouter sandbox; `auto` keeps the provider's native hosted shell when available (OpenAI) and routes to the OpenRouter sandbox on other providers                                                                              |
-| `environment`         | object  | `container_auto` | Execution environment. Use `{ "type": "container_auto" }` for an OpenRouter-managed ephemeral container, or `{ "type": "container_reference", "container_id": "..." }` to reuse an existing container. `local` environments are not supported. See [Containers](/docs/guides/features/server-tools/containers) |
-| `sleep_after_seconds` | integer | `900`            | How long the container stays warm after its last command before sleeping. Idle-based: each command renews the timer. Capped at 14400 (4 hours)                                                                                                                                                            |
+| Parameter             | Type    | Default          | Description                                                                                                                                                                                                                                                                                  |
+| --------------------- | ------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `engine`              | string  | `auto`           | Which shell engine to use: `openrouter` runs commands server-side in the OpenRouter sandbox; `auto` keeps the provider's native hosted shell when available (OpenAI) and routes to the OpenRouter sandbox on other providers                                                                 |
+| `environment`         | object  | `container_auto` | Execution environment. Use `{ "type": "container_auto" }` for an OpenRouter-managed ephemeral container, or `{ "type": "container_reference", "container_id": "..." }` to reuse an existing container. `local` environments are not supported. See [Containers](/docs/guides/features/containers) |
+| `sleep_after_seconds` | integer | `900`            | How long the container stays warm after its last command before sleeping. Idle-based: each command renews the timer. Capped at 14400 (4 hours)                                                                                                                                               |
 
 Defaults and caps reflect current server-enforced limits and may change while the tool is in beta.
 
@@ -248,6 +248,6 @@ Shell execution is sandboxed by design:
 ## Next Steps
 
 * [Server Tools Overview](/docs/guides/features/server-tools). Learn about server tools
-* [Containers](/docs/guides/features/server-tools/containers). How sandbox containers work
+* [Containers](/docs/guides/features/containers). How sandbox containers work
 * [Bash](/docs/guides/features/server-tools/bash). Sandboxed shell for the Anthropic Messages API
 * [Tool Calling](/docs/guides/features/tool-calling). Learn about user-defined tool calling

@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deploy a Sandbox application
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/deploy/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/deploy/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Sandbox runs on [Containers](https://developers.cloudflare.com/containers/). For deploy commands, Workers Builds, and rollout flags, refer to [Deploy Containers](https://developers.cloudflare.com/containers/deploy/) and [Rollouts](https://developers.cloudflare.com/containers/platform-details/rollouts/).
+Sandbox runs on [Containers](https://developers.cloudflare.com/containers/). For deploy commands, Workers Builds, and rollout flags, refer to [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/) and [Rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/).
 
 To put `exposePort()` on a custom domain, refer to [Configure preview URLs on a custom domain](https://developers.cloudflare.com/sandbox/guides/preview-urls-custom-domain/).
 
@@ -43,7 +43,7 @@ yarn wrangler deploy --containers-rollout=immediate
 ```
 pnpm wrangler deploy --containers-rollout=immediate
 ```
-Use this for stable to `@next` cutovers and other breaking package/image pairs. Refer to [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/#deploy-the-cutover) and [Rollouts](https://developers.cloudflare.com/containers/platform-details/rollouts/).
+Use this for stable to `@next` cutovers and other breaking package/image pairs. Refer to [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/#deploy-the-cutover) and [Rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/).
 
 Do not mix a stable package with a `@next` image, or the reverse.
 
@@ -71,12 +71,12 @@ For production, use `wrangler deploy` so the package and image can update togeth
 
 Non-production Workers Builds defaults to `wrangler versions upload`, which does not publish a new image. [Preview URLs](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/) are not generated for these Workers (they implement Durable Objects). Test with `wrangler dev`, or with a staging Worker or [environment](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#wrangler-environments) that runs `wrangler deploy`.
 
-More detail: [Before production](https://developers.cloudflare.com/containers/deploy/#before-production).
+More detail: [Before production](https://developers.cloudflare.com/containers/guides/deploy/#before-production).
 
 ## Related
 
-* [Deploy Containers](https://developers.cloudflare.com/containers/deploy/)
-* [Rollouts](https://developers.cloudflare.com/containers/platform-details/rollouts/)
+* [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/)
+* [Rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/)
 * [Configure preview URLs on a custom domain](https://developers.cloudflare.com/sandbox/guides/preview-urls-custom-domain/)
 * [Migrate to Sandbox SDK 1.0 preview](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/)
 
@@ -89,5 +89,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/deploy/#page","headline":"Deploy a Sandbox application · Cloudflare Sandbox SDK docs","description":"Deploy a Sandbox Worker and keep the npm package and container image on the same release line.","url":"https://developers.cloudflare.com/sandbox/guides/deploy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/deploy/#page","headline":"Deploy a Sandbox application · Cloudflare Sandbox SDK docs","description":"Deploy a Sandbox Worker and keep the npm package and container image on the same release line.","url":"https://developers.cloudflare.com/sandbox/guides/deploy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

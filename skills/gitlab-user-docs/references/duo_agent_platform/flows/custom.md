@@ -25,6 +25,7 @@
 - **Work item status changed** trigger event type [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/599983) in GitLab 19.2.
 - Feature flag `ai_catalog_flows` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/239459) in GitLab 19.2.
 - Changed to [generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/602415) in GitLab 19.2.
+- **Merge request** trigger event type with the **Created** action [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/242698) in GitLab 19.4.
 
 Custom flows are AI-powered workflows you create and configure to
 automate complex, multi-step tasks across your GitLab projects.

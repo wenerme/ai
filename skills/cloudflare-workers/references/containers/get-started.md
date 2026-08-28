@@ -1,6 +1,6 @@
 ---
 description: Deploy your first Container on Cloudflare by building an image, configuring a Worker, and routing requests to container instances.
-title: Getting started
+title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
@@ -10,9 +10,9 @@ image: https://developers.cloudflare.com/og-docs.png
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Getting started
+# Get started
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will deploy a Worker that can make requests to one or more Containers in response to end-user requests. In this example, each container runs a small webserver written in Go.
 
@@ -171,7 +171,7 @@ Important points about this config:
 
 Your container image must be able to run on the `linux/amd64` architecture, but aside from that, has few limitations.
 
-In the example you just deployed, it is a simple Golang server that responds to requests on port 8080 using the `MESSAGE` environment variable that will be set in the Worker and an [auto-generated environment variable](https://developers.cloudflare.com/containers/platform-details/#environment-variables) `CLOUDFLARE_DEPLOYMENT_ID.`
+In the example you just deployed, it is a simple Golang server that responds to requests on port 8080 using the `MESSAGE` environment variable that will be set in the Worker and an [auto-generated environment variable](https://developers.cloudflare.com/containers/configuration/environment-variables/) `CLOUDFLARE_DEPLOYMENT_ID.`
 
 ```go
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -223,7 +223,7 @@ This defines basic configuration for the container:
 
 The `Container` class itself extends [DurableObject](https://developers.cloudflare.com/durable-objects/), so your subclass has access to the full Durable Object API. The Durable Object handles routing, lifecycle, and persistent state, while the container process runs your image inside a Linux VM. This means you can use [this.ctx.storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) to persist data that survives container restarts and resides close to the container itself.
 
-Refer to the [Container class reference](https://developers.cloudflare.com/containers/container-class/) and the [low-level Durable Object container API](https://developers.cloudflare.com/durable-objects/api/container/) for more details.
+Refer to the [Container class reference](https://developers.cloudflare.com/containers/reference/container-class/) and the [low-level Durable Object container API](https://developers.cloudflare.com/durable-objects/api/container/) for more details.
 
 #### Routing to Containers
 
@@ -271,7 +271,7 @@ After launching your Worker, go to the Containers Dashboard by selecting **Worke
 To do more:
 
 * Modify the image by changing the Dockerfile and running `wrangler deploy`
-* Refer to [Deploy Containers](https://developers.cloudflare.com/containers/deploy/) for Workers Builds and rollout behavior
+* Refer to [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/) for Workers Builds and rollout behavior
 * Browse [examples](https://developers.cloudflare.com/containers/examples/) for more patterns
 * Check the [Frequently Asked Questions](https://developers.cloudflare.com/containers/faq/) for platform behavior and limitations
 
@@ -284,5 +284,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/get-started/#page","headline":"Getting started · Cloudflare Containers docs","description":"Deploy your first Container on Cloudflare by building an image, configuring a Worker, and routing requests to container instances.","url":"https://developers.cloudflare.com/containers/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/get-started/#page","headline":"Get started · Cloudflare Containers docs","description":"Deploy your first Container on Cloudflare by building an image, configuring a Worker, and routing requests to container instances.","url":"https://developers.cloudflare.com/containers/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

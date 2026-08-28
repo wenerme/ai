@@ -20,7 +20,6 @@ You can also configure [CASB webhooks](https://developers.cloudflare.com/cloudfl
 
 The workflow pages for managing findings and webhooks appear first, followed by supported integrations and troubleshooting guides:
 
-* [Manage findings](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/findings/)
 * [Webhooks](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/)
 * [Anthropic](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic/)
 * [Atlassian Confluence](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/atlassian-confluence/)

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When connecting your Git repository to your Worker, you can customize the configurations needed to build and deploy your Worker.
 
@@ -27,7 +27,7 @@ For preview builds (commits to branches other than your production branch), the 
 
 Workers that use Containers
 
-`wrangler deploy` can build and publish container images and roll out container instances. `wrangler versions upload` does not update container images. Preview URLs are not generated for Workers that implement Durable Objects, including Containers. Refer to [Deploy Containers](https://developers.cloudflare.com/containers/deploy/#before-production).
+`wrangler deploy` can build and publish container images and roll out container instances. `wrangler versions upload` does not update container images. Preview URLs are not generated for Workers that implement Durable Objects, including Containers. Refer to [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/#before-production).
 
 ## Build settings
 
@@ -65,7 +65,7 @@ Examples of other deploy commands you can set include:
 | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | npx wrangler deploy --assets ./public/             | Deploy your Worker along with static assets from the specified directory. Alternatively, you can use the [assets binding](https://developers.cloudflare.com/workers/static-assets/binding/).                                                                                                                                                      |
 | npx wrangler deploy --env staging                  | If you have a [Wrangler environment](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#wrangler-environments) Worker, you should set your deploy command with the environment flag. For more details, see [Advanced Setups](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#wrangler-environments). |
-| npx wrangler deploy --containers-rollout=immediate | [Containers](https://developers.cloudflare.com/containers/) rollout mode for this deploy. Refer to [Rollouts](https://developers.cloudflare.com/containers/platform-details/rollouts/).                                                                                                                                                           |
+| npx wrangler deploy --containers-rollout=immediate | [Containers](https://developers.cloudflare.com/containers/) rollout mode for this deploy. Refer to [Rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/).                                                                                                                                                              |
 | npx wrangler deploy --containers-rollout=none      | Deploy the Worker only. Skip container image build/push and instance rollout.                                                                                                                                                                                                                                                                     |
 
 ### Non-production branch deploy command
@@ -76,7 +76,7 @@ It defaults to `npx wrangler versions upload`, producing a [preview URL](https:/
 
 Note
 
-Preview URLs are not generated for Durable Object Workers, including [Containers](https://developers.cloudflare.com/containers/). For Containers, `versions upload` also does not update the container image. Refer to [Deploy Containers](https://developers.cloudflare.com/containers/deploy/#before-production).
+Preview URLs are not generated for Durable Object Workers, including [Containers](https://developers.cloudflare.com/containers/). For Containers, `versions upload` also does not update the container image. Refer to [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/#before-production).
 
 Examples of other non-production branch deploy commands you can set include:
 
@@ -134,6 +134,7 @@ It is recommended to consistently use the same API token across all uploads and 
   * [Expo](https://docs.expo.dev/eas/hosting/reference/worker-runtime/)
 * [APIs](https://developers.cloudflare.com/workers/framework-guides/apis/)
   * [FastAPI](https://developers.cloudflare.com/workers/languages/python/packages/fastapi/)
+  * [Flask](https://developers.cloudflare.com/workers/languages/python/packages/flask/)
   * [Hono](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)
 * [AI & agents](https://developers.cloudflare.com/workers/framework-guides/ai-and-agents/)
   * [Agents SDK](https://developers.cloudflare.com/agents/)
@@ -201,5 +202,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Understand the different settings associated with your build.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Understand the different settings associated with your build.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

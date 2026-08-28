@@ -56,7 +56,7 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
 The Files API stores files in your workspace. You can upload a file once and
 use it in many requests. A sandbox container can load workspace files with the
-[`file_ids` setting](/docs/guides/features/server-tools/containers#attach-workspace-files).
+[`file_ids` setting](/docs/guides/features/containers#attach-workspace-files).
 
 <Note>
   **Global endpoint only**
@@ -196,11 +196,11 @@ error. Keep your own copy of every file you upload.
 Files that a model creates are different:
 
 * Files that a sandbox command creates can be downloaded through the
-  [container files endpoints](/docs/guides/features/server-tools/containers#download-container-files),
+  [container files endpoints](/docs/guides/features/containers#download-container-files),
   or copied into your workspace as a durable document. A promoted document
   has `"downloadable": true` and can be downloaded later through
   `GET /api/v1/files/{file_id}/content`. See
-  [Save a container file to your workspace](/docs/guides/features/server-tools/containers#save-a-container-file-to-your-workspace).
+  [Save a container file to your workspace](/docs/guides/features/containers#save-a-container-file-to-your-workspace).
 * Files that the [files tool](/docs/guides/features/server-tools/files) writes or
   edits also have `"downloadable": true` and can be downloaded the same way.
 
@@ -233,5 +233,5 @@ Without a configured key, the request returns a `400` error.
 
 ## Next steps
 
-* [Containers](/docs/guides/features/server-tools/containers): Load files into a
+* [Containers](/docs/guides/features/containers): Load files into a
   sandbox container

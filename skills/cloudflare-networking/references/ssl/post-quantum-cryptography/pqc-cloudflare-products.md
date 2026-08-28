@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # PQC in Cloudflare products
 
-Last updated Jul 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloudflare-products/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloudflare-products/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare is [targeting 2029 ↗](https://blog.cloudflare.com/post-quantum-roadmap/) to be fully post-quantum secure across its entire product suite.
 
@@ -41,6 +41,8 @@ Reference: [PQC for all websites and APIs ↗](https://blog.cloudflare.com/post-
 * [API Shield](https://developers.cloudflare.com/api-shield/)\-protected APIs.
 * The Cloudflare API and dashboard.
 * [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) self-hosted applications (browser-to-edge leg).
+
+Customers can measure per-zone post-quantum key agreement adoption on their inbound traffic using the [ClientTLSKeyExchangeGroup](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/#clienttlskeyexchangegroup) field in the `http_requests` Logpush dataset, which is also queryable in [Log Explorer](https://developers.cloudflare.com/log-explorer/).
 
 This section only covers the inbound TLS connection from the end-user client to Cloudflare's edge. When a Worker fetches data from a backend storage service ([D1](https://developers.cloudflare.com/d1/), [KV](https://developers.cloudflare.com/kv/), [Durable Objects](https://developers.cloudflare.com/durable-objects/), [R2](https://developers.cloudflare.com/r2/), [Workers AI](https://developers.cloudflare.com/workers-ai/), [Hyperdrive](https://developers.cloudflare.com/hyperdrive/), and similar), that connection is governed by the [Cloudflare internal network](#cloudflare-internal-network) section. When a Worker calls out to a third-party origin via `fetch()`, it is governed by the [Cloudflare to origin](#cloudflare-to-origin) section.
 
@@ -146,6 +148,19 @@ TLS 1.3 control-plane connection used by the [Cloudflare One Appliance](https://
 
 Reference: [PQC SASE ↗](https://blog.cloudflare.com/post-quantum-sase/), [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/reference/), [PQC and Cloudflare One](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/#cloudflare-ipsec).
 
+### Cloudflare Email Security
+
+Post-quantum protection applies to inbound and outbound TLS 1.3 SMTP connections between Cloudflare [Email Security](https://developers.cloudflare.com/cloudflare-one/email-security/) MX deployments and third-party mail servers:
+
+| Protection    | Status           |
+| ------------- | ---------------- |
+| Key agreement | ✅ X25519MLKEM768 |
+| Signatures    | Not yet          |
+
+Reference: [Email Security](https://developers.cloudflare.com/cloudflare-one/email-security/), [MX/Inline deployment](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment/).
+
+Post-quantum key agreement is negotiated automatically when the remote SMTP peer advertises support (for example, [Google Workspace ↗](https://workspace.google.com/)). Senders and receivers that do not yet advertise post-quantum key agreement continue to connect with classical key exchange.
+
 ## Contributing
 
 This listing is maintained alongside the rest of the Cloudflare SSL/TLS documentation. If you spot an inaccuracy or have an update after a product announcement, [contributions](https://developers.cloudflare.com/style-guide/contributions/) are welcome.
@@ -159,5 +174,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloudflare-products/#page","headline":"PQC in Cloudflare products · Cloudflare SSL/TLS docs","description":"Track which Cloudflare products support post-quantum key agreement and post-quantum signatures.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloudflare-products/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloudflare-products/#page","headline":"PQC in Cloudflare products · Cloudflare SSL/TLS docs","description":"Track which Cloudflare products support post-quantum key agreement and post-quantum signatures.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloudflare-products/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
 ```

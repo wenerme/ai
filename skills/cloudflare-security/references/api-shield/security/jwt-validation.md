@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # JSON Web Tokens validation
 
-Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 JSON web tokens (JWT) are often used as part of an authentication component on many web applications. Since JWTs are crucial to identifying users and their access, ensuring the token's integrity is important.
 
@@ -32,9 +32,11 @@ After you create a token configuration, Cloudflare checks every request in the z
 3. On **Token configurations**, select **Configure tokens**.
 4. Add a name for your configuration.
 5. Choose where Cloudflare can locate the JWT for this configuration on incoming requests, such as a header or cookie and its name.
-6. Copy and paste your JWT issuer's public key(s) (JWKS).
+6. Copy and paste your JWT issuer's verification keys (JWKS). You can provide asymmetric public keys or symmetric keys used with HMAC algorithms.
 
-Each JWT issuer typically publishes public keys (JWKS) for verification at a known URL on the Internet. If you do not know where to get them, contact your identity administrator.
+JWT issuers that use asymmetric algorithms typically publish public keys (JWKS) for verification at a known URL on the Internet. Issuers that use HMAC algorithms share a symmetric credential with the validator. If you do not know where to get your issuer's verification keys or symmetric credential, contact your identity administrator.
+
+For supported algorithms and symmetric key requirements, refer to [Configure JWT validation via the API](https://developers.cloudflare.com/api-shield/security/jwt-validation/api/#credentials).
 
 To automatically keep your JWKS up to date when your identity provider refreshes them, you can use a Worker. Refer to [Configure Workers to automatically update keys](https://developers.cloudflare.com/api-shield/security/jwt-validation/jwt-worker/) to learn more about setting up the Worker.
 
@@ -147,5 +149,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/#page","headline":"JSON Web Tokens validation · Cloudflare API Shield docs","description":"Verify incoming JWTs to detect token tampering and invalid tokens at the edge.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/#page","headline":"JSON Web Tokens validation · Cloudflare API Shield docs","description":"Verify incoming JWTs to detect token tampering and invalid tokens at the edge.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
 ```

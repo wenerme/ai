@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Nameserver options
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/nameservers/nameserver-options/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/nameservers/nameserver-options/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Refer to the following sections to learn about different Cloudflare nameserver options. The availability of these options depends on your plan. Also, if you acquired your domain from Cloudflare Registrar, your domain already uses and [must remain](https://developers.cloudflare.com/registrar/faq/#can-i-use-my-own-third-party-nameservers) on Cloudflare nameservers.
 
@@ -24,9 +24,11 @@ The default assignment method is to use [standard nameservers](https://developer
 
 Caution
 
-To prevent domain hijacking, you can no longer preset Cloudflare nameservers at your registrar before creating the respective zone in Cloudflare. If you preset your nameservers and then add the domain, your domain will be assigned a new pair of nameservers.
+To prevent domain hijacking, you can no longer preset Cloudflare nameservers at your registrar before creating the respective zone in Cloudflare. If you preset your nameservers and then add the domain, your domain will be assigned a new set of nameservers.
 
-These nameserver assignments cannot be changed. However, depending on your subscription, you may have different options for better nameserver consistency.
+Caution
+
+Once a zone is created, its assigned nameservers cannot be changed — not even by Cloudflare Support. If your new zone was assigned a different set from your other zones, refer to [Why does my new zone have different nameservers than my other zones?](https://developers.cloudflare.com/dns/faq/#why-does-my-new-zone-have-different-nameservers-than-my-other-zones) in the DNS FAQ. To keep new zones on the same nameservers going forward, refer to [Nameserver consistency](#nameserver-consistency).
 
 ### Nameserver consistency
 
@@ -91,5 +93,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/nameservers/nameserver-options/#page","headline":"Multi-provider DNS and nameserver options · Cloudflare DNS docs","description":"Available nameserver configuration options.","url":"https://developers.cloudflare.com/dns/nameservers/nameserver-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/nameservers/nameserver-options/#page","headline":"Multi-provider DNS and nameserver options · Cloudflare DNS docs","description":"Available nameserver configuration options.","url":"https://developers.cloudflare.com/dns/nameservers/nameserver-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

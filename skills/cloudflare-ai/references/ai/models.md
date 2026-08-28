@@ -16,7 +16,7 @@ Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 233 modelsClear filters
+We found 234 modelsClear filters
 
 No models found
 
@@ -375,6 +375,8 @@ Try a different search term, or broaden your search by removing filters.
 [![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)glm-4.7-flashZhipu AIText GenerationGLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
 
 [![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)glm-5.2Zhipu AIText GenerationZ.ai's flagship agentic coding modelCloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
+
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)glm-5.3Zhipu AIText GenerationGLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3/)
 
 [![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)glm-5.3-flashZhipu AIText GenerationThe first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.Cloudflare-hostedFunction callingReasoningVision](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
 

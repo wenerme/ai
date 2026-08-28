@@ -401,7 +401,7 @@ first = client.responses.create(
 )
 puts(first.output_text)
 
-history.concat(first.output.map(&:to_h))
+history.concat(first.output)
 history << {role: :user, content: "Tell me another."}
 
 second = client.responses.create(

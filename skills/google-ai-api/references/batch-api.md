@@ -384,10 +384,11 @@ Fields `name` `string` The server-assigned name, which is only unique within the
 
 An object containing fields of an arbitrary type. An additional field `"@type"` contains a URI identifying the type. Example: `{ "id": 1234, "@type": "types.example.com/standard/id" }`.
 `done` `boolean` If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-`result` `Union type` The operation result, which can be either an `error` or a valid `response`. If `done` == `false`, neither `error` nor `response` is set. If `done` == `true`, exactly one of `error` or `response` can be set. Some services might not provide the result. `result` can be only one of the following: `error` ``object (`https://ai.google.dev/api/files#v1beta.Status`)`` The error result of the operation in case of failure or cancellation.
+`result` `Union type` The operation result, which can be either an `error` or a valid `response`. If `done` == `false`, neither `error` nor `response` is set. If `done` == `true`, exactly one of `error` or `response` can be set. Some services might not provide the result. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `error` ``object (`https://ai.google.dev/api/files#v1beta.Status`)`` The error result of the operation in case of failure or cancellation.
 `response` `object` The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
 
 An object containing fields of an arbitrary type. An additional field `"@type"` contains a URI identifying the type. Example: `{ "id": 1234, "@type": "types.example.com/standard/id" }`.
+End of mutually exclusive fields.
 
 | JSON representation |
 |---|
@@ -441,8 +442,9 @@ Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 
 ## InputConfig
 
 Configures the input to the batch request.
-Fields `source` `Union type` Required. The source of the input. `source` can be only one of the following: `fileName` `string` The name of the `File` containing the input requests.
+Fields `source` `Union type` Required. The source of the input. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `fileName` `string` The name of the `File` containing the input requests.
 `requests` ``object (`https://ai.google.dev/api/batch-api#InlinedRequests`)`` The requests to be processed in the batch.
+End of mutually exclusive fields.
 
 | JSON representation |
 |---|
@@ -470,8 +472,9 @@ Fields `request` ``object (`https://ai.google.dev/api/batch-api#GenerateContentR
 ## GenerateContentBatchOutput
 
 The output of a batch request. This is returned in the `BatchGenerateContentResponse` or the `GenerateContentBatch.output` field.
-Fields `output` `Union type` The output of the batch request. `output` can be only one of the following: `responsesFile` `string` Output only. The file ID of the file containing the responses. The file will be a JSONL file with a single response per line. The responses will be `GenerateContentResponse` messages formatted as JSON. The responses will be written in the same order as the input requests.
+Fields `output` `Union type` The output of the batch request. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `responsesFile` `string` Output only. The file ID of the file containing the responses. The file will be a JSONL file with a single response per line. The responses will be `GenerateContentResponse` messages formatted as JSON. The responses will be written in the same order as the input requests.
 `inlinedResponses` ``object (`https://ai.google.dev/api/batch-api#InlinedResponses`)`` Output only. The responses to the requests in the batch. Returned when the batch was built using inlined requests. The responses will be in the same order as the input requests.
+End of mutually exclusive fields.
 
 | JSON representation |
 |---|
@@ -490,8 +493,9 @@ Fields `inlinedResponses[]` ``object (`https://ai.google.dev/api/batch-api#Inlin
 
 The response to a single request in the batch.
 Fields `metadata` ``object (`https://protobuf.dev/reference/protobuf/google.protobuf#struct` format)`` Output only. The metadata associated with the request.
-`output` `Union type` The output of the request. `output` can be only one of the following: `error` ``object (`https://ai.google.dev/api/files#v1beta.Status`)`` Output only. The error encountered while processing the request.
+`output` `Union type` The output of the request. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `error` ``object (`https://ai.google.dev/api/files#v1beta.Status`)`` Output only. The error encountered while processing the request.
 `response` ``object (`https://ai.google.dev/api/generate-content#v1beta.GenerateContentResponse`)`` Output only. The response to the request.
+End of mutually exclusive fields.
 
 | JSON representation |
 |---|
