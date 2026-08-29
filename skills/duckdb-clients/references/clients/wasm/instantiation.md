@@ -136,6 +136,10 @@ await db.open({
     path: ':memory:',
     query: {
         castBigIntToDouble: true,
+        castDecimalToDouble: true,
+        castDurationToTime64: true,
+        castTimestampToDate: true,
+        queryPollingInterval: 1000,
     },
 });
 

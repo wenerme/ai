@@ -1,4 +1,4 @@
-# Define Connections
+# Connect
 
 ## Overview
 
@@ -279,4 +279,4 @@ Repeatedly opening and closing the last connection to a database means starting 
 * [Handle Results](https://duckdb.org/docs/current/clients/java/result_handling.html) — the `jdbc_stream_results` option and other result-handling choices set at connection time.
 * [Configuration](https://duckdb.org/docs/current/configuration/overview.html) — the full list of DuckDB settings that can be passed as connection options.
 * [Files Created by DuckDB](https://duckdb.org/docs/current/operations_manual/footprint_of_duckdb/files_created_by_duckdb.html) — the database, WAL, and temporary files that connection shutdown checkpoints and cleans up.
-* [Troubleshoot](https://duckdb.org/docs/current/clients/java/known_issues.html) — workarounds for common connection and driver problems.
+* [Troubleshoot](https://duckdb.org/docs/current/clients/java/troubleshoot.html) — workarounds for common connection and driver problems.
