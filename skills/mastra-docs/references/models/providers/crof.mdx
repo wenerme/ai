@@ -1,11 +1,11 @@
 ---
 title: "CrofAI | Models"
-description: "Use CrofAI models with Mastra. 21 models available."
+description: "Use CrofAI models with Mastra. 22 models available."
 ---
 
 # [CrofAI logo]CrofAI
 
-Access 21 CrofAI models through Mastra's model router. Authentication is handled automatically using the `CROF_API_KEY` environment variable.
+Access 22 CrofAI models through Mastra's model router. Authentication is handled automatically using the `CROF_API_KEY` environment variable.
 
 Learn more in the [CrofAI documentation](https://crof.ai/docs).
 
@@ -72,8 +72,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 131072,
-    "inputCost": 0.12,
-    "outputCost": 0.21
+    "inputCost": 0.08,
+    "outputCost": 0.1
   },
   {
     "model": "crof/deepseek-v4-pro",
@@ -88,7 +88,7 @@ for await (const chunk of stream) {
     "outputCost": 0.8
   },
   {
-    "model": "crof/deepseek-v4-pro-lightning",
+    "model": "crof/deepseek-v4-pro-0813",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
@@ -96,8 +96,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 131072,
-    "inputCost": 0.8,
-    "outputCost": 1.6
+    "inputCost": 0.35,
+    "outputCost": 0.8
   },
   {
     "model": "crof/gemma-4-31b-it",
@@ -134,6 +134,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.3,
     "outputCost": 1.05
+  },
+  {
+    "model": "crof/glm-5.3-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 0.07,
+    "outputCost": 0.22
   },
   {
     "model": "crof/greg-1-mini",
@@ -288,8 +300,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 262144,
-    "inputCost": 0.25,
-    "outputCost": 2.1
+    "inputCost": 0.2,
+    "outputCost": 1.5
   }
 ]}
 />

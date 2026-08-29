@@ -1,11 +1,11 @@
 ---
 title: "Requesty | Models"
-description: "Use Requesty models with Mastra. 141 models available."
+description: "Use Requesty models with Mastra. 142 models available."
 ---
 
 # [Requesty logo]Requesty
 
-Access 141 Requesty models through Mastra's model router. Authentication is handled automatically using the `REQUESTY_API_KEY` environment variable.
+Access 142 Requesty models through Mastra's model router. Authentication is handled automatically using the `REQUESTY_API_KEY` environment variable.
 
 Learn more in the [Requesty documentation](https://requesty.ai/solution/llm-routing/models).
 
@@ -686,6 +686,18 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": 0.2,
     "outputCost": 0.5
+  },
+  {
+    "model": "requesty/glm-5.3@eu",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 1.75,
+    "outputCost": 4.5
   },
   {
     "model": "requesty/gpt-4.1-mini@eu",

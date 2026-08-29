@@ -90,6 +90,10 @@ containing `first_frame` and `last_frame`.
 Build the video request with `frame_images` when the image should anchor an
 exact frame. This example uses a first frame. Put the same request shape in
 whatever server route, queue, or worker owns video generation in your app.
+Validate `duration`, `resolution`, and `aspect_ratio` against the selected
+model's supported fields from the
+[video models API](/docs/api/api-reference/video-generation/list-all-video-generation-models)
+before submitting. Unsupported values return a 400 with the supported values.
 
 ```js expandable lines theme={null}
 const apiKey = process.env.OPENROUTER_API_KEY;

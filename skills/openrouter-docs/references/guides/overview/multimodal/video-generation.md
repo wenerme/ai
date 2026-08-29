@@ -96,6 +96,7 @@ The response returns a `data` array where each model includes:
       "name": "Google: Veo 3.1",
       "description": "...",
       "created": 1719792000,
+      "supported_durations": [4, 6, 8],
       "supported_resolutions": ["720p", "1080p"],
       "supported_aspect_ratios": ["16:9", "9:16", "1:1"],
       "supported_sizes": ["1280x720", "1920x1080"],
@@ -113,6 +114,7 @@ The response returns a `data` array where each model includes:
 | -------------------------------- | --------------------------------------------------------------------------------- |
 | `id`                             | Model slug to use in generation requests                                          |
 | `canonical_slug`                 | Permanent model identifier                                                        |
+| `supported_durations`            | List of supported output durations in seconds                                     |
 | `supported_resolutions`          | List of supported output resolutions (e.g., `720p`, `1080p`)                      |
 | `supported_aspect_ratios`        | List of supported aspect ratios (e.g., `16:9`, `9:16`)                            |
 | `supported_sizes`                | List of supported pixel dimensions (e.g., `1280x720`)                             |
@@ -120,6 +122,13 @@ The response returns a `data` array where each model includes:
 | `allowed_passthrough_parameters` | Provider-specific parameters that can be passed through via the `provider` option |
 
 Use this endpoint to check which resolutions, aspect ratios, and passthrough parameters are supported by each model before submitting a generation request.
+
+<Tip>
+  Validate `duration`, `resolution`, and `aspect_ratio` against the selected
+  model's `supported_durations`, `supported_resolutions`, and
+  `supported_aspect_ratios` from [the video models API](/docs/api/api-reference/video-generation/list-all-video-generation-models).
+  Requests with unsupported values return a 400 that lists the supported values.
+</Tip>
 
 ### Via the Models API
 

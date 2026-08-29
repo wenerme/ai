@@ -1,16 +1,16 @@
 ---
-title: "Tencent TokenHub | Models"
-description: "Use Tencent TokenHub models with Mastra. 3 models available."
+title: "OpenReason | Models"
+description: "Use OpenReason models with Mastra. 3 models available."
 ---
 
-# [Tencent TokenHub logo]Tencent TokenHub
+# [OpenReason logo]OpenReason
 
-Access 3 Tencent TokenHub models through Mastra's model router. Authentication is handled automatically using the `TENCENT_TOKENHUB_API_KEY` environment variable.
+Access 3 OpenReason models through Mastra's model router. Authentication is handled automatically using the `OPENREASON_API_KEY` environment variable.
 
-Learn more in the [Tencent TokenHub documentation](https://cloud.tencent.com/document/product/1823/130050).
+Learn more in the [OpenReason documentation](https://openreason.app/docs).
 
 ```bash title=".env"
-TENCENT_TOKENHUB_API_KEY=your-api-key
+OPENREASON_API_KEY=your-api-key
 ```
 
 ```typescript title="src/mastra/agents/my-agent.ts" {7}
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "tencent-tokenhub/hy3"
+  model: "openreason/deepseek-ai/deepseek-v4-flash-0731"
 });
 
 // Generate a response
@@ -33,47 +33,47 @@ for await (const chunk of stream) {
 }
 ```
 
-> **note**: Mastra uses the OpenAI-compatible `/chat/completions` endpoint. Some provider-specific features may not be available. Check the [Tencent TokenHub documentation](https://cloud.tencent.com/document/product/1823/130050) for details.
+> **note**: Mastra uses the OpenAI-compatible `/chat/completions` endpoint. Some provider-specific features may not be available. Check the [OpenReason documentation](https://openreason.app/docs) for details.
 
 ## Models
 
 <ProviderModelsTable
   models={[
   {
-    "model": "tencent-tokenhub/hy3",
+    "model": "openreason/deepseek-ai/deepseek-v4-flash-0731",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 256000,
-    "maxOutput": 64000,
-    "inputCost": null,
-    "outputCost": null
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 0.1371,
+    "outputCost": 0.2743
   },
   {
-    "model": "tencent-tokenhub/hy3-preview",
-    "imageInput": false,
+    "model": "openreason/moonshotai/kimi-k2.7-code",
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 256000,
-    "maxOutput": 64000,
-    "inputCost": null,
-    "outputCost": null
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": 1.0022,
+    "outputCost": 4.22
   },
   {
-    "model": "tencent-tokenhub/hy4-preview",
+    "model": "openreason/openai/gpt-oss-120b",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1024000,
-    "maxOutput": 64000,
-    "inputCost": 0.834,
-    "outputCost": 2.501
+    "contextWindow": 131072,
+    "maxOutput": 32768,
+    "inputCost": 0.1055,
+    "outputCost": 0.422
   }
 ]}
 />
@@ -87,9 +87,9 @@ const agent = new Agent({
   id: "custom-agent",
   name: "custom-agent",
   model: {
-    url: "https://tokenhub.tencentmaas.com/v1",
-    id: "tencent-tokenhub/hy3",
-    apiKey: process.env.TENCENT_TOKENHUB_API_KEY,
+    url: "https://api.openreason.app/v1",
+    id: "openreason/deepseek-ai/deepseek-v4-flash-0731",
+    apiKey: process.env.OPENREASON_API_KEY,
     headers: {
       "X-Custom-Header": "value"
     }
@@ -106,8 +106,8 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "tencent-tokenhub/hy4-preview"
-      : "tencent-tokenhub/hy3";
+      ? "openreason/openai/gpt-oss-120b"
+      : "openreason/deepseek-ai/deepseek-v4-flash-0731";
   }
 });
 ```
