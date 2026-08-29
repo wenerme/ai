@@ -2380,7 +2380,7 @@ as input for the model's response.
 
         - `"incomplete"`
 
-    - `AdditionalTools object { role, tools, type, 2 more }`
+    - `AdditionalTools object { role, tools, type, id }`
 
       - `role: "developer"`
 
@@ -3227,16 +3227,6 @@ as input for the model's response.
       - `id: optional string or null`
 
         The unique ID of this additional tools item.
-
-      - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-        An explicit cache breakpoint after these tool definitions. Requires a non-empty tools list.
-
-        - `mode: "explicit"`
-
-          The breakpoint mode. Always `explicit`.
-
-          - `"explicit"`
 
     - `Reasoning object { id, summary, type, 3 more }`
 
@@ -8249,7 +8239,7 @@ as input for the model's response.
 
           - `"incomplete"`
 
-      - `AdditionalTools object { role, tools, type, 2 more }`
+      - `AdditionalTools object { role, tools, type, id }`
 
         - `role: "developer"`
 
@@ -9096,16 +9086,6 @@ as input for the model's response.
         - `id: optional string or null`
 
           The unique ID of this additional tools item.
-
-        - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-          An explicit cache breakpoint after these tool definitions. Requires a non-empty tools list.
-
-          - `mode: "explicit"`
-
-            The breakpoint mode. Always `explicit`.
-
-            - `"explicit"`
 
       - `Reasoning object { id, summary, type, 3 more }`
 
@@ -11778,7 +11758,7 @@ as input for the model's response.
 
         The identifier of the actor that created the item.
 
-    - `AdditionalTools object { id, role, tools, 2 more }`
+    - `AdditionalTools object { id, role, tools, type }`
 
       - `id: string`
 
@@ -12639,16 +12619,6 @@ as input for the model's response.
         The type of the item. Always `additional_tools`.
 
         - `"additional_tools"`
-
-      - `prompt_cache_breakpoint: optional object { mode }`
-
-        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-        - `mode: "explicit"`
-
-          The breakpoint mode. Always `explicit`.
-
-          - `"explicit"`
 
     - `Compaction object { id, encrypted_content, type, created_by }`
 

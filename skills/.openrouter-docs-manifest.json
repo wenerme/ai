@@ -1627,9 +1627,9 @@
   },
   "cookbook/video-generation/image-to-video.md": {
     "url": "https://openrouter.ai/docs/cookbook/video-generation/image-to-video.md",
-    "lastModified": "Mon, 10 Aug 2026 02:46:47 GMT",
-    "size": 8229,
-    "updatedAt": "2026-08-10T02:46:47.176Z"
+    "lastModified": "Sat, 29 Aug 2026 07:01:25 GMT",
+    "size": 8510,
+    "updatedAt": "2026-08-29T07:01:25.743Z"
   },
   "cookbook/video-generation/provider-specific-video-options.md": {
     "url": "https://openrouter.ai/docs/cookbook/video-generation/provider-specific-video-options.md",
@@ -1645,9 +1645,9 @@
   },
   "cookbook/video-generation/text-to-video.md": {
     "url": "https://openrouter.ai/docs/cookbook/video-generation/text-to-video.md",
-    "lastModified": "Mon, 10 Aug 2026 02:46:48 GMT",
-    "size": 9816,
-    "updatedAt": "2026-08-10T02:46:48.566Z"
+    "lastModified": "Sat, 29 Aug 2026 07:01:26 GMT",
+    "size": 10065,
+    "updatedAt": "2026-08-29T07:01:26.812Z"
   },
   "cookbook/video-generation/video-generation-webhooks.md": {
     "url": "https://openrouter.ai/docs/cookbook/video-generation/video-generation-webhooks.md",
@@ -2263,9 +2263,9 @@
   },
   "guides/overview/multimodal/video-generation.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/video-generation.md",
-    "lastModified": "Sun, 09 Aug 2026 02:41:23 GMT",
-    "size": 23123,
-    "updatedAt": "2026-08-09T02:41:23.193Z"
+    "lastModified": "Sat, 29 Aug 2026 07:02:07 GMT",
+    "size": 23650,
+    "updatedAt": "2026-08-29T07:02:07.356Z"
   },
   "guides/overview/multimodal/videos.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/videos.md",

@@ -39,6 +39,9 @@ For more information about rate limits, see the [Hub Rate limits](./rate-limits)
 
 This option restricts access to your organization's resources to only those coming from your defined IP ranges. No one can access your organization resources outside your IP ranges. The rules also apply to access tokens. When enabled, this option unlocks additional nested security settings below.
 
+> [!TIP]
+> For automated workflows that run outside your corporate network, you can exempt an individual [service account token](./enterprise-service-accounts#network-security-exemption) from these restrictions and from the Content Access Policy.
+
 ### Require login for users in your IP ranges
 
 When this option is enabled, anyone visiting Hugging Face from your corporate network must be logged in and belong to your organization (requires a manual verification when IP ranges have changed). If enabled, you can optionally define a content access policy.

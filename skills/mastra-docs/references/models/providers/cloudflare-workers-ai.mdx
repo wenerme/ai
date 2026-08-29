@@ -1,11 +1,11 @@
 ---
 title: "Cloudflare Workers AI | Models"
-description: "Use Cloudflare Workers AI models with Mastra. 26 models available."
+description: "Use Cloudflare Workers AI models with Mastra. 27 models available."
 ---
 
 # [Cloudflare Workers AI logo]Cloudflare Workers AI
 
-Access 26 Cloudflare Workers AI models through Mastra's model router. Authentication is handled automatically using the `CLOUDFLARE_API_KEY` environment variable. Configure `CLOUDFLARE_ACCOUNT_ID` as well.
+Access 27 Cloudflare Workers AI models through Mastra's model router. Authentication is handled automatically using the `CLOUDFLARE_API_KEY` environment variable. Configure `CLOUDFLARE_ACCOUNT_ID` as well.
 
 Learn more in the [Cloudflare Workers AI documentation](https://developers.cloudflare.com/workers-ai/models/).
 
@@ -337,6 +337,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 256000,
+    "inputCost": 1.4,
+    "outputCost": 4.4
+  },
+  {
+    "model": "cloudflare-workers-ai/@cf/zai-org/glm-5.3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1310720,
+    "maxOutput": 1310720,
     "inputCost": 1.4,
     "outputCost": 4.4
   },

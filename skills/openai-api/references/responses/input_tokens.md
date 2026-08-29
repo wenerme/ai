@@ -2323,7 +2323,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"incomplete"`
 
-    - `AdditionalTools object { role, tools, type, 2 more }`
+    - `AdditionalTools object { role, tools, type, id }`
 
       - `role: "developer"`
 
@@ -3170,16 +3170,6 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `id: optional string or null`
 
         The unique ID of this additional tools item.
-
-      - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-        An explicit cache breakpoint after these tool definitions. Requires a non-empty tools list.
-
-        - `mode: "explicit"`
-
-          The breakpoint mode. Always `explicit`.
-
-          - `"explicit"`
 
     - `Reasoning object { id, summary, type, 3 more }`
 

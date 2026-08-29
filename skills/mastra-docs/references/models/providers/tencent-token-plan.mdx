@@ -1,11 +1,11 @@
 ---
 title: "Tencent Token Plan | Models"
-description: "Use Tencent Token Plan models with Mastra. 1 model available."
+description: "Use Tencent Token Plan models with Mastra. 2 models available."
 ---
 
 # [Tencent Token Plan logo]Tencent Token Plan
 
-Access 1 Tencent Token Plan model through Mastra's model router. Authentication is handled automatically using the `TENCENT_TOKEN_PLAN_API_KEY` environment variable.
+Access 2 Tencent Token Plan models through Mastra's model router. Authentication is handled automatically using the `TENCENT_TOKEN_PLAN_API_KEY` environment variable.
 
 Learn more in the [Tencent Token Plan documentation](https://cloud.tencent.com/document/product/1823/130060).
 
@@ -50,6 +50,18 @@ for await (const chunk of stream) {
     "maxOutput": 64000,
     "inputCost": null,
     "outputCost": null
+  },
+  {
+    "model": "tencent-token-plan/hy4-preview",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1024000,
+    "maxOutput": 64000,
+    "inputCost": 0.834,
+    "outputCost": 2.501
   }
 ]}
 />
@@ -82,7 +94,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "tencent-token-plan/hy3"
+      ? "tencent-token-plan/hy4-preview"
       : "tencent-token-plan/hy3";
   }
 });

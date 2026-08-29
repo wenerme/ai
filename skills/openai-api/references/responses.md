@@ -2390,7 +2390,7 @@ the `background` parameter set to `true` can be cancelled.
 
           - `"incomplete"`
 
-      - `AdditionalTools object { role, tools, type, 2 more }`
+      - `AdditionalTools object { role, tools, type, id }`
 
         - `role: "developer"`
 
@@ -3237,16 +3237,6 @@ the `background` parameter set to `true` can be cancelled.
         - `id: optional string or null`
 
           The unique ID of this additional tools item.
-
-        - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-          An explicit cache breakpoint after these tool definitions. Requires a non-empty tools list.
-
-          - `mode: "explicit"`
-
-            The breakpoint mode. Always `explicit`.
-
-            - `"explicit"`
 
       - `Reasoning object { id, summary, type, 3 more }`
 
@@ -5919,7 +5909,7 @@ the `background` parameter set to `true` can be cancelled.
 
         The identifier of the actor that created the item.
 
-    - `AdditionalTools object { id, role, tools, 2 more }`
+    - `AdditionalTools object { id, role, tools, type }`
 
       - `id: string`
 
@@ -6780,16 +6770,6 @@ the `background` parameter set to `true` can be cancelled.
         The type of the item. Always `additional_tools`.
 
         - `"additional_tools"`
-
-      - `prompt_cache_breakpoint: optional object { mode }`
-
-        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-        - `mode: "explicit"`
-
-          The breakpoint mode. Always `explicit`.
-
-          - `"explicit"`
 
     - `Compaction object { id, encrypted_content, type, created_by }`
 
@@ -11954,7 +11934,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         - `"incomplete"`
 
-    - `AdditionalTools object { role, tools, type, 2 more }`
+    - `AdditionalTools object { role, tools, type, id }`
 
       - `role: "developer"`
 
@@ -12801,16 +12781,6 @@ Learn when and how to compact long-running conversations in the [conversation st
       - `id: optional string or null`
 
         The unique ID of this additional tools item.
-
-      - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-        An explicit cache breakpoint after these tool definitions. Requires a non-empty tools list.
-
-        - `mode: "explicit"`
-
-          The breakpoint mode. Always `explicit`.
-
-          - `"explicit"`
 
     - `Reasoning object { id, summary, type, 3 more }`
 
@@ -15514,7 +15484,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         The identifier of the actor that created the item.
 
-    - `AdditionalTools object { id, role, tools, 2 more }`
+    - `AdditionalTools object { id, role, tools, type }`
 
       - `id: string`
 
@@ -16375,16 +16345,6 @@ Learn when and how to compact long-running conversations in the [conversation st
         The type of the item. Always `additional_tools`.
 
         - `"additional_tools"`
-
-      - `prompt_cache_breakpoint: optional object { mode }`
-
-        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-        - `mode: "explicit"`
-
-          The breakpoint mode. Always `explicit`.
-
-          - `"explicit"`
 
     - `FunctionCallOutput object { output, type, id, 5 more }`
 
@@ -20451,7 +20411,7 @@ as input for the model's response.
 
         - `"incomplete"`
 
-    - `AdditionalTools object { role, tools, type, 2 more }`
+    - `AdditionalTools object { role, tools, type, id }`
 
       - `role: "developer"`
 
@@ -21298,16 +21258,6 @@ as input for the model's response.
       - `id: optional string or null`
 
         The unique ID of this additional tools item.
-
-      - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-        An explicit cache breakpoint after these tool definitions. Requires a non-empty tools list.
-
-        - `mode: "explicit"`
-
-          The breakpoint mode. Always `explicit`.
-
-          - `"explicit"`
 
     - `Reasoning object { id, summary, type, 3 more }`
 
@@ -26320,7 +26270,7 @@ as input for the model's response.
 
           - `"incomplete"`
 
-      - `AdditionalTools object { role, tools, type, 2 more }`
+      - `AdditionalTools object { role, tools, type, id }`
 
         - `role: "developer"`
 
@@ -27167,16 +27117,6 @@ as input for the model's response.
         - `id: optional string or null`
 
           The unique ID of this additional tools item.
-
-        - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-          An explicit cache breakpoint after these tool definitions. Requires a non-empty tools list.
-
-          - `mode: "explicit"`
-
-            The breakpoint mode. Always `explicit`.
-
-            - `"explicit"`
 
       - `Reasoning object { id, summary, type, 3 more }`
 
@@ -29849,7 +29789,7 @@ as input for the model's response.
 
         The identifier of the actor that created the item.
 
-    - `AdditionalTools object { id, role, tools, 2 more }`
+    - `AdditionalTools object { id, role, tools, type }`
 
       - `id: string`
 
@@ -30710,16 +30650,6 @@ as input for the model's response.
         The type of the item. Always `additional_tools`.
 
         - `"additional_tools"`
-
-      - `prompt_cache_breakpoint: optional object { mode }`
-
-        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-        - `mode: "explicit"`
-
-          The breakpoint mode. Always `explicit`.
-
-          - `"explicit"`
 
     - `Compaction object { id, encrypted_content, type, created_by }`
 
@@ -36541,7 +36471,7 @@ Retrieves a model response with the given ID.
 
           - `"incomplete"`
 
-      - `AdditionalTools object { role, tools, type, 2 more }`
+      - `AdditionalTools object { role, tools, type, id }`
 
         - `role: "developer"`
 
@@ -37388,16 +37318,6 @@ Retrieves a model response with the given ID.
         - `id: optional string or null`
 
           The unique ID of this additional tools item.
-
-        - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-          An explicit cache breakpoint after these tool definitions. Requires a non-empty tools list.
-
-          - `mode: "explicit"`
-
-            The breakpoint mode. Always `explicit`.
-
-            - `"explicit"`
 
       - `Reasoning object { id, summary, type, 3 more }`
 
@@ -40070,7 +39990,7 @@ Retrieves a model response with the given ID.
 
         The identifier of the actor that created the item.
 
-    - `AdditionalTools object { id, role, tools, 2 more }`
+    - `AdditionalTools object { id, role, tools, type }`
 
       - `id: string`
 
@@ -40931,16 +40851,6 @@ Retrieves a model response with the given ID.
         The type of the item. Always `additional_tools`.
 
         - `"additional_tools"`
-
-      - `prompt_cache_breakpoint: optional object { mode }`
-
-        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-        - `mode: "explicit"`
-
-          The breakpoint mode. Always `explicit`.
-
-          - `"explicit"`
 
     - `Compaction object { id, encrypted_content, type, created_by }`
 
@@ -45271,7 +45181,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The identifier of the actor that created the item.
 
-    - `AdditionalTools object { id, role, tools, 2 more }`
+    - `AdditionalTools object { id, role, tools, type }`
 
       - `id: string`
 
@@ -46132,16 +46042,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
         The type of the item. Always `additional_tools`.
 
         - `"additional_tools"`
-
-      - `prompt_cache_breakpoint: optional object { mode }`
-
-        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-        - `mode: "explicit"`
-
-          The breakpoint mode. Always `explicit`.
-
-          - `"explicit"`
 
     - `FunctionCallOutput object { output, type, id, 5 more }`
 
@@ -50975,7 +50875,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"incomplete"`
 
-      - `AdditionalTools object { role, tools, type, 2 more }`
+      - `AdditionalTools object { role, tools, type, id }`
 
         - `role: "developer"`
 
@@ -51822,16 +51722,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `id: optional string or null`
 
           The unique ID of this additional tools item.
-
-        - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-          An explicit cache breakpoint after these tool definitions. Requires a non-empty tools list.
-
-          - `mode: "explicit"`
-
-            The breakpoint mode. Always `explicit`.
-
-            - `"explicit"`
 
       - `Reasoning object { id, summary, type, 3 more }`
 
@@ -54504,7 +54394,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The identifier of the actor that created the item.
 
-    - `AdditionalTools object { id, role, tools, 2 more }`
+    - `AdditionalTools object { id, role, tools, type }`
 
       - `id: string`
 
@@ -55365,16 +55255,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
         The type of the item. Always `additional_tools`.
 
         - `"additional_tools"`
-
-      - `prompt_cache_breakpoint: optional object { mode }`
-
-        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-        - `mode: "explicit"`
-
-          The breakpoint mode. Always `explicit`.
-
-          - `"explicit"`
 
     - `Compaction object { id, encrypted_content, type, created_by }`
 
@@ -60361,7 +60241,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"incomplete"`
 
-        - `AdditionalTools object { role, tools, type, 2 more }`
+        - `AdditionalTools object { role, tools, type, id }`
 
           - `role: "developer"`
 
@@ -61208,16 +61088,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `id: optional string or null`
 
             The unique ID of this additional tools item.
-
-          - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-            An explicit cache breakpoint after these tool definitions. Requires a non-empty tools list.
-
-            - `mode: "explicit"`
-
-              The breakpoint mode. Always `explicit`.
-
-              - `"explicit"`
 
         - `Reasoning object { id, summary, type, 3 more }`
 
@@ -63890,7 +63760,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The identifier of the actor that created the item.
 
-      - `AdditionalTools object { id, role, tools, 2 more }`
+      - `AdditionalTools object { id, role, tools, type }`
 
         - `id: string`
 
@@ -64751,16 +64621,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
           The type of the item. Always `additional_tools`.
 
           - `"additional_tools"`
-
-        - `prompt_cache_breakpoint: optional object { mode }`
-
-          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-          - `mode: "explicit"`
-
-            The breakpoint mode. Always `explicit`.
-
-            - `"explicit"`
 
       - `Compaction object { id, encrypted_content, type, created_by }`
 
@@ -70256,7 +70116,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"incomplete"`
 
-        - `AdditionalTools object { role, tools, type, 2 more }`
+        - `AdditionalTools object { role, tools, type, id }`
 
           - `role: "developer"`
 
@@ -71103,16 +70963,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `id: optional string or null`
 
             The unique ID of this additional tools item.
-
-          - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-            An explicit cache breakpoint after these tool definitions. Requires a non-empty tools list.
-
-            - `mode: "explicit"`
-
-              The breakpoint mode. Always `explicit`.
-
-              - `"explicit"`
 
         - `Reasoning object { id, summary, type, 3 more }`
 
@@ -73785,7 +73635,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The identifier of the actor that created the item.
 
-      - `AdditionalTools object { id, role, tools, 2 more }`
+      - `AdditionalTools object { id, role, tools, type }`
 
         - `id: string`
 
@@ -74646,16 +74496,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
           The type of the item. Always `additional_tools`.
 
           - `"additional_tools"`
-
-        - `prompt_cache_breakpoint: optional object { mode }`
-
-          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-          - `mode: "explicit"`
-
-            The breakpoint mode. Always `explicit`.
-
-            - `"explicit"`
 
       - `Compaction object { id, encrypted_content, type, created_by }`
 
@@ -79590,7 +79430,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"incomplete"`
 
-        - `AdditionalTools object { role, tools, type, 2 more }`
+        - `AdditionalTools object { role, tools, type, id }`
 
           - `role: "developer"`
 
@@ -80437,16 +80277,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `id: optional string or null`
 
             The unique ID of this additional tools item.
-
-          - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-            An explicit cache breakpoint after these tool definitions. Requires a non-empty tools list.
-
-            - `mode: "explicit"`
-
-              The breakpoint mode. Always `explicit`.
-
-              - `"explicit"`
 
         - `Reasoning object { id, summary, type, 3 more }`
 
@@ -83119,7 +82949,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The identifier of the actor that created the item.
 
-      - `AdditionalTools object { id, role, tools, 2 more }`
+      - `AdditionalTools object { id, role, tools, type }`
 
         - `id: string`
 
@@ -83980,16 +83810,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
           The type of the item. Always `additional_tools`.
 
           - `"additional_tools"`
-
-        - `prompt_cache_breakpoint: optional object { mode }`
-
-          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-          - `mode: "explicit"`
-
-            The breakpoint mode. Always `explicit`.
-
-            - `"explicit"`
 
       - `Compaction object { id, encrypted_content, type, created_by }`
 
@@ -89189,7 +89009,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"incomplete"`
 
-        - `AdditionalTools object { role, tools, type, 2 more }`
+        - `AdditionalTools object { role, tools, type, id }`
 
           - `role: "developer"`
 
@@ -90036,16 +89856,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `id: optional string or null`
 
             The unique ID of this additional tools item.
-
-          - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-            An explicit cache breakpoint after these tool definitions. Requires a non-empty tools list.
-
-            - `mode: "explicit"`
-
-              The breakpoint mode. Always `explicit`.
-
-              - `"explicit"`
 
         - `Reasoning object { id, summary, type, 3 more }`
 
@@ -92718,7 +92528,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The identifier of the actor that created the item.
 
-      - `AdditionalTools object { id, role, tools, 2 more }`
+      - `AdditionalTools object { id, role, tools, type }`
 
         - `id: string`
 
@@ -93579,16 +93389,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
           The type of the item. Always `additional_tools`.
 
           - `"additional_tools"`
-
-        - `prompt_cache_breakpoint: optional object { mode }`
-
-          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-          - `mode: "explicit"`
-
-            The breakpoint mode. Always `explicit`.
-
-            - `"explicit"`
 
       - `Compaction object { id, encrypted_content, type, created_by }`
 
@@ -98416,7 +98216,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"incomplete"`
 
-        - `AdditionalTools object { role, tools, type, 2 more }`
+        - `AdditionalTools object { role, tools, type, id }`
 
           - `role: "developer"`
 
@@ -99263,16 +99063,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `id: optional string or null`
 
             The unique ID of this additional tools item.
-
-          - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-            An explicit cache breakpoint after these tool definitions. Requires a non-empty tools list.
-
-            - `mode: "explicit"`
-
-              The breakpoint mode. Always `explicit`.
-
-              - `"explicit"`
 
         - `Reasoning object { id, summary, type, 3 more }`
 
@@ -101945,7 +101735,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The identifier of the actor that created the item.
 
-      - `AdditionalTools object { id, role, tools, 2 more }`
+      - `AdditionalTools object { id, role, tools, type }`
 
         - `id: string`
 
@@ -102806,16 +102596,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
           The type of the item. Always `additional_tools`.
 
           - `"additional_tools"`
-
-        - `prompt_cache_breakpoint: optional object { mode }`
-
-          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-          - `mode: "explicit"`
-
-            The breakpoint mode. Always `explicit`.
-
-            - `"explicit"`
 
       - `Compaction object { id, encrypted_content, type, created_by }`
 
@@ -108339,7 +108119,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       The identifier of the actor that created the item.
 
-  - `AdditionalTools object { id, role, tools, 2 more }`
+  - `AdditionalTools object { id, role, tools, type }`
 
     - `id: string`
 
@@ -109200,16 +108980,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
       The type of the item. Always `additional_tools`.
 
       - `"additional_tools"`
-
-    - `prompt_cache_breakpoint: optional object { mode }`
-
-      Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-      - `mode: "explicit"`
-
-        The breakpoint mode. Always `explicit`.
-
-        - `"explicit"`
 
   - `Compaction object { id, encrypted_content, type, created_by }`
 
@@ -112317,7 +112087,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The identifier of the actor that created the item.
 
-    - `AdditionalTools object { id, role, tools, 2 more }`
+    - `AdditionalTools object { id, role, tools, type }`
 
       - `id: string`
 
@@ -113178,16 +112948,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
         The type of the item. Always `additional_tools`.
 
         - `"additional_tools"`
-
-      - `prompt_cache_breakpoint: optional object { mode }`
-
-        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-        - `mode: "explicit"`
-
-          The breakpoint mode. Always `explicit`.
-
-          - `"explicit"`
 
     - `Compaction object { id, encrypted_content, type, created_by }`
 
@@ -116306,7 +116066,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The identifier of the actor that created the item.
 
-    - `AdditionalTools object { id, role, tools, 2 more }`
+    - `AdditionalTools object { id, role, tools, type }`
 
       - `id: string`
 
@@ -117167,16 +116927,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
         The type of the item. Always `additional_tools`.
 
         - `"additional_tools"`
-
-      - `prompt_cache_breakpoint: optional object { mode }`
-
-        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-        - `mode: "explicit"`
-
-          The breakpoint mode. Always `explicit`.
-
-          - `"explicit"`
 
     - `Compaction object { id, encrypted_content, type, created_by }`
 
@@ -121042,7 +120792,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"incomplete"`
 
-        - `AdditionalTools object { role, tools, type, 2 more }`
+        - `AdditionalTools object { role, tools, type, id }`
 
           - `role: "developer"`
 
@@ -121889,16 +121639,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `id: optional string or null`
 
             The unique ID of this additional tools item.
-
-          - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-            An explicit cache breakpoint after these tool definitions. Requires a non-empty tools list.
-
-            - `mode: "explicit"`
-
-              The breakpoint mode. Always `explicit`.
-
-              - `"explicit"`
 
         - `Reasoning object { id, summary, type, 3 more }`
 
@@ -124571,7 +124311,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The identifier of the actor that created the item.
 
-      - `AdditionalTools object { id, role, tools, 2 more }`
+      - `AdditionalTools object { id, role, tools, type }`
 
         - `id: string`
 
@@ -125432,16 +125172,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
           The type of the item. Always `additional_tools`.
 
           - `"additional_tools"`
-
-        - `prompt_cache_breakpoint: optional object { mode }`
-
-          Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-          - `mode: "explicit"`
-
-            The breakpoint mode. Always `explicit`.
-
-            - `"explicit"`
 
       - `Compaction object { id, encrypted_content, type, created_by }`
 
@@ -130926,7 +130656,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"incomplete"`
 
-          - `AdditionalTools object { role, tools, type, 2 more }`
+          - `AdditionalTools object { role, tools, type, id }`
 
             - `role: "developer"`
 
@@ -131773,16 +131503,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `id: optional string or null`
 
               The unique ID of this additional tools item.
-
-            - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-              An explicit cache breakpoint after these tool definitions. Requires a non-empty tools list.
-
-              - `mode: "explicit"`
-
-                The breakpoint mode. Always `explicit`.
-
-                - `"explicit"`
 
           - `Reasoning object { id, summary, type, 3 more }`
 
@@ -134455,7 +134175,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The identifier of the actor that created the item.
 
-        - `AdditionalTools object { id, role, tools, 2 more }`
+        - `AdditionalTools object { id, role, tools, type }`
 
           - `id: string`
 
@@ -135316,16 +135036,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
             The type of the item. Always `additional_tools`.
 
             - `"additional_tools"`
-
-          - `prompt_cache_breakpoint: optional object { mode }`
-
-            Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-            - `mode: "explicit"`
-
-              The breakpoint mode. Always `explicit`.
-
-              - `"explicit"`
 
         - `Compaction object { id, encrypted_content, type, created_by }`
 
@@ -138304,7 +138014,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `ToolSearchOutput object { id, call_id, execution, 4 more }`
 
-      - `AdditionalTools object { id, role, tools, 2 more }`
+      - `AdditionalTools object { id, role, tools, type }`
 
       - `Compaction object { id, encrypted_content, type, created_by }`
 
@@ -142039,7 +141749,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"incomplete"`
 
-      - `AdditionalTools object { role, tools, type, 2 more }`
+      - `AdditionalTools object { role, tools, type, id }`
 
         - `role: "developer"`
 
@@ -142886,16 +142596,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `id: optional string or null`
 
           The unique ID of this additional tools item.
-
-        - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-          An explicit cache breakpoint after these tool definitions. Requires a non-empty tools list.
-
-          - `mode: "explicit"`
-
-            The breakpoint mode. Always `explicit`.
-
-            - `"explicit"`
 
       - `Reasoning object { id, summary, type, 3 more }`
 
@@ -148609,7 +148309,7 @@ Returns a list of input items for a given response.
 
         The identifier of the actor that created the item.
 
-    - `AdditionalTools object { id, role, tools, 2 more }`
+    - `AdditionalTools object { id, role, tools, type }`
 
       - `id: string`
 
@@ -149470,16 +149170,6 @@ Returns a list of input items for a given response.
         The type of the item. Always `additional_tools`.
 
         - `"additional_tools"`
-
-      - `prompt_cache_breakpoint: optional object { mode }`
-
-        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-        - `mode: "explicit"`
-
-          The breakpoint mode. Always `explicit`.
-
-          - `"explicit"`
 
     - `Reasoning object { id, summary, type, 3 more }`
 
@@ -152735,7 +152425,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         The identifier of the actor that created the item.
 
-    - `AdditionalTools object { id, role, tools, 2 more }`
+    - `AdditionalTools object { id, role, tools, type }`
 
       - `id: string`
 
@@ -153596,16 +153286,6 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
         The type of the item. Always `additional_tools`.
 
         - `"additional_tools"`
-
-      - `prompt_cache_breakpoint: optional object { mode }`
-
-        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-        - `mode: "explicit"`
-
-          The breakpoint mode. Always `explicit`.
-
-          - `"explicit"`
 
     - `Reasoning object { id, summary, type, 3 more }`
 
@@ -156945,7 +156625,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"incomplete"`
 
-    - `AdditionalTools object { role, tools, type, 2 more }`
+    - `AdditionalTools object { role, tools, type, id }`
 
       - `role: "developer"`
 
@@ -157792,16 +157472,6 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `id: optional string or null`
 
         The unique ID of this additional tools item.
-
-      - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-        An explicit cache breakpoint after these tool definitions. Requires a non-empty tools list.
-
-        - `mode: "explicit"`
-
-          The breakpoint mode. Always `explicit`.
-
-          - `"explicit"`
 
     - `Reasoning object { id, summary, type, 3 more }`
 

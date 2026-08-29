@@ -582,9 +582,73 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
     - `"event"`
 
+### Safety Alert Created Webhook Event
+
+- `SafetyAlertCreatedWebhookEvent object { id, created_at, data, 2 more }`
+
+  Sent when an approved safety alert is available for an API project.
+
+  - `id: string`
+
+    The unique ID of the webhook event.
+
+  - `created_at: number`
+
+    The Unix timestamp in seconds when the event was created.
+
+  - `data: object { id }`
+
+    - `id: string`
+
+      The safety alert ID to pass to `GET /v1/safety/alerts/{id}`.
+
+  - `object: "event"`
+
+    Always `event`.
+
+    - `"event"`
+
+  - `type: "safety.alert.created"`
+
+    Always `safety.alert.created`.
+
+    - `"safety.alert.created"`
+
+### Safety Org Alert Created Webhook Event
+
+- `SafetyOrgAlertCreatedWebhookEvent object { id, created_at, data, 2 more }`
+
+  Sent when an approved safety alert is available for an enterprise workspace.
+
+  - `id: string`
+
+    The unique ID of the webhook event.
+
+  - `created_at: number`
+
+    The Unix timestamp in seconds when the event was created.
+
+  - `data: object { id }`
+
+    - `id: string`
+
+      The safety alert ID to pass to `GET /v1/safety/alerts/{id}`.
+
+  - `object: "event"`
+
+    Always `event`.
+
+    - `"event"`
+
+  - `type: "safety.org_alert.created"`
+
+    Always `safety.org_alert.created`.
+
+    - `"safety.org_alert.created"`
+
 ### Unwrap Webhook Event
 
-- `UnwrapWebhookEvent = BatchCancelledWebhookEvent or BatchCompletedWebhookEvent or BatchExpiredWebhookEvent or 13 more`
+- `UnwrapWebhookEvent = BatchCancelledWebhookEvent or BatchCompletedWebhookEvent or BatchExpiredWebhookEvent or 15 more`
 
   Sent when a batch API request has been cancelled.
 
@@ -1129,3 +1193,63 @@ Validates that the given payload was sent by OpenAI and parses the payload.
       The object of the event. Always `event`.
 
       - `"event"`
+
+  - `SafetyAlertCreatedWebhookEvent object { id, created_at, data, 2 more }`
+
+    Sent when an approved safety alert is available for an API project.
+
+    - `id: string`
+
+      The unique ID of the webhook event.
+
+    - `created_at: number`
+
+      The Unix timestamp in seconds when the event was created.
+
+    - `data: object { id }`
+
+      - `id: string`
+
+        The safety alert ID to pass to `GET /v1/safety/alerts/{id}`.
+
+    - `object: "event"`
+
+      Always `event`.
+
+      - `"event"`
+
+    - `type: "safety.alert.created"`
+
+      Always `safety.alert.created`.
+
+      - `"safety.alert.created"`
+
+  - `SafetyOrgAlertCreatedWebhookEvent object { id, created_at, data, 2 more }`
+
+    Sent when an approved safety alert is available for an enterprise workspace.
+
+    - `id: string`
+
+      The unique ID of the webhook event.
+
+    - `created_at: number`
+
+      The Unix timestamp in seconds when the event was created.
+
+    - `data: object { id }`
+
+      - `id: string`
+
+        The safety alert ID to pass to `GET /v1/safety/alerts/{id}`.
+
+    - `object: "event"`
+
+      Always `event`.
+
+      - `"event"`
+
+    - `type: "safety.org_alert.created"`
+
+      Always `safety.org_alert.created`.
+
+      - `"safety.org_alert.created"`

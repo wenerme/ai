@@ -81,6 +81,9 @@ Model metadata output:
 Add a server-side submit step that sends `POST /api/v1/videos` with the chosen
 model, prompt, duration, resolution, and aspect ratio. Store the returned job
 object because the next step needs its `id`, `status`, and `polling_url`.
+Validate those values against the selected model's supported fields from the
+[video models API](/docs/api/api-reference/video-generation/list-all-video-generation-models)
+before submitting. Unsupported values return a 400 with the supported values.
 
 Adapt this submit shape in the server route, queue, or worker that owns video
 generation:
