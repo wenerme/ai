@@ -73,7 +73,7 @@ In particular:
 * Requests are always upgraded to HTTPS.
 * Because of the browser's CORS policy, any request for data must target a site that allows (using CORS headers) the site hosting the DuckDB-Wasm instance to access that data.
 
-The [MDN website](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) is a great resource for more information regarding CORS. If a query over a remote file fails with a network error, see [Troubleshoot](https://duckdb.org/docs/current/clients/wasm/known_issues.html#network-error-when-querying-remote-files).
+The [MDN website](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) is a great resource for more information regarding CORS. If a query over a remote file fails with a network error, see [Troubleshoot](https://duckdb.org/docs/current/clients/wasm/troubleshoot.html#network-error-when-querying-remote-files).
 
 ## Extension Signing
 
@@ -96,7 +96,7 @@ DuckDB-Wasm extensions are served pre-compressed using Brotli compression. While
 
 As with regular DuckDB, if you use `SET custom_extension_repository = 'https://some.url.com'`, subsequent loads will be attempted at `https://some.url.com/duckdb-wasm/$duckdb_version_hash/$duckdb_platform/$name.duckdb_extension.wasm`.
 
-Note that `GET` requests for the extensions must be [CORS enabled](https://www.w3.org/wiki/CORS_Enabled) for a browser to allow the connection; see [Troubleshoot](https://duckdb.org/docs/current/clients/wasm/known_issues.html#extension-fails-to-load-from-a-custom-repository) if a load fails.
+Note that `GET` requests for the extensions must be [CORS enabled](https://www.w3.org/wiki/CORS_Enabled) for a browser to allow the connection; see [Troubleshoot](https://duckdb.org/docs/current/clients/wasm/troubleshoot.html#extension-fails-to-load-from-a-custom-repository) if a load fails.
 
 ## Tooling
 
@@ -108,4 +108,4 @@ Both DuckDB-Wasm and its extensions have been compiled using the latest packaged
 * [Core Extensions](https://duckdb.org/docs/current/core_extensions/overview.html) — the core extensions available across all DuckDB clients.
 * [Community Extensions](https://duckdb.org/docs/current/extensions/community_extensions.html) — third-party extensions installable with `INSTALL … FROM community`.
 * [Import Data](https://duckdb.org/docs/current/clients/wasm/data_ingestion.html) — using the Parquet, JSON, and Wasm-flavored httpfs extensions to read files.
-* [Troubleshoot](https://duckdb.org/docs/current/clients/wasm/known_issues.html) — CORS errors when loading extensions from a custom repository.
+* [Troubleshoot](https://duckdb.org/docs/current/clients/wasm/troubleshoot.html) — CORS errors when loading extensions from a custom repository.

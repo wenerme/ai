@@ -96,4 +96,4 @@ For more background on why these headers are required and how they unlock `Share
 * [Load Extensions](https://duckdb.org/docs/current/clients/wasm/extensions.html) — how extensions are fetched, signed, and served from a custom repository.
 * [Extension Distribution](https://duckdb.org/docs/current/extensions/extension_distribution.html) — general information about extension repositories and creating a custom one.
 * [DuckDB Wasm Client](https://duckdb.org/docs/current/clients/wasm/overview.html) — the layered API and example deployments this page builds on.
-* [Troubleshoot](https://duckdb.org/docs/current/clients/wasm/known_issues.html) — cross-origin isolation for threading and other deployment-related issues.
+* [Troubleshoot](https://duckdb.org/docs/current/clients/wasm/troubleshoot.html) — cross-origin isolation for threading and other deployment-related issues.

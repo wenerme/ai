@@ -100,4 +100,4 @@ await conn.close();
 * [Load Extensions](https://duckdb.org/docs/current/clients/wasm/extensions.html) — the Parquet extension used by the export example and other query-time extensions.
 * [Prepared Statements](https://duckdb.org/docs/current/sql/query_syntax/prepared_statements.html) — DuckDB's SQL-level support for the parameterized queries shown here.
 * [Instantiate](https://duckdb.org/docs/current/clients/wasm/instantiation.html) — creating the `db` that connections are opened on.
-* [Troubleshoot](https://duckdb.org/docs/current/clients/wasm/known_issues.html) — streaming results with `send()` to stay within the memory limit.
+* [Troubleshoot](https://duckdb.org/docs/current/clients/wasm/troubleshoot.html) — streaming results with `send()` to stay within the memory limit.
