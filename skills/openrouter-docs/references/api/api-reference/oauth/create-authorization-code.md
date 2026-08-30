@@ -142,7 +142,10 @@ paths:
                   example: S256
                   type: string
                 expires_at:
-                  description: Optional expiration time for the API key to be created
+                  description: >-
+                    Optional ISO 8601 UTC expiration timestamp. Must include
+                    seconds (YYYY-MM-DDTHH:MM:SSZ; fractional seconds allowed);
+                    minute-precision timestamps are rejected.
                   example: '2027-12-31T23:59:59Z'
                   format: date-time
                   type:
