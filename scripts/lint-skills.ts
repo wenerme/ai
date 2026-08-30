@@ -68,7 +68,13 @@ for (const dir of dirs) {
     }
   }
 
-  // --- description checks ---
+  // --- invocation and description checks ---
+  const hasDisableModelInvocation = Object.prototype.hasOwnProperty.call(meta, "disable-model-invocation");
+  const userInvoked = meta["disable-model-invocation"] === true;
+  if (hasDisableModelInvocation && typeof meta["disable-model-invocation"] !== "boolean") {
+    addIssue(dir, "error", "'disable-model-invocation' must be a boolean");
+  }
+
   const desc: string = meta.description || "";
   if (!desc) {
     addIssue(dir, "error", "Missing 'description' field");
@@ -94,35 +100,46 @@ for (const dir of dirs) {
     }
   }
 
-  // --- description best practices ---
+  // --- invocation-specific description best practices ---
   if (desc) {
     const descLower = desc.toLowerCase();
-    // Check for "Trigger keywords" — info for reference skills, may be intentional
-    if (/trigger keywords?[:\s]/i.test(desc) || /triggers? (?:on|include)[:\s]/i.test(desc)) {
-      addIssue(dir, "info", "description contains trigger keywords — acceptable for reference skills, avoid for pattern/discipline skills");
-    }
-    // Description should describe when to use, not what it does
-    if (descLower.startsWith("use this skill") || descLower.startsWith("use when")) {
-      // good
-    } else if (!descLower.includes("use when") && !descLower.includes("use this")) {
-      addIssue(dir, "warn", "description should start with 'Use when...' (triggering conditions only)");
-    }
-    // Check for workflow summaries in description
-    if (/provides? (?:strict )?sops? for/i.test(desc) || /this (?:pattern|skill) enforces/i.test(desc)) {
-      addIssue(dir, "warn", "description may summarize workflow — should only describe when to use, not what it does");
-    }
-    if (desc.length > 500) {
-      addIssue(dir, "warn", `description is ${desc.length} chars (recommended < 500)`);
+    if (userInvoked) {
+      if (descLower.startsWith("use when") || descLower.startsWith("use this skill")) {
+        addIssue(dir, "warn", "user-invoked description should be a human-facing command summary, not a model trigger");
+      }
+      if (/trigger keywords?[:\s]/i.test(desc) || /triggers? (?:on|include)[:\s]/i.test(desc)) {
+        addIssue(dir, "warn", "user-invoked description contains model trigger keywords that cannot improve auto-invocation");
+      }
+      if (desc.length > 200) {
+        addIssue(dir, "warn", `user-invoked description is ${desc.length} chars (recommended < 200 for command discovery)`);
+      }
+    } else {
+      // Check for "Trigger keywords" — info for reference skills, may be intentional
+      if (/trigger keywords?[:\s]/i.test(desc) || /triggers? (?:on|include)[:\s]/i.test(desc)) {
+        addIssue(dir, "info", "description contains trigger keywords — acceptable for reference skills, avoid synonym duplication");
+      }
+      if (!descLower.startsWith("use this skill") && !descLower.startsWith("use when")) {
+        addIssue(dir, "warn", "model-invoked description should start with 'Use when...' (triggering conditions only)");
+      }
+      // Check for workflow summaries in model-visible descriptions
+      if (/provides? (?:strict )?sops? for/i.test(desc) || /this (?:pattern|skill) enforces/i.test(desc)) {
+        addIssue(dir, "warn", "model-invoked description may summarize workflow — describe triggering branches instead");
+      }
+      if (desc.length > 500) {
+        addIssue(dir, "warn", `model-invoked description is ${desc.length} chars (recommended < 500)`);
+      }
     }
   }
 
-  // --- metadata (always in context) checks ---
-  const metadataText = `${name} ${desc}`;
-  const metadataTokens = Math.round(metadataText.length / 4);
-  if (metadataTokens > 200) {
-    addIssue(dir, "warn", `metadata ~${metadataTokens} tokens (recommended < 200 — loaded in every conversation)`);
-  } else if (metadataTokens > 150) {
-    addIssue(dir, "info", `metadata ~${metadataTokens} tokens (ideal < 150 — loaded in every conversation)`);
+  // --- model-visible metadata checks ---
+  if (!userInvoked) {
+    const metadataText = `${name} ${desc}`;
+    const metadataTokens = Math.round(metadataText.length / 4);
+    if (metadataTokens > 200) {
+      addIssue(dir, "warn", `metadata ~${metadataTokens} tokens (recommended < 200 — loaded in every conversation)`);
+    } else if (metadataTokens > 150) {
+      addIssue(dir, "info", `metadata ~${metadataTokens} tokens (ideal < 150 — loaded in every conversation)`);
+    }
   }
 
   // --- body checks ---

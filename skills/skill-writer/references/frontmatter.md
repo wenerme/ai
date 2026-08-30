@@ -4,10 +4,20 @@ Based on the [Agent Skills Specification](https://github.com/agentskills/agentsk
 
 ## Required Fields
 
+Every skill needs `name` and `description`. Invocation determines description semantics:
+
 ```yaml
+# Model-invoked: visible to the model
 ---
 name: skill-name-in-kebab-case
 description: Use when [specific triggering conditions and symptoms]
+---
+
+# User-invoked: visible only through an explicit skill command
+---
+name: command-name
+description: Concise human-facing command summary.
+disable-model-invocation: true
 ---
 ```
 
@@ -38,10 +48,9 @@ name: my--skill            # consecutive hyphens
 
 - Max 1024 characters (recommended <500)
 - Single line — no newlines (use `just fix-skills` to auto-flatten)
-- Start with "Use when..." — describe triggering conditions
-- English-first for reliable LLM matching
-- No XML tags (`<` `>`) — frontmatter appears in system prompt
-- Third person voice
+- No XML tags (`<` `>`)
+- Model-invoked: start with `Use when...`, English-first, and describe distinct trigger branches
+- User-invoked: concise human-facing summary for autocomplete; trigger phrasing is optional
 
 ```yaml
 # Good — specific triggers
@@ -65,6 +74,10 @@ See [description-rules.md](description-rules.md) for the full rationale and CSO 
 name: skill-name
 description: Use when [...]
 
+# Hide from model discovery; user must invoke explicitly
+# Supported by Pi; verify support in other target harnesses.
+disable-model-invocation: true
+
 # Pre-approved tool calls (experimental)
 allowed-tools: Bash(git:*) Read mcp__server-name
 
@@ -79,6 +92,17 @@ metadata:
   author: Your Name
   version: 1.0.0
 ```
+
+### disable-model-invocation
+
+Use `true` for human-only orchestration commands. This removes the skill from Pi's model-visible skill metadata while retaining `/skill:<name>` invocation.
+
+Tradeoff:
+
+- `false`/omitted: pays context load, gains autonomous model discovery and cross-skill reach.
+- `true`: pays human cognitive load, gains explicit control and zero model metadata load.
+
+If user-invoked commands become hard to remember, add a user-invoked router instead of exposing all commands to the model.
 
 ### allowed-tools (experimental)
 

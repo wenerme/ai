@@ -7,5 +7,7 @@
   { "repo": "obra/superpowers", "path": "skills/writing-skills", "name": "writing-skills" },
   { "repo": "mastra-ai/skills", "path": "skills/mastra", "name": "mastra" },
   { "repo": "shadcn-ui/ui", "path": "skills/shadcn", "name": "shadcn" },
-  { "repo": "nextlevelbuilder/ui-ux-pro-max-skill", "path": ".claude/skills/ui-ux-pro-max", "name": "ui-ux-pro-max" }
+  { "repo": "nextlevelbuilder/ui-ux-pro-max-skill", "path": ".claude/skills/ui-ux-pro-max", "name": "ui-ux-pro-max" },
+  { "repo": "blader/humanizer", "path": "SKILL.md", "name": "humanizer", "sourceType": "file" },
+  { "repo": "hugohe3/ppt-master", "path": "skills/ppt-master", "name": "ppt-master" }
 ]

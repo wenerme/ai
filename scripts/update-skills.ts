@@ -1,5 +1,5 @@
 import { $ } from "bun";
-import { existsSync, mkdirSync } from "node:fs";
+import { existsSync, mkdirSync, rmSync } from "node:fs";
 import { dirname, join } from "node:path";
 
 const projectDir = join(import.meta.dirname, "..");
@@ -11,12 +11,23 @@ interface SkillEntry {
   repo: string;
   path: string;
   name: string;
+  sourceType?: "directory" | "file";
 }
 
 const skills: SkillEntry[] = await Bun.file(skillsJson).json();
+const requestedNames = process.argv.slice(2);
+const requestedSkills = requestedNames.length === 0
+  ? skills
+  : skills.filter((skill) => requestedNames.includes(skill.name));
+const foundNames = new Set(requestedSkills.map((skill) => skill.name));
+const unknownNames = requestedNames.filter((name) => !foundNames.has(name));
+
+if (unknownNames.length > 0) {
+  throw new Error(`Unknown skill name(s): ${unknownNames.join(", ")}`);
+}
 
 // Collect unique repos
-const repos = [...new Set(skills.map((s) => s.repo))];
+const repos = [...new Set(requestedSkills.map((s) => s.repo))];
 
 async function retry<T>(fn: () => Promise<T>, retries = 3): Promise<T> {
   for (let i = 1; i <= retries; i++) {
@@ -44,7 +55,7 @@ for (const repo of repos) {
 }
 
 // Sync each skill
-for (const { repo, path, name } of skills) {
+for (const { repo, path, name, sourceType = "directory" } of requestedSkills) {
   const src = join(gitsPath, repo, path);
   const dst = join(skillsDir, name);
 
@@ -54,8 +65,14 @@ for (const { repo, path, name } of skills) {
   }
 
   console.log(`    Syncing ${name} ...`);
-  mkdirSync(dst, { recursive: true });
-  await $`rsync -aL --delete ${src}/ ${dst}/`;
+  if (sourceType === "file") {
+    rmSync(dst, { recursive: true, force: true });
+    mkdirSync(dst, { recursive: true });
+    await Bun.write(join(dst, "SKILL.md"), Bun.file(src));
+  } else {
+    mkdirSync(dst, { recursive: true });
+    await $`rsync -aL --delete ${src}/ ${dst}/`;
+  }
 
   // Fix name field in SKILL.md to match the local directory name
   const skillMd = join(dst, "SKILL.md");

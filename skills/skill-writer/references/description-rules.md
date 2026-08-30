@@ -4,7 +4,10 @@ The description field is the single most important piece of a skill. It determin
 
 ## The Golden Rule
 
-**Description = WHEN to use. NEVER WHAT it does.**
+First choose invocation:
+
+- **Model-invoked:** description = WHEN to load, never the workflow.
+- **User-invoked:** description = a concise human-facing command summary, with `disable-model-invocation: true`.
 
 ```yaml
 # ✅ GOOD — triggering conditions only
@@ -24,14 +27,16 @@ When changed to just triggering conditions, Claude correctly read and followed t
 
 ## Format Rules
 
-| Rule | Detail |
-|------|--------|
-| Start with "Use when..." | Focus on triggering conditions |
-| Single line | No newlines (YAML multiline causes issues) |
-| English-first | Reliable LLM matching across languages |
-| <500 chars recommended | <1024 hard limit |
-| Third person | Injected into system prompt context |
-| No XML tags | `<` `>` break system prompt parsing |
+| Rule | Model-invoked | User-invoked |
+|------|---------------|--------------|
+| Purpose | Trigger autonomous loading | Help humans choose a slash command |
+| Opening | Start with `Use when...` | Plain one-line summary |
+| Language | English-first for matching | Language useful to the human audience |
+| Length | <500 chars recommended | Prefer one short sentence |
+| Workflow summary | Never | Brief job is acceptable; runbook is not |
+| Visibility | Always-loaded model metadata | Hidden with `disable-model-invocation: true` |
+
+Both modes require a single line, <1024 chars, and no XML tags.
 
 ## Trigger Keywords
 
@@ -88,9 +93,11 @@ description: Use when fixing Biome linter errors, TypeScript/tsgo type-check err
 description: Use when implementing event-driven communication between React components using Emittery, including event types, sidecar components, or subscription hooks
 ```
 
-## Keyword Coverage
+## Branch Coverage
 
-Use words Claude would search for when encountering a problem:
+For model-invoked skills, use one trigger phrase per genuinely distinct branch. Synonyms that rename one branch are duplication and add context load.
+
+Use words the model would search for when encountering a problem:
 
 - **Error messages:** "Hook timed out", "persistAndFlush is not a function"
 - **Symptoms:** "layout broken", "auth error", "perpetual diff"
@@ -131,13 +138,18 @@ Agent: "I'll first check the diff to see what changes will be applied..."
 argocd app diff <APP> && argocd app sync <APP>
 ```
 
-## Testing Triggers
+## Testing Invocation
 
-After creating a skill, verify:
+Model-invoked:
 
-1. **Positive test:** Ask Claude a question that SHOULD trigger the skill. Does it load?
-2. **Negative test:** Ask something unrelated. Does it stay unloaded?
-3. **Edge case:** Ask something adjacent but not quite matching. Correct behavior?
+1. Positive: a matching task loads the skill.
+2. Negative: an unrelated task stays unloaded.
+3. Adjacent: a confusable sibling task routes correctly.
 
-If the skill triggers too broadly, make the description more specific.
-If it never triggers, add more symptom keywords.
+User-invoked:
+
+1. The slash command is discoverable and has a useful autocomplete summary.
+2. The skill is absent from model-visible metadata before explicit invocation.
+3. A realistic invocation follows the full body rather than only the description.
+
+If a model skill triggers too broadly, narrow branches. If it never triggers, strengthen the leading words or missing symptom branch.

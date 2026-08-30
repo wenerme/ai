@@ -99,6 +99,7 @@ glab api --method POST projects/:id/issues --field title="Bug"
 | `404 Project Not Found` | Check repo name + access permissions |
 | `not a git repository` | `cd` to repo or use `-R owner/repo` |
 | `source branch already has MR` | `glab mr list` to find existing |
+| Multiple config files found and the first config lacks the self-hosted token | Retry with `GLAB_CONFIG_DIR='<authenticated-config-dir>' GITLAB_HOST=<host> glab auth status`; do not read or print token files just to diagnose config precedence. |
 | Direct local `glab` returns `EOF`/timeout for self-hosted GitLab but another trusted host can reach it | Do not conclude MR is impossible. Push using SSH ProxyCommand through the reachable host when appropriate, or run GitLab REST API/glab from that host. Still verify MR URL, pipeline, mergeability, and discussions before marking complete. |
 
 ## References

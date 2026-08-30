@@ -5,6 +5,7 @@ local/
 .agents/
 .idea
 .mcp.json
+/.claude/settings.local.json
 # Logs
 logs
 !skills/**/references/logs/

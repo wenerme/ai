@@ -8,7 +8,7 @@ A curated collection of AI Agent Skills — personal patterns and community skil
   - `SKILL.md` — Skill definition (YAML frontmatter + instructions)
   - `references/` — Detailed docs loaded on demand
   - `scripts/`, `assets/` — Optional supporting files
-- `skills/skills.json` — Tracks external skill sources (repo, path, name)
+- `skills/skills.json` — Tracks external skill sources (repo, path, name; root files use `sourceType: file`)
 - `scripts/update-skills.ts` — Pull external repos and sync skills
 - `scripts/update-readme.ts` — Generate skills table in README.md
 - `scripts/lint-skills.ts` — Validate skills against best practices
@@ -18,7 +18,7 @@ A curated collection of AI Agent Skills — personal patterns and community skil
 **Always use `just` to execute scripts.**
 
 ```bash
-just update-skills   # git pull external repos + rsync skills
+just update-skills [name...] # git pull external repos + rsync all or named skills
 just update-readme   # regenerate README.md skills table
 just lint-skills     # validate skills (errors, warnings, info)
 just fix-skills      # auto-fix (e.g. flatten multiline descriptions)
@@ -28,8 +28,8 @@ just fix-skills      # auto-fix (e.g. flatten multiline descriptions)
 
 ### From an external repo
 
-1. Add entry to `skills/skills.json` with `repo`, `path`, and `name`
-2. Run `just update-skills`
+1. Add entry to `skills/skills.json` with `repo`, `path`, and `name`. For a root-level `SKILL.md`, use `path: "SKILL.md"` and `sourceType: "file"`.
+2. Run `just update-skills <name>` or `just update-skills` for all sources
 3. Run `just update-readme`
 
 ### Local/custom skill

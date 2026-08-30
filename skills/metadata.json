@@ -13,6 +13,7 @@
     "anthropic-sdk-python": { "repo": "anthropics/anthropic-sdk-python" },
     "anthropic-sdk-ruby": { "repo": "anthropics/anthropic-sdk-ruby" },
     "anthropic-sdk-typescript": { "repo": "anthropics/anthropic-sdk-typescript" },
+    "argocd-docs": { "repo": "argoproj/argo-cd", "path": "docs", "ref": "master" },
     "biome-docs": { "repo": "biomejs/website" },
     "brainstorming": { "repo": "obra/superpowers" },
     "bun-docs": { "repo": "oven-sh/bun" },

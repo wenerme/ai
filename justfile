@@ -5,8 +5,8 @@ update-readme:
     bun scripts/update-readme.ts
 
 # Update skills from external repositories
-update-skills:
-    bun scripts/update-skills.ts
+update-skills *names:
+    bun scripts/update-skills.ts {{names}}
 
 # Fetch Claude Code docs from code.claude.com + CHANGELOG
 update-claude-code-docs:
@@ -64,6 +64,16 @@ test-duckdb-docs:
 update-duckdb-docs: test-duckdb-docs
     bun scripts/sync-duckdb-docs.ts
     set -e; for skill_dir in skills/duckdb-docs skills/duckdb-clients skills/duckdb-extensions skills/duckdb-data skills/duckdb-dev skills/duckdb-quack skills/duckdb-sql skills/duckdb-ops; do gitleaks dir "$skill_dir" --redact --exit-code 1; done
+
+# Test and sync official Argo CD MkDocs documentation from local argoproj/argo-cd clone
+test-argocd-docs:
+    bun test scripts/sync-argocd-docs.test.ts
+
+update-argocd-docs: test-argocd-docs
+    bun scripts/sync-argocd-docs.ts
+    gitleaks dir skills/argocd-docs --redact --exit-code 1
+    gitleaks dir scripts/sync-argocd-docs.ts --redact --exit-code 1
+    gitleaks dir scripts/sync-argocd-docs.test.ts --redact --exit-code 1
 
 # Sync ClickHouse docs from local ClickHouse/clickhouse-docs clone
 update-clickhouse-docs:
@@ -264,6 +274,7 @@ update:
     -just update-grafana-plugin-docs
     -just update-doris-docs
     -just update-duckdb-docs
+    -just update-argocd-docs
     -just update-clickhouse-docs
     -just update-gemini-cli-docs
     -just update-opencode-docs
