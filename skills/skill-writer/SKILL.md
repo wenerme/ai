@@ -9,12 +9,14 @@ Create and optimize Claude Skills following best practices and validation rules.
 
 ## Core Principles
 
-1. **Context is scarce** — Claude is already smart. Only add what it doesn't know. Challenge each paragraph: "Does this justify its token cost?"
-2. **Description is the trigger** — Description determines WHEN a skill loads. It MUST describe triggering conditions, NEVER summarize workflow.
-3. **Progressive disclosure** — Three-level loading: metadata (~100 tokens, always loaded) → SKILL.md body (<5000 tokens, on trigger) → references/scripts/assets (on demand, unlimited).
-4. **English trigger, localized body** — Frontmatter `description` should stay English for reliable triggering. Write the SKILL.md body in the language most useful to the intended audience; keep command names, API fields, code identifiers, and established English terms unchanged.
-5. **Directive-style** — Use `MUST`, `NEVER`, `CRITICAL RULE` for hard constraints (not just "should" or "try to").
-6. **No duplication** — Information lives in EITHER SKILL.md or references, never both. Keep core workflow in SKILL.md; move detailed reference material out.
+1. **Predictability is the goal** — A skill should drive the same process every run, even when outputs differ.
+2. **Choose invocation deliberately** — Model-invoked skills spend context load; user-invoked skills spend human cognitive load. Use `disable-model-invocation: true` when only a human should start the skill.
+3. **Description follows invocation** — A model-invoked description is a trigger and MUST describe WHEN to load. A user-invoked description is a concise human-facing command summary.
+4. **Progressive disclosure** — Three levels: always-loaded metadata → `SKILL.md` on invocation → references/scripts/assets on demand.
+5. **Every step needs a completion criterion** — The agent must be able to distinguish complete from incomplete before seeing the next step.
+6. **Use leading words** — Prefer compact, established concepts such as `tight loop`, `red-green-refactor`, or `tracer bullet` over repeated explanatory sentences.
+7. **Prune aggressively** — Remove duplication, stale sediment, and no-op instructions. Prompt the positive target; reserve `NEVER` for hard guardrails.
+8. **No duplication** — Information lives in one source of truth. Keep core steps in `SKILL.md`; move branch-specific reference material behind precise context pointers.
 
 ## Skill Types
 
@@ -41,30 +43,49 @@ Who will use this skill?
 
 See [references/patterns.md](references/patterns.md) for detailed scope analysis.
 
-### Step 2: Write Frontmatter
+### Step 2: Choose Invocation
+
+```text
+Must the model discover this autonomously, or must another skill reach it?
+  ├─ Yes → model-invoked; omit disable-model-invocation
+  └─ No  → user-invoked; set disable-model-invocation: true
+```
+
+When user-invoked commands become hard to remember, add one user-invoked router that explains which command fits each branch. Do not make every command model-invoked just to solve discoverability.
+
+### Step 3: Write Frontmatter
 
 ```yaml
+# Model-invoked
 ---
 name: my-skill-name
 description: Use when [specific triggering conditions and symptoms]
+---
+
+# User-invoked
+---
+name: my-command
+description: Concise human-facing command summary.
+disable-model-invocation: true
 ---
 ```
 
 **Quick rules:**
 - `name`: lowercase kebab-case, 1-64 chars, MUST match directory name
-- `description`: "Use when..." format, single line, <500 chars, English
+- Model-invoked `description`: English trigger, single line, <500 chars
+- User-invoked `description`: concise command summary for autocomplete; no trigger list required
 
-See [references/frontmatter.md](references/frontmatter.md) for full spec including optional fields.
+See [references/frontmatter.md](references/frontmatter.md) for full invocation and field semantics.
 
-### Step 3: Write Instructions
+### Step 4: Write Instructions
 
-- Role setting: "You are an expert..." at the top
-- Use diff blocks for before/after comparisons
-- Extract rules from code comments to explicit bullet lists
-- Include error troubleshooting table (symptom → cause → fix)
-- One excellent code example beats many mediocre ones
+- Put ordered actions first; end each with a checkable completion criterion.
+- Keep definitions/rules co-located and disclose branch-specific reference material.
+- Use one strong leading word instead of restating the same behavioural idea.
+- Include an error troubleshooting table when real recurring symptoms exist.
+- One excellent, runnable example beats many mediocre examples.
 
-### Step 4: Organize Resources
+### Step 5: Organize Resources
 
 When SKILL.md approaches 500 lines or ~5000 tokens, split into bundled resources:
 
@@ -90,7 +111,7 @@ When SKILL.md approaches 500 lines or ~5000 tokens, split into bundled resources
 - For very large references (>10k words), include grep patterns in SKILL.md so Claude can search efficiently
 - Link with relative paths: `[title](references/file.md)`
 
-### Step 5: Validate
+### Step 6: Validate
 
 ```bash
 just lint-skills     # Check all skills
@@ -113,8 +134,10 @@ Enforced by `lint-skills.ts`:
 | `description` no newlines | warn | Must be single line (auto-fixable with `--fix`) |
 | `description` ≤ 1024 chars | warn | Spec hard limit |
 | `description` ≤ 500 chars | warn | Recommended for conciseness |
-| `description` starts "Use when..." | warn | Best practice for triggering |
-| No workflow summary in description | warn | Description = WHEN to use, not WHAT it does |
+| Invocation mode explicit | info | `disable-model-invocation: true` for human-only commands |
+| Model description starts "Use when..." | warn | Model-facing descriptions encode triggering branches |
+| User description is concise | warn | Human-facing autocomplete summary; no trigger list required |
+| No workflow summary in model description | warn | Description = WHEN to use, not the runbook |
 | Metadata ≤ 150 tokens | info | name + description always loaded in every conversation |
 | Metadata ≤ 200 tokens | warn | Metadata is too heavy for "always in context" cost |
 | Body ≤ 500 lines | warn | Move excess to `references/` |
@@ -122,27 +145,31 @@ Enforced by `lint-skills.ts`:
 
 ## Description Rules (CRITICAL)
 
-**MUST:** Start with "Use when..." and describe triggering conditions only.
+For a **model-invoked** skill:
 
-**NEVER:** Summarize what the skill does or its workflow in the description.
+- MUST start with `Use when...` and cover distinct trigger branches.
+- NEVER summarize the workflow; the model may shortcut the body.
+- Front-load the leading words users and agents actually use.
 
-**WHY:** When a description summarizes workflow, Claude follows the description shortcut instead of reading the full skill body. This causes it to miss important details.
+For a **user-invoked** skill:
+
+- MUST set `disable-model-invocation: true`.
+- Write a short human-facing summary suitable for slash-command autocomplete.
+- Do not spend words on model trigger synonyms because the model cannot auto-invoke it.
 
 ```yaml
-# GOOD — triggering conditions only
-description: Use when upgrading @mikro-orm packages from v6 to v7, fixing v7 runtime/type errors...
+# GOOD — model-invoked trigger
+description: Use when upgrading @mikro-orm packages from v6 to v7 or fixing v7 runtime/type errors
 
-# BAD — summarizes workflow
+# BAD — workflow shortcut
 description: Migrates MikroORM by replacing packages, renaming APIs, and updating decorators
 
-# GOOD — reference skill with trigger keywords
-description: Use when managing Kubernetes apps via argocd CLI, including syncing, diffing, or viewing logs
-
-# BAD — too vague
-description: ArgoCD CLI helper
+# GOOD — user-invoked orchestration
+description: Turn the current conversation into an implementation spec.
+disable-model-invocation: true
 ```
 
-**Trigger keywords** (e.g., `Triggers on "argocd sync"...`) are acceptable for reference skills, but avoid for pattern/discipline skills.
+**Trigger keywords** are useful for model-invoked reference skills, but avoid synonym duplication: one trigger per genuinely different branch.
 
 See [references/description-rules.md](references/description-rules.md) for full guidelines.
 
@@ -175,22 +202,26 @@ Workflow: add entry → `just update-skills` → `just update-readme`
 - [ ] Identify 2-3 concrete use cases
 - [ ] Determine scope (generic / user / project / case)
 - [ ] Choose type (reference / pattern / migration / discipline)
+- [ ] Choose invocation (model / user) and account for context vs cognitive load
 
 **During creation:**
 - [ ] `name` kebab-case, matches directory, ≤64 chars
-- [ ] `description` "Use when...", single line, English, <500 chars
-- [ ] `description` has NO workflow summary
+- [ ] Frontmatter matches invocation semantics
+- [ ] Model description has triggers but no workflow summary
+- [ ] User description is concise and sets `disable-model-invocation: true`
+- [ ] Every ordered step has a checkable completion criterion
+- [ ] Branch-specific reference lives behind a precise context pointer
+- [ ] Repeated explanations collapsed into leading words or one source of truth
+- [ ] No-op, stale, duplicate, and primarily negative instructions removed
 - [ ] Body <500 lines / <5000 tokens
-- [ ] Heavy reference in `references/`
-- [ ] Hard constraints use MUST / NEVER / CRITICAL RULE
-- [ ] Code examples complete and runnable
-- [ ] Error troubleshooting table included
+- [ ] Code examples are complete and runnable where examples are needed
 
 **After creation:**
 - [ ] `just lint-skills` — 0 errors
-- [ ] `just update-readme` — table updated
-- [ ] Test: relevant query triggers the skill
-- [ ] Test: unrelated query does NOT trigger
+- [ ] `just update-readme` — table updated when repository workflow requires it
+- [ ] Model-invoked: positive, negative, and adjacent trigger tests
+- [ ] User-invoked: slash command appears, but skill metadata is absent from model context
+- [ ] Execute one realistic scenario and verify each completion criterion
 
 ## References
 

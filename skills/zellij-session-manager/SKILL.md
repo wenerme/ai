@@ -1,11 +1,22 @@
 ---
 name: zellij-session-manager
-description: 'Use when executing commands, running builds, starting services, or monitoring agent panes in Zellij. Replaces tmux-session-manager for Zellij users. Enables multi-agent orchestration via remote pane control.'
+description: 'Use when the user requests Zellij, a command must persist after the current tool call, or an existing Zellij pane/session must be monitored or controlled.'
 ---
 
 # Zellij 共享终端协作
 
 在用户可见的 Zellij 面板中执行命令，读取输出，支持跨会话多 agent 编排。
+
+## 执行策略
+
+1. **直接执行优先**：一次性 build、test、lint、查询或预计能在当前 tool timeout 内完成的命令，直接使用命令执行工具，不启动 Zellij。
+2. **复用现有 session**：服务、持续日志、长时间交互或用户明确要求 Zellij 时，先按标题定位已有 pane；只有用户明确授权，或任务必须跨当前调用持久运行且没有可复用 session 时，才能创建新 session。
+3. **遵循用户边界**：用户说“直接操作”“不要新增 session”或“不要 Zellij”时，禁止创建 session/pane，也禁止为了符合本 skill 而改用 Zellij。
+4. **保持 socket 一致**：默认继承当前环境的 Zellij socket。禁止仅因 `Session not found`、pane 创建失败或 session 列表异常而设置 `ZELLIJ_SOCKET_DIR`；这会把 list/control 命令路由到不同 socket namespace。
+5. **按副作用处理失败**：读取 pane、发送输入等已知目标上的控制操作失败时，先确认 session 名和当前环境；尚未提交的一次性命令可改为直接执行。`new-pane`、`run`、`new-tab`、`--in-place` 等创建/替换操作是非幂等操作；返回结果不明确时禁止重试、换另一种创建方式或直接执行同一命令。
+6. **创建只提交一次**：同一个逻辑任务最多提交一次创建操作。退出码 `0` 但没有返回 pane ID，不代表没有创建，而是结果不确定；必须先执行 pane/process reconciliation，确认真实状态。
+
+完成标准：命令使用了最小必要的执行方式；没有额外 session/socket 目录；若使用 pane，已获得唯一 pane ID、读取输出并确认真实退出状态；若创建结果不确定，已停止后续提交并明确报告状态。
 
 ## 发现会话与面板
 
@@ -106,31 +117,184 @@ zellij --session $SESSION action rename-pane --pane-id $PANE "my-pane-name"
 
 ## 面板生命周期
 
-### 创建新面板并获取 ID
+### 创建操作是非幂等的
+
+以下操作都可能启动新进程或替换 pane，不能按普通查询命令重试：
+
+- `zellij action new-pane`
+- `zellij run`
+- `zellij action new-tab`
+- `zellij action new-pane --in-place`
+
+`exit 0 + stdout 为空`、调用超时、pane 暂时未出现在列表中，都属于 **ambiguous create**。这些现象不能证明命令未启动。此时禁止：
+
+- 再执行一次相同 `new-pane`
+- 改用 `run`、`new-tab` 或 `--in-place` 再试
+- 回退为 shell/命令工具直接执行同一任务
+- 复用一个已退出 pane 启动同一任务
+
+### 创建前检查
+
+1. 为本次逻辑任务生成唯一 operation ID，并用作 pane title。不要复用固定标题。
+2. 保存创建前的完整 pane JSON，而不是只保存标题匹配结果。
+3. 检查是否已有相同任务的活动 pane/process；有则复用或报告，不创建。
+4. 复杂命令使用无敏感值的 wrapper 脚本；不要把 token、密码或完整连接串放进 title、argv 或日志。
+
+```bash
+SESSION=${ZELLIJ_SESSION_NAME:?missing ZELLIJ_SESSION_NAME}
+TASK=dev-server
+OP_ID="${TASK}-$(date -u +%Y%m%dT%H%M%SZ)-$$"
+BEFORE=$(mktemp)
+AFTER=$(mktemp)
+trap 'rm -f "$BEFORE" "$AFTER"' EXIT
+
+zellij --session "$SESSION" action list-panes --json >"$BEFORE"
+
+# 标题定位活动任务。需要更严格时再结合 terminal_command/cwd 检查。
+zellij --session "$SESSION" action list-panes --json \
+  | jq -e --arg prefix "${TASK}-" '
+      any(.[]; (.is_plugin | not) and (.exited | not) and (.title | startswith($prefix)))
+    ' >/dev/null \
+  && { echo "task already running"; exit 3; }
+
+# 对稳定、非敏感的 wrapper 路径检查系统进程。
+ps -axo pid,ppid,etime,command \
+  | grep -F '/absolute/workdir/local/run.sh' \
+  | grep -v grep \
+  && { echo "task process already running"; exit 3; }
+```
+
+完成标准：`OP_ID` 唯一；创建前 pane 快照已保存；不存在同任务活动 pane/process。
+
+### 单次提交并确认 ID
+
+只调用一次创建命令，同时保存 stdout、stderr 和退出码：
+
+```bash
+set +e
+CREATE_OUTPUT=$(
+  zellij --session "$SESSION" action new-pane \
+    --no-focus \
+    --name "$OP_ID" \
+    --cwd /absolute/workdir \
+    -- bash /absolute/workdir/local/run.sh \
+    2>&1
+)
+CREATE_STATUS=$?
+set -e
+
+PANE=$(
+  printf '%s\n' "$CREATE_OUTPUT" \
+    | grep -Eo 'terminal_[0-9]+' \
+    | tail -1
+)
+
+if [[ -n "$PANE" ]]; then
+  zellij --session "$SESSION" action list-panes --json \
+    | jq -e --argjson id "${PANE#terminal_}" --arg op "$OP_ID" '
+        any(.[]; (.is_plugin | not) and .id == $id and .title == $op)
+      ' >/dev/null
+  printf 'created=%s status=%s\n' "$PANE" "$CREATE_STATUS"
+else
+  printf 'AMBIGUOUS_CREATE status=%s output=%q\n' \
+    "$CREATE_STATUS" "$CREATE_OUTPUT" >&2
+fi
+```
+
+只有“返回了 pane ID，并且 `list-panes` 中 ID/title 一致”才是确认创建。退出码本身不是确认条件。
+
+完成标准：获得并验证唯一 pane ID；否则进入 reconciliation，绝不再次提交任务。
+
+### Ambiguous create reconciliation
+
+创建结果不明确时，在宽限期内重复读取状态，而不是重复创建。`list-panes --json` 返回的是整个 session，不要只查当前 tab。
+
+```bash
+PANE=
+for attempt in 1 2 3 4 5; do
+  zellij --session "$SESSION" action list-panes --json >"$AFTER"
+
+  # 首选唯一 operation title；pane ID 差集只作为诊断证据。
+  MATCHES=$(jq -r --arg op "$OP_ID" '
+    .[] | select((.is_plugin | not) and .title == $op) | .id
+  ' "$AFTER")
+  MATCH_COUNT=$(printf '%s\n' "$MATCHES" | grep -c . || true)
+
+  if [[ "$MATCH_COUNT" == 1 ]]; then
+    PANE="terminal_$MATCHES"
+    break
+  fi
+  if [[ "$MATCH_COUNT" -gt 1 ]]; then
+    echo "AMBIGUOUS_CREATE: duplicate operation panes" >&2
+    break
+  fi
+
+  jq -nr --slurpfile before "$BEFORE" --slurpfile after "$AFTER" '
+    ($before[0] | map(select(.is_plugin | not) | .id)) as $old
+    | $after[0][]
+    | select(.is_plugin | not)
+    | .id as $id
+    | select(($old | index($id)) == null)
+    | {id, title, tab_id, tab_name, terminal_command, exited, exit_status}
+  '
+  sleep 1
+done
+
+if [[ -z "$PANE" ]]; then
+  # 对稳定、非敏感的 wrapper 路径做进程检查；不要搜索 secret-bearing argv。
+  ps -axo pid,ppid,etime,command \
+    | grep -F '/absolute/workdir/local/run.sh' \
+    | grep -v grep || true
+  echo "create outcome remains uncertain; do not retry" >&2
+  exit 4
+fi
+```
+
+如果宽限期后仍无法确认：保持“不确定”结论，报告 `OP_ID`、创建退出码、pane 差集和进程检查摘要。宁可让用户/后续任务继续核对，也不要启动第二份任务。
+
+完成标准：找到唯一 operation pane 并继续监控，或在未追加任何创建/执行操作的情况下以“不确定”停止。
+
+| 现象 | 状态 | 正确操作 |
+|------|------|----------|
+| 返回 `terminal_<id>`，且 ID/title 匹配 | confirmed | 只监控该 pane |
+| exit 0，但 stdout 为空 | ambiguous | 做 title、pane ID 差集和 process reconciliation |
+| 调用超时 | ambiguous | 不重跑；按 `OP_ID` 查整个 session |
+| title 暂时找不到 | unresolved | 等待宽限期并检查新增 pane，不改用其他创建 API |
+| pane 稍后出现 | confirmed late | 采用该 pane，禁止启动第二份任务 |
+| 同一 `OP_ID` 出现多个 pane | duplicate | 停止后续操作并报告；未经授权不批量中断 |
+| 宽限期后无 pane、无 process | still uncertain | 停止并报告，不在当前流程自动重试 |
+
+### 基础创建形式
+
+以下只是 CLI 形态，不是可跳过确认流程的快捷方式。每次仍必须使用唯一 `OP_ID`、保存创建输出，并验证返回的 ID/title：
 
 ```bash
 # 方式一：新建 shell pane（需额外注入命令）
-PANE=$(zellij --session $SESSION action new-pane --name "worker")
+PANE=$(zellij --session "$SESSION" action new-pane --name "$OP_ID")
 echo "Created: $PANE"  # e.g. terminal_5
 
 # 方式二：直接启动命令（推荐，绕过 shell，pane 退出时 exited 字段为 true）
-PANE=$(zellij --session $SESSION action new-pane -- cargo build --release)
+PANE=$(zellij --session "$SESSION" action new-pane --name "$OP_ID" -- cargo build --release)
 
-# 方式三：用 zellij run（same as new-pane，返回 pane ID）
-PANE=$(zellij --session $SESSION run -d down -- bash)
+# zellij run/new-tab 是替代 API，不是 ambiguous create 后的重试手段。
 ```
 
 ### 在新面板中运行命令（blocking，等待完成）
 
+仅在用户明确要求 Zellij，或命令必须留在用户可见 pane 中时使用。blocking flag 不会让创建变成幂等操作；调用超时或输出不明确时，仍按 `OP_ID` reconciliation，禁止重跑命令。
+
 ```bash
 # 阻塞直到命令成功（失败时 pane 停留，Enter 可重试）
-zellij --session $SESSION action new-pane --block-until-exit-success -- cargo test
+zellij --session "$SESSION" action new-pane \
+  --no-focus --name "$OP_ID" --block-until-exit-success -- cargo test
 
 # 阻塞直到命令退出（无论成功失败）
-zellij --session $SESSION action new-pane --block-until-exit -- ./deploy.sh
+zellij --session "$SESSION" action new-pane \
+  --no-focus --name "$OP_ID" --block-until-exit -- ./deploy.sh
 
 # 阻塞直到 pane 被用户手动关闭
-zellij --session $SESSION action new-pane --blocking -- cargo build
+zellij --session "$SESSION" action new-pane \
+  --no-focus --name "$OP_ID" --blocking -- cargo build
 ```
 
 ### 关闭面板
@@ -145,9 +309,12 @@ zellij --session $SESSION action close-pane --pane-id $PANE
 
 ### 方式一：blocking pane（最简单，推荐）
 
+该方式只简化“等待完成”，不简化“确认是否创建”。调用超时后不得再次执行；先按唯一 `OP_ID` 查找 pane 和真实退出状态。
+
 ```bash
 # 等待命令成功，继续下一步
-zellij --session $SESSION action new-pane --block-until-exit-success -- npm run build
+zellij --session "$SESSION" action new-pane \
+  --no-focus --name "$OP_ID" --block-until-exit-success -- npm run build
 echo "Build succeeded!"
 ```
 
@@ -221,8 +388,13 @@ zellij --session my-session action new-pane -- cargo build
 zellij attach --create-background work
 
 # 分配任务到命名 pane
-PANE_A=$(zellij --session work action new-pane --name "agent-research")
-PANE_B=$(zellij --session work action new-pane --name "agent-build")
+OP_A="agent-research-$(date -u +%Y%m%dT%H%M%SZ)-$$"
+PANE_A=$(zellij --session work action new-pane --name "$OP_A")
+# 必须先验证 PANE_A 的 ID/title；结果 ambiguous 时停止，不能继续创建 PANE_B。
+
+OP_B="agent-build-$(date -u +%Y%m%dT%H%M%SZ)-$$"
+PANE_B=$(zellij --session work action new-pane --name "$OP_B")
+# 同样验证 PANE_B 的 ID/title 后，才能发送命令。
 
 # 向各 pane 注入命令
 zellij --session work action paste --pane-id $PANE_A "python research.py" && \
@@ -274,8 +446,13 @@ wait
 
 | 规则 | 说明 |
 |------|------|
+| 直接执行优先 | 一次性 build/test/lint/query 直接运行，不为它创建 session 或 pane |
+| 创建非幂等 | `new-pane`/`run`/`new-tab`/`--in-place` 每个逻辑任务只提交一次 |
+| 空输出不是未创建 | 创建退出 `0` 但无 pane ID 时进入 reconciliation，禁止重试或直接回退执行 |
+| 唯一 operation ID | 创建前生成唯一 title，保存 pane 快照；创建后必须验证 ID/title |
+| 禁止擅改 socket | 不设置 `ZELLIJ_SOCKET_DIR`；`Session not found` 时核对当前环境或直接执行 |
 | 禁止交互式 TUI | 不运行 `vim`、`top`、`htop` 等需要持续键盘输入的程序 |
 | 先写后读 | 发送命令后必须用 `dump-screen` 或 `subscribe` 确认结果 |
 | paste 优先 | 多行或含特殊字符的命令用 `paste`，不用 `write-chars` |
 | 引号转义 | `paste`/`write-chars` 参数中注意 shell 引号嵌套 |
-| 长任务异步 | 确认命令已启动即可，用 `subscribe` 或 blocking flag 等待完成 |
+| 长任务异步 | 先确认唯一 pane ID/title 和真实启动输出，再用 `subscribe` 或 blocking flag 等待完成 |

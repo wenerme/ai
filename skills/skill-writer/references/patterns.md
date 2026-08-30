@@ -45,6 +45,18 @@ description: Use when deploying backend services to production clusters
 description: Use when investigating LLM API latency issues. Requires cloud-logging MCP server.
 ```
 
+## Invocation Pattern
+
+Choose who should reach the skill before writing its body:
+
+```text
+Autonomous model discovery or cross-skill reuse required?
+  ├─ Yes → model-invoked; rich trigger description
+  └─ No  → user-invoked; disable-model-invocation: true
+```
+
+When several user-invoked skills become hard to remember, add one user-invoked router. The router names each command, its trigger boundary, and the main flows between commands. It should orient, not duplicate each runbook.
+
 ## Freedom vs Precision
 
 Match the instruction style to how much flexibility the task allows:
@@ -165,6 +177,35 @@ For discipline skills that need hard enforcement.
 ```
 
 **Key:** Use `MUST`, `NEVER`, `CRITICAL` — not "should", "try to", "consider".
+
+## Completion Criteria
+
+Every ordered step should end with a criterion the agent can actually check. Sharpen the criterion before splitting a sequence.
+
+```markdown
+# Weak
+Explore the codebase thoroughly.
+
+# Strong
+Exploration is complete when every changed public symbol has its definition, direct callers, tests, and documented contract accounted for.
+```
+
+Demand drives legwork. Prefer exhaustive nouns (`every changed public symbol`) and observable evidence (`command already run`, `report path exists`) over subjective adjectives (`good`, `complete`, `thorough`).
+
+## Leading Words And Pruning
+
+Use a compact established concept to anchor behaviour, then remove repeated explanations:
+
+- `tight loop` instead of repeatedly saying fast + deterministic + specific feedback.
+- `red-green-refactor` instead of restating the TDD sequence.
+- `tracer bullet` instead of repeatedly defining thin end-to-end slices.
+
+Before finalizing, test every sentence:
+
+1. **Relevance:** Does it still bear on this skill?
+2. **No-op:** Would the model behave differently without it?
+3. **Single source:** Is this meaning authoritative here and nowhere else?
+4. **Positive target:** Does it state what to do? Keep prohibitions only for hard safety boundaries and pair them with the desired action.
 
 ## Anti-Patterns
 

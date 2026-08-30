@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 123 skills available
+> 125 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -29,6 +29,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | [anthropic-sdk-ruby](./skills/anthropic-sdk-ruby/SKILL.md) | Use when writing Ruby code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-ruby](https://github.com/anthropics/anthropic-sdk-ruby) |
 | [anthropic-sdk-typescript](./skills/anthropic-sdk-typescript/SKILL.md) | Use when writing TypeScript code with the Anthropic SDK: creating messages, streaming responses, batch processing, token... | [anthropics/anthropic-sdk-typescript](https://github.com/anthropics/anthropic-sdk-typescript) |
 | [argocd-cli-guide](./skills/argocd-cli-guide/SKILL.md) | Use when managing, inspecting, syncing, or troubleshooting Kubernetes applications via the argocd CLI, including... |  |
+| [argocd-docs](./skills/argocd-docs/SKILL.md) | Use when installing, configuring, operating, securing, upgrading, troubleshooting, extending, or developing Argo CD and... | [argoproj/argo-cd/docs](https://github.com/argoproj/argo-cd/tree/master/docs) |
 | [biome-docs](./skills/biome-docs/SKILL.md) | Biome documentation — fast web toolchain for JavaScript, TypeScript, JSX, JSON, CSS, and GraphQL. Covers linter (473... | [biomejs/website](https://github.com/biomejs/website) |
 | [biome-lint](./skills/biome-lint/SKILL.md) | Use when fixing Biome linter errors, TypeScript/tsgo type-check errors, or running lint/typecheck workflows |  |
 | [brainstorming](./skills/brainstorming/SKILL.md) | You MUST use this before any creative work - creating features, building components, adding functionality, or modifying... | [obra/superpowers](https://github.com/obra/superpowers) |
@@ -77,7 +78,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | [grafana-plugin-docs](./skills/grafana-plugin-docs/SKILL.md) | Use when working with Grafana plugins and plugin-specific docs, including data source/app/panel plugins such as... | [grafana.com](https://grafana.com/docs/plugins) |
 | [hono-docs](./skills/hono-docs/SKILL.md) | Use when working with Hono, the Web Standards JavaScript/TypeScript framework: Hono app/router APIs, Context and Request... | [honojs/website/docs](https://github.com/honojs/website/tree/main/docs) |
 | [huggingface-docs](./skills/huggingface-docs/SKILL.md) | Use when working with Hugging Face Hub: model/dataset/Space repositories, Hub APIs, tokens, gated models/datasets,... | [huggingface/hub-docs/docs](https://github.com/huggingface/hub-docs/tree/main/docs) |
-| [humanizer](./skills/humanizer/SKILL.md) | Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and... | [blader/humanizer](https://github.com/blader/humanizer) |
+| [humanizer](./skills/humanizer/SKILL.md) | Rewrite AI-sounding text so it reads naturally without changing what it says. | [blader/humanizer](https://github.com/blader/humanizer) |
 | [image-prompt-guide](./skills/image-prompt-guide/SKILL.md) | USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics,... |  |
 | [immich-docs](./skills/immich-docs/SKILL.md) | Immich documentation — self-hosted photo/video management. Covers installation (Docker, Kubernetes, Synology, TrueNAS,... | [immich-app/immich](https://github.com/immich-app/immich) |
 | [justfile-docs](./skills/justfile-docs/SKILL.md) | justfile (just) documentation — a command runner with make-inspired syntax. Covers recipes (parameters, dependencies,... | [casey/just](https://github.com/casey/just) |
@@ -107,6 +108,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | [papermc-docs](./skills/papermc-docs/SKILL.md) | PaperMC documentation — high-performance Minecraft Java server (Paper), Velocity proxy, and Adventure text API. Covers... | [PaperMC/docs](https://github.com/PaperMC/docs) |
 | [peekaboo](./skills/peekaboo/SKILL.md) | Use when using Peekaboo as an installed macOS automation CLI or MCP server: screenshots, UI inspection, clicking,... | [steipete/peekaboo](https://github.com/steipete/peekaboo) |
 | [powerdns-docs](./skills/powerdns-docs/SKILL.md) | Use when working with PowerDNS Authoritative Server: pdns.conf settings, backends, DNSSEC, primary/secondary operation,... | [PowerDNS/pdns/docs](https://github.com/PowerDNS/pdns/tree/master/docs) |
+| [ppt-master](./skills/ppt-master/SKILL.md) | AI-driven presentation workflow for generating editable PPTX decks and slides, reconstructing page visuals, creating... | [hugohe3/ppt-master](https://github.com/hugohe3/ppt-master) |
 | [pytorch-docs](./skills/pytorch-docs/SKILL.md) | Use when working with PyTorch APIs, tensors, autograd, torch.nn, torch.optim, torch.compile, export, distributed/RPC,... | [pytorch/pytorch/docs](https://github.com/pytorch/pytorch/tree/main/docs) |
 | [react-resizable-panels-v3-to-v4](./skills/react-resizable-panels-v3-to-v4/SKILL.md) | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
 | [requesting-code-review](./skills/requesting-code-review/SKILL.md) | Use when completing tasks, implementing major features, or before merging to verify work meets requirements | [obra/superpowers](https://github.com/obra/superpowers) |
@@ -135,7 +137,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | [wode-emittery-pattern](./skills/wode-emittery-pattern/SKILL.md) | Use when implementing event-driven communication between React components using Emittery, including event types, sidecar... |  |
 | [writing-skills](./skills/writing-skills/SKILL.md) | Use when creating new skills, editing existing skills, or verifying skills work before deployment | [obra/superpowers](https://github.com/obra/superpowers) |
 | [zellij-docs](./skills/zellij-docs/SKILL.md) | Use when configuring, scripting, or troubleshooting zellij — including layouts (KDL), keybindings, sessions, CLI... | [zellij-org/zellij-org.github.io/docs](https://github.com/zellij-org/zellij-org.github.io/tree/main/docs) |
-| [zellij-session-manager](./skills/zellij-session-manager/SKILL.md) | Use when executing commands, running builds, starting services, or monitoring agent panes in Zellij. Replaces... |  |
+| [zellij-session-manager](./skills/zellij-session-manager/SKILL.md) | Use when the user requests Zellij, a command must persist after the current tool call, or an existing Zellij... |  |
 | [zustand-mutative-pattern](./skills/zustand-mutative-pattern/SKILL.md) | Use when implementing React state management with Zustand, including context-scoped stores, mutative updates, or actions... |  |
 
 <details>
@@ -286,6 +288,16 @@ npx skills add wenerme/ai --skill argocd-cli-guide
 ```
 
 Use when managing, inspecting, syncing, or troubleshooting Kubernetes applications via the argocd CLI, including checking app health, running diffs, syncing deployments, viewing logs, or switching between ArgoCD server contexts
+
+</details>
+<details>
+<summary><code>argocd-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill argocd-docs
+```
+
+Use when installing, configuring, operating, securing, upgrading, troubleshooting, extending, or developing Argo CD and its Application, ApplicationSet, RBAC, SSO, repository, notification, or CLI features.
 
 </details>
 <details>
@@ -775,7 +787,10 @@ Use when working with Hugging Face Hub: model/dataset/Space repositories, Hub AP
 npx skills add wenerme/ai --skill humanizer
 ```
 
-Remove signs of AI-generated writing from text. Use when editing or reviewing text to make it sound more natural and human-written. Based on Wikipedia's comprehensive "Signs of AI writing" guide. Detects and fixes patterns including: inflated symbolism, promotional language, superficial -ing analyses, vague attributions, em dash overuse, rule of three, AI vocabulary words, negative parallelisms, and excessive conjunctive phrases.
+Rewrite AI-sounding text so it reads naturally without changing what it says.
+Use when editing or reviewing prose for inflated claims,
+sales language, vague sources, repetitive structure, stock AI words, passive
+voice, filler, or chatbot artifacts. Based on Wikipedia's "Signs of AI writing."
 
 </details>
 <details>
@@ -1069,6 +1084,16 @@ Use when working with PowerDNS Authoritative Server: pdns.conf settings, backend
 
 </details>
 <details>
+<summary><code>ppt-master</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill ppt-master
+```
+
+AI-driven presentation workflow for generating editable PPTX decks and slides, reconstructing page visuals, creating reusable Brand/Style/Layout/Deck workspaces, filling native PPTX templates, and enhancing finished PPTX files. Use when the user asks to create, generate, reconstruct, regenerate, beautify, redesign, template, fill, or enhance a presentation, PPT, PPTX, slide deck, or courseware — including adding narration or animation to one — requests a presentation-authored narrated/self-running video, or mentions ppt-master.
+
+</details>
+<details>
 <summary><code>pytorch-docs</code></summary>
 
 ```bash
@@ -1355,7 +1380,7 @@ Use when configuring, scripting, or troubleshooting zellij — including layouts
 npx skills add wenerme/ai --skill zellij-session-manager
 ```
 
-Use when executing commands, running builds, starting services, or monitoring agent panes in Zellij. Replaces tmux-session-manager for Zellij users. Enables multi-agent orchestration via remote pane control.
+Use when the user requests Zellij, a command must persist after the current tool call, or an existing Zellij pane/session must be monitored or controlled.
 
 </details>
 <details>
@@ -1371,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 123 skills, 34055 files, 415 MiB total
+> 125 skills, 47419 files, 493 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1390,6 +1415,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [anthropic-sdk-ruby](./skills/anthropic-sdk-ruby/SKILL.md) | 159 | 8.5 MiB |
 | [anthropic-sdk-typescript](./skills/anthropic-sdk-typescript/SKILL.md) | 159 | 8.6 MiB |
 | [argocd-cli-guide](./skills/argocd-cli-guide/SKILL.md) | 2 | 7.5 KiB |
+| [argocd-docs](./skills/argocd-docs/SKILL.md) | 421 | 2.7 MiB |
 | [biome-docs](./skills/biome-docs/SKILL.md) | 685 | 8.3 MiB |
 | [biome-lint](./skills/biome-lint/SKILL.md) | 4 | 13 KiB |
 | [brainstorming](./skills/brainstorming/SKILL.md) | 1 | 4.6 KiB |
@@ -1409,7 +1435,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 937 | 10 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
 | [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 5287 | 17 MiB |
-| [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 60 KiB |
+| [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 61 KiB |
 | [doris-docs](./skills/doris-docs/SKILL.md) | 1594 | 9.7 MiB |
 | [duckdb-clients](./skills/duckdb-clients/SKILL.md) | 75 | 1.3 MiB |
 | [duckdb-data](./skills/duckdb-data/SKILL.md) | 27 | 146 KiB |
@@ -1430,7 +1456,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 251 | 14 MiB |
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 173 | 2.0 MiB |
 | [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 910 | 8.2 MiB |
-| [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 21 KiB |
+| [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 22 KiB |
 | [glab-docs](./skills/glab-docs/SKILL.md) | 296 | 479 KiB |
 | [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 720 KiB |
 | [google-ai-docs](./skills/google-ai-docs/SKILL.md) | 102 | 2.5 MiB |
@@ -1438,7 +1464,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [grafana-plugin-docs](./skills/grafana-plugin-docs/SKILL.md) | 661 | 4.6 MiB |
 | [hono-docs](./skills/hono-docs/SKILL.md) | 87 | 360 KiB |
 | [huggingface-docs](./skills/huggingface-docs/SKILL.md) | 361 | 2.0 MiB |
-| [humanizer](./skills/humanizer/SKILL.md) | 1 | 15 KiB |
+| [humanizer](./skills/humanizer/SKILL.md) | 1 | 30 KiB |
 | [image-prompt-guide](./skills/image-prompt-guide/SKILL.md) | 9 | 323 KiB |
 | [immich-docs](./skills/immich-docs/SKILL.md) | 77 | 487 KiB |
 | [justfile-docs](./skills/justfile-docs/SKILL.md) | 113 | 166 KiB |
@@ -1450,7 +1476,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 22 | 172 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
 | [mastra](./skills/mastra/SKILL.md) | 11 | 64 KiB |
-| [mastra-docs](./skills/mastra-docs/SKILL.md) | 874 | 7.4 MiB |
+| [mastra-docs](./skills/mastra-docs/SKILL.md) | 878 | 7.5 MiB |
 | [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 183 | 549 KiB |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
 | [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 84 | 1.3 MiB |
@@ -1468,11 +1494,12 @@ Use when implementing React state management with Zustand, including context-sco
 | [papermc-docs](./skills/papermc-docs/SKILL.md) | 192 | 877 KiB |
 | [peekaboo](./skills/peekaboo/SKILL.md) | 1 | 15 KiB |
 | [powerdns-docs](./skills/powerdns-docs/SKILL.md) | 158 | 1.4 MiB |
+| [ppt-master](./skills/ppt-master/SKILL.md) | 12939 | 76 MiB |
 | [pytorch-docs](./skills/pytorch-docs/SKILL.md) | 319 | 2.1 MiB |
 | [react-resizable-panels-v3-to-v4](./skills/react-resizable-panels-v3-to-v4/SKILL.md) | 1 | 9.2 KiB |
 | [requesting-code-review](./skills/requesting-code-review/SKILL.md) | 2 | 8.4 KiB |
 | [shadcn](./skills/shadcn/SKILL.md) | 15 | 95 KiB |
-| [skill-writer](./skills/skill-writer/SKILL.md) | 4 | 23 KiB |
+| [skill-writer](./skills/skill-writer/SKILL.md) | 4 | 28 KiB |
 | [sling-cli](./skills/sling-cli/SKILL.md) | 3 | 14 KiB |
 | [slopus-happy-docs](./skills/slopus-happy-docs/SKILL.md) | 75 | 716 KiB |
 | [stash-docs](./skills/stash-docs/SKILL.md) | 83 | 400 KiB |
@@ -1496,7 +1523,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [wode-emittery-pattern](./skills/wode-emittery-pattern/SKILL.md) | 2 | 9.8 KiB |
 | [writing-skills](./skills/writing-skills/SKILL.md) | 7 | 105 KiB |
 | [zellij-docs](./skills/zellij-docs/SKILL.md) | 74 | 489 KiB |
-| [zellij-session-manager](./skills/zellij-session-manager/SKILL.md) | 1 | 10 KiB |
+| [zellij-session-manager](./skills/zellij-session-manager/SKILL.md) | 1 | 19 KiB |
 | [zustand-mutative-pattern](./skills/zustand-mutative-pattern/SKILL.md) | 2 | 12 KiB |
 
 <!--endregion-->

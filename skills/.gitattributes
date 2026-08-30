@@ -1,1 +1,2 @@
 duckdb-*/references/** whitespace=-trailing-space
+argocd-docs/references/** whitespace=-trailing-space
