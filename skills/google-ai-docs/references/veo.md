@@ -48,8 +48,7 @@ The following examples show how you can generate a video with [dialogue](https:/
 
     # Download the generated video.
     generated_video = operation.response.generated_videos[0]
-    client.files.download(file=generated_video.video)
-    generated_video.video.save("dialogue_example.mp4")
+    client.files.download(file=generated_video.video, destination="dialogue_example.mp4")
     print("Generated video saved to dialogue_example.mp4")
 
 ### JavaScript
@@ -232,8 +231,7 @@ The following examples show how you can generate a video with [dialogue](https:/
 
     # Download the generated video.
     generated_video = operation.response.generated_videos[0]
-    client.files.download(file=generated_video.video)
-    generated_video.video.save("realism_example.mp4")
+    client.files.download(file=generated_video.video, destination="realism_example.mp4")
     print("Generated video saved to realism_example.mp4")
 
 ### JavaScript
@@ -413,8 +411,7 @@ The following examples show how you can generate a video with [dialogue](https:/
 
     # Download the generated video.
     generated_video = operation.response.generated_videos[0]
-    client.files.download(file=generated_video.video)
-    generated_video.video.save("style_example.mp4")
+    client.files.download(file=generated_video.video, destination="style_example.mp4")
     print("Generated video saved to style_example.mp4")
 
 ### JavaScript
@@ -600,8 +597,7 @@ Veo 3.1 lets you create landscape (`16:9`, the default setting) or portrait
 
     # Download the generated video.
     generated_video = operation.response.generated_videos[0]
-    client.files.download(file=generated_video.video)
-    generated_video.video.save("pizza_making.mp4")
+    client.files.download(file=generated_video.video, destination="pizza_making.mp4")
     print("Generated video saved to pizza_making.mp4")
 
 ### JavaScript
@@ -765,8 +761,7 @@ are also more expensive (see [pricing](https://ai.google.dev/gemini-api/docs/pri
 
     # Download the generated video.
     generated_video = operation.response.generated_videos[0]
-    client.files.download(file=generated_video.video)
-    generated_video.video.save("4k_grand_canyon.mp4")
+    client.files.download(file=generated_video.video, destination="4k_grand_canyon.mp4")
     print("Generated video saved to 4k_grand_canyon.mp4")
 
 ### JavaScript
@@ -932,8 +927,7 @@ starting frame for generating a video with Veo 3.1.
 
     # Download the video.
     video = operation.response.generated_videos[0]
-    client.files.download(file=video.video)
-    video.video.save("veo3_with_image_input.mp4")
+    client.files.download(file=video.video, destination="veo3_with_image_input.mp4")
     print("Generated video saved to veo3_with_image_input.mp4")
 
 ### JavaScript
@@ -1136,8 +1130,7 @@ For example, using these three images generated with
 
     # Download the video.
     video = operation.response.generated_videos[0]
-    client.files.download(file=video.video)
-    video.video.save("veo3.1_with_reference_images.mp4")
+    client.files.download(file=video.video, destination="veo3.1_with_reference_images.mp4")
     print("Generated video saved to veo3.1_with_reference_images.mp4")
 
 ### JavaScript
@@ -1351,8 +1344,7 @@ for video generation, see the [Veo prompt guide](https://ai.google.dev/gemini-ap
 
     # Download the video.
     video = operation.response.generated_videos[0]
-    client.files.download(file=video.video)
-    video.video.save("veo3.1_with_interpolation.mp4")
+    client.files.download(file=video.video, destination="veo3.1_with_interpolation.mp4")
     print("Generated video saved to veo3.1_with_interpolation.mp4")
 
 ### JavaScript
@@ -1547,8 +1539,7 @@ prompt:
 
     # Download the video.
     video = operation.response.generated_videos[0]
-    client.files.download(file=video.video)
-    video.video.save("veo3.1_extension.mp4")
+    client.files.download(file=video.video, destination="veo3.1_extension.mp4")
     print("Generated video saved to veo3.1_extension.mp4")
 
 ### JavaScript

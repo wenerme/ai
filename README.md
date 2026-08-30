@@ -111,7 +111,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | [ppt-master](./skills/ppt-master/SKILL.md) | AI-driven presentation workflow for generating editable PPTX decks and slides, reconstructing page visuals, creating... | [hugohe3/ppt-master](https://github.com/hugohe3/ppt-master) |
 | [pytorch-docs](./skills/pytorch-docs/SKILL.md) | Use when working with PyTorch APIs, tensors, autograd, torch.nn, torch.optim, torch.compile, export, distributed/RPC,... | [pytorch/pytorch/docs](https://github.com/pytorch/pytorch/tree/main/docs) |
 | [react-resizable-panels-v3-to-v4](./skills/react-resizable-panels-v3-to-v4/SKILL.md) | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
-| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | Use when completing tasks, implementing major features, reviewing committed or uncommitted changes, or before merging to... | [obra/superpowers](https://github.com/obra/superpowers) |
+| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | Use when completing tasks, implementing major features, or before merging to verify work meets requirements | [obra/superpowers](https://github.com/obra/superpowers) |
 | [shadcn](./skills/shadcn/SKILL.md) | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI, including chat... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
 | [skill-writer](./skills/skill-writer/SKILL.md) | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
 | [sling-cli](./skills/sling-cli/SKILL.md) | Use when moving data between databases, files, or APIs with the sling CLI; configuring connections, writing replication... | [docs.slingdata.io](https://docs.slingdata.io) |
@@ -1120,7 +1120,7 @@ Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime 
 npx skills add wenerme/ai --skill requesting-code-review
 ```
 
-Use when completing tasks, implementing major features, reviewing committed or uncommitted changes, or before merging to verify both requirement fidelity and engineering quality.
+Use when completing tasks, implementing major features, or before merging to verify work meets requirements
 
 </details>
 <details>
@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 47382 files, 493 MiB total
+> 125 skills, 47419 files, 493 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1431,12 +1431,12 @@ Use when implementing React state management with Zustand, including context-sco
 | [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 832 | 5.5 MiB |
 | [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1268 | 9.2 MiB |
 | [cloudflare-security](./skills/cloudflare-security/SKILL.md) | 1015 | 6.0 MiB |
-| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 820 | 8.0 MiB |
-| [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 924 | 10 MiB |
+| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 824 | 8.1 MiB |
+| [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 937 | 10 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
 | [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 5287 | 17 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 61 KiB |
-| [doris-docs](./skills/doris-docs/SKILL.md) | 1593 | 9.6 MiB |
+| [doris-docs](./skills/doris-docs/SKILL.md) | 1594 | 9.7 MiB |
 | [duckdb-clients](./skills/duckdb-clients/SKILL.md) | 75 | 1.3 MiB |
 | [duckdb-data](./skills/duckdb-data/SKILL.md) | 27 | 146 KiB |
 | [duckdb-dev](./skills/duckdb-dev/SKILL.md) | 29 | 135 KiB |
@@ -1460,12 +1460,12 @@ Use when implementing React state management with Zustand, including context-sco
 | [glab-docs](./skills/glab-docs/SKILL.md) | 296 | 479 KiB |
 | [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 720 KiB |
 | [google-ai-docs](./skills/google-ai-docs/SKILL.md) | 102 | 2.5 MiB |
-| [grafana-docs](./skills/grafana-docs/SKILL.md) | 634 | 6.3 MiB |
+| [grafana-docs](./skills/grafana-docs/SKILL.md) | 635 | 6.4 MiB |
 | [grafana-plugin-docs](./skills/grafana-plugin-docs/SKILL.md) | 661 | 4.6 MiB |
 | [hono-docs](./skills/hono-docs/SKILL.md) | 87 | 360 KiB |
 | [huggingface-docs](./skills/huggingface-docs/SKILL.md) | 361 | 2.0 MiB |
 | [humanizer](./skills/humanizer/SKILL.md) | 1 | 30 KiB |
-| [image-prompt-guide](./skills/image-prompt-guide/SKILL.md) | 9 | 324 KiB |
+| [image-prompt-guide](./skills/image-prompt-guide/SKILL.md) | 9 | 323 KiB |
 | [immich-docs](./skills/immich-docs/SKILL.md) | 77 | 487 KiB |
 | [justfile-docs](./skills/justfile-docs/SKILL.md) | 113 | 166 KiB |
 | [k3s-docs](./skills/k3s-docs/SKILL.md) | 58 | 1.8 MiB |
@@ -1476,7 +1476,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 22 | 172 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
 | [mastra](./skills/mastra/SKILL.md) | 11 | 64 KiB |
-| [mastra-docs](./skills/mastra-docs/SKILL.md) | 874 | 7.4 MiB |
+| [mastra-docs](./skills/mastra-docs/SKILL.md) | 878 | 7.5 MiB |
 | [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 183 | 549 KiB |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
 | [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 84 | 1.3 MiB |
@@ -1487,17 +1487,17 @@ Use when implementing React state management with Zustand, including context-sco
 | [openai-sdk-python](./skills/openai-sdk-python/SKILL.md) | 529 | 25 MiB |
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 529 | 24 MiB |
 | [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 476 KiB |
-| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 463 | 2.7 MiB |
+| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 476 | 2.8 MiB |
 | [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2400 | 15 MiB |
 | [orpc-docs](./skills/orpc-docs/SKILL.md) | 1 | 4.7 KiB |
 | [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | 2 | 7.4 KiB |
 | [papermc-docs](./skills/papermc-docs/SKILL.md) | 192 | 877 KiB |
 | [peekaboo](./skills/peekaboo/SKILL.md) | 1 | 15 KiB |
 | [powerdns-docs](./skills/powerdns-docs/SKILL.md) | 158 | 1.4 MiB |
-| [ppt-master](./skills/ppt-master/SKILL.md) | 12938 | 76 MiB |
+| [ppt-master](./skills/ppt-master/SKILL.md) | 12939 | 76 MiB |
 | [pytorch-docs](./skills/pytorch-docs/SKILL.md) | 319 | 2.1 MiB |
 | [react-resizable-panels-v3-to-v4](./skills/react-resizable-panels-v3-to-v4/SKILL.md) | 1 | 9.2 KiB |
-| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | 2 | 9.2 KiB |
+| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | 2 | 8.4 KiB |
 | [shadcn](./skills/shadcn/SKILL.md) | 15 | 95 KiB |
 | [skill-writer](./skills/skill-writer/SKILL.md) | 4 | 28 KiB |
 | [sling-cli](./skills/sling-cli/SKILL.md) | 3 | 14 KiB |

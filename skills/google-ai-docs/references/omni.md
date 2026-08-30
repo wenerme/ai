@@ -703,9 +703,7 @@ video is `ACTIVE` before downloading.
         time.sleep(5)
 
     # 3. Download the final video
-    video_bytes = client.files.download(file=video_output.uri)
-    with open("output.mp4", "wb") as f:
-        f.write(video_bytes)
+    client.files.download(file=video_output.uri, destination="output.mp4")
 
 ### JavaScript
 

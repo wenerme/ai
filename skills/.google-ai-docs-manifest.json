@@ -170,8 +170,8 @@
   "google-ai-docs/files.md": {
     "url": "https://ai.google.dev/gemini-api/docs/files",
     "skill": "google-ai-docs",
-    "size": 29627,
-    "updatedAt": "2026-08-27T09:06:33.256Z"
+    "size": 29745,
+    "updatedAt": "2026-08-30T14:59:41.604Z"
   },
   "google-ai-docs/live.md": {
     "url": "https://ai.google.dev/gemini-api/docs/live",
@@ -464,14 +464,14 @@
   "google-ai-docs/omni.md": {
     "url": "https://ai.google.dev/gemini-api/docs/omni",
     "skill": "google-ai-docs",
-    "size": 46167,
-    "updatedAt": "2026-08-27T20:33:43.783Z"
+    "size": 46110,
+    "updatedAt": "2026-08-30T15:00:10.446Z"
   },
   "google-ai-docs/veo.md": {
     "url": "https://ai.google.dev/gemini-api/docs/veo",
     "skill": "google-ai-docs",
-    "size": 94355,
-    "updatedAt": "2026-07-01T01:37:56.493Z"
+    "size": 94224,
+    "updatedAt": "2026-08-30T15:00:10.895Z"
   },
   "google-ai-docs/interactions/media-resolution.md": {
     "url": "https://ai.google.dev/gemini-api/docs/interactions/media-resolution",

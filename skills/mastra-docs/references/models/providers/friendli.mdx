@@ -1,11 +1,11 @@
 ---
 title: "Friendli | Models"
-description: "Use Friendli models with Mastra. 5 models available."
+description: "Use Friendli models with Mastra. 6 models available."
 ---
 
 # [Friendli logo]Friendli
 
-Access 5 Friendli models through Mastra's model router. Authentication is handled automatically using the `FRIENDLI_TOKEN` environment variable.
+Access 6 Friendli models through Mastra's model router. Authentication is handled automatically using the `FRIENDLI_TOKEN` environment variable.
 
 Learn more in the [Friendli documentation](https://friendli.ai/docs/guides/serverless_endpoints/introduction).
 
@@ -98,6 +98,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 1.4,
     "outputCost": 4.4
+  },
+  {
+    "model": "friendli/zai-org/GLM-5.3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 1.4,
+    "outputCost": 4.4
   }
 ]}
 />
@@ -130,7 +142,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "friendli/zai-org/GLM-5.2"
+      ? "friendli/zai-org/GLM-5.3"
       : "friendli/MiniMaxAI/MiniMax-M2.5";
   }
 });

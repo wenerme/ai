@@ -1,11 +1,11 @@
 ---
 title: "Fireworks AI | Models"
-description: "Use Fireworks AI models with Mastra. 17 models available."
+description: "Use Fireworks AI models with Mastra. 18 models available."
 ---
 
 # [Fireworks AI logo]Fireworks AI
 
-Access 17 Fireworks AI models through Mastra's model router. Authentication is handled automatically using the `FIREWORKS_API_KEY` environment variable.
+Access 18 Fireworks AI models through Mastra's model router. Authentication is handled automatically using the `FIREWORKS_API_KEY` environment variable.
 
 Learn more in the [Fireworks AI documentation](https://fireworks.ai/docs/).
 
@@ -86,6 +86,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 1.4,
     "outputCost": 4.4
+  },
+  {
+    "model": "fireworks-ai/accounts/fireworks/models/glm-5p3-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 0.15,
+    "outputCost": 0.5
   },
   {
     "model": "fireworks-ai/accounts/fireworks/models/gpt-oss-120b",

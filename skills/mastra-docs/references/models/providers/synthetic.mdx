@@ -1,11 +1,11 @@
 ---
 title: "Synthetic | Models"
-description: "Use Synthetic models with Mastra. 8 models available."
+description: "Use Synthetic models with Mastra. 9 models available."
 ---
 
 # [Synthetic logo]Synthetic
 
-Access 8 Synthetic models through Mastra's model router. Authentication is handled automatically using the `SYNTHETIC_API_KEY` environment variable.
+Access 9 Synthetic models through Mastra's model router. Authentication is handled automatically using the `SYNTHETIC_API_KEY` environment variable.
 
 Learn more in the [Synthetic documentation](https://synthetic.new/pricing).
 
@@ -134,6 +134,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 1.4,
     "outputCost": 4.4
+  },
+  {
+    "model": "synthetic/hf:zai-org/GLM-5.3-Flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 524288,
+    "maxOutput": 65536,
+    "inputCost": 0.15,
+    "outputCost": 0.5
   }
 ]}
 />
@@ -166,7 +178,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "synthetic/hf:zai-org/GLM-5.2"
+      ? "synthetic/hf:zai-org/GLM-5.3-Flash"
       : "synthetic/hf:MiniMaxAI/MiniMax-M3";
   }
 });

@@ -1,121 +1,95 @@
 ---
 name: requesting-code-review
-description: Use when completing tasks, implementing major features, reviewing committed or uncommitted changes, or before merging to verify both requirement fidelity and engineering quality.
+description: Use when completing tasks, implementing major features, or before merging to verify work meets requirements
 ---
 
 # Requesting Code Review
 
-Review an explicit change surface on two independent axes:
+Dispatch a code reviewer subagent to catch issues before they cascade. The reviewer gets precisely crafted context for evaluation — never your session's history.
 
-- **Requirements**: Does the implementation faithfully satisfy the originating goal/spec/issue?
-- **Engineering**: Is the implementation correct, secure, maintainable, testable, and consistent with repository standards?
+**Core principle:** Review early, review often.
 
-Run the axes in separate parallel reviewers so one perspective cannot mask the other. Reviewer output is evidence to verify, not proof by itself.
+## When to Request Review
 
-## 1. Pin The Review Surface
+**Mandatory:**
+- After each task in subagent-driven development
+- After completing major feature
+- Before merge to main
 
-Choose one explicit mode from the user's request and current git state.
+**Optional but valuable:**
+- When stuck (fresh perspective)
+- Before refactoring (baseline check)
+- After fixing complex bug
 
-### Committed range
+## How to Request
 
+**1. Get git SHAs:**
 ```bash
-BASE_SHA=$(git rev-parse <base-ref>)
-TARGET_SHA=$(git rev-parse <target-ref-or-HEAD>)
-git diff --stat "$BASE_SHA"..."$TARGET_SHA"
-git diff "$BASE_SHA"..."$TARGET_SHA"
-git log --oneline "$BASE_SHA".."$TARGET_SHA"
+BASE_SHA=$(git rev-parse HEAD~1)  # or origin/main
+HEAD_SHA=$(git rev-parse HEAD)
 ```
 
-### Current worktree
+**2. Dispatch code reviewer subagent:**
 
-Use this when the implementation is staged, unstaged, untracked, or combines local edits with commits after a known base:
+Dispatch a `general-purpose` subagent, filling the template at [code-reviewer.md](code-reviewer.md)
 
-```bash
-BASE_SHA=$(git rev-parse <base-ref-or-HEAD>)
-git status --short
-git diff --stat "$BASE_SHA" --
-git diff "$BASE_SHA" --
-git ls-files --others --exclude-standard
+**Placeholders:**
+- `{DESCRIPTION}` - Brief summary of what you built
+- `{PLAN_OR_REQUIREMENTS}` - What it should do
+- `{BASE_SHA}` - Starting commit
+- `{HEAD_SHA}` - Ending commit
+
+**3. Act on feedback:**
+- Fix Critical issues immediately
+- Fix Important issues before proceeding
+- Note Minor issues for later
+- Push back if reviewer is wrong (with reasoning)
+
+## Example
+
+```
+[Just completed Task 2: Add verification function]
+
+You: Let me request code review before proceeding.
+
+BASE_SHA=$(git log --oneline | grep "Task 1" | head -1 | awk '{print $1}')
+HEAD_SHA=$(git rev-parse HEAD)
+
+[Dispatch code reviewer subagent]
+  DESCRIPTION: Added verifyIndex() and repairIndex() with 4 issue types
+  PLAN_OR_REQUIREMENTS: Task 2 from docs/superpowers/plans/deployment-plan.md
+  BASE_SHA: a7981ec
+  HEAD_SHA: 3df7661
+
+[Subagent returns]:
+  Strengths: Clean architecture, real tests
+  Issues:
+    Important: Missing progress indicators
+    Minor: Magic number (100) for reporting interval
+  Assessment: Ready to proceed
+
+You: [Fix progress indicators]
+[Continue to Task 3]
 ```
 
-`git diff "$BASE_SHA"` includes staged and unstaged tracked changes relative to the base. Read relevant untracked files explicitly because Git diff omits them. If the user asks for staged-only review, use `git diff --cached` and exclude unstaged/untracked content from the declared surface.
+## Common Rationalizations
 
-If the user did not specify a base, infer it only when task start/branch/upstream facts make it unambiguous. For a purely dirty current task, `HEAD` is the normal base. Stop if a required ref does not resolve or the declared surface is empty.
+| Excuse | Reality |
+|--------|---------|
+| "I'll just review the diff myself instead of dispatching a reviewer" | You're the coordinator — reviewing the diff inline burns the context window you need to keep driving the work. Dispatch a reviewer subagent: the diff and the evaluation live in its context, and only the findings come back to you. |
+| "The reviewer needs my whole session history to understand the change" | Hand it precisely crafted context, never your session's history. That keeps the reviewer on the work product, not your thought process. |
 
-Completion criterion: mode, base, target (`SHA`, `WORKTREE`, or `INDEX`), status/inventory, and exact reproducible diff commands are recorded.
+## Red Flags
 
-## 2. Establish Evidence Sources
+**Never:**
+- Skip review because "it's simple"
+- Ignore Critical issues
+- Proceed with unfixed Important issues
+- Argue with valid technical feedback
 
-Requirements source priority:
+**If reviewer wrong:**
+- Push back with technical reasoning
+- Show code/tests that prove it works
+- Request clarification
 
-1. User-provided goal/spec/issue/acceptance criteria.
-2. Issue or PR referenced by branch/commit history.
-3. Repo-local plan/spec under `docs/`, `project/`, `.agents/`, or `.scratch/`.
-4. If none exists, mark the Requirements axis `not available`; do not invent a spec.
-
-Engineering source priority:
-
-1. Applicable `AGENTS.md` / `CLAUDE.md` and repo-local skills.
-2. `CONTRIBUTING.md`, coding standards, architecture docs, ADRs.
-3. Existing patterns and tests around the changed boundary.
-4. General correctness, security, reliability, compatibility, performance, operability, and maintainability principles.
-
-Completion criterion: each axis has a concrete source list or an explicit skip reason.
-
-## 3. Dispatch Two Reviewers In Parallel
-
-Read [code-reviewer.md](code-reviewer.md), fill its placeholders, and dispatch two `general-purpose` reviewers in one parallel batch:
-
-- Requirements reviewer: use the Requirements template only.
-- Engineering reviewer: use the Engineering template only.
-
-Both reviewers are read-only. Give each the review mode, base/target, status or commit list, exact diff commands, relevant untracked paths, source paths/content, project constraints, and output format. Do not pass the parent conversation history as a substitute for a brief.
-
-When the reviewer uses worktree isolation, all repository commands must run in the worktree assigned by the Agent harness. Do not direct the reviewer to `cd` into an existing primary checkout or provide that checkout as the operational target. Explicitly prohibit mutating Git commands (`checkout`, `switch`, `reset`, `restore`, `apply`, `commit`, `rebase`, `merge`); committed-range review needs only `git diff`, `git show`, `git log`, and file reads. Worktree isolation does not prevent a reviewer from manually escaping to an absolute path.
-
-If no subagent tool exists, run the two passes sequentially with fresh, explicitly separated review contexts; do not merge the checklists into one pass.
-
-Completion criterion: both reports exist, or the Requirements report has an explicit `not available` status; every finding is inside the declared surface and cites a file/hunk plus its governing requirement/standard or concrete behavioral risk.
-
-## 4. Aggregate Without Masking
-
-Present separate sections:
-
-```markdown
-## Requirements
-
-## Engineering
-
-## Verification Gaps
-
-## Verdict
-```
-
-Do not merge or rerank the two axes. Report Critical/Important/Minor counts per axis and the worst issue in each. A pass on one axis cannot cancel a failure on the other.
-
-Verdict:
-
-- `approve`: no Critical/Important findings and required verification evidence exists.
-- `request_changes`: fixable Critical/Important findings remain.
-- `block`: requirements are ambiguous at behavior/safety boundaries, required evidence is unavailable, or review range is invalid.
-
-## 5. Close Findings
-
-- Verify each finding against source before changing code.
-- Fix valid Critical findings immediately.
-- Fix valid Important findings before merge or record explicit owner-approved acceptance.
-- Minor findings may become follow-ups when they are genuinely non-blocking.
-- Re-run affected checks and the relevant review axis after fixes.
-
-Completion criterion: every Critical/Important finding is fixed, rejected with evidence, or explicitly accepted by the authorized owner; final verdict reflects the verified state.
-
-## Use Boundaries
-
-Request review:
-
-- after a coherent implementation milestone;
-- after a complex bug fix;
-- before merging;
-- before a risky refactor when a baseline review is useful.
-
-Keep reviews proportional. A small isolated change still needs both axes, but each pass can be short. Do not force a review after every trivial edit when no coherent diff boundary exists.
+See template at: [code-reviewer.md](code-reviewer.md)
