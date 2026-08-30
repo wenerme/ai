@@ -328,9 +328,19 @@ paths:
                 time_range:
                   properties:
                     end:
+                      description: >-
+                        ISO 8601 UTC timestamp. Must include seconds
+                        (YYYY-MM-DDTHH:MM:SSZ; fractional seconds allowed);
+                        minute-precision timestamps are rejected.
+                      example: '2027-12-31T23:59:59Z'
                       format: date-time
                       type: string
                     start:
+                      description: >-
+                        ISO 8601 UTC timestamp. Must include seconds
+                        (YYYY-MM-DDTHH:MM:SSZ; fractional seconds allowed);
+                        minute-precision timestamps are rejected.
+                      example: '2027-12-31T23:59:59Z'
                       format: date-time
                       type: string
                   required:

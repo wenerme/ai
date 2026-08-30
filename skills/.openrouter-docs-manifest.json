@@ -139,9 +139,9 @@
   },
   "api/api-reference/analytics/query-analytics-data.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/analytics/query-analytics-data.md",
-    "lastModified": "Mon, 24 Aug 2026 02:20:49 GMT",
-    "size": 22981,
-    "updatedAt": "2026-08-24T02:20:49.669Z"
+    "lastModified": "Sun, 30 Aug 2026 05:13:03 GMT",
+    "size": 23587,
+    "updatedAt": "2026-08-30T05:13:03.168Z"
   },
   "api/api-reference/anthropic-messages/create-a-message.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/anthropic-messages/create-a-message.md",
@@ -151,9 +151,9 @@
   },
   "api/api-reference/api-keys/create-a-new-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/api-keys/create-a-new-api-key.md",
-    "lastModified": "Tue, 25 Aug 2026 01:50:42 GMT",
-    "size": 25613,
-    "updatedAt": "2026-08-25T01:50:42.774Z"
+    "lastModified": "Sun, 30 Aug 2026 05:13:04 GMT",
+    "size": 25682,
+    "updatedAt": "2026-08-30T05:13:04.040Z"
   },
   "api/api-reference/api-keys/delete-an-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/api-keys/delete-an-api-key.md",
@@ -475,9 +475,9 @@
   },
   "api/api-reference/oauth/create-authorization-code.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/oauth/create-authorization-code.md",
-    "lastModified": "Mon, 24 Aug 2026 02:21:25 GMT",
-    "size": 15290,
-    "updatedAt": "2026-08-24T02:21:25.043Z"
+    "lastModified": "Sun, 30 Aug 2026 05:13:40 GMT",
+    "size": 15457,
+    "updatedAt": "2026-08-30T05:13:40.925Z"
   },
   "api/api-reference/oauth/exchange-authorization-code-for-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/oauth/exchange-authorization-code-for-api-key.md",
@@ -1135,9 +1135,9 @@
   },
   "client-sdks/python/sdks/oauth/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/oauth/README.md",
-    "lastModified": "Mon, 06 Jul 2026 14:29:26 GMT",
-    "size": 12365,
-    "updatedAt": "2026-07-06T14:29:26.289Z"
+    "lastModified": "Sun, 30 Aug 2026 05:14:44 GMT",
+    "size": 12407,
+    "updatedAt": "2026-08-30T05:14:44.218Z"
   },
   "client-sdks/python/sdks/observability/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/observability/README.md",

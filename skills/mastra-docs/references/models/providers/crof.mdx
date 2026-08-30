@@ -1,11 +1,11 @@
 ---
 title: "CrofAI | Models"
-description: "Use CrofAI models with Mastra. 22 models available."
+description: "Use CrofAI models with Mastra. 23 models available."
 ---
 
 # [CrofAI logo]CrofAI
 
-Access 22 CrofAI models through Mastra's model router. Authentication is handled automatically using the `CROF_API_KEY` environment variable.
+Access 23 CrofAI models through Mastra's model router. Authentication is handled automatically using the `CROF_API_KEY` environment variable.
 
 Learn more in the [CrofAI documentation](https://crof.ai/docs).
 
@@ -134,6 +134,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.3,
     "outputCost": 1.05
+  },
+  {
+    "model": "crof/glm-5.3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 0.4,
+    "outputCost": 1.4
   },
   {
     "model": "crof/glm-5.3-flash",

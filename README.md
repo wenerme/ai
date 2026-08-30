@@ -1397,7 +1397,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [bun-ffi-interop-pattern](./skills/bun-ffi-interop-pattern/SKILL.md) | 1 | 4.8 KiB |
 | [caddy-docs](./skills/caddy-docs/SKILL.md) | 82 | 667 KiB |
 | [chrome-devtools](./skills/chrome-devtools/SKILL.md) | 1 | 4.1 KiB |
-| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 141 | 7.0 MiB |
+| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 141 | 7.1 MiB |
 | [clickhouse-docs](./skills/clickhouse-docs/SKILL.md) | 1105 | 10 MiB |
 | [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1581 | 18 MiB |
 | [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 381 | 3.1 MiB |
@@ -1460,7 +1460,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [openai-docs](./skills/openai-docs/SKILL.md) | 185 | 3.7 MiB |
 | [openai-sdk-python](./skills/openai-sdk-python/SKILL.md) | 529 | 25 MiB |
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 529 | 24 MiB |
-| [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 477 KiB |
+| [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 476 KiB |
 | [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 476 | 2.8 MiB |
 | [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2400 | 15 MiB |
 | [orpc-docs](./skills/orpc-docs/SKILL.md) | 1 | 4.7 KiB |

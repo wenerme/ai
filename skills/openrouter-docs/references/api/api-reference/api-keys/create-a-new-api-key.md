@@ -141,8 +141,9 @@ paths:
                     - 'null'
                 expires_at:
                   description: >-
-                    Optional ISO 8601 UTC timestamp when the API key should
-                    expire. Must be UTC, other timezones will be rejected
+                    Optional ISO 8601 UTC expiration timestamp. Must include
+                    seconds (YYYY-MM-DDTHH:MM:SSZ; fractional seconds allowed);
+                    minute-precision timestamps are rejected.
                   example: '2027-12-31T23:59:59Z'
                   format: date-time
                   type:
