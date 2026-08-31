@@ -37664,6 +37664,7 @@ Fields:
 | <a id="countablevulnerability-airesolutionenabled"></a>`aiResolutionEnabled` | [`Boolean`](#boolean) | Indicates whether the specific vulnerability can be resolved with AI. |
 | <a id="countablevulnerability-aiworkflows"></a>`aiWorkflows`  | [`VulnerabilityTriggeredWorkflowConnection`](#vulnerabilitytriggeredworkflowconnection) | Introduced in GitLab 18.6. Status: Experiment. AI workflows triggered for the vulnerability. |
 | <a id="countablevulnerability-archivalinformation"></a>`archivalInformation`  | [`VulnerabilityArchivalInformation!`](#vulnerabilityarchivalinformation) | Introduced in GitLab 17.11. Status: Experiment. Indicates whether the vulnerability is about to be archived in the next month. |
+| <a id="countablevulnerability-ascpcomponent"></a>`ascpComponent`  | [`AscpComponent`](#ascpcomponent) | Introduced in GitLab 19.4. Status: Experiment. The ASCP component the vulnerability belongs to. Returns `null` when there is no matchor when the `ascp_component_vulnerability_association` feature flag is disabled. |
 | <a id="countablevulnerability-commenters"></a>`commenters` | [`UserCoreConnection!`](#usercoreconnection) | All commenters on the noteable. (see [Connections](#connections)) |
 | <a id="countablevulnerability-confirmedat"></a>`confirmedAt` | [`Time`](#time) | Timestamp of when the vulnerability state was changed to confirmed. |
 | <a id="countablevulnerability-confirmedby"></a>`confirmedBy` | [`UserCore`](#usercore) | User that confirmed the vulnerability. |
@@ -50934,7 +50935,7 @@ Fields:
 - Introduced in GitLab 19.3.
 - Status: Experiment.
 
-Artifact Registry repositories in the organization. Returns `null` when the `artifact_registry_ui` feature flag is disabled.
+Artifact Registry repositories in the organization. Returns `null` when the `artifact_registry_ui` feature flag is disabled. Raises a resource-not-available error when the organization is not activated for Artifact Registry, where `artifactRegistry` returns `null` instead.
 
 Returns [`ArtifactRegistryRepositoryConnection`](#artifactregistryrepositoryconnection).
 
@@ -50955,7 +50956,7 @@ Arguments:
 - Introduced in GitLab 19.3.
 - Status: Experiment.
 
-Single Artifact Registry repository in the organization, by name. Returns `null` when not found or when the `artifact_registry_ui` feature flag is disabled.
+Single Artifact Registry repository in the organization, by name. Returns `null` when not found or when the `artifact_registry_ui` feature flag is disabled. Raises a resource-not-available error when the organization is not activated for Artifact Registry, where `artifactRegistry` returns `null` instead.
 
 Returns [`ArtifactRegistryRepositoryDetails`](#artifactregistryrepositorydetails).
 
@@ -50998,7 +50999,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="organization-cdapplications-search"></a>`search` | [`String`](#string) | Search applications by name or description. |
-| <a id="organization-cdapplications-statuses"></a>`statuses` | [`[CdApplicationStatus!]`](#cdapplicationstatus) | Filter applications by status. An application can match more than one status. |
+| <a id="organization-cdapplications-status"></a>`status` | [`CdApplicationStatus`](#cdapplicationstatus) | Filter applications by status. An application can match more than one status. |
 
 ##### `Organization.cdEnvironment`
 
@@ -60226,6 +60227,7 @@ Fields:
 | <a id="vulnerability-airesolutionenabled"></a>`aiResolutionEnabled` | [`Boolean`](#boolean) | Indicates whether the specific vulnerability can be resolved with AI. |
 | <a id="vulnerability-aiworkflows"></a>`aiWorkflows`  | [`VulnerabilityTriggeredWorkflowConnection`](#vulnerabilitytriggeredworkflowconnection) | Introduced in GitLab 18.6. Status: Experiment. AI workflows triggered for the vulnerability. |
 | <a id="vulnerability-archivalinformation"></a>`archivalInformation`  | [`VulnerabilityArchivalInformation!`](#vulnerabilityarchivalinformation) | Introduced in GitLab 17.11. Status: Experiment. Indicates whether the vulnerability is about to be archived in the next month. |
+| <a id="vulnerability-ascpcomponent"></a>`ascpComponent`  | [`AscpComponent`](#ascpcomponent) | Introduced in GitLab 19.4. Status: Experiment. The ASCP component the vulnerability belongs to. Returns `null` when there is no matchor when the `ascp_component_vulnerability_association` feature flag is disabled. |
 | <a id="vulnerability-commenters"></a>`commenters` | [`UserCoreConnection!`](#usercoreconnection) | All commenters on the noteable. (see [Connections](#connections)) |
 | <a id="vulnerability-confirmedat"></a>`confirmedAt` | [`Time`](#time) | Timestamp of when the vulnerability state was changed to confirmed. |
 | <a id="vulnerability-confirmedby"></a>`confirmedBy` | [`UserCore`](#usercore) | User that confirmed the vulnerability. |

@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 47419 files, 493 MiB total
+> 125 skills, 47422 files, 494 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1437,7 +1437,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 5287 | 17 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 61 KiB |
 | [doris-docs](./skills/doris-docs/SKILL.md) | 1594 | 9.7 MiB |
-| [duckdb-clients](./skills/duckdb-clients/SKILL.md) | 75 | 1.3 MiB |
+| [duckdb-clients](./skills/duckdb-clients/SKILL.md) | 76 | 1.3 MiB |
 | [duckdb-data](./skills/duckdb-data/SKILL.md) | 27 | 146 KiB |
 | [duckdb-dev](./skills/duckdb-dev/SKILL.md) | 29 | 135 KiB |
 | [duckdb-docs](./skills/duckdb-docs/SKILL.md) | 101 | 441 KiB |
@@ -1453,11 +1453,11 @@ Use when implementing React state management with Zustand, including context-sco
 | [ghostty-docs](./skills/ghostty-docs/SKILL.md) | 103 | 557 KiB |
 | [gitea-docs](./skills/gitea-docs/SKILL.md) | 97 | 683 KiB |
 | [gitlab-admin-docs](./skills/gitlab-admin-docs/SKILL.md) | 360 | 4.5 MiB |
-| [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 251 | 14 MiB |
+| [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 252 | 15 MiB |
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 173 | 2.0 MiB |
 | [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 910 | 8.2 MiB |
 | [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 22 KiB |
-| [glab-docs](./skills/glab-docs/SKILL.md) | 296 | 479 KiB |
+| [glab-docs](./skills/glab-docs/SKILL.md) | 296 | 480 KiB |
 | [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 720 KiB |
 | [google-ai-docs](./skills/google-ai-docs/SKILL.md) | 102 | 2.5 MiB |
 | [grafana-docs](./skills/grafana-docs/SKILL.md) | 635 | 6.4 MiB |
@@ -1476,7 +1476,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 22 | 172 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
 | [mastra](./skills/mastra/SKILL.md) | 11 | 64 KiB |
-| [mastra-docs](./skills/mastra-docs/SKILL.md) | 878 | 7.5 MiB |
+| [mastra-docs](./skills/mastra-docs/SKILL.md) | 879 | 7.5 MiB |
 | [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 183 | 549 KiB |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
 | [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 84 | 1.3 MiB |
