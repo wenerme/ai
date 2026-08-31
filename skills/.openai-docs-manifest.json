@@ -74,10 +74,10 @@
   "openai-docs/changelog.md": {
     "url": "https://developers.openai.com/api/docs/changelog.md",
     "skill": "openai-docs",
-    "etag": "W/\"0316c2da924a372142903d3d286c492b\"",
-    "lastModified": "Fri, 28 Aug 2026 10:34:27 GMT",
-    "size": 60672,
-    "updatedAt": "2026-08-28T11:15:25.169Z"
+    "etag": "W/\"43a5678a4f52641eb0b9e4663457e8e5\"",
+    "lastModified": "Mon, 31 Aug 2026 04:58:02 GMT",
+    "size": 61575,
+    "updatedAt": "2026-08-31T05:18:20.100Z"
   },
   "openai-docs/concepts.md": {
     "url": "https://developers.openai.com/api/docs/concepts.md",
@@ -90,10 +90,10 @@
   "openai-docs/deprecations.md": {
     "url": "https://developers.openai.com/api/docs/deprecations.md",
     "skill": "openai-docs",
-    "etag": "W/\"246018d112af263e6ed78ef5f41ac3e1\"",
-    "lastModified": "Thu, 27 Aug 2026 20:03:05 GMT",
-    "size": 36196,
-    "updatedAt": "2026-08-27T20:26:07.484Z"
+    "etag": "W/\"a1cb47d7260fc73e9d5c676bce998429\"",
+    "lastModified": "Mon, 31 Aug 2026 04:57:10 GMT",
+    "size": 37172,
+    "updatedAt": "2026-08-31T05:18:20.538Z"
   },
   "openai-docs/gpts/release-notes.md": {
     "url": "https://developers.openai.com/api/docs/gpts/release-notes.md",

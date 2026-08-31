@@ -38,7 +38,7 @@ blog post.
 - The maximum number of components per project [changed](https://gitlab.com/gitlab-org/gitlab/-/issues/569158) from 30 to 100 in GitLab 18.5.
 
 A component project is a GitLab project with a repository that hosts one or more components.
-All components in the project are versioned together, with a maximum of 30 components per project.
+All components in the project are versioned together, with a maximum of 100 components per project.
 
 If a component requires different versioning from other components, the component should be moved
 to a dedicated component project.

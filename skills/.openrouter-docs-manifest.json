@@ -145,9 +145,9 @@
   },
   "api/api-reference/anthropic-messages/create-a-message.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/anthropic-messages/create-a-message.md",
-    "lastModified": "Fri, 28 Aug 2026 21:24:03 GMT",
-    "size": 198496,
-    "updatedAt": "2026-08-28T21:24:03.465Z"
+    "lastModified": "Mon, 31 Aug 2026 05:20:45 GMT",
+    "size": 198862,
+    "updatedAt": "2026-08-31T05:20:45.933Z"
   },
   "api/api-reference/api-keys/create-a-new-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/api-keys/create-a-new-api-key.md",
@@ -223,9 +223,9 @@
   },
   "api/api-reference/chat/create-a-chat-completion.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/chat/create-a-chat-completion.md",
-    "lastModified": "Fri, 28 Aug 2026 21:24:29 GMT",
-    "size": 168392,
-    "updatedAt": "2026-08-28T21:24:29.379Z"
+    "lastModified": "Mon, 31 Aug 2026 05:20:55 GMT",
+    "size": 168758,
+    "updatedAt": "2026-08-31T05:20:55.567Z"
   },
   "api/api-reference/classifications/task-classification-market-share.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/classifications/task-classification-market-share.md",
@@ -295,9 +295,9 @@
   },
   "api/api-reference/embeddings/submit-an-embedding-request.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/embeddings/submit-an-embedding-request.md",
-    "lastModified": "Fri, 28 Aug 2026 21:24:59 GMT",
-    "size": 44040,
-    "updatedAt": "2026-08-28T21:24:59.375Z"
+    "lastModified": "Mon, 31 Aug 2026 05:21:03 GMT",
+    "size": 44406,
+    "updatedAt": "2026-08-31T05:21:03.503Z"
   },
   "api/api-reference/endpoints/list-all-endpoints-for-a-model.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/endpoints/list-all-endpoints-for-a-model.md",
@@ -433,9 +433,9 @@
   },
   "api/api-reference/images/generate-an-image.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/images/generate-an-image.md",
-    "lastModified": "Fri, 28 Aug 2026 21:25:21 GMT",
-    "size": 57134,
-    "updatedAt": "2026-08-28T21:25:21.556Z"
+    "lastModified": "Mon, 31 Aug 2026 05:21:17 GMT",
+    "size": 57500,
+    "updatedAt": "2026-08-31T05:21:17.763Z"
   },
   "api/api-reference/images/list-endpoints-for-an-image-model.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/images/list-endpoints-for-an-image-model.md",
@@ -577,9 +577,9 @@
   },
   "api/api-reference/responses/create-a-response.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/responses/create-a-response.md",
-    "lastModified": "Fri, 28 Aug 2026 21:25:39 GMT",
-    "size": 353963,
-    "updatedAt": "2026-08-28T21:25:39.742Z"
+    "lastModified": "Mon, 31 Aug 2026 05:21:33 GMT",
+    "size": 354439,
+    "updatedAt": "2026-08-31T05:21:33.090Z"
   },
   "api/api-reference/scim/create-a-scim-group-mapping.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/scim/create-a-scim-group-mapping.md",

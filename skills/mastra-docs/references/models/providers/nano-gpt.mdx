@@ -1,11 +1,11 @@
 ---
 title: "NanoGPT | Models"
-description: "Use NanoGPT models with Mastra. 607 models available."
+description: "Use NanoGPT models with Mastra. 605 models available."
 ---
 
 # [NanoGPT logo]NanoGPT
 
-Access 607 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
+Access 605 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
 
 Learn more in the [NanoGPT documentation](https://docs.nano-gpt.com).
 
@@ -46,7 +46,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
-    "contextWindow": 16384,
+    "contextWindow": 32768,
     "maxOutput": 8192,
     "inputCost": 0.493,
     "outputCost": 0.493
@@ -820,18 +820,6 @@ for await (const chunk of stream) {
     "outputCost": 75
   },
   {
-    "model": "nano-gpt/claude-opus-4-1-thinking:32000",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 32000,
-    "inputCost": 15,
-    "outputCost": 75
-  },
-  {
     "model": "nano-gpt/claude-opus-4-1-thinking:32768",
     "imageInput": true,
     "audioInput": false,
@@ -905,18 +893,6 @@ for await (const chunk of stream) {
   },
   {
     "model": "nano-gpt/claude-opus-4-thinking:1024",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 32000,
-    "inputCost": 15,
-    "outputCost": 75
-  },
-  {
-    "model": "nano-gpt/claude-opus-4-thinking:32000",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -2100,8 +2076,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.12,
+    "outputCost": 0.38
   },
   {
     "model": "nano-gpt/gemma-4-26b-a4b-it-darksoul",
@@ -2112,8 +2088,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.12,
+    "outputCost": 0.38
   },
   {
     "model": "nano-gpt/gemma-4-26b-a4b-it-luminous",
@@ -2124,8 +2100,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.12,
+    "outputCost": 0.38
   },
   {
     "model": "nano-gpt/gemma-4-26b-a4b-it-moonlight",
@@ -2136,8 +2112,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.12,
+    "outputCost": 0.38
   },
   {
     "model": "nano-gpt/gemma-4-26b-a4b-it-musica",
@@ -2148,8 +2124,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.12,
+    "outputCost": 0.38
   },
   {
     "model": "nano-gpt/gemma-4-26b-a4b-it-opusdistill",
@@ -2160,8 +2136,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.12,
+    "outputCost": 0.38
   },
   {
     "model": "nano-gpt/gemma-4-26b-a4b-it-shadowsiren",
@@ -2172,8 +2148,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.12,
+    "outputCost": 0.38
   },
   {
     "model": "nano-gpt/Gemma-4-26B-A4B-MeroMero",
@@ -2184,8 +2160,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.12,
+    "outputCost": 0.38
   },
   {
     "model": "nano-gpt/Gemma-4-26B-A4B-MeroMero:thinking",
@@ -2196,8 +2172,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.12,
+    "outputCost": 0.38
   },
   {
     "model": "nano-gpt/gemma-4-26b-a4b-uncensored",
@@ -2208,8 +2184,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.12,
+    "outputCost": 0.38
   },
   {
     "model": "nano-gpt/gemma-4-26b-a4b-uncensored:thinking",
@@ -2220,8 +2196,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.12,
+    "outputCost": 0.38
   },
   {
     "model": "nano-gpt/Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled",
@@ -2280,8 +2256,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.1,
+    "outputCost": 0.45
   },
   {
     "model": "nano-gpt/gemma-4-31b-it-fabled",
@@ -2292,8 +2268,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.1,
+    "outputCost": 0.45
   },
   {
     "model": "nano-gpt/gemma-4-31b-it-garnet",
@@ -2304,8 +2280,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.1,
+    "outputCost": 0.45
   },
   {
     "model": "nano-gpt/gemma-4-31b-it-gembrain",
@@ -2316,8 +2292,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.1,
+    "outputCost": 0.45
   },
   {
     "model": "nano-gpt/gemma-4-31b-it-gemsicle",
@@ -2328,8 +2304,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.1,
+    "outputCost": 0.45
   },
   {
     "model": "nano-gpt/gemma-4-31b-it-isometry",
@@ -2340,8 +2316,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.1,
+    "outputCost": 0.45
   },
   {
     "model": "nano-gpt/gemma-4-31b-it-novelist",
@@ -2352,8 +2328,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.1,
+    "outputCost": 0.45
   },
   {
     "model": "nano-gpt/Gemma-4-31B-MeroMero-v2",
@@ -2364,8 +2340,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.1,
+    "outputCost": 0.45
   },
   {
     "model": "nano-gpt/Gemma-4-31B-MeroMero-v2:thinking",
@@ -2376,8 +2352,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.1,
+    "outputCost": 0.45
   },
   {
     "model": "nano-gpt/Gemma-4-31B-Queen",
@@ -2700,8 +2676,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 131072,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.12,
+    "outputCost": 0.38
   },
   {
     "model": "nano-gpt/google/gemma-4-26b-a4b-it:thinking",
@@ -2724,8 +2700,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 131072,
-    "inputCost": 0.08,
-    "outputCost": 0.33
+    "inputCost": 0.1,
+    "outputCost": 0.45
   },
   {
     "model": "nano-gpt/google/gemma-4-31b-it:thinking",
@@ -4728,8 +4704,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.05,
-    "outputCost": 0.1
+    "inputCost": 0.1,
+    "outputCost": 0.2
   },
   {
     "model": "nano-gpt/ornith-ai/ornith-1.5-9b:thinking",
@@ -4740,8 +4716,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.05,
-    "outputCost": 0.1
+    "inputCost": 0.1,
+    "outputCost": 0.2
   },
   {
     "model": "nano-gpt/pamanseau/OpenReasoning-Nemotron-32B",
@@ -5197,7 +5173,7 @@ for await (const chunk of stream) {
     "contextWindow": 262144,
     "maxOutput": 32768,
     "inputCost": 0.15,
-    "outputCost": 0.5
+    "outputCost": 0.95
   },
   {
     "model": "nano-gpt/qwen/qwen3.6-35b-a3b-uncensored:thinking",
@@ -5209,7 +5185,7 @@ for await (const chunk of stream) {
     "contextWindow": 262144,
     "maxOutput": 32768,
     "inputCost": 0.15,
-    "outputCost": 0.5
+    "outputCost": 0.95
   },
   {
     "model": "nano-gpt/qwen/Qwen3.6-35B-A3B:thinking",
@@ -5244,8 +5220,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.2,
-    "outputCost": 1.4
+    "inputCost": 0.25,
+    "outputCost": 1.5
   },
   {
     "model": "nano-gpt/qwen/qwen3.8-27b-obliterated",
@@ -5256,8 +5232,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.18,
-    "outputCost": 0.5
+    "inputCost": 0.25,
+    "outputCost": 1.5
   },
   {
     "model": "nano-gpt/qwen/qwen3.8-27b-obliterated:thinking",
@@ -5268,8 +5244,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.18,
-    "outputCost": 0.5
+    "inputCost": 0.25,
+    "outputCost": 1.5
   },
   {
     "model": "nano-gpt/qwen/qwen3.8-27b-uncensored",
@@ -5280,8 +5256,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.18,
-    "outputCost": 0.5
+    "inputCost": 0.25,
+    "outputCost": 1.5
   },
   {
     "model": "nano-gpt/qwen/qwen3.8-27b-uncensored:thinking",
@@ -5292,8 +5268,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.18,
-    "outputCost": 0.5
+    "inputCost": 0.25,
+    "outputCost": 1.5
   },
   {
     "model": "nano-gpt/qwen25-vl-72b-instruct",
@@ -7272,8 +7248,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.125,
-    "outputCost": 0.5
+    "inputCost": 0.35,
+    "outputCost": 1.4
   },
   {
     "model": "nano-gpt/z-ai/glm-5.3:thinking",

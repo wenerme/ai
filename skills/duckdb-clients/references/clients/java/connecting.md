@@ -14,6 +14,8 @@ Class.forName("org.duckdb.DuckDBDriver");
 Connection conn = DriverManager.getConnection("jdbc:duckdb:");
 ```
 
+In [GraalVM Native Image](https://duckdb.org/docs/current/clients/java/deploy_native_image.html) executables, always use this explicit load: the service-provider discovery is not reliably visible to Native Image's static analysis.
+
 To create a DuckDB connection, call `DriverManager` with the `jdbc:duckdb:` JDBC URL prefix, like so:
 
 ```java

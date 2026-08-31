@@ -1,11 +1,11 @@
 ---
 title: "above.dev | Models"
-description: "Use above.dev models with Mastra. 8 models available."
+description: "Use above.dev models with Mastra. 9 models available."
 ---
 
 # [above.dev logo]above.dev
 
-Access 8 above.dev models through Mastra's model router. Authentication is handled automatically using the `ABOVE_API_KEY` environment variable.
+Access 9 above.dev models through Mastra's model router. Authentication is handled automatically using the `ABOVE_API_KEY` environment variable.
 
 Learn more in the [above.dev documentation](https://above.dev/docs).
 
@@ -98,6 +98,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 2.31,
     "outputCost": 7.26
+  },
+  {
+    "model": "above/glm-5.3-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 0.165,
+    "outputCost": 0.55
   },
   {
     "model": "above/mimo-v2.5-pro",
