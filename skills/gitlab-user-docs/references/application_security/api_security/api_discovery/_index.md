@@ -173,4 +173,4 @@ When experiencing a behavior not working as expected, consider providing context
 - Language runtime with version (for example "Eclipse Temurin v17.0.1").
 
 > [!warning]
-> **Sanitize data attached to a support issue**. Remove sensitive information, including: credentials, passwords, tokens, keys, and secrets.
+> Sanitize data attached to a support issue. Remove sensitive information, including: credentials, passwords, tokens, keys, and secrets.

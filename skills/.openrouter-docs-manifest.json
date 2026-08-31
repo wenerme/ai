@@ -535,9 +535,9 @@
   },
   "api/api-reference/presets/create-a-preset-from-a-responses-request-body.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/create-a-preset-from-a-responses-request-body.md",
-    "lastModified": "Fri, 28 Aug 2026 21:25:34 GMT",
-    "size": 233997,
-    "updatedAt": "2026-08-28T21:25:34.266Z"
+    "lastModified": "Mon, 31 Aug 2026 17:44:04 GMT",
+    "size": 234153,
+    "updatedAt": "2026-08-31T17:44:04.650Z"
   },
   "api/api-reference/presets/get-a-preset.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/get-a-preset.md",
@@ -577,9 +577,9 @@
   },
   "api/api-reference/responses/create-a-response.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/responses/create-a-response.md",
-    "lastModified": "Mon, 31 Aug 2026 05:21:33 GMT",
-    "size": 354439,
-    "updatedAt": "2026-08-31T05:21:33.090Z"
+    "lastModified": "Mon, 31 Aug 2026 17:44:07 GMT",
+    "size": 354751,
+    "updatedAt": "2026-08-31T17:44:07.079Z"
   },
   "api/api-reference/scim/create-a-scim-group-mapping.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/scim/create-a-scim-group-mapping.md",

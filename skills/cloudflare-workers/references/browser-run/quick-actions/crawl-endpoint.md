@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # /crawl - Crawl web content
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `/crawl` endpoint scrapes content from a starting URL and follows links across the site, up to a configurable depth or page limit. Responses can be returned as HTML, Markdown, or JSON.
 
@@ -220,6 +220,7 @@ When `render` is `true` (the default), crawl jobs also support all standard Brow
 | options.includePatterns      | Array of strings | Only visits URLs that match one of these wildcard patterns. Use \* to match any characters except /, or \*\* to match any characters including /.                                                                                                                                                                                                                                                                                           |
 | options.excludePatterns      | Array of strings | Does not visit URLs that match any of these wildcard patterns. Use \* to match any characters except /, or \*\* to match any characters including /.                                                                                                                                                                                                                                                                                        |
 | crawlPurposes                | Array of strings | Declares the intended use of crawled content for [Content Signals ↗](https://contentsignals.org/) enforcement. Allowed values: search, ai-input, ai-train. Default is \["search", "ai-input", "ai-train"\]. If a target site's robots.txt includes a Content-Signal directive that sets any of your declared purposes to no, the crawl request will be rejected with a 400 error. Refer to [Content Signals](#content-signals) for details. |
+| contentUse                   | String           | Declares the intended content use level for the use [Content Signals ↗](https://contentsignals.org/) directive. Allowed values, from least to most permissive: reference, full. Default is full. If a target site sets a use directive more restrictive than your declared level, the crawl request will be rejected with a 400 error. Refer to [Content Signals](#content-signals) for details.                                            |
 
 ### Pattern behavior
 
@@ -257,6 +258,7 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser
   -d '{
     "url": "https://www.exampledocs.com/docs/",
     "crawlPurposes": ["search"],
+    "contentUse": "reference",
     "limit": 50,
     "depth": 2,
     "formats": ["markdown"],
@@ -486,7 +488,25 @@ Content-Signal: search=yes, ai-train=no
 Allow: /
 ```
 
+A site owner can also declare a `use` directive to express the maximum level at which their content may be used. The levels, from least to most permissive, are:
+
+* `immediate` — Ephemeral, single-response use, where content is not retained.
+* `reference` — Content may be retained, indexed, or cited.
+* `full` — Unrestricted use, including AI training.
+
+For example, a `robots.txt` that limits use to `reference`:
+
+```txt
+User-Agent: *
+Content-Signal: use=reference
+Allow: /
+```
+
 #### How /crawl enforces Content Signals
+
+The `/crawl` endpoint enforces both the yes/no purpose directives (`search`, `ai-input`, `ai-train`) and the `use` level directive.
+
+**Purpose directives**
 
 By default, `/crawl` declares all three purposes: `["search", "ai-input", "ai-train"]`. If a target site sets any of those content signals to `no`, the crawl request will be rejected at initiation with a `400 Bad Request` error unless you explicitly narrow your declared purposes using the `crawlPurposes` parameter to exclude the disallowed use.
 
@@ -494,7 +514,7 @@ This means:
 
 1. **Site has no Content Signals** — The crawl proceeds normally.
 2. **Site has Content Signals, and all your declared purposes are allowed** — The crawl proceeds normally.
-3. **Site sets a content signal to `no`, and that purpose is in your `crawlPurposes`** — The crawl request is rejected with a `400` error and the message `Crawl purpose(s) completely disallowed by Content-Signal directive`.
+3. **Site sets a content signal to `no`, and that purpose is in your `crawlPurposes`** — The crawl request is rejected with a `400` error and the message `Crawl disallowed by Content-Signal directive (purpose or use level)`.
 
 To crawl a site that disallows AI training but allows search, set `crawlPurposes` to only the purposes you need:
 
@@ -511,9 +531,34 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser
 
 In this example, because the operator declared only `search` as their purpose, the crawl will succeed even if the site sets `ai-train=no`.
 
+**Use level directive**
+
+The `contentUse` parameter declares the level at which you intend to use the crawled content. Allowed values, from least to most permissive, are `reference` and `full`. The default is `full`.
+
+The `immediate` level is not accepted as a `contentUse` value because the `/crawl` endpoint stores crawled content, which is not compatible with ephemeral, single-response use.
+
+A crawl is rejected when your declared `contentUse` level is more permissive than the site's declared `use` level. For example:
+
+1. **Site sets `use=full` (or does not set `use`)** — Any `contentUse` value is allowed.
+2. **Site sets `use=reference`** — A crawl with `contentUse: "reference"` is allowed, but the default `contentUse: "full"` is rejected.
+3. **Site sets `use=immediate`** — All crawls are rejected, because both `reference` and `full` exceed the declared level.
+
+To crawl a site that sets `use=reference`, set `contentUse` to `reference`:
+
+```bash
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
+  -H 'Authorization: Bearer <apiToken>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "url": "https://example.com",
+    "contentUse": "reference",
+    "formats": ["markdown"]
+  }'
+```
+
 Note
 
-Content Signals are trust-based. By setting `crawlPurposes`, you are declaring to the site owner how you intend to use the crawled content.
+Content Signals are trust-based. By setting `crawlPurposes` and `contentUse`, you are declaring to the site owner how you intend to use the crawled content.
 
 ## Troubleshooting
 
@@ -527,7 +572,12 @@ If your crawl job completes but returns an empty records array, or all URLs show
 
 ### Crawl rejected by Content Signals
 
-If your crawl request returns a `400 Bad Request` with the message `Crawl purpose(s) completely disallowed by Content-Signal directive`, the target site's `robots.txt` includes a `Content-Signal` directive that disallows one or more of your declared `crawlPurposes`. To resolve this, check the site's `robots.txt` for `Content-Signal:` entries and set `crawlPurposes` to only the purposes you need. For example, if the site sets `ai-train=no` and you only need search indexing, use `"crawlPurposes": ["search"]`. Refer to [Content Signals](#content-signals) for details.
+If your crawl request returns a `400 Bad Request` with the message `Crawl disallowed by Content-Signal directive (purpose or use level)`, the target site's `robots.txt` includes a `Content-Signal` directive that disallows one or more of your declared `crawlPurposes`, or a `use` directive that is more restrictive than your declared `contentUse` level. To resolve this, check the site's `robots.txt` for `Content-Signal:` entries:
+
+* If the site sets a purpose to `no`, set `crawlPurposes` to only the purposes you need. For example, if the site sets `ai-train=no` and you only need search indexing, use `"crawlPurposes": ["search"]`.
+* If the site sets a `use` level, set `contentUse` to a level at or below it. For example, if the site sets `use=reference`, use `"contentUse": "reference"`.
+
+Refer to [Content Signals](#content-signals) for details.
 
 ### Crawl job takes too long
 
@@ -569,5 +619,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/#page","headline":"/crawl - Crawl web content · Cloudflare Browser Run docs","description":"Scrape and follow links across a website using the Browser Run /crawl endpoint, with configurable depth and output formats.","url":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/#page","headline":"/crawl - Crawl web content · Cloudflare Browser Run docs","description":"Scrape and follow links across a website using the Browser Run /crawl endpoint, with configurable depth and output formats.","url":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-31","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

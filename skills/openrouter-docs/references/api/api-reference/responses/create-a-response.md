@@ -4329,6 +4329,7 @@ components:
           *** Begin Patch
           *** End Patch
         name: apply_patch
+        status: completed
         type: custom_tool_call
       properties:
         call_id:
@@ -4343,6 +4344,12 @@ components:
           description: >-
             Namespace qualifier for tools registered as part of a namespace tool
             group (e.g. an MCP server)
+          type: string
+        status:
+          enum:
+            - in_progress
+            - completed
+            - incomplete
           type: string
         type:
           enum:
@@ -7224,6 +7231,7 @@ components:
           *** Begin Patch
           *** End Patch
         name: apply_patch
+        status: completed
         type: custom_tool_call
       properties:
         call_id:
@@ -7238,6 +7246,12 @@ components:
           description: >-
             Namespace qualifier for tools registered as part of a namespace tool
             group (e.g. an MCP server)
+          type: string
+        status:
+          enum:
+            - in_progress
+            - completed
+            - incomplete
           type: string
         type:
           enum:

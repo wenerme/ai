@@ -1,6 +1,6 @@
 ---
 title: "Reference: DatadogExporter | Observability"
-description: Datadog LLM Observability exporter for Tracing
+description: "Configure DatadogExporter to send Mastra traces into Datadog LLM Observability, supporting application monitoring and analysis of spans and AI performance."
 packages:
   - "@mastra/core"
   - "@mastra/observability"
@@ -14,7 +14,7 @@ Sends Tracing data to Datadog's LLM Observability product for monitoring and ana
 
 ## Constructor
 
-```typescript prettier:false
+```typescript oxfmt:false
 new DatadogExporter(config: DatadogExporterConfig)
 ```
 
@@ -89,7 +89,7 @@ Extends `BaseExporterConfig`, which includes:
 
 ### `exportTracingEvent`
 
-```typescript prettier:false
+```typescript oxfmt:false
 async exportTracingEvent(event: TracingEvent): Promise<void>
 ```
 
@@ -97,7 +97,7 @@ Exports a tracing event to Datadog LLM Observability.
 
 ### flush
 
-```typescript prettier:false
+```typescript oxfmt:false
 async flush(): Promise<void>
 ```
 
@@ -105,7 +105,7 @@ Force flushes any buffered spans to Datadog without shutting down the exporter. 
 
 ### shutdown
 
-```typescript prettier:false
+```typescript oxfmt:false
 async shutdown(): Promise<void>
 ```
 

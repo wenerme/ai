@@ -738,10 +738,10 @@
   "openai-docs/guides/realtime-mcp.md": {
     "url": "https://developers.openai.com/api/docs/guides/realtime-mcp.md",
     "skill": "openai-docs",
-    "etag": "W/\"05d44e14086b7f397b2d12aa465507de\"",
-    "lastModified": "Fri, 28 Aug 2026 10:10:54 GMT",
-    "size": 25625,
-    "updatedAt": "2026-08-28T11:15:45.476Z"
+    "etag": "W/\"aa3e2abb92c347e8facb0ea0fde852da\"",
+    "lastModified": "Mon, 31 Aug 2026 17:41:28 GMT",
+    "size": 26048,
+    "updatedAt": "2026-08-31T17:41:28.181Z"
   },
   "openai-docs/guides/realtime-models-prompting.md": {
     "url": "https://developers.openai.com/api/docs/guides/realtime-models-prompting.md",

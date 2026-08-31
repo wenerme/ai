@@ -1,6 +1,6 @@
 ---
 title: "Reference: ArthurExporter | Observability"
-description: Arthur AI exporter for Tracing using OpenInference
+description: "Configure ArthurExporter to send Mastra traces to Arthur Engine through OpenTelemetry with OpenInference semantic conventions and metadata."
 packages:
   - "@mastra/arthur"
 ---
@@ -11,7 +11,7 @@ Sends Tracing data to [Arthur Engine](https://github.com/arthur-ai/arthur-engine
 
 ## Constructor
 
-```typescript prettier:false
+```typescript oxfmt:false
 new ArthurExporter(config: ArthurExporterConfig)
 ```
 
@@ -96,7 +96,7 @@ Non-reserved span attributes are serialized into the OpenInference `metadata` pa
 
 ### `exportTracingEvent`
 
-```typescript prettier:false
+```typescript oxfmt:false
 async exportTracingEvent(event: TracingEvent): Promise<void>
 ```
 
@@ -104,7 +104,7 @@ Exports a tracing event to the configured endpoint.
 
 ### export
 
-```typescript prettier:false
+```typescript oxfmt:false
 async export(spans: ReadOnlySpan[]): Promise<void>
 ```
 
@@ -112,7 +112,7 @@ Batch exports spans using OpenTelemetry with OpenInference semantic conventions.
 
 ### flush
 
-```typescript prettier:false
+```typescript oxfmt:false
 async flush(): Promise<void>
 ```
 
@@ -120,7 +120,7 @@ Force flushes any buffered spans to the configured endpoint without shutting dow
 
 ### shutdown
 
-```typescript prettier:false
+```typescript oxfmt:false
 async shutdown(): Promise<void>
 ```
 

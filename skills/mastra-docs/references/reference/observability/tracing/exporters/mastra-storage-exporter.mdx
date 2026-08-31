@@ -1,6 +1,6 @@
 ---
 title: "Reference: MastraStorageExporter | Observability"
-description: API reference for the MastraStorageExporter (formerly DefaultExporter)
+description: "Persists traces to Mastra's configured storage with automatic batching and retry logic."
 packages:
   - "@mastra/observability"
 ---
@@ -13,7 +13,7 @@ Persists traces to Mastra's configured storage with automatic batching and retry
 
 ## Constructor
 
-```typescript prettier:false
+```typescript oxfmt:false
 new MastraStorageExporter(config?: MastraStorageExporterConfig)
 ```
 
@@ -71,7 +71,7 @@ type TracingStorageStrategy = 'realtime' | 'batch-with-updates' | 'insert-only'
 
 ## Properties
 
-```typescript prettier:false
+```typescript oxfmt:false
 readonly name = 'mastra-storage-exporter';
 ```
 
@@ -81,7 +81,7 @@ The deprecated `DefaultExporter` class continues to use `'mastra-default-observa
 
 ### init
 
-```typescript prettier:false
+```typescript oxfmt:false
 init(options: InitExporterOptions): void
 ```
 
@@ -100,7 +100,7 @@ Initializes the exporter after dependencies are ready. Resolves tracing strategy
 
 ### `exportTracingEvent`
 
-```typescript prettier:false
+```typescript oxfmt:false
 async exportTracingEvent(event: TracingEvent): Promise<void>
 ```
 
@@ -119,7 +119,7 @@ Processes a tracing event according to the resolved strategy.
 
 ### flush
 
-```typescript prettier:false
+```typescript oxfmt:false
 async flush(): Promise<void>
 ```
 
@@ -127,7 +127,7 @@ Force flushes any buffered events to storage without shutting down the exporter.
 
 ### shutdown
 
-```typescript prettier:false
+```typescript oxfmt:false
 async shutdown(): Promise<void>
 ```
 

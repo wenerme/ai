@@ -1,6 +1,6 @@
 ---
 title: "Reference: Tracing | Observability"
-description: Core Tracing classes and methods
+description: "Use ObservabilityInstance and its default implementation to create, manage, flush, and shut down Mastra tracing instances and exporters."
 packages:
   - "@mastra/core"
 ---
@@ -13,7 +13,7 @@ Default implementation of the ObservabilityInstance interface.
 
 ### Constructor
 
-```typescript prettier:false
+```typescript oxfmt:false
 new DefaultObservabilityInstance(config: ObservabilityInstanceConfig)
 ```
 
@@ -31,7 +31,7 @@ Base class for custom ObservabilityInstance implementations.
 
 #### `getConfig`
 
-```typescript prettier:false
+```typescript oxfmt:false
 getConfig(): Readonly<Required<ObservabilityInstanceConfig>>
 ```
 
@@ -39,7 +39,7 @@ Returns the current observability configuration.
 
 #### `getExporters`
 
-```typescript prettier:false
+```typescript oxfmt:false
 getExporters(): readonly ObservabilityExporter[]
 ```
 
@@ -47,7 +47,7 @@ Returns all configured exporters.
 
 #### `getSpanOutputProcessors`
 
-```typescript prettier:false
+```typescript oxfmt:false
 getSpanOutputProcessors(): readonly SpanOutputProcessor[]
 ```
 
@@ -55,7 +55,7 @@ Returns all configured span output processors.
 
 #### `getLogger`
 
-```typescript prettier:false
+```typescript oxfmt:false
 getLogger(): IMastraLogger
 ```
 
@@ -63,7 +63,7 @@ Returns the logger instance for exporters and other components.
 
 #### `startSpan`
 
-```typescript prettier:false
+```typescript oxfmt:false
 startSpan<TType extends SpanType>(
   options: StartSpanOptions<TType>
 ): Span<TType>
@@ -120,7 +120,7 @@ Start a new span of a specific SpanType. Creates the root span of a trace if no 
 
 #### shutdown
 
-```typescript prettier:false
+```typescript oxfmt:false
 async shutdown(): Promise<void>
 ```
 

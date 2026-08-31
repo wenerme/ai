@@ -1,6 +1,6 @@
 ---
 title: "Reference: PosthogExporter | Observability"
-description: PostHog exporter for Tracing
+description: "Configure PosthogExporter to send Mastra tracing data to PostHog for AI observability, analytics, user attribution, and session analysis."
 packages:
   - "@mastra/posthog"
 ---
@@ -11,7 +11,7 @@ Sends Tracing data to PostHog for AI observability and analytics.
 
 ## Constructor
 
-```typescript prettier:false
+```typescript oxfmt:false
 new PosthogExporter(config: PosthogExporterConfig)
 ```
 
@@ -91,7 +91,7 @@ Extends `BaseExporterConfig`, which includes:
 
 ### `exportTracingEvent`
 
-```typescript prettier:false
+```typescript oxfmt:false
 async exportTracingEvent(event: TracingEvent): Promise<void>
 ```
 
@@ -99,7 +99,7 @@ Exports a tracing event to PostHog.
 
 ### `onFeedbackEvent`
 
-```typescript prettier:false
+```typescript oxfmt:false
 async onFeedbackEvent(event: FeedbackEvent): Promise<void>
 ```
 
@@ -107,7 +107,7 @@ Exports a feedback event to PostHog. See [Feedback export](#feedback-export).
 
 ### flush
 
-```typescript prettier:false
+```typescript oxfmt:false
 async flush(): Promise<void>
 ```
 
@@ -115,7 +115,7 @@ Force flushes any buffered events to PostHog without shutting down the exporter.
 
 ### shutdown
 
-```typescript prettier:false
+```typescript oxfmt:false
 async shutdown(): Promise<void>
 ```
 

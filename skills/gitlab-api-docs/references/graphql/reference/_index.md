@@ -4266,6 +4266,33 @@ Fields:
 | <a id="mutation-artifactregistryrepositorydelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-artifactregistryrepositorydelete-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 
+### `Mutation.artifactRegistryRepositoryTestConnection`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Tests the upstream connection of a remote repository in Artifact Registry.
+
+Input type: `ArtifactRegistryRepositoryTestConnectionInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryrepositorytestconnection-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryrepositorytestconnection-name"></a>`name` | [`String!`](#string) | Name of the repository to test, unique within the organization. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryrepositorytestconnection-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryrepositorytestconnection-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-artifactregistryrepositorytestconnection-httpstatus"></a>`httpStatus` | [`Int`](#int) | Status the upstream answered the probe with. Null when the probe failed in transport and no response arrived, and when no probe ran. |
+| <a id="mutation-artifactregistryrepositorytestconnection-lasthealthcheckedat"></a>`lastHealthCheckedAt` | [`Time`](#time) | Timestamp of the most recent health probe of the upstream, as it reads after this probe. Null when no verdict is recorded, including when this probe's own write did not land. |
+| <a id="mutation-artifactregistryrepositorytestconnection-lasthealthstatus"></a>`lastHealthStatus` | [`ArtifactRegistryHealthStatus`](#artifactregistryhealthstatus) | Stored health verdict as it reads after the probe. Can differ from `passed`, because Artifact Registry moves it to `UNHEALTHY` only once consecutive failures reach its threshold. `UNKNOWN` when no verdict is recorded, including when this probe's own write did not land, and for a status this schema does not recognize. Null when no probe ran. |
+| <a id="mutation-artifactregistryrepositorytestconnection-passed"></a>`passed` | [`Boolean`](#boolean) | Indicates the upstream answered the probe with a status below 500. Reports reachability rather than credential validity, so an upstream 401 or 404 passes. Null when no probe ran. |
+
 ### `Mutation.artifactRegistryRepositoryUpdate`
 
 - Introduced in GitLab 19.3.
@@ -6037,7 +6064,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="mutation-cdrolloutgateresolve-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-cdrolloutgateresolve-id"></a>`id` | [`CdRolloutID!`](#cdrolloutid) | Global ID of the rollout whose approval gate is being resolved. |
-| <a id="mutation-cdrolloutgateresolve-reason"></a>`reason` | [`String`](#string) | Reason for the decision. |
+| <a id="mutation-cdrolloutgateresolve-resolutionreason"></a>`resolutionReason` | [`String`](#string) | Reason for the decision. |
 | <a id="mutation-cdrolloutgateresolve-status"></a>`status` | [`CdRolloutGateStatus!`](#cdrolloutgatestatus) | Decision to record for the approval gate. |
 
 Fields:
@@ -34991,7 +35018,8 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="cdrolloutgate-id"></a>`id` | [`CdRolloutTransitionID!`](#cdrollouttransitionid) | Global ID of the transition that opened the gate. |
 | <a id="cdrolloutgate-name"></a>`name` | [`String`](#string) | Label of the gate, derived from the step it was opened for. |
-| <a id="cdrolloutgate-reason"></a>`reason` | [`String`](#string) | Reason given when the gate was resolved, if any. |
+| <a id="cdrolloutgate-reason"></a>`reason` | [`String`](#string) | Reason the approval was requested for. |
+| <a id="cdrolloutgate-resolutionreason"></a>`resolutionReason` | [`String`](#string) | Reason given when the gate was resolved, if any. |
 | <a id="cdrolloutgate-resolvedat"></a>`resolvedAt` | [`Time`](#time) | Timestamp of when the gate was resolved, null while still pending. |
 | <a id="cdrolloutgate-resolvedby"></a>`resolvedBy` | [`UserCore`](#usercore) | User that resolved the gate, when the resolving principal identifies a user that still exists; null while pending or for other principal kinds. |
 | <a id="cdrolloutgate-state"></a>`state` | [`CdRolloutGateState!`](#cdrolloutgatestate) | State of the gate. |
@@ -35036,6 +35064,7 @@ Fields:
 | <a id="cdrollouttransition-principal"></a>`principal` | [`String!`](#string) | Identity reference of the principal that triggered the transition, for example `user:1234`. |
 | <a id="cdrollouttransition-principaluser"></a>`principalUser`  | [`UserCore`](#usercore) | Introduced in GitLab 19.3. Status: Experiment. User that triggered the transition, when the principal identifies a user that still exists; null for other principal kinds or a deleted user. |
 | <a id="cdrollouttransition-reason"></a>`reason` | [`String`](#string) | Reason for the transition. |
+| <a id="cdrollouttransition-resolutionreason"></a>`resolutionReason` | [`String`](#string) | Reason given when resolving an approval gate, for an approve/reject transition. |
 | <a id="cdrollouttransition-tostate"></a>`toState` | [`CdRolloutTransitionState!`](#cdrollouttransitionstate) | State the rollout transitioned to. |
 | <a id="cdrollouttransition-triggeredby"></a>`triggeredBy` | [`String`](#string) | Identifier of what triggered the transition. |
 
@@ -50999,7 +51028,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="organization-cdapplications-search"></a>`search` | [`String`](#string) | Search applications by name or description. |
-| <a id="organization-cdapplications-status"></a>`status` | [`CdApplicationStatus`](#cdapplicationstatus) | Filter applications by status. An application can match more than one status. |
+| <a id="organization-cdapplications-status"></a>`status` | [`CdApplicationStatus`](#cdapplicationstatus) | Filter applications by status. Returns applications whose most-urgent status matches the given value. |
 
 ##### `Organization.cdEnvironment`
 
@@ -65193,6 +65222,7 @@ Type of a dependency firewall policy rule.
 | ----- | ----------- |
 | <a id="dependencyfirewallruletype-license"></a>`LICENSE` | Rule matching on package licenses. |
 | <a id="dependencyfirewallruletype-malicious"></a>`MALICIOUS` | Rule matching on packages flagged as malicious. |
+| <a id="dependencyfirewallruletype-risk_severity"></a>`RISK_SEVERITY` | Rule matching on vulnerability counts per severity level. |
 | <a id="dependencyfirewallruletype-vulnerability"></a>`VULNERABILITY` | Rule matching on package vulnerabilities. |
 
 ### `DependencyProxyManifestStatus`

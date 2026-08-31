@@ -240,6 +240,18 @@ Claude treats your design system as higher precedence than its own choices, and 
 
 For typography, Claude can load a typeface from Google Fonts, the one external font source an artifact page can load from. Claude inlines any other typeface as a `@font-face` data URI and gives every typeface a fallback stack, so the page still renders if a font doesn't load. To use a specific typeface, name it in your prompt or your design system.
 
+## Draft a design canvas
+
+To mock up a UI, a screen flow, a landing page, or a poster rather than build a page, run `/design` with a brief. Claude drafts the design as artboards on one canvas and publishes the canvas as an artifact that runs a research preview of Claude Design's editor. The brief names what you want drawn:
+
+```text wrap theme={null}
+/design a settings screen for a mobile banking app
+```
+
+Open the published artifact to review the artboards. Where saving is enabled for your account, select an element on an artboard, change it, and save to publish a new version; otherwise you view the draft and export it as PNG or PDF.
+
+`/design` requires a session where [artifacts are available](#availability) and Claude Code v2.1.234 or later.
+
 ## Page constraints
 
 Each artifact is one self-contained page. Claude Code wraps the file you publish in an HTML document shell and serves it under a strict Content Security Policy (CSP), which shapes what the page can do.

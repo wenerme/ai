@@ -44,7 +44,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 1. **Download Codex**
@@ -128,23 +128,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+```
+
+```txt
+Add bot protection and rate limiting to my login and checkout endpoints.
+```
+
+```txt
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+```
+
+```txt
+Check my Workers deployment logs for errors and suggest fixes.
+```
+
+```txt
 Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
-```
-
-```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
-```
-
-```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
-```
-
-```txt
-Configure Zero Trust access policies to protect my internal staging environment.
-```
-
-```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ## Tips
