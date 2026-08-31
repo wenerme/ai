@@ -383,7 +383,9 @@ The warning is advisory: it doesn't pause or limit the run. Two settings change 
 * If you choose a [size guideline](#set-a-size-guideline) yourself, its agent count replaces the 25-agent threshold. The built-in default guideline leaves the threshold at 25.
 * Sessions with [ultracode](#let-claude-decide-with-ultracode) on don't show the warning, because turning ultracode on already opts you in to large runs.
 
-Every agent in a workflow uses your session's model unless the script routes a stage to a different one or the [`CLAUDE_CODE_SUBAGENT_MODEL`](/docs/en/model-config#environment-variables) environment variable is set, which overrides both. To control the model cost:
+Claude Code picks each workflow agent's model in the same [order it uses for subagents](/docs/en/sub-agents#choose-a-model). A model the script names for a stage counts as the per-invocation model in that order. When nothing else assigns one, the agent runs on your session's model.
+
+To control the model cost:
 
 * Check `/model` before a large run if you usually switch to a smaller model for routine work
 * Ask Claude to use a smaller model for stages that don't need the strongest one when you describe the task

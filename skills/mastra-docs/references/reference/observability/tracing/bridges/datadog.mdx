@@ -1,6 +1,6 @@
 ---
 title: "Reference: DatadogBridge | Observability"
-description: Datadog bridge for Tracing
+description: "Configure DatadogBridge for bidirectional context propagation between Mastra tracing and Datadog APM spans, including trace and parent IDs."
 packages:
   - "@mastra/core"
   - "@mastra/observability"
@@ -15,7 +15,7 @@ Enables bidirectional integration between Mastra tracing and Datadog. Creates na
 
 ## Constructor
 
-```typescript prettier:false
+```typescript oxfmt:false
 new DatadogBridge(config?: DatadogBridgeConfig)
 ```
 
@@ -101,7 +101,7 @@ Extends `BaseExporterConfig`, which includes:
 
 ### `createSpan`
 
-```typescript prettier:false
+```typescript oxfmt:false
 createSpan(options: CreateSpanOptions<SpanType>): SpanIds | undefined
 ```
 
@@ -111,7 +111,7 @@ Called by the Mastra observability instance during span construction. Creates a 
 
 ### `executeInContext`
 
-```typescript prettier:false
+```typescript oxfmt:false
 executeInContext<T>(spanId: string, fn: () => Promise<T>): Promise<T>
 ```
 
@@ -138,7 +138,7 @@ Executes an async function within the dd-trace context of a Mastra span. dd-trac
 
 ### `executeInContextSync`
 
-```typescript prettier:false
+```typescript oxfmt:false
 executeInContextSync<T>(spanId: string, fn: () => T): T
 ```
 
@@ -165,7 +165,7 @@ Executes a synchronous function within the dd-trace context of a Mastra span.
 
 ### `flush`
 
-```typescript prettier:false
+```typescript oxfmt:false
 async flush(): Promise<void>
 ```
 
@@ -173,7 +173,7 @@ Force-flushes any buffered LLM Observability data to Datadog without shutting do
 
 ### `shutdown`
 
-```typescript prettier:false
+```typescript oxfmt:false
 async shutdown(): Promise<void>
 ```
 

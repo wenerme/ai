@@ -1,6 +1,6 @@
 ---
 title: "Reference: OtelExporter | Observability"
-description: OpenTelemetry exporter for traces and logs
+description: "Sends traces and logs to any OpenTelemetry-compatible observability platform. Traces use the standardized GenAI semantic conventions."
 packages:
   - "@mastra/otel-exporter"
 ---
@@ -11,7 +11,7 @@ Sends traces and logs to any OpenTelemetry-compatible observability platform. Tr
 
 ## Constructor
 
-```typescript prettier:false
+```typescript oxfmt:false
 new OtelExporter(config: OtelExporterConfig)
 ```
 
@@ -264,7 +264,7 @@ interface CustomConfig {
 
 ### `exportTracingEvent`
 
-```typescript prettier:false
+```typescript oxfmt:false
 async exportTracingEvent(event: TracingEvent): Promise<void>
 ```
 
@@ -272,7 +272,7 @@ Exports a tracing event to the configured OTEL backend.
 
 ### flush
 
-```typescript prettier:false
+```typescript oxfmt:false
 async flush(): Promise<void>
 ```
 
@@ -280,7 +280,7 @@ Force flushes any buffered spans to the OTEL backend without shutting down the e
 
 ### shutdown
 
-```typescript prettier:false
+```typescript oxfmt:false
 async shutdown(): Promise<void>
 ```
 

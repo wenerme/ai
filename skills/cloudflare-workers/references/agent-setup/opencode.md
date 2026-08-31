@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ## Cloudflare platform access
@@ -134,23 +134,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ## Tips

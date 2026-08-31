@@ -1,6 +1,6 @@
 ---
 title: "Reference: CloudExporter | Observability"
-description: API reference for the deprecated CloudExporter (replaced by MastraPlatformExporter)
+description: "Use the deprecated CloudExporter to send traces to Mastra Cloud in older releases, and migrate configuration to MastraPlatformExporter."
 packages:
   - "@mastra/observability"
 ---
@@ -17,7 +17,7 @@ Sends tracing spans, logs, metrics, scores, and feedback to the Mastra platform 
 
 ## Constructor
 
-```typescript prettier:false
+```typescript oxfmt:false
 new CloudExporter(config?: CloudExporterConfig)
 ```
 
@@ -88,7 +88,7 @@ The exporter reads these environment variables if not provided in config:
 
 ## Properties
 
-```typescript prettier:false
+```typescript oxfmt:false
 readonly name = 'mastra-cloud-observability-exporter';
 ```
 
@@ -96,7 +96,7 @@ readonly name = 'mastra-cloud-observability-exporter';
 
 ### `exportTracingEvent`
 
-```typescript prettier:false
+```typescript oxfmt:false
 async exportTracingEvent(event: TracingEvent): Promise<void>
 ```
 
@@ -119,7 +119,7 @@ Only `SPAN_ENDED` tracing events are exported. `SPAN_STARTED` and `SPAN_UPDATED`
 
 ### `onLogEvent`
 
-```typescript prettier:false
+```typescript oxfmt:false
 async onLogEvent(event: LogEvent): Promise<void>
 ```
 
@@ -142,7 +142,7 @@ Every `LogEvent` passed to this handler is buffered and exported to the Cloud lo
 
 ### `onMetricEvent`
 
-```typescript prettier:false
+```typescript oxfmt:false
 async onMetricEvent(event: MetricEvent): Promise<void>
 ```
 
@@ -165,7 +165,7 @@ Every `MetricEvent` passed to this handler is buffered and exported to the Cloud
 
 ### `onScoreEvent`
 
-```typescript prettier:false
+```typescript oxfmt:false
 async onScoreEvent(event: ScoreEvent): Promise<void>
 ```
 
@@ -188,7 +188,7 @@ Every `ScoreEvent` passed to this handler is buffered and exported to the Cloud 
 
 ### `onFeedbackEvent`
 
-```typescript prettier:false
+```typescript oxfmt:false
 async onFeedbackEvent(event: FeedbackEvent): Promise<void>
 ```
 
@@ -211,7 +211,7 @@ Every `FeedbackEvent` passed to this handler is buffered and exported to the Clo
 
 ### flush
 
-```typescript prettier:false
+```typescript oxfmt:false
 async flush(): Promise<void>
 ```
 
@@ -219,7 +219,7 @@ Force flushes any buffered events to the Mastra platform without shutting down t
 
 ### shutdown
 
-```typescript prettier:false
+```typescript oxfmt:false
 async shutdown(): Promise<void>
 ```
 

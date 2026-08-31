@@ -1,6 +1,6 @@
 ---
 title: "Reference: Workflow class | Workflows"
-description: Documentation for the `Workflow` class in Mastra, which enables you to create state machines for complex sequences of operations with conditional branching and data validation.
+description: "The Workflow class enables you to create state machines for complex sequences of operations with conditional branching and data validation."
 packages:
   - "@mastra/core"
 ---
@@ -31,7 +31,7 @@ export const workflow = createWorkflow({
 You can define the workflow's `inputSchema` and `outputSchema` with any library that supports [Standard JSON Schema](https://standardschema.dev/json-schema). This includes libraries like [Zod](https://zod.dev/), [Valibot](https://valibot.dev/), and [ArkType](https://arktype.io/).
 
   
-    ```typescript {9,12,15,16} title="src/mastra/workflows/test-workflow.ts" prettier:false
+    ```typescript {9,12,15,16} title="src/mastra/workflows/test-workflow.ts" oxfmt:false
     import { createWorkflow, createStep } from "@mastra/core/workflows";
     import { z } from "zod";
 
@@ -52,7 +52,7 @@ You can define the workflow's `inputSchema` and `outputSchema` with any library 
   
 
   
-    ```typescript {10,13,16,17} title="src/mastra/workflows/test-workflow.ts" prettier:false
+    ```typescript {10,13,16,17} title="src/mastra/workflows/test-workflow.ts" oxfmt:false
     import { createWorkflow, createStep } from "@mastra/core/workflows";
     import * as v from "valibot";
     import { toStandardJsonSchema } from "@valibot/to-json-schema";
@@ -74,7 +74,7 @@ You can define the workflow's `inputSchema` and `outputSchema` with any library 
   
 
   
-    ```typescript {9,12,15,16} title="src/mastra/workflows/test-workflow.ts" prettier:false
+    ```typescript {9,12,15,16} title="src/mastra/workflows/test-workflow.ts" oxfmt:false
     import { createWorkflow, createStep } from "@mastra/core/workflows";
     import { type } from "arktype";
 

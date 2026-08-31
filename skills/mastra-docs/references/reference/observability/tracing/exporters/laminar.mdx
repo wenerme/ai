@@ -1,6 +1,6 @@
 ---
 title: "Reference: LaminarExporter | Observability"
-description: Laminar exporter for Tracing
+description: "Configure LaminarExporter to send Mastra traces to Laminar over OTLP/HTTP with protobuf encoding, authentication, and endpoint options."
 packages:
   - "@mastra/laminar"
 ---
@@ -11,7 +11,7 @@ Sends Tracing data to Laminar via OTLP/HTTP (protobuf).
 
 ## Constructor
 
-```typescript prettier:false
+```typescript oxfmt:false
 new LaminarExporter(config?: LaminarExporterConfig)
 ```
 
@@ -94,7 +94,7 @@ Extends `BaseExporterConfig`, which includes:
 
 ### `exportTracingEvent`
 
-```typescript prettier:false
+```typescript oxfmt:false
 async exportTracingEvent(event: TracingEvent): Promise<void>
 ```
 
@@ -102,7 +102,7 @@ Exports a tracing event to Laminar.
 
 ### flush
 
-```typescript prettier:false
+```typescript oxfmt:false
 async flush(): Promise<void>
 ```
 
@@ -110,7 +110,7 @@ Force flushes any buffered spans to Laminar without shutting down the exporter. 
 
 ### shutdown
 
-```typescript prettier:false
+```typescript oxfmt:false
 async shutdown(): Promise<void>
 ```
 

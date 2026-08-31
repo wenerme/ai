@@ -320,7 +320,7 @@ The automatic name is a short label written by a [Haiku-class model](/docs/en/mo
 
 Paste an image into the prompt to include a screenshot or diagram with the task.
 
-Pasted text longer than 800 characters or more than two lines collapses to a `[Pasted text #N]` placeholder so the input stays on one line; the full text is sent when you dispatch. To review or edit the collapsed text before dispatching, paste the same text again and the placeholder expands back into the input.
+Pasted text longer than 800 characters or more than three lines collapses to a `[Pasted text #N]` placeholder so the input stays on one line; the full text is sent when you dispatch. To review or edit the collapsed text before dispatching, paste the same text again and the placeholder expands back into the input.
 
 Prefix or mention parts of the prompt to control how the session starts:
 
