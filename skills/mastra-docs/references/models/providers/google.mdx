@@ -1,11 +1,11 @@
 ---
 title: "Google | Models"
-description: "Use Google models with Mastra. 39 models available."
+description: "Use Google models with Mastra. 38 models available."
 ---
 
 # [Google logo]Google
 
-Access 39 Google models through Mastra's model router. Authentication is handled automatically using one of the following environment variables: `GOOGLE_API_KEY`, `GOOGLE_GENERATIVE_AI_API_KEY`.
+Access 38 Google models through Mastra's model router. Authentication is handled automatically using one of the following environment variables: `GOOGLE_API_KEY`, `GOOGLE_GENERATIVE_AI_API_KEY`.
 
 Learn more in the [Google documentation](https://ai.google.dev/gemini-api/docs/models).
 
@@ -397,18 +397,6 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 1.5,
     "outputCost": 17.5
-  },
-  {
-    "model": "google/gemini-robotics-er-1.6-preview",
-    "imageInput": true,
-    "audioInput": true,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 131072,
-    "maxOutput": 65536,
-    "inputCost": 1,
-    "outputCost": 5
   },
   {
     "model": "google/gemma-4-26b-a4b-it",

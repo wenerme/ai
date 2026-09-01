@@ -66,7 +66,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/model_permissions 
     "object": "project.model_permissions",
     "mode": "allow_list",
     "model_ids": [
-        "gpt-4.1",
+        "gpt-5.6-sol",
         "o3"
     ]
 }

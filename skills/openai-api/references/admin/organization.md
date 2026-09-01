@@ -11059,7 +11059,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/model_permissions 
     "object": "project.model_permissions",
     "mode": "allow_list",
     "model_ids": [
-        "gpt-4.1",
+        "gpt-5.6-sol",
         "o3"
     ]
 }
@@ -19493,6 +19493,10 @@ Get costs details for the organization.
 - `limit: optional number`
 
   A limit on the number of buckets to be returned. Limit can range between 1 and 180, and the default is 7.
+
+- `line_items: optional array of string`
+
+  Return only costs for these exact line item names. Each value must match the complete `line_item` value, for example `gpt-5.6-sol, input_tokens`.
 
 - `page: optional string`
 

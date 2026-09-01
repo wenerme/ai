@@ -169,7 +169,7 @@ Get a list of runs for an evaluation.
 
           - `model: optional string or null`
 
-            An optional model to filter by (e.g., 'gpt-4o').
+            An optional model to filter by (e.g., 'gpt-5.6-sol').
 
       - `type: "completions"`
 

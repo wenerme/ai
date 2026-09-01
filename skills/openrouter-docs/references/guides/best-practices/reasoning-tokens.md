@@ -196,18 +196,24 @@ MODEL: "openai/o3-mini"
     });
 
     const response = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      messages: [
-        {
-          role: 'user',
-          content: "How would you build the world's tallest skyscraper?",
+      chatRequest: {
+        model: '{{MODEL}}',
+        messages: [
+          {
+            role: 'user',
+            content: "How would you build the world's tallest skyscraper?",
+          },
+        ],
+        reasoning: {
+          effort: 'high',
         },
-      ],
-      reasoning: {
-        effort: 'high',
+        stream: false,
       },
-      stream: false,
     });
+
+    if (response instanceof ReadableStream) {
+      throw new Error('Expected a non-streaming response');
+    }
 
     console.log('REASONING:', response.choices[0].message.reasoning);
     console.log('CONTENT:', response.choices[0].message.content);

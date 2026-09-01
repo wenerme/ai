@@ -611,7 +611,7 @@ curl https://api.openai.com/v1/assistants \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-          "model": "gpt-4o",
+          "model": "gpt-5",
           "temperature": 1,
           "top_p": 1
         }'
@@ -665,7 +665,7 @@ curl "https://api.openai.com/v1/assistants" \
     "instructions": "You are a personal math tutor. When asked a question, write and run Python code to answer the question.",
     "name": "Math Tutor",
     "tools": [{"type": "code_interpreter"}],
-    "model": "gpt-4o"
+    "model": "gpt-5"
   }'
 ```
 
@@ -678,7 +678,7 @@ curl "https://api.openai.com/v1/assistants" \
   "created_at": 1698984975,
   "name": "Math Tutor",
   "description": null,
-  "model": "gpt-4o",
+  "model": "gpt-5",
   "instructions": "You are a personal math tutor. When asked a question, write and run Python code to answer the question.",
   "tools": [
     {
@@ -703,7 +703,7 @@ curl https://api.openai.com/v1/assistants \
     "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies.",
     "tools": [{"type": "file_search"}],
     "tool_resources": {"file_search": {"vector_store_ids": ["vs_123"]}},
-    "model": "gpt-4o"
+    "model": "gpt-5"
   }'
 ```
 
@@ -716,7 +716,7 @@ curl https://api.openai.com/v1/assistants \
   "created_at": 1699009403,
   "name": "HR Helper",
   "description": null,
-  "model": "gpt-4o",
+  "model": "gpt-5",
   "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies.",
   "tools": [
     {
@@ -1128,7 +1128,7 @@ curl "https://api.openai.com/v1/assistants?order=desc&limit=20" \
       "created_at": 1698982736,
       "name": "Coding Tutor",
       "description": null,
-      "model": "gpt-4o",
+      "model": "gpt-5",
       "instructions": "You are a helpful assistant designed to make me better at coding!",
       "tools": [],
       "tool_resources": {},
@@ -1143,7 +1143,7 @@ curl "https://api.openai.com/v1/assistants?order=desc&limit=20" \
       "created_at": 1698982718,
       "name": "My Assistant",
       "description": null,
-      "model": "gpt-4o",
+      "model": "gpt-5",
       "instructions": "You are a helpful assistant designed to make me better at coding!",
       "tools": [],
       "tool_resources": {},
@@ -1158,7 +1158,7 @@ curl "https://api.openai.com/v1/assistants?order=desc&limit=20" \
       "created_at": 1698982643,
       "name": null,
       "description": null,
-      "model": "gpt-4o",
+      "model": "gpt-5",
       "instructions": null,
       "tools": [],
       "tool_resources": {},
@@ -1471,7 +1471,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
   "created_at": 1699009709,
   "name": "HR Helper",
   "description": null,
-  "model": "gpt-4o",
+  "model": "gpt-5",
   "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies.",
   "tools": [
     {
@@ -2099,7 +2099,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
   -d '{
       "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies. Always response with info from either of the files.",
       "tools": [{"type": "file_search"}],
-      "model": "gpt-4o"
+      "model": "gpt-5"
     }'
 ```
 
@@ -2112,7 +2112,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
   "created_at": 1699009709,
   "name": "HR Helper",
   "description": null,
-  "model": "gpt-4o",
+  "model": "gpt-5",
   "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies. Always response with info from either of the files.",
   "tools": [
     {
@@ -13276,14 +13276,14 @@ the `background` parameter set to `true` can be cancelled.
 
   - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
-    Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+    Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/docs/models)
     to browse and compare available models.
 
     - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
-      Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+      Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
@@ -18922,8 +18922,6 @@ the `background` parameter set to `true` can be cancelled.
 
   - `reasoning: optional object { context, effort, generate_summary, 2 more }  or null`
 
-    **gpt-5 and o-series models only**
-
     Configuration options for
     [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
@@ -19250,7 +19248,7 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID/cancel \
   "metadata": {
     "foo": "string"
   },
-  "model": "gpt-5.1",
+  "model": "gpt-5.6-sol",
   "object": "response",
   "output": [
     {
@@ -19431,7 +19429,7 @@ curl -X POST https://api.openai.com/v1/responses/resp_123/cancel \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-4o-2024-08-06",
+  "model": "gpt-5.6-sol",
   "output": [
     {
       "type": "message",
@@ -19488,11 +19486,11 @@ Learn when and how to compact long-running conversations in the [conversation st
 
 - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string or null`
 
-  Model ID used to generate the response, like `gpt-5` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/docs/models) to browse and compare available models.
+  Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/docs/models) to browse and compare available models.
 
   - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
-    Model ID used to generate the response, like `gpt-5` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/docs/models) to browse and compare available models.
+    Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/docs/models) to browse and compare available models.
 
     - `"gpt-5.6-sol"`
 
@@ -29507,7 +29505,7 @@ curl -X POST https://api.openai.com/v1/responses/compact \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-      "model": "gpt-5.1-codex-max",
+      "model": "gpt-5.6-sol",
       "input": [
         {
           "role": "user",
@@ -34547,14 +34545,14 @@ as input for the model's response.
 
 - `model: optional "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
-  Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+  Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
   offers a wide range of models with different capabilities, performance
   characteristics, and price points. Refer to the [model guide](/docs/models)
   to browse and compare available models.
 
   - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
-    Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+    Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/docs/models)
     to browse and compare available models.
@@ -34895,8 +34893,6 @@ as input for the model's response.
   - `"24h"`
 
 - `reasoning: optional object { context, effort, generate_summary, 2 more }  or null`
-
-  **gpt-5 and o-series models only**
 
   Configuration options for
   [reasoning models](https://platform.openai.com/docs/guides/reasoning).
@@ -41325,14 +41321,14 @@ as input for the model's response.
 
   - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
-    Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+    Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/docs/models)
     to browse and compare available models.
 
     - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
-      Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+      Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
@@ -46971,8 +46967,6 @@ as input for the model's response.
 
   - `reasoning: optional object { context, effort, generate_summary, 2 more }  or null`
 
-    **gpt-5 and o-series models only**
-
     Configuration options for
     [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
@@ -47281,7 +47275,7 @@ curl https://api.openai.com/v1/responses \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-          "model": "gpt-5.1",
+          "model": "gpt-5.6-sol",
           "prompt_cache_key": "prompt-cache-key-1234",
           "safety_identifier": "safety-identifier-1234",
           "temperature": 1,
@@ -47307,7 +47301,7 @@ curl https://api.openai.com/v1/responses \
   "metadata": {
     "foo": "string"
   },
-  "model": "gpt-5.1",
+  "model": "gpt-5.6-sol",
   "object": "response",
   "output": [
     {
@@ -47473,7 +47467,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.4",
+    "model": "gpt-5.6-sol",
     "input": [
       {
         "role": "user",
@@ -47505,7 +47499,7 @@ curl https://api.openai.com/v1/responses \
   "instructions": null,
   "max_output_tokens": null,
   "max_tool_calls": null,
-  "model": "gpt-5.4",
+  "model": "gpt-5.6-sol",
   "output": [
     {
       "id": "msg_686eef60d3e081a29283bdcbc4322fd90e34c516d176ff86",
@@ -47565,7 +47559,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.4",
+    "model": "gpt-5.6-sol",
     "tools": [{
       "type": "file_search",
       "vector_store_ids": ["vs_1234567890"],
@@ -47588,7 +47582,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-5.4",
+  "model": "gpt-5.6-sol",
   "output": [
     {
       "type": "file_search_call",
@@ -47716,7 +47710,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.4",
+    "model": "gpt-5.6-sol",
     "input": "What is the weather like in Boston today?",
     "tools": [
       {
@@ -47756,7 +47750,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-5.4",
+  "model": "gpt-5.6-sol",
   "output": [
     {
       "type": "function_call",
@@ -47831,7 +47825,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.4",
+    "model": "gpt-5.6-sol",
     "input": [
       {
         "role": "user",
@@ -47860,7 +47854,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-5.4",
+  "model": "gpt-5.6-sol",
   "output": [
     {
       "type": "message",
@@ -47917,7 +47911,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "o3-mini",
+    "model": "gpt-5.6-sol",
     "input": "How much wood would a woodchuck chuck?",
     "reasoning": {
       "effort": "high"
@@ -47938,7 +47932,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "o1-2024-12-17",
+  "model": "gpt-5.6-sol",
   "output": [
     {
       "type": "message",
@@ -47995,7 +47989,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.4",
+    "model": "gpt-5.6-sol",
     "instructions": "You are a helpful assistant.",
     "input": "Hello!",
     "stream": true
@@ -48006,10 +48000,10 @@ curl https://api.openai.com/v1/responses \
 
 ```json
 event: response.created
-data: {"type":"response.created","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-5.4","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}}}
+data: {"type":"response.created","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-5.6-sol","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}}}
 
 event: response.in_progress
-data: {"type":"response.in_progress","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-5.4","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}}}
+data: {"type":"response.in_progress","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","created_at":1741290958,"status":"in_progress","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-5.6-sol","output":[],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":null,"user":null,"metadata":{}}}
 
 event: response.output_item.added
 data: {"type":"response.output_item.added","output_index":0,"item":{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"in_progress","role":"assistant","content":[]}}
@@ -48032,7 +48026,7 @@ event: response.output_item.done
 data: {"type":"response.output_item.done","output_index":0,"item":{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"completed","role":"assistant","content":[{"type":"output_text","text":"Hi there! How can I assist you today?","annotations":[]}]}}
 
 event: response.completed
-data: {"type":"response.completed","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","created_at":1741290958,"status":"completed","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-5.4","output":[{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"completed","role":"assistant","content":[{"type":"output_text","text":"Hi there! How can I assist you today?","annotations":[]}]}],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":{"input_tokens":37,"output_tokens":11,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":48},"user":null,"metadata":{}}}
+data: {"type":"response.completed","response":{"id":"resp_67c9fdcecf488190bdd9a0409de3a1ec07b8b0ad4e5eb654","object":"response","created_at":1741290958,"status":"completed","error":null,"incomplete_details":null,"instructions":"You are a helpful assistant.","max_output_tokens":null,"model":"gpt-5.6-sol","output":[{"id":"msg_67c9fdcf37fc8190ba82116e33fb28c507b8b0ad4e5eb654","type":"message","status":"completed","role":"assistant","content":[{"type":"output_text","text":"Hi there! How can I assist you today?","annotations":[]}]}],"parallel_tool_calls":true,"previous_response_id":null,"reasoning":{"effort":null,"summary":null},"store":true,"temperature":1.0,"text":{"format":{"type":"text"}},"tool_choice":"auto","tools":[],"top_p":1.0,"truncation":"disabled","usage":{"input_tokens":37,"output_tokens":11,"output_tokens_details":{"reasoning_tokens":0},"total_tokens":48},"user":null,"metadata":{}}}
 ```
 
 ### Text input
@@ -48042,7 +48036,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.4",
+    "model": "gpt-5.6-sol",
     "input": "Tell me a three sentence bedtime story about a unicorn."
   }'
 ```
@@ -48060,7 +48054,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-5.4",
+  "model": "gpt-5.6-sol",
   "output": [
     {
       "type": "message",
@@ -48117,7 +48111,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.4",
+    "model": "gpt-5.6-sol",
     "tools": [{ "type": "web_search_preview" }],
     "input": "What was a positive news story from today?"
   }'
@@ -48136,7 +48130,7 @@ curl https://api.openai.com/v1/responses \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-5.4",
+  "model": "gpt-5.6-sol",
   "output": [
     {
       "type": "web_search_call",
@@ -53279,14 +53273,14 @@ Retrieves a model response with the given ID.
 
   - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
-    Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+    Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/docs/models)
     to browse and compare available models.
 
     - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
-      Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+      Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
@@ -58925,8 +58919,6 @@ Retrieves a model response with the given ID.
 
   - `reasoning: optional object { context, effort, generate_summary, 2 more }  or null`
 
-    **gpt-5 and o-series models only**
-
     Configuration options for
     [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
@@ -59252,7 +59244,7 @@ curl https://api.openai.com/v1/responses/$RESPONSE_ID \
   "metadata": {
     "foo": "string"
   },
-  "model": "gpt-5.1",
+  "model": "gpt-5.6-sol",
   "object": "response",
   "output": [
     {
@@ -59432,7 +59424,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
   "incomplete_details": null,
   "instructions": null,
   "max_output_tokens": null,
-  "model": "gpt-4o-2024-08-06",
+  "model": "gpt-5.6-sol",
   "output": [
     {
       "type": "message",
@@ -70163,14 +70155,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
   - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
-    Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+    Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/docs/models)
     to browse and compare available models.
 
     - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
-      Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+      Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
@@ -75809,8 +75801,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
   - `reasoning: optional object { context, effort, generate_summary, 2 more }  or null`
 
-    **gpt-5 and o-series models only**
-
     Configuration options for
     [reasoning models](https://platform.openai.com/docs/guides/reasoning).
 
@@ -81339,14 +81329,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
-      Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+      Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
       - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
-        Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+        Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/docs/models)
         to browse and compare available models.
@@ -86984,8 +86974,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"24h"`
 
     - `reasoning: optional object { context, effort, generate_summary, 2 more }  or null`
-
-      **gpt-5 and o-series models only**
 
       Configuration options for
       [reasoning models](https://platform.openai.com/docs/guides/reasoning).
@@ -92976,14 +92964,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
-      Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+      Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
       - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
-        Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+        Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/docs/models)
         to browse and compare available models.
@@ -98621,8 +98609,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"24h"`
 
     - `reasoning: optional object { context, effort, generate_summary, 2 more }  or null`
-
-      **gpt-5 and o-series models only**
 
       Configuration options for
       [reasoning models](https://platform.openai.com/docs/guides/reasoning).
@@ -104060,14 +104046,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
-      Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+      Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
       - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
-        Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+        Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/docs/models)
         to browse and compare available models.
@@ -109705,8 +109691,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"24h"`
 
     - `reasoning: optional object { context, effort, generate_summary, 2 more }  or null`
-
-      **gpt-5 and o-series models only**
 
       Configuration options for
       [reasoning models](https://platform.openai.com/docs/guides/reasoning).
@@ -115457,14 +115441,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
-      Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+      Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
       - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
-        Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+        Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/docs/models)
         to browse and compare available models.
@@ -121102,8 +121086,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"24h"`
 
     - `reasoning: optional object { context, effort, generate_summary, 2 more }  or null`
-
-      **gpt-5 and o-series models only**
 
       Configuration options for
       [reasoning models](https://platform.openai.com/docs/guides/reasoning).
@@ -126410,14 +126392,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
-      Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+      Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
       - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
-        Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+        Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/docs/models)
         to browse and compare available models.
@@ -132055,8 +132037,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"24h"`
 
     - `reasoning: optional object { context, effort, generate_summary, 2 more }  or null`
-
-      **gpt-5 and o-series models only**
 
       Configuration options for
       [reasoning models](https://platform.openai.com/docs/guides/reasoning).
@@ -162788,14 +162768,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
-      Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+      Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
       - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
-        Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+        Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/docs/models)
         to browse and compare available models.
@@ -168433,8 +168413,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"24h"`
 
     - `reasoning: optional object { context, effort, generate_summary, 2 more }  or null`
-
-      **gpt-5 and o-series models only**
 
       Configuration options for
       [reasoning models](https://platform.openai.com/docs/guides/reasoning).
@@ -174574,14 +174552,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
-        Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+        Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/docs/models)
         to browse and compare available models.
 
         - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
-          Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+          Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
           offers a wide range of models with different capabilities, performance
           characteristics, and price points. Refer to the [model guide](/docs/models)
           to browse and compare available models.
@@ -180219,8 +180197,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"24h"`
 
       - `reasoning: optional object { context, effort, generate_summary, 2 more }  or null`
-
-        **gpt-5 and o-series models only**
 
         Configuration options for
         [reasoning models](https://platform.openai.com/docs/guides/reasoning).
@@ -187873,14 +187849,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `model: optional "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
-      Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+      Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
       - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
-        Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
+        Model ID used to generate the response, like `gpt-5.6-sol`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/docs/models)
         to browse and compare available models.
@@ -188221,8 +188197,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"24h"`
 
     - `reasoning: optional object { context, effort, generate_summary, 2 more }  or null`
-
-      **gpt-5 and o-series models only**
 
       Configuration options for
       [reasoning models](https://platform.openai.com/docs/guides/reasoning).
@@ -215472,7 +215446,7 @@ curl -X POST https://api.openai.com/v1/responses/input_tokens \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-      "model": "gpt-5",
+      "model": "gpt-5.6-sol",
       "input": "Tell me a joke."
     }'
 ```
@@ -216924,7 +216898,7 @@ curl https://api.openai.com/v1/threads/runs \
   "completed_at": null,
   "required_action": null,
   "last_error": null,
-  "model": "gpt-4o",
+  "model": "gpt-5",
   "instructions": "You are a helpful assistant.",
   "tools": [],
   "tool_resources": {},
@@ -216970,13 +216944,13 @@ event: thread.created
 data: {"id":"thread_123","object":"thread","created_at":1710348075,"metadata":{}}
 
 event: thread.run.created
-data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"tool_resources":{},"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":null,"tools":[],"tool_resources":{},"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: thread.run.queued
-data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"tool_resources":{},"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":null,"tools":[],"tool_resources":{},"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: thread.run.in_progress
-data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"tool_resources":{},"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":null,"tools":[],"tool_resources":{},"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: thread.run.step.created
 data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":null}
@@ -217008,7 +216982,7 @@ event: thread.run.step.completed
 data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"completed","cancelled_at":null,"completed_at":1710348077,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31}}
 
 event: thread.run.completed
-{"id":"run_123","object":"thread.run","created_at":1710348076,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1713226836,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1713226837,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":345,"completion_tokens":11,"total_tokens":356},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+{"id":"run_123","object":"thread.run","created_at":1710348076,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1713226836,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1713226837,"required_action":null,"last_error":null,"model":"gpt-5","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":345,"completion_tokens":11,"total_tokens":356},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: done
 data: [DONE]
@@ -217062,13 +217036,13 @@ event: thread.created
 data: {"id":"thread_123","object":"thread","created_at":1710351818,"metadata":{}}
 
 event: thread.run.created
-data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
 
 event: thread.run.queued
-data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
 
 event: thread.run.in_progress
-data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710351818,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710351818,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
 
 event: thread.run.step.created
 data: {"id":"step_001","object":"thread.run.step","created_at":1710351819,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"tool_calls","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710352418,"failed_at":null,"last_error":null,"step_details":{"type":"tool_calls","tool_calls":[]},"usage":null}
@@ -217094,7 +217068,7 @@ event: thread.run.step.delta
 data: {"id":"step_001","object":"thread.run.step.delta","delta":{"step_details":{"type":"tool_calls","tool_calls":[{"index":0,"type":"function","function":{"arguments":"\"}"}}]}}}
 
 event: thread.run.requires_action
-data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"requires_action","started_at":1710351818,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":{"type":"submit_tool_outputs","submit_tool_outputs":{"tool_calls":[{"id":"call_XXNp8YGaFrjrSjgqxtC8JJ1B","type":"function","function":{"name":"get_current_weather","arguments":"{\"location\":\"San Francisco, CA\",\"unit\":\"fahrenheit\"}"}}]}},"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":345,"completion_tokens":11,"total_tokens":356},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"requires_action","started_at":1710351818,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":{"type":"submit_tool_outputs","submit_tool_outputs":{"tool_calls":[{"id":"call_XXNp8YGaFrjrSjgqxtC8JJ1B","type":"function","function":{"name":"get_current_weather","arguments":"{\"location\":\"San Francisco, CA\",\"unit\":\"fahrenheit\"}"}}]}},"last_error":null,"model":"gpt-5","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":345,"completion_tokens":11,"total_tokens":356},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
 
 event: done
 data: [DONE]
@@ -221065,7 +221039,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/cancel \
   "failed_at": null,
   "completed_at": null,
   "last_error": null,
-  "model": "gpt-4o",
+  "model": "gpt-5",
   "instructions": "You summarize books.",
   "tools": [
     {
@@ -222113,7 +222087,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs \
   "failed_at": null,
   "completed_at": 1699063291,
   "last_error": null,
-  "model": "gpt-4o",
+  "model": "gpt-5",
   "instructions": null,
   "incomplete_details": null,
   "tools": [
@@ -222154,13 +222128,13 @@ curl https://api.openai.com/v1/threads/thread_123/runs \
 
 ```json
 event: thread.run.created
-data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710331240,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710331240,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
 
 event: thread.run.queued
-data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710331240,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710331240,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
 
 event: thread.run.in_progress
-data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710330641,"expires_at":1710331240,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710330641,"expires_at":1710331240,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
 
 event: thread.run.step.created
 data: {"id":"step_001","object":"thread.run.step","created_at":1710330641,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710331240,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":null}
@@ -222192,7 +222166,7 @@ event: thread.run.step.completed
 data: {"id":"step_001","object":"thread.run.step","created_at":1710330641,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"completed","cancelled_at":null,"completed_at":1710330642,"expires_at":1710331240,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31}}
 
 event: thread.run.completed
-data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1710330641,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1710330642,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1710330641,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1710330642,"required_action":null,"last_error":null,"model":"gpt-5","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
 
 event: done
 data: [DONE]
@@ -222238,13 +222212,13 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs \
 
 ```json
 event: thread.run.created
-data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
 
 event: thread.run.queued
-data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
 
 event: thread.run.in_progress
-data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710348075,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710348075,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
 
 event: thread.run.step.created
 data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":null}
@@ -222276,7 +222250,7 @@ event: thread.run.step.completed
 data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"completed","cancelled_at":null,"completed_at":1710348077,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31}}
 
 event: thread.run.completed
-data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1710348075,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1710348077,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1710348075,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1710348077,"required_action":null,"last_error":null,"model":"gpt-5","instructions":null,"tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
 
 event: done
 data: [DONE]
@@ -222830,7 +222804,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs \
       "failed_at": null,
       "completed_at": 1699075073,
       "last_error": null,
-      "model": "gpt-4o",
+      "model": "gpt-5",
       "instructions": null,
       "incomplete_details": null,
       "tools": [
@@ -222877,7 +222851,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs \
       "failed_at": null,
       "completed_at": 1699063291,
       "last_error": null,
-      "model": "gpt-4o",
+      "model": "gpt-5",
       "instructions": null,
       "incomplete_details": null,
       "tools": [
@@ -223428,7 +223402,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123 \
   "failed_at": null,
   "completed_at": 1699075073,
   "last_error": null,
-  "model": "gpt-4o",
+  "model": "gpt-5",
   "instructions": null,
   "incomplete_details": null,
   "tools": [
@@ -223999,7 +223973,7 @@ curl https://api.openai.com/v1/threads/thread_123/runs/run_123/submit_tool_outpu
   "failed_at": null,
   "completed_at": null,
   "last_error": null,
-  "model": "gpt-4o",
+  "model": "gpt-5",
   "instructions": null,
   "tools": [
     {
@@ -224065,10 +224039,10 @@ event: thread.run.step.completed
 data: {"id":"step_001","object":"thread.run.step","created_at":1710352449,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"tool_calls","status":"completed","cancelled_at":null,"completed_at":1710352475,"expires_at":1710353047,"failed_at":null,"last_error":null,"step_details":{"type":"tool_calls","tool_calls":[{"id":"call_iWr0kQ2EaYMaxNdl0v3KYkx7","type":"function","function":{"name":"get_current_weather","arguments":"{\"location\":\"San Francisco, CA\",\"unit\":\"fahrenheit\"}","output":"70 degrees and sunny."}}]},"usage":{"prompt_tokens":291,"completion_tokens":24,"total_tokens":315}}
 
 event: thread.run.queued
-data: {"id":"run_123","object":"thread.run","created_at":1710352447,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":1710352448,"expires_at":1710353047,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+data: {"id":"run_123","object":"thread.run","created_at":1710352447,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":1710352448,"expires_at":1710353047,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
 
 event: thread.run.in_progress
-data: {"id":"run_123","object":"thread.run","created_at":1710352447,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710352475,"expires_at":1710353047,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+data: {"id":"run_123","object":"thread.run","created_at":1710352447,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710352475,"expires_at":1710353047,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
 
 event: thread.run.step.created
 data: {"id":"step_002","object":"thread.run.step","created_at":1710352476,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710353047,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_002"}},"usage":null}
@@ -224106,7 +224080,7 @@ event: thread.run.step.completed
 data: {"id":"step_002","object":"thread.run.step","created_at":1710352476,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"completed","cancelled_at":null,"completed_at":1710352477,"expires_at":1710353047,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_002"}},"usage":{"prompt_tokens":329,"completion_tokens":18,"total_tokens":347}}
 
 event: thread.run.completed
-data: {"id":"run_123","object":"thread.run","created_at":1710352447,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1710352475,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1710352477,"required_action":null,"last_error":null,"model":"gpt-4o","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
+data: {"id":"run_123","object":"thread.run","created_at":1710352447,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1710352475,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1710352477,"required_action":null,"last_error":null,"model":"gpt-5","instructions":null,"tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto","last_messages":null},"incomplete_details":null,"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}}
 
 event: done
 data: [DONE]
@@ -224641,7 +224615,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123 \
   "failed_at": null,
   "completed_at": 1699075073,
   "last_error": null,
-  "model": "gpt-4o",
+  "model": "gpt-5",
   "instructions": null,
   "incomplete_details": null,
   "tools": [

@@ -50,12 +50,14 @@ When `enforce_distillable_text` is set to `true`, the request will only be route
   });
 
   const completion = await openRouter.chat.send({
-    model: 'meta-llama/llama-3.1-70b-instruct',
-    messages: [{ role: 'user', content: 'Explain quantum computing' }],
-    provider: {
-      enforceDistillableText: true,
+    chatRequest: {
+      model: 'meta-llama/llama-3.1-70b-instruct',
+      messages: [{ role: 'user', content: 'Explain quantum computing' }],
+      provider: {
+        enforceDistillableText: true,
+      },
+      stream: false,
     },
-    stream: false,
   });
   ```
 

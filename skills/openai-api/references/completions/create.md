@@ -369,7 +369,7 @@ curl https://api.openai.com/v1/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "VAR_completion_model_id",
+    "model": "gpt-3.5-turbo-instruct",
     "prompt": "Say this is a test",
     "max_tokens": 7,
     "temperature": 0
@@ -383,7 +383,7 @@ curl https://api.openai.com/v1/completions \
   "id": "cmpl-uqkvlQyYK7bGYrRHQ0eXlWi7",
   "object": "text_completion",
   "created": 1589478378,
-  "model": "VAR_completion_model_id",
+  "model": "gpt-3.5-turbo-instruct",
   "system_fingerprint": "fp_44709d6fcb",
   "choices": [
     {
@@ -408,7 +408,7 @@ curl https://api.openai.com/v1/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "VAR_completion_model_id",
+    "model": "gpt-3.5-turbo-instruct",
     "prompt": "Say this is a test",
     "max_tokens": 7,
     "temperature": 0,

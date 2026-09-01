@@ -3,9 +3,9 @@ title: "Comfy Cloud"
 description: "Use Comfy Cloud as an always-available managed deployment for running workflows via API"
 ---
 
-Comfy Cloud is a stateful, interactive, fully managed version of ComfyUI. You build and run workflows in the browser as you would on a local install, while Comfy manages the models, the GPUs, and everything in between. You can also call it directly through the API, using Comfy Cloud as a serverless API endpoint: there is no environment to build and no deployment to create.
+Comfy Cloud is a stateful, interactive, fully managed version of ComfyUI. You build and run workflows in the browser as you would on a local install, while Comfy manages the models, the GPUs, and everything in between. You can also call Comfy Cloud through the API. Comfy Cloud provides a managed endpoint, so there is no environment to build and no deployment to create.
 
-You can think of it as a permanent serverless deployment. Where a [Serverless API](/development/serverless/overview) deployment serves one pinned environment that you build and release, Comfy Cloud serves a full, managed ComfyUI that is always on.
+Unlike a [serverless deployment](/development/serverless/overview), which serves one pinned environment that you build and release, Comfy Cloud serves a full, managed ComfyUI that is always on.
 
   See the [Comfy Cloud introduction](/get_started/cloud) if you are new to it. This section covers using the Comfy Cloud API as a developer.
 
@@ -59,7 +59,7 @@ Comfy Cloud works with the [Comfy SDKs](/development/api-development/sdks) out o
     `"9"` is the ID of the output node in your workflow file. See the [SDK guide](/development/api-development/sdks) for inputs, progress events, and error handling.
   
 
-See [Running Workflows](/development/run-workflows/overview) for how the same code moves between Comfy Cloud, Serverless, and self-hosted deployments.
+See [Running Workflows](/development/run-workflows/overview) for how the same code moves between Comfy Cloud, serverless deployments, and self-hosted deployments.
 
 ## Credits and Usage
 

@@ -343,6 +343,8 @@ type ResponseUsage = {
     upstream_inference_cost?: number;
     upstream_inference_prompt_cost: number;
     upstream_inference_completions_cost: number;
+    /** Metered server-tool execution cost (e.g. shell sandbox time), billed in USD */
+    server_tool_cost?: number | null;
   };
 
   /** Server-side tool usage (optional) */

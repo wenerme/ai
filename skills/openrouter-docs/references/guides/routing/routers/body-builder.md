@@ -18,26 +18,72 @@ Body Builder uses AI to understand your intent and generate valid OpenRouter API
 
 ## Usage
 
+The TypeScript SDK example imports Zod for runtime validation. Install it as a direct dependency alongside the SDK: `npm install @openrouter/sdk zod`.
+
 <CodeGroup>
   ```typescript title="TypeScript SDK" lines theme={null}
   import { OpenRouter } from '@openrouter/sdk';
+  import { z } from 'zod';
+
+  const OPENROUTER_API_KEY = '<OPENROUTER_API_KEY>';
+
+  const GeneratedMessageSchema = z.looseObject({
+    role: z.string(),
+  });
+
+  const BodyBuilderResponseSchema = z.object({
+    requests: z.array(
+      z.looseObject({
+        model: z.string(),
+        messages: z.array(GeneratedMessageSchema),
+        stream: z.literal(false).optional(),
+      }),
+    ),
+  });
+
+  const ChatCompletionResponseSchema = z.looseObject({
+    choices: z
+      .array(
+        z.looseObject({
+          message: z.looseObject({ content: z.string() }),
+        }),
+      )
+      .min(1),
+  });
+
+  type BodyBuilderResponse = z.infer<typeof BodyBuilderResponseSchema>;
+
+  function parseBodyBuilderResponse(content: unknown): BodyBuilderResponse {
+    if (typeof content !== 'string') {
+      throw new Error('Expected Body Builder to return JSON text');
+    }
+
+    const parsed: unknown = JSON.parse(content);
+    return BodyBuilderResponseSchema.parse(parsed);
+  }
 
   const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
+    apiKey: OPENROUTER_API_KEY,
   });
 
   const completion = await openRouter.chat.send({
-    model: 'openrouter/bodybuilder',
-    messages: [
-      {
-        role: 'user',
-        content: 'Count to 10 using Claude Sonnet and GPT-5',
-      },
-    ],
+    chatRequest: {
+      model: 'openrouter/bodybuilder',
+      messages: [
+        {
+          role: 'user',
+          content: 'Count to 10 using Claude Sonnet and GPT-5',
+        },
+      ],
+    },
   });
 
+  if (completion instanceof ReadableStream) {
+    throw new Error('Expected a non-streaming response');
+  }
+
   // Parse the generated requests
-  const generatedRequests = JSON.parse(completion.choices[0].message.content);
+  const generatedRequests = parseBodyBuilderResponse(completion.choices[0]?.message.content);
   console.log(generatedRequests);
   ```
 
@@ -122,21 +168,52 @@ After generating the request bodies, execute them in parallel:
   ```typescript title="TypeScript" lines theme={null}
   // Generate the requests
   const builderResponse = await openRouter.chat.send({
-    model: 'openrouter/bodybuilder',
-    messages: [{ role: 'user', content: 'Explain gravity using Gemini and Claude' }],
+    chatRequest: {
+      model: 'openrouter/bodybuilder',
+      messages: [{ role: 'user', content: 'Explain gravity using Gemini and Claude' }],
+    },
   });
 
-  const { requests } = JSON.parse(builderResponse.choices[0].message.content);
+  if (builderResponse instanceof ReadableStream) {
+    throw new Error('Expected a non-streaming response');
+  }
 
-  // Execute all requests in parallel
+  const { requests } = parseBodyBuilderResponse(builderResponse.choices[0]?.message.content);
+
+  // Body Builder returns API-format fields such as `max_tokens`, so send the
+  // generated JSON directly rather than converting it to SDK request types.
   const results = await Promise.all(
-    requests.map((req) => openRouter.chat.send(req))
+    requests.map(async (request) => {
+      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request),
+      });
+
+      if (!response.ok) {
+        await response.body?.cancel();
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+
+      const data: unknown = await response.json();
+      const result = ChatCompletionResponseSchema.parse(data);
+      const choice = result.choices[0];
+
+      if (!choice) {
+        throw new Error('Expected at least one choice');
+      }
+
+      return { model: request.model, content: choice.message.content };
+    }),
   );
 
   // Process results
-  results.forEach((result, i) => {
-    console.log(`Model: ${requests[i].model}`);
-    console.log(`Response: ${result.choices[0].message.content}\n`);
+  results.forEach(({ model, content }) => {
+    console.log(`Model: ${model}`);
+    console.log(`Response: ${content}\n`);
   });
   ```
 

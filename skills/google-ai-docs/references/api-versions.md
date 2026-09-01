@@ -11,7 +11,7 @@ and `v1beta` (Beta). Core API capabilities and tools apply to both
 the Interactions API and `generateContent` unless specified otherwise:
 
 > [!NOTE]
-> **Note:** This table tracks the availability of features across the `v1` and `v1beta` **API versions** (endpoint routes and schema parameters). It does not reflect individual model release stages (such as preview versus GA models listed on the [Models page](https://ai.google.dev/gemini-api/docs/models)) or specific agent lifecycle statuses.
+> **Note:** All models are supported in both `v1` and `v1beta`. This table tracks the availability of features across the `v1` and `v1beta` **API versions** (endpoint routes and schema parameters).
 
 | Feature | v1 | v1beta |
 |---|---|---|

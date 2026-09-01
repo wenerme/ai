@@ -38,6 +38,10 @@ Get costs details for the organization.
 
   A limit on the number of buckets to be returned. Limit can range between 1 and 180, and the default is 7.
 
+- `line_items: optional array of string`
+
+  Return only costs for these exact line item names. Each value must match the complete `line_item` value, for example `gpt-5.6-sol, input_tokens`.
+
 - `page: optional string`
 
   A cursor for use in pagination. Corresponding to the `next_page` field from the previous response.

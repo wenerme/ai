@@ -162,7 +162,7 @@ const toolResult = await searchGutenbergBooks(["James", "Joyce"]);
 
 ### Tool Calling Example
 
-Here is Python code that gives LLMs the ability to call an external API -- in this case Project Gutenberg, to search for books.
+Here is an end-to-end example that gives LLMs the ability to call an external API -- in this case Project Gutenberg, to search for books.
 
 First, let's do some basic setup:
 
@@ -174,6 +174,7 @@ MODEL: 'google/gemini-3-flash-preview'
 >
   <CodeGroup>
     ```typescript title="TypeScript SDK" expandable lines theme={null}
+    import type { ChatFunctionTool, ChatMessages, ChatResult, ChatToolCall } from '@openrouter/sdk/models';
     import { OpenRouter } from '@openrouter/sdk';
 
     const OPENROUTER_API_KEY = "{{API_KEY_REF}}";
@@ -187,7 +188,7 @@ MODEL: 'google/gemini-3-flash-preview'
 
     const task = "What are the titles of some James Joyce books?";
 
-    const messages = [
+    const messages: ChatMessages[] = [
       {
         role: "system",
         content: "You are a helpful assistant."
@@ -262,20 +263,30 @@ MODEL: 'google/gemini-3-flash-preview'
 >
   <CodeGroup>
     ```typescript title="TypeScript SDK" expandable lines theme={null}
+    type Book = {
+      id: number;
+      title: string;
+      authors: { name: string }[];
+    };
+
     async function searchGutenbergBooks(searchTerms: string[]): Promise<Book[]> {
       const searchQuery = searchTerms.join(' ');
       const url = 'https://gutendex.com/books';
       const response = await fetch(`${url}?search=${searchQuery}`);
-      const data = await response.json();
+      const data: unknown = await response.json();
 
-      return data.results.map((book: any) => ({
+      if (!isGutenbergResponse(data)) {
+        throw new Error('Invalid response from the Gutenberg API');
+      }
+
+      return data.results.map((book) => ({
         id: book.id,
         title: book.title,
-        authors: book.authors,
+        authors: book.authors.map((author) => ({ name: author.name })),
       }));
     }
 
-    const tools = [
+    const tools: ChatFunctionTool[] = [
       {
         type: 'function',
         function: {
@@ -300,9 +311,44 @@ MODEL: 'google/gemini-3-flash-preview'
       },
     ];
 
-    const TOOL_MAPPING = {
-      searchGutenbergBooks,
-    };
+    function parseSearchTerms(argumentsJson: string): string[] {
+      const args: unknown = JSON.parse(argumentsJson);
+
+      if (
+        !isRecord(args) ||
+        !isStringArray(args.search_terms)
+      ) {
+        throw new Error('Invalid arguments for searchGutenbergBooks');
+      }
+
+      return args.search_terms;
+    }
+
+    function isGutenbergResponse(value: unknown): value is { results: Book[] } {
+      return isRecord(value) && Array.isArray(value.results) && value.results.every(isBook);
+    }
+
+    function isBook(value: unknown): value is Book {
+      return (
+        isRecord(value) &&
+        typeof value.id === 'number' &&
+        typeof value.title === 'string' &&
+        Array.isArray(value.authors) &&
+        value.authors.every(isBookAuthor)
+      );
+    }
+
+    function isBookAuthor(value: unknown): value is { name: string } {
+      return isRecord(value) && typeof value.name === 'string';
+    }
+
+    function isStringArray(value: unknown): value is string[] {
+      return Array.isArray(value) && value.every((item: unknown) => typeof item === 'string');
+    }
+
+    function isRecord(value: unknown): value is Record<string, unknown> {
+      return typeof value === 'object' && value !== null;
+    }
     ```
 
     ```python Python expandable lines theme={null}
@@ -367,13 +413,25 @@ MODEL: 'google/gemini-3-flash-preview'
   <CodeGroup>
     ```typescript title="TypeScript SDK" lines theme={null}
     const result = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      tools,
-      messages,
-      stream: false,
+      chatRequest: {
+        model: '{{MODEL}}',
+        tools,
+        messages,
+        stream: false,
+      },
     });
 
-    const response_1 = result.choices[0].message;
+    if (result instanceof ReadableStream) {
+      throw new Error('Expected a non-streaming response');
+    }
+
+    const firstChoice = result.choices[0];
+
+    if (!firstChoice) {
+      throw new Error('Expected the model to return a choice');
+    }
+
+    const response_1 = firstChoice.message;
     ```
 
     ```python Python lines theme={null}
@@ -383,7 +441,7 @@ MODEL: 'google/gemini-3-flash-preview'
         "messages": messages
     }
 
-    response_1 = openai_client.chat.completions.create(**request_1).message
+    response_1 = openai_client.chat.completions.create(**request_1).choices[0].message
     ```
 
     ```typescript title="TypeScript (fetch)" lines theme={null}
@@ -421,14 +479,20 @@ MODEL: 'google/gemini-3-flash-preview'
     messages.push(response_1);
 
     // Now we process the requested tool calls, and use our book lookup tool
-    for (const toolCall of response_1.tool_calls) {
-      const toolName = toolCall.function.name;
-      const { search_params } = JSON.parse(toolCall.function.arguments);
-      const toolResponse = await TOOL_MAPPING[toolName](search_params);
+    if (!response_1.toolCalls || response_1.toolCalls.length === 0) {
+      throw new Error('Expected the model to request a tool call');
+    }
+
+    for (const toolCall of response_1.toolCalls) {
+      if (toolCall.function.name !== 'searchGutenbergBooks') {
+        throw new Error(`Unknown tool: ${toolCall.function.name}`);
+      }
+
+      const searchTerms = parseSearchTerms(toolCall.function.arguments);
+      const toolResponse = await searchGutenbergBooks(searchTerms);
       messages.push({
         role: 'tool',
         toolCallId: toolCall.id,
-        name: toolName,
         content: JSON.stringify(toolResponse),
       });
     }
@@ -475,13 +539,25 @@ MODEL: 'google/gemini-3-flash-preview'
   <CodeGroup>
     ```typescript title="TypeScript SDK" lines theme={null}
     const response_2 = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      messages,
-      tools,
-      stream: false,
+      chatRequest: {
+        model: '{{MODEL}}',
+        messages,
+        tools,
+        stream: false,
+      },
     });
 
-    console.log(response_2.choices[0].message.content);
+    if (response_2 instanceof ReadableStream) {
+      throw new Error('Expected a non-streaming response');
+    }
+
+    const finalChoice = response_2.choices[0];
+
+    if (!finalChoice) {
+      throw new Error('Expected the model to return a choice');
+    }
+
+    console.log(finalChoice.message.content);
     ```
 
     ```python Python lines theme={null}
@@ -641,49 +717,71 @@ MODEL: 'google/gemini-3-flash-preview'
 >
   <CodeGroup>
     ```typescript title="TypeScript SDK" expandable lines theme={null}
-    async function callLLM(messages: Message[]): Promise<ChatResponse> {
+    async function callLLM(messages: ChatMessages[]): Promise<ChatResult> {
       const result = await openRouter.chat.send({
-        model: '{{MODEL}}',
-        tools,
-        messages,
-        stream: false,
+        chatRequest: {
+          model: '{{MODEL}}',
+          tools,
+          messages,
+          stream: false,
+        },
       });
 
-      messages.push(result.choices[0].message);
+      if (result instanceof ReadableStream) {
+        throw new Error('Expected a non-streaming response');
+      }
+
+      const choice = result.choices[0];
+
+      if (!choice) {
+        throw new Error('Expected the model to return a choice');
+      }
+
+      messages.push(choice.message);
       return result;
     }
 
-    async function getToolResponse(response: ChatResponse): Promise<Message> {
-      const toolCall = response.choices[0].message.toolCalls[0];
-      const toolName = toolCall.function.name;
-      const toolArgs = JSON.parse(toolCall.function.arguments);
+    async function getToolResponse(toolCall: ChatToolCall): Promise<ChatMessages> {
+      if (toolCall.function.name !== 'searchGutenbergBooks') {
+        throw new Error(`Unknown tool: ${toolCall.function.name}`);
+      }
 
-      // Look up the correct tool locally, and call it with the provided arguments
-      // Other tools can be added without changing the agentic loop
-      const toolResult = await TOOL_MAPPING[toolName](toolArgs);
+      const searchTerms = parseSearchTerms(toolCall.function.arguments);
+      const toolResult = await searchGutenbergBooks(searchTerms);
 
       return {
         role: 'tool',
         toolCallId: toolCall.id,
-        content: toolResult,
+        content: JSON.stringify(toolResult),
       };
     }
 
     const maxIterations = 10;
     let iterationCount = 0;
+    let didReachMaxIterations = true;
 
     while (iterationCount < maxIterations) {
       iterationCount++;
       const response = await callLLM(messages);
+      const choice = response.choices[0];
 
-      if (response.choices[0].message.toolCalls) {
-        messages.push(await getToolResponse(response));
-      } else {
+      if (!choice) {
+        throw new Error('Expected the model to return a choice');
+      }
+
+      const toolCalls = choice.message.toolCalls;
+
+      if (!toolCalls || toolCalls.length === 0) {
+        didReachMaxIterations = false;
         break;
+      }
+
+      for (const toolCall of toolCalls) {
+        messages.push(await getToolResponse(toolCall));
       }
     }
 
-    if (iterationCount >= maxIterations) {
+    if (didReachMaxIterations) {
       console.warn("Warning: Maximum iterations reached");
     }
 
@@ -700,8 +798,7 @@ MODEL: 'google/gemini-3-flash-preview'
         msgs.append(resp.choices[0].message.dict())
         return resp
 
-    def get_tool_response(response):
-        tool_call = response.choices[0].message.tool_calls[0]
+    def get_tool_response(tool_call):
         tool_name = tool_call.function.name
         tool_args = json.loads(tool_call.function.arguments)
 
@@ -712,22 +809,26 @@ MODEL: 'google/gemini-3-flash-preview'
         return {
             "role": "tool",
             "tool_call_id": tool_call.id,
-            "content": tool_result,
+            "content": json.dumps(tool_result),
         }
 
     max_iterations = 10
     iteration_count = 0
+    reached_max_iterations = True
 
     while iteration_count < max_iterations:
         iteration_count += 1
-        resp = call_llm(_messages)
+        resp = call_llm(messages)
 
-        if resp.choices[0].message.tool_calls is not None:
-            messages.append(get_tool_response(resp))
-        else:
+        tool_calls = resp.choices[0].message.tool_calls
+        if not tool_calls:
+            reached_max_iterations = False
             break
 
-    if iteration_count >= max_iterations:
+        for tool_call in tool_calls:
+            messages.append(get_tool_response(tool_call))
+
+    if reached_max_iterations:
         print("Warning: Maximum iterations reached")
 
     print(messages[-1]['content'])

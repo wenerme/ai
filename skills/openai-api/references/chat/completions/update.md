@@ -715,7 +715,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 {
   "object": "chat.completion",
   "id": "chatcmpl-AyPNinnUqUDYo9SAdA52NobMflmj2",
-  "model": "gpt-4o-2024-08-06",
+  "model": "gpt-5.6-sol",
   "created": 1738960610,
   "request_id": "req_ded8ab984ec4bf840f37566c1011c417",
   "tool_choice": null,

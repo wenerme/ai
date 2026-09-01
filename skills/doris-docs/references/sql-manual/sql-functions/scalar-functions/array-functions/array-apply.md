@@ -30,7 +30,7 @@ array_apply(arr, op, val)
 
 **T supported types:**
 - Numeric types: TINYINT, SMALLINT, INT, BIGINT, LARGEINT, FLOAT, DOUBLE, DECIMAL
-- Date and time types: DATE, DATETIME, DATEV2, DATETIMEV2
+- Date and time types: DATE, DATETIME, DATEV2, DATETIMEV2, TIMESTAMP_NS
 - Boolean type: BOOLEAN
 
 ### Return Value

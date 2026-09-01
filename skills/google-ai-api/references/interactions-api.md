@@ -258,75 +258,11 @@ model string (optional) The model to use for agent reasoning.
 type object (required) No description provided.
 
 Always set to `"antigravity"`.
-CodeMenderAgentConfig Configuration for the CodeMender agent.
-find_request FindRequest (optional) Parameters for finding vulnerabilities.
-Request parameters specific to FIND sessions, used for discovering
-vulnerabilities in a codebase.
-
-#### Fields
-
-description string (optional) Additional context or custom instructions provided by the user to guide
-the vulnerability analysis.
-finding_id string (optional) The identifier of a specific finding to verify. This is primarily used in
-VERIFY mode to focus the agent's execution-based validation on a single
-vulnerability.
-mode enum (string) (optional) The mode of the find session.
-
-Possible
-values:
-
-- `scan`
-
-  Fast scan using only the initial classifier.
-- `verify`
-
-  Performs classification followed by detailed investigation.
-source_files array (FileContent) (optional) A list of source files to provide as context for the scan.
-Content of a single file in the codebase.
-
-#### Fields
-
-content string (optional) The UTF-8 encoded text content of the file.
-path string (optional) The relative path of the file from the project root.
-fix_request FixRequest (optional) Parameters for fixing vulnerabilities.
-Request parameters specific to FIX sessions, used for generating and
-validating security patches.
-
-#### Fields
-
-description string (optional) Additional context or custom instructions provided by the user to guide
-the patch generation process.
-finding_id string (optional) The identifier of the specific security finding to be remediated. This ID
-maps to a previously discovered vulnerability.
-source_files array (FileContent) (optional) A list of source files providing context for the remediation. These files
-are typically the ones containing the identified vulnerability.
-Content of a single file in the codebase.
-
-#### Fields
-
-content string (optional) The UTF-8 encoded text content of the file.
-path string (optional) The relative path of the file from the project root.
-model string (optional) The name of the model to use for the CodeMender agent. One
-CodeMender session will only use one model.
-session_config SessionConfig (optional) Optional session-specific configurations to override default agent
-behavior.
-The configuration of CodeMender sessions.
-
-#### Fields
-
-max_rounds integer (optional) The maximum number of interaction rounds the agent is allowed to perform
-before reaching a timeout.
-session_id string (optional) Parameter for grouping multiple interactions that belong to
-the same CodeMender session.
-type object (required) No description provided.
-
-Always set to `"code-mender"`.
 DeepResearchAgentConfig Configuration for the Deep Research agent.
 collaborative_planning boolean (optional) Enables human-in-the-loop planning for the Deep Research agent. If set to
 true, the Deep Research agent will provide a research plan in its response.
 The agent will then proceed only if the user confirms the plan in the next
 turn.
-enable_bigquery_tool boolean (optional) Enables bigquery tool for the Deep Research agent.
 thinking_summaries ThinkingSummaries (optional) Whether to include thought summaries in the response.
 <br />
 
@@ -360,85 +296,6 @@ environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resou
 labels object (optional) The labels with user-defined metadata for the request.
 previous_interaction_id string (optional) The ID of the previous interaction, if any.
 safety_settings array (SafetySetting) (optional) Safety settings for the interaction.
-A safety setting that affects the safety-blocking behavior.
-
-A SafetySetting consists of a
-harm category and a
-threshold for that
-category.
-
-#### Fields
-
-method enum (string) (optional) Optional. The method for blocking content. If not specified, the default
-behavior is to use the probability score.
-
-Possible
-values:
-
-- `severity`
-
-  The harm block method uses both probability and severity scores.
-- `probability`
-
-  The harm block method uses the probability score.
-threshold enum (string) (optional) Required. The threshold for blocking content. If the harm probability
-exceeds this threshold, the content will be blocked.
-
-Possible
-values:
-
-- `block_low_and_above`
-
-  Block content with a low harm probability or higher.
-- `block_medium_and_above`
-
-  Block content with a medium harm probability or higher.
-- `block_only_high`
-
-  Block content with a high harm probability.
-- `block_none`
-
-  Do not block any content, regardless of its harm probability.
-- `off`
-
-  Turn off the safety filter entirely.
-type HarmCategory (optional) Required. The type of harm category to be blocked.
-<br />
-
-#### Possible values
-
-- `hate_speech`
-
-  Content that promotes violence or incites hatred against individuals or
-  groups based on certain attributes.
-- `dangerous_content`
-
-  Content that promotes, facilitates, or enables dangerous activities.
-- `harassment`
-
-  Abusive, threatening, or content intended to bully, torment, or ridicule.
-- `sexually_explicit`
-
-  Content that contains sexually explicit material.
-- `civic_integrity`
-
-  Deprecated: Election filter is not longer supported.
-  The harm category is civic integrity.
-- `image_hate`
-
-  Images that contain hate speech.
-- `image_dangerous_content`
-
-  Images that contain dangerous content.
-- `image_harassment`
-
-  Images that contain harassment.
-- `image_sexually_explicit`
-
-  Images that contain sexually explicit content.
-- `jailbreak`
-
-  Prompts designed to bypass safety filters.
 service_tier ServiceTier (optional) The service tier for the interaction.
 <br />
 
@@ -453,9 +310,6 @@ service_tier ServiceTier (optional) The service tier for the interaction.
 - `priority`
 
   Priority service tier.
-- `deferred`
-
-  Deferred service tier.
 webhook_config WebhookConfig (optional) Optional. Webhook configuration for receiving notifications when the
 interaction completes.
 Message for configuring webhook events for a request.
@@ -924,75 +778,11 @@ model string (optional) The model to use for agent reasoning.
 type object (required) No description provided.
 
 Always set to `"antigravity"`.
-CodeMenderAgentConfig Configuration for the CodeMender agent.
-find_request FindRequest (optional) Parameters for finding vulnerabilities.
-Request parameters specific to FIND sessions, used for discovering
-vulnerabilities in a codebase.
-
-#### Fields
-
-description string (optional) Additional context or custom instructions provided by the user to guide
-the vulnerability analysis.
-finding_id string (optional) The identifier of a specific finding to verify. This is primarily used in
-VERIFY mode to focus the agent's execution-based validation on a single
-vulnerability.
-mode enum (string) (optional) The mode of the find session.
-
-Possible
-values:
-
-- `scan`
-
-  Fast scan using only the initial classifier.
-- `verify`
-
-  Performs classification followed by detailed investigation.
-source_files array (FileContent) (optional) A list of source files to provide as context for the scan.
-Content of a single file in the codebase.
-
-#### Fields
-
-content string (optional) The UTF-8 encoded text content of the file.
-path string (optional) The relative path of the file from the project root.
-fix_request FixRequest (optional) Parameters for fixing vulnerabilities.
-Request parameters specific to FIX sessions, used for generating and
-validating security patches.
-
-#### Fields
-
-description string (optional) Additional context or custom instructions provided by the user to guide
-the patch generation process.
-finding_id string (optional) The identifier of the specific security finding to be remediated. This ID
-maps to a previously discovered vulnerability.
-source_files array (FileContent) (optional) A list of source files providing context for the remediation. These files
-are typically the ones containing the identified vulnerability.
-Content of a single file in the codebase.
-
-#### Fields
-
-content string (optional) The UTF-8 encoded text content of the file.
-path string (optional) The relative path of the file from the project root.
-model string (optional) The name of the model to use for the CodeMender agent. One
-CodeMender session will only use one model.
-session_config SessionConfig (optional) Optional session-specific configurations to override default agent
-behavior.
-The configuration of CodeMender sessions.
-
-#### Fields
-
-max_rounds integer (optional) The maximum number of interaction rounds the agent is allowed to perform
-before reaching a timeout.
-session_id string (optional) Parameter for grouping multiple interactions that belong to
-the same CodeMender session.
-type object (required) No description provided.
-
-Always set to `"code-mender"`.
 DeepResearchAgentConfig Configuration for the Deep Research agent.
 collaborative_planning boolean (optional) Enables human-in-the-loop planning for the Deep Research agent. If set to
 true, the Deep Research agent will provide a research plan in its response.
 The agent will then proceed only if the user confirms the plan in the next
 turn.
-enable_bigquery_tool boolean (optional) Enables bigquery tool for the Deep Research agent.
 thinking_summaries ThinkingSummaries (optional) Whether to include thought summaries in the response.
 <br />
 
@@ -1113,213 +903,9 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-robotics-er-2-preview`
 
   Gemini Robotics Embodied Reasoning 2 Preview
-output_audio AudioContent (optional) The last audio generated by the model in response to the current request.
-
-Note: this is added by the SDK.
-An audio content block.
-
-#### Fields
-
-channels integer (optional) The number of audio channels.
-data string (optional) The audio content.
-mime_type enum (string) (optional) The mime type of the audio.
-
-Possible
-values:
-
-- `audio/wav`
-
-  WAV audio format
-- `audio/mp3`
-
-  MP3 audio format
-- `audio/aiff`
-
-  AIFF audio format
-- `audio/aac`
-
-  AAC audio format
-- `audio/ogg`
-
-  OGG audio format
-- `audio/flac`
-
-  FLAC audio format
-- `audio/mpeg`
-
-  MPEG audio format
-- `audio/m4a`
-
-  M4A audio format
-- `audio/l16`
-
-  L16 audio format
-- `audio/opus`
-
-  OPUS audio format
-- `audio/alaw`
-
-  ALAW audio format
-- `audio/mulaw`
-
-  MULAW audio format
-sample_rate integer (optional) The sample rate of the audio.
-type object (optional) No description provided.
-
-Always set to `"audio"`.
-uri string (optional) The URI of the audio.
-output_image [ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) (optional) The last image generated by the model in response to the current request.
-
-Note: this is added by the SDK.
-output_text string (optional) Concatenated text from the last model output in response to the current request.
-
-Note: this is added by the SDK.
-output_video VideoContent (optional) The last video generated by the model in response to the current request.
-
-Note: this is added by the SDK.
-A video content block.
-
-#### Fields
-
-data string (optional) The video content.
-mime_type enum (string) (optional) The mime type of the video.
-
-Possible
-values:
-
-- `video/mp4`
-
-  MP4 video format
-- `video/mpeg`
-
-  MPEG video format
-- `video/mpg`
-
-  MPG video format
-- `video/mov`
-
-  MOV video format
-- `video/avi`
-
-  AVI video format
-- `video/x-flv`
-
-  FLV video format
-- `video/webm`
-
-  WebM video format
-- `video/wmv`
-
-  WMV video format
-- `video/3gpp`
-
-  3GPP video format
-processing MediaProcessing or enum (string) (optional) How the model processes this video for understanding.
-<br />
-
-resolution MediaResolution (optional) The resolution of the media.
-<br />
-
-#### Possible values
-
-- `low`
-
-  Low resolution.
-- `medium`
-
-  Medium resolution.
-- `high`
-
-  High resolution.
-- `ultra_high`
-
-  Ultra high resolution.
-type object (optional) No description provided.
-
-Always set to `"video"`.
-uri string (optional) The URI of the video.
 previous_interaction_id string (optional) The ID of the previous interaction, if any.
 response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with the JSON schema specified in this field.
 safety_settings array (SafetySetting) (optional) Safety settings for the interaction.
-A safety setting that affects the safety-blocking behavior.
-
-A SafetySetting consists of a
-harm category and a
-threshold for that
-category.
-
-#### Fields
-
-method enum (string) (optional) Optional. The method for blocking content. If not specified, the default
-behavior is to use the probability score.
-
-Possible
-values:
-
-- `severity`
-
-  The harm block method uses both probability and severity scores.
-- `probability`
-
-  The harm block method uses the probability score.
-threshold enum (string) (optional) Required. The threshold for blocking content. If the harm probability
-exceeds this threshold, the content will be blocked.
-
-Possible
-values:
-
-- `block_low_and_above`
-
-  Block content with a low harm probability or higher.
-- `block_medium_and_above`
-
-  Block content with a medium harm probability or higher.
-- `block_only_high`
-
-  Block content with a high harm probability.
-- `block_none`
-
-  Do not block any content, regardless of its harm probability.
-- `off`
-
-  Turn off the safety filter entirely.
-type HarmCategory (optional) Required. The type of harm category to be blocked.
-<br />
-
-#### Possible values
-
-- `hate_speech`
-
-  Content that promotes violence or incites hatred against individuals or
-  groups based on certain attributes.
-- `dangerous_content`
-
-  Content that promotes, facilitates, or enables dangerous activities.
-- `harassment`
-
-  Abusive, threatening, or content intended to bully, torment, or ridicule.
-- `sexually_explicit`
-
-  Content that contains sexually explicit material.
-- `civic_integrity`
-
-  Deprecated: Election filter is not longer supported.
-  The harm category is civic integrity.
-- `image_hate`
-
-  Images that contain hate speech.
-- `image_dangerous_content`
-
-  Images that contain dangerous content.
-- `image_harassment`
-
-  Images that contain harassment.
-- `image_sexually_explicit`
-
-  Images that contain sexually explicit content.
-- `jailbreak`
-
-  Prompts designed to bypass safety filters.
 service_tier ServiceTier (optional) The service tier for the interaction.
 <br />
 
@@ -1334,9 +920,6 @@ service_tier ServiceTier (optional) The service tier for the interaction.
 - `priority`
 
   Priority service tier.
-- `deferred`
-
-  Deferred service tier.
 status enum (string) (optional) Required. Output only. The status of the interaction.
 
 Possible
@@ -1421,9 +1004,6 @@ values:
 - `google_maps`
 
   Grounding with Google Maps.
-- `retrieval`
-
-  Grounding with customer's data, for example, VertexAISearch.
 input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
@@ -1612,6 +1192,9 @@ values:
 - `audio/mulaw`
 
   MULAW audio format
+- `audio/webm`
+
+  WEBM audio format
 sample_rate integer (optional) The sample rate of the audio.
 type object (required) No description provided.
 
@@ -1791,6 +1374,8 @@ values:
 - `video/3gpp`
 
   3GPP video format
+name string (optional) A user-defined name for this content block. Can be referenced by the model
+in the final response.
 processing MediaProcessing or enum (string) (optional) How the model processes this video for understanding.
 <br />
 
@@ -1957,9 +1542,6 @@ values:
 - `image_search`
 
   Setting this field enables image search. Image bytes are returned.
-- `enterprise_web_search`
-
-  Setting this field enables enterprise web search.
 type object (required) No description provided.
 
 Always set to `"google_search"`.
@@ -1994,70 +1576,6 @@ type object (required) No description provided.
 Always set to `"mcp_server"`.
 url string (optional) The full URL for the MCPServer endpoint.
 Example: "https://api.example.com/mcp"
-Retrieval A tool that can be used by the model to retrieve files.
-exa_ai_search_config ExaAISearchConfig (optional) Used to specify configuration for ExaAISearch.
-Used to specify configuration for ExaAISearch.
-
-#### Fields
-
-api_key string (optional) Required. The API key for ExaAiSearch.
-custom_config object (optional) Optional. This field can be used to pass any parameter from the Exa.ai Search API.
-parallel_ai_search_config ParallelAISearchConfig (optional) Used to specify configuration for ParallelAISearch.
-Used to specify configuration for ParallelAISearch.
-
-#### Fields
-
-api_key string (optional) Optional. The API key for ParallelAiSearch.
-custom_config object (optional) Optional. Custom configs for ParallelAiSearch.
-rag_store_config RagStoreConfig (optional) Used to specify configuration for RagStore.
-Use to specify configuration for RAG Store.
-
-#### Fields
-
-rag_resources array (RagResource) (optional) Optional. The representation of the rag source.
-The definition of the Rag resource.
-
-#### Fields
-
-rag_corpus string (optional) Optional. RagCorpora resource name.
-rag_file_ids array (string) (optional) Optional. rag_file_id. The files should be in the same rag_corpus set in
-rag_corpus field.
-rag_retrieval_config RagRetrievalConfig (optional) Optional. The retrieval config for the Rag query.
-Specifies the context retrieval config.
-
-#### Fields
-
-filter Filter (optional) Optional. Config for filters.
-Config for filters.
-
-#### Fields
-
-metadata_filter string (optional) Optional. String for metadata filtering.
-vector_distance_threshold number (optional) Optional. Only returns contexts with vector distance smaller than the
-threshold.
-vector_similarity_threshold number (optional) Optional. Only returns contexts with vector similarity larger than the
-threshold.
-hybrid_search HybridSearch (optional) Optional. Config for Hybrid Search.
-Config for Hybrid Search.
-
-#### Fields
-
-alpha number (optional) Optional. Alpha value controls the weight between dense and sparse vector search
-results.
-ranking Ranking (optional) Optional. Config for ranking and reranking.
-Config for ranking and reranking.
-top_k integer (optional) Optional. The number of contexts to retrieve.
-retrieval_types array (enum (string)) (optional) The types of file retrieval to enable.
-
-Possible
-values:
-
-- `rag_store`
-- `exa_ai_search`
-- `parallel_ai_search`
-type object (required) No description provided.
-
-Always set to `"retrieval"`.
 UrlContext A tool that can be used by the model to fetch URL context.
 type object (required) No description provided.
 
@@ -2092,10 +1610,6 @@ Always set to `"url_context"`.
 ### McpServer
 
 <iframe src="https:///frame/api/interactions-api_a77dcb58324425b88cad29f9831d9b801d7b83c2603395f8730cce94c1149051.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-### Retrieval
-
-No examples available for this type.
 
 ### UrlContext
 
@@ -2155,9 +1669,6 @@ service_tier ServiceTier (optional) The service tier for the interaction.
 - `priority`
 
   Priority service tier.
-- `deferred`
-
-  Deferred service tier.
 status enum (string) (optional) Required. Output only. The status of the interaction.
 
 Possible
@@ -2232,9 +1743,6 @@ values:
 - `google_maps`
 
   Grounding with Google Maps.
-- `retrieval`
-
-  Grounding with customer's data, for example, VertexAISearch.
 input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
@@ -2353,9 +1861,6 @@ service_tier ServiceTier (optional) The service tier for the interaction.
 - `priority`
 
   Priority service tier.
-- `deferred`
-
-  Deferred service tier.
 status enum (string) (optional) Required. Output only. The status of the interaction.
 
 Possible
@@ -2430,9 +1935,6 @@ values:
 - `google_maps`
 
   Grounding with Google Maps.
-- `retrieval`
-
-  Grounding with customer's data, for example, VertexAISearch.
 input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
@@ -2553,10 +2055,6 @@ values:
 - `budget_exceeded`
 
   The interaction was halted because the token budget was exceeded.
-- `queued`
-
-  The interaction is queued, waiting for processing (e.g. waiting for
-  off-peak capacity).
 StepDelta <br />
 
 delta StepDeltaData (required) No description provided.
@@ -2615,6 +2113,9 @@ values:
 - `audio/mulaw`
 
   MULAW audio format
+- `audio/webm`
+
+  WEBM audio format
 sample_rate integer (optional) The sample rate of the audio.
 type object (required) No description provided.
 
@@ -2825,40 +2326,16 @@ server_name string (optional) No description provided.
 type object (required) No description provided.
 
 Always set to `"mcp_server_tool_result"`.
-RetrievalCallDelta Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI Search,
-etc. RetrievalType decides which tool is used.
-arguments RetrievalStepArguments (required) Required. The arguments to pass to the Retrieval tool.
-The arguments to pass to Retrieval tools.
-
-#### Fields
-
-queries array (string) (optional) Queries for Retrieval information.
-retrieval_type enum (string) (optional) The type of retrieval tools.
-
-Possible
-values:
-
-- `rag_store`
-
-  The type of retrieval tools.
-- `exa_ai_search`
-
-  The type of retrieval tools.
-- `parallel_ai_search`
-
-  The type of retrieval tools.
+ProcessingCallDelta Streaming delta for a server-initiated media processing step.
 signature string (optional) A signature hash for backend validation.
 type object (required) No description provided.
 
-Always set to `"retrieval_call"`.
-RetrievalResultDelta Used by Vertex Retrieval tools such as Parallel AI, Exa AI, Vertex AI Search,
-etc.
-ToolResultDelta.type
-is_error boolean (optional) Whether the retrieval resulted in an error.
+Always set to `"processing_call"`.
+ProcessingResultDelta Streaming delta for the result of a server-initiated media processing step.
 signature string (optional) A signature hash for backend validation.
 type object (required) No description provided.
 
-Always set to `"retrieval_result"`.
+Always set to `"processing_result"`.
 TextAnnotationDelta <br />
 
 annotations array (Annotation) (optional) Citation information for model-generated content.
@@ -3109,9 +2586,6 @@ values:
 - `google_maps`
 
   Grounding with Google Maps.
-- `retrieval`
-
-  Grounding with customer's data, for example, VertexAISearch.
 input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
@@ -3263,9 +2737,6 @@ values:
 - `google_maps`
 
   Grounding with Google Maps.
-- `retrieval`
-
-  Grounding with customer's data, for example, VertexAISearch.
 input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
@@ -3400,9 +2871,6 @@ values:
 - `google_maps`
 
   Grounding with Google Maps.
-- `retrieval`
-
-  Grounding with customer's data, for example, VertexAISearch.
 input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
@@ -3786,8 +3254,6 @@ values:
 
   Video data is returned as a URI.
 duration string (optional) The duration for the video output.
-gcs_uri string (optional) The Cloud Storage URI to store the video output. Required for Vertex if
-delivery mode is URI.
 resolution enum (string) (optional) The video output resolution. Defaults to 720p.
 
 Possible
@@ -3989,9 +3455,6 @@ values:
 - `image_search`
 
   Setting this field enables image search. Image bytes are returned.
-- `enterprise_web_search`
-
-  Setting this field enables enterprise web search.
 signature string (optional) A signature hash for backend validation.
 type object (required) No description provided.
 
@@ -4030,6 +3493,19 @@ content array ([Content](https://ai.google.dev/api/interactions-api#Resource:Con
 type object (required) No description provided.
 
 Always set to `"model_output"`.
+ProcessingCallStep A server-initiated processing step for media analysis (e.g. video
+understanding).
+id string (required) Required. A unique ID for this specific tool call.
+signature string (optional) A signature hash for backend validation.
+type object (required) No description provided.
+
+Always set to `"processing_call"`.
+ProcessingResultStep The result of a server-initiated media processing step.
+call_id string (required) Required. ID to match the ID from the function call block.
+signature string (optional) A signature hash for backend validation.
+type object (required) No description provided.
+
+Always set to `"processing_result"`.
 ThoughtStep A thought step.
 signature string (optional) A signature hash for backend validation.
 summary array (ThoughtSummaryContent) (optional) A summary of the thought.
@@ -4380,6 +3856,14 @@ Always set to `"user_input"`.
 }
 ```
 
+### ProcessingCallStep
+
+No examples available for this type.
+
+### ProcessingResultStep
+
+No examples available for this type.
+
 ### ThoughtStep
 
 ```json
@@ -4481,14 +3965,6 @@ values:
 
   A generic repository. The protocol prefix in the source URL
   identifies the provider (e.g., github://, gcs://).
-- `skill_registry`
-
-  A skill resource from the Skill Registry Service.
-  Skill: projects/{project}/locations/{location}/skills/{skill}
-  SkillRevision:
-  projects/{project}/locations/{location}/skills/{skill}/revisions/{revision}
-  Support mounting all skills under a project:
-  projects/{project}/locations/{location}/skills.
 type object (optional) No description provided.
 
 Always set to `"remote"`.

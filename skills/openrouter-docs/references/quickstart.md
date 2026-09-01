@@ -154,14 +154,20 @@ Then use it in your code:
   });
 
   const completion = await client.chat.send({
-    model: '~openai/gpt-latest',
-    messages: [
-      {
-        role: 'user',
-        content: 'What is the meaning of life?',
-      },
-    ],
+    chatRequest: {
+      model: '~openai/gpt-latest',
+      messages: [
+        {
+          role: 'user',
+          content: 'What is the meaning of life?',
+        },
+      ],
+    },
   });
+
+  if (completion instanceof ReadableStream) {
+    throw new Error('Expected a non-streaming response');
+  }
 
   console.log(completion.choices[0].message.content);
   ```
@@ -237,9 +243,7 @@ const weatherTool = tool({
 
 const result = openrouter.callModel({
   model: '~anthropic/claude-sonnet-latest',
-  messages: [
-    { role: 'user', content: 'What is the weather in San Francisco?' },
-  ],
+  input: 'What is the weather in San Francisco?',
   tools: [weatherTool],
 });
 

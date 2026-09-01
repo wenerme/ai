@@ -97,15 +97,21 @@ const openRouter = new OpenRouter({
 
 async function main() {
   const completion = await openRouter.chat.send({
-    model: 'openai/gpt-4o-mini',
-    messages: [
-      {
-        role: 'user',
-        content: 'Say "Hello from OpenRouter!" and nothing else.',
-      },
-    ],
-    stream: false,
+    chatRequest: {
+      model: 'openai/gpt-4o-mini',
+      messages: [
+        {
+          role: 'user',
+          content: 'Say "Hello from OpenRouter!" and nothing else.',
+        },
+      ],
+      stream: false,
+    },
   });
+
+  if (completion instanceof ReadableStream) {
+    throw new Error('Expected a non-streaming response');
+  }
 
   console.log(completion.choices[0].message.content);
 }

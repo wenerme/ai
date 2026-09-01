@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Account Abuse Protection (Early Access)
 
-Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/account-abuse-protection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/account-abuse-protection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Identify and mitigate attacks on your customer and user accounts.
 
@@ -91,9 +91,9 @@ Cloudflare automatically identifies certain login and sign up traffic on your ap
 
 Verify that your endpoints are properly labeled to ensure Cloudflare can detect and monitor them correctly.
 
-Login {props.one} endpoints
+Login or sign up endpoints
 
-Not all login or sign up endpoints are automatically detected.
+Not all login or signup endpoints are automatically detected.
 
 Cloudflare evaluates and automatically detects your website or application's login or sign up endpoint, but non-traditional login or sign up endpoints may not be recognized.
 
@@ -172,5 +172,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/account-abuse-protection/#page","headline":"Account Abuse Protection (Early Access) · Cloudflare bot solutions docs","description":"Detect and block automated abuse on login and registration endpoints.","url":"https://developers.cloudflare.com/bots/account-abuse-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Account takeover"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/account-abuse-protection/#page","headline":"Account Abuse Protection (Early Access) · Cloudflare bot solutions docs","description":"Detect and block automated abuse on login and registration endpoints.","url":"https://developers.cloudflare.com/bots/account-abuse-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-31","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Account takeover"]}
 ```

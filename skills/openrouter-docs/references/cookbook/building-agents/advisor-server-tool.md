@@ -38,7 +38,7 @@ https://openrouter.ai/docs/cookbook/building-agents/advisor-server-tool
 
 Use these source-of-truth docs for current fields and response shapes:
 - Advisor server tool: https://openrouter.ai/docs/guides/features/server-tools/advisor
-- Agent SDK callModel overview: https://openrouter.ai/docs/sdks/typescript/call-model/overview
+- Agent SDK callModel overview: https://openrouter.ai/docs/agent-sdk/call-model/overview
 - Chat Completions request API: https://openrouter.ai/docs/api/api-reference/chat/create-a-chat-completion
 - Responses request API, if this app uses Responses: https://openrouter.ai/docs/api/api-reference/responses/create-a-response
 - TypeScript SDK Chat reference, if this app uses @openrouter/sdk: https://openrouter.ai/docs/client-sdks/typescript/sdks/chat/README

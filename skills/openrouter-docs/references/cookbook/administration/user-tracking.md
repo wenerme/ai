@@ -91,16 +91,22 @@ MODEL: "~openai/gpt-latest"
     });
 
     const response = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      messages: [
-        {
-          role: 'user',
-          content: "What's the weather like today?",
-        },
-      ],
-      user: 'user_12345', // Your user identifier
-      stream: false,
+      chatRequest: {
+        model: '{{MODEL}}',
+        messages: [
+          {
+            role: 'user',
+            content: "What's the weather like today?",
+          },
+        ],
+        user: 'user_12345', // Your user identifier
+        stream: false,
+      },
     });
+
+    if (response instanceof ReadableStream) {
+      throw new Error('Expected a non-streaming response');
+    }
 
     console.log(response.choices[0].message.content);
     ```

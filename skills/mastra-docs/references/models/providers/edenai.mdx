@@ -1,11 +1,11 @@
 ---
 title: "Eden AI | Models"
-description: "Use Eden AI models with Mastra. 238 models available."
+description: "Use Eden AI models with Mastra. 239 models available."
 ---
 
 # [Eden AI logo]Eden AI
 
-Access 238 Eden AI models through Mastra's model router. Authentication is handled automatically using the `EDENAI_API_KEY` environment variable.
+Access 239 Eden AI models through Mastra's model router. Authentication is handled automatically using the `EDENAI_API_KEY` environment variable.
 
 Learn more in the [Eden AI documentation](https://docs.edenai.co).
 
@@ -876,8 +876,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 786432,
     "maxOutput": 384000,
-    "inputCost": 0.08,
-    "outputCost": 0.18
+    "inputCost": 0.03,
+    "outputCost": 0.1
   },
   {
     "model": "edenai/flexai/gpt-oss-120b",
@@ -1164,8 +1164,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 4096,
-    "inputCost": 0.756795,
-    "outputCost": 0.756795
+    "inputCost": 0.75374,
+    "outputCost": 0.75374
   },
   {
     "model": "edenai/ionos/openai/gpt-oss-120b",
@@ -1176,8 +1176,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 131072,
     "maxOutput": 32768,
-    "inputCost": 0.174645,
-    "outputCost": 0.756795
+    "inputCost": 0.17394,
+    "outputCost": 0.75374
   },
   {
     "model": "edenai/minimax/MiniMax-M2",
@@ -1406,6 +1406,18 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": 0.95,
     "outputCost": 4
+  },
+  {
+    "model": "edenai/moonshot/kimi-k2.7-code-highspeed",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": 1.9,
+    "outputCost": 8
   },
   {
     "model": "edenai/moonshot/kimi-k3",
@@ -2268,8 +2280,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 256000,
     "maxOutput": 384000,
-    "inputCost": 0.46572,
-    "outputCost": 0.93144
+    "inputCost": 0.46384,
+    "outputCost": 0.92768
   },
   {
     "model": "edenai/scaleway/gpt-oss-120b",
@@ -2280,8 +2292,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 128000,
     "maxOutput": 32768,
-    "inputCost": 0.174645,
-    "outputCost": 0.69858
+    "inputCost": 0.17394,
+    "outputCost": 0.69576
   },
   {
     "model": "edenai/scaleway/llama-3.3-70b-instruct",
@@ -2292,8 +2304,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 4096,
-    "inputCost": 1.04787,
-    "outputCost": 1.04787
+    "inputCost": 1.04364,
+    "outputCost": 1.04364
   },
   {
     "model": "edenai/tensorx/deepseek/deepseek-v4-flash-0731",
