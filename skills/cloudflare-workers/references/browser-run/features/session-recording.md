@@ -12,13 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Session recording
 
-Last updated Jun 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/features/session-recording/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/features/session-recording/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Beta
 
 When browser automation fails or behaves unexpectedly, it can be difficult to understand what happened. Session recording captures DOM changes, mouse and keyboard events, and page navigation as structured JSON events — not a video — so it is lightweight and easy to inspect. Recordings are powered by [rrweb ↗](https://github.com/rrweb-io/rrweb) and are opt-in per session.
 
 ## Enable session recording
+
+Session recording must be enabled during the initial session acquisition. You cannot enable recording when reconnecting to an existing session.
 
 Pass `recording: true` to `puppeteer.launch()` or `playwright.launch()`:
 
@@ -125,20 +127,25 @@ A successful response looks similar to the following:
 
 ```json
 {
-	"sessionId": "e26d4660-5b78-4761-b82f-c6b5bad5a925",
-	"duration": 4380,
-	"events": {
-		"target-1": [],
-		"target-2": []
+	"success": true,
+	"result": {
+		"sessionId": "e26d4660-5b78-4761-b82f-c6b5bad5a925",
+		"duration": 4380,
+		"events": {
+			"target-1": [],
+			"target-2": []
+		}
 	}
 }
 ```
 
-The keys in `events` (such as `target-1`, `target-2`) are [CDP targets ↗](https://chromedevtools.github.io/devtools-protocol/tot/Target/). In the context of session recording, each target typically corresponds to a browser tab. A session that opened multiple tabs will have one target per tab, and each target's value is an independent rrweb event array for that tab.
+After a recorded session closes, the recording may still be finalizing. The endpoint can briefly return `404` during this period. Callers can retry the request until finalization completes.
+
+The event arrays are available under `result.events`. The keys in `result.events` (such as `target-1`, `target-2`) are [CDP targets ↗](https://chromedevtools.github.io/devtools-protocol/tot/Target/). In the context of session recording, each target typically corresponds to a browser tab. A session that opened multiple tabs will have one target per tab, and each target's value is an independent rrweb event array for that tab.
 
 ## Replay a recording
 
-Each value in `events` is a standard rrweb event array and can be passed directly to [rrweb-player ↗](https://github.com/rrweb-io/rrweb/tree/master/packages/rrweb-player) to self-host a replay UI with a timeline scrubber and playback controls.
+Each value in `result.events` is a standard rrweb event array and can be passed directly to [rrweb-player ↗](https://github.com/rrweb-io/rrweb/tree/master/packages/rrweb-player) to self-host a replay UI with a timeline scrubber and playback controls.
 
 Tabs replay independently — to replay a multi-tab session, render one player per target, or build a UI that lets the user switch between targets (similar to the tab selector in the dashboard recording viewer).
 
@@ -170,5 +177,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/session-recording/#page","headline":"Session recording · Cloudflare Browser Run docs","description":"Record and replay Browser Run sessions to visually debug browser automation scripts.","url":"https://developers.cloudflare.com/browser-run/features/session-recording/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/session-recording/#page","headline":"Session recording · Cloudflare Browser Run docs","description":"Record and replay Browser Run sessions to visually debug browser automation scripts.","url":"https://developers.cloudflare.com/browser-run/features/session-recording/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

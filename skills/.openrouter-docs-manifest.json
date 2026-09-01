@@ -1477,9 +1477,9 @@
   },
   "cookbook/coding-agents/claude-code-integration.md": {
     "url": "https://openrouter.ai/docs/cookbook/coding-agents/claude-code-integration.md",
-    "lastModified": "Wed, 12 Aug 2026 11:32:45 GMT",
-    "size": 21250,
-    "updatedAt": "2026-08-12T11:32:45.714Z"
+    "lastModified": "Tue, 01 Sep 2026 14:54:41 GMT",
+    "size": 21761,
+    "updatedAt": "2026-09-01T14:54:41.742Z"
   },
   "cookbook/coding-agents/claude-desktop-integration.md": {
     "url": "https://openrouter.ai/docs/cookbook/coding-agents/claude-desktop-integration.md",
@@ -1561,9 +1561,9 @@
   },
   "cookbook/evaluate-and-optimize/model-migrations/opus-5.md": {
     "url": "https://openrouter.ai/docs/cookbook/evaluate-and-optimize/model-migrations/opus-5.md",
-    "lastModified": "Sat, 25 Jul 2026 04:00:37 GMT",
-    "size": 7783,
-    "updatedAt": "2026-07-25T04:00:37.644Z"
+    "lastModified": "Tue, 01 Sep 2026 14:54:46 GMT",
+    "size": 7911,
+    "updatedAt": "2026-09-01T14:54:46.857Z"
   },
   "cookbook/evaluate-and-optimize/model-migrations/sonnet-5.md": {
     "url": "https://openrouter.ai/docs/cookbook/evaluate-and-optimize/model-migrations/sonnet-5.md",
@@ -2107,9 +2107,9 @@
   },
   "guides/features/service-tiers.md": {
     "url": "https://openrouter.ai/docs/guides/features/service-tiers.md",
-    "lastModified": "Tue, 01 Sep 2026 04:58:14 GMT",
-    "size": 16686,
-    "updatedAt": "2026-09-01T04:58:14.649Z"
+    "lastModified": "Tue, 01 Sep 2026 14:55:14 GMT",
+    "size": 17646,
+    "updatedAt": "2026-09-01T14:55:14.202Z"
   },
   "guides/features/sovereign-ai.md": {
     "url": "https://openrouter.ai/docs/guides/features/sovereign-ai.md",

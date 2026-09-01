@@ -34,6 +34,8 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [**Vidstack**Example of video playback with Cloudflare Stream and Vidstack](https://developers.cloudflare.com/stream/examples/vidstack/)
 
+[**First WebRTC broadcast in the browser**Broadcast your webcam to Cloudflare Stream with WHIP and play it back with WHEP, using native browser WebRTC and no third-party libraries.](https://developers.cloudflare.com/stream/examples/browser-based-webrtc/)
+
 [**First Live Stream with OBS**Set up and start your first Live Stream using OBS (Open Broadcaster Software) Studio](https://developers.cloudflare.com/stream/examples/obs-from-scratch/)
 
 [**Test webhooks locally**Test Cloudflare Stream webhook notifications locally using a Cloudflare Worker and Cloudflare Tunnel.](https://developers.cloudflare.com/stream/examples/test-webhooks-locally/)

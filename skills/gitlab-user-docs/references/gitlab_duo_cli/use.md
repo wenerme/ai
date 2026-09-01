@@ -86,6 +86,7 @@ The GitLab Duo CLI displays the current mode under the `>` prompt. To switch bet
 - `/doctor` slash command [introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v8.94.0) in GitLab Duo CLI 8.94.0, during the GitLab 19.0 release.
 - `/skills` slash command [introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v8.81.0) in GitLab Duo CLI 8.81.0, during the GitLab 19.0 release.
 - `/mcp` slash command [introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v8.95.0) in GitLab Duo CLI 8.95.0, during the GitLab 19.0 release.
+- `/goal` slash command [introduced](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/releases/v9.17.0) in GitLab Duo CLI 9.17.0, during the GitLab 19.4 release.
 
 In interactive mode, use slash commands to configure the GitLab Duo CLI and perform
 actions. Enter a slash command at the prompt and press <kbd>Enter</kbd>.
@@ -98,6 +99,7 @@ The following slash commands are available:
 | `/doctor`   | Show diagnostics for the GitLab Duo CLI environment. |
 | `/exit`     | Exit the GitLab Duo CLI.                             |
 | `/feedback` | Submit a bug report or feature request.              |
+| `/goal`     | Start a session that works toward a goal.            |
 | `/help`     | Display a list of available slash commands.          |
 | `/mcp`      | View configured MCP servers and their status.        |
 | `/model`    | Switch the AI model for the current session.         |

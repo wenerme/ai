@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Media Transformations is now GA:
+Stream Live WebRTC is going GA:
 
-Billing for Media Transformations will begin on November 1st, 2025.
+Billing for WebRTC delivery will begin on October 15th, 2026.
 
 ## Pricing for Stream
 
@@ -38,7 +38,7 @@ Storage is a prepaid pricing dimension purchased in increments of $5 per 1,000 m
 Storage is consumed by:
 
 * Original videos uploaded to your account
-* Recordings of live broadcasts
+* Recordings of live broadcasts using RTMP or SRT
 * The reserved `maxDurationSeconds` for Direct Creator and TUS uploads which have not been completed. After these uploads are complete or the upload link expires, this reservation is released.
 
 Storage is not consumed by:
@@ -48,6 +48,7 @@ Storage is not consumed by:
 * Deleted videos
 * Downloadable files generated for [MP4 Downloads](https://developers.cloudflare.com/stream/viewing-videos/download-videos/)
 * Multiple quality levels that Stream generates for each uploaded original
+* WebRTC broadcasts cannot currently be recorded, thus no storage is consumed
 
 Storage consumption is rounded up to the second of video duration; file size does not matter. Video stored in Stream does not incur additional storage fees from other storage products such as R2.
 
@@ -65,7 +66,8 @@ Delivery is a post-paid, usage-based pricing dimension billed at $1 per 1,000 mi
 
 Delivery is counted for the following uses:
 
-* Playback on the web or an app using [Stream's built-in player](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/) or the [HLS or DASH manifests](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/)
+* Playback using [Stream's built-in player](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/) or the [HLS or DASH manifests](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/)
+* [WebRTC (WHEP)](https://developers.cloudflare.com/stream/webrtc-beta/) playback
 * MP4 Downloads
 * Simulcasting via SRT or RTMP live outputs
 
@@ -131,5 +133,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/pricing/#page","headline":"Pricing · Cloudflare Stream docs","description":"Cloudflare Stream pricing for minutes of video stored and minutes of video delivered.","url":"https://developers.cloudflare.com/stream/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/pricing/#page","headline":"Pricing · Cloudflare Stream docs","description":"Cloudflare Stream pricing for minutes of video stored and minutes of video delivered.","url":"https://developers.cloudflare.com/stream/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -8,7 +8,7 @@
 
 ## What's New
 
-Claude Opus 5 ships as [`anthropic/claude-opus-5`](https://openrouter.ai/anthropic/claude-opus-5), with a fast-mode sibling at [`anthropic/claude-opus-5-fast`](https://openrouter.ai/anthropic/claude-opus-5-fast).
+Claude Opus 5 ships as [`anthropic/claude-opus-5`](https://openrouter.ai/anthropic/claude-opus-5), with fast mode available as a `fast` service tier endpoint on the same model.
 
 Three changes matter for migration:
 
@@ -122,12 +122,9 @@ To change a tool's definition, remove the old tool with `tool_removal`, then sen
 
 ## Fast Mode
 
-Like Opus 4.6–4.8, Opus 5 has a fast-mode sibling with up to 2.5x faster output at premium pricing. Request it either way:
+Like Opus 4.6–4.8, Opus 5 supports fast mode with up to 2.5x faster output at premium pricing. Send `speed: "fast"` (or `service_tier: "fast"` / `"priority"`) with `anthropic/claude-opus-5` — the request routes to the model's `fast` service tier endpoint.
 
-1. Send `speed: "fast"` with `anthropic/claude-opus-5` — OpenRouter reroutes to [`anthropic/claude-opus-5-fast`](https://openrouter.ai/anthropic/claude-opus-5-fast)
-2. Call `anthropic/claude-opus-5-fast` directly
-
-See [Fast Mode](/docs/cookbook/coding-agents/claude-code-integration#fast-mode) for details.
+The dedicated [`anthropic/claude-opus-5-fast`](https://openrouter.ai/anthropic/claude-opus-5-fast) model is deprecated: it keeps working and is served by the same fast tier capacity, but new integrations should target `anthropic/claude-opus-5`. See [Fast Mode](/docs/cookbook/coding-agents/claude-code-integration#fast-mode) for details.
 
 ## Migration Checklist
 

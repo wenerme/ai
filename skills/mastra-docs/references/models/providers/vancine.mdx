@@ -1,11 +1,11 @@
 ---
 title: "Vancine | Models"
-description: "Use Vancine models with Mastra. 12 models available."
+description: "Use Vancine models with Mastra. 10 models available."
 ---
 
 # [Vancine logo]Vancine
 
-Access 12 Vancine models through Mastra's model router. Authentication is handled automatically using the `VANCINE_API_KEY` environment variable.
+Access 10 Vancine models through Mastra's model router. Authentication is handled automatically using the `VANCINE_API_KEY` environment variable.
 
 Learn more in the [Vancine documentation](https://vancine.com/docs).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "vancine/LongCat-2.0"
+  model: "vancine/MiniMax-M3"
 });
 
 // Generate a response
@@ -124,30 +124,6 @@ for await (const chunk of stream) {
     "outputCost": 12
   },
   {
-    "model": "vancine/LongCat-2.0",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 131072,
-    "inputCost": 0.24,
-    "outputCost": 0.96
-  },
-  {
-    "model": "vancine/mimo-v2.5-pro",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 131072,
-    "inputCost": 0.348,
-    "outputCost": 0.696
-  },
-  {
     "model": "vancine/MiniMax-M3",
     "imageInput": true,
     "audioInput": false,
@@ -196,7 +172,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://vancine.com/v1",
-    id: "vancine/LongCat-2.0",
+    id: "vancine/MiniMax-M3",
     apiKey: process.env.VANCINE_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -215,7 +191,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "vancine/qwen3.8-max"
-      : "vancine/LongCat-2.0";
+      : "vancine/MiniMax-M3";
   }
 });
 ```

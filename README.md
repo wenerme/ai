@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 47644 files, 495 MiB total
+> 125 skills, 47648 files, 496 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1431,7 +1431,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 832 | 5.5 MiB |
 | [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1268 | 9.2 MiB |
 | [cloudflare-security](./skills/cloudflare-security/SKILL.md) | 1015 | 6.0 MiB |
-| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 824 | 8.1 MiB |
+| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 825 | 8.1 MiB |
 | [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 937 | 10 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
 | [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 5503 | 19 MiB |
@@ -1452,8 +1452,8 @@ Use when implementing React state management with Zustand, including context-sco
 | [gemini-enterprise-agent-platform-docs](./skills/gemini-enterprise-agent-platform-docs/SKILL.md) | 427 | 5.9 MiB |
 | [ghostty-docs](./skills/ghostty-docs/SKILL.md) | 103 | 557 KiB |
 | [gitea-docs](./skills/gitea-docs/SKILL.md) | 97 | 683 KiB |
-| [gitlab-admin-docs](./skills/gitlab-admin-docs/SKILL.md) | 360 | 4.5 MiB |
-| [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 252 | 15 MiB |
+| [gitlab-admin-docs](./skills/gitlab-admin-docs/SKILL.md) | 361 | 4.6 MiB |
+| [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 253 | 15 MiB |
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 173 | 2.0 MiB |
 | [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 910 | 8.2 MiB |
 | [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 22 KiB |
@@ -1472,11 +1472,11 @@ Use when implementing React state management with Zustand, including context-sco
 | [lark-node-sdk](./skills/lark-node-sdk/SKILL.md) | 1 | 5.8 KiB |
 | [linear-docs](./skills/linear-docs/SKILL.md) | 137 | 2.0 MiB |
 | [litellm-docs](./skills/litellm-docs/SKILL.md) | 1 | 2.8 KiB |
-| [llamacpp-docs](./skills/llamacpp-docs/SKILL.md) | 51 | 451 KiB |
+| [llamacpp-docs](./skills/llamacpp-docs/SKILL.md) | 51 | 456 KiB |
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 22 | 172 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
 | [mastra](./skills/mastra/SKILL.md) | 11 | 64 KiB |
-| [mastra-docs](./skills/mastra-docs/SKILL.md) | 879 | 7.5 MiB |
+| [mastra-docs](./skills/mastra-docs/SKILL.md) | 880 | 7.5 MiB |
 | [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 183 | 549 KiB |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
 | [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 84 | 1.3 MiB |

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sandbox lifecycle
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/sandboxes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/sandboxes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A sandbox is an isolated execution environment where your code runs. Each sandbox:
 
@@ -202,6 +202,7 @@ See [Dockerfile reference](https://developers.cloudflare.com/sandbox/configurati
 * [Architecture](https://developers.cloudflare.com/sandbox/concepts/architecture/) \- How sandboxes fit in the system
 * [Container runtime](https://developers.cloudflare.com/sandbox/concepts/containers/) \- What runs inside sandboxes
 * [Session management](https://developers.cloudflare.com/sandbox/concepts/sessions/) \- Advanced state isolation
+* [Directory backups](https://developers.cloudflare.com/sandbox/concepts/backup-restore/) \- Why restored files do not survive sleep unless you restore again
 * [Lifecycle API](https://developers.cloudflare.com/sandbox/api/lifecycle/) \- Create and manage sandboxes
 * [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) \- Create and manage execution sessions
 
@@ -214,5 +215,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/sandboxes/#page","headline":"Sandbox lifecycle · Cloudflare Sandbox SDK docs","description":"Sandbox SDK sandboxes transition through running, sleeping, and destroyed states based on activity.","url":"https://developers.cloudflare.com/sandbox/concepts/sandboxes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/sandboxes/#page","headline":"Sandbox lifecycle · Cloudflare Sandbox SDK docs","description":"Sandbox SDK sandboxes transition through running, sleeping, and destroyed states based on activity.","url":"https://developers.cloudflare.com/sandbox/concepts/sandboxes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

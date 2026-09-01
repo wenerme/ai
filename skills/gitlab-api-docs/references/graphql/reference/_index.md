@@ -276,6 +276,7 @@ Arguments:
 | <a id="query-aicatalogconfigureditems-itemtype"></a>`itemType` | [`AiCatalogItemType`](#aicatalogitemtype) | Type of items to retrieve. |
 | <a id="query-aicatalogconfigureditems-itemtypes"></a>`itemTypes` | [`[AiCatalogItemType!]`](#aicatalogitemtype) | Types of items to retrieve. |
 | <a id="query-aicatalogconfigureditems-projectid"></a>`projectId` | [`ProjectID`](#projectid) | Project ID to retrieve configured AI Catalog items for. |
+| <a id="query-aicatalogconfigureditems-sort"></a>`sort` | [`AiCatalogConfiguredItemsSort`](#aicatalogconfigureditemssort) | Sort configured items, for example by usage. |
 
 ### `Query.aiCatalogCustomAndFoundationalItems`
 
@@ -12097,6 +12098,81 @@ Fields:
 | <a id="mutation-mergerequestreviewerrereview-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-mergerequestreviewerrereview-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-mergerequestreviewerrereview-mergerequest"></a>`mergeRequest` | [`MergeRequest`](#mergerequest) | Merge request after mutation. |
+
+### `Mutation.mergeRequestSavedViewCreate`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Creates a saved view on the merge request dashboard. Available only when the `mr_dashboard_saved_views` feature flag is enabled.
+
+Input type: `MergeRequestSavedViewCreateInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-mergerequestsavedviewcreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-mergerequestsavedviewcreate-filters"></a>`filters` | [`MergeRequestSavedViewFilterInput`](#mergerequestsavedviewfilterinput) | Merge request filters stored in the saved view. |
+| <a id="mutation-mergerequestsavedviewcreate-name"></a>`name` | [`String!`](#string) | Name of the saved view. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-mergerequestsavedviewcreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-mergerequestsavedviewcreate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-mergerequestsavedviewcreate-savedview"></a>`savedView` | [`MergeRequestSavedView`](#mergerequestsavedview) | Saved view after the mutation. |
+
+### `Mutation.mergeRequestSavedViewDelete`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Deletes a saved view from the merge request dashboard. Available only when the `mr_dashboard_saved_views` feature flag is enabled.
+
+Input type: `MergeRequestSavedViewDeleteInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-mergerequestsavedviewdelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-mergerequestsavedviewdelete-id"></a>`id` | [`MergeRequestsSavedViewID!`](#mergerequestssavedviewid) | Global ID of the saved view. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-mergerequestsavedviewdelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-mergerequestsavedviewdelete-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-mergerequestsavedviewdelete-savedview"></a>`savedView` | [`MergeRequestSavedView`](#mergerequestsavedview) | Saved view after the mutation. |
+
+### `Mutation.mergeRequestSavedViewUpdate`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Updates a saved view on the merge request dashboard. Available only when the `mr_dashboard_saved_views` feature flag is enabled.
+
+Input type: `MergeRequestSavedViewUpdateInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-mergerequestsavedviewupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-mergerequestsavedviewupdate-filters"></a>`filters` | [`MergeRequestSavedViewFilterInput`](#mergerequestsavedviewfilterinput) | Merge request filters stored in the saved view. |
+| <a id="mutation-mergerequestsavedviewupdate-id"></a>`id` | [`MergeRequestsSavedViewID!`](#mergerequestssavedviewid) | Global ID of the saved view. |
+| <a id="mutation-mergerequestsavedviewupdate-name"></a>`name` | [`String`](#string) | Name of the saved view. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-mergerequestsavedviewupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-mergerequestsavedviewupdate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-mergerequestsavedviewupdate-savedview"></a>`savedView` | [`MergeRequestSavedView`](#mergerequestsavedview) | Saved view after the mutation. |
 
 ### `Mutation.mergeRequestSetAssignees`
 
@@ -33115,6 +33191,7 @@ Arguments:
 | <a id="analytics-deployments-finishedatto"></a>`finishedAtTo` | [`Time`](#time) | Filter by deployment finish timestamp. End of the range. |
 | <a id="analytics-deployments-ref"></a>`ref` | [`[String!]`](#string) | Filter by one or many deployment refs. |
 | <a id="analytics-deployments-status"></a>`status` | [`[String!]`](#string) | Filter by one or many deployment statuses. |
+| <a id="analytics-deployments-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
 
 ##### `Analytics.duoCodeSuggestions`
 
@@ -33500,6 +33577,38 @@ Fields:
 | <a id="artifactregistryrepositorydetails-sizebytes"></a>`sizeBytes`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.3. Status: Experiment. Storage the repository occupies, in bytes. Buffered, so it can lag. |
 | <a id="artifactregistryrepositorydetails-updatedby"></a>`updatedBy`  | [`UserCore`](#usercore) | Introduced in GitLab 19.4. Status: Experiment. User who last changed the repository. Null when the editor is unknown or no longer exists. |
 | <a id="artifactregistryrepositorydetails-visibility"></a>`visibility`  | [`ArtifactRegistryRepositoryVisibility!`](#artifactregistryrepositoryvisibility) | Introduced in GitLab 19.3. Status: Experiment. Who can read the repository. |
+
+#### Fields with arguments
+
+##### `ArtifactRegistryRepositoryDetails.image`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Single container image the repository holds, by Artifact Registry ID. Can be selected once per operation. Returns `null` for a repository holding packages and for an image that is gone. Also `null` when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx.
+
+Returns [`ArtifactRegistryImage`](#artifactregistryimage).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryrepositorydetails-image-id"></a>`id` | [`ID!`](#id) | ID of the image in Artifact Registry. |
+
+##### `ArtifactRegistryRepositoryDetails.package`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Single package the repository holds, by Artifact Registry ID. Can be selected once per operation. Returns `null` for a repository holding images and for a package that is gone. Also `null` when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx.
+
+Returns [`ArtifactRegistryPackage`](#artifactregistrypackage).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryrepositorydetails-package-id"></a>`id` | [`ID!`](#id) | ID of the package in Artifact Registry. |
 
 ### `ArtifactRegistryRoleAssignment`
 
@@ -34977,6 +35086,7 @@ Fields:
 | <a id="cdenvironment-environmentdriverbindings"></a>`environmentDriverBindings`  | [`CdEnvironmentDriverBindingConnection`](#cdenvironmentdriverbindingconnection) | Introduced in GitLab 19.2. Status: Experiment. Driver bindings of the environment. |
 | <a id="cdenvironment-healthstatus"></a>`healthStatus`  | [`CdServiceHealth`](#cdservicehealth) | Introduced in GitLab 19.4. Status: Experiment. Worst observed service health across the environment. Null when no service health has been reported. |
 | <a id="cdenvironment-id"></a>`id` | [`CdEnvironmentID!`](#cdenvironmentid) | Global ID of the environment. |
+| <a id="cdenvironment-latestfinishedrolloutenvironment"></a>`latestFinishedRolloutEnvironment`  | [`CdRolloutEnvironment`](#cdrolloutenvironment) | Introduced in GitLab 19.4. Status: Experiment. Most recently finished rollout environment for the environment. |
 | <a id="cdenvironment-name"></a>`name` | [`String!`](#string) | Name of the environment. |
 | <a id="cdenvironment-organization"></a>`organization` | [`Organization`](#organization) | Organization the environment belongs to. |
 | <a id="cdenvironment-rolloutenvironments"></a>`rolloutEnvironments`  | [`CdRolloutEnvironmentConnection`](#cdrolloutenvironmentconnection) | Introduced in GitLab 19.2. Status: Experiment. Rollout environments of the environment. |
@@ -39522,6 +39632,7 @@ Fields:
 | <a id="deploymentsaggregationresponsedimensions-environment"></a>`environment` | [`Environment`](#environment) | Environment ID. |
 | <a id="deploymentsaggregationresponsedimensions-ref"></a>`ref` | [`String`](#string) | Deployment ref. |
 | <a id="deploymentsaggregationresponsedimensions-status"></a>`status` | [`String`](#string) | Deployment status. |
+| <a id="deploymentsaggregationresponsedimensions-user"></a>`user` | [`UserCore`](#usercore) | User who created the deployment. Returns `null` if there is no recorded creator, or if that user has been deleted. |
 
 #### Fields with arguments
 
@@ -44142,6 +44253,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="group-labels-archived"></a>`archived` | [`Boolean`](#boolean) | Filters archived labels. Defaults to false. |
+| <a id="group-labels-fuzzysearch"></a>`fuzzySearch` | [`Boolean`](#boolean) | Match `searchTerm` fuzzily: labels match when they contain the searched characters in order, but not necessarily contiguously (for example, `bugu` matches `bug::ux`). Ignored if using `title`. |
 | <a id="group-labels-includeancestorgroups"></a>`includeAncestorGroups` | [`Boolean`](#boolean) | Include labels from ancestor groups. |
 | <a id="group-labels-includedescendantgroups"></a>`includeDescendantGroups` | [`Boolean`](#boolean) | Include labels from descendant groups. |
 | <a id="group-labels-onlygrouplabels"></a>`onlyGroupLabels` | [`Boolean`](#boolean) | Include only group level labels. |
@@ -54588,6 +54700,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="project-labels-archived"></a>`archived` | [`Boolean`](#boolean) | Filters archived labels. Defaults to false. |
+| <a id="project-labels-fuzzysearch"></a>`fuzzySearch` | [`Boolean`](#boolean) | Match `searchTerm` fuzzily: labels match when they contain the searched characters in order, but not necessarily contiguously (for example, `bugu` matches `bug::ux`). Ignored if using `title`. |
 | <a id="project-labels-includeancestorgroups"></a>`includeAncestorGroups` | [`Boolean`](#boolean) | Include labels from ancestor groups. |
 | <a id="project-labels-searchin"></a>`searchIn` | [`[LabelSearchFieldList!]!`](#labelsearchfieldlist) | Specify which fields to search in. Ignored if using `title`. |
 | <a id="project-labels-searchterm"></a>`searchTerm` | [`String`](#string) | Search term to find labels with. |
@@ -63187,6 +63300,15 @@ Permission mode for an AI tool on the background-flow surface. `ask` is not avai
 | <a id="aibackgroundtoolpermission-allow"></a>`ALLOW` | Tool is always allowed to run without approval. |
 | <a id="aibackgroundtoolpermission-deny"></a>`DENY` | Tool is always blocked from running. |
 
+### `AiCatalogConfiguredItemsSort`
+
+Values for sorting configured AI Catalog items.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="aicatalogconfigureditemssort-usage_count_asc"></a>`USAGE_COUNT_ASC` | Last 30-day usage count by ascending order. |
+| <a id="aicatalogconfigureditemssort-usage_count_desc"></a>`USAGE_COUNT_DESC` | Last 30-day usage count by descending order. |
+
 ### `AiCatalogFlowConfigType`
 
 Possible flow configuration types for AI Catalog agents.
@@ -67838,7 +67960,11 @@ Scan profile trigger type.
 | <a id="scanprofiletriggertype-default_branch_pipeline"></a>`DEFAULT_BRANCH_PIPELINE` | Default branch pipeline. |
 | <a id="scanprofiletriggertype-git_push_event"></a>`GIT_PUSH_EVENT` | Git push event. |
 | <a id="scanprofiletriggertype-merge_request_pipeline"></a>`MERGE_REQUEST_PIPELINE` | Merge request pipeline. |
+| <a id="scanprofiletriggertype-sast_false_positive"></a>`SAST_FALSE_POSITIVE`  | Introduced in GitLab 19.4. Status: Experiment. SAST false positive. |
+| <a id="scanprofiletriggertype-sast_vulnerability_resolution"></a>`SAST_VULNERABILITY_RESOLUTION`  | Introduced in GitLab 19.4. Status: Experiment. SAST vulnerability resolution. |
 | <a id="scanprofiletriggertype-sbom_ingested"></a>`SBOM_INGESTED`  | Introduced in GitLab 19.2. Status: Experiment. SBOM ingested. |
+| <a id="scanprofiletriggertype-secret_detection_false_positive"></a>`SECRET_DETECTION_FALSE_POSITIVE`  | Introduced in GitLab 19.4. Status: Experiment. Secret detection false positive. |
+| <a id="scanprofiletriggertype-vulnerability_enrichment"></a>`VULNERABILITY_ENRICHMENT`  | Introduced in GitLab 19.4. Status: Experiment. Vulnerability enrichment. |
 
 ### `ScanStatus`
 
@@ -68028,6 +68154,7 @@ Scan profile type.
 | <a id="securityscanprofiletype-dependency_scanning_post_processing"></a>`DEPENDENCY_SCANNING_POST_PROCESSING`  | Introduced in GitLab 19.2. Status: Experiment. Dependency scanning post processing. |
 | <a id="securityscanprofiletype-sast"></a>`SAST` | Sast. |
 | <a id="securityscanprofiletype-secret_detection"></a>`SECRET_DETECTION` | Secret detection. |
+| <a id="securityscanprofiletype-triage_and_remediation"></a>`TRIAGE_AND_REMEDIATION`  | Introduced in GitLab 19.4. Status: Experiment. Triage and remediation. |
 
 ### `SecurityScanProfileUpgradePolicy`
 
@@ -73964,6 +74091,46 @@ Arguments:
 | <a id="mergeaccesslevelinput-groupid"></a>`groupId` | [`GroupID`](#groupid) | Group associated with the access level. |
 | <a id="mergeaccesslevelinput-memberroleid"></a>`memberRoleId`  | [`MemberRoleID`](#memberroleid) | Introduced in GitLab 19.2. Status: Experiment. Custom member role associated with the access level. |
 | <a id="mergeaccesslevelinput-userid"></a>`userId` | [`UserID`](#userid) | User associated with the access level. |
+
+### `MergeRequestSavedViewFilterInput`
+
+Merge request filter values that can be stored in a saved view.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestsavedviewfilterinput-approvedby"></a>`approvedBy` | [`[String!]`](#string) | Usernames of the approvers. |
+| <a id="mergerequestsavedviewfilterinput-assigneeusernames"></a>`assigneeUsernames` | [`[String!]`](#string) | Usernames of users assigned to the merge request. |
+| <a id="mergerequestsavedviewfilterinput-authorusername"></a>`authorUsername` | [`String`](#string) | Username of the author. |
+| <a id="mergerequestsavedviewfilterinput-draft"></a>`draft` | [`Boolean`](#boolean) | Limit results to draft merge requests. |
+| <a id="mergerequestsavedviewfilterinput-labelname"></a>`labelName` | [`[String!]`](#string) | Labels applied to the merge request. |
+| <a id="mergerequestsavedviewfilterinput-mergedafter"></a>`mergedAfter` | [`Time`](#time) | Merge requests merged after the timestamp. |
+| <a id="mergerequestsavedviewfilterinput-mergedbefore"></a>`mergedBefore` | [`Time`](#time) | Merge requests merged before the timestamp. |
+| <a id="mergerequestsavedviewfilterinput-milestonetitle"></a>`milestoneTitle` | [`String`](#string) | Title of the milestone. |
+| <a id="mergerequestsavedviewfilterinput-not"></a>`not` | [`MergeRequestSavedViewNegatedFilterInput`](#mergerequestsavedviewnegatedfilterinput) | Filter values to exclude. |
+| <a id="mergerequestsavedviewfilterinput-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
+| <a id="mergerequestsavedviewfilterinput-sort"></a>`sort` | [`MergeRequestSort`](#mergerequestsort) | Sort order for the merge requests. |
+| <a id="mergerequestsavedviewfilterinput-sourcebranches"></a>`sourceBranches` | [`[String!]`](#string) | Source branch names. |
+| <a id="mergerequestsavedviewfilterinput-state"></a>`state` | [`MergeRequestState`](#mergerequeststate) | Merge request state. |
+| <a id="mergerequestsavedviewfilterinput-targetbranches"></a>`targetBranches` | [`[String!]`](#string) | Target branch names. |
+
+### `MergeRequestSavedViewNegatedFilterInput`
+
+Merge request filter values to exclude in a saved view.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestsavedviewnegatedfilterinput-approvedby"></a>`approvedBy` | [`[String!]`](#string) | Usernames of approvers to exclude. |
+| <a id="mergerequestsavedviewnegatedfilterinput-assigneeusernames"></a>`assigneeUsernames` | [`[String!]`](#string) | Usernames of assignees to exclude. |
+| <a id="mergerequestsavedviewnegatedfilterinput-authorusername"></a>`authorUsername` | [`String`](#string) | Username of the author to exclude. |
+| <a id="mergerequestsavedviewnegatedfilterinput-labelname"></a>`labelName` | [`[String!]`](#string) | Labels to exclude. |
+| <a id="mergerequestsavedviewnegatedfilterinput-milestonetitle"></a>`milestoneTitle` | [`String`](#string) | Title of the milestone to exclude. |
+| <a id="mergerequestsavedviewnegatedfilterinput-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer to exclude. |
+| <a id="mergerequestsavedviewnegatedfilterinput-sourcebranches"></a>`sourceBranches` | [`[String!]`](#string) | Source branch names to exclude. |
+| <a id="mergerequestsavedviewnegatedfilterinput-targetbranches"></a>`targetBranches` | [`[String!]`](#string) | Target branch names to exclude. |
 
 ### `MergeRequestsResolverNegatedParams`
 

@@ -6,7 +6,7 @@
 Automatic background verification ensures that the transferred data matches a
 calculated checksum. If the checksum of the data on the primary site matches the checksum of the
 data on the secondary site, the data transferred successfully. Following a planned failover,
-any corrupted data may be **lost**, depending on the extent of the corruption.
+any corrupted data may be lost, depending on the extent of the corruption.
 
 If verification fails on the primary site, this indicates Geo is replicating a corrupted object.
 You can restore it from backup or remove it from the primary site to resolve the issue.
