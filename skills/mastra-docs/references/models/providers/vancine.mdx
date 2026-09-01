@@ -1,11 +1,11 @@
 ---
 title: "Vancine | Models"
-description: "Use Vancine models with Mastra. 8 models available."
+description: "Use Vancine models with Mastra. 12 models available."
 ---
 
 # [Vancine logo]Vancine
 
-Access 8 Vancine models through Mastra's model router. Authentication is handled automatically using the `VANCINE_API_KEY` environment variable.
+Access 12 Vancine models through Mastra's model router. Authentication is handled automatically using the `VANCINE_API_KEY` environment variable.
 
 Learn more in the [Vancine documentation](https://vancine.com/docs).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "vancine/MiniMax-M3"
+  model: "vancine/LongCat-2.0"
 });
 
 // Generate a response
@@ -42,6 +42,18 @@ for await (const chunk of stream) {
   {
     "model": "vancine/deepseek-v4-flash",
     "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 0.22,
+    "outputCost": 0.66
+  },
+  {
+    "model": "vancine/deepseek-v4-flash-vision-exp",
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -88,6 +100,18 @@ for await (const chunk of stream) {
     "outputCost": 0.2
   },
   {
+    "model": "vancine/hy4-preview",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1024000,
+    "maxOutput": 64000,
+    "inputCost": 0.67,
+    "outputCost": 2
+  },
+  {
     "model": "vancine/kimi-k3",
     "imageInput": true,
     "audioInput": false,
@@ -98,6 +122,30 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 2.4,
     "outputCost": 12
+  },
+  {
+    "model": "vancine/LongCat-2.0",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 0.24,
+    "outputCost": 0.96
+  },
+  {
+    "model": "vancine/mimo-v2.5-pro",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.348,
+    "outputCost": 0.696
   },
   {
     "model": "vancine/MiniMax-M3",
@@ -148,7 +196,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://vancine.com/v1",
-    id: "vancine/MiniMax-M3",
+    id: "vancine/LongCat-2.0",
     apiKey: process.env.VANCINE_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -167,7 +215,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "vancine/qwen3.8-max"
-      : "vancine/MiniMax-M3";
+      : "vancine/LongCat-2.0";
   }
 });
 ```

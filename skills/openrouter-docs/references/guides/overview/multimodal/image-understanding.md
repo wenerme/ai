@@ -72,25 +72,27 @@ MODEL: 'google/gemini-3-flash-preview'
     });
 
     const result = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      messages: [
-        {
-          role: 'user',
-          content: [
-            {
-              type: 'text',
-              text: "What's in this image?",
-            },
-            {
-              type: 'image_url',
-              imageUrl: {
-                url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg',
+      chatRequest: {
+        model: '{{MODEL}}',
+        messages: [
+          {
+            role: 'user',
+            content: [
+              {
+                type: 'text',
+                text: "What's in this image?",
               },
-            },
-          ],
-        },
-      ],
-      stream: false,
+              {
+                type: 'image_url',
+                imageUrl: {
+                  url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg',
+                },
+              },
+            ],
+          },
+        ],
+        stream: false,
+      },
     });
 
     console.log(result);
@@ -198,25 +200,27 @@ MODEL: 'google/gemini-3-flash-preview'
     const base64Image = await encodeImageToBase64(imagePath);
 
     const result = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      messages: [
-        {
-          role: 'user',
-          content: [
-            {
-              type: 'text',
-              text: "What's in this image?",
-            },
-            {
-              type: 'image_url',
-              imageUrl: {
-                url: base64Image,
+      chatRequest: {
+        model: '{{MODEL}}',
+        messages: [
+          {
+            role: 'user',
+            content: [
+              {
+                type: 'text',
+                text: "What's in this image?",
               },
-            },
-          ],
-        },
-      ],
-      stream: false,
+              {
+                type: 'image_url',
+                imageUrl: {
+                  url: base64Image,
+                },
+              },
+            ],
+          },
+        ],
+        stream: false,
+      },
     });
 
     console.log(result);

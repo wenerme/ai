@@ -238,7 +238,7 @@ The variants are the recommended default, since a tier endpoint serves only when
 
 ### Tier Endpoints in the API
 
-Tier endpoints are listed in the [model endpoints API](/docs/api/api-reference/endpoints/list-all-endpoints-for-a-model) alongside standard endpoints. Each appears as its own entry with a tier-suffixed `tag` (e.g. `openai/fast`) and pricing with the tier multiplier already applied (the same pricing used for billing). Their presence in the listing doesn't change routing: they remain opt-in as described above.
+Tier endpoints are listed in the [model endpoints API](/docs/api/api-reference/endpoints/list-all-endpoints-for-a-model) alongside standard endpoints. Each appears as its own entry with a tier-suffixed `tag` (e.g. `openai/fast`) and its own tier pricing (the same pricing used for billing). Their presence in the listing doesn't change routing: they remain opt-in as described above.
 
 ### Supported Providers
 

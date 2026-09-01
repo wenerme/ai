@@ -44,7 +44,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 1. **Download Codex**
@@ -128,23 +128,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+```
+
+```txt
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+```
+
+```txt
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
 Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
-```
-
-```txt
-Check my Workers deployment logs for errors and suggest fixes.
-```
-
-```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ## Tips

@@ -96,15 +96,21 @@ we may add new categories in the future.
   });
 
   const completion = await openRouter.chat.send({
-    model: 'openai/gpt-5.2',
-    messages: [
-      {
-        role: 'user',
-        content: 'Hello, world!',
-      },
-    ],
-    stream: false,
+    chatRequest: {
+      model: 'openai/gpt-5.2',
+      messages: [
+        {
+          role: 'user',
+          content: 'Hello, world!',
+        },
+      ],
+      stream: false,
+    },
   });
+
+  if (completion instanceof ReadableStream) {
+    throw new Error('Expected a non-streaming response');
+  }
 
   console.log(completion.choices[0].message);
   ```

@@ -61,14 +61,20 @@ Provide an array of model IDs in priority order. If the first model returns an e
   });
 
   const completion = await openRouter.chat.send({
-    models: ['~anthropic/claude-sonnet-latest', 'gryphe/mythomax-l2-13b'],
-    messages: [
-      {
-        role: 'user',
-        content: 'What is the meaning of life?',
-      },
-    ],
+    chatRequest: {
+      models: ['~anthropic/claude-sonnet-latest', 'gryphe/mythomax-l2-13b'],
+      messages: [
+        {
+          role: 'user',
+          content: 'What is the meaning of life?',
+        },
+      ],
+    },
   });
+
+  if (completion instanceof ReadableStream) {
+    throw new Error('Expected a non-streaming response');
+  }
 
   console.log(completion.choices[0].message.content);
   ```

@@ -86,25 +86,27 @@ MODEL: 'google/gemini-2.5-flash'
     });
 
     const result = await openRouter.chat.send({
-      model: "{{MODEL}}",
-      messages: [
-        {
-          role: "user",
-          content: [
-            {
-              type: "text",
-              text: "Please describe what's happening in this video.",
-            },
-            {
-              type: "video_url",
-              videoUrl: {
-                url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      chatRequest: {
+        model: "{{MODEL}}",
+        messages: [
+          {
+            role: "user",
+            content: [
+              {
+                type: "text",
+                text: "Please describe what's happening in this video.",
               },
-            },
-          ],
-        },
-      ],
-      stream: false,
+              {
+                type: "video_url",
+                videoUrl: {
+                  url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+                },
+              },
+            ],
+          },
+        ],
+        stream: false,
+      },
     });
 
     console.log(result);
@@ -212,25 +214,27 @@ MODEL: 'google/gemini-2.5-flash'
     const base64Video = await encodeVideoToBase64(videoPath);
 
     const result = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      messages: [
-        {
-          role: 'user',
-          content: [
-            {
-              type: 'text',
-              text: "What's in this video?",
-            },
-            {
-              type: 'video_url',
-              videoUrl: {
-                url: base64Video,
+      chatRequest: {
+        model: '{{MODEL}}',
+        messages: [
+          {
+            role: 'user',
+            content: [
+              {
+                type: 'text',
+                text: "What's in this video?",
               },
-            },
-          ],
-        },
-      ],
-      stream: false,
+              {
+                type: 'video_url',
+                videoUrl: {
+                  url: base64Video,
+                },
+              },
+            ],
+          },
+        ],
+        stream: false,
+      },
     });
 
     console.log(result);

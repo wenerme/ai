@@ -85,26 +85,28 @@ MODEL: 'google/gemini-2.5-flash'
     const base64Audio = await encodeAudioToBase64(audioPath);
 
     const result = await openRouter.chat.send({
-      model: "{{MODEL}}",
-      messages: [
-        {
-          role: "user",
-          content: [
-            {
-              type: "text",
-              text: "Please transcribe this audio file.",
-            },
-            {
-              type: "input_audio",
-              inputAudio: {
-                data: base64Audio,
-                format: "wav",
+      chatRequest: {
+        model: "{{MODEL}}",
+        messages: [
+          {
+            role: "user",
+            content: [
+              {
+                type: "text",
+                text: "Please transcribe this audio file.",
               },
-            },
-          ],
-        },
-      ],
-      stream: false,
+              {
+                type: "input_audio",
+                inputAudio: {
+                  data: base64Audio,
+                  format: "wav",
+                },
+              },
+            ],
+          },
+        ],
+        stream: false,
+      },
     });
 
     console.log(result);

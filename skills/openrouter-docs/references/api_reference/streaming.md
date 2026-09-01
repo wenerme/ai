@@ -71,10 +71,16 @@ MODEL: Model.GPT_4_Omni
     const question = 'How would you build the tallest building ever?';
 
     const stream = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      messages: [{ role: 'user', content: question }],
-      stream: true,
+      chatRequest: {
+        model: '{{MODEL}}',
+        messages: [{ role: 'user', content: question }],
+        stream: true,
+      },
     });
+
+    if (!(stream instanceof ReadableStream)) {
+      throw new Error('Expected a streaming response');
+    }
 
     for await (const chunk of stream) {
       const content = chunk.choices?.[0]?.delta?.content;
@@ -345,12 +351,18 @@ MODEL: Model.GPT_4_Omni
 
     try {
       const stream = await openRouter.chat.send({
-        model: '{{MODEL}}',
-        messages: [{ role: 'user', content: 'Write a story' }],
-        stream: true,
+        chatRequest: {
+          model: '{{MODEL}}',
+          messages: [{ role: 'user', content: 'Write a story' }],
+          stream: true,
+        },
       }, {
         signal: controller.signal,
       });
+
+      if (!(stream instanceof ReadableStream)) {
+        throw new Error('Expected a streaming response');
+      }
 
       for await (const chunk of stream) {
         const content = chunk.choices?.[0]?.delta?.content;
@@ -448,9 +460,9 @@ MODEL: Model.GPT_4_Omni
 
 OpenRouter handles errors differently depending on when they occur during the streaming process:
 
-#### Errors before any tokens are sent
+#### Errors before the response is committed
 
-If an error occurs before any tokens have been streamed to the client, OpenRouter returns a standard JSON error response with the appropriate HTTP status code. This follows the standard error format:
+If an error occurs before OpenRouter has committed the response, you get a standard JSON error response with the appropriate HTTP status code. That covers failures raised before the request reaches a provider, and provider failures visible at connection time such as a connection error or a non-2xx upstream status.
 
 ```json lines theme={null}
 {
@@ -470,9 +482,9 @@ Common HTTP status codes include:
 * **502**: Bad Gateway (provider error)
 * **503**: Service Unavailable (no available providers)
 
-#### Errors after tokens have been sent (mid-stream)
+#### Errors after the response is committed (mid-stream)
 
-If an error occurs after some tokens have already been streamed to the client, OpenRouter cannot change the HTTP status code (which is already 200 OK). Instead, the error is sent as a Server-Sent Event (SSE) with a unified structure:
+Once the provider has returned response headers, the `200 OK` status is committed even if no token has been produced yet. Any error after that point arrives as an SSE event rather than as an HTTP status:
 
 ```text lines theme={null}
 data: {"id":"cmpl-abc123","object":"chat.completion.chunk","created":1234567890,"model":"openai/gpt-4o","provider":"openai","error":{"code":"server_error","message":"Provider disconnected unexpectedly"},"choices":[{"index":0,"delta":{"content":""},"finish_reason":"error"}]}
@@ -484,6 +496,7 @@ Key characteristics of mid-stream errors:
 * A `choices` array is included with `finish_reason: "error"` to properly terminate the stream
 * The HTTP status remains 200 OK since headers were already sent
 * The stream is terminated after this unified error event
+* The error can be the first and only event in the stream, so treat a `200` carrying an `error` chunk with no content as a failure, not a success
 
 #### Code examples
 
@@ -506,10 +519,16 @@ MODEL: Model.GPT_4_Omni
     async function streamWithErrorHandling(prompt: string) {
       try {
         const stream = await openRouter.chat.send({
-          model: '{{MODEL}}',
-          messages: [{ role: 'user', content: prompt }],
-          stream: true,
+          chatRequest: {
+            model: '{{MODEL}}',
+            messages: [{ role: 'user', content: prompt }],
+            stream: true,
+          },
         });
+
+        if (!(stream instanceof ReadableStream)) {
+          throw new Error('Expected a streaming response');
+        }
 
         for await (const chunk of stream) {
           // Check for errors in chunk

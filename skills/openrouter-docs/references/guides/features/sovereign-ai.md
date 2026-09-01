@@ -47,9 +47,11 @@ https://us.openrouter.ai
   });
 
   const completion = await openRouter.chat.send({
-    model: 'meta-llama/llama-3.3-70b-instruct',
-    messages: [{ role: 'user', content: 'Hello' }],
-    stream: false,
+    chatRequest: {
+      model: 'meta-llama/llama-3.3-70b-instruct',
+      messages: [{ role: 'user', content: 'Hello' }],
+      stream: false,
+    },
   });
   ```
 

@@ -79,9 +79,7 @@ const openrouter = new OpenRouter({
 
 const result = openrouter.callModel({
   model: 'anthropic/claude-sonnet-4',
-  messages: [
-    { role: 'user', content: 'Hello!' }
-  ]
+  input: 'Hello!'
 });
 
 const text = await result.getText();
@@ -110,7 +108,7 @@ const searchTool = tool({
 
 const result = openrouter.callModel({
   model: 'anthropic/claude-sonnet-4',
-  messages: [{ role: 'user', content: 'Search for TypeScript best practices' }],
+  input: 'Search for TypeScript best practices',
   tools: [searchTool],
 });
 

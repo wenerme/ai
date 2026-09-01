@@ -166,15 +166,21 @@ Store the API key securely within the user's browser or in your own database, an
   });
 
   const completion = await openRouter.chat.send({
-    model: '~openai/gpt-latest',
-    messages: [
-      {
-        role: 'user',
-        content: 'Hello!',
-      },
-    ],
-    stream: false,
+    chatRequest: {
+      model: '~openai/gpt-latest',
+      messages: [
+        {
+          role: 'user',
+          content: 'Hello!',
+        },
+      ],
+      stream: false,
+    },
   });
+
+  if (completion instanceof ReadableStream) {
+    throw new Error('Expected a non-streaming response');
+  }
 
   console.log(completion.choices[0].message);
   ```

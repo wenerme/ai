@@ -31,14 +31,20 @@ Send a chat completion request with a `~author/family-latest` slug as the model:
   });
 
   const completion = await openRouter.chat.send({
-    model: '~anthropic/claude-opus-latest',
-    messages: [
-      {
-        role: 'user',
-        content: 'Summarize this in one sentence: ...',
-      },
-    ],
+    chatRequest: {
+      model: '~anthropic/claude-opus-latest',
+      messages: [
+        {
+          role: 'user',
+          content: 'Summarize this in one sentence: ...',
+        },
+      ],
+    },
   });
+
+  if (completion instanceof ReadableStream) {
+    throw new Error('Expected a non-streaming response');
+  }
 
   console.log(completion.choices[0].message.content);
   // The `model` field reflects the concrete version that served the request.

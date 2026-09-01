@@ -23,15 +23,21 @@ Add `:exacto` to the end of any supported model slug. This is a shortcut for set
   });
 
   const completion = await openRouter.chat.send({
-    model: "moonshotai/kimi-k2-0905:exacto",
-    messages: [
-      {
-        role: "user",
-        content: "Draft a concise changelog entry for the Exacto launch.",
-      },
-    ],
-    stream: false,
+    chatRequest: {
+      model: "moonshotai/kimi-k2-0905:exacto",
+      messages: [
+        {
+          role: "user",
+          content: "Draft a concise changelog entry for the Exacto launch.",
+        },
+      ],
+      stream: false,
+    },
   });
+
+  if (completion instanceof ReadableStream) {
+    throw new Error('Expected a non-streaming response');
+  }
 
   console.log(completion.choices[0].message.content);
   ```

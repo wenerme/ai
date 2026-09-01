@@ -54,14 +54,14 @@ Anthropic's [client SDKs](https://platform.claude.com/docs/en/cli-sdks-libraries
   <Tab title="Java">
     <CodeGroup>
       ```groovy Gradle
-      implementation("com.anthropic:anthropic-java-bedrock:2.57.0")
+      implementation("com.anthropic:anthropic-java-bedrock:2.58.0")
       ```
 
       ```xml Maven
       <dependency>
           <groupId>com.anthropic</groupId>
           <artifactId>anthropic-java-bedrock</artifactId>
-          <version>2.57.0</version>
+          <version>2.58.0</version>
       </dependency>
       ```
 
@@ -136,7 +136,7 @@ AWS offers newer Claude models through [cross-region inference](https://docs.aws
 Invocation of model ID anthropic.claude-sonnet-4-5-20250929-v1:0 with on-demand throughput isn't supported. Retry your request with the ID or ARN of an inference profile that contains this model.
 ```
 
-To invoke these models, pass an inference profile instead of the base model ID. The inference profile ID is the base model ID with a prefix from a column marked "Yes" in the following table, for example us.anthropic.claude-sonnet-4-5-20250929-v1:0. You can also pass the full inference profile ARN, in the form `arn:aws:bedrock:{region}:{account-id}:inference-profile/{inference-profile-id}`. For AWS's authoritative list of available inference profiles, see [Supported Regions and models for inference profiles](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html). For how the prefixes affect routing and pricing, see the [Global versus regional endpoints](https://platform.claude.com/docs/en/build-with-claude/claude-on-amazon-bedrock-legacy#global-vs-regional-endpoints) section.
+To invoke these models, pass an inference profile instead of the base model ID. The inference profile ID is the base model ID with a prefix from a column marked "Yes" in the following table, for example us.anthropic.claude-sonnet-4-5-20250929-v1:0. You can also pass the full inference profile ARN, in the form `arn:aws:bedrock:{region}:{account-id}:inference-profile/{inference-profile-id}`. For AWS's authoritative list of available inference profiles, see [Supported Regions and models for inference profiles](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html). To learn how the prefixes affect routing and pricing, see the [Global versus regional endpoints](https://platform.claude.com/docs/en/build-with-claude/claude-on-amazon-bedrock-legacy#global-vs-regional-endpoints) section.
 
 | Model                        | Base Bedrock model ID                     | `global` | `us` | `eu` | `jp` | `apac` |
 | ---------------------------- | ----------------------------------------- | -------- | ---- | ---- | ---- | ------ |
@@ -536,7 +536,7 @@ To provide a token programmatically:
 <Tabs>
   <Tab title="cURL">
     <Note>
-      This section shows how to configure a bearer token in an SDK client. The SDKs also read the token from the `AWS_BEARER_TOKEN_BEDROCK` environment variable. For making direct HTTP requests with a bearer token, see the [Amazon Bedrock documentation](https://docs.aws.amazon.com/bedrock/).
+      This section shows how to configure a bearer token in an SDK client. The SDKs also read the token from the `AWS_BEARER_TOKEN_BEDROCK` environment variable. To make direct HTTP requests with a bearer token, see the [Amazon Bedrock documentation](https://docs.aws.amazon.com/bedrock/).
     </Note>
   </Tab>
 

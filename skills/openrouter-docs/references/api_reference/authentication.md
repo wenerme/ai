@@ -37,10 +37,16 @@ If you're using the OpenAI Typescript SDK, set the `api_base` to `https://openro
   });
 
   const completion = await openRouter.chat.send({
-    model: 'openai/gpt-5.2',
-    messages: [{ role: 'user', content: 'Say this is a test' }],
-    stream: false,
+    chatRequest: {
+      model: 'openai/gpt-5.2',
+      messages: [{ role: 'user', content: 'Say this is a test' }],
+      stream: false,
+    },
   });
+
+  if (completion instanceof ReadableStream) {
+    throw new Error('Expected a non-streaming response');
+  }
 
   console.log(completion.choices[0].message);
   ```

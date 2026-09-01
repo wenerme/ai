@@ -39,7 +39,7 @@ https://openrouter.ai/docs/cookbook/building-agents/subagent-server-tool
 Use these source-of-truth docs for current fields, response shapes, and SDK methods:
 - Subagent server tool reference: https://openrouter.ai/docs/guides/features/server-tools/subagent
 - Server tools overview: https://openrouter.ai/docs/guides/features/server-tools
-- Agent SDK callModel overview: https://openrouter.ai/docs/sdks/typescript/call-model/overview
+- Agent SDK callModel overview: https://openrouter.ai/docs/agent-sdk/call-model/overview
 - Chat Completions API: https://openrouter.ai/docs/api/api-reference/chat/create-a-chat-completion
 - Responses API: https://openrouter.ai/docs/api/api-reference/responses/create-a-response
 - TypeScript SDK Chat reference: https://openrouter.ai/docs/client-sdks/typescript/sdks/chat/README
@@ -195,8 +195,14 @@ Wire the request body into your app's existing request path. Here's the shape of
   const client = new OpenRouter({ apiKey: process.env.OPENROUTER_API_KEY });
 
   const result = await client.chat.send({
-    ...requestBody,
+    chatRequest: {
+      ...requestBody,
+    },
   });
+
+  if (result instanceof ReadableStream) {
+    throw new Error("Expected a non-streaming response");
+  }
 
   const message = result.choices?.[0]?.message;
   ```

@@ -94,14 +94,20 @@ The model pins the preset as a default and gets its own entry in `/api/v1/models
   });
 
   const completion = await openRouter.chat.send({
-    model: 'openrouter/fusion',
-    messages: [
-      {
-        role: 'user',
-        content: 'Survey the strongest arguments for and against a carbon tax. Where do experts disagree?',
-      },
-    ],
+    chatRequest: {
+      model: 'openrouter/fusion',
+      messages: [
+        {
+          role: 'user',
+          content: 'Survey the strongest arguments for and against a carbon tax. Where do experts disagree?',
+        },
+      ],
+    },
   });
+
+  if (completion instanceof ReadableStream) {
+    throw new Error('Expected a non-streaming response');
+  }
 
   console.log(completion.choices[0].message.content);
   ```
@@ -130,24 +136,26 @@ Pass a `fusion` plugin entry alongside `model: "openrouter/fusion"`. This is the
 <CodeGroup>
   ```typescript title="TypeScript SDK" lines theme={null}
   const completion = await openRouter.chat.send({
-    model: 'openrouter/fusion',
-    plugins: [
-      {
-        id: 'fusion',
-        analysis_models: [
-          '~anthropic/claude-opus-latest',
-          '~openai/gpt-latest',
-          '~google/gemini-pro-latest',
-        ],
-        model: '~openai/gpt-latest',
-      },
-    ],
-    messages: [
-      {
-        role: 'user',
-        content: 'Compare ridge, lasso, and elastic-net regression. Where does each shine?',
-      },
-    ],
+    chatRequest: {
+      model: 'openrouter/fusion',
+      plugins: [
+        {
+          id: 'fusion',
+          analysisModels: [
+            '~anthropic/claude-opus-latest',
+            '~openai/gpt-latest',
+            '~google/gemini-pro-latest',
+          ],
+          model: '~openai/gpt-latest',
+        },
+      ],
+      messages: [
+        {
+          role: 'user',
+          content: 'Compare ridge, lasso, and elastic-net regression. Where does each shine?',
+        },
+      ],
+    },
   });
   ```
 
@@ -178,26 +186,28 @@ When you bring your own model and add `openrouter:fusion` as a server tool, conf
 <CodeGroup>
   ```typescript title="TypeScript SDK" expandable lines theme={null}
   const completion = await openRouter.chat.send({
-    model: '~anthropic/claude-opus-latest',
-    messages: [
-      {
-        role: 'user',
-        content: 'Compare ridge, lasso, and elastic-net regression. Where does each shine?',
-      },
-    ],
-    tools: [
-      {
-        type: 'openrouter:fusion',
-        parameters: {
-          analysis_models: [
-            '~anthropic/claude-opus-latest',
-            '~openai/gpt-latest',
-            '~google/gemini-pro-latest',
-          ],
-          model: '~openai/gpt-latest',
+    chatRequest: {
+      model: '~anthropic/claude-opus-latest',
+      messages: [
+        {
+          role: 'user',
+          content: 'Compare ridge, lasso, and elastic-net regression. Where does each shine?',
         },
-      },
-    ],
+      ],
+      tools: [
+        {
+          type: 'openrouter:fusion',
+          parameters: {
+            analysisModels: [
+              '~anthropic/claude-opus-latest',
+              '~openai/gpt-latest',
+              '~google/gemini-pro-latest',
+            ],
+            model: '~openai/gpt-latest',
+          },
+        },
+      ],
+    },
   });
   ```
 
@@ -239,14 +249,16 @@ By default, the model decides when to call `openrouter:fusion`. To guarantee it 
 <CodeGroup>
   ```typescript title="TypeScript SDK" lines theme={null}
   const completion = await openRouter.chat.send({
-    model: 'openrouter/fusion',
-    messages: [
-      {
-        role: 'user',
-        content: 'Compare ridge, lasso, and elastic-net regression.',
-      },
-    ],
-    tool_choice: 'required',
+    chatRequest: {
+      model: 'openrouter/fusion',
+      messages: [
+        {
+          role: 'user',
+          content: 'Compare ridge, lasso, and elastic-net regression.',
+        },
+      ],
+      toolChoice: 'required',
+    },
   });
   ```
 

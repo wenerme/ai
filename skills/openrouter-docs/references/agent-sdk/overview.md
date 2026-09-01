@@ -8,7 +8,7 @@
 
 The Agent SDK (`@openrouter/agent`) provides the primitives you need to build agentic applications on OpenRouter. Instead of manually wiring up conversation loops, tool dispatch, and state tracking, the Agent SDK handles all of that so you can focus on defining *what* your agent does.
 
-The Agent SDK is built to work alongside the [Client SDKs](/docs/client-sdks/overview). Installing `@openrouter/agent` automatically includes the Client SDKs as well, but each package can work independently.
+The Agent SDK is built on top of the TypeScript [Client SDK](/docs/client-sdks/overview): `@openrouter/agent` depends on `@openrouter/sdk` and installs it for you, so its `OpenRouter` class accepts the same client options. Add `@openrouter/sdk` to your own dependencies if you also want to call REST endpoints directly, so that you control which version you get.
 
 ## When to use the Agent SDK
 
@@ -73,9 +73,7 @@ const weatherTool = tool({
 
 const result = openrouter.callModel({
   model: 'anthropic/claude-sonnet-4',
-  messages: [
-    { role: 'user', content: 'What is the weather in San Francisco?' },
-  ],
+  input: 'What is the weather in San Francisco?',
   tools: [weatherTool],
 });
 
@@ -83,7 +81,7 @@ const text = await result.getText();
 console.log(text);
 ```
 
-The SDK sends the message to the model, receives a tool call, executes `get_weather`, feeds the result back, and returns the final response, all in one `callModel` invocation.
+The SDK sends the input to the model, receives a tool call, executes `get_weather`, feeds the result back, and returns the final response, all in one `callModel` invocation.
 
 ## Core concepts
 
@@ -91,7 +89,7 @@ The SDK sends the message to the model, receives a tool call, executes `get_weat
 
 The main entry point. It runs an inference loop that:
 
-1. Sends messages to the model
+1. Sends the `input` to the model
 2. If the model returns tool calls, executes them automatically
 3. Appends tool results to the conversation
 4. Repeats until a stop condition is met or no more tool calls are made
@@ -130,7 +128,7 @@ const openrouter = new OpenRouter({
 
 const result = openrouter.callModel({
   model: 'anthropic/claude-sonnet-4',
-  messages: [{ role: 'user', content: 'Research this topic thoroughly' }],
+  input: 'Research this topic thoroughly',
   tools: [searchTool],
   stopWhen: [stepCountIs(10), maxCost(0.50)],
 });

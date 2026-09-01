@@ -119,12 +119,14 @@ The three sort options are:
   });
 
   const completion = await openRouter.chat.send({
-    model: 'meta-llama/llama-3.3-70b-instruct',
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      sort: 'throughput',
+    chatRequest: {
+      model: 'meta-llama/llama-3.3-70b-instruct',
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        sort: 'throughput',
+      },
+      stream: false,
     },
-    stream: false,
   });
   ```
 
@@ -184,9 +186,11 @@ You can append `:nitro` to any model slug as a shortcut to sort by throughput. I
   });
 
   const completion = await openRouter.chat.send({
-    model: 'meta-llama/llama-3.3-70b-instruct:nitro',
-    messages: [{ role: 'user', content: 'Hello' }],
-    stream: false,
+    chatRequest: {
+      model: 'meta-llama/llama-3.3-70b-instruct:nitro',
+      messages: [{ role: 'user', content: 'Hello' }],
+      stream: false,
+    },
   });
   ```
 
@@ -236,9 +240,11 @@ You can append `:floor` to any model slug as a shortcut to sort by price. In add
   });
 
   const completion = await openRouter.chat.send({
-    model: 'meta-llama/llama-3.3-70b-instruct:floor',
-    messages: [{ role: 'user', content: 'Hello' }],
-    stream: false,
+    chatRequest: {
+      model: 'meta-llama/llama-3.3-70b-instruct:floor',
+      messages: [{ role: 'user', content: 'Hello' }],
+      stream: false,
+    },
   });
   ```
 
@@ -305,19 +311,21 @@ When you have multiple acceptable models and want to use whichever has the best 
   });
 
   const completion = await openRouter.chat.send({
-    models: [
-      'anthropic/claude-sonnet-4.5',
-      'openai/gpt-5-mini',
-      'google/gemini-3-flash-preview',
-    ],
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      sort: {
-        by: 'throughput',
-        partition: 'none',
+    chatRequest: {
+      models: [
+        'anthropic/claude-sonnet-4.5',
+        'openai/gpt-5-mini',
+        'google/gemini-3-flash-preview',
+      ],
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        sort: {
+          by: 'throughput',
+          partition: 'none',
+        },
       },
+      stream: false,
     },
-    stream: false,
   });
   ```
 
@@ -436,22 +444,24 @@ Combine `partition: "none"` with performance thresholds to find the cheapest opt
   });
 
   const completion = await openRouter.chat.send({
-    models: [
-      'anthropic/claude-sonnet-4.5',
-      'openai/gpt-5-mini',
-      'google/gemini-3-flash-preview',
-    ],
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      sort: {
-        by: 'price',
-        partition: 'none',
+    chatRequest: {
+      models: [
+        'anthropic/claude-sonnet-4.5',
+        'openai/gpt-5-mini',
+        'google/gemini-3-flash-preview',
+      ],
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        sort: {
+          by: 'price',
+          partition: 'none',
+        },
+        preferredMinThroughput: {
+          p90: 50, // Prefer providers with >50 tokens/sec for 90% of requests in last 5 minutes
+        },
       },
-      preferredMinThroughput: {
-        p90: 50, // Prefer providers with >50 tokens/sec for 90% of requests in last 5 minutes
-      },
+      stream: false,
     },
-    stream: false,
   });
   ```
 
@@ -546,21 +556,23 @@ You can also use `preferred_max_latency` to set a maximum acceptable latency:
   });
 
   const completion = await openRouter.chat.send({
-    models: [
-      'anthropic/claude-sonnet-4.5',
-      'openai/gpt-5-mini',
-    ],
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      sort: {
-        by: 'price',
-        partition: 'none',
+    chatRequest: {
+      models: [
+        'anthropic/claude-sonnet-4.5',
+        'openai/gpt-5-mini',
+      ],
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        sort: {
+          by: 'price',
+          partition: 'none',
+        },
+        preferredMaxLatency: {
+          p90: 3, // Prefer providers with <3 second latency for 90% of requests in last 5 minutes
+        },
       },
-      preferredMaxLatency: {
-        p90: 3, // Prefer providers with <3 second latency for 90% of requests in last 5 minutes
-      },
+      stream: false,
     },
-    stream: false,
   });
   ```
 
@@ -652,20 +664,22 @@ You can specify multiple percentile cutoffs to set both typical and worst-case p
   });
 
   const completion = await openRouter.chat.send({
-    model: 'deepseek/deepseek-v3.2',
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      preferredMaxLatency: {
-        p50: 1, // Prefer providers with <1 second latency for 50% of requests in last 5 minutes
-        p90: 3, // Prefer providers with <3 second latency for 90% of requests in last 5 minutes
-        p99: 5, // Prefer providers with <5 second latency for 99% of requests in last 5 minutes
+    chatRequest: {
+      model: 'deepseek/deepseek-v3.2',
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        preferredMaxLatency: {
+          p50: 1, // Prefer providers with <1 second latency for 50% of requests in last 5 minutes
+          p90: 3, // Prefer providers with <3 second latency for 90% of requests in last 5 minutes
+          p99: 5, // Prefer providers with <5 second latency for 99% of requests in last 5 minutes
+        },
+        preferredMinThroughput: {
+          p50: 100, // Prefer providers with >100 tokens/sec for 50% of requests in last 5 minutes
+          p90: 50, // Prefer providers with >50 tokens/sec for 90% of requests in last 5 minutes
+        },
       },
-      preferredMinThroughput: {
-        p50: 100, // Prefer providers with >100 tokens/sec for 50% of requests in last 5 minutes
-        p90: 50, // Prefer providers with >50 tokens/sec for 90% of requests in last 5 minutes
-      },
+      stream: false,
     },
-    stream: false,
   });
   ```
 
@@ -754,19 +768,21 @@ If you use [Bring Your Own Key (BYOK)](/docs/guides/overview/auth/byok) and want
   });
 
   const completion = await openRouter.chat.send({
-    models: [
-      'anthropic/claude-sonnet-4.5',
-      'openai/gpt-5-mini',
-      'google/gemini-3-flash-preview',
-    ],
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      sort: {
-        by: 'price',
-        partition: 'none',
+    chatRequest: {
+      models: [
+        'anthropic/claude-sonnet-4.5',
+        'openai/gpt-5-mini',
+        'google/gemini-3-flash-preview',
+      ],
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        sort: {
+          by: 'price',
+          partition: 'none',
+        },
       },
+      stream: false,
     },
-    stream: false,
   });
   ```
 
@@ -875,12 +891,14 @@ This example skips over OpenAI (which doesn't host Mixtral), tries Together, and
   });
 
   const completion = await openRouter.chat.send({
-    model: 'mistralai/mixtral-8x7b-instruct',
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      order: ['openai', 'together'],
+    chatRequest: {
+      model: 'mistralai/mixtral-8x7b-instruct',
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        order: ['openai', 'together'],
+      },
+      stream: false,
     },
-    stream: false,
   });
   ```
 
@@ -936,13 +954,15 @@ Here's an example with `allow_fallbacks` set to `false` that skips over OpenAI (
   });
 
   const completion = await openRouter.chat.send({
-    model: 'mistralai/mixtral-8x7b-instruct',
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      order: ['openai', 'together'],
-      allowFallbacks: false,
+    chatRequest: {
+      model: 'mistralai/mixtral-8x7b-instruct',
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        order: ['openai', 'together'],
+        allowFallbacks: false,
+      },
+      stream: false,
     },
-    stream: false,
   });
   ```
 
@@ -1022,13 +1042,15 @@ By copying the exact provider slug and using it in your request's `order` array,
   });
 
   const completion = await openRouter.chat.send({
-    model: 'deepseek/deepseek-r1',
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      order: ['deepinfra/turbo'],
-      allowFallbacks: false,
+    chatRequest: {
+      model: 'deepseek/deepseek-r1',
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        order: ['deepinfra/turbo'],
+        allowFallbacks: false,
+      },
+      stream: false,
     },
-    stream: false,
   });
   ```
 
@@ -1106,12 +1128,14 @@ For example, to only use providers that support JSON formatting:
   });
 
   const completion = await openRouter.chat.send({
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      requireParameters: true,
+    chatRequest: {
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        requireParameters: true,
+      },
+      responseFormat: { type: 'json_object' },
+      stream: false,
     },
-    responseFormat: { type: 'json_object' },
-    stream: false,
   });
   ```
 
@@ -1188,11 +1212,13 @@ To exclude providers that don't comply with your data policies, set `data_collec
   });
 
   const completion = await openRouter.chat.send({
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      dataCollection: 'deny', // or "allow"
+    chatRequest: {
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        dataCollection: 'deny', // or "allow"
+      },
+      stream: false,
     },
-    stream: false,
   });
   ```
 
@@ -1263,12 +1289,14 @@ To ensure a request only uses ZDR endpoints, set `zdr` to `true`:
   });
 
   const completion = await openRouter.chat.send({
-    model: 'gpt-4',
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      zdr: true,
+    chatRequest: {
+      model: 'gpt-4',
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        zdr: true,
+      },
+      stream: false,
     },
-    stream: false,
   });
   ```
 
@@ -1338,12 +1366,14 @@ To ensure a request only uses models that allow text distillation, set `enforce_
   });
 
   const completion = await openRouter.chat.send({
-    model: 'meta-llama/llama-3.3-70b-instruct',
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      enforceDistillableText: true,
+    chatRequest: {
+      model: 'meta-llama/llama-3.3-70b-instruct',
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        enforceDistillableText: true,
+      },
+      stream: false,
     },
-    stream: false,
   });
   ```
 
@@ -1401,11 +1431,13 @@ This is combined with the `order` field from [Ordering Specific Providers](#orde
   });
 
   const completion = await openRouter.chat.send({
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      allowFallbacks: false,
+    chatRequest: {
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        allowFallbacks: false,
+      },
+      stream: false,
     },
-    stream: false,
   });
   ```
 
@@ -1480,12 +1512,14 @@ Here's an example that will only use Azure for a request calling GPT-4 Omni:
   });
 
   const completion = await openRouter.chat.send({
-    model: 'openai/gpt-5-mini',
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      only: ['azure'],
+    chatRequest: {
+      model: 'openai/gpt-5-mini',
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        only: ['azure'],
+      },
+      stream: false,
     },
-    stream: false,
   });
   ```
 
@@ -1562,12 +1596,14 @@ Here's an example that will ignore DeepInfra for a request calling Llama 3.3 70b
   });
 
   const completion = await openRouter.chat.send({
-    model: 'meta-llama/llama-3.3-70b-instruct',
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      ignore: ['deepinfra'],
+    chatRequest: {
+      model: 'meta-llama/llama-3.3-70b-instruct',
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        ignore: ['deepinfra'],
+      },
+      stream: false,
     },
-    stream: false,
   });
   ```
 
@@ -1655,12 +1691,14 @@ Here's an example that will only use providers that support FP8 quantization:
   });
 
   const completion = await openRouter.chat.send({
-    model: 'meta-llama/llama-3.1-8b-instruct',
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      quantizations: ['fp8'],
+    chatRequest: {
+      model: 'meta-llama/llama-3.1-8b-instruct',
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        quantizations: ['fp8'],
+      },
+      stream: false,
     },
-    stream: false,
   });
   ```
 
@@ -1750,9 +1788,11 @@ When using Anthropic models (Claude), you can request specific beta features by 
 
   const completion = await openRouter.chat.send(
     {
-      model: 'anthropic/claude-sonnet-4.5',
-      messages: [{ role: 'user', content: 'Solve this step by step: What is 15% of 240?' }],
-      stream: true,
+      chatRequest: {
+        model: 'anthropic/claude-sonnet-4.5',
+        messages: [{ role: 'user', content: 'Solve this step by step: What is 15% of 240?' }],
+        stream: true,
+      },
     },
     {
       headers: {

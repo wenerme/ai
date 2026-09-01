@@ -339,7 +339,7 @@ curl https://api.openai.com/v1/evals/egroup_67abd54d9b0081909a86353f6fb9317a/run
           }
         ],
         "finish_reason": "stop",
-        "model": "gpt-4o-mini-2024-07-18",
+        "model": "gpt-5.6-sol",
         "usage": {
           "total_tokens": 325,
           "completion_tokens": 2,
@@ -641,7 +641,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
       }
     ],
     "finish_reason": "stop",
-    "model": "gpt-4o-mini-2024-07-18",
+    "model": "gpt-5.6-sol",
     "usage": {
       "total_tokens": 325,
       "completion_tokens": 2,

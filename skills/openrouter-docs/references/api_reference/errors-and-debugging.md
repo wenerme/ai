@@ -289,7 +289,9 @@ You'll see pre-stream errors for issues like invalid API keys, malformed request
 
 ### Mid-stream errors
 
-Once the first token has been written to the client, the HTTP `200 OK` status and headers are already committed — they can't be changed. If the provider fails at this point, OpenRouter **cannot** silently fail over to another provider because partial content has already been delivered to your application. The error must arrive in-band as an SSE event.
+OpenRouter sends you the HTTP `200 OK` status and headers as soon as the provider accepts the request. That happens before the model produces a single token, and an HTTP status is final once sent.
+
+Every failure after that point is therefore reported inside the response instead of in the status. A streaming request receives an SSE error event; a non-streaming request receives an error body. This includes provider errors that arrive before any token. Failover also stops once part of the answer has reached you, since your application already holds output from the first provider.
 
 Common causes of mid-stream errors:
 
@@ -300,7 +302,7 @@ Common causes of mid-stream errors:
 * **Provider overload** — the upstream returns a rate-limit or capacity error after beginning to stream
 
 <Note>
-  If an error occurs before any tokens are written — even on a streaming request — OpenRouter can still retry with a backup provider transparently. Mid-stream errors only happen when partial content has already been committed to your stream, making failover impossible.
+  If an attempt fails before any tokens reach you, OpenRouter automatically tries a backup provider. The `200 OK` has already been sent by then, so the status stays `200` even when every provider fails — the last error reaches you in the response body.
 </Note>
 
 Mid-stream errors are sent as Server-Sent Events (SSE) with a unified structure that includes both the error details and a completion choice:
@@ -340,9 +342,13 @@ Key characteristics:
 * The error appears at the **top level** alongside standard response fields
 * `error.metadata.error_type` carries a typed code you can switch on programmatically — see [Typed Error Codes](#typed-error-codes) for the full list
 * A `choices` array is included with `finish_reason: "error"` to properly terminate the stream
-* The HTTP status remains 200 OK since headers were already sent
+* The HTTP status remains `200 OK`, because the headers were sent before the error occurred
 * The stream is terminated after this event
 * On 500-class errors, `error.message` is replaced with a generic string and `provider_code` is omitted to prevent leaking upstream details
+
+#### Non-streaming requests
+
+Non-streaming requests send the status at the same point. If the provider returns headers and then fails, you receive a `200 OK` whose JSON body holds only an `error` object and no `choices`; its `id` identifies the generation when you report the failure. Check the body for an `error` field even on a `200`, rather than relying on the status alone.
 
 ## Typed error codes
 

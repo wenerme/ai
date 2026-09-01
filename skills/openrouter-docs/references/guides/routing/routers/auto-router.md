@@ -15,9 +15,11 @@ Two slugs run this router:
 
 ```typescript theme={null}
 const completion = await openRouter.chat.send({
-  model: 'openrouter/auto-beta',
-  messages: [{ role: 'user', content: 'Summarize this paragraph' }],
-  plugins: [{ id: 'auto-beta-router', cost_tier: 'medium' }],
+  chatRequest: {
+    model: 'openrouter/auto-beta',
+    messages: [{ role: 'user', content: 'Summarize this paragraph' }],
+    plugins: [{ id: 'auto-beta-router', costTier: 'medium' }],
+  },
 });
 ```
 
@@ -53,14 +55,20 @@ Set your model to `openrouter/auto`:
   });
 
   const completion = await openRouter.chat.send({
-    model: 'openrouter/auto',
-    messages: [
-      {
-        role: 'user',
-        content: 'Explain quantum entanglement in simple terms',
-      },
-    ],
+    chatRequest: {
+      model: 'openrouter/auto',
+      messages: [
+        {
+          role: 'user',
+          content: 'Explain quantum entanglement in simple terms',
+        },
+      ],
+    },
   });
+
+  if (completion instanceof ReadableStream) {
+    throw new Error('Expected a non-streaming response');
+  }
 
   console.log(completion.choices[0].message.content);
   // Check which model was selected
@@ -156,25 +164,33 @@ Sessions also keep requests on the same provider, which works the same way as it
 <CodeGroup>
   ```typescript title="TypeScript SDK" expandable lines theme={null}
   const completion = await openRouter.chat.send({
-    model: 'openrouter/auto',
-    session_id: 'my-conversation-123',
-    messages: [
-      {
-        role: 'user',
-        content: 'Explain quantum entanglement',
-      },
-    ],
+    chatRequest: {
+      model: 'openrouter/auto',
+      sessionId: 'my-conversation-123',
+      messages: [
+        {
+          role: 'user',
+          content: 'Explain quantum entanglement',
+        },
+      ],
+    },
   });
+
+  if (completion instanceof ReadableStream) {
+    throw new Error('Expected a non-streaming response');
+  }
 
   // Subsequent requests with this session reuse the cached provider and may reuse the model
   const followUp = await openRouter.chat.send({
-    model: 'openrouter/auto',
-    session_id: 'my-conversation-123',
-    messages: [
-      { role: 'user', content: 'Explain quantum entanglement' },
-      { role: 'assistant', content: completion.choices[0].message.content ?? '' },
-      { role: 'user', content: 'Now explain it to a 5-year-old' },
-    ],
+    chatRequest: {
+      model: 'openrouter/auto',
+      sessionId: 'my-conversation-123',
+      messages: [
+        { role: 'user', content: 'Explain quantum entanglement' },
+        { role: 'assistant', content: completion.choices[0].message.content ?? '' },
+        { role: 'user', content: 'Now explain it to a 5-year-old' },
+      ],
+    },
   });
   ```
 
@@ -230,19 +246,21 @@ Use wildcard patterns to filter models. For example, `anthropic/*` matches all A
 <CodeGroup>
   ```typescript title="TypeScript SDK" lines theme={null}
   const completion = await openRouter.chat.send({
-    model: 'openrouter/auto',
-    messages: [
-      {
-        role: 'user',
-        content: 'Explain quantum entanglement',
-      },
-    ],
-    plugins: [
-      {
-        id: 'auto-router',
-        allowed_models: ['anthropic/*', 'openai/gpt-5.1'],
-      },
-    ],
+    chatRequest: {
+      model: 'openrouter/auto',
+      messages: [
+        {
+          role: 'user',
+          content: 'Explain quantum entanglement',
+        },
+      ],
+      plugins: [
+        {
+          id: 'auto-router',
+          allowedModels: ['anthropic/*', 'openai/gpt-5.1'],
+        },
+      ],
+    },
   });
   ```
 
@@ -340,19 +358,21 @@ A tier is a band, not a ceiling, so models cheaper than the band are excluded as
 <CodeGroup>
   ```typescript title="TypeScript SDK" lines theme={null}
   const completion = await openRouter.chat.send({
-    model: 'openrouter/auto',
-    messages: [
-      {
-        role: 'user',
-        content: 'Summarize this paragraph',
-      },
-    ],
-    plugins: [
-      {
-        id: 'auto-router',
-        cost_tier: 'xhigh',
-      },
-    ],
+    chatRequest: {
+      model: 'openrouter/auto',
+      messages: [
+        {
+          role: 'user',
+          content: 'Summarize this paragraph',
+        },
+      ],
+      plugins: [
+        {
+          id: 'auto-router',
+          costTier: 'xhigh',
+        },
+      ],
+    },
   });
   ```
 

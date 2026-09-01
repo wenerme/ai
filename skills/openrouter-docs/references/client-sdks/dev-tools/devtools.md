@@ -6,15 +6,15 @@
 
 > SDK Development Tools for telemetry capture and visualization
 
-The OpenRouter DevTools provide a comprehensive solution for SDK telemetry capture and visualization during development. Monitor your AI application's requests, responses, token usage, and errors in real-time with a beautiful web interface.
+The OpenRouter DevTools include pre-release telemetry hooks and a viewer for compatible telemetry files.
 
 ## Why use DevTools?
 
-Building with AI SDKs requires visibility into what's happening under the hood. The OpenRouter DevTools give you complete insight into your SDK operations without adding complexity or impacting performance.
+Building with AI SDKs requires visibility into what's happening under the hood. The DevTools viewer helps inspect telemetry produced by a compatible integration.
 
 **Two main components:**
 
-1. **SDK Telemetry Hooks** - Automatically capture all SDK operations in development
+1. **SDK Telemetry Hooks** - Normalize supported operations into the DevTools telemetry format
 2. **DevTools Viewer** - Beautiful web UI for visualizing captured telemetry data
 
 ## Key Features
@@ -23,11 +23,10 @@ Building with AI SDKs requires visibility into what's happening under the hood. 
 
 Launch a web-based interface to visualize your SDK telemetry:
 
-* **Real-time run tracking** - View all SDK operations (chat, embeddings, etc.) as they happen
+* **Run tracking** - View operations from an existing compatible telemetry file
 * **Detailed step analysis** - Inspect request/response data, timing, and errors for each step
 * **Token usage insights** - Track prompt and completion tokens across all requests
 * **Error debugging** - Easily identify and debug failed requests with full error details
-* **Multi-run comparison** - Compare different SDK runs side-by-side
 * **Dark/Light mode** - Full theme support with automatic system preference detection
 
 <Frame>
@@ -36,14 +35,13 @@ Launch a web-based interface to visualize your SDK telemetry:
 
 ### SDK Telemetry Hooks
 
-Developer-friendly hooks that automatically capture:
+For compatible operations that complete successfully, the hooks record:
 
-* All chat completions with full request/response data
-* Token usage and costs
+* Request and response data
+* Token usage
 * Timing information for performance analysis
 * Errors and failure modes
-* Tool/function calls
-* Current directory, git branch, and model information
+* Model information
 
 ## Installation
 
@@ -71,57 +69,35 @@ Install the DevTools package as a development dependency:
   ```
 </CodeGroup>
 
+Install the CLI that provides the `openrouter devtools` command:
+
+```bash lines theme={null}
+npm install --global @openrouter/cli
+```
+
 **Important:** DevTools is designed for development only. It will throw an error if `NODE_ENV === 'production'` to prevent accidental production deployment.
 
-## Quick Start - SDK Hooks
+## Client Compatibility
 
-Integrate DevTools hooks into your SDK client to start capturing telemetry:
+<Warning>
+  There is currently no complete supported public client integration. The generated `@openrouter/sdk` client cannot attach the plain DevTools hook object through its typed public constructor options.
+</Warning>
 
-### Basic Usage
-
-```typescript lines theme={null}
-import { createOpenRouterDevtools } from '@openrouter/devtools';
-import { OpenRouter } from '@openrouter/sdk';
-
-const sdk = new OpenRouter({
-  apiKey: process.env.OPENROUTER_API_KEY,
-  hooks: createOpenRouterDevtools()
-});
-
-// Now all SDK operations are automatically captured
-const response = await sdk.chat.send({
-  model: "openai/gpt-5",
-  messages: [
-    { role: "user", content: "Explain quantum computing" }
-  ]
-});
-```
-
-### Custom Configuration
-
-```typescript lines theme={null}
-const sdk = new OpenRouter({
-  apiKey: process.env.OPENROUTER_API_KEY,
-  hooks: createOpenRouterDevtools({
-    storagePath: '.custom-path/generations.json',  // Default: '.devtools/openrouter-generations.json'
-    serverUrl: 'http://localhost:5000/api/notify', // Default: 'http://localhost:4983/api/notify'
-  })
-});
-```
+The Agent SDK is not an alternative Client SDK setup. Although `@openrouter/agent` accepts the hooks, its `callModel` method always uses a streaming Responses API request. DevTools currently attempts to parse the response as JSON, does not parse the SSE stream, and does not normalize the Responses API request or response schema.
 
 ## Quick Start - DevTools Viewer
 
-Launch the DevTools web interface to visualize captured telemetry:
+From a project containing an existing compatible `.devtools/openrouter-generations.json` file, launch the DevTools web interface:
 
 ```bash lines theme={null}
 openrouter devtools
 ```
 
-This starts a local server on port 4983 and opens your browser to view:
+This starts a local server on port 4983. Open `http://localhost:4983` in your browser to view:
 
 * All SDK runs with timestamps and status
 * Step-by-step request/response details
-* Token usage and costs
+* Token usage
 * Error messages and stack traces
 * Performance timing information
 
@@ -131,16 +107,19 @@ The viewer automatically refreshes when new telemetry data is captured.
 
 ### Telemetry Capture Flow
 
+With a compatible hook integration:
+
 1. SDK hooks intercept requests before they're sent
-2. Telemetry data is captured asynchronously (non-blocking)
+2. Hook processing parses the request or response body
 3. Data is stored in `.devtools/openrouter-generations.json`
 4. A notification is sent to the local DevTools server (if running)
 5. The DevTools viewer updates in real-time
 
-### Non-Intrusive Design
+### Failure Isolation
 
-* **Zero SDK impact** - Telemetry capture is async and never blocks SDK operations
-* **Graceful degradation** - Errors in DevTools never break your SDK calls
+* **Request preservation** - Hooks return the original SDK request or response
+* **Graceful degradation** - Capture errors are swallowed instead of replacing the SDK result
+* **Hook overhead** - Body parsing runs inside the SDK hook lifecycle; capture is not zero-cost
 * **Development-only** - Throws error if used in production (`NODE_ENV === 'production'`)
 
 ### Storage Location
@@ -170,27 +149,24 @@ When calling `createOpenRouterDevtools()`, you can customize:
 
 ### DevTools Server Configuration
 
-The DevTools viewer runs on port 4983 by default. This can be configured in your OpenRouter CLI configuration at `~/.openrouter/claude-code-proxy.json`:
+The DevTools viewer runs on port 4983 by default. Set `OPENROUTER_DEVTOOLS_PORT` when launching the CLI to use a different port:
 
-```json lines theme={null}
-{
-  "DEVTOOLS_PORT": 4983
-}
+```bash lines theme={null}
+OPENROUTER_DEVTOOLS_PORT=5000 openrouter devtools
 ```
 
-## Operations Captured
+## Recognized Operation IDs
 
-The DevTools hooks automatically capture these SDK operations:
+The hooks recognize these internal SDK operation IDs:
 
-* `chat.send()` - Chat completions API calls
-* `chat.createResponses()` - Responses API calls
-* `embeddings.create()` - Embeddings API calls
+* `createResponses` - Responses API calls
+* `sendChatCompletionRequest` - Chat completions API calls
 
-All other SDK operations are currently ignored.
+This is not a list of working public client integrations. The Agent SDK reaches `createResponses`, but its streaming response is unsupported. The generated Client SDK reaches `sendChatCompletionRequest`, but it cannot attach the plain hooks through its typed public options. All other SDK operations, including embeddings, are ignored.
 
 ## Data Captured Per Step
 
-For each SDK operation, DevTools captures:
+For each compatible operation that completes successfully, DevTools captures:
 
 **Request Data:**
 
@@ -204,7 +180,6 @@ For each SDK operation, DevTools captures:
 * Token usage (prompt + completion tokens)
 * Provider and model used
 * Finish reason
-* Tool calls (if any)
 
 **Metadata:**
 
@@ -217,35 +192,17 @@ For each SDK operation, DevTools captures:
 
 ### Production Environment Protection
 
-DevTools will throw an error if initialized when `NODE_ENV === 'production'`:
+Creating DevTools hooks throws an error when `NODE_ENV === 'production'`. Only initialize the package in a development environment and only from a compatible integration.
 
-```typescript lines theme={null}
-// This will throw an error in production
-const sdk = new OpenRouter({
-  apiKey: process.env.OPENROUTER_API_KEY,
-  hooks: createOpenRouterDevtools() // ERROR in production!
-});
-```
+### Capture Failure Isolation
 
-### Non-Blocking Architecture
-
-* All telemetry capture happens asynchronously
-* DevTools errors never propagate to your SDK calls
-* Failed writes are logged but don't break your application
+* Hook body parsing is awaited by the SDK hook lifecycle
+* DevTools capture errors do not replace your SDK result
+* Failed writes are silently ignored and don't break your application
 
 ### Error Handling
 
-DevTools failures are handled gracefully:
-
-```typescript lines theme={null}
-// If DevTools fails, your SDK call still works
-try {
-  await sdk.chat.send({ /* ... */ });
-  // SDK call succeeds even if DevTools capture fails
-} catch (error) {
-  // Only SDK errors are thrown, never DevTools errors
-}
-```
+DevTools catches failures in request parsing, response parsing, storage, and server notification. A capture failure can leave telemetry missing or incomplete, but it does not replace the SDK request or response.
 
 ## Troubleshooting
 
@@ -257,18 +214,16 @@ If port 4983 is already in use:
 Error: listen EADDRINUSE: address already in use :::4983
 ```
 
-**Solution:** Either stop the process using port 4983, or configure a different port in `~/.openrouter/claude-code-proxy.json`:
+**Solution:** Either stop the process using port 4983, or launch the viewer with a different port:
 
-```json lines theme={null}
-{
-  "DEVTOOLS_PORT": 5000
-}
+```bash lines theme={null}
+OPENROUTER_DEVTOOLS_PORT=5000 openrouter devtools
 ```
 
-Then update your hook configuration:
+If you maintain a compatible hook integration, update its notification configuration:
 
 ```typescript lines theme={null}
-hooks: createOpenRouterDevtools({
+createOpenRouterDevtools({
   serverUrl: 'http://localhost:5000/api/notify'
 })
 ```
@@ -330,15 +285,4 @@ Cannot find module '@openrouter/devtools'
 Error: DevTools should not be used in production
 ```
 
-**Solution:** Only initialize DevTools in development:
-
-```typescript lines theme={null}
-const hooks = process.env.NODE_ENV === 'development'
-  ? createOpenRouterDevtools()
-  : undefined;
-
-const sdk = new OpenRouter({
-  apiKey: process.env.OPENROUTER_API_KEY,
-  hooks
-});
-```
+**Solution:** Initialize the hook package only in a development environment and only from a compatible integration.

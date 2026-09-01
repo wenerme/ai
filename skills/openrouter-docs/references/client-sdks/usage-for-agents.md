@@ -78,10 +78,12 @@ import { OpenRouter } from '@openrouter/sdk';
 const client = new OpenRouter();
 
 const completion = await client.chat.send({
-  model: 'anthropic/claude-sonnet-4',
-  messages: [
-    { role: 'user', content: 'Hello!' }
-  ]
+  chatRequest: {
+    model: 'anthropic/claude-sonnet-4',
+    messages: [
+      { role: 'user', content: 'Hello!' }
+    ]
+  },
 });
 ```
 
@@ -95,10 +97,16 @@ import { OpenRouter } from '@openrouter/sdk';
 const client = new OpenRouter();
 
 const stream = await client.chat.send({
-  model: 'anthropic/claude-sonnet-4',
-  messages: [{ role: 'user', content: 'Tell me a story' }],
-  stream: true
+  chatRequest: {
+    model: 'anthropic/claude-sonnet-4',
+    messages: [{ role: 'user', content: 'Tell me a story' }],
+    stream: true
+  },
 });
+
+if (!(stream instanceof ReadableStream)) {
+  throw new Error('Expected a streaming response');
+}
 
 for await (const chunk of stream) {
   process.stdout.write(chunk.choices[0]?.delta?.content ?? '');

@@ -151,38 +151,44 @@ MODEL: 'openai/gpt-4o'
     });
 
     const response = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      messages: [
-        { role: 'user', content: 'What is the weather like in London?' },
-      ],
-      responseFormat: {
-        type: 'json_schema',
-        jsonSchema: {
-          name: 'weather',
-          strict: true,
-          schema: {
-            type: 'object',
-            properties: {
-              location: {
-                type: 'string',
-                description: 'City or location name',
+      chatRequest: {
+        model: '{{MODEL}}',
+        messages: [
+          { role: 'user', content: 'What is the weather like in London?' },
+        ],
+        responseFormat: {
+          type: 'json_schema',
+          jsonSchema: {
+            name: 'weather',
+            strict: true,
+            schema: {
+              type: 'object',
+              properties: {
+                location: {
+                  type: 'string',
+                  description: 'City or location name',
+                },
+                temperature: {
+                  type: 'number',
+                  description: 'Temperature in Celsius',
+                },
+                conditions: {
+                  type: 'string',
+                  description: 'Weather conditions description',
+                },
               },
-              temperature: {
-                type: 'number',
-                description: 'Temperature in Celsius',
-              },
-              conditions: {
-                type: 'string',
-                description: 'Weather conditions description',
-              },
+              required: ['location', 'temperature', 'conditions'],
+              additionalProperties: false,
             },
-            required: ['location', 'temperature', 'conditions'],
-            additionalProperties: false,
           },
         },
+        stream: false,
       },
-      stream: false,
     });
+
+    if (response instanceof ReadableStream) {
+      throw new Error('Expected a non-streaming response');
+    }
 
     const weatherInfo = response.choices[0].message.content;
     ```

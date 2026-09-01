@@ -105,16 +105,17 @@ paths:
       parameters:
         - description: >-
             Filter models by output modality. Accepts a comma-separated list of
-            modalities (text, image, audio, embeddings) or "all" to include all
-            models. Defaults to "text".
+            modalities (text, image, embeddings, audio, video, rerank, speech,
+            transcription) or "all" to include all models. Defaults to "text".
           in: query
           name: output_modalities
           required: false
           schema:
             description: >-
               Filter models by output modality. Accepts a comma-separated list
-              of modalities (text, image, audio, embeddings) or "all" to include
-              all models. Defaults to "text".
+              of modalities (text, image, embeddings, audio, video, rerank,
+              speech, transcription) or "all" to include all models. Defaults to
+              "text".
             example: text
             type: string
       responses:

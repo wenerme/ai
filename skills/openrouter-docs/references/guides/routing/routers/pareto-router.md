@@ -27,20 +27,26 @@ Set your model to `openrouter/pareto-code` and optionally pass the `pareto-route
   });
 
   const completion = await openRouter.chat.send({
-    model: 'openrouter/pareto-code',
-    plugins: [
-      {
-        id: 'pareto-router',
-        min_coding_score: 0.8,
-      },
-    ],
-    messages: [
-      {
-        role: 'user',
-        content: 'Write a Python function that merges two sorted lists.',
-      },
-    ],
+    chatRequest: {
+      model: 'openrouter/pareto-code',
+      plugins: [
+        {
+          id: 'pareto-router',
+          minCodingScore: 0.8,
+        },
+      ],
+      messages: [
+        {
+          role: 'user',
+          content: 'Write a Python function that merges two sorted lists.',
+        },
+      ],
+    },
   });
+
+  if (completion instanceof ReadableStream) {
+    throw new Error('Expected a non-streaming response');
+  }
 
   console.log(completion.choices[0].message.content);
   console.log('Model used:', completion.model);
@@ -152,37 +158,45 @@ For full details on how sticky routing works, cache key granularity, and the `x-
 <CodeGroup>
   ```typescript title="TypeScript SDK" expandable lines theme={null}
   const completion = await openRouter.chat.send({
-    model: 'openrouter/pareto-code',
-    session_id: 'my-coding-session-123',
-    plugins: [
-      {
-        id: 'pareto-router',
-        min_coding_score: 0.8,
-      },
-    ],
-    messages: [
-      {
-        role: 'user',
-        content: 'Write a Python function that merges two sorted lists.',
-      },
-    ],
+    chatRequest: {
+      model: 'openrouter/pareto-code',
+      sessionId: 'my-coding-session-123',
+      plugins: [
+        {
+          id: 'pareto-router',
+          minCodingScore: 0.8,
+        },
+      ],
+      messages: [
+        {
+          role: 'user',
+          content: 'Write a Python function that merges two sorted lists.',
+        },
+      ],
+    },
   });
+
+  if (completion instanceof ReadableStream) {
+    throw new Error('Expected a non-streaming response');
+  }
 
   // Subsequent requests with the same session_id may reuse the same model and provider
   const followUp = await openRouter.chat.send({
-    model: 'openrouter/pareto-code',
-    session_id: 'my-coding-session-123',
-    plugins: [
-      {
-        id: 'pareto-router',
-        min_coding_score: 0.8,
-      },
-    ],
-    messages: [
-      { role: 'user', content: 'Write a Python function that merges two sorted lists.' },
-      { role: 'assistant', content: completion.choices[0].message.content ?? '' },
-      { role: 'user', content: 'Now add type hints and docstrings.' },
-    ],
+    chatRequest: {
+      model: 'openrouter/pareto-code',
+      sessionId: 'my-coding-session-123',
+      plugins: [
+        {
+          id: 'pareto-router',
+          minCodingScore: 0.8,
+        },
+      ],
+      messages: [
+        { role: 'user', content: 'Write a Python function that merges two sorted lists.' },
+        { role: 'assistant', content: completion.choices[0].message.content ?? '' },
+        { role: 'user', content: 'Now add type hints and docstrings.' },
+      ],
+    },
   });
   ```
 

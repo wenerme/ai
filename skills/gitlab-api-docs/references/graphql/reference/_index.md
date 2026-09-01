@@ -20337,6 +20337,29 @@ Fields:
 | <a id="artifactregistryroleassignmentedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="artifactregistryroleassignmentedge-node"></a>`node` | [`ArtifactRegistryRoleAssignment`](#artifactregistryroleassignment) | The item at the end of the edge. |
 
+#### `ArtifactRegistryVersionConnection`
+
+The connection type for [`ArtifactRegistryVersion`](#artifactregistryversion).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryversionconnection-edges"></a>`edges` | [`[ArtifactRegistryVersionEdge]`](#artifactregistryversionedge) | A list of edges. |
+| <a id="artifactregistryversionconnection-nodes"></a>`nodes` | [`[ArtifactRegistryVersion]`](#artifactregistryversion) | A list of nodes. |
+| <a id="artifactregistryversionconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `ArtifactRegistryVersionEdge`
+
+The edge type for [`ArtifactRegistryVersion`](#artifactregistryversion).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryversionedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="artifactregistryversionedge-node"></a>`node` | [`ArtifactRegistryVersion`](#artifactregistryversion) | The item at the end of the edge. |
+
 #### `AscpComponentConnection`
 
 The connection type for [`AscpComponent`](#ascpcomponent).
@@ -32318,6 +32341,19 @@ Fields:
 | <a id="aicatalogthirdpartyflowversion-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the item version was updated. |
 | <a id="aicatalogthirdpartyflowversion-versionname"></a>`versionName` | [`String`](#string) | Version name of the item version. |
 
+### `AiChatQuestionCategory`
+
+Category of suggested questions for GitLab Duo Chat.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aichatquestioncategory-contextual"></a>`contextual` | [`Boolean!`](#boolean) | Whether the questions are about the resource on the current page. At most one category is contextual, and it is returned first. |
+| <a id="aichatquestioncategory-key"></a>`key` | [`String!`](#string) | Stable identifier of the category. The type of the current page for contextual categories, for example `merge_request` or `blob`, and the topic for static ones, for example `security`. |
+| <a id="aichatquestioncategory-questions"></a>`questions` | [`[String!]!`](#string) | Suggested questions in the category. |
+| <a id="aichatquestioncategory-title"></a>`title` | [`String!`](#string) | Display title of the category, for example the reference of the current resource. |
+
 ### `AiConversationsThread`
 
 Conversation thread of the AI feature.
@@ -33386,6 +33422,7 @@ Fields:
 | <a id="artifactregistrymavenpackage-artifactid"></a>`artifactId`  | [`String!`](#string) | Introduced in GitLab 19.3. Status: Experiment. Maven artifact ID coordinate of the package. |
 | <a id="artifactregistrymavenpackage-groupid"></a>`groupId`  | [`String!`](#string) | Introduced in GitLab 19.3. Status: Experiment. Maven group ID coordinate of the package. |
 | <a id="artifactregistrymavenpackage-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.3. Status: Experiment. ID of the package in Artifact Registry. |
+| <a id="artifactregistrymavenpackage-versions"></a>`versions`  | [`ArtifactRegistryVersionConnection`](#artifactregistryversionconnection) | Introduced in GitLab 19.4. Status: Experiment. Versions of the package, ordered by publication date descending. Resolves at most once per package in a page, so one operation reads versions for up to 20 packages. Returns `null` for a package that is gone. Also `null` when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx. |
 
 ### `ArtifactRegistryNpmPackage`
 
@@ -33398,6 +33435,7 @@ Fields:
 | <a id="artifactregistrynpmpackage-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.3. Status: Experiment. ID of the package in Artifact Registry. |
 | <a id="artifactregistrynpmpackage-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.3. Status: Experiment. Name of the package, including its scope when it has one. |
 | <a id="artifactregistrynpmpackage-scope"></a>`scope`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. npm scope of the package. Null for an unscoped package. |
+| <a id="artifactregistrynpmpackage-versions"></a>`versions`  | [`ArtifactRegistryVersionConnection`](#artifactregistryversionconnection) | Introduced in GitLab 19.4. Status: Experiment. Versions of the package, ordered by publication date descending. Resolves at most once per package in a page, so one operation reads versions for up to 20 packages. Returns `null` for a package that is gone. Also `null` when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx. |
 | <a id="artifactregistrynpmpackage-versionscount"></a>`versionsCount`  | [`Int!`](#int) | Introduced in GitLab 19.3. Status: Experiment. Number of versions of the package. Buffered, so it can lag the version list. |
 
 ### `ArtifactRegistryRemoteSettings`
@@ -33475,6 +33513,18 @@ Fields:
 | <a id="artifactregistryroleassignment-createdat"></a>`createdAt` | [`Time`](#time) | Time the assignment was created. |
 | <a id="artifactregistryroleassignment-resourceid"></a>`resourceId` | [`String!`](#string) | UUID of the Artifact Registry resource the role is assigned on. |
 | <a id="artifactregistryroleassignment-role"></a>`role` | [`ArtifactRegistryRole`](#artifactregistryrole) | Assigned Artifact Registry role. |
+
+### `ArtifactRegistryVersion`
+
+Version of a package in an Artifact Registry repository (Maven and npm).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryversion-createdat"></a>`createdAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp the version was published. Null when Artifact Registry stored none. |
+| <a id="artifactregistryversion-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.4. Status: Experiment. ID of the version in Artifact Registry. |
+| <a id="artifactregistryversion-version"></a>`version`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Version string of the package. |
 
 ### `AscpComponent`
 
@@ -37591,6 +37641,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="contextpreset-airesourcedata"></a>`aiResourceData` | [`String`](#string) | Serialized representation of the AI resource in the current context. |
+| <a id="contextpreset-questioncategories"></a>`questionCategories`  | [`[AiChatQuestionCategory!]`](#aichatquestioncategory) | Introduced in GitLab 19.4. Status: Experiment. Suggested questions grouped by category. Not affected by questionCount. |
 | <a id="contextpreset-questions"></a>`questions` | [`[String!]`](#string) | Array of questions that the user can ask GitLab Duo Chat from the current page. |
 
 ### `ContributionAnalyticsContribution`
@@ -42931,6 +42982,7 @@ Fields:
 | <a id="governpolicy-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Name of the policy. |
 | <a id="governpolicy-namespaceid"></a>`namespaceId`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. ID of the namespace the policy is scoped to. Null for organization-wide policies. |
 | <a id="governpolicy-organizationid"></a>`organizationId`  | [`Int!`](#int) | Introduced in GitLab 19.4. Status: Experiment. ID of the organization the policy belongs to. |
+| <a id="governpolicy-policyrego"></a>`policyRego`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Rego program merged from the compiled rules. Null when the rules cannot be merged. |
 | <a id="governpolicy-policyscope"></a>`policyScope`  | [`JSON`](#json) | Introduced in GitLab 19.4. Status: Experiment. Scope of the policy. |
 | <a id="governpolicy-rules"></a>`rules`  | [`[JSON!]`](#json) | Introduced in GitLab 19.4. Status: Experiment. Rules of the policy. |
 | <a id="governpolicy-scopedimensions"></a>`scopeDimensions`  | [`[String!]`](#string) | Introduced in GitLab 19.4. Status: Experiment. Dotted context paths scopeRego reads to decide whether the policy applies. Null when scopeRego was authored directly instead of compiled from policyScope. |
@@ -45556,17 +45608,22 @@ Fields:
 | <a id="grouppermissions-adminallresources"></a>`adminAllResources` | [`Boolean!`](#boolean) | If `true`, the user is an instance administrator. |
 | <a id="grouppermissions-adminissue"></a>`adminIssue` | [`Boolean!`](#boolean) | If `true`, the user can perform `admin_issue` on this resource. |
 | <a id="grouppermissions-adminworkitemlifecycle"></a>`adminWorkItemLifecycle` | [`Boolean!`](#boolean) | If `true`, the user can perform `admin_work_item_lifecycle` on this resource. |
+| <a id="grouppermissions-applysecurityscanprofiles"></a>`applySecurityScanProfiles`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. If `true`, the user can perform `apply_security_scan_profiles` on this resource. Attaching a profile is authorized per project, so this ability is evaluated on this resource rather than on the root ancestor. |
 | <a id="grouppermissions-archivegroup"></a>`archiveGroup` | [`Boolean!`](#boolean) | If `true`, the user can perform `archive_group` on this resource. |
 | <a id="grouppermissions-canleave"></a>`canLeave` | [`Boolean!`](#boolean) | If `true`, the user can leave this group. |
 | <a id="grouppermissions-changegroup"></a>`changeGroup` | [`Boolean!`](#boolean) | If `true`, the user can perform `change_group` on this resource. |
 | <a id="grouppermissions-createcustomemoji"></a>`createCustomEmoji` | [`Boolean!`](#boolean) | If `true`, the user can perform `create_custom_emoji` on this resource. |
 | <a id="grouppermissions-createprojects"></a>`createProjects` | [`Boolean!`](#boolean) | If `true`, the user can perform `create_projects` on this resource. |
+| <a id="grouppermissions-createsecurityscanprofiles"></a>`createSecurityScanProfiles`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. If `true`, the user can perform `create_security_scan_profiles` on the top-level namespace of this resource. Security scan profiles belong to the top-level namespace, so this ability is evaluated on the root ancestor rather than on this resource. |
+| <a id="grouppermissions-deletesecurityscanprofiles"></a>`deleteSecurityScanProfiles`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. If `true`, the user can perform `delete_security_scan_profiles` on the top-level namespace of this resource. Security scan profiles belong to the top-level namespace, so this ability is evaluated on the root ancestor rather than on this resource. |
 | <a id="grouppermissions-generatedescription"></a>`generateDescription` | [`Boolean!`](#boolean) | If `true`, the user can perform `generate_description` on this resource. |
 | <a id="grouppermissions-readcrmcontact"></a>`readCrmContact` | [`Boolean!`](#boolean) | If `true`, the user can perform `read_crm_contact` on this resource. |
 | <a id="grouppermissions-readcrmorganization"></a>`readCrmOrganization` | [`Boolean!`](#boolean) | If `true`, the user can perform `read_crm_organization` on this resource. |
 | <a id="grouppermissions-readgroup"></a>`readGroup` | [`Boolean!`](#boolean) | If `true`, the user can perform `read_group` on this resource. |
 | <a id="grouppermissions-readrunnercloudprovisioninginfo"></a>`readRunnerCloudProvisioningInfo`  | [`Boolean!`](#boolean) | Introduced in GitLab 18.8. Status: Experiment. If `true`, the user can perform `read_runner_cloud_provisioning_info` on this resource. |
+| <a id="grouppermissions-readsecurityscanprofiles"></a>`readSecurityScanProfiles`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. If `true`, the user can perform `read_security_scan_profiles` on the top-level namespace of this resource. Security scan profiles belong to the top-level namespace, so this ability is evaluated on the root ancestor rather than on this resource. |
 | <a id="grouppermissions-removegroup"></a>`removeGroup` | [`Boolean!`](#boolean) | If `true`, the user can perform `remove_group` on this resource. |
+| <a id="grouppermissions-updatesecurityscanprofiles"></a>`updateSecurityScanProfiles`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. If `true`, the user can perform `update_security_scan_profiles` on the top-level namespace of this resource. Security scan profiles belong to the top-level namespace, so this ability is evaluated on the root ancestor rather than on this resource. |
 | <a id="grouppermissions-vieweditpage"></a>`viewEditPage` | [`Boolean!`](#boolean) | If `true`, the user can perform `view_edit_page` on this resource. |
 
 ### `GroupReleaseStats`
@@ -59766,6 +59823,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="usermergerequestinteraction-applicableapprovalrules"></a>`applicableApprovalRules` | [`[ApprovalRule!]`](#approvalrule) | Approval rules that apply to the user for the merge request. |
 | <a id="usermergerequestinteraction-approved"></a>`approved` | [`Boolean!`](#boolean) | Whether the user has approved the merge request. |
+| <a id="usermergerequestinteraction-approvedat"></a>`approvedAt` | [`Time`](#time) | Timestamp of when the user approved the merge request. Returns `null` if the user has not approved it. |
 | <a id="usermergerequestinteraction-canmerge"></a>`canMerge` | [`Boolean!`](#boolean) | Whether the user can merge the merge request. |
 | <a id="usermergerequestinteraction-canupdate"></a>`canUpdate` | [`Boolean!`](#boolean) | Whether the user can update the merge request. |
 | <a id="usermergerequestinteraction-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | State of the review by the user. |

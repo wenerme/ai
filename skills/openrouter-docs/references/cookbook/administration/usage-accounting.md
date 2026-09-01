@@ -155,14 +155,20 @@ MODEL: "anthropic/claude-3-opus"
     });
 
     const response = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      messages: [
-        {
-          role: 'user',
-          content: 'What is the capital of France?',
-        },
-      ],
+      chatRequest: {
+        model: '{{MODEL}}',
+        messages: [
+          {
+            role: 'user',
+            content: 'What is the capital of France?',
+          },
+        ],
+      },
     });
+
+    if (response instanceof ReadableStream) {
+      throw new Error('Expected a non-streaming response');
+    }
 
     console.log('Response:', response.choices[0].message.content);
     // Usage is always included automatically
