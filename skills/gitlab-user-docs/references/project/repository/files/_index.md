@@ -146,6 +146,9 @@ To create a permalink:
 1. Select **Actions** (), then select **Copy Permalink**.
    Alternatively, press <kbd>y</kbd>. For more shortcuts, see [keyboard shortcuts](../../../shortcuts.md).
 
+When you paste a permalink to lines of a file in a comment or description, GitLab can
+[embed the code](../../../markdown.md#embed-code-from-a-repository) instead of the link.
+
 ## View open merge requests for a file
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/448868) in GitLab 17.10 [with a feature flag](../../../../administration/feature_flags/_index.md) named `filter_blob_path`.

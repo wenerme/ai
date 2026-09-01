@@ -139,8 +139,8 @@ these layout presets:
 [Timeline header showing quarters and months for 6 quarters, highlighting the time scale.]
 
 In the **Quarters** preset, roadmap shows epics and milestones which have start or due dates
-**falling within** the currently selected date range preset,
-where **today**
+falling within the currently selected date range preset,
+where today
 is shown by the vertical red line in the timeline. The sub-headers underneath the quarter name on
 the timeline header represent the month of the quarter.
 
@@ -149,8 +149,8 @@ the timeline header represent the month of the quarter.
 [Timeline header showing months with weekly date markers beneath each month.]
 
 In the **Months** preset, roadmap shows epics and milestones which have start or
-due dates **falling within** or **going through** the currently selected date range
-preset, where **today** is shown by the vertical red line in the timeline. The
+due dates falling within or going through the currently selected date range
+preset, where today is shown by the vertical red line in the timeline. The
 sub-headers underneath the month name on the timeline header represent the date
 on the start day (Sunday) of the week. This preset is selected by default.
 
@@ -158,8 +158,8 @@ on the start day (Sunday) of the week. This preset is selected by default.
 
 [The Weeks date range preset on a roadmap.]
 
-In the **Weeks** preset, roadmap shows epics and milestones which have start or due dates **falling within**
-or **going through** the currently selected date range preset, where **today**
+In the **Weeks** preset, roadmap shows epics and milestones which have start or due dates falling within
+or going through the currently selected date range preset, where today
 is shown by the vertical red line in the timeline. The sub-headers underneath the week name on
 the timeline header represent the days of the week.
 

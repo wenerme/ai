@@ -202,7 +202,7 @@ curl https://openrouter.ai/api/v1/messages \
 
 ### Fast mode
 
-`service_tier: "fast"` (OpenAI's [Fast mode](https://developers.openai.com/api/docs/guides/fast-mode) rename of priority processing), `service_tier: "priority"`, and Anthropic's native `speed: "fast"` parameter are fully interchangeable on all APIs and providers. Any of the three requests the priority tier (the response reports `priority`), and on Anthropic models with a fast sibling (e.g. [`anthropic/claude-opus-5-fast`](https://openrouter.ai/anthropic/claude-opus-5-fast)) reroutes to the fast sibling (see [Fast Mode](/docs/cookbook/coding-agents/claude-code-integration#fast-mode)).
+`service_tier: "fast"` (OpenAI's [Fast mode](https://developers.openai.com/api/docs/guides/fast-mode) rename of priority processing), `service_tier: "priority"`, and Anthropic's native `speed: "fast"` parameter are fully interchangeable on all APIs and providers. Any of the three requests the priority tier, and the response always reports the tier as `priority`, never `fast` — the same echo behavior as OpenAI's own API, which returns `priority` even when the request spelled the tier `fast`. On Anthropic models, the reported tier is derived from the `speed` Anthropic returns: a fast-served request reports `service_tier: "priority"` (plus `usage.speed: "fast"` on the Messages API), even though Anthropic's own API would echo `service_tier: "standard"` for it. On Anthropic models that support fast mode, this routes to the model's `fast` service tier endpoint like any other provider's priority tier (see [Fast Mode](/docs/cookbook/coding-agents/claude-code-integration#fast-mode)). The dedicated `*-fast` models (e.g. [`anthropic/claude-opus-5-fast`](https://openrouter.ai/anthropic/claude-opus-5-fast)) are deprecated — they keep working and are served by the same fast tier capacity, but new integrations should target the regular model.
 
 If you set conflicting values explicitly (e.g. `speed: "standard"` with `service_tier: "priority"`), both are honored as written and neither is derived from the other.
 
@@ -245,6 +245,7 @@ Tier endpoints are listed in the [model endpoints API](/docs/api/api-reference/e
 The following providers support `flex` and `priority` service tiers for select models:
 
 * **OpenAI** (the priority tier is branded [Fast mode](https://developers.openai.com/api/docs/guides/fast-mode))
+* **Anthropic** (`priority` only, served via Anthropic's [fast mode](https://platform.claude.com/docs/en/build-with-claude/fast-mode) — requesting the `priority` or `fast` tier sends `speed: "fast"` upstream)
 * **Google Vertex**
 * **Google AI Studio**
 * **SpaceXAI** (`priority` only)
@@ -254,6 +255,7 @@ The response's `service_tier` field reports which tier was actually used. Possib
 Provider documentation:
 
 * **OpenAI**: [Flex](https://developers.openai.com/api/docs/guides/flex-processing) and [Fast mode](https://developers.openai.com/api/docs/guides/fast-mode)
+* **Anthropic**: [Fast mode](https://platform.claude.com/docs/en/build-with-claude/fast-mode)
 * **Google Vertex**: [Flex](https://cloud.google.com/vertex-ai/generative-ai/docs/flex-paygo) and [Priority](https://cloud.google.com/vertex-ai/generative-ai/docs/priority-paygo)
 * **Google AI Studio**: [Flex](https://ai.google.dev/gemini-api/docs/flex-inference) and [Priority](https://ai.google.dev/gemini-api/docs/priority-inference)
 * **SpaceXAI**: [Priority Processing](https://docs.x.ai/developers/advanced-api-usage/priority-processing)

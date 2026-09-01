@@ -2136,14 +2136,12 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/APIEntitiesCdRollout"
+        '400':
+          description: Bad request
         '401':
           description: Unauthorized
-        '422':
-          description: Unprocessable entity
         '404':
           description: Not Found
-        '400':
-          description: Bad Request
       parameters:
       - name: id
         required: true
@@ -3641,7 +3639,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_24bfaf02a0f1"
+              "$ref": "#/components/schemas/RequestBody_2ac715ce5351"
       x-gitlab-lifecycle: experiment
   "/api/v4/ai/duo_workflows/workflows/agent_privileges":
     get:
@@ -31763,6 +31761,85 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/RequestBody_d0e25dbef307"
+      x-gitlab-lifecycle: beta
+  "/api/v4/projects/{id}/repository/changed_paths":
+    get:
+      operationId: getApiV4ProjectsIdRepositoryChangedPaths
+      summary: List files changed between two commits
+      description: Returns the path, change status, and file modes for every path
+        that differs between two refs.
+      tags:
+      - Repositories
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesChangedPath"
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '429':
+          description: Too Many Requests
+      parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the project
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      - name: from
+        required: true
+        description: The commit SHA or branch/tag to compare from
+        schema:
+          type: string
+          nullable: true
+          maxLength: 255
+        in: query
+        example: main
+      - name: to
+        required: true
+        description: The commit SHA or branch/tag to compare to
+        schema:
+          type: string
+          nullable: true
+          maxLength: 255
+        in: query
+        example: feature
+      - name: find_renames
+        required: false
+        description: If true, detect file renames
+        schema:
+          type: boolean
+          nullable: true
+        in: query
+      - name: page
+        required: false
+        description: Current page number
+        schema:
+          type: integer
+          default: 1
+          nullable: true
+        in: query
+        example: 1
+      - name: per_page
+        required: false
+        description: Number of items per page
+        schema:
+          type: integer
+          default: 20
+          nullable: true
+        in: query
+        example: 20
       x-gitlab-lifecycle: beta
   "/api/v4/projects/{id}/repository/diverging_commits":
     get:
@@ -89297,6 +89374,24 @@ components:
         content:
           type: string
           example: VGhpcyBpcyBhIGZpbGU=
+    APIEntitiesChangedPath:
+      type: object
+      properties:
+        status:
+          type: string
+          example: MODIFIED
+        path:
+          type: string
+          example: app/models/user.rb
+        old_path:
+          type: string
+          example: app/models/user.rb
+        old_mode:
+          type: string
+          example: '100644'
+        new_mode:
+          type: string
+          example: '100644'
     APIEntitiesDivergingCommitCount:
       type: object
       properties:
@@ -89921,6 +90016,8 @@ components:
         squash_option:
           type: string
           example: default_off
+        automatic_rebase_enabled:
+          type: boolean
         enforce_auth_checks_on_uploads:
           type: boolean
         suggestion_commit_message:
@@ -90374,6 +90471,8 @@ components:
         squash_option:
           type: string
           example: default_off
+        automatic_rebase_enabled:
+          type: boolean
         enforce_auth_checks_on_uploads:
           type: boolean
         suggestion_commit_message:
@@ -90822,6 +90921,8 @@ components:
         squash_option:
           type: string
           example: default_off
+        automatic_rebase_enabled:
+          type: boolean
         enforce_auth_checks_on_uploads:
           type: boolean
         suggestion_commit_message:
@@ -97512,7 +97613,7 @@ components:
           description: The ID or path of the project
           example: '1'
           nullable: true
-    RequestBody_24bfaf02a0f1:
+    RequestBody_2ac715ce5351:
       type: object
       properties:
         project_id:
@@ -97638,6 +97739,21 @@ components:
           - convert_platform_ci_pipeline
           description: Where the session was triggered from
           nullable: true
+        callback_hook_id:
+          type: integer
+          description: ID of a webhook with GitLab Duo flow callbacks enabled. When
+            provided, GitLab POSTs flow lifecycle events to that webhook so the client
+            does not have to poll. The hook must belong to the project or namespace
+            the flow runs in, or to one of its ancestor groups.
+          example: 42
+          nullable: true
+        client_reference:
+          type: string
+          description: An opaque string echoed back in every callback payload, useful
+            for correlating callbacks to the triggering request.
+          example: autoflow-run-abc123
+          nullable: true
+          maxLength: 255
     RequestBody_7139042d9372:
       type: object
       properties:

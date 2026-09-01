@@ -20,7 +20,7 @@ These guides show you how to solve specific problems and implement features with
 
 [**Run background processes**Start and manage long-running services and applications.](https://developers.cloudflare.com/sandbox/guides/background-processes/)
 
-[**Backup and restore**Create point-in-time backups and restore sandbox directories.](https://developers.cloudflare.com/sandbox/guides/backup-restore/)
+[**Backup and restore**Snapshot a sandbox directory to R2 and restore it later.](https://developers.cloudflare.com/sandbox/guides/backup-restore/)
 
 [**Browser terminals**Connect browser-based terminals to sandbox shells using xterm.js or raw WebSockets.](https://developers.cloudflare.com/sandbox/guides/browser-terminals/)
 
