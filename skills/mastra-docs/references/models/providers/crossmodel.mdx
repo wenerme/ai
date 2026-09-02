@@ -1,11 +1,11 @@
 ---
-title: "CrossModel | Models"
-description: "Use CrossModel models with Mastra. 56 models available."
+title: "CrossModel Models: IDs, Pricing & Usage"
+description: "Browse CrossModel model IDs, capabilities, context windows, and pricing. Learn how to use them in TypeScript with Mastra's model router."
 ---
 
 # [CrossModel logo]CrossModel
 
-Access 56 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
+Access 57 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
 
 Learn more in the [CrossModel documentation](https://www.crossmodel.ai/docs).
 
@@ -41,6 +41,18 @@ for await (const chunk of stream) {
   models={[
   {
     "model": "crossmodel/anthropic/claude-fable-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 10,
+    "outputCost": 50
+  },
+  {
+    "model": "crossmodel/anthropic/claude-fable-5-1",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -713,6 +725,8 @@ for await (const chunk of stream) {
   }
 ]}
 />
+
+Model availability, capabilities, context windows, and pricing are sourced from [models.dev](https://models.dev) and may change.
 
 ## Advanced configuration
 

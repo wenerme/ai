@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Setup
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create a Cloudflare Tunnel and publish your first application in under 5 minutes.
 
@@ -68,6 +68,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel" \
 
 To make an application accessible from the Internet, add a published application route to your tunnel. The tunnel route maps a public hostname to a local service.
 
+If your origin already serves HTTPS or redirects HTTP to HTTPS, refer to [Troubleshoot HTTPS origins](https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/) to choose the **Service URL** and origin settings.
+
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels** and select your tunnel. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Under **Routes**, select **Add route**.
 3. Select **Published application**.
@@ -78,6 +80,7 @@ For example, if your web server runs on the same machine as `cloudflared`:
   * HTTP on port `80`: `http://localhost:80`
   * HTTPS on port `443`: `https://localhost:443`
 If your web server runs on a different machine: `http://192.0.2.1:80`
+If the origin certificate covers the public hostname rather than the service address, set **Origin Server Name** to the certificate hostname and keep **Disable TLS certificate verification** turned off. Refer to [Troubleshoot HTTPS origins](https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/) for the complete configuration.
 6. Select **Add route**.
 
 1. Configure your tunnel's ingress rules:
@@ -182,5 +185,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/setup/#page","headline":"Set up Cloudflare Tunnel · Cloudflare Docs","description":"Create your first Cloudflare Tunnel and publish an application in under 5 minutes.","url":"https://developers.cloudflare.com/tunnel/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/setup/#page","headline":"Set up Cloudflare Tunnel · Cloudflare Docs","description":"Create your first Cloudflare Tunnel and publish an application in under 5 minutes.","url":"https://developers.cloudflare.com/tunnel/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

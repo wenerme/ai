@@ -1,18 +1,24 @@
 ---
 title: "Ideogram P-Image - 快速文生图"
 description: "在 ComfyUI 中使用 Ideogram 的快速 P-Image 模型，从文本描述生成图像，以更低的成本和延迟提供与领先模型相当的质量"
-translationSourceHash: ae883c64
+translationSourceHash: b65872f5
 translationFrom: tutorials/partner-nodes/ideogram/ideogram-p-image.mdx
 ---
 
 Ideogram P-Image 是 Ideogram 的快速文生图模型，以显著更低的成本和延迟提供与领先图像模型相当的质量。它接受单个文本提示词并输出一张图像，支持质量级别和分辨率控制，非常适合快速迭代和大批量生成。
 
-## 主要功能
+## Ideogram P-Image 的优势
 
 - **速度与价值**：以更低的成本和延迟提供与领先图像模型相当的质量
 - **质量等级**：可从 VERY_LOW、LOW、MEDIUM 或 HIGH 速度/价格/质量等级中选择
 - **灵活输出**：支持 1K 或 2K 尺寸档位，并完整支持宽高比
 - **提示词上采样**：AUTO 会在生成之前将简短提示词扩展为详细的结构化描述
+
+## 示例输出
+
+从单个提示词进行文生图：
+
+![Ideogram P-Image 输出](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_ideogram_p_image_t2i.png)
 
 ## Ideogram P-Image 文生图工作流
 
@@ -24,7 +30,7 @@ Ideogram P-Image 是 Ideogram 的快速文生图模型，以显著更低的成�
     在 Comfy Cloud 中打开
   
   
-    下载 JSON，或在模板库中搜索"Ideogram P-Image"
+    下载 JSON，或在模板库中搜索“Ideogram P-Image”
   
 
 ![Ideogram P-Image 输出](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_ideogram_p_image_t2i.png)

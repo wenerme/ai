@@ -16,14 +16,15 @@ Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
 
-## 2026-08-25
+## 2026-09-01
 
 
-**WAF Release - Scheduled changes for 2026-09-01**
+**WAF Release - Scheduled changes for 2026-09-08**
 
-| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                              | Comments                 |
-| ----------------- | ------------ | ---------------- | -------------- | ----------- | ---------------------------------------- | ------------------------ |
-| 2026-08-25        | 2026-09-01   | Log              | N/A            | ...bcfa0966 | SQLi - WHERE Comparison With WITH Clause | This is a new detection. |
+| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                                                             | Comments                                                                                                                              |
+| ----------------- | ------------ | ---------------- | -------------- | ----------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-09-01        | 2026-09-08   | Log              | N/A            | ...c76ba662 | Next.js - Image Optimizer Remote Code Execution via Crafted AVIF - Beta | This rule will be merged into the original rule "Next.js - Image Optimizer Remote Code Execution via Crafted AVIF" (ID: ...80256efe). |
+| 2026-09-01        | 2026-09-08   | Log              | N/A            | ...208457cf | Next.js - Remote Code Execution - CVE:CVE-2026-75604 - Beta             | This rule will be merged into the original rule "Next.js - Remote Code Execution - CVE:CVE-2026-75604" (ID: ...2ca6cce3).             |
 
 For other WAF updates, refer to the [changelog](https://developers.cloudflare.com/waf/change-log/changelog/).
 

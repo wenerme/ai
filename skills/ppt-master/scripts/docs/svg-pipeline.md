@@ -743,11 +743,13 @@ It aggregates:
 - `align_embed_images.py` (`crop-images` / `fix-aspect` / `embed-images` aliases route here)
 - `flatten_tspan.py`
 
+EMF/WMF images referenced by a page are preserved as external references, never embedded or rasterized.
+
 `svg_final/` is an optional Step 7.2 preview artifact; the native exporter reads `svg_output/` and never requires it. It is the self-contained visual reference and may be manually inserted as an SVG picture.
 
 ## `svg_to_pptx.py`
 
-Convert project SVGs into PPTX.
+Convert project SVGs into PPTX. EMF/WMF images referenced from `svg_output/` are embedded as native `image/x-emf` / `image/x-wmf` media at full vector fidelity.
 
 Native formulas use the two markers owned by
 [`native-formula.md`](../../references/native-formula.md). A standalone block
@@ -856,7 +858,11 @@ Behavior:
   the converter resolves its Latin / East Asian role to a typeface that normally
   requires a custom installation. A recommended stack such as
   `"Microsoft YaHei", Arial, sans-serif` does not warn merely because it ends with a
-  generic fallback.
+  generic fallback. Face resolution writes one face per script: the first named
+  Latin face fills `latin`, the first named CJK face fills `ea` (and `latin` when
+  no Latin face is named), and a generic family fills `latin` only when it
+  precedes every named face. Fonts are never embedded; a missing face substitutes
+  on the viewer's machine.
 - Multiline text export modes:
   - Default: one editable frame retains authored breaks and disables PowerPoint wrapping. An ordinary generated frame uses PowerPoint's native resize-shape-to-fit-text behavior, so deleting a retained break expands the frame instead of leaving text outside it; imported exact frames and structured multiline placeholder carriers retain fixed-size behavior.
   - `--reflow-text`: eligible same-size lines become flowing prose that PowerPoint may rewrap; a font-size change, list marker, or accepted larger gap remains a paragraph boundary. Legacy `--merge-paragraphs` aliases this mode.
@@ -1014,9 +1020,18 @@ the SVG quality checker.
   a JSON bounds object with `--json`.
 - `calibrate` measures fixed CJK and Latin samples for every typography role
   from `spec_lock.md` or repeatable `--role NAME:FAMILY:SIZE` overrides, writes
-  `validation/text_calibration.json`, and prints a compact table or JSON. Add
-  `--outline` to include the longest planned line per mapped role from Design
-  Spec §IX.
+  `validation/text_calibration.json`, and prints a compact table or JSON. The
+  estimator is additive across scripts, so a line mixing CJK with Latin words
+  or digits is estimated as (CJK chars ÷ CJK rate + other chars ÷ Latin rate)
+  × 100; spaces, digits, and punctuation count as Latin. Rates are rounded, so
+  the estimate carries a few percent of slack; leave that margin in the zone. The checker's overflow
+  diagnostic prints that line's average px per character, which is not a
+  reusable rate. A lock role without its own
+  `<role>_family` resolves to `title_family` when the role name contains
+  `title` or `numeral`, otherwise to `body_family`. Add `--outline` to include
+  the longest planned line per mapped role from Design Spec §IX; a Content
+  value joined by spaced `·`, `•`, `|`, `/` separators or by semicolons counts
+  each block as its own line.
 
 ```bash
 python3 scripts/text_measure.py measure "Editable DrawingML text" --size 22

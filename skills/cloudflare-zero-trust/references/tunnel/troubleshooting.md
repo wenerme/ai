@@ -12,11 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Jul 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use this page to diagnose and resolve common issues with Cloudflare Tunnel. Many issues are resolved by upgrading to the latest version of `cloudflared` — refer to [Update cloudflared](https://developers.cloudflare.com/tunnel/downloads/update-cloudflared/) before investigating further.
 
 For tunnel health monitoring, logs, and metrics, refer to [Monitoring](https://developers.cloudflare.com/tunnel/monitoring/).
+
+If your tunnel is `Healthy` but an HTTPS route fails or redirects, refer to [Troubleshoot HTTPS origins](https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/).
 
 ## Connection errors
 
@@ -176,9 +178,11 @@ The third component, the token, consists of the zone ID (for the selected domain
 
 This means the origin is using a certificate that `cloudflared` does not trust. For example, you may get this error if you are using SSL/TLS inspection in a proxy between your server and Cloudflare. To resolve:
 
-* Add the certificate to the system certificate pool.
-* Use the `--origin-ca-pool` flag and specify the path to the certificate.
-* Use the `--no-tls-verify` flag to stop `cloudflared` checking the certificate for a trust chain.
+* Add the CA certificate to the system trust store, then restart `cloudflared`.
+* Set [caPool](https://developers.cloudflare.com/tunnel/advanced/origin-parameters/#capool) to a local PEM file that contains the CA certificate.
+* As a temporary last resort, set [noTLSVerify](https://developers.cloudflare.com/tunnel/advanced/origin-parameters/#notlsverify) to `true`. Turn it off after you fix the certificate trust chain.
+
+The `--origin-ca-pool` and `--no-tls-verify` command-line flags apply only when you define a single origin with `--url`. For ingress rules, configure these settings under `originRequest`.
 
 ## I see an error 1033 when attempting to run a tunnel.
 
@@ -231,7 +235,7 @@ To resolve, update the service URL in your tunnel route to match the [protocol](
 
 If the port in your tunnel route does not match the port your service is listening on, `cloudflared` will log a `connection refused` error for that port. Double-check the service URL in your ingress rule and compare it against the port your application is bound to.
 
-#### Origin uses a certificate that `cloudflared` does not trust
+#### `cloudflared` cannot validate the origin certificate
 
 If the origin presents a TLS certificate that `cloudflared` cannot verify, the logs will show an error similar to:
 
@@ -239,11 +243,11 @@ If the origin presents a TLS certificate that `cloudflared` cannot verify, the l
 error="x509: certificate is valid for example.com, not localhost"
 ```
 
-This commonly occurs when the origin uses a self-signed certificate or when an SSL/TLS inspection proxy sits between `cloudflared` and the origin.
+This error indicates that the certificate does not cover the service hostname. An `x509: certificate signed by unknown authority` error instead indicates that `cloudflared` does not trust the certificate authority.
 
 To resolve, use one of the following approaches:
 
-* Set [originServerName](https://developers.cloudflare.com/tunnel/configuration/#originservername) to the hostname on the origin certificate in your tunnel route. If you are using a locally-managed tunnel, here is an example of a [configuration file](https://developers.cloudflare.com/tunnel/advanced/local-management/configuration-file/):
+* Set [originServerName](https://developers.cloudflare.com/tunnel/advanced/origin-parameters/#originservername) to the hostname on the origin certificate in your tunnel route. If you are using a locally-managed tunnel, here is an example of a [configuration file](https://developers.cloudflare.com/tunnel/advanced/local-management/configuration-file/):
 ```yml
 ingress:
   - hostname: app.example.com
@@ -251,7 +255,7 @@ ingress:
     originRequest:
       originServerName: app.example.com
 ```
-* Provide the CA certificate using [caPool](https://developers.cloudflare.com/tunnel/configuration/#capool):
+* Provide the CA certificate using [caPool](https://developers.cloudflare.com/tunnel/advanced/origin-parameters/#capool):
 ```yml
 ingress:
   - hostname: app.example.com
@@ -259,7 +263,7 @@ ingress:
     originRequest:
       caPool: /path/to/ca-cert.pem
 ```
-* As a last resort, disable TLS verification with [noTLSVerify](https://developers.cloudflare.com/tunnel/configuration/#notlsverify). This is not recommended for production environments.
+* As a temporary last resort, disable TLS verification with [noTLSVerify](https://developers.cloudflare.com/tunnel/advanced/origin-parameters/#notlsverify). Turn it off after resolving the certificate issue.
 ```yml
 ingress:
   - hostname: app.example.com
@@ -268,17 +272,11 @@ ingress:
       noTLSVerify: true
 ```
 
-## I see `ERR_TOO_MANY_REDIRECTS` when attempting to connect to an Access self-hosted app.
+## A published application returns `ERR_TOO_MANY_REDIRECTS`.
 
-This error occurs when `cloudflared` does not recognize the SSL/TLS certificate presented by your origin. To resolve the issue, set the [origin server name](https://developers.cloudflare.com/tunnel/configuration/#originservername) parameter to the hostname on your origin certificate. Here is an example of a locally-managed tunnel configuration:
+This error can occur when the origin redirects HTTP requests to HTTPS but the published application route uses an `http://` `Service URL`. Each request reaches the origin over HTTP and receives the same redirect.
 
-```txt
-ingress:
-  - hostname: test.example.com
-    service: https://localhost:443
-    originRequest:
-      originServerName: test.example.com
-```
+To choose the correct service URL and origin settings, refer to [Troubleshoot HTTPS origins](https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/). If the redirect chain alternates between HTTP and HTTPS, also refer to [ERR\_TOO\_MANY\_REDIRECTS](https://developers.cloudflare.com/ssl/troubleshooting/too-many-redirects/).
 
 ## `cloudflared access` shows an error `websocket: bad handshake`.
 
@@ -299,7 +297,7 @@ If `cloudflared` returns error `error="remote error: tls: handshake failure"`, c
 
 ## Tunnel connections fail with `Too many open files` error.
 
-If your [Cloudflare Tunnel logs](https://developers.cloudflare.com/tunnel/monitoring/#logs) return a `socket: too many open files` error, it means that `cloudflared` has exhausted the open files limit on your machine. The maximum number of open files, or file descriptors, is an operating system setting that determines how many files a process is allowed to open. To increase the open file limit, you will need to [configure ulimit settings](https://developers.cloudflare.com/tunnel/configuration/#ulimits) on the machine running `cloudflared`.
+If your [Cloudflare Tunnel logs](https://developers.cloudflare.com/tunnel/monitoring/#logs) return a `socket: too many open files` error, it means that `cloudflared` has exhausted the open files limit on your machine. The maximum number of open files, or file descriptors, is an operating system setting that determines how many files a process is allowed to open. To increase the open file limit, you will need to [configure ulimit settings](https://developers.cloudflare.com/tunnel/downloads/system-requirements/#ulimits-linux-and-macos) on the machine running `cloudflared`.
 
 ## I see `failed to sufficiently increase receive buffer size` in my cloudflared logs.
 
@@ -427,5 +425,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Docs","description":"Resolve common Cloudflare Tunnel connection and configuration issues.","url":"https://developers.cloudflare.com/tunnel/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Docs","description":"Resolve common Cloudflare Tunnel connection and configuration issues.","url":"https://developers.cloudflare.com/tunnel/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

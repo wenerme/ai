@@ -19,6 +19,123 @@ Image background removal, returning the subject on a transparent background:
 
 ![Bria: Remove Image Background example output](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/utility_bria_remove_image_background.png)
 
-## Use it in ComfyUI
+### Bria: Remove Image Background {#utility_bria_remove_image_background}
 
-Run the image and video background removal, green screen, and background replacement workflows in ComfyUI, locally or on Comfy Cloud
+Upload an image to automatically remove its background using the Bria API. The result is returned as an image with a transparent background.
+
+[Bria: Remove Image Background workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Bria: Remove Image Background&quot; in Template Library
+  
+
+**Input materials**
+
+Upload this file to the matching `LoadImage` node:
+
+  
+    `LoadImage` node 26 · `denim_girl.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [Input image]
+  [Bria: Remove Image Background example output]
+</div>
+
+## Video Background Processing
+
+Bria's video background processing nodes let you remove, replace, or apply chroma-key effects to video backgrounds. The input video must be 60 seconds or shorter.
+
+### Bria: Remove Video Background {#api_bria_remove_video_background}
+
+Replace a video's background with a solid color of your choice.
+
+[Bria: Remove Video Background workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Bria: Remove Video Background&quot; in Template Library
+  
+
+**Input materials**
+
+Upload this file to the matching `LoadVideo` node:
+
+  
+    `LoadVideo` node 4 · `spear_warrior.mp4`
+  
+
+### Bria: Remove Video Background (Transparent) {#api_bria_remove_video_background_transparent}
+
+Remove the background from a video and output it with transparency.
+
+[Bria: Remove Video Background (Transparent) workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Bria: Remove Video Background (Transparent)&quot; in Template Library
+  
+
+**Input materials**
+
+Upload this file to the matching `LoadVideo` node:
+
+  
+    `LoadVideo` node 5 · `ad_video_demo.mp4`
+  
+
+### Bria: Video Green Screen {#api_bria_video_green_screen}
+
+Apply a professional chroma-key green or blue screen effect to your video, with multiple preset options including broadcast_green, chroma_green, and blue_screen.
+
+[Bria: Video Green Screen workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Bria: Video Green Screen&quot; in Template Library
+  
+
+**Input materials**
+
+Upload this file to the matching `LoadVideo` node:
+
+  
+    `LoadVideo` node 5 · `investigator.mp4`
+  
+
+### Bria: Video Replace Background {#api_bria_video_replace_background}
+
+Replace a video's background with a custom image or another video.
+
+[Bria: Video Replace Background workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Bria: Video Replace Background&quot; in Template Library
+  
+
+**Input materials**
+
+Upload these files to the matching `LoadVideo` and `LoadImage` nodes:
+
+  
+    `LoadVideo` node 4 · `stained_window_vintage_woman.mp4`
+  
+  
+    `LoadImage` node 8 · `gothic_hall_light_rays.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [gothic_hall_light_rays.png]
+</div>

@@ -12,6 +12,44 @@ Topaz Astra Video Creative Upscale is available in ComfyUI through the Topaz par
 - **Resolution targets**: Output at FullHD (1080p) or 4K (2160p)
 - **Simple I/O**: Accepts MP4 input and produces enhanced MP4 output
 
-## Use it in ComfyUI
+## Topaz Astra: Video Creative Upscale
 
-Run the video creative upscale workflow in ComfyUI, locally or on Comfy Cloud
+Upscale and enhance a video with the Starlight (Astra) Fast model, with optional apo-8 frame interpolation to smooth motion.
+
+[Topaz Astra Video Creative Upscale workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search "Topaz Astra" in Template Library
+  
+
+Input materials
+
+Download this sample input video to try the workflow:
+
+  
+    A sample clip used as the base video
+  
+
+### Workflow overview
+
+This workflow uses three nodes:
+
+- **LoadVideo**: provides the source video
+- **TopazVideoEnhanceV2**: the core node, configured with the `Starlight (Astra) Fast` upscaler model
+- **SaveVideo**: saves the enhanced video
+
+### Steps to run
+
+1. **Load a video**: connect your MP4 video to the **LoadVideo** node
+2. **Select the upscaler**: keep `Starlight (Astra) Fast` on the **TopazVideoEnhanceV2** node
+3. **Set resolution**: `FullHD (1080p)` or `4K (2160p)`
+4. **Optional frame interpolation**: switch the interpolation model to `apo-8` to raise the frame rate
+5. **Click Queue**: press `Ctrl+Enter` to generate
+
+## Get started
+
+1. Update ComfyUI to the latest version
+2. Go to Template Library, search for `Topaz Astra`

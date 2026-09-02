@@ -5,8 +5,8 @@ Send email notifications to all users or specific groups and projects.
 - Tier: Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
 
-Administrators can email all users, or users of a chosen group or project.
-Users receive the email at their primary email address.
+Administrators can send email notifications to all human users on the instance, or to those in a specific
+group or project. Users receive the email at their primary email address.
 
 You might use this functionality to notify your users:
 

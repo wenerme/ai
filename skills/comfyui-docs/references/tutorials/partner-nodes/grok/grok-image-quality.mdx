@@ -18,6 +18,31 @@ Enhanced image generation with the `grok-imagine-image-quality` model:
 
 ![Grok Imagine Image Quality generation output](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_grok_imagine_image_quality_image_generation.png)
 
-## Use it in ComfyUI
+## Grok Imagine Image Quality: Generation
 
-Run the image generation workflow in ComfyUI, locally or on Comfy Cloud
+Generate enhanced images with the `grok-imagine-image-quality` model, which adds improved detail, better text rendering, and stronger creative control compared to the standard model.
+
+[Grok Imagine Image Quality generation workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search "Grok Imagine Image Quality" in Template Library
+  
+
+![Grok Imagine Image Quality generation output](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_grok_imagine_image_quality_image_generation.png)
+
+### Workflow overview
+
+This workflow uses two nodes:
+
+- **GrokImageNode**: the core node, configured with the `grok-imagine-image-quality` model
+- **SaveImage**: saves the generated image
+
+### Steps to run
+
+1. **Enter your prompt**: describe the scene and any text you want rendered in the **GrokImageNode**
+2. **Choose aspect ratio**: pick from the available ratios
+3. **Set resolution**: `1K` or `2K`
+4. **Click Queue**: press `Ctrl+Enter` to generate

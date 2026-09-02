@@ -1,26 +1,26 @@
 ---
 title: "OpenRouter LLM 파트너 노드 ComfyUI 공식 예시"
 description: "ComfyUI에서 OpenRouter LLM 파트너 노드를 사용해 여러 프론티어 모델을 통해 채팅, 추론, 비전 및 웹 기반 답변을 제공하세요."
-translationSourceHash: 61b827bf
+translationSourceHash: 7f3f031c
 translationFrom: tutorials/partner-nodes/openrouter/llm.mdx
 translationBlockHashes:
-  "_intro": 9264cc8a
-  "What you can do": 45cbf4e4
-  "Supported models": dcb9f489
+  "_intro": f09612e4
+  "What OpenRouter LLM is good at": 2f0a413c
+  "Supported models": 0cde70e9
   "Model-specific inputs": 61b64249
 ---
 
 [OpenRouter](https://openrouter.ai)는 대규모 언어 모델을 위한 통합 라우팅 플랫폼입니다. 하나의 API를 통해 다양한 제공자를 노출하므로 통합을 변경하지 않고도 모델을 전환할 수 있습니다. ComfyUI는 **OpenRouter LLM** 파트너 노드를 통해 연결되며, 이 노드는 Claude, GPT, Gemini, Grok, DeepSeek, Qwen, Mistral, GLM, Kimi, Perplexity Sonar 등 텍스트 및 멀티모달 모델의 엄선된 목록을 단일 노드에서 제공합니다.
 
-## 할 수 있는 일
+## OpenRouter LLM의 강점
 
-- **텍스트 채팅**: 역할이나 작업 지침을 위한 프롬프트와 선택적 `system_prompt`
-- **비전**: 지원되는 모델에 참조 이미지를 첨부하세요 (슬롯 수는 모델에 따라 다름)
-- **비디오 입력**: Gemini 3.5 Flash 및 Qwen 3.6 Plus/Flash는 선택적 참조 비디오를 지원합니다
-- **추론**: 추론 / 프론티어 추론 모델에 대한 `reasoning_effort`(`off`, `low`, `medium`, `high`)
-- **웹 검색**: Perplexity Sonar 모델은 근거 있는 답변을 위해 `search_context_size`를 노출합니다
+- **텍스트 채팅**: 프롬프트와 역할 또는 작업 지침을 위한 선택적 `system_prompt`를 사용할 수 있습니다.
+- **비전**: 지원되는 모델에 참조 이미지를 첨부할 수 있습니다(슬롯 수는 모델에 따라 다름).
+- **비디오 입력**: Gemini 3.5 Flash 및 Qwen 3.6 Plus/Flash는 선택적 참조 비디오를 지원합니다.
+- **추론**: 추론/프런티어 추론 모델에서 `reasoning_effort` 설정(`off`, `low`, `medium`, `high`)을 지원합니다.
+- **웹 검색**: Perplexity Sonar 모델은 근거 있는 답변을 제공하기 위해 `search_context_size`를 노출합니다.
 
-토큰 가격은 [파트너 노드 가격](/ko/tutorials/partner-nodes/pricing#openrouter)에서 확인하실 수 있습니다.
+토큰 요금은 [파트너 노드 요금](/ko/tutorials/partner-nodes/pricing#openrouter)에서 확인할 수 있습니다.
 
 ## 지원되는 모델
 

@@ -63,6 +63,9 @@ Useful options:
 - Unknown backend-specific flags are passed through to each selected converter.
 - `-o/--output` selects one Markdown file for one input, or an output directory
   for multiple inputs / directory inputs.
+  A path that names an existing directory, or ends in `/`, is always treated as
+  a directory, even for a single input: the file keeps its default `<stem>.md`
+  name inside it.
 
 For multi-source project intake, use `project_manager.py import-sources` with
 all source paths / URLs. For local files, the default is to keep generated
@@ -627,7 +630,7 @@ block Python's default TLS fingerprint. No extra flags needed. If
 `curl_cffi` is not available, it falls back to plain `requests`.
 
 On success, the converter uses the shared best-effort sidecar contract for
-`<output>.conversion_profile.json` beside the Markdown output.
+`<stem>.conversion_profile.json` beside the Markdown output.
 `--emit-result` is for wrapper scripts that need the actual saved Markdown path
 when the converter derives a title-based filename.
 
