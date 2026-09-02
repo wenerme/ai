@@ -21,6 +21,63 @@ You can drive music generation directly from your ComfyUI node graphs, alongside
 - **Content creators and agencies** - Produce platform-ready videos with synchronized music across multiple formats.
 - **Developers and pipeline engineers** - Integrate music generation directly into automated workflows via ComfyUI.
 
-## Use it in ComfyUI
+## Get started
 
-Run the video soundtrack and text-to-music workflows in ComfyUI, locally or on Comfy Cloud
+  
+    Update ComfyUI to the latest version, or use [Comfy Cloud](https://www.comfy.org/cloud).
+  
+  
+    Open the **Workflow Library**, browse **Templates**, and search for "Sonilo" to find a ready-to-use workflow.
+  
+  
+    Connect your video source, update the prompt, and click the **Run** button or use `Ctrl(Cmd) + Enter` to generate.
+  
+
+### Sonilo: Video Soundtrack Generation {#api_sonilo_v2m}
+
+Generate synchronized soundtracks from video footage. Input a video to produce music that matches its pacing and emotional cues.
+
+[Sonilo: Video Soundtrack Generation workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Sonilo: Video Soundtrack Generation&quot; in Template Library
+  
+
+**Input materials**
+
+Upload this file to the matching `LoadVideo` node:
+
+  
+    `LoadVideo` node 705 · `leopard_rider.mp4`
+  
+
+1. Load your video in the input node.
+2. (Optional) Add a text prompt to guide the style or mood of the generated music.
+3. Click the **Run** button or use the shortcut `Ctrl(Cmd) + Enter` to start music generation.
+4. The generated audio will be saved to the `ComfyUI/output/audio` directory.
+
+### Sonilo: Text to Music Generation {#api_sonilo_t2m}
+
+Generate high-quality, production-ready music from text prompts.
+
+[Sonilo: Text to Music Generation workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Sonilo: Text to Music Generation&quot; in Template Library
+  
+
+**Example prompts:**
+
+- `Dreamy ambient electronic music, gentle rhythm, suitable for short videos`
+- `Futuristic electronic instrumental, sci-fi sense, ethereal and deep`
+- `Lazy jazz instrumental, saxophone, relaxing cafe atmosphere`
+
+1. Enter your text prompt describing the music you want to generate.
+2. Click the **Run** button or use the shortcut `Ctrl(Cmd) + Enter` to start audio generation.
+3. The generated audio will be saved to the `ComfyUI/output/audio` directory.

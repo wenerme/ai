@@ -3058,6 +3058,7 @@ Arguments:
 | <a id="mutation-adminsidekiqqueuesdeletejobs-clientid"></a>`clientId` | [`String`](#string) | Delete jobs matching client_id in the context metadata. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-featurecategory"></a>`featureCategory` | [`String`](#string) | Delete jobs matching feature_category in the context metadata. |
+| <a id="mutation-adminsidekiqqueuesdeletejobs-glrootnamespaceid"></a>`glRootNamespaceId` | [`String`](#string) | Delete jobs matching gl_root_namespace_id in the context metadata. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-gluserid"></a>`glUserId` | [`String`](#string) | Delete jobs matching gl_user_id in the context metadata. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-jobid"></a>`jobId` | [`String`](#string) | Delete jobs matching job_id in the context metadata. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-kubernetesagentid"></a>`kubernetesAgentId` | [`String`](#string) | Delete jobs matching kubernetes_agent_id in the context metadata. |
@@ -4171,6 +4172,31 @@ Fields:
 | <a id="mutation-artifactregistryactivate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-artifactregistryactivate-registry"></a>`registry`  | [`ArtifactRegistry`](#artifactregistry) | Introduced in GitLab 19.4. Status: Experiment. Registry provisioned. Null when the request was refused. |
 
+### `Mutation.artifactRegistryArtifactDelete`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Deletes one artifact of an Artifact Registry repository. Permanently deletes a published artifact on a hosted repository and evicts a cached artifact on a remote repository, following the kind of the repository addressed. Artifact Registry accepts the request rather than completing it, so the mutation reports acceptance rather than completion. Re-read the artifact list to see the result.
+
+Input type: `ArtifactRegistryArtifactDeleteInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryartifactdelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryartifactdelete-id"></a>`id` | [`ID!`](#id) | ID of the artifact in Artifact Registry, as returned by the `id` field on a package or image. Not a GitLab global ID. |
+| <a id="mutation-artifactregistryartifactdelete-name"></a>`name` | [`String!`](#string) | Name of the repository holding the artifact, unique within the organization. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryartifactdelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryartifactdelete-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-artifactregistryartifactdelete-repository"></a>`repository` | [`ArtifactRegistryRepository`](#artifactregistryrepository) | Repository holding the deleted artifact. Counters were read before the deletion applied, so they can lag its result. Null when the deletion was not applied. |
+
 ### `Mutation.artifactRegistryDisable`
 
 - Introduced in GitLab 19.4.
@@ -4216,6 +4242,30 @@ Fields:
 | <a id="mutation-artifactregistryenable-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-artifactregistryenable-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-artifactregistryenable-registry"></a>`registry` | [`ArtifactRegistry`](#artifactregistry) | Registry after the transition. Null when the transition was rejected, for example an unknown namespace. |
+
+### `Mutation.artifactRegistryRepositoryArtifactsDelete`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Deletes every artifact of an Artifact Registry repository. Permanently deletes published artifacts on a hosted repository and evicts cached artifacts on a remote repository, following the kind of the repository addressed. Artifact Registry accepts the request rather than completing it, so the mutation reports acceptance rather than completion. Re-read the artifact list to see the result.
+
+Input type: `ArtifactRegistryRepositoryArtifactsDeleteInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryrepositoryartifactsdelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryrepositoryartifactsdelete-name"></a>`name` | [`String!`](#string) | Name of the repository whose artifacts are deleted, unique within the organization. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryrepositoryartifactsdelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryrepositoryartifactsdelete-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-artifactregistryrepositoryartifactsdelete-repository"></a>`repository` | [`ArtifactRegistryRepository`](#artifactregistryrepository) | Repository the deletion targeted. Counters were read before the deletion applied, so they can lag its result. Null when the deletion was not applied. |
 
 ### `Mutation.artifactRegistryRepositoryCreate`
 
@@ -37989,7 +38039,7 @@ Arguments:
 | <a id="countablevulnerability-dependencies-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Work in progress and gated with feature flag `malicious_packages_dependency_list_filtering`. |
 | <a id="countablevulnerability-dependencies-notcomponentversions"></a>`notComponentVersions`  | [`[String!]`](#string) | Introduced in GitLab 18.1. Status: Experiment. Filter dependencies to exclude the specified component versions. |
 | <a id="countablevulnerability-dependencies-packagemanagers"></a>`packageManagers` | [`[PackageManager!]`](#packagemanager) | Filter dependencies by package managers. |
-| <a id="countablevulnerability-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. |
+| <a id="countablevulnerability-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. Cannot be combined with the `malware` argument. |
 | <a id="countablevulnerability-dependencies-sort"></a>`sort` | [`DependencySort`](#dependencysort) | Sort dependencies by given criteria. |
 | <a id="countablevulnerability-dependencies-sourcetypes"></a>`sourceTypes` | [`[SbomSourceType!]`](#sbomsourcetype) | Filter dependencies by source type. |
 | <a id="countablevulnerability-dependencies-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref IDs. Only available when the vulnerabilities_across_contexts feature flag is enabled. |
@@ -40558,7 +40608,7 @@ Fields:
 | <a id="duoworkflow-auditevents"></a>`auditEvents`  | [`AiAuditEventConnection`](#aiauditeventconnection) | Introduced in GitLab 19.0. Status: Experiment. Audit events recorded for the session. Requires `read_agent_artifacts` on the workflow's project or namespace. Returns no events when the `agent_artifacts_page` feature flag is disabled. |
 | <a id="duoworkflow-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the session was created. |
 | <a id="duoworkflow-environment"></a>`environment` | [`WorkflowEnvironment`](#workflowenvironment) | Environment, like IDE or web. |
-| <a id="duoworkflow-externalmcpblocked"></a>`externalMcpBlocked`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Whether the workflow's external MCP server tools are currently blocked for the namespace (group-level kill-switch). Checked per tool call so blocking takes effect mid-session. |
+| <a id="duoworkflow-externalmcpblocked"></a>`externalMcpBlocked`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Whether any of the workflow's external MCP servers are currently blocked for the namespace (group-level kill-switch). |
 | <a id="duoworkflow-flowmetadataid"></a>`flowMetadataId`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Identifier of the flow that was executed in the session. |
 | <a id="duoworkflow-flowmetadataschemaversion"></a>`flowMetadataSchemaVersion`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Schema version of the flow metadata for the session. |
 | <a id="duoworkflow-flowmetadataversion"></a>`flowMetadataVersion`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Version of the flow that was executed in the session. |
@@ -43841,7 +43891,7 @@ Arguments:
 | <a id="group-dependencies-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Work in progress and gated with feature flag `malicious_packages_dependency_list_filtering`. |
 | <a id="group-dependencies-notcomponentversions"></a>`notComponentVersions`  | [`[String!]`](#string) | Introduced in GitLab 18.1. Status: Experiment. Filter dependencies to exclude the specified component versions. |
 | <a id="group-dependencies-packagemanagers"></a>`packageManagers` | [`[PackageManager!]`](#packagemanager) | Filter dependencies by package managers. |
-| <a id="group-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. |
+| <a id="group-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. Cannot be combined with the `malware` argument. |
 | <a id="group-dependencies-sort"></a>`sort` | [`DependencySort`](#dependencysort) | Sort dependencies by given criteria. |
 | <a id="group-dependencies-sourcetypes"></a>`sourceTypes` | [`[SbomSourceType!]`](#sbomsourcetype) | Filter dependencies by source type. |
 | <a id="group-dependencies-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref IDs. Only available when the vulnerabilities_across_contexts feature flag is enabled. |
@@ -43871,7 +43921,7 @@ Arguments:
 | <a id="group-dependencyaggregations-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Work in progress and gated with feature flag `malicious_packages_dependency_list_filtering`. |
 | <a id="group-dependencyaggregations-notcomponentversions"></a>`notComponentVersions`  | [`[String!]`](#string) | Introduced in GitLab 18.1. Status: Experiment. Filter dependencies to exclude the specified component versions. |
 | <a id="group-dependencyaggregations-packagemanagers"></a>`packageManagers` | [`[PackageManager!]`](#packagemanager) | Filter dependencies by package managers. |
-| <a id="group-dependencyaggregations-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. |
+| <a id="group-dependencyaggregations-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. Cannot be combined with the `malware` argument. |
 | <a id="group-dependencyaggregations-projectcountmax"></a>`projectCountMax` | [`Int`](#int) | Filter dependencies by maximum project count. |
 | <a id="group-dependencyaggregations-projectcountmin"></a>`projectCountMin` | [`Int`](#int) | Filter dependencies by minimum project count. |
 | <a id="group-dependencyaggregations-projectids"></a>`projectIds`  | [`[ProjectID!]`](#projectid) | Introduced in GitLab 19.2. Status: Experiment. Filter dependencies by projects within the group. |
@@ -54119,7 +54169,7 @@ Arguments:
 | <a id="project-dependencies-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Work in progress and gated with feature flag `malicious_packages_dependency_list_filtering`. |
 | <a id="project-dependencies-notcomponentversions"></a>`notComponentVersions`  | [`[String!]`](#string) | Introduced in GitLab 18.1. Status: Experiment. Filter dependencies to exclude the specified component versions. |
 | <a id="project-dependencies-packagemanagers"></a>`packageManagers` | [`[PackageManager!]`](#packagemanager) | Filter dependencies by package managers. |
-| <a id="project-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. |
+| <a id="project-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. Cannot be combined with the `malware` argument. |
 | <a id="project-dependencies-sort"></a>`sort` | [`DependencySort`](#dependencysort) | Sort dependencies by given criteria. |
 | <a id="project-dependencies-sourcetypes"></a>`sourceTypes` | [`[SbomSourceType!]`](#sbomsourcetype) | Filter dependencies by source type. |
 | <a id="project-dependencies-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref IDs. Only available when the vulnerabilities_across_contexts feature flag is enabled. |
@@ -60562,7 +60612,7 @@ Arguments:
 | <a id="vulnerability-dependencies-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Work in progress and gated with feature flag `malicious_packages_dependency_list_filtering`. |
 | <a id="vulnerability-dependencies-notcomponentversions"></a>`notComponentVersions`  | [`[String!]`](#string) | Introduced in GitLab 18.1. Status: Experiment. Filter dependencies to exclude the specified component versions. |
 | <a id="vulnerability-dependencies-packagemanagers"></a>`packageManagers` | [`[PackageManager!]`](#packagemanager) | Filter dependencies by package managers. |
-| <a id="vulnerability-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. |
+| <a id="vulnerability-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. Cannot be combined with the `malware` argument. |
 | <a id="vulnerability-dependencies-sort"></a>`sort` | [`DependencySort`](#dependencysort) | Sort dependencies by given criteria. |
 | <a id="vulnerability-dependencies-sourcetypes"></a>`sourceTypes` | [`[SbomSourceType!]`](#sbomsourcetype) | Filter dependencies by source type. |
 | <a id="vulnerability-dependencies-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by tracked ref IDs. Only available when the vulnerabilities_across_contexts feature flag is enabled. |

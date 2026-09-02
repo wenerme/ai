@@ -1065,26 +1065,35 @@ def _wait_for_ready(
     proc: subprocess.Popen,
     project_path: Path,
     timeout: int = STARTUP_TIMEOUT,
-) -> bool:
-    """Wait until this project's detached live-preview server responds."""
+) -> int:
+    """Wait until this project's detached live-preview server responds.
+
+    Returns the server pid recorded in the project lock, or 0 on timeout.
+    ``proc.pid`` is not used for identity: on Windows a venv ``python.exe``
+    may be a launcher whose child is the real interpreter.
+    """
     deadline = time.time() + timeout
     health_url = _server_url(port, '/api/health')
     last_error = ''
     while time.time() < deadline:
         if proc.poll() is not None:
             logger.error('live preview exited during startup (code=%s)', proc.returncode)
-            return False
+            return 0
         try:
             with urllib.request.urlopen(health_url, timeout=1) as response:
                 data = json.load(response)
+                lock = _read_lock(_lock_file(project_path))
+                server_pid = _lock_pid(lock)
                 if (
                     response.status == 200
                     and isinstance(data, dict)
                     and data.get('service') == 'live_preview'
                     and data.get('project') == str(project_path)
-                    and data.get('pid') == proc.pid
+                    and lock is not None
+                    and lock.get('port') == port
+                    and data.get('pid') == server_pid
                 ):
-                    return True
+                    return server_pid
                 last_error = 'health response belongs to another service or project'
         except (urllib.error.URLError, TimeoutError, OSError, ValueError) as exc:
             last_error = str(exc)
@@ -1095,7 +1104,7 @@ def _wait_for_ready(
         timeout,
         f' (last error: {last_error})' if last_error else '',
     )
-    return False
+    return 0
 
 
 def _open_browser(url: str) -> bool:
@@ -1291,12 +1300,13 @@ def main(argv: Optional[list[str]] = None) -> int:
             logger.error('cannot write live preview log: %s (%s)', log_path, exc)
             return 1
         url = _server_url(port)
-        if not _wait_for_ready(port, proc, project_path):
+        server_pid = _wait_for_ready(port, proc, project_path)
+        if not server_pid:
             if proc.poll() is None:
                 proc.terminate()
             logger.error('live preview failed to become reachable: %s (log: %s)', url, log_path)
             return 1
-        logger.info('started live preview in background: %s (pid=%s)', url, proc.pid)
+        logger.info('started live preview in background: %s (pid=%s)', url, server_pid)
         logger.info('log: %s', log_path)
         if not args.no_browser and not _open_browser(url):
             logger.info('browser did not auto-open; open %s manually', url)

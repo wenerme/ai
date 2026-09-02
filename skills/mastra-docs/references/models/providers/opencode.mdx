@@ -1,11 +1,11 @@
 ---
-title: "OpenCode Zen | Models"
-description: "Use OpenCode Zen models with Mastra. 94 models available."
+title: "OpenCode Zen Models: IDs, Pricing & Usage"
+description: "Browse OpenCode Zen model IDs, capabilities, context windows, and pricing. Learn how to use them in TypeScript with Mastra's model router."
 ---
 
 # [OpenCode Zen logo]OpenCode Zen
 
-Access 94 OpenCode Zen models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
+Access 95 OpenCode Zen models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
 
 Learn more in the [OpenCode Zen documentation](https://opencode.ai/docs/zen).
 
@@ -53,6 +53,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "opencode/claude-fable-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 10,
+    "outputCost": 50
+  },
+  {
+    "model": "opencode/claude-fable-5-1",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -773,6 +785,8 @@ for await (const chunk of stream) {
   }
 ]}
 />
+
+Model availability, capabilities, context windows, and pricing are sourced from [models.dev](https://models.dev) and may change.
 
 ## Advanced configuration
 

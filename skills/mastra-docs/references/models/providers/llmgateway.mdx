@@ -1,11 +1,11 @@
 ---
-title: "DevPass (LLM Gateway) | Models"
-description: "Use DevPass (LLM Gateway) models with Mastra. 181 models available."
+title: "DevPass (LLM Gateway) Models: IDs, Pricing & Usage"
+description: "Browse DevPass (LLM Gateway) model IDs, capabilities, context windows, and pricing. Learn how to use them in TypeScript with Mastra's model router."
 ---
 
 # [DevPass (LLM Gateway) logo]DevPass (LLM Gateway)
 
-Access 181 DevPass (LLM Gateway) models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 182 DevPass (LLM Gateway) models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [DevPass (LLM Gateway) documentation](https://llmgateway.io/docs).
 
@@ -432,6 +432,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
+    "inputCost": 0.75,
+    "outputCost": 3.75
+  },
+  {
+    "model": "llmgateway/gemini-3.8-flash",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
     "inputCost": 0.75,
     "outputCost": 3.75
   },
@@ -1068,8 +1080,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 131072,
     "maxOutput": 32766,
-    "inputCost": 0.05,
-    "outputCost": 0.2
+    "inputCost": 0.04,
+    "outputCost": 0.19
   },
   {
     "model": "llmgateway/grok-4",
@@ -2201,6 +2213,8 @@ for await (const chunk of stream) {
   }
 ]}
 />
+
+Model availability, capabilities, context windows, and pricing are sourced from [models.dev](https://models.dev) and may change.
 
 ## Advanced configuration
 

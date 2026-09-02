@@ -1,27 +1,51 @@
 ---
 title: "ComfyUI における Kling 3.0 の動画および画像生成"
 description: "ComfyUI で Kling 3.0 モデルを活用し、マルチショット動画生成、被写体の一貫性維持、多言語音声対応、およびネイティブなテキストレンダリングを実現する方法を学びましょう"
-translationSourceHash: c20691d4
+translationSourceHash: 2672b80e
 translationFrom: tutorials/partner-nodes/kling/kling-3-0.mdx
 translationBlockHashes:
-  "_intro": 6176006f
-  "About Kling 3.0": 241f54a8
-  "Learn more": 75a02ac4
+  "_intro": e1cf8602
+  "What Kling 3.0 is good at": cd16420a
+  "Example outputs": 1ab9ace9
   "Available models": f566da3f
+  "Learn more": aae1714a
+  "Kling 3.0: Text to Image {#api_kling_v3_t2i}": 5e7df91d
+  "Kling 3.0: Video Generation {#api_kling_v3_video}": d092c139
+  "Kling 3.0: First Last Frame to Video {#api_kling_v3_flf2v}": dd36484f
   "Legacy Kling models (EOL)": 6b40fd6e
 ---
 
 Kling 3.0 は、現在最も先進的なマルチモーダル生成システムの一つであり、パートナーノード経由で ComfyUI にて利用可能になりました。本リリースには **Kling Video 3.0**、**Kling Video 3.0 Omni**、**Kling Image 3.0**、および **Kling Image 3.0 Omni** が含まれており、動画・画像・オーディオビジュアル・ナラティブ生成機能を、ノードベースのワークフローに直接統合します。
 
-## Kling 3.0 について
+## Kling 3.0が得意なこと
 
-**主な機能：**
-- **マルチショット生成**：1 回の生成処理で複数のショットを生成し、各ショットの再生時間を制御可能
-- **被写体の固定された一貫性**：カメラの動きやシーンの展開においても、キャラクターやオブジェクトの同一性を維持
-- **ネイティブ音声（キャラクター認識対応）**：多言語による会話に対応し、正確なリップシンクと表情の同期を実現
-- **ネイティブテキストレンダリング**：広告、UI シーン、ブランドコンテンツ向けに、明瞭かつ構造化されたオンスクリーンテキストを生成
+- **マルチショット生成**: 1回の生成で再生時間を制御しながら、複数のショットを生成
+- **被写体の一貫性保持**: カメラの動きやシーンの展開をまたいで、キャラクターとオブジェクトの同一性を維持
+- **キャラクター認識対応のネイティブオーディオ**: 正確なリップシンクと表情の同期を備えた多言語ダイアログ
+- **ネイティブテキストレンダリング**: 広告、UIシーン、ブランドコンテンツ向けの、明瞭で構造化された画面上のテキスト
 
-### Kling 3.0: テキストから画像 {#api_kling_v3_t2i}
+## 出力例
+
+Kling 3.0モデルによるテキストから画像への生成：
+
+![Kling 3.0：テキストから画像への例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_kling_v3_t2i.png)
+
+## 利用可能なモデル
+
+| モデル | タイプ | 説明 |
+|--------|------|------|
+| **Kling Video 3.0** | 動画 | マルチショット対応の標準的な動画生成 |
+| **Kling Video 3.0 Omni** | 動画 | オーディオビジュアル機能を備えた高度な動画生成 |
+| **Kling Image 3.0** | 画像 | 高品質な画像生成 |
+| **Kling Image 3.0 Omni** | 画像 | 機能強化済みのマルチモーダル画像生成 |
+
+## さらに詳しく知る
+
+Kling 3.0 の機能に関する詳細なサンプル、プロンプト例、および動画デモンストレーションについては、以下のブログ記事をご覧ください：
+
+  動画サンプル、プロンプト活用のコツ、各機能の詳細解説を含む、完全版アナウンス記事をご覧ください。
+
+## Kling 3.0: テキストから画像 {#api_kling_v3_t2i}
 
 Kling 3.0 モデルを使用して、テキストプロンプトから画像を生成します。
 
@@ -38,9 +62,9 @@ Kling 3.0 モデルを使用して、テキストプロンプトから画像を�
 
 ![Kling 3.0: テキストから画像の出力例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_kling_v3_t2i.png)
 
-### Kling 3.0: ビデオ生成 {#api_kling_v3_video}
+## Kling 3.0: ビデオ生成 {#api_kling_v3_video}
 
-テキストまたは画像のプロンプトを入力すると、マルチショット構成、複雑なカメラの動き、一貫した被写体を持つ 15 秒のビデオシーケンスを生成できます。
+テキストまたは画像プロンプトを入力して、マルチショット構図、複雑なカメラワーク、一貫した被写体を持つ15秒のビデオシーケンスを生成します。
 
 [Kling 3.0: ビデオ生成ワークフローのプレビュー]
 
@@ -48,64 +72,49 @@ Kling 3.0 モデルを使用して、テキストプロンプトから画像を�
     Comfy Cloud で開く
   
   
-    JSON をダウンロードするか、テンプレートライブラリで &quot;Kling 3.0: Video Generation&quot; を検索してください
+    JSON をダウンロードするか、テンプレートライブラリで &quot;Kling 3.0: ビデオ生成&quot; を検索してください
   
 
 **入力素材**
 
-このファイルを対応する `LoadImage` ノードにアップロードします：
+このファイルを対応する `LoadImage` ノードにアップロードしてください:
 
   
-    `LoadImage` ノード 1・`boxing.png`
+    `LoadImage` ノード 1 · `boxing.png`
   
 
 <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
   [boxing.png]
 </div>
 
-### Kling 3.0: 最初と最後のフレームからビデオ生成 {#api_kling_v3_flf2v}
+## Kling 3.0: 先頭フレームと最終フレームからビデオ {#api_kling_v3_flf2v}
 
-最初と最後のフレーム画像を入力すると、マルチショット生成と精密な要素制御により、連続したビデオシーケンスを生成できます。
+先頭フレームと最終フレームの画像を入力して、マルチショット生成と精密な要素制御により、連続したビデオシーケンスを生成します。
 
-[Kling 3.0: 最初と最後のフレームからビデオ生成ワークフローのプレビュー]
+[Kling 3.0: 先頭フレームと最終フレームからビデオを作成するワークフローのプレビュー]
 
   
     Comfy Cloud で開く
   
   
-    JSON をダウンロードするか、テンプレートライブラリで &quot;Kling 3.0: First Last Frame to Video&quot; を検索してください
+    JSON をダウンロードするか、テンプレートライブラリで「Kling 3.0: 先頭フレームと最終フレームからビデオ」を検索してください。
   
 
 **入力素材**
 
-これらのファイルを対応する `LoadImage` ノードにアップロードします：
+以下のファイルを対応する `LoadImage` ノードにアップロードします。
 
   
-    `LoadImage` ノード 1・`goldenfish_in_bag.png`
+    `LoadImage` ノード 1 · `goldenfish_in_bag.png`
   
   
-    `LoadImage` ノード 13・`man_in_daydream.png`
+    `LoadImage` ノード 13 · `man_in_daydream.png`
   
 
 <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
   [goldenfish_in_bag.png]
   [man_in_daydream.png]
 </div>
-
-## さらに詳しく知る
-
-Kling 3.0 の機能に関する詳細なサンプル、プロンプト例、および動画デモンストレーションについては、以下のブログ記事をご覧ください：
-
-  動画サンプル、プロンプト活用のコツ、各機能の詳細解説を含む、完全版アナウンス記事をご覧ください。
-
-## 利用可能なモデル
-
-| モデル | タイプ | 説明 |
-|--------|------|------|
-| **Kling Video 3.0** | 動画 | マルチショット対応の標準的な動画生成 |
-| **Kling Video 3.0 Omni** | 動画 | オーディオビジュアル機能を備えた高度な動画生成 |
-| **Kling Image 3.0** | 画像 | 高品質な画像生成 |
-| **Kling Image 3.0 Omni** | 画像 | 機能強化済みのマルチモーダル画像生成 |
 
 ## レガシー Kling モデル（EOL）
 

@@ -1133,6 +1133,7 @@ class SVGQualityChecker:
         canonical_authoring: bool = False,
     ):
         self.template_mode = template_mode
+        self.scan_banner = True
         self.quick_generate = quick_generate
         self.canonical_authoring = canonical_authoring
         self.results = []
@@ -3866,7 +3867,8 @@ class SVGQualityChecker:
             f'{bottom:.1f}), container ({outer_left:.1f}, '
             f'{outer_top:.1f})-({outer_right:.1f}, '
             f'{outer_bottom:.1f}), overflow horizontal '
-            f'{horizontal_ratio:.1%}, vertical {vertical_ratio:.1%}; '
+            f'{horizontal_ratio:.1%}, vertical {vertical_ratio:.1%} '
+            f'(error above {_BOUNDS_OVERFLOW_ERROR_RATIO:.0%}); '
             f'{repair}{width_suffix}'
         )
 
@@ -4632,11 +4634,25 @@ class SVGQualityChecker:
         if text_el.get('x') is None:
             return '<text> has no x anchor'
 
-        for child in list(text_el):
-            if not cls._is_tspan(child):
-                return '<text> has non-tspan child'
-            if (child.tail or "").strip():
-                return '<tspan> has non-empty tail text'
+        children = list(text_el)
+        if any(not cls._is_tspan(child) for child in children):
+            return '<text> has non-tspan child'
+
+        # Mirror svg_finalize.flatten_tspan: tail text after an inline run
+        # stays on its line, but a line made of one positioned <tspan> has
+        # nowhere to keep a tail.
+        groups: list[list[ET.Element]] = [[]]
+        for child in children:
+            if cls._is_line_tspan(child):
+                groups.append([child])
+            else:
+                groups[-1].append(child)
+        for group in groups[1:]:
+            if len(group) == 1 and (group[0].tail or "").strip():
+                return (
+                    'text follows a positioned line <tspan> directly; '
+                    'nest it inside that <tspan>'
+                )
 
         return None
 
@@ -6859,7 +6875,8 @@ class SVGQualityChecker:
                     directory_expected_label = f"first SVG {svg_file.name}"
                     break
 
-        print(f"\n[SCAN] Checking {len(svg_files)} SVG file(s)...\n")
+        if self.scan_banner:
+            print(f"\n[SCAN] Checking {len(svg_files)} SVG file(s)...\n")
 
         for svg_file in svg_files:
             self._active_prototype_path = self._prototype_by_output.get(
@@ -7534,6 +7551,11 @@ class SVGQualityChecker:
 
     @staticmethod
     def _row_layout(row: Dict[str, str]) -> str:
+        # ``Image pattern`` is the current §VIII column; ``Layout pattern`` is
+        # the pre-rename spelling still present in older Design Specs.
+        value = row.get('Image pattern', '').strip()
+        if value:
+            return value
         return row.get('Layout pattern', '').strip()
 
     @staticmethod
@@ -7806,7 +7828,7 @@ class SVGQualityChecker:
                     'error',
                     'planned_image_missing_pattern',
                     f"{filename or '(missing filename)'} has an empty Design "
-                    "Spec §VIII Layout pattern; preserve one non-empty "
+                    "Spec §VIII Image pattern; preserve one non-empty "
                     "Strategist recommendation without locking SVG geometry.",
                 ))
             if current_image_contract and crop not in {'adaptive', 'no-crop'}:
@@ -7964,7 +7986,7 @@ class SVGQualityChecker:
                         'locked_image_pattern_mismatch',
                         f"{filename} spec_lock pattern="
                         f"{entry.get('pattern')!r} does not preserve the "
-                        "Design Spec §VIII Layout pattern recommendation "
+                        "Design Spec §VIII Image pattern recommendation "
                         f"{layout_pattern!r}. This Design Spec-to-spec_lock "
                         "projection check compares ordered catalog ids when "
                         "present, otherwise normalized text; it does not "

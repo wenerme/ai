@@ -286,7 +286,10 @@ def _ordered_roles(roles: dict[str, tuple[str, float]]) -> list[tuple[str, str, 
     return [(name, *roles[name]) for name in names]
 
 
-def _roles_from_spec_lock(lock_path: Path) -> dict[str, tuple[str, float]]:
+def _roles_from_spec_lock(
+    lock_path: Path,
+    fallbacks: dict[str, str] | None = None,
+) -> dict[str, tuple[str, float]]:
     lock = parse_spec_lock(lock_path, report_duplicate_fields=True)
     typography = next(
         (
@@ -312,8 +315,11 @@ def _roles_from_spec_lock(lock_path: Path) -> dict[str, tuple[str, float]]:
             ) from exc
         family = rows.get(f'{role}_family', '')
         if not family:
-            fallback = 'title_family' if 'title' in role else 'body_family'
+            display_role = 'title' in role or 'numeral' in role
+            fallback = 'title_family' if display_role else 'body_family'
             family = rows.get(fallback, '') or rows.get('font_family', '')
+            if fallbacks is not None:
+                fallbacks[role] = fallback
         if not family:
             raise ValueError(
                 f'spec_lock.md typography role {role!r} has no resolvable font family'
@@ -330,6 +336,20 @@ def _clean_planned_line(raw: str) -> str:
     text = re.sub(r'\[([^]]+)\]\([^)]*\)', r'\1', text)
     text = text.replace('**', '').replace('__', '').replace('`', '')
     return ' '.join(text.split())
+
+
+_JOINED_BLOCK_SEPARATOR_RE = re.compile(r'\s+[·•|/]\s+|；|;\s')
+
+
+def _split_joined_blocks(text: str) -> list[str]:
+    """Split one outline value joined by spaced separators into planned lines.
+
+    A brief-depth Content field lists a page's blocks as ``A · B · C`` or
+    ``A；B；C`` on one line; each block is a planned line, not the whole list.
+    Unspaced ``·`` inside a name (``让·努维尔``) is left alone.
+    """
+    parts = [part.strip() for part in _JOINED_BLOCK_SEPARATOR_RE.split(text)]
+    return [part for part in parts if part]
 
 
 def _slide_id(token: str) -> str:
@@ -392,7 +412,7 @@ def _outline_candidates(
                 line_index += 1
                 continue
 
-            content_lines = [value] if value else []
+            content_lines = _split_joined_blocks(value) if value else []
             next_index = line_index + 1
             while next_index < len(lines):
                 next_field = _OUTLINE_DATA_LINE_RE.match(lines[next_index])
@@ -403,7 +423,7 @@ def _outline_candidates(
                     break
                 planned_line = _clean_planned_line(lines[next_index])
                 if planned_line:
-                    content_lines.append(planned_line)
+                    content_lines.extend(_split_joined_blocks(planned_line))
                 next_index += 1
             if 'body' in candidates:
                 candidates['body'].extend((slide, text) for text in content_lines)
@@ -473,6 +493,26 @@ def _calibration_payload(
     }
 
 
+def _fallback_notes(
+    roles: dict[str, tuple[str, float]],
+    fallbacks: dict[str, str],
+) -> list[str]:
+    """Flag display-sized roles that inherited body_family by default."""
+    body = roles.get('body')
+    if body is None:
+        return []
+    notes = []
+    for role, fallback in sorted(fallbacks.items()):
+        size = roles[role][1]
+        if fallback == 'body_family' and size >= 2 * body[1]:
+            notes.append(
+                f'role {role} ({_format_number(size)}px, at least twice body) has '
+                f'no {role}_family and uses body_family; declare {role}_family '
+                'if it is display type'
+            )
+    return notes
+
+
 def _render_calibration_table(payload: dict[str, object], *, include_outline: bool) -> str:
     role_rows = payload['roles']
     assert isinstance(role_rows, dict)
@@ -501,6 +541,12 @@ def _render_calibration_table(payload: dict[str, object], *, include_outline: bo
                 else f'{planned["px"]:.1f}px, {planned["slide"]}, {planned["text"]}'
             )
         lines.append(' | '.join(row))
+    for note in payload.get('notes') or []:
+        lines.append(f'[NOTE] {note}')
+    lines.append(
+        '[NOTE] mixed line width ≈ (CJK chars ÷ CJK rate + other chars ÷ Latin '
+        'rate) × 100; spaces, digits, and punctuation count as Latin.'
+    )
     return '\n'.join(lines) + '\n'
 
 
@@ -520,9 +566,15 @@ def _run_calibrate(args: argparse.Namespace) -> int:
         )
         return 2
     try:
-        roles = _roles_from_spec_lock(lock_path) if lock_path.is_file() else {}
+        fallbacks: dict[str, str] = {}
+        roles = (
+            _roles_from_spec_lock(lock_path, fallbacks)
+            if lock_path.is_file()
+            else {}
+        )
         for name, family, size in args.role:
             roles[name] = (family, size)
+            fallbacks.pop(name, None)
         ordered_roles = _ordered_roles(roles)
         if not ordered_roles:
             raise ValueError('no typography size roles were found')
@@ -533,6 +585,7 @@ def _run_calibrate(args: argparse.Namespace) -> int:
             source=source,
             include_outline=args.outline,
         )
+        payload['notes'] = _fallback_notes(roles, fallbacks)
         output_path = project_path / 'validation' / 'text_calibration.json'
         output_path.parent.mkdir(parents=True, exist_ok=True)
         rendered_json = json.dumps(payload, ensure_ascii=False, indent=2)

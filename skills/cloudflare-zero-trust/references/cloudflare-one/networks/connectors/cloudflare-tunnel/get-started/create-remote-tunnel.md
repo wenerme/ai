@@ -51,7 +51,8 @@ If you add a multi-level subdomain (more than one level of subdomain), you must 
 Path routing
 Specifying a path routes matching requests to the service URL, but does not strip or rewrite the path. The service receives the complete request path. To strip or rewrite paths, configure [URL Rewrite Rules](https://developers.cloudflare.com/rules/transform/url-rewrite/) at the Cloudflare edge or use a local reverse proxy.
 4. In **Service URL**, enter the protocol and address of your application (for example, `http://localhost:8000`). Refer to [supported protocols](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/protocols/) for available options.
-5. Select **Save**.
+If your origin already serves HTTPS or redirects HTTP to HTTPS, refer to [Troubleshoot HTTPS origins with Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/) before choosing the service URL.
+5. Select **Add route**.
 
 Anyone on the Internet can now access the application at the specified hostname. To allow or block specific users, [create an Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/).
 

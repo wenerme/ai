@@ -13,6 +13,88 @@ ComfyUI has now natively integrated the corresponding Rodin model generation API
 - **Different levels of detail**: Supports model generation with adjustable detail, including different polygon counts for smoother, more detailed models
 - **Direct export**: Generated models are saved to the `ComfyUI/output/Rodin` directory and can be exported from the `Preview 3D` node
 
-## Use it in ComfyUI
+## Single-view Model Generation Workflow
 
-Run the single-view and multi-view model generation workflows in ComfyUI, locally or on Comfy Cloud
+Generate a 3D model from a single image input with Rodin.
+
+[Rodin Single-view Model Generation workflow preview]
+
+  
+    Single-view Model Generation (Json Format)
+  
+  
+    Open in Comfy Cloud
+  
+
+Input materials
+
+Download this sample input image to try the workflow:
+
+  
+    Download sample input image
+  
+
+![Input Image](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/api_nodes/rodin/doll.jpg)
+
+### 2. Complete the Workflow Execution Step by Step
+
+[ComfyUI Rodin Image to Model Step Guide]
+
+You can refer to the numbers in the image to complete the basic text-to-image workflow execution:  
+1. In the `Load Image` node, load the provided input image
+2. (Optional) In `Rodin 3D Generate - Regular Generate` adjust the corresponding parameters
+   - polygon_count: You can set different polygon counts, the higher the value, the smoother and more detailed the model
+3. Click the `Run` button, or use the shortcut `Ctrl(cmd) + Enter` to execute model generation. After the workflow completes, the corresponding model will be automatically saved to the `ComfyUI/output/Rodin` directory
+4. In the `Preview 3D` node, click to expand the menu
+5. Select `Export` to directly export the corresponding model
+
+## Multi-view Model Generation Workflow
+
+The corresponding `Rodin 3D Generate - Regular Generate` allows up to 5 image inputs
+
+### 1. Workflow File Download
+
+You can modify the single-view workflow to a multi-view workflow, or directly download the workflow file below
+
+[Rodin Multi-view Model Generation workflow preview]
+
+  
+    Multi-view Model Generation (Json Format)
+  
+  
+    Open in Comfy Cloud
+  
+
+Input materials
+
+Download these sample input images to try the workflow:
+
+  
+    Download front view
+  
+  
+    Download back view
+  
+  
+    Download left view
+  
+
+![Input Image](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/api_nodes/rodin/multiview_to_model/front.jpg)
+![Input Image](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/api_nodes/rodin/multiview_to_model/back.jpg)
+![Input Image](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/api_nodes/rodin/multiview_to_model/left.jpg)
+
+### 2. Complete the Workflow Execution Step by Step
+
+[ComfyUI Rodin Image to Model Step Guide]
+
+You can refer to the numbers in the image to complete the basic text-to-image workflow execution:  
+1. In the `Load Image` node, load the provided input images
+2. Click the `Run` button, or use the shortcut `Ctrl(cmd) + Enter` to execute model generation. After the workflow completes, the corresponding model will be automatically saved to the `ComfyUI/output/Rodin` directory
+3. In the `Preview 3D` node, click to expand the menu
+4. Select `Export` to directly export the corresponding model
+
+## Other Related Nodes
+
+Currently, Rodin provides different types of model generation nodes in ComfyUI, since the corresponding input conditions are the same as the workflow introduced in this article, you can enable them as needed. In addition, we have provided corresponding nodes in the corresponding templates, you can also modify the corresponding node mode as needed to enable them
+
+[Rodin Other Related Nodes]
