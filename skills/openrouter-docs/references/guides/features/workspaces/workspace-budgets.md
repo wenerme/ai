@@ -39,7 +39,7 @@ Budget limits must be **strictly decreasing** as the interval narrows:
 lifetime > monthly > weekly > daily
 ```
 
-For example, if your monthly budget is $1,000, the weekly budget must be less than $1,000 and the daily budget must be less than the weekly budget. You don't need to set all four intervals — only the ones you set must follow this ordering.
+For example, if your monthly budget is \$1,000, the weekly budget must be less than \$1,000 and the daily budget must be less than the weekly budget. You don't need to set all four intervals — only the ones you set must follow this ordering.
 
 ## Setting Budgets in the Dashboard
 

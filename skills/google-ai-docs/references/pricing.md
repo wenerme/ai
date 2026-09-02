@@ -1227,6 +1227,7 @@ consumption and usage of the tools.
 
 ## Notes
 
+- **Agentic video understanding:** When using agentic video understanding, token usage is variable based on the content loaded by the model rather than full video length. This typically results in up to 88% fewer input tokens for long-form video, though token counts depend on query complexity and dynamic sampling depth (which may exceed 1 FPS for detailed visual segments). See [Agentic video understanding](https://ai.google.dev/gemini-api/docs/video-understanding#agentic-video-understanding).
 - **Document token billing:** Tokens for the `DOCUMENT` modality (for example, PDFs) are billed at the image token rate. In API responses, these tokens appear under the `DOCUMENT` modality within `promptTokensDetails`.
 - Google AI Studio usage is free of charge in all [available regions](https://ai.google.dev/gemini-api/docs/available-regions). See [Billing FAQs](https://ai.google.dev/gemini-api/docs/billing) for details.
 - Prices may differ from the prices listed here and the prices offered on Gemini Enterprise Agent Platform. For Gemini Enterprise Agent Platform prices, see the [Gemini Enterprise Agent Platform pricing page](https://cloud.google.com/products/gemini-enterprise-agent-platform).

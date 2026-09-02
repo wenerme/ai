@@ -41,7 +41,7 @@ This file is created when you run `cloudflared tunnel create <NAME>`. It stores 
 
 ## Ingress rule
 
-Ingress rules let you specify which local services traffic should be proxied to. If a rule does not specify a path, all paths will be matched. Ingress rules can be listed in your [configuration file](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/) or when running `cloudflared tunnel ingress`.
+Ingress rules let you specify which local services traffic should be proxied to. If a rule does not specify a path, all paths will be matched. `cloudflared` forwards the full request path to the service without stripping or rewriting it. Ingress rules can be listed in your [configuration file](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/) or when running `cloudflared tunnel ingress`.
 
 Was this helpful?
 

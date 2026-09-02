@@ -179,6 +179,74 @@ The only supported completion window is `24h`.
 
 ***
 
+## List your batches
+
+List the batches owned by the authenticating API key with:
+
+```shell title="Shell" lines theme={null}
+curl 'https://openrouter.ai/api/beta/batches?limit=2&status=completed&status=failed' \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY"
+```
+
+Batches are returned newest first. List items contain metadata only and always set `results` to `null`; retrieve an individual batch by ID when you need its results.
+
+```json title="Batch list" lines theme={null}
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "batch_9f2c1e",
+      "object": "batch",
+      "endpoint": "/v1/chat/completions",
+      "model": "openai/gpt-4o",
+      "completion_window": "24h",
+      "status": "completed",
+      "created_at": 1787836000,
+      "finalized_at": 1787837000,
+      "request_counts": { "total": 100, "completed": 100, "failed": 0 },
+      "usage": { "prompt_tokens": 51200, "completion_tokens": 20480, "total_tokens": 71680 },
+      "results": null,
+      "error": null
+    }
+  ],
+  "first_id": "batch_9f2c1e",
+  "last_id": "batch_9f2c1e",
+  "has_more": true
+}
+```
+
+All query parameters are optional:
+
+| Parameter        | Description                                                                                                                                                                                                                                     |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `limit`          | Number of batches to return, from 1 to 100. Defaults to 20.                                                                                                                                                                                     |
+| `after`          | Continue strictly after this batch ID. Pass the previous page's `last_id`.                                                                                                                                                                      |
+| `status`         | Include a public status. Repeat the parameter to include more than one of `validating`, `in_progress`, `completed`, `failed`, `expired`, or `cancelled`. The transient `finalizing` and `cancelling` statuses are not accepted as list filters. |
+| `created_after`  | Include batches created strictly after a Unix timestamp in seconds or an ISO-8601 date or datetime.                                                                                                                                             |
+| `created_before` | Include batches created strictly before a Unix timestamp in seconds or an ISO-8601 date or datetime.                                                                                                                                            |
+
+When `has_more` is `true`, request the next page with `after`. Pagination does not use offsets or a `before` parameter.
+
+```shell title="Next page" lines theme={null}
+curl 'https://openrouter.ai/api/beta/batches?limit=2&after=batch_9f2c1e' \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY"
+```
+
+For human-readable date filters, use an ISO-8601 value such as `2026-08-20` or `2026-08-20T00:00:00Z`. Unix seconds use the same unit as the integer timestamps returned in batch objects:
+
+```shell title="Creation-time range" lines theme={null}
+curl 'https://openrouter.ai/api/beta/batches?created_after=1787184000&created_before=1787837000' \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY"
+```
+
+`created_after` must be earlier than `created_before` when both are present.
+
+<Note>
+  Batch objects expose `created_at` in whole seconds, while creation-time filtering retains subsecond precision. A batch created later within the same displayed second can still match `created_after=<created_at>`. Use the `after` cursor, not timestamps, when paginating without gaps or overlaps.
+</Note>
+
+***
+
 ## Poll for results
 
 Use the batch ID to retrieve the current status:

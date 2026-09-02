@@ -4,11 +4,11 @@
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 In GitLab Pages, you can configure rules to forward one URL to another using
-[Netlify style](https://docs.netlify.com/routing/redirects/#syntax-for-the-redirects-file)
+[Netlify style](https://docs.netlify.com/manage/routing/redirects/overview/#syntax-for-the-redirects-file)
 HTTP redirects.
 
 Not all
-[special options offered by Netlify](https://docs.netlify.com/routing/redirects/redirect-options/)
+[special options offered by Netlify](https://docs.netlify.com/manage/routing/redirects/redirect-options/)
 are supported.
 
 | Feature                                           | Supported              | Example |
@@ -19,7 +19,7 @@ are supported.
 | [Placeholders](#placeholders)                     | Yes | `/news/:year/:month/:date /blog-:year-:month-:date.html` |
 | Rewrites (other than `200`)                       | No | `/en/* /en/404.html 404` |
 | Query parameters                                  | No | `/store id=:id  /blog/:id  301` |
-| Force ([shadowing](https://docs.netlify.com/routing/redirects/rewrites-proxies/#shadowing)) | No | `/app/  /app/index.html  200!` |
+| Force ([shadowing](https://docs.netlify.com/manage/routing/redirects/rewrites-proxies/#shadowing)) | No | `/app/  /app/index.html  200!` |
 | [Domain-level redirects](#domain-level-redirects) | Yes | `http://blog.example.com/* https://www.example.com/blog/:splat 301` |
 | Redirect by country or language                   | No | `/  /anz     302  Country=au,nz` |
 | Redirect by role                                  | No | `/admin/*  200!  Role=admin` |
@@ -67,7 +67,7 @@ is ignored because `hello.html` exists:
 ```
 
 GitLab does not support Netlify
-[force option](https://docs.netlify.com/routing/redirects/rewrites-proxies/#shadowing)
+[force option](https://docs.netlify.com/manage/routing/redirects/rewrites-proxies/#shadowing)
 to change this behavior.
 
 ## HTTP status codes

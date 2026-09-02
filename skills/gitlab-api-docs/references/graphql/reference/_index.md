@@ -3781,6 +3781,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="mutation-aiflowtriggercreate-active"></a>`active`  | [`Boolean`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Indicates whether the AI flow trigger is active. Defaults to true. |
 | <a id="mutation-aiflowtriggercreate-aicatalogitemconsumerid"></a>`aiCatalogItemConsumerId` | [`AiCatalogItemConsumerID`](#aicatalogitemconsumerid) | AI catalog item consumer to use instead of config_path. |
 | <a id="mutation-aiflowtriggercreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-aiflowtriggercreate-configpath"></a>`configPath` | [`String`](#string) | Path to the configuration file for the AI flow trigger. |
@@ -3830,6 +3831,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="mutation-aiflowtriggerupdate-active"></a>`active`  | [`Boolean`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Indicates whether the AI flow trigger is active. Inactive triggers do not run automatically. |
 | <a id="mutation-aiflowtriggerupdate-aicatalogitemconsumerid"></a>`aiCatalogItemConsumerId` | [`AiCatalogItemConsumerID`](#aicatalogitemconsumerid) | AI catalog item consumer to use instead of config_path. |
 | <a id="mutation-aiflowtriggerupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-aiflowtriggerupdate-configpath"></a>`configPath` | [`String`](#string) | Path to the configuration file for the AI flow trigger. |
@@ -20344,6 +20346,29 @@ Fields:
 | <a id="artifactregistryimageedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="artifactregistryimageedge-node"></a>`node` | [`ArtifactRegistryImage`](#artifactregistryimage) | The item at the end of the edge. |
 
+#### `ArtifactRegistryManifestConnection`
+
+The connection type for [`ArtifactRegistryManifest`](#artifactregistrymanifest).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistrymanifestconnection-edges"></a>`edges` | [`[ArtifactRegistryManifestEdge]`](#artifactregistrymanifestedge) | A list of edges. |
+| <a id="artifactregistrymanifestconnection-nodes"></a>`nodes` | [`[ArtifactRegistryManifest]`](#artifactregistrymanifest) | A list of nodes. |
+| <a id="artifactregistrymanifestconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `ArtifactRegistryManifestEdge`
+
+The edge type for [`ArtifactRegistryManifest`](#artifactregistrymanifest).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistrymanifestedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="artifactregistrymanifestedge-node"></a>`node` | [`ArtifactRegistryManifest`](#artifactregistrymanifest) | The item at the end of the edge. |
+
 #### `ArtifactRegistryPackageConnection`
 
 The connection type for [`ArtifactRegistryPackage`](#artifactregistrypackage).
@@ -32484,6 +32509,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="aiflowtriggertype-active"></a>`active`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Indicates whether the flow trigger is active. Inactive triggers do not run automatically. |
 | <a id="aiflowtriggertype-aicatalogitemconsumer"></a>`aiCatalogItemConsumer` | [`AiCatalogItemConsumer`](#aicatalogitemconsumer) | AI catalog item consumer associated with the trigger. |
 | <a id="aiflowtriggertype-configpath"></a>`configPath` | [`String`](#string) | Path to the configuration file for the trigger. |
 | <a id="aiflowtriggertype-configurl"></a>`configUrl` | [`String`](#string) | Web URL to the configuration file for the trigger. |
@@ -33486,7 +33512,25 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="artifactregistryimage-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.4. Status: Experiment. ID of the image in Artifact Registry. |
+| <a id="artifactregistryimage-lastdownloadedat"></a>`lastDownloadedAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp the image was last pulled. Null when it was never pulled. |
+| <a id="artifactregistryimage-manifests"></a>`manifests`  | [`ArtifactRegistryManifestConnection`](#artifactregistrymanifestconnection) | Introduced in GitLab 19.4. Status: Experiment. Manifests of the image, ordered by publication date descending. Reads at most 20 rows per page and can be selected for up to 20 images per operation, matching the images page size. Returns `null` for an image that is gone. Also `null` when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx. |
 | <a id="artifactregistryimage-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Name of the image. |
+
+### `ArtifactRegistryManifest`
+
+Manifest of a container image in an Artifact Registry repository (Docker and OCI).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistrymanifest-artifacttype"></a>`artifactType`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Artifact type of the manifest. Null when the manifest declares none. |
+| <a id="artifactregistrymanifest-createdat"></a>`createdAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Time the manifest was pushed. Null if the timestamp is absent or unparseable. |
+| <a id="artifactregistrymanifest-digest"></a>`digest`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Content-addressable digest of the manifest. |
+| <a id="artifactregistrymanifest-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.4. Status: Experiment. ID of the manifest in Artifact Registry. |
+| <a id="artifactregistrymanifest-mediatype"></a>`mediaType`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Media type of the manifest. |
+| <a id="artifactregistrymanifest-size"></a>`size`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.4. Status: Experiment. Size of the manifest, in bytes. For a hosted repository, the push-time tree total, where an index total already contains its platform children and so does not sum across sibling rows. For a remote repository, the cached manifest's own payload bytes. |
+| <a id="artifactregistrymanifest-subjectdigest"></a>`subjectDigest`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Digest of the subject manifest a referrer refers to. Null for a manifest that is not a referrer, and always null on this connection until the referrer-inclusion argument lands: the read leaves Artifact Registry on its default, which excludes referrers. |
 
 ### `ArtifactRegistryMavenPackage`
 
@@ -33499,6 +33543,7 @@ Fields:
 | <a id="artifactregistrymavenpackage-artifactid"></a>`artifactId`  | [`String!`](#string) | Introduced in GitLab 19.3. Status: Experiment. Maven artifact ID coordinate of the package. |
 | <a id="artifactregistrymavenpackage-groupid"></a>`groupId`  | [`String!`](#string) | Introduced in GitLab 19.3. Status: Experiment. Maven group ID coordinate of the package. |
 | <a id="artifactregistrymavenpackage-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.3. Status: Experiment. ID of the package in Artifact Registry. |
+| <a id="artifactregistrymavenpackage-lastdownloadedat"></a>`lastDownloadedAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp the package was last pulled. Null when it was never pulled. |
 | <a id="artifactregistrymavenpackage-versions"></a>`versions`  | [`ArtifactRegistryVersionConnection`](#artifactregistryversionconnection) | Introduced in GitLab 19.4. Status: Experiment. Versions of the package, ordered by publication date descending. Resolves at most once per package in a page, so one operation reads versions for up to 20 packages. Returns `null` for a package that is gone. Also `null` when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx. |
 
 ### `ArtifactRegistryNpmPackage`
@@ -33510,10 +33555,11 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="artifactregistrynpmpackage-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.3. Status: Experiment. ID of the package in Artifact Registry. |
+| <a id="artifactregistrynpmpackage-lastdownloadedat"></a>`lastDownloadedAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp the package was last pulled. Null when it was never pulled. |
 | <a id="artifactregistrynpmpackage-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.3. Status: Experiment. Name of the package, including its scope when it has one. |
 | <a id="artifactregistrynpmpackage-scope"></a>`scope`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. npm scope of the package. Null for an unscoped package. |
 | <a id="artifactregistrynpmpackage-versions"></a>`versions`  | [`ArtifactRegistryVersionConnection`](#artifactregistryversionconnection) | Introduced in GitLab 19.4. Status: Experiment. Versions of the package, ordered by publication date descending. Resolves at most once per package in a page, so one operation reads versions for up to 20 packages. Returns `null` for a package that is gone. Also `null` when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx. |
-| <a id="artifactregistrynpmpackage-versionscount"></a>`versionsCount`  | [`Int!`](#int) | Introduced in GitLab 19.3. Status: Experiment. Number of versions of the package. Buffered, so it can lag the version list. |
+| <a id="artifactregistrynpmpackage-versionscount"></a>`versionsCount`  | [`Int`](#int) | Introduced in GitLab 19.3. Status: Experiment. Number of versions of the package. Buffered, so it can lag the version list. Null for a package of a remote repository, which Artifact Registry supplies no count for. |
 
 ### `ArtifactRegistryRemoteSettings`
 

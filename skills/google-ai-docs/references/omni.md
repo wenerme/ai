@@ -43,6 +43,34 @@ camera movement, lighting and mood for best results.
       fs.writeFileSync('marble.mp4', Buffer.from(interaction.output_video.data, 'base64'));
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Base64;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-omni-1.1-flash"))
+            .input(InteractionsInput.of("A marble rolling fast on a chain reaction style track, continuous smooth shot."))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
+        byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+        Files.write(Paths.get("marble.mp4"), videoBytes);
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions?key=$API_KEY" \
@@ -124,6 +152,44 @@ is the default.
       fs.writeFileSync('example.mp4', Buffer.from(interaction.output_video.data, 'base64'));
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
+    import com.google.genai.gaos.models.interactions.VideoResponseFormat;
+    import com.google.genai.gaos.models.interactions.VideoResponseFormatAspectRatio;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Base64;
+
+    Client client = new Client();
+
+    VideoResponseFormat videoFormat =
+        VideoResponseFormat.builder()
+            .aspectRatio(VideoResponseFormatAspectRatio.of("9:16"))
+            .build();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-omni-1.1-flash"))
+            .input(InteractionsInput.of("A futuristic city with neon lights and flying cars, cyberpunk style"))
+            .responseFormat(CreateModelInteractionResponseFormat.of(ResponseFormat.of(videoFormat)))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
+        byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+        Files.write(Paths.get("example.mp4"), videoBytes);
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions?key=$API_KEY" \
@@ -186,6 +252,44 @@ parameter in `response_format`. The default resolution is 720p.
       fs.writeFileSync('hires.mp4', Buffer.from(interaction.output_video.data, 'base64'));
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Resolution;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
+    import com.google.genai.gaos.models.interactions.VideoResponseFormat;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Base64;
+
+    Client client = new Client();
+
+    VideoResponseFormat videoFormat =
+        VideoResponseFormat.builder()
+            .resolution(Resolution.of("1080p"))
+            .build();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-omni-1.1-flash"))
+            .input(InteractionsInput.of("A drone shot of a mountain landscape at sunrise."))
+            .responseFormat(CreateModelInteractionResponseFormat.of(ResponseFormat.of(videoFormat)))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
+        byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+        Files.write(Paths.get("hires.mp4"), videoBytes);
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions?key=$API_KEY" \
@@ -198,6 +302,8 @@ parameter in `response_format`. The default resolution is 720p.
        "resolution": "1080p"
      }
     }'
+
+Your browser does not support the video tag.
 
 ## Image to video generation
 
@@ -249,6 +355,56 @@ To generate a realistic video of the drawing.
 
     if (interaction.output_video?.data) {
       fs.writeFileSync('clownfish.mp4', Buffer.from(interaction.output_video.data, 'base64'));
+    }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.List;
+
+    Client client = new Client();
+
+    byte[] imageBytes = Files.readAllBytes(Paths.get("first_frame.png"));
+    String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+
+    Content imageContent =
+        ImageContent.builder()
+            .data(base64Image)
+            .mimeType(ImageContentMimeType.IMAGE_PNG)
+            .build();
+
+    Content textContent =
+        TextContent.builder()
+            .text("A mythical dragon perched on a craggy peak slowly unfolds its wings and lets out a roar.")
+            .build();
+
+    List<Content> contents = Arrays.asList(imageContent, textContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-omni-1.1-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
+        byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+        Files.write(Paths.get("dragon.mp4"), videoBytes);
     }
 
 ### REST
@@ -315,6 +471,62 @@ ending frame.
       fs.writeFileSync('interpolation.mp4', Buffer.from(interaction.output_video.data, 'base64'));
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.List;
+
+    Client client = new Client();
+
+    String firstFrameB64 = Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get("first_frame.jpg")));
+    String lastFrameB64 = Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get("last_frame.jpg")));
+
+    Content firstFrame =
+        ImageContent.builder()
+            .data(firstFrameB64)
+            .mimeType(ImageContentMimeType.IMAGE_JPEG)
+            .build();
+
+    Content lastFrame =
+        ImageContent.builder()
+            .data(lastFrameB64)
+            .mimeType(ImageContentMimeType.IMAGE_JPEG)
+            .build();
+
+    Content prompt =
+        TextContent.builder()
+            .text("A smooth cinematic transition from a lush green forest at sunrise to a snowy forest under a starry night sky.")
+            .build();
+
+    List<Content> contents = Arrays.asList(firstFrame, lastFrame, prompt);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-omni-1.1-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
+        byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+        Files.write(Paths.get("interpolation.mp4"), videoBytes);
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions?key=$API_KEY" \
@@ -327,6 +539,8 @@ ending frame.
        {"type": "text", "text": "A smooth cinematic transition from a lush green forest at sunrise to a snowy forest under a starry night sky."}
      ]
     }'
+
+Your browser does not support the video tag.
 
 ### Subject reference
 
@@ -369,6 +583,56 @@ to generate a video of the cat playing with the yarn.
 
     if (interaction.output_video?.data) {
       fs.writeFileSync('cat.mp4', Buffer.from(interaction.output_video.data, 'base64'));
+    }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.List;
+
+    Client client = new Client();
+
+    byte[] imageBytes = Files.readAllBytes(Paths.get("reference.png"));
+    String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+
+    Content imageContent =
+        ImageContent.builder()
+            .data(base64Image)
+            .mimeType(ImageContentMimeType.IMAGE_PNG)
+            .build();
+
+    Content textContent =
+        TextContent.builder()
+            .text("A cute small creature like the one in <image_1> is running in a sunny park chasing a butterfly.")
+            .build();
+
+    List<Content> contents = Arrays.asList(imageContent, textContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-omni-1.1-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
+        byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+        Files.write(Paths.get("creature.mp4"), videoBytes);
     }
 
 ### REST
@@ -450,6 +714,65 @@ to video example.
       fs.writeFileSync('example.mp4', Buffer.from(interaction.output_video.data, 'base64'));
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.GenerationConfig;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.Task;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.VideoConfig;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.List;
+
+    Client client = new Client();
+
+    byte[] imageBytes = Files.readAllBytes(Paths.get("reference.png"));
+    String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+
+    Content imageContent =
+        ImageContent.builder()
+            .data(base64Image)
+            .mimeType(ImageContentMimeType.IMAGE_PNG)
+            .build();
+
+    Content textContent =
+        TextContent.builder()
+            .text("A fast red sports car drives down an empty desert highway at dusk.")
+            .build();
+
+    List<Content> contents = Arrays.asList(imageContent, textContent);
+
+    GenerationConfig generationConfig =
+        GenerationConfig.builder()
+            .videoConfig(VideoConfig.builder().task(Task.IMAGE_TO_VIDEO).build())
+            .build();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-omni-1.1-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .generationConfig(generationConfig)
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
+        byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+        Files.write(Paths.get("task_output.mp4"), videoBytes);
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -528,6 +851,46 @@ The following example demonstrates how to generate a first video then edit it:
 
     if (res2.output_video?.data) {
       fs.writeFileSync('example.mp4', Buffer.from(res2.output_video.data, 'base64'));
+    }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Base64;
+
+    Client client = new Client();
+
+    // Turn 1: Generate initial video
+    CreateModelInteraction turn1Params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-omni-1.1-flash"))
+            .input(InteractionsInput.of("A person in a red jacket standing in a snowy landscape."))
+            .build();
+
+    Interaction turn1 =
+        client.interactions.create(CreateInteractionRequestBody.of(turn1Params)).interaction().get();
+
+    // Turn 2: Edit the previous video using previousInteractionId
+    CreateModelInteraction turn2Params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-omni-1.1-flash"))
+            .input(InteractionsInput.of("Change the jacket to bright yellow."))
+            .previousInteractionId(turn1.id().get())
+            .build();
+
+    Interaction turn2 =
+        client.interactions.create(CreateInteractionRequestBody.of(turn2Params)).interaction().get();
+
+    if (turn2.outputVideo().isPresent() && turn2.outputVideo().get().data().isPresent()) {
+        byte[] videoBytes = Base64.getDecoder().decode(turn2.outputVideo().get().data().get());
+        Files.write(Paths.get("edited.mp4"), videoBytes);
     }
 
 ### REST
@@ -628,6 +991,56 @@ The following example shows how to edit the following original video:
 
     if (interaction.output_video?.data) {
       fs.writeFileSync('example.mp4', Buffer.from(interaction.output_video.data, 'base64'));
+    }
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.VideoContent;
+    import com.google.genai.gaos.models.interactions.VideoContentMimeType;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.List;
+
+    Client client = new Client();
+
+    byte[] videoBytes = Files.readAllBytes(Paths.get("my_video.mp4"));
+    String base64Video = Base64.getEncoder().encodeToString(videoBytes);
+
+    Content videoContent =
+        VideoContent.builder()
+            .data(base64Video)
+            .mimeType(VideoContentMimeType.VIDEO_MP4)
+            .build();
+
+    Content textContent =
+        TextContent.builder()
+            .text("Make the violin completely invisible while keeping the musician playing normally in the air.")
+            .build();
+
+    List<Content> contents = Arrays.asList(videoContent, textContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-omni-1.1-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
+        byte[] editedBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+        Files.write(Paths.get("edited_invisible_violin.mp4"), editedBytes);
     }
 
 ### REST
@@ -736,6 +1149,42 @@ video is `ACTIVE` before downloading.
       downloadPath: 'output.mp4',
     });
     console.log("💾 Saved video to output.mp4");
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.CreateModelInteractionResponseFormat;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.ResponseFormat;
+    import com.google.genai.gaos.models.interactions.VideoResponseFormat;
+    import com.google.genai.gaos.models.interactions.VideoResponseFormatDelivery;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    // 1. Request video via URI delivery
+    VideoResponseFormat videoFormat =
+        VideoResponseFormat.builder()
+            .delivery(VideoResponseFormatDelivery.URI)
+            .build();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-omni-1.1-flash"))
+            .input(InteractionsInput.of("A camera flies over a misty redwood forest at sunrise."))
+            .responseFormat(CreateModelInteractionResponseFormat.of(ResponseFormat.of(videoFormat)))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    // 2. Extract file URI
+    interaction.outputVideo().flatMap(v -> v.uri()).ifPresent(uri -> {
+        System.out.println("Video URI: " + uri);
+    });
 
 ### REST
 
@@ -871,6 +1320,58 @@ You can extend:
       fs.writeFileSync('extended.mp4', Buffer.from(interaction.output_video.data, 'base64'));
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.VideoContent;
+    import com.google.genai.gaos.models.interactions.VideoContentMimeType;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.List;
+
+    Client client = new Client();
+
+    // Load base video
+    byte[] videoBytes = Files.readAllBytes(Paths.get("my_video.mp4"));
+    String base64Video = Base64.getEncoder().encodeToString(videoBytes);
+
+    Content videoContent =
+        VideoContent.builder()
+            .data(base64Video)
+            .mimeType(VideoContentMimeType.VIDEO_MP4)
+            .build();
+
+    // Prompt describing seamless continuation
+    Content promptContent =
+        TextContent.builder()
+            .text("Continue the scene.")
+            .build();
+
+    List<Content> contents = Arrays.asList(videoContent, promptContent);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-omni-1.1-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
+        byte[] extendedBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+        Files.write(Paths.get("extended.mp4"), extendedBytes);
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions?key=$API_KEY"     -H "Content-Type: application/json"     -d '{
@@ -880,6 +1381,8 @@ You can extend:
        {"type": "text", "text": "Continue the scene."}
      ]
     }'
+
+Your browser does not support the video tag. Your browser does not support the video tag.
 
 ### Extending with reference media
 
@@ -939,6 +1442,65 @@ introduce new characters or elements into the extended video:
       fs.writeFileSync('extended_with_character.mp4', Buffer.from(interaction.output_video.data, 'base64'));
     }
 
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.Content;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.ImageContent;
+    import com.google.genai.gaos.models.interactions.ImageContentMimeType;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.interactions.TextContent;
+    import com.google.genai.gaos.models.interactions.VideoContent;
+    import com.google.genai.gaos.models.interactions.VideoContentMimeType;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.nio.file.Files;
+    import java.nio.file.Paths;
+    import java.util.Arrays;
+    import java.util.Base64;
+    import java.util.List;
+
+    Client client = new Client();
+
+    // Load base video and reference character image
+    byte[] videoBytes = Files.readAllBytes(Paths.get("my_video.mp4"));
+    byte[] charBytes = Files.readAllBytes(Paths.get("character.png"));
+
+    Content baseVideo =
+        VideoContent.builder()
+            .data(Base64.getEncoder().encodeToString(videoBytes))
+            .mimeType(VideoContentMimeType.VIDEO_MP4)
+            .build();
+
+    Content characterImg =
+        ImageContent.builder()
+            .data(Base64.getEncoder().encodeToString(charBytes))
+            .mimeType(ImageContentMimeType.IMAGE_PNG)
+            .build();
+
+    Content prompt =
+        TextContent.builder()
+            .text("Extend the video: the car stops, and the traveler from <image_1> steps out and waves at the sunset.")
+            .build();
+
+    List<Content> contents = Arrays.asList(baseVideo, characterImg, prompt);
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-omni-1.1-flash"))
+            .input(InteractionsInput.ofContent(contents))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
+        byte[] extendedBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
+        Files.write(Paths.get("extended_with_character.mp4"), extendedBytes);
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions?key=$API_KEY"     -H "Content-Type: application/json"     -d '{
@@ -949,6 +1511,8 @@ introduce new characters or elements into the extended video:
        {"type": "text", "text": "Extend this video: have the character shown in <IMAGE_REF_0> enter the scene and wave."}
      ]
     }'
+
+Your browser does not support the video tag.
 
 > [!TIP]
 > **Tip:** Optionally, you can set `"task": "extend"` in `video_config` under `generation_config` if prompting alone does not produce the expected extension mode. However, we recommend relying primarily on prompting first, as using the `task` field adds strict constraints to the model.

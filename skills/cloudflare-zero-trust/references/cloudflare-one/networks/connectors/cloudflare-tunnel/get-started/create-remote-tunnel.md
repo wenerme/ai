@@ -48,6 +48,8 @@ After creating your tunnel, add a published application route:
 3. Enter a subdomain and select a **Domain** from the drop-down menu. Specify any subdomain or path information.
 Note
 If you add a multi-level subdomain (more than one level of subdomain), you must [order an Advanced Certificate for the hostname](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/#i-see-this-site-cant-provide-a-secure-connection).
+Path routing
+Specifying a path routes matching requests to the service URL, but does not strip or rewrite the path. The service receives the complete request path. To strip or rewrite paths, configure [URL Rewrite Rules](https://developers.cloudflare.com/rules/transform/url-rewrite/) at the Cloudflare edge or use a local reverse proxy.
 4. In **Service URL**, enter the protocol and address of your application (for example, `http://localhost:8000`). Refer to [supported protocols](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/protocols/) for available options.
 5. Select **Save**.
 

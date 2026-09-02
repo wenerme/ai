@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration file
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/advanced/local-management/configuration-file/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/advanced/local-management/configuration-file/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -74,6 +74,14 @@ ingress:
 You can use wildcards to match traffic to multiple subdomains. For example, if you set the `hostname` key to `*.example.com`, both `alpha.example.com` and `beta.example.com` will route traffic to your origin. `cloudflared` does not support wildcards in the middle of the hostname, such as `test.*.example.com`.
 
 You can also enter regular expressions for the `path` key. For example, if `hostname` is `static.example.com` and `path` is `\.(jpg|png|css|js)$`, matching URLs could include `https://static.example.com/data.js`, `http://static.example.com/images/photo.jpg`, and so on. Cloudflare parses the path regex using the [Go syntax package ↗](https://pkg.go.dev/regexp/syntax).
+
+Path forwarding
+
+`cloudflared` matches request paths to evaluate rules, but it forwards the full request path to your service without modifying or stripping it.
+
+For example, if an ingress rule matches `path: /api`, a request to `https://example.com/api/users` is sent to your service as `http://localhost:8000/api/users`.
+
+If your application requires path stripping or URL rewriting, you can rewrite the URL at the Cloudflare edge using [URL Rewrite Rules](https://developers.cloudflare.com/rules/transform/url-rewrite/), or forward traffic from `cloudflared` to a local reverse proxy (such as Nginx or Traefik) configured to strip path prefixes before reaching your application.
 
 ### Services
 
@@ -175,5 +183,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/local-management/configuration-file/#page","headline":"Configuration file · Cloudflare Docs","description":"Configure locally-managed tunnels with a YAML configuration file.","url":"https://developers.cloudflare.com/tunnel/advanced/local-management/configuration-file/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["YAML"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/local-management/configuration-file/#page","headline":"Configuration file · Cloudflare Docs","description":"Configure locally-managed tunnels with a YAML configuration file.","url":"https://developers.cloudflare.com/tunnel/advanced/local-management/configuration-file/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["YAML"]}
 ```

@@ -10,8 +10,16 @@ OpenRouter handles model access and routing. [Render Workflows](https://render.c
 
 This guide deploys a small prompt batch. One task receives a list of prompts and fans out one retriable task run per prompt. Each run calls OpenRouter's Auto Router and returns both the answer and the concrete model OpenRouter selected.
 
-```text theme={null}
-prompts -> Render Workflow fan-out -> OpenRouter Auto Router -> answers + model IDs
+```mermaid lines theme={null}
+flowchart TD
+  prompts[Prompts] --> fanout[Render Workflow<br/>fan-out]
+  fanout --> run1[Task run 1]
+  fanout --> run2[Task run 2]
+  fanout --> runN[Task run N]
+  run1 --> auto[OpenRouter<br/>Auto Router]
+  run2 --> auto
+  runN --> auto
+  auto --> answers[Answers<br/>+ model IDs]
 ```
 
 Each prompt becomes its own task run. Render provisions compute for those runs on demand and deprovisions it when they finish, so the fan-out does not require a pre-provisioned worker pool.

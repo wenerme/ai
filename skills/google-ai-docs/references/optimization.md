@@ -1,5 +1,3 @@
-# Gemini API optimization and inference
-
 The Gemini API offers a variety of optimization mechanisms to help you balance
 speed, cost, and reliability based on your specific workload needs.
 Whether you're building real-time conversational bots or running heavy offline
@@ -75,3 +73,22 @@ context is referenced repeatedly by shorter requests.
 - **Explicit Caching:** You can manually create a cache object with a specific Time-To-Live (TTL). Once created, you refer to the cached tokens for subsequent requests to avoid passing the same corpus payload repeatedly.
 - **Price:** Billed based on cache token count and storage duration (TTL).
 - **Best For:** Chatbots with extensive system instructions, repetitive analysis of lengthy video files, or queries against large document sets.
+
+## Reduce video input costs with agentic processing
+
+For long-form video content, agentic processing can reduce input token costs by
+up to 88% while improving response quality. Instead of extracting every frame
+at 1 FPS (static processing), the model dynamically seeks through the video,
+loading transcript and/or frames and/or audio relevant to your prompt. For
+short clips (under 5 minutes) where latency is critical, static processing
+may provide a faster Time to First Token (TTFT), as agentic mode incurs
+internal reasoning and tool round-trips before generation begins.
+
+To use agentic processing with Gemini 3.7 Flash, 3.6 Flash, or 3.5 Flash Lite,
+set `processing: "agentic"` (Interactions API) or
+`media_processing: "AGENTIC"` (GenerateContent API) on your video input. If the
+model does not support agentic processing, it will return an error.
+
+See
+[Agentic video understanding](https://ai.google.dev/gemini-api/docs/video-understanding#agentic-video-understanding)
+for code examples.

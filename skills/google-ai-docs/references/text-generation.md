@@ -77,13 +77,13 @@ instead. To learn more about other media convenience properties, see the
 
 ## Thinking with Gemini
 
-Gemini models often have ["thinking"](https://ai.google.dev/gemini-api/docs/interactions/thinking)
+Gemini models often have ["thinking"](https://ai.google.dev/gemini-api/docs/thinking)
 enabled by default which allows the model to reason before responding to a
 request.
 
 Each model supports different thinking configurations which gives you control
 over cost, latency, and intelligence. For more details, see the
-[thinking guide](https://ai.google.dev/gemini-api/docs/interactions/thinking#set-budget).
+[thinking guide](https://ai.google.dev/gemini-api/docs/thinking#set-budget).
 
 ### Python
 
@@ -394,9 +394,9 @@ media files. The following example demonstrates providing an image:
       }'
 
 For alternative methods of providing images and more advanced image processing,
-see our [image understanding guide](https://ai.google.dev/gemini-api/docs/interactions/image-understanding).
-The API also supports [document](https://ai.google.dev/gemini-api/docs/interactions/document-processing), [video](https://ai.google.dev/gemini-api/docs/interactions/video-understanding), and
-[audio](https://ai.google.dev/gemini-api/docs/interactions/audio) inputs and understanding.
+see our [image understanding guide](https://ai.google.dev/gemini-api/docs/image-understanding).
+The API also supports [document](https://ai.google.dev/gemini-api/docs/document-processing), [video](https://ai.google.dev/gemini-api/docs/video-understanding), and
+[audio](https://ai.google.dev/gemini-api/docs/audio) inputs and understanding.
 
 ## Streaming responses
 
@@ -406,7 +406,7 @@ process is complete.
 For more fluid interactions, use streaming to handle response chunks
 as they're generated. For a comprehensive guide covering event types,
 streaming with tools, thinking, agents, and image generation, see the
-dedicated [Streaming interactions](https://ai.google.dev/gemini-api/docs/interactions/streaming)
+dedicated [Streaming interactions](https://ai.google.dev/gemini-api/docs/streaming)
 guide.
 
 ### Python
@@ -866,6 +866,6 @@ suggestions on getting the most out of Gemini.
 ## What's next
 
 - Try [Gemini in Google AI Studio](https://aistudio.google.com).
-- Experiment with [structured outputs](https://ai.google.dev/gemini-api/docs/interactions/structured-output) for JSON-like responses.
-- Explore Gemini's [image](https://ai.google.dev/gemini-api/docs/interactions/image-understanding), [video](https://ai.google.dev/gemini-api/docs/interactions/video-understanding), [audio](https://ai.google.dev/gemini-api/docs/interactions/audio) and [document](https://ai.google.dev/gemini-api/docs/interactions/document-processing) understanding capabilities.
-- Learn about multimodal [file prompting strategies](https://ai.google.dev/gemini-api/docs/interactions/files#prompt-guide).
+- Experiment with [structured outputs](https://ai.google.dev/gemini-api/docs/structured-output) for JSON-like responses.
+- Explore Gemini's [image](https://ai.google.dev/gemini-api/docs/image-understanding), [video](https://ai.google.dev/gemini-api/docs/video-understanding), [audio](https://ai.google.dev/gemini-api/docs/audio) and [document](https://ai.google.dev/gemini-api/docs/document-processing) understanding capabilities.
+- Learn about multimodal [file prompting strategies](https://ai.google.dev/gemini-api/docs/files#prompt-guide).

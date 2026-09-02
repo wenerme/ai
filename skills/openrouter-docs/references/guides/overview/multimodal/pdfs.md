@@ -95,9 +95,9 @@ To configure PDF processing, use the `plugins` parameter in your request. OpenRo
 OpenRouter provides several PDF processing engines:
 
 1. <code>"{PDFParserEngine.MistralOCR}"</code>: Best for scanned documents or
-   PDFs with images (${MISTRAL_OCR_COST} per 1,000 pages).
+   PDFs with images (\${MISTRAL_OCR_COST} per 1,000 pages).
    Requests pinned to the US data region use Mistral's US regional endpoint and
-   the US rate (${MISTRAL_OCR_US_COST} per 1,000 pages), which includes Mistral's
+   the US rate (\${MISTRAL_OCR_US_COST} per 1,000 pages), which includes Mistral's
    10% regional upcharge.
 2. <code>"{PDFParserEngine.CloudflareAI}"</code>: Converts PDFs to markdown
    using Cloudflare Workers AI (Free).

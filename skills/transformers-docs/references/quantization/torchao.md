@@ -177,7 +177,6 @@ print(tokenizer.decode(output[0], skip_special_tokens=True))
 ```
 
 </hfoption>
-
 <hfoption id="int4-weight-only">
 
 ```py
@@ -248,7 +247,6 @@ print(tokenizer.decode(output[0], skip_special_tokens=True))
 ```
 
 </hfoption>
-
 <hfoption id="int4-weight-only">
 
 ```py

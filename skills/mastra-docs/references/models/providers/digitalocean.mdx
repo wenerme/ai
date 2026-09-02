@@ -1,11 +1,11 @@
 ---
 title: "DigitalOcean | Models"
-description: "Use DigitalOcean models with Mastra. 94 models available."
+description: "Use DigitalOcean models with Mastra. 95 models available."
 ---
 
 # [DigitalOcean logo]DigitalOcean
 
-Access 94 DigitalOcean models through Mastra's model router. Authentication is handled automatically using the `DIGITALOCEAN_ACCESS_TOKEN` environment variable.
+Access 95 DigitalOcean models through Mastra's model router. Authentication is handled automatically using the `DIGITALOCEAN_ACCESS_TOKEN` environment variable.
 
 Learn more in the [DigitalOcean documentation](https://docs.digitalocean.com/products/gradient-ai-platform/details/models/).
 
@@ -125,6 +125,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "digitalocean/anthropic-claude-fable-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 10,
+    "outputCost": 50
+  },
+  {
+    "model": "digitalocean/anthropic-claude-fable-5.1",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,

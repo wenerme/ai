@@ -41,6 +41,7 @@ Audit event types belong to the following product categories.
 |:----------|:---------------------|:------------------|:--------------|:------|
 | [`admin_override_cleared_for_namespace_duo_availability`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/244301) | Admin cleared a duo_availability override from a namespace | Yes | GitLab [19.2](https://gitlab.com/gitlab-org/gitlab/-/issues/603325) | Group |
 | [`admin_override_set_for_namespace_duo_availability`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/244301) | Admin set a duo_availability override on a namespace | Yes | GitLab [19.2](https://gitlab.com/gitlab-org/gitlab/-/issues/603325) | Group |
+| [`ai_custom_instructions_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245563) | Custom AI instructions setting on group changed | Yes | GitLab [19.4](https://gitlab.com/gitlab-org/gitlab/-/work_items/601517) | Group |
 | [`ai_setting_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/230001) | An AI setting is updated | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/work_items/593015) | Instance |
 
 ### AI agents
@@ -850,6 +851,7 @@ Audit event types belong to the following product categories.
 | [`update_mismatched_group_saml_extern_uid`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/104791) | The external UID is changed on a SAML identity | Yes | GitLab [15.7](https://gitlab.com/gitlab-org/gitlab/-/issues/382256) | User |
 | [`user_access_locked`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/124169) | User access to the instance is locked | Yes | GitLab [16.2](https://gitlab.com/gitlab-org/modelops/anti-abuse/team-tasks/-/issues/244) | User |
 | [`user_access_unlocked`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/124973) | User access to the instance is unlocked | Yes | GitLab [16.2](https://gitlab.com/gitlab-org/modelops/anti-abuse/team-tasks/-/issues/244) | User |
+| [`user_blocked_by_ldap_sync`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/247146) | A user is blocked by LDAP synchronization | Yes | GitLab [19.4](https://gitlab.com/gitlab-org/gitlab/-/issues/592315) | User |
 | [`user_disable_passkey`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/214530) | A user disables passkey. Group scope is only available for enterprise users. | Yes | GitLab [18.7](https://gitlab.com/gitlab-org/gitlab/-/issues/569463) | User, Group |
 | [`user_disable_two_factor`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/89598) | A user disables two factor authentication. Group scope was [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/171988) in GitLab 17.6. | Yes | GitLab [15.1](https://gitlab.com/gitlab-org/gitlab/-/issues/238177) | User, Group |
 | [`user_enable_admin_mode`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/104754) | Admin Mode enabled | Yes | GitLab [15.7](https://gitlab.com/gitlab-org/gitlab/-/issues/362101) | User |

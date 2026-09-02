@@ -40,6 +40,12 @@ in rankings and analytics. `X-Title` is still supported for backwards compatibil
 
 The `X-OpenRouter-Categories` header assigns your app to one or more marketplace categories. Pass a comma-separated list of up to {MAX_CATEGORIES_PER_REQUEST} categories per request. Categories must be lowercase, hyphen-separated, and each category is limited to 30 characters. Only recognized categories from the list below are accepted; OpenRouter drops unrecognized ones without an error. Categories are merged with any existing ones (up to {MAX_CATEGORIES_PER_APP} total).
 
+### X-OpenRouter-App-Visibility
+
+The `X-OpenRouter-App-Visibility` header controls whether a **new** app is listed publicly. Send `hidden` to create the app hidden: it is excluded from the public rankings, the app marketplace, and public app pages, while attribution keeps working and the app's usage still shows in your own analytics. Any other value, or no header at all, creates a public app.
+
+`hidden` applies only when the request creates a brand-new app: an `HTTP-Referer` that resolves to an app that already exists — including through origin grouping, or through an app created by a prior OAuth authorization — keeps that app's current visibility. The header is ignored on every later request, so it cannot list a hidden app publicly, and a caller of somebody else's app cannot hide it. To change an app that already exists, contact support.
+
 #### Category groups
 
 Categories are organized into groups for the [marketplace](https://openrouter.ai/apps):
@@ -289,6 +295,25 @@ Once your app is tracked, you can access detailed analytics at `openrouter.ai/ap
 
 * Only public apps, meaning those that send headers, are included in rankings
 * Attribution headers don't expose sensitive information about your requests
+
+## Keeping attributed apps private
+
+If you use attribution as internal telemetry for services you don't want listed
+publicly, send `X-OpenRouter-App-Visibility: hidden` alongside `HTTP-Referer`:
+
+```bash theme={null}
+curl https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -H "HTTP-Referer: https://internal-service.example.com" \
+  -H "X-OpenRouter-Title: Internal Service" \
+  -H "X-OpenRouter-App-Visibility: hidden" \
+  -H "Content-Type: application/json" \
+  -d '{"model": "openai/gpt-4o", "messages": [{"role": "user", "content": "Hello"}]}'
+```
+
+Set it once in the client every internal service shares and each new URL you
+add lands hidden the first time it sends traffic — no request afterwards, from
+you or anyone else, changes that app's visibility in either direction.
 
 ## Related documentation
 

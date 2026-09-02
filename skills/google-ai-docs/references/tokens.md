@@ -190,7 +190,7 @@ All input to the Gemini API is tokenized, including images, video, and audio.
 Key points about tokenization:
 
 - **Images**: Images ≤384 pixels in both dimensions count as 258 tokens. Larger images are tiled into 768x768 pixel tiles, each counting as 258 tokens.
-- **Video**: 263 tokens per second
+- **Video** : 263 tokens per second (applies to static processing). For agentic processing, token usage varies. See [Video token usage by processing mode](https://ai.google.dev/gemini-api/docs/tokens#video-token-usage).
 - **Audio**: 32 tokens per second
 
 #### Image tokens
@@ -299,7 +299,7 @@ Key points about tokenization:
         time.sleep(5)
         video_file = client.files.get(name=video_file.name)
 
-    # A 60-second video is approximately 263 * 60 = 15,780 tokens
+    # A 60-second video is approximately 100 * 60 = 6,000 tokens
     total_tokens = client.models.count_tokens(
         model="gemini-3.7-flash",
         contents=["Summarize this video", video_file]
@@ -315,6 +315,28 @@ Key points about tokenization:
         ]
     )
     print(interaction.usage)
+
+#### Video token usage by processing mode
+
+Token usage for video depends on the processing mode:
+
+| **Processing mode** | **Token calculation** | **Typical usage** |
+|---|---|---|
+| **Static** (default) | \~100 tokens/second by default (low resolution) or \~300 tokens/second (high resolution). All frames sampled at 1 FPS. | Predictable, proportional to video duration. |
+| **Agentic** | Varies by content complexity. The model loads only the transcript and/or frames and/or audio needed to answer the prompt. | Up to 88% fewer tokens for long-form content. |
+
+With agentic processing, a 1-hour lecture that would use \~1.08M tokens in
+static mode might use \~108K tokens, depending on the prompt and content.
+
+> [!NOTE]
+> **Note:** For static processing, token calculations assume the default sampling rate of 1 FPS. If you set a [custom frame rate](https://ai.google.dev/gemini-api/docs/generate-content/video-understanding#custom-frame-rate) in the GenerateContent API, token usage scales proportionally with the configured FPS.
+
+To check actual token usage for a request, inspect `interaction.usage`. Agentic video tokens are reported across the following fields:
+
+- **Initial prompt** (video reference + user prompt): `total_input_tokens`
+- **Navigation thinking** : `total_thought_tokens`
+- **Transcript, frames, and audio loaded on demand** : `total_tool_use_tokens`
+- **Final answer** : `total_output_tokens`
 
 #### Audio tokens
 
