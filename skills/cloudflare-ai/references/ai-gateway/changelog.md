@@ -16,6 +16,24 @@ Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/ai-gateway.xml)
 
+## 2026-09-01
+
+
+**AI Gateway consolidates monthly usage invoice line items and standardizes model names**
+
+AI Gateway monthly usage invoices, issued at the beginning of each month for the previous month's usage, now show a single total cost for each model. These invoices no longer break out input and output token quantities and unit prices into separate line items. This change does not apply to invoices for AI Gateway credit purchases.
+
+For example, an invoice that previously included these separate line items:
+
+* `anthropic claude-haiku-4-5-20251001 Input Tokens`: 40,000 tokens at $0.000001 ($0.04)
+* `anthropic claude-haiku-4-5-20251001 Output Tokens`: 24,000 tokens at $0.000005 ($0.12)
+
+The updated invoice includes one line item: `anthropic/claude-haiku-4.5`: $0.16.
+
+AI Gateway has also standardized model names across invoices and logs. Model variants that previously appeared with provider-specific version suffixes now use a consistent `provider/model` identifier.
+
+For more information, refer to the [Unified Billing documentation](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) and [AI Gateway logging documentation](https://developers.cloudflare.com/ai-gateway/observability/logging/).
+
 ## 2026-08-19
 
 

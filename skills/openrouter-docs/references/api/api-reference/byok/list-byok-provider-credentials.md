@@ -258,6 +258,7 @@ paths:
               - together
               - upstage
               - venice
+              - voyageai
               - wafer
               - wandb
               - wandb-legacy
@@ -684,6 +685,7 @@ components:
         - together
         - upstage
         - venice
+        - voyageai
         - wafer
         - wandb
         - wandb-legacy

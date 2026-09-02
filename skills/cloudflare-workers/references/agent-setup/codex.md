@@ -44,7 +44,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 1. **Download Codex**
@@ -129,11 +129,7 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
-```
-
-```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
@@ -141,11 +137,15 @@ Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Add bot protection and rate limiting to my login and checkout endpoints.
+```
+
+```txt
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ## Tips

@@ -1,11 +1,11 @@
 ---
 title: "DevPass (LLM Gateway) | Models"
-description: "Use DevPass (LLM Gateway) models with Mastra. 180 models available."
+description: "Use DevPass (LLM Gateway) models with Mastra. 181 models available."
 ---
 
 # [DevPass (LLM Gateway) logo]DevPass (LLM Gateway)
 
-Access 180 DevPass (LLM Gateway) models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 181 DevPass (LLM Gateway) models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [DevPass (LLM Gateway) documentation](https://llmgateway.io/docs).
 
@@ -53,6 +53,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "llmgateway/claude-fable-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 10,
+    "outputCost": 50
+  },
+  {
+    "model": "llmgateway/claude-fable-5-1",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,

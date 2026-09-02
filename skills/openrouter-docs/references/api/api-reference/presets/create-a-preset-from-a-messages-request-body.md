@@ -454,6 +454,8 @@ components:
         thinking:
           oneOf:
             - properties:
+                block_binding:
+                  $ref: '#/components/schemas/AnthropicThinkingBlockBinding'
                 budget_tokens:
                   type: integer
                 display:
@@ -475,6 +477,8 @@ components:
                 - type
               type: object
             - properties:
+                block_binding:
+                  $ref: '#/components/schemas/AnthropicThinkingBlockBinding'
                 display:
                   $ref: '#/components/schemas/AnthropicThinkingDisplay'
                 type:
@@ -999,6 +1003,8 @@ components:
         content: Hello, how are you?
         role: user
       properties:
+        clear_at:
+          $ref: '#/components/schemas/AnthropicSystemClearAt'
         content:
           anyOf:
             - type: string
@@ -1168,6 +1174,8 @@ components:
                   - $ref: '#/components/schemas/MessagesShellToolResultBlock'
                   - $ref: '#/components/schemas/MessagesBashToolResultBlock'
               type: array
+        output_config:
+          $ref: '#/components/schemas/AnthropicMessageOutputConfig'
         role:
           enum:
             - user
@@ -2034,10 +2042,27 @@ components:
         - type
         - text
       type: object
+    AnthropicThinkingBlockBinding:
+      additionalProperties: false
+      example:
+        prefix_mismatch_behavior: drop_block
+      properties:
+        prefix_mismatch_behavior:
+          enum:
+            - error
+            - drop_block
+            - null
+          type:
+            - string
+            - 'null'
+      type:
+        - object
+        - 'null'
     AnthropicThinkingDisplay:
       enum:
         - summarized
         - omitted
+        - updates
         - null
       example: summarized
       type:
@@ -2455,6 +2480,15 @@ components:
         - 1h
       example: 5m
       type: string
+    AnthropicSystemClearAt:
+      enum:
+        - next_user_message
+        - never
+        - null
+      example: next_user_message
+      type:
+        - string
+        - 'null'
     AnthropicImageBlockParam:
       example:
         source:
@@ -2887,6 +2921,16 @@ components:
         - tool_use_id
         - content
       type: object
+    AnthropicMessageOutputConfig:
+      additionalProperties: false
+      example:
+        effort: low
+      properties:
+        effort:
+          $ref: '#/components/schemas/AnthropicOutputEffort'
+      type:
+        - object
+        - 'null'
     ContextCompressionEngine:
       description: The compression engine to use. Defaults to "middle-out".
       enum:
@@ -3740,6 +3784,18 @@ components:
         - type
         - file_id
       type: object
+    AnthropicOutputEffort:
+      enum:
+        - low
+        - medium
+        - high
+        - xhigh
+        - max
+        - null
+      example: high
+      type:
+        - string
+        - 'null'
     PDFParserEngine:
       anyOf:
         - enum:

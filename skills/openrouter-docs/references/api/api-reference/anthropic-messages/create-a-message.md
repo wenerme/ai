@@ -525,6 +525,8 @@ components:
         thinking:
           oneOf:
             - properties:
+                block_binding:
+                  $ref: '#/components/schemas/AnthropicThinkingBlockBinding'
                 budget_tokens:
                   type: integer
                 display:
@@ -546,6 +548,8 @@ components:
                 - type
               type: object
             - properties:
+                block_binding:
+                  $ref: '#/components/schemas/AnthropicThinkingBlockBinding'
                 display:
                   $ref: '#/components/schemas/AnthropicThinkingDisplay'
                 type:
@@ -838,6 +842,8 @@ components:
                       items:
                         $ref: '#/components/schemas/AnthropicUsageIteration'
                       type: array
+                    server_tool_use:
+                      $ref: '#/components/schemas/ORAnthropicServerToolUsage'
                     service_tier:
                       type:
                         - string
@@ -1069,6 +1075,8 @@ components:
         content: Hello, how are you?
         role: user
       properties:
+        clear_at:
+          $ref: '#/components/schemas/AnthropicSystemClearAt'
         content:
           anyOf:
             - type: string
@@ -1238,6 +1246,8 @@ components:
                   - $ref: '#/components/schemas/MessagesShellToolResultBlock'
                   - $ref: '#/components/schemas/MessagesBashToolResultBlock'
               type: array
+        output_config:
+          $ref: '#/components/schemas/AnthropicMessageOutputConfig'
         role:
           enum:
             - user
@@ -2104,10 +2114,27 @@ components:
         - type
         - text
       type: object
+    AnthropicThinkingBlockBinding:
+      additionalProperties: false
+      example:
+        prefix_mismatch_behavior: drop_block
+      properties:
+        prefix_mismatch_behavior:
+          enum:
+            - error
+            - drop_block
+            - null
+          type:
+            - string
+            - 'null'
+      type:
+        - object
+        - 'null'
     AnthropicThinkingDisplay:
       enum:
         - summarized
         - omitted
+        - updates
         - null
       example: summarized
       type:
@@ -2406,6 +2433,12 @@ components:
           type: array
         id:
           type: string
+        input_transformations:
+          items:
+            $ref: '#/components/schemas/AnthropicInputTransformation'
+          type:
+            - array
+            - 'null'
         model:
           type: string
         role:
@@ -2712,6 +2745,27 @@ components:
         input_tokens: 100
         output_tokens: 50
         type: message
+    ORAnthropicServerToolUsage:
+      example:
+        tool_calls_executed: 1
+        tool_calls_requested: 1
+        web_fetch_requests: 0
+        web_search_requests: 0
+      properties:
+        tool_calls_executed:
+          type: integer
+        tool_calls_requested:
+          type: integer
+        web_fetch_requests:
+          type: integer
+        web_search_requests:
+          type: integer
+      required:
+        - web_search_requests
+        - web_fetch_requests
+      type:
+        - object
+        - 'null'
     MessagesStreamEvents:
       description: Union of all possible streaming events
       discriminator:
@@ -2786,6 +2840,15 @@ components:
         - 1h
       example: 5m
       type: string
+    AnthropicSystemClearAt:
+      enum:
+        - next_user_message
+        - never
+        - null
+      example: next_user_message
+      type:
+        - string
+        - 'null'
     AnthropicImageBlockParam:
       example:
         source:
@@ -3218,6 +3281,16 @@ components:
         - tool_use_id
         - content
       type: object
+    AnthropicMessageOutputConfig:
+      additionalProperties: false
+      example:
+        effort: low
+      properties:
+        effort:
+          $ref: '#/components/schemas/AnthropicOutputEffort'
+      type:
+        - object
+        - 'null'
     ContextCompressionEngine:
       description: The compression engine to use. Defaults to "middle-out".
       enum:
@@ -3751,11 +3824,19 @@ components:
       example:
         expires_at: '2026-04-08T00:00:00Z'
         id: ctr_01abc
+        skills: null
       properties:
         expires_at:
           type: string
         id:
           type: string
+        skills:
+          default: null
+          items:
+            $ref: '#/components/schemas/AnthropicContainerSkill'
+          type:
+            - array
+            - 'null'
       required:
         - id
         - expires_at
@@ -3819,6 +3900,27 @@ components:
         - $ref: '#/components/schemas/AnthropicAdvisorToolResult'
         - $ref: '#/components/schemas/ORAnthropicShellToolResult'
         - $ref: '#/components/schemas/ORAnthropicBashToolResult'
+    AnthropicInputTransformation:
+      additionalProperties: {}
+      description: A server-side transformation Anthropic applied to the request input
+      example:
+        path: messages.1.content.0
+        reason: prefix_binding_mismatch
+        type: thinking_dropped
+      properties:
+        path:
+          type:
+            - string
+            - 'null'
+        reason:
+          type:
+            - string
+            - 'null'
+        type:
+          type: string
+      required:
+        - type
+      type: object
     AnthropicRefusalStopDetails:
       description: Structured information about a refusal
       example:
@@ -4377,17 +4479,7 @@ components:
             output_tokens_details:
               $ref: '#/components/schemas/AnthropicOutputTokensDetails'
             server_tool_use:
-              properties:
-                web_fetch_requests:
-                  type: integer
-                web_search_requests:
-                  type: integer
-              required:
-                - web_search_requests
-                - web_fetch_requests
-              type:
-                - object
-                - 'null'
+              $ref: '#/components/schemas/ORAnthropicServerToolUsage'
           required:
             - input_tokens
             - output_tokens
@@ -4436,6 +4528,12 @@ components:
               type: array
             id:
               type: string
+            input_transformations:
+              items:
+                $ref: '#/components/schemas/AnthropicInputTransformation'
+              type:
+                - array
+                - 'null'
             model:
               type: string
             provider:
@@ -4762,6 +4860,18 @@ components:
         - type
         - file_id
       type: object
+    AnthropicOutputEffort:
+      enum:
+        - low
+        - medium
+        - high
+        - xhigh
+        - max
+        - null
+      example: high
+      type:
+        - string
+        - 'null'
     PDFParserEngine:
       anyOf:
         - enum:
@@ -5065,6 +5175,26 @@ components:
       oneOf:
         - $ref: '#/components/schemas/ContainerAutoEnvironment'
         - $ref: '#/components/schemas/ContainerReferenceEnvironment'
+    AnthropicContainerSkill:
+      example:
+        skill_id: pdf
+        type: anthropic
+        version: latest
+      properties:
+        skill_id:
+          type: string
+        type:
+          enum:
+            - anthropic
+            - custom
+          type: string
+        version:
+          type: string
+      required:
+        - skill_id
+        - type
+        - version
+      type: object
     AnthropicAdvisorToolResult:
       example:
         content:

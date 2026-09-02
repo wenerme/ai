@@ -16,7 +16,7 @@ Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 234 modelsClear filters
+We found 235 modelsClear filters
 
 No models found
 
@@ -51,6 +51,8 @@ Try a different search term, or broaden your search by removing filters.
 [![Alibaba logo](https://developers.cloudflare.com/_astro/alibaba.BK31NAJz.svg)wan-3.0AlibabaText-to-VideoAlibaba's Wan 3.0 text-to-video model. Generates cinematic videos from text prompts with adaptive aspect ratio, 480P, 720P, or 1080P resolution, and configurable duration.Third-party](https://developers.cloudflare.com/ai/models/alibaba/wan-3.0/)
 
 [![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)claude-fable-5AnthropicText GenerationClaude Fable 5 is Anthropic's most capable widely released model, built for the most demanding reasoning and long-horizon agentic work. Adaptive thinking is always on, and the model supports a 1M token context window with up to 128k output tokens per request.Third-party](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5/)
+
+[![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)claude-fable-5.1AnthropicText GenerationClaude Fable 5.1 is Anthropic's next model in the Fable family, with improvements in agentic coding, long-running agentic workflows, knowledge work, front-end and visual code generation, and finance and analysis tasks. It supports adaptive thinking and a 1M token context window.Third-party](https://developers.cloudflare.com/ai/models/anthropic/claude-fable-5.1/)
 
 [![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)claude-haiku-4.5AnthropicText GenerationClaude Haiku 4.5 delivers similar levels of coding performance at one-third the cost and more than twice the speed of larger models.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/anthropic/claude-haiku-4.5/)
 

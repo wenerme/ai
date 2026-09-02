@@ -28,7 +28,7 @@ OpenRouter provides several features that enable sovereign AI deployments today,
 
 ### In-Region Routing
 
-For enterprise customers, OpenRouter supports in-region routing in the EU and the US. When enabled, your requests are guaranteed to only be decrypted within the designated region, and are only routed to providers operating in that region. This means prompts and completions are processed entirely within that region. They never leave it at any point in the request lifecycle.
+For Business and Enterprise customers, OpenRouter supports [in-region routing](/docs/guides/features/in-region-routing) in the EU and the US. When enabled, your requests are guaranteed to only be decrypted within the designated region, and are only routed to providers operating in that region. This means prompts and completions are processed entirely within that region. They never leave it at any point in the request lifecycle.
 
 To use in-region routing, send API requests through the region-specific base URL:
 
@@ -103,7 +103,9 @@ https://us.openrouter.ai
   * Browse [EU-eligible models](https://openrouter.ai/models?region=eu) or [US-eligible models](https://openrouter.ai/models?region=us) on the models page with the **In-Region Routing** filter
 </Info>
 
-In-region routing (EU or US) is available for enterprise customers by request. [Contact our enterprise team](https://openrouter.ai/enterprise/form) to enable it for your account.
+In-region routing (EU or US) is available on the Business and Enterprise plans. Organization admins can upgrade to Business from their organization settings, or [contact our enterprise team](https://openrouter.ai/enterprise/form) for Enterprise.
+
+For full details on how requests are routed, which features are available on regional domains, and how BYOK works with regional routing, see the [In-Region Routing](/docs/guides/features/in-region-routing) guide.
 
 ### Zero Data Retention (ZDR)
 

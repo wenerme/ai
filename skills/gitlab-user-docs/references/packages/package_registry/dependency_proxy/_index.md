@@ -52,7 +52,7 @@ For Maven packages:
 |---------------------------------------------------------------------------------------------------------------------------------------|-----------------------------|
 | [GitLab](../../maven_repository/_index.md)                                                                                            | Yes |
 | [Maven Central](https://mvnrepository.com/repos/central)                                                                              | Yes |
-| [Artifactory](https://jfrog.com/integration/maven-repository/)                                                                        | Yes |
+| [Artifactory](https://jfrog.com/integrations/maven-repository/)                                                                        | Yes |
 | [Sonatype Nexus](https://help.sonatype.com/en/maven-repositories.html)                                                                | Yes |
 | [GitHub Packages](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry) | No |
 

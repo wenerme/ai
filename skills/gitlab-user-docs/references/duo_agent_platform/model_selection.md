@@ -43,6 +43,7 @@ in the Agent Platform.
 | Model                       | GitLab Duo Agentic Chat | Code Review Flow <sup>1</sup> | Security Review Flow | All other agents |
 |-----------------------------|-------------------------|------------------|----------------------|------------------|
 | Claude Fable 5 <sup>2</sup> | Yes             | No       | No           | Yes      |
+| Claude Fable 5.1 <sup>2</sup> | Yes             | No       | No           | Yes      |
 | Claude Sonnet 4.5           | Yes             | No      | Yes          | Yes      |
 | Claude Sonnet 4.6           | Yes             | Yes      | Yes          | Yes      |
 | Claude Sonnet 5             | Yes             | Yes      | No           | Yes      |

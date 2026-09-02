@@ -1,11 +1,11 @@
 ---
 title: "Anthropic | Models"
-description: "Use Anthropic models with Mastra. 13 models available."
+description: "Use Anthropic models with Mastra. 14 models available."
 ---
 
 # [Anthropic logo]Anthropic
 
-Access 13 Anthropic models through Mastra's model router. Authentication is handled automatically using the `ANTHROPIC_API_KEY` environment variable.
+Access 14 Anthropic models through Mastra's model router. Authentication is handled automatically using the `ANTHROPIC_API_KEY` environment variable.
 
 Learn more in the [Anthropic documentation](https://docs.anthropic.com/en/docs/about-claude/models).
 
@@ -39,6 +39,18 @@ for await (const chunk of stream) {
   models={[
   {
     "model": "anthropic/claude-fable-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 10,
+    "outputCost": 50
+  },
+  {
+    "model": "anthropic/claude-fable-5-1",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,

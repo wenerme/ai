@@ -10,6 +10,7 @@ Use this API to interact with [CI/CD pipelines](../ci/pipelines/_index.md).
 ## List pipelines
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250635) in GitLab 19.3.
+- Field `project` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/252943) in GitLab 19.4.
 
 Lists pipelines across all projects that were triggered by the authenticated user.
 
@@ -62,7 +63,16 @@ Example of response
     "name": "Build pipeline",
     "web_url": "https://example.com/foo/bar/pipelines/47",
     "created_at": "2016-08-11T11:28:34.085Z",
-    "updated_at": "2016-08-11T11:32:35.169Z"
+    "updated_at": "2016-08-11T11:32:35.169Z",
+    "project": {
+      "id": 1,
+      "description": "",
+      "name": "Bar",
+      "name_with_namespace": "Foo / Bar",
+      "path": "bar",
+      "path_with_namespace": "foo/bar",
+      "created_at": "2016-08-10T09:00:00.000Z"
+    }
   },
   {
     "id": 51,
@@ -75,7 +85,16 @@ Example of response
     "name": "Deploy pipeline",
     "web_url": "https://example.com/foo/baz/pipelines/51",
     "created_at": "2016-08-11T09:07:01.514Z",
-    "updated_at": "2016-08-11T09:12:44.782Z"
+    "updated_at": "2016-08-11T09:12:44.782Z",
+    "project": {
+      "id": 3,
+      "description": "",
+      "name": "Baz",
+      "name_with_namespace": "Foo / Baz",
+      "path": "baz",
+      "path_with_namespace": "foo/baz",
+      "created_at": "2016-08-10T09:00:00.000Z"
+    }
   }
 ]
 ```

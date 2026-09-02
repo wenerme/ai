@@ -1,4 +1,4 @@
-> To learn about video generation, see the [Veo](https://ai.google.dev/gemini-api/docs/video) guide.
+> To learn about video generation, see the [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/omni) guide.
 
 Gemini models can process videos, enabling many frontier developer use cases
 that would have historically required domain specific models.
@@ -30,7 +30,6 @@ summarize the video.
 ### Python
 
     from google import genai
-    import base64
     import time
 
     client = genai.Client()
@@ -421,6 +420,285 @@ You can pass YouTube URLs directly to Gemini API as part of your request as foll
 - For models prior to Gemini 2.5, you can upload only 1 video per request. For Gemini 2.5 and later models, you can upload a maximum of 10 videos per request.
 - You can only upload public videos (not private or unlisted videos).
 
+## Agentic video understanding
+
+By default, video inputs use static processing (extracting frames at 1 FPS).
+Gemini 3.7 Flash, 3.6 Flash, and 3.5 Flash Lite models also support **agentic
+video understanding**, where the model dynamically explores the video timeline,
+selectively inspecting transcripts and adaptively adjusting frame rates and
+resolution on the fly based on the prompt.
+
+| **Mode** | **Description** | **Supported models** |
+|---|---|---|
+| **Static** (default) | Extracts frames at a fixed rate (1 FPS) and places them into context in a single pass. Works well for short clips. | All Gemini models |
+| **Agentic** | The model dynamically navigates the video timeline, loading only the content it needs based on the prompt. Up to 88% more token-efficient and \~7% higher quality on long-form content. | Gemini 3.7 Flash, 3.6 Flash, 3.5 Flash Lite |
+
+### Choosing a processing mode
+
+As a general guideline, start with **agentic** mode, especially when optimizing
+for response quality or token efficiency.
+
+- **Agentic:** Long-form videos or queries targeting specific moments. The model dynamically navigates the timeline to target contextually relevant information without filling the context window.
+- **Static:** Latency-sensitive queries on short clips (under 5 minutes), or cases where frame-level precision across the entire clip is needed.
+
+### Set the processing mode
+
+### Python
+
+    import time
+    from google import genai
+
+    client = genai.Client()
+
+    # Upload a long video
+    video_file = client.files.upload(file="path/to/lecture.mp4")
+
+    while video_file.state.name == "PROCESSING":
+        time.sleep(2)
+        video_file = client.files.get(name=video_file.name)
+
+    # Use agentic processing
+    interaction = client.interactions.create(
+        model="gemini-3.7-flash",
+        input=[
+            {
+                "type": "video",
+                "uri": video_file.uri,
+                "mime_type": video_file.mime_type,
+                "processing": "agentic"
+            },
+            {"type": "text", "text": "What are the three main arguments presented?"}
+        ]
+    )
+    print(interaction.output_text)
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+
+    const ai = new GoogleGenAI({});
+
+    // Upload a long video
+    let videoFile = await ai.files.upload({
+      file: "path/to/lecture.mp4",
+      config: { mimeType: "video/mp4" }
+    });
+
+    while (videoFile.state === "PROCESSING") {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      videoFile = await ai.files.get({ name: videoFile.name });
+    }
+
+    // Use agentic processing
+    const interaction = await ai.interactions.create({
+      model: "gemini-3.7-flash",
+      input: [
+        {
+          type: "video",
+          uri: videoFile.uri,
+          mime_type: videoFile.mimeType,
+          processing: "agentic"
+        },
+        { type: "text", text: "What are the three main arguments presented?" }
+      ]
+    });
+    console.log(interaction.output_text);
+
+### REST
+
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H 'Content-Type: application/json' \
+      -d '{
+        "model": "gemini-3.7-flash",
+        "input": [
+          {
+            "type": "video",
+            "uri": "'${file_uri}'",
+            "mime_type": "video/mp4",
+            "processing": "agentic"
+          },
+          {"type": "text", "text": "What are the three main arguments presented?"}
+        ]
+      }' 2> /dev/null
+
+> **Note:** To verify that agentic processing was used, inspect `interaction.steps`. The presence of `processing_call` and `processing_result` indicates that the model dynamically navigated the video.
+
+### Response steps
+
+Agentic processing adds two new step types to the `steps` array:
+
+- `processing_call`: the model requested a video segment or audio transcript, identified by `id`.
+- `processing_result`: the result of that load, linked by `call_id`.
+
+These appear interleaved with `thought` steps (when summaries are enabled) and precede the final `model_output` step. They can be used to show a progress trace in your UI but do not require a response.
+
+The following example shows the response payload with interleaved processing steps:
+
+    {
+      "steps": [
+        {
+          "type": "thought",
+          "signature": "sig_thought_1",
+          "summary": [
+            {
+              "type": "text",
+              "text": "Inspecting transcript for key discussion topics..."
+            }
+          ]
+        },
+        {
+          "type": "processing_call",
+          "id": "call_01",
+          "signature": "sig_call_01"
+        },
+        {
+          "type": "processing_result",
+          "call_id": "call_01",
+          "signature": "sig_result_01"
+        },
+        {
+          "type": "thought",
+          "signature": "sig_thought_2",
+          "summary": [
+            {
+              "type": "text",
+              "text": "Loading visual frames to verify slide content..."
+            }
+          ]
+        },
+        {
+          "type": "processing_call",
+          "id": "call_02",
+          "signature": "sig_call_02"
+        },
+        {
+          "type": "processing_result",
+          "call_id": "call_02",
+          "signature": "sig_result_02"
+        },
+        {
+          "type": "thought",
+          "signature": "sig_thought_3",
+          "summary": [
+            {
+              "type": "text",
+              "text": "Synthesizing answer from gathered evidence..."
+            }
+          ]
+        },
+        {
+          "type": "model_output",
+          "content": [
+            {
+              "type": "text",
+              "text": "The three main arguments presented in the lecture are..."
+            }
+          ]
+        }
+      ]
+    }
+
+### Mix processing modes across videos
+
+You can set different processing modes for each video in the same request:
+
+### Python
+
+    from google import genai
+
+    client = genai.Client()
+
+    lecture = client.files.upload(file="path/to/long-lecture.mp4")
+    experiment = client.files.upload(file="path/to/short-experiment.mp4")
+
+    interaction = client.interactions.create(
+        model="gemini-3.7-flash",
+        input=[
+            {
+                "type": "video",
+                "uri": lecture.uri,
+                "mime_type": lecture.mime_type,
+                "processing": "agentic"  # Use agentic video understanding
+            },
+            {
+                "type": "video",
+                "uri": experiment.uri,
+                "mime_type": experiment.mime_type,
+                "processing": "static"  # Use static processing
+            },
+            {"type": "text", "text": "Compare the lecture content with the experiment results."}
+        ]
+    )
+    print(interaction.output_text)
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+
+    const ai = new GoogleGenAI({});
+
+    const lecture = await ai.files.upload({
+      file: "path/to/long-lecture.mp4",
+      config: { mimeType: "video/mp4" }
+    });
+    const experiment = await ai.files.upload({
+      file: "path/to/short-experiment.mp4",
+      config: { mimeType: "video/mp4" }
+    });
+
+    const interaction = await ai.interactions.create({
+      model: "gemini-3.7-flash",
+      input: [
+        {
+          type: "video",
+          uri: lecture.uri,
+          mime_type: lecture.mimeType,
+          processing: "agentic" // Use agentic video understanding
+        },
+        {
+          type: "video",
+          uri: experiment.uri,
+          mime_type: experiment.mimeType,
+          processing: "static" // Use static processing
+        },
+        { type: "text", text: "Compare the lecture content with the experiment results." }
+      ]
+    });
+    console.log(interaction.output_text);
+
+### REST
+
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H 'Content-Type: application/json' \
+      -d '{
+        "model": "gemini-3.7-flash",
+        "input": [
+          {
+            "type": "video",
+            "uri": "'${lecture_uri}'",
+            "mime_type": "video/mp4",
+            "processing": "agentic"
+          },
+          {
+            "type": "video",
+            "uri": "'${experiment_uri}'",
+            "mime_type": "video/mp4",
+            "processing": "static"
+          },
+          {"type": "text", "text": "Compare the lecture content with the experiment results."}
+        ]
+      }' 2> /dev/null
+
+### Multi-turn video conversations
+
+Video context is preserved across turns in a conversation. When using agentic
+processing:
+
+- **Stateful mode** (using `previous_interaction_id`): The server retains the video context. No additional handling is needed.
+- **Stateless mode** (using `step_list`): In stateless mode, the response includes `processing_call` and `processing_result` steps that encode the video context. You must include all steps from the response in your next request's `step_list` to preserve video context. While omitting them does not currently return an API error, the video context is lost, significantly reducing response quality on follow-up questions. Note that returned steps sent in subsequent requests contribute to input token counts.
+
 ## Refer to timestamps in the content
 
 You can ask questions about specific points in time within the video using
@@ -535,6 +813,141 @@ note that it may miss details in videos with rapid motion or quick scene changes
 
     PROMPT="Describe the key events in this video, providing both audio and visual details. Include timestamps for salient moments."
 
+## Customize video processing
+
+You can customize video processing in the Gemini API by setting clipping
+intervals or providing custom frame rate sampling. These customization options
+are only supported when processing the video in `"static"` mode.
+
+### Set clipping intervals
+
+You can clip video by specifying `start_offset` and `end_offset` in the `processing` configuration object.
+
+### Python
+
+    interaction = client.interactions.create(
+        model="gemini-3.7-flash",
+        input=[
+            {
+                "type": "video",
+                "uri": video_file.uri,
+                "mime_type": video_file.mime_type,
+                "processing": {
+                    "type": "static",
+                    "start_offset": 1200,
+                    "end_offset": 1500,
+                },
+            },
+            {"type": "text", "text": "Summarize this section of the video."},
+        ],
+    )
+    print(interaction.output_text)
+
+### JavaScript
+
+    const interaction = await ai.interactions.create({
+      model: "gemini-3.7-flash",
+      input: [
+        {
+          type: "video",
+          uri: videoFile.uri,
+          mime_type: videoFile.mimeType,
+          processing: {
+            type: "static",
+            start_offset: 1200,
+            end_offset: 1500,
+          },
+        },
+        { type: "text", text: "Summarize this section of the video." },
+      ],
+    });
+    console.log(interaction.output_text);
+
+### REST
+
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H 'Content-Type: application/json' \
+      -d '{
+        "model": "gemini-3.7-flash",
+        "input": [
+          {
+            "type": "video",
+            "uri": "'${file_uri}'",
+            "mime_type": "video/mp4",
+            "processing": {
+              "type": "static",
+              "start_offset": 1200,
+              "end_offset": 1500
+            }
+          },
+          {"type": "text", "text": "Summarize this section of the video."}
+        ]
+      }' 2> /dev/null
+
+### Set a custom frame rate
+
+You can set custom frame rate sampling by passing an `fps` argument in the `processing` configuration object.
+
+### Python
+
+    interaction = client.interactions.create(
+        model="gemini-3.7-flash",
+        input=[
+            {
+                "type": "video",
+                "uri": video_file.uri,
+                "mime_type": video_file.mime_type,
+                "processing": {
+                    "type": "static",
+                    "fps": 0.5,  # Sample 1 frame every 2 seconds
+                },
+            },
+            {"type": "text", "text": "Describe the scene changes in this video."},
+        ],
+    )
+    print(interaction.output_text)
+
+### JavaScript
+
+    const interaction = await ai.interactions.create({
+      model: "gemini-3.7-flash",
+      input: [
+        {
+          type: "video",
+          uri: videoFile.uri,
+          mime_type: videoFile.mimeType,
+          processing: {
+            type: "static",
+            fps: 0.5, // Sample 1 frame every 2 seconds
+          },
+        },
+        { type: "text", text: "Describe the scene changes in this video." },
+      ],
+    });
+    console.log(interaction.output_text);
+
+### REST
+
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -H 'Content-Type: application/json' \
+      -d '{
+        "model": "gemini-3.7-flash",
+        "input": [
+          {
+            "type": "video",
+            "uri": "'${file_uri}'",
+            "mime_type": "video/mp4",
+            "processing": {
+              "type": "static",
+              "fps": 0.5
+            }
+          },
+          {"type": "text", "text": "Describe the scene changes in this video."}
+        ]
+      }' 2> /dev/null
+
 ## Supported video formats
 
 Gemini supports the following video format MIME types:
@@ -551,38 +964,32 @@ Gemini supports the following video format MIME types:
 
 ## Technical details about videos
 
-- **Supported models \& context** : All Gemini can process video data.
-  - Models with a 1M context window can process videos up to 1 hour long at default media resolution or 3 hours long at low media resolution.
-- **File API processing** : When using the File API, videos are stored at 1 frame per second (FPS) and audio is processed at 1Kbps (single channel). Timestamps are added every second.
-  - These rates are subject to change in the future for improvements in inference.
-- **Token calculation** : Each second of video is tokenized as follows:
+- **Supported models and context** : All Gemini models can process video data.
+  - Models with a 1M context window can process videos up to 3 hours long by default (at low media resolution), or up to 1 hour long at high media resolution.
+- **Processing modes** : Gemini 3.5 Flash Lite, 3.6 Flash, 3.7 Flash, and later models support two video processing modes:
+  - **Static**: Frames are extracted at 1 FPS and placed into context (default for all models). Audio is processed at 1Kbps (single channel). Timestamps are added every second. Best for short clips or when every frame matters (such as frame-by-frame inspection). Note that fast action sequences might lose detail due to the 1 FPS sampling rate.
+  - **Agentic** : The model dynamically navigates the video, loading transcript and/or frames and/or audio on demand. This uses up to 88% fewer tokens for long-form content, though navigation may slightly increase Time to First Token (TTFT) on short clips (\<5 minutes) due to internal reasoning and tool round-trips before generation begins. Best for long-form videos to optimize token costs and response quality. Supported on Gemini 3.7 Flash, 3.6 Flash, and 3.5 Flash Lite. See [Agentic video understanding](https://ai.google.dev/gemini-api/docs/video-understanding#agentic-video-understanding) for details.
+- **Token calculation (static mode)** : Each second of video is tokenized as follows:
   - Individual frames (sampled at 1 FPS):
     - If `media_resolution` is set to low, frames are tokenized at 66 tokens per frame.
     - Otherwise, frames are tokenized at 258 tokens per frame.
   - Audio: 32 tokens per second.
   - Metadata is also included.
-  - Total: Approximately 300 tokens per second of video at default media resolution, or 100 tokens per second of video at low media resolution.
-- **Medial resolution** : Gemini 3 introduces granular control over multimodal
-  vision processing with the `media_resolution` parameter. The
-  `media_resolution` parameter determines the
-  **maximum number of tokens allocated per input image or video frame.**
-  Higher resolutions improve the model's ability to read fine text or identify
-  small details, but increase token usage and latency.
+  - Total: Approximately 100 tokens per second of video at default (low) media resolution, or approximately 300 tokens per second of video at high media resolution.
+- **Token calculation (agentic mode)** : Token usage varies based on content complexity and the model's navigation strategy. Navigation reasoning tokens generated during video exploration are accounted as **thought tokens** (`total_thought_tokens`), while frames, audio, and transcript loaded on demand are accounted as tool use tokens (`total_tool_use_tokens`). Agentic processing typically uses up to 88% fewer total tokens than static processing for long-form content because the model loads only the transcript and/or frames and/or audio it needs to answer the prompt (see the [tokens guide](https://ai.google.dev/gemini-api/docs/tokens#video-token-usage)).
+- **Media resolution** : Gemini 3 introduces granular control over multimodal vision processing with the `media_resolution` parameter. The `media_resolution` parameter determines the **maximum number of tokens
+  allocated per input image or video frame.** Higher resolutions improve the model's ability to read fine text or identify small details, but increase token usage and latency. The `media_resolution` and `processing` parameters are independent: you can set both on the same video input.
 
-  For more details on token calculations, see the [tokens](https://ai.google.dev/gemini-api/docs/tokens) guide.
+For more details on token calculations, see the
+[tokens](https://ai.google.dev/gemini-api/docs/tokens) guide.
+
 - **Timestamp format** : When referring to specific moments in a video within your prompt, use the `MM:SS` format (e.g., `01:15` for 1 minute and 15 seconds).
-
-- **Best practices**:
-
-  - Use only one video per prompt request for optimal results.
-  - If combining text and a single video, place the text prompt *after* the video part in the `input` array.
-  - Be aware that fast action sequences might lose detail due to the 1 FPS sampling rate. Consider slowing down such clips if necessary.
+- **Prompt placement** : If combining text and a single video, place the text prompt *after* the video part in the `input` array.
 
 ## What's next
 
-This guide shows how to upload video files and generate text outputs from video
-inputs. To learn more, see the following resources:
-
+- [Media resolution](https://ai.google.dev/gemini-api/docs/media-resolution): Control the resolution of video frames to balance quality and token usage.
+- [Tokens](https://ai.google.dev/gemini-api/docs/tokens): Understand how video content is tokenized in both static and agentic processing modes.
 - [System instructions](https://ai.google.dev/gemini-api/docs/text-generation#system-instructions): System instructions let you steer the behavior of the model based on your specific needs and use cases.
 - [Files API](https://ai.google.dev/gemini-api/docs/files): Learn more about uploading and managing files for use with Gemini.
 - [File prompting strategies](https://ai.google.dev/gemini-api/docs/files#prompt-guide): The Gemini API supports prompting with text, image, audio, and video data, also known as multimodal prompting.
