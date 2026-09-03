@@ -58,8 +58,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/logs/access_requests?limit=25&direction=desc&since=2020-07-01T05%3A20%3A00Z&until=2020-10-01T05%3A20%3A00Z" \
 	--request GET \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 ```json

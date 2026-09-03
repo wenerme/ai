@@ -48,6 +48,17 @@ A policy says which tokens from an issuer may exchange, and which API key they a
 
 Each policy has an id shown under its name. Your workload sends that id as `federation_policy_id` with every exchange, which binds the exchange to your organization even if another organization trusts the same issuer, subject, and audience. Policies can be paused with the **Enabled** switch.
 
+Under **Token must match**, choose **Add claim check** to add either of these optional conditions:
+
+| Check                           | Required subject-token claim                                                                                                |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Scopes                          | `scopes` must be an array of strings containing the exact configured value. A space-separated `scope` string is not used.   |
+| Token type (`token_type` claim) | `token_type` must be a string equal to the configured value, such as `service_account`. This is not the JWT header's `typ`. |
+
+All added checks must pass, in addition to issuer, subject, audience, signature, and expiry validation. Matching is case-sensitive; missing or incorrectly typed claims fail the exchange. Each check can be added once and removed independently. Policies without additional checks keep their existing behavior.
+
+These conditions validate the **incoming identity token**. They do not change the `inference` scope or `Bearer` token type of the issued OpenRouter access token, and sending `scope=inference` in the exchange request does not satisfy a subject-token check.
+
 ## Exchange a token
 
 ```bash title="Token exchange" theme={null}
@@ -87,20 +98,21 @@ The request body is `application/x-www-form-urlencoded` and must stay under 32 K
 * Signed with `ES256` or `RS256` by a key published at the issuer's JWKS.
 * Carries `iss`, `sub`, `aud`, and `exp`, and is not expired.
 * `iss` equals the issuer URL of the named policy, and `sub` plus one `aud` value equal that policy's subject and audience.
+* Satisfies every additional claim check configured on the policy.
 
 ### Errors
 
 Errors follow [RFC 6749 §5.2](https://www.rfc-editor.org/rfc/rfc6749#section-5.2):
 
-| HTTP | `error`                   | Meaning                                                                                                                                                                                                                                                                             |
-| ---- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 400  | `invalid_request`         | A required field is missing or malformed, or `subject_token` is not a JWT.                                                                                                                                                                                                          |
-| 400  | `unsupported_grant_type`  | `grant_type` is not the token-exchange grant.                                                                                                                                                                                                                                       |
-| 400  | `invalid_scope`           | A scope other than `inference` was requested.                                                                                                                                                                                                                                       |
-| 400  | `invalid_grant`           | The token was not accepted: the policy does not exist or is paused, the token's issuer, subject, or audience do not match it, the signature is bad, or the token is expired. One generic message covers all of these so a caller cannot probe another organization's configuration. |
-| 413  | `invalid_request`         | The request body is larger than 32 KB.                                                                                                                                                                                                                                              |
-| 429  | `invalid_request`         | Too many exchanges from one address; retry after the `Retry-After` header.                                                                                                                                                                                                          |
-| 503  | `temporarily_unavailable` | The issuer's discovery document or JWKS could not be fetched; retry shortly.                                                                                                                                                                                                        |
+| HTTP | `error`                   | Meaning                                                                                                                                                                                                                                                                 |
+| ---- | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 400  | `invalid_request`         | A required field is missing or malformed, or `subject_token` is not a JWT.                                                                                                                                                                                              |
+| 400  | `unsupported_grant_type`  | `grant_type` is not the token-exchange grant.                                                                                                                                                                                                                           |
+| 400  | `invalid_scope`           | A scope other than `inference` was requested.                                                                                                                                                                                                                           |
+| 400  | `invalid_grant`           | The token was not accepted: the policy does not exist or is paused, the token's claims do not satisfy the policy, the signature is bad, or the token is expired. One generic message covers all of these so a caller cannot probe another organization's configuration. |
+| 413  | `invalid_request`         | The request body is larger than 32 KB.                                                                                                                                                                                                                                  |
+| 429  | `invalid_request`         | Too many exchanges from one address; retry after the `Retry-After` header.                                                                                                                                                                                              |
+| 503  | `temporarily_unavailable` | The issuer's discovery document or JWKS could not be fetched; retry shortly.                                                                                                                                                                                            |
 
 ## Verifying OpenRouter access tokens
 

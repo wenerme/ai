@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Zone Analytics
 
-Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare zone analytics is a major component of the overall Cloudflare Analytics product line. Specifically, this app gives you access to a wide range of metrics, collected at the website or domain level.
 
@@ -28,7 +28,7 @@ To view metrics for your website, in the Cloudflare dashboard, go to the **Analy
 
 [Go to **HTTP Traffic** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/traffic)
 
-Once it loads, you can find tabs for **Traffic**, **Security**, **Performance**, **DNS**, **Workers**, and **Logs** (Enterprise domains only). To understand the various metrics available, refer to _Review your website metrics_ below.
+Once it loads, you can find tabs for **Traffic**, **Security**, **Performance**, **Workers**, and **Logs** (Enterprise domains only). To understand the various metrics available, refer to _Review your website metrics_ below.
 
 ---
 
@@ -132,5 +132,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/#page","headline":"Zone Analytics · Cloudflare Analytics docs","description":"Analyze request and bandwidth data per zone.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/#page","headline":"Zone Analytics · Cloudflare Analytics docs","description":"Analyze request and bandwidth data per zone.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**
 For example:
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ## Cloudflare platform access
@@ -115,19 +115,19 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
-```
-
-```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ```txt
 Configure Zero Trust access policies to protect my internal staging environment.
+```
+
+```txt
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
