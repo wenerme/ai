@@ -37,7 +37,7 @@
 | `Esc` + `Esc`                                                                                | Clear input draft, or rewind                                                                                                                                                                                                                                               | When the prompt input contains text, double `Esc` clears it and saves the draft to history so `Up` recalls it. When the input is empty, double `Esc` opens the [rewind menu](/docs/en/checkpointing) to restore or summarize code and conversation from a previous point                                                                                                                                                                                                                                                              |
 | `Shift+Tab`, or `Alt+M` on Windows when the Node or Bun runtime doesn't enable VT input mode | Cycle permission modes                                                                                                                                                                                                                                                     | Cycle through `default` (labeled Manual in the mode indicator), `acceptEdits`, `plan`, and, when available, `bypassPermissions` and then `auto`. From `auto`, the first press switches to `default`. See [permission modes](/docs/en/permission-modes). On a file permission prompt, the same key closes an open [comment field](/docs/en/permissions#add-a-comment-when-you-answer-a-permission-prompt). With no field open, it selects the option that allows the action for the rest of the session, when the prompt offers that option |
 | `Option+P` (macOS) or `Alt+P` (Windows/Linux)                                                | Switch model                                                                                                                                                                                                                                                               | Switch models without clearing your prompt                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| `Option+T` (macOS) or `Alt+T` (Windows/Linux)                                                | Toggle extended thinking                                                                                                                                                                                                                                                   | Enable or disable extended thinking mode. Has no effect on Fable 5, which always uses extended thinking. Works on macOS without configuring Option as Meta                                                                                                                                                                                                                                                                                                                                                                       |
+| `Option+T` (macOS) or `Alt+T` (Windows/Linux)                                                | Toggle extended thinking                                                                                                                                                                                                                                                   | Enable or disable extended thinking mode. Has no effect on Fable 5.1 or Fable 5, which always use extended thinking. Works on macOS without configuring Option as Meta                                                                                                                                                                                                                                                                                                                                                           |
 | `Option+O` (macOS) or `Alt+O` (Windows/Linux)                                                | Toggle fast mode                                                                                                                                                                                                                                                           | Enable or disable [fast mode](/docs/en/fast-mode)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
 ### Text editing
@@ -623,17 +623,22 @@ When working on a branch with an open pull request, Claude Code displays a click
 * Red: changes requested
 * Gray: draft
 
-The badge disappears once the pull request merges or closes. `Cmd+click` (macOS) or `Ctrl+click` (Windows/Linux) the link to open the pull request in your browser. How often Claude Code refreshes the status depends on your provider:
+The badge disappears once the pull request merges or closes.
 
-* **Anthropic API with [feature-flag fetching](/docs/en/env-vars#features-that-need-feature-flag-fetching) on**: about every 90 seconds while you're active in the session, and less often while you're idle, while your terminal is unfocused, or while Claude Code keeps finding no pull request for the branch
-* **Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry, Claude Platform on AWS, or feature-flag fetching off**: every 60 seconds
+`Cmd+click` (macOS) or `Ctrl+click` (Windows/Linux) the link to open the pull request in your browser.
 
-On either schedule, Claude Code also refreshes as soon as a `git push`, or a `gh pr` command that changes the pull request such as `gh pr create` or `gh pr merge`, succeeds in the session. After an hour without input from you, Claude Code stops refreshing, and your next prompt starts it again.
+The status refreshes as soon as a `git push`, or a `gh pr` command that changes the pull request, such as `gh pr create` or `gh pr merge`, succeeds in the session.
 
 Claude Code renders the badge as a hyperlink even when it can't detect hyperlink support in your terminal, which commonly happens over SSH or in tmux. Set [`FORCE_HYPERLINK=0`](/docs/en/env-vars) to render the badge as plain text.
 
+When you set [`CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC`](/docs/en/env-vars), Claude Code doesn't check pull request or merge request status.
+
 <Note>
-  PR status for GitHub repositories requires the `gh` CLI to be installed and authenticated with `gh auth login`.
+  PR status for GitHub repositories needs a GitHub token. Claude Code finds one based on the remote's host:
+
+  * **github.com**: `GH_TOKEN` or `GITHUB_TOKEN`, or the token saved by `gh auth login`. Without one, the footer shows `install gh for PR status` when the `gh` CLI isn't installed, or `gh auth login for PR status` when it is
+  * **A GitHub Enterprise host set as `GH_HOST`**: `GH_ENTERPRISE_TOKEN` or `GITHUB_ENTERPRISE_TOKEN`, or the token saved by `gh auth login --hostname <host>`. Without one, the footer shows the same hints
+  * **Any other GitHub host**: the token saved by `gh auth login --hostname <host>`. Without one, Claude Code shows no badge and no hint
 </Note>
 
 ### GitLab merge requests
@@ -644,7 +649,9 @@ When you work on a branch with an open GitLab merge request, Claude Code shows a
 * Yellow: any other open state
 * Gray: draft
 
-The badge disappears once the merge request merges or closes. Claude Code checks merge request status on the same schedule as the GitHub badge, and refreshes as soon as a `glab mr create` or `git push` succeeds in the session.
+The badge disappears once the merge request merges or closes.
+
+It refreshes as soon as a `glab mr create` or `git push` succeeds in the session.
 
 To get the badge, you need:
 

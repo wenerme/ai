@@ -26,7 +26,7 @@ To use the Priority tier, set the `service_tier` field in your request to `prior
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="Triage this critical customer support ticket immediately.",
         service_tier='priority'
     )
@@ -40,7 +40,7 @@ To use the Priority tier, set the `service_tier` field in your request to `prior
 
     async function main() {
         const interaction = await ai.interactions.create({
-            model: "gemini-3.7-flash",
+            model: "gemini-3.8-flash",
             input: "Triage this critical customer support ticket immediately.",
             service_tier: "priority"
         });
@@ -63,7 +63,7 @@ To use the Priority tier, set the `service_tier` field in your request to `prior
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Perform a priority inference task."))
             .serviceTier(ServiceTier.PRIORITY)
             .build();
@@ -79,7 +79,7 @@ To use the Priority tier, set the `service_tier` field in your request to `prior
       -H "Content-Type: application/json" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "Triage this critical customer support ticket immediately.",
         "service_tier": "priority"
       }'
@@ -143,6 +143,7 @@ The following models support Priority inference:
 
 | Model | Priority inference |
 |---|---|
+| [Gemini 3.8 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash) | ✔️ |
 | [Gemini 3.7 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.7-flash) | ✔️ |
 | [Gemini 3.6 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash) | ✔️ |
 | [Gemini 3.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) | ✔️ |

@@ -6,9 +6,11 @@ This guide introduces all the models available through the Gemini API.
 
 ### Stable
 
-[### Gemini 3.7 Flash
-Our latest and most capable Flash model, built for complex coding, agentic workflows, and reliable multi-step execution.
-New Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.7-flash) [### Gemini 3.6 Flash
+[### Gemini 3.8 Flash
+Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.
+New Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash) [### Gemini 3.7 Flash
+Our previous-generation Flash model for complex coding, agentic workflows, and reliable multi-step execution.
+Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.7-flash) [### Gemini 3.6 Flash
 Our previous-generation Flash model, balancing speed and multimodal capabilities across general agentic and everyday tasks.
 Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash) [### Gemini 3.5 Flash
 Our legacy Flash model, providing baseline speed and foundational performance for routine, high-throughput workloads.
@@ -46,6 +48,7 @@ New](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 
 | Model | Endpoint |
 |---|---|
+| [Gemini 3.8 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash) | ``` gemini-3.8-flash ``` |
 | [Gemini 3.7 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.7-flash) | ``` gemini-3.7-flash ``` |
 | [Gemini 3.6 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash) | ``` gemini-3.6-flash ``` |
 | [Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) | ``` gemini-3.5-flash ``` |

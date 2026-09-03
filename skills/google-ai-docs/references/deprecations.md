@@ -19,7 +19,8 @@ Already-shutdown models are indicated with gray backgrounds.
 
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|
-| `gemini-3.7-flash` | August 2026 | No shutdown date announced |   |
+| `gemini-3.8-flash` | September 2, 2026 | No shutdown date announced |   |
+| `gemini-3.7-flash` | August 13, 2026 | No shutdown date announced |   |
 | `gemini-3.6-flash` | July 21, 2026 | No shutdown date announced |   |
 | `gemini-3.5-flash-lite` | July 21, 2026 | No shutdown date announced |   |
 | `gemini-3.5-flash` | May 19, 2026 | No shutdown date announced |   |

@@ -5,7 +5,7 @@ description: "Browse Fireworks AI model IDs, capabilities, context windows, and 
 
 # [Fireworks AI logo]Fireworks AI
 
-Access 18 Fireworks AI models through Mastra's model router. Authentication is handled automatically using the `FIREWORKS_API_KEY` environment variable.
+Access 19 Fireworks AI models through Mastra's model router. Authentication is handled automatically using the `FIREWORKS_API_KEY` environment variable.
 
 Learn more in the [Fireworks AI documentation](https://fireworks.ai/docs/).
 
@@ -42,6 +42,18 @@ for await (const chunk of stream) {
   {
     "model": "fireworks-ai/accounts/fireworks/models/deepseek-v4-flash-0731",
     "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 0.22,
+    "outputCost": 0.66
+  },
+  {
+    "model": "fireworks-ai/accounts/fireworks/models/deepseek-v4-flash-vision-exp",
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,

@@ -66,16 +66,17 @@ strongest:
 * **Use shared capacity** (default): OpenRouter tries
   your key first, then falls back to OpenRouter
   endpoints on failures.
-* **Use shared capacity only for models this key doesn't
-  apply to**: models selected in the key's Models filter
+* **Never use shared capacity for models this key applies
+  to**: models selected in the key's Models filter
   (which defaults to All) never fall back to OpenRouter
   endpoints on this provider, which may result in rate
   limit errors if your keys are exhausted, but ensures
   those requests go through your account. Models outside
   the filter can still fall back to OpenRouter endpoints
   on this provider.
-* **Never use shared capacity on this provider**: never
-  spend OpenRouter credits on this provider, even for
+* **Never use shared capacity for any model on this
+  provider**: never spend OpenRouter credits on this
+  provider, even for
   models outside the key's Models filter. Requests to
   that provider only run through your keys: if no key
   allows the requested model, or all matching keys fail,
@@ -139,7 +140,7 @@ Note that even though Amazon Bedrock is listed first in the `order` array, the G
 
 If you want to prevent fallback to OpenRouter endpoints
 entirely, set **Shared capacity fallback** to **"Never
-use shared capacity on this provider"** on your
+use shared capacity for any model on this provider"** on your
 BYOK keys in your
 [workspace BYOK settings](https://openrouter.ai/workspaces/default/byok).
 
@@ -291,7 +292,7 @@ curl https://openrouter.ai/api/v1/byok/11111111-2222-3333-4444-555555555555 \
 
 Filters and multiple keys work together to enable flexible routing strategies. For example:
 
-* **Key A**: OpenAI, model filter = `[openai/gpt-4o]`, Shared capacity fallback set to "Use shared capacity only for models this key doesn't apply to"
+* **Key A**: OpenAI, model filter = `[openai/gpt-4o]`, Shared capacity fallback set to "Never use shared capacity for models this key applies to"
 * **Key B**: OpenAI, no model filter (matches all models)
 
 In this setup:

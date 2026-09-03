@@ -42,7 +42,7 @@ summarize the video.
         myfile = client.files.get(name=myfile.name)
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "video", "uri": myfile.uri, "mime_type": myfile.mime_type},
             {"type": "text", "text": "Summarize this video. Then create a quiz with an answer key based on the information in this video."}
@@ -78,7 +78,7 @@ summarize the video.
       }
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: [
           { type: "video", uri: myfile.uri, mime_type: myfile.mimeType },
           { type: "text", text: "Summarize this video. Then create a quiz with an answer key based on the information in this video." }
@@ -117,7 +117,7 @@ summarize the video.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -183,7 +183,7 @@ summarize the video.
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d '{
-          "model": "gemini-3.7-flash",
+          "model": "gemini-3.8-flash",
           "input": [
             {"type": "video", "uri": "'${file_uri}'", "mime_type": "'${MIME_TYPE}'"},
             {"type": "text", "text": "Summarize this video. Then create a quiz with an answer key based on the information in this video."}
@@ -218,7 +218,7 @@ Here's an example of providing inline video data:
 
     client = genai.Client()
     interaction = client.interactions.create(
-        model='gemini-3.7-flash',
+        model='gemini-3.8-flash',
         input=[
             {"type": "text", "text": "Please summarize the video in 3 sentences."},
             {
@@ -241,7 +241,7 @@ Here's an example of providing inline video data:
     });
 
     const interaction = await ai.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       input: [
         { type: "text", text: "Please summarize the video in 3 sentences." },
         {
@@ -281,7 +281,7 @@ Here's an example of providing inline video data:
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -307,7 +307,7 @@ Here's an example of providing inline video data:
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d '{
-          "model": "gemini-3.7-flash",
+          "model": "gemini-3.8-flash",
           "input": [
             {"type": "text", "text": "Please summarize the video in 3 sentences."},
             {
@@ -331,7 +331,7 @@ You can pass YouTube URLs directly to Gemini API as part of your request as foll
 
     client = genai.Client()
     interaction = client.interactions.create(
-        model='gemini-3.7-flash',
+        model='gemini-3.8-flash',
         input=[
             {"type": "text", "text": "Please summarize the video in 3 sentences."},
             {
@@ -349,7 +349,7 @@ You can pass YouTube URLs directly to Gemini API as part of your request as foll
     const ai = new GoogleGenAI({});
 
     const interaction = await ai.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       input: [
         { type: "text", text: "Please summarize the video in 3 sentences." },
         {
@@ -388,7 +388,7 @@ You can pass YouTube URLs directly to Gemini API as part of your request as foll
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -403,7 +403,7 @@ You can pass YouTube URLs directly to Gemini API as part of your request as foll
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d '{
-          "model": "gemini-3.7-flash",
+          "model": "gemini-3.8-flash",
           "input": [
             {"type": "text", "text": "Please summarize the video in 3 sentences."},
             {
@@ -423,15 +423,15 @@ You can pass YouTube URLs directly to Gemini API as part of your request as foll
 ## Agentic video understanding
 
 By default, video inputs use static processing (extracting frames at 1 FPS).
-Gemini 3.7 Flash, 3.6 Flash, and 3.5 Flash Lite models also support **agentic
-video understanding**, where the model dynamically explores the video timeline,
-selectively inspecting transcripts and adaptively adjusting frame rates and
-resolution on the fly based on the prompt.
+Gemini 3.8 Flash, 3.7 Flash, 3.6 Flash, and 3.5 Flash Lite models also support
+**agentic video understanding**, where the model dynamically explores the video
+timeline, selectively inspecting transcripts and adaptively adjusting frame
+rates and resolution on the fly based on the prompt.
 
 | **Mode** | **Description** | **Supported models** |
 |---|---|---|
 | **Static** (default) | Extracts frames at a fixed rate (1 FPS) and places them into context in a single pass. Works well for short clips. | All Gemini models |
-| **Agentic** | The model dynamically navigates the video timeline, loading only the content it needs based on the prompt. Up to 88% more token-efficient and \~7% higher quality on long-form content. | Gemini 3.7 Flash, 3.6 Flash, 3.5 Flash Lite |
+| **Agentic** | The model dynamically navigates the video timeline, loading only the content it needs based on the prompt. Up to 88% more token-efficient and \~7% higher quality on long-form content. | Gemini 3.8 Flash, 3.7 Flash, 3.6 Flash, 3.5 Flash Lite |
 
 ### Choosing a processing mode
 
@@ -459,7 +459,7 @@ for response quality or token efficiency.
 
     # Use agentic processing
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {
                 "type": "video",
@@ -491,7 +491,7 @@ for response quality or token efficiency.
 
     // Use agentic processing
     const interaction = await ai.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       input: [
         {
           type: "video",
@@ -510,7 +510,7 @@ for response quality or token efficiency.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": [
           {
             "type": "video",
@@ -613,7 +613,7 @@ You can set different processing modes for each video in the same request:
     experiment = client.files.upload(file="path/to/short-experiment.mp4")
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {
                 "type": "video",
@@ -648,7 +648,7 @@ You can set different processing modes for each video in the same request:
     });
 
     const interaction = await ai.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       input: [
         {
           type: "video",
@@ -673,7 +673,7 @@ You can set different processing modes for each video in the same request:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": [
           {
             "type": "video",
@@ -740,7 +740,7 @@ timestamps of the form `MM:SS`.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -800,7 +800,7 @@ note that it may miss details in videos with rapid motion or quick scene changes
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -826,7 +826,7 @@ You can clip video by specifying `start_offset` and `end_offset` in the `process
 ### Python
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {
                 "type": "video",
@@ -846,7 +846,7 @@ You can clip video by specifying `start_offset` and `end_offset` in the `process
 ### JavaScript
 
     const interaction = await ai.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       input: [
         {
           type: "video",
@@ -869,7 +869,7 @@ You can clip video by specifying `start_offset` and `end_offset` in the `process
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": [
           {
             "type": "video",
@@ -892,7 +892,7 @@ You can set custom frame rate sampling by passing an `fps` argument in the `proc
 ### Python
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {
                 "type": "video",
@@ -911,7 +911,7 @@ You can set custom frame rate sampling by passing an `fps` argument in the `proc
 ### JavaScript
 
     const interaction = await ai.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       input: [
         {
           type: "video",
@@ -933,7 +933,7 @@ You can set custom frame rate sampling by passing an `fps` argument in the `proc
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": [
           {
             "type": "video",
@@ -966,9 +966,9 @@ Gemini supports the following video format MIME types:
 
 - **Supported models and context** : All Gemini models can process video data.
   - Models with a 1M context window can process videos up to 3 hours long by default (at low media resolution), or up to 1 hour long at high media resolution.
-- **Processing modes** : Gemini 3.5 Flash Lite, 3.6 Flash, 3.7 Flash, and later models support two video processing modes:
+- **Processing modes** : Gemini 3.8 Flash, 3.7 Flash, 3.6 Flash, 3.5 Flash Lite, and later models support two video processing modes:
   - **Static**: Frames are extracted at 1 FPS and placed into context (default for all models). Audio is processed at 1Kbps (single channel). Timestamps are added every second. Best for short clips or when every frame matters (such as frame-by-frame inspection). Note that fast action sequences might lose detail due to the 1 FPS sampling rate.
-  - **Agentic** : The model dynamically navigates the video, loading transcript and/or frames and/or audio on demand. This uses up to 88% fewer tokens for long-form content, though navigation may slightly increase Time to First Token (TTFT) on short clips (\<5 minutes) due to internal reasoning and tool round-trips before generation begins. Best for long-form videos to optimize token costs and response quality. Supported on Gemini 3.7 Flash, 3.6 Flash, and 3.5 Flash Lite. See [Agentic video understanding](https://ai.google.dev/gemini-api/docs/video-understanding#agentic-video-understanding) for details.
+  - **Agentic** : The model dynamically navigates the video, loading transcript and/or frames and/or audio on demand. This uses up to 88% fewer tokens for long-form content, though navigation may slightly increase Time to First Token (TTFT) on short clips (\<5 minutes) due to internal reasoning and tool round-trips before generation begins. Best for long-form videos to optimize token costs and response quality. Supported on Gemini 3.8 Flash, 3.7 Flash, 3.6 Flash, and 3.5 Flash Lite. See [Agentic video understanding](https://ai.google.dev/gemini-api/docs/video-understanding#agentic-video-understanding) for details.
 - **Token calculation (static mode)** : Each second of video is tokenized as follows:
   - Individual frames (sampled at 1 FPS):
     - If `media_resolution` is set to low, frames are tokenized at 66 tokens per frame.

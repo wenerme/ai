@@ -181,14 +181,14 @@ The only supported completion window is `24h`.
 
 ## List your batches
 
-List the batches owned by the authenticating API key with:
+List the batches in the workspace of the authenticating API key with:
 
 ```shell title="Shell" lines theme={null}
 curl 'https://openrouter.ai/api/beta/batches?limit=2&status=completed&status=failed' \
   -H "Authorization: Bearer $OPENROUTER_API_KEY"
 ```
 
-Batches are returned newest first. List items contain metadata only and always set `results` to `null`; retrieve an individual batch by ID when you need its results.
+Batches are scoped to the workspace, not the key: every API key in the same workspace sees the same list, including batches submitted with other keys. Batches are returned newest first. List items contain metadata only and always set `results` to `null`; retrieve an individual batch by ID when you need its results.
 
 ```json title="Batch list" lines theme={null}
 {

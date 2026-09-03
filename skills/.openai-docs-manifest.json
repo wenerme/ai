@@ -74,10 +74,10 @@
   "openai-docs/changelog.md": {
     "url": "https://developers.openai.com/api/docs/changelog.md",
     "skill": "openai-docs",
-    "etag": "W/\"dd67c78e42eeb0cd3ce5481c468f6b53\"",
-    "lastModified": "Tue, 01 Sep 2026 02:09:49 GMT",
-    "size": 62062,
-    "updatedAt": "2026-09-01T04:53:06.185Z"
+    "etag": "W/\"a9893bedf8dede659c40e021fced5aa3\"",
+    "lastModified": "Thu, 03 Sep 2026 01:53:03 GMT",
+    "size": 62730,
+    "updatedAt": "2026-09-03T04:14:28.303Z"
   },
   "openai-docs/concepts.md": {
     "url": "https://developers.openai.com/api/docs/concepts.md",
@@ -402,18 +402,18 @@
   "openai-docs/guides/embeddings.md": {
     "url": "https://developers.openai.com/api/docs/guides/embeddings.md",
     "skill": "openai-docs",
-    "etag": "W/\"980fd9c4c3bceb5a2804805b07ea9472\"",
-    "lastModified": "Fri, 28 Aug 2026 09:15:19 GMT",
-    "size": 37251,
-    "updatedAt": "2026-08-28T11:15:35.116Z"
+    "etag": "W/\"e4037aa8488582b1afe5b12ba9e9944a\"",
+    "lastModified": "Thu, 03 Sep 2026 02:37:24 GMT",
+    "size": 42272,
+    "updatedAt": "2026-09-03T04:14:38.421Z"
   },
   "openai-docs/guides/error-codes.md": {
     "url": "https://developers.openai.com/api/docs/guides/error-codes.md",
     "skill": "openai-docs",
-    "etag": "W/\"df3ab8a52f4a517529a846031cb78295\"",
-    "lastModified": "Fri, 28 Aug 2026 07:47:56 GMT",
-    "size": 31727,
-    "updatedAt": "2026-08-28T11:15:35.359Z"
+    "etag": "W/\"10ab3a4a9837f60862949d7c09cd35a7\"",
+    "lastModified": "Thu, 03 Sep 2026 03:04:52 GMT",
+    "size": 31539,
+    "updatedAt": "2026-09-03T04:14:38.659Z"
   },
   "openai-docs/guides/evals.md": {
     "url": "https://developers.openai.com/api/docs/guides/evals.md",
@@ -450,10 +450,10 @@
   "openai-docs/guides/fast-mode.md": {
     "url": "https://developers.openai.com/api/docs/guides/fast-mode.md",
     "skill": "openai-docs",
-    "etag": "W/\"3efdf0f387b4ce029bbceabe9a5097c3\"",
-    "lastModified": "Fri, 21 Aug 2026 23:07:54 GMT",
-    "size": 8304,
-    "updatedAt": "2026-08-22T01:47:57.608Z"
+    "etag": "W/\"a2732af3f6d3d5cbce50eb89be57e1d4\"",
+    "lastModified": "Thu, 03 Sep 2026 02:25:59 GMT",
+    "size": 8398,
+    "updatedAt": "2026-09-03T04:14:39.833Z"
   },
   "openai-docs/guides/file-inputs.md": {
     "url": "https://developers.openai.com/api/docs/guides/file-inputs.md",
@@ -666,10 +666,10 @@
   "openai-docs/guides/prompt-generation.md": {
     "url": "https://developers.openai.com/api/docs/guides/prompt-generation.md",
     "skill": "openai-docs",
-    "etag": "W/\"ad158ad99a45b226374fcd5cbb481094\"",
-    "lastModified": "Fri, 28 Aug 2026 07:39:17 GMT",
-    "size": 114610,
-    "updatedAt": "2026-08-28T11:15:43.086Z"
+    "etag": "W/\"322150bdb53613b077d2ddb120c2ee63\"",
+    "lastModified": "Thu, 03 Sep 2026 02:13:32 GMT",
+    "size": 133317,
+    "updatedAt": "2026-09-03T04:14:46.458Z"
   },
   "openai-docs/guides/prompt-guidance.md": {
     "url": "https://developers.openai.com/api/docs/guides/prompt-guidance.md",
@@ -706,10 +706,10 @@
   "openai-docs/guides/rate-limits.md": {
     "url": "https://developers.openai.com/api/docs/guides/rate-limits.md",
     "skill": "openai-docs",
-    "etag": "W/\"e2ca9335822a37fce9dfa054ba6ddd9d\"",
-    "lastModified": "Tue, 25 Aug 2026 01:26:19 GMT",
-    "size": 15680,
-    "updatedAt": "2026-08-25T01:48:39.483Z"
+    "etag": "W/\"b7601313431aba0748674da6858de91f\"",
+    "lastModified": "Thu, 03 Sep 2026 01:56:54 GMT",
+    "size": 17890,
+    "updatedAt": "2026-09-03T04:14:47.887Z"
   },
   "openai-docs/guides/rbac.md": {
     "url": "https://developers.openai.com/api/docs/guides/rbac.md",
@@ -938,10 +938,10 @@
   "openai-docs/guides/structured-outputs.md": {
     "url": "https://developers.openai.com/api/docs/guides/structured-outputs.md",
     "skill": "openai-docs",
-    "etag": "W/\"20cdad1cc227a755f8e13daece473082\"",
-    "lastModified": "Thu, 27 Aug 2026 07:24:38 GMT",
-    "size": 134097,
-    "updatedAt": "2026-08-27T09:01:58.575Z"
+    "etag": "W/\"8ddb3cfaaa30687f94b9896c0ea1b06e\"",
+    "lastModified": "Thu, 03 Sep 2026 01:54:03 GMT",
+    "size": 135190,
+    "updatedAt": "2026-09-03T04:14:54.983Z"
   },
   "openai-docs/guides/supervised-fine-tuning.md": {
     "url": "https://developers.openai.com/api/docs/guides/supervised-fine-tuning.md",

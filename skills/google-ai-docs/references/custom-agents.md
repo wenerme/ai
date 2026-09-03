@@ -4,7 +4,7 @@ Managed agents on the Gemini API let you extend the Antigravity agent with your 
 
 The fastest way to build a custom agent is to pass your configuration inline while creating a new interaction with no registration step required. You can extend the agent in several key ways:
 
-- **[Model selection](https://ai.google.dev/gemini-api/docs/antigravity-agent#model-selection)** : Choose the underlying Gemini model via `agent_config` (defaults to **Gemini 3.7 Flash**).
+- **[Model selection](https://ai.google.dev/gemini-api/docs/antigravity-agent#model-selection)** : Choose the underlying Gemini model via `agent_config` (defaults to **Gemini 3.8 Flash**).
 - **System instructions** : Pass inline text via `system_instruction` to shape behavior.
 - **Tools**: Override default tools (Code Execution, Search, URL Context), register remote MCP servers, or define custom functions (Function Calling).
 - **Files and skills** : Mount files like `AGENTS.md` and `SKILL.md` into the environment.
@@ -369,7 +369,7 @@ Specify `base_agent`, `id`, `agent_config`, `system_instruction` and `base_envir
         base_agent="antigravity-preview-05-2026",
         agent_config={
             "type": "antigravity",
-            "model": "gemini-3.7-flash",
+            "model": "gemini-3.8-flash",
         },
         system_instruction="You are a data analyst. Always include visualizations and export results as PDF.",
         base_environment={
@@ -407,7 +407,7 @@ Specify `base_agent`, `id`, `agent_config`, `system_instruction` and `base_envir
         base_agent: "antigravity-preview-05-2026",
         agent_config: {
             type: "antigravity",
-            model: "gemini-3.7-flash",
+            model: "gemini-3.8-flash",
         },
         system_instruction: "You are a data analyst. Always include visualizations and export results as PDF.",
         base_environment: {
@@ -466,7 +466,7 @@ Specify `base_agent`, `id`, `agent_config`, `system_instruction` and `base_envir
         "base_agent": "antigravity-preview-05-2026",
         "agent_config": {
             "type": "antigravity",
-            "model": "gemini-3.7-flash"
+            "model": "gemini-3.8-flash"
         },
         "system_instruction": "You are a data analyst. Always include visualizations and export results as PDF.",
         "base_environment": {
@@ -1066,7 +1066,7 @@ Deleting removes the configuration. Existing environments and interactions creat
 | `id` | string | Yes | Unique agent identifier within the Google Cloud project. Used to invoke the agent. Must not use reserved prefixes. See [Agent ID restrictions](https://ai.google.dev/gemini-api/docs/custom-agents#agent-id-restrictions). |
 | `description` | string | No | Human-readable description of the agent. |
 | `base_agent` | string | Yes | Base agent ID (e.g., `antigravity-preview-05-2026`). |
-| `agent_config` | object | No | Configuration for the base agent, including model selection (`{"type": "antigravity", "model": "gemini-3.7-flash"}`). Defaults to `gemini-3.7-flash` if omitted. Cannot be overridden at interaction time for named agents. |
+| `agent_config` | object | No | Configuration for the base agent, including model selection (`{"type": "antigravity", "model": "gemini-3.8-flash"}`). Defaults to `gemini-3.8-flash` if omitted. Cannot be overridden at interaction time for named agents. |
 | `system_instruction` | string | No | System prompt defining behavior and persona. |
 | `tools` | array | No | Tools the agent can use. If omitted, defaults to `code_execution`, `google_search`, and `url_context`. Supported tools include `code_execution`, `google_search`, `url_context`, `mcp_server`, and custom `function` definitions. |
 | `base_environment` | string or object | No | `"remote"`, an `environment_id`, or a config object with `sources` and `network`. See Environments. |
@@ -1104,7 +1104,7 @@ When creating a managed agent, the `id` you specify must follow these rules:
 ## Limitations
 
 - **Preview status**: Managed agents are in preview. Features and schemas may change.
-- **Base agent and models** : Only `antigravity-preview-05-2026` is supported as `base_agent`. Supported model options in `agent_config` are `gemini-3.7-flash` (default), `gemini-3.6-flash`, `gemini-3.5-flash`, and `gemini-3.5-flash-lite`. For named agents, the model cannot be overridden at interaction time.
+- **Base agent and models** : Only `antigravity-preview-05-2026` is supported as `base_agent`. Supported model options in `agent_config` are `gemini-3.8-flash` (default), `gemini-3.7-flash`, `gemini-3.6-flash`, `gemini-3.5-flash`, and `gemini-3.5-flash-lite`. For named agents, the model cannot be overridden at interaction time.
 - **No versioning**: Agent versioning and rollback are not yet available.
 - **No subagent nesting**: Subagent delegation is not yet supported.
 - You can have up to 1000 managed agents.

@@ -40,6 +40,8 @@ Learn how to build applications with Sandbox SDK through step-by-step tutorials.
 
 [**Set up Claude Managed Agents**Run Claude Managed Agents on self-managed Cloudflare environments.](https://developers.cloudflare.com/sandbox/tutorials/claude-managed-agents/)
 
+[**Run Cursor Cloud Agents on Cloudflare via self-hosted machines**Deploy Cursor self-hosted machines that run each assigned session in an isolated Cloudflare container.](https://developers.cloudflare.com/sandbox/tutorials/cursor-cloud-agents/)
+
 [**Run Devin Outposts on Cloudflare**Deploy a Devin Outpost that runs each Devin session in an isolated Cloudflare container.](https://developers.cloudflare.com/sandbox/tutorials/devin-outposts/)
 
 ## Before you start

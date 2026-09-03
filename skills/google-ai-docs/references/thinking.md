@@ -26,7 +26,7 @@ Initiating an interaction with a thinking model is similar to any other interact
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="Explain the concept of Occam's Razor and provide a simple, everyday example."
     )
     print(interaction.output_text)
@@ -38,7 +38,7 @@ Initiating an interaction with a thinking model is similar to any other interact
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "Explain the concept of Occam's Razor and provide a simple, everyday example."
     });
     console.log(interaction.output_text);
@@ -58,7 +58,7 @@ Initiating an interaction with a thinking model is similar to any other interact
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Explain the concept of Occam's Razor and provide a simple example."))
             .generationConfig(GenerationConfig.builder().thinkingLevel(ThinkingLevel.HIGH).build())
             .build();
@@ -74,7 +74,7 @@ Initiating an interaction with a thinking model is similar to any other interact
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "Explain the concept of Occam'\''s Razor and provide a simple example."
       }'
 
@@ -91,7 +91,7 @@ with `thinking_summaries`:
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="What is the sum of the first 50 prime numbers?",
         generation_config={
             "thinking_summaries": "auto"
@@ -120,7 +120,7 @@ with `thinking_summaries`:
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "What is the sum of the first 50 prime numbers?",
         generation_config: {
             thinking_summaries: "auto"
@@ -160,7 +160,7 @@ with `thinking_summaries`:
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Explain the concept of Occam's Razor and provide a simple example."))
             .generationConfig(GenerationConfig.builder().thinkingLevel(ThinkingLevel.HIGH).build())
             .build();
@@ -176,7 +176,7 @@ with `thinking_summaries`:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "What is the sum of the first 50 prime numbers?",
         "generation_config": {
           "thinking_summaries": "auto"
@@ -220,7 +220,7 @@ delta types:
     answer = ""
 
     stream = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=prompt,
         generation_config={
             "thinking_summaries": "auto"
@@ -258,7 +258,7 @@ delta types:
     let answer = "";
 
     const stream = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: prompt,
         generation_config: {
             thinking_summaries: "auto"
@@ -296,7 +296,7 @@ delta types:
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Explain the concept of Occam's Razor and provide a simple example."))
             .generationConfig(GenerationConfig.builder().thinkingLevel(ThinkingLevel.HIGH).build())
             .build();
@@ -313,7 +313,7 @@ delta types:
       -H 'Content-Type: application/json' \
       --no-buffer \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "Alice, Bob, and Carol each live in a different house on the same street: red, green, and blue. Alice does not live in the red house. Bob does not live in the green house. Carol does not live in the red or green house. Which house does each person live in?",
         "generation_config": {
           "thinking_summaries": "auto"
@@ -325,7 +325,7 @@ The streaming response uses Server-Sent Events (SSE) and is composed of steps
 and events, for example:
 
     event: interaction.created
-    data: {"interaction":{"id":"v1_xxx","status":"in_progress","object":"interaction","model":"gemini-3.7-flash"},"event_type":"interaction.created"}
+    data: {"interaction":{"id":"v1_xxx","status":"in_progress","object":"interaction","model":"gemini-3.8-flash"},"event_type":"interaction.created"}
 
     event: step.start
     data: {"index":0,"step":{"signature":"","summary":[{"text":"**Evaluating the clues**\n\nI'm considering...","type":"text"}],"type":"thought"},"event_type":"step.start"}
@@ -358,6 +358,7 @@ the amount of reasoning effort based on the complexity of the request. You can c
 
 | Model | Default Thinking | Levels Supported |
 |---|---|---|
+| gemini-3.8-flash | On (medium) | low, medium, high |
 | gemini-3.7-flash | On (medium) | low, medium, high |
 | gemini-3.6-flash | On (medium) | minimal, low, medium, high |
 | gemini-3.5-flash-lite | On (minimal) | minimal, low, medium, high |
@@ -377,7 +378,7 @@ the amount of reasoning effort based on the complexity of the request. You can c
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="Provide a list of 3 famous physicists and their key contributions",
         generation_config={
             "thinking_level": "low"
@@ -392,7 +393,7 @@ the amount of reasoning effort based on the complexity of the request. You can c
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "Provide a list of 3 famous physicists and their key contributions",
         generation_config: {
             thinking_level: "low"
@@ -415,7 +416,7 @@ the amount of reasoning effort based on the complexity of the request. You can c
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Explain the concept of Occam's Razor and provide a simple example."))
             .generationConfig(GenerationConfig.builder().thinkingLevel(ThinkingLevel.HIGH).build())
             .build();
@@ -431,7 +432,7 @@ the amount of reasoning effort based on the complexity of the request. You can c
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "Provide a list of 3 famous physicists and their key contributions",
         "generation_config": {
           "thinking_level": "low"
@@ -490,7 +491,7 @@ tokens from the `total_thought_tokens` field.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Explain the concept of Occam's Razor and provide a simple example."))
             .generationConfig(GenerationConfig.builder().thinkingLevel(ThinkingLevel.HIGH).build())
             .build();

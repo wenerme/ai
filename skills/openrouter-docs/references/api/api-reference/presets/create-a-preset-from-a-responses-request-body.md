@@ -6078,6 +6078,16 @@ components:
         type: input_video
         video_url: https://example.com/video.mp4
       properties:
+        processing:
+          description: >-
+            Video processing mode. `agentic` enables agentic video processing
+            and `static` forces fixed-rate frame sampling on providers that
+            support it (currently Google Gemini).
+          enum:
+            - agentic
+            - static
+          example: agentic
+          type: string
         type:
           enum:
             - input_video

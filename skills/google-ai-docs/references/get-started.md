@@ -6,7 +6,7 @@ This guide gets you started with the Gemini API using the [Interactions API](htt
 > **Building with an AI coding agent?** Install the skill and then paste the prompt to get started with the Gemini API using Interactions:
 >
 > ```
-> npx skills add google-gemini/gemini-skills --skill gemini-interactions-api
+> npx skills add google-gemini/gemini-skills --skill gemini-api-dev
 > ```
 
 The Interactions API is available through the [Python](https://github.com/googleapis/python-genai) and [JavaScript](https://github.com/googleapis/js-genai) SDKs, as well as through REST.
@@ -52,7 +52,7 @@ Initialize the client and make a request:
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="Explain how AI works in a few words"
     )
     print(interaction.output_text)
@@ -70,7 +70,7 @@ Initialize the client and make a request:
     const ai = new GoogleGenAI({});
 
     const interaction = await ai.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       input: "Explain how AI works in a few words",
     });
     console.log(interaction.output_text);
@@ -88,7 +88,7 @@ Initialize the client and make a request:
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Explain how AI works in a few sentences."))
             .build();
 
@@ -103,7 +103,7 @@ Initialize the client and make a request:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "Explain how AI works in a few words"
       }'
 
@@ -134,7 +134,7 @@ Initialize the client and make a request:
         }
       ],
       "object": "interaction",
-      "model": "gemini-3.7-flash",
+      "model": "gemini-3.8-flash",
     }
 
 When using REST, the API returns the full `Interaction` resource containing metadata, usage statistics, and the step-by-step history of the turn.
@@ -152,7 +152,7 @@ For more fluid interactions, stream the response as it's generated. Each `step.d
     client = genai.Client()
 
     stream = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="Explain how AI works",
         stream=True
     )
@@ -166,7 +166,7 @@ For more fluid interactions, stream the response as it's generated. Each `step.d
     const ai = new GoogleGenAI({});
 
     const stream = await ai.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       input: "Explain how AI works",
       stream: true,
     });
@@ -188,7 +188,7 @@ For more fluid interactions, stream the response as it's generated. Each `step.d
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Explain how AI works in a few sentences."))
             .build();
 
@@ -204,7 +204,7 @@ For more fluid interactions, stream the response as it's generated. Each `step.d
       -H 'Content-Type: application/json' \
       --no-buffer \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "Explain how AI works",
         "stream": true
       }'
@@ -214,7 +214,7 @@ When streaming, the server responds with a stream of server-sent events (SSE). E
 **Response:**
 
     event: interaction.created
-    data: {"interaction":{"id":"v1_Chd...","status":"in_progress","model":"gemini-3.7-flash"},"event_type":"interaction.created"}
+    data: {"interaction":{"id":"v1_Chd...","status":"in_progress","model":"gemini-3.8-flash"},"event_type":"interaction.created"}
 
     event: step.start
     data: {"index":0,"step":{"type":"thought"},"event_type":"step.start"}
@@ -261,13 +261,13 @@ Chain interactions by passing `previous_interaction_id`. The server manages the 
 
     # Server-side state (recommended)
     interaction1 = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="I have 2 dogs in my house.",
     )
     print("Response 1:", interaction1.output_text)
 
     interaction2 = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="How many paws are in my house?",
         previous_interaction_id=interaction1.id,
     )
@@ -281,13 +281,13 @@ Chain interactions by passing `previous_interaction_id`. The server manages the 
 
     // Server-side state (recommended)
     const interaction1 = await ai.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       input: "I have 2 dogs in my house.",
     });
     console.log("Response 1:", interaction1.output_text);
 
     const interaction2 = await ai.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       input: "How many paws are in my house?",
       previous_interaction_id: interaction1.id,
     });
@@ -306,7 +306,7 @@ Chain interactions by passing `previous_interaction_id`. The server manages the 
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Explain how AI works in a few sentences."))
             .build();
 
@@ -321,7 +321,7 @@ Chain interactions by passing `previous_interaction_id`. The server manages the 
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "I have 2 dogs in my house."
       }')
 
@@ -332,7 +332,7 @@ Chain interactions by passing `previous_interaction_id`. The server manages the 
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "How many paws are in my house?",
         "previous_interaction_id": "'$INTERACTION_ID'"
       }'
@@ -355,7 +355,7 @@ Set `store=false` and manage conversation history on the client side. You must p
     ]
 
     interaction1 = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         store=False,
         input=history
     )
@@ -370,7 +370,7 @@ Set `store=false` and manage conversation history on the client side. You must p
     })
 
     interaction2 = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         store=False,
         input=history
     )
@@ -390,7 +390,7 @@ Set `store=false` and manage conversation history on the client side. You must p
     ];
 
     const interaction1 = await ai.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       store: false,
       input: history
     });
@@ -404,7 +404,7 @@ Set `store=false` and manage conversation history on the client side. You must p
     });
 
     const interaction2 = await ai.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       store: false,
       input: history
     });
@@ -423,7 +423,7 @@ Set `store=false` and manage conversation history on the client side. You must p
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Explain how AI works in a few sentences."))
             .build();
 
@@ -439,7 +439,7 @@ Set `store=false` and manage conversation history on the client side. You must p
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "store": false,
         "input": [
           {
@@ -462,7 +462,7 @@ Set `store=false` and manage conversation history on the client side. You must p
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d "{
-        \"model\": \"gemini-3.7-flash\",
+        \"model\": \"gemini-3.8-flash\",
         \"store\": false,
         \"input\": $HISTORY
       }"
@@ -489,7 +489,7 @@ Set `store=false` and manage conversation history on the client side. You must p
         }
       ],
       "object": "interaction",
-      "model": "gemini-3.7-flash"
+      "model": "gemini-3.8-flash"
     }
 
 The second interaction returns a complete response object that includes only the new steps, but is grounded in the previous turn's context. Learn more about maintaining state in the [multi-turn conversations guide](https://ai.google.dev/gemini-api/docs/text-generation#multi-turn-conversations), or explore [stateless mode](https://ai.google.dev/gemini-api/docs/text-generation#stateless-conversations) for client-side history management.
@@ -511,7 +511,7 @@ Gemini models understand images, audio, video, and documents natively. Pass medi
     image_b64 = base64.b64encode(image_bytes).decode("utf-8")
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "text", "text": "Compare this local image and this remote audio file."},
             {
@@ -540,7 +540,7 @@ Gemini models understand images, audio, video, and documents natively. Pass medi
     const imageB64 = imageBytes.toString("base64");
 
     const interaction = await ai.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       input: [
         { type: "text", text: "Compare this local image and this remote audio file." },
         {
@@ -570,7 +570,7 @@ Gemini models understand images, audio, video, and documents natively. Pass medi
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Explain how AI works in a few sentences."))
             .build();
 
@@ -585,7 +585,7 @@ Gemini models understand images, audio, video, and documents natively. Pass medi
     BASE64_IMAGE=$(base64 -w 0 sample.jpg)
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions"   -H "x-goog-api-key: $GEMINI_API_KEY"   -H 'Content-Type: application/json'   -H "Api-Revision: 2026-05-20"   -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": [
           {
             "type": "text",
@@ -624,7 +624,7 @@ Gemini models understand images, audio, video, and documents natively. Pass medi
         }
       ],
       "object": "interaction",
-      "model": "gemini-3.7-flash",
+      "model": "gemini-3.8-flash",
     }
 
 Explore how to pass images, video, and audio files in the [image understanding guide](https://ai.google.dev/gemini-api/docs/image-understanding).
@@ -683,7 +683,7 @@ Gemini can generate images natively using the [Nano Banana](https://ai.google.de
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Explain how AI works in a few sentences."))
             .build();
 
@@ -748,7 +748,7 @@ Configure the model to return JSON that matches a schema you define. Structured 
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="Give me a recipe for banana bread",
         response_format={
             "type": "text",
@@ -787,7 +787,7 @@ Configure the model to return JSON that matches a schema you define. Structured 
     const recipeSchema = z.fromJSONSchema(recipeJsonSchema);
 
     const interaction = await ai.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       input: "Give me a recipe for banana bread",
       response_format: {
         type: "text",
@@ -812,7 +812,7 @@ Configure the model to return JSON that matches a schema you define. Structured 
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Explain how AI works in a few sentences."))
             .build();
 
@@ -827,7 +827,7 @@ Configure the model to return JSON that matches a schema you define. Structured 
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "Give me a recipe for banana bread",
         "response_format": {
           "type": "text",
@@ -868,7 +868,7 @@ Configure the model to return JSON that matches a schema you define. Structured 
         }
       ],
       "object": "interaction",
-      "model": "gemini-3.7-flash",
+      "model": "gemini-3.8-flash",
     }
 
 The output text block contains a valid JSON string conforming exactly to the requested schema. To learn how to define more complex structures and recursive schemas, see the [structured output guide](https://ai.google.dev/gemini-api/docs/structured-output).
@@ -884,7 +884,7 @@ Ground the model's response in real-time information with Google Search. The API
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="Who won the euro 2024?",
         tools=[{"type": "google_search"}]
     )
@@ -908,7 +908,7 @@ Ground the model's response in real-time information with Google Search. The API
     const ai = new GoogleGenAI({});
 
     const interaction = await ai.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       input: "Who won the euro 2024?",
       tools: [{ type: "google_search" }]
     });
@@ -944,7 +944,7 @@ Ground the model's response in real-time information with Google Search. The API
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Explain how AI works in a few sentences."))
             .build();
 
@@ -959,7 +959,7 @@ Ground the model's response in real-time information with Google Search. The API
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "Who won the euro 2024?",
         "tools": [{"type": "google_search"}]
       }'
@@ -1009,7 +1009,7 @@ Ground the model's response in real-time information with Google Search. The API
         }
       ],
       "object": "interaction",
-      "model": "gemini-3.7-flash",
+      "model": "gemini-3.8-flash",
     }
 
 The search steps are detailed within the interaction history, and the final output includes inline citations pointing to web sources.
@@ -1062,7 +1062,7 @@ Function calling lets you connect the model to your code. You declare a function
 
     while True:
         interaction = client.interactions.create(
-            model="gemini-3.7-flash",
+            model="gemini-3.8-flash",
             input=user_input,
             tools=[weather_tool],
             previous_interaction_id=previous_id,
@@ -1122,7 +1122,7 @@ Function calling lets you connect the model to your code. You declare a function
 
     while (true) {
       interaction = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input,
         tools: [weatherTool],
         previous_interaction_id: previousId,
@@ -1163,7 +1163,7 @@ Function calling lets you connect the model to your code. You declare a function
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Explain how AI works in a few sentences."))
             .build();
 
@@ -1179,7 +1179,7 @@ Function calling lets you connect the model to your code. You declare a function
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "What is the temperature in London?",
         "tools": [{
           "type": "function",
@@ -1205,7 +1205,7 @@ Function calling lets you connect the model to your code. You declare a function
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "previous_interaction_id": "'$INTERACTION_ID'",
         "input": [{
           "type": "function_result",
@@ -1273,7 +1273,7 @@ You can also use function calling in stateless mode by managing the conversation
 
     while True:
         interaction = client.interactions.create(
-            model="gemini-3.7-flash",
+            model="gemini-3.8-flash",
             store=False,
             input=history,
             tools=[weather_tool],
@@ -1338,7 +1338,7 @@ You can also use function calling in stateless mode by managing the conversation
 
     while (true) {
       interaction = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         store: false,
         input: history,
         tools: [weatherTool],
@@ -1379,7 +1379,7 @@ You can also use function calling in stateless mode by managing the conversation
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Explain how AI works in a few sentences."))
             .build();
 
@@ -1395,7 +1395,7 @@ You can also use function calling in stateless mode by managing the conversation
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "store": false,
         "input": [
           {
@@ -1440,7 +1440,7 @@ You can also use function calling in stateless mode by managing the conversation
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d "{
-        \"model\": \"gemini-3.7-flash\",
+        \"model\": \"gemini-3.8-flash\",
         \"store\": false,
         \"input\": $HISTORY,
         \"tools\": [{
@@ -1475,7 +1475,7 @@ During Turn 1, the model returns a response with status `requires_action` and th
         }
       ],
       "object": "interaction",
-      "model": "gemini-3.7-flash"
+      "model": "gemini-3.8-flash"
     }
 
 After you run the function locally and submit the result (Turn 2), the final completed interaction returns:
@@ -1503,7 +1503,7 @@ After you run the function locally and submit the result (Turn 2), the final com
         }
       ],
       "object": "interaction",
-      "model": "gemini-3.7-flash",
+      "model": "gemini-3.8-flash",
     }
 
 For advanced features like parallel function calling or function choice modes, see the [function calling guide](https://ai.google.dev/gemini-api/docs/function-calling).
@@ -1553,7 +1553,7 @@ Managed agents run in a remote sandbox with access to tools like code execution 
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Explain how AI works in a few sentences."))
             .build();
 
@@ -1591,7 +1591,7 @@ Set `background=True` to run long tasks asynchronously. Poll for results with `i
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="Write a detailed analysis of the impact of artificial intelligence on modern healthcare.",
         background=True,
     )
@@ -1617,7 +1617,7 @@ Set `background=True` to run long tasks asynchronously. Poll for results with `i
     const ai = new GoogleGenAI({});
 
     const interaction = await ai.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       input: "Write a detailed analysis of the impact of artificial intelligence on modern healthcare.",
       background: true,
     });
@@ -1651,7 +1651,7 @@ Set `background=True` to run long tasks asynchronously. Poll for results with `i
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Explain how AI works in a few sentences."))
             .build();
 
@@ -1667,7 +1667,7 @@ Set `background=True` to run long tasks asynchronously. Poll for results with `i
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "Write a detailed analysis of the impact of artificial intelligence on modern healthcare.",
         "background": true
       }')
@@ -1700,7 +1700,7 @@ The initial response returns immediately with status `in_progress`:
       "id": "v1_abc123",
       "status": "in_progress",
       "object": "interaction",
-      "model": "gemini-3.7-flash"
+      "model": "gemini-3.8-flash"
     }
 
 Once the background task is fully executed, checking the interaction state returns:
@@ -1720,7 +1720,7 @@ Once the background task is fully executed, checking the interaction state retur
         }
       ],
       "object": "interaction",
-      "model": "gemini-3.7-flash",
+      "model": "gemini-3.8-flash",
     }
 
 Read about running models and agents asynchronously in the [background execution guide](https://ai.google.dev/gemini-api/docs/background-execution).
