@@ -1,6 +1,6 @@
 The Antigravity agent is a general-purpose managed agent on the Gemini API. A single API call gives you an agent that reasons, executes code, manages files, and browses the web inside your own secure Linux sandbox, hosted by Google.
 
-It is powered by Gemini 3.7 Flash and uses the same harness as the Antigravity IDE. You can configure the underlying Gemini model using `agent_config`. Available through the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview) and [Google AI Studio](https://aistudio.google.com).
+It is built with Gemini 3.8 Flash and uses the same harness as the Antigravity IDE. You can configure the underlying Gemini model using `agent_config`. Available through the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview) and [Google AI Studio](https://aistudio.google.com).
 
 ### Python
 
@@ -583,7 +583,7 @@ When registering an MCP server, you must specify the following fields in the `to
 
 ## Model selection
 
-For `antigravity-preview-05-2026`, the default model is **Gemini 3.7 Flash** (`gemini-3.7-flash`). If you omit `agent_config`, the agent defaults to `gemini-3.7-flash`.
+For `antigravity-preview-05-2026`, the default model is **Gemini 3.8 Flash** (`gemini-3.8-flash`). If you omit `agent_config`, the agent defaults to `gemini-3.8-flash`.
 
 You can configure the underlying Gemini model using `agent_config` to optimize for speed, cost, or reasoning capability.
 
@@ -664,8 +664,9 @@ The supported values for `agent_config.model` are:
 
 | Model | Value in `agent_config.model` | Description |
 |---|---|---|
-| **Gemini 3.7 Flash** (default) | `gemini-3.7-flash` | Default balanced model for reasoning, coding, and tool use. |
-| **Gemini 3.6 Flash** | `gemini-3.6-flash` | Previous generation Flash model for general agentic workflows. |
+| **Gemini 3.8 Flash** (default) | `gemini-3.8-flash` | Default balanced model for reasoning, coding, and tool use. |
+| **Gemini 3.7 Flash** | `gemini-3.7-flash` | Previous generation Flash model for reasoning, coding, and agentic workflows. |
+| **Gemini 3.6 Flash** | `gemini-3.6-flash` | Balanced Flash model for general agentic workflows. |
 | **Gemini 3.5 Flash** | `gemini-3.5-flash` | Lightweight model for general workflows. |
 | **Gemini 3.5 Flash-Lite** | `gemini-3.5-flash-lite` | Lightweight model optimized for low latency and cost-sensitive tasks. |
 

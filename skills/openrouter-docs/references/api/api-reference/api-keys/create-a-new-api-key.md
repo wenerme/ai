@@ -4,7 +4,7 @@
 
 # Create a new API key
 
-> Create a new API key for the authenticated user. The plaintext `key` is returned only in this response. Treat it as a write-only, sensitive value; it cannot be retrieved later. Authenticate with a [management key](/docs/guides/overview/auth/management-api-keys), or with a Connect client secret. `external_user` and `external_api_key` are accepted only with a client secret, and `external_user` is required there; supplying either field with a management key is rejected with 403.
+> Create a new API key for the authenticated user. The plaintext `key` is returned only in this response. Treat it as a write-only, sensitive value; it cannot be retrieved later. Authenticate with a [management key](/docs/guides/overview/auth/management-api-keys). The optional `external` object associates the key with a partner-defined user and lookup key.
 
 
 
@@ -107,10 +107,9 @@ paths:
         Create a new API key for the authenticated user. The plaintext `key` is
         returned only in this response. Treat it as a write-only, sensitive
         value; it cannot be retrieved later. Authenticate with a [management
-        key](/docs/guides/overview/auth/management-api-keys), or with a Connect
-        client secret. `external_user` and `external_api_key` are accepted only
-        with a client secret, and `external_user` is required there; supplying
-        either field with a management key is rejected with 403.
+        key](/docs/guides/overview/auth/management-api-keys). The optional
+        `external` object associates the key with a partner-defined user and
+        lookup key.
       operationId: createKeys
       requestBody:
         content:
@@ -149,24 +148,28 @@ paths:
                   type:
                     - string
                     - 'null'
-                external_api_key:
+                external:
                   description: >-
-                    Optional partner-supplied API key. Stored as a SHA-256 hash
-                    and never returned. Accepted only when authenticating with a
-                    Connect client secret; supplying it with a management key is
-                    rejected with 403.
-                  maxLength: 512
-                  minLength: 1
-                  type: string
-                external_user:
-                  description: >-
-                    Partner's end-user identifier for attribution, between 1 and
-                    512 characters. Accepted only when authenticating with a
-                    Connect client secret, where it is required; supplying it
-                    with a management key is rejected with 403.
-                  maxLength: 512
-                  minLength: 1
-                  type: string
+                    Optional partner-defined identity associated with the
+                    created API key.
+                  properties:
+                    api_key:
+                      description: >-
+                        Optional partner-supplied API key with a minimum length
+                        of 32 characters and sufficient entropy. Stored as a
+                        SHA-256 hash and never returned.
+                      maxLength: 512
+                      minLength: 32
+                      type: string
+                    user:
+                      description: Partner's end-user identifier for attribution.
+                      example: partner-user-123
+                      maxLength: 512
+                      minLength: 1
+                      type: string
+                  required:
+                    - user
+                  type: object
                 include_byok_in_limit:
                   description: Whether to include BYOK usage in the limit
                   example: true

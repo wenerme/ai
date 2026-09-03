@@ -120,7 +120,7 @@ C:\Program Files (x86)\cloudflared\.\cloudflared.exe tunnel --loglevel info --lo
 
 Configures the frequency of `cloudflared` updates.
 
-By default, `cloudflared` will periodically check for updates and restart with the new version. Restarts are performed by spawning a new process that connects to the Cloudflare global network. On successful connection, the old process will gracefully shut down after handling all outstanding requests. See also: [no-autoupdate](#no-autoupdate).
+Built-in automatic updates are enabled when `cloudflared` is installed as a standalone binary and runs as a service. They are not available on Windows, for package-manager installations, or when `cloudflared` runs interactively in a terminal. When an update is available, `cloudflared` restarts to use the new version. The updater does not wait for the replacement process to connect to Cloudflare before shutting down the old process. Active connections may be interrupted. To control when updates occur, use [no-autoupdate](#no-autoupdate).
 
 ### `config`
 
@@ -182,13 +182,23 @@ The value `auto` relies on the host operating system to determine which IP versi
 
 When `cloudflared` receives SIGINT/SIGTERM it will stop accepting new requests, wait for in-progress requests to terminate, then shut down. Waiting for in-progress requests will timeout after this grace period, or when a second SIGTERM/SIGINT is received.
 
+### `log-directory`
+
+| Syntax                                                       | Environment Variable |
+| ------------------------------------------------------------ | -------------------- |
+| cloudflared tunnel --log-directory <PATH> run <UUID or NAME> | TUNNEL\_LOGDIRECTORY |
+
+Writes logs to a file named `cloudflared.log` in the specified directory. When the file reaches 1 MB, `cloudflared` rotates it and keeps up to five backup files. Rotation is based on file size; there is no age-based retention.
+
+Use `log-directory` for routine persistent logging. If you also specify [logfile](#logfile), `logfile` takes precedence.
+
 ### `logfile`
 
 | Syntax                                                 | Environment Variable |
 | ------------------------------------------------------ | -------------------- |
 | cloudflared tunnel --logfile <PATH> run <UUID or NAME> | TUNNEL\_LOGFILE      |
 
-Saves application log to this file. Mainly useful for reporting issues. For more details on what information you need when contacting Cloudflare support, refer to [this guide](https://developers.cloudflare.com/tunnel/troubleshooting/).
+Saves the application log to this file. `cloudflared` does not rotate this file. Use `logfile` for short troubleshooting sessions or when another tool manages log rotation. If you also specify [log-directory](#log-directory), `logfile` takes precedence. For more details on what information you need when contacting Cloudflare support, refer to [this guide](https://developers.cloudflare.com/tunnel/troubleshooting/).
 
 ### `loglevel`
 
@@ -210,7 +220,7 @@ Exposes a Prometheus endpoint on the specified IP address and port, which you ca
 
 Note
 
-Does not apply if you installed `cloudflared` using a package manager.
+This parameter does not apply when `cloudflared` runs on Windows, was installed by a package manager, or runs interactively in a terminal. Automatic updates are not available in these environments.
 
 You can check if `cloudflared` was installed by a package manager by running `ls -la /usr/local/etc/cloudflared/` and looking for `.installedFromPackageManager` in the output.
 
@@ -218,7 +228,7 @@ You can check if `cloudflared` was installed by a package manager by running `ls
 | ----------------------------------------------------- | -------------------- |
 | cloudflared tunnel --no-autoupdate run <UUID or NAME> | NO\_AUTOUPDATE       |
 
-Disables automatic `cloudflared` updates. See also: [autoupdate-freq](#autoupdate-freq).
+Disables automatic `cloudflared` updates. To change the automatic update interval instead, refer to [autoupdate-freq](#autoupdate-freq). For manual update methods and options to minimize downtime, refer to [Update cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/update-cloudflared/).
 
 ### `origincert`
 

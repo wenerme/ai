@@ -28,6 +28,12 @@ Choose the Agent SDK when you need **agentic behavior**: multi-step reasoning wh
 
 ## Installation
 
+| Language   | Package                                                                  |
+| ---------- | ------------------------------------------------------------------------ |
+| TypeScript | [`@openrouter/agent`](https://www.npmjs.com/package/@openrouter/agent)   |
+| Python     | [`openrouter-agent-sdk`](https://pypi.org/project/openrouter-agent-sdk/) |
+| Go         | [`go-agent`](https://pkg.go.dev/github.com/OpenRouterTeam/go-agent)      |
+
 <CodeGroup>
   ```bash title="npm" lines theme={null}
   npm install @openrouter/agent
@@ -48,7 +54,17 @@ Choose the Agent SDK when you need **agentic behavior**: multi-step reasoning wh
   ```bash title="deno" lines theme={null}
   deno add npm:@openrouter/agent
   ```
+
+  ```bash title="pip (Python)" lines theme={null}
+  pip install openrouter-agent-sdk
+  ```
+
+  ```bash title="go (Go)" lines theme={null}
+  go get github.com/OpenRouterTeam/go-agent
+  ```
 </CodeGroup>
+
+The Python and Go packages are ports of `@openrouter/agent` kept in sync automatically. See the [Python agent SDK repository](https://github.com/OpenRouterTeam/python-agent) and [Go agent SDK repository](https://github.com/OpenRouterTeam/go-agent) for language-specific details. The rest of this Agent SDK documentation uses TypeScript examples.
 
 ## Quick example
 
@@ -142,7 +158,7 @@ const result = openrouter.callModel({
 | **Use when**           | You want built-in agent loops, tool execution, and state management | You want direct model calls and manage orchestration yourself   |
 | **Conversation state** | Managed for you via `callModel`                                     | You manage it                                                   |
 | **Tool execution**     | Automatic with the `tool()` helper                                  | You dispatch tool calls                                         |
-| **Languages**          | TypeScript                                                          | TypeScript, Python, Go                                          |
+| **Languages**          | TypeScript, Python, Go                                              | TypeScript, Python, Go                                          |
 
 ## Next steps
 

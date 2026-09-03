@@ -16,6 +16,7 @@ token count for context caching is listed in the following table for each model:
 
 | Model | Min token limit |
 |---|---|
+| Gemini 3.8 Flash | 4,096 |
 | Gemini 3.7 Flash | 4,096 |
 | Gemini 3.6 Flash | 4,096 |
 | Gemini 3.5 Flash | 4,096 |
@@ -83,7 +84,7 @@ instruction and video file.
 
     print(f'Video processing complete: {video_file.uri}')
 
-    model='models/gemini-3.6-flash'
+    model='models/gemini-3.8-flash'
 
     # Create a cache with a 5 minute TTL (300 seconds)
     cache = client.caches.create(
@@ -131,7 +132,7 @@ instruction and video file.
       config=dict(mime_type='application/pdf')
     )
 
-    model_name = "gemini-3.6-flash"
+    model_name = "gemini-3.8-flash"
     system_instruction = "You are an expert analyzing transcripts."
 
     # Create a cached content object
@@ -176,7 +177,7 @@ instruction and a text file.
       });
       console.log("Uploaded file name:", doc.name);
 
-      const modelName = "gemini-3.6-flash";
+      const modelName = "gemini-3.8-flash";
       const cache = await ai.caches.create({
         model: modelName,
         config: {
@@ -220,7 +221,7 @@ The following example shows how to generate content using a cache.
             log.Fatal(err)
         }
 
-        modelName := "gemini-3.6-flash"
+        modelName := "gemini-3.8-flash"
         document, err := client.Files.UploadFromPath(
             ctx,
             "media/a11.txt",
@@ -273,7 +274,7 @@ generate content.
 
     wget https://storage.googleapis.com/generativeai-downloads/data/a11.txt
     echo '{
-      "model": "models/gemini-3.6-flash",
+      "model": "models/gemini-3.8-flash",
       "contents":[
         {
           "parts":[
@@ -304,7 +305,7 @@ generate content.
 
     CACHE_NAME=$(cat cache.json | grep '"name":' | cut -d '"' -f 4 | head -n 1)
 
-    curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=$GEMINI_API_KEY" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=$GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -d '{
           "contents": [
@@ -324,7 +325,7 @@ generate content.
     DISPLAY_NAME="A11_Mission_Report"
     SYSTEM_INSTRUCTION="You are an expert at analyzing transcripts."
     PROMPT="Please summarize this transcript"
-    MODEL="models/gemini-3.6-flash"
+    MODEL="models/gemini-3.8-flash"
     TTL="300s"
 
     # Download the PDF

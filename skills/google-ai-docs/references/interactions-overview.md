@@ -21,7 +21,7 @@ details.
 
 ## Get started
 
-- **Set up your coding agent** : Connect to the **Gemini Docs MCP** and install the `gemini-interactions-api` skill to give your assistant direct access to the latest developer docs and best practices. For detailed steps, see the [Set up your coding agent guide](https://ai.google.dev/gemini-api/docs/coding-agents)
+- **Set up your coding agent** : Connect to the **Gemini Docs MCP** and install the `gemini-api-dev` skill to give your assistant direct access to the latest developer docs and best practices. For detailed steps, see the [Set up your coding agent guide](https://ai.google.dev/gemini-api/docs/coding-agents)
 - **Migrate from `generateContent`** : If you have an existing integration, follow the [Migration guide](https://ai.google.dev/gemini-api/docs/migrate-to-interactions) to transition to the Interactions API.
 - **Get started** : Follow the steps in the [Interactions API Get started
   guide](https://ai.google.dev/gemini-api/docs/get-started).
@@ -117,6 +117,7 @@ projects on the Paid Tier. You can view them directly from the
 
 | Model Name | Type | Model ID |
 |---|---|---|
+| Gemini 3.8 Flash | Model | `gemini-3.8-flash` |
 | Gemini 3.7 Flash | Model | `gemini-3.7-flash` |
 | Gemini 3.6 Flash | Model | `gemini-3.6-flash` |
 | Gemini 3.5 Flash | Model | `gemini-3.5-flash` |

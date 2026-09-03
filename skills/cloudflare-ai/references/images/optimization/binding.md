@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Optimize with Workers
 
-Last updated Jul 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/optimization/binding/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/optimization/binding/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) connects your [Worker](https://developers.cloudflare.com/workers/) to external resources on the Developer Platform, like [Images](https://developers.cloudflare.com/images/), [R2 buckets](https://developers.cloudflare.com/r2/buckets/), or [KV namespaces](https://developers.cloudflare.com/kv/concepts/kv-namespaces/).
 
@@ -57,6 +57,8 @@ Within your Worker code, use `env.IMAGES.input()` to build an object that can ma
 
 ## Methods
 
+An operation starts with a source method — `.input()` for an image or `.text()` for text — and ends with `.output()`. Both source methods return an optimization handle that you can use to chain `.transform()` and `.draw()` calls.
+
 Enable caching
 
 Responses from the Images binding are not automatically cached. Every uncached call performs a full decode and re-encode of the source image, which adds unnecessary latency to every request.
@@ -76,33 +78,27 @@ We strongly recommend enabling [Workers Cache](https://developers.cloudflare.com
 enabled = true
 ```
 
-Then set `Cache-Control` headers on your response to control how long transformed images are cached:
+Then set `Cache-Control` headers on your response to control how long transformed images are cached. Pass a `headers` option to `.response()` to set them without rebuilding the `Response`:
 
 ```js
-const response = (
+return (
 	await env.IMAGES.input(stream)
 		.transform({ width: 800 })
 		.output({ format: "image/webp" })
-).response();
-
-return new Response(response.body, {
+).response({
 	headers: {
-		...Object.fromEntries(response.headers),
 		"Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
 	},
 });
 ```
 
 ```ts
-const response = (
+return (
 	await env.IMAGES.input(stream)
 		.transform({ width: 800 })
 		.output({ format: "image/webp" })
-).response();
-
-return new Response(response.body, {
+).response({
 	headers: {
-		...Object.fromEntries(response.headers),
 		"Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
 	},
 });
@@ -110,7 +106,7 @@ return new Response(response.body, {
 
 ### `.input(stream)`
 
-Creates an optimization handle for an image. All operations begin with this method. Accepts image bytes up to 20 MB from any source, including [Images](https://developers.cloudflare.com/images/storage/upload-images/methods/), [R2](https://developers.cloudflare.com/r2/), a `fetch()` response, or a request body.
+Creates an optimization handle for an image. Accepts image bytes up to 20 MB from any source, including [Images](https://developers.cloudflare.com/images/storage/upload-images/methods/), [R2](https://developers.cloudflare.com/r2/), a `fetch()` response, or a request body.
 
 Returns a handle that you can use to chain `.transform()`, `.draw()`, and `.output()` calls.
 
@@ -120,6 +116,9 @@ export default {
 		const imageURL = "https://example.com/photo.jpg";
 
 		const response = await fetch(imageURL);
+		if (!response.ok || !response.body) {
+			return new Response("Upstream fetch failed", { status: 502 });
+		}
 
 		return (
 			await env.IMAGES.input(response.body)
@@ -136,16 +135,42 @@ export default {
 		const imageURL = "https://example.com/photo.jpg";
 
 		const response = await fetch(imageURL);
+		if (!response.ok || !response.body) {
+			return new Response("Upstream fetch failed", { status: 502 });
+		}
 
 		return (
-			await env.IMAGES
-				.input(response.body)
+			await env.IMAGES.input(response.body)
 				.transform({ width: 800 })
 				.output({ format: "image/webp" })
 		).response();
 	},
 };
 ```
+
+### `.text(content, options)`
+
+Creates an optimization handle for text. Cloudflare rasterizes `content` into an image using the `options`. The dimensions of the image are determined by the text string and its styling.
+
+Returns a handle that you can use to chain `.transform()`, `.draw()`, and `.output()` calls. Pass the handle to `.draw()` to overlay the text on a base image, or call `.output()` on it directly to produce a standalone image with a transparent background.
+
+#### `content`
+
+Sets the text string to render. This parameter is required.
+
+#### `options`
+
+Sets the styling options for the text. These options apply to both the `.text()` method in the binding and `text` entries when drawing overlays with the `draw` array in `cf.image`.
+
+Accepts the following options:
+
+* `font` — Sets the font for the text. Accepts an object with a `url` property that points to a custom TrueType (`.ttf`), OpenType (`.otf`), Web Open (`.woff` and `.woff2`) font file, up to 20 MB. If the font cannot be fetched or parsed, then the request returns an error.
+* `color` — Sets the fill color for the text. Accepts a HEX code, a CSS color name, or a CSS color function. The default is `#000000` (black).
+* `size` — Sets the font size in pixels. The default is `12`.
+
+The rendered text can be up to 1,000 characters and up to 4096 x 4096 pixels. If a text overlay exceeds these limits, then the request returns an error.
+
+To draw text over an image, refer to [Draw overlays and watermarks](https://developers.cloudflare.com/images/optimization/draw-overlays/).
 
 ### `.transform(options)`
 
@@ -158,6 +183,9 @@ The example below shows how you can resize an image that is [stored in Images](h
 ```js
 // Get the raw bytes of a hosted image
 const bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();
+if (!bytes) {
+	return new Response("Not found", { status: 404 });
+}
 
 // Resize and transcode the image
 const response = (
@@ -172,12 +200,15 @@ return response;
 ```ts
 // Get the raw bytes of a hosted image
 const bytes = await env.IMAGES.hosted.image("IMAGE_ID").bytes();
+if (!bytes) {
+	return new Response("Not found", { status: 404 });
+}
 
 // Resize and transcode the image
 const response = (
-  await env.IMAGES.input(bytes)
-    .transform({ width: 400 })
-    .output({ format: "image/webp" })
+	await env.IMAGES.input(bytes)
+		.transform({ width: 400 })
+		.output({ format: "image/webp" })
 ).response();
 
 return response;
@@ -193,7 +224,7 @@ Accepts `opacity`, `repeat`, a side (`left`, `right`, `top`, `bottom`), and `com
 
 ### `.output(options)`
 
-Generates the final image with the specified output options.
+Generates the final image with the specified output options. Returns a result that you can call [.response()](https://developers.cloudflare.com/images/optimization/binding/#responseoptions) on to return the image from your Worker.
 
 Accepts the following options:
 
@@ -224,6 +255,16 @@ const response = (
 
 return response;
 ```
+
+#### `.response(options)`
+
+Returns a `Response` that you can return from your Worker.
+
+Accepts the following options:
+
+* `headers` — Additional headers to set on the `Response` as a [HeadersInit](https://developers.cloudflare.com/workers/runtime-apis/response/#parameters). Use this to set `Cache-Control` or other headers directly, instead of rebuilding the `Response`.
+
+The `Content-Type` is always set from the output format and cannot be overridden.
 
 ### `.info(stream)`
 
@@ -263,5 +304,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/binding/#page","headline":"Optimize with Workers · Cloudflare Images docs","description":"Use the Images binding to optimize, resize, and manipulate images directly in a Worker from any source.","url":"https://developers.cloudflare.com/images/optimization/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/binding/#page","headline":"Optimize with Workers · Cloudflare Images docs","description":"Use the Images binding to optimize, resize, and manipulate images directly in a Worker from any source.","url":"https://developers.cloudflare.com/images/optimization/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

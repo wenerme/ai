@@ -15,6 +15,7 @@ token count for context caching is listed in the following table for each model:
 
 | Model | Min token limit |
 |---|---|
+| Gemini 3.8 Flash | 4,096 |
 | Gemini 3.7 Flash | 4,096 |
 | Gemini 3.6 Flash | 4,096 |
 | Gemini 3.5 Flash | 4,096 |

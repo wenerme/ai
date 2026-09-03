@@ -5,7 +5,7 @@ description: "Browse OVHcloud AI Endpoints model IDs, capabilities, context wind
 
 # [OVHcloud AI Endpoints logo]OVHcloud AI Endpoints
 
-Access 14 OVHcloud AI Endpoints models through Mastra's model router. Authentication is handled automatically using the `OVHCLOUD_API_KEY` environment variable.
+Access 15 OVHcloud AI Endpoints models through Mastra's model router. Authentication is handled automatically using the `OVHCLOUD_API_KEY` environment variable.
 
 Learn more in the [OVHcloud AI Endpoints documentation](https://www.ovhcloud.com/en/public-cloud/ai-endpoints/catalog//).
 
@@ -182,6 +182,18 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": 0.47,
     "outputCost": 3.19
+  },
+  {
+    "model": "ovhcloud/qwen3.8-27b",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": null,
+    "outputCost": null
   },
   {
     "model": "ovhcloud/qwen3guard-gen-0.6b",

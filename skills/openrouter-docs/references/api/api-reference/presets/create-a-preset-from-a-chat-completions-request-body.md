@@ -4039,6 +4039,16 @@ components:
       example:
         url: https://example.com/video.mp4
       properties:
+        processing:
+          description: >-
+            Video processing mode. `agentic` enables agentic video processing
+            and `static` forces fixed-rate frame sampling on providers that
+            support it (currently Google Gemini).
+          enum:
+            - agentic
+            - static
+          example: agentic
+          type: string
         url:
           description: 'URL of the video (data: URLs supported)'
           type: string
@@ -4050,6 +4060,16 @@ components:
       example:
         url: https://example.com/video.mp4
       properties:
+        processing:
+          description: >-
+            Video processing mode. `agentic` enables agentic video processing
+            and `static` forces fixed-rate frame sampling on providers that
+            support it (currently Google Gemini).
+          enum:
+            - agentic
+            - static
+          example: agentic
+          type: string
         url:
           description: 'URL of the video (data: URLs supported)'
           type: string

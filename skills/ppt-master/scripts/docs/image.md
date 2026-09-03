@@ -180,7 +180,8 @@ duotone, Gaussian blur, and `--fit WxH` (downscale to fit inside a pixel
 box, aspect ratio and alpha preserved; never upscales). They compose in a
 fixed order: brightness → contrast → tone treatment → blur → fit. Desaturation, grayscale, and duotone are
 mutually exclusive. At least one option must produce a real change; animated
-or multi-frame sources are rejected rather than reduced to one frame.
+sources are rejected rather than reduced to one frame, while a camera
+multi-picture JPEG (MPO) contributes its primary frame.
 
 Both input and output are bare filenames directly under `images/`; output must
 be a new `.png` file. The tool keeps the EXIF-corrected display dimensions,
@@ -279,11 +280,11 @@ python3 scripts/image_search.py "abstract gradient" \
 
 Suitability & manual replacement (a web top hit is metadata-relevant, not guaranteed visually right):
 
-- By default only the best match is downloaded, plus a downscaled review copy at `images/.review/<stem>.jpg` (the placed asset stays full-resolution).
+- By default only the best match is downloaded, plus a downscaled review copy at `images/.review/<stem>.jpg` (the placed asset stays full-resolution). A downloaded camera multi-picture JPEG (MPO, common among Commons originals) is rewritten as its primary frame before validation so every later consumer sees a single-frame JPEG.
 - For exact subjects (landmarks, people, companies, products), use `--require-terms` or batch `required_terms` so visually plausible but wrong metadata is rejected before ranking. Example: `--require-terms Chongqing --require-terms "Jiefangbei|Liberation Monument"`. Keep proper-name / geography anchors; do not broaden to generic terms like `canyon`, `stone pillar`, or `ancient town` just to improve coverage.
 - When the current Generate agent can inspect images, use `--save-candidates`. The tool saves only the first ranked page of review-eligible provider previews (**8 by default**), writes `candidates/<stem>/review_sheet.jpg`, and leaves the target image and `image_sources.json` untouched. Standalone CLI use remains best-only unless this flag is explicit.
 - Compare the thumbnail set against the active Reference/Crop Policy. Only after one passes, run `--promote candidate_03.jpg --filename <name>.jpg`; this downloads and validates exactly that original. In batch mode, pass the same `--batch images/image_queries.json` so `Needs-Selection` becomes `Sourced`.
-- If no thumbnail passes and `has_more_candidates` is true, fetch `--candidate-page 2` (or set the batch row's `candidate_page` to `next_candidate_page` and reset it to `Pending`). Candidate numbering continues at 9; no original is downloaded. Only after the pool is exhausted should you materially change the identity wording, viewpoint, translation, alias, or disambiguator and generate a fresh pool.
+- If no thumbnail passes and `has_more_candidates` is true, fetch `--candidate-page 2` with the same query and filename — the pool's saved `required_terms`, `query_variants`, orientation, and minimum dimensions are inherited unless given again, and a changed query is refused as a page continuation (start a new page-1 pool instead). In batch mode pass `--candidate-page 2` to rerun every `Needs-Selection` row at that page, or set one row's `candidate_page` to `next_candidate_page` and reset only it to `Pending`. Candidate numbering continues at 9, earlier pages stay in `candidates.json` (`saved_pages`) so any saved thumbnail remains promotable, and no original is downloaded. Only after the pool is exhausted should you materially change the identity wording, viewpoint, translation, alias, or disambiguator and generate a fresh pool.
 - Without multimodal inspection, omit `--save-candidates`. Best-only mode rejects visual-verification-required near matches, accepts only a strict metadata candidate, downloads one original, and records `selection_method: metadata-ranked`; if metadata cannot prove the entity or the active visual requirement, use `Needs-Manual` rather than claiming visual confirmation.
 - `--from-url <url> --filename <name>.jpg` downloads a user-chosen image URL and replaces the target (recorded `license_tier: manual`) — the model-agnostic manual path; works even without a multimodal model.
 
@@ -291,7 +292,7 @@ Full review / escalation flow: [`image-searcher.md`](../../references/image-sear
 
 Output:
 
-- `--save-candidates`: thumbnail-only `candidates/<stem>/candidates.json`, at most 8 provider previews by default, and `review_sheet.jpg`; no target image or provenance entry. `--candidate-page N` advances through the ranked pool; `--max-candidates 0` explicitly dumps all candidates for exceptional debugging
+- `--save-candidates`: thumbnail-only `candidates/<stem>/candidates.json`, at most 8 provider previews by default, and `review_sheet.jpg`; no target image or provenance entry. `--candidate-page N` advances through the ranked pool while keeping earlier pages' entries in `candidates.json`; `--max-candidates 0` explicitly dumps all candidates for exceptional debugging
 - Best-only / `--promote`: one original saved to the specified output directory (auto-converts webp → jpg via Pillow when the filename extension demands)
 - Best-only / `--promote`: `image_sources.json` manifest with full provenance (provider, license, license_tier, author, source URL, dimensions, attribution_text)
 - Manifest is idempotent on `filename` and written atomically; damaged existing provenance blocks replacement
@@ -315,14 +316,14 @@ The full role-level reference (intent → query translation, on-slide attributio
 | `--require-terms` | — | Repeatable identity gate; comma separates groups, `A|B` aliases |
 | `--save-candidates` | off | Thumbnail mode: one ranked page of previews plus `review_sheet.jpg`, no original |
 | `--max-candidates` | `8` | Page size; `0` = complete pool, debugging only |
-| `--candidate-page` | `1` | Ranked page; page 2 starts at rank 9 |
+| `--candidate-page` | `1` | Ranked page; page 2 starts at rank 9. Single-query continuation inherits the saved pool request; batch reruns every `Needs-Selection` row at that page |
 | `--promote <candidate>` | — | Download exactly one selected original, enforce gates, write provenance |
 | `--from-url <url>` | — | Manual replacement recorded as `license_tier: manual`; works without vision |
 | `--manifest <path>` | `images/image_queries.json` | Override the manifest path |
 
 ### Batch runner and ranking
 
-Required per item: `filename`, `query`, `status`; optional: `query_variants`, `candidate_page`, `slide`, `purpose`, `orientation`, `provider`, `strict_no_attribution`, `min_width`, `min_height`, `required_terms`. The runner revalidates every `Sourced` row against its file, dimensions, and manifest entry (drift → `Failed`), then searches all `Pending` / `Failed` rows concurrently (default concurrency 3, `--concurrency N` or `IMAGE_SEARCH_CONCURRENCY`; `1` for strict pacing on rate-sensitive free providers). Thumbnail mode writes `Needs-Selection` with `candidate_page`, `candidate_count`, `candidate_total`, `has_more_candidates`, `next_candidate_page`, and the `review_sheet` path, creating no image or provenance; to see the next page for one row set its `candidate_page` to `next_candidate_page`, reset only that row to `Pending`, and rerun. Promoting with the same `--batch` manifest moves the row to `Sourced`. Provider failures stay retryable `Failed`; clean exhaustion becomes `Needs-Manual`; status is saved after each completion.
+Required per item: `filename`, `query`, `status`; optional: `query_variants`, `candidate_page`, `slide`, `purpose`, `orientation`, `provider`, `strict_no_attribution`, `min_width`, `min_height`, `required_terms`. The runner revalidates every `Sourced` row against its file, dimensions, and manifest entry (drift → `Failed`), then searches all `Pending` / `Failed` rows concurrently (default concurrency 3, `--concurrency N` or `IMAGE_SEARCH_CONCURRENCY`; `1` for strict pacing on rate-sensitive free providers). Thumbnail mode writes `Needs-Selection` with `candidate_page`, `candidate_count`, `candidate_total`, `has_more_candidates`, `next_candidate_page`, and the `review_sheet` path, creating no image or provenance; to see the next page for one row set its `candidate_page` to `next_candidate_page`, reset only that row to `Pending`, and rerun; `--candidate-page N` on the batch run advances every `Needs-Selection` row at once. A positional query is rejected in batch mode rather than ignored. Promoting with the same `--batch` manifest moves the row to `Sourced`. Provider failures stay retryable `Failed`; clean exhaustion becomes `Needs-Manual`; status is saved after each completion.
 
 **Ranking** orders provider metadata, never pixels, and must not be tuned into a taste engine: hard-reject invalid licenses and zero relevance; in best-only mode reject any candidate missing a `required_terms` group; in thumbnail mode keep strict matches first and admit a near match only when exactly one group is missing and the finding query still has strong relevance (marked `identity_evidence: visual-verification-required`, never auto-promoted); then metadata-verified identity in the title outranks a URL-only match; concrete query tokens match whole ASCII tokens (`office` ≠ `officer`) and dominate generic words; orientation is a small penalty, no-attribution a small bonus, pixel count capped so a huge weak match cannot beat a smaller accurate one.
 

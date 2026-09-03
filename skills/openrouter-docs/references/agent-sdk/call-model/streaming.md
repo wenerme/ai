@@ -306,7 +306,7 @@ console.log('\nCancelled!');
 
 ### React Example
 
-```typescript expandable lines theme={null}
+```tsx expandable lines theme={null}
 import { useState, useEffect } from 'react';
 
 function ChatResponse({ prompt }: { prompt: string }) {

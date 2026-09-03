@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Shadow IT SaaS analytics
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Shadow IT SaaS analytics provides visibility into the SaaS applications your users are visiting. The dashboard aggregates data from Gateway HTTP traffic to track application usage across your organization. This information allows you to create identity and device-driven Cloudflare One policies to secure your users and data.
 
@@ -59,13 +59,13 @@ Approval status does not impact a user's ability to access an application. Users
 
 Review the Shadow IT SaaS analytics dashboard for application usage. Filter the view based on:
 
-| Field            | Description                                                                                                                                        |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Application      | SaaS application's name and logo.                                                                                                                  |
-| Application type | [Application type](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/#app-types) assigned by Cloudflare One. |
-| Status           | Application's approval status.                                                                                                                     |
-| Secured          | Whether the application is currently secured behind Cloudflare Access.                                                                             |
-| Users            | Number of users who connected to the application over the period of time specified on the Shadow IT Discovery overview page.                       |
+| Field              | Description                                                                                                                                        |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Application        | SaaS application's name and logo.                                                                                                                  |
+| Application type   | [Application type](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/#app-types) assigned by Cloudflare One. |
+| Application status | Application's approval status.                                                                                                                     |
+| Hostname           | Hostname of the requested SaaS application.                                                                                                        |
+| Country            | Country code associated with the user's source IP address.                                                                                         |
 
 To manage application statuses in bulk, select **Set Application Statuses** to review applications your users commonly visit and update their approval statuses.
 
@@ -112,5 +112,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/#page","headline":"Shadow IT SaaS analytics · Cloudflare One docs","description":"Reference information for Shadow IT SaaS analytics in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/#page","headline":"Shadow IT SaaS analytics · Cloudflare One docs","description":"Reference information for Shadow IT SaaS analytics in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
 ```

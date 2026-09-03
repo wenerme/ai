@@ -8,7 +8,7 @@
 
 In-Region Routing (IRR) keeps your AI workloads inside a designated geographic region. When you send a request through a region-specific base URL, the request is decrypted within that region and is only routed to provider endpoints in that region. Prompts and completions are processed entirely in-region and never leave it at any point in the request lifecycle.
 
-In-region routing is available for the European Union (EU) and United States (US) on the Business and Enterprise plans. Organization admins can upgrade to Business from their organization settings. For Enterprise, [contact our enterprise team](https://openrouter.ai/enterprise/form).
+In-region routing is available for the European Union (EU) and United States (US) on the Business and Enterprise plans. Organization admins can upgrade to Business under **Account Type** in [Settings > Preferences](https://openrouter.ai/settings/preferences). For Enterprise, [contact our enterprise team](https://openrouter.ai/enterprise/form).
 
 ## Using In-Region Routing
 
@@ -78,7 +78,7 @@ https://us.openrouter.ai
 
 ## How Requests Are Routed
 
-On a regional domain, OpenRouter filters the candidate endpoints for your request down to those whose provider infrastructure is located in that region. If no endpoint for the requested model operates in your region, the request fails with an error rather than falling back to an out-of-region endpoint. In-region routing fails closed: OpenRouter never silently routes a regional request outside the region.
+On a regional domain, OpenRouter filters the candidate endpoints for your request down to those whose provider infrastructure is located in that region. If OpenRouter has not onboarded an endpoint for the requested model to that region, the request fails with an error rather than falling back to an out-of-region endpoint. A provider might serve the model from infrastructure in the region, but the endpoint is only eligible once OpenRouter has onboarded it for EU or US routing. See Finding In-Region Models for the current list. In-region routing fails closed: OpenRouter never silently routes a regional request outside the region.
 
 Two categories of endpoints are always excluded from regional routing even if the model is otherwise available:
 
@@ -157,6 +157,6 @@ OpenRouter's in-region guarantee covers everything OpenRouter controls: where yo
 
 ## Getting Started
 
-* Upgrade to the Business plan from your organization settings (organization admins), or [contact our enterprise team](https://openrouter.ai/enterprise/form) for Enterprise
+* Organization admins can upgrade to the Business plan under **Account Type** in [Settings > Preferences](https://openrouter.ai/settings/preferences). For Enterprise, [contact our enterprise team](https://openrouter.ai/enterprise/form).
 * Review [Sovereign AI](/docs/guides/features/sovereign-ai) for combining in-region routing with ZDR and data collection controls
 * Configure [BYOK](/docs/guides/overview/auth/byok) keys with region-appropriate deployments as described above

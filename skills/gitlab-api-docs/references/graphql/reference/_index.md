@@ -16025,6 +16025,9 @@ Fields:
 
 ### `Mutation.tagCreate`
 
+Creates a tag in a project repository.
+Rate limited per project by the `tags_create_limit` application setting.
+
 Input type: `TagCreateInput`
 
 Arguments:
@@ -32066,6 +32069,7 @@ Fields:
 | <a id="aicatalogagent-verificationlevel"></a>`verificationLevel` | [`AiCatalogItemVerificationLevel!`](#aicatalogitemverificationlevel) | Verification level of the item. |
 | <a id="aicatalogagent-versions"></a>`versions` | [`AiCatalogItemVersionConnection`](#aicatalogitemversionconnection) | Versions of the item. (see [Connections](#connections)) |
 | <a id="aicatalogagent-visibility"></a>`visibility`  | [`AiCatalogItemVisibility!`](#aicatalogitemvisibility) | Introduced in GitLab 19.2. Status: Experiment. Visibility of the item in the catalog. |
+| <a id="aicatalogagent-webpath"></a>`webPath`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Web path of the item in the AI catalog. |
 
 #### Fields with arguments
 
@@ -32193,6 +32197,7 @@ Fields:
 | <a id="aicatalogflow-verificationlevel"></a>`verificationLevel` | [`AiCatalogItemVerificationLevel!`](#aicatalogitemverificationlevel) | Verification level of the item. |
 | <a id="aicatalogflow-versions"></a>`versions` | [`AiCatalogItemVersionConnection`](#aicatalogitemversionconnection) | Versions of the item. (see [Connections](#connections)) |
 | <a id="aicatalogflow-visibility"></a>`visibility`  | [`AiCatalogItemVisibility!`](#aicatalogitemvisibility) | Introduced in GitLab 19.2. Status: Experiment. Visibility of the item in the catalog. |
+| <a id="aicatalogflow-webpath"></a>`webPath`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Web path of the item in the AI catalog. |
 
 #### Fields with arguments
 
@@ -32411,6 +32416,7 @@ Fields:
 | <a id="aicatalogthirdpartyflow-verificationlevel"></a>`verificationLevel` | [`AiCatalogItemVerificationLevel!`](#aicatalogitemverificationlevel) | Verification level of the item. |
 | <a id="aicatalogthirdpartyflow-versions"></a>`versions` | [`AiCatalogItemVersionConnection`](#aicatalogitemversionconnection) | Versions of the item. (see [Connections](#connections)) |
 | <a id="aicatalogthirdpartyflow-visibility"></a>`visibility`  | [`AiCatalogItemVisibility!`](#aicatalogitemvisibility) | Introduced in GitLab 19.2. Status: Experiment. Visibility of the item in the catalog. |
+| <a id="aicatalogthirdpartyflow-webpath"></a>`webPath`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Web path of the item in the AI catalog. |
 
 #### Fields with arguments
 
@@ -40601,6 +40607,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="duoworkflow-agentname"></a>`agentName`  | [`String`](#string) | Introduced in GitLab 18.8. Status: Experiment. Name of the agent used for the workflow. |
 | <a id="duoworkflow-agentprivilegesnames"></a>`agentPrivilegesNames` | [`[String!]`](#string) | Privileges granted to the agent during execution. |
+| <a id="duoworkflow-aicatalogitem"></a>`aiCatalogItem`  | [`AiCatalogItem`](#aicatalogitem) | Introduced in GitLab 19.4. Status: Experiment. AI catalog item (flow or agent definition) that the session ran. |
 | <a id="duoworkflow-aicatalogitemversionid"></a>`aiCatalogItemVersionId`  | [`AiCatalogItemVersionID`](#aicatalogitemversionid) | Introduced in GitLab 18.4. Status: Experiment. ID of the AI catalog item version that triggered the workflow. |
 | <a id="duoworkflow-allexecutorlogsurls"></a>`allExecutorLogsUrls` | [`[String!]`](#string) | List of all the executor logs for the workflow. |
 | <a id="duoworkflow-allowagenttorequestuser"></a>`allowAgentToRequestUser` | [`Boolean`](#boolean) | Allow the agent to request user input. |
@@ -49709,13 +49716,16 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="mergerequestriskassessment-assessedat"></a>`assessedAt` | [`Time`](#time) | When the classification completed. |
 | <a id="mergerequestriskassessment-confidence"></a>`confidence` | [`Int`](#int) | Confidence in the score, from 0 to 100. Derived from how much of the change could be measured and whether the signals agreed. |
+| <a id="mergerequestriskassessment-confidencetier"></a>`confidenceTier` | [`MergeRequestRiskTier`](#mergerequestrisktier) | Tier derived from the confidence score. |
 | <a id="mergerequestriskassessment-domaintags"></a>`domainTags` | [`[String!]!`](#string) | Risk domains the change touches, used to route specialist review. |
+| <a id="mergerequestriskassessment-duoworkflowid"></a>`duoWorkflowId` | [`Int`](#int) | ID of the Duo workflow session that produced the classification. |
 | <a id="mergerequestriskassessment-missingsignals"></a>`missingSignals` | [`[String!]!`](#string) | Signals that could not be measured, which is why confidence may be low. |
 | <a id="mergerequestriskassessment-rationale"></a>`rationale` | [`String`](#string) | Plain-language explanation of the assessment. |
-| <a id="mergerequestriskassessment-score"></a>`score` | [`Int`](#int) | Risk score from 0 to 100. Null until the classification completes. |
+| <a id="mergerequestriskassessment-risk"></a>`risk` | [`Int`](#int) | Risk score from 0 to 100. |
+| <a id="mergerequestriskassessment-risktier"></a>`riskTier` | [`MergeRequestRiskTier`](#mergerequestrisktier) | Tier derived from the risk score. |
 | <a id="mergerequestriskassessment-signalbreakdown"></a>`signalBreakdown` | [`[MergeRequestRiskSignalContribution!]!`](#mergerequestrisksignalcontribution) | What each signal contributed to the score. |
 | <a id="mergerequestriskassessment-stale"></a>`stale` | [`Boolean!`](#boolean) | Whether the merge request has changed since it was classified. Classification runs once, so this is a notice rather than a trigger to re-run. |
-| <a id="mergerequestriskassessment-tier"></a>`tier` | [`MergeRequestRiskTier`](#mergerequestrisktier) | Tier derived from the score. Null until the scoring function and tier thresholds exist. |
+| <a id="mergerequestriskassessment-status"></a>`status` | [`MergeRequestRiskAssessmentStatus!`](#mergerequestriskassessmentstatus) | Status of the classification. |
 
 ### `MergeRequestRiskSignalContribution`
 
@@ -63624,6 +63634,7 @@ Possible event types for flow triggers.
 | <a id="aiflowtriggereventtype-merge_request_code_conflict"></a>`MERGE_REQUEST_CODE_CONFLICT` | Flow trigger merge_request_code_conflict event. |
 | <a id="aiflowtriggereventtype-merge_request_ready"></a>`MERGE_REQUEST_READY` | Flow trigger merge_request_ready event. |
 | <a id="aiflowtriggereventtype-pipeline_hooks"></a>`PIPELINE_HOOKS` | Flow trigger pipeline_hooks event. |
+| <a id="aiflowtriggereventtype-scheduled"></a>`SCHEDULED`  | Introduced in GitLab 19.4. Status: Experiment. Flow trigger scheduled event. |
 | <a id="aiflowtriggereventtype-work_item"></a>`WORK_ITEM` | Flow trigger work_item event. |
 
 ### `AiGovernanceAgentClass`
@@ -66978,6 +66989,17 @@ State of a review of a GitLab merge request.
 | <a id="mergerequestreviewstate-unapproved"></a>`UNAPPROVED` | Merge request reviewer removed their approval of the changes. |
 | <a id="mergerequestreviewstate-unreviewed"></a>`UNREVIEWED` | Awaiting review from merge request reviewer. |
 
+### `MergeRequestRiskAssessmentStatus`
+
+Status of a merge request risk classification.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="mergerequestriskassessmentstatus-complete"></a>`COMPLETE` | Classification has completed. |
+| <a id="mergerequestriskassessmentstatus-pending"></a>`PENDING` | Waiting to be classified. |
+| <a id="mergerequestriskassessmentstatus-queued"></a>`QUEUED` | Queued for (re)classification. |
+| <a id="mergerequestriskassessmentstatus-stale"></a>`STALE` | Classification is outdated. |
+
 ### `MergeRequestRiskTier`
 
 Risk tier derived from a merge request risk score.
@@ -68229,6 +68251,15 @@ Template type for predefined security categories.
 | <a id="securityreporttypeenum-sast_advanced"></a>`SAST_ADVANCED` | SAST ADVANCED scan report. |
 | <a id="securityreporttypeenum-sast_iac"></a>`SAST_IAC` | SAST IAC scan report. |
 | <a id="securityreporttypeenum-secret_detection"></a>`SECRET_DETECTION` | SECRET DETECTION scan report. |
+
+### `SecurityScanProfileAdvancedSastPartialScan`
+
+Controls GitLab Advanced SAST diff-based scanning.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="securityscanprofileadvancedsastpartialscan-differential"></a>`DIFFERENTIAL`  | Introduced in GitLab 19.4. Status: Experiment. Enable diff-based scanning. |
+| <a id="securityscanprofileadvancedsastpartialscan-disabled"></a>`DISABLED`  | Introduced in GitLab 19.4. Status: Experiment. Disable diff-based scanning. |
 
 ### `SecurityScanProfileImageSuffix`
 
@@ -71589,6 +71620,7 @@ Fields:
 | <a id="aicatalogitem-verificationlevel"></a>`verificationLevel` | [`AiCatalogItemVerificationLevel!`](#aicatalogitemverificationlevel) | Verification level of the item. |
 | <a id="aicatalogitem-versions"></a>`versions` | [`AiCatalogItemVersionConnection`](#aicatalogitemversionconnection) | Versions of the item. (see [Connections](#connections)) |
 | <a id="aicatalogitem-visibility"></a>`visibility`  | [`AiCatalogItemVisibility!`](#aicatalogitemvisibility) | Introduced in GitLab 19.2. Status: Experiment. Visibility of the item in the catalog. |
+| <a id="aicatalogitem-webpath"></a>`webPath`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Web path of the item in the AI catalog. |
 
 ##### Fields with arguments
 
@@ -73296,6 +73328,7 @@ Arguments:
 | <a id="aicatalogtriggerconditionsinput-mergerequestcodeconflict"></a>`mergeRequestCodeConflict` | [`AiCatalogTriggerConditionsGroupInput`](#aicatalogtriggerconditionsgroupinput) | Trigger condition rules for the merge_request_code_conflict event. |
 | <a id="aicatalogtriggerconditionsinput-mergerequestready"></a>`mergeRequestReady` | [`AiCatalogTriggerConditionsGroupInput`](#aicatalogtriggerconditionsgroupinput) | Trigger condition rules for the merge_request_ready event. |
 | <a id="aicatalogtriggerconditionsinput-pipelinehooks"></a>`pipelineHooks` | [`AiCatalogTriggerConditionsGroupInput`](#aicatalogtriggerconditionsgroupinput) | Trigger condition rules for the pipeline_hooks event. |
+| <a id="aicatalogtriggerconditionsinput-scheduled"></a>`scheduled`  | [`AiCatalogTriggerConditionsGroupInput`](#aicatalogtriggerconditionsgroupinput) | Introduced in GitLab 19.4. Status: Experiment. Trigger condition rules for the scheduled event. |
 | <a id="aicatalogtriggerconditionsinput-workitem"></a>`workItem` | [`AiCatalogTriggerConditionsGroupInput`](#aicatalogtriggerconditionsgroupinput) | Trigger condition rules for the work_item event. |
 
 ### `AiCatalogTriggerConditionsRuleItemInput`
@@ -74601,6 +74634,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="securityscanprofileconfigurationinput-dependencyscanningpostprocessing"></a>`dependencyScanningPostProcessing`  | [`SecurityScanProfileDependencyScanningPostProcessingConfigurationInput`](#securityscanprofiledependencyscanningpostprocessingconfigurationinput) | Introduced in GitLab 19.3. Status: Experiment. Configuration for a dependency scanning post-processing scan profile. |
+| <a id="securityscanprofileconfigurationinput-sast"></a>`sast`  | [`SecurityScanProfileSastConfigurationInput`](#securityscanprofilesastconfigurationinput) | Introduced in GitLab 19.4. Status: Experiment. Configuration for a SAST scan profile. |
 | <a id="securityscanprofileconfigurationinput-secretdetection"></a>`secretDetection`  | [`SecurityScanProfileSecretDetectionConfigurationInput`](#securityscanprofilesecretdetectionconfigurationinput) | Introduced in GitLab 19.3. Status: Experiment. Configuration for a secret detection scan profile. |
 
 ### `SecurityScanProfileDependencyScanningPostProcessingConfigurationInput`
@@ -74612,6 +74646,22 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="securityscanprofiledependencyscanningpostprocessingconfigurationinput-autoremediation"></a>`autoRemediation`  | [`SecurityScanProfileAutoRemediationInput`](#securityscanprofileautoremediationinput) | Introduced in GitLab 19.3. Status: Experiment. Auto-remediation configuration. |
+
+### `SecurityScanProfileSastConfigurationInput`
+
+Configuration for a SAST scan profile.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="securityscanprofilesastconfigurationinput-advancedsastpartialscan"></a>`advancedSastPartialScan`  | [`SecurityScanProfileAdvancedSastPartialScan`](#securityscanprofileadvancedsastpartialscan) | Introduced in GitLab 19.4. Status: Experiment. Controls GitLab Advanced SAST diff-based scanning. Use 'differential' to enable, 'false' to disable. |
+| <a id="securityscanprofilesastconfigurationinput-analyzerimagetag"></a>`analyzerImageTag`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Tag of the analyzer image to use. Warning: Setting this value overrides the pinned image tag for all SAST analyzers, which can cause analyzer failures if they require specific versions. |
+| <a id="securityscanprofilesastconfigurationinput-excludedanalyzers"></a>`excludedAnalyzers`  | [`[String!]`](#string) | Introduced in GitLab 19.4. Status: Experiment. Analyzers excluded from the scan. |
+| <a id="securityscanprofilesastconfigurationinput-excludedpaths"></a>`excludedPaths`  | [`[String!]`](#string) | Introduced in GitLab 19.4. Status: Experiment. Glob paths excluded from the scan. |
+| <a id="securityscanprofilesastconfigurationinput-gitlabadvsastincrscan"></a>`gitlabAdvSastIncrScan`  | [`Boolean`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Whether GitLab Advanced SAST incremental scanning is enabled. |
+| <a id="securityscanprofilesastconfigurationinput-imagesuffix"></a>`imageSuffix`  | [`SecurityScanProfileImageSuffix`](#securityscanprofileimagesuffix) | Introduced in GitLab 19.4. Status: Experiment. Suffix appended to the analyzer image name. |
+| <a id="securityscanprofilesastconfigurationinput-secureanalyzersprefix"></a>`secureAnalyzersPrefix`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Prefix for the container registry from which the analyzer image is pulled. |
 
 ### `SecurityScanProfileSecretDetectionConfigurationInput`
 

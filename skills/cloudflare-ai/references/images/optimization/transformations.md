@@ -19,7 +19,6 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 * [Create transformation flows](https://developers.cloudflare.com/images/optimization/transformations/flows/)
 * [Transform via fetch](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/)
 * [Control origin access](https://developers.cloudflare.com/images/optimization/transformations/control-origin-access/)
-* [Draw overlays and watermarks](https://developers.cloudflare.com/images/optimization/transformations/draw-overlays/)
 * [Integrate with frameworks](https://developers.cloudflare.com/images/optimization/transformations/integrate-with-frameworks/)
 * [Set up rewrite rules](https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules/)
 * [Preserve Content Credentials](https://developers.cloudflare.com/images/optimization/transformations/preserve-content-credentials/)

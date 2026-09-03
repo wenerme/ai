@@ -17,7 +17,7 @@ Grounding helps you build applications that can:
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="Who won the euro 2024?",
         tools=[{"type": "google_search"}]
     )
@@ -31,7 +31,7 @@ Grounding helps you build applications that can:
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "Who won the euro 2024?",
         tools: [{ type: "google_search" }]
     });
@@ -53,7 +53,7 @@ Grounding helps you build applications that can:
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("What is the current score of the Lakers game?"))
             .tools(Arrays.asList(new GoogleSearch()))
             .build();
@@ -69,7 +69,7 @@ Grounding helps you build applications that can:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "Who won the euro 2024?",
         "tools": [{"type": "google_search"}]
       }'
@@ -223,7 +223,7 @@ of the text it cites. Here's how to extract and display them.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("What happened in tech news today?"))
             .tools(Arrays.asList(new GoogleSearch()))
             .build();
@@ -287,6 +287,7 @@ overview](https://ai.google.dev/gemini-api/docs/models) page.
 
 | Model | Grounding with Google Search |
 |---|---|
+| Gemini 3.8 Flash | ✔️ |
 | Gemini 3.7 Flash | ✔️ |
 | Gemini 3.6 Flash | ✔️ |
 | Gemini 3.5 Flash-Lite | ✔️ |

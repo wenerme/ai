@@ -6,6 +6,10 @@
 
 > SDK Development Tools for telemetry capture and visualization
 
+<Warning>
+  The DevTools telemetry hooks and viewer are currently pre-release. There is no complete supported public client integration yet: `@openrouter/sdk` cannot attach the DevTools hooks through its typed public options, and `@openrouter/agent` `callModel` uses streaming Responses API output that DevTools cannot currently complete or normalize. See [Client Compatibility](#client-compatibility) below. DevTools is designed for development use only and should never be deployed in production environments.
+</Warning>
+
 The OpenRouter DevTools include pre-release telemetry hooks and a viewer for compatible telemetry files.
 
 ## Why use DevTools?

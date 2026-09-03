@@ -48,7 +48,7 @@ This example shows how to directly upload a file to the
         operation = client.operations.get(operation)
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="Can you tell me about [insert question]",
         tools=[{
             "type": "file_search",
@@ -95,7 +95,7 @@ This example shows how to directly upload a file to the
       }
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "Can you tell me about [insert question]",
         tools: [{
           type: "file_search",
@@ -152,7 +152,7 @@ This example shows how to directly upload a file to the
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -200,7 +200,7 @@ This example shows how to directly upload a file to the
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "gemini-3.7-flash",
+          "model": "gemini-3.8-flash",
           "input": "Can you tell me about [insert question]",
           "tools": [{
             "type": "file_search",
@@ -241,7 +241,7 @@ Alternatively, you can upload an existing file and [import it to your file searc
         operation = client.operations.get(operation)
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="Can you tell me about [insert question]",
         tools=[{
             "type": "file_search",
@@ -285,7 +285,7 @@ Alternatively, you can upload an existing file and [import it to your file searc
       }
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "Can you tell me about [insert question]",
         tools: [{
           type: "file_search",
@@ -334,7 +334,7 @@ Alternatively, you can upload an existing file and [import it to your file searc
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -387,7 +387,7 @@ Alternatively, you can upload an existing file and [import it to your file searc
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H "Content-Type: application/json" \
         -d '{
-          "model": "gemini-3.7-flash",
+          "model": "gemini-3.8-flash",
           "input": "Can you tell me about [insert question]",
           "tools": [{
             "type": "file_search",
@@ -487,7 +487,7 @@ tokens.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -654,7 +654,7 @@ Here are some examples of how to manage your File Search stores:
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -738,7 +738,7 @@ document by name.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -814,7 +814,7 @@ additional context. Metadata is a set of key-value pairs.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -829,7 +829,7 @@ to search only a subset of them.
 ### Python
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="Tell me about the book 'I, Claudius'",
         tools=[{
             "type": "file_search",
@@ -847,7 +847,7 @@ to search only a subset of them.
 ### JavaScript
 
     const interaction = await ai.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       input: "Tell me about the book 'I, Claudius'",
       tools: [{
         type: "file_search",
@@ -894,7 +894,7 @@ to search only a subset of them.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -910,7 +910,7 @@ to search only a subset of them.
         -H 'Content-Type: application/json' \
         -X POST \
         -d '{
-                "model": "gemini-3.7-flash",
+                "model": "gemini-3.8-flash",
                 "input": [{"type": "text", "text": "Tell me about the book I, Claudius"}],
                 "tools": [{
                     "type": "file_search",
@@ -981,7 +981,7 @@ process both text and images.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -1066,7 +1066,7 @@ You can access citation information through the `annotations` attribute inside t
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -1162,7 +1162,7 @@ You can access this information through the `page_number` attribute of a
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -1283,7 +1283,7 @@ download the media:
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -1308,7 +1308,7 @@ contains this custom metadata.
 ### Python
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="Tell me about [insert question]",
         tools=[{
             "type": "file_search",
@@ -1326,7 +1326,7 @@ contains this custom metadata.
 ### JavaScript
 
     const interaction = await ai.interactions.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       input: "Tell me about [insert question]",
       tools: [{
         type: "file_search",
@@ -1374,7 +1374,7 @@ contains this custom metadata.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -1429,7 +1429,7 @@ Starting with Gemini 3 models, you can combine file search tool with
         currency: str = Field(description="The currency of amount.")
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="What is the minimum hourly wage in Tokyo right now?",
         tools=[{
             "type": "file_search",
@@ -1461,7 +1461,7 @@ Starting with Gemini 3 models, you can combine file search tool with
 
     async function run() {
       const interaction = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "What is the minimum hourly wage in Tokyo right now?",
         tools: [{
           type: "file_search",
@@ -1508,7 +1508,7 @@ Starting with Gemini 3 models, you can combine file search tool with
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -1524,7 +1524,7 @@ Starting with Gemini 3 models, you can combine file search tool with
       -H 'Content-Type: application/json' \
       -X POST \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "What is the minimum hourly wage in Tokyo right now?",
         "tools": [{
           "type": "file_search",
@@ -1550,6 +1550,7 @@ The following models support File Search:
 
 | Model | File Search |
 |---|---|
+| [Gemini 3.8 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash) | ✔️ |
 | [Gemini 3.7 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.7-flash) | ✔️ |
 | [Gemini 3.6 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash) | ✔️ |
 | [Gemini 3.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) | ✔️ |

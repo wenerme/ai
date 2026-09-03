@@ -43,7 +43,7 @@ history and account standing.
 |---|---|
 | **Free** | N/A |
 | **Tier 1** | $10 |
-| **Tier 2** | $200 |
+| **Tier 2** | $50 |
 | **Tier 3** | $200 |
 
 If you hit a spend-based rate limit, the API returns a `429 RESOURCE_EXHAUSTED`
@@ -110,6 +110,7 @@ limits, separate from the non-batch API calls.
 |---|---|---|---|---|
 | Gemini 3.1 Pro Preview | 5,000,000 |
 | Gemini 3.5 Flash-Lite | 10,000,000 |
+| Gemini 3.8 Flash | 3,000,000 |
 | Gemini 3.7 Flash | 3,000,000 |
 | Gemini 3.1 Flash Lite | 10,000,000 |
 | Gemini 3.1 Flash Lite Preview | 10,000,000 |
@@ -140,6 +141,8 @@ limits, separate from the non-batch API calls.
 | Gemini 3.5 Flash-Lite | 500,000,000 |
 | Gemini 3.1 Flash Lite | 500,000,000 |
 | Gemini 3.1 Flash Lite Preview | 500,000,000 |
+| Gemini 3.8 Flash | 400,000,000 |
+| Gemini 3.7 Flash | 400,000,000 |
 | Gemini 3.6 Flash | 400,000,000 |
 | Gemini 3.5 Flash | 400,000,000 |
 | Gemini 2.5 Pro | 500,000,000 |
@@ -167,6 +170,8 @@ limits, separate from the non-batch API calls.
 | Gemini 3.5 Flash-Lite | 1,000,000,000 |
 | Gemini 3.1 Flash Lite | 1,000,000,000 |
 | Gemini 3.1 Flash Lite Preview | 1,000,000,000 |
+| Gemini 3.8 Flash | 1,000,000,000 |
+| Gemini 3.7 Flash | 1,000,000,000 |
 | Gemini 3.6 Flash | 1,000,000,000 |
 | Gemini 3.5 Flash | 1,000,000,000 |
 | Gemini 2.5 Pro | 1,000,000,000 |

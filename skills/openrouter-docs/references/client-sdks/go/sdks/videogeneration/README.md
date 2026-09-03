@@ -76,6 +76,7 @@ func main() {
 | sdkerrors.BadRequestResponseError      | 400         | application/json |
 | sdkerrors.UnauthorizedResponseError    | 401         | application/json |
 | sdkerrors.PaymentRequiredResponseError | 402         | application/json |
+| sdkerrors.ForbiddenResponseError       | 403         | application/json |
 | sdkerrors.NotFoundResponseError        | 404         | application/json |
 | sdkerrors.PayloadTooLargeResponseError | 413         | application/json |
 | sdkerrors.TooManyRequestsResponseError | 429         | application/json |
@@ -132,6 +133,7 @@ func main() {
 | Error Type                            | Status Code | Content Type     |
 | ------------------------------------- | ----------- | ---------------- |
 | sdkerrors.UnauthorizedResponseError   | 401         | application/json |
+| sdkerrors.ForbiddenResponseError      | 403         | application/json |
 | sdkerrors.NotFoundResponseError       | 404         | application/json |
 | sdkerrors.InternalServerResponseError | 500         | application/json |
 | sdkerrors.APIError                    | 4XX, 5XX    | \*/\*            |
@@ -189,6 +191,7 @@ func main() {
 | ------------------------------------- | ----------- | ---------------- |
 | sdkerrors.BadRequestResponseError     | 400         | application/json |
 | sdkerrors.UnauthorizedResponseError   | 401         | application/json |
+| sdkerrors.ForbiddenResponseError      | 403         | application/json |
 | sdkerrors.NotFoundResponseError       | 404         | application/json |
 | sdkerrors.InternalServerResponseError | 500         | application/json |
 | sdkerrors.BadGatewayResponseError     | 502         | application/json |

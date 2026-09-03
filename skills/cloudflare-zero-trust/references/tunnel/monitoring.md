@@ -85,13 +85,15 @@ Tunnel logs record all activity between `cloudflared` and the Cloudflare global 
 
 ### Server-side logs
 
-If you have access to the origin server, you can use the [\--loglevel flag](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#loglevel) to enable logging when you start the tunnel. By default, `cloudflared` prints logs to stdout and does not store logs on the server. You can optionally use the [\--logfile flag](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#logfile) to write your logs to a file.
+If you have access to the origin server, you can use the [\--loglevel flag](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#loglevel) to enable logging when you start the tunnel. By default, `cloudflared` prints logs to stdout and does not store logs on the server.
 
-To enable logs, [run the tunnel](https://developers.cloudflare.com/tunnel/configuration/#update-run-parameters) using the `--loglevel info` and `--logfile <PATH>` flags. For example,
+For routine persistent logging, [run the tunnel](https://developers.cloudflare.com/tunnel/configuration/#update-run-parameters#log-directory) with `--log-directory <PATH>`. This flag writes logs to `cloudflared.log` in the specified directory, rotates the file when it reaches 1 MB, and keeps up to five backups. It does not remove logs based on age.
 
 ```sh
-cloudflared tunnel --loglevel info --logfile cloudflared.log run <UUID>
+cloudflared tunnel --loglevel info --log-directory <PATH> run <UUID>
 ```
+
+Use the [\--logfile flag](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#logfile) instead for short troubleshooting sessions or when another tool manages rotation. `cloudflared` does not rotate the file specified by `--logfile`. If you set both flags, `--logfile` takes precedence.
 
 ### Remote log streaming
 

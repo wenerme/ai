@@ -335,6 +335,193 @@ MODEL: 'google/gemini-2.5-flash'
   </CodeGroup>
 </Template>
 
+### Video Processing Mode
+
+<Note>
+  Video processing modes are currently a **Google Gemini** feature. When a processing mode is set, OpenRouter routes the request to an endpoint that supports it. Other providers ignore the `processing` field.
+</Note>
+
+Google Gemini's [agentic video understanding](https://ai.google.dev/gemini-api/docs/video-understanding#agentic-video) lets the model dynamically navigate a video, loading only the frames, transcript, and audio it needs based on your prompt, instead of sampling the whole video at a fixed frame rate.
+
+Set the optional `processing` field on the video part to control this:
+
+* `agentic`: The model actively navigates the video timeline while answering. Best for long-form videos or queries targeting specific moments
+* `static`: The video is sampled at a fixed frame rate in a single pass. Best for latency-sensitive queries on short clips
+
+If `processing` is omitted, OpenRouter does not send a value upstream and Gemini's default applies.
+
+For supported models, mode selection guidance, and token accounting details, refer to [Google's video understanding docs](https://ai.google.dev/gemini-api/docs/video-understanding#agentic-video) as the source of truth.
+
+The `processing` field is supported in two OpenRouter APIs:
+
+* **Chat Completions API** (`/api/v1/chat/completions`): on the `video_url` content part
+* **Responses API** (`/api/v1/responses`): on the `input_video` content part
+
+The Messages API (`/api/v1/messages`) does not support video inputs.
+
+#### Chat Completions API
+
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'google/gemini-2.5-flash'
+}}
+>
+  <CodeGroup>
+    ```python Python expandable lines theme={null}
+    import requests
+
+    url = "https://openrouter.ai/api/v1/chat/completions"
+    headers = {
+        "Authorization": f"Bearer {API_KEY_REF}",
+        "Content-Type": "application/json"
+    }
+
+    payload = {
+        "model": "{{MODEL}}",
+        "messages": [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": "What is the height of the Rio Cathedral?"
+                    },
+                    {
+                        "type": "video_url",
+                        "video_url": {
+                            "url": "https://www.youtube.com/watch?v=-11ookL1yPA",
+                            "processing": "agentic"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+
+    response = requests.post(url, headers=headers, json=payload)
+    print(response.json())
+    ```
+
+    ```typescript title="TypeScript (fetch)" expandable lines theme={null}
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${API_KEY_REF}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "{{MODEL}}",
+        messages: [
+          {
+            role: "user",
+            content: [
+              {
+                type: "text",
+                text: "What is the height of the Rio Cathedral?",
+              },
+              {
+                type: "video_url",
+                video_url: {
+                  url: "https://www.youtube.com/watch?v=-11ookL1yPA",
+                  processing: "agentic",
+                },
+              },
+            ],
+          },
+        ],
+      }),
+    });
+
+    const data = await response.json();
+    console.log(data);
+    ```
+  </CodeGroup>
+</Template>
+
+#### Responses API
+
+<Template
+  data={{
+API_KEY_REF,
+MODEL: 'google/gemini-2.5-flash'
+}}
+>
+  <CodeGroup>
+    ```python Python expandable lines theme={null}
+    import requests
+
+    url = "https://openrouter.ai/api/v1/responses"
+    headers = {
+        "Authorization": f"Bearer {API_KEY_REF}",
+        "Content-Type": "application/json"
+    }
+
+    payload = {
+        "model": "{{MODEL}}",
+        "input": [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "input_text",
+                        "text": "What is the height of the Rio Cathedral?"
+                    },
+                    {
+                        "type": "input_video",
+                        "video_url": "https://www.youtube.com/watch?v=-11ookL1yPA",
+                        "processing": "agentic"
+                    }
+                ]
+            }
+        ]
+    }
+
+    response = requests.post(url, headers=headers, json=payload)
+    print(response.json())
+    ```
+
+    ```typescript title="TypeScript (fetch)" expandable lines theme={null}
+    const response = await fetch("https://openrouter.ai/api/v1/responses", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${API_KEY_REF}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "{{MODEL}}",
+        input: [
+          {
+            role: "user",
+            content: [
+              {
+                type: "input_text",
+                text: "What is the height of the Rio Cathedral?",
+              },
+              {
+                type: "input_video",
+                video_url: "https://www.youtube.com/watch?v=-11ookL1yPA",
+                processing: "agentic",
+              },
+            ],
+          },
+        ],
+      }),
+    });
+
+    const data = await response.json();
+    console.log(data);
+    ```
+  </CodeGroup>
+</Template>
+
+#### Response handling per API
+
+When agentic processing is used, the model's internal video navigation steps are returned as encrypted reasoning rather than as tool calls, and the response finishes normally. The exact shape depends on the API:
+
+* **Chat Completions API**: The navigation steps appear as encrypted `reasoning_details` entries on the assistant message, and the response finishes with `finish_reason: "stop"`. To preserve the video context on follow-up turns, send the assistant message back with its `reasoning_details` intact, as with other [reasoning token](/docs/guides/best-practices/reasoning-tokens) round-tripping.
+* **Responses API**: The navigation steps appear as `reasoning` output items with `encrypted_content`. To preserve the video context on follow-up turns, echo the response's output items (including the `reasoning` items) back in the `input` of the next request.
+
 ## Supported Video Formats
 
 OpenRouter supports the following video formats:
