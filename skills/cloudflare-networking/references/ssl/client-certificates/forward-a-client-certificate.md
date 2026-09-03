@@ -144,8 +144,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/access/certificates/settings" \
 	--request PUT \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
 		"settings": [
 				{

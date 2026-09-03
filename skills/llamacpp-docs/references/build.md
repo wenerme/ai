@@ -27,6 +27,7 @@ The following sections describe how to build with different backends and options
 * [OpenCL](#opencl)
 * [Android](#android-1)
 * [OpenVINO](#openvino)
+* [Hexagon](#hexagon)
 * [Notes about GPU-accelerated backends](#notes-about-gpu-accelerated-backends)
 
 ## CPU Build
@@ -825,6 +826,10 @@ To read documentation for how to build on IBM Z & LinuxONE, [click here](./build
 [OpenVINO](https://docs.openvino.ai/) is an open-source toolkit for optimizing and deploying high-performance AI inference, specifically designed for Intel hardware (CPUs, GPUs, and NPUs).
 
 For build instructions and usage examples, refer to [OPENVINO.md](backend/OPENVINO.md).
+
+### Hexagon
+
+Check [README.md](./backend/snapdragon/README.md) for target specific build and run info.
 
 ---
 ## Notes about GPU-accelerated backends

@@ -31872,6 +31872,7 @@ Fields:
 | <a id="agentplatformsessionsaggregationresponse-completionrate"></a>`completionRate` | [`Float`](#float) | Session completion rate. |
 | <a id="agentplatformsessionsaggregationresponse-dimensions"></a>`dimensions` | [`AgentPlatformSessionsAggregationResponseDimensions`](#agentplatformsessionsaggregationresponsedimensions) | Aggregation dimensions. Every selected dimension will be used for aggregation. |
 | <a id="agentplatformsessionsaggregationresponse-duration"></a>`duration` | [`AgentPlatformSessionsAggregationResponseDurationMetrics`](#agentplatformsessionsaggregationresponsedurationmetrics) | Aggregated `duration` metrics. |
+| <a id="agentplatformsessionsaggregationresponse-featurescount"></a>`featuresCount` | [`Int`](#int) | Number of unique features (flow types). |
 | <a id="agentplatformsessionsaggregationresponse-finishedcount"></a>`finishedCount` | [`Int`](#int) | Number of finished sessions. |
 | <a id="agentplatformsessionsaggregationresponse-meanduration"></a>`meanDuration` | [`Float`](#float) | Average session duration in seconds. |
 | <a id="agentplatformsessionsaggregationresponse-totalcount"></a>`totalCount` | [`Int`](#int) | Total number of sessions. |
@@ -31964,6 +31965,8 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="agentplatformsessionsaggregationscope-aggregated-featurescountfrom"></a>`featuresCountFrom` | [`Int`](#int) | Filter by the number of unique features. The `features_count` metric must also be requested when using this filter. Start of the range. |
+| <a id="agentplatformsessionsaggregationscope-aggregated-featurescountto"></a>`featuresCountTo` | [`Int`](#int) | Filter by the number of unique features. The `features_count` metric must also be requested when using this filter. End of the range. |
 | <a id="agentplatformsessionsaggregationscope-aggregated-orderby"></a>`orderBy` | [`[AggregationOrder!]`](#aggregationorder) | Sorting order list for the aggregated data. |
 
 ### `AgentPlatformUserFlowCount`
@@ -33600,7 +33603,27 @@ Fields:
 | <a id="artifactregistrymavenpackage-groupid"></a>`groupId`  | [`String!`](#string) | Introduced in GitLab 19.3. Status: Experiment. Maven group ID coordinate of the package. |
 | <a id="artifactregistrymavenpackage-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.3. Status: Experiment. ID of the package in Artifact Registry. |
 | <a id="artifactregistrymavenpackage-lastdownloadedat"></a>`lastDownloadedAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp the package was last pulled. Null when it was never pulled. |
-| <a id="artifactregistrymavenpackage-versions"></a>`versions`  | [`ArtifactRegistryVersionConnection`](#artifactregistryversionconnection) | Introduced in GitLab 19.4. Status: Experiment. Versions of the package, ordered by publication date descending. Resolves at most once per package in a page, so one operation reads versions for up to 20 packages. Returns `null` for a package that is gone. Also `null` when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx. |
+
+#### Fields with arguments
+
+##### `ArtifactRegistryMavenPackage.versions`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Versions of the package, ordered by publication date descending by default. Resolves at most once per package in a page, so one operation reads versions for up to 20 packages. Returns `null` for a package that is gone. Also `null` when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx.
+
+Returns [`ArtifactRegistryVersionConnection`](#artifactregistryversionconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistrymavenpackage-versions-sort"></a>`sort`  | [`ArtifactRegistryVersionSort`](#artifactregistryversionsort) | Introduced in GitLab 19.4. Status: Experiment. Sort versions by the criteria. Defaults to publication date descending. |
 
 ### `ArtifactRegistryNpmPackage`
 
@@ -33614,8 +33637,28 @@ Fields:
 | <a id="artifactregistrynpmpackage-lastdownloadedat"></a>`lastDownloadedAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp the package was last pulled. Null when it was never pulled. |
 | <a id="artifactregistrynpmpackage-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.3. Status: Experiment. Name of the package, including its scope when it has one. |
 | <a id="artifactregistrynpmpackage-scope"></a>`scope`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. npm scope of the package. Null for an unscoped package. |
-| <a id="artifactregistrynpmpackage-versions"></a>`versions`  | [`ArtifactRegistryVersionConnection`](#artifactregistryversionconnection) | Introduced in GitLab 19.4. Status: Experiment. Versions of the package, ordered by publication date descending. Resolves at most once per package in a page, so one operation reads versions for up to 20 packages. Returns `null` for a package that is gone. Also `null` when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx. |
 | <a id="artifactregistrynpmpackage-versionscount"></a>`versionsCount`  | [`Int`](#int) | Introduced in GitLab 19.3. Status: Experiment. Number of versions of the package. Buffered, so it can lag the version list. Null for a package of a remote repository, which Artifact Registry supplies no count for. |
+
+#### Fields with arguments
+
+##### `ArtifactRegistryNpmPackage.versions`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Versions of the package, ordered by publication date descending by default. Resolves at most once per package in a page, so one operation reads versions for up to 20 packages. Returns `null` for a package that is gone. Also `null` when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx.
+
+Returns [`ArtifactRegistryVersionConnection`](#artifactregistryversionconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistrynpmpackage-versions-sort"></a>`sort`  | [`ArtifactRegistryVersionSort`](#artifactregistryversionsort) | Introduced in GitLab 19.4. Status: Experiment. Sort versions by the criteria. Defaults to publication date descending. |
 
 ### `ArtifactRegistryRemoteSettings`
 
@@ -50891,7 +50934,6 @@ Fields:
 | <a id="namespaceavailablefeatures-hasepicsfeature"></a>`hasEpicsFeature`  | [`Boolean!`](#boolean) | Introduced in GitLab 18.1. Status: Experiment. Whether epics are enabled for the namespace. |
 | <a id="namespaceavailablefeatures-hasgroupbulkeditfeature"></a>`hasGroupBulkEditFeature`  | [`Boolean!`](#boolean) | Introduced in GitLab 18.3. Status: Experiment. Whether group bulk edit is enabled for the namespace. |
 | <a id="namespaceavailablefeatures-hasissuablehealthstatusfeature"></a>`hasIssuableHealthStatusFeature`  | [`Boolean!`](#boolean) | Introduced in GitLab 18.1. Status: Experiment. Whether issuable health status is enabled for the namespace. |
-| <a id="namespaceavailablefeatures-hasissuedatefilterfeature"></a>`hasIssueDateFilterFeature`  | [`Boolean!`](#boolean) | Introduced in GitLab 18.1. Status: Experiment. Whether issue date filter is enabled for the namespace. |
 | <a id="namespaceavailablefeatures-hasissueweightsfeature"></a>`hasIssueWeightsFeature`  | [`Boolean!`](#boolean) | Introduced in GitLab 18.1. Status: Experiment. Whether issue weights are enabled for the namespace. |
 | <a id="namespaceavailablefeatures-hasiterationsfeature"></a>`hasIterationsFeature`  | [`Boolean!`](#boolean) | Introduced in GitLab 18.1. Status: Experiment. Whether iterations are enabled for the namespace. |
 | <a id="namespaceavailablefeatures-haslinkeditemsepicsfeature"></a>`hasLinkedItemsEpicsFeature`  | [`Boolean!`](#boolean) | Introduced in GitLab 18.1. Status: Experiment. Whether linked items epics are enabled for the namespace. |
@@ -55706,6 +55748,25 @@ Arguments:
 | <a id="project-timelogs-startdate"></a>`startDate` | [`Time`](#time) | List timelogs within a date range where the logged date is equal to or after startDate. |
 | <a id="project-timelogs-starttime"></a>`startTime` | [`Time`](#time) | List timelogs within a time range where the logged time is equal to or after startTime. |
 | <a id="project-timelogs-username"></a>`username` | [`String`](#string) | List timelogs for a user. |
+
+##### `Project.unprotectedBranches`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Paginated list of unprotected branches, ignoring any wildcard branch rules. Supports forward-only pagination with `first` and `after`. This field can only be resolved for one project in any single request.
+
+Returns [`StringConnection`](#stringconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="project-unprotectedbranches-search"></a>`search` | [`String`](#string) | Search query to filter branch names (case-insensitive). |
 
 ##### `Project.valueStreamDashboardUsageOverview`
 
@@ -64193,6 +64254,17 @@ Artifact Registry role that can be assigned to a user.
 | <a id="artifactregistryrole-artifact_manager"></a>`ARTIFACT_MANAGER` | Manage artifacts and repository configuration. |
 | <a id="artifactregistryrole-artifact_viewer"></a>`ARTIFACT_VIEWER` | Consume artifacts and browse the registry. |
 
+### `ArtifactRegistryVersionSort`
+
+Values for sorting Artifact Registry package versions.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="artifactregistryversionsort-created_at_asc"></a>`CREATED_AT_ASC` | Publication date by ascending order. |
+| <a id="artifactregistryversionsort-created_at_desc"></a>`CREATED_AT_DESC` | Publication date by descending order. |
+| <a id="artifactregistryversionsort-version_asc"></a>`VERSION_ASC` | Version string by ascending, alphabetical order. |
+| <a id="artifactregistryversionsort-version_desc"></a>`VERSION_DESC` | Version string by descending, alphabetical order. |
+
 ### `AscpScanType`
 
 Type of ASCP scan (full or incremental).
@@ -66502,6 +66574,7 @@ Licensed features that can be checked for availability on a namespace or project
 | <a id="licensedfeature-ci_cd_projects"></a>`CI_CD_PROJECTS` | Ci cd projects feature. |
 | <a id="licensedfeature-ci_component_usages_in_projects"></a>`CI_COMPONENT_USAGES_IN_PROJECTS` | Ci component usages in projects feature. |
 | <a id="licensedfeature-ci_job_analytics_for_projects"></a>`CI_JOB_ANALYTICS_FOR_PROJECTS` | Ci job analytics for projects feature. |
+| <a id="licensedfeature-ci_parallel_test_balancing"></a>`CI_PARALLEL_TEST_BALANCING` | Ci parallel test balancing feature. |
 | <a id="licensedfeature-ci_pipeline_cancellation_restrictions"></a>`CI_PIPELINE_CANCELLATION_RESTRICTIONS` | Ci pipeline cancellation restrictions feature. |
 | <a id="licensedfeature-ci_project_subscriptions"></a>`CI_PROJECT_SUBSCRIPTIONS` | Ci project subscriptions feature. |
 | <a id="licensedfeature-ci_runner_controllers"></a>`CI_RUNNER_CONTROLLERS` | Ci runner controllers feature. |
