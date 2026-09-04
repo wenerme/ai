@@ -237,6 +237,7 @@ paths:
               - perplexity
               - phala
               - poolside
+              - prime-intellect
               - quiver
               - recraft
               - reka
@@ -664,6 +665,7 @@ components:
         - perplexity
         - phala
         - poolside
+        - prime-intellect
         - quiver
         - recraft
         - reka

@@ -27,7 +27,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       The unique ID of the conversation.
 
-- `input: optional string or array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 29 more or null`
+- `input: optional string or array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 30 more or null`
 
   Text, image, or file inputs to the model, used to generate a response
 
@@ -35,7 +35,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
     A text input to the model, equivalent to a text input with the `user` role.
 
-  - `array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 29 more`
+  - `array of EasyInputMessage or object { content, role, status, type }  or ResponseOutputMessage or 30 more`
 
     A list of one or many input items to the model, containing different content types.
 
@@ -936,7 +936,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"web_search_call"`
 
-    - `FunctionCall object { arguments, call_id, name, 5 more }`
+    - `FunctionCall object { arguments, call_id, name, 6 more }`
 
       A tool call to run a function. See the
       [function calling guide](/docs/guides/function-calling) for more information.
@@ -962,6 +962,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `id: optional string`
 
         The unique ID of the function tool call.
+
+      - `async: optional boolean`
+
+        Whether the function tool call runs asynchronously.
 
       - `caller: optional object { type }  or object { caller_id, type }  or null`
 
@@ -1212,11 +1216,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
     - `ToolSearchOutput object { tools, type, id, 3 more }`
 
-      - `tools: array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
 
         The loaded tool definitions returned by the tool search output.
 
-        - `Function object { name, parameters, strict, 5 more }`
+        - `Function object { name, parameters, strict, 6 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -1245,6 +1249,8 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             - `"direct"`
 
             - `"programmatic"`
+
+          - `async: optional boolean`
 
           - `defer_loading: optional boolean`
 
@@ -2039,7 +2045,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 - `"container_reference"`
 
-        - `Custom object { name, type, allowed_callers, 3 more }`
+        - `Custom object { name, type, allowed_callers, 4 more }`
 
           A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -2060,6 +2066,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             - `"direct"`
 
             - `"programmatic"`
+
+          - `async: optional boolean`
+
+            Whether the tool response can be returned asynchronously versus immediately returned on next response creation.
 
           - `defer_loading: optional boolean`
 
@@ -2117,11 +2127,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
+          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
-            - `Function object { name, type, allowed_callers, 5 more }`
+            - `Function object { name, type, allowed_callers, 6 more }`
 
               - `name: string`
 
@@ -2136,6 +2146,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
                 - `"direct"`
 
                 - `"programmatic"`
+
+              - `async: optional boolean`
+
+                Whether the tool response can be returned asynchronously versus immediately returned on next response creation.
 
               - `defer_loading: optional boolean`
 
@@ -2153,7 +2167,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-            - `Custom object { name, type, allowed_callers, 3 more }`
+            - `Custom object { name, type, allowed_callers, 4 more }`
 
               A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -2174,6 +2188,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
                 - `"direct"`
 
                 - `"programmatic"`
+
+              - `async: optional boolean`
+
+                Whether the tool response can be returned asynchronously versus immediately returned on next response creation.
 
               - `defer_loading: optional boolean`
 
@@ -2331,11 +2349,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"developer"`
 
-      - `tools: array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+      - `tools: array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
 
         A list of additional tools made available at this item.
 
-        - `Function object { name, parameters, strict, 5 more }`
+        - `Function object { name, parameters, strict, 6 more }`
 
           Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -2364,6 +2382,8 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             - `"direct"`
 
             - `"programmatic"`
+
+          - `async: optional boolean`
 
           - `defer_loading: optional boolean`
 
@@ -2941,7 +2961,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `ContainerReference object { container_id, type }`
 
-        - `Custom object { name, type, allowed_callers, 3 more }`
+        - `Custom object { name, type, allowed_callers, 4 more }`
 
           A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -2962,6 +2982,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             - `"direct"`
 
             - `"programmatic"`
+
+          - `async: optional boolean`
+
+            Whether the tool response can be returned asynchronously versus immediately returned on next response creation.
 
           - `defer_loading: optional boolean`
 
@@ -2987,11 +3011,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             The namespace name used in tool calls (for example, `crm`).
 
-          - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
+          - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
             The function/custom tools available inside this namespace.
 
-            - `Function object { name, type, allowed_callers, 5 more }`
+            - `Function object { name, type, allowed_callers, 6 more }`
 
               - `name: string`
 
@@ -3006,6 +3030,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
                 - `"direct"`
 
                 - `"programmatic"`
+
+              - `async: optional boolean`
+
+                Whether the tool response can be returned asynchronously versus immediately returned on next response creation.
 
               - `defer_loading: optional boolean`
 
@@ -3023,7 +3051,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-            - `Custom object { name, type, allowed_callers, 3 more }`
+            - `Custom object { name, type, allowed_callers, 4 more }`
 
               A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -3044,6 +3072,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
                 - `"direct"`
 
                 - `"programmatic"`
+
+              - `async: optional boolean`
+
+                Whether the tool response can be returned asynchronously versus immediately returned on next response creation.
 
               - `defer_loading: optional boolean`
 
@@ -3170,6 +3202,45 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `id: optional string or null`
 
         The unique ID of this additional tools item.
+
+    - `ConfigurationUpdate object { type, id, reasoning }`
+
+      An update to the conversation's response configuration. The configuration
+      remains in effect for subsequent responses until it is replaced by another
+      configuration update.
+
+      - `type: "configuration_update"`
+
+        The item type. Always `configuration_update`.
+
+        - `"configuration_update"`
+
+      - `id: optional string or null`
+
+        The unique ID of the configuration update item.
+
+      - `reasoning: optional object { effort }`
+
+        Updates to reasoning configuration. Only effort is supported.
+
+        - `effort: optional ReasoningEffort or null`
+
+          The reasoning effort to use for subsequent responses until another
+          configuration update replaces it.
+
+          - `"none"`
+
+          - `"minimal"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"xhigh"`
+
+          - `"max"`
 
     - `Reasoning object { id, summary, type, 3 more }`
 
@@ -4014,7 +4085,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"program"`
 
-    - `CustomToolCall object { call_id, input, name, 4 more }`
+    - `CustomToolCall object { call_id, input, name, 5 more }`
 
       A call to a custom tool created by the model.
 
@@ -4039,6 +4110,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `id: optional string`
 
         The unique ID of the custom tool call in the OpenAI platform.
+
+      - `async: optional boolean`
+
+        Whether the custom tool call runs asynchronously.
 
       - `caller: optional object { type }  or object { caller_id, type }  or null`
 
@@ -4204,20 +4279,6 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
     value. See the
     [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
     for model-specific support.
-
-    - `"none"`
-
-    - `"minimal"`
-
-    - `"low"`
-
-    - `"medium"`
-
-    - `"high"`
-
-    - `"xhigh"`
-
-    - `"max"`
 
   - `generate_summary: optional "auto" or "concise" or "detailed" or null`
 
@@ -4527,11 +4588,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `"shell"`
 
-- `tools: optional array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more or null`
+- `tools: optional array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more or null`
 
   An array of tools the model may call while generating a response. You can specify which tool to use by setting the `tool_choice` parameter.
 
-  - `Function object { name, parameters, strict, 5 more }`
+  - `Function object { name, parameters, strict, 6 more }`
 
     Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -4560,6 +4621,8 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `"direct"`
 
       - `"programmatic"`
+
+    - `async: optional boolean`
 
     - `defer_loading: optional boolean`
 
@@ -5137,7 +5200,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `ContainerReference object { container_id, type }`
 
-  - `Custom object { name, type, allowed_callers, 3 more }`
+  - `Custom object { name, type, allowed_callers, 4 more }`
 
     A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -5158,6 +5221,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `"direct"`
 
       - `"programmatic"`
+
+    - `async: optional boolean`
+
+      Whether the tool response can be returned asynchronously versus immediately returned on next response creation.
 
     - `defer_loading: optional boolean`
 
@@ -5183,11 +5250,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       The namespace name used in tool calls (for example, `crm`).
 
-    - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
+    - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
       The function/custom tools available inside this namespace.
 
-      - `Function object { name, type, allowed_callers, 5 more }`
+      - `Function object { name, type, allowed_callers, 6 more }`
 
         - `name: string`
 
@@ -5202,6 +5269,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           - `"direct"`
 
           - `"programmatic"`
+
+        - `async: optional boolean`
+
+          Whether the tool response can be returned asynchronously versus immediately returned on next response creation.
 
         - `defer_loading: optional boolean`
 
@@ -5219,7 +5290,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-      - `Custom object { name, type, allowed_callers, 3 more }`
+      - `Custom object { name, type, allowed_callers, 4 more }`
 
         A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -5240,6 +5311,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
           - `"direct"`
 
           - `"programmatic"`
+
+        - `async: optional boolean`
+
+          Whether the tool response can be returned asynchronously versus immediately returned on next response creation.
 
         - `defer_loading: optional boolean`
 
@@ -5397,7 +5472,7 @@ curl -X POST https://api.openai.com/v1/responses/input_tokens \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-      "model": "gpt-5.6-sol",
+      "model": "gpt-6-astra",
       "input": "Tell me a joke."
     }'
 ```

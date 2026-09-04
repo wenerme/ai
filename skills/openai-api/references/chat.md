@@ -446,21 +446,23 @@ chunk objects if the request is streamed.
 
       - `"function"`
 
-- `model: string or "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 80 more`
+- `model: string or "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 81 more`
 
-  Model ID used to generate the response, like `gpt-5.6-sol` or `o3`. OpenAI
+  Model ID used to generate the response, like `gpt-6-astra` or `o3`. OpenAI
   offers a wide range of models with different capabilities, performance
   characteristics, and price points. Refer to the [model guide](/docs/models)
   to browse and compare available models.
 
   - `string`
 
-  - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 80 more`
+  - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 81 more`
 
-    Model ID used to generate the response, like `gpt-5.6-sol` or `o3`. OpenAI
+    Model ID used to generate the response, like `gpt-6-astra` or `o3`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/docs/models)
     to browse and compare available models.
+
+    - `"gpt-6-astra"`
 
     - `"gpt-5.6-sol"`
 
@@ -1909,7 +1911,7 @@ curl https://api.openai.com/v1/chat/completions \
               "role": "developer"
             }
           ],
-          "model": "gpt-5.6-sol",
+          "model": "gpt-6-astra",
           "n": 1,
           "prompt_cache_key": "prompt-cache-key-1234",
           "safety_identifier": "safety-identifier-1234",
@@ -2087,7 +2089,7 @@ curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.6-sol",
+    "model": "gpt-6-astra",
     "messages": [
       {
         "role": "developer",
@@ -2108,7 +2110,7 @@ curl https://api.openai.com/v1/chat/completions \
   "id": "chatcmpl-B9MBs8CjcvOU2jLn4n570S5qMJKcT",
   "object": "chat.completion",
   "created": 1741569952,
-  "model": "gpt-5.6-sol",
+  "model": "gpt-6-astra",
   "choices": [
     {
       "index": 0,
@@ -2148,7 +2150,7 @@ curl https://api.openai.com/v1/chat/completions \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-  "model": "gpt-5.6-sol",
+  "model": "gpt-6-astra",
   "messages": [
     {
       "role": "user",
@@ -2189,7 +2191,7 @@ curl https://api.openai.com/v1/chat/completions \
   "id": "chatcmpl-abc123",
   "object": "chat.completion",
   "created": 1699896916,
-  "model": "gpt-5.6-sol",
+  "model": "gpt-6-astra",
   "choices": [
     {
       "index": 0,
@@ -2231,7 +2233,7 @@ curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.6-sol",
+    "model": "gpt-6-astra",
     "messages": [
       {
         "role": "user",
@@ -2260,7 +2262,7 @@ curl https://api.openai.com/v1/chat/completions \
   "id": "chatcmpl-B9MHDbslfkBeAs8l4bebGdFOJ6PeG",
   "object": "chat.completion",
   "created": 1741570283,
-  "model": "gpt-5.6-sol",
+  "model": "gpt-6-astra",
   "choices": [
     {
       "index": 0,
@@ -2300,7 +2302,7 @@ curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.6-sol",
+    "model": "gpt-6-astra",
     "messages": [
       {
         "role": "user",
@@ -2320,7 +2322,7 @@ curl https://api.openai.com/v1/chat/completions \
   "id": "chatcmpl-123",
   "object": "chat.completion",
   "created": 1702685778,
-  "model": "gpt-5.6-sol",
+  "model": "gpt-6-astra",
   "choices": [
     {
       "index": 0,
@@ -2514,7 +2516,7 @@ curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-5.6-sol",
+    "model": "gpt-6-astra",
     "messages": [
       {
         "role": "developer",
@@ -2532,13 +2534,13 @@ curl https://api.openai.com/v1/chat/completions \
 #### Response
 
 ```json
-{"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-5.6-sol", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"role":"assistant","content":""},"logprobs":null,"finish_reason":null}]}
+{"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-6-astra", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"role":"assistant","content":""},"logprobs":null,"finish_reason":null}]}
 
-{"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-5.6-sol", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"content":"Hello"},"logprobs":null,"finish_reason":null}]}
+{"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-6-astra", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"content":"Hello"},"logprobs":null,"finish_reason":null}]}
 
 ....
 
-{"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-5.6-sol", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{},"logprobs":null,"finish_reason":"stop"}]}
+{"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-6-astra", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{},"logprobs":null,"finish_reason":"stop"}]}
 ```
 
 ## Delete chat completion
@@ -3352,7 +3354,7 @@ curl https://api.openai.com/v1/chat/completions \
     {
       "object": "chat.completion",
       "id": "chatcmpl-AyPNinnUqUDYo9SAdA52NobMflmj2",
-      "model": "gpt-5.6-sol",
+      "model": "gpt-6-astra",
       "created": 1738960610,
       "request_id": "req_ded8ab984ec4bf840f37566c1011c417",
       "tool_choice": null,
@@ -4086,7 +4088,7 @@ curl https://api.openai.com/v1/chat/completions/chatcmpl-abc123 \
 {
   "object": "chat.completion",
   "id": "chatcmpl-abc123",
-  "model": "gpt-5.6-sol",
+  "model": "gpt-6-astra",
   "created": 1738960610,
   "request_id": "req_ded8ab984ec4bf840f37566c1011c417",
   "tool_choice": null,
@@ -4834,7 +4836,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 {
   "object": "chat.completion",
   "id": "chatcmpl-AyPNinnUqUDYo9SAdA52NobMflmj2",
-  "model": "gpt-5.6-sol",
+  "model": "gpt-6-astra",
   "created": 1738960610,
   "request_id": "req_ded8ab984ec4bf840f37566c1011c417",
   "tool_choice": null,

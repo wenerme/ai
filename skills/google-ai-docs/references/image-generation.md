@@ -16,7 +16,7 @@ Prompt to prototype fully-functional, UI-complete apps, and see Nano Banana 2 in
 
 **Nano Banana** is the name for Gemini's native image generation capabilities.
 Gemini can generate and process images conversationally
-with text, images, or a combination of both. This lets you create, edit, and
+with text, images, video, or a combination. This lets you create, edit, and
 iterate on visuals with unprecedented control.
 
 Nano Banana refers to four distinct models available in the Gemini API:
@@ -734,10 +734,10 @@ and attribution metadata as part of the response steps:
 - **`google_search_result`** : Contains `search_suggestions`, an HTML
   snippet for rendering search suggestions in your UI.
 
-### Video-to-image generation (3.1 Flash)
+### Video-to-image generation (3.1 Flash and 3.1 Flash Lite)
 
 > [!NOTE]
-> **Note:** This feature is only available for the Gemini 3.1 Flash Image model.
+> **Note:** This feature is only available for the Gemini 3.1 Flash Image and Gemini 3.1 Flash Lite Image models.
 
 Video-to-image generation allows you to generate new images using a video's context
 as a multimodal reference. This is useful for creating high-quality video thumbnails, cinematic
@@ -1014,7 +1014,7 @@ You can check the thoughts that lead to the final image being produced.
 
     Client client = new Client();
     CreateModelInteraction req = CreateModelInteraction.builder()
-        .model(Model.of("gemini-3.7-flash"))
+        .model(Model.of("gemini-3.8-flash"))
         .input(InteractionsInput.of("Image operation"))
         .build();
     var interaction = client.interactions.create(CreateInteractionRequestBody.of(req)).interaction().get();
@@ -1091,9 +1091,9 @@ and save interleaved content, you must manually iterate over `steps`:
 
 #### Controlling thinking levels
 
-With Gemini 3.1 Flash Image, you can control the amount of thinking the model
-uses to balance quality and latency. The default `thinking_level` is `minimal`,
-and the supported levels are `minimal` and `high`.
+With Gemini 3.1 Flash Image and Gemini 3.1 Flash Lite Image, you can control the
+amount of thinking the model uses to balance quality and latency. The default
+`thinking_level` is `minimal`, and the supported levels are `minimal` and `high`.
 
 ### Python
 
@@ -2716,7 +2716,7 @@ strategies into your workflow.
 ## Limitations
 
 - For best performance, use the following languages: EN, ar-EG, de-DE, es-MX, fr-FR, hi-IN, id-ID, it-IT, ja-JP, ko-KR, pt-BR, ru-RU, ua-UA, vi-VN, zh-CN.
-- Image generation does not support audio inputs. Video inputs are only supported for Gemini 3.1 Flash Image.
+- Image generation does not support audio inputs. Video inputs are only supported for Gemini 3.1 Flash Image and Gemini 3.1 Flash Lite Image.
 - The model won't always follow the exact number of image outputs that the user explicitly asks for.
 - `gemini-2.5-flash-image` works best with up to 3 images as input, while `gemini-3-pro-image` supports 5 images with high fidelity, and up to 14 images in total. `gemini-3.1-flash-image` supports character resemblance of up to 4 characters and the fidelity of up to 10 objects in a single workflow.
 - When generating text for an image, Gemini works best if you first generate the text and then ask for an image with the text.

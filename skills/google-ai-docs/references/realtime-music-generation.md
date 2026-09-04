@@ -17,7 +17,7 @@ using the [Prompt DJ](https://aistudio.google.com/apps/bundled/promptdj) or the
 [MIDI DJ](https://aistudio.google.com/apps/bundled/promptdj-midi) apps.
 
 > [!NOTE]
-> **Note:** Looking for non-streaming music generation? See [Generate music with Lyria 3](https://ai.google.dev/gemini-api/docs/music-generation).
+> **Note:** Looking for non-streaming music generation? See [Generate music with Lyria 3.5](https://ai.google.dev/gemini-api/docs/music-generation).
 
 ## Generate and control music
 
@@ -331,7 +331,7 @@ except B flat.
 
 ## What's next
 
-- Generate full songs and vocal tracks with [Lyria 3](https://ai.google.dev/gemini-api/docs/music-generation),
+- Generate full songs and vocal tracks with [Lyria 3.5](https://ai.google.dev/gemini-api/docs/music-generation),
 - Instead of music, learn how to generate multi-speakers conversation using the [TTS models](https://ai.google.dev/gemini-api/docs/speech-generation),
 - Discover how to generate [images](https://ai.google.dev/gemini-api/docs/image-generation) or [videos](https://ai.google.dev/gemini-api/docs/video),
 - Instead of generation music or audio, find out how to Gemini can [understand Audio files](https://ai.google.dev/gemini-api/docs/audio),

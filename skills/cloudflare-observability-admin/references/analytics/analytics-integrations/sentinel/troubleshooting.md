@@ -12,13 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Sep 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use this guide to resolve common issues when integrating Cloudflare logs with [Microsoft Sentinel](https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/) through the Codeless Connector Framework (CCF).
 
 Support scope
 
-Cloudflare Support can help you troubleshoot Cloudflare-side log delivery, including [Logpush](https://developers.cloudflare.com/logs/logpush/) job configuration. Configuring or troubleshooting your Microsoft Azure environment — including subscriptions, resource groups, role assignments, Log Analytics workspaces, or Data Collection Rules — is outside the scope of Cloudflare Support. Contact your Microsoft representative or your integration partner for assistance with those components.
+Cloudflare Support can help troubleshoot [Cloudflare Logpush](https://developers.cloudflare.com/logs/logpush/) and the Cloudflare CCF connector. Support can validate deployment prerequisites and investigate known issues involving Azure Resource Manager (ARM) template deployment, service principals, Azure roles, storage network access, Data Collection Rules (DCRs), table schemas, and field mappings.
+
+Cloudflare Support can guide you through these checks but cannot access or modify resources in your Azure environment. If the issue remains after validating the recommended setup and is isolated to Microsoft Azure or the Microsoft Sentinel CCF environment, contact Microsoft Support.
 
 ## Connector deployment fails with `InternalServerError (HTTP 500)`
 
@@ -143,7 +145,7 @@ If your issue is not covered here:
 * Consult the [Cloudflare CCF solution page ↗](https://azuremarketplace.microsoft.com/marketplace/apps/cloudflare.azure-sentinel-solution-cloudflare-ccf) on the Azure Marketplace for the latest solution version and deployment prerequisites.
 * Review the [Cloudflare Logs change notices](https://developers.cloudflare.com/logs/reference/change-notices/) for recent schema changes that may affect your DCR or table definitions.
 * [Contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) for issues involving Cloudflare-side log delivery.
-* Contact your Microsoft representative or your integration partner for issues within your Azure environment.
+* Contact Microsoft Support for issues isolated to Microsoft Azure or the Microsoft Sentinel CCF environment.
 
 Was this helpful?
 
@@ -154,5 +156,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Analytics docs","description":"Resolve common issues when integrating Cloudflare with Microsoft Sentinel.","url":"https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Analytics docs","description":"Resolve common issues when integrating Cloudflare with Microsoft Sentinel.","url":"https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

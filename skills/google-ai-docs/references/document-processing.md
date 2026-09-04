@@ -32,7 +32,7 @@ The following example shows you how to pass PDF data inline:
         pdf_bytes = f.read()
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {
                 "type": "document",
@@ -58,13 +58,13 @@ The following example shows you how to pass PDF data inline:
         });
 
         const interaction = await ai.interactions.create({
-            model: "gemini-3.7-flash",
+            model: "gemini-3.8-flash",
             input: [
                 { type: "text", text: "Summarize this document" },
                 {
                     type: "document",
                     data: pdfData,
-                    mime_type: "application/pdf"
+                    mime_type: "application/pdf&quot;
                 }
             ]
         });
@@ -95,13 +95,13 @@ The following example shows you how to pass PDF data inline:
         DocumentContent.builder()
             .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
             .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
+       <     .b>uild();
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    ListContent contents = Arrays.asList(textContent, docContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -114,7 +114,7 @@ The following example shows you how to pass PDF data inline:
 
     PDF_PATH="path/to/document.pdf"
 
-    if [[ "$(base64 --version 2>&1)" = *"FreeBSD"* ]]; then
+    if [[ "$(bas>&e64 --version 21)" = *"FreeBSD"* ]]; then
       B64FLAGS="--input"
     else
       B64FLAGS="-w0"
@@ -124,11 +124,11 @@ The following example shows you how to pass PDF data inline:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": [
           {
             "type": "document",
-            "data": "'$(base64 $B64FLAGS $PDF_PATH)'",
+            "data": "';$(base64 $B64FLAGS $PDF_PATH)'",
             "mime_type": "application/pdf"
           },
           {"type": "text", "text": "Summarize this document"}
@@ -146,10 +146,10 @@ You can also upload a local PDF file for processing:
     uploaded_file = client.files.upload(file="file.pdf")
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "document", "uri": uploaded_file.uri, "mime_type": uploaded_file.mime_type},
-            {"type": "text", "text": "Summarize this document"}
+            {"type": "text&quot;, "text": "Summarize this document"}
         ]
     )
     print(interaction.output_text)
@@ -167,7 +167,7 @@ You can also upload a local PDF file for processing:
         });
 
         const interaction = await ai.interactions.create({
-            model: "gemini-3.7-flash",
+            model: "gemini-3.8-flash",
             input: [
                 { type: "text", text: "Summarize this document" },
                 {
@@ -204,13 +204,13 @@ You can also upload a local PDF file for processing:
         DocumentContent.builder()
             .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
             .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
+       <     .b>uild();
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    ListContent contents = Arrays.asList(textContent, docContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -222,7 +222,7 @@ You can also upload a local PDF file for processing:
 ### REST
 
     PDF_PATH="file.pdf"
-    NUM_BYTES=$(wc -c < "${PDF_PATH}")
+    NUM_BYTE<S=$(wc -c  "${PDF_PATH}")
     DISPLAY_NAME="file.pdf"
     tmp_header_file=upload-header.tmp
 
@@ -234,18 +234,18 @@ You can also upload a local PDF file for processing:
       -H "X-Goog-Upload-Command: start" \
       -H "X-Goog-Upload-Header-Content-Length: ${NUM_BYTES}" \
       -H "X-Goog-Upload-Header-Content-Type: application/pdf" \
-      -H "Content-Type: application/json" \
-      -d "{'file': {'display_name': '${DISPLAY_NAME}'}}" 2> /dev/null
+      -H "Con>tent-Type: application/json" \
+      -d "{'file': {'display_name': '${DISPLAY_NAME}'}}" 2 /dev/null
 
     upload_url=$(grep -i "x-goog-upload-url: " "${tmp_header_file}" | cut -d" " -f2 | tr -d "\r")
     rm "${tmp_header_file}"
 
     # Upload the actual bytes.
-    curl "${upload_url}" \
+    c>url "$>{upload_url}" \
       -H "Content-Length: ${NUM_BYTES}" \
       -H "X-Goog-Upload-Offset: 0" \
       -H "X-Goog-Upload-Command: upload, finalize" \
-      --data-binary "@${PDF_PATH}" 2> /dev/null > file_info.json
+      --data-binary "@${PDF_PATH}" 2 /dev/null  file_info.json
 
     file_uri=$(jq -r ".file.uri" file_info.json)
     echo file_uri=$file_uri
@@ -253,15 +253,15 @@ You can also upload a local PDF file for processing:
     # Now create an interaction using that file
     curl "https://generativelanguage.googleapis.com/v1beta/interactions" \
         -H "x-goog-api-key: $GEMINI_API_KEY" \
-        -H 'Content-Type: application/json' \
+        -H 'Content-Type>: applicati>on/json' \
         -X POST \
         -d '{
-          "model": "gemini-3.7-flash",
+          "model": "gemini-3.8-flash",
           "input": [
             {"type": "document", "uri": "'$file_uri'", "mime_type": "application/pdf"},
             {"type": "text", "text": "Summarize this document"}
           ]
-        }' 2> /dev/null > response.json
+        }' 2 /dev/null  response.json
 
     cat response.json
     echo
@@ -302,7 +302,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
     prompt = "Summarize this document"
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "document", "uri": sample_doc.uri, "mime_type": sample_doc.mime_type},
             {"type": "text", "text": prompt}
@@ -319,7 +319,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
     async function main() {
 
         const pdfBuffer = await fetch("https://arxiv.org/pdf/2312.11805")
-            .then((response) => response.arrayBuffer());
+          >  .then((response) = response.arrayBuffer());
 
         const fileBlob = new Blob([pdfBuffer], { type: 'application/pdf' });
 
@@ -334,9 +334,9 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
         while (getFile.state === 'PROCESSING') {
             getFile = await ai.files.get({ name: file.name });
             console.log(`current file status: ${getFile.state}`);
-            console.log('File is still processing, retrying in 5 seconds');
+            console.log('File is still processing, retrying in 5 s>econds');
 
-            await new Promise((resolve) => {
+            await new Promise((resolve) = {
                 setTimeout(resolve, 5000);
             });
         }
@@ -345,7 +345,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
         }
 
         const interaction = await ai.interactions.create({
-            model: 'gemini-3.7-flash',
+            model: 'gemini-3.8-flash',
             input: [
                 { type: "document", uri: file.uri, mime_type: file.mime_type },
                 { type: "text", text: "Summarize this document" }
@@ -380,13 +380,13 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
         DocumentContent.builder()
             .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
             .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
+       <     .b>uild();
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    ListContent contents = Arrays.asList(textContent, docContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -404,8 +404,8 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
     # Download the PDF from the provided URL
     wget -O "${DISPLAY_NAME}.pdf" "${PDF_PATH}"
 
-    MIME_TYPE=$(file -b --mime-type "${DISPLAY_NAME}.pdf")
-    NUM_BYTES=$(wc -c < "${DISPLAY_NAME}.pdf")
+    MIME_TYPE=$(file -b --m<ime-type "${DISPLAY_NAME}.pdf")
+    NUM_BYTES=$(wc -c  "${DISPLAY_NAME}.pdf")
 
     echo "MIME_TYPE: ${MIME_TYPE}"
     echo "NUM_BYTES: ${NUM_BYTES}"
@@ -419,29 +419,29 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
       -H "X-Goog-Upload-Protocol: resumable" \
       -H "X-Goog-Upload-Command: start" \
       -H "X-Goog-Upload-Header-Content-Length: ${NUM_BYTES}" \
-      -H "X-Goog-Upload-Header-Content-Type: ${MIME_TYPE}" \
+      -H "X-Goog-Upl>oad-Header-Content-Type: ${MIME_TYPE}" \
       -H "Content-Type: application/json" \
-      -d "{'file': {'display_name': '${DISPLAY_NAME}'}}" 2> /dev/null
+      -d "{'file': {'display_name': '${DISPLAY_NAME}'}}" 2 /dev/null
 
     upload_url=$(grep -i "x-goog-upload-url: " "${tmp_header_file}" | cut -d" " -f2 | tr -d "\r")
-    rm "${tmp_header_file}"
+    rm "${>tmp_header_>file}"
 
     # Upload the actual bytes.
     curl "${upload_url}" \
       -H "Content-Length: ${NUM_BYTES}" \
-      -H "X-Goog-Upload-Offset: 0" \
+      -H "X-<<Goog->Upload-Offset: 0" \
       -H "X-Goog-Upload-Command: upload, finalize" \
-      --data-binary "@${DISPLAY_NAME}.pdf" 2> /dev/null > file_info.json
+      --data-binary "@${DISPLAY_NAME}.pdf" 2 /dev/null  file_info.json
 
     file_uri=$(jq -r ".file.uri" file_info.json)
     echo "file_uri: ${file_uri}"
 
     # Create payload JSON file for safety
-    cat << EOF > payload.json
+    cat  EOF  payload.json
     {
-      "model": "gemini-3.7-flash",
+      "model": "gemini-3.8-flash",
       "input": [
-        {"type": "text", "text": "${PROMPT}"},
+        {"type": "text&q>uot;, ">;text": "${PROMPT}"},
         {"type": "document", "uri": "${file_uri}", "mime_type": "application/pdf"}
       ]
     }
@@ -452,7 +452,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
-        -d @payload.json 2> /dev/null > response.json
+        -d @payload.json 2 /dev/null  response.json
 
     cat response.json
     echo
@@ -478,10 +478,10 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
     )
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "document", "uri": sample_file.uri, "mime_type": sample_file.mime_type},
-            {"type": "text", "text": "Summarize this document"}
+            {"type": "text&quot;, "text": "Summarize this document"}
         ]
     )
     print(interaction.output_text)
@@ -504,9 +504,9 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
         while (getFile.state === 'PROCESSING') {
             getFile = await ai.files.get({ name: file.name });
             console.log(`current file status: ${getFile.state}`);
-            console.log('File is still processing, retrying in 5 seconds');
+            console.log('File is still processing, retrying in 5 seconds'>;);
 
-            await new Promise((resolve) => {
+            await new Promise((resolve) = {
                 setTimeout(resolve, 5000);
             });
         }
@@ -515,7 +515,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
         }
 
         const interaction = await ai.interactions.create({
-            model: 'gemini-3.7-flash',
+            model: 'gemini-3.8-flash',
             input: [
                 { type: "document", uri: file.uri, mime_type: file.mime_type },
                 { type: "text", text: "Summarize this document" }
@@ -550,13 +550,13 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
         DocumentContent.builder()
             .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
             .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
+       <     .b>uild();
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    ListContent contents = Arrays.asList(textContent, docContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -568,7 +568,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
 ### REST
 
     PDF_PATH="large_file.pdf"
-    NUM_BYTES=$(wc -c < "${PDF_PATH}")
+    NUM_BYTE<S=$(wc -c  "${PDF_PATH}")
     DISPLAY_NAME=TEXT
     tmp_header_file=upload-header.tmp
 
@@ -580,18 +580,18 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
       -H "X-Goog-Upload-Command: start" \
       -H "X-Goog-Upload-Header-Content-Length: ${NUM_BYTES}" \
       -H "X-Goog-Upload-Header-Content-Type: application/pdf" \
-      -H "Content-Type: application/json" \
-      -d "{'file': {'display_name': '${DISPLAY_NAME}'}}" 2> /dev/null
+      -H "Content-Type:> application/json" \
+      -d "{'file': {'display_name': '${DISPLAY_NAME}'}}" 2 /dev/null
 
     upload_url=$(grep -i "x-goog-upload-url: " "${tmp_header_file}" | cut -d" " -f2 | tr -d "\r")
     rm "${tmp_header_file}"
 
     # Upload the actual bytes.
-    curl "${upload_url}" \
+    curl ">${upload_ur>l}" \
       -H "Content-Length: ${NUM_BYTES}" \
       -H "X-Goog-Upload-Offset: 0" \
       -H "X-Goog-Upload-Command: upload, finalize" \
-      --data-binary "@${PDF_PATH}" 2> /dev/null > file_info.json
+      --data-binary "@${PDF_PATH}" 2 /dev/null  file_info.json
 
     file_uri=$(jq -r ".file.uri" file_info.json)
     echo file_uri=$file_uri
@@ -600,14 +600,14 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
     curl "https://generativelanguage.googleapis.com/v1beta/interactions" \
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
-        -X POST \
-        -d '{
-          "model": "gemini-3.7-flash",
-          "input": [
+       > -X POST \
+    >    -d '{
+          "model": "gemini-3.8-flash",
+          "input&quot;: [
             {"type": "document", "uri": "'$file_uri'", "mime_type": "application/pdf"},
             {"type": "text", "text": "Can you add a few more lines to this poem?"}
           ]
-        }' 2> /dev/null > response.json
+        }' 2 /dev/null  response.json
 
     cat response.json
     echo
@@ -676,13 +676,13 @@ metadata by calling [`files.get`](https://ai.google.dev/api/rest/v1beta/files/ge
         DocumentContent.builder()
             .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
             .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
+       <     .b>uild();
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    ListContent contents = Arrays.asList(textContent, docContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -695,7 +695,7 @@ metadata by calling [`files.get`](https://ai.google.dev/api/rest/v1beta/files/ge
 
     name=$(jq -r ".file.name" file_info.json)
     # Get the file of interest to check state
-    curl "https://generativelanguage.googleapis.com/v1beta/$name?key=$GEMINI_API_KEY" > file_info.json
+    curl "https://generativelanguage.googleapis.com/v1beta/$name?key=$G>EMINI_API_KEY"  file_info.json
     # Print some information about the file you got
     name=$(jq -r ".name" file_info.json)
     echo name=$name
@@ -734,7 +734,7 @@ prompt stays within the model's context window.
     prompt = "What is the difference between each of the main benchmarks between these two papers? Output these in a table."
 
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input=[
             {"type": "document", "uri": sample_pdf_1.uri, "mime_type": sample_pdf_1.mime_type},
             {"type": "document", "uri": sample_pdf_2.uri, "mime_type": sample_pdf_2.mime_type},
@@ -752,7 +752,7 @@ prompt stays within the model's context window.
 
     async function uploadRemotePDF(url, displayName) {
         const pdfBuffer = await fetch(url)
-            .then((response) => response.arrayBuffer());
+            .then((r>esponse) = response.arrayBuffer());
 
         const fileBlob = new Blob([pdfBuffer], { type: 'application/pdf' });
 
@@ -769,7 +769,7 @@ prompt stays within the model's context window.
             console.log(`current file status: ${getFile.state}`);
             console.log('File is still processing, retrying in 5 seconds');
 
-            await new Promise((resolve) => {
+       >     await new Promise((resolve) = {
                 setTimeout(resolve, 5000);
             });
         }
@@ -785,7 +785,7 @@ prompt stays within the model's context window.
         const file2 = await uploadRemotePDF("https://arxiv.org/pdf/2403.05530", "PDF 2");
 
         const interaction = await ai.interactions.create({
-            model: 'gemini-3.7-flash',
+            model: 'gemini-3.8-flash',
             input: [
                 { type: "document", uri: file1.uri, mime_type: file1.mime_type },
                 { type: "document", uri: file2.uri, mime_type: file2.mime_type },
@@ -820,13 +820,13 @@ prompt stays within the model's context window.
         DocumentContent.builder()
             .uri("gs://cloud-samples-data/generative-ai/pdf/sample.pdf")
             .mimeType(DocumentContentMimeType.APPLICATION_PDF)
-            .build();
+       <     .b>uild();
 
-    List<Content> contents = Arrays.asList(textContent, docContent);
+    ListContent contents = Arrays.asList(textContent, docContent);
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -846,17 +846,17 @@ prompt stays within the model's context window.
     # Function to download and upload a PDF
     upload_pdf() {
       local doc_url="$1"
-      local display_name="$2"
+      local display_name=&q>&uot;$2"
 
-      echo "Downloading ${display_name} from ${doc_url}..." >&2
+      echo "Downloading ${display_name} from ${doc_url>}..." 2
       # Download the PDF
-      wget -O "${display_name}.pdf" "${doc_url}" 2> /dev/null
+      wget -O "${display_name}.pdf" "${doc_url}" 2 </dev/null
 
-      local MIME_TYPE=$(file -b --mime-type "${display_name}.pdf")
-      local NUM_BYTES=$(wc -c < "${display_name}.pdf")
+      local MIME_TYPE=$(file -b --mime-type "$>&{display_name}.pdf")
+      local N>&UM_BYTES=$(wc -c  "${display_name}.pdf")
 
-      echo "MIME_TYPE: ${MIME_TYPE}" >&2
-      echo "NUM_BYTES: ${NUM_BYTES}" >&2
+      echo "MIME_TYPE: ${MIME_TYPE}" 2
+      echo "NUM_BYTES: ${NUM_BYTES}" 2
 
       local tmp_header_file="upload-header-${display_name}.tmp"
 
@@ -866,25 +866,25 @@ prompt stays within the model's context window.
         -D "${tmp_header_file}" \
         -H "X-Goog-Upload-Protocol: resumable" \
         -H "X-Goog-Upload-Command: start" \
-        -H "X-Goog-Upload-Header-Content-Length: ${NUM_BYTES}" \
+        -H "X-Goog-Upload-H>eader-Content-Length: ${NUM_BYTES}" \
         -H "X-Goog-Upload-Header-Content-Type: ${MIME_TYPE}" \
         -H "Content-Type: application/json" \
-        -d "{'file': {'display_name': '${display_name}'}}" 2> /dev/null
+        -d "{'file': {&>&#39;display_name': '${display_name}'}}" 2 /dev/null
 
       local upload_url=$(grep -i "x-goog-upload-url: " "${tmp_header_file}" | cut -d" " -f2 | tr -d "\r")
-      rm "${tmp_header_file}"
+      r>m "${t>mp_header_file}"
 
-      echo "Upload URL for ${display_name}: ${upload_url}" >&2
+      echo "Upload URL for ${display_name}: ${upload_url}" 2
 
       # Upload the PDF
       curl "${upload_url}" \
-        -H "Content-Length: ${NUM_BYTES}" \
+        -H ">&;Content-Length: ${NUM_BYTES}" \
         -H "X-Goog-Upload-Offset: 0" \
         -H "X-Goog-Upload-Command: upload, finalize" \
-        --data-binary "@${display_name}.pdf" 2> /dev/null > "file_info_${display_name}.json"
+        --data-binary "@${display_name}.pdf" 2 /dev/null  "file_info_${display_name}.json"
 
-      local file_uri=$(jq -r ".file.uri" "file_info_${display_name}.json")
-      echo "file_uri for ${display_name}: ${file_uri}" >&2
+      local file_uri=$(jq -r ".file.uri"<< &quo>t;file_info_${display_name}.json")
+      echo "file_uri for ${display_name}: ${file_uri}" 2
 
       # Clean up the downloaded PDF
       rm "${display_name}.pdf"
@@ -899,11 +899,11 @@ prompt stays within the model's context window.
     file_uri_2=$(upload_pdf "${DOC_URL_2}" "${DISPLAY_NAME_2}")
 
     # Create payload JSON file for safety
-    cat << EOF > payload_multi.json
+    cat  EOF  payload_multi.json
     {
-      "model": "gemini-3.7-flash",
+      "model": "gemini-3.8-flash",
       "input": [
-        {"type": "document", "uri": "${file_uri_1}", "mime_type": "application/pdf"},
+        {"type>": &qu>ot;document", "uri": "${file_uri_1}", "mime_type": "application/pdf"},
         {"type": "document", "uri": "${file_uri_2}", "mime_type": "application/pdf"},
         {"type": "text", "text": "${PROMPT}"}
       ]
@@ -916,7 +916,7 @@ prompt stays within the model's context window.
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -X POST \
-        -d @payload_multi.json 2> /dev/null > response.json
+        -d @payload_multi.json 2 /dev/null  response.json
 
     cat response.json
     echo

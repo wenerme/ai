@@ -145,8 +145,10 @@ Already-shutdown models are indicated with gray backgrounds.
 
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|
-| `lyria-3-clip-preview` | March 25, 2026 | No shutdown date announced |   |
-| `lyria-3-pro-preview` | March 25, 2026 | No shutdown date announced |   |
+| `lyria-3.5-clip-preview` | September 3, 2026 | No shutdown date announced |   |
+| `lyria-3.5-pro-preview` | September 3, 2026 | No shutdown date announced |   |
+| `lyria-3-clip-preview` | March 25, 2026 | No shutdown date announced | `lyria-3.5-clip-preview` |
+| `lyria-3-pro-preview` | March 25, 2026 | No shutdown date announced | `lyria-3.5-pro-preview` |
 | `lyria-realtime-exp` | May 20, 2025 | No shutdown date announced |   |
 
 ## Robotics models

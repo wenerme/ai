@@ -171,7 +171,7 @@ paths:
           description: >-
             Invalid request, or an attempt to change a workspace default
             guardrail's name (which is derived from its workspace and not
-            editable).
+            editable; sending the current name unchanged is accepted).
         '401':
           content:
             application/json:
@@ -192,6 +192,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotFoundResponse'
           description: Not Found - Resource does not exist
+        '409':
+          content:
+            application/json:
+              example:
+                error:
+                  code: 409
+                  message: Resource conflict. Please try again later.
+              schema:
+                $ref: '#/components/schemas/ConflictResponse'
+          description: >-
+            Guardrail name conflict — another guardrail in this workspace
+            already uses the requested name.
         '500':
           content:
             application/json:
@@ -488,6 +500,27 @@ components:
       properties:
         error:
           $ref: '#/components/schemas/NotFoundResponseErrorData'
+        openrouter_metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - error
+      type: object
+    ConflictResponse:
+      description: Conflict - Resource conflict or concurrent modification
+      example:
+        error:
+          code: 409
+          message: Resource conflict. Please try again later.
+      properties:
+        error:
+          $ref: '#/components/schemas/ConflictResponseErrorData'
         openrouter_metadata:
           additionalProperties: {}
           type:
@@ -883,6 +916,25 @@ components:
       example:
         code: 404
         message: Resource not found
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+      required:
+        - code
+        - message
+      type: object
+    ConflictResponseErrorData:
+      description: Error data for ConflictResponse
+      example:
+        code: 409
+        message: Resource conflict. Please try again later.
       properties:
         code:
           type: integer

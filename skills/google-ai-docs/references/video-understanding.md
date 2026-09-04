@@ -433,13 +433,18 @@ rates and resolution on the fly based on the prompt.
 | **Static** (default) | Extracts frames at a fixed rate (1 FPS) and places them into context in a single pass. Works well for short clips. | All Gemini models |
 | **Agentic** | The model dynamically navigates the video timeline, loading only the content it needs based on the prompt. Up to 88% more token-efficient and \~7% higher quality on long-form content. | Gemini 3.8 Flash, 3.7 Flash, 3.6 Flash, 3.5 Flash Lite |
 
-### Choosing a processing mode
+### Choose a processing mode
 
 As a general guideline, start with **agentic** mode, especially when optimizing
 for response quality or token efficiency.
 
 - **Agentic:** Long-form videos or queries targeting specific moments. The model dynamically navigates the timeline to target contextually relevant information without filling the context window.
 - **Static:** Latency-sensitive queries on short clips (under 5 minutes), or cases where frame-level precision across the entire clip is needed.
+
+> **Note:** For long videos or complex prompts where agentic processing takes
+> more time, use streaming (`stream=True`) or background execution
+> (`background=True`). This keeps the connection active, surfaces intermediate
+> reasoning steps, and avoids connection or authentication timeouts.
 
 ### Set the processing mode
 
@@ -985,6 +990,7 @@ For more details on token calculations, see the
 
 - **Timestamp format** : When referring to specific moments in a video within your prompt, use the `MM:SS` format (e.g., `01:15` for 1 minute and 15 seconds).
 - **Prompt placement** : If combining text and a single video, place the text prompt *after* the video part in the `input` array.
+- **Timeouts for long requests** : For videos that require extended processing time or complex multi-step reasoning, use streaming (`stream=True`) or background execution (`background=True`). Synchronous, non-streaming requests that experience backend retries under high demand can exceed connection or authentication token validity windows, which may surface as unexpected `401 Unauthorized` or timeout errors. Streaming keeps the connection active and surfaces intermediate reasoning and tool call progress.
 
 ## What's next
 

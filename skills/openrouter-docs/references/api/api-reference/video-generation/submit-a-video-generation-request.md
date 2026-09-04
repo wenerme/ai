@@ -898,6 +898,9 @@ components:
         poolside:
           additionalProperties: {}
           type: object
+        prime-intellect:
+          additionalProperties: {}
+          type: object
         quiver:
           additionalProperties: {}
           type: object

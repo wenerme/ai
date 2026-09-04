@@ -507,6 +507,7 @@ components:
         - perplexity
         - phala
         - poolside
+        - prime-intellect
         - quiver
         - recraft
         - reka

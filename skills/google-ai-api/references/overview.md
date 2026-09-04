@@ -1,5 +1,3 @@
-# Gemini API reference
-
 <br />
 
 This API reference describes the unary, streaming, and real-time APIs you can

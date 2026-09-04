@@ -92,6 +92,30 @@ To see which models are available for in-region routing:
 * Call [`/api/v1/models`](https://eu.openrouter.ai/api/v1/models) on a regional domain to get the full list programmatically, or pass a `region` query parameter (`eu` or `us`) on the main domain
 * Browse [EU-eligible models](https://openrouter.ai/models?region=eu) or [US-eligible models](https://openrouter.ai/models?region=us) on the models page with the **In-Region Routing** filter
 
+## Enforcing In-Region Routing with Guardrails
+
+Sending requests to a regional base URL is a per-request choice. To guarantee that traffic for a key, member, or an entire workspace can only enter OpenRouter through a specific region, restrict the allowed data regions in a [guardrail](/docs/guides/features/guardrails). Each guardrail can specify `allowed_data_regions`, a list of the OpenRouter domains that requests governed by that guardrail must arrive through:
+
+| Value    | Base URL                   |
+| -------- | -------------------------- |
+| `global` | `https://openrouter.ai`    |
+| `europe` | `https://eu.openrouter.ai` |
+| `us`     | `https://us.openrouter.ai` |
+
+A request that arrives through a domain not in the list is rejected with a **403 Forbidden** error before any inference or endpoint selection happens, so no prompt is ever processed outside the permitted regions. Leaving the setting unrestricted (`null`) accepts requests from any domain.
+
+Enforcement applies to every OpenRouter API surface, including chat completions, embeddings, rerank, image, audio, and video generation, server tools, the Batch API, and generation lookups.
+
+When more than one guardrail governs a request (the workspace default guardrail, the member's guardrail, and the API key's guardrail), the effective set of regions is the intersection of every guardrail that sets one, so a lower-level guardrail can only narrow the regions permitted above it. For example, if the workspace default guardrail allows `europe` and `us` and an API key guardrail allows only `europe`, requests with that key must arrive through `https://eu.openrouter.ai`.
+
+To enforce EU residency for a whole workspace, set `allowed_data_regions` to `["europe"]` on the [workspace default guardrail](/docs/guides/features/guardrails#updating-the-workspace-default-guardrail-via-api). This can be configured in the guardrail editor under **Data regions** or through the [Guardrails API](/docs/api/api-reference/guardrails/create-a-guardrail).
+
+<Note>
+  The guardrail value for the EU is `europe`, while the [Models API](/docs/api/api-reference/models/list-all-models-and-their-properties) region filter takes `region=eu`. The two are not interchangeable.
+</Note>
+
+Data-region guardrails require a Business or Enterprise plan. If your plan stops including in-region routing while a region guardrail is still assigned, the guardrail keeps enforcing its region list, but the regional domains themselves reject requests from accounts without in-region routing. Requests governed by that guardrail are therefore rejected until you upgrade or clear the restriction (any region not in the list stays blocked; `global` in the list keeps `https://openrouter.ai` open).
+
 ## Feature Availability
 
 Everything on a regional domain must uphold the same residency guarantee as inference itself. Features whose infrastructure or third-party vendors process data outside your region are therefore unavailable on regional domains today, and requests that use them return an error instead of silently processing data out of region.

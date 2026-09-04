@@ -1,15 +1,15 @@
-Lyria 3 is Google's family of music generation models, available
-through the Gemini API. With Lyria 3, you can generate
+Lyria 3.5 is Google's family of music generation models, available
+through the Gemini API. With Lyria 3.5, you can generate
 high-quality, 44.1 kHz stereo audio from text prompts or from images. These
 models deliver structural coherence, including vocals, timed lyrics, and full
 instrumental arrangements.
 
-The Lyria 3 family includes two models:
+The Lyria 3.5 family includes two models:
 
 | Model | Model ID | Best for | Duration | Output |
 |---|---|---|---|---|
-| **Lyria 3 Clip** | `lyria-3-clip-preview` | Short clips, loops, previews | 30 seconds | MP3 |
-| **Lyria 3 Pro** | `lyria-3-pro-preview` | Full-length songs with verses, choruses, bridges | A couple of minutes (controllable using prompt) | MP3 |
+| **Lyria 3.5 Clip** | `lyria-3.5-clip-preview` | Short clips, loops, previews | 30 seconds | MP3 |
+| **Lyria 3.5 Pro** | `lyria-3.5-pro-preview` | Full-length songs with verses, choruses, bridges | A couple of minutes (controllable using prompt) | MP3 |
 
 Both models can be used using the new
 [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview), supporting multimodal
@@ -21,7 +21,7 @@ audio.
 
 ## Generate a music clip
 
-The Lyria 3 Clip model always generates a **30-second** clip. To generate a
+The Lyria 3.5 Clip model always generates a **30-second** clip. To generate a
 clip, call the `interactions.create` method with a text prompt. The response
 always includes the generated lyrics and song structure alongside the audio in
 the `steps` schema.
@@ -34,7 +34,7 @@ the `steps` schema.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="lyria-3-clip-preview",
+        model="lyria-3.5-clip-preview",
         input="A short instrumental acoustic guitar piece.",
     )
 
@@ -55,7 +55,7 @@ the `steps` schema.
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        model: 'lyria-3-clip-preview',
+        model: 'lyria-3.5-clip-preview',
         input: 'A short instrumental acoustic guitar piece.',
     });
 
@@ -100,7 +100,7 @@ the `steps` schema.
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
-        "model": "lyria-3-clip-preview",
+        "model": "lyria-3.5-clip-preview",
         "input": "A short instrumental acoustic guitar piece."
     }'
 
@@ -115,7 +115,7 @@ property. For details on convenience properties, see the
 
 ## Generate a full-length song
 
-Use the `lyria-3-pro-preview` model to generate full-length songs that last a
+Use the `lyria-3.5-pro-preview` model to generate full-length songs that last a
 couple of minutes. The Pro model understands musical structure and can create
 compositions with distinct verses, choruses, and bridges. You can influence the
 duration by specifying it in your prompt (e.g., "create a 2-minute song") or by
@@ -124,14 +124,14 @@ using [timestamps](https://ai.google.dev/gemini-api/docs/music-generation#timing
 ### Python
 
     interaction = client.interactions.create(
-        model="lyria-3-pro-preview",
+        model="lyria-3.5-pro-preview",
         input="An epic cinematic orchestral piece about a journey home. Starts with a solo piano intro, builds through sweeping strings, and climaxes with a massive wall of sound.",
     )
 
 ### JavaScript
 
     const interaction = await client.interactions.create({
-        model: 'lyria-3-pro-preview',
+        model: 'lyria-3.5-pro-preview',
         input: 'A beautiful piano melody.',
     });
 
@@ -166,20 +166,20 @@ using [timestamps](https://ai.google.dev/gemini-api/docs/music-generation#timing
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
-        "model": "lyria-3-pro-preview",
+        "model": "lyria-3.5-pro-preview",
         "input": "A beautiful piano melody."
     }'
 
 ## Select output format
 
-By default, the Lyria 3 models generate audio in **MP3** format. For
-Lyria 3 Pro, you can also request the output in **WAV** format by setting
+By default, the Lyria 3.5 models generate audio in **MP3** format. For
+Lyria 3.5 Pro, you can also request the output in **WAV** format by setting
 the `response_format`.
 
 ### Python
 
     interaction = client.interactions.create(
-        model="lyria-3-pro-preview",
+        model="lyria-3.5-pro-preview",
         input="A beautiful piano melody.",
         response_format={"type": "audio"},
     )
@@ -187,7 +187,7 @@ the `response_format`.
 ### JavaScript
 
     const interaction = await client.interactions.create({
-        model: 'lyria-3-pro-preview',
+        model: 'lyria-3.5-pro-preview',
         input: 'A beautiful piano melody.',
         response_format: {
             type: 'audio',
@@ -225,7 +225,7 @@ the `response_format`.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "lyria-3-pro-preview",
+        "model": "lyria-3.5-pro-preview",
         "input": "A beautiful piano melody.",
         "response_format": {
             "type": "audio"
@@ -234,7 +234,7 @@ the `response_format`.
 
 ## Parse the response
 
-The response from Lyria 3 contains multiple content blocks within the `steps` schema.
+The response from Lyria 3.5 contains multiple content blocks within the `steps` schema.
 Interactions return a sequence of steps, where `model_output` steps contain the
 generated content.
 Text content blocks contain the generated lyrics or a JSON description of the song
@@ -304,7 +304,7 @@ Content blocks with `audio` type contain the base64 encoded audio data.
 
 #### Interleaved lyrics and music
 
-Because the output from Lyria 3 is complex---containing separate steps and
+Because the output from Lyria 3.5 is complex---containing separate steps and
 blocks for generated lyrics (text) and the song itself (audio)---convenience
 properties offer a fast and recommended shortcut.
 
@@ -384,7 +384,7 @@ received), you can manually iterate over `steps` instead:
 
 ## Generate music from images
 
-Lyria 3 supports multimodal inputs --- you can provide up to **10 images**
+Lyria 3.5 supports multimodal inputs --- you can provide up to **10 images**
 alongside your text prompt in the `input` list and the model will compose music
 inspired by the visual content.
 
@@ -397,7 +397,7 @@ inspired by the visual content.
         image_b64 = base64.b64encode(image_bytes).decode("utf-8")
 
     response = client.interactions.create(
-        model="lyria-3-pro-preview",
+        model="lyria-3.5-pro-preview",
         input=[
             {
                 "type": "text",
@@ -418,7 +418,7 @@ inspired by the visual content.
     const imageBytes = fs.readFileSync("desert_sunset.jpg").toString("base64");
 
     const interaction = await client.interactions.create({
-        model: "lyria-3-pro-preview",
+        model: "lyria-3.5-pro-preview",
         input: [
             {
                 type: "text",
@@ -464,7 +464,7 @@ inspired by the visual content.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "lyria-3-pro-preview",
+        "model": "lyria-3.5-pro-preview",
         "input": [
           {"type": "text", "text": "An atmospheric ambient track inspired by the mood and colors in this image."},
           {"type": "image", "mime_type": "image/jpeg", "data": "/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA="}
@@ -502,7 +502,7 @@ song structure:
     """
 
     interaction = client.interactions.create(
-        model="lyria-3-pro-preview",
+        model="lyria-3.5-pro-preview",
         input=prompt,
     )
 
@@ -531,7 +531,7 @@ song structure:
     `;
 
     const interaction = await client.interactions.create({
-        model: 'lyria-3-pro-preview',
+        model: 'lyria-3.5-pro-preview',
         input: prompt,
     });
 
@@ -566,7 +566,7 @@ song structure:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "lyria-3-pro-preview",
+        "model": "lyria-3.5-pro-preview",
         "input": "Create a dreamy indie pop song with the following lyrics: ..."
       }'
 
@@ -589,7 +589,7 @@ are delivered, and how the song progresses:
     """
 
     interaction = client.interactions.create(
-        model="lyria-3-pro-preview",
+        model="lyria-3.5-pro-preview",
         input=prompt,
     )
 
@@ -606,7 +606,7 @@ are delivered, and how the song progresses:
     `;
 
     const interaction = await client.interactions.create({
-        model: 'lyria-3-pro-preview',
+        model: 'lyria-3.5-pro-preview',
         input: prompt,
     });
 
@@ -641,7 +641,7 @@ are delivered, and how the song progresses:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "lyria-3-pro-preview",
+        "model": "lyria-3.5-pro-preview",
         "input": "[0:00 - 0:10] Intro: ..."
       }'
 
@@ -653,14 +653,14 @@ required, you can prompt the model to produce instrumental-only tracks:
 ### Python
 
     interaction = client.interactions.create(
-        model="lyria-3-clip-preview",
+        model="lyria-3.5-clip-preview",
         input="A bright chiptune melody in C Major, retro 8-bit video game style. Instrumental only, no vocals.",
     )
 
 ### JavaScript
 
     const interaction = await client.interactions.create({
-        model: 'lyria-3-clip-preview',
+        model: 'lyria-3.5-clip-preview',
         input: 'A bright chiptune melody in C Major, retro 8-bit video game style. Instrumental only, no vocals.',
     });
 
@@ -695,27 +695,27 @@ required, you can prompt the model to produce instrumental-only tracks:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "lyria-3-clip-preview",
+        "model": "lyria-3.5-clip-preview",
         "input": "A bright chiptune melody in C Major, retro 8-bit video game style. Instrumental only, no vocals."
       }'
 
 ## Generate music in different languages
 
-Lyria 3 generates lyrics in the language of your prompt. To generate a song
+Lyria 3.5 generates lyrics in the language of your prompt. To generate a song
 with French lyrics, write your prompt in French. The model adapts its vocal
 style and pronunciation to match the language.
 
 ### Python
 
     interaction = client.interactions.create(
-        model="lyria-3-pro-preview",
+        model="lyria-3.5-pro-preview",
         input="Crée une chanson pop romantique en français sur un coucher de soleil à Paris. Utilise du piano et de la guitare acoustique.",
     )
 
 ### JavaScript
 
     const interaction = await client.interactions.create({
-        model: 'lyria-3-pro-preview',
+        model: 'lyria-3.5-pro-preview',
         input: 'Crée une chanson pop romantique en français sur un coucher de soleil à Paris. Utilise du piano et de la guitare acoustique.',
     });
 
@@ -750,20 +750,20 @@ style and pronunciation to match the language.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "lyria-3-pro-preview",
+        "model": "lyria-3.5-pro-preview",
         "input": "Crée une chanson pop romantique en français sur un coucher de soleil à Paris. Utilise du piano et de la guitare acoustique."
       }'
 
 ## Model intelligence
 
-Lyria 3 analyzes your prompt process where the
+Lyria 3.5 analyzes your prompt process where the
 model reasons through musical structure (intro, verse, chorus, bridge, etc.)
 based on your prompt.
 This happens before the audio is generated and ensures structural coherence and
 musicality.
 
 > [!IMPORTANT]
-> **Important:** While Lyria 3 uses a prompt rewriter internally to interpret natural language instructions, it does **not** expose intermediate "thought" blocks or thought signatures to the user.
+> **Important:** While Lyria 3.5 uses a prompt rewriter internally to interpret natural language instructions, it does **not** expose intermediate "thought" blocks or thought signatures to the user.
 
 ## Prompting guide
 
@@ -793,7 +793,7 @@ Here are some examples of effective prompts:
 
 ## Best practices
 
-- **Iterate with Clip first.** Use the faster `lyria-3-clip-preview` model to experiment with prompts before committing to a full-length generation with `lyria-3-pro-preview`.
+- **Iterate with Clip first.** Use the faster `lyria-3.5-clip-preview` model to experiment with prompts before committing to a full-length generation with `lyria-3.5-pro-preview`.
 - **Be specific.** Vague prompts produce generic results. Mention instruments, BPM, key, mood, and structure for the best output.
 - **Match your language.** Prompt in the language you want the lyrics in.
 - **Use section tags.** `[Verse]`, `[Chorus]`, `[Bridge]` tags give the model clear structure to follow.
@@ -803,13 +803,13 @@ Here are some examples of effective prompts:
 
 - **Safety**: All prompts are checked by safety filters. Prompts that trigger the filters will be blocked. This includes prompts that request specific artist voices or the generation of copyrighted lyrics.
 - **Watermarking** : All generated audio includes a [SynthID audio watermark](https://ai.google.dev/responsible/docs/safeguards/synthid) for identification. This watermark is imperceptible to the human ear and does not affect the listening experience.
-- **Multi-turn editing**: Music generation is a single-turn process. Iterative editing or refining a generated clip through multiple prompts is not supported in the current version of Lyria 3.
+- **Multi-turn editing**: Music generation is a single-turn process. Iterative editing or refining a generated clip through multiple prompts is not supported in the current version of Lyria 3.5.
 - **Length**: The Clip model always generates 30-second clips. The Pro model generates songs that last a couple of minutes; exact duration can be influenced through your prompt.
 - **Determinism**: Results may vary between calls, even with the same prompt.
 
 ## What's next
 
-- Check [pricing](https://ai.google.dev/gemini-api/docs/pricing) for Lyria 3 models.
+- Check [pricing](https://ai.google.dev/gemini-api/docs/pricing) for Lyria 3.5 models.
 - Try [real-time, streaming music generation](https://ai.google.dev/gemini-api/docs/realtime-music-generation) with Lyria RealTime.
 - Generate multi-speaker conversations with the [TTS models](https://ai.google.dev/gemini-api/docs/speech-generation).
 - Discover how to generate [images](https://ai.google.dev/gemini-api/docs/image-generation) or [videos](https://ai.google.dev/gemini-api/docs/video).

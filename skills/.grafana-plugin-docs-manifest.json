@@ -2144,20 +2144,45 @@
     "size": 10121,
     "updatedAt": "2026-08-13T02:59:13.356Z"
   },
-  "grafana-zendesk-datasource/configuration.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/configuration.md",
-    "size": 2969,
-    "updatedAt": "2026-06-25T05:43:37.408Z"
+  "grafana-zendesk-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/alerting.md",
+    "size": 4472,
+    "updatedAt": "2026-09-04T04:29:08.463Z"
+  },
+  "grafana-zendesk-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/annotations.md",
+    "size": 5753,
+    "updatedAt": "2026-09-04T04:29:08.616Z"
+  },
+  "grafana-zendesk-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/configure.md",
+    "size": 8214,
+    "updatedAt": "2026-09-04T04:29:08.768Z"
   },
   "grafana-zendesk-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest.md",
-    "size": 958,
-    "updatedAt": "2026-06-25T05:43:37.769Z"
+    "size": 4185,
+    "updatedAt": "2026-09-04T04:29:08.954Z"
   },
-  "grafana-zendesk-datasource/queries.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/queries.md",
-    "size": 4006,
-    "updatedAt": "2026-06-25T05:43:38.137Z"
+  "grafana-zendesk-datasource/install.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/install.md",
+    "size": 5630,
+    "updatedAt": "2026-09-04T04:29:09.112Z"
+  },
+  "grafana-zendesk-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/query-editor.md",
+    "size": 9952,
+    "updatedAt": "2026-09-04T04:29:09.267Z"
+  },
+  "grafana-zendesk-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/template-variables.md",
+    "size": 6372,
+    "updatedAt": "2026-09-04T04:29:09.425Z"
+  },
+  "grafana-zendesk-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/troubleshooting.md",
+    "size": 6520,
+    "updatedAt": "2026-09-04T04:29:09.588Z"
   },
   "index.md": {
     "url": "https://grafana.com/docs/plugins.md",
