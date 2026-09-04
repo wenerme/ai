@@ -943,7 +943,7 @@ Returns a list of input items for a given response.
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -954,6 +954,8 @@ Returns a list of input items for a given response.
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 
@@ -5875,7 +5877,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -5886,6 +5888,8 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 

@@ -85,7 +85,25 @@ export TOKEN
 
 ## Verify the token
 
-Before configuring workload identity federation, export the JWT-SVID as `TOKEN`, then run this script locally to inspect its header and claims:
+Before configuring workload identity federation, export the JWT-SVID as `TOKEN`, then run one of these examples locally to inspect its header and claims:
+
+```javascript
+const parts = process.env.TOKEN?.split(".");
+if (!parts || parts.length !== 3) {
+  throw new Error(
+    "Expected TOKEN to contain a compact JWT with three segments"
+  );
+}
+
+function decode(segment) {
+  return JSON.parse(Buffer.from(segment, "base64url").toString("utf8"));
+}
+
+console.log("Header:");
+console.log(JSON.stringify(decode(parts[0]), null, 2));
+console.log("\nPayload:");
+console.log(JSON.stringify(decode(parts[1]), null, 2));
+```
 
 ```python
 import base64
@@ -108,8 +126,146 @@ print("\nPayload:")
 print(json.dumps(decode(parts[1]), indent=2))
 ```
 
+```go
+package main
 
-This command decodes the JWT without verifying the token signature. Use a local decoder for production tokens, and avoid pasting production tokens into third-party tools.
+import (
+	"encoding/base64"
+	"encoding/json"
+	"fmt"
+	"log"
+	"os"
+	"strings"
+)
+
+func decode(segment string) (any, error) {
+	decoded, err := base64.RawURLEncoding.DecodeString(segment)
+	if err != nil {
+		return nil, err
+	}
+
+	var value any
+	if err := json.Unmarshal(decoded, &value); err != nil {
+		return nil, err
+	}
+	return value, nil
+}
+
+func printJSON(label string, value any) error {
+	formatted, err := json.MarshalIndent(value, "", "  ")
+	if err != nil {
+		return err
+	}
+	fmt.Printf("%s:\n%s\n", label, formatted)
+	return nil
+}
+
+func main() {
+	parts := strings.Split(os.Getenv("TOKEN"), ".")
+	if len(parts) != 3 {
+		log.Fatal("expected TOKEN to contain a compact JWT with three segments")
+	}
+
+	header, err := decode(parts[0])
+	if err != nil {
+		log.Fatal(err)
+	}
+	payload, err := decode(parts[1])
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if err := printJSON("Header", header); err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println()
+	if err := printJSON("Payload", payload); err != nil {
+		log.Fatal(err)
+	}
+}
+```
+
+```java
+// Add Jackson (com.fasterxml.jackson.core:jackson-databind) to your project.
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+
+public final class DecodeJwtExample {
+  private static final ObjectMapper JSON = new ObjectMapper();
+
+  private DecodeJwtExample() {}
+
+  static JsonNode decode(String segment) throws Exception {
+    byte[] decoded = Base64.getUrlDecoder().decode(segment);
+    return JSON.readTree(new String(decoded, StandardCharsets.UTF_8));
+  }
+
+  public static void main(String[] args) throws Exception {
+    String token = System.getenv("TOKEN");
+    String[] parts = token == null ? new String[0] : token.split("\\.", -1);
+    if (parts.length != 3) {
+      throw new IllegalArgumentException(
+          "Expected TOKEN to contain a compact JWT with three segments");
+    }
+
+    System.out.println("Header:");
+    System.out.println(JSON.writerWithDefaultPrettyPrinter().writeValueAsString(decode(parts[0])));
+    System.out.println("\nPayload:");
+    System.out.println(JSON.writerWithDefaultPrettyPrinter().writeValueAsString(decode(parts[1])));
+  }
+}
+```
+
+```csharp
+using System.Buffers.Text;
+using System.Text;
+using System.Text.Json;
+
+string token = Environment.GetEnvironmentVariable("TOKEN")
+    ?? throw new InvalidOperationException("Set TOKEN to a compact JWT.");
+string[] parts = token.Split('.');
+if (parts.Length != 3)
+{
+    throw new InvalidOperationException(
+        "Expected TOKEN to contain a compact JWT with three segments."
+    );
+}
+
+static JsonElement Decode(string segment)
+{
+    byte[] json = Base64Url.DecodeFromChars(segment);
+    return JsonSerializer.Deserialize<JsonElement>(Encoding.UTF8.GetString(json));
+}
+
+JsonSerializerOptions jsonOptions = new() { WriteIndented = true };
+Console.WriteLine("Header:");
+Console.WriteLine(JsonSerializer.Serialize(Decode(parts[0]), jsonOptions));
+Console.WriteLine("\nPayload:");
+Console.WriteLine(JsonSerializer.Serialize(Decode(parts[1]), jsonOptions));
+```
+
+```ruby
+require "base64"
+require "json"
+
+parts = ENV.fetch("TOKEN").split(".")
+raise "Expected TOKEN to contain a compact JWT with three segments" unless parts.length == 3
+
+def decode(segment)
+  JSON.parse(Base64.urlsafe_decode64(segment))
+end
+
+puts "Header:"
+puts JSON.pretty_generate(decode(parts[0]))
+puts "\nPayload:"
+puts JSON.pretty_generate(decode(parts[1]))
+```
+
+
+Each example decodes the JWT without verifying the token signature. Use a local decoder for production tokens, and avoid pasting production tokens into third-party tools.
 
 A decoded SPIFFE JWT-SVID will look similar to:
 

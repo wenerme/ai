@@ -889,7 +889,7 @@ Create a conversation.
 
           The URL of the page searched for the pattern.
 
-    - `status: "in_progress" or "searching" or "completed" or "failed"`
+    - `status: "in_progress" or "searching" or "completed" or 2 more`
 
       The status of the web search tool call.
 
@@ -900,6 +900,8 @@ Create a conversation.
       - `"completed"`
 
       - `"failed"`
+
+      - `"incomplete"`
 
     - `type: "web_search_call"`
 

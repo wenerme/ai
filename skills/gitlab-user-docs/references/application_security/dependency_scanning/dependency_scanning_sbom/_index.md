@@ -187,8 +187,6 @@ The following CycloneDX SBOMs are created as job artifacts:
 
 ### Dependency scanning report
 
-- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
-
 The dependency scanning analyzer generates a dependency scanning report that documents all
 vulnerabilities identified in dependencies identified in the CycloneDX SBOM files.
 
@@ -1315,7 +1313,6 @@ The dependency scanning report follows the generic process for [security scannin
 
 ## Offline environment
 
-- Tier: Ultimate
 - Offering: GitLab Self-Managed
 
 For instances in an environment with limited, restricted, or intermittent access

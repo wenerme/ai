@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**
 For example:
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ## Cloudflare platform access
@@ -115,7 +115,15 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+```
+
+```txt
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
+```
+
+```txt
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
@@ -123,15 +131,7 @@ Set up GitHub Actions to deploy this Worker to staging and production on Cloudfl
 ```
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
-```
-
-```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
-```
-
-```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ## Tips

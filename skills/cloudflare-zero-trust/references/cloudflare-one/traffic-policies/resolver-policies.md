@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Resolver policies
 
-Last updated Jul 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -160,6 +160,48 @@ Terraform provider v4 precedence limitation
 To avoid conflicts, version 4 of the Terraform Cloudflare provider applies a hash calculation to policy precedence. For example, a precedence of `1000` may become `1000901`. This can cause errors when reordering policies. To avoid this issue, manually set the precedence of policies created with Terraform using the [Update a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/update/) endpoint.
 
 To ensure your precedence is set correctly, Cloudflare recommends [upgrading your Terraform provider to version 5 ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/guides/version-5-upgrade).
+
+## Send DNS queries sourced from dedicated egress IPs Closed beta
+
+Note
+
+Available in closed beta for Enterprise accounts with [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/). Contact your account team to request access.
+
+By default, DNS requests that Gateway sends to your custom resolvers use shared Cloudflare source IP addresses. If your upstream resolver restricts access by source IP, you can configure a resolver policy to send those requests from your [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/) instead.
+
+### Prerequisites
+
+* Your account must have dedicated egress IPs provisioned.
+* The resolver policy must include at least one public resolver. Dedicated egress IPs cannot be used when all resolvers route through private networks.
+
+### Enable dedicated egress on a resolver policy
+
+1. In the [Cloudflare One dashboard ↗](https://dash.cloudflare.com/one), go to **Traffic policies** \> **Resolver policies**.
+2. Create or edit a resolver policy that uses custom DNS resolvers.
+3. Under the custom resolver configuration, turn on **Use dedicated egress IPs for DNS requests to custom resolvers**.
+4. Select a **Primary IPv4**, **IPv6**, and optionally a **Secondary IPv4** address from the available dedicated egress IPs.
+5. Save the policy.
+
+### API configuration
+
+To configure dedicated egress on a resolver policy via the API, add an `egress` object to `rule_settings`:
+
+```json
+{
+	"rule_settings": {
+		"dns_resolvers": {
+			"ipv4": [{ "ip": "198.51.100.1" }]
+		},
+		"egress": {
+			"ipv4": "104.30.133.232",
+			"ipv6": "2a09:bac0:1000:3ec::/64",
+			"ipv4_fallback": "104.30.134.156"
+		}
+	}
+}
+```
+
+The `egress` object uses the same schema as [egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/).
 
 ## Selectors
 
@@ -341,5 +383,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#page","headline":"Resolver policies · Cloudflare One docs","description":"Configure Resolver policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","IPv4","IPv6","QUIC"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#page","headline":"Resolver policies · Cloudflare One docs","description":"Configure Resolver policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","IPv4","IPv6","QUIC"]}
 ```

@@ -5,7 +5,7 @@ description: "Browse CrossModel model IDs, capabilities, context windows, and pr
 
 # [CrossModel logo]CrossModel
 
-Access 57 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
+Access 58 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
 
 Learn more in the [CrossModel documentation](https://www.crossmodel.ai/docs).
 
@@ -264,11 +264,23 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 65536,
-    "inputCost": 1.5,
-    "outputCost": 7.5
+    "inputCost": 0.75,
+    "outputCost": 3.75
   },
   {
     "model": "crossmodel/gemini/gemini-3.7-flash",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 0.75,
+    "outputCost": 3.75
+  },
+  {
+    "model": "crossmodel/gemini/gemini-3.8-flash",
     "imageInput": true,
     "audioInput": true,
     "videoInput": true,

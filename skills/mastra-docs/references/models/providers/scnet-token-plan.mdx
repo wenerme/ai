@@ -5,7 +5,7 @@ description: "Browse SCNet Token Plan model IDs, capabilities, and context windo
 
 # [SCNet Token Plan logo]SCNet Token Plan
 
-Access 17 SCNet Token Plan models through Mastra's model router. Authentication is handled automatically using the `SCNET_API_KEY` environment variable.
+Access 20 SCNet Token Plan models through Mastra's model router. Authentication is handled automatically using the `SCNET_API_KEY` environment variable.
 
 Learn more in the [SCNet Token Plan documentation](https://www.scnet.cn/ac/openapi/doc/2.0/moduleapi/plans/token-plan.html).
 
@@ -136,6 +136,30 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
+    "model": "scnet-token-plan/GLM-5.3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "scnet-token-plan/GLM-5.3-Flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "scnet-token-plan/Kimi-K2.5",
     "imageInput": true,
     "audioInput": false,
@@ -228,6 +252,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 512000,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "scnet-token-plan/Qwen3.8-Flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null
   },

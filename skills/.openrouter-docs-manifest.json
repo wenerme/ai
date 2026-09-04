@@ -2130,6 +2130,11 @@
     "size": 80533,
     "updatedAt": "2026-08-28T11:20:13.047Z"
   },
+  "guides/ori/env-vars.md": {
+    "url": "https://openrouter.ai/docs/guides/ori/env-vars.md",
+    "size": 10566,
+    "updatedAt": "2026-09-04T14:28:17.972Z"
+  },
   "guides/ori/eval.md": {
     "url": "https://openrouter.ai/docs/guides/ori/eval.md",
     "lastModified": "Tue, 04 Aug 2026 03:56:45 GMT",
