@@ -1024,7 +1024,7 @@ the `background` parameter set to `true` can be cancelled.
 
               The URL of the page searched for the pattern.
 
-        - `status: "in_progress" or "searching" or "completed" or "failed"`
+        - `status: "in_progress" or "searching" or "completed" or 2 more`
 
           The status of the web search tool call.
 
@@ -1035,6 +1035,8 @@ the `background` parameter set to `true` can be cancelled.
           - `"completed"`
 
           - `"failed"`
+
+          - `"incomplete"`
 
         - `type: "web_search_call"`
 
@@ -4874,7 +4876,7 @@ the `background` parameter set to `true` can be cancelled.
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -4885,6 +4887,8 @@ the `background` parameter set to `true` can be cancelled.
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 

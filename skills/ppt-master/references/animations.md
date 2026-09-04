@@ -179,6 +179,8 @@ Morph tweens matched objects across consecutive slides, so any continuous action
 | A dropping scrim or growing cut | Progressive reveal |
 | The same wide image at two `x` offsets | Camera pan (`#C2-01`) |
 
+**Reference — continuity carriers**: the Morph most decks need is not an action but a carrier — one object that persists across pages and re-seats: a progress axis or station marker that travels to the current stop, a hero figure that shrinks into the next page's header, a title band that hands one page's identity to the next. Carriers orient the reader, their endpoints are the same kind by construction, and one key chains them through a whole section (§2.1 Chains).
+
 **Hard rule — matching needs compatible identity, not identical geometry**: prefer §2.1 pairs; ids and visible state may differ, but both endpoints must resolve to one compatible top-level PowerPoint object kind — a shape and a picture cross-fade instead of tweening. Automatic Morph is heuristic.
 
 **Give text somewhere to come from**: text present only on the second page can only fade in — place the next page's copy just below the canvas and the previous page's just above, so blocks slide through the frame. A wholly off-canvas endpoint is one direct-root `<g id>` with valid `data-pptx-bounds` and `data-pptx-morph-staging="true"`, explicitly paired when Morph stays enabled; the marker never excuses a partially clipped group. Declare identity through the destination's `morph` block, never `data-pptx-shape-name` (importer metadata, [`svg-effects.md`](./svg-effects.md) §6.6).
@@ -232,7 +234,7 @@ Animations anchor on unique top-level `<g id>` content groups (`cover-title`, `c
 
 **Hard rule — existing groups are not custom-animation intent**: during the custom stage derive one group per logical motion unit from claims, comparisons, sequence, causality, and narration — splitting coarse wrappers and merging fragments without changing appearance, never to hit a count — and run `list-groups` only after that rewrite.
 
-**Chrome stays static**: `data-pptx-layer` and explicit static role/placeholder markers are absolute. The legacy chrome-name heuristic (background, header/footer, decor, watermark, page number, nav, logo, rule) applies only to unmarked top-level groups, and only it may be overridden by a sidecar entry. Wrap logical sections in `<g id>` ([`shared-standards-core.md`](./shared-standards-core.md) §4.3); a root with no top-level group falls back to a bounded primitive set ([`svg-pipeline.md`](../scripts/docs/svg-pipeline.md)).
+**Chrome stays static by default**: a `data-pptx-layer` group is structural and never animates, and a full-canvas background rect becomes the slide background, which cannot animate either. A static role/placeholder marker or a chrome-name id (background, header/footer, decor, watermark, page number, nav, logo, rule) keeps a group out of automatic animation and the scaffold; a sidecar entry that names it animates it — a background field panning (§4.1), a cover band sliding in — judged per page, never by category. Wrap logical sections in `<g id>` ([`shared-standards-core.md`](./shared-standards-core.md) §4.3); a root with no top-level group falls back to a bounded primitive set ([`svg-pipeline.md`](../scripts/docs/svg-pipeline.md)).
 
 ---
 

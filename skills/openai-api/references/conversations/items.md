@@ -918,7 +918,7 @@ Create items in a conversation with the given ID.
 
           The URL of the page searched for the pattern.
 
-    - `status: "in_progress" or "searching" or "completed" or "failed"`
+    - `status: "in_progress" or "searching" or "completed" or 2 more`
 
       The status of the web search tool call.
 
@@ -929,6 +929,8 @@ Create items in a conversation with the given ID.
       - `"completed"`
 
       - `"failed"`
+
+      - `"incomplete"`
 
     - `type: "web_search_call"`
 
@@ -4910,7 +4912,7 @@ Create items in a conversation with the given ID.
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -4921,6 +4923,8 @@ Create items in a conversation with the given ID.
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 
@@ -9281,7 +9285,7 @@ List all items for a conversation with the given ID.
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -9292,6 +9296,8 @@ List all items for a conversation with the given ID.
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 
@@ -13513,7 +13519,7 @@ Get a single item from a conversation with the given IDs.
 
           The URL of the page searched for the pattern.
 
-    - `status: "in_progress" or "searching" or "completed" or "failed"`
+    - `status: "in_progress" or "searching" or "completed" or 2 more`
 
       The status of the web search tool call.
 
@@ -13524,6 +13530,8 @@ Get a single item from a conversation with the given IDs.
       - `"completed"`
 
       - `"failed"`
+
+      - `"incomplete"`
 
     - `type: "web_search_call"`
 
@@ -17678,7 +17686,7 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           The URL of the page searched for the pattern.
 
-    - `status: "in_progress" or "searching" or "completed" or "failed"`
+    - `status: "in_progress" or "searching" or "completed" or 2 more`
 
       The status of the web search tool call.
 
@@ -17689,6 +17697,8 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
       - `"completed"`
 
       - `"failed"`
+
+      - `"incomplete"`
 
     - `type: "web_search_call"`
 
@@ -21796,7 +21806,7 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -21807,6 +21817,8 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 

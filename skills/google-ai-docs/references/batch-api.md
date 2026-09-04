@@ -156,7 +156,7 @@ The following is an example of a JSONL file. You can save it in a file named
 `my-batch-requests.json`:
 
     {"key": "request-1", "request": {"contents": [{"parts": [{"text": "Describe the process of photosynthesis."}]}], "generation_config": {"temperature": 0.7}}}
-    {"key": "request-2&quot;, "request": {"contents": [{"parts": [{"text": "What are the main ingredients in a Margherita pizza?"}]}]}}
+    {"key": "request-2", "request": {"contents": [{"parts": [{"text": "What are the main ingredients in a Margherita pizza?"}]}]}}
 
 Similarly to inline requests, you can specify other parameters like system
 instructions, tools or other configurations in each request JSON.
@@ -763,7 +763,7 @@ The following shows an example output of this job:
           "1/2 cup (100g) packed light brown sugar",
           "1 large egg",
           "1 teaspoon vanilla extract",
-          &quot;1/2 teaspoon baking soda",
+          "1/2 teaspoon baking soda",
           "1/4 teaspoon salt"
         ]
       },

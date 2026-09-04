@@ -56,7 +56,7 @@ The dispatcher writes standard Markdown plus a conversion profile beside each so
 
 ```bash
 python3 ${SKILL_DIR}/scripts/project_manager.py init <project_name>
-python3 ${SKILL_DIR}/scripts/project_manager.py import-sources <project_path> <source_files_or_dirs...>   # skip when content is only in conversation
+python3 ${SKILL_DIR}/scripts/project_manager.py import-sources <project_path> <source_files_or_dirs...>   # skip when content is only in conversation; another project's files are copied unless --move
 ```
 
 **Hard rule — truthful canvas token**: append `--format <registered_format>` only when an explicit user/source fact already establishes an exact registered canvas ([`canvas-formats.md`](../references/canvas-formats.md)). Otherwise Stage 1 confirms the canvas, starting from the project-initialization canvas unless the user/source context changes it, and `spec_lock.md` records its viewBox.
@@ -287,7 +287,7 @@ gate-signal: method=<rule resolved, or none> | page-local=<count> | not-exercise
 
 | Signal | Reading |
 |---|---|
-| Two or more issues share a category and direction — on one page or across pages | Method-level bias — resolve to the authoritative rule before P06 (for text extents: correct the per-role calibration table — rerun `python3 ${SKILL_DIR}/scripts/text_measure.py calibrate <project_path> --outline` or add the missing `--role` — then every later page estimates by that arithmetic and measures nothing); a correction fitted to the observed offset patches only this sample |
+| Two or more issues share a category and direction — on one page or across pages — or one issue sits in a writing form the deck repeats on every page (a paragraph construction, a header line, a card frame), which a long deck copies before the final gate | Method-level bias — resolve to the authoritative rule before P06 (for text extents: correct the per-role calibration table — rerun `python3 ${SKILL_DIR}/scripts/text_measure.py calibrate <project_path> --outline` or add the missing `--role` — then every later page estimates by that arithmetic and measures nothing); a correction fitted to the observed offset patches only this sample |
 | One isolated issue tied to a single page's structure | Page-local — fix and continue |
 | A recurring element (furniture, caption format, section numbering, accent discipline) drifts between its occurrences or is still unsettled | It will be copied to every later page — settle its semantics now |
 

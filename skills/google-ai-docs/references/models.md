@@ -121,10 +121,9 @@ New](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 
 | Model | Description | Endpoint |
 |---|---|---|
-| [Lyria 3.5 Pro](https://ai.google.dev/gemini-api/docs/models/lyria-3.5-pro-preview) | Our flagship music generation model, optimized for full-length songs with complex structural coherence. | ``` lyria-3.5-pro-preview ``` |
-| [Lyria 3.5 Clip](https://ai.google.dev/gemini-api/docs/models/lyria-3.5-clip-preview) | Optimized for generating short musical clips, loops, and previews up to 30 seconds. | ``` lyria-3.5-clip-preview ``` |
+| [Lyria 3.5](https://ai.google.dev/gemini-api/docs/models/lyria-3.5) | Our flagship music generation model, optimized for full-length songs with complex structural coherence. | ``` lyria-3.5 ``` |
+| [Lyria 3 Clip](https://ai.google.dev/gemini-api/docs/models/lyria-3-clip-preview) | Optimized for generating short musical clips, loops, and previews up to 30 seconds. | ``` lyria-3-clip-preview ``` |
 | [Lyria 3 Pro](https://ai.google.dev/gemini-api/docs/models/lyria-3-pro-preview) | Previous generation music generation model for full-length songs. | ``` lyria-3-pro-preview ``` |
-| [Lyria 3 Clip](https://ai.google.dev/gemini-api/docs/models/lyria-3-clip-preview) | Previous generation music generation model for 30-second clips. | ``` lyria-3-clip-preview ``` |
 | [Lyria RealTime](https://ai.google.dev/gemini-api/docs/models/lyria-realtime-exp) | High-fidelity music generation model providing granular creative control and real-time streaming capabilities. | ``` lyria-realtime-exp ``` |
 
 ## Tool and agent models

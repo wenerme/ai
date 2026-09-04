@@ -4606,7 +4606,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": false,
     "reasoning": true,
-    "contextWindow": 131072,
+    "contextWindow": 32768,
     "maxOutput": 65536,
     "inputCost": 0.1,
     "outputCost": 0.4
@@ -4810,8 +4810,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 41000,
-    "maxOutput": 32768,
+    "contextWindow": 262144,
+    "maxOutput": 16384,
     "inputCost": 0.3,
     "outputCost": 0.5
   },
@@ -5158,7 +5158,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
-    "contextWindow": 128000,
+    "contextWindow": 32000,
     "maxOutput": 115200,
     "inputCost": 0.69989,
     "outputCost": 0.69989
@@ -5776,18 +5776,6 @@ for await (const chunk of stream) {
     "outputCost": 0.69989
   },
   {
-    "model": "nano-gpt/Steelskull/L3.3-MS-Evayale-70B",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 16384,
-    "maxOutput": 16384,
-    "inputCost": 0.493,
-    "outputCost": 0.493
-  },
-  {
     "model": "nano-gpt/Steelskull/L3.3-MS-Nevoria-70b",
     "imageInput": false,
     "audioInput": false,
@@ -6088,6 +6076,18 @@ for await (const chunk of stream) {
     "outputCost": 0.7
   },
   {
+    "model": "nano-gpt/TEE/qwen3-8b",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 40960,
+    "maxOutput": 8192,
+    "inputCost": 0.11,
+    "outputCost": 0.45
+  },
+  {
     "model": "nano-gpt/TEE/qwen3.5-27b",
     "imageInput": true,
     "audioInput": false,
@@ -6298,7 +6298,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
-    "contextWindow": 32768,
+    "contextWindow": 8192,
     "maxOutput": 26214,
     "inputCost": 0.493,
     "outputCost": 0.493

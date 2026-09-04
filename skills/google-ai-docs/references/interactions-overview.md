@@ -133,8 +133,7 @@ projects on the Paid Tier. You can view them directly from the
 | Gemini 3.1 Flash TTS Preview | Model | `gemini-3.1-flash-tts-preview` |
 | Gemma 4 31B IT | Model | `gemma-4-31b-it` |
 | Gemma 4 26B MoE IT | Model | `gemma-4-26b-a4b-it` |
-| Lyria 3.5 Clip Preview | Model | `lyria-3.5-clip-preview` |
-| Lyria 3.5 Pro Preview | Model | `lyria-3.5-pro-preview` |
+| Lyria 3.5 | Model | `lyria-3.5` |
 | Lyria 3 Clip Preview | Model | `lyria-3-clip-preview` |
 | Lyria 3 Pro Preview | Model | `lyria-3-pro-preview` |
 | Deep Research Preview | Agent | `deep-research-preview-04-2026` |

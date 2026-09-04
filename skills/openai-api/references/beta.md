@@ -9413,7 +9413,7 @@ the `background` parameter set to `true` can be cancelled.
 
               The URL of the page searched for the pattern.
 
-        - `status: "in_progress" or "searching" or "completed" or "failed"`
+        - `status: "in_progress" or "searching" or "completed" or 2 more`
 
           The status of the web search tool call.
 
@@ -9424,6 +9424,8 @@ the `background` parameter set to `true` can be cancelled.
           - `"completed"`
 
           - `"failed"`
+
+          - `"incomplete"`
 
         - `type: "web_search_call"`
 
@@ -14235,7 +14237,7 @@ the `background` parameter set to `true` can be cancelled.
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -14246,6 +14248,8 @@ the `background` parameter set to `true` can be cancelled.
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 
@@ -20911,7 +20915,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -20922,6 +20926,8 @@ Learn when and how to compact long-running conversations in the [conversation st
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 
@@ -28360,7 +28366,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -28371,6 +28377,8 @@ Learn when and how to compact long-running conversations in the [conversation st
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 
@@ -30989,7 +30997,7 @@ as input for the model's response.
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -31000,6 +31008,8 @@ as input for the model's response.
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 
@@ -37925,7 +37935,7 @@ as input for the model's response.
 
               The URL of the page searched for the pattern.
 
-        - `status: "in_progress" or "searching" or "completed" or "failed"`
+        - `status: "in_progress" or "searching" or "completed" or 2 more`
 
           The status of the web search tool call.
 
@@ -37936,6 +37946,8 @@ as input for the model's response.
           - `"completed"`
 
           - `"failed"`
+
+          - `"incomplete"`
 
         - `type: "web_search_call"`
 
@@ -42747,7 +42759,7 @@ as input for the model's response.
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -42758,6 +42770,8 @@ as input for the model's response.
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 
@@ -50125,7 +50139,7 @@ Retrieves a model response with the given ID.
 
               The URL of the page searched for the pattern.
 
-        - `status: "in_progress" or "searching" or "completed" or "failed"`
+        - `status: "in_progress" or "searching" or "completed" or 2 more`
 
           The status of the web search tool call.
 
@@ -50136,6 +50150,8 @@ Retrieves a model response with the given ID.
           - `"completed"`
 
           - `"failed"`
+
+          - `"incomplete"`
 
         - `type: "web_search_call"`
 
@@ -54947,7 +54963,7 @@ Retrieves a model response with the given ID.
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -54958,6 +54974,8 @@ Retrieves a model response with the given ID.
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 
@@ -63858,7 +63876,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -63869,6 +63887,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 
@@ -67287,7 +67307,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The URL of the page searched for the pattern.
 
-        - `status: "in_progress" or "searching" or "completed" or "failed"`
+        - `status: "in_progress" or "searching" or "completed" or 2 more`
 
           The status of the web search tool call.
 
@@ -67298,6 +67318,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"completed"`
 
           - `"failed"`
+
+          - `"incomplete"`
 
         - `type: "web_search_call"`
 
@@ -72109,7 +72131,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -72120,6 +72142,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 
@@ -78695,7 +78719,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The URL of the page searched for the pattern.
 
-          - `status: "in_progress" or "searching" or "completed" or "failed"`
+          - `status: "in_progress" or "searching" or "completed" or 2 more`
 
             The status of the web search tool call.
 
@@ -78706,6 +78730,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"completed"`
 
             - `"failed"`
+
+            - `"incomplete"`
 
           - `type: "web_search_call"`
 
@@ -83517,7 +83543,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The URL of the page searched for the pattern.
 
-        - `status: "in_progress" or "searching" or "completed" or "failed"`
+        - `status: "in_progress" or "searching" or "completed" or 2 more`
 
           The status of the web search tool call.
 
@@ -83528,6 +83554,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"completed"`
 
           - `"failed"`
+
+          - `"incomplete"`
 
         - `type: "web_search_call"`
 
@@ -90564,7 +90592,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The URL of the page searched for the pattern.
 
-          - `status: "in_progress" or "searching" or "completed" or "failed"`
+          - `status: "in_progress" or "searching" or "completed" or 2 more`
 
             The status of the web search tool call.
 
@@ -90575,6 +90603,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"completed"`
 
             - `"failed"`
+
+            - `"incomplete"`
 
           - `type: "web_search_call"`
 
@@ -95386,7 +95416,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The URL of the page searched for the pattern.
 
-        - `status: "in_progress" or "searching" or "completed" or "failed"`
+        - `status: "in_progress" or "searching" or "completed" or 2 more`
 
           The status of the web search tool call.
 
@@ -95397,6 +95427,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"completed"`
 
           - `"failed"`
+
+          - `"incomplete"`
 
         - `type: "web_search_call"`
 
@@ -101914,7 +101946,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The URL of the page searched for the pattern.
 
-          - `status: "in_progress" or "searching" or "completed" or "failed"`
+          - `status: "in_progress" or "searching" or "completed" or 2 more`
 
             The status of the web search tool call.
 
@@ -101925,6 +101957,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"completed"`
 
             - `"failed"`
+
+            - `"incomplete"`
 
           - `type: "web_search_call"`
 
@@ -106736,7 +106770,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The URL of the page searched for the pattern.
 
-        - `status: "in_progress" or "searching" or "completed" or "failed"`
+        - `status: "in_progress" or "searching" or "completed" or 2 more`
 
           The status of the web search tool call.
 
@@ -106747,6 +106781,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"completed"`
 
           - `"failed"`
+
+          - `"incomplete"`
 
         - `type: "web_search_call"`
 
@@ -113543,7 +113579,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The URL of the page searched for the pattern.
 
-          - `status: "in_progress" or "searching" or "completed" or "failed"`
+          - `status: "in_progress" or "searching" or "completed" or 2 more`
 
             The status of the web search tool call.
 
@@ -113554,6 +113590,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"completed"`
 
             - `"failed"`
+
+            - `"incomplete"`
 
           - `type: "web_search_call"`
 
@@ -118365,7 +118403,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The URL of the page searched for the pattern.
 
-        - `status: "in_progress" or "searching" or "completed" or "failed"`
+        - `status: "in_progress" or "searching" or "completed" or 2 more`
 
           The status of the web search tool call.
 
@@ -118376,6 +118414,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"completed"`
 
           - `"failed"`
+
+          - `"incomplete"`
 
         - `type: "web_search_call"`
 
@@ -124732,7 +124772,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The URL of the page searched for the pattern.
 
-          - `status: "in_progress" or "searching" or "completed" or "failed"`
+          - `status: "in_progress" or "searching" or "completed" or 2 more`
 
             The status of the web search tool call.
 
@@ -124743,6 +124783,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"completed"`
 
             - `"failed"`
+
+            - `"incomplete"`
 
           - `type: "web_search_call"`
 
@@ -129554,7 +129596,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The URL of the page searched for the pattern.
 
-        - `status: "in_progress" or "searching" or "completed" or "failed"`
+        - `status: "in_progress" or "searching" or "completed" or 2 more`
 
           The status of the web search tool call.
 
@@ -129565,6 +129607,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"completed"`
 
           - `"failed"`
+
+          - `"incomplete"`
 
         - `type: "web_search_call"`
 
@@ -135783,7 +135827,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -135794,6 +135838,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 
@@ -140748,7 +140794,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -140759,6 +140805,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 
@@ -146584,7 +146632,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The URL of the page searched for the pattern.
 
-    - `status: "in_progress" or "searching" or "completed" or "failed"`
+    - `status: "in_progress" or "searching" or "completed" or 2 more`
 
       The status of the web search tool call.
 
@@ -146595,6 +146643,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"completed"`
 
       - `"failed"`
+
+      - `"incomplete"`
 
     - `type: "web_search_call"`
 
@@ -151311,7 +151361,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -151322,6 +151372,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 
@@ -156057,7 +156109,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -156068,6 +156120,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 
@@ -161616,7 +161670,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The URL of the page searched for the pattern.
 
-          - `status: "in_progress" or "searching" or "completed" or "failed"`
+          - `status: "in_progress" or "searching" or "completed" or 2 more`
 
             The status of the web search tool call.
 
@@ -161627,6 +161681,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"completed"`
 
             - `"failed"`
+
+            - `"incomplete"`
 
           - `type: "web_search_call"`
 
@@ -166438,7 +166494,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The URL of the page searched for the pattern.
 
-        - `status: "in_progress" or "searching" or "completed" or "failed"`
+        - `status: "in_progress" or "searching" or "completed" or 2 more`
 
           The status of the web search tool call.
 
@@ -166449,6 +166505,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"completed"`
 
           - `"failed"`
+
+          - `"incomplete"`
 
         - `type: "web_search_call"`
 
@@ -174919,7 +174977,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   The URL of the page searched for the pattern.
 
-            - `status: "in_progress" or "searching" or "completed" or "failed"`
+            - `status: "in_progress" or "searching" or "completed" or 2 more`
 
               The status of the web search tool call.
 
@@ -174930,6 +174988,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"completed"`
 
               - `"failed"`
+
+              - `"incomplete"`
 
             - `type: "web_search_call"`
 
@@ -179741,7 +179801,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The URL of the page searched for the pattern.
 
-          - `status: "in_progress" or "searching" or "completed" or "failed"`
+          - `status: "in_progress" or "searching" or "completed" or 2 more`
 
             The status of the web search tool call.
 
@@ -179752,6 +179812,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"completed"`
 
             - `"failed"`
+
+            - `"incomplete"`
 
           - `type: "web_search_call"`
 
@@ -188393,7 +188455,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The URL of the page searched for the pattern.
 
-          - `status: "in_progress" or "searching" or "completed" or "failed"`
+          - `status: "in_progress" or "searching" or "completed" or 2 more`
 
             The status of the web search tool call.
 
@@ -188404,6 +188466,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"completed"`
 
             - `"failed"`
+
+            - `"incomplete"`
 
           - `type: "web_search_call"`
 
@@ -194831,7 +194895,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The URL of the page searched for the pattern.
 
-        - `status: "in_progress" or "searching" or "completed" or "failed"`
+        - `status: "in_progress" or "searching" or "completed" or 2 more`
 
           The status of the web search tool call.
 
@@ -194842,6 +194906,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"completed"`
 
           - `"failed"`
+
+          - `"incomplete"`
 
         - `type: "web_search_call"`
 
@@ -200736,7 +200802,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The URL of the page searched for the pattern.
 
-        - `status: "in_progress" or "searching" or "completed" or "failed"`
+        - `status: "in_progress" or "searching" or "completed" or 2 more`
 
           The status of the web search tool call.
 
@@ -200747,6 +200813,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"completed"`
 
           - `"failed"`
+
+          - `"incomplete"`
 
         - `type: "web_search_call"`
 
@@ -205837,7 +205905,7 @@ Returns a list of input items for a given response.
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -205848,6 +205916,8 @@ Returns a list of input items for a given response.
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 
@@ -210769,7 +210839,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -210780,6 +210850,8 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 
@@ -215711,7 +215783,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             The URL of the page searched for the pattern.
 
-      - `status: "in_progress" or "searching" or "completed" or "failed"`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
 
         The status of the web search tool call.
 
@@ -215722,6 +215794,8 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `"completed"`
 
         - `"failed"`
+
+        - `"incomplete"`
 
       - `type: "web_search_call"`
 
