@@ -1347,6 +1347,7 @@ components:
         - OpenInference
         - Parasail
         - Poolside
+        - PrimeIntellect
         - Perceptron
         - Perplexity
         - Phala
@@ -1690,6 +1691,9 @@ components:
           additionalProperties: {}
           type: object
         poolside:
+          additionalProperties: {}
+          type: object
+        prime-intellect:
           additionalProperties: {}
           type: object
         quiver:

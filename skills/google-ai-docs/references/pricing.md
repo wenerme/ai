@@ -1070,11 +1070,24 @@ A fast video generation model.
 > [!NOTE]
 > **Note:** In some cases, an audio processing issue may prevent a video from being generated. You will only be charged if your video is successfully generated.
 
+## Lyria 3.5
+
+*`lyria-3.5-clip-preview` and `lyria-3.5-pro-preview`*
+
+Google's family of music generation models. Preview models may change
+before becoming stable and have more restrictive rate limits.
+
+|   | Free Tier | Paid Tier, per request in USD |
+|---|---|---|
+| Lyria 3.5 Clip Preview (30s) | Not available | $0.04 per song |
+| Lyria 3.5 Pro Preview (Full Song) | Not available | $0.08 per song |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
 ## Lyria 3
 
 *[`lyria-3-clip-preview`](https://ai.google.dev/gemini-api/docs/models/lyria-3-clip-preview) and [`lyria-3-pro-preview`](https://ai.google.dev/gemini-api/docs/models/lyria-3-pro-preview)*
 
-Google's family of music generation models.
+Google's family of legacy music generation models.
 
 |   | Free Tier | Paid Tier, per request in USD |
 |---|---|---|

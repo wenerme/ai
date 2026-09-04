@@ -237,9 +237,9 @@ Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers
 * Added Regional Internet Registry (see field `source` in response) to [get asn by id](https://developers.cloudflare.com/api/resources/radar/subresources/entities/subresources/asns/methods/get/)and [get asn by ip](https://developers.cloudflare.com/api/resources/radar/subresources/entities/subresources/asns/methods/ip/) endpoints.
 * Stopped collecting data in the old layer 3 data source.
 * Updated layer 3 [timeseries](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/timeseries/) endpoint to start using the new layer 3 data source by default, fetching the old data source now requires sending the parameter `metric=bytes_old`.
-* Deprecated layer 3 summary endpoint, this will stop receiving data after 2023-08-14.
+* Deprecated layer 3 summary endpoint, this will stop receiving data after 2023-08-14\.
   * To continue getting this data, switch to the new [timeseries group protocol](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/subresources/summary/methods/protocol/)endpoint.
-* Deprecated layer 3 timeseries groups endpoint, this will stop receiving data after 2023-08-14.
+* Deprecated layer 3 timeseries groups endpoint, this will stop receiving data after 2023-08-14\.
   * To continue getting this data, switch to the new [timeseries group protocol](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/subresources/timeseries%5Fgroups/methods/protocol/)endpoint.
 
 ## 2023-07-31

@@ -46,7 +46,7 @@ You can build a rule in Cloudflare Access to control who can connect to your Mon
 
 To be accessible over SSH, the Kubernetes deployment should manage both the MongoDB standalone service and an SSH proxy service. The configuration below will deploy 1 replica of the database service, available at port 27017, as well as an SSH proxy available at port 22.
 
- StatefulSet Configuration
+StatefulSet Configuration
 
 ```yaml
 apiVersion: apps/v1

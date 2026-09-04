@@ -8,7 +8,7 @@
 
 Sovereign AI refers to a nation's or region's ability to develop, deploy, and control artificial intelligence systems within its own borders, using local infrastructure and under local regulatory frameworks. As AI becomes critical infrastructure, governments and enterprises increasingly require that AI workloads (including the data they process) remain within specific geographic and jurisdictional boundaries.
 
-OpenRouter offers fully in-region routing in the EU and the US for enterprise customers. [Contact our enterprise team](https://openrouter.ai/enterprise/form) to enable it for your account.
+OpenRouter offers fully in-region routing in the EU and the US on the Business and Enterprise plans. Organization admins can upgrade to Business under **Account Type** in [Settings > Preferences](https://openrouter.ai/settings/preferences); for Enterprise, [contact our enterprise team](https://openrouter.ai/enterprise/form).
 
 ## Drivers of sovereign AI
 
@@ -29,6 +29,8 @@ OpenRouter provides several features that enable sovereign AI deployments today,
 ### In-Region Routing
 
 For Business and Enterprise customers, OpenRouter supports [in-region routing](/docs/guides/features/in-region-routing) in the EU and the US. When enabled, your requests are guaranteed to only be decrypted within the designated region, and are only routed to providers operating in that region. This means prompts and completions are processed entirely within that region. They never leave it at any point in the request lifecycle.
+
+Choosing a regional base URL per request is the first step. To guarantee that every request in a workspace stays in-region regardless of how a client is configured, restrict the allowed data regions in a [guardrail](/docs/guides/features/guardrails). The guardrail's `allowed_data_regions` setting (`global`, `europe`, `us`) lists the OpenRouter domains that governed requests must arrive through; requests through any other domain are rejected with a 403 before processing. Setting it on the workspace default guardrail enforces the policy for all keys and members in that workspace, and per-member or per-key guardrails can narrow it further. See [Enforcing In-Region Routing with Guardrails](/docs/guides/features/in-region-routing#enforcing-in-region-routing-with-guardrails).
 
 To use in-region routing, send API requests through the region-specific base URL:
 
@@ -103,7 +105,7 @@ https://us.openrouter.ai
   * Browse [EU-eligible models](https://openrouter.ai/models?region=eu) or [US-eligible models](https://openrouter.ai/models?region=us) on the models page with the **In-Region Routing** filter
 </Info>
 
-In-region routing (EU or US) is available on the Business and Enterprise plans. Organization admins can upgrade to Business from their organization settings, or [contact our enterprise team](https://openrouter.ai/enterprise/form) for Enterprise.
+In-region routing (EU or US) is available on the Business and Enterprise plans. Organization admins can upgrade to Business under **Account Type** in [Settings > Preferences](https://openrouter.ai/settings/preferences), or [contact our enterprise team](https://openrouter.ai/enterprise/form) for Enterprise.
 
 For full details on how requests are routed, which features are available on regional domains, and how BYOK works with regional routing, see the [In-Region Routing](/docs/guides/features/in-region-routing) guide.
 
@@ -149,10 +151,10 @@ This gives you a single API with unified billing while maintaining full control 
 
 ## Getting Started
 
-Sovereign AI features are available to all OpenRouter users, with in-region routing (EU or US) available for enterprise customers. To get started:
+Sovereign AI features are available to all OpenRouter users, with in-region routing (EU or US) available on the Business and Enterprise plans. To get started:
 
 * [Create an API key](https://openrouter.ai/settings/keys) and start using [provider routing](/docs/guides/routing/provider-selection) to control where your requests are processed
 * Enable [ZDR](/docs/guides/features/zdr) and [data collection controls](/docs/guides/privacy/provider-logging) for privacy compliance
-* [Contact our enterprise team](https://openrouter.ai/enterprise/form) to enable in-region routing and discuss additional sovereign AI requirements
+* Upgrade to Business under **Account Type** in [Settings > Preferences](https://openrouter.ai/settings/preferences) to enable in-region routing, or [contact our enterprise team](https://openrouter.ai/enterprise/form) for Enterprise and additional sovereign AI requirements
 
 For a complete enterprise setup guide, see the [Enterprise Quickstart](/docs/cookbook/get-started/enterprise-quickstart).

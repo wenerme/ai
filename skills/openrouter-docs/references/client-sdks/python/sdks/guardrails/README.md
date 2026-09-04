@@ -80,7 +80,7 @@ with OpenRouter(
 
 ## create
 
-Create a new guardrail for the authenticated user. A newly created guardrail enforces nothing until it is assigned to API keys or organization members; `workspace_id` places the guardrail in a workspace but does not apply it to that workspace's traffic. To restrict all traffic in a workspace, update the workspace's default guardrail instead. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Create a new guardrail for the authenticated user. A newly created guardrail enforces nothing until it is assigned to API keys or organization members; `workspace_id` places the guardrail in a workspace but does not apply it to that workspace's traffic. To restrict all traffic in a workspace, update the workspace's default guardrail instead. Set `allowed_data_regions` to enforce [In-Region Routing](/docs/client-sdks/python/docs/guides/features/in-region-routing#enforcing-in-region-routing-with-guardrails): governed requests must arrive through one of the listed OpenRouter domains and are rejected with a 403 otherwise. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -96,7 +96,9 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.guardrails.create(name="My New Guardrail", allowed_models=None, allowed_providers=[
+    res = open_router.guardrails.create(name="My New Guardrail", allowed_data_regions=[
+        "europe",
+    ], allowed_models=None, allowed_providers=[
         "openai",
         "anthropic",
         "deepseek",
@@ -315,6 +317,7 @@ with OpenRouter(
 | errors.BadRequestResponseError     | 400         | application/json |
 | errors.UnauthorizedResponseError   | 401         | application/json |
 | errors.NotFoundResponseError       | 404         | application/json |
+| errors.ConflictResponseError       | 409         | application/json |
 | errors.InternalServerResponseError | 500         | application/json |
 | errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
 

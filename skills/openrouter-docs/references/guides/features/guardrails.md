@@ -30,12 +30,17 @@ Each guardrail can include any combination of:
 * **Model allowlist** - Restrict to specific models. Leave empty to allow all.
 * **Provider allowlist** - Restrict to specific providers. Leave empty to allow all.
 * **Zero Data Retention** - Enforce ZDR per model group (Anthropic, OpenAI, Google, SpaceXAI, and non-frontier). See [Zero Data Retention](/docs/guides/features/zdr#per-model-group-zdr-enforcement) for details.
+* **Data regions** - Restrict which OpenRouter domains requests may arrive through (`allowed_data_regions`: `global` for `https://openrouter.ai`, `europe` for `https://eu.openrouter.ai`, `us` for `https://us.openrouter.ai`). Requests through any other domain are rejected. Leave unrestricted to accept any region. Data-region guardrails require a Business or Enterprise plan. See [Enforcing In-Region Routing with Guardrails](/docs/guides/features/in-region-routing#enforcing-in-region-routing-with-guardrails). Note that the guardrail value for the EU is `europe`, while the Models API region filter takes `region=eu`.
 * **Security** - Protect against prompt injection and jailbreak attacks with [regex-based detection](/docs/guides/features/guardrails/prompt-injection).
 * **[Sensitive Info](/docs/guides/features/guardrails/sensitive-info)** - Detect and redact or block sensitive information (PII) in API requests using built-in presets and NLP-based detection.
 * **Custom content filters** - Define your own regex patterns to [redact or block](#custom-content-filters) matching content in incoming requests.
 
 <Note>
   Individual API key budgets still apply. The lower limit wins.
+</Note>
+
+<Note>
+  If your plan stops including in-region routing while a data-region guardrail is still assigned, requests governed by that guardrail are rejected until you upgrade or clear the restriction. The guardrail keeps enforcing its region list, and the regional domains reject requests from accounts without in-region routing (any region not in the list stays blocked; `global` in the list keeps `https://openrouter.ai` open).
 </Note>
 
 ## Assigning Guardrails
@@ -58,6 +63,7 @@ Account-wide privacy and provider settings are always enforced as a default guar
 * **Provider allowlists**: Intersection across all guardrails (only providers allowed by all guardrails are available)
 * **Model allowlists**: Intersection across all guardrails (only models allowed by all guardrails are available)
 * **Zero Data Retention**: OR logic per model group (if any guardrail enforces ZDR for a given scope, such as Anthropic, OpenAI, Google, SpaceXAI, or non-frontier, it is enforced for that scope)
+* **Data regions**: Intersection across all guardrails that set `allowed_data_regions` (a guardrail that leaves it unrestricted does not affect the result). A member or API key guardrail can only narrow the regions permitted by the workspace default guardrail.
 * **Sensitive Info**: Union across all guardrails (filters from all applicable guardrails are combined). If the same entity type or pattern appears with different actions, block takes precedence over redact.
 * **Budget limits**: Each guardrail's budget is checked independently. See [Budget Enforcement](#budget-enforcement) for details.
 
@@ -132,7 +138,18 @@ on create and on update.
 
 ## When a Request Is Blocked
 
-When a guardrail's runtime checks block a request (for example a content filter or prompt-injection detector), OpenRouter returns an HTTP **403 Forbidden** response. Note that budget limits and allowlist restrictions also produce 403 responses, but only runtime content checks include `openrouter_metadata` stage details.
+When a guardrail's runtime checks block a request (for example a content filter or prompt-injection detector), OpenRouter returns an HTTP **403 Forbidden** response. Note that budget limits, allowlist restrictions, and data region restrictions also produce 403 responses, but only runtime content checks include `openrouter_metadata` stage details.
+
+A request rejected by a data region restriction is refused before any inference happens, and the error message names the permitted hostnames:
+
+```json lines theme={null}
+{
+  "error": {
+    "code": 403,
+    "message": "This request arrived on the global data region, but the key's workspace permits requests only on these OpenRouter hostnames: eu.openrouter.ai. Use one of the permitted hostnames or update the workspace guardrail allowed data regions."
+  }
+}
+```
 
 ```json lines theme={null}
 {

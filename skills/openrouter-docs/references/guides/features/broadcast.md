@@ -50,26 +50,6 @@ Each destination has its own configuration requirements, such as API keys, endpo
 
 For the most up-to-date list of available destinations, visit the [Broadcast settings page](https://openrouter.ai/settings/observability) in your dashboard.
 
-### Coming Soon
-
-The following destinations are in development and will be available soon:
-
-* AWS Firehose
-* Dynatrace
-* Evidently
-* Fiddler
-* Galileo
-* Helicone
-* HoneyHive
-* Keywords AI
-* Middleware
-* Mona
-* OpenInference
-* Phoenix
-* Portkey
-* Supabase
-* WhyLabs
-
 ## Trace Data
 
 Each broadcast trace includes comprehensive information about your API request:

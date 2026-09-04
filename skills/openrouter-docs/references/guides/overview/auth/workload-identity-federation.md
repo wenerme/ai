@@ -9,7 +9,7 @@
 Workload identity federation lets a workload that already holds a JWT from your identity provider call OpenRouter without an OpenRouter API key in its environment. The workload exchanges its JWT for a short-lived OpenRouter access token ([RFC 8693 token exchange](https://www.rfc-editor.org/rfc/rfc8693)) and sends that token as the bearer on inference requests.
 
 <Note>
-  Workload identity federation is available to organizations on request. Contact your OpenRouter account team to enable **Settings → Workload identity** for your organization.
+  Workload identity federation is an Enterprise feature. It is available to organizations on Enterprise plans and must be enabled by OpenRouter. Contact your OpenRouter account team, or [contact our enterprise team](https://openrouter.ai/enterprise/form), to enable **Settings → Workload identity** for your organization.
 </Note>
 
 ## How it works

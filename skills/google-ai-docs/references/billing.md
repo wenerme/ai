@@ -41,7 +41,7 @@ for paid services, see the [Terms of Service](https://ai.google.dev/gemini-api/t
 You can create a project and set up billing, or import an existing project, to
 upgrade to the Paid Tier in [Google AI Studio](https://aistudio.google.com/projects).
 Upgrading from the Free Tier to the Paid Tier means linking a billing account
-and [prepaying](https://ai.google.dev/gemini-api/docs/billing#prepay) to add a minimum of $10 (or equivalent in other
+and [prepaying](https://ai.google.dev/gemini-api/docs/billing#prepay) to add a minimum of $5 (or equivalent in other
 currencies) of credits to your account.
 
 1. Go to the AI Studio [API keys](https://aistudio.google.com/api-keys) page, [Projects](https://aistudio.google.com/projects) page, or anywhere you see **Set up billing** button in AI Studio.
@@ -56,7 +56,7 @@ currencies) of credits to your account.
    - If you don't want to use any of your existing accounts, click **Add new
      billing account** and fill in or confirm your contact information and payment method to continue.
 5. Next, you will either be:
-   - Asked to prepay a minimum of $10 to complete billing setup (meaning your account is auto-assigned to the [Prepay](https://ai.google.dev/gemini-api/docs/billing#prepay) billing plan),
+   - Asked to prepay a minimum of $5 to complete billing setup (meaning your account is auto-assigned to the [Prepay](https://ai.google.dev/gemini-api/docs/billing#prepay) billing plan),
    - Given the choice between [Prepay](https://ai.google.dev/gemini-api/docs/billing#prepay) and [Postpay](https://ai.google.dev/gemini-api/docs/billing#postpay) billing plans for your account.
    - Assigned to a [Postpay](https://ai.google.dev/gemini-api/docs/billing#postpay) billing plan for an intermediary period until the new Prepay system propagates to all users (starting March 23, 2026).
 6. After prepaying or selecting Postpay, your account setup is complete.
@@ -103,7 +103,7 @@ assigned billing plan and manage payment methods on the
 > [!IMPORTANT]
 > **Important:** Prepay and Postpay billing plans start taking effect **March 23, 2026** .  
 > - Accounts that predate the introduction of Prepay and Postpay billing plans will be evaluated and assigned a plan or offered the choice between plans.
-> - Accounts created after the effective date might not be immediately affected; you may be assigned a Postpay account initially, and be switched to Prepay once the new billing plan system is fully released.
+> - Accounts created after the effective date might not be immediately affected; you may be assigned a Postpay account initially, and be switched to Prepay once the new billing plan system is fully released. See [Migrate to prepay](https://ai.google.dev/gemini-api/docs/billing#migrate-to-prepay) for details.
 > - If you have a prepay billing account, you must add funds to your account before you can use promotional Cloud Credits. After adding funds, your promotional credits will be consumed first before your prepaid funds.
 >
 ### Prepay
@@ -132,13 +132,37 @@ API.
 *Note that Prepay is not available for [Invoiced (or Offline)](https://docs.cloud.google.com/billing/docs/concepts#billing_account_types)
 accounts.*
 
+#### Add Prepay to an existing Postpay account
+
+If your existing Cloud Billing account uses a **Postpay** plan, you can add **Prepay**
+capabilities to purchase credits in advance. These prepay credits let you use
+the Gemini API without creating a new Cloud Billing account.
+
+During the setup to add **Prepay** to an existing account, you are
+presented with a mandatory confirmation screen explaining that your selected
+Cloud Billing account will be modified.
+
+The system must modify your account state *before* you submit your prepayment.
+Therefore, canceling the process after confirming the modification but before
+completing the prepayment setup might result in temporary service disruptions
+for projects already linked to that Cloud Billing account. Ensure you are ready
+to complete the prepayment process before confirming the transition. If you
+encounter issues, see [Services disrupted after canceling a **Prepay**
+setup](https://docs.cloud.google.com/billing/docs/in-product-billing-setup#prepay-issue).
+
+If you are eligible and manually switch from a **Prepay** cycle to a **Postpay**
+cycle, any remaining prepay credit balance is automatically refunded to the
+original payment method used for the prepayment. However, if you close your
+Cloud Billing account for any other reason, any remaining prepay
+credits are forfeited and aren't refunded.
+
 #### Buy credits
 
 You can manually purchase credits in advance of your Gemini API usage to load
 them into your Prepay account credit balance.
 
 To purchase credits, go to the [AI Studio Billing](https://aistudio.google.com/billing) page and select **Buy credits**.
-The minimum purchase is $10. The maximum amount of credits you can prepay for is
+The minimum purchase is $5. The maximum amount of credits you can prepay for is
 $5,000.
 
 > [!NOTE]
@@ -187,12 +211,26 @@ the [billing setup](https://ai.google.dev/gemini-api/docs/billing#setup-billing)
 
 After you switch a Cloud Billing account to use the Postpay billing plan, all
 projects linked to that billing account are switched to the Postpay plan. You
-can't move that billing account back to the Prepay billing plan. You can
+can move an eligible account to Prepay by following the steps in [Migrate to prepay](https://ai.google.dev/gemini-api/docs/billing#migrate-to-prepay). You can also
 move a project to a billing account with a different billing plan to change
 the charging cycle for that project; visit the Cloud documentation on [managing
 billing for projects](https://docs.cloud.google.com/billing/docs/how-to/modify-project).
 
 You can learn more about the Postpay charging cycle in the [Cloud Billing guide](https://docs.cloud.google.com/billing/docs/how-to/billing-cycle).
+
+### Migrate to prepay
+
+Google AI Studio is transitioning developer accounts from Postpay to Prepay billing for Gemini API usage. This change applies only to the Gemini API; other Google Cloud services linked to your billing account remain on Postpay.
+
+Switch to Prepay and add credits before the cutover date in your account notice to avoid service interruptions. Accounts that use only Free Tier features do not need to take action.
+
+To switch an existing Postpay account to Prepay:
+
+1. Go to the [AI Studio Billing](https://aistudio.google.com/billing) page.
+2. Select **Switch to Prepay** for your billing account.
+3. [Purchase credits](https://ai.google.dev/gemini-api/docs/billing#buy-credits) (minimum $5) to load your starting balance.
+
+To prevent service interruptions after switching, configure [auto-reload](https://ai.google.dev/gemini-api/docs/billing#auto-reload) to top up your credit balance when it runs low.
 
 ## Spend caps
 
@@ -535,6 +573,10 @@ the standard [Cloud charging cycle](https://docs.cloud.google.com/billing/docs/h
 
 No, switching from a Prepay billing plan to a Postpay billing plan is not supported.
 
+### Can I switch from Postpay to Prepay billing?
+
+Yes, you can transition an existing Postpay account on the [AI Studio Billing](https://aistudio.google.com/billing) page. See [Migrate to prepay](https://ai.google.dev/gemini-api/docs/billing#migrate-to-prepay) for instructions.
+
 ### What happens to my Prepaid credits if I switch to Postpay?
 
 When you upgrade to [Postpay](https://ai.google.dev/gemini-api/docs/billing#postpay), Cloud Billing closes your Prepay
@@ -594,6 +636,27 @@ is flagged for issues such as:
 To restore service, you must [resolve the Postpay account issue](https://docs.cloud.google.com/billing/docs/how-to/resolve-issues#resolving-declined-payments)
 in the Google Cloud Billing console. Once you resolve the issue, you will regain
 access to your Prepaid Gemini API credits and services.
+
+### Why are my projects disrupted after I canceled a Prepay setup?
+
+**Issue:** You started the flow to add Prepay capabilities to an existing
+Postpay billing account, but closed the window or canceled the process before
+completing the prepayment setup. Other projects linked to that billing account
+lost access to the Gemini API.
+
+**Cause:** During the transition flow, the infrastructure to support Prepay is
+created on your billing account immediately after you accept the confirmation
+dialog. If you don't complete the prepayment steps, the configuration remains
+in an unchargeable state. Because this state applies at the billing account
+level, it restricts access for all projects linked to that billing account that
+rely on Prepay services.
+
+**Resolution:** Because the account state has already changed, there is no
+automatic way to revert the state if you abandon the payment flow. To restore
+service to your linked projects, do one of the following:
+
+- **Complete the setup:** Return to Google AI Studio, restart the billing setup flow, and complete the prepayment process. After the payment is processed, the Prepay billing plan becomes active and the service is restored.
+- **Contact Support:** If you don't want to use the Prepay billing plan and want to revert your billing account back to Postpay, [contact Cloud Billing Support](https://cloud.google.com/support/billing) to manually reset your account state.
 
 ### Where can I get help with billing?
 

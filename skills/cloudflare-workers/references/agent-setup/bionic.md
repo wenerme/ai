@@ -39,7 +39,7 @@ https://mcp.cloudflare.com/mcp
 Ask Bionic to investigate a task, make changes, and run relevant tests. Review its diffs and command output before keeping changes.
 For example:
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ## Cloudflare platform access
@@ -118,7 +118,7 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
@@ -126,15 +126,15 @@ Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
-```
-
-```txt
 Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Set up a KV namespace for edge-cached session storage in my Worker.
+```
+
+```txt
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ## Tips

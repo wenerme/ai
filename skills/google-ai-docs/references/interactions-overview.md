@@ -133,6 +133,8 @@ projects on the Paid Tier. You can view them directly from the
 | Gemini 3.1 Flash TTS Preview | Model | `gemini-3.1-flash-tts-preview` |
 | Gemma 4 31B IT | Model | `gemma-4-31b-it` |
 | Gemma 4 26B MoE IT | Model | `gemma-4-26b-a4b-it` |
+| Lyria 3.5 Clip Preview | Model | `lyria-3.5-clip-preview` |
+| Lyria 3.5 Pro Preview | Model | `lyria-3.5-pro-preview` |
 | Lyria 3 Clip Preview | Model | `lyria-3-clip-preview` |
 | Lyria 3 Pro Preview | Model | `lyria-3-pro-preview` |
 | Deep Research Preview | Agent | `deep-research-preview-04-2026` |
@@ -159,7 +161,6 @@ The following features are supported by the
 [`generateContent`](https://ai.google.dev/gemini-api/docs/generate-content/text-generation) API but are **not yet
 available** in the Interactions API:
 
-- **[Video metadata](https://ai.google.dev/gemini-api/docs/video-understanding)** : The `video_metadata` field, used to set clipping intervals and custom frame rates for video understanding.
 - **[Batch API](https://ai.google.dev/gemini-api/docs/batch-api)**
 - **[Automatic function calling (Python)](https://ai.google.dev/gemini-api/docs/function-calling?example=meeting#automatic_function_calling_python_only)**
 - **[Explicit caching](https://ai.google.dev/gemini-api/docs/caching)** : Note that server-side implicit caching is available in the Interactions API via `previous_interaction_id`.

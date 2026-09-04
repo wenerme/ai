@@ -30,7 +30,7 @@ Upgrading to the paid tier increases your rate limits and requires setting up
 Cloud Billing.
 
 - Click **Set up billing** on the AI Studio [API keys](https://aistudio.google.com/api-keys) or [Projects](https://aistudio.google.com/projects) pages.
-- Follow the Cloud Billing dialog to create or link a billing account, add a payment method, and prepay a minimum of $10 (or currency equivalent) in paid credits.
+- Follow the Cloud Billing dialog to create or link a billing account, add a payment method, and prepay a minimum of $5 (or currency equivalent) in paid credits.
 - View your API usage in [Google AI Studio](https://aistudio.google.com/usage) under **Dashboard** \> **Usage**.
 
 See the [Billing page](https://ai.google.dev/gemini-api/docs/billing) for more information.
@@ -728,7 +728,7 @@ Gemini can generate images natively using the [Nano Banana](https://ai.google.de
 When the model generates an image, it returns the base64-encoded image data in a step within the `steps` array, as well as via the `output_image` convenience property. Check out the [image generation guide](https://ai.google.dev/gemini-api/docs/image-generation) to learn about aspect ratios, image editing, and references.
 [Speech generation
 Generate expressive, multi-speaker speech with Gemini 3.1 Flash TTS.](https://ai.google.dev/gemini-api/docs/speech-generation) [Music generation
-Create clips and full-length songs with Lyria 3.](https://ai.google.dev/gemini-api/docs/music-generation)
+Create clips and full-length songs with Lyria 3.5.](https://ai.google.dev/gemini-api/docs/music-generation)
 
 ## 7. Use structured output
 

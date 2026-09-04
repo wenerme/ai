@@ -169,7 +169,7 @@ Get a list of runs for an evaluation.
 
           - `model: optional string or null`
 
-            An optional model to filter by (e.g., 'gpt-5.6-sol').
+            An optional model to filter by (e.g., 'gpt-6-astra').
 
       - `type: "completions"`
 
@@ -974,7 +974,7 @@ Get a list of runs for an evaluation.
               model will not generate JSON without a system or user message instructing it
               to do so.
 
-        - `tools: optional array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
+        - `tools: optional array of object { name, parameters, strict, 6 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
 
           An array of tools the model may call while generating a response. You
           can specify which tool to use by setting the `tool_choice` parameter.
@@ -989,7 +989,7 @@ Get a list of runs for an evaluation.
             enabling the model to call your own code. Learn more about
             [function calling](/docs/guides/function-calling).
 
-          - `Function object { name, parameters, strict, 5 more }`
+          - `Function object { name, parameters, strict, 6 more }`
 
             Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
 
@@ -1018,6 +1018,8 @@ Get a list of runs for an evaluation.
               - `"direct"`
 
               - `"programmatic"`
+
+            - `async: optional boolean`
 
             - `defer_loading: optional boolean`
 
@@ -1812,7 +1814,7 @@ Get a list of runs for an evaluation.
 
                   - `"container_reference"`
 
-          - `Custom object { name, type, allowed_callers, 3 more }`
+          - `Custom object { name, type, allowed_callers, 4 more }`
 
             A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -1833,6 +1835,10 @@ Get a list of runs for an evaluation.
               - `"direct"`
 
               - `"programmatic"`
+
+            - `async: optional boolean`
+
+              Whether the tool response can be returned asynchronously versus immediately returned on next response creation.
 
             - `defer_loading: optional boolean`
 
@@ -1890,11 +1896,11 @@ Get a list of runs for an evaluation.
 
               The namespace name used in tool calls (for example, `crm`).
 
-            - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
+            - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
               The function/custom tools available inside this namespace.
 
-              - `Function object { name, type, allowed_callers, 5 more }`
+              - `Function object { name, type, allowed_callers, 6 more }`
 
                 - `name: string`
 
@@ -1909,6 +1915,10 @@ Get a list of runs for an evaluation.
                   - `"direct"`
 
                   - `"programmatic"`
+
+                - `async: optional boolean`
+
+                  Whether the tool response can be returned asynchronously versus immediately returned on next response creation.
 
                 - `defer_loading: optional boolean`
 
@@ -1926,7 +1936,7 @@ Get a list of runs for an evaluation.
 
                   Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
-              - `Custom object { name, type, allowed_callers, 3 more }`
+              - `Custom object { name, type, allowed_callers, 4 more }`
 
                 A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
 
@@ -1947,6 +1957,10 @@ Get a list of runs for an evaluation.
                   - `"direct"`
 
                   - `"programmatic"`
+
+                - `async: optional boolean`
+
+                  Whether the tool response can be returned asynchronously versus immediately returned on next response creation.
 
                 - `defer_loading: optional boolean`
 

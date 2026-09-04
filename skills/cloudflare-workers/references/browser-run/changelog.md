@@ -213,7 +213,7 @@ This is a detailed changelog of every update to Browser Run (formerly Browser Re
 ## 2025-07-24
 
 **Playwright now supported in local development**
-* You can now use Playwright with local development. Upgrade to [wrangler@4.26.0](mailto:wrangler@4.26.0) to get started.
+* You can now use Playwright with local development. Upgrade to wrangler@4.26.0 to get started.
 
 ## 2025-07-16
 

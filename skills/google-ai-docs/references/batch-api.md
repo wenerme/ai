@@ -51,7 +51,7 @@ method with inline requests:
     ]
 
     inline_batch_job = client.batches.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         src=inline_requests,
         config={
             'display_name': "inlined-requests-job-1",
@@ -83,7 +83,7 @@ method with inline requests:
     ]
 
     const response = await ai.batches.create({
-        model: 'gemini-3.7-flash',
+        model: 'gemini-3.8-flash',
         src: inlinedRequests,
         config: {
             displayName: 'inlined-requests-job-1',
@@ -106,12 +106,12 @@ method with inline requests:
             .format("jsonl")
             .build();
 
-    BatchJob batchJob = client.batches.create("gemini-3.7-flash", batchJobSource, null);
+    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
     System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
 
 ### REST
 
-    curl https://generativelanguage.googleapis.com/v1beta/models/gemini-3.7-flash:batchGenerateContent \
+    curl https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:batchGenerateContent \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -X POST \
     -H "Content-Type:application/json" \
@@ -156,7 +156,7 @@ The following is an example of a JSONL file. You can save it in a file named
 `my-batch-requests.json`:
 
     {"key": "request-1", "request": {"contents": [{"parts": [{"text": "Describe the process of photosynthesis."}]}], "generation_config": {"temperature": 0.7}}}
-    {"key": "request-2", "request": {"contents": [{"parts": [{"text": "What are the main ingredients in a Margherita pizza?"}]}]}}
+    {"key": "request-2&quot;, "request": {"contents": [{"parts": [{"text": "What are the main ingredients in a Margherita pizza?"}]}]}}
 
 Similarly to inline requests, you can specify other parameters like system
 instructions, tools or other configurations in each request JSON.
@@ -261,7 +261,7 @@ within your JSONL file.
             .format("jsonl")
             .build();
 
-    BatchJob batchJob = client.batches.create("gemini-3.7-flash", batchJobSource, null);
+    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
     System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
 
 ### REST
@@ -309,7 +309,7 @@ method with the input file uploaded using File API:
     # Assumes `uploaded_file` is the file object from the previous step
     client = genai.Client()
     file_batch_job = client.batches.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         src=uploaded_file.name,
         config={
             'display_name': "file-upload-job-1",
@@ -322,7 +322,7 @@ method with the input file uploaded using File API:
 
     // Assumes `uploadedFile` is the file object from the previous step
     const fileBatchJob = await ai.batches.create({
-        model: 'gemini-3.7-flash',
+        model: 'gemini-3.8-flash',
         src: uploadedFile.name,
         config: {
             displayName: 'file-upload-job-1',
@@ -345,14 +345,14 @@ method with the input file uploaded using File API:
             .format("jsonl")
             .build();
 
-    BatchJob batchJob = client.batches.create("gemini-3.7-flash", batchJobSource, null);
+    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
     System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
 
 ### REST
 
     # Set the File ID taken from the upload response.
     BATCH_INPUT_FILE='files/123456'
-    curl https://generativelanguage.googleapis.com/v1beta/models/gemini-3.7-flash:batchGenerateContent \
+    curl https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:batchGenerateContent \
     -X POST \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -H "Content-Type:application/json" \
@@ -438,7 +438,7 @@ specify the embeddings model.
             .format("jsonl")
             .build();
 
-    BatchJob batchJob = client.batches.create("gemini-3.7-flash", batchJobSource, null);
+    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
     System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
 
 Read the Embeddings section in the [Batch API cookbook](https://github.com/google-gemini/cookbook/blob/main/quickstarts/Batch_mode.ipynb)
@@ -487,7 +487,7 @@ request that contains a system instruction for one of the requests:
             .format("jsonl")
             .build();
 
-    BatchJob batchJob = client.batches.create("gemini-3.7-flash", batchJobSource, null);
+    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
     System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
 
 Similarly can specify tools to use for a request. The following example
@@ -522,7 +522,7 @@ shows a request that enables the [Google Search tool](https://ai.google.dev/gemi
             .format("jsonl")
             .build();
 
-    BatchJob batchJob = client.batches.create("gemini-3.7-flash", batchJobSource, null);
+    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
     System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
 
 You can specify [structured output](https://ai.google.dev/gemini-api/docs/structured-output) as well.
@@ -565,7 +565,7 @@ The following example shows how to specify for your batch requests.
     ]
 
     inline_batch_job = client.batches.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         src=inline_requests,
         config={
             'display_name': "structured-output-job-1"
@@ -667,7 +667,7 @@ The following example shows how to specify for your batch requests.
     ]
 
     const inlinedBatchJob = await ai.batches.create({
-        model: 'gemini-3.7-flash',
+        model: 'gemini-3.8-flash',
         src: inlinedRequests,
         config: {
             displayName: 'inlined-requests-job-1',
@@ -688,7 +688,7 @@ The following example shows how to specify for your batch requests.
             .format("jsonl")
             .build();
 
-    BatchJob batchJob = client.batches.create("gemini-3.7-flash", batchJobSource, null);
+    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
     System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
 
 The following shows an example output of this job:
@@ -763,7 +763,7 @@ The following shows an example output of this job:
           "1/2 cup (100g) packed light brown sugar",
           "1 large egg",
           "1 teaspoon vanilla extract",
-          "1/2 teaspoon baking soda",
+          &quot;1/2 teaspoon baking soda",
           "1/4 teaspoon salt"
         ]
       },
@@ -874,7 +874,7 @@ You can poll the job status periodically to check for completion.
             .format("jsonl")
             .build();
 
-    BatchJob batchJob = client.batches.create("gemini-3.7-flash", batchJobSource, null);
+    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
     System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
 
 ### Polling and webhooks
@@ -932,7 +932,7 @@ complete.
             .format("jsonl")
             .build();
 
-    BatchJob batchJob = client.batches.create("gemini-3.7-flash", batchJobSource, null);
+    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
     System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
 
 ### REST
@@ -1084,7 +1084,7 @@ before they are permanently deleted.
             .format("jsonl")
             .build();
 
-    BatchJob batchJob = client.batches.create("gemini-3.7-flash", batchJobSource, null);
+    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
     System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
 
 ### REST
@@ -1155,7 +1155,7 @@ You can list your recent batch jobs.
             .format("jsonl")
             .build();
 
-    BatchJob batchJob = client.batches.create("gemini-3.7-flash", batchJobSource, null);
+    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
     System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
 
 ### REST
@@ -1190,7 +1190,7 @@ canceled, it stops processing new requests.
             .format("jsonl")
             .build();
 
-    BatchJob batchJob = client.batches.create("gemini-3.7-flash", batchJobSource, null);
+    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
     System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
 
 ### REST
@@ -1234,7 +1234,7 @@ batch jobs.
             .format("jsonl")
             .build();
 
-    BatchJob batchJob = client.batches.create("gemini-3.7-flash", batchJobSource, null);
+    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
     System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
 
 ### REST
@@ -1421,7 +1421,7 @@ a [JSONL input file](https://ai.google.dev/gemini-api/docs/batch-api#input-file-
             .format("jsonl")
             .build();
 
-    BatchJob batchJob = client.batches.create("gemini-3.7-flash", batchJobSource, null);
+    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
     System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
 
 ### REST
@@ -1673,7 +1673,7 @@ a [JSONL input file](https://ai.google.dev/gemini-api/docs/batch-api#input-file-
             .format("jsonl")
             .build();
 
-    BatchJob batchJob = client.batches.create("gemini-3.7-flash", batchJobSource, null);
+    BatchJob batchJob = client.batches.create("gemini-3.8-flash", batchJobSource, null);
     System.out.println("Batch Job Name: " + batchJob.name().orElse(""));
 
 ### REST

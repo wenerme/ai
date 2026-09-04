@@ -14,10 +14,6 @@ keywords: Muon optimizer, MuSGD, Newton-Schulz iteration, orthogonalization, mom
 
 <hr>
 
-## ::: ultralytics.optim.muon.Muon
-
-<hr>
-
 ## ::: ultralytics.optim.muon.zeropower_via_newtonschulz5
 
 <hr>
