@@ -33,3 +33,4 @@ df
 ## Subcommands
 
 - [`ci-summary`](ci-summary.md)
+- [`npm`](npm.md)

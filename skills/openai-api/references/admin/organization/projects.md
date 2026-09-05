@@ -3710,7 +3710,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/model_permissions 
     "object": "project.model_permissions",
     "mode": "allow_list",
     "model_ids": [
-        "gpt-5.6-sol",
+        "gpt-6-astra",
         "o3"
     ]
 }
@@ -5332,6 +5332,10 @@ Creates an API key for a service account in the project.
 
 ### Body Parameters
 
+- `expires_in_seconds: optional number or null`
+
+  Number of seconds until the API key expires.
+
 - `name: optional string`
 
   API key name.
@@ -5364,6 +5368,10 @@ Creates an API key for a service account in the project.
 
   The unredacted API key value.
 
+- `expires_at: optional number or null`
+
+  The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
+
 ### Example
 
 ```http
@@ -5380,7 +5388,8 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
   "created_at": 0,
   "name": "name",
   "object": "organization.project.service_account.api_key",
-  "value": "value"
+  "value": "value",
+  "expires_at": 0
 }
 ```
 
@@ -5412,7 +5421,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
 ### API Key Create Response
 
-- `APIKeyCreateResponse object { id, created_at, name, 2 more }`
+- `APIKeyCreateResponse object { id, created_at, name, 3 more }`
 
   - `id: string`
 
@@ -5435,6 +5444,10 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
   - `value: string`
 
     The unredacted API key value.
+
+  - `expires_at: optional number or null`
+
+    The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
 # Spend Alerts
 

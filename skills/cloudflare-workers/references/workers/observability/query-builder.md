@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Query Builder
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/query-builder/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/query-builder/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Query Builder helps you write structured queries to investigate and visualize your telemetry data. The Query Builder searches the Workers Observability dataset, which currently includes all logs stored by [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/).
+
+You can also run the same queries programmatically using the [Workers Observability REST API](https://developers.cloudflare.com/api/resources/workers/subresources/observability/), which exposes endpoints to list dataset keys, run a query, and list the values for a key.
 
 The Query Builder can be found in the **Observability** page of the Cloudflare dashboard:
 
@@ -145,7 +147,7 @@ The **Visualizations** tab shows graphs and a summary table for the query.
 
 ### Invocations tab
 
-The **Invocations** tab shows all logs, grouped by by the invocation, and ordered by timestamp. Only invocations matching the query criteria are returned.
+The **Invocations** tab shows all logs, grouped by the invocation, and ordered by timestamp. Only invocations matching the query criteria are returned.
 
 ![Invocations Overview](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2112,height=966,format=webp/_astro/wobs_invocation_logs_full_list_122.BDOkV-CS.png)
 
@@ -204,5 +206,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/query-builder/#page","headline":"Query Builder · Cloudflare Workers docs","description":"Write structured queries to investigate and visualize your telemetry data.","url":"https://developers.cloudflare.com/workers/observability/query-builder/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/query-builder/#page","headline":"Query Builder · Cloudflare Workers docs","description":"Write structured queries to investigate and visualize your telemetry data.","url":"https://developers.cloudflare.com/workers/observability/query-builder/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

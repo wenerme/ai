@@ -1864,43 +1864,41 @@ status.
 These are the parameters you can set in your API request to control the video
 generation process.
 
-| Parameter | Veo 3.1 \& Veo 3.1 Fast | Veo 3.1 Lite | Veo 3 \& Veo 3 Fast | Veo 2 |
-|---|---|---|---|---|
-| Instances |||||
-| `prompt`: The text description for the video. Supports audio cues. | `string` | `string` | `string` | `string` |
-| `image`: An initial image to animate. | `Image` object | `Image` object | `Image` object | `Image` object |
-| `lastFrame`: The final image for an interpolation video to transition. Must be used in combination with the `image` parameter. | `Image` object | `Image` object | `Image` object | `Image` object |
-| `referenceImages`: Up to three images to be used as style and content references. | `VideoGenerationReferenceImage` object | `n/a` object | n/a | n/a |
-| `video`: Video to be used for video extension. | `Video` object from a previous generation | n/a | n/a | n/a |
-| Parameters |||||
-| `aspectRatio`: The video's aspect ratio. | `"16:9"` (default), `"9:16"` | `"16:9"` (default), `"9:16"` | `"16:9"` (default), `"9:16"` | `"16:9"` (default), `"9:16"` |
-| `durationSeconds`: Length of the generated video. | `"4"`, `"6"`, `"8"`. * Must be "8" when using extension, reference images or with 1080p and 4k resolutions* | `"4"`, `"6"`, `"8"`. * Must be "8" when using reference images or with 1080p* | `"4"`, `"6"`, `"8"`. * Must be "8" when using extension, reference images or with 1080p and 4k resolutions* | `"5"`, `"6"`, `"8"` |
-| `personGeneration`: Controls the generation of people. (See [Limitations](https://ai.google.dev/gemini-api/docs/veo#limitations) for region restrictions) | Text-to-video \& Extension: `"allow_all"` only Image-to-video, Interpolation, \& Reference images: `"allow_adult"` only | Text-to-video: `"allow_all"` only Image-to-video, Interpolation, \& Reference images: `"allow_adult"` only | Text-to-video: `"allow_all"` only Image-to-video: `"allow_adult"` only | Text-to-video: `"allow_all"`, `"allow_adult"`, `"dont_allow"` <br /> Image-to-video: `"allow_adult"`, and `"dont_allow"` |
-| `resolution`: The video's resolution. | `"720p"` (default), `"1080p"` (only supports 8s duration), `"4k"` (only supports 8s duration) * `"720p"` only for extension* | `"720p"` (default), `"1080p"` (only supports 8s duration) | `"720p"` (default), `"1080p"` (only supports 8s duration), `"4k"` (only supports 8s duration) * `"720p"` only for extension* | Unsupported |
+| Parameter | Veo 3.1 \& Veo 3.1 Fast | Veo 3.1 Lite | Veo 3 \& Veo 3 Fast |
+|---|---|---|---|
+| Instances ||||
+| `prompt`: The text description for the video. Supports audio cues. | `string` | `string` | `string` |
+| `image`: An initial image to animate. | `Image` object | `Image` object | `Image` object |
+| `lastFrame`: The final image for an interpolation video to transition. Must be used in combination with the `image` parameter. | `Image` object | `Image` object | `Image` object |
+| `referenceImages`: Up to three images to be used as style and content references. | `VideoGenerationReferenceImage` object | `n/a` object | n/a |
+| `video`: Video to be used for video extension. | `Video` object from a previous generation | n/a | n/a |
+| Parameters ||||
+| `aspectRatio`: The video's aspect ratio. | `"16:9"` (default), `"9:16"` | `"16:9"` (default), `"9:16"` | `"16:9"` (default), `"9:16"` |
+| `durationSeconds`: Length of the generated video. | `"4"`, `"6"`, `"8"`. * Must be "8" when using extension, reference images or with 1080p and 4k resolutions* | `"4"`, `"6"`, `"8"`. * Must be "8" when using reference images or with 1080p* | `"4"`, `"6"`, `"8"`. * Must be "8" when using extension, reference images or with 1080p and 4k resolutions* |
+| `personGeneration`: Controls the generation of people. (See [Limitations](https://ai.google.dev/gemini-api/docs/veo#limitations) for region restrictions) | Text-to-video \& Extension: `"allow_all"` only Image-to-video, Interpolation, \& Reference images: `"allow_adult"` only | Text-to-video: `"allow_all"` only Image-to-video, Interpolation, \& Reference images: `"allow_adult"` only | Text-to-video: `"allow_all"` only Image-to-video: `"allow_adult"` only |
+| `resolution`: The video's resolution. | `"720p"` (default), `"1080p"` (only supports 8s duration), `"4k"` (only supports 8s duration) * `"720p"` only for extension* | `"720p"` (default), `"1080p"` (only supports 8s duration) | `"720p"` (default), `"1080p"` (only supports 8s duration), `"4k"` (only supports 8s duration) * `"720p"` only for extension* |
 
 Note that the `seed` parameter is also available for Veo 3 models.
 It doesn't guarantee determinism, but slightly improves it.
 
 ## Model features
 
-| Feature | Veo 3.1 \& Veo 3.1 Fast | Veo 3.1 Lite | Veo 3 \& Veo 3 Fast | Veo 2 |
-|---|---|---|---|---|
-| **Audio:** Natively generates audio with video. | ✔️ Always on | ✔️ Always on | ✔️ Always on | ❌ Silent only |
-| **Input modalities:** The type of input used for generation. | Text-to-Video, Image-to-Video, Video-to-Video | Text-to-Video, Image-to-Video | Text-to-Video, Image-to-Video | Text-to-Video, Image-to-Video |
-| **Resolution:** The output resolution of the video. | 720p, 1080p (8s length only), 4k (8s length only) *720p only when using video extension.* | 720p, 1080p (8s length only) | 720p \& 1080p (16:9 only) | 720p |
-| **Frame rate:** The output frame rate of the video. | 24fps | 24fps | 24fps | 24fps |
-| **Video duration:** Length of the generated video. | 8 seconds, 6 seconds, 4 seconds *8 seconds only if 1080p or 4k or using reference images* | 8 seconds, 6 seconds, 4 seconds *8 seconds only if 1080p or using reference images* | 8 seconds | 5-8 seconds |
-| **Videos per request:** Number of videos generated per request. | 1 | 1 | 1 | 1 or 2 |
-| **Status:** Model availability | [Preview](https://ai.google.dev/gemini-api/docs/models#preview) | [Preview](https://ai.google.dev/gemini-api/docs/models#preview) | [Stable](https://ai.google.dev/gemini-api/docs/models#stable) | [Stable](https://ai.google.dev/gemini-api/docs/models#latest-stable) |
+| Feature | Veo 3.1 \& Veo 3.1 Fast | Veo 3.1 Lite | Veo 3 \& Veo 3 Fast |
+|---|---|---|---|
+| **Audio:** Natively generates audio with video. | ✔️ Always on | ✔️ Always on | ✔️ Always on |
+| **Input modalities:** The type of input used for generation. | Text-to-Video, Image-to-Video, Video-to-Video | Text-to-Video, Image-to-Video | Text-to-Video, Image-to-Video |
+| **Resolution:** The output resolution of the video. | 720p, 1080p (8s length only), 4k (8s length only) *720p only when using video extension.* | 720p, 1080p (8s length only) | 720p \& 1080p (16:9 only) |
+| **Frame rate:** The output frame rate of the video. | 24fps | 24fps | 24fps |
+| **Video duration:** Length of the generated video. | 8 seconds, 6 seconds, 4 seconds *8 seconds only if 1080p or 4k or using reference images* | 8 seconds, 6 seconds, 4 seconds *8 seconds only if 1080p or using reference images* | 8 seconds |
+| **Videos per request:** Number of videos generated per request. | 1 | 1 | 1 |
+| **Status:** Model availability | [Preview](https://ai.google.dev/gemini-api/docs/models#preview) | [Preview](https://ai.google.dev/gemini-api/docs/models#preview) | [Stable](https://ai.google.dev/gemini-api/docs/models#stable) |
 
 ## Limitations
 
 - **Multi-video prompting:** Referencing or reasoning across multiple videos is not currently supported. Attempting multi-video prompting may result in degraded model performance or unexpected outputs.
 - **Language support:** English (EN) is fully supported, but other languages have not been evaluated, so they may work but results can vary.
 - **Request latency:** Min: 11 seconds; Max: 6 minutes (during peak hours).
-- **Regional limitations:** In EU, UK, CH, MENA locations, the following are the allowed values for `personGeneration`:
-  - Veo 3 and 3.1: `allow_adult` only.
-  - Veo 2: `dont_allow` and `allow_adult`. Default is `dont_allow`.
+- **Regional limitations:** In EU, UK, CH, MENA locations, `allow_adult` is the only allowed value for `personGeneration`.
 - **Video retention:** Generated videos are stored on the server for 2 days, after which they are removed. To save a local copy, you must download your video within 2 days of generation. Extended videos are treated as newly generated videos.
 - **Watermarking:** Videos created by Veo are watermarked using [SynthID](https://deepmind.google/technologies/synthid/), our tool for watermarking and identifying AI-generated content. Videos can be verified using the [SynthID](https://deepmind.google/science/synthid/) verification platform.
 - **Safety:** Generated videos are passed through safety filters and memorization checking processes that help mitigate privacy, copyright and bias risks.
@@ -2157,24 +2155,6 @@ details.
 | Supported data types | **Input** Text, Image **Output** Video with audio |
 | Limits | **Text input** 1,024 tokens **Output video** 1 |
 | Latest update | July 2025 |
-
-### Veo 2 (Deprecated)
-
-| Property | Description |
-|---|---|
-| Model code | **Gemini API** `veo-2.0-generate-001` |
-| Supported data types | **Input** Text, image **Output** Video |
-| Limits | **Text input** N/A **Image input** Any image resolution and aspect ratio up to 20MB file size **Output video** Up to 2 |
-| Latest update | April 2025 |
-
-### Veo 2 (Deprecated)
-
-| Property | Description |
-|---|---|
-| Model code | **Gemini API** `veo-2.0-generate-001` |
-| Supported data types | **Input** Text, image **Output** Video |
-| Limits | **Text input** N/A **Image input** Any image resolution and aspect ratio up to 20MB file size **Output video** Up to 2 |
-| Latest update | April 2025 |
 
 Veo Fast versions allow developers to create videos with sound while maintaining
 high quality and optimizing for speed and business use cases. They're ideal for

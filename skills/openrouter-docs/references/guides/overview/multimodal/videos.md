@@ -519,7 +519,7 @@ MODEL: 'google/gemini-2.5-flash'
 
 When agentic processing is used, the model's internal video navigation steps are returned as encrypted reasoning rather than as tool calls, and the response finishes normally. The exact shape depends on the API:
 
-* **Chat Completions API**: The navigation steps appear as encrypted `reasoning_details` entries on the assistant message, and the response finishes with `finish_reason: "stop"`. To preserve the video context on follow-up turns, send the assistant message back with its `reasoning_details` intact, as with other [reasoning token](/docs/guides/best-practices/reasoning-tokens) round-tripping.
+* **Chat Completions API**: The navigation steps appear as encrypted `reasoning_details` entries on the assistant message, and the response finishes with `finish_reason: "stop"`. To preserve the video context on follow-up turns, send the assistant message back with its `reasoning_details` intact, as with other [reasoning token](/docs/guides/overview/reasoning-tokens) round-tripping.
 * **Responses API**: The navigation steps appear as `reasoning` output items with `encrypted_content`. To preserve the video context on follow-up turns, echo the response's output items (including the `reasoning` items) back in the `input` of the next request.
 
 ## Supported Video Formats

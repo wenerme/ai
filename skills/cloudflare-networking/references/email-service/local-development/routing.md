@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Test email routing Workers locally using wrangler dev with simulated incoming emails
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/local-development/routing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/local-development/routing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Test email routing behavior locally using `wrangler dev` to simulate incoming emails and verify your routing logic before deploying.
 
@@ -35,14 +35,14 @@ Configure your Wrangler file:
 {
 	"name": "email-routing-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-05",
 }
 ```
 
 ```toml
 name = "email-routing-worker"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-05"
 ```
 
 ## Basic routing worker
@@ -86,7 +86,7 @@ npx wrangler dev
 Send a test email using the local endpoint. The request body must be a raw email message in [RFC 5322 ↗](https://datatracker.ietf.org/doc/html/rfc5322) format, and the message must include a `Message-ID` header:
 
 ```bash
-curl --request POST 'http://localhost:8787/cdn-cgi/handler/email' \
+curl --request POST 'http://localhost:8787/cdn-cgi/local/email' \
   --url-query 'from=sender@example.com' \
   --url-query 'to=recipient@example.com' \
   --data-raw 'Received: from smtp.example.com (127.0.0.1)
@@ -150,5 +150,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/local-development/routing/#page","headline":"Email routing · Cloudflare Email Service docs","description":"Test Email Service routing Workers locally using wrangler dev with simulated incoming emails.","url":"https://developers.cloudflare.com/email-service/local-development/routing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/local-development/routing/#page","headline":"Email routing · Cloudflare Email Service docs","description":"Test Email Service routing Workers locally using wrangler dev with simulated incoming emails.","url":"https://developers.cloudflare.com/email-service/local-development/routing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

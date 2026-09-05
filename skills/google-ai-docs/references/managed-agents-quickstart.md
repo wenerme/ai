@@ -56,7 +56,7 @@ A single call to the [Interactions API](https://ai.google.dev/gemini-api/docs) p
 
     CreateModelInteraction req =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Summarize the project structure."))
             .environment(CreateModelInteractionEnvironment.of("remote"))
             .build();
@@ -124,7 +124,7 @@ Pass both in their respective place to resume:
 
     CreateModelInteraction req =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Summarize the project structure."))
             .environment(CreateModelInteractionEnvironment.of("remote"))
             .build();
@@ -213,7 +213,7 @@ For long-running tasks, you can stream the response to see the agent work in rea
 
     CreateModelInteraction req =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Summarize the project structure."))
             .environment(CreateModelInteractionEnvironment.of("remote"))
             .build();
@@ -308,7 +308,7 @@ When the agent creates files inside the sandbox. Download them using the Files A
 
     CreateModelInteraction req =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Summarize the project structure."))
             .environment(CreateModelInteractionEnvironment.of("remote"))
             .build();
@@ -320,10 +320,13 @@ When the agent creates files inside the sandbox. Download them using the Files A
 
 ### REST
 
+    ENV_ID="your_environment_id_here"
+
     curl -L -X GET "https://generativelanguage.googleapis.com/v1beta/files/environment-$ENV_ID:download?alt=media" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -o snapshot.tar
 
+    mkdir -p extracted_snapshot
     tar -xf snapshot.tar -C extracted_snapshot
 
 ## Save a managed agent
@@ -341,7 +344,7 @@ When you save an agent, notice the architectural symmetry with inline interactio
         base_agent="antigravity-preview-05-2026",
         agent_config={
             "type": "antigravity",
-            "model": "gemini-3.7-flash",
+            "model": "gemini-3.8-flash",
         },
         system_instruction="You are a math analysis agent. Generate sequences, visualize them, and export results as PDF reports.",
         base_environment={
@@ -370,7 +373,7 @@ When you save an agent, notice the architectural symmetry with inline interactio
         base_agent: "antigravity-preview-05-2026",
         agent_config: {
             type: "antigravity",
-            model: "gemini-3.7-flash",
+            model: "gemini-3.8-flash",
         },
         system_instruction: "You are a math analysis agent. Generate sequences, visualize them, and export results as PDF reports.",
         base_environment: {
@@ -406,7 +409,7 @@ When you save an agent, notice the architectural symmetry with inline interactio
 
     CreateModelInteraction req =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Summarize the project structure."))
             .environment(CreateModelInteractionEnvironment.of("remote"))
             .build();
@@ -426,7 +429,7 @@ When you save an agent, notice the architectural symmetry with inline interactio
         "base_agent": "antigravity-preview-05-2026",
         "agent_config": {
             "type": "antigravity",
-            "model": "gemini-3.7-flash"
+            "model": "gemini-3.8-flash"
         },
         "system_instruction": "You are a math analysis agent. Generate sequences, visualize them, and export results as PDF reports.",
         "base_environment": {
@@ -486,7 +489,7 @@ Once you've saved a managed agent, you can invoke it by ID. Each invocation fork
 
     CreateModelInteraction req =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("Summarize the project structure."))
             .environment(CreateModelInteractionEnvironment.of("remote"))
             .build();

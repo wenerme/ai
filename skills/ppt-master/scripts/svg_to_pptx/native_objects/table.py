@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from typing import Any
 from xml.etree import ElementTree as ET
@@ -16,6 +17,7 @@ from ..drawingml.utils import (
     _xml_escape,
     detect_text_lang,
     font_px_to_hpt,
+    px_to_emu,
     text_has_rtl_characters,
     text_uses_rtl,
 )
@@ -1034,6 +1036,44 @@ def _native_table_fill_warnings(
     return warnings
 
 
+def _native_table_body_text_warnings(
+    payload: dict[str, Any],
+    table_rows: list[list[Any]],
+    header_rows: int,
+    text_cells: list[tuple[Any, int, int]],
+) -> list[str]:
+    """Report fallback body text colours the payload would not carry."""
+    style = payload.get("style") if isinstance(payload.get("style"), dict) else {}
+    style_body_text = _hex_or_none(style.get("body_text"))
+    body_records = [item for item in text_cells if item[1] >= header_rows]
+    if not body_records:
+        return []
+    body_colors = [
+        record.fill
+        for record, _, col_idx in body_records
+        if col_idx != 0 and record.fill
+    ]
+    body_color = max(set(body_colors), key=body_colors.count) if body_colors else None
+    missing_colors: set[str] = set()
+    for record, row_idx, col_idx in body_records:
+        if record.fill is None:
+            continue
+        if col_idx == 0 and record.fill != body_color:
+            continue  # first-column emphasis is reported separately
+        cell_color = _table_cell_parity_text_style(table_rows[row_idx][col_idx])[1]
+        if cell_color is None:
+            cell_color = style_body_text
+        if cell_color != record.fill:
+            missing_colors.add(record.fill)
+    if not missing_colors:
+        return []
+    return [
+        "Native PPTX table body text color "
+        + "/".join(f"#{color}" for color in sorted(missing_colors))
+        + " is not projected to cell color, defaults.run.color, or style.body_text"
+    ]
+
+
 def _native_table_first_column_warnings(
     table_rows: list[list[Any]],
     header_rows: int,
@@ -1269,6 +1309,14 @@ def _native_table_warnings(
         )
     )
     warnings.extend(
+        _native_table_body_text_warnings(
+            payload,
+            table_rows,
+            header_rows,
+            text_cells,
+        )
+    )
+    warnings.extend(
         _native_table_border_topology_warnings(
             payload,
             table_rows,
@@ -1366,7 +1414,44 @@ def _table_padding_value(
     return _powerpoint_emu(pixels, f"table {side} padding")
 
 
-def _table_padding_attrs(cell_data: dict[str, Any], style: dict[str, Any]) -> str:
+_TEXT_LINE_FACTOR = 1.4  # PowerPoint line box per em, covering CJK faces' tall metrics
+
+
+def _table_text_height_emu(paragraphs_xml: str) -> int:
+    """Estimate the vertical space the cell's paragraphs need in PowerPoint."""
+    sizes = [int(value) for value in re.findall(r' sz="(\d+)"', paragraphs_xml)]
+    paragraph_count = max(1, paragraphs_xml.count("<a:p>"))
+    if not sizes:
+        return 0
+    line_px = max(sizes) / 100 / 0.75 * _TEXT_LINE_FACTOR
+    return px_to_emu(line_px * paragraph_count)
+
+
+def _table_padding_attrs(
+    cell_data: dict[str, Any],
+    style: dict[str, Any],
+    *,
+    row_height: int | None = None,
+    paragraphs_xml: str | None = None,
+) -> str:
+    values = {
+        side: _table_padding_value(cell_data, style, side)
+        for side in ("left", "right", "top", "bottom")
+    }
+    # An authored row height is geometry; vertical padding is style. When the
+    # text line plus both margins would exceed the row, PowerPoint grows the
+    # row instead, so shrink the margins to what the row can hold.
+    if row_height is not None and paragraphs_xml is not None:
+        top = values["top"] or 0
+        bottom = values["bottom"] or 0
+        room = row_height - _table_text_height_emu(paragraphs_xml)
+        if top + bottom > room > 0:
+            scale = room / (top + bottom)
+            values["top"] = int(top * scale) if values["top"] is not None else None
+            values["bottom"] = int(bottom * scale) if values["bottom"] is not None else None
+        elif top + bottom > room:
+            values["top"] = 0 if values["top"] is not None else None
+            values["bottom"] = 0 if values["bottom"] is not None else None
     attrs = []
     for attr, side in (
         ("marL", "left"),
@@ -1374,7 +1459,7 @@ def _table_padding_attrs(cell_data: dict[str, Any], style: dict[str, Any]) -> st
         ("marT", "top"),
         ("marB", "bottom"),
     ):
-        value = _table_padding_value(cell_data, style, side)
+        value = values[side]
         if value is not None:
             attrs.append(f'{attr}="{value}"')
     return (" " + " ".join(attrs)) if attrs else ""
@@ -1619,11 +1704,18 @@ def _build_native_table(elem: ET.Element, ctx: ConvertContext, payload: dict[str
     preserve_source_style = native_import_source(elem) == "pptx"
 
     style = payload.get("style") if isinstance(payload.get("style"), dict) else {}
-    header_fill = _clean_hex(style.get("header_fill"), "#1F4E79")
-    header_text = _clean_hex(style.get("header_text"), "#FFFFFF")
-    body_fill = _clean_hex(style.get("body_fill"), "#FFFFFF")
+    # Fills are only what the payload says: a cell that resolves to no fill
+    # exports as noFill so the slide background shows through, matching a
+    # fallback that draws no cell rect. Text colour keeps a legible default
+    # because an invisible run is worse than a wrong one.
+    header_fill = _hex_or_none(style.get("header_fill"))
+    body_fill = _hex_or_none(style.get("body_fill"))
+    band_fill = _hex_or_none(style.get("band_fill"))
     body_text = _clean_hex(style.get("body_text"), "#1F2937")
-    band_fill = _clean_hex(style.get("band_fill"), "#F3F6FA")
+    header_text = _clean_hex(
+        style.get("header_text"),
+        "#FFFFFF" if header_fill is not None else body_text,
+    )
     font_face = str(style["font_family"]) if style.get("font_family") else None
     body_font_size = _font_size_hpt(style.get("font_size"), 18)
     band_rows_enabled = _table_bool(
@@ -1709,14 +1801,17 @@ def _build_native_table(elem: ET.Element, ctx: ConvertContext, payload: dict[str
                 )
                 align = str(cell_data.get("align") or "l")
             else:
-                fill = _clean_hex(
-                    cell_data.get("fill"),
-                    header_fill if is_header else (
-                        band_fill
-                        if band_rows_enabled and row_idx % 2 == 0 and row_idx
-                        else body_fill
-                    ),
-                )
+                fill = _hex_or_none(cell_data.get("fill"))
+                if fill is None:
+                    banded = (
+                        band_rows_enabled
+                        and band_fill is not None
+                        and row_idx % 2 == 0
+                        and row_idx
+                    )
+                    fill = header_fill if is_header else (
+                        band_fill if banded else body_fill
+                    )
                 color = _clean_hex(
                     cell_data.get("color"),
                     header_text if is_header else body_text,
@@ -1837,7 +1932,7 @@ def _build_native_table(elem: ET.Element, ctx: ConvertContext, payload: dict[str
                 anchor_attr = f' anchor="{_table_anchor(cell_data, style)}"'
             tc_pr_attrs = (
                 f'{anchor_attr}'
-                f'{_table_padding_attrs(cell_data, style)}'
+                f'{_table_padding_attrs(cell_data, style, row_height=row_heights[row_idx], paragraphs_xml=paragraphs_xml)}'
                 f'{_table_cell_extra_attrs(cell_data)}'
             )
             border_xml = _table_border_xml(
@@ -1845,11 +1940,14 @@ def _build_native_table(elem: ET.Element, ctx: ConvertContext, payload: dict[str
                 style,
                 ctx.theme_color_spec,
             )
-            fill_xml = _table_fill_xml(
-                fill,
-                _table_fill_opacity(cell_data),
-                ctx.theme_color_spec,
-            )
+            if fill is None and not preserve_source_style:
+                fill_xml = "<a:noFill/>"
+            else:
+                fill_xml = _table_fill_xml(
+                    fill,
+                    _table_fill_opacity(cell_data),
+                    ctx.theme_color_spec,
+                )
             cells_xml.append(
                 f"<a:tc{merge_attrs}>"
                 "<a:txBody><a:bodyPr/><a:lstStyle/>"

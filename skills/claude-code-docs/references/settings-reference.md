@@ -620,6 +620,7 @@ scope: "Which settings files can set the key: user (~/.claude/settings.json), pr
 | [`awsAuthRefresh`](#awsauthrefresh)                                                                   | Refresh expired [Bedrock credentials](/docs/en/amazon-bedrock#advanced-credential-configuration) in `.aws` with your own command                                                                                                 | Authentication and providers       | Any file                |
 | [`awsCredentialExport`](#awscredentialexport)                                                         | Supply [Bedrock credentials](/docs/en/amazon-bedrock#advanced-credential-configuration) as JSON from your own command                                                                                                            | Authentication and providers       | Any file                |
 | [`axScreenReader`](#axscreenreader)                                                                   | Render [screen-reader friendly output](/docs/en/accessibility)                                                                                                                                                                   | Interface and terminal             | Any file                |
+| [`bashOutputMaxChars`](#bashoutputmaxchars)                                                           | Set how much of a successful command's [output](/docs/en/tools-reference#output-limits) Claude receives inline                                                                                                                   | Memory and context                 | Any file                |
 | [`blockedMarketplaces`](#blockedmarketplaces)                                                         | Block [plugin marketplace](/docs/en/plugin-marketplaces) sources for your organization                                                                                                                                           | Plugins and skills                 | Managed                 |
 | [`browserExternalPageTools`](#browserexternalpagetools)                                               | Keep Claude's tools off external pages in the [desktop](/docs/en/desktop) Browser pane                                                                                                                                           | Tools                              | Managed                 |
 | [`channelsEnabled`](#channelsenabled)                                                                 | Allow [channels](/docs/en/channels#enable-channels-for-your-organization) for your organization                                                                                                                                  | Plugins and skills                 | Managed                 |
@@ -786,6 +787,7 @@ scope: "Which settings files can set the key: user (~/.claude/settings.json), pr
 | [`switchModelsOnFlag`](#switchmodelsonflag)                                                           | Switch models automatically or pause when a [safety classifier](/docs/en/model-config#ask-before-switching) flags a request                                                                                                      | Model and responses                | Any file                |
 | [`syncClaudeAiSkills`](#syncclaudeaiskills)                                                           | Stop downloading the [skills enabled on your claude.ai account](/docs/en/skills#how-synced-skills-behave) and hide the ones already synced                                                                                       | Plugins and skills                 | User, local, or managed |
 | [`syntaxHighlightingDisabled`](#syntaxhighlightingdisabled)                                           | Turn off syntax highlighting in diffs and code blocks                                                                                                                                                                       | Interface and terminal             | Any file                |
+| [`taskOutputMaxChars`](#taskoutputmaxchars)                                                           | Set how much of a [background task's](/docs/en/tools-reference#background-commands) output Claude receives inline                                                                                                                | Memory and context                 | Any file                |
 | [`teammateDefaultModel`](#teammatedefaultmodel)                                                       | Removed in v2.1.234; see [Specify teammates and models](/docs/en/agent-teams#specify-teammates-and-models) for how Claude Code picks a teammate's model                                                                          | Global config settings             | Global config           |
 | [`teammateMode`](#teammatemode)                                                                       | Choose how [agent team teammates display](/docs/en/agent-teams#choose-a-display-mode)                                                                                                                                            | Agents, sessions, and worktrees    | Any file                |
 | [`terminalProgressBarEnabled`](#terminalprogressbarenabled)                                           | Hide the terminal progress bar in terminals that support it                                                                                                                                                                 | Interface and terminal             | Any file                |
@@ -2637,6 +2639,22 @@ Turn [auto memory](/docs/en/memory#enable-or-disable-auto-memory) on or off. Whe
 }
 ```
 
+### `bashOutputMaxChars`
+
+Set how many characters of a successful Bash or PowerShell command's [output Claude receives inline](/docs/en/tools-reference#output-limits). When output passes the limit, Claude Code saves it to a file and Claude receives a short preview plus the file's path. Raise the limit when command output, such as a verbose build or a full test-suite log, routinely overflows the default and you want Claude to read it without opening the file. Requires Claude Code v2.1.261 or later.
+
+* **Scope**: [`Any file`](#scopes)
+* **Type**: number of characters, a positive integer. Claude Code clamps the value into the range `4000` to `128000`
+* **Default**: unset, so Claude receives up to 30,000 characters inline
+
+```json settings.json theme={null}
+{
+  "bashOutputMaxChars": 100000
+}
+```
+
+When you set this key, Claude Code ignores the [`BASH_MAX_OUTPUT_LENGTH`](/docs/en/env-vars) environment variable.
+
 ### `claudeMd`
 
 Inject CLAUDE.md-style instructions as organization-managed memory without deploying a separate file. Claude Code loads the text as a managed memory entry ahead of user and project CLAUDE.md files.
@@ -2784,6 +2802,22 @@ Each turn, Claude sees a [listing of your skills](/docs/en/skills#skill-descript
 ```
 
 Raise it to keep long descriptions intact at the cost of more context per turn; lower it to fit more skills under [`skillListingBudgetFraction`](#skilllistingbudgetfraction).
+
+### `taskOutputMaxChars`
+
+Set how many characters of a [background task's](/docs/en/tools-reference#background-commands) output Claude receives inline when Claude reads the task with the `TaskOutput` tool. When a finished task's output is longer, Claude receives the most recent characters. Raise the limit when your background tasks routinely produce more output than the default. Requires Claude Code v2.1.261 or later.
+
+* **Scope**: [`Any file`](#scopes)
+* **Type**: number of characters, a positive integer. Claude Code clamps the value into the range `4000` to `128000`
+* **Default**: unset, so Claude receives up to 32,000 characters inline
+
+```json settings.json theme={null}
+{
+  "taskOutputMaxChars": 100000
+}
+```
+
+When you set this key, Claude Code ignores the [`TASK_MAX_OUTPUT_LENGTH`](/docs/en/env-vars) environment variable.
 
 ## Interface and terminal
 

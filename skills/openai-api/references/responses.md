@@ -23126,6 +23126,8 @@ as input for the model's response.
 
   Whether to store the generated model response for later retrieval via
   API.
+  Defaults to true when omitted.
+  If set to true, response data will be stored for at least 30 days, subject to the [data retention exceptions](/api/docs/guides/your-data#v1responses).
 
 - `stream: optional boolean or null`
 
@@ -88236,7 +88238,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Response Function Call Arguments Done Event
 
-- `ResponseFunctionCallArgumentsDoneEvent object { arguments, item_id, name, 3 more }`
+- `ResponseFunctionCallArgumentsDoneEvent object { arguments, item_id, output_index, 2 more }`
 
   Emitted when function-call arguments are finalized.
 
@@ -88247,10 +88249,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
   - `item_id: string`
 
     The ID of the item.
-
-  - `name: string`
-
-    The name of the function that was called.
 
   - `output_index: number`
 
@@ -141700,7 +141698,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `"response.function_call_arguments.delta"`
 
-  - `ResponseFunctionCallArgumentsDoneEvent object { arguments, item_id, name, 3 more }`
+  - `ResponseFunctionCallArgumentsDoneEvent object { arguments, item_id, output_index, 2 more }`
 
     Emitted when function-call arguments are finalized.
 
@@ -141711,10 +141709,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
     - `item_id: string`
 
       The ID of the item.
-
-    - `name: string`
-
-      The name of the function that was called.
 
     - `output_index: number`
 
@@ -148150,6 +148144,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       Whether to store the generated model response for later retrieval via
       API.
+      Defaults to true when omitted.
+      If set to true, response data will be stored for at least 30 days, subject to the [data retention exceptions](/api/docs/guides/your-data#v1responses).
 
     - `stream: optional boolean or null`
 

@@ -5,7 +5,7 @@ description: "Browse NanoGPT model IDs, capabilities, context windows, and prici
 
 # [NanoGPT logo]NanoGPT
 
-Access 591 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
+Access 592 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
 
 Learn more in the [NanoGPT documentation](https://docs.nano-gpt.com).
 
@@ -2800,18 +2800,6 @@ for await (const chunk of stream) {
     "outputCost": 0.7
   },
   {
-    "model": "nano-gpt/ibm-granite/granite-4.1-8b",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 131072,
-    "maxOutput": 117964,
-    "inputCost": 0.05,
-    "outputCost": 0.1
-  },
-  {
     "model": "nano-gpt/ibm-granite/granite-4.2-8b",
     "imageInput": false,
     "audioInput": false,
@@ -4382,6 +4370,30 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 2,
     "outputCost": 12
+  },
+  {
+    "model": "nano-gpt/openai/gpt-6-astra",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 10,
+    "outputCost": 50
+  },
+  {
+    "model": "nano-gpt/openai/gpt-6-astra-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 10,
+    "outputCost": 50
   },
   {
     "model": "nano-gpt/openai/gpt-chat-latest",

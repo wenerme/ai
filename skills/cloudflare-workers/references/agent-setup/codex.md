@@ -44,7 +44,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 1. **Download Codex**
@@ -129,23 +129,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ## Tips

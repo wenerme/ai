@@ -35514,6 +35514,8 @@ as input for the model's response.
 
   Whether to store the generated model response for later retrieval via
   API.
+  Defaults to true when omitted.
+  If set to true, response data will be stored for at least 30 days, subject to the [data retention exceptions](/api/docs/guides/your-data#v1responses).
 
 - `stream: optional boolean or null`
 
@@ -112289,7 +112291,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Beta Response Function Call Arguments Done Event
 
-- `BetaResponseFunctionCallArgumentsDoneEvent object { arguments, item_id, name, 4 more }`
+- `BetaResponseFunctionCallArgumentsDoneEvent object { arguments, item_id, output_index, 3 more }`
 
   Emitted when function-call arguments are finalized.
 
@@ -112300,10 +112302,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
   - `item_id: string`
 
     The ID of the item.
-
-  - `name: string`
-
-    The name of the function that was called.
 
   - `output_index: number`
 
@@ -185379,7 +185377,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The canonical name of the agent that produced this item.
 
-  - `BetaResponseFunctionCallArgumentsDoneEvent object { arguments, item_id, name, 4 more }`
+  - `BetaResponseFunctionCallArgumentsDoneEvent object { arguments, item_id, output_index, 3 more }`
 
     Emitted when function-call arguments are finalized.
 
@@ -185390,10 +185388,6 @@ curl https://api.openai.com/v1/responses/resp_123 \
     - `item_id: string`
 
       The ID of the item.
-
-    - `name: string`
-
-      The name of the function that was called.
 
     - `output_index: number`
 
@@ -192972,6 +192966,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       Whether to store the generated model response for later retrieval via
       API.
+      Defaults to true when omitted.
+      If set to true, response data will be stored for at least 30 days, subject to the [data retention exceptions](/api/docs/guides/your-data#v1responses).
 
     - `stream: optional boolean or null`
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cron Triggers
 
-Last updated Jun 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/cron-triggers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/cron-triggers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -178,16 +178,16 @@ Some common time intervals that may be useful for setting up your Cron Trigger:
 
 ## Test Cron Triggers locally
 
-Test Cron Triggers using Wrangler with [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev), or using the [Cloudflare Vite plugin ↗](https://developers.cloudflare.com/workers/vite-plugin/). This exposes a `/cdn-cgi/handler/scheduled` route, which can be used to test using an HTTP request. If you are using the Cloudflare Vite Plugin, ensure that you use the correct vite port for the following commands (Vite defaults to 5173).
+Test Cron Triggers using Wrangler with [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev), or using the [Cloudflare Vite plugin ↗](https://developers.cloudflare.com/workers/vite-plugin/). This exposes a `/cdn-cgi/local/scheduled` route, which can be used to test using an HTTP request. If you are using the Cloudflare Vite Plugin, ensure that you use the correct vite port for the following commands (Vite defaults to 5173).
 
 ```sh
-curl "http://localhost:8787/cdn-cgi/handler/scheduled"
+curl "http://localhost:8787/cdn-cgi/local/scheduled"
 ```
 
 By default, the endpoint returns the scheduled handler outcome as text. To return the structured scheduled handler result as JSON, pass `?format=json`.
 
 ```sh
-curl "http://localhost:8787/cdn-cgi/handler/scheduled?format=json"
+curl "http://localhost:8787/cdn-cgi/local/scheduled?format=json"
 ```
 
 ```json
@@ -202,13 +202,13 @@ The `noRetry` field is `true` when the scheduled handler calls `controller.noRet
 To simulate different cron patterns, a `cron` query parameter can be passed in.
 
 ```sh
-curl "http://localhost:8787/cdn-cgi/handler/scheduled?cron=*+*+*+*+*"
+curl "http://localhost:8787/cdn-cgi/local/scheduled?cron=*+*+*+*+*"
 ```
 
 Optionally, you can also pass a `time` query parameter to override `controller.scheduledTime` in your scheduled event listener.
 
 ```sh
-curl "http://localhost:8787/cdn-cgi/handler/scheduled?cron=*+*+*+*+*&time=1745856238000"
+curl "http://localhost:8787/cdn-cgi/local/scheduled?cron=*+*+*+*+*&time=1745856238000"
 ```
 
 ## View past events
@@ -296,5 +296,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/cron-triggers/#page","headline":"Cron Triggers · Cloudflare Workers docs","description":"Enable your Worker to be executed on a schedule.","url":"https://developers.cloudflare.com/workers/configuration/cron-triggers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/cron-triggers/#page","headline":"Cron Triggers · Cloudflare Workers docs","description":"Enable your Worker to be executed on a schedule.","url":"https://developers.cloudflare.com/workers/configuration/cron-triggers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

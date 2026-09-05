@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Regionalized IP Bindings
 
-Last updated Jul 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -33,6 +33,7 @@ Bindings are managed through the Data Localization Suite API under `/accounts/{a
 A binding covers a range of addresses within a prefix, not just a single address — you do **not** need to create one binding per IP address. The `cidr` you bind must:
 
 * Fall within the prefix identified by `prefix_id`.
+* Contain only unused IP addresses. Binding IP addresses that are already in use interrupts their traffic while the change propagates.
 * Be **more specific than the prefix itself** — a sub-range within it. For example, within a `/24` prefix you can bind any range from a `/25` down to a single address (a `/32` for IPv4, or a `/128` for IPv6). Binding the entire prefix (the full `/24`) is rejected with a [conflict error](#handle-a-conflict-error), because the whole prefix range is already in use once Cloudflare advertises it.
 
 How you choose the CIDR depends on how you want to split the prefix across regions:
@@ -40,7 +41,7 @@ How you choose the CIDR depends on how you want to split the prefix across regio
 * **One region for the whole prefix** — cover the prefix with sub-ranges that all point to the same region. For example, bind both `203.0.113.0/25` and `203.0.113.128/25` to `eu` to regionalize every address in a `/24`.
 * **Different regions for different addresses** — bind each range to the region you want (for example, `203.0.113.0/25` to `eu` and `203.0.113.128/25` to `us`). Cloudflare applies the most specific binding that matches a given address, so a narrower binding takes precedence over a broader one that overlaps it.
 
-Each CIDR can have only one binding. If you try to create a second binding for a CIDR that is already bound, the API returns a [conflict error](#handle-a-conflict-error). To change the region for an existing binding, [update it](#update-the-region-for-a-binding) instead of creating a new one.
+A conflict occurs only when you try to create two bindings for the exact same CIDR. Bindings with overlapping but different CIDRs can coexist, and Cloudflare applies the most specific matching binding. To change the region for an existing CIDR, [update its binding](#update-the-region-for-a-binding) instead of creating another one.
 
 ## Prerequisites
 
@@ -139,13 +140,38 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/dls/regiona
 }
 ```
 
-Note
+Always bind unused IP addresses
 
-After you create or change a binding, it can take a few hours for the change to propagate across Cloudflare's network before traffic is regionalized at the edge.
+Creating or changing a binding can take four to six hours to propagate across Cloudflare's network. If the affected IP addresses are already in use, this process interrupts their traffic and clients receive TCP resets.
 
-Connectivity to these addresses is not interrupted while the binding propagates — existing traffic continues to be served. However, a binding must finish propagating and become **active** before you can add its addresses to an [address map](https://developers.cloudflare.com/byoip/address-maps/) (including creating a new address map that contains them). Until the binding is active, those operations are rejected.
+Always bind unused IP addresses. Wait for the binding to become **active** before you direct production traffic to the addresses or add them to an [address map](https://developers.cloudflare.com/byoip/address-maps/).
 
-For this reason, create the binding **first** and allow it to finish propagating before you configure address maps for the affected addresses.
+### Check binding status
+
+Use the binding ID returned by the create request to call the [Get service binding](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service%5Fbindings/methods/get/) endpoint. The Regionalized IP Bindings API and Service Bindings API use the same binding ID.
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/addressing/prefixes/%7Bprefix_id%7D/bindings/%7Bbinding_id%7D" \
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+The binding is ready when `result.provisioning.state` is `active`:
+
+```json
+{
+	"success": true,
+	"errors": [],
+	"messages": [],
+	"result": {
+		"id": "f0e1d2c3-b4a5-6789-0abc-def123456789",
+		"cidr": "203.0.113.0/25",
+		"provisioning": {
+			"state": "active"
+		}
+	}
+}
+```
 
 ### Handle a conflict error
 
@@ -274,5 +300,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/#page","headline":"Regionalized IP Bindings · Cloudflare Data Localization Suite docs","description":"Bind a BYOIP prefix to a region so traffic to those IP addresses is processed in-region.","url":"https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/#page","headline":"Regionalized IP Bindings · Cloudflare Data Localization Suite docs","description":"Bind a BYOIP prefix to a region so traffic to those IP addresses is processed in-region.","url":"https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
