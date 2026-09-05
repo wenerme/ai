@@ -82,6 +82,7 @@ from .utils import (
     parse_project_stroke_dasharray,
     quantize_ooxml_alpha,
     project_definition_index,
+    svg_hidden_reason,
     matrix_multiply, parse_transform_matrix, parse_transform_operations,
     transform_point, _xml_escape,
 )
@@ -765,6 +766,7 @@ def _shape_xfrm_from_svg_rect(
     off_y = px_to_emu(resolved_y)
     ext_cx = px_to_emu(resolved_w)
     ext_cy = px_to_emu(resolved_h)
+    validate_ooxml_xfrm(off_x, off_y, ext_cx, ext_cy)
     return '', off_x, off_y, ext_cx, ext_cy, (off_x, off_y, off_x + ext_cx, off_y + ext_cy)
 
 
@@ -2098,7 +2100,21 @@ def _normalize_text_run_whitespace(
         (str(run.get('_xml_space', 'default')), str(run.get('text', '')))
         for run in runs
     ]
-    for index, text in normalize_project_text_segments(segments):
+    text_by_index = dict(normalize_project_text_segments(segments))
+    for index, source_run in enumerate(runs):
+        if '_inline_dx' in source_run:
+            # Insert after whitespace normalization so dx neither preserves
+            # indentation nor disappears with an empty/whitespace-only tspan.
+            run = {**source_run, 'text': ' ', 'letter_spacing': 0.0, 'text_decoration': 'none'}
+            dx = run.pop('_inline_dx')
+            run['letter_spacing'] = dx - _estimate_run_text_width(run)
+            run.update(text='\u00a0', _inline_dx=dx)
+            run.pop('_xml_space', None)
+            normalized.append(run)
+            continue
+        text = text_by_index.get(index)
+        if text is None:
+            continue
         run = {**runs[index], 'text': text}
         run.pop('_xml_space', None)
         normalized.append(run)
@@ -2138,10 +2154,67 @@ _WIDE_FAMILY_WIDTH_FACTORS = {
     'verdana': (1.02, 1.08),
 }
 
+# Monospaced faces advance every Latin glyph by one fixed em fraction, so the
+# per-glyph table (tuned for proportional sans faces) undershoots them by
+# 14–22%: measured 2026-09-05 at 20px, Courier New, DejaVu Sans Mono and Noto
+# Sans Mono all render 0.600 em per character where the generic estimate gives
+# 0.46–0.50. A monospaced run is therefore measured as characters × advance
+# instead of scaled by a factor; CJK glyphs in these faces stay full-width and
+# keep the generic estimate. Advances are the faces' published hmtx values.
+_MONOSPACE_ADVANCE_EM = {
+    'andale mono': 0.60,
+    'cascadia code': 0.586,
+    'cascadia mono': 0.586,
+    'consolas': 0.55,
+    'courier': 0.60,
+    'courier new': 0.60,
+    'dejavu sans mono': 0.602,
+    'fira code': 0.60,
+    'fira mono': 0.60,
+    'hack': 0.602,
+    'ibm plex mono': 0.60,
+    'inconsolata': 0.50,
+    'jetbrains mono': 0.60,
+    'liberation mono': 0.60,
+    'lucida console': 0.60,
+    'menlo': 0.602,
+    'monaco': 0.60,
+    'monospace': 0.60,
+    'noto sans mono': 0.60,
+    'pt mono': 0.60,
+    'roboto mono': 0.60,
+    'sf mono': 0.602,
+    'source code pro': 0.60,
+    'ubuntu mono': 0.50,
+}
+
+
+def _run_primary_family(run: dict[str, Any]) -> str:
+    return str(run.get('font_family') or '').split(',')[0].strip().strip('\'"').lower()
+
+
+# Fixed-pitch faces outside the table almost always say so in their name
+# (Cascadia Mono, Fira Code, Victor Mono, Noto Sans Mono CJK); 0.60 em is the
+# common advance of the Courier-derived and modern coding families alike.
+_MONOSPACE_NAME_HINTS = ('mono', 'code', 'courier', 'consol', 'typewriter')
+_MONOSPACE_DEFAULT_ADVANCE_EM = 0.60
+
+
+def _monospace_advance_em(run: dict[str, Any]) -> float | None:
+    """Return the fixed per-character advance of a monospaced run, if any."""
+    family = _run_primary_family(run)
+    if not family:
+        return None
+    advance = _MONOSPACE_ADVANCE_EM.get(family)
+    if advance is not None:
+        return advance
+    if any(hint in family for hint in _MONOSPACE_NAME_HINTS):
+        return _MONOSPACE_DEFAULT_ADVANCE_EM
+    return None
+
 
 def _family_width_factor(run: dict[str, Any]) -> float:
-    family = str(run.get('font_family') or '').split(',')[0].strip().strip('\'"').lower()
-    factors = _WIDE_FAMILY_WIDTH_FACTORS.get(family)
+    factors = _WIDE_FAMILY_WIDTH_FACTORS.get(_run_primary_family(run))
     if factors is None:
         return 1.0
     base, caps = factors
@@ -2150,6 +2223,8 @@ def _family_width_factor(run: dict[str, Any]) -> float:
 
 def _estimate_run_text_width(run: dict[str, Any]) -> float:
     """Estimate one run using the metrics actually emitted to DrawingML."""
+    if '_inline_dx' in run:
+        return float(run['_inline_dx'])
     text = str(run.get('text', ''))
     font_size_px = (
         font_px_to_hpt(float(run.get('font_size', 16)))
@@ -2160,6 +2235,18 @@ def _estimate_run_text_width(run: dict[str, Any]) -> float:
         font_size_px,
         str(run.get('font_weight', '400')),
     )
+    monospace_advance = _monospace_advance_em(run)
+    if monospace_advance is not None:
+        # Fixed-pitch faces ignore weight and glyph shape for Latin text.
+        cluster_widths = [
+            width
+            if any(is_cjk_char(ch) for ch in cluster)
+            else monospace_advance * font_size_px
+            for cluster, width in zip(
+                split_project_text_clusters(text),
+                cluster_widths,
+            )
+        ]
     letter_spacing_px = (
         drawingml_letter_spacing(
             float(run.get('letter_spacing', 0.0) or 0.0)
@@ -2223,6 +2310,17 @@ def _estimate_text_runs_width(
     so adding headroom there stretches the merged text frame beyond the
     author's source line width.
     """
+    if any('_inline_dx' in run for run in runs):
+        # A negative dx moves the cursor back; it must not subtract space
+        # already occupied by earlier glyphs or make the frame extent negative.
+        advance = right = 0.0
+        for run in runs:
+            if '_inline_dx' in run:
+                advance += float(run['_inline_dx'])
+                continue
+            advance += _estimate_text_runs_width([run], include_headroom=include_headroom)
+            right = max(right, advance)
+        return right
     if not include_headroom:
         return sum(_estimate_run_text_width(run) for run in runs)
 
@@ -2324,6 +2422,10 @@ def _extract_text_bullet(
     runs: list[dict[str, Any]],
 ) -> tuple[list[dict[str, Any]], dict[str, Any] | None]:
     """Convert a leading text bullet marker into paragraph metadata."""
+    if any('_inline_dx' in run for run in runs):
+        # Keep positioned markers literal so bullet normalization cannot
+        # discard or relocate an authored displacement.
+        return runs, None
     first_nonspace = _first_nonspace_run(runs)
     if first_nonspace and (
         first_nonspace.get(_INLINE_FORMULA_KEY) is not None
@@ -2575,6 +2677,15 @@ def _collect_inline_runs(
             ctx,
             svg_hyperlink_href(container),
         )
+
+    if container_tag == 'tspan' and container.get('dx') is not None:
+        dx = parse_svg_length(
+            container.get('dx'),
+            percent_base=ctx.viewport_width,
+            font_size=float(own_attrs.get('font_size', 16)) / (ctx.scale_y or 1.0),
+        ) * ctx.scale_x
+        if dx:
+            runs.append({**own_attrs, 'text': '', '_inline_dx': dx})
 
     if container.text:
         run = {
@@ -2840,7 +2951,7 @@ def _coalesce_text_runs(
         text = str(run.get('text', ''))
         if not text:
             continue
-        if run.get(_INLINE_FORMULA_KEY) is not None:
+        if run.get(_INLINE_FORMULA_KEY) is not None or '_inline_dx' in run:
             merged.append({**run, 'text': text})
             previous_properties = None
             continue
@@ -3784,6 +3895,35 @@ def _nested_crop_clip_preset_geometry_error(
     )
 
 
+def _visible_clip_shapes(
+    clip: ET.Element,
+    parent_by_id: dict[int, ET.Element],
+) -> list[ET.Element]:
+    """Resolve clip children with the same inherited visibility as visuals."""
+    return [
+        child for child in clip
+        if child.tag not in _CLIP_NON_VISUAL_ELEMENTS
+        and svg_hidden_reason(child, parent_by_id) is None
+    ]
+
+
+def empty_clip_path_reason(
+    element: ET.Element,
+    definitions: dict[str, ET.Element],
+    parent_by_id: dict[int, ET.Element],
+) -> str | None:
+    """Identify a valid clip reference whose children are all hidden."""
+    clip_id = resolve_url_id(element.get('clip-path', ''))
+    clip = definitions.get(clip_id)
+    if clip is not None and clip.tag == f'{{{SVG_NS}}}clipPath':
+        if (
+            any(child.tag not in _CLIP_NON_VISUAL_ELEMENTS for child in clip)
+            and not _visible_clip_shapes(clip, parent_by_id)
+        ):
+            return f'empty clip: url(#{clip_id})'
+    return None
+
+
 def project_clip_path_errors(root: ET.Element) -> list[str]:
     """Return clip-path errors that would otherwise degrade picture geometry."""
     definitions, duplicates = project_definition_index(root)
@@ -3851,10 +3991,9 @@ def project_clip_path_errors(root: ET.Element) -> list[str]:
                 f'{clip_label} cannot use {", ".join(clip_rules)}; native '
                 'picture geometry has no equivalent winding-rule control'
             )
-        visual_children = [
-            child for child in list(clip)
-            if child.tag not in _CLIP_NON_VISUAL_ELEMENTS
-        ]
+        visual_children = _visible_clip_shapes(clip, parent_by_id)
+        if not visual_children and empty_clip_path_reason(elem, definitions, parent_by_id):
+            continue
         if len(visual_children) != 1:
             errors.add(
                 f'{clip_label} must contain exactly one direct supported shape'
@@ -3937,16 +4076,12 @@ def _resolve_clip_geometry(
     if clip_tag != 'clipPath':
         return DEFAULT
 
-    # Find the first shape child of the clipPath
-    shape = None
-    for child in clip_elem:
-        child_tag = child.tag.replace(f'{{{SVG_NS}}}', '')
-        if child_tag in ('circle', 'ellipse', 'rect', 'path', 'polygon'):
-            shape = child
-            break
-
-    if shape is None:
+    shapes = _visible_clip_shapes(clip_elem, ctx.parent_by_id)
+    if not shapes:
         return DEFAULT
+    if len(shapes) != 1:
+        raise ValueError('clipPath must contain exactly one direct supported shape')
+    shape = shapes[0]
 
     shape_tag = shape.tag.replace(f'{{{SVG_NS}}}', '')
     is_obb = clip_elem.get('clipPathUnits') == 'objectBoundingBox'
@@ -5191,17 +5326,12 @@ def _resolve_nested_svg_clip_geometry(
     if not clip_id or clip_id not in ctx.defs:
         return default
     clip_elem = ctx.defs[clip_id]
-    shape = next(
-        (
-            child
-            for child in clip_elem
-            if child.tag.rsplit('}', 1)[-1]
-            in {'circle', 'ellipse', 'rect', 'path', 'polygon'}
-        ),
-        None,
-    )
-    if shape is None:
+    shapes = _visible_clip_shapes(clip_elem, ctx.parent_by_id)
+    if not shapes:
         return default
+    if len(shapes) != 1:
+        raise ValueError('clipPath must contain exactly one direct supported shape')
+    shape = shapes[0]
     if (
         clip_elem.get('clipPathUnits', 'userSpaceOnUse')
         != 'userSpaceOnUse'
@@ -5259,7 +5389,7 @@ def _resolve_nested_svg_clip_geometry(
     )
 
 
-def convert_nested_svg(elem: ET.Element, ctx: ConvertContext) -> ShapeResult:
+def convert_nested_svg(elem: ET.Element, ctx: ConvertContext) -> ShapeResult | None:
     """Convert a nested <svg> sprite-crop wrapper to a DrawingML picture.
 
     Pattern produced by pptx_to_svg::
@@ -5273,6 +5403,8 @@ def convert_nested_svg(elem: ET.Element, ctx: ConvertContext) -> ShapeResult:
     """
     crop = parse_project_nested_svg_crop(elem)
     image_elem = crop.image
+    if empty_clip_path_reason(image_elem, ctx.defs, ctx.parent_by_id):
+        return None
     source = load_project_image_source(
         image_elem,
         ctx.svg_dir,

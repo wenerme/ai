@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 from xml.etree import ElementTree as ET
@@ -19,6 +20,18 @@ from svg_to_pptx.native_objects.chart_style import (  # noqa: E402
     _native_chart_chrome_warnings,
 )
 from svg_to_pptx.native_objects.chart_xml import _chart_xml  # noqa: E402
+from pptx_to_svg.chart_to_svg import (  # noqa: E402
+    _UnsupportedChart,
+    _cache_point_values,
+    _category_payload,
+    _numeric_cache_values,
+)
+from pptx_to_svg.emu_units import NS, Xfrm  # noqa: E402
+from pptx_to_svg.ooxml_loader import PartRef  # noqa: E402
+from pptx_to_svg.normalized_chart_svg import render_normalized_chart_svg  # noqa: E402
+from pptx_to_svg.shape_walker import GRAPHIC, ShapeNode  # noqa: E402
+from pptx_to_svg.slide_to_svg import AssemblyContext, _convert_graphic_fallback  # noqa: E402
+from svg_authoring_view import _render_projection  # noqa: E402
 
 SVG_NS = "http://www.w3.org/2000/svg"
 
@@ -52,6 +65,91 @@ def _bar_payload(**extra: object) -> dict:
     }
     payload.update(extra)
     return payload
+
+
+class ChartImportTests(unittest.TestCase):
+    def test_sparse_cache_preserves_missing_indices(self) -> None:
+        cache = ET.fromstring(
+            '<c:numCache xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart">'
+            '<c:ptCount val="5"/><c:pt idx="3"><c:v>2.5</c:v></c:pt>'
+            '<c:pt idx="1"><c:v>1</c:v></c:pt></c:numCache>'
+        )
+        self.assertEqual(_cache_point_values(cache), [None, "1", None, "2.5", None])
+        self.assertEqual(_numeric_cache_values(cache), [None, 1, None, 2.5, None])
+
+    def test_exported_line_gaps_survive_category_import(self) -> None:
+        payload = {
+            "type": "line", "categories": ["A", "B", "C", "D"],
+            "series": [{"name": "S", "values": [1, None, 3, None]}],
+        }
+        chart = ET.fromstring(_render(payload)).find(
+            ".//{http://schemas.openxmlformats.org/drawingml/2006/chart}lineChart"
+        )
+        imported = _category_payload(chart, "line", Xfrm(0, 0, 400, 200))
+        self.assertEqual(imported["categories"], payload["categories"])
+        self.assertEqual(imported["series"], payload["series"])
+
+    def test_invalid_cache_indices_and_counts_remain_rejected(self) -> None:
+        for contents in (
+            '<c:ptCount val="1"/><c:pt idx="1"><c:v>2</c:v></c:pt>',
+            '<c:ptCount val="2"/><c:pt idx="0"/><c:pt idx="0"/>',
+            '<c:ptCount val="2"/><c:pt idx="-1"/>',
+            '<c:ptCount val="-1"/>',
+            '<c:ptCount val="bad"/>',
+        ):
+            with self.subTest(contents=contents):
+                cache = ET.fromstring(
+                    '<c:numCache xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart">'
+                    f'{contents}</c:numCache>'
+                )
+                with self.assertRaises(_UnsupportedChart):
+                    _cache_point_values(cache)
+
+    def test_normalized_chart_preview_keeps_gaps(self) -> None:
+        payload = {
+            "type": "line", "x": 0, "y": 0, "width": 400, "height": 200,
+            "categories": ["A", "B", "C", "D", "E", "F"],
+            "series": [{"name": "S", "values": [None, 1, 2, None, 4, None]}],
+            "line_style": "lineMarker",
+        }
+        rendered = render_normalized_chart_svg(payload, [])
+        self.assertIsNotNone(rendered)
+        root = ET.fromstring(f'<svg xmlns="{SVG_NS}">{rendered}</svg>')
+        lines = root.findall(f'.//{{{SVG_NS}}}polyline')
+        self.assertEqual([len(line.get("points").split()) for line in lines], [2, 1])
+        self.assertEqual(len(root.findall(f'.//{{{SVG_NS}}}circle')), 3)
+        for chart_type in ("area", "bar", "column"):
+            with self.subTest(type=chart_type):
+                self.assertIsNotNone(render_normalized_chart_svg({**payload, "type": chart_type}, []))
+        combo = {**payload, "type": "combo", "plots": [{"type": "line", "series": payload["series"]}]}
+        self.assertIsNotNone(render_normalized_chart_svg(combo, []))
+
+    def test_unsupported_graphic_placeholder_can_publish_authoring_projection(self) -> None:
+        xml = ET.fromstring(
+            f'<p:graphicFrame xmlns:p="{NS["p"]}" xmlns:a="{NS["a"]}">'
+            '<a:graphic><a:graphicData '
+            'uri="http://schemas.openxmlformats.org/drawingml/2006/chart"/>'
+            '</a:graphic></p:graphicFrame>'
+        )
+        node = ShapeNode(GRAPHIC, xml, Xfrm(20, 20, 200, 100), name="unsupported", spid="2")
+        ctx = AssemblyContext(
+            palette=None, pkg=None,
+            slide_part=PartRef("ppt/slides/slide1.xml", ET.Element("slide")),
+            render_graphic_previews=False,
+        )
+        fallback = _convert_graphic_fallback(node, ctx, top_level=True)
+        self.assertIn("unsupported-chart-reference", fallback)
+        self.assertIn("[chart]", fallback)
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / "slide.svg"
+            source.write_text(
+                f'<svg xmlns="{SVG_NS}" viewBox="0 0 400 200">{fallback}</svg>',
+                encoding="utf-8",
+            )
+            _, rendered, _ = _render_projection(source, Path(tmp) / "authoring.svg")
+            root = ET.fromstring(rendered)
+            self.assertTrue(root.get("font-family"))
+            self.assertIn("[chart]", "".join(root.itertext()))
 
 
 class CategoryOrderTests(unittest.TestCase):
@@ -340,20 +438,32 @@ class CompanionPlacementTests(unittest.TestCase):
         self.assertIn('anchor="b"', note[:note.index("</a:bodyPr>") + 1] if "</a:bodyPr>" in note else note[:900])
 
 
-class FrameTrimTests(unittest.TestCase):
-    def test_frame_top_moves_to_the_plot_when_nothing_sits_above_it(self) -> None:
-        from svg_to_pptx.native_objects import _trim_chart_frame_top
+class FrameGrowthTests(unittest.TestCase):
+    def test_frame_grows_below_the_plot_to_hold_value_axis_labels(self) -> None:
+        from svg_to_pptx.native_objects import _grow_chart_frame_for_axis_labels
 
-        payload = {"type": "bar", "categories": ["A"], "series": [{"name": "S", "values": [1]}]}
-        bounds = (0, 100 * 9525, 500 * 9525, 300 * 9525)
-        chart_data = _chart_data({**payload, "plot_area": {"x": 50, "y": 120, "width": 400, "height": 250}})
-        trimmed = _trim_chart_frame_top(payload, chart_data, bounds)
-        self.assertEqual(trimmed, (0, 120 * 9525, 500 * 9525, 280 * 9525))
-        titled = _trim_chart_frame_top({**payload, "title": "T"}, chart_data, bounds)
-        self.assertEqual(titled, bounds)
-        top_axis = _chart_data({**payload, "plot_area": {"x": 50, "y": 120, "width": 400, "height": 250},
-                                "axes": {"value": {"position": "top"}}})
-        self.assertEqual(_trim_chart_frame_top(payload, top_axis, bounds), bounds)
+        payload = {"type": "bar", "categories": ["A"], "series": [{"name": "S", "values": [1]}],
+                   "plot_area": {"x": 50, "y": 120, "width": 400, "height": 250}}
+        bounds = (0, 100 * 9525, 500 * 9525, 300 * 9525)  # frame bottom 400, plot bottom 370
+        grown = _grow_chart_frame_for_axis_labels(_chart_data(payload), bounds, axis_font_px=20)
+        self.assertEqual(grown, (0, 100 * 9525, 500 * 9525, 310 * 9525))  # bottom 370 + 40
+        roomy = (0, 100 * 9525, 500 * 9525, 320 * 9525)
+        self.assertEqual(_grow_chart_frame_for_axis_labels(_chart_data(payload), roomy, axis_font_px=20), roomy)
+
+    def test_frame_grows_above_for_a_top_axis_and_not_for_hidden_labels(self) -> None:
+        from svg_to_pptx.native_objects import _grow_chart_frame_for_axis_labels
+
+        base = {"type": "column", "categories": ["A"], "series": [{"name": "S", "values": [1]}],
+                "plot_area": {"x": 50, "y": 120, "width": 400, "height": 250}}
+        bounds = (0, 100 * 9525, 500 * 9525, 300 * 9525)  # plot top 120, frame top 100
+        top = _chart_data({**base, "axes": {"category": {"position": "top"}}})
+        self.assertEqual(_grow_chart_frame_for_axis_labels(top, bounds, axis_font_px=20),
+                         (0, 80 * 9525, 500 * 9525, 320 * 9525))
+        hidden = _chart_data({**base, "axes": {"category": {"label_position": "none"}}})
+        self.assertEqual(_grow_chart_frame_for_axis_labels(hidden, bounds, axis_font_px=20), bounds)
+        pie = _chart_data({"type": "pie", "categories": ["A"], "series": [{"name": "S", "values": [1]}],
+                           "plot_area": {"x": 50, "y": 120, "width": 400, "height": 250}})
+        self.assertEqual(_grow_chart_frame_for_axis_labels(pie, bounds, axis_font_px=20), bounds)
 
 
 if __name__ == "__main__":

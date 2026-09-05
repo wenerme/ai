@@ -1,13 +1,13 @@
 ---
 title: "LTX-2.3 ComfyUIワークフローチュートリアル | AI動画・音声生成ガイド"
 description: "LTX-2.3は、ComfyUIで利用できる高度な音声・動画生成モデルです。詳細描写、縦向き動画、音声、画像から動画、テキストから動画のワークフローを紹介します。"
-translationSourceHash: 36378426
+translationSourceHash: 2e21405a
 translationFrom: tutorials/video/ltx/ltx-2-3.mdx
 translationBlockHashes:
   "_intro": 2afce33d
   "Key features": 3ddea9bd
   "Getting started": 8bd36b77
-  "ComfyUI Native Workflows": f3645859
+  "ComfyUI Native Workflows": fb09a224
   "Prompting tips": f92227b7
   "Resources": 3f045765
 ---
@@ -334,6 +334,123 @@ ComfyUI/
 │   │   └── gemma_3_12B_it_fp4_mixed.safetensors
 │   └── 📂 geometry_estimation/
 │       └── moge_2_vitl_normal_fp16.safetensors
+```
+
+---
+
+### IC-LoRAによる動画編集
+
+IC-LoRAウェイトは生成制御だけに限りません。テンプレートライブラリには既製のLTX-2.3 IC-LoRA動画編集ワークフローが複数含まれており、それぞれComfy CloudまたはローカルのComfyUIで実行できます。LTX-2.3上でトレーニングされたコミュニティIC-LoRAチェックポイント（例：[LTX2.3-ICEdit-Insight](https://huggingface.co/joyfox/LTX2.3-ICEdit-Insight)ファミリー）も、ComfyUIのネイティブLTX-2.3モデルと互換性があります。
+
+#### 動画から字幕を削除
+
+動画から字幕、キャプション、透かし、その他のテキストオーバーレイを削除：
+
+[LTX-2.3 字幕削除ワークフロー プレビュー]
+
+  
+    Comfy Cloud で開く
+  
+  
+    JSONをダウンロードするか、テンプレートライブラリで「字幕削除」を検索
+  
+
+入力素材
+
+このワークフローを試すには、サンプル入力動画をダウンロードしてください：
+
+  
+    サンプル入力動画をダウンロード
+  
+
+#### 動画からオブジェクトを削除
+
+プロンプトでオブジェクトを説明して、動画の前景から指定したオブジェクトを削除：
+
+[LTX-2.3 オブジェクト削除ワークフロー プレビュー]
+
+  
+    Comfy Cloud で開く
+  
+  
+    JSONをダウンロードするか、テンプレートライブラリで「オブジェクト削除」を検索
+  
+
+入力素材
+
+このワークフローを試すには、サンプル入力動画をダウンロードしてください：
+
+  
+    サンプル入力動画をダウンロード
+  
+
+#### アーカイブ映像の修復
+
+古い映像や劣化したアーカイブ映像を修復：
+
+[LTX-2.3 アーカイブ映像修復ワークフロー プレビュー]
+
+  
+    Comfy Cloud で開く
+  
+  
+    JSONをダウンロードするか、テンプレートライブラリで「アーカイブ修復」を検索
+  
+
+入力素材
+
+このワークフローを試すには、サンプル入力動画をダウンロードしてください：
+
+  
+    サンプル入力動画をダウンロード
+  
+
+#### 動画のアウトペインティング
+
+LTX-2.3 Video Outpainting IC-LoRAを使用して、動画を任意の方向に拡張：
+
+[LTX-2.3 アウトペインティングワークフロー プレビュー]
+
+  
+    Comfy Cloud で開く
+  
+  
+    JSONをダウンロードするか、テンプレートライブラリで「アウトペインティング」を検索
+  
+
+入力素材
+
+このワークフローを試すには、サンプル入力動画をダウンロードしてください：
+
+  
+    サンプル入力動画をダウンロード
+  
+
+#### Googly Eyes
+
+Googlyeyes LTX-2.3 LoRAを入力動画に適用して、フレーム内の全員をグーグリーアイに：
+
+[LTX-2.3 Googly Eyes ワークフロー プレビュー]
+
+  
+    Comfy Cloud で開く
+  
+  
+    JSONをダウンロードするか、テンプレートライブラリで「Googly Eyes」を検索
+  
+
+入力素材
+
+このワークフローを試すには、サンプル入力動画をダウンロードしてください：
+
+  
+    サンプル入力動画をダウンロード
+  
+
+コミュニティIC-LoRAの場合、編集用LoRAを`ComfyUI/models/loras/`に配置し、LoRAローダーでLTX-2.3チェックポイントと一緒に読み込み、動画を入力として次のようなプロンプトでワークフローを実行します：
+
+```text
+Remove subtitles, captions, and related text occlusions from the video, restoring a clean and natural underlying image.
 ```
 
 ---

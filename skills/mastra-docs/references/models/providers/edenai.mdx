@@ -5,7 +5,7 @@ description: "Browse Eden AI model IDs, capabilities, context windows, and prici
 
 # [Eden AI logo]Eden AI
 
-Access 247 Eden AI models through Mastra's model router. Authentication is handled automatically using the `EDENAI_API_KEY` environment variable.
+Access 249 Eden AI models through Mastra's model router. Authentication is handled automatically using the `EDENAI_API_KEY` environment variable.
 
 Learn more in the [Eden AI documentation](https://docs.edenai.co).
 
@@ -1876,6 +1876,18 @@ for await (const chunk of stream) {
     "outputCost": 12
   },
   {
+    "model": "edenai/openai/gpt-6-astra",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 10,
+    "outputCost": 50
+  },
+  {
     "model": "edenai/openai/gpt-latest",
     "imageInput": true,
     "audioInput": false,
@@ -1884,8 +1896,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 4,
-    "outputCost": 20
+    "inputCost": 10,
+    "outputCost": 50
   },
   {
     "model": "edenai/openai/gpt-mini-latest",
@@ -2064,8 +2076,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 384000,
-    "inputCost": 0.176,
-    "outputCost": 0.528
+    "inputCost": 0.352,
+    "outputCost": 1.056
   },
   {
     "model": "edenai/qwen/deepseek-v4-pro-0813",
@@ -2076,8 +2088,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 384000,
-    "inputCost": 0.5808,
-    "outputCost": 1.7424
+    "inputCost": 1.122,
+    "outputCost": 3.366
   },
   {
     "model": "edenai/qwen/qwen-max",
@@ -2309,6 +2321,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "edenai/qwen/qwen3.8-max",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 2,
+    "outputCost": 6
+  },
+  {
+    "model": "edenai/qwen/qwen3.8-max-0902",
     "imageInput": true,
     "audioInput": false,
     "videoInput": true,

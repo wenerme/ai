@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import json
 import sys
 import unittest
 from pathlib import Path
@@ -261,6 +262,40 @@ class NativeProjectionCheckerTests(unittest.TestCase):
                 for text in expected:
                     self.assertIn(text, joined)
 
+    def test_formatted_chart_labels_warning_names_data_label_number_format(self) -> None:
+        for value, number_format, label in (
+            (1000, "#,##0", "1,000"),
+            (0.5, "0%", "50%"),
+        ):
+            with self.subTest(label=label):
+                marker = ET.fromstring(f"""
+                    <g data-pptx-replace-with="chart">
+                      <metadata type="application/json">
+                        {{
+                          "x": 0, "y": 0, "width": 400, "height": 240,
+                          "type": "column", "categories": ["A"],
+                          "series": [{{"name": "Series", "values": [{value}]}}],
+                          "number_format": "{number_format}",
+                          "data_labels": {{"show_value": true}}
+                        }}
+                      </metadata>
+                      <text x="100" y="100">{label}</text>
+                    </g>
+                """)
+                warnings = native_object_projection_warnings(marker)
+                joined = "\n".join(warnings)
+                self.assertIn(f"visible text not projected: {label!r}", joined)
+                self.assertIn("data_labels.number_format", joined)
+
+                metadata = marker.find("metadata")
+                payload = json.loads(metadata.text)
+                payload["data_labels"]["number_format"] = payload.pop("number_format")
+                metadata.text = json.dumps(payload)
+                self.assertNotIn(
+                    "visible text not projected",
+                    "\n".join(native_object_projection_warnings(marker)),
+                )
+
     def test_explicit_chart_text_axis_and_grid_colors_use_role_inference(self) -> None:
         marker = ET.fromstring("""
             <g data-pptx-replace-with="chart" data-pptx-bounds="0 0 400 240">
@@ -448,6 +483,25 @@ class NativeTableFillAndTextDefaultsTests(unittest.TestCase):
         # defaults.cell wins over defaults.run for a shared field
         self.assertEqual(body_a["font_size"], 20)
 
+    def test_paragraph_cells_inherit_run_defaults_like_plain_text(self) -> None:
+        expanded = expand_semantic_table_payload({
+            "schema": "ppt-master.semantic-table.v2",
+            "x": 0, "y": 0, "width": 200, "height": 80,
+            "column_widths": [100, 100],
+            "row_heights": [40, 40],
+            "defaults": {"run": {"color": "#1F2933", "bold": False}},
+            "columns": ["A", "B"],
+            "rows": [[
+                {"paragraphs": ["line one", "line two"]},
+                {"paragraphs": [{"runs": [{"text": "run"}]}], "color": "#B4342C"},
+            ]],
+        })
+        strings, runs = expanded["rows"][0]
+        self.assertEqual(strings["color"], "#1F2933")
+        self.assertFalse(strings["bold"])
+        self.assertEqual(runs["color"], "#B4342C")
+        self.assertEqual(runs["paragraphs"][0]["runs"][0]["color"], "#1F2933")
+
     def test_body_text_color_parity_warns_when_no_layer_carries_it(self) -> None:
         def marker(rows_json: str, style_json: str = "") -> ET.Element:
             return ET.fromstring(f"""
@@ -495,6 +549,108 @@ class NativeTableFillAndTextDefaultsTests(unittest.TestCase):
             marker('["Altar", "Cosmos"]', '"defaults": {"run": {"color": "#DAD5CA"}},')
         ))
         self.assertNotIn("body text color", via_run_defaults)
+
+        paragraph_strings = "\n".join(native_object_projection_warnings(
+            marker(
+                '[{"paragraphs": ["Altar"]}, {"paragraphs": ["Cosmos"]}]',
+                '"defaults": {"run": {"color": "#DAD5CA"}},',
+            )
+        ))
+        self.assertNotIn("body text color", paragraph_strings)
+
+    def test_first_column_in_body_text_colour_is_carried_by_style(self) -> None:
+        def marker(style_json: str) -> ET.Element:
+            return ET.fromstring(f"""
+                <g data-pptx-replace-with="table" data-pptx-bounds="0 0 300 80">
+                  <metadata type="application/json">
+                    {{
+                      "schema": "ppt-master.semantic-table.v2",
+                      "x": 0, "y": 0, "width": 300, "height": 80,
+                      "header_rows": 1,
+                      "column_widths": [100, 100, 100],
+                      "row_heights": [40, 40],
+                      {style_json}
+                      "columns": [
+                        {{"text": "Task", "color": "#F5F7F2", "align": "l"}},
+                        {{"text": "Old", "color": "#F5F7F2", "align": "l"}},
+                        {{"text": "uv", "color": "#F5F7F2", "align": "l"}}
+                      ],
+                      "rows": [[
+                        "Create env",
+                        {{"text": "venv", "color": "#9EACB8"}},
+                        {{"text": "uv venv", "color": "#D7FF64"}}
+                      ]]
+                    }}
+                  </metadata>
+                  <line x1="0" y1="0" x2="300" y2="0" stroke="#3A4651"/>
+                  <line x1="0" y1="40" x2="300" y2="40" stroke="#3A4651"/>
+                  <line x1="0" y1="80" x2="300" y2="80" stroke="#3A4651"/>
+                  <g fill="#F5F7F2">
+                    <text x="10" y="25">Task</text>
+                    <text x="110" y="25">Old</text>
+                    <text x="210" y="25">uv</text>
+                  </g>
+                  <text x="10" y="65" fill="#E7ECEF">Create env</text>
+                  <text x="110" y="65" fill="#9EACB8">venv</text>
+                  <text x="210" y="65" fill="#D7FF64">uv venv</text>
+                </g>
+            """)
+
+        carried = "\n".join(native_object_projection_warnings(
+            marker('"style": {"body_text": "#E7ECEF"},')
+        ))
+        self.assertNotIn("first-column", carried)
+
+        uncarried = "\n".join(native_object_projection_warnings(marker("")))
+        self.assertIn("first-column text style not projected", uncarried)
+        self.assertIn("#E7ECEF", uncarried)
+
+    def test_header_align_parity_reads_the_centred_export_default(self) -> None:
+        def marker(header_anchor: str, columns_json: str) -> ET.Element:
+            x = {"start": 10, "middle": 50, "end": 90}[header_anchor]
+            return ET.fromstring(f"""
+                <g data-pptx-replace-with="table" data-pptx-bounds="0 0 200 80">
+                  <metadata type="application/json">
+                    {{
+                      "schema": "ppt-master.semantic-table.v2",
+                      "x": 0, "y": 0, "width": 200, "height": 80,
+                      "header_rows": 1,
+                      "column_widths": [100, 100],
+                      "row_heights": [40, 40],
+                      "defaults": {{"run": {{"color": "#DAD5CA"}}}},
+                      "columns": [{columns_json}],
+                      "rows": [["Altar", "Cosmos"]]
+                    }}
+                  </metadata>
+                  <line x1="0" y1="0" x2="200" y2="0" stroke="#999999"/>
+                  <line x1="0" y1="40" x2="200" y2="40" stroke="#999999"/>
+                  <line x1="0" y1="80" x2="200" y2="80" stroke="#999999"/>
+                  <g fill="#DAD5CA" text-anchor="{header_anchor}">
+                    <text x="{x}" y="25">Level</text>
+                    <text x="{x + 100}" y="25">Meaning</text>
+                  </g>
+                  <g fill="#DAD5CA">
+                    <text x="10" y="65">Altar</text>
+                    <text x="110" y="65">Cosmos</text>
+                  </g>
+                </g>
+            """)
+
+        left_without_align = "\n".join(native_object_projection_warnings(
+            marker("start", '"Level", "Meaning"')
+        ))
+        self.assertIn('columns[].align "l"', left_without_align)
+        self.assertIn("export centred unless align is set", left_without_align)
+
+        left_with_align = "\n".join(native_object_projection_warnings(
+            marker("start", '{"text": "Level", "align": "l"}, {"text": "Meaning", "align": "l"}')
+        ))
+        self.assertNotIn("columns[].align", left_with_align)
+
+        centred_without_align = "\n".join(native_object_projection_warnings(
+            marker("middle", '"Level", "Meaning"')
+        ))
+        self.assertNotIn("columns[].align", centred_without_align)
 
 
 if __name__ == "__main__":
