@@ -136,7 +136,7 @@ for the same container id. They share the same saved files.
 A container sleeps after it has been idle. The `sleep_after_seconds`
 setting controls the idle time:
 
-* The default is 900 seconds (15 minutes).
+* The default is 300 seconds (5 minutes).
 * The maximum is 14,400 seconds (4 hours).
 * Each command resets the timer.
 

@@ -92,6 +92,11 @@ The security policy pipeline check behaves as follows:
 - If the project setting **Skipped pipelines are considered successful** is enabled, skipped pipelines
   are treated as if they passed.
 
+> [!warning]
+> If you migrate a project, imported pipelines retain their source status and can satisfy the
+> security policy pipeline check on the destination instance without running again.
+> Run a new pipeline on any imported merge requests before you merge them.
+
 ### `.pipeline-policy-pre` stage
 
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/558233) pipeline execution so that when a `.pipeline-policy-pre` stage fails, all later jobs are skipped in GitLab 18.10. Enabled by default.

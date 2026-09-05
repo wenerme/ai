@@ -59,6 +59,8 @@ Effort previously applied to the whole conversation as a top-level parameter. No
 }
 ```
 
+The same change is available through the Chat Completions API (`configuration_update` on a content-less system message) and the Responses API (a `configuration_update` input item). OpenRouter translates each form into the `output_config` message Fable expects. See [Changing Effort Mid-Conversation](/docs/docs/guides/best-practices/reasoning-tokens#mid-conversation-effort).
+
 ## Forced Tool Use Is Rejected
 
 On models with thinking always enabled, forcing a tool call makes the model skip its thinking entirely and squeeze its working-out into the tool arguments. Starting with Fable 5.1, requests with `tool_choice` set to `{"type": "any"}` or a named tool return a 400. `{"type": "auto"}` (the default) and `{"type": "none"}` are unaffected.

@@ -18,6 +18,8 @@ SCIM endpoints
 * [read](#read) - Get a SCIM group mapping
 * [update](#update) - Update a SCIM group mapping
 * [list\_groups](#list_groups) - List SCIM groups
+* [create\_sync\_job](#create_sync_job) - Start a SCIM directory sync
+* [get\_sync\_job](#get_sync_job) - Get SCIM directory sync status
 
 ## list\_mappings
 
@@ -311,6 +313,101 @@ with OpenRouter(
 ### Response
 
 **[operations.ListScimGroupsResponse](../../operations/listscimgroupsresponse.mdx)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.NotFoundResponseError       | 404         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+## create\_sync\_job
+
+Start a SCIM directory sync. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+```python theme={null}
+from openrouter import OpenRouter
+import os
+
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.scim.create_sync_job()
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                                | Required             | Description                                                                                                                                                 |
+| -------------------------- | ------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `http_referer`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |
+| `x_open_router_title`      | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |
+| `x_open_router_categories` | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |
+
+### Response
+
+**[operations.CreateScimSyncJobResponse](../../operations/createscimsyncjobresponse.mdx)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.NotFoundResponseError       | 404         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+## get\_sync\_job
+
+Get SCIM directory sync status. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+```python theme={null}
+from openrouter import OpenRouter
+import os
+
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.scim.get_sync_job(id="11506961-3c26-4184-a388-53273cc64c83")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                                | Required             | Description                                                                                                                                                 |
+| -------------------------- | ------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                       | *str*                                                               | :heavy\_check\_mark: | N/A                                                                                                                                                         |
+| `http_referer`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |
+| `x_open_router_title`      | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |
+| `x_open_router_categories` | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |
+
+### Response
+
+**[components.GetScimSyncJobResponse](../../components/getscimsyncjobresponse.mdx)**
 
 ### Errors
 

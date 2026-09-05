@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Local Explorer
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/local-development/local-explorer/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/local-development/local-explorer/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Local Explorer is a browser-based interface for viewing and editing the data in your local [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) and debugging Worker invocations during development. It is available at `/cdn-cgi/explorer` on your local development server.
+Local Explorer is a browser-based interface for viewing and editing the data in your local [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) and debugging Worker invocations during development. It is available at `/cdn-cgi/local/explorer` on your local development server.
 
 Instead of running CLI commands or writing throwaway code to inspect local state, you can open Local Explorer in your browser to work with your data, view traces, and search logs. This is useful when you want to seed test data, verify what your Worker wrote, debug a failing request, or run SQL queries against a local [D1](https://developers.cloudflare.com/d1/) database.
 
@@ -40,7 +40,7 @@ pnpm wrangler dev
 2. Open Local Explorer in your browser:
 
   * **Wrangler**: press `e` in your terminal.
-  * **Vite plugin**: navigate directly to `/cdn-cgi/explorer` on your dev server's route and port.
+  * **Vite plugin**: navigate directly to `/cdn-cgi/local/explorer` on your dev server's route and port.
 
 Local Explorer is available by default and detects the bindings defined in your [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/) automatically.
 
@@ -80,12 +80,12 @@ For example, if a request makes two D1 calls and the second one fails, the trace
 
 ## API
 
-Local Explorer exposes an API at `/cdn-cgi/explorer/api` that provides programmatic access to the same operations available in the browser interface. The API serves an [OpenAPI specification ↗](https://www.openapis.org/) that describes all available endpoints, parameters, and response formats.
+Local Explorer exposes an API at `/cdn-cgi/local/explorer/api` that provides programmatic access to the same operations available in the browser interface. The API serves an [OpenAPI specification ↗](https://www.openapis.org/) that describes all available endpoints, parameters, and response formats.
 
 To retrieve the OpenAPI spec:
 
 ```sh
-curl http://localhost:8787/cdn-cgi/explorer/api
+curl http://localhost:8787/cdn-cgi/local/explorer/api
 ```
 
 ### Use with AI agents
@@ -98,12 +98,12 @@ The hint includes the API URL and relevant endpoints:
 This dev session is running in an AI agent.
 
 The Local Explorer API is available at
-http://localhost:8787/cdn-cgi/explorer/api
+http://localhost:8787/cdn-cgi/local/explorer/api
 
 ...
 
 Debug with traces:
-POST /cdn-cgi/explorer/api/local/observability/query -- query traces and logs with SQL
+POST /cdn-cgi/local/explorer/api/local/observability/query -- query traces and logs with SQL
 ```
 
 This can be useful as an alternative to the CLI when you want an agent to:
@@ -123,5 +123,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/local-development/local-explorer/#page","headline":"Local Explorer · Cloudflare Workers docs","description":"Browse and edit local binding data from your browser during development.","url":"https://developers.cloudflare.com/workers/local-development/local-explorer/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/local-development/local-explorer/#page","headline":"Local Explorer · Cloudflare Workers docs","description":"Browse and edit local binding data from your browser during development.","url":"https://developers.cloudflare.com/workers/local-development/local-explorer/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

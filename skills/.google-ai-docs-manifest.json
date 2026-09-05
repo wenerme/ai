@@ -338,8 +338,8 @@
   "google-ai-docs/managed-agents-quickstart.md": {
     "url": "https://ai.google.dev/gemini-api/docs/managed-agents-quickstart",
     "skill": "google-ai-docs",
-    "size": 20312,
-    "updatedAt": "2026-08-27T09:06:53.672Z"
+    "size": 20383,
+    "updatedAt": "2026-09-05T04:19:00.843Z"
   },
   "google-ai-docs/antigravity-agent.md": {
     "url": "https://ai.google.dev/gemini-api/docs/antigravity-agent",
@@ -422,8 +422,8 @@
   "google-ai-docs/veo.md": {
     "url": "https://ai.google.dev/gemini-api/docs/veo",
     "skill": "google-ai-docs",
-    "size": 94224,
-    "updatedAt": "2026-08-30T15:00:10.895Z"
+    "size": 92998,
+    "updatedAt": "2026-09-05T04:19:07.814Z"
   },
   "google-ai-docs/interactions/media-resolution.md": {
     "url": "https://ai.google.dev/gemini-api/docs/interactions/media-resolution",

@@ -22,7 +22,7 @@
 | `Ctrl+X Ctrl+K`                                                                              | Stop all running [background subagents](/docs/en/sub-agents#run-subagents-in-foreground-or-background) in this session, and turn off [artifact auto-replies](/docs/en/artifacts#let-claude-reply-to-comments-on-its-own) for the rest of it. Press twice within 3 seconds to confirm | Subagent control                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | `Ctrl+D`                                                                                     | Exit Claude Code session                                                                                                                                                                                                                                                   | The first press shows a confirmation hint and a second press within 800ms exits. When the prompt has text, `Ctrl+D` deletes the character after the cursor instead                                                                                                                                                                                                                                                                                                                                                               |
 | `Ctrl+G` or `Ctrl+X Ctrl+E`                                                                  | Open in default text editor                                                                                                                                                                                                                                                | Edit your prompt or custom response in your default text editor. `Ctrl+X Ctrl+E` is the readline-native binding. Turn on **Show last response in external editor** in `/config` to prepend Claude's previous reply as `#`-commented context above your prompt; Claude Code strips the comment block when you save                                                                                                                                                                                                                |
-| `Ctrl+L`                                                                                     | Redraw screen                                                                                                                                                                                                                                                              | Forces a full terminal redraw, keeping input and conversation history. Use this to recover if the display becomes garbled or partially blank                                                                                                                                                                                                                                                                                                                                                                                     |
+| `Ctrl+L`                                                                                     | Redraw or clear the screen                                                                                                                                                                                                                                                 | Forces a full terminal redraw, keeping input and conversation history. Use this to recover if the display becomes garbled or partially blank. In [fullscreen rendering](/docs/en/fullscreen#clear-the-conversation), it also clears the screen, and you can scroll up to see the earlier messages                                                                                                                                                                                                                                     |
 | `Ctrl+O`                                                                                     | Toggle transcript viewer                                                                                                                                                                                                                                                   | Shows detailed tool usage and execution, with a timestamp and the model used on each assistant message. Also expands lines that collapse by default, such as MCP calls, shown as a single `Called slack 3 times` line, and [messages from your other sessions](/docs/en/cross-session-messaging#what-a-message-looks-like), shown as a one-line `Message from @<sender>` preview                                                                                                                                                      |
 | `Ctrl+R`                                                                                     | Reverse search command history                                                                                                                                                                                                                                             | Search through previous commands interactively                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | `Ctrl+V` or `Cmd+V` (iTerm2) or `Alt+V` (Windows and WSL)                                    | Paste image from clipboard                                                                                                                                                                                                                                                 | Inserts an `[Image #N]` chip at the cursor so you can reference it positionally in your prompt. On WSL, both `Ctrl+V` and `Alt+V` are bound; use `Alt+V` if your terminal intercepts `Ctrl+V`                                                                                                                                                                                                                                                                                                                                    |
@@ -299,7 +299,8 @@ To run commands in the background, you can either:
 
 * Output is written to a file and Claude can retrieve it using the Read tool
 * Background tasks have unique IDs for tracking and output retrieval
-* Background tasks are automatically cleaned up when Claude Code exits. If you background the session instead of exiting it, Claude Code hands them to the background session, where they keep running. See [background a running session](/docs/en/agent-view#from-inside-a-session)
+* Background tasks are automatically cleaned up when Claude Code exits. On macOS and Linux, when you stop a background task from [`/tasks`](/docs/en/commands) or Claude Code stops it at exit, processes that detached from the task's shell, such as ones started under `setsid` or `timeout`, stop too
+* If you background the session instead of exiting it, your background tasks keep running in the background session. See [background a running session](/docs/en/agent-view#from-inside-a-session)
 * Background tasks are automatically terminated if output exceeds 5GB, with a note in stderr explaining why
 * On macOS and Linux, Claude Code terminates running background tasks when the operating system signals memory pressure, provided the session has been idle for at least 30 minutes and no turn or subagent is running. Set [`CLAUDE_CODE_DISABLE_BG_SHELL_PRESSURE_REAP`](/docs/en/env-vars) to `1` to turn this off. Requires Claude Code v2.1.193 or later. Background commands owned by a [subagent](/docs/en/sub-agents) are instead terminated after 60 minutes, configurable in milliseconds with [`CLAUDE_SUBAGENT_BG_SHELL_MAX_MS`](/docs/en/env-vars). A command owned by a subagent running in the foreground also ends when that subagent gives its final response; see [Background commands](/docs/en/tools-reference#background-commands) in the tools reference. Before v2.1.218, neither the memory-pressure reap nor the 60-minute limit covered commands moved to the background with `Ctrl+B`
 
@@ -507,6 +508,49 @@ Claude Code underlines nothing when it can't keep a checker running:
 * The checker takes more than 15 seconds to answer, three times. Each time, Claude Code leaves the words it was waiting on unmarked; after the third, it stops checking until you restart Claude Code
 
 To find out which of these happened, start `claude --debug` with spell checking on and type a word. Then look for the `[spellcheck]` lines in the debug log at `~/.claude/debug/<session-id>.txt`. One line names the program Claude Code started, or lists the ones it looked for and didn't find. Later lines say why it stopped. A missing-dictionary error there means the checker has no dictionary for your `language` value, or no default one when `language` is unset. Install one, or set `language` to a dictionary you have.
+
+## Review changes with /diff
+
+Run `/diff` to look over the changes in your working tree without leaving Claude Code. You see the edits Claude has made so far alongside anything else you haven't committed.
+
+In [fullscreen rendering](/docs/en/fullscreen), `/diff` opens the [diff panel](#diff-panel) beside the conversation, which stays open and updates while you keep working. In the classic renderer, `/diff` opens the [diff viewer](#diff-viewer) in place of the prompt, and you close it when you're done reading.
+
+### Diff panel
+
+The diff panel lists the changed files with their added and removed line counts, and shows each file's diff under the list. Claude Code refreshes it each time Claude edits a file or runs a shell command. To close it, run `/diff` again or click the `✕` in its header.
+
+To use the panel you need:
+
+* [Fullscreen rendering](/docs/en/fullscreen)
+* A git repository
+* A terminal at least 110 columns wide
+* Claude Code v2.1.260 or later
+
+When the panel can't open, `/diff` opens the diff viewer instead or tells you why.
+
+The panel also opens on its own once Claude starts editing files, if your terminal is at least 144 columns wide. After you've opened it yourself with `/diff`, later sessions open it as soon as Claude edits a file in any terminal wide enough to fit it. Close the panel and it stays closed, in this session and later ones, until you run `/diff` again.
+
+While the panel is open, you can:
+
+* **Jump to a file**: click its row in the list. Scroll the panel with the mouse wheel. When the file list itself is too long to fit, scroll it with `Alt+Up` and `Alt+Down`, or `Ctrl+Up` and `Ctrl+Down`.
+* **Ask Claude about specific lines**: select them in the panel with the mouse. Claude Code attaches the selection to your next prompt and shows a line count next to the input until you send it.
+* **Show the files the panel leaves out**: the list skips test files and generated files, and collapses changes from before this session into one line at the bottom. Click either count line to expand it.
+* **Change what the panel compares against**: press `Ctrl+X B` to cycle from this session's changes, to your uncommitted changes as one list, to everything since your branch split from the default branch. Claude Code remembers the choice for each project.
+
+To bind keys to these actions, see [Diff panel actions](/docs/en/keybindings#diff-panel-actions).
+
+### Diff viewer
+
+The diff viewer takes the place of the prompt until you close it. Its **Current** view shows your uncommitted changes from git, or, when there are none, what your branch adds on top of the default branch. The viewer also has a turn view for each prompt after which Claude edited files, showing just those edits. Claude Code builds the turn views from Claude's file edits rather than from git, so a change Claude makes through a shell command appears only under Current.
+
+Use these keys in the viewer:
+
+* **Left and Right**: move between Current and the turn views.
+* **Up and Down**: select a file.
+* **Enter**: open the selected file's diff. Scroll it with Up and Down, or PageUp and PageDown.
+* **Esc**: return from a file's diff to the list, or close the viewer from the list.
+
+To rebind these keys, see [Diff actions](/docs/en/keybindings#diff-actions).
 
 ## Side questions with /btw
 

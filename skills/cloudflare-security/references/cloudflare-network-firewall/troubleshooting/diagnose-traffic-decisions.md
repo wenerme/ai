@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Diagnose traffic decisions
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/troubleshooting/diagnose-traffic-decisions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/troubleshooting/diagnose-traffic-decisions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When traffic is unexpectedly blocked, multiple Cloudflare systems could be responsible. This guide walks you through identifying what is blocking your traffic and how to resolve it.
 
@@ -50,7 +50,7 @@ Before making changes, gather the following information:
   * Select **Apply**.
 5. Filter the time range to when the issue occurred.
 6. Add additional filters if you know the affected traffic characteristics (such as Source IP, Destination IP, and more).
-7. To identify the blocking system: In the **Packet Summary** graph, select the the three dots > **Mitigation system**. This tells you which Cloudflare system blocked the traffic.
+7. To identify the blocking system: In the **Packet Summary** graph, select the three dots > **Mitigation system**. This tells you which Cloudflare system blocked the traffic.
 
 ### If the mitigation system displays DDoS Managed Ruleset
 
@@ -110,5 +110,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/troubleshooting/diagnose-traffic-decisions/#page","headline":"Diagnose traffic decisions · Cloudflare Network Firewall docs","description":"Diagnose why the Network Firewall allowed or blocked traffic.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/troubleshooting/diagnose-traffic-decisions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/troubleshooting/diagnose-traffic-decisions/#page","headline":"Diagnose traffic decisions · Cloudflare Network Firewall docs","description":"Diagnose why the Network Firewall allowed or blocked traffic.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/troubleshooting/diagnose-traffic-decisions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

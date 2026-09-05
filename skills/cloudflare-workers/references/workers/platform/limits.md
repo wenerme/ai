@@ -12,27 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits
 
-Last updated Sep 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/platform/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/platform/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Account plan limits
 
-| Feature                                                                                                      | Workers Free | Workers Paid   |
-| ------------------------------------------------------------------------------------------------------------ | ------------ | -------------- |
-| [Requests](#daily-requests)                                                                                  | 100,000/day  | No limit       |
-| [CPU time](#cpu-time)                                                                                        | 10 ms        | 5 min          |
-| [Memory](#memory)                                                                                            | 128 MB       | 128 MB         |
-| [Subrequests](#subrequests)                                                                                  | 50/request   | 10,000/request |
-| [Simultaneous outgoing connections/request](#simultaneous-open-connections)                                  | 6            | 6              |
-| [Environment variables](#environment-variables)                                                              | 64/Worker    | 128/Worker     |
-| [Environment variable size](#environment-variables)                                                          | 5 KB         | 5 KB           |
-| [Worker size](#worker-size)                                                                                  | 3 MB         | 10 MB          |
-| [Worker startup time](#worker-startup-time)                                                                  | 1 second     | 1 second       |
-| [Number of Workers](#number-of-workers)1                                                                     | 100          | 500            |
-| Number of [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/)per account | 5            | 250            |
-| Number of [Static Asset](#static-assets) files per Worker version                                            | 20,000       | 100,000        |
-| Individual [Static Asset](#static-assets) file size                                                          | 25 MiB       | 25 MiB         |
-
-1 If you reach this limit, consider using [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/).
+| Feature                                                                                                      | Workers Free | Workers Paid               |
+| ------------------------------------------------------------------------------------------------------------ | ------------ | -------------------------- |
+| [Requests](#daily-requests)                                                                                  | 100,000/day  | No limit                   |
+| [CPU time](#cpu-time)                                                                                        | 10 ms        | 5 min                      |
+| [Memory](#memory)                                                                                            | 128 MB       | 128 MB                     |
+| [Subrequests](#subrequests)                                                                                  | 50/request   | 10,000/request             |
+| [Simultaneous outgoing connections/request](#simultaneous-open-connections)                                  | 6            | 6                          |
+| [Environment variables](#environment-variables)                                                              | 64/Worker    | 128/Worker                 |
+| [Environment variable size](#environment-variables)                                                          | 5 KB         | 5 KB                       |
+| [Worker size](#worker-size)                                                                                  | 64 MiB       | 64 MiB                     |
+| [Worker startup time](#worker-startup-time)                                                                  | 1 second     | 1 second                   |
+| [Number of Workers](#number-of-workers)                                                                      | 100          | 500[1](#user-content-fn-1) |
+| Number of [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/)per account | 5            | 250                        |
+| Number of [Static Asset](#static-assets) files per Worker version                                            | 20,000       | 100,000                    |
+| Individual [Static Asset](#static-assets) file size                                                          | 25 MiB       | 25 MiB                     |
 
 Need a higher limit?
 
@@ -136,7 +134,8 @@ To resolve a memory limit error:
 
 1. **Stream request and response bodies** — Use [TransformStream](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/) or [node:stream](https://developers.cloudflare.com/workers/runtime-apis/nodejs/streams/) instead of buffering entire payloads in memory.
 2. **Avoid large in-memory objects** — Store large data in [KV](https://developers.cloudflare.com/kv/), [R2](https://developers.cloudflare.com/r2/), or [D1](https://developers.cloudflare.com/d1/) instead of holding it in Worker memory.
-3. **Profile memory usage** — Use [memory profiling with DevTools](https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/) locally to identify leaks and high-memory allocations.
+3. **Update Zod** — If your Worker uses Zod, use [version 4.5.0 or later ↗](https://github.com/colinhacks/zod/releases/tag/v4.5.0). Earlier versions use substantially more memory per schema.
+4. **Profile memory usage** — Use [memory profiling with DevTools](https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/) locally to identify leaks and high-memory allocations.
 
 To view memory errors in the dashboard:
 
@@ -261,21 +260,23 @@ The runtime measures simultaneous open connections from the top-level request. W
 
 ## Worker size
 
-| Limit                    | Workers Free | Workers Paid |
-| ------------------------ | ------------ | ------------ |
-| After compression (gzip) | 3 MB         | 10 MB        |
-| Before compression       | 64 MB        | 64 MB        |
+| Limit                      | Workers Free | Workers Paid |
+| -------------------------- | ------------ | ------------ |
+| Worker size (uncompressed) | 64 MiB       | 64 MiB       |
 
-Larger Worker bundles can impact startup time. To check your compressed bundle size:
+There is no compressed size limit. Only the uncompressed bundle size counts.
+
+Larger Worker bundles can impact startup time. To check your Worker bundle size:
 
 ```sh
 wrangler deploy --outdir bundled/ --dry-run
 ```
 
 ```sh
-# Output will resemble the below:
 Total Upload: 259.61 KiB / gzip: 47.23 KiB
 ```
+
+The `Total Upload` value is your uncompressed bundle size. The `gzip` value is shown for reference but is not a limit.
 
 To reduce Worker size:
 
@@ -307,11 +308,9 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form �
 
 ## Number of Workers
 
-| Limit               | Workers Free | Workers Paid |
-| ------------------- | ------------ | ------------ |
-| Workers per account | 100          | 500          |
-
-If you need more than 500 Workers, consider using [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/).
+| Limit               | Workers Free | Workers Paid               |
+| ------------------- | ------------ | -------------------------- |
+| Workers per account | 100          | 500[1](#user-content-fn-1) |
 
 ---
 
@@ -431,6 +430,10 @@ The following table summarizes the wall time limits for different types of Worke
 * [Queues limits](https://developers.cloudflare.com/queues/platform/limits/)
 * [Workers errors reference](https://developers.cloudflare.com/workers/observability/errors/)
 
+## Footnotes
+
+1. If you need a higher Worker limit, use [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/). [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2)
+
 Was this helpful?
 
 YesNo
@@ -440,5 +443,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/limits/#page","headline":"Limits · Cloudflare Workers docs","description":"Cloudflare Workers plan and platform limits.","url":"https://developers.cloudflare.com/workers/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/limits/#page","headline":"Limits · Cloudflare Workers docs","description":"Cloudflare Workers plan and platform limits.","url":"https://developers.cloudflare.com/workers/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

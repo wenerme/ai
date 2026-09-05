@@ -2084,6 +2084,27 @@ components:
         name: Assistant Config
         role: system
       properties:
+        configuration_update:
+          additionalProperties: false
+          description: >-
+            OpenRouter extension. Changes reasoning effort from this point in
+            the conversation onward without invalidating the prompt cache for
+            the preceding turns. Place it on a content-less system message
+            (`content: ""`) directly before the user message it should apply to,
+            and keep it at that position in later requests. Equivalent to the
+            OpenAI Responses `configuration_update` input item and the Anthropic
+            Messages per-message `output_config.effort`.
+          example:
+            reasoning:
+              effort: low
+          properties:
+            reasoning:
+              $ref: '#/components/schemas/ConfigurationUpdateReasoning'
+          required:
+            - reasoning
+          type:
+            - object
+            - 'null'
         content:
           anyOf:
             - type: string
@@ -3073,6 +3094,27 @@ components:
         - type
         - text
       type: object
+    ConfigurationUpdateReasoning:
+      additionalProperties: false
+      description: Reasoning settings applied from this point in the conversation onward
+      example:
+        effort: low
+      properties:
+        effort:
+          description: Reasoning effort to apply from this point in the conversation onward
+          enum:
+            - max
+            - xhigh
+            - high
+            - medium
+            - low
+            - minimal
+            - none
+          example: low
+          type: string
+      required:
+        - effort
+      type: object
     PDFParserEngine:
       anyOf:
         - enum:
@@ -3972,9 +4014,9 @@ components:
       description: >-
         How long (in seconds) the container stays warm after its last command
         before sleeping, freeing its capacity slot. Idle-based: each command
-        renews the timer. Defaults to 900 (15 minutes); capped at 14400 (4
+        renews the timer. Defaults to 300 (5 minutes); capped at 14400 (4
         hours).
-      example: 900
+      example: 300
       type: integer
     SubagentReasoning:
       description: >-

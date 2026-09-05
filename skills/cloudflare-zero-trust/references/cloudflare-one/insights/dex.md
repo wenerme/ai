@@ -12,11 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Digital experience
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Digital Experience Monitoring (DEX) provides visibility into device, network, and application performance across your Zero Trust organization.
 
 With DEX, you can monitor the state of your [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) deployment and resolve issues impacting end-user productivity. DEX is designed for IT and security teams who need to proactively monitor and troubleshoot device and network health across distributed environments. DEX is available on all Cloudflare Zero Trust and SASE plans.
+
+Enrolled devices automatically send device-state telemetry to DEX. Synthetic tests are optional checks that administrators create to monitor specific public or private endpoints.
 
 DEX is compatible with Cloudflare's [Customer Metadata Boundary](https://developers.cloudflare.com/data-localization/metadata-boundary/) (CMB) for the EU (European Union). When CMB is configured for the EU, customer logs are stored exclusively in the EU region.
 
@@ -27,7 +29,7 @@ Refer to [Insights overview](https://developers.cloudflare.com/cloudflare-one/in
 If a user notifies that “the connection is not working” or “performance is slow,” DEX allows you to:
 
 * Use [device monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/) to check device health and endpoint connectivity.
-* Test network health and application responsiveness with [synthetic tests](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) — automated connectivity checks that run periodically from user devices.
+* Optionally, test network health and application responsiveness with [synthetic tests](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) that run periodically from user devices.
 * Identify whether problems originate from the device (such as [issues with the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/)), the network, or Cloudflare.
 
 ## Troubleshooting other Cloudflare One features
@@ -44,7 +46,7 @@ To start using DEX for device, network, and application monitoring:
 
 1. [Create a Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization).
 2. [Install the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) and sign in to register your device to the organization.
-3. Create [tests](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) to verify device connectivity to applications and networks.
+3. (Optional) Create [tests](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) to verify device connectivity to applications and networks.
 4. [Monitor](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/) device and network health across your fleet using real-time and historical metrics.
 5. Use [diagnostics](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/) to run speed tests and collect remote captures from user devices.
 6. Set up [notifications](https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/) to get alerts when degraded connectivity or application performance is detected.
@@ -76,5 +78,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/insights/dex/#page","headline":"Digital experience · Cloudflare One docs","description":"Digital experience resources and guides for Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/dex/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/insights/dex/#page","headline":"Digital experience · Cloudflare One docs","description":"Digital experience resources and guides for Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/dex/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

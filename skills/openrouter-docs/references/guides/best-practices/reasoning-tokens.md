@@ -773,8 +773,75 @@ For each supported model, there are two equivalent ways to request pro mode on O
 ```
 
 <Note title="Behavior">
-  * `mode` is independent of `effort`: you can combine `mode: "pro"` with any supported effort level.
+  * `mode` is independent of `effort`: you can combine `mode: "pro"` with any supported request-level effort. It cannot be combined with a [mid-conversation effort update](#mid-conversation-effort), which OpenAI does not accept on pro models, so that combination is rejected with a 400.
   * Pro mode bills at the same per-token rates as standard mode, but typically consumes more tokens.
+</Note>
+
+<span id="mid-conversation-effort" />
+
+## Changing Effort Mid-Conversation
+
+Request-level effort applies to the whole conversation, so raising it for one hard turn and lowering it again on the next changes the request prefix and invalidates the prompt cache. Some models instead accept an effort change as an item in the conversation history. The change applies from that point onward and stays in effect until the next change, the preceding items are untouched, and the cache stays warm. Keep the item at the same position in every later request.
+
+All three OpenRouter APIs expose this, each in the shape native to that API. The Chat Completions form is an OpenRouter extension, since OpenAI's own Chat Completions API has no per-message equivalent.
+
+```json lines theme={null}
+// Chat Completions
+{
+  "model": "anthropic/claude-fable-5.1",
+  "reasoning": { "effort": "high" },
+  "messages": [
+    { "role": "user", "content": "Plan the migration." },
+    { "role": "assistant", "content": "Here's the plan: ..." },
+    { "role": "system", "content": "", "configuration_update": { "reasoning": { "effort": "low" } } },
+    { "role": "user", "content": "Now rename the config file." }
+  ]
+}
+```
+
+```json lines theme={null}
+// Responses API
+{
+  "model": "anthropic/claude-fable-5.1",
+  "reasoning": { "effort": "high" },
+  "input": [
+    { "role": "user", "content": "Plan the migration." },
+    { "type": "message", "role": "assistant", "content": [{ "type": "output_text", "text": "Here's the plan: ..." }] },
+    { "type": "configuration_update", "reasoning": { "effort": "low" } },
+    { "role": "user", "content": "Now rename the config file." }
+  ]
+}
+```
+
+```json lines theme={null}
+// Anthropic Messages API
+{
+  "model": "anthropic/claude-fable-5.1",
+  "max_tokens": 4096,
+  "output_config": { "effort": "high" },
+  "messages": [
+    { "role": "user", "content": "Plan the migration." },
+    { "role": "assistant", "content": "Here's the plan: ..." },
+    { "role": "system", "content": [], "output_config": { "effort": "low" } },
+    { "role": "user", "content": "Now rename the config file." }
+  ]
+}
+```
+
+The three forms are interchangeable: OpenRouter normalizes each into one internal representation and re-emits it in the form the selected provider accepts. A Responses `configuration_update` sent to a Claude model becomes a per-message `output_config`, and a Chat Completions or Messages API update sent to an OpenAI model becomes a Responses `configuration_update` item. The request-level effort (`reasoning.effort` or `output_config.effort`) is independent of the per-item updates and still sets the baseline for turns before the first update.
+
+Effort values are translated to the target model's vocabulary the same way as request-level effort. Claude accepts `low`, `medium`, `high`, `xhigh`, and `max` (`minimal` is sent as `low`, `none` is rejected). OpenAI models accept the efforts listed in their [supported reasoning efforts](#discovering-per-model-reasoning-options), and an update with an effort the model does not support is rejected with a 400.
+
+<Note title="Placement Rules">
+  * Put the update directly before the user turn it should apply to, on a content-less system message (Chat Completions and Messages API) or a `configuration_update` item (Responses API). An update ahead of the first user turn is allowed; on Claude models it stays inline in `messages` while ordinary system text is still sent as the top-level `system` prompt, so a system message that carries both text and an update is split in two.
+  * Do not place two updates next to each other. OpenAI rejects adjacent `configuration_update` items, and OpenRouter applies the same rule on every API so the three forms stay interchangeable.
+  * Do not end the request with an update. This is an OpenRouter rule, applied on every API: an update applies to the input that follows it, so a trailing one changes nothing for the request and is rejected rather than forwarded.
+  * Updates cannot be combined with `truncation: "auto"` in the Responses API, and on any API they cannot be combined with `reasoning.mode: "pro"` or sent to a pro model variant such as `openai/gpt-6-astra-pro`.
+  * Mid-conversation effort updates are not accepted on the [Batch API](/docs/batch-quickstart) and are rejected per line.
+</Note>
+
+<Note title="Provider Support">
+  Support is per model and OpenRouter enables it as providers roll it out; the first models to accept mid-conversation effort changes were Claude Fable 5.1 and OpenAI GPT-6 Astra. Requests that use an update are routed only to endpoints that accept it, and a request for a model that does not support it is rejected with a 400 instead of being sent with the update silently dropped.
 </Note>
 
 <span id="responses-api-shape" />

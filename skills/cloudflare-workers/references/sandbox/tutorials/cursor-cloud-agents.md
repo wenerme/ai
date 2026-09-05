@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Run Cursor Cloud Agents on Cloudflare via self-hosted machines
 
-Last updated Sep 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/cursor-cloud-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/cursor-cloud-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Run Cursor Cloud Agents on Cloudflare via [self-hosted machines ↗](https://cursor.com/docs/cloud-agent/self-hosted). Each Cursor session assigned to the deployment runs in an isolated container backed by Cloudflare Containers.
 
@@ -174,7 +174,7 @@ npx wrangler dev --test-scheduled
 In another terminal, invoke the scheduled route:
 
 ```sh
-curl "http://localhost:8787/__scheduled?cron=*/5+*+*+*+*"
+curl "http://localhost:8787/cdn-cgi/local/scheduled?cron=*/5+*+*+*+*"
 ```
 
 If you change the cron interval, update both `triggers.crons` in `wrangler.jsonc` and `CONTROLLER_RUN_BUDGET_MS` in `src/config.ts`.
@@ -207,5 +207,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/cursor-cloud-agents/#page","headline":"Run Cursor Cloud Agents on Cloudflare via self-hosted machines · Cloudflare Sandbox SDK docs","description":"Deploy Cursor self-hosted machines that run each assigned session in an isolated Cloudflare container.","url":"https://developers.cloudflare.com/sandbox/tutorials/cursor-cloud-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/cursor-cloud-agents/#page","headline":"Run Cursor Cloud Agents on Cloudflare via self-hosted machines · Cloudflare Sandbox SDK docs","description":"Deploy Cursor self-hosted machines that run each assigned session in an isolated Cloudflare container.","url":"https://developers.cloudflare.com/sandbox/tutorials/cursor-cloud-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
