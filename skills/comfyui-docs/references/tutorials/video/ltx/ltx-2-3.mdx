@@ -329,6 +329,123 @@ ComfyUI/
 
 ---
 
+### Video editing with IC-LoRA
+
+IC-LoRA weights are not limited to generation control. The Template Library includes ready-made LTX-2.3 IC-LoRA workflows for editing existing footage, and each one runs in Comfy Cloud or locally in ComfyUI. Community IC-LoRA checkpoints trained on top of LTX-2.3 (for example, the [LTX2.3-ICEdit-Insight](https://huggingface.co/joyfox/LTX2.3-ICEdit-Insight) family) are also compatible with the native LTX-2.3 model.
+
+#### Remove Subtitles from Video
+
+Remove subtitles, captions, watermarks, or other text overlays from a video:
+
+[LTX-2.3 Remove Subtitles workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search "Remove Subtitles" in Template Library
+  
+
+Input materials
+
+Download this sample input video to try the workflow:
+
+  
+    Download sample input video
+  
+
+#### Remove Object from Video
+
+Remove a specific object from the foreground of a video by describing it in the prompt:
+
+[LTX-2.3 Remove Object workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search "Remove Object" in Template Library
+  
+
+Input materials
+
+Download this sample input video to try the workflow:
+
+  
+    Download sample input video
+  
+
+#### Restore Archival Footage
+
+Restore old or degraded archival footage:
+
+[LTX-2.3 Restore Archival Footage workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search "Restore Archival" in Template Library
+  
+
+Input materials
+
+Download this sample input video to try the workflow:
+
+  
+    Download sample input video
+  
+
+#### Video Outpainting
+
+Expand a video in any direction using the LTX-2.3 Video Outpainting IC-LoRA:
+
+[LTX-2.3 Video Outpainting workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search "Video Outpainting" in Template Library
+  
+
+Input materials
+
+Download this sample input video to try the workflow:
+
+  
+    Download sample input video
+  
+
+#### Googly Eyes
+
+Apply the Googlyeyes LTX-2.3 LoRA to an input video to give everyone in the frame googly eyes:
+
+[LTX-2.3 Googly Eyes workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search "Googly Eyes" in Template Library
+  
+
+Input materials
+
+Download this sample input video to try the workflow:
+
+  
+    Download sample input video
+  
+
+For community IC-LoRAs, place the editing LoRA in `ComfyUI/models/loras/` and load it with a LoRA loader alongside the LTX-2.3 checkpoint, then run the workflow with your video as input and a prompt like:
+
+```text
+Remove subtitles, captions, and related text occlusions from the video, restoring a clean and natural underlying image.
+```
+
+---
+
 ### LTX-2.3 ID-LoRA
 
 Generate personalized videos with synchronized audio from a text prompt, reference image, and short audio clip. Uses ID-LoRA to adapt a person's appearance and voice in a single generative model.

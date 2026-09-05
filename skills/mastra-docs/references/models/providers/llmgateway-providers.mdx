@@ -5,7 +5,7 @@ description: "Browse LLM Gateway model IDs, capabilities, context windows, and p
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 372 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 374 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -1168,6 +1168,18 @@ for await (const chunk of stream) {
     "outputCost": 12
   },
   {
+    "model": "llmgateway-providers/azure/gpt-6-astra",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 10,
+    "outputCost": 50
+  },
+  {
     "model": "llmgateway-providers/azure/gpt-oss-120b",
     "imageInput": false,
     "audioInput": false,
@@ -1560,7 +1572,7 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 524288,
     "maxOutput": 393216,
-    "inputCost": 0.08,
+    "inputCost": 0.07,
     "outputCost": 0.16
   },
   {
@@ -2808,8 +2820,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": 0.075,
-    "outputCost": 0.25
+    "inputCost": 0.15,
+    "outputCost": 0.5
   },
   {
     "model": "llmgateway-providers/novita/hy3",
@@ -3734,6 +3746,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.6,
     "outputCost": 3.05
+  },
+  {
+    "model": "llmgateway-providers/runware/kimi-k3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 3,
+    "outputCost": 15
   },
   {
     "model": "llmgateway-providers/sakana/fugu-ultra",

@@ -681,7 +681,7 @@ scope: "Which settings files can set the key: user (~/.claude/settings.json), pr
 | [`includeGitInstructions`](#includegitinstructions)                                                   | Remove the built-in commit and PR instructions from the [system prompt](/docs/en/sub-agents#what-loads-at-startup)                                                                                                               | Git and attribution                | Any file                |
 | [`inputNeededNotifEnabled`](#inputneedednotifenabled)                                                 | Get a [push notification](/docs/en/remote-control#mobile-push-notifications) when Claude is waiting on you                                                                                                                       | Remote, desktop, and notifications | Any file                |
 | [`isolatePeerMachines`](#isolatepeermachines)                                                         | Ask you before Claude [messages one of your sessions on another machine](/docs/en/cross-session-messaging#require-approval-for-cross-machine-messages)                                                                           | Agents, sessions, and worktrees    | Any file                |
-| [`keybindingFlavor`](#keybindingflavor)                                                               | Make `Ctrl+W` [delete back to the previous whitespace](/docs/en/interactive-mode#make-ctrl-w-delete-back-to-whitespace), as Bash does                                                                                            | Interface and terminal             | Any file                |
+| [`keybindingFlavor`](#keybindingflavor)                                                               | Deprecated and has no effect; the word-editing shortcuts always [follow readline conventions](/docs/en/interactive-mode#make-ctrl-w-delete-back-to-whitespace)                                                                   | Interface and terminal             | Any file                |
 | [`language`](#language)                                                                               | Have Claude respond in a language other than English                                                                                                                                                                        | Model and responses                | Any file                |
 | [`managedSourcesBehavior`](#managedsourcesbehavior)                                                   | Compose every [managed source](/docs/en/managed-settings#how-claude-code-combines-managed-sources) you deploy instead of using the highest-priority one alone                                                                    | Enterprise and managed settings    | Managed                 |
 | [`minimumVersion`](#minimumversion)                                                                   | Keep [auto-updates](/docs/en/setup#pin-a-minimum-version) from installing anything below a version                                                                                                                               | Updates and versioning             | Any file                |
@@ -1442,7 +1442,7 @@ List the tool uses that prompt you for confirmation even in a permission mode th
 
 ### `permissions.deny`
 
-List the tool uses Claude Code blocks. Use it for files that hold API keys, secrets, or environment values: Claude Code excludes matching files from file discovery and search results, denies reads of them, and blocks the [Edit and Write tools](/docs/en/permissions#read-and-edit) on the matching paths. Read and Edit deny rules apply to Claude's built-in file tools and to file commands Claude Code recognizes in Bash, such as `cat`, `head`, `tail`, and `sed`; they don't apply to arbitrary subprocesses, so for OS-level enforcement [enable the sandbox](/docs/en/sandboxing).
+List the tool uses Claude Code blocks. Use it for files that hold API keys, secrets, or environment values: Claude Code excludes matching files from file discovery and search results, denies reads of them, and blocks the [Edit and Write tools](/docs/en/permissions#read-and-edit) on the matching paths. Read and Edit deny rules apply to Claude's built-in file tools, to file commands Claude Code recognizes in Bash, such as `cat`, `head`, `tail`, and `sed`, and to the targets of Bash [redirections](/docs/en/permissions#redirections) such as `> file` and `< file`; they don't apply to arbitrary subprocesses, so for OS-level enforcement [enable the sandbox](/docs/en/sandboxing).
 
 * **Scope**: [`Any file`](#scopes)
 * **Type**: array of permission rule strings
@@ -1694,7 +1694,7 @@ Name commands that Claude Code always runs outside the sandbox, such as tools th
 
 * **Scope**: [`Any file`](#scopes)
 * **Type**: array of command patterns
-* **Default**: unset, so every command Claude Code can sandbox runs sandboxed
+* **Default**: unset, so no command is excluded
 
 ```json settings.json theme={null}
 {
@@ -1708,12 +1708,12 @@ Excluded commands still go through the regular permission flow. Exclusion is a c
 
 ### `sandbox.allowUnsandboxedCommands`
 
-Let Claude retry a command outside the sandbox with the `dangerouslyDisableSandbox` parameter after the sandbox blocks it. Set it to `false` so Claude Code ignores that parameter completely and every command must run sandboxed or appear in [`excludedCommands`](#sandbox-excludedcommands), which the `/sandbox` **Overrides** tab shows as **Strict sandbox mode**. Use `false` in managed settings for policies that require strict sandboxing.
+Let Claude retry a command outside the sandbox with the `dangerouslyDisableSandbox` parameter after the sandbox blocks it. Set it to `false` so Claude Code ignores that parameter completely and every command Claude runs must be sandboxed or appear in [`excludedCommands`](#sandbox-excludedcommands). The `/sandbox` **Overrides** tab shows that state as **Strict sandbox mode**. Use `false` in managed settings for policies that require strict sandboxing.
 
 * **Scope**: [`Any file`](#scopes)
 * **Type**: Boolean
   * `true`: Claude can retry a command outside the sandbox with the `dangerouslyDisableSandbox` parameter after the sandbox blocks it
-  * `false`: Claude Code ignores that parameter, so every command runs sandboxed or appears in `excludedCommands`
+  * `false`: Claude Code ignores that parameter, so every command Claude runs is sandboxed or appears in `excludedCommands`
 * **Default**: `true`
 
 This enforces strict sandbox mode for everyone the managed settings cover:
@@ -1728,6 +1728,8 @@ This enforces strict sandbox mode for everyone the managed settings cover:
 ```
 
 An unsandboxed retry goes through the regular permission flow, with a prompt in Manual mode. See [The unsandboxed retry escape hatch](/docs/en/sandboxing#the-unsandboxed-retry-escape-hatch).
+
+To see when commands you type yourself at the [`!` shell-mode prompt](/docs/en/interactive-mode#shell-mode-with-prefix) run sandboxed, see [strict sandbox mode](/docs/en/sandboxing#the-unsandboxed-retry-escape-hatch).
 
 ### `sandbox.filesystem`
 
@@ -3075,21 +3077,15 @@ Footer badges render alongside a [custom status line](/docs/en/statusline) when 
 
 ### `keybindingFlavor`
 
-Choose which convention `Ctrl+W` follows in the prompt input. Set it to `"readline"` to make `Ctrl+W` delete back to the previous whitespace, as Bash does, so a path or a `--flag=value` goes in one press. Requires Claude Code v2.1.238 or later.
+<Warning>
+  Deprecated since v2.1.261 and has no effect. The prompt's word-editing keys always [follow readline conventions](/docs/en/interactive-mode#make-ctrl-w-delete-back-to-whitespace), as in Bash. Claude Code still accepts `keybindingFlavor`, so a settings file that sets it stays valid.
+</Warning>
+
+In v2.1.238 through v2.1.260, setting it to `"readline"` made `Ctrl+W` delete back to the previous whitespace instead of only the previous word.
 
 * **Scope**: [`Any file`](#scopes)
-* **Type**: string, one of:
-  * `"classic"`: `Ctrl+W` deletes the previous word
-  * `"readline"`: `Ctrl+W` deletes back to the previous whitespace
-* **Default**: `"classic"`
-
-```json settings.json theme={null}
-{
-  "keybindingFlavor": "readline"
-}
-```
-
-See [Make editing keys follow readline conventions](/docs/en/interactive-mode#make-ctrl-w-delete-back-to-whitespace) for the per-key behavior.
+* **Type**: string, `"classic"` or `"readline"`
+* **Default**: unset
 
 ### `prefersReducedMotion`
 

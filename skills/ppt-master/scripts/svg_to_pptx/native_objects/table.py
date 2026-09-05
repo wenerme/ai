@@ -949,12 +949,20 @@ def _native_table_header_warnings(
         for record, row_idx, col_idx in header_text_cells
     ):
         missing.append("columns[].bold")
-    if any(
-        _cell_payload(table_rows[row_idx][col_idx]).get("align")
-        != _fallback_table_alignment(record.anchor)
+    # Header cells export centred unless the payload sets align, so a missing
+    # align only matches a fallback whose header text is centred.
+    unmatched_anchors = sorted({
+        _fallback_table_alignment(record.anchor)
         for record, row_idx, col_idx in header_text_cells
-    ):
-        missing.append("columns[].align")
+        if (_cell_payload(table_rows[row_idx][col_idx]).get("align") or "ctr")
+        != _fallback_table_alignment(record.anchor)
+    })
+    if unmatched_anchors:
+        missing.append(
+            "columns[].align "
+            + "/".join(f'"{value}"' for value in unmatched_anchors)
+            + " (header cells export centred unless align is set)"
+        )
     if not missing:
         return []
     return [
@@ -1030,8 +1038,14 @@ def _native_table_fill_warnings(
         human_start = start + 1
         human_end = end
         span = str(human_start) if human_start == human_end else f"{human_start}-{human_end}"
+        hint = (
+            f" (one fallback rect spanning several {axis}s reads as one whole-{axis} fill;"
+            " draw one rect per column or row when their payload fills differ)"
+            if human_start != human_end
+            else ""
+        )
         warnings.append(
-            f"Native PPTX table whole {axis} {span} fill #{color} is not projected to cell fill"
+            f"Native PPTX table whole {axis} {span} fill #{color} is not projected to cell fill{hint}"
         )
     return warnings
 
@@ -1078,7 +1092,15 @@ def _native_table_first_column_warnings(
     table_rows: list[list[Any]],
     header_rows: int,
     text_cells: list[tuple[Any, int, int]],
+    *,
+    style_body_text: str | None = None,
 ) -> list[str]:
+    """Report first-column emphasis the payload would not carry.
+
+    A first column drawn in the table's own body text colour is carried by
+    ``style.body_text`` even when the other columns are coloured per cell, so
+    only a colour no layer resolves to is reported.
+    """
     body_records = [item for item in text_cells if item[1] >= header_rows]
     first_column = [item for item in body_records if item[2] == 0]
     if not first_column:
@@ -1104,9 +1126,10 @@ def _native_table_first_column_warnings(
         if (
             record.fill is not None
             and record.fill != body_color
-            and _table_cell_parity_text_style(
-                table_rows[row_idx][col_idx]
-            )[1] != record.fill
+            and (
+                _table_cell_parity_text_style(table_rows[row_idx][col_idx])[1]
+                or style_body_text
+            ) != record.fill
         )
     })
     if missing_colors:
@@ -1301,11 +1324,13 @@ def _native_table_warnings(
             shape_records,
         )
     )
+    table_style = payload.get("style") if isinstance(payload.get("style"), dict) else {}
     warnings.extend(
         _native_table_first_column_warnings(
             table_rows,
             header_rows,
             text_cells,
+            style_body_text=_hex_or_none(table_style.get("body_text")),
         )
     )
     warnings.extend(

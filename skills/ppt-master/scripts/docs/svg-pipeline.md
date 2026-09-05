@@ -917,8 +917,8 @@ Behavior:
   - Long-audio import and automatic long-audio splitting are not supported; keep narration assets page-level
   - Voice choices can be listed with `python3 scripts/notes_to_audio.py --list-common-voices`, `python3 scripts/notes_to_audio.py --list-voices --locale zh-CN`, or provider-specific `--provider <name> --list-voices`
 - Page transitions are controlled by `-t/--transition`; per-element object animations are controlled by `-a/--animation`
-- Per-element animation applies to ordinary top-level SVG `<g id="...">` groups; each group is a PowerPoint shape-target anchor, not necessarily one Animation Pane row. Use one group per logical Slide-local content unit rather than targeting a group count. Master/Layout atoms and slot groups are structural and excluded; exact id tokens remain a fallback only when explicit structural roles are absent
-- An explicit `animations.json` group entry may override the marker-free legacy chrome-name heuristic. It cannot override `data-pptx-layer` or an explicit static role/placeholder marker
+- Per-element animation applies to ordinary top-level SVG `<g id="...">` groups; each group is a PowerPoint shape-target anchor, not necessarily one Animation Pane row. Use one group per logical Slide-local content unit rather than targeting a group count
+- For chrome defaults, static role/placeholder overrides, and structural exclusions, see [`animations.md`](../../references/animations.md) §5
 - Start mode is set globally by `--animation-trigger`, mirroring PowerPoint's Start dropdown: `after-previous` (default, cascade with `--animation-stagger` spacing on slide entry), `on-click` (presenter-paced), or `with-previous` (all together on slide entry). A sidecar row may override it with `trigger`; the slide value is only the inherited Start mode
 - `on-click` is for live presentations only; recorded narration rejects every row that resolves to it, including a row with `trigger_shape`, because the tool does not generate object-level click timings
 - Flat SVG roots without top-level groups fall back to at most 8 visible primitives; beyond that, animation is skipped on the slide
@@ -1180,6 +1180,23 @@ python3 scripts/svg_position_calculator.py calc line --data "68:0.5,71:1.5,49:2.
 
 ### `flatten_tspan.py`
 
+Positioned `x`/`y`/nonzero `dy` rows keep the existing split/preserve/reflow
+behavior. A row starter's `dx` is consumed by its resolved line position;
+later inline scalar `dx` stays with its run through flattening.
+
+Native export represents inline `dx` with a separate NBSP run before the
+affected text. Its `a:rPr@spc`, in hundredths of a point, is
+`round(75 * (dx_px - estimated_space_width_px))`. The space estimate uses the
+current run's font and size. This keeps both positive and negative movement
+local to the boundary, including the first run, without changing tracking
+inside a label. Font substitution and estimated space metrics can introduce
+a small width difference. Spacing runs stay separate; positioned bullet
+markers remain literal text so bullet extraction cannot remove the offset.
+
+A small nonzero `dy` still starts a positioned row; it is not an inline
+superscript/subscript displacement. Use the supported `baseline-shift` form
+for inline vertical shifts.
+
 ```bash
 python3 scripts/svg_finalize/flatten_tspan.py projects/<project>/svg_output
 python3 scripts/svg_finalize/flatten_tspan.py path/to/input.svg path/to/output.svg
@@ -1223,6 +1240,10 @@ their conditionally loaded modules. The complete closed grammar those files
 rely on — mapping tables, accepted-but-warned spellings, rejection boundaries,
 and imported native-shape metadata — is documented in
 [`svg-contract.md`](svg-contract.md). This tool guide does not repeat it.
+
+For the first-pair approximation of odd-length or multi-segment custom
+`stroke-dasharray` lists and stroke-width normalization, see
+[`svg-contract.md`](svg-contract.md) §6.6.
 
 `svg_quality_checker.py` validates source SVG before finalization.
 `finalize_svg.py` and native export apply the preprocessing required by that
