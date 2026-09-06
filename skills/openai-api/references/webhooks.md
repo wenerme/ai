@@ -370,8 +370,8 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
     - `session_id: string`
 
-      The Transceiver `rtc_...` ID of the pending SIP session. The same
-      value appears as `call_id` in `realtime.call.incoming`.
+      The `live_...` ID of the pending SIP session. Forward this value
+      unchanged when accepting or rejecting the call through the Live API.
 
     - `sip_headers: array of object { name, value }`
 
@@ -419,8 +419,10 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
     - `call_id: string`
 
-      The Transceiver `rtc_...` ID of the pending SIP session. The same
-      value appears as `session_id` in `live.call.incoming`.
+      The Transceiver `rtc_...` ID of the pending SIP session. The paired
+      `live.call.incoming` event derives its `session_id` by replacing the
+      `rtc_` prefix with `live_`. Use the ID returned by the event with the
+      corresponding Realtime or Live API.
 
     - `sip_headers: array of object { name, value }`
 
@@ -992,8 +994,8 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `session_id: string`
 
-        The Transceiver `rtc_...` ID of the pending SIP session. The same
-        value appears as `call_id` in `realtime.call.incoming`.
+        The `live_...` ID of the pending SIP session. Forward this value
+        unchanged when accepting or rejecting the call through the Live API.
 
       - `sip_headers: array of object { name, value }`
 
@@ -1039,8 +1041,10 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `call_id: string`
 
-        The Transceiver `rtc_...` ID of the pending SIP session. The same
-        value appears as `session_id` in `live.call.incoming`.
+        The Transceiver `rtc_...` ID of the pending SIP session. The paired
+        `live.call.incoming` event derives its `session_id` by replacing the
+        `rtc_` prefix with `live_`. Use the ID returned by the event with the
+        corresponding Realtime or Live API.
 
       - `sip_headers: array of object { name, value }`
 

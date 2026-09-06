@@ -259,30 +259,6 @@ INSERT INTO tbl BY NAME
     ON CONFLICT DO UPDATE SET j = EXCLUDED.j;
 ```
 
-#### Limitations
-
-When the `ON CONFLICT ... DO UPDATE` clause is used and a conflict occurs, DuckDB internally assigns `NULL` values to the row's columns that are unaffected by the conflict, then re-assigns their values. If the affected columns use a `NOT NULL` constraint, this will trigger a `NOT NULL constraint failed` error. For example:
-
-```sql
-CREATE TABLE t1 (id INTEGER PRIMARY KEY, val1 DOUBLE, val2 DOUBLE NOT NULL);
-CREATE TABLE t2 (id INTEGER PRIMARY KEY, val1 DOUBLE);
-INSERT INTO t1
-    VALUES (1, 2, 3);
-INSERT INTO t2
-    VALUES (1, 5);
-
-INSERT INTO t1 BY NAME (SELECT id, val1 FROM t2)
-    ON CONFLICT DO UPDATE
-    SET val1 = EXCLUDED.val1;
-```
-
-This fails with the following error:
-
-```console
-Constraint Error:
-NOT NULL constraint failed: t1.val2
-```
-
 #### Composite Primary Key
 
 When multiple columns need to be part of the uniqueness constraint, use a single `PRIMARY KEY` clause including all relevant columns:
