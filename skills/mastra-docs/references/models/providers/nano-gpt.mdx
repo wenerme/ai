@@ -5,7 +5,7 @@ description: "Browse NanoGPT model IDs, capabilities, context windows, and prici
 
 # [NanoGPT logo]NanoGPT
 
-Access 591 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
+Access 592 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
 
 Learn more in the [NanoGPT documentation](https://docs.nano-gpt.com).
 
@@ -4162,8 +4162,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 32768,
+    "contextWindow": 400000,
+    "maxOutput": 128000,
     "inputCost": 1.25,
     "outputCost": 10
   },
@@ -4246,7 +4246,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 922000,
+    "contextWindow": 1050000,
     "maxOutput": 128000,
     "inputCost": 2.5,
     "outputCost": 15
@@ -4282,7 +4282,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
+    "contextWindow": 1050000,
     "maxOutput": 128000,
     "inputCost": 5,
     "outputCost": 30
@@ -6206,6 +6206,18 @@ for await (const chunk of stream) {
     "maxOutput": 16384,
     "inputCost": 0.31,
     "outputCost": 0.31
+  },
+  {
+    "model": "nano-gpt/TheDrummer/Artemis-v1.1",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 32768,
+    "inputCost": 0.1,
+    "outputCost": 0.45
   },
   {
     "model": "nano-gpt/TheDrummer/Cydonia-24B-v2",

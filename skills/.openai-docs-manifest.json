@@ -4572,10 +4572,10 @@
   "openai-api/webhooks.md": {
     "url": "https://developers.openai.com/api/reference/resources/webhooks/index.md",
     "skill": "openai-api",
-    "etag": "W/\"da4d3febd25b9da0ebd5b40ab6ac2bce\"",
-    "lastModified": "Sat, 29 Aug 2026 06:59:35 GMT",
-    "size": 25379,
-    "updatedAt": "2026-08-29T06:59:35.687Z"
+    "etag": "W/\"4bc30fb5e8838763e52992770926eb24\"",
+    "lastModified": "Sun, 06 Sep 2026 10:33:16 GMT",
+    "size": 25675,
+    "updatedAt": "2026-09-06T13:44:25.720Z"
   },
   "openai-api/webhooks/unwrap.md": {
     "url": "https://developers.openai.com/api/reference/resources/webhooks/methods/unwrap/index.md",
