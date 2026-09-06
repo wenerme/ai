@@ -49,6 +49,16 @@
       "investor"
     ]
   },
+  "mbb-consulting": {
+    "summary": "Strategy-document method in the MBB consulting convention — answer-first argument at document density with numbered exhibits, a key-message column, footnotes, and action titles on every page.",
+    "keywords": [
+      "consulting",
+      "strategy-document",
+      "MBB-style",
+      "document-density",
+      "exhibits"
+    ]
+  },
   "narrative-keynote": {
     "summary": "Story-driven keynote method that earns one idea through tension, turn, and concrete human detail.",
     "keywords": [
