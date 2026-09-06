@@ -137,6 +137,8 @@ paths:
                   id: 99999999-aaaa-bbbb-cccc-dddddddddddd
                   name: Production Langfuse
                   privacy_mode: false
+                  regions:
+                    - global
                   sampling_rate: 1
                   type: langfuse
                   updated_at: '2025-08-24T15:45:00Z'
@@ -193,6 +195,8 @@ components:
           id: 99999999-aaaa-bbbb-cccc-dddddddddddd
           name: Production Langfuse
           privacy_mode: false
+          regions:
+            - global
           sampling_rate: 1
           type: langfuse
           updated_at: '2025-08-24T15:45:00Z'
@@ -321,6 +325,8 @@ components:
         id: 99999999-aaaa-bbbb-cccc-dddddddddddd
         name: Production Langfuse
         privacy_mode: false
+        regions:
+          - global
         sampling_rate: 1
         type: langfuse
         updated_at: '2025-08-24T15:45:00Z'
@@ -417,6 +423,8 @@ components:
         id: 99999999-aaaa-bbbb-cccc-dddddddddddd
         name: Production Arize
         privacy_mode: false
+        regions:
+          - global
         sampling_rate: 1
         type: arize
         updated_at: '2025-08-24T15:45:00Z'
@@ -497,6 +505,16 @@ components:
             destination — only metadata.
           example: false
           type: boolean
+        regions:
+          description: >-
+            Data regions this destination applies to. Requests served in a
+            region only fan out to destinations that include that region.
+          example:
+            - global
+          items:
+            $ref: '#/components/schemas/ObservabilityDataRegion'
+          minItems: 1
+          type: array
         sampling_rate:
           description: >-
             Sampling rate for events sent to this destination, between 0.0001
@@ -520,6 +538,7 @@ components:
       required:
         - id
         - workspace_id
+        - regions
         - name
         - enabled
         - privacy_mode
@@ -550,6 +569,8 @@ components:
         id: 99999999-aaaa-bbbb-cccc-dddddddddddd
         name: Production Braintrust
         privacy_mode: false
+        regions:
+          - global
         sampling_rate: 1
         type: braintrust
         updated_at: '2025-08-24T15:45:00Z'
@@ -625,6 +646,16 @@ components:
             destination — only metadata.
           example: false
           type: boolean
+        regions:
+          description: >-
+            Data regions this destination applies to. Requests served in a
+            region only fan out to destinations that include that region.
+          example:
+            - global
+          items:
+            $ref: '#/components/schemas/ObservabilityDataRegion'
+          minItems: 1
+          type: array
         sampling_rate:
           description: >-
             Sampling rate for events sent to this destination, between 0.0001
@@ -648,6 +679,7 @@ components:
       required:
         - id
         - workspace_id
+        - regions
         - name
         - enabled
         - privacy_mode
@@ -680,6 +712,8 @@ components:
         id: 99999999-aaaa-bbbb-cccc-dddddddddddd
         name: Production ClickHouse
         privacy_mode: false
+        regions:
+          - global
         sampling_rate: 1
         type: clickhouse
         updated_at: '2025-08-24T15:45:00Z'
@@ -766,6 +800,16 @@ components:
             destination — only metadata.
           example: false
           type: boolean
+        regions:
+          description: >-
+            Data regions this destination applies to. Requests served in a
+            region only fan out to destinations that include that region.
+          example:
+            - global
+          items:
+            $ref: '#/components/schemas/ObservabilityDataRegion'
+          minItems: 1
+          type: array
         sampling_rate:
           description: >-
             Sampling rate for events sent to this destination, between 0.0001
@@ -789,6 +833,7 @@ components:
       required:
         - id
         - workspace_id
+        - regions
         - name
         - enabled
         - privacy_mode
@@ -819,6 +864,8 @@ components:
         id: 99999999-aaaa-bbbb-cccc-dddddddddddd
         name: Production Datadog
         privacy_mode: false
+        regions:
+          - global
         sampling_rate: 1
         type: datadog
         updated_at: '2025-08-24T15:45:00Z'
@@ -902,6 +949,16 @@ components:
             destination — only metadata.
           example: false
           type: boolean
+        regions:
+          description: >-
+            Data regions this destination applies to. Requests served in a
+            region only fan out to destinations that include that region.
+          example:
+            - global
+          items:
+            $ref: '#/components/schemas/ObservabilityDataRegion'
+          minItems: 1
+          type: array
         sampling_rate:
           description: >-
             Sampling rate for events sent to this destination, between 0.0001
@@ -925,6 +982,7 @@ components:
       required:
         - id
         - workspace_id
+        - regions
         - name
         - enabled
         - privacy_mode
@@ -955,6 +1013,8 @@ components:
         id: 99999999-aaaa-bbbb-cccc-dddddddddddd
         name: Production Grafana
         privacy_mode: false
+        regions:
+          - global
         sampling_rate: 1
         type: grafana
         updated_at: '2025-08-24T15:45:00Z'
@@ -1030,6 +1090,16 @@ components:
             destination — only metadata.
           example: false
           type: boolean
+        regions:
+          description: >-
+            Data regions this destination applies to. Requests served in a
+            region only fan out to destinations that include that region.
+          example:
+            - global
+          items:
+            $ref: '#/components/schemas/ObservabilityDataRegion'
+          minItems: 1
+          type: array
         sampling_rate:
           description: >-
             Sampling rate for events sent to this destination, between 0.0001
@@ -1053,6 +1123,7 @@ components:
       required:
         - id
         - workspace_id
+        - regions
         - name
         - enabled
         - privacy_mode
@@ -1083,6 +1154,8 @@ components:
         id: 99999999-aaaa-bbbb-cccc-dddddddddddd
         name: Production Langfuse
         privacy_mode: false
+        regions:
+          - global
         sampling_rate: 1
         type: langfuse
         updated_at: '2025-08-24T15:45:00Z'
@@ -1158,6 +1231,16 @@ components:
             destination — only metadata.
           example: false
           type: boolean
+        regions:
+          description: >-
+            Data regions this destination applies to. Requests served in a
+            region only fan out to destinations that include that region.
+          example:
+            - global
+          items:
+            $ref: '#/components/schemas/ObservabilityDataRegion'
+          minItems: 1
+          type: array
         sampling_rate:
           description: >-
             Sampling rate for events sent to this destination, between 0.0001
@@ -1181,6 +1264,7 @@ components:
       required:
         - id
         - workspace_id
+        - regions
         - name
         - enabled
         - privacy_mode
@@ -1211,6 +1295,8 @@ components:
         id: 99999999-aaaa-bbbb-cccc-dddddddddddd
         name: Production LangSmith
         privacy_mode: false
+        regions:
+          - global
         sampling_rate: 1
         type: langsmith
         updated_at: '2025-08-24T15:45:00Z'
@@ -1294,6 +1380,16 @@ components:
             destination — only metadata.
           example: false
           type: boolean
+        regions:
+          description: >-
+            Data regions this destination applies to. Requests served in a
+            region only fan out to destinations that include that region.
+          example:
+            - global
+          items:
+            $ref: '#/components/schemas/ObservabilityDataRegion'
+          minItems: 1
+          type: array
         sampling_rate:
           description: >-
             Sampling rate for events sent to this destination, between 0.0001
@@ -1317,6 +1413,7 @@ components:
       required:
         - id
         - workspace_id
+        - regions
         - name
         - enabled
         - privacy_mode
@@ -1346,6 +1443,8 @@ components:
         id: 99999999-aaaa-bbbb-cccc-dddddddddddd
         name: Production New Relic
         privacy_mode: false
+        regions:
+          - global
         sampling_rate: 1
         type: newrelic
         updated_at: '2025-08-24T15:45:00Z'
@@ -1420,6 +1519,16 @@ components:
             destination — only metadata.
           example: false
           type: boolean
+        regions:
+          description: >-
+            Data regions this destination applies to. Requests served in a
+            region only fan out to destinations that include that region.
+          example:
+            - global
+          items:
+            $ref: '#/components/schemas/ObservabilityDataRegion'
+          minItems: 1
+          type: array
         sampling_rate:
           description: >-
             Sampling rate for events sent to this destination, between 0.0001
@@ -1443,6 +1552,7 @@ components:
       required:
         - id
         - workspace_id
+        - regions
         - name
         - enabled
         - privacy_mode
@@ -1473,6 +1583,8 @@ components:
         id: 99999999-aaaa-bbbb-cccc-dddddddddddd
         name: Production Opik
         privacy_mode: false
+        regions:
+          - global
         sampling_rate: 1
         type: opik
         updated_at: '2025-08-24T15:45:00Z'
@@ -1549,6 +1661,16 @@ components:
             destination — only metadata.
           example: false
           type: boolean
+        regions:
+          description: >-
+            Data regions this destination applies to. Requests served in a
+            region only fan out to destinations that include that region.
+          example:
+            - global
+          items:
+            $ref: '#/components/schemas/ObservabilityDataRegion'
+          minItems: 1
+          type: array
         sampling_rate:
           description: >-
             Sampling rate for events sent to this destination, between 0.0001
@@ -1572,6 +1694,7 @@ components:
       required:
         - id
         - workspace_id
+        - regions
         - name
         - enabled
         - privacy_mode
@@ -1600,6 +1723,8 @@ components:
         id: 99999999-aaaa-bbbb-cccc-dddddddddddd
         name: Production OTel Collector
         privacy_mode: false
+        regions:
+          - global
         sampling_rate: 1
         type: otel-collector
         updated_at: '2025-08-24T15:45:00Z'
@@ -1670,6 +1795,16 @@ components:
             destination — only metadata.
           example: false
           type: boolean
+        regions:
+          description: >-
+            Data regions this destination applies to. Requests served in a
+            region only fan out to destinations that include that region.
+          example:
+            - global
+          items:
+            $ref: '#/components/schemas/ObservabilityDataRegion'
+          minItems: 1
+          type: array
         sampling_rate:
           description: >-
             Sampling rate for events sent to this destination, between 0.0001
@@ -1693,6 +1828,7 @@ components:
       required:
         - id
         - workspace_id
+        - regions
         - name
         - enabled
         - privacy_mode
@@ -1722,6 +1858,8 @@ components:
         id: 99999999-aaaa-bbbb-cccc-dddddddddddd
         name: Production PostHog
         privacy_mode: false
+        regions:
+          - global
         sampling_rate: 1
         type: posthog
         updated_at: '2025-08-24T15:45:00Z'
@@ -1793,6 +1931,16 @@ components:
             destination — only metadata.
           example: false
           type: boolean
+        regions:
+          description: >-
+            Data regions this destination applies to. Requests served in a
+            region only fan out to destinations that include that region.
+          example:
+            - global
+          items:
+            $ref: '#/components/schemas/ObservabilityDataRegion'
+          minItems: 1
+          type: array
         sampling_rate:
           description: >-
             Sampling rate for events sent to this destination, between 0.0001
@@ -1816,6 +1964,7 @@ components:
       required:
         - id
         - workspace_id
+        - regions
         - name
         - enabled
         - privacy_mode
@@ -1845,6 +1994,8 @@ components:
         id: 99999999-aaaa-bbbb-cccc-dddddddddddd
         name: Production Ramp
         privacy_mode: false
+        regions:
+          - global
         sampling_rate: 1
         type: ramp
         updated_at: '2025-08-24T15:45:00Z'
@@ -1917,6 +2068,16 @@ components:
             destination — only metadata.
           example: false
           type: boolean
+        regions:
+          description: >-
+            Data regions this destination applies to. Requests served in a
+            region only fan out to destinations that include that region.
+          example:
+            - global
+          items:
+            $ref: '#/components/schemas/ObservabilityDataRegion'
+          minItems: 1
+          type: array
         sampling_rate:
           description: >-
             Sampling rate for events sent to this destination, between 0.0001
@@ -1940,6 +2101,7 @@ components:
       required:
         - id
         - workspace_id
+        - regions
         - name
         - enabled
         - privacy_mode
@@ -1970,6 +2132,8 @@ components:
         id: 99999999-aaaa-bbbb-cccc-dddddddddddd
         name: Production S3
         privacy_mode: false
+        regions:
+          - global
         sampling_rate: 1
         type: s3
         updated_at: '2025-08-24T15:45:00Z'
@@ -2068,6 +2232,16 @@ components:
             destination — only metadata.
           example: false
           type: boolean
+        regions:
+          description: >-
+            Data regions this destination applies to. Requests served in a
+            region only fan out to destinations that include that region.
+          example:
+            - global
+          items:
+            $ref: '#/components/schemas/ObservabilityDataRegion'
+          minItems: 1
+          type: array
         sampling_rate:
           description: >-
             Sampling rate for events sent to this destination, between 0.0001
@@ -2091,6 +2265,7 @@ components:
       required:
         - id
         - workspace_id
+        - regions
         - name
         - enabled
         - privacy_mode
@@ -2120,6 +2295,8 @@ components:
         id: 99999999-aaaa-bbbb-cccc-dddddddddddd
         name: Production Sentry
         privacy_mode: false
+        regions:
+          - global
         sampling_rate: 1
         type: sentry
         updated_at: '2025-08-24T15:45:00Z'
@@ -2192,6 +2369,16 @@ components:
             destination — only metadata.
           example: false
           type: boolean
+        regions:
+          description: >-
+            Data regions this destination applies to. Requests served in a
+            region only fan out to destinations that include that region.
+          example:
+            - global
+          items:
+            $ref: '#/components/schemas/ObservabilityDataRegion'
+          minItems: 1
+          type: array
         sampling_rate:
           description: >-
             Sampling rate for events sent to this destination, between 0.0001
@@ -2215,6 +2402,7 @@ components:
       required:
         - id
         - workspace_id
+        - regions
         - name
         - enabled
         - privacy_mode
@@ -2244,6 +2432,8 @@ components:
         id: 99999999-aaaa-bbbb-cccc-dddddddddddd
         name: Production Snowflake
         privacy_mode: false
+        regions:
+          - global
         sampling_rate: 1
         type: snowflake
         updated_at: '2025-08-24T15:45:00Z'
@@ -2330,6 +2520,16 @@ components:
             destination — only metadata.
           example: false
           type: boolean
+        regions:
+          description: >-
+            Data regions this destination applies to. Requests served in a
+            region only fan out to destinations that include that region.
+          example:
+            - global
+          items:
+            $ref: '#/components/schemas/ObservabilityDataRegion'
+          minItems: 1
+          type: array
         sampling_rate:
           description: >-
             Sampling rate for events sent to this destination, between 0.0001
@@ -2353,6 +2553,7 @@ components:
       required:
         - id
         - workspace_id
+        - regions
         - name
         - enabled
         - privacy_mode
@@ -2384,6 +2585,8 @@ components:
         id: 99999999-aaaa-bbbb-cccc-dddddddddddd
         name: Production Weave
         privacy_mode: false
+        regions:
+          - global
         sampling_rate: 1
         type: weave
         updated_at: '2025-08-24T15:45:00Z'
@@ -2463,6 +2666,16 @@ components:
             destination — only metadata.
           example: false
           type: boolean
+        regions:
+          description: >-
+            Data regions this destination applies to. Requests served in a
+            region only fan out to destinations that include that region.
+          example:
+            - global
+          items:
+            $ref: '#/components/schemas/ObservabilityDataRegion'
+          minItems: 1
+          type: array
         sampling_rate:
           description: >-
             Sampling rate for events sent to this destination, between 0.0001
@@ -2486,6 +2699,7 @@ components:
       required:
         - id
         - workspace_id
+        - regions
         - name
         - enabled
         - privacy_mode
@@ -2514,6 +2728,8 @@ components:
         id: 99999999-aaaa-bbbb-cccc-dddddddddddd
         name: Production Webhook
         privacy_mode: false
+        regions:
+          - global
         sampling_rate: 1
         type: webhook
         updated_at: '2025-08-24T15:45:00Z'
@@ -2586,6 +2802,16 @@ components:
             destination — only metadata.
           example: false
           type: boolean
+        regions:
+          description: >-
+            Data regions this destination applies to. Requests served in a
+            region only fan out to destinations that include that region.
+          example:
+            - global
+          items:
+            $ref: '#/components/schemas/ObservabilityDataRegion'
+          minItems: 1
+          type: array
         sampling_rate:
           description: >-
             Sampling rate for events sent to this destination, between 0.0001
@@ -2609,6 +2835,7 @@ components:
       required:
         - id
         - workspace_id
+        - regions
         - name
         - enabled
         - privacy_mode
@@ -2639,6 +2866,13 @@ components:
       type:
         - object
         - 'null'
+    ObservabilityDataRegion:
+      enum:
+        - global
+        - europe
+        - us
+      example: global
+      type: string
     ObservabilityFilterRuleGroup:
       example:
         logic: and

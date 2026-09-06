@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Kitesurf
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/kitesurf/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/kitesurf/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Kitesurf ↗ ↗](https://blog.cloudflare.com/kitesurf) is Cloudflare's stateless, highly scalable browser that runs entirely on top of [Workers](https://developers.cloudflare.com/workers/) and is designed for AI agents. Instead of shipping a full desktop browser engine like Chromium, Kitesurf focuses on what matters to an agent — token count, context windows, scalability, performance, and cost — while trading away features that only humans need, such as tabs, themes, extensions, and pixel-perfect rendering.
+[Kitesurf ↗](https://blog.cloudflare.com/kitesurf) is Cloudflare's stateless, highly scalable browser that runs entirely on top of [Workers](https://developers.cloudflare.com/workers/) and is designed for AI agents. Instead of shipping a full desktop browser engine like Chromium, Kitesurf focuses on what matters to an agent — token count, context windows, scalability, performance, and cost — while trading away features that only humans need, such as tabs, themes, extensions, and pixel-perfect rendering.
 
 For common agentic tasks like screenshots and HTML extraction, Kitesurf uses significantly less CPU and memory than Chromium, which means you can run more sessions and scale better for bursty, AI-driven workloads.
 
@@ -30,7 +30,7 @@ Kitesurf is a good fit for:
 * Automations and applications that rely on one-shot [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/), such as extracting content from a page or generating PDFs and screenshots for compatible sites.
 * Bursty, AI-driven workloads that benefit from an ephemeral, fully-isolated, stateless engine designed to exist only for the duration of a task.
 
-Kitesurf correctly renders pages such as [TodoMVC ↗ ↗](https://todomvc.com/) (vanilla, React, Vue, Angular, Preact), Wikipedia, Hacker News, the Cloudflare Blog, and much of the Cloudflare dashboard.
+Kitesurf correctly renders pages such as [TodoMVC ↗](https://todomvc.com/) (vanilla, React, Vue, Angular, Preact), Wikipedia, Hacker News, the Cloudflare Blog, and much of the Cloudflare dashboard.
 
 ### What Kitesurf cannot do yet
 
@@ -42,7 +42,7 @@ Kitesurf is not yet the right option if you need to:
 
 For these cases, use Browser Run's default browser, which is powered by Chromium.
 
-The best way to know whether a specific site is compatible with Kitesurf is to try it — either through the [CDP endpoint](https://developers.cloudflare.com/browser-run/cdp/) and [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) or in the [public playground ↗ ↗](https://kitesurf.cloudflare.app/).
+The best way to know whether a specific site is compatible with Kitesurf is to try it — either through the [CDP endpoint](https://developers.cloudflare.com/browser-run/cdp/) and [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) or in the [public playground ↗](https://kitesurf.cloudflare.app/).
 
 ## How to use Kitesurf
 
@@ -64,7 +64,7 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser
 
 ### Use Kitesurf with the CDP endpoint
 
-The [Browser Run CDP endpoint](https://developers.cloudflare.com/browser-run/cdp/) supports Kitesurf as an option, so your existing [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), or [chrome-remote-interface ↗ ↗](https://www.npmjs.com/package/chrome-remote-interface) setup already works. To opt in, add `browser=kitesurf` to the endpoint URL:
+The [Browser Run CDP endpoint](https://developers.cloudflare.com/browser-run/cdp/) supports Kitesurf as an option, so your existing [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), or [chrome-remote-interface ↗](https://www.npmjs.com/package/chrome-remote-interface) setup already works. To opt in, add `browser=kitesurf` to the endpoint URL:
 
 ```txt
 wss://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-run/devtools/browser?browser=kitesurf
@@ -96,13 +96,13 @@ Replace `<ACCOUNT_ID>` with your Cloudflare account ID and `<API_TOKEN>` with a 
 
 ### Try the Kitesurf playground
 
-To start exploring Kitesurf without writing any code, use the [public playground ↗ ↗](https://kitesurf.cloudflare.app/). Type in any URL to see how Kitesurf renders the page and interact with it.
+To start exploring Kitesurf without writing any code, use the [public playground ↗](https://kitesurf.cloudflare.app/). Type in any URL to see how Kitesurf renders the page and interact with it.
 
-The playground injects Chrome DevTools into the UI, so you can inspect expanded DOM elements, read console messages, and watch network activity while Kitesurf renders a page. The [Memory panel ↗ ↗](https://developer.chrome.com/docs/devtools/memory) reports the WebAssembly footprint of each isolate, including frames, so you can see the resources each page consumes.
+The playground injects Chrome DevTools into the UI, so you can inspect expanded DOM elements, read console messages, and watch network activity while Kitesurf renders a page. The [Memory panel ↗](https://developer.chrome.com/docs/devtools/memory) reports the WebAssembly footprint of each isolate, including frames, so you can see the resources each page consumes.
 
 ## Standards compliance
 
-Kitesurf is tested against the [Web Platform Tests (WPT) ↗ ↗](https://github.com/web-platform-tests/wpt), the shared suite used to measure conformance to [W3C ↗ ↗](https://www.w3.org/) standards. As of the latest run, Kitesurf passes over **235,000 subtests**, and coverage is expanding quickly.
+Kitesurf is tested against the [Web Platform Tests (WPT) ↗](https://github.com/web-platform-tests/wpt), the shared suite used to measure conformance to [W3C ↗](https://www.w3.org/) standards. As of the latest run, Kitesurf passes over **235,000 subtests**, and coverage is expanding quickly.
 
 The parts of a browser that matter most to agents have strong coverage:
 
@@ -119,13 +119,13 @@ The parts of a browser that matter most to agents have strong coverage:
 
 Note
 
-These numbers are a snapshot and improve over time. WPT measures conformance to web standards, not a browser's ability to render and interact with every real-world website. The best way to confirm a specific site works is to try it in the [playground ↗ ↗](https://kitesurf.cloudflare.app/).
+These numbers are a snapshot and improve over time. WPT measures conformance to web standards, not a browser's ability to render and interact with every real-world website. The best way to confirm a specific site works is to try it in the [playground ↗](https://kitesurf.cloudflare.app/).
 
 ## How Kitesurf compares to Chromium
 
 Kitesurf is designed to be lightweight and efficient. It uses less CPU and memory than Chromium for common agentic tasks, at the cost of slightly slower wall time and rendering that is not pixel-perfect.
 
-The table below shows the medians of five Browser Run [Quick Action](https://developers.cloudflare.com/browser-run/quick-actions/) runs across a [14-URL corpus ↗ ↗](https://kitesurf.cloudflare.app/corpus.txt), comparing Chromium (warm pool) with Kitesurf:
+The table below shows the medians of five Browser Run [Quick Action](https://developers.cloudflare.com/browser-run/quick-actions/) runs across a [14-URL corpus ↗](https://kitesurf.cloudflare.app/corpus.txt), comparing Chromium (warm pool) with Kitesurf:
 
 | Metric                     | Kitesurf | Chromium (warm pool) | Kitesurf, relative          |
 | -------------------------- | -------- | -------------------- | --------------------------- |
@@ -147,5 +147,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/kitesurf/#page","headline":"Kitesurf · Cloudflare Browser Run docs","description":"Use Kitesurf, Cloudflare's stateless, agent-first browser that runs entirely on Workers, with Browser Run for screenshots, HTML extraction, and automation.","url":"https://developers.cloudflare.com/browser-run/kitesurf/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/kitesurf/#page","headline":"Kitesurf · Cloudflare Browser Run docs","description":"Use Kitesurf, Cloudflare's stateless, agent-first browser that runs entirely on Workers, with Browser Run for screenshots, HTML extraction, and automation.","url":"https://developers.cloudflare.com/browser-run/kitesurf/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

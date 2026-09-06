@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tutorial - React SPA with an API
 
-Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/tutorial/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/tutorial/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial takes you through the steps needed to adapt a Vite project to use the Cloudflare Vite plugin. Much of the content can also be applied to adapting existing Vite projects and to front-end frameworks other than React.
 
@@ -66,7 +66,9 @@ pnpm add -D @cloudflare/vite-plugin wrangler
 bun add -d @cloudflare/vite-plugin wrangler
 ```
 
-### Add the plugin to your Vite config
+### Add the Cloudflare Vite plugin to your project
+
+In your `vite.config.ts`, add the Cloudflare Vite plugin after your framework plugin:
 
 ```ts
 import { defineConfig } from "vite";
@@ -78,45 +80,46 @@ export default defineConfig({
 });
 ```
 
-The Cloudflare Vite plugin doesn't require any configuration by default and will look for a `wrangler.jsonc`, `wrangler.json` or `wrangler.toml` in the root of your application.
-
-Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plugin/reference/api/) for configuration options.
+The Cloudflare Vite plugin does not require any configuration by default and will look for a `wrangler.jsonc`, `wrangler.json`, or `wrangler.toml` in the root of your application.
 
 ### Create your Worker config file
 
+Create a `wrangler.jsonc` file in the root of your project:
+
 ```jsonc
 {
-	"$schema": "./node_modules/wrangler/config-schema.json",
-	"name": "cloudflare-vite-tutorial",
-	// Set this to today's date
-	"compatibility_date": "2026-08-25",
-	"assets": {
-		"not_found_handling": "single-page-application"
-	}
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-app",
+  // Set this to today's date
+  "compatibility_date": "2026-09-05",
+  "assets": {
+    "not_found_handling": "single-page-application"
+  }
 }
 ```
 
 ```toml
-"$schema" = "./node_modules/wrangler/config-schema.json"
-name = "cloudflare-vite-tutorial"
+name = "my-app"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-05"
 
 [assets]
 not_found_handling = "single-page-application"
 ```
 
-The [not\_found\_handling](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/) value has been set to `single-page-application`. This means that all not found requests will serve the `index.html` file. With the Cloudflare plugin, the `assets` routing configuration is used in place of Vite's default behavior. This ensures that your application's [routing configuration](https://developers.cloudflare.com/workers/static-assets/routing/) works the same way while developing as it does when deployed to production.
+The [not\_found\_handling](https://developers.cloudflare.com/workers/static-assets/routing/single-page-application/) value has been set to `single-page-application`. This means that all not-found requests will serve the `index.html` file, which is required for React Router and other client-side routing solutions.
 
-Note that the [directory](https://developers.cloudflare.com/workers/static-assets/binding/#directory) field is not used when configuring assets with Vite. The `directory` in the output configuration will automatically point to the client build output. See [Static Assets](https://developers.cloudflare.com/workers/vite-plugin/reference/static-assets/) for more information.
+With the Cloudflare plugin, the `assets` routing configuration is used in place of Vite's default behavior. This ensures that your application's [routing configuration](https://developers.cloudflare.com/workers/static-assets/routing/) works the same way while developing as it does when deployed to production.
+
+The [directory](https://developers.cloudflare.com/workers/static-assets/binding/#directory) field is not used when configuring assets with Vite. The `directory` in the output configuration will automatically point to the client build output. Refer to [Static Assets](https://developers.cloudflare.com/workers/vite-plugin/reference/static-assets/) for more information.
 
 Note
 
 When using the Cloudflare Vite plugin, the Worker config (for example, `wrangler.jsonc`) that you provide is the input configuration file. A separate output `wrangler.json` file is created when you run `vite build`. This output file is a snapshot of your configuration at the time of the build and is modified to reference your build artifacts. It is the configuration that is used for preview and deployment.
 
-### Update the .gitignore file
+### Update the `.gitignore` file
 
-When developing Workers, additional files are used and/or generated that should not be stored in git. Add the following lines to your `.gitignore` file:
+When developing Workers, additional files are used and/or generated that should not be stored in Git. Add the following lines to your `.gitignore` file:
 
 ```txt
 .wrangler
@@ -125,13 +128,27 @@ When developing Workers, additional files are used and/or generated that should 
 
 ### Run the development server
 
-Run `npm run dev` to start the Vite development server and verify that your application is working as expected.
+Run your framework's development command to start the Vite development server and verify that your application is working as expected.
 
-For a purely front-end application, you could now build (`npm run build`), preview (`npm run preview`), and deploy (`npm exec wrangler deploy`) your application. This tutorial, however, will show you how to go a step further and add an API Worker.
+npmyarnpnpm
+
+```
+npm run dev
+```
+
+```
+yarn run dev
+```
+
+```
+pnpm run dev
+```
+
+For a purely front-end application, you could now build, preview, and deploy your application. The following sections will show you how to go further and add an API Worker.
 
 ## Add an API Worker
 
-### Configure TypeScript for your Worker code
+### Add Workers TypeScript types
 
 npmyarnpnpmbun
 
@@ -151,16 +168,20 @@ pnpm add -D @cloudflare/workers-types
 bun add -d @cloudflare/workers-types
 ```
 
+Create a `tsconfig.worker.json` that extends your Node TypeScript configuration and adds the Workers types:
+
 ```jsonc
 {
 	"extends": "./tsconfig.node.json",
 	"compilerOptions": {
 		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.worker.tsbuildinfo",
-		"types": ["@cloudflare/workers-types", "vite/client"],
+		"types": ["@cloudflare/workers-types/2023-07-01", "vite/client"],
 	},
 	"include": ["worker"],
 }
 ```
+
+Then add a reference to this new configuration in your root `tsconfig.json`:
 
 ```jsonc
 {
@@ -173,26 +194,27 @@ bun add -d @cloudflare/workers-types
 }
 ```
 
-### Add to your Worker configuration
+### Add the Worker entrypoint to your configuration
+
+Update your Wrangler configuration file to add a `main` field that points to your Worker entrypoint:
 
 ```jsonc
 {
-	"$schema": "./node_modules/wrangler/config-schema.json",
-	"name": "cloudflare-vite-tutorial",
-	// Set this to today's date
-	"compatibility_date": "2026-08-25",
-	"assets": {
-		"not_found_handling": "single-page-application"
-	},
-	"main": "./worker/index.ts"
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-app",
+  // Set this to today's date
+  "compatibility_date": "2026-09-05",
+  "main": "./worker/index.ts",
+  "assets": {
+    "not_found_handling": "single-page-application"
+  }
 }
 ```
 
 ```toml
-"$schema" = "./node_modules/wrangler/config-schema.json"
-name = "cloudflare-vite-tutorial"
+name = "my-app"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-05"
 main = "./worker/index.ts"
 
 [assets]
@@ -202,6 +224,8 @@ not_found_handling = "single-page-application"
 The `main` field specifies the entry file for your Worker code.
 
 ### Add your API Worker
+
+Create a `worker/index.ts` file with the following contents:
 
 ```ts
 export default {
@@ -219,7 +243,7 @@ export default {
 } satisfies ExportedHandler;
 ```
 
-The Worker above will be invoked for any non-navigation request that does not match a static asset. It returns a JSON response if the `pathname` starts with `/api/` and otherwise return a `404` response.
+The Worker defined in the preceding code block will be invoked for any non-navigation request that does not match a static asset. It returns a JSON response if the `pathname` starts with `/api/` and otherwise returns a `404` response.
 
 Note
 
@@ -229,30 +253,29 @@ If you would instead like to define the routes that invoke your Worker explicitl
 
 ```jsonc
 {
-	"$schema": "./node_modules/wrangler/config-schema.json",
-	"name": "cloudflare-vite-tutorial",
-	// Set this to today's date
-	"compatibility_date": "2026-08-25",
-	"assets": {
-		"not_found_handling": "single-page-application",
-		"run_worker_first": [
-			"/api/*"
-		]
-	},
-	"main": "./worker/index.ts"
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "cloudflare-vite-tutorial",
+  // Set this to today's date
+  "compatibility_date": "2026-09-05",
+  "main": "./worker/index.ts",
+  "assets": {
+    "not_found_handling": "single-page-application",
+    "run_worker_first": [
+      "/api/*"
+    ]
+  }
 }
 ```
 
 ```toml
-"$schema" = "./node_modules/wrangler/config-schema.json"
 name = "cloudflare-vite-tutorial"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-05"
 main = "./worker/index.ts"
 
 [assets]
 not_found_handling = "single-page-application"
-run_worker_first = [ "/api/*" ]
+run_worker_first = ["/api/*"]
 ```
 
 ### Call the API from the client
@@ -324,33 +347,60 @@ With Vite and the Cloudflare plugin, you can iterate on the client and server pa
 
 ### Build your application
 
-Run `npm run build` to build your application.
+Run the build command to build your application.
 
-```sh
+npmyarnpnpm
+
+```
 npm run build
 ```
 
-If you inspect the `dist` directory, you will see that it contains two subdirectories:
+```
+yarn run build
+```
 
-* `client` \- the client code that runs in the browser
-* `cloudflare_vite_tutorial` \- the Worker code alongside the output `wrangler.json` configuration file
+```
+pnpm run build
+```
+
+The `dist` directory will contain your client build output in the `client` subdirectory and your Worker code alongside the output `wrangler.json` configuration file.
 
 ### Preview your application
 
-Run `npm run preview` to validate that your application runs as expected.
+Run the preview command to validate that your application runs as expected.
 
-```sh
+npmyarnpnpm
+
+```
 npm run preview
 ```
 
-This command will run your build output locally in the Workers runtime, closely matching its behaviour in production.
+```
+yarn run preview
+```
+
+```
+pnpm run preview
+```
+
+This command will run your build output locally in the Workers runtime, closely matching its behavior in production.
 
 ### Deploy to Cloudflare
 
-Run `npm exec wrangler deploy` to deploy your application to Cloudflare.
+Run the deploy command to deploy your application to Cloudflare.
 
-```sh
-npm exec wrangler deploy
+npmyarnpnpm
+
+```
+npx wrangler deploy
+```
+
+```
+yarn wrangler deploy
+```
+
+```
+pnpm wrangler deploy
 ```
 
 This command will automatically use the output `wrangler.json` that was included in the build output.
@@ -374,5 +424,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/#page","headline":"Tutorial - React SPA with an API · Cloudflare Workers docs","description":"Create a React SPA with an API Worker using the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/#page","headline":"Tutorial - React SPA with an API · Cloudflare Workers docs","description":"Create a React SPA with an API Worker using the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

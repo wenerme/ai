@@ -5,7 +5,7 @@ description: "Browse NanoGPT model IDs, capabilities, context windows, and prici
 
 # [NanoGPT logo]NanoGPT
 
-Access 592 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
+Access 591 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
 
 Learn more in the [NanoGPT documentation](https://docs.nano-gpt.com).
 
@@ -3868,18 +3868,6 @@ for await (const chunk of stream) {
     "outputCost": 1.2
   },
   {
-    "model": "nano-gpt/NousResearch/Hermes-4-70B:thinking",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 8192,
-    "inputCost": 0.2006,
-    "outputCost": 0.3995
-  },
-  {
     "model": "nano-gpt/nvidia/Llama-3.1-Nemotron-70B-Instruct-HF",
     "imageInput": false,
     "audioInput": false,
@@ -4416,8 +4404,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 2,
-    "outputCost": 10
+    "inputCost": 10,
+    "outputCost": 50
   },
   {
     "model": "nano-gpt/openai/gpt-oss-120b",
@@ -6214,7 +6202,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
-    "contextWindow": 131072,
+    "contextWindow": 32000,
     "maxOutput": 16384,
     "inputCost": 0.31,
     "outputCost": 0.31

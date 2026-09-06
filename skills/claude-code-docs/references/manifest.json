@@ -79,9 +79,9 @@
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-    "etag": "W/\"675c5a503f28e059bf95aea8862491a64a0e5c5506f10d16231556df3c5800ed\"",
-    "size": 630029,
-    "updatedAt": "2026-09-05T04:08:57.487Z"
+    "etag": "W/\"662cfcb0f767eea562c80049e9aabf3e6a1fe70d94b0c6309b024be380ba1010\"",
+    "size": 630083,
+    "updatedAt": "2026-09-06T04:17:36.309Z"
   },
   "channels.md": {
     "url": "https://code.claude.com/docs/en/channels",
@@ -175,9 +175,9 @@
   },
   "cli-reference.md": {
     "url": "https://code.claude.com/docs/en/cli-reference",
-    "lastModified": "Sat, 05 Sep 2026 13:24:39 GMT",
-    "size": 108582,
-    "updatedAt": "2026-09-05T13:24:39.367Z"
+    "lastModified": "Sun, 06 Sep 2026 04:16:17 GMT",
+    "size": 109584,
+    "updatedAt": "2026-09-06T04:16:17.779Z"
   },
   "cloud-environments.md": {
     "url": "https://code.claude.com/docs/en/cloud-environments",
@@ -307,9 +307,9 @@
   },
   "env-vars.md": {
     "url": "https://code.claude.com/docs/en/env-vars",
-    "lastModified": "Sat, 05 Sep 2026 13:24:56 GMT",
-    "size": 481445,
-    "updatedAt": "2026-09-05T13:24:56.492Z"
+    "lastModified": "Sun, 06 Sep 2026 04:16:33 GMT",
+    "size": 481450,
+    "updatedAt": "2026-09-06T04:16:33.207Z"
   },
   "errors.md": {
     "url": "https://code.claude.com/docs/en/errors",
@@ -745,9 +745,9 @@
   },
   "sub-agents.md": {
     "url": "https://code.claude.com/docs/en/sub-agents",
-    "lastModified": "Sat, 05 Sep 2026 13:25:59 GMT",
-    "size": 112286,
-    "updatedAt": "2026-09-05T13:25:59.687Z"
+    "lastModified": "Sun, 06 Sep 2026 04:17:14 GMT",
+    "size": 112483,
+    "updatedAt": "2026-09-06T04:17:14.879Z"
   },
   "terminal-config.md": {
     "url": "https://code.claude.com/docs/en/terminal-config",

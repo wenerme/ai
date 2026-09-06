@@ -418,10 +418,10 @@
   "openai-docs/guides/error-codes.md": {
     "url": "https://developers.openai.com/api/docs/guides/error-codes.md",
     "skill": "openai-docs",
-    "etag": "W/\"962afdf51d3133f637d32a0e94632cb5\"",
-    "lastModified": "Fri, 04 Sep 2026 04:06:34 GMT",
-    "size": 31559,
-    "updatedAt": "2026-09-04T04:19:13.596Z"
+    "etag": "W/\"41b498c906f556bab1fbd766e95ddcbd\"",
+    "lastModified": "Sun, 06 Sep 2026 03:26:18 GMT",
+    "size": 32170,
+    "updatedAt": "2026-09-06T04:22:03.878Z"
   },
   "openai-docs/guides/evals.md": {
     "url": "https://developers.openai.com/api/docs/guides/evals.md",
@@ -714,10 +714,10 @@
   "openai-docs/guides/rate-limits.md": {
     "url": "https://developers.openai.com/api/docs/guides/rate-limits.md",
     "skill": "openai-docs",
-    "etag": "W/\"b7601313431aba0748674da6858de91f\"",
-    "lastModified": "Thu, 03 Sep 2026 01:56:54 GMT",
-    "size": 17890,
-    "updatedAt": "2026-09-03T04:14:47.887Z"
+    "etag": "W/\"f49447d90f75cfeb5671e0da08a21ecd\"",
+    "lastModified": "Sun, 06 Sep 2026 03:52:56 GMT",
+    "size": 20166,
+    "updatedAt": "2026-09-06T04:22:12.327Z"
   },
   "openai-docs/guides/rbac.md": {
     "url": "https://developers.openai.com/api/docs/guides/rbac.md",
