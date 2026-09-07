@@ -5,7 +5,7 @@ description: "Browse SenseNova (China) model IDs, capabilities, and context wind
 
 # [SenseNova (China) logo]SenseNova (China)
 
-Access 3 SenseNova (China) models through Mastra's model router. Authentication is handled automatically using the `SENSENOVA_API_KEY` environment variable.
+Access 5 SenseNova (China) models through Mastra's model router. Authentication is handled automatically using the `SENSENOVA_API_KEY` environment variable.
 
 Learn more in the [SenseNova (China) documentation](https://platform.sensenova.cn/docs).
 
@@ -52,6 +52,18 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
+    "model": "sensenova/deepseek-v4-pro",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "sensenova/glm-5.2",
     "imageInput": false,
     "audioInput": false,
@@ -60,6 +72,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "sensenova/kimi-k3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
     "inputCost": null,
     "outputCost": null
   },

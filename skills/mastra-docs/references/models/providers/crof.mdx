@@ -5,7 +5,7 @@ description: "Browse CrofAI model IDs, capabilities, context windows, and pricin
 
 # [CrofAI logo]CrofAI
 
-Access 23 CrofAI models through Mastra's model router. Authentication is handled automatically using the `CROF_API_KEY` environment variable.
+Access 24 CrofAI models through Mastra's model router. Authentication is handled automatically using the `CROF_API_KEY` environment variable.
 
 Learn more in the [CrofAI documentation](https://crof.ai/docs).
 
@@ -74,6 +74,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.08,
     "outputCost": 0.1
+  },
+  {
+    "model": "crof/deepseek-v4-flash-vision-exp",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 0.08,
+    "outputCost": 0.2
   },
   {
     "model": "crof/deepseek-v4-pro",

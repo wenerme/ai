@@ -158,6 +158,7 @@ To select driver, you can either use `type` option, or provide the driver class 
 | `oracledb`   | `OracleDriver`     | `oracledb`       | -                           |
 | `sqlite`     | `SqliteDriver`     | `better-sqlite3` | -                           |
 | `libsql`     | `LibSqlDriver`     | `libsql`         | -                           |
+| `sql-js`     | `SqlJsDriver`      | `sql.js`         | in-memory SQLite in WASM    |
 
 > Driver and connection implementations are not directly exported from `@mikro-orm/core` module. You can import them from the driver packages (e.g. `import { PostgreSqlDriver } from '@mikro-orm/postgresql'`).
 
@@ -202,6 +203,29 @@ MikroORM.init({
   driverOptions: () => mongo,
 });
 ```
+
+### Accessing the native client
+
+`getNativeClient()` returns the client the connection drives, for vendor APIs MikroORM does not wrap. Each driver narrows the return type to its own client:
+
+```ts
+const pool = await orm.em.getConnection().getNativeClient(); // pg Pool on postgresql
+```
+
+| Driver                   | Returns                                     |
+| ------------------------ | ------------------------------------------- |
+| `postgresql`             | `Pool` from `pg`                            |
+| `mysql`, `mariadb`       | `Pool` from `mysql2`                        |
+| `sqlite`                 | `Database` from `better-sqlite3`            |
+| `libsql`                 | `Database` from `libsql`                    |
+| `pglite`                 | `PGlite` from `@electric-sql/pglite`        |
+| `sql-js`                 | `SqlJsNativeDatabase` from `@mikro-orm/sql-js` |
+| `oracledb`               | `Pool` from `oracledb`                      |
+| `mongodb`                | `MongoClient` (same as `getClient()`)       |
+
+It throws on `mssql`, which has no long-lived native client — use the `onCreateConnection`/`onReserveConnection` hooks to reach `tedious` connections. It also throws when you supplied a ready-made Kysely instance or dialect via `driverOptions`, since the driver never creates a client of its own in that case.
+
+The client's lifecycle belongs to the ORM, so leave closing it to `orm.close()` unless you provided it yourself. For the Kysely query builder rather than the vendor client, use [`getClient()`](./kysely.md).
 
 > You can also set the timezone directly in the ORM configuration:
 >
@@ -279,7 +303,9 @@ MikroORM.init({
 
 ### Connection reserve hook
 
-`onReserveConnection` is awaited every time a connection is acquired from the pool, before any query runs on it. It can be combined with `AsyncLocalStorage` to set request-scoped session variables before each query, for example when using row-level security policies.
+`onReserveConnection` is awaited every time a connection is acquired from the pool, before any query runs on it. It can be combined with `AsyncLocalStorage` to set request-scoped session variables before each query.
+
+> **info**: For PostgreSQL row level security you no longer need to hand-roll this — the ORM manages session variables natively via `em.fork({ session })` and the `sessionContext` option, see the [Row Level Security](./row-level-security.md) guide.
 
 It is supported by the PostgreSQL, MySQL/MariaDB, and MSSQL drivers; other drivers (SQLite, libSQL, Oracle) ignore it. For PostgreSQL and MySQL/MariaDB it is forwarded to Kysely's dialect; for MSSQL the hook runs on every checkout from the `tedious` pool. The example below uses PostgreSQL syntax — adapt the statement to your driver (e.g. `sp_set_session_context` on MSSQL).
 
@@ -573,6 +599,7 @@ MikroORM.init({
     ignoreSchema: [], // allows ignoring some schemas when diffing
     ignoreTriggers: false, // leave triggers unmanaged (never drop or alter existing ones)
     ignoreRoutines: false, // leave stored routines unmanaged (never drop or alter existing ones)
+    ignorePolicies: false, // leave row level security policies unmanaged (never drop or alter existing ones)
     skipTables: [], // ignore some database tables during schema generation
     skipColumns: {}, // ignore some database table columns during schema generation
   },
@@ -790,6 +817,7 @@ Full list of supported options:
 | `MIKRO_ORM_SCHEMA_GENERATOR_CREATE_FOREIGN_KEY_CONSTRAINTS` | `migrations.createForeignKeyConstraints`       |
 | `MIKRO_ORM_SCHEMA_GENERATOR_IGNORE_TRIGGERS`               | `schemaGenerator.ignoreTriggers`               |
 | `MIKRO_ORM_SCHEMA_GENERATOR_IGNORE_ROUTINES`               | `schemaGenerator.ignoreRoutines`               |
+| `MIKRO_ORM_SCHEMA_GENERATOR_IGNORE_POLICIES`               | `schemaGenerator.ignorePolicies`               |
 | `MIKRO_ORM_SEEDER_PATH`                                     | `seeder.path`                                  |
 | `MIKRO_ORM_SEEDER_PATH_TS`                                  | `seeder.pathTs`                                |
 | `MIKRO_ORM_SEEDER_GLOB`                                     | `seeder.glob`                                  |

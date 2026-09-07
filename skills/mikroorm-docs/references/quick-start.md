@@ -32,6 +32,9 @@ npm install @mikro-orm/core @mikro-orm/sqlite
 # for libsql/turso
 npm install @mikro-orm/core @mikro-orm/libsql
 
+# for sql.js (in-memory SQLite in WASM, works in the browser)
+npm install @mikro-orm/core @mikro-orm/sql-js
+
 # for mssql
 npm install @mikro-orm/core @mikro-orm/mssql
 
@@ -95,6 +98,17 @@ This method has some limitations:
 - folder-based discovery not supported
 - ORM extensions are not auto-loaded
 - when metadata cache is enabled, `FileCacheAdapter` needs to be explicitly set in the config
+
+## Closing the ORM
+
+To close the database connection, call `orm.close()`. The ORM instance also implements the async disposable protocol via `Symbol.asyncDispose`, so you can use [explicit resource management](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Resource_management) to close it automatically:
+
+```ts
+await using orm = await MikroORM.init({ ... });
+// `orm.close()` is called automatically at the end of the enclosing scope
+```
+
+> The `await using` syntax requires node 24+, or a transpiler that downlevels it (TypeScript does so for any compilation target below `ESNext`).
 
 ## RequestContext helper
 
@@ -302,7 +316,7 @@ Another way to control these CLI-related settings is with the environment variab
 
 - `MIKRO_ORM_CLI_CONFIG`: the path to ORM config file
 - `MIKRO_ORM_CLI_PREFER_TS`: enforce use of the TS paths (e.g. `entitiesTs` or `pathTs`)
-- `MIKRO_ORM_CLI_TS_LOADER`: set preferred TS loader (one of `oxc`, `swc`, `tsx`, `jiti`, `tsimp`)
+- `MIKRO_ORM_CLI_TS_LOADER`: set preferred TS loader (one of `oxc`, `swc`, `tsx`, `jiti`, `tsimp`, `nub`), see [TypeScript loaders in CLI](./typescript-loaders.md)
 - `MIKRO_ORM_CLI_TS_CONFIG_PATH`: path to the tsconfig.json (for TS support)
 - `MIKRO_ORM_CLI_ALWAYS_ALLOW_TS`: enable `.ts` files to use without detected TS support
 - `MIKRO_ORM_CLI_VERBOSE`: enable verbose logging (e.g. print queries used in seeder or schema diffing)
