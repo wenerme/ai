@@ -961,6 +961,10 @@ console.log(articles[0] instanceof Article); // true
 
 > You can also use `qb.getResultList()` which is alias for `qb.getResult()`.
 
+Here is the `QueryBuilder` in action — the same sub-queries, join, and `execute()`/`getSingleResult()` calls running against a real SQLite database in your browser. Press **Run** (or edit the query and re-run):
+
+<BrowserOnly>{() => <Playground project="query-builder" />}</BrowserOnly>
+
 ## Updating the tests
 
 We just changed the shape of our API response, which is something we test already, so let's fix our broken tests. First, create some testing comments in our `TestSeeder`:

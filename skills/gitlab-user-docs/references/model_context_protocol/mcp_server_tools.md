@@ -74,7 +74,10 @@ Each object in `actions` accepts the following fields:
 | `execute_filemode` | boolean | No       | Whether the file is executable. Required for `chmod`. |
 
 Partial edits replace exactly one occurrence of `old_str`. If it occurs more than once, provide more surrounding
-context. Partial edits read the complete file on the server and are subject to the 20 MB GraphQL blob request limit.
+context. Partial edits read the complete file on the server, so they are not supported for files larger than 10 MiB.
+For larger files, commit the full file content instead.
+
+Partial edits are not supported for binary files or for files stored in LFS.
 
 Example:
 
@@ -219,6 +222,24 @@ Example:
 
 ```plaintext
 List my active Duo Agent Platform sessions in gitlab-org/gitlab
+```
+
+## `get_duo_session`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/607634) in GitLab 19.4. `get_duo_workflow_status` is also accepted as an alias.
+
+Checks the status of a GitLab Duo Agent Platform session. Running sessions include a suggested
+polling delay. Finished sessions and completed chat turns include the latest agent answer.
+Sessions waiting for approval include instructions for continuing the session.
+
+| Parameter     | Type    | Required | Description |
+|---------------|---------|----------|-------------|
+| `workflow_id` | integer | Yes      | Workflow ID returned by `trigger_duo_flow` or `ask_duo_agent`. |
+
+Example:
+
+```plaintext
+Check the status of Duo session 42
 ```
 
 ## `list_merge_requests`
@@ -816,15 +837,19 @@ merge requests related to it. Widgets the work item type does not support are om
 | `group_id`                      | string  | No       | ID or path of the group. Required if `url` and `project_id` are missing. |
 | `project_id`                    | string  | No       | ID or path of the project. Required if `url` and `group_id` are missing. |
 | `work_item_iid`                 | integer | No       | Internal ID of the work item. Required if `url` is missing. |
-| `include`                       | array   | No       | Associated data to return. One of `notes` or `related_merge_requests`, one facet per call. |
+| `include`                       | array   | No       | Associated data to return. One of `notes` or `related_merge_requests`, one facet per call. For the newest notes, use `notes_last` without `notes_first` or `notes_after`. |
+| `notes_first`                   | integer | No       | Number of notes to return after the cursor (forward pagination). Default 100, maximum 100. |
+| `notes_after`                   | string  | No       | Cursor for forward pagination of notes. Use `pageInfo.endCursor` from a previous response. |
+| `notes_last`                    | integer | No       | Number of notes to return before the cursor (backward pagination). Default 100, maximum 100. |
+| `notes_before`                  | string  | No       | Cursor for backward pagination of notes. Use `pageInfo.startCursor` from a previous response. |
 | `related_merge_requests_first`  | integer | No       | Number of related merge requests to return. Default 20, maximum 100. |
 | `related_merge_requests_after`  | string  | No       | Cursor for forward pagination of related merge requests. |
 | `mr_page_size`                  | integer | No       | Deprecated: use `related_merge_requests_first` instead. |
 | `mr_pagination_cursor`          | string  | No       | Deprecated: use `related_merge_requests_after` instead. |
 
-The `notes` facet returns the first 100 notes. Use `get_workitem_notes` for full note
-pagination. The `related_merge_requests` facet is empty for group-level work items such
-as epics.
+The `notes` facet returns up to 100 notes per call and paginates in both directions with
+the `notes_*` parameters. The `related_merge_requests` facet is empty for group-level work
+items such as epics.
 
 Example:
 

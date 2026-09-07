@@ -16,6 +16,10 @@ You can define custom types by extending `Type` abstract class. It has several o
 
   Converts a value from its JS representation to its serialized JSON form of this type. By default, uses the runtime value.
 
+- `fromJSON(value: unknown, platform: Platform): any` (optional)
+
+  Converts a value from its serialized JSON form (what `toJSON` produced, after a `JSON.parse` round trip) back to its JS representation. Implementing it makes the type own its cursor wire format: cursor encoding then uses `toJSON`, and decoding passes the value back to `fromJSON`. Cursor values are client supplied, so implementations should validate the input and throw for values they cannot restore — the failure surfaces as a `CursorError`. Without it, cursors carry the raw JS value and decoding falls back to `convertToJSValue`.
+
 - `getColumnType(prop: EntityProperty, platform: Platform): string`
 
   Gets the SQL declaration snippet for a field of this type. By default, returns `columnType` of given property.
@@ -63,6 +67,43 @@ For most custom types, you only need the runtime conversion methods. The SQL-lev
 
 - The database stores values in a binary or internal format that requires SQL functions to convert (e.g., PostGIS geometry, MySQL spatial types)
 - You want to leverage database-specific functions for encoding/decoding
+
+## Normalizing string properties
+
+The built-in `StringType` and `TextType` can trim and change the casing of string values. With `defineEntity`, use the string-specific builder methods:
+
+```ts
+const Customer = defineEntity({
+  name: 'Customer',
+  properties: {
+    id: p.integer().primary().autoincrement(),
+    currency: p.string().trim().uppercase(),
+    email: p.string().trim().lowercase().unique(),
+    biography: p.text().trim(),
+    aliases: p.string().trim().lowercase().array(),
+  },
+});
+```
+
+Decorator and `EntitySchema` definitions can configure the mapped type directly with an options object:
+
+```ts
+@Entity()
+class Customer {
+  @PrimaryKey()
+  id!: number;
+
+  @Property({ type: new StringType({ trim: true, case: 'upper' }) })
+  currency!: string;
+
+  @Property({ type: new TextType({ trim: true }) })
+  biography!: string;
+}
+```
+
+When both operations are enabled, trimming runs before casing. Normalization is applied when values are written to the database or used as ORM query parameters. `null` and `undefined` are preserved. The casing conversion uses `toUpperCase()` or `toLowerCase()` and is not locale-specific.
+
+Normalization does not act as a property setter. Direct assignment, `em.create()`, and `em.assign()` keep the assigned value in memory, while a flush writes its normalized form without changing the entity property. Values read from the database are not normalized again, as values written through the mapped type are already normalized. Existing columns containing non-normalized data should be updated with a migration before enabling these options. The options do not change the SQL column type or generated schema.
 
 ### Handling null and undefined
 

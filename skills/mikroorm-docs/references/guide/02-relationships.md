@@ -631,7 +631,6 @@ We added 2 new entities: `Article` and `Tag` and a `BaseEntity` that they extend
 
 > This uses an in-memory database, a SQLite feature available via special database name `:memory:`.
 
-This is the [`server.ts` file](https://stackblitz.com/edit/mikro-orm-getting-started-guide-cp-2?file=src%2Fserver.ts) after this chapter:
+Edit the code and press **Run** to execute it against a real SQLite database running entirely in your browser via WebAssembly:
 
-<iframe width="100%" height="800" frameborder="0" src="https://stackblitz.com/edit/mikro-orm-getting-started-guide-cp-2?embed=1&ctl=1&view=editor&file=src%2Fserver.ts">
-</iframe>
+<BrowserOnly>{() => <Playground project="relationships" />}</BrowserOnly>

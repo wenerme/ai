@@ -78,7 +78,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | [grafana-plugin-docs](./skills/grafana-plugin-docs/SKILL.md) | Use when working with Grafana plugins and plugin-specific docs, including data source/app/panel plugins such as... | [grafana.com](https://grafana.com/docs/plugins) |
 | [hono-docs](./skills/hono-docs/SKILL.md) | Use when working with Hono, the Web Standards JavaScript/TypeScript framework: Hono app/router APIs, Context and Request... | [honojs/website/docs](https://github.com/honojs/website/tree/main/docs) |
 | [huggingface-docs](./skills/huggingface-docs/SKILL.md) | Use when working with Hugging Face Hub: model/dataset/Space repositories, Hub APIs, tokens, gated models/datasets,... | [huggingface/hub-docs/docs](https://github.com/huggingface/hub-docs/tree/main/docs) |
-| [humanizer](./skills/humanizer/SKILL.md) | Rewrite AI-sounding text so it reads naturally without changing what it says. | [blader/humanizer](https://github.com/blader/humanizer) |
+| [humanizer](./skills/humanizer/SKILL.md) | Rewrite AI-sounding text so it reads like the writer without changing what it says. | [blader/humanizer](https://github.com/blader/humanizer) |
 | [image-prompt-guide](./skills/image-prompt-guide/SKILL.md) | USE THIS SKILL WHEN writing prompts for AI image generation: creating illustrations, cover images, infographics,... |  |
 | [immich-docs](./skills/immich-docs/SKILL.md) | Immich documentation — self-hosted photo/video management. Covers installation (Docker, Kubernetes, Synology, TrueNAS,... | [immich-app/immich](https://github.com/immich-app/immich) |
 | [justfile-docs](./skills/justfile-docs/SKILL.md) | justfile (just) documentation — a command runner with make-inspired syntax. Covers recipes (parameters, dependencies,... | [casey/just](https://github.com/casey/just) |
@@ -787,10 +787,10 @@ Use when working with Hugging Face Hub: model/dataset/Space repositories, Hub AP
 npx skills add wenerme/ai --skill humanizer
 ```
 
-Rewrite AI-sounding text so it reads naturally without changing what it says.
-Use when editing or reviewing prose for inflated claims,
-sales language, vague sources, repetitive structure, stock AI words, passive
-voice, filler, or chatbot artifacts. Based on Wikipedia's "Signs of AI writing."
+Rewrite AI-sounding text so it reads like the writer without changing what it says.
+Use when editing or reviewing prose for AI tells: not-X-but-Y contrasts, one-line
+closers, staged openers, forced triads, dashes everywhere, inflated claims, sales
+language, stock AI words, bold labels, or filler. Based on Wikipedia's "Signs of AI writing."
 
 </details>
 <details>
@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 47940 files, 501 MiB total
+> 125 skills, 47948 files, 501 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1416,7 +1416,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [anthropic-sdk-typescript](./skills/anthropic-sdk-typescript/SKILL.md) | 159 | 8.6 MiB |
 | [argocd-cli-guide](./skills/argocd-cli-guide/SKILL.md) | 2 | 7.5 KiB |
 | [argocd-docs](./skills/argocd-docs/SKILL.md) | 421 | 2.7 MiB |
-| [biome-docs](./skills/biome-docs/SKILL.md) | 696 | 8.4 MiB |
+| [biome-docs](./skills/biome-docs/SKILL.md) | 701 | 8.4 MiB |
 | [biome-lint](./skills/biome-lint/SKILL.md) | 4 | 13 KiB |
 | [brainstorming](./skills/brainstorming/SKILL.md) | 1 | 4.6 KiB |
 | [bun-docs](./skills/bun-docs/SKILL.md) | 321 | 1.7 MiB |
@@ -1464,7 +1464,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [grafana-plugin-docs](./skills/grafana-plugin-docs/SKILL.md) | 666 | 4.6 MiB |
 | [hono-docs](./skills/hono-docs/SKILL.md) | 88 | 361 KiB |
 | [huggingface-docs](./skills/huggingface-docs/SKILL.md) | 361 | 2.0 MiB |
-| [humanizer](./skills/humanizer/SKILL.md) | 1 | 30 KiB |
+| [humanizer](./skills/humanizer/SKILL.md) | 1 | 28 KiB |
 | [image-prompt-guide](./skills/image-prompt-guide/SKILL.md) | 9 | 323 KiB |
 | [immich-docs](./skills/immich-docs/SKILL.md) | 77 | 489 KiB |
 | [justfile-docs](./skills/justfile-docs/SKILL.md) | 113 | 166 KiB |
@@ -1479,14 +1479,14 @@ Use when implementing React state management with Zustand, including context-sco
 | [mastra-docs](./skills/mastra-docs/SKILL.md) | 893 | 7.7 MiB |
 | [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 183 | 549 KiB |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
-| [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 84 | 1.3 MiB |
+| [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 87 | 1.3 MiB |
 | [model-reference](./skills/model-reference/SKILL.md) | 17 | 67 KiB |
 | [nats-docs](./skills/nats-docs/SKILL.md) | 6 | 42 KiB |
 | [openai-api](./skills/openai-api/SKILL.md) | 534 | 34 MiB |
 | [openai-docs](./skills/openai-docs/SKILL.md) | 189 | 3.9 MiB |
 | [openai-sdk-python](./skills/openai-sdk-python/SKILL.md) | 529 | 25 MiB |
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 529 | 24 MiB |
-| [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 481 KiB |
+| [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 485 KiB |
 | [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 476 | 2.8 MiB |
 | [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2411 | 16 MiB |
 | [orpc-docs](./skills/orpc-docs/SKILL.md) | 1 | 4.7 KiB |
