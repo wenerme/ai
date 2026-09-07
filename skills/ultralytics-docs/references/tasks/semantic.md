@@ -5,7 +5,7 @@ keywords: semantic segmentation, YOLO26, pixel-wise classification, scene parsin
 model_name: yolo26n-sem
 ---
 
-# Semantic Segmentation
+# Semantic Segmentation with Ultralytics YOLO
 
 [Semantic segmentation examples]
 

@@ -37,6 +37,14 @@ To pass a token on standard input, use `--stdin`.
 In interactive mode, glab detects GitLab instances from your Git remotes
 and lists them as options, so you do not have to type the hostname manually.
 
+When you omit `--hostname` in a non-interactive run, glab authenticates
+with the first of these that applies:
+
+- The host of the base repository, if you're in a Git repository with a GitLab remote.
+- The `GITLAB_HOST` environment variable, if it's set.
+- The `host` key in your configuration file, if it's set.
+- `gitlab.com`, if none of the above apply.
+
 ```plaintext
 glab auth login [flags]
 ```
@@ -63,6 +71,10 @@ glab auth login --hostname gitlab.example.org --api-host gitlab.example.org:3443
 # Semi-interactive OAuth login, skipping all prompts except browser auth
 glab auth login --hostname gitlab.com --web --git-protocol ssh --container-registry-domains "gitlab.com,gitlab.com:443,registry.gitlab.com"
 
+# Semi-interactive OAuth login for GitLab Self-Managed, with every
+# prompted value supplied by a flag.
+glab auth login --hostname gitlab.example.com --web --api-host gitlab.example.com --ssh-hostname gitlab.example.com --api-protocol https --git-protocol ssh --container-registry-domains registry.gitlab.example.com
+
 # OAuth device authorization flow for headless environments without a local browser.
 # glab displays a one-time code and verification URL; you authorize on any
 # other device with a browser. Requires GitLab 17.9 or later.
@@ -79,15 +91,15 @@ glab auth login --hostname $CI_SERVER_FQDN --job-token $CI_JOB_TOKEN --api-proto
 ## Options
 
 ```plaintext
-  -a, --api-host string                     Hostname for the API endpoint, if different from --hostname. Accepts a hostname or hostname:port. Use only when the API is served from a different host than the Git remote.
+  -a, --api-host string                     Hostname for the API endpoint, if different from --hostname. Accepts a hostname or hostname:port. Also skips the API hostname prompt in interactive mode.
   -p, --api-protocol string                 API protocol. Options: https, http.
       --container-registry-domains string   Container registry and image dependency proxy domains, comma-separated.
       --device                              Use the OAuth 2.0 device authorization flow. Useful for headless environments where a local browser is not available. Requires GitLab 17.9 or later.
   -g, --git-protocol string                 Git protocol. Options: ssh, https, http.
-      --hostname string                     The hostname of the GitLab instance to authenticate with.
+      --hostname string                     The hostname of the GitLab instance to authenticate with. When omitted, glab prompts in interactive mode, or uses the host resolved from your Git remotes, GITLAB_HOST, and your configuration.
       --insecure-storage                    Store the token as plaintext in the configuration file instead of the operating system's keyring.
   -j, --job-token string                    CI job token.
-      --ssh-hostname string                 SSH hostname for instances with a different SSH endpoint. A port is not required; Git uses the port from the remote URL.
+      --ssh-hostname string                 SSH hostname for instances with a different SSH endpoint. A port is not required; Git uses the port from the remote URL. Also skips the SSH hostname prompt in interactive mode.
       --stdin                               Read the token from standard input.
   -t, --token string                        Your GitLab access token.
       --web                                 Skip the login type prompt and use web/OAuth login.

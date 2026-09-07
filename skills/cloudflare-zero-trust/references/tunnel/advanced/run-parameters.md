@@ -230,6 +230,20 @@ You can check if `cloudflared` was installed by a package manager by running `ls
 
 Disables automatic `cloudflared` updates. To change the automatic update interval instead, refer to [autoupdate-freq](#autoupdate-freq). For manual update methods and options to minimize downtime, refer to [Update cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/update-cloudflared/).
 
+### `output`
+
+Note
+
+Requires `cloudflared` version 2025.6.1 or later.
+
+| Syntax                                                  | Default | Environment variables                         |
+| ------------------------------------------------------- | ------- | --------------------------------------------- |
+| cloudflared tunnel --output <FORMAT> run <UUID or NAME> | default | TUNNEL\_LOG\_OUTPUTTUNNEL\_MANAGEMENT\_OUTPUT |
+
+Specifies the console log format. Available values are `default` and `json`.
+
+The `json` value formats each log line as a JSON object. This format is useful for Kubernetes deployments and log collection systems that consume JSON.
+
 ### `origincert`
 
 Note

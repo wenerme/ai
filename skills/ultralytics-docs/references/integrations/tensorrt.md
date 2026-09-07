@@ -1,7 +1,7 @@
 ---
 comments: true
 description: Learn to convert YOLO26 models to TensorRT for high-speed NVIDIA GPU inference. Boost efficiency and deploy optimized models with our step-by-step guide.
-keywords: YOLO26, YOLO26, TensorRT, NVIDIA, GPU, deep learning, model optimization, high-speed inference, model export
+keywords: YOLO26, TensorRT, NVIDIA, GPU, deep learning, model optimization, high-speed inference, model export
 ---
 
 # TensorRT Export for YOLO26 Models
@@ -528,7 +528,7 @@ Having successfully exported your Ultralytics YOLO26 models to TensorRT format, 
 
 - **[End-to-End AI for NVIDIA-Based PCs: NVIDIA TensorRT Deployment](https://developer.nvidia.com/blog/end-to-end-ai-for-nvidia-based-pcs-nvidia-tensorrt-deployment/)**: This blog post explains the use of NVIDIA TensorRT for optimizing and deploying AI models on NVIDIA-based PCs.
 
-- **[GitHub Repository for NVIDIA TensorRT:](https://github.com/NVIDIA/TensorRT)**: This is the official GitHub repository that contains the source code and documentation for NVIDIA TensorRT.
+- **[GitHub Repository for NVIDIA TensorRT](https://github.com/NVIDIA/TensorRT)**: This is the official GitHub repository that contains the source code and documentation for NVIDIA TensorRT.
 
 ## Summary
 

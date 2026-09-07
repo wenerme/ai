@@ -12,6 +12,8 @@ Create work items in a project or group. (EXPERIMENTAL)
 Use `--type` to specify the kind of work item to create.
 The command uses your repository context to detect scope automatically.
 
+`--attach` uploads a file and references it at the end of the description. Repeat the flag for more than one file, or pass `-` to read the file from standard input. Uploads are project-scoped, so `--attach` cannot be combined with `--group`.
+
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.
 For more information, see
@@ -36,11 +38,15 @@ glab work-items create --type issue --title "Add feature" --description-file des
 # Read the description from standard input
 cat description.md | glab work-items create --type issue --title "Add feature" --description-file -
 
+# Attach a screenshot to the description
+glab work-items create --type issue --title "Add feature" --attach ./screenshot.png
+
 ```
 
 ## Options
 
 ```plaintext
+      --attach stringArray        (EXPERIMENTAL) Upload a file and reference it at the end of the description. Use "-" to read the file from standard input. Repeat the flag to attach multiple files.
   -c, --confidential              Mark work item confidential.
   -d, --description string        Description of the work item. Set to "-" to open an editor.
       --description-file string   Read the work item description from a file. Use "-" to read from standard input.

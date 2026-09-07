@@ -13,6 +13,8 @@ The command uses your repository context to detect scope automatically.
 
 Use `--group` to target a group or subgroup. `--group` and `--repo` are mutually exclusive.
 
+`--attach` uploads a file and references it at the end of the description. Repeat the flag for more than one file, or pass `-` to read the file from standard input. Without `--description` the references are added to the description the work item already has, instead of replacing it. Uploads are project-scoped, so `--attach` cannot be combined with `--group`.
+
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.
 For more information, see
@@ -37,12 +39,16 @@ glab work-items update 42 --description-file description.md
 # Read the description from standard input
 cat description.md | glab work-items update 42 --description-file -
 
+# Add a screenshot to the existing description
+glab work-items update 42 --attach ./screenshot.png
+
 ```
 
 ## Options
 
 ```plaintext
   -a, --assignee strings          Update the work item assignee with the supplied GitLab usernames.
+      --attach stringArray        (EXPERIMENTAL) Upload a file and reference it at the end of the description. Use "-" to read the file from standard input. Repeat the flag to attach multiple files.
   -d, --description string        Update the description for the work item.
       --description-file string   Read the work item description from a file. Use "-" to read from standard input.
       --duedate string            Update the due date for the work item.

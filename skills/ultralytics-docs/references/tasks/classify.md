@@ -135,8 +135,8 @@ Train YOLO26n-cls on the MNIST160 dataset for 100 [epochs](https://www.ultralyti
             return CustomizedDataset(root=img_path, args=self.args, augment=False, prefix=self.args.split)
 
     model = YOLO("yolo26n-cls.pt")
-    model.train(data="imagenet1000", trainer=CustomizedTrainer, epochs=10, imgsz=224, batch=64)
-    model.val(data="imagenet1000", validator=CustomizedValidator, imgsz=224, batch=64)
+    model.train(data="imagenet", trainer=CustomizedTrainer, epochs=10, imgsz=224, batch=64)
+    model.val(data="imagenet", validator=CustomizedValidator, imgsz=224, batch=64)
     ```
 
 ### Dataset format

@@ -41,6 +41,11 @@ exclusive.
 - `--resolvable=false` cannot be combined with `--reply`
 or `--file` (and by extension `--line` or
 `--old-line`).
+- `--attach` and `--unique` are mutually exclusive,
+because every upload gets a fresh URL and so an attached comment can
+never match an existing one.
+
+`--attach` uploads a file and references it at the end of the comment. Repeat the flag for more than one file, or pass `-` to read the file from standard input. An attachment is content on its own, so a comment with only `--attach` neither prompts nor reads a body from stdin.
 
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.
@@ -90,18 +95,25 @@ glab mr note create 123 --file main.go --old-line 7 -m "Why was this removed?"
 # Add a file-level diff comment (no line specified)
 glab mr note create 123 --file main.go -m "General comment on this file"
 
+# Attach a screenshot alongside the message
+glab mr note create 123 -m "Renders wrong here." --attach ./screenshot.png
+
+# Attach an image piped from the clipboard
+pngpaste - | glab mr note create 123 --attach -
+
 ```
 
 ## Options
 
 ```plaintext
-      --file string      File path for a diff comment, like <path/to/file>. Targets the latest merge request diff version.
-      --line string      Line in the new version. A single line number, like 42, or a range, like 10:15.
-  -m, --message string   Comment or note message.
-      --old-line int     Line in the old version, for commenting on a removed line.
-      --reply string     Reply to an existing discussion. Accepts a full discussion ID or a unique prefix of at least 8 characters.
-      --resolvable       Create the note as a resolvable discussion thread. Set to false to create a non-resolvable note. (default true)
-      --unique           Don't create a note if a note with the same body already exists. Reads all merge request comments first.
+      --attach stringArray   (EXPERIMENTAL) Upload a file and reference it at the end of the comment. Use "-" to read the file from standard input. Repeat the flag to attach multiple files.
+      --file string          File path for a diff comment, like <path/to/file>. Targets the latest merge request diff version.
+      --line string          Line in the new version. A single line number, like 42, or a range, like 10:15.
+  -m, --message string       Comment or note message.
+      --old-line int         Line in the old version, for commenting on a removed line.
+      --reply string         Reply to an existing discussion. Accepts a full discussion ID or a unique prefix of at least 8 characters.
+      --resolvable           Create the note as a resolvable discussion thread. Set to false to create a non-resolvable note. (default true)
+      --unique               Don't create a note if a note with the same body already exists. Reads all merge request comments first.
 ```
 
 ## Options inherited from parent commands

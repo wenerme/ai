@@ -29,6 +29,31 @@ SCRIPT = SCRIPTS_DIR / "slice_images.py"
 
 
 class SliceImagesDiagnosticsTests(unittest.TestCase):
+    def test_pure_key_despill_keeps_opaque_key_hue_foreground_and_recovers_shadow(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            sheet_path = root / "sheet.png"
+            key = (0, 255, 0)
+            malachite = (63, 143, 108)
+            image = Image.new("RGB", (240, 100), key)
+            draw = ImageDraw.Draw(image)
+            draw.rectangle((20, 20, 100, 80), fill=malachite)
+            # A black shadow composited over the key at 50% alpha.
+            draw.rectangle((140, 20, 220, 80), fill=(0, 128, 0))
+            image.save(sheet_path)
+
+            written = slice_sheet(
+                sheet_path, 1, 1, root / "out",
+                names=["element"], alpha=True, bg=key, tolerance=18,
+            )
+            element = Image.open(written[0]).convert("RGBA")
+
+            self.assertEqual(element.getpixel((60, 50)), malachite + (255,))
+            shadow_r, shadow_g, shadow_b, shadow_a = element.getpixel((180, 50))
+            self.assertLessEqual(max(shadow_r, shadow_g, shadow_b), 8)
+            self.assertTrue(120 <= shadow_a <= 136, shadow_a)
+            self.assertEqual(element.getpixel((120, 50))[3], 0)
+
     def test_sheet_orientation_is_applied_before_slicing(self) -> None:
         for orientation, expected_size in ((6, (40, 80)), (None, (80, 40))):
             with self.subTest(orientation=orientation), tempfile.TemporaryDirectory() as tmp:

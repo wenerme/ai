@@ -13,6 +13,13 @@ Opens an editor to draft the issue unless you pass a title and
 description. Use `--web` to create the issue in your browser, or
 `--template` to start from an issue template.
 
+`--attach` uploads a file and references it at the end of the description. Repeat the flag for more than one file, or pass `-` to read the file from standard input. An attachment satisfies the description requirement, so `--title` with `--attach` completes without prompting.
+
+The `--attach` flag is an experiment. It might be
+unstable or removed at any time, and is not ready for production use.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
 The `--recover` flag is an experiment: it might be unstable or
 removed at any time, and is not ready for production use. For more
 information, see
@@ -44,12 +51,16 @@ glab issue create -t "we need this feature" --description-file description.md
 
 # Read the description from standard input
 cat description.md | glab issue create -t "we need this feature" --description-file -
+
+# Attach a screenshot to the description
+glab issue create -t "Login button misaligned" -d "See below." --attach ./screenshot.png
 ```
 
 ## Options
 
 ```plaintext
   -a, --assignee usernames        Assign issue to people by their usernames. Multiple usernames can be comma-separated or specified by repeating the flag.
+      --attach stringArray        (EXPERIMENTAL) Upload a file and reference it at the end of the description. Use "-" to read the file from standard input. Repeat the flag to attach multiple files.
   -c, --confidential              Set an issue to be confidential.
   -d, --description string        Issue description. Set to "-" to open an editor.
       --description-file string   Read the issue description from a file. Use "-" to read from standard input.

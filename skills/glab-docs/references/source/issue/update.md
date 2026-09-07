@@ -13,6 +13,13 @@ Change an issue's labels, assignees, milestone, title, or
 description. Use `--label` and `--unlabel` to add or remove
 labels.
 
+`--attach` uploads a file and references it at the end of the description. Repeat the flag for more than one file, or pass `-` to read the file from standard input. Without `--description` the references are added to the description the issue already has, instead of replacing it.
+
+The `--attach` flag is an experiment. It might be
+unstable or removed at any time, and is not ready for production use.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
 ```plaintext
 glab issue update <id> [flags]
 ```
@@ -28,12 +35,16 @@ glab issue update 42 --description-file description.md
 
 # Read the description from standard input
 cat description.md | glab issue update 42 --description-file -
+
+# Add a screenshot to the existing description
+glab issue update 42 --attach ./screenshot.png
 ```
 
 ## Options
 
 ```plaintext
   -a, --assignee strings          Assign users by username. Prefix with '!' or '-' to remove from existing assignees, or '+' to add new. Otherwise, replace existing assignees with these users. Multiple usernames can be comma-separated or specified by repeating the flag.
+      --attach stringArray        (EXPERIMENTAL) Upload a file and reference it at the end of the description. Use "-" to read the file from standard input. Repeat the flag to attach multiple files.
   -c, --confidential              Make issue confidential.
   -d, --description string        Issue description. Set to "-" to open an editor.
       --description-file string   Read the issue description from a file. Use "-" to read from standard input.

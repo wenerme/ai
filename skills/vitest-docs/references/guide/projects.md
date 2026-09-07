@@ -205,7 +205,8 @@ pnpm run test --project e2e
 bun run test --project e2e
 ```
 
-> **tip**: CLI option `--project` can be used multiple times to filter out several projects:
+:::: tip
+CLI option `--project` can be used multiple times to filter out several projects:
 
 ```bash [npm]
 npm run test --project e2e --project unit
@@ -219,6 +220,8 @@ pnpm run test --project e2e --project unit
 ```bash [bun]
 bun run test --project e2e --project unit
 ```
+
+::::
 
 The filter supports `*` wildcards and `!` exclusions. A project runs if it matches no negated pattern and, when regular patterns are also given, matches at least one of them:
 

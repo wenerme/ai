@@ -12,6 +12,13 @@ Update a merge request.
 Defaults to the currently checked-out branch. Use `--fill` to
 automatically fill the title and description from the commit history.
 
+`--attach` uploads a file and references it at the end of the description. Repeat the flag for more than one file, or pass `-` to read the file from standard input. Without `--description` the references are added to the description the merge request already has, instead of replacing it.
+
+The `--attach` flag is an experiment. It might be
+unstable or removed at any time, and is not ready for production use.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
 ```plaintext
 glab mr update [<id> | <branch>] [flags]
 ```
@@ -36,12 +43,16 @@ glab mr update 23 --description-file description.md
 
 # Read the description from standard input
 cat description.md | glab mr update 23 --description-file -
+
+# Add a screenshot to the existing description
+glab mr update 23 --attach ./screenshot.png
 ```
 
 ## Options
 
 ```plaintext
   -a, --assignee strings          Assign users via username. Prefix with '!' or '-' to remove from existing assignees, '+' to add. Otherwise, replace existing assignees with given users. Multiple usernames can be comma-separated or specified by repeating the flag.
+      --attach stringArray        (EXPERIMENTAL) Upload a file and reference it at the end of the description. Use "-" to read the file from standard input. Repeat the flag to attach multiple files.
   -d, --description string        Merge request description. Set to "-" to open an editor.
       --description-file string   Read the merge request description from a file. Use "-" to read from standard input.
       --draft                     Mark merge request as a draft.

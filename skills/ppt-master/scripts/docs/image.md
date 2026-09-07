@@ -160,7 +160,9 @@ Create a non-destructive PNG derivative from one bitmap already prepared under
 crop, mask, rotation, mirror, opacity, shadow, scrim, outline, and overlap remain
 native SVG/PPT treatments. This tool does not perform semantic background
 removal: use `slice_images.py --alpha --bg <key> --strict-alpha` for flat-color
-keys (a pure red/green/blue key also recovers soft alpha and removes spill), an
+keys (a pure red/green/blue key also recovers soft alpha and removes spill from
+key-dominant blends, leaving an opaque foreground of the key's hue untouched; thin
+dark strokes of that hue can still fringe, so choose the key by hue absence), an
 already prepared RGBA asset or the active host image editor for a standalone cutout, and
 [`image-generator.md`](../../references/image-generator.md) §4.4 only for
 registered subject/base layers.
