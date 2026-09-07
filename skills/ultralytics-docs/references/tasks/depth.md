@@ -5,7 +5,7 @@ keywords: monocular depth estimation, YOLO26, depth map, per-pixel depth, NYU De
 model_name: yolo26n-depth
 ---
 
-# Monocular Depth Estimation
+# Monocular Depth Estimation with Ultralytics YOLO
 
 [Monocular depth estimation examples]
 

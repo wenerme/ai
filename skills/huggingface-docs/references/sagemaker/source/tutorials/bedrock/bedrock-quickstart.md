@@ -26,7 +26,9 @@ Path A is from the Bedrock *Model Catalog*:
 5. Wait for Foundation Models → Marketplace deployments to show status In service (takes a few minutes)
 6. Click the deployment name and copy the SageMaker endpoint ARN — you’ll need it for API calls
 
-[Bedrock deployment demo]
+<div class="flex justify-center my-6">
+  [Bedrock deployment demo]
+</div>
 
 Path B is from SageMaker JumpStart for the model that shows “Use with Bedrock”:
 1. In SageMaker Studio, open JumpStart
@@ -55,7 +57,8 @@ inference_cfg = {"maxTokens": 256, "temperature": 0.1, "topP": 0.95}
 extra = {"parameters": {"repetition_penalty": 1.05}}
 
 response = bedrock.converse(
-    modelId=endpoint_arn,                  # <- SageMaker endpoint ARN
+    # SageMaker endpoint ARN
+    modelId=endpoint_arn,
     messages=[{
         "role": "user",
         "content": [{"text": "Give me three taglines for a serverless AI startup"}]
@@ -67,7 +70,8 @@ response = bedrock.converse(
 print(response["output"]["message"]["content"][0]["text"])
 ```
 
-*Heads‑up*: the same `modelId=endpoint_arn` works with **InvokeModel**, **Knowledge Bases (RetrieveAndGenerate)**, **Agents**, and **Guardrails**—no code changes.
+> [!NOTE]
+> The same `modelId=endpoint_arn` works with **InvokeModel**, **Knowledge Bases (RetrieveAndGenerate)**, **Agents**, and **Guardrails** — no code changes.
 
 ## 4 . Clean‑up (stop charges)
 

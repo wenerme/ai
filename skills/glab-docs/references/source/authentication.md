@@ -125,6 +125,38 @@ glab auth login --job-token $CI_JOB_TOKEN --hostname $CI_SERVER_FQDN --api-proto
 GITLAB_HOST=$CI_SERVER_FQDN glab release list -R $CI_PROJECT_PATH
 ```
 
+## Token precedence
+
+For every authenticated command, `glab` resolves the token to use in this order:
+
+1. If any of these environment variables are set, including in a CI/CD environment,
+   `glab` uses the first available, in this order:
+   - `GITLAB_TOKEN`
+   - `GITLAB_ACCESS_TOKEN`
+   - `OAUTH_TOKEN`
+1. The credentials stored for the host, either in your operating system's keyring or in the
+   [configuration file](configuration.md#configuration-file-locations).
+   `glab auth login` and `glab config set token` write them there.
+1. If CI/CD auto-login is enabled (`GLAB_ENABLE_CI_AUTOLOGIN=true` and `GITLAB_CI=true`),
+   a CI/CD job token (`CI_JOB_TOKEN`). To use a job token, make sure none of the
+   environment variables above are set in the CI/CD job.
+
+If no token is found, `glab` sends the request unauthenticated.
+
+Because an environment variable wins over stored credentials, `glab auth login` warns you
+when one is set: the token you just stored is not the one later commands use. Run
+`type glab` to find the source. An alias such as `op plugin run -- glab` means a wrapper
+is injecting it, which is expected. A plain path means it is set in your shell profile or
+CI/CD configuration, and you should remove it there.
+
+> [!note]
+> Do not set `GITLAB_TOKEN=$CI_JOB_TOKEN` in a CI/CD job. `glab` sends `GITLAB_TOKEN` as an
+> access token in the `PRIVATE-TOKEN` header, which does not accept CI/CD job tokens.
+> Requests fail with `401 Unauthorized`, or `404 Not Found` on endpoints that support job tokens.
+
+For the full list of variables that configure `glab`, see
+[environment variables](configuration.md#environment-variables).
+
 ## Credential storage
 
 By default, `glab auth login` stores your credentials in the operating system's

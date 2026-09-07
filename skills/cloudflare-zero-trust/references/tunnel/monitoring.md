@@ -85,7 +85,19 @@ Tunnel logs record all activity between `cloudflared` and the Cloudflare global 
 
 ### Server-side logs
 
-If you have access to the origin server, you can use the [\--loglevel flag](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#loglevel) to enable logging when you start the tunnel. By default, `cloudflared` prints logs to stdout and does not store logs on the server.
+If you have access to the origin server, you can use the [\--loglevel flag](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#loglevel) to enable logging when you start the tunnel. By default, `cloudflared` writes logs to standard error (`stderr`) and does not store logs on the server.
+
+Note
+
+Requires `cloudflared` version 2025.6.1 or later.
+
+To format each log line as a JSON object, add `--output json` before `run`:
+
+```sh
+cloudflared tunnel --output json run <UUID>
+```
+
+This format is useful for Kubernetes deployments and log collection systems that consume JSON.
 
 For routine persistent logging, [run the tunnel](https://developers.cloudflare.com/tunnel/configuration/#update-run-parameters#log-directory) with `--log-directory <PATH>`. This flag writes logs to `cloudflared.log` in the specified directory, rotates the file when it reaches 1 MB, and keeps up to five backups. It does not remove logs based on age.
 

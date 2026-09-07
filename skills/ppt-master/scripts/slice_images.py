@@ -68,6 +68,11 @@ _SHEET_DIAGNOSTIC_BUCKET_SIZE = 4
 # larger tolerance absorbs; farther pixels are content crossing the gutter.
 _KEY_DRIFT_MAX_TOLERANCE = 48
 _KEY_DRIFT_MARGIN = 4
+# A key-dominant pixel whose strongest non-key channel reaches this fraction of
+# the key channel is opaque foreground of a key-like hue (malachite green on a
+# green key), not a semi-transparent blend with the key; color-to-alpha recovery
+# and despill skip it so the element keeps its own color.
+_KEY_PURITY_OPAQUE_RATIO = 0.6
 # At most this many trim pixels on a touched edge count as isolated drift.
 _EDGE_DRIFT_MAX_PIXELS = 8
 # Corner sample inset (px) and minimum cell fill for the backing-panel notice.
@@ -314,13 +319,43 @@ def _chroma_alpha(rgb: Image.Image, bg: tuple[int, int, int]) -> Image.Image:
     other_channels = [
         channel for index, channel in enumerate(channels) if index != key_index
     ]
-    key_excess = ImageChops.subtract(
+    key_blend = _key_blend_mask(
         channels[key_index],
         ImageChops.lighter(other_channels[0], other_channels[1]),
     )
-    key_dominance = key_excess.point(lambda value: 255 if value > 0 else 0)
     opaque = Image.new("L", rgb.size, 255)
-    return Image.composite(raw_alpha, opaque, key_dominance)
+    return Image.composite(raw_alpha, opaque, key_blend)
+
+
+def _key_blend_mask(key_channel: Image.Image, other_max: Image.Image) -> Image.Image:
+    """Mask the pixels that read as a blend of foreground with a pure key.
+
+    A pixel qualifies only when the key channel dominates and the strongest
+    non-key channel stays below `_KEY_PURITY_OPAQUE_RATIO` of it. An opaque
+    foreground color that merely shares the key's hue (a malachite green under a
+    green key) keeps a substantial non-key channel and is left opaque, while
+    antialiased edges, soft shadows, and glows composited over the key fall
+    below the ratio and still receive color-to-alpha recovery.
+    """
+    ratio_num = round(_KEY_PURITY_OPAQUE_RATIO * 10)
+    if hasattr(ImageMath, "lambda_eval"):
+        blend = ImageMath.lambda_eval(
+            lambda op: op["convert"](
+                (op["key"] > op["other"])
+                & (op["other"] * 10 < op["key"] * ratio_num),
+                "L",
+            ),
+            key=key_channel,
+            other=other_max,
+        )
+    else:
+        blend = ImageMath.eval(  # type: ignore[attr-defined]
+            "convert((key > other) & (other * 10 < key * ratio), 'L')",
+            key=key_channel,
+            other=other_max,
+            ratio=ratio_num,
+        )
+    return blend.point(lambda value: 255 if value else 0)
 
 
 def _decontaminate_channel(
@@ -800,7 +835,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--bg", default=None,
         help="Background hex color for --trim/--alpha; an exact pure red/green/blue "
-             "key enables despill and soft-alpha recovery (default: auto-sample)",
+             "key enables despill and soft-alpha recovery, skipping opaque "
+             "foreground pixels of a key-like hue (default: auto-sample)",
     )
     parser.add_argument(
         "--tolerance", type=int, default=18,

@@ -19,6 +19,8 @@ You can find note IDs with:
 
 You can change only the note body. You cannot move the position of diff notes.
 
+`--attach` uploads a file and references it at the end of the note. Repeat the flag for more than one file, or pass `-` to read the file from standard input. Without `--message` the references are added to the body the note already has, instead of replacing it.
+
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.
 For more information, see
@@ -40,12 +42,16 @@ glab mr note update 12345
 # Pipe the new body from stdin
 echo "new body" | glab mr note update 1 12345
 
+# Add a screenshot to the existing note body
+glab mr note update 1 12345 --attach ./screenshot.png
+
 ```
 
 ## Options
 
 ```plaintext
-  -m, --message string   New note body. If omitted, opens an editor or reads from stdin.
+      --attach stringArray   (EXPERIMENTAL) Upload a file and reference it at the end of the note. Use "-" to read the file from standard input. Repeat the flag to attach multiple files.
+  -m, --message string       New note body. If omitted, opens an editor or reads from stdin.
 ```
 
 ## Options inherited from parent commands

@@ -13,6 +13,13 @@ Defaults to the current branch as the source branch. Use `--fill`
 to automatically fill the title and description from the commit history. Use
 `--draft` to create a draft merge request.
 
+`--attach` uploads a file and references it at the end of the description. Repeat the flag for more than one file, or pass `-` to read the file from standard input. Files upload to the target project, so the references resolve even for a merge request from a fork.
+
+The `--attach` flag is an experiment. It might be
+unstable or removed at any time, and is not ready for production use.
+For more information, see
+<https://docs.gitlab.com/policy/development_stages_support/>.
+
 The `--recover` flag is an experiment: it might be unstable or
 removed at any time, and is not ready for production use. For more
 information, see
@@ -61,6 +68,9 @@ glab mr create -t "Fix login bug" --description-file description.md
 
 # Read the description from standard input
 cat description.md | glab mr create -t "Fix login bug" --description-file -
+
+# Attach a screenshot to the description
+glab mr create -t "Fix login bug" -d "Before and after:" --attach ./before.png --attach ./after.png
 ```
 
 ## Options
@@ -68,6 +78,7 @@ cat description.md | glab mr create -t "Fix login bug" --description-file -
 ```plaintext
       --allow-collaboration       Allow commits from other members. Set to true/false to override project defaults, or omit to use project settings.
   -a, --assignee usernames        Assign merge request to people by their usernames. Multiple usernames can be comma-separated or specified by repeating the flag.
+      --attach stringArray        (EXPERIMENTAL) Upload a file and reference it at the end of the description. Use "-" to read the file from standard input. Repeat the flag to attach multiple files.
       --auto-merge                Set the merge request to merge when all merge checks pass.
       --copy-issue-labels         Copy labels from issue to the merge request. Used with --related-issue.
       --create-source-branch      Create a source branch if it does not exist.

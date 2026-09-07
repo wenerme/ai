@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Set up a webinar
 
-Last updated Sep 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/webinar/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/webinar/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In a RealtimeKit webinar, presenters publish audio and video from the [stage](https://developers.cloudflare.com/realtime/realtimekit/concepts/meeting/#stage). Viewers watch and can request to join the stage.
 
@@ -51,8 +51,16 @@ Configure presets with the API
 If you manage presets programmatically instead of through the dashboard, use the [Create Preset API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/presets/methods/create/) with the following fields:
 
 * `config.view_type` set to `WEBINAR`.
-* `permissions.stage_access` set to `ALLOWED` for presenters, `CAN_REQUEST` for viewers who can request to join the stage, or `NOT_ALLOWED` for view-only viewers.
+* `permissions.stage_enabled` set to `true` for both presets.
 * `permissions.can_accept_production_requests` set to `true` for participants who moderate stage requests.
+
+Set `permissions.stage_access`, `permissions.media.audio.can_produce`, `permissions.media.video.can_produce`, and `permissions.media.screenshare.can_produce` to the same value, based on the stage behavior you want:
+
+| Stage behavior        | Applies to                                | Value        |
+| --------------------- | ----------------------------------------- | ------------ |
+| _Allowed to join_     | Presenters                                | ALLOWED      |
+| _Can request to join_ | Viewers who can request to join the stage | CAN\_REQUEST |
+| _Can only view_       | View-only viewers                         | NOT\_ALLOWED |
 
 For the complete request schema, refer to [Presets](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/presets/).
 
@@ -89,5 +97,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/webinar/#page","headline":"Set up a webinar · Cloudflare Realtime docs","description":"Set up a RealtimeKit webinar with presenters and viewers, then manage requests to join the stage.","url":"https://developers.cloudflare.com/realtime/realtimekit/webinar/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/webinar/#page","headline":"Set up a webinar · Cloudflare Realtime docs","description":"Set up a RealtimeKit webinar with presenters and viewers, then manage requests to join the stage.","url":"https://developers.cloudflare.com/realtime/realtimekit/webinar/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

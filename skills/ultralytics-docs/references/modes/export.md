@@ -121,7 +121,9 @@ Not every export format supports every precision. Explicit `quantize` requests e
 | DEEPX         | ❌                | ❌                | ✅ auto    | ❌                | DEEPX export requires INT8; it is auto-enabled when unset.                                                                                                                                                                                              |
 | Qualcomm QNN  | ❌                | ❌                | ❌         | ✅ auto           | QNN HTP export is fixed to INT8 weights with 16-bit activations.                                                                                                                                                                                        |
 | LiteRT        | ✅                | ❌                | ✅         | ✅                | Static INT8 (`8`) and `"w8a16"` (int8 weights + **int16** activations) use calibration data; also supports `"w8a32"` dynamic INT8 (no calibration). `quantize=16` is not a separate export; an FP32 model runs in FP16 at runtime via the GPU delegate. |
+| Hailo         | ❌                | ❌                | ✅ auto    | ❌                | Hailo export requires INT8; it is auto-enabled when unset.                                                                                                                                                                                              |
 | Huawei Ascend | ❌                | ✅ auto           | ❌         | ❌                | Ascend AI Core convolutions accept only FP16/INT8 inputs, so ATC compiles FP16; it is auto-enabled when unset.                                                                                                                                          |
+| Core AI       | ✅                | ✅                | ❌         | ❌                | FP32 by default or an FP16 `.aimodel` asset with `quantize=16`; no INT8 path.                                                                                                                                                                           |
 
 For INT8 and W8A16 exports, provide representative calibration data with `data`, such as `data="coco8.yaml"`, unless the target integration documents a default or auto-enabled behavior. The LiteRT `"w8a32"` (dynamic INT8) scheme needs no calibration data.
 
@@ -221,7 +223,7 @@ Dynamic input sizing is particularly useful for applications where input dimensi
 
 Understanding and configuring export arguments is crucial for optimizing model performance:
 
-- **`format:`** The target format for the exported model (e.g., `onnx`, `torchscript`, `tensorflow`).
+- **`format:`** The target format for the exported model (e.g., `onnx`, `torchscript`, `saved_model`).
 - **`imgsz:`** Desired image size for the model input (e.g., `640` or `(height, width)`).
 - **`quantize:`** Quantization precision, such as `8`/`"int8"`, `16`/`"fp16"`, `32`/`"fp32"`, or the mixed weight/activation schemes `"w8a16"` and `"w8a32"` (LiteRT dynamic INT8) on supported formats. See [Quantization Options](#quantization-options).
 - **`optimize:`** Enables higher compiler optimization for DEEPX exports.

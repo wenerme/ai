@@ -44,7 +44,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 1. **Download Codex**
@@ -130,23 +130,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
-```
-
-```txt
 Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
 Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+```
+
+```txt
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ## Tips
