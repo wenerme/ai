@@ -5,7 +5,7 @@ description: "Browse CrossModel model IDs, capabilities, context windows, and pr
 
 # [CrossModel logo]CrossModel
 
-Access 59 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
+Access 58 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
 
 Learn more in the [CrossModel documentation](https://www.crossmodel.ai/docs).
 
@@ -314,18 +314,6 @@ for await (const chunk of stream) {
     "maxOutput": 512000,
     "inputCost": 0.33,
     "outputCost": 1.32
-  },
-  {
-    "model": "crossmodel/moonshot/kimi-k2.5",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262000,
-    "maxOutput": 262000,
-    "inputCost": 0.62,
-    "outputCost": 3.3
   },
   {
     "model": "crossmodel/moonshot/kimi-k2.6",

@@ -50,6 +50,8 @@ pnpm wrangler workflows list
 Interact with local dev session
 * `--port` `number` default: 8787
 Port of the local dev session (default: 8787)
+* `--json` `boolean` default: false
+Output the raw API response as JSON
 * `--page` `number` default: 1
 Show a sepecific page from the listing, can configure page size using "per-page"
 * `--per-page` `number`
@@ -98,6 +100,8 @@ pnpm wrangler workflows describe [NAME]
 Interact with local dev session
 * `--port` `number` default: 8787
 Port of the local dev session (default: 8787)
+* `--json` `boolean` default: false
+Output the raw API response as JSON
 * `[NAME]` `string` required
 Name of the workflow
 
@@ -144,6 +148,8 @@ pnpm wrangler workflows delete [NAME]
 Interact with local dev session
 * `--port` `number` default: 8787
 Port of the local dev session (default: 8787)
+* `--json` `boolean` default: false
+Output the raw API response as JSON
 * `[NAME]` `string` required
 Name of the workflow
 
@@ -190,6 +196,8 @@ pnpm wrangler workflows trigger [NAME] [PARAMS]
 Interact with local dev session
 * `--port` `number` default: 8787
 Port of the local dev session (default: 8787)
+* `--json` `boolean` default: false
+Output the raw API response as JSON
 * `[NAME]` `string` required
 Name of the workflow
 * `[PARAMS]` `string` default:
@@ -240,12 +248,18 @@ pnpm wrangler workflows instances list [NAME]
 Interact with local dev session
 * `--port` `number` default: 8787
 Port of the local dev session (default: 8787)
+* `--json` `boolean` default: false
+Output the raw API response as JSON
 * `[NAME]` `string` required
 Name of the workflow
 * `--reverse` `boolean` default: false
 Reverse order of the instances table
 * `--status` `string`
 Filters list by instance status (can be one of: queued, running, paused, errored, terminated, complete)
+* `--date-start` `string`
+Only list instances created at or after this date (ISO 8601, e.g. 2026-01-01 or 2026-01-01T13:00:00Z)
+* `--date-end` `string`
+Only list instances created at or before this date (ISO 8601). A date without a time covers the whole UTC day, so 2026-01-31 includes everything up to 2026-01-31T23:59:59.999Z
 * `--page` `number` default: 1
 Show a sepecific page from the listing, can configure page size using "per-page"
 * `--per-page` `number`
@@ -294,6 +308,8 @@ pnpm wrangler workflows instances describe [NAME] [ID]
 Interact with local dev session
 * `--port` `number` default: 8787
 Port of the local dev session (default: 8787)
+* `--json` `boolean` default: false
+Output the raw API response as JSON
 * `[NAME]` `string` required
 Name of the workflow
 * `[ID]` `string` default: latest
@@ -346,6 +362,8 @@ pnpm wrangler workflows instances send-event [NAME] [ID]
 Interact with local dev session
 * `--port` `number` default: 8787
 Port of the local dev session (default: 8787)
+* `--json` `boolean` default: false
+Output the raw API response as JSON
 * `[NAME]` `string` required
 Name of the workflow
 * `[ID]` `string` required
@@ -398,6 +416,8 @@ pnpm wrangler workflows instances terminate [NAME] [ID]
 Interact with local dev session
 * `--port` `number` default: 8787
 Port of the local dev session (default: 8787)
+* `--json` `boolean` default: false
+Output the raw API response as JSON
 * `[NAME]` `string` required
 Name of the workflow
 * `[ID]` `string` required
@@ -448,6 +468,8 @@ pnpm wrangler workflows instances restart [NAME] [ID]
 Interact with local dev session
 * `--port` `number` default: 8787
 Port of the local dev session (default: 8787)
+* `--json` `boolean` default: false
+Output the raw API response as JSON
 * `[NAME]` `string` required
 Name of the workflow
 * `[ID]` `string` required
@@ -502,6 +524,8 @@ pnpm wrangler workflows instances pause [NAME] [ID]
 Interact with local dev session
 * `--port` `number` default: 8787
 Port of the local dev session (default: 8787)
+* `--json` `boolean` default: false
+Output the raw API response as JSON
 * `[NAME]` `string` required
 Name of the workflow
 * `[ID]` `string` required
@@ -550,6 +574,8 @@ pnpm wrangler workflows instances resume [NAME] [ID]
 Interact with local dev session
 * `--port` `number` default: 8787
 Port of the local dev session (default: 8787)
+* `--json` `boolean` default: false
+Output the raw API response as JSON
 * `[NAME]` `string` required
 Name of the workflow
 * `[ID]` `string` required
@@ -598,6 +624,8 @@ pnpm wrangler workflows instances delete [NAME] [ID]
 Interact with local dev session
 * `--port` `number` default: 8787
 Port of the local dev session (default: 8787)
+* `--json` `boolean` default: false
+Output the raw API response as JSON
 * `[NAME]` `string` required
 Name of the workflow
 * `[ID]` `string`
