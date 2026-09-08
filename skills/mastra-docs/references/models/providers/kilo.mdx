@@ -5,7 +5,7 @@ description: "Browse Kilo Gateway model IDs, capabilities, context windows, and 
 
 # [Kilo Gateway logo]Kilo Gateway
 
-Access 369 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
+Access 367 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
 
 Learn more in the [Kilo Gateway documentation](https://kilo.ai).
 
@@ -132,8 +132,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 943718,
-    "inputCost": 2.55,
-    "outputCost": 12.75
+    "inputCost": 2.5,
+    "outputCost": 14
   },
   {
     "model": "kilo/~openai/gpt-latest",
@@ -1708,18 +1708,6 @@ for await (const chunk of stream) {
     "outputCost": 1.2
   },
   {
-    "model": "kilo/minimax/minimax-m2.7:free",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 196608,
-    "maxOutput": 176947,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "kilo/minimax/minimax-m3",
     "imageInput": true,
     "audioInput": false,
@@ -1730,18 +1718,6 @@ for await (const chunk of stream) {
     "maxOutput": 512000,
     "inputCost": 0.3,
     "outputCost": 1.2
-  },
-  {
-    "model": "kilo/minimax/minimax-m3:free",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 943718,
-    "inputCost": null,
-    "outputCost": null
   },
   {
     "model": "kilo/mistralai/codestral-2508",
@@ -4044,8 +4020,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 128000,
-    "inputCost": 0.132,
-    "outputCost": 0.528
+    "inputCost": 0.0825,
+    "outputCost": 0.33
   },
   {
     "model": "kilo/tencent/hy3-preview",

@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 47953 files, 501 MiB total
+> 125 skills, 47954 files, 501 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1511,7 +1511,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [threejs-docs](./skills/threejs-docs/SKILL.md) | 798 | 2.0 MiB |
 | [threejs-guide](./skills/threejs-guide/SKILL.md) | 11 | 134 KiB |
 | [tmux-session-manager](./skills/tmux-session-manager/SKILL.md) | 1 | 1.7 KiB |
-| [transformers-docs](./skills/transformers-docs/SKILL.md) | 170 | 1.3 MiB |
+| [transformers-docs](./skills/transformers-docs/SKILL.md) | 171 | 1.3 MiB |
 | [ui-ux-pro-max](./skills/ui-ux-pro-max/SKILL.md) | 73 | 3.4 MiB |
 | [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 527 | 4.6 MiB |
 | [vite-docs](./skills/vite-docs/SKILL.md) | 58 | 549 KiB |

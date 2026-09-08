@@ -219,6 +219,13 @@ List excluded paths in the `.gitlab-ci.yml` file:
 - For the dependency scanning template, use the `DS_EXCLUDED_PATHS` CI/CD variable.
 - For the dependency scanning CI/CD component, use the `excluded_paths` spec input.
 
+To specify multiple patterns, separate them with commas and no spaces. For example:
+
+```yaml
+variables:
+  DS_EXCLUDED_PATHS: "**/*.Test/**,**/*.Test.*/**,src/Test/**"
+```
+
 Exclusion patterns follow these rules:
 
 - Patterns without slashes match file or directory names at any depth in the project. For example,
@@ -229,6 +236,8 @@ Exclusion patterns follow these rules:
   `a/x/y/b`.
 - Leading and trailing slashes are ignored. For example, `/build` and `build/` match the same
   results as `build`.
+- Spaces after commas become part of the pattern and cause matching to fail. Use
+  `"path/a/**,path/b/**"`, not `"path/a/**, path/b/**"`.
 
 ### Limit scan directory depth
 
@@ -1334,7 +1343,7 @@ To use the dependency scanning analyzer:
 1. Import the [current images](#current-images) from `registry.gitlab.com` into
    your [local Docker container registry](../../../packages/container_registry/_index.md).
    The process for importing Docker images into a local offline Docker registry depends on
-   **your network security policy**. Consult your IT staff to find an accepted and approved
+   your network security policy. Consult your IT staff to find an accepted and approved
    process by which external resources can be imported or temporarily accessed.
    These images are regularly updated with new features, bug fixes and patches,
    and you might want to download them regularly. In case your offline instance

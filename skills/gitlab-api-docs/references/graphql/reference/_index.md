@@ -102,7 +102,7 @@ Arguments:
 | <a id="query-admingroups-ownedonly"></a>`ownedOnly` | [`Boolean`](#boolean) | Only include groups where the current user has an owner role. |
 | <a id="query-admingroups-parentpath"></a>`parentPath` | [`ID`](#id) | Full path of the parent group. |
 | <a id="query-admingroups-search"></a>`search` | [`String`](#string) | Search query for group name or group full path. |
-| <a id="query-admingroups-sort"></a>`sort` | [`String`](#string) | Sort order of results. Format: `<field_name>_<sort_direction>`, for example: `id_desc` or `name_asc`. |
+| <a id="query-admingroups-sort"></a>`sort` | [`String`](#string) | Sort order of results. Format: `<field_name>_<sort_direction>`, for example: `id_desc` or `name_asc`. Use `similarity` to rank results by closeness to `search`. `similarity` applies only when `search` is given and results are already scoped to the current user's memberships, such as with `ownedOnly: true` or `allAvailable: false`. Filtering by `visibilityLevel` to public or internal groups only disables `similarity`, because the results are then no longer scoped by membership. Results fall back to `id_desc` when `similarity` does not apply. |
 | <a id="query-admingroups-toplevelonly"></a>`topLevelOnly` | [`Boolean`](#boolean) | Only include top-level groups. |
 | <a id="query-admingroups-visibilitylevel"></a>`visibilityLevel` | [`VisibilityLevelsEnum`](#visibilitylevelsenum) | Filter groups by visibility level. |
 
@@ -1439,7 +1439,7 @@ Arguments:
 | <a id="query-groups-ownedonly"></a>`ownedOnly` | [`Boolean`](#boolean) | Only include groups where the current user has an owner role. |
 | <a id="query-groups-parentpath"></a>`parentPath` | [`ID`](#id) | Full path of the parent group. |
 | <a id="query-groups-search"></a>`search` | [`String`](#string) | Search query for group name or group full path. |
-| <a id="query-groups-sort"></a>`sort` | [`String`](#string) | Sort order of results. Format: `<field_name>_<sort_direction>`, for example: `id_desc` or `name_asc`. |
+| <a id="query-groups-sort"></a>`sort` | [`String`](#string) | Sort order of results. Format: `<field_name>_<sort_direction>`, for example: `id_desc` or `name_asc`. Use `similarity` to rank results by closeness to `search`. `similarity` applies only when `search` is given and results are already scoped to the current user's memberships, such as with `ownedOnly: true` or `allAvailable: false`. Filtering by `visibilityLevel` to public or internal groups only disables `similarity`, because the results are then no longer scoped by membership. Results fall back to `id_desc` when `similarity` does not apply. |
 | <a id="query-groups-toplevelonly"></a>`topLevelOnly` | [`Boolean`](#boolean) | Only include top-level groups. |
 | <a id="query-groups-visibilitylevel"></a>`visibilityLevel` | [`VisibilityLevelsEnum`](#visibilitylevelsenum) | Filter groups by visibility level. |
 | <a id="query-groups-withknowledgegraphenabled"></a>`withKnowledgeGraphEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 18.10. Status: Experiment. Return only groups with Knowledge Graph enabled. |
@@ -4469,6 +4469,31 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="mutation-artifactregistryrolerevoke-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-artifactregistryrolerevoke-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+
+### `Mutation.artifactRegistryVersionDelete`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Deletes one version of a package in an Artifact Registry repository. Permanently deletes a published version on a hosted repository and evicts a cached version on a remote repository, following the kind of the repository addressed. Artifact Registry accepts the request rather than completing it, so the mutation reports acceptance rather than completion. Re-read the version list to see the result. Applies to Maven and npm repositories only.
+
+Input type: `ArtifactRegistryVersionDeleteInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryversiondelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryversiondelete-id"></a>`id` | [`ID!`](#id) | ID of the version in Artifact Registry, as returned by the `id` field on a version. Not a GitLab global ID. |
+| <a id="mutation-artifactregistryversiondelete-name"></a>`name` | [`String!`](#string) | Name of the repository holding the version, unique within the organization. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryversiondelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryversiondelete-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-artifactregistryversiondelete-repository"></a>`repository` | [`ArtifactRegistryRepository`](#artifactregistryrepository) | Repository holding the deleted version. Counters were read before the deletion applied, so they can lag its result. Null when the deletion was not applied. |
 
 ### `Mutation.ascpComponentCreate`
 
@@ -18638,6 +18663,30 @@ Fields:
 | <a id="mutation-workitemexport-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-workitemexport-message"></a>`message` | [`String`](#string) | Export request result message. |
 
+### `Mutation.workItemGenerateReadinessScore`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Scores the readiness of a work item asynchronously through a Duo Agent Platform flow, instead of Duo Chat. Available only when the `workplan_score` feature flag is enabled; returns an error otherwise.
+
+Input type: `WorkItemGenerateReadinessScoreInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-workitemgeneratereadinessscore-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-workitemgeneratereadinessscore-id"></a>`id` | [`WorkItemID!`](#workitemid) | Global ID of the work item to score readiness for. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-workitemgeneratereadinessscore-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-workitemgeneratereadinessscore-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-workitemgeneratereadinessscore-workflow"></a>`workflow` | [`DuoWorkflow`](#duoworkflow) | Duo Agent Platform workflow started to score the readiness. |
+
 ### `Mutation.workItemGenerateWorkplan`
 
 - Introduced in GitLab 19.3.
@@ -31956,7 +32005,7 @@ Fields:
 
 ##### `AgentPlatformSessionsAggregationResponseDimensions.createdEventAt`
 
-Session creation time.
+Session creation date.
 
 Returns [`Date`](#date).
 
@@ -32673,6 +32722,22 @@ Fields:
 | <a id="aifoundationalchatagentflowconfig-flowconfigschemaversion"></a>`flowConfigSchemaVersion` | [`String`](#string) | Flow config schema version sent to the Duo Workflow Service. |
 | <a id="aifoundationalchatagentflowconfig-flowversion"></a>`flowVersion` | [`String`](#string) | Flow version sent to the Duo Workflow Service. |
 
+### `AiGovernanceConnectedAgent`
+
+Registered external agents of one type, with their session activity.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aigovernanceconnectedagent-activecount"></a>`activeCount` | [`Int!`](#int) | Registered machines whose identity has not been revoked. |
+| <a id="aigovernanceconnectedagent-agenttype"></a>`agentType` | [`String!`](#string) | External agent type, for example `claude-code`. |
+| <a id="aigovernanceconnectedagent-identitycount"></a>`identityCount` | [`Int!`](#int) | Registered machines of the agent type, revoked ones included. |
+| <a id="aigovernanceconnectedagent-lastsessionat"></a>`lastSessionAt` | [`Time`](#time) | When a machine of the agent type last opened a session, across all time. |
+| <a id="aigovernanceconnectedagent-revokedcount"></a>`revokedCount` | [`Int!`](#int) | Registered machines whose identity was revoked. |
+| <a id="aigovernanceconnectedagent-sessioncount"></a>`sessionCount` | [`Int!`](#int) | Sessions opened by these machines in the selected timeframe. |
+| <a id="aigovernanceconnectedagent-usercount"></a>`userCount` | [`Int!`](#int) | Distinct users with a registered machine of the agent type. |
+
 ### `AiGovernanceKpi`
 
 Aggregated KPI for the AI governance dashboard.
@@ -32708,6 +32773,18 @@ Fields:
 | <a id="aigovernancemetrics-sessions"></a>`sessions` | [`AiGovernanceKpi`](#aigovernancekpi) | AI sessions in the timeframe, including Duo Chat conversations. |
 
 #### Fields with arguments
+
+##### `AiGovernanceMetrics.connectedAgents`
+
+Registered external (Connected) agents by type, ordered by registered machines. Empty when `agentClass` is `INTERNAL_DAP`.
+
+Returns [`[AiGovernanceConnectedAgent!]`](#aigovernanceconnectedagent).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aigovernancemetrics-connectedagents-limit"></a>`limit` | [`Int`](#int) | Number of agent types to return. Defaults to 5, maximum 20. |
 
 ##### `AiGovernanceMetrics.topProjects`
 
@@ -33425,6 +33502,7 @@ Arguments:
 | <a id="analytics-duoworkflows-createdatfrom"></a>`createdAtFrom` | [`Time`](#time) | Filter by flow creation timestamp. Start of the range. |
 | <a id="analytics-duoworkflows-createdatto"></a>`createdAtTo` | [`Time`](#time) | Filter by flow creation timestamp. End of the range. |
 | <a id="analytics-duoworkflows-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
+| <a id="analytics-duoworkflows-workflowdefinition"></a>`workflowDefinition` | [`[String!]`](#string) | Filter by one or many flow types. |
 
 ##### `Analytics.mergeRequests`
 
@@ -33686,8 +33764,29 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="artifactregistryimage-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.4. Status: Experiment. ID of the image in Artifact Registry. |
 | <a id="artifactregistryimage-lastdownloadedat"></a>`lastDownloadedAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp the image was last pulled. Null when it was never pulled. |
-| <a id="artifactregistryimage-manifests"></a>`manifests`  | [`ArtifactRegistryManifestConnection`](#artifactregistrymanifestconnection) | Introduced in GitLab 19.4. Status: Experiment. Manifests of the image, ordered by publication date descending. Reads at most 20 rows per page and can be selected for up to 20 images per operation, matching the images page size. Returns `null` for an image that is gone. Also `null` when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx. |
 | <a id="artifactregistryimage-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Name of the image. |
+
+#### Fields with arguments
+
+##### `ArtifactRegistryImage.manifests`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Manifests of the image, ordered by publication date descending by default. Reads at most 20 rows per page and can be selected for up to 20 images per operation, matching the images page size. Returns `null` for an image that is gone. Also `null` when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx.
+
+Returns [`ArtifactRegistryManifestConnection`](#artifactregistrymanifestconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryimage-manifests-includereferrers"></a>`includeReferrers`  | [`Boolean`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Include referrer manifests in the list. Defaults to false, matching the endpoint. |
+| <a id="artifactregistryimage-manifests-sort"></a>`sort`  | [`ArtifactRegistryManifestSort`](#artifactregistrymanifestsort) | Introduced in GitLab 19.4. Status: Experiment. Sort manifests by the criteria. Defaults to publication date descending. |
 
 ### `ArtifactRegistryManifest`
 
@@ -33890,8 +33989,12 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="artifactregistryversion-commitpath"></a>`commitPath`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Web path to the publishing commit within the resolved project. Null when there is no SHA or project, or the viewer cannot read the project code. |
+| <a id="artifactregistryversion-commitsha"></a>`commitSha`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Commit SHA the version was published from, within the resolved project. Null when there is no SHA or project, or the viewer cannot read the project code. |
 | <a id="artifactregistryversion-createdat"></a>`createdAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp the version was published. Null when Artifact Registry stored none. |
+| <a id="artifactregistryversion-createdby"></a>`createdBy`  | [`UserCore`](#usercore) | Introduced in GitLab 19.4. Status: Experiment. User who published the version, resolved from the reference Artifact Registry stores. Null when it stored none or the user no longer exists. |
 | <a id="artifactregistryversion-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.4. Status: Experiment. ID of the version in Artifact Registry. |
+| <a id="artifactregistryversion-project"></a>`project`  | [`Project`](#project) | Introduced in GitLab 19.4. Status: Experiment. Project the version was published from, resolved from the reference Artifact Registry stores. Null when it stored none, the project no longer exists, or the viewer cannot see the project. |
 | <a id="artifactregistryversion-version"></a>`version`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Version string of the package. |
 
 ### `AscpComponent`
@@ -38057,9 +38160,9 @@ Fields:
 
 ##### `ContributionsAggregationResponseDimensions.createdAt`
 
-Contribution timestamp.
+Contribution date.
 
-Returns [`Time`](#time).
+Returns [`Date`](#date).
 
 Arguments:
 
@@ -39915,9 +40018,9 @@ Fields:
 
 ##### `DeploymentsAggregationResponseDimensions.createdAt`
 
-Deployment creation time.
+Deployment creation date.
 
-Returns [`Time`](#time).
+Returns [`Date`](#date).
 
 Arguments:
 
@@ -39927,9 +40030,9 @@ Arguments:
 
 ##### `DeploymentsAggregationResponseDimensions.finishedAt`
 
-Deployment finish time.
+Deployment finish date.
 
-Returns [`Time`](#time).
+Returns [`Date`](#date).
 
 Arguments:
 
@@ -40618,7 +40721,7 @@ Fields:
 
 ##### `DuoCodeSuggestionsAggregationResponseDimensions.timestamp`
 
-Suggestion timestamp.
+Suggestion date.
 
 Returns [`Date`](#date).
 
@@ -40739,9 +40842,9 @@ Fields:
 
 ##### `DuoUsageEventsAggregationResponseDimensions.timestamp`
 
-Event timestamp.
+Event date.
 
-Returns [`Time`](#time).
+Returns [`Date`](#date).
 
 Arguments:
 
@@ -41086,6 +41189,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="duoworkflowsessionartifact-agenttype"></a>`agentType`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Type of the external agent that ran the session, for example `claude-code`. Null for sessions run on the GitLab Duo Agent Platform. |
 | <a id="duoworkflowsessionartifact-auditevents"></a>`auditEvents` | [`AiAuditEventConnection`](#aiauditeventconnection) | Audit events recorded for the session. Readable with `read_agent_artifacts` on the parent group or project; does not require access to the underlying workflow. (see [Connections](#connections)) |
 | <a id="duoworkflowsessionartifact-auditeventscount"></a>`auditEventsCount` | [`Int!`](#int) | Number of audit events recorded for the session. |
 | <a id="duoworkflowsessionartifact-creditsused"></a>`creditsUsed`  | [`Float`](#float) | Introduced in GitLab 19.4. Status: Experiment. Total GitLab Credits consumed by the session. Readable with `read_agent_artifacts` on the parent group or project. Requires ClickHouse to be configured for analytics; ingestion is gated by the `duo_workflow_session_credits_ingestion` feature flag. Null until credit data has been ingested for the session, including sessions that failed before ingestion. |
@@ -41166,19 +41270,25 @@ Arguments:
 
 Response dimensions for `DuoWorkflows` aggregation engine.
 
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowsaggregationresponsedimensions-workflowdefinition"></a>`workflowDefinition` | [`String`](#string) | Type of flow. |
+
 #### Fields with arguments
 
 ##### `DuoWorkflowsAggregationResponseDimensions.createdAt`
 
-Flow creation time.
+Flow creation date.
 
-Returns [`Time`](#time).
+Returns [`Date`](#date).
 
 Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="duoworkflowsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) |  |
+| <a id="duoworkflowsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) | Date bucket granularity: daily, weekly, or monthly. |
 
 ### `DuoWorkflowsAggregationScope`
 
@@ -50117,27 +50227,27 @@ Fields:
 
 ##### `MergeRequestsAggregationResponseDimensions.createdAt`
 
-Merge request creation time.
+Merge request creation date.
 
-Returns [`Time`](#time).
+Returns [`Date`](#date).
 
 Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="mergerequestsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) | Time bucket granularity: daily, weekly, or monthly. |
+| <a id="mergerequestsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) | Date bucket granularity: daily, weekly, or monthly. |
 
 ##### `MergeRequestsAggregationResponseDimensions.metricMergedAt`
 
-Merge request merge time.
+Merge request merge date.
 
-Returns [`Time`](#time).
+Returns [`Date`](#date).
 
 Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="mergerequestsaggregationresponsedimensions-metricmergedat-granularity"></a>`granularity` | [`String`](#string) | Time bucket granularity: daily, weekly, or monthly. |
+| <a id="mergerequestsaggregationresponsedimensions-metricmergedat-granularity"></a>`granularity` | [`String`](#string) | Date bucket granularity: daily, weekly, or monthly. |
 
 ### `MergeRequestsAggregationResponseTimeToMergeMetrics`
 
@@ -51711,7 +51821,7 @@ Arguments:
 | <a id="organization-groups-ownedonly"></a>`ownedOnly` | [`Boolean`](#boolean) | Only include groups where the current user has an owner role. |
 | <a id="organization-groups-parentpath"></a>`parentPath` | [`ID`](#id) | Full path of the parent group. |
 | <a id="organization-groups-search"></a>`search` | [`String`](#string) | Search query for group name or group full path. |
-| <a id="organization-groups-sort"></a>`sort` | [`String`](#string) | Sort order of results. Format: `<field_name>_<sort_direction>`, for example: `id_desc` or `name_asc`. |
+| <a id="organization-groups-sort"></a>`sort` | [`String`](#string) | Sort order of results. Format: `<field_name>_<sort_direction>`, for example: `id_desc` or `name_asc`. Use `similarity` to rank results by closeness to `search`. `similarity` applies only when `search` is given and results are already scoped to the current user's memberships, such as with `ownedOnly: true` or `allAvailable: false`. Filtering by `visibilityLevel` to public or internal groups only disables `similarity`, because the results are then no longer scoped by membership. Results fall back to `id_desc` when `similarity` does not apply. |
 | <a id="organization-groups-toplevelonly"></a>`topLevelOnly` | [`Boolean`](#boolean) | Only include top-level groups. |
 | <a id="organization-groups-visibilitylevel"></a>`visibilityLevel` | [`VisibilityLevelsEnum`](#visibilitylevelsenum) | Filter groups by visibility level. |
 | <a id="organization-groups-withknowledgegraphenabled"></a>`withKnowledgeGraphEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 18.10. Status: Experiment. Return only groups with Knowledge Graph enabled. |
@@ -53169,9 +53279,9 @@ Fields:
 
 ##### `PipelinesAggregationResponseDimensions.finishedAt`
 
-Pipeline finish time.
+Pipeline finish date.
 
-Returns [`Time`](#time).
+Returns [`Date`](#date).
 
 Arguments:
 
@@ -53181,9 +53291,9 @@ Arguments:
 
 ##### `PipelinesAggregationResponseDimensions.startedAt`
 
-Pipeline start time.
+Pipeline start date.
 
-Returns [`Time`](#time).
+Returns [`Date`](#date).
 
 Arguments:
 
@@ -62545,6 +62655,8 @@ Fields:
 | <a id="workitemwidgetagentplan-content"></a>`content` | [`String`](#string) | Content of the agent plan. This field can only be resolved for one work item in any single request. |
 | <a id="workitemwidgetagentplan-contenthtml"></a>`contentHtml` | [`String`](#string) | GitLab Flavored Markdown rendering of `content`. This field can only be resolved for one work item in any single request. |
 | <a id="workitemwidgetagentplan-readinessscore"></a>`readinessScore`  | [`Int`](#int) | Introduced in GitLab 19.3. Status: Experiment. Readiness score of the agent plan (0-100). Null when the score is not yet available. Only available when the `workplan_score` feature flag is enabled. |
+| <a id="workitemwidgetagentplan-readinessscorefeedback"></a>`readinessScoreFeedback`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Markdown feedback explaining the readiness score. Null when no feedback is available. Only available when the `workplan_score` feature flag is enabled. This field can only be resolved for one work item in any single request. |
+| <a id="workitemwidgetagentplan-readinessscorefeedbackhtml"></a>`readinessScoreFeedbackHtml`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. GitLab Flavored Markdown rendering of `readiness_score_feedback`. Only available when the `workplan_score` feature flag is enabled. This field can only be resolved for one work item in any single request. |
 | <a id="workitemwidgetagentplan-type"></a>`type` | [`WorkItemWidgetType`](#workitemwidgettype) | Widget type. |
 
 ### `WorkItemWidgetAiSession`
@@ -62805,6 +62917,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="workitemwidgetdevelopment-closingmergerequests"></a>`closingMergeRequests` | [`WorkItemClosingMergeRequestConnection`](#workitemclosingmergerequestconnection) | Merge requests that will close the work item when merged. (see [Connections](#connections)) |
+| <a id="workitemwidgetdevelopment-closingmergerequestscount"></a>`closingMergeRequestsCount` | [`Int!`](#int) | Number of merge requests that will close the work item when merged. |
 | <a id="workitemwidgetdevelopment-featureflags"></a>`featureFlags` | [`FeatureFlagConnection`](#featureflagconnection) | Feature flags associated with the work item. (see [Connections](#connections)) |
 | <a id="workitemwidgetdevelopment-relatedbranches"></a>`relatedBranches` | [`WorkItemRelatedBranchConnection`](#workitemrelatedbranchconnection) | Branches that have referred to the work item, but do not have an associated merge request. (see [Connections](#connections)) |
 | <a id="workitemwidgetdevelopment-relatedmergerequests"></a>`relatedMergeRequests`  | [`MergeRequestConnection`](#mergerequestconnection) | Introduced in GitLab 17.6. Status: Experiment. Merge requests where the work item has been mentioned. This field can only be resolved for one work item in any single request. |
@@ -64499,6 +64612,15 @@ Stored health verdict for a remote Artifact Registry repository upstream.
 | <a id="artifactregistryhealthstatus-healthy"></a>`HEALTHY` | Most recent probe reached the upstream. |
 | <a id="artifactregistryhealthstatus-unhealthy"></a>`UNHEALTHY` | Consecutive probe failures reached the threshold Artifact Registry sets. |
 | <a id="artifactregistryhealthstatus-unknown"></a>`UNKNOWN` | No health probe has recorded a result yet, or Artifact Registry reported a status this schema does not recognize. |
+
+### `ArtifactRegistryManifestSort`
+
+Values for sorting Artifact Registry container manifests.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="artifactregistrymanifestsort-created_at_asc"></a>`CREATED_AT_ASC` | Publication date by ascending order. |
+| <a id="artifactregistrymanifestsort-created_at_desc"></a>`CREATED_AT_DESC` | Publication date by descending order. |
 
 ### `ArtifactRegistryRepositoryFormat`
 
