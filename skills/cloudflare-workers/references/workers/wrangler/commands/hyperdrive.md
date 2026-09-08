@@ -221,6 +221,48 @@ Install Cloudflare skills for detected AI coding agents before running the comma
 * `--profile` `string`
 Use a specific auth profile
 
+## `hyperdrive planetscale signature`
+
+
+Experimental
+
+Generate a signed authorization for creating a Cloudflare-billed PlanetScale database
+
+npmyarnpnpm
+
+```
+npx wrangler hyperdrive planetscale signature
+```
+
+```
+yarn wrangler hyperdrive planetscale signature
+```
+
+```
+pnpm wrangler hyperdrive planetscale signature
+```
+
+Global flags
+
+* `--v` `boolean` alias: --version
+Show version number
+* `--cwd` `string`
+Run as if Wrangler was started in the specified directory instead of the current working directory
+* `--config` `string` alias: --c
+Path to Wrangler configuration file
+* `--env` `string` alias: --e
+Environment to use for operations, and for selecting .env and .dev.vars files
+* `--env-file` `string`
+Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
+Experimental: Enable automatic resource provisioning
+* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
+Automatically provision draft bindings with new resources
+* `--install-skills` `boolean` default: false
+Install Cloudflare skills for detected AI coding agents before running the command
+* `--profile` `string`
+Use a specific auth profile
+
 ## `hyperdrive update`
 
 Update a Hyperdrive config

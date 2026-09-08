@@ -518,8 +518,8 @@ The type of sink to create
 R2 bucket name
 * `--format` `string` default: parquet
 Output format
-* `--compression` `string` default: zstd
-Compression method (parquet only)
+* `--compression` `string`
+Compression method (JSON supports uncompressed and gzip; Parquet defaults to zstd)
 * `--target-row-group-size` `string`
 Target row group size for parquet format
 * `--path` `string`

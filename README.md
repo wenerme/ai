@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 47954 files, 501 MiB total
+> 125 skills, 47971 files, 505 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1431,10 +1431,10 @@ Use when implementing React state management with Zustand, including context-sco
 | [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 832 | 5.5 MiB |
 | [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1270 | 9.3 MiB |
 | [cloudflare-security](./skills/cloudflare-security/SKILL.md) | 1014 | 6.0 MiB |
-| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 827 | 8.1 MiB |
+| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 828 | 8.1 MiB |
 | [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 938 | 10 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
-| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 5698 | 21 MiB |
+| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 5702 | 21 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 61 KiB |
 | [doris-docs](./skills/doris-docs/SKILL.md) | 1603 | 9.8 MiB |
 | [duckdb-clients](./skills/duckdb-clients/SKILL.md) | 76 | 1.3 MiB |
@@ -1476,7 +1476,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 22 | 172 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
 | [mastra](./skills/mastra/SKILL.md) | 11 | 64 KiB |
-| [mastra-docs](./skills/mastra-docs/SKILL.md) | 893 | 7.7 MiB |
+| [mastra-docs](./skills/mastra-docs/SKILL.md) | 894 | 7.7 MiB |
 | [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 183 | 549 KiB |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
 | [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 87 | 1.3 MiB |
@@ -1494,7 +1494,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [papermc-docs](./skills/papermc-docs/SKILL.md) | 192 | 877 KiB |
 | [peekaboo](./skills/peekaboo/SKILL.md) | 1 | 15 KiB |
 | [powerdns-docs](./skills/powerdns-docs/SKILL.md) | 158 | 1.4 MiB |
-| [ppt-master](./skills/ppt-master/SKILL.md) | 12954 | 76 MiB |
+| [ppt-master](./skills/ppt-master/SKILL.md) | 12965 | 79 MiB |
 | [pytorch-docs](./skills/pytorch-docs/SKILL.md) | 319 | 2.1 MiB |
 | [react-resizable-panels-v3-to-v4](./skills/react-resizable-panels-v3-to-v4/SKILL.md) | 1 | 9.2 KiB |
 | [requesting-code-review](./skills/requesting-code-review/SKILL.md) | 2 | 8.4 KiB |

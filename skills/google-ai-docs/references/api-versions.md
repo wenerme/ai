@@ -30,7 +30,7 @@ the Interactions API and `generateContent` unless specified otherwise:
 | [URL Context Tool](https://ai.google.dev/gemini-api/docs/url-context) | Yes | Yes |
 | [File Search Tool](https://ai.google.dev/gemini-api/docs/file-search) | Yes | Yes |
 | [Computer Use Tool](https://ai.google.dev/gemini-api/docs/computer-use) |   | Yes |
-| [MCP Servers Tool](https://ai.google.dev/gemini-api/docs/eap/remote_mcp) |   | Yes |
+| [MCP Servers Tool](https://ai.google.dev/gemini-api/docs/function-calling#mcp) |   | Yes |
 | **Realtime APIs** |   |   |
 | [Live API (WebSockets)](https://ai.google.dev/gemini-api/docs/live-api) |   | Yes |
 | [Live Music API](https://ai.google.dev/gemini-api/docs/realtime-music-generation) |   | Yes |
@@ -60,7 +60,7 @@ by setting the API version as shown in the following code sample:
     client = genai.Client(http_options={'api_version': 'v1'})
 
     interaction = client.interactions.create(
-        model='gemini-3.7-flash',
+        model='gemini-3.8-flash',
         input="Explain how AI works",
     )
 
@@ -76,7 +76,7 @@ by setting the API version as shown in the following code sample:
 
     async function main() {
       const interaction = await ai.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "Explain how AI works",
       });
       console.log(interaction.output_text);
@@ -110,6 +110,6 @@ by setting the API version as shown in the following code sample:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.7-flash",
+        "model": "gemini-3.8-flash",
         "input": "Explain how AI works",
       }'
