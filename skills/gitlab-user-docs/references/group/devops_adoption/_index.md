@@ -24,7 +24,7 @@ DevOps adoption shows feature adoption for development, security, and operations
 | Security    | DASTDependency scanningFuzz testingSAST |
 | Operations  | DeploymentsPipelinesRunners |
 
-A feature shows as **adopted** when a group or subgroup has used the feature in a project in the last full calendar month.
+A feature shows as adopted when a group or subgroup has used the feature in a project in the last full calendar month.
 For example, if an issue was created in a project in a group, the group has adopted issues in that time.
 
 [The overview tab of a DevOps adoption report.]

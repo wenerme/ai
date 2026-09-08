@@ -609,8 +609,8 @@
   },
   "api/api-reference/stt/create-transcription.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/stt/create-transcription.md",
-    "size": 42117,
-    "updatedAt": "2026-09-04T04:23:30.859Z"
+    "size": 42171,
+    "updatedAt": "2026-09-08T04:26:07.007Z"
   },
   "api/api-reference/tts/create-speech.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/tts/create-speech.md",
@@ -1906,9 +1906,8 @@
   },
   "guides/features/guardrails/prompt-injection.md": {
     "url": "https://openrouter.ai/docs/guides/features/guardrails/prompt-injection.md",
-    "lastModified": "Tue, 21 Jul 2026 06:47:56 GMT",
-    "size": 17489,
-    "updatedAt": "2026-07-21T06:47:56.957Z"
+    "size": 17503,
+    "updatedAt": "2026-09-08T04:28:13.444Z"
   },
   "guides/features/guardrails/prompt-injection/allowlist.md": {
     "url": "https://openrouter.ai/docs/guides/features/guardrails/prompt-injection/allowlist.md",
