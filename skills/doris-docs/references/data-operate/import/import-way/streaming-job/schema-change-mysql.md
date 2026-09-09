@@ -18,6 +18,8 @@
 
 MySQL Schema Change Sync automatically applies upstream MySQL column changes to Doris during continuous load. This capability applies only to [MySQL CDC with Auto Table Creation](./continuous-load-mysql-database.md). It is not supported by [MySQL CDC with SQL Mapping](./continuous-load-mysql-table.md).
 
+> **tip**: MySQL Schema Change Sync is supported from Doris 4.1.4.
+
 ## Supported Schema Changes
 
 | MySQL operation | Doris behavior |
@@ -31,6 +33,7 @@ MySQL Schema Change Sync automatically applies upstream MySQL column changes to 
 - Column positions specified by `FIRST` and `AFTER` are not synchronized to Doris. New columns are appended after the existing Doris columns.
 - `CHANGE COLUMN`, `MODIFY COLUMN`, `RENAME COLUMN`, DEFAULT changes, and `NULL` / `NOT NULL` constraint changes are not synchronized automatically. Before performing these operations, pause the continuous load job, change the Doris target table manually, verify that both schemas are compatible, and then resume the job.
 - Primary key, index, partition, table name, and other table-level schema changes are not synchronized automatically.
+- You can disable automatic schema change synchronization with the Job property `schema_change_enabled` (default `true`, supported since version 4.1.4). The `cdc_stream()` table function (SQL Mapping Sync) always forces this property to `false`.
 
 ## Related Docs
 

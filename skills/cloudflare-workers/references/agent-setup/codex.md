@@ -44,7 +44,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 1. **Download Codex**
@@ -130,23 +130,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ## Tips

@@ -14,3 +14,4 @@ Guides and How Tos
   zskroll
   algoroll
   addingrecords
+  edns-cookies

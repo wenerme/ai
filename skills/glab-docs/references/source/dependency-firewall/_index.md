@@ -34,3 +34,8 @@ df
 
 - [`ci-summary`](ci-summary.md)
 - [`npm`](npm.md)
+- [`pip`](pip.md)
+- [`pipenv`](pipenv.md)
+- [`poetry`](poetry.md)
+- [`twine`](twine.md)
+- [`uv`](uv.md)

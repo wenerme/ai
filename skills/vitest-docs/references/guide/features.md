@@ -187,29 +187,32 @@ if (import.meta.vitest) {
 
 Learn more at [In-source testing](/guide/in-source).
 
-## Benchmarking <Experimental /> {#benchmarking}
+## Benchmarking {#benchmarking}
 
-You can run benchmark tests with [`bench`](/api/test#bench) function via [Tinybench](https://github.com/tinylibs/tinybench) to compare performance results.
+You can run benchmark tests with the [`bench`](/api/test#bench) fixture from the [test context](/guide/test-context#bench) via [Tinybench](https://github.com/tinylibs/tinybench) to compare performance results.
 
 ```ts [sort.bench.ts]
-import { bench, describe } from 'vitest'
+import { test } from 'vitest'
 
-describe('sort', () => {
-  bench('normal', () => {
-    const x = [1, 5, 4, 2, 3]
-    x.sort((a, b) => {
-      return a - b
-    })
-  })
-
-  bench('reverse', () => {
-    const x = [1, 5, 4, 2, 3]
-    x.reverse().sort((a, b) => {
-      return a - b
-    })
-  })
+test('sort', async ({ bench }) => {
+  await bench.compare(
+    bench('normal', () => {
+      const x = [1, 5, 4, 2, 3]
+      x.sort((a, b) => {
+        return a - b
+      })
+    }),
+    bench('reverse', () => {
+      const x = [1, 5, 4, 2, 3]
+      x.reverse().sort((a, b) => {
+        return a - b
+      })
+    }),
+  )
 })
 ```
+
+Learn more at [Benchmarking](/guide/benchmarking).
 
 [Benchmark report]
 [Benchmark report]
