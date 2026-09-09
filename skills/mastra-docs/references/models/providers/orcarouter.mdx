@@ -1288,18 +1288,6 @@ for await (const chunk of stream) {
     "outputCost": 2.4
   },
   {
-    "model": "orcarouter/qwen/qwen3.8-27b-free",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 65536,
-    "maxOutput": 32768,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "orcarouter/qwen/qwen3.8-max",
     "imageInput": true,
     "audioInput": false,
@@ -1442,6 +1430,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 0.075,
     "outputCost": 0.25
+  },
+  {
+    "model": "orcarouter/z-ai/glm-5.3-flash-free",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": null,
+    "outputCost": null
   }
 ]}
 />
@@ -1476,7 +1476,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "orcarouter/z-ai/glm-5.3-flash"
+      ? "orcarouter/z-ai/glm-5.3-flash-free"
       : "orcarouter/anthropic/claude-fable-5";
   }
 });

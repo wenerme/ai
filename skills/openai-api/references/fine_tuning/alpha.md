@@ -318,7 +318,7 @@ Run a grader.
         Reducing reasoning effort can result in faster responses and fewer tokens
         used on reasoning in a response. Not all reasoning models support every
         value. See the
-        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        [reasoning guide](/api/docs/guides/reasoning)
         for model-specific support.
 
         - `"none"`
@@ -489,14 +489,14 @@ Run a grader.
 - `model_sample: string`
 
   The model sample to be evaluated. This value will be used to populate
-  the `sample` namespace. See [the guide](/docs/guides/graders) for more details.
+  the `sample` namespace. See [the guide](/api/docs/guides/graders) for more details.
   The `output_json` variable will be populated if the model sample is a
   valid JSON string.
 
 - `item: optional unknown`
 
   The dataset item provided to the grader. This will be used to populate
-  the `item` namespace. See [the guide](/docs/guides/graders) for more details.
+  the `item` namespace. See [the guide](/api/docs/guides/graders) for more details.
 
 ### Returns
 
@@ -1087,7 +1087,7 @@ Validate a grader.
         Reducing reasoning effort can result in faster responses and fewer tokens
         used on reasoning in a response. Not all reasoning models support every
         value. See the
-        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        [reasoning guide](/api/docs/guides/reasoning)
         for model-specific support.
 
         - `"none"`
@@ -1565,7 +1565,7 @@ Validate a grader.
         Reducing reasoning effort can result in faster responses and fewer tokens
         used on reasoning in a response. Not all reasoning models support every
         value. See the
-        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        [reasoning guide](/api/docs/guides/reasoning)
         for model-specific support.
 
         - `"none"`
@@ -2163,7 +2163,7 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
           Reducing reasoning effort can result in faster responses and fewer tokens
           used on reasoning in a response. Not all reasoning models support every
           value. See the
-          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          [reasoning guide](/api/docs/guides/reasoning)
           for model-specific support.
 
           - `"none"`

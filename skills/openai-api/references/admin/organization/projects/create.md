@@ -16,12 +16,12 @@ Create a new project in the organization. Projects can be created and archived, 
 
 - `geography: optional string or null`
 
-  Create the project with the specified data residency region. Your organization must have access to Data residency functionality in order to use. See [data residency controls](/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
+  Create the project with the specified data residency region. Your organization must have access to Data residency functionality in order to use. See [data residency controls](/api/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
   Deprecated: use `residency` instead. Do not provide both `geography` and `residency`.
 
 - `residency: optional ProjectResidency or null`
 
-  Create the project with the specified residency configuration. Your organization must have access to the requested residency configuration in order to use it. See [data residency controls](/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
+  Create the project with the specified residency configuration. Your organization must have access to the requested residency configuration in order to use it. See [data residency controls](/api/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
 
   - `"GLOBAL"`
 

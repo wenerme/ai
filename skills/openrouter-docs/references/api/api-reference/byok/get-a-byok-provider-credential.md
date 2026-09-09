@@ -493,7 +493,6 @@ components:
         - modular
         - moonshotai
         - morph
-        - ncompass
         - nebius
         - nex-agi
         - nextbit
@@ -507,7 +506,7 @@ components:
         - perplexity
         - phala
         - poolside
-        - prime-intellect
+        - primeintellect
         - quiver
         - recraft
         - reka

@@ -133,12 +133,7 @@ for the same container id. They share the same saved files.
 
 ## Container lifetime
 
-A container sleeps after it has been idle. The `sleep_after_seconds`
-setting controls the idle time:
-
-* The default is 300 seconds (5 minutes).
-* The maximum is 14,400 seconds (4 hours).
-* Each command resets the timer.
+A container sleeps after it has been idle for 5 minutes. The idle time is not configurable.
 
 Sleep does not delete the files in the home directory. When a request with
 the same container id arrives later, a new sandbox starts and loads the

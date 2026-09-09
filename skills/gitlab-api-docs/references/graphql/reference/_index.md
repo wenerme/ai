@@ -218,25 +218,6 @@ Arguments:
 | <a id="query-aicatalogagentflowconfig-agentversionid"></a>`agentVersionId` | [`AiCatalogItemVersionID!`](#aicatalogitemversionid) | Global ID of the agent version to use. |
 | <a id="query-aicatalogagentflowconfig-flowconfigtype"></a>`flowConfigType` | [`AiCatalogFlowConfigType!`](#aicatalogflowconfigtype) | Type of flow configuration to generate. |
 
-### `Query.aiCatalogAvailableFlowsForProject`
-
-- Introduced in GitLab 18.9.
-- Status: Experiment.
-
-AI Catalog flows available to enable for a project.
-
-Returns [`AiCatalogItemConsumerConnection!`](#aicatalogitemconsumerconnection).
-
-This field returns a [connection](#connections). It accepts the
-four standard [pagination arguments](#pagination-arguments):
-`before: String`, `after: String`, `first: Int`, and `last: Int`.
-
-Arguments:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="query-aicatalogavailableflowsforproject-projectid"></a>`projectId` | [`ProjectID!`](#projectid) | Project ID to retrieve available AI Catalog flows for. |
-
 ### `Query.aiCatalogBuiltInTools`
 
 - Introduced in GitLab 18.3.
@@ -3771,6 +3752,80 @@ Fields:
 | <a id="mutation-aifeaturesettingupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-aifeaturesettingupdate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 
+### `Mutation.aiFlowScheduleCreate`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Input type: `AiFlowScheduleCreateInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-aiflowschedulecreate-active"></a>`active` | [`Boolean`](#boolean) | Indicates whether the schedule should be active. |
+| <a id="mutation-aiflowschedulecreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-aiflowschedulecreate-cron"></a>`cron` | [`String!`](#string) | Cron expression defining the schedule frequency. |
+| <a id="mutation-aiflowschedulecreate-crontimezone"></a>`cronTimezone` | [`String!`](#string) | IANA timezone for the cron expression. |
+| <a id="mutation-aiflowschedulecreate-description"></a>`description` | [`String!`](#string) | Description of the schedule. |
+| <a id="mutation-aiflowschedulecreate-flowtriggerid"></a>`flowTriggerId` | [`AiFlowTriggerID!`](#aiflowtriggerid) | Global ID of the flow trigger to schedule. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-aiflowschedulecreate-aiflowschedule"></a>`aiFlowSchedule` | [`AiFlowScheduleType`](#aiflowscheduletype) | Created flow schedule. |
+| <a id="mutation-aiflowschedulecreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-aiflowschedulecreate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+
+### `Mutation.aiFlowScheduleDelete`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Input type: `AiFlowScheduleDeleteInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-aiflowscheduledelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-aiflowscheduledelete-id"></a>`id` | [`AiFlowScheduleID!`](#aiflowscheduleid) | Global ID of the flow schedule to delete. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-aiflowscheduledelete-aiflowschedule"></a>`aiFlowSchedule` | [`AiFlowScheduleType`](#aiflowscheduletype) | Deleted flow schedule. |
+| <a id="mutation-aiflowscheduledelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-aiflowscheduledelete-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+
+### `Mutation.aiFlowScheduleUpdate`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Input type: `AiFlowScheduleUpdateInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-aiflowscheduleupdate-active"></a>`active` | [`Boolean`](#boolean) | Indicates whether the schedule should be active. |
+| <a id="mutation-aiflowscheduleupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-aiflowscheduleupdate-cron"></a>`cron` | [`String`](#string) | Cron expression defining the schedule frequency. |
+| <a id="mutation-aiflowscheduleupdate-crontimezone"></a>`cronTimezone` | [`String`](#string) | IANA timezone for the cron expression. |
+| <a id="mutation-aiflowscheduleupdate-description"></a>`description` | [`String`](#string) | Description of the schedule. |
+| <a id="mutation-aiflowscheduleupdate-id"></a>`id` | [`AiFlowScheduleID!`](#aiflowscheduleid) | Global ID of the flow schedule to update. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-aiflowscheduleupdate-aiflowschedule"></a>`aiFlowSchedule` | [`AiFlowScheduleType`](#aiflowscheduletype) | Updated flow schedule. |
+| <a id="mutation-aiflowscheduleupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-aiflowscheduleupdate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+
 ### `Mutation.aiFlowTriggerCreate`
 
 - Introduced in GitLab 18.3.
@@ -4197,6 +4252,32 @@ Fields:
 | <a id="mutation-artifactregistryartifactdelete-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-artifactregistryartifactdelete-repository"></a>`repository` | [`ArtifactRegistryRepository`](#artifactregistryrepository) | Repository holding the deleted artifact. Counters were read before the deletion applied, so they can lag its result. Null when the deletion was not applied. |
 
+### `Mutation.artifactRegistryContainerTagDelete`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Deletes a container tag, identified by its name. Applies only to container repositories in Docker or OCI format. This mutation never reads the repository kind. Artifact Registry decides the outcome from its own records. On a hosted repository, deletion permanently removes the tag. On a remote repository, it evicts the cached tag reference. On a virtual repository, the request is passed through for Artifact Registry to decide. Deleting a tag never removes the manifest it pointed at. Artifact Registry accepts the request rather than completing it, so this mutation reports acceptance, not completion.
+
+Input type: `ArtifactRegistryContainerTagDeleteInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistrycontainertagdelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistrycontainertagdelete-imageid"></a>`imageId` | [`ID!`](#id) | ID of the image holding the tag in Artifact Registry, as returned by the `id` field on an image. Not a GitLab global ID. |
+| <a id="mutation-artifactregistrycontainertagdelete-name"></a>`name` | [`String!`](#string) | Name of the repository holding the tag, unique within the organization. |
+| <a id="mutation-artifactregistrycontainertagdelete-tagname"></a>`tagName` | [`String!`](#string) | Name of the tag to delete. Limited to 1024 characters. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistrycontainertagdelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistrycontainertagdelete-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-artifactregistrycontainertagdelete-repository"></a>`repository` | [`ArtifactRegistryRepository`](#artifactregistryrepository) | Repository holding the deleted tag. A tag delete moves no repository counter. Null when the deletion was not accepted. |
+
 ### `Mutation.artifactRegistryDisable`
 
 - Introduced in GitLab 19.4.
@@ -4242,6 +4323,57 @@ Fields:
 | <a id="mutation-artifactregistryenable-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-artifactregistryenable-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-artifactregistryenable-registry"></a>`registry` | [`ArtifactRegistry`](#artifactregistry) | Registry after the transition. Null when the transition was rejected, for example an unknown namespace. |
+
+### `Mutation.artifactRegistryManifestDelete`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Deletes a manifest, identified by its digest. Applies only to Docker or OCI container repositories, whose kind this mutation never reads. Artifact Registry decides the outcome from its records, permanently removing the manifest on a hosted repository, evicting the cached copy on a remote one, or passing the request through on a virtual one. Deleting a manifest removes tags pointing at it and index entries where it is the parent, though a manifest it indexed survives untagged. Artifact Registry accepts rather than completes the request, so this reports acceptance. Re-read the image's manifests afterward for the result. Deletion is refused if another manifest indexes the target as a child, and the error lists at most 10 blocking digests plus the total count.
+
+Input type: `ArtifactRegistryManifestDeleteInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistrymanifestdelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistrymanifestdelete-digest"></a>`digest` | [`String!`](#string) | Content-addressable digest of the manifest, as returned by the `digest` field on a manifest. Limited to 512 characters. |
+| <a id="mutation-artifactregistrymanifestdelete-imageid"></a>`imageId` | [`ID!`](#id) | ID of the image holding the manifest in Artifact Registry, as returned by the `id` field on an image. Not a GitLab global ID. |
+| <a id="mutation-artifactregistrymanifestdelete-name"></a>`name` | [`String!`](#string) | Name of the repository holding the manifest, unique within the organization. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistrymanifestdelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistrymanifestdelete-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-artifactregistrymanifestdelete-repository"></a>`repository` | [`ArtifactRegistryRepository`](#artifactregistryrepository) | Repository holding the deleted manifest. Counters were read before the deletion applied, so they can lag its result. Null when the deletion was not accepted. |
+
+### `Mutation.artifactRegistryNpmDistTagDelete`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Deletes one dist-tag of an npm package in an Artifact Registry repository, addressed by its Artifact Registry ID. Applies to npm repositories only. A non-npm repository is refused before any request reaches Artifact Registry, and the refusal appears in the payload errors. A remote repository is refused the same way, because Artifact Registry holds the dist-tags of a remote repository as a rewritten document rather than as individually addressable rows, so there is no dist-tag row to delete. Removes the dist-tag alone, never the version it named. The mutation reports acceptance rather than completion.
+
+Input type: `ArtifactRegistryNpmDistTagDeleteInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistrynpmdisttagdelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistrynpmdisttagdelete-id"></a>`id` | [`ID!`](#id) | ID of the dist-tag in Artifact Registry. Not a GitLab global ID. |
+| <a id="mutation-artifactregistrynpmdisttagdelete-name"></a>`name` | [`String!`](#string) | Name of the repository holding the dist-tag, unique within the organization. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistrynpmdisttagdelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistrynpmdisttagdelete-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-artifactregistrynpmdisttagdelete-repository"></a>`repository` | [`ArtifactRegistryRepository`](#artifactregistryrepository) | Repository holding the deleted dist-tag. A dist-tag delete moves no repository counter. Null when the deletion was not accepted. |
 
 ### `Mutation.artifactRegistryRepositoryArtifactsDelete`
 
@@ -4301,7 +4433,7 @@ Fields:
 - Introduced in GitLab 19.3.
 - Status: Experiment.
 
-Deletes a repository in Artifact Registry.
+Deletes a repository in Artifact Registry and removes every artifact it holds. Deleting an already-absent repository still succeeds.
 
 Input type: `ArtifactRegistryRepositoryDeleteInput`
 
@@ -18762,6 +18894,30 @@ Fields:
 | <a id="mutation-workitemremovelinkeditems-message"></a>`message` | [`String`](#string) | Linked items update result message. |
 | <a id="mutation-workitemremovelinkeditems-workitem"></a>`workItem` | [`WorkItem`](#workitem) | Updated work item. |
 
+### `Mutation.workItemResumeWorkplan`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Resumes a paused workplan generation flow that is awaiting input, sending the replies left on the questions the flow asked. Available only when the `duo_workplan_async_flow` feature flag is enabled; returns an error otherwise.
+
+Input type: `WorkItemResumeWorkplanInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-workitemresumeworkplan-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-workitemresumeworkplan-id"></a>`id` | [`WorkItemID!`](#workitemid) | Global ID of the work item whose workplan generation to resume. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-workitemresumeworkplan-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-workitemresumeworkplan-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-workitemresumeworkplan-workflow"></a>`workflow` | [`DuoWorkflow`](#duoworkflow) | Duo Agent Platform workflow that was resumed. |
+
 ### `Mutation.workItemSavedViewCreate`
 
 - Introduced in GitLab 18.7.
@@ -19909,6 +20065,29 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="aifeaturesettingedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="aifeaturesettingedge-node"></a>`node` | [`AiFeatureSetting`](#aifeaturesetting) | The item at the end of the edge. |
+
+#### `AiFlowScheduleTypeConnection`
+
+The connection type for [`AiFlowScheduleType`](#aiflowscheduletype).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aiflowscheduletypeconnection-edges"></a>`edges` | [`[AiFlowScheduleTypeEdge]`](#aiflowscheduletypeedge) | A list of edges. |
+| <a id="aiflowscheduletypeconnection-nodes"></a>`nodes` | [`[AiFlowScheduleType]`](#aiflowscheduletype) | A list of nodes. |
+| <a id="aiflowscheduletypeconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `AiFlowScheduleTypeEdge`
+
+The edge type for [`AiFlowScheduleType`](#aiflowscheduletype).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aiflowscheduletypeedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="aiflowscheduletypeedge-node"></a>`node` | [`AiFlowScheduleType`](#aiflowscheduletype) | The item at the end of the edge. |
 
 #### `AiFlowTriggerTypeConnection`
 
@@ -25190,6 +25369,29 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="googlecloudloggingconfigurationtypeedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="googlecloudloggingconfigurationtypeedge-node"></a>`node` | [`GoogleCloudLoggingConfigurationType`](#googlecloudloggingconfigurationtype) | The item at the end of the edge. |
+
+#### `GovernPolicyEvaluationConnection`
+
+The connection type for [`GovernPolicyEvaluation`](#governpolicyevaluation).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="governpolicyevaluationconnection-edges"></a>`edges` | [`[GovernPolicyEvaluationEdge]`](#governpolicyevaluationedge) | A list of edges. |
+| <a id="governpolicyevaluationconnection-nodes"></a>`nodes` | [`[GovernPolicyEvaluation]`](#governpolicyevaluation) | A list of nodes. |
+| <a id="governpolicyevaluationconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `GovernPolicyEvaluationEdge`
+
+The edge type for [`GovernPolicyEvaluation`](#governpolicyevaluation).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="governpolicyevaluationedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="governpolicyevaluationedge-node"></a>`node` | [`GovernPolicyEvaluation`](#governpolicyevaluation) | The item at the end of the edge. |
 
 #### `GroupAuditEventStreamingDestinationConnection`
 
@@ -30907,6 +31109,52 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="workitemconnection-count-limit"></a>`limit` | [`Int`](#int) | Limit applied to the count query, returns limit + 1. When not provided, returns the exact count. |
 
+#### `WorkItemDecisionConnection`
+
+The connection type for [`WorkItemDecision`](#workitemdecision).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="workitemdecisionconnection-edges"></a>`edges` | [`[WorkItemDecisionEdge]`](#workitemdecisionedge) | A list of edges. |
+| <a id="workitemdecisionconnection-nodes"></a>`nodes` | [`[WorkItemDecision]`](#workitemdecision) | A list of nodes. |
+| <a id="workitemdecisionconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `WorkItemDecisionEdge`
+
+The edge type for [`WorkItemDecision`](#workitemdecision).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="workitemdecisionedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="workitemdecisionedge-node"></a>`node` | [`WorkItemDecision`](#workitemdecision) | The item at the end of the edge. |
+
+#### `WorkItemDecisionOptionConnection`
+
+The connection type for [`WorkItemDecisionOption`](#workitemdecisionoption).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="workitemdecisionoptionconnection-edges"></a>`edges` | [`[WorkItemDecisionOptionEdge]`](#workitemdecisionoptionedge) | A list of edges. |
+| <a id="workitemdecisionoptionconnection-nodes"></a>`nodes` | [`[WorkItemDecisionOption]`](#workitemdecisionoption) | A list of nodes. |
+| <a id="workitemdecisionoptionconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `WorkItemDecisionOptionEdge`
+
+The edge type for [`WorkItemDecisionOption`](#workitemdecisionoption).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="workitemdecisionoptionedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="workitemdecisionoptionedge-node"></a>`node` | [`WorkItemDecisionOption`](#workitemdecisionoption) | The item at the end of the edge. |
+
 #### `WorkItemDescriptionTemplateConnection`
 
 The connection type for [`WorkItemDescriptionTemplate`](#workitemdescriptiontemplate).
@@ -32657,6 +32905,39 @@ Fields:
 | <a id="aiflowcapability-metadata"></a>`metadata` | [`JSON`](#json) | Arbitrary JSON-encoded metadata associated with the capability. |
 | <a id="aiflowcapability-name"></a>`name` | [`String!`](#string) | Name of the capability. |
 
+### `AiFlowScheduleLastRun`
+
+Details of the most recent execution attempt of a flow schedule.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aiflowschedulelastrun-error"></a>`error` | [`String`](#string) | Error message from the most recent failed execution. |
+| <a id="aiflowschedulelastrun-ranat"></a>`ranAt` | [`Time`](#time) | Timestamp of the most recent execution attempt. |
+| <a id="aiflowschedulelastrun-status"></a>`status` | [`String`](#string) | Status of the most recent execution attempt. |
+
+### `AiFlowScheduleType`
+
+Represents a cron-based schedule for an AI flow trigger.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aiflowscheduletype-active"></a>`active` | [`Boolean!`](#boolean) | Indicates the schedule is active. |
+| <a id="aiflowscheduletype-consecutivefailurecount"></a>`consecutiveFailureCount` | [`Int!`](#int) | Number of consecutive execution failures. |
+| <a id="aiflowscheduletype-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the flow schedule was created. |
+| <a id="aiflowscheduletype-cron"></a>`cron` | [`String!`](#string) | Cron expression defining the schedule frequency. |
+| <a id="aiflowscheduletype-crontimezone"></a>`cronTimezone` | [`String!`](#string) | IANA timezone for the cron expression. |
+| <a id="aiflowscheduletype-description"></a>`description` | [`String!`](#string) | Description of the flow schedule. |
+| <a id="aiflowscheduletype-flowtrigger"></a>`flowTrigger` | [`AiFlowTriggerType!`](#aiflowtriggertype) | Flow trigger the schedule executes. |
+| <a id="aiflowscheduletype-id"></a>`id` | [`AiFlowScheduleID!`](#aiflowscheduleid) | Global ID of the flow schedule. |
+| <a id="aiflowscheduletype-lastrun"></a>`lastRun` | [`AiFlowScheduleLastRun`](#aiflowschedulelastrun) | Details of the most recent execution attempt, or null if the schedule has never run. |
+| <a id="aiflowscheduletype-nextrunat"></a>`nextRunAt` | [`Time`](#time) | Timestamp of the next scheduled execution. |
+| <a id="aiflowscheduletype-project"></a>`project` | [`Project!`](#project) | Project of the flow schedule. |
+| <a id="aiflowscheduletype-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the flow schedule was last updated. |
+
 ### `AiFlowTriggerType`
 
 Represents an AI flow trigger.
@@ -32673,6 +32954,7 @@ Fields:
 | <a id="aiflowtriggertype-description"></a>`description` | [`String!`](#string) | Description of the flow trigger. |
 | <a id="aiflowtriggertype-eventtypes"></a>`eventTypes` | [`[Int!]!`](#int) | List of events that triggers the flow. |
 | <a id="aiflowtriggertype-filter"></a>`filter`  | [`JSON`](#json) | Introduced in GitLab 18.11. Status: Experiment. Filter conditions for the AI flow trigger. |
+| <a id="aiflowtriggertype-flowschedules"></a>`flowSchedules`  | [`AiFlowScheduleTypeConnection`](#aiflowscheduletypeconnection) | Introduced in GitLab 19.4. Status: Experiment. Cron-based schedules associated with the flow trigger. |
 | <a id="aiflowtriggertype-id"></a>`id` | [`ID!`](#id) | ID of the flow trigger. |
 | <a id="aiflowtriggertype-precondition"></a>`precondition`  | [`JSON`](#json) | Introduced in GitLab 18.11. Status: Experiment. Enforced filter conditions from the foundational flow definition. |
 | <a id="aiflowtriggertype-project"></a>`project` | [`Project!`](#project) | Project of the flow trigger. |
@@ -33502,6 +33784,8 @@ Arguments:
 | <a id="analytics-duoworkflows-createdatfrom"></a>`createdAtFrom` | [`Time`](#time) | Filter by flow creation timestamp. Start of the range. |
 | <a id="analytics-duoworkflows-createdatto"></a>`createdAtTo` | [`Time`](#time) | Filter by flow creation timestamp. End of the range. |
 | <a id="analytics-duoworkflows-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
+| <a id="analytics-duoworkflows-projectid"></a>`projectId` | [`[String!]`](#string) | Filter by one or many project Global IDs. |
+| <a id="analytics-duoworkflows-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
 | <a id="analytics-duoworkflows-workflowdefinition"></a>`workflowDefinition` | [`[String!]`](#string) | Filter by one or many flow types. |
 
 ##### `Analytics.mergeRequests`
@@ -38243,7 +38527,7 @@ Fields:
 | <a id="countablevulnerability-latestdetectedpipeline"></a>`latestDetectedPipeline`  | [`Pipeline`](#pipeline) | Introduced in GitLab 18.2. Status: Experiment. Pipeline where the vulnerability was last detected. |
 | <a id="countablevulnerability-latestflag"></a>`latestFlag`  | [`VulnerabilityFlag`](#vulnerabilityflag) | Introduced in GitLab 18.5. Status: Experiment. Latest flag for the vulnerability. |
 | <a id="countablevulnerability-latestnonclosedmergerequest"></a>`latestNonClosedMergeRequest`  | [`MergeRequest`](#mergerequest) | Introduced in GitLab 19.1. Status: Experiment. Latest non-closed merge request linked to fix the vulnerability. |
-| <a id="countablevulnerability-latestsecurityreportfinding"></a>`latestSecurityReportFinding`  | [`PipelineSecurityReportFinding`](#pipelinesecurityreportfinding) | Introduced in GitLab 18.4. Status: Experiment. Latest security report finding for the vulnerability. |
+| <a id="countablevulnerability-latestsecurityreportfinding"></a>`latestSecurityReportFinding`  | [`PipelineSecurityReportFinding`](#pipelinesecurityreportfinding) | Introduced in GitLab 18.4. Status: Experiment. Latest security report finding for the vulnerability. On large projects, the field can time out and return null. Clients should check the top-level errors array for timeout errors, even when the HTTP response status is 200. |
 | <a id="countablevulnerability-links"></a>`links` | [`[VulnerabilityLink!]!`](#vulnerabilitylink) | List of links associated with the vulnerability. |
 | <a id="countablevulnerability-location"></a>`location` | [`VulnerabilityLocation`](#vulnerabilitylocation) | Location metadata for the vulnerability. Its fields depend on the type of security scan that found the vulnerability. |
 | <a id="countablevulnerability-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Indicates whether the vulnerability is associated with a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. Returns `null` when malware detection is not enabled for the namespace. |
@@ -41236,6 +41520,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="duoworkflowsaggregationresponse-creditsused"></a>`creditsUsed` | [`DuoWorkflowsAggregationResponseCreditsUsedMetrics`](#duoworkflowsaggregationresponsecreditsusedmetrics) | Aggregated `credits_used` metrics. |
 | <a id="duoworkflowsaggregationresponse-dimensions"></a>`dimensions` | [`DuoWorkflowsAggregationResponseDimensions`](#duoworkflowsaggregationresponsedimensions) | Aggregation dimensions. Every selected dimension will be used for aggregation. |
+| <a id="duoworkflowsaggregationresponse-projectscount"></a>`projectsCount` | [`Int`](#int) | Number of unique projects. |
 | <a id="duoworkflowsaggregationresponse-totalcount"></a>`totalCount` | [`Int`](#int) | Total number of flows. |
 | <a id="duoworkflowsaggregationresponse-userscount"></a>`usersCount` | [`Int`](#int) | Number of unique users. |
 
@@ -41274,6 +41559,8 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="duoworkflowsaggregationresponsedimensions-project"></a>`project` | [`Project`](#project) | Project the flow ran in. Returns `null` for flows not scoped to a project. |
+| <a id="duoworkflowsaggregationresponsedimensions-user"></a>`user` | [`UserCore`](#usercore) | Flow owner. |
 | <a id="duoworkflowsaggregationresponsedimensions-workflowdefinition"></a>`workflowDefinition` | [`String`](#string) | Type of flow. |
 
 #### Fields with arguments
@@ -43600,6 +43887,38 @@ Fields:
 | <a id="governpolicy-triggertype"></a>`triggerType`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Trigger the policy responds to. |
 | <a id="governpolicy-updatedat"></a>`updatedAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp of when the policy was last updated. |
 | <a id="governpolicy-version"></a>`version`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. Version of the policy. |
+
+### `GovernPolicyEvaluation`
+
+Recorded evaluation of a policy stored in the policy store.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="governpolicyevaluation-environmentid"></a>`environmentId`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. ID of the environment the evaluation ran for. Null when the evaluation was not scoped to an environment. |
+| <a id="governpolicyevaluation-evaluatedat"></a>`evaluatedAt`  | [`Time!`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp of when the policy was evaluated. |
+| <a id="governpolicyevaluation-id"></a>`id`  | [`GovernPolicyEvaluationID!`](#governpolicyevaluationid) | Introduced in GitLab 19.4. Status: Experiment. Global ID of the evaluation. |
+| <a id="governpolicyevaluation-mode"></a>`mode`  | [`GovernPolicyEvaluationMode!`](#governpolicyevaluationmode) | Introduced in GitLab 19.4. Status: Experiment. Enforcement mode of the policy at the time of the evaluation. |
+| <a id="governpolicyevaluation-policyid"></a>`policyId`  | [`Int!`](#int) | Introduced in GitLab 19.4. Status: Experiment. ID of the policy that was evaluated. |
+| <a id="governpolicyevaluation-policyversion"></a>`policyVersion`  | [`Int!`](#int) | Introduced in GitLab 19.4. Status: Experiment. Version of the policy at the time of the evaluation. |
+| <a id="governpolicyevaluation-projectid"></a>`projectId`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. ID of the project the evaluation ran for. Null when the evaluation was not scoped to a project. |
+| <a id="governpolicyevaluation-triggertype"></a>`triggerType`  | [`GovernPolicyEvaluationTriggerType!`](#governpolicyevaluationtriggertype) | Introduced in GitLab 19.4. Status: Experiment. Trigger that started the evaluation. |
+| <a id="governpolicyevaluation-userid"></a>`userId`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. ID of the user whose operation triggered the evaluation. Null when the evaluation was not triggered by a user. |
+| <a id="governpolicyevaluation-verdict"></a>`verdict`  | [`GovernPolicyEvaluationVerdict!`](#governpolicyevaluationverdict) | Introduced in GitLab 19.4. Status: Experiment. Verdict the evaluation produced. |
+| <a id="governpolicyevaluation-violations"></a>`violations`  | [`[GovernPolicyViolation!]`](#governpolicyviolation) | Introduced in GitLab 19.4. Status: Experiment. Violations the evaluation produced. |
+
+### `GovernPolicyViolation`
+
+Violation a policy evaluation produced.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="governpolicyviolation-createdat"></a>`createdAt`  | [`Time!`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp of when the violation was recorded. |
+| <a id="governpolicyviolation-details"></a>`details`  | [`JSON`](#json) | Introduced in GitLab 19.4. Status: Experiment. Details of the violation. |
+| <a id="governpolicyviolation-id"></a>`id`  | [`GovernPolicyViolationID!`](#governpolicyviolationid) | Introduced in GitLab 19.4. Status: Experiment. Global ID of the violation. |
 
 ### `GpgSignature`
 
@@ -53570,6 +53889,29 @@ Arguments:
 | <a id="policystore-policies-ids"></a>`ids`  | [`[Int!]`](#int) | Introduced in GitLab 19.4. Status: Experiment. Return only the policies with these IDs. Unknown IDs are ignored; an empty list returns no policies. Maximum is 1000 IDs. |
 | <a id="policystore-policies-triggertype"></a>`triggerType`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Return only the policies that respond to this trigger. Valid values are the ids in the policy store triggers catalog. |
 
+##### `PolicyStore.policyEvaluations`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Recorded evaluations of the policies stored in the policy store for the organization, newest first. Returns `null` for groups and when the current user cannot read the policies of the organization.
+
+Returns [`GovernPolicyEvaluationConnection`](#governpolicyevaluationconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="policystore-policyevaluations-evaluatedafter"></a>`evaluatedAfter`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Return only the evaluations that ran at or after the given timestamp. |
+| <a id="policystore-policyevaluations-evaluatedbefore"></a>`evaluatedBefore`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Return only the evaluations that ran at or before the given timestamp. |
+| <a id="policystore-policyevaluations-mode"></a>`mode`  | [`GovernPolicyEvaluationMode`](#governpolicyevaluationmode) | Introduced in GitLab 19.4. Status: Experiment. Return only the evaluations that ran in the given enforcement mode. |
+| <a id="policystore-policyevaluations-policyid"></a>`policyId`  | [`Int`](#int) | Introduced in GitLab 19.4. Status: Experiment. Return only the evaluations of the policy with the given ID. |
+| <a id="policystore-policyevaluations-verdict"></a>`verdict`  | [`GovernPolicyEvaluationVerdict`](#governpolicyevaluationverdict) | Introduced in GitLab 19.4. Status: Experiment. Return only the evaluations that produced the given verdict. |
+
 ### `PolicyStoreAction`
 
 Action available when creating a policy in the policy store.
@@ -61023,7 +61365,7 @@ Fields:
 | <a id="vulnerability-latestdetectedpipeline"></a>`latestDetectedPipeline`  | [`Pipeline`](#pipeline) | Introduced in GitLab 18.2. Status: Experiment. Pipeline where the vulnerability was last detected. |
 | <a id="vulnerability-latestflag"></a>`latestFlag`  | [`VulnerabilityFlag`](#vulnerabilityflag) | Introduced in GitLab 18.5. Status: Experiment. Latest flag for the vulnerability. |
 | <a id="vulnerability-latestnonclosedmergerequest"></a>`latestNonClosedMergeRequest`  | [`MergeRequest`](#mergerequest) | Introduced in GitLab 19.1. Status: Experiment. Latest non-closed merge request linked to fix the vulnerability. |
-| <a id="vulnerability-latestsecurityreportfinding"></a>`latestSecurityReportFinding`  | [`PipelineSecurityReportFinding`](#pipelinesecurityreportfinding) | Introduced in GitLab 18.4. Status: Experiment. Latest security report finding for the vulnerability. |
+| <a id="vulnerability-latestsecurityreportfinding"></a>`latestSecurityReportFinding`  | [`PipelineSecurityReportFinding`](#pipelinesecurityreportfinding) | Introduced in GitLab 18.4. Status: Experiment. Latest security report finding for the vulnerability. On large projects, the field can time out and return null. Clients should check the top-level errors array for timeout errors, even when the HTTP response status is 200. |
 | <a id="vulnerability-links"></a>`links` | [`[VulnerabilityLink!]!`](#vulnerabilitylink) | List of links associated with the vulnerability. |
 | <a id="vulnerability-location"></a>`location` | [`VulnerabilityLocation`](#vulnerabilitylocation) | Location metadata for the vulnerability. Its fields depend on the type of security scan that found the vulnerability. |
 | <a id="vulnerability-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Indicates whether the vulnerability is associated with a malware package. Returns `true` if a malware package is identified. Returns `false` if the package is not a malware package. Returns `null` when malware detection is not enabled for the namespace. |
@@ -62314,6 +62656,41 @@ Fields:
 | <a id="workitemdatefieldvalue-customfield"></a>`customField` | [`CustomField!`](#customfield) | Custom field associated with the custom field value. |
 | <a id="workitemdatefieldvalue-value"></a>`value` | [`Date`](#date) | Date value of the custom field. |
 
+### `WorkItemDecision`
+
+Represents a decision recorded in the decision log of a work item.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="workitemdecision-author"></a>`author`  | [`UserCore`](#usercore) | Introduced in GitLab 19.4. Status: Experiment. User who raised the decision. |
+| <a id="workitemdecision-description"></a>`description`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Context of the decision. |
+| <a id="workitemdecision-discussionid"></a>`discussionId`  | [`DiscussionID`](#discussionid) | Introduced in GitLab 19.4. Status: Experiment. Global ID of the originating discussion thread. |
+| <a id="workitemdecision-id"></a>`id`  | [`WorkItemsDecisionID!`](#workitemsdecisionid) | Introduced in GitLab 19.4. Status: Experiment. Global ID of the decision. |
+| <a id="workitemdecision-noteurl"></a>`noteUrl`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. URL of the comment that resolved the decision. |
+| <a id="workitemdecision-options"></a>`options`  | [`WorkItemDecisionOptionConnection`](#workitemdecisionoptionconnection) | Introduced in GitLab 19.4. Status: Experiment. Candidate options of the decision. |
+| <a id="workitemdecision-resolutionrationale"></a>`resolutionRationale`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Reasoning given when the decision was resolved. |
+| <a id="workitemdecision-resolvedat"></a>`resolvedAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp when the decision was resolved. |
+| <a id="workitemdecision-resolvedby"></a>`resolvedBy`  | [`UserCore`](#usercore) | Introduced in GitLab 19.4. Status: Experiment. User who resolved the decision. |
+| <a id="workitemdecision-resolvingnoteid"></a>`resolvingNoteId`  | [`NoteID`](#noteid) | Introduced in GitLab 19.4. Status: Experiment. Global ID of the comment that resolved the decision. |
+| <a id="workitemdecision-sourcelink"></a>`sourceLink`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. URL of the comment, discussion, or external resource that prompted the decision. Present only on manually created decisions. |
+| <a id="workitemdecision-title"></a>`title`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Question being decided. |
+
+### `WorkItemDecisionOption`
+
+Represents a candidate option of a work item decision.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="workitemdecisionoption-content"></a>`content`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Content of the decision option. |
+| <a id="workitemdecisionoption-description"></a>`description`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Reasoning behind the decision option. |
+| <a id="workitemdecisionoption-id"></a>`id`  | [`WorkItemsDecisionOptionID!`](#workitemsdecisionoptionid) | Introduced in GitLab 19.4. Status: Experiment. Global ID of the decision option. |
+| <a id="workitemdecisionoption-recommended"></a>`recommended`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Indicates the option is recommended by GitLab Duo. |
+| <a id="workitemdecisionoption-selected"></a>`selected`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Indicates the option was selected when the decision was resolved. |
+
 ### `WorkItemDescriptionTemplate`
 
 Fields:
@@ -62339,6 +62716,7 @@ Fields:
 | <a id="workitemfeatures-crmcontacts"></a>`crmContacts` | [`WorkItemWidgetCrmContacts`](#workitemwidgetcrmcontacts) | Crm contacts widget of the work item. Returns `null` if the widget is not available for the work item. |
 | <a id="workitemfeatures-currentusertodos"></a>`currentUserTodos` | [`WorkItemWidgetCurrentUserTodos`](#workitemwidgetcurrentusertodos) | Current user todos widget of the work item. Returns `null` if the widget is not available for the work item. |
 | <a id="workitemfeatures-customfields"></a>`customFields` | [`WorkItemWidgetCustomFields`](#workitemwidgetcustomfields) | Custom fields widget of the work item. Returns `null` if the widget is not available for the work item. |
+| <a id="workitemfeatures-decisionlog"></a>`decisionLog` | [`WorkItemWidgetDecisionLog`](#workitemwidgetdecisionlog) | Decision log widget of the work item. Returns `null` if the widget is not available for the work item. |
 | <a id="workitemfeatures-description"></a>`description` | [`WorkItemWidgetDescription`](#workitemwidgetdescription) | Description widget of the work item. Returns `null` if the widget is not available for the work item. |
 | <a id="workitemfeatures-designs"></a>`designs` | [`WorkItemWidgetDesigns`](#workitemwidgetdesigns) | Designs widget of the work item. Returns `null` if the widget is not available for the work item. |
 | <a id="workitemfeatures-development"></a>`development` | [`WorkItemWidgetDevelopment`](#workitemwidgetdevelopment) | Development widget of the work item. Returns `null` if the widget is not available for the work item. |
@@ -62775,6 +63153,17 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="workitemwidgetcustomfields-customfieldvalues-customfieldids"></a>`customFieldIds` | [`[IssuablesCustomFieldID!]`](#issuablescustomfieldid) | Only return values for the given custom field IDs. |
+
+### `WorkItemWidgetDecisionLog`
+
+Represents a decision log widget.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="workitemwidgetdecisionlog-decisions"></a>`decisions`  | [`WorkItemDecisionConnection`](#workitemdecisionconnection) | Introduced in GitLab 19.4. Status: Experiment. Decisions recorded on the work item. |
+| <a id="workitemwidgetdecisionlog-type"></a>`type` | [`WorkItemWidgetType`](#workitemwidgettype) | Widget type. |
 
 ### `WorkItemWidgetDefinitionAssignees`
 
@@ -63609,6 +63998,7 @@ Fields:
 | <a id="duomessagingusermetrics-aiduomessagingfeedbacksubmittedeventcount"></a>`aiDuoMessagingFeedbackSubmittedEventCount` | [`Int`](#int) | Total count of `ai_duo_messaging_feedback_submitted` event. |
 | <a id="duomessagingusermetrics-lastduoactivityon"></a>`lastDuoActivityOn` | [`Date`](#date) | Date of the last Duo Messaging activity for the user. |
 | <a id="duomessagingusermetrics-totaleventcount"></a>`totalEventCount` | [`Int`](#int) | Total count of all Duo Messaging events for the user. |
+| <a id="duomessagingusermetrics-triggerslackduoeventcount"></a>`triggerSlackDuoEventCount` | [`Int`](#int) | Total count of `trigger_slack_duo` event. |
 
 ### `duoWorkflowUserMetrics`
 
@@ -64276,6 +64666,7 @@ Type of AI usage event.
 | <a id="aiusageeventtype-start_mcp_tool_call"></a>`START_MCP_TOOL_CALL` | MCP tool call was started. |
 | <a id="aiusageeventtype-summarize_new_merge_request"></a>`SUMMARIZE_NEW_MERGE_REQUEST` | Merge request summary was generated. |
 | <a id="aiusageeventtype-summarize_review"></a>`SUMMARIZE_REVIEW` | A merge request review summary was requested with GitLab Duo. |
+| <a id="aiusageeventtype-trigger_slack_duo"></a>`TRIGGER_SLACK_DUO` | Duo agent was triggered from a Slack mention. |
 | <a id="aiusageeventtype-troubleshoot_job"></a>`TROUBLESHOOT_JOB` | Troubleshoot job feature was used. |
 | <a id="aiusageeventtype-view_duo_agentic_subscription_expired_empty_state"></a>`VIEW_DUO_AGENTIC_SUBSCRIPTION_EXPIRED_EMPTY_STATE` | Duo Agent Platform subscription expired empty state was viewed. |
 
@@ -64391,6 +64782,8 @@ Values for sorting AI user metrics.
 | <a id="aiusermetricssort-summarize_review_total_count_desc"></a>`SUMMARIZE_REVIEW_TOTAL_COUNT_DESC` | Summarize Review total event count in descending order. |
 | <a id="aiusermetricssort-total_events_count_asc"></a>`TOTAL_EVENTS_COUNT_ASC` | Total count of all AI events in ascending order. |
 | <a id="aiusermetricssort-total_events_count_desc"></a>`TOTAL_EVENTS_COUNT_DESC` | Total count of all AI events in descending order. |
+| <a id="aiusermetricssort-trigger_slack_duo_asc"></a>`TRIGGER_SLACK_DUO_ASC` | Trigger Slack Duo event count in ascending order. |
+| <a id="aiusermetricssort-trigger_slack_duo_desc"></a>`TRIGGER_SLACK_DUO_DESC` | Trigger Slack Duo event count in descending order. |
 | <a id="aiusermetricssort-troubleshoot_job_asc"></a>`TROUBLESHOOT_JOB_ASC` | Troubleshoot Job event count in ascending order. |
 | <a id="aiusermetricssort-troubleshoot_job_desc"></a>`TROUBLESHOOT_JOB_DESC` | Troubleshoot Job event count in descending order. |
 | <a id="aiusermetricssort-troubleshoot_job_total_count_asc"></a>`TROUBLESHOOT_JOB_TOTAL_COUNT_ASC` | Troubleshoot Job total event count in ascending order. |
@@ -66601,6 +66994,36 @@ Values for sorting artifacts.
 | <a id="googlecloudartifactregistryartifactssort-upload_time_asc"></a>`UPLOAD_TIME_ASC` | Ordered by `upload_time` in ascending order. |
 | <a id="googlecloudartifactregistryartifactssort-upload_time_desc"></a>`UPLOAD_TIME_DESC` | Ordered by `upload_time` in descending order. |
 
+### `GovernPolicyEvaluationMode`
+
+Enforcement mode of the policy at the time of an evaluation.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="governpolicyevaluationmode-audit"></a>`AUDIT` | Policy was in `audit` mode when it was evaluated. |
+| <a id="governpolicyevaluationmode-enforce"></a>`ENFORCE` | Policy was in `enforce` mode when it was evaluated. |
+| <a id="governpolicyevaluationmode-warn"></a>`WARN` | Policy was in `warn` mode when it was evaluated. |
+
+### `GovernPolicyEvaluationTriggerType`
+
+Trigger that started a policy evaluation.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="governpolicyevaluationtriggertype-deployment_promoted"></a>`DEPLOYMENT_PROMOTED` | Evaluation was triggered by the `deployment_promoted` operation. |
+| <a id="governpolicyevaluationtriggertype-deployment_requested"></a>`DEPLOYMENT_REQUESTED` | Evaluation was triggered by the `deployment_requested` operation. |
+| <a id="governpolicyevaluationtriggertype-environment_advanced"></a>`ENVIRONMENT_ADVANCED` | Evaluation was triggered by the `environment_advanced` operation. |
+
+### `GovernPolicyEvaluationVerdict`
+
+Verdict a policy evaluation produced.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="governpolicyevaluationverdict-allow"></a>`ALLOW` | Evaluation produced a `allow` verdict. |
+| <a id="governpolicyevaluationverdict-deny"></a>`DENY` | Evaluation produced a `deny` verdict. |
+| <a id="governpolicyevaluationverdict-require_approval"></a>`REQUIRE_APPROVAL` | Evaluation produced a `require_approval` verdict. |
+
 ### `GroupMemberRelation`
 
 Group member relation.
@@ -67502,9 +67925,9 @@ Status of a merge request risk classification.
 | Value | Description |
 | ----- | ----------- |
 | <a id="mergerequestriskassessmentstatus-complete"></a>`COMPLETE` | Classification has completed. |
+| <a id="mergerequestriskassessmentstatus-failed"></a>`FAILED` | Classification could not be completed. |
 | <a id="mergerequestriskassessmentstatus-pending"></a>`PENDING` | Waiting to be classified. |
 | <a id="mergerequestriskassessmentstatus-queued"></a>`QUEUED` | Queued for (re)classification. |
-| <a id="mergerequestriskassessmentstatus-stale"></a>`STALE` | Classification is outdated. |
 
 ### `MergeRequestRiskTier`
 
@@ -69294,6 +69717,7 @@ Name of the feature that the callout is for.
 | ----- | ----------- |
 | <a id="usergroupcalloutfeaturename-all_seats_used_alert"></a>`ALL_SEATS_USED_ALERT` | Callout feature name for all_seats_used_alert. |
 | <a id="usergroupcalloutfeaturename-approaching_seat_count_threshold"></a>`APPROACHING_SEAT_COUNT_THRESHOLD` | Callout feature name for approaching_seat_count_threshold. |
+| <a id="usergroupcalloutfeaturename-billing_retrial_card"></a>`BILLING_RETRIAL_CARD` | Callout feature name for billing_retrial_card. |
 | <a id="usergroupcalloutfeaturename-ci_minutes_limit_alert_danger_stage"></a>`CI_MINUTES_LIMIT_ALERT_DANGER_STAGE` | Callout feature name for ci_minutes_limit_alert_danger_stage. |
 | <a id="usergroupcalloutfeaturename-ci_minutes_limit_alert_exceeded_stage"></a>`CI_MINUTES_LIMIT_ALERT_EXCEEDED_STAGE` | Callout feature name for ci_minutes_limit_alert_exceeded_stage. |
 | <a id="usergroupcalloutfeaturename-ci_minutes_limit_alert_warning_stage"></a>`CI_MINUTES_LIMIT_ALERT_WARNING_STAGE` | Callout feature name for ci_minutes_limit_alert_warning_stage. |
@@ -69953,6 +70377,7 @@ Type of a work item widget.
 | <a id="workitemwidgettype-crm_contacts"></a>`CRM_CONTACTS` | Crm Contacts widget. |
 | <a id="workitemwidgettype-current_user_todos"></a>`CURRENT_USER_TODOS` | Current User Todos widget. |
 | <a id="workitemwidgettype-custom_fields"></a>`CUSTOM_FIELDS` | Custom Fields widget. |
+| <a id="workitemwidgettype-decision_log"></a>`DECISION_LOG` | Decision Log widget. |
 | <a id="workitemwidgettype-description"></a>`DESCRIPTION` | Description widget. |
 | <a id="workitemwidgettype-designs"></a>`DESIGNS` | Designs widget. |
 | <a id="workitemwidgettype-development"></a>`DEVELOPMENT` | Development widget. |
@@ -70103,6 +70528,12 @@ An example `AiConversationThreadID` is: `"gid://gitlab/Ai::Conversation::Thread/
 A `AiDuoWorkflowsWorkflowID` is a global ID. It is encoded as a string.
 
 An example `AiDuoWorkflowsWorkflowID` is: `"gid://gitlab/Ai::DuoWorkflows::Workflow/1"`.
+
+### `AiFlowScheduleID`
+
+A `AiFlowScheduleID` is a global ID. It is encoded as a string.
+
+An example `AiFlowScheduleID` is: `"gid://gitlab/Ai::FlowSchedule/1"`.
 
 ### `AiFlowTriggerID`
 
@@ -71019,6 +71450,18 @@ Represents a Google Cloud Compute region.
 
 Represents a Google Cloud Compute zone.
 
+### `GovernPolicyEvaluationID`
+
+A `GovernPolicyEvaluationID` is a global ID. It is encoded as a string.
+
+An example `GovernPolicyEvaluationID` is: `"gid://gitlab/Govern::PolicyEvaluation/1"`.
+
+### `GovernPolicyViolationID`
+
+A `GovernPolicyViolationID` is a global ID. It is encoded as a string.
+
+An example `GovernPolicyViolationID` is: `"gid://gitlab/Govern::PolicyViolation/1"`.
+
 ### `GroupHookID`
 
 A `GroupHookID` is a global ID. It is encoded as a string.
@@ -71759,6 +72202,18 @@ An example `WorkItemID` is: `"gid://gitlab/WorkItem/1"`.
 
 While we transition from Issues into Work Items this type will temporarily support
 `IssueID` like: `"gid://gitlab/Issue/1"`. This behavior will be removed without notice in the future.
+
+### `WorkItemsDecisionID`
+
+A `WorkItemsDecisionID` is a global ID. It is encoded as a string.
+
+An example `WorkItemsDecisionID` is: `"gid://gitlab/WorkItems::Decision/1"`.
+
+### `WorkItemsDecisionOptionID`
+
+A `WorkItemsDecisionOptionID` is a global ID. It is encoded as a string.
+
+An example `WorkItemsDecisionOptionID` is: `"gid://gitlab/WorkItems::DecisionOption/1"`.
 
 ### `WorkItemsRelatedWorkItemLinkID`
 
@@ -73724,6 +74179,7 @@ Implementations:
 - [`WorkItemWidgetCrmContacts`](#workitemwidgetcrmcontacts)
 - [`WorkItemWidgetCurrentUserTodos`](#workitemwidgetcurrentusertodos)
 - [`WorkItemWidgetCustomFields`](#workitemwidgetcustomfields)
+- [`WorkItemWidgetDecisionLog`](#workitemwidgetdecisionlog)
 - [`WorkItemWidgetDescription`](#workitemwidgetdescription)
 - [`WorkItemWidgetDesigns`](#workitemwidgetdesigns)
 - [`WorkItemWidgetDevelopment`](#workitemwidgetdevelopment)

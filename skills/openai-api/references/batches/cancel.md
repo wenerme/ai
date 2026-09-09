@@ -127,10 +127,10 @@ Cancels an in-progress batch. The batch will be in status `cancelling` for up to
 
   - `model: optional string`
 
-    Model ID used to process the batch, like `gpt-5.6-sol`. OpenAI
+    Model ID used to process the batch, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model
-    guide](/docs/models) to browse and compare available models.
+    guide](/api/docs/models) to browse and compare available models.
 
   - `output_file_id: optional string`
 
@@ -169,7 +169,7 @@ Cancels an in-progress batch. The batch will be in status `cancelling` for up to
       - `cached_tokens: number`
 
         The number of tokens that were retrieved from the cache. [More on
-        prompt caching](/docs/guides/prompt-caching).
+        prompt caching](/api/docs/guides/prompt-caching).
 
     - `output_tokens: number`
 

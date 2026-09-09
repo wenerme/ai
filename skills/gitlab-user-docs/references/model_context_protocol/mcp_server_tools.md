@@ -176,7 +176,7 @@ Update merge request 42 in project gitlab-org/gitlab to add the "bug" label and 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/201838) in GitLab 18.4.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/605878) to accept `url` and return associated data facets in GitLab 19.3.
 
-Retrieves a merge request and, optionally, its diffs, commits, notes, pipelines, or discussions.
+Retrieves a merge request and, optionally, its diffs, commits, notes, pipelines, discussions, or conflicts.
 Only the base merge request is returned unless you request associated data with the `include` parameter.
 
 | Parameter           | Type    | Required | Description |
@@ -184,12 +184,16 @@ Only the base merge request is returned unless you request associated data with 
 | `url`               | string  | No       | GitLab URL of the merge request. Provide this, or `project_id` and `merge_request_iid`. |
 | `project_id`        | string  | No       | ID or URL-encoded path of the project. Required if `url` is missing. |
 | `merge_request_iid` | integer | No       | Internal ID of the merge request. Required if `url` is missing. |
-| `include`           | array   | No       | Associated facets to return with the merge request. One of `diffs`, `commits`, `notes`, `pipelines`, or `discussions`. Limited to one facet per call. |
+| `include`           | array   | No       | Associated facets to return with the merge request. One of `diffs`, `commits`, `notes`, `pipelines`, `discussions`, or `conflicts`. Limited to one facet per call. |
 | `notes_after`       | string  | No       | Cursor for forward pagination of notes. Applies only when `include` is `["notes"]`. |
 | `notes_first`       | integer | No       | Number of notes to return after the cursor, up to 100. Applies only when `include` is `["notes"]`. |
 
 The `diffs` facet returns change statistics only: overall totals and per-file additions and
 deletions. To get patch text, use `get_merge_request_diffs`.
+
+The `conflicts` facet returns raw conflict file content, including Git conflict markers. It is
+available only when the merge request cannot be merged and you can push to the source branch, and
+is `null` until mergeability has been checked. Read the base `conflicts` field to determine the state.
 
 Example:
 
@@ -245,13 +249,18 @@ Check the status of Duo session 42
 ## `list_merge_requests`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/246413) in GitLab 19.3.
+- `group_id` parameter and group scope [added](https://gitlab.com/gitlab-org/gitlab/-/work_items/606934) in GitLab 19.4.
 
-Lists or searches merge requests in a GitLab project, returning compact merge request metadata.
+Lists or searches merge requests in a GitLab project or group, returning compact merge request metadata.
+Group scope always includes merge requests from every project in the group and its subgroups, but excludes
+merge requests from archived projects.
+A group result also includes the owning project path of each merge request, for use with `get_merge_request`.
 
 | Parameter           | Type    | Required | Description |
 |---------------------|---------|----------|-------------|
-| `url`               | string  | No       | URL of the project. Provide exactly one of `url` or `project_id`. |
-| `project_id`        | string  | No       | ID or full path of the project. Provide exactly one of `url` or `project_id`. |
+| `url`               | string  | No       | GitLab URL of the project or group. Provide exactly one of `url`, `project_id`, or `group_id`. |
+| `project_id`        | string  | No       | ID or full path of the project. Provide exactly one of `url`, `project_id`, or `group_id`. |
+| `group_id`          | string  | No       | ID or full path of the group. Provide exactly one of `url`, `project_id`, or `group_id`. |
 | `author_username`   | string  | No       | Filter by the username of the merge request author. |
 | `assignee_username` | string  | No       | Filter by the username of an assignee. |
 | `reviewer_username` | string  | No       | Filter by the username of a reviewer. |
@@ -330,9 +339,8 @@ Show me all pipelines for merge request 42 in project gitlab-org/gitlab
 
 ## `save_note`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605848) in GitLab 19.4.
-- [Renamed](https://gitlab.com/gitlab-org/gitlab/-/work_items/605848) from `create_merge_request_note` in GitLab 19.4. `create_merge_request_note` continues to work as an alias.
-- [Renamed](https://gitlab.com/gitlab-org/gitlab/-/work_items/605848) from `create_workitem_note` in GitLab 19.4. `create_workitem_note` continues to work as an alias.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/241114) in GitLab 19.2.
+- [Replaced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605848) `create_merge_request_note` and `create_workitem_note` tools in GitLab 19.4. Both original tool names continue to work as aliases.
 
 Adds a comment to a GitLab merge request or work item, or replies to an existing discussion thread,
 as the authenticated user.
@@ -532,6 +540,37 @@ Example:
 
 ```plaintext
 Create a branch named feature/x from main in project gitlab-org/gitlab
+```
+
+## `fork_repository`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/597680) in GitLab 19.4.
+
+Forks a GitLab project into a namespace.
+
+The fork is created asynchronously. The response contains the new project attributes, including
+an `import_status` field, such as `scheduled`, that shows fork progress.
+
+The call fails due to reasons based on the following statuses:
+
+- `409` status when the namespace already has a fork of the project.
+- `404` status when the project or namespace doesn't exist, or you don't have
+permission to fork the project.
+
+| Parameter        | Type    | Required | Description |
+|------------------|---------|----------|-------------|
+| `id`             | string  | Yes      | ID or URL-encoded path of the project. |
+| `namespace_id`   | integer | No       | ID of the namespace to fork the project into. |
+| `namespace_path` | string  | No       | Path of the namespace to fork the project into. |
+| `name`           | string  | No       | Name to assign to the fork. |
+| `path`           | string  | No       | Path to assign to the fork. |
+| `description`    | string  | No       | Description to assign to the fork. |
+| `visibility`     | string  | No       | Visibility of the fork. |
+
+Example:
+
+```plaintext
+Fork gitlab-org/gitlab-test into my personal namespace
 ```
 
 ## `list_branches`
@@ -1067,6 +1106,37 @@ Example:
 
 ```plaintext
 List my open tasks in the gitlab-org group updated this month.
+```
+
+## `list_projects`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250301) in GitLab 19.4.
+
+Without `group_id`, lists projects where you have at least the Guest role by default;
+pass `min_access_level` to raise the threshold. With `group_id`, lists every project in
+that group and its subgroups regardless of access level; adding `min_access_level` or
+`visibility` narrows the listing to that group only, not its subgroups, because GitLab
+does not support combining subgroup traversal with those filters when listing a
+group's projects.
+
+| Parameter          | Type    | Required | Description |
+|--------------------|---------|----------|-------------|
+| `group_id`         | string  | No       | ID or full path of a group. Omit to list across the whole instance, defaulting to projects where you have at least the Guest role. |
+| `min_access_level` | string  | No       | Minimum access level a project must grant you to be included. One of `guest`, `planner`, `reporter`, `developer`, `maintainer`, or `owner`. |
+| `search`           | string  | No       | Search projects by name, path, or description. |
+| `visibility`       | string  | No       | Filter by visibility level: `public`, `internal`, or `private`. |
+| `archived`         | string  | No       | Filter by archived state: `only`, `include`, or `exclude` (default). |
+| `after`            | string  | No       | Cursor for forward pagination. |
+| `first`            | integer | No       | Number of projects to return for forward pagination. Default is 20, maximum is 100. |
+
+When you provide `group_id`, the response includes `subgroupsIncluded`: `true` when the
+listing covers the group's subgroups, `false` when `min_access_level` or `visibility`
+narrowed the listing to that group only.
+
+Example:
+
+```plaintext
+List my projects
 ```
 
 ## `search`

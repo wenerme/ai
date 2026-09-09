@@ -146,7 +146,7 @@ with the `store` parameter set to `true` will be returned.
       - `annotations: optional array of object { type, url_citation }`
 
         Annotations for the message, when applicable, as when using the
-        [web search tool](/docs/guides/tools-web-search?api-mode=chat).
+        [web search tool](/api/docs/guides/tools-web-search).
 
         - `type: "url_citation"`
 
@@ -177,7 +177,7 @@ with the `store` parameter set to `true` will be returned.
       - `audio: optional ChatCompletionAudio or null`
 
         If the audio output modality is requested, this object contains data
-        about the audio response from the model. [Learn more](/docs/guides/audio).
+        about the audio response from the model. [Learn more](/api/docs/guides/audio).
 
         - `id: string`
 
@@ -440,7 +440,7 @@ with the `store` parameter set to `true` will be returned.
 
     - If set to 'auto', then the request will be processed with the service tier configured in the Project settings. Unless otherwise configured, the Project will use 'default'.
     - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
-    - If set to '[flex](/docs/guides/flex-processing)', then the request will be processed with the Flex Processing service tier.
+    - If set to '[flex](/api/docs/guides/flex-processing)', then the request will be processed with the Flex Processing service tier.
     - To opt-in to [Fast mode](/api/docs/guides/fast-mode) at the request level, include the `service_tier=fast` or `service_tier=priority` parameter for Responses or Chat Completions. The response will show `service_tier=priority` regardless of if you specify `service_tier=fast` or `priority` in your request.
     - When not set, the default behavior is 'auto'.
 
@@ -744,7 +744,7 @@ curl https://api.openai.com/v1/chat/completions \
     {
       "object": "chat.completion",
       "id": "chatcmpl-AyPNinnUqUDYo9SAdA52NobMflmj2",
-      "model": "gpt-5.6-sol",
+      "model": "gpt-6-astra",
       "created": 1738960610,
       "request_id": "req_ded8ab984ec4bf840f37566c1011c417",
       "tool_choice": null,

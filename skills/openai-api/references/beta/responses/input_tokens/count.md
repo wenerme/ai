@@ -91,7 +91,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           - `BetaResponseInputImage object { detail, type, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](/docs/guides/vision).
+            An image input to the model. Learn about [image inputs](/api/docs/guides/images-vision).
 
             - `detail: BetaImageDetail`
 
@@ -450,7 +450,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
     - `FileSearchCall object { id, queries, status, 3 more }`
 
       The results of a file search tool call. See the
-      [file search guide](/docs/guides/tools-file-search) for more information.
+      [file search guide](/api/docs/guides/tools-file-search) for more information.
 
       - `id: string`
 
@@ -526,7 +526,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
     - `ComputerCall object { id, call_id, pending_safety_checks, 5 more }`
 
       A tool call to a computer use tool. See the
-      [computer use guide](/docs/guides/tools-computer-use) for more information.
+      [computer use guide](/api/docs/guides/tools-computer-use) for more information.
 
       - `id: string`
 
@@ -887,7 +887,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
     - `WebSearchCall object { id, action, status, 2 more }`
 
       The results of a web search tool call. See the
-      [web search guide](/docs/guides/tools-web-search) for more information.
+      [web search guide](/api/docs/guides/tools-web-search) for more information.
 
       - `id: string`
 
@@ -993,7 +993,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
     - `FunctionCall object { arguments, call_id, name, 7 more }`
 
       A tool call to run a function. See the
-      [function calling guide](/docs/guides/function-calling) for more information.
+      [function calling guide](/api/docs/guides/function-calling) for more information.
 
       - `arguments: string`
 
@@ -1106,7 +1106,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           - `BetaResponseInputImageContent object { type, detail, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](/docs/guides/vision)
+            An image input to the model. Learn about [image inputs](/api/docs/guides/images-vision)
 
             - `type: "input_image"`
 
@@ -1264,7 +1264,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `BetaResponseInputImageContent object { type, detail, file_id, 2 more }`
 
-          An image input to the model. Learn about [image inputs](/docs/guides/vision)
+          An image input to the model. Learn about [image inputs](/api/docs/guides/images-vision)
 
         - `EncryptedContent object { encrypted_content, type }`
 
@@ -1530,7 +1530,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `Function object { name, parameters, strict, 6 more }`
 
-          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](/api/docs/guides/function-calling).
 
           - `name: string`
 
@@ -1574,7 +1574,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
-          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](/api/docs/guides/tools-file-search).
 
           - `type: "file_search"`
 
@@ -1748,7 +1748,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `Computer object { type }`
 
-          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+          A tool that controls a virtual computer. Learn more about the [computer tool](/api/docs/guides/tools-computer-use).
 
           - `type: "computer"`
 
@@ -1758,7 +1758,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
-          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+          A tool that controls a virtual computer. Learn more about the [computer tool](/api/docs/guides/tools-computer-use).
 
           - `display_height: number`
 
@@ -1791,7 +1791,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](/docs/guides/tools-web-search).
+          [web search tool](/api/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -1855,7 +1855,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](/api/docs/guides/tools-connectors-mcp).
 
           - `server_label: string`
 
@@ -1907,7 +1907,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -2131,11 +2131,13 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Set the background of the generated image. One of `transparent`,
-            `opaque`, or `auto`. Transparent backgrounds are available for
-            supported GPT Image models. For `gpt-image-2` and
-            `gpt-image-2-2026-04-21`, this support is in preview. When using
-            `transparent`, set the output format to `png` or `webp`. Default: `auto`.
+            Set the background of the generated image. One of `transparent`, `opaque`,
+            or `auto`. `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`, including
+            their `2026-09-08` snapshots, support `opaque` and `transparent`
+            backgrounds. Transparent backgrounds are available for supported GPT Image
+            models. For `gpt-image-2` and `gpt-image-2-2026-04-21`, this support is in
+            preview. When using `transparent`, set the output format to `png` or `webp`.
+            Default: `auto`.
 
             - `"transparent"`
 
@@ -2164,20 +2166,24 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 2 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
             The image generation model to use. One of `gpt-image-1`,
             `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
-            `gpt-image-2-2026-04-21`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
+            `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
+            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
             `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 2 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
               The image generation model to use. One of `gpt-image-1`,
               `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
-              `gpt-image-2-2026-04-21`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
+              `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
+              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
               `gpt-image-1`.
 
               - `"gpt-image-1"`
@@ -2189,6 +2195,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
               - `"gpt-image-2"`
 
               - `"gpt-image-2-2026-04-21"`
+
+              - `"gpt-image-2.5-sunburst"`
+
+              - `"gpt-image-2.5-sunburst-2026-09-08"`
+
+              - `"gpt-image-2.5-flare"`
+
+              - `"gpt-image-2.5-flare-2026-09-08"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -2217,10 +2231,12 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             Number of partial images to generate in streaming mode, from 0 (default value) to 3.
 
-          - `quality: optional "low" or "medium" or "high" or "auto"`
+          - `quality: optional "low" or "medium" or "high" or 3 more`
 
-            The quality of the generated image. One of `low`, `medium`, `high`,
-            or `auto`. Default: `auto`.
+            The quality of the generated image. The GPT image models support `low`,
+            `medium`, and `high`. `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`,
+            including their `2026-09-08` snapshots, also support `xhigh` and `max`.
+            Default: `auto`.
 
             - `"low"`
 
@@ -2228,17 +2244,21 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"high"`
 
+            - `"xhigh"`
+
+            - `"max"`
+
             - `"auto"`
 
           - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or "auto"`
 
-            The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
+            The size of the generated images. For `gpt-image-2`, `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and `gpt-image-2.5-flare-2026-09-08`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
             - `string`
 
             - `"1024x1024" or "1024x1536" or "1536x1024" or "auto"`
 
-              The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
+              The size of the generated images. For `gpt-image-2`, `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and `gpt-image-2.5-flare-2026-09-08`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
               - `"1024x1024"`
 
@@ -2404,7 +2424,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `Custom object { name, type, allowed_callers, 4 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](/api/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -2526,7 +2546,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `Custom object { name, type, allowed_callers, 4 more }`
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](/api/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -2628,7 +2648,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
-          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](/api/docs/guides/tools-web-search).
 
           - `type: "web_search_preview" or "web_search_preview_2025_03_11"`
 
@@ -2752,7 +2772,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `Function object { name, parameters, strict, 6 more }`
 
-          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+          Defines a function in your own code the model can choose to call. Learn more about [function calling](/api/docs/guides/function-calling).
 
           - `name: string`
 
@@ -2796,7 +2816,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
-          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](/api/docs/guides/tools-file-search).
 
           - `type: "file_search"`
 
@@ -2970,7 +2990,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `Computer object { type }`
 
-          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+          A tool that controls a virtual computer. Learn more about the [computer tool](/api/docs/guides/tools-computer-use).
 
           - `type: "computer"`
 
@@ -2980,7 +3000,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
-          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+          A tool that controls a virtual computer. Learn more about the [computer tool](/api/docs/guides/tools-computer-use).
 
           - `display_height: number`
 
@@ -3013,7 +3033,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](/docs/guides/tools-web-search).
+          [web search tool](/api/docs/guides/tools-web-search).
 
           - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -3077,7 +3097,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
           Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+          (MCP) servers. [Learn more about MCP](/api/docs/guides/tools-connectors-mcp).
 
           - `server_label: string`
 
@@ -3129,7 +3149,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             Identifier for service connectors, like those available in ChatGPT. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+            about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
             Currently supported `connector_id` values are:
 
@@ -3321,11 +3341,13 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           - `background: optional "transparent" or "opaque" or "auto"`
 
-            Set the background of the generated image. One of `transparent`,
-            `opaque`, or `auto`. Transparent backgrounds are available for
-            supported GPT Image models. For `gpt-image-2` and
-            `gpt-image-2-2026-04-21`, this support is in preview. When using
-            `transparent`, set the output format to `png` or `webp`. Default: `auto`.
+            Set the background of the generated image. One of `transparent`, `opaque`,
+            or `auto`. `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`, including
+            their `2026-09-08` snapshots, support `opaque` and `transparent`
+            backgrounds. Transparent backgrounds are available for supported GPT Image
+            models. For `gpt-image-2` and `gpt-image-2-2026-04-21`, this support is in
+            preview. When using `transparent`, set the output format to `png` or `webp`.
+            Default: `auto`.
 
             - `"transparent"`
 
@@ -3354,20 +3376,24 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               Base64-encoded mask image.
 
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 2 more`
+          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
             The image generation model to use. One of `gpt-image-1`,
             `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
-            `gpt-image-2-2026-04-21`, or `chatgpt-image-latest`. Default:
+            `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
+            `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
+            `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
             `gpt-image-1`.
 
             - `string`
 
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 2 more`
+            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
               The image generation model to use. One of `gpt-image-1`,
               `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
-              `gpt-image-2-2026-04-21`, or `chatgpt-image-latest`. Default:
+              `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
+              `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
+              `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
               `gpt-image-1`.
 
               - `"gpt-image-1"`
@@ -3379,6 +3405,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
               - `"gpt-image-2"`
 
               - `"gpt-image-2-2026-04-21"`
+
+              - `"gpt-image-2.5-sunburst"`
+
+              - `"gpt-image-2.5-sunburst-2026-09-08"`
+
+              - `"gpt-image-2.5-flare"`
+
+              - `"gpt-image-2.5-flare-2026-09-08"`
 
           - `moderation: optional "auto" or "low"`
 
@@ -3407,10 +3441,12 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             Number of partial images to generate in streaming mode, from 0 (default value) to 3.
 
-          - `quality: optional "low" or "medium" or "high" or "auto"`
+          - `quality: optional "low" or "medium" or "high" or 3 more`
 
-            The quality of the generated image. One of `low`, `medium`, `high`,
-            or `auto`. Default: `auto`.
+            The quality of the generated image. The GPT image models support `low`,
+            `medium`, and `high`. `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`,
+            including their `2026-09-08` snapshots, also support `xhigh` and `max`.
+            Default: `auto`.
 
             - `"low"`
 
@@ -3418,17 +3454,21 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"high"`
 
+            - `"xhigh"`
+
+            - `"max"`
+
             - `"auto"`
 
           - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or "auto"`
 
-            The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
+            The size of the generated images. For `gpt-image-2`, `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and `gpt-image-2.5-flare-2026-09-08`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
             - `string`
 
             - `"1024x1024" or "1024x1536" or "1536x1024" or "auto"`
 
-              The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
+              The size of the generated images. For `gpt-image-2`, `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and `gpt-image-2.5-flare-2026-09-08`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
               - `"1024x1024"`
 
@@ -3476,7 +3516,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `Custom object { name, type, allowed_callers, 4 more }`
 
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+          A custom tool that processes input using a specified format. Learn more about   [custom tools](/api/docs/guides/function-calling#custom-tools)
 
           - `name: string`
 
@@ -3598,7 +3638,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `Custom object { name, type, allowed_callers, 4 more }`
 
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+              A custom tool that processes input using a specified format. Learn more about   [custom tools](/api/docs/guides/function-calling#custom-tools)
 
               - `name: string`
 
@@ -3700,7 +3740,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
-          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](/api/docs/guides/tools-web-search).
 
           - `type: "web_search_preview" or "web_search_preview_2025_03_11"`
 
@@ -3840,7 +3880,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       A description of the chain of thought used by a reasoning model while generating
       a response. Be sure to include these items in your `input` to the Responses API
       for subsequent turns of a conversation if you are manually
-      [managing context](/docs/guides/conversation-state).
+      [managing context](/api/docs/guides/conversation-state).
 
       - `id: string`
 
@@ -3913,7 +3953,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
     - `Compaction object { encrypted_content, type, id, agent }`
 
-      A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
+      A compaction item generated by the [`v1/responses/compact` API](/api/reference/resources/responses/methods/compact).
 
       - `encrypted_content: string`
 
@@ -3937,7 +3977,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           The canonical name of the agent that produced this item.
 
-    - `ImageGenerationCall object { id, result, status, 2 more }`
+    - `ImageGenerationCall object { id, result, status, 4 more }`
 
       An image generation request made by the model.
 
@@ -3974,6 +4014,38 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `agent_name: string`
 
           The canonical name of the agent that produced this item.
+
+      - `quality: optional "low" or "medium" or "high" or 3 more or null`
+
+        The quality of the image generated by the image generation tool call. One of `low`, `medium`, `high`, `xhigh`, `max`, or `auto`.
+
+        - `"low"`
+
+        - `"medium"`
+
+        - `"high"`
+
+        - `"xhigh"`
+
+        - `"max"`
+
+        - `"auto"`
+
+      - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
+
+        The image dimensions as a `WIDTHxHEIGHT` string, for example `1536x864`.
+
+        - `string`
+
+        - `"1024x1024" or "1024x1536" or "1536x1024"`
+
+          The image dimensions as a `WIDTHxHEIGHT` string, for example `1536x864`.
+
+          - `"1024x1024"`
+
+          - `"1024x1536"`
+
+          - `"1536x1024"`
 
     - `CodeInterpreterCall object { id, code, container_id, 4 more }`
 
@@ -4750,7 +4822,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           - `BetaResponseInputImage object { detail, type, file_id, 2 more }`
 
-            An image input to the model. Learn about [image inputs](/docs/guides/vision).
+            An image input to the model. Learn about [image inputs](/api/docs/guides/images-vision).
 
           - `BetaResponseInputFile object { type, detail, file_data, 4 more }`
 
@@ -4979,7 +5051,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
 - `model: optional string or null`
 
-  Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/docs/models) to browse and compare available models.
+  Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
 
 - `parallel_tool_calls: optional boolean or null`
 
@@ -5001,11 +5073,11 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
 - `previous_response_id: optional string or null`
 
-  The unique ID of the previous response to the model. Use this to create multi-turn conversations. Learn more about [conversation state](/docs/guides/conversation-state). Cannot be used in conjunction with `conversation`.
+  The unique ID of the previous response to the model. Use this to create multi-turn conversations. Learn more about [conversation state](/api/docs/guides/conversation-state). Cannot be used in conjunction with `conversation`.
 
 - `reasoning: optional object { context, effort, generate_summary, 2 more }  or null`
 
-  **gpt-5 and o-series models only** Configuration options for [reasoning models](https://platform.openai.com/docs/guides/reasoning).
+  **gpt-5 and o-series models only** Configuration options for [reasoning models](/api/docs/guides/reasoning).
 
   - `context: optional "auto" or "current_turn" or "all_turns" or null`
 
@@ -5030,7 +5102,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
     Reducing reasoning effort can result in faster responses and fewer tokens
     used on reasoning in a response. Not all reasoning models support every
     value. See the
-    [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+    [reasoning guide](/api/docs/guides/reasoning)
     for model-specific support.
 
     - `"none"`
@@ -5098,8 +5170,8 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
   Configuration options for a text response from the model. Can be plain
   text or structured JSON data. Learn more:
 
-  - [Text inputs and outputs](/docs/guides/text)
-  - [Structured Outputs](/docs/guides/structured-outputs)
+  - [Text inputs and outputs](/api/docs/guides/text)
+  - [Structured Outputs](/api/docs/guides/structured-outputs)
 
   - `format: optional BetaResponseFormatTextConfig`
 
@@ -5107,7 +5179,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
     Configuring `{ "type": "json_schema" }` enables Structured Outputs,
     which ensures the model will match your supplied JSON schema. Learn more in the
-    [Structured Outputs guide](/docs/guides/structured-outputs).
+    [Structured Outputs guide](/api/docs/guides/structured-outputs).
 
     The default format is `{ "type": "text" }` with no additional options.
 
@@ -5130,7 +5202,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
     - `BetaResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
 
       JSON Schema response format. Used to generate structured JSON responses.
-      Learn more about [Structured Outputs](/docs/guides/structured-outputs).
+      Learn more about [Structured Outputs](/api/docs/guides/structured-outputs).
 
       - `name: string`
 
@@ -5159,7 +5231,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         If set to true, the model will always follow the exact schema defined
         in the `schema` field. Only a subset of JSON Schema is supported when
         `strict` is `true`. To learn more, read the [Structured Outputs
-        guide](/docs/guides/structured-outputs).
+        guide](/api/docs/guides/structured-outputs).
 
     - `JSONObject object { type }`
 
@@ -5248,12 +5320,12 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
   - `BetaToolChoiceTypes object { type }`
 
     Indicates that the model should use a built-in tool to generate a response.
-    [Learn more about built-in tools](/docs/guides/tools).
+    [Learn more about built-in tools](/api/docs/guides/tools).
 
     - `type: "file_search" or "web_search_preview" or "computer" or 5 more`
 
       The type of hosted tool the model should to use. Learn more about
-      [built-in tools](/docs/guides/tools).
+      [built-in tools](/api/docs/guides/tools).
 
       Allowed values are:
 
@@ -5361,7 +5433,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
   - `Function object { name, parameters, strict, 6 more }`
 
-    Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
+    Defines a function in your own code the model can choose to call. Learn more about [function calling](/api/docs/guides/function-calling).
 
     - `name: string`
 
@@ -5405,7 +5477,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
   - `FileSearch object { type, vector_store_ids, filters, 2 more }`
 
-    A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
+    A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](/api/docs/guides/tools-file-search).
 
     - `type: "file_search"`
 
@@ -5579,7 +5651,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
   - `Computer object { type }`
 
-    A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+    A tool that controls a virtual computer. Learn more about the [computer tool](/api/docs/guides/tools-computer-use).
 
     - `type: "computer"`
 
@@ -5589,7 +5661,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
   - `ComputerUsePreview object { display_height, display_width, environment, type }`
 
-    A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
+    A tool that controls a virtual computer. Learn more about the [computer tool](/api/docs/guides/tools-computer-use).
 
     - `display_height: number`
 
@@ -5622,7 +5694,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
   - `WebSearch object { type, external_web_access, filters, 2 more }`
 
     Search the Internet for sources related to the prompt. Learn more about the
-    [web search tool](/docs/guides/tools-web-search).
+    [web search tool](/api/docs/guides/tools-web-search).
 
     - `type: "web_search" or "web_search_2025_08_26"`
 
@@ -5686,7 +5758,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
   - `Mcp object { server_label, type, allowed_callers, 9 more }`
 
     Give the model access to additional tools via remote Model Context Protocol
-    (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
+    (MCP) servers. [Learn more about MCP](/api/docs/guides/tools-connectors-mcp).
 
     - `server_label: string`
 
@@ -5738,7 +5810,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       Identifier for service connectors, like those available in ChatGPT. One of
       `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-      about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
+      about service connectors [here](/api/docs/guides/tools-connectors-mcp#connectors).
 
       Currently supported `connector_id` values are:
 
@@ -5930,11 +6002,13 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
     - `background: optional "transparent" or "opaque" or "auto"`
 
-      Set the background of the generated image. One of `transparent`,
-      `opaque`, or `auto`. Transparent backgrounds are available for
-      supported GPT Image models. For `gpt-image-2` and
-      `gpt-image-2-2026-04-21`, this support is in preview. When using
-      `transparent`, set the output format to `png` or `webp`. Default: `auto`.
+      Set the background of the generated image. One of `transparent`, `opaque`,
+      or `auto`. `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`, including
+      their `2026-09-08` snapshots, support `opaque` and `transparent`
+      backgrounds. Transparent backgrounds are available for supported GPT Image
+      models. For `gpt-image-2` and `gpt-image-2-2026-04-21`, this support is in
+      preview. When using `transparent`, set the output format to `png` or `webp`.
+      Default: `auto`.
 
       - `"transparent"`
 
@@ -5963,20 +6037,24 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         Base64-encoded mask image.
 
-    - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 2 more`
+    - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
       The image generation model to use. One of `gpt-image-1`,
       `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
-      `gpt-image-2-2026-04-21`, or `chatgpt-image-latest`. Default:
+      `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
+      `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
+      `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
       `gpt-image-1`.
 
       - `string`
 
-      - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 2 more`
+      - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5" or 6 more`
 
         The image generation model to use. One of `gpt-image-1`,
         `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,
-        `gpt-image-2-2026-04-21`, or `chatgpt-image-latest`. Default:
+        `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,
+        `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,
+        `gpt-image-2.5-flare-2026-09-08`, or `chatgpt-image-latest`. Default:
         `gpt-image-1`.
 
         - `"gpt-image-1"`
@@ -5988,6 +6066,14 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `"gpt-image-2"`
 
         - `"gpt-image-2-2026-04-21"`
+
+        - `"gpt-image-2.5-sunburst"`
+
+        - `"gpt-image-2.5-sunburst-2026-09-08"`
+
+        - `"gpt-image-2.5-flare"`
+
+        - `"gpt-image-2.5-flare-2026-09-08"`
 
     - `moderation: optional "auto" or "low"`
 
@@ -6016,10 +6102,12 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       Number of partial images to generate in streaming mode, from 0 (default value) to 3.
 
-    - `quality: optional "low" or "medium" or "high" or "auto"`
+    - `quality: optional "low" or "medium" or "high" or 3 more`
 
-      The quality of the generated image. One of `low`, `medium`, `high`,
-      or `auto`. Default: `auto`.
+      The quality of the generated image. The GPT image models support `low`,
+      `medium`, and `high`. `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`,
+      including their `2026-09-08` snapshots, also support `xhigh` and `max`.
+      Default: `auto`.
 
       - `"low"`
 
@@ -6027,17 +6115,21 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `"high"`
 
+      - `"xhigh"`
+
+      - `"max"`
+
       - `"auto"`
 
     - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or "auto"`
 
-      The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
+      The size of the generated images. For `gpt-image-2`, `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and `gpt-image-2.5-flare-2026-09-08`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
       - `string`
 
       - `"1024x1024" or "1024x1536" or "1536x1024" or "auto"`
 
-        The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
+        The size of the generated images. For `gpt-image-2`, `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and `gpt-image-2.5-flare-2026-09-08`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
         - `"1024x1024"`
 
@@ -6085,7 +6177,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
   - `Custom object { name, type, allowed_callers, 4 more }`
 
-    A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+    A custom tool that processes input using a specified format. Learn more about   [custom tools](/api/docs/guides/function-calling#custom-tools)
 
     - `name: string`
 
@@ -6207,7 +6299,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `Custom object { name, type, allowed_callers, 4 more }`
 
-        A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
+        A custom tool that processes input using a specified format. Learn more about   [custom tools](/api/docs/guides/function-calling#custom-tools)
 
         - `name: string`
 
@@ -6309,7 +6401,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
   - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
 
-    This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
+    This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](/api/docs/guides/tools-web-search).
 
     - `type: "web_search_preview" or "web_search_preview_2025_03_11"`
 

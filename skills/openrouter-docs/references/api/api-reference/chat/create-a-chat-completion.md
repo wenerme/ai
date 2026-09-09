@@ -2802,6 +2802,24 @@ components:
         content: This is a message from the developer.
         role: developer
       properties:
+        configuration_update:
+          additionalProperties: false
+          description: >-
+            OpenRouter extension. Same as the system message
+            `configuration_update`: changes reasoning effort from this point in
+            the conversation onward without invalidating the prompt cache for
+            the preceding turns.
+          example:
+            reasoning:
+              effort: low
+          properties:
+            reasoning:
+              $ref: '#/components/schemas/ConfigurationUpdateReasoning'
+          required:
+            - reasoning
+          type:
+            - object
+            - 'null'
         content:
           anyOf:
             - type: string
@@ -3081,7 +3099,6 @@ components:
         - Moonshot AI
         - Morph
         - VoyageAI by MongoDB
-        - NCompass
         - Nebius
         - Nex AGI
         - NextBit
@@ -3975,26 +3992,6 @@ components:
         - type
         - function
       type: object
-    ChatContentText:
-      description: Text content part
-      example:
-        text: Hello, world!
-        type: text
-      properties:
-        cache_control:
-          $ref: '#/components/schemas/ChatContentCacheControl'
-        prompt_cache_breakpoint:
-          $ref: '#/components/schemas/PromptCacheBreakpoint'
-        text:
-          type: string
-        type:
-          enum:
-            - text
-          type: string
-      required:
-        - type
-        - text
-      type: object
     ConfigurationUpdateReasoning:
       additionalProperties: false
       description: Reasoning settings applied from this point in the conversation onward
@@ -4015,6 +4012,26 @@ components:
           type: string
       required:
         - effort
+      type: object
+    ChatContentText:
+      description: Text content part
+      example:
+        text: Hello, world!
+        type: text
+      properties:
+        cache_control:
+          $ref: '#/components/schemas/ChatContentCacheControl'
+        prompt_cache_breakpoint:
+          $ref: '#/components/schemas/PromptCacheBreakpoint'
+        text:
+          type: string
+        type:
+          enum:
+            - text
+          type: string
+      required:
+        - type
+        - text
       type: object
     PDFParserEngine:
       anyOf:
@@ -4256,8 +4273,6 @@ components:
           $ref: '#/components/schemas/BashServerToolEngine'
         environment:
           $ref: '#/components/schemas/BashServerToolEnvironment'
-        sleep_after_seconds:
-          $ref: '#/components/schemas/SandboxSleepAfterSeconds'
       type: object
     DatetimeServerToolConfig:
       description: Configuration for the openrouter:datetime server tool
@@ -5027,14 +5042,6 @@ components:
       oneOf:
         - $ref: '#/components/schemas/ContainerAutoEnvironment'
         - $ref: '#/components/schemas/ContainerReferenceEnvironment'
-    SandboxSleepAfterSeconds:
-      description: >-
-        How long (in seconds) the container stays warm after its last command
-        before sleeping, freeing its capacity slot. Idle-based: each command
-        renews the timer. Defaults to 300 (5 minutes); capped at 14400 (4
-        hours).
-      example: 300
-      type: integer
     SubagentReasoning:
       description: >-
         Reasoning configuration forwarded to the subagent call. Use this to

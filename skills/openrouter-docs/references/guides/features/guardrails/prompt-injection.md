@@ -26,6 +26,37 @@ export const PromptInjectionEvasionKeywords = () => {
     </>;
 };
 
+export const PromptInjectionFuzzyPhrases = () => {
+  const PHRASES = [{
+    "name": "fuzzy_phrase_instruction_override",
+    "keywords": "ignore / disregard / forget / delete / bypass / override / skip~ … (all / any / the / my / your / our / its / their / every / this / that / these / those / of)? … previous / prior / above / earlier / initial / safety / security / system / internal / core / original~ … (safety / security / system / internal / core / original)?~ … instructions / instruction / rules / rule / guidelines / guideline / constraints / directives / prompt / prompts~"
+  }, {
+    "name": "fuzzy_phrase_read_instruction_override",
+    "keywords": "reveal / expose / print / output~ … (all / any / the / my / your / our / its / their / every / this / that / these / those / of)? … previous / prior / above / earlier / initial / safety / security / system / internal / core / original … (safety / security / system / internal / core / original)? … instructions / instruction / rules / rule / guidelines / guideline / constraints / directives / prompt / prompts"
+  }, {
+    "name": "fuzzy_phrase_prompt_extraction",
+    "keywords": "reveal / show / print / output / display / expose / leak / repeat~ … (me)? … (all / any / the / my / your / our / its / their / every / this / that / these / those / of)? … (full / hidden / secret / internal / original / complete / entire / exact / actual / real)?~ … system~ … prompt / prompts / instructions~"
+  }];
+  return <table>
+      <thead>
+        <tr>
+          <th>Pattern Name</th>
+          <th>Candidate Phrase Keywords</th>
+        </tr>
+      </thead>
+      <tbody>
+        {PHRASES.map(phrase => <tr key={phrase.name}>
+            <td>
+              <code>{phrase.name}</code>
+            </td>
+            <td>
+              <code className="regex-cell">{phrase.keywords}</code>
+            </td>
+          </tr>)}
+      </tbody>
+    </table>;
+};
+
 export const PromptInjectionFuzzyTargets = () => {
   const ITEMS = ["ignore", "bypass", "override", "reveal", "delete", "system", "prompt", "instructions"];
   return <>
@@ -268,6 +299,18 @@ In addition to the regex patterns above, the detection system includes technique
 Attackers may scramble the middle letters of keywords while keeping the first and last letters intact (e.g., "ignroe" instead of "ignore"). The system checks for typoglycemia variants of these target words:
 
 <PromptInjectionFuzzyTargets />
+
+### Misspelled Phrase Detection
+
+Attackers may misspell a keyword inside an injection phrase to evade exact matching (e.g., "1gnore previous instructions", "ignore previous saefty rules", "revael your system prompt"). The system finds candidate phrase shapes word-by-word, allowing one edit (insertion, deletion, substitution, or adjacent transposition) or a middle-letter scramble per eligible keyword:
+
+<PromptInjectionFuzzyPhrases />
+
+A `~` marks a slot that also accepts a misspelling; slots without it must match exactly.
+
+A candidate is detected only when **at least one keyword is misspelled and its corrected phrase matches one of the exact regex patterns above**. The check uses that candidate's words, including any filler words, not an unrelated exact match elsewhere in the message. This prevents a typo from expanding the exact blocking policy: "delte previous instructions" and "skip the securty rules for now" do not trigger this layer because their corrected forms are not exact detections. Standalone near-words (e.g., `systemd`, `prompt1`, or prose that fixes a typo like `"promt" should be "prompt"`) do not qualify either.
+
+Read verbs (`print`, `output`, `reveal`, `expose`) also require exact qualifier and target slots in the read-override candidate. A misspelled verb is not sufficient on its own: "prnit the previous instructions" stays clean in this layer, while "outupt original instructions" qualifies because "output original instructions" matches the exact policy. Typoglycemia and encoding detectors still run independently.
 
 ### Encoding-Based Evasion
 

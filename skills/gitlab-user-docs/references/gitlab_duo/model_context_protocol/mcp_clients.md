@@ -7,7 +7,7 @@ Describes Model Context Protocol and how to use it
 
 ### Model information
 
-- Not available on GitLab Duo with self-hosted models
+- Available on GitLab Duo with self-hosted models, except with GitLab Duo Agentic Chat in the GitLab web UI
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/519938) in GitLab 18.1 [with a feature flag](../../../administration/feature_flags/_index.md) named `duo_workflow_mcp_support`. Disabled by default.
 - [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/545956) in GitLab 18.2. Feature flag `duo_workflow_mcp_support` removed.
@@ -33,6 +33,10 @@ The following features can act as MCP clients and connect to external tools from
 - The [Software Development Flow](../../duo_agent_platform/flows/foundational_flows/software_development.md)
 
 These features can then access external context and information to generate more powerful answers.
+
+> [!note]
+> Self-hosted models are not available for MCP with GitLab Duo Agentic Chat in the GitLab web UI.
+> MCP is supported with self-hosted models in IDEs, the GitLab Duo CLI, and flows.
 
 To use a feature with MCP:
 

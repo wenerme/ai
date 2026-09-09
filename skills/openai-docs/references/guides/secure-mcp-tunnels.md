@@ -35,6 +35,11 @@ Secure MCP Tunnel keeps the MCP server private while giving supported OpenAI pro
 The private MCP server does not need a public listener. The OpenAI-hosted endpoint gives supported products a normal MCP request path, while the network initiation point stays inside your boundary. When a connector asks for streamed results, the tunnel path can forward intermediate server-sent events.
 
 <figure className="not-prose my-8">
+  
+
+![Diagram showing an OpenAI product sending MCP JSON-RPC through the OpenAI tunnel service to tunnel-client, which forwards the request to a private MCP server and returns the response through the same tunnel.](<https://developers.openai.com/images/platform/guides/secure-mcp-tunnels/request-flow-diagram.png>)
+
+
   <figcaption className="mt-3 text-sm text-gray-600 dark:text-gray-400">
     OpenAI products call the OpenAI-hosted tunnel endpoint; `tunnel-client`
     long-polls for queued work and returns the MCP response through the same
@@ -108,6 +113,11 @@ For an HTTP MCP server, use `--mcp-server-url https://mcp.internal.example.com/m
 Keep `tunnel-client run ...` healthy while you create or test the app. App discovery and MCP tool calls depend on the running client.
 
 <figure className="not-prose my-8">
+  
+
+![Live local tunnel-client admin UI showing health, readiness, tunnel metadata, and channel status.](<https://developers.openai.com/images/platform/guides/secure-mcp-tunnels/tunnel-client-admin-ui.png>)
+
+
   <figcaption className="mt-3 text-sm text-gray-600 dark:text-gray-400">
     The local admin UI at `/ui` shows whether the running client is
     healthy, ready, and connected before you test from ChatGPT, Codex, or an API
@@ -129,9 +139,38 @@ Go to [ChatGPT Plugins](https://chatgpt.com/plugins), select the plus button to 
 
 If the tunnel does not appear in ChatGPT, verify that the tunnel is associated with the target ChatGPT workspace, not only with a Platform organization, and that the app creator has Tunnels **Read** + **Use**.
 
+## Connect from the Responses API
+
+Pass the tunnel identifier as `tunnel_id` in the MCP tool definition. Do not pass the OpenAI-hosted tunnel endpoint as `server_url`; use `server_url` only for an MCP server that the Responses API can reach directly.
+
+Use Secure MCP Tunnel with the Responses API
+
+```bash
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-6-astra",
+    "input": "Use the private MCP server to answer my request.",
+    "tools": [
+      {
+        "type": "mcp",
+        "server_label": "private_mcp",
+        "tunnel_id": "tunnel_0123456789abcdef0123456789abcdef"
+      }
+    ]
+  }'
+```
+
+
 ## Security and networking
 
 <figure className="not-prose my-8">
+  
+
+![Diagram showing tunnel-client inside the customer-controlled environment connecting outbound to the OpenAI-managed tunnel control plane while the private MCP server remains inside the customer network.](<https://developers.openai.com/images/platform/guides/secure-mcp-tunnels/trust-boundaries-diagram.png>)
+
+
   <figcaption className="mt-3 text-sm text-gray-600 dark:text-gray-400">
     The private MCP server stays inside the customer-controlled environment.
     `tunnel-client` reaches OpenAI over outbound HTTPS using the runtime API key

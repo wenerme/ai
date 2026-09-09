@@ -1162,9 +1162,9 @@ understanding, multi-robot collaboration, and advanced spatial reasoning.
 
 |   | Free Tier | Paid Tier, per 1M tokens in USD |
 |---|---|---|
-| Input price | Free of charge | $2.00 (text / image / video / audio) |
-| Output price (including thinking tokens) | Free of charge | $10.00 |
-| Context caching price | Not available | $0.20 $1.00 / 1,000,000 tokens per hour (storage price) |
+| Input price | Free of charge | $1.00 (text / image / video / audio) through December 31, 2026. $2.00 (text / image / video / audio) starting January 1, 2027. |
+| Output price (including thinking tokens) | Free of charge | $5.00 through December 31, 2026. $10.00 starting January 1, 2027. |
+| Context caching price | Not available | $0.10 through December 31, 2026. $0.20 starting January 1, 2027. $0.50 / 1,000,000 tokens per hour (storage price) through December 31, 2026. $1.00 / 1,000,000 tokens per hour (storage price) starting January 1, 2027. |
 | Grounding with Google Search | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -1172,9 +1172,9 @@ understanding, multi-robot collaboration, and advanced spatial reasoning.
 
 |   | Free Tier | Paid Tier, per 1M tokens in USD |
 |---|---|---|
-| Input price | Not available | $1.00 (text / image / video / audio) |
-| Output price (including thinking tokens) | Not available | $5.00 |
-| Context caching price | Not available | $0.10 $1.00 / 1,000,000 tokens per hour (storage price) |
+| Input price | Not available | $0.50 (text / image / video / audio) through December 31, 2026. $1.00 (text / image / video / audio) starting January 1, 2027. |
+| Output price (including thinking tokens) | Not available | $2.50 through December 31, 2026. $5.00 starting January 1, 2027. |
+| Context caching price | Not available | $0.05 through December 31, 2026. $0.10 starting January 1, 2027. $0.50 / 1,000,000 tokens per hour (storage price) through December 31, 2026. $1.00 / 1,000,000 tokens per hour (storage price) starting January 1, 2027. |
 | Grounding with Google Search | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -1194,8 +1194,8 @@ function calling.
 
 |   | Free Tier | Paid Tier, per 1M tokens in USD |
 |---|---|---|
-| Input price | Free of charge | $2.00 (text / image / video / audio) |
-| Output price | Free of charge | $10.00 |
+| Input price | Free of charge | $1.00 (text / image / video / audio) through December 31, 2026. $2.00 (text / image / video / audio) starting January 1, 2027. |
+| Output price | Free of charge | $5.00 through December 31, 2026. $10.00 starting January 1, 2027. |
 | Grounding with Google Search | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 

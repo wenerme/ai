@@ -137,6 +137,14 @@ When `remove_nodejs_compat_eol_v22` is enabled, APIs that reached end-of-life in
 
 This flag is automatically enabled when the `remove_nodejs_compat_eol` flag is enabled after 2027-04-30.
 
+### Python 314 for Python Workers
+
+| **Default as of**  | 2026-09-08           |
+| ------------------ | -------------------- |
+| **Flag to enable** | python\_workers\_314 |
+
+When this flag is set, Python 3.14 is used for Python Workers. Normally, you don't need to enable this flag manually, and the Python version is selected based on the compatibility date or your worker.
+
 ### Throw On Not Implements TLS Options
 
 | **Default as of**   | 2026-06-16                                    |

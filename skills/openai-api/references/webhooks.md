@@ -375,7 +375,9 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
     - `sip_headers: array of object { name, value }`
 
-      Headers from the SIP Invite.
+      Headers from the SIP INVITE, excluding SIP authorization headers.
+      Retained names, values, repeated entries, and order are preserved.
+      Treat these values as untrusted call metadata.
 
       - `name: string`
 
@@ -426,7 +428,9 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
     - `sip_headers: array of object { name, value }`
 
-      Headers from the SIP Invite.
+      Headers from the SIP INVITE, excluding SIP authorization headers.
+      Retained names, values, repeated entries, and order are preserved.
+      Treat these values as untrusted call metadata.
 
       - `name: string`
 
@@ -999,7 +1003,9 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `sip_headers: array of object { name, value }`
 
-        Headers from the SIP Invite.
+        Headers from the SIP INVITE, excluding SIP authorization headers.
+        Retained names, values, repeated entries, and order are preserved.
+        Treat these values as untrusted call metadata.
 
         - `name: string`
 
@@ -1048,7 +1054,9 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `sip_headers: array of object { name, value }`
 
-        Headers from the SIP Invite.
+        Headers from the SIP INVITE, excluding SIP authorization headers.
+        Retained names, values, repeated entries, and order are preserved.
+        Treat these values as untrusted call metadata.
 
         - `name: string`
 

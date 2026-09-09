@@ -5,7 +5,7 @@ description: "Browse LLM Gateway model IDs, capabilities, context windows, and p
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 373 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 372 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -1608,8 +1608,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 32768,
     "maxOutput": 32768,
-    "inputCost": 0.41,
-    "outputCost": 2.5
+    "inputCost": 0.2,
+    "outputCost": 2
   },
   {
     "model": "llmgateway-providers/deepinfra/deepseek-v3.2",
@@ -1982,18 +1982,6 @@ for await (const chunk of stream) {
     "maxOutput": 16384,
     "inputCost": 0.051,
     "outputCost": 0.104
-  },
-  {
-    "model": "llmgateway-providers/gonka24/kimi-k2.6",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 98304,
-    "inputCost": 0.22,
-    "outputCost": 1.137
   },
   {
     "model": "llmgateway-providers/gonka24/minimax-m2.7",

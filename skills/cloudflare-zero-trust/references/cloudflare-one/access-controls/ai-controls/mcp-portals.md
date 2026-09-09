@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # MCP server portals
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An MCP server portal centralizes multiple [Model Context Protocol (MCP) servers ↗](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) onto a single HTTP endpoint.
 
@@ -91,7 +91,7 @@ Users can turn individual servers on or off without disconnecting. For stateless
 
 ### Naming
 
-MCP server portals were previously referred to as **Agents Gateway** in some contexts. The API paths, Terraform resources, and internal codebases may still use `agents_gateway` or `agw` prefixes. The product name is **MCP server portals** and the dashboard navigation is **AI controls**.
+MCP server portals were previously referred to as **Agents Gateway** in some contexts. The API paths, Terraform resources, and internal codebases may still use `agents_gateway` or `agw` prefixes. The product name is **MCP server portals** and the dashboard navigation is **MCP Portals**.
 
 ## Prerequisites
 
@@ -105,7 +105,7 @@ Add individual MCP servers to Cloudflare Access to bring them under centralized 
 
 To add an MCP server:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **MCP Portals**.
 2. Go to the **MCP servers** tab.
 3. Select **Add an MCP server**.
 4. Enter any name for the server.
@@ -124,7 +124,7 @@ Cloudflare Access will validate the server connection and retrieve a list of pro
 Use manual OAuth credentials when the upstream provider does not support [OAuth Dynamic Client Registration ↗](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization#dynamic-client-registration). This flow uses an OAuth application that you register with the upstream provider.
 
 1. Add the MCP server with **OAuth** as its authentication method.
-2. In **Zero Trust** \> **Access controls** \> **AI controls**, go to the **MCP servers** tab.
+2. In **Zero Trust** \> **Access controls** \> **MCP Portals**, go to the **MCP servers** tab.
 3. Find the server, select the three dots > **Edit**, and go to **Authentication**.
 4. Under **OAuth credentials**, select **Manual credentials**.
 5. Copy the displayed **Redirect URI to register at the upstream provider**. Add it to the OAuth application's allowed redirect URIs.
@@ -179,7 +179,7 @@ If `is_upstream` is `true`, use `status_code`, `mcp_code`, and `cause` to troubl
 
 To reauthenticate an MCP server in Cloudflare Access:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **MCP Portals**.
 2. Go to the **MCP servers** tab.
 3. Select the server that you want to reauthenticate, then select **Edit**.
 4. Select **Authenticate server**.
@@ -198,7 +198,7 @@ Synchronization uses the admin credential, not individual user credentials. If t
 
 To manually refresh the MCP server in Zero Trust:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **MCP Portals**.
 2. Go to the **MCP servers** tab and find the server that you want to refresh.
 3. Select the three dots > **Sync capabilities**.
 
@@ -236,7 +236,7 @@ If an upstream OAuth provider rejects the callback URL, check whether **Use the 
 
 To create an MCP server portal:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **MCP Portals**.
 2. Select **Add MCP server portal**.
 3. Enter any name for the portal.
 4. Under **Custom domain**, select a domain for the portal URL. Domains must belong to an active zone in your Cloudflare account. You can optionally specify a subdomain.
@@ -278,10 +278,11 @@ When you add an MCP server to a portal, all of its tools and prompts are availab
 
 To hide specific tools or prompts from portal users:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **MCP Portals**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.
-3. Under **MCP servers**, find the server whose tools you want to manage.
-4. Turn off the toggle next to any tool or prompt that you want to hide from users.
+3. Under **Servers**, select the server name to open its tools panel.
+4. Scroll down to the **Tools** section, then turn off the toggle next to any tool or prompt that you want to hide from users.
+![The tools panel for an MCP server shows a list of tools with a toggle next to each one.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1017,height=855,format=webp/_astro/mcp-portal-manage-tools.CAqPUw2R.png)
 5. Select **Save**.
 
 Turned-off tools will not appear in the portal's tool list. Users will not be able to call them.
@@ -344,7 +345,7 @@ Custom descriptions follow the same precedence. Set a description by including t
 
 To set an alias that applies to a specific portal:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **MCP Portals**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.
 3. Go to the **Servers** tab.
 4. Select the **Tools authorized** or **Prompts authorized** value for the server you want to configure (for example, `10/10`).
@@ -354,7 +355,7 @@ To set an alias that applies to a specific portal:
 
 To set an alias that applies across all portals using a server:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **MCP Portals**.
 2. Go to the **MCP servers** tab.
 3. Find the server you want to configure, then select the three dots > **Edit**.
 4. Go to the **Tools** or **Prompts** tab.
@@ -782,7 +783,7 @@ Gateway routing supports [Streamable HTTP ↗](https://spec.modelcontextprotocol
 
 To route MCP server portal traffic through Gateway:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **MCP Portals**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.
 3. Under **Basic information**, turn on **Route traffic through Cloudflare Gateway**.
 4. Select **Save**.
@@ -1064,7 +1065,7 @@ When an admin adds a new upstream MCP server to a portal, the portal automatical
 
 Portal logs allow you to monitor user activity through an MCP server portal. You can view logs on a per-portal or per-server basis.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **MCP Portals**.
 2. Find the portal or server that you want to view logs for, then select the three dots > **Edit**.
 3. Select **Logs**.
 
@@ -1186,5 +1187,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

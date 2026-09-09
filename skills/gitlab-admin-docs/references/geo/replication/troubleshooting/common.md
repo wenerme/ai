@@ -102,7 +102,7 @@ health check manually to get this information and a few more details.
 
 #### Health check Rake task
 
-This Rake task can be run on a **Rails** node in the primary or secondary
+This Rake task can be run on a Rails node in the primary or secondary
 Geo sites:
 
 ```shell
@@ -668,7 +668,7 @@ DETAIL:  User query might have needed to see row versions that must be removed.
 pg_dump: error: The command was: COPY public.notes (id, note, [...], last_edited_at) TO stdout;
 ```
 
-To prevent a database backup being made automatically during GitLab upgrades on your Geo **secondaries**,
+To prevent a database backup being made automatically during GitLab upgrades on your Geo secondaries,
 create the following empty file:
 
 ```shell

@@ -46,7 +46,7 @@ List user actions and configuration changes within this organization.
 
 - `event_types: optional array of "api_key.created" or "api_key.updated" or "api_key.deleted" or 144 more`
 
-  Return only events with a `type` in one of these values. For example, `project.created`. For all options, see the documentation for the [audit log object](/docs/api-reference/audit-logs/object).
+  Return only events with a `type` in one of these values. For example, `project.created`. For all options, see the documentation for the [audit log object](/api/reference/resources/admin/subresources/organization/subresources/audit_logs).
 
   - `"api_key.created"`
 

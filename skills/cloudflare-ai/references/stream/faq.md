@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQ
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Stream
 
@@ -33,7 +33,7 @@ The limit to the number of videos only applies to videos being uploaded to Cloud
 
 Limits apply to Direct Creator Uploads at the time of upload URL creation.
 
-Uploads over these limits will receive a [429 (Too Many Requests)](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-429/) or [413 (Payload too large)](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-413/) HTTP status codes with more information in the response body. Please write to Cloudflare support or your customer success manager for higher limits.
+Uploads over these limits will receive a [429 (Too Many Requests)](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-429/) or [413 (Payload too large)](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-413/) HTTP status codes with more information in the response body. For higher limits, [contact Cloudflare support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) or your account team.
 
 ### Can I embed videos on Stream even if my domain is not on Cloudflare?
 
@@ -113,5 +113,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/faq/#page","headline":"Frequently asked questions about Cloudflare Stream · Cloudflare Stream docs","description":"Frequently asked questions about Cloudflare Stream video uploads, playback, and billing.","url":"https://developers.cloudflare.com/stream/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/faq/#page","headline":"Frequently asked questions about Cloudflare Stream · Cloudflare Stream docs","description":"Frequently asked questions about Cloudflare Stream video uploads, playback, and billing.","url":"https://developers.cloudflare.com/stream/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

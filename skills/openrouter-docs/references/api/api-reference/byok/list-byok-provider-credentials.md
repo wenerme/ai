@@ -223,7 +223,6 @@ paths:
               - modular
               - moonshotai
               - morph
-              - ncompass
               - nebius
               - nex-agi
               - nextbit
@@ -237,7 +236,7 @@ paths:
               - perplexity
               - phala
               - poolside
-              - prime-intellect
+              - primeintellect
               - quiver
               - recraft
               - reka
@@ -651,7 +650,6 @@ components:
         - modular
         - moonshotai
         - morph
-        - ncompass
         - nebius
         - nex-agi
         - nextbit
@@ -665,7 +663,7 @@ components:
         - perplexity
         - phala
         - poolside
-        - prime-intellect
+        - primeintellect
         - quiver
         - recraft
         - reka

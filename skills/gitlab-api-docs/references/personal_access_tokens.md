@@ -149,6 +149,7 @@ You can create personal access tokens with the user tokens API. For more informa
 ## Rotate a personal access token
 
 - `granular_scopes` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/589500) in GitLab 19.2.
+- `last_used_ips` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250307) in GitLab 19.4.
 
 Rotates a specified personal access token. This revokes the previous token and creates a new token
 that expires after one week. Administrators can revoke tokens for any user. Non-administrators can
@@ -181,6 +182,7 @@ Example response:
     "scopes": ["api"],
     "user_id": 1337,
     "last_used_at": null,
+    "last_used_ips": [],
     "active": true,
     "expires_at": "2023-08-15",
     "token": "s3cr3t"

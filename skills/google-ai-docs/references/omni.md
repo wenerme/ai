@@ -951,7 +951,7 @@ The following example shows how to edit the following original video:
     interaction = client.interactions.create(
         model="gemini-omni-1.1-flash",
         input=[
-            {"type": "document", "uri": video_file.uri},
+            {"type": "video", "uri": video_file.uri},
             {"type": "text", "text": "When the person touches the mirror, make the mirror ripple beautifully like liquid, and the person's arm turns into reflective mirror material"}
         ],
     )
@@ -984,7 +984,7 @@ The following example shows how to edit the following original video:
     const interaction = await ai.interactions.create({
       model: 'gemini-omni-1.1-flash',
       input: [
-        { type: 'document', uri: videoFile.uri },
+        { type: 'video', uri: videoFile.uri },
         { type: 'text', text: "When the person touches the mirror, make the mirror ripple beautifully like liquid, and the person's arm turns into reflective mirror material" }
       ],
     });
@@ -1284,7 +1284,7 @@ You can extend:
     interaction = client.interactions.create(
         model="gemini-omni-1.1-flash",
         input=[
-            {"type": "document", "uri": video_file.uri},
+            {"type": "video", "uri": video_file.uri},
             {"type": "text", "text": "Continue the scene."}
         ],
     )
@@ -1311,7 +1311,7 @@ You can extend:
     const interaction = await ai.interactions.create({
       model: 'gemini-omni-1.1-flash',
       input: [
-        { type: 'document', uri: videoFile.uri },
+        { type: 'video', uri: videoFile.uri },
         { type: 'text', text: 'Continue the scene.' }
       ],
     });
@@ -1377,7 +1377,7 @@ You can extend:
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions?key=$API_KEY"     -H "Content-Type: application/json"     -d '{
      "model": "gemini-omni-1.1-flash",
      "input": [
-       {"type": "document", "uri": "'"$VIDEO_URI"'"},
+       {"type": "video", "uri": "'"$VIDEO_URI"'"},
        {"type": "text", "text": "Continue the scene."}
      ]
     }'
@@ -1404,8 +1404,8 @@ introduce new characters or elements into the extended video:
     interaction = client.interactions.create(
         model="gemini-omni-1.1-flash",
         input=[
-            {"type": "document", "uri": video_file.uri},
-            {"type": "document", "uri": character_img.uri},
+            {"type": "video", "uri": video_file.uri},
+            {"type": "image", "uri": character_img.uri},
             {"type": "text", "text": "Extend this video: have the character shown in <IMAGE_REF_0> enter the scene and wave."}
         ],
     )
@@ -1432,8 +1432,8 @@ introduce new characters or elements into the extended video:
     const interaction = await ai.interactions.create({
       model: 'gemini-omni-1.1-flash',
       input: [
-        { type: 'document', uri: videoFile.uri },
-        { type: 'document', uri: characterImg.uri },
+        { type: 'video', uri: videoFile.uri },
+        { type: 'image', uri: characterImg.uri },
         { type: 'text', text: 'Extend this video: have the character shown in <IMAGE_REF_0> enter the scene and wave.' }
       ],
     });
@@ -1505,11 +1505,11 @@ introduce new characters or elements into the extended video:
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions?key=$API_KEY"     -H "Content-Type: application/json"     -d '{
      "model": "gemini-omni-1.1-flash",
-     "input": [
-       {"type": "document", "uri": "'$VIDEO_URI'"},
-       {"type": "document", "uri": "'$CHARACTER_IMG_URI'"},
-       {"type": "text", "text": "Extend this video: have the character shown in <IMAGE_REF_0> enter the scene and wave."}
-     ]
+      "input": [
+        {"type": "video", "uri": "'$VIDEO_URI'"},
+        {"type": "image", "uri": "'$CHARACTER_IMG_URI'"},
+        {"type": "text", "text": "Extend this video: have the character shown in <IMAGE_REF_0> enter the scene and wave."}
+      ]
     }'
 
 Your browser does not support the video tag.
