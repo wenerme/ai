@@ -8,7 +8,7 @@
 
 ## Description
 
-`TRY_PARSE_TO_VARIANT` tries to parse one complete JSON value into `VARIANT`. The `TRY_` prefix means that a parsing or validation error returns SQL `NULL` instead of failing the query. This function is available in Doris 4.2 and later.
+`TRY_PARSE_TO_VARIANT` tries to parse one complete JSON value into `VARIANT`. The `TRY_` prefix means that a parsing or validation error returns SQL `NULL` instead of failing the query. This function is available in Doris 4.1.4 and later.
 
 ## Syntax
 

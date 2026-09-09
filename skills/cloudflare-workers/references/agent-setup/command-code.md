@@ -54,7 +54,7 @@ cmd
 Ask Command Code to investigate a task, make changes, and run the relevant tests. Review its diffs and command output before keeping changes.
 For example:
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ## Cloudflare platform access
@@ -134,11 +134,11 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
@@ -146,11 +146,11 @@ Add a D1 database to my Worker and create a users table with full CRUD endpoints
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ## Tips

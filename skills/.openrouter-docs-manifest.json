@@ -1444,9 +1444,13 @@
   },
   "cookbook/coding-agents/codex-cli.md": {
     "url": "https://openrouter.ai/docs/cookbook/coding-agents/codex-cli.md",
-    "lastModified": "Sun, 09 Aug 2026 02:40:25 GMT",
-    "size": 6958,
-    "updatedAt": "2026-08-09T02:40:25.433Z"
+    "size": 7145,
+    "updatedAt": "2026-09-09T14:38:32.679Z"
+  },
+  "cookbook/coding-agents/codex-desktop.md": {
+    "url": "https://openrouter.ai/docs/cookbook/coding-agents/codex-desktop.md",
+    "size": 7365,
+    "updatedAt": "2026-09-09T14:38:33.269Z"
   },
   "cookbook/coding-agents/cursor-integration.md": {
     "url": "https://openrouter.ai/docs/cookbook/coding-agents/cursor-integration.md",
@@ -2162,9 +2166,8 @@
   },
   "guides/overview/auth/management-api-keys.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/management-api-keys.md",
-    "lastModified": "Tue, 21 Jul 2026 06:48:13 GMT",
-    "size": 7170,
-    "updatedAt": "2026-07-21T06:48:13.376Z"
+    "size": 19130,
+    "updatedAt": "2026-09-09T14:40:04.080Z"
   },
   "guides/overview/auth/oauth.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/oauth.md",

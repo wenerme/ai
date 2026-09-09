@@ -10,6 +10,8 @@
 
 [Codex CLI](https://github.com/openai/codex) is OpenAI's open-source local coding agent that runs in your terminal. It supports multiple model providers, including OpenRouter, so you can use OpenRouter's unified API, provider failover, and organizational controls with Codex's agentic coding workflows.
 
+Using Codex inside the ChatGPT desktop app instead? See the [Codex Desktop App guide](/docs/cookbook/coding-agents/codex-desktop), which covers making your API key visible to a GUI app.
+
 ## Quick Start
 
 ### Step 1: Install Codex CLI

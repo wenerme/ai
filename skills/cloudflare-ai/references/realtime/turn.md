@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # TURN Service
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/turn/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/turn/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Separately from the SFU, Realtime offers a managed TURN service. TURN acts as a relay point for traffic between WebRTC clients like the browser and SFUs, particularly in scenarios where direct communication is obstructed by NATs or firewalls. TURN maintains an allocation of public IP addresses and ports for each session, ensuring connectivity even in restrictive network environments.
 
@@ -22,14 +22,10 @@ Using Cloudflare Realtime TURN service is available free of charge when used tog
 
 | Protocol      | Primary address     | Primary port | Alternate port |
 | ------------- | ------------------- | ------------ | -------------- |
-| STUN over UDP | stun.cloudflare.com | 3478/udp     | 53/udp         |
-| TURN over UDP | turn.cloudflare.com | 3478/udp     | 53/udp         |
+| STUN over UDP | stun.cloudflare.com | 3478/udp     |                |
+| TURN over UDP | turn.cloudflare.com | 3478/udp     |                |
 | TURN over TCP | turn.cloudflare.com | 3478/tcp     | 80/tcp         |
 | TURN over TLS | turn.cloudflare.com | 5349/tcp     | 443/tcp        |
-
-Note
-
-Use of alternate port 53 only by itself is not recommended. Port 53 is blocked by many ISPs, and by popular browsers such as [Chrome ↗](https://chromium.googlesource.com/chromium/src.git/+/refs/heads/master/net/base/port%5Futil.cc#44) and [Firefox ↗](https://github.com/mozilla/gecko-dev/blob/master/netwerk/base/nsIOService.cpp#L132). It is useful only in certain specific scenarios.
 
 ## Regions
 
@@ -82,5 +78,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/turn/#page","headline":"TURN Service · Cloudflare Realtime docs","description":"Cloudflare Realtime TURN relays WebRTC traffic through NATs and firewalls on a global network.","url":"https://developers.cloudflare.com/realtime/turn/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/turn/#page","headline":"TURN Service · Cloudflare Realtime docs","description":"Cloudflare Realtime TURN relays WebRTC traffic through NATs and firewalls on a global network.","url":"https://developers.cloudflare.com/realtime/turn/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

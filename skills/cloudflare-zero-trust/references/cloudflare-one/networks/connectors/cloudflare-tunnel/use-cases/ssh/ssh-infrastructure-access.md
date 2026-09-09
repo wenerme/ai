@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SSH with Access for Infrastructure
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/) provides granular control over how users can connect to your SSH servers. Like the [self-managed SSH keys](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-device-client/) method, it uses the Cloudflare One Client on user devices and Cloudflare Tunnel on the server to create a secure, private connection through Cloudflare's network. Access for Infrastructure adds application-level policies with per-target and per-username controls, as well as SSH command logging.
 
@@ -506,9 +506,10 @@ SSH sessions have a maximum expected duration of 10 hours. For more information,
 Failure to connect to your SSH endpoint could be the result of multiple variables. Use the following steps to investigate and resolve the source of your connection failure.
 
 1. [Verify that your Access policies](#1-review-access-policies) allow the user to access the target.
-2. [Check Cloudflare Tunnel](#2-check-target-machine-connection) health.
-3. [Confirm user existence](#3-confirm-user-existence-on-the-target-server) on the server.
-4. [Check your sshd\_config file](#4-debug-sshd%5Fconfig-file-misconfiguration) for misconfiguration.
+2. [Check the user's device profile](#2-check-client-routing) routes the target through the Cloudflare One Client.
+3. [Check Cloudflare Tunnel](#3-check-target-connection) health.
+4. [Confirm user existence](#4-confirm-user-existence-on-the-server) on the server.
+5. [Check your sshd\_config file](#5-debug-sshd%5Fconfig-file-misconfiguration) for misconfiguration.
 
 ### 1\. Review Access policies
 
@@ -542,7 +543,7 @@ warp-cli target list
 ╰──────────────────────────────────────┴──────────┴───────┴───────────────────────┴──────────────────────┴────────────╯
 ```
 
-* If the target appears in the list, confirm that the username you are attempting to connect with is shown in the output. If the username is not shown, an administrator must find the Access policy associated with the target and add that username to the Access policy. An administrator should have created an Access policy in [substep 9 of step 5: Add an infrastructure application](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#5-add-an-infrastructure-application). If the username is shown, that means the Access policy should be granting access and you should ensure that the tunnel is healthy in [step 2](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#2-check-target-machine-connection).
+* If the target appears in the list, confirm that the username you are attempting to connect with is shown in the output. If the username is not shown, an administrator must find the Access policy associated with the target and add that username to the Access policy. An administrator should have created an Access policy in [substep 9 of step 5: Add an infrastructure application](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#5-add-an-infrastructure-application). If the username is shown, that means the Access policy should be granting access. Continue to [check client routing](#2-check-client-routing).
 * If the target does not appear in the list, an administrator must audit the Access policies for the target in Cloudflare One for potential misconfiguration that may be blocking connection.
 
 #### Administrators
@@ -557,7 +558,7 @@ You will need Cloudflare dashboard access and log view [permissions](https://dev
 2. Select **Access authentication logs**.
 3. Select the application you are testing or filter _Infrastructure_ as the App Type.
 4. Review the **Decision**. If the **Decision** is `Access denied`, select the application and copy the name under App.
-If the decision is `Access granted`, Access policies are not interfering with your connection attempts and your connection issue is due to the Cloudflare Tunnel ([step 2](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#2-check-target-machine-connection)), the SSH server ([step 3](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#3-confirm-user-existence-on-the-target-server)), or the `sshd_config` file ([step 4](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#4-debug-sshd%5Fconfig-file-misconfiguration)).
+If the decision is `Access granted`, continue to [check client routing](#2-check-client-routing).
 5. Go to **Access controls** \> **Applications**.
 6. Input the app name in the search bar and select the application.
 7. Select **Configure**.
@@ -565,9 +566,24 @@ If the decision is `Access granted`, Access policies are not interfering with yo
 
 By adding an Access [policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to allow the user, the connection issue should be resolved. After saving your policy changes, attempt to connect to the server.
 
-If you are still having connection issues after auditing your Access policies, review tunnel health in the following step.
+If you are still having connection issues after auditing your Access policies, check the client routing configuration in the following step.
 
-### 2\. Check target connection
+### 2\. Check client routing
+
+The target's IP address must route through the Cloudflare One Client. A device can receive a different Split Tunnel configuration than expected if it matches another device profile.
+
+To check the active profile and its Split Tunnel configuration:
+
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices**.
+2. Find the user's device and note its **Last active device profile**.
+3. Go to **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
+4. Edit the active profile and open **Split Tunnels**.
+5. Confirm that the target's IP address or CIDR routes through the Cloudflare One Client. Refer to [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) for configuration instructions.
+6. If the profile uses an `identity.email` selector, confirm that its email matches the identity allowed by the infrastructure application policy.
+
+If the connection attempt does not appear in Access authentication logs, correct the client routing configuration before reviewing the tunnel or SSH server.
+
+### 3\. Check target connection
 
 If the end user cannot connect to the target, the tunnel you set up in [step 1: Connect the server to Cloudflare](#1-connect-the-server-to-cloudflare) may be down or inactive.
 
@@ -591,13 +607,13 @@ For detailed steps on troubleshooting, refer to the [Troubleshooting Tunnel docu
 
 After you have verified that there are no issues with your tunnel's health, confirm the user's existence on the server in the following step.
 
-### 3\. Confirm user existence on the server
+### 4\. Confirm user existence on the server
 
 To verify the existence of a user on a UNIX server, run the `id <USERNAME>` command on the server to verify that the username exists. If the username does not exist, you must add the user to the server.
 
 If the user exists on the server, debug your `sshd_config` file in the following step.
 
-### 4\. Debug `sshd_config` file misconfiguration
+### 5\. Debug `sshd_config` file misconfiguration
 
 One reason a user is failing to connect to your SSH endpoint might be the result of a misconfigured `sshd_config` file. Follow the steps below to audit your `sshd_config` file for misconfigurations.
 
@@ -795,9 +811,9 @@ For CentOS/RHEL 7 and newer:
 sudo systemctl reload sshd
 ```
 
-By completing all four troubleshooting steps, you should have resolved any connection issues caused by misconfiguration of the SSH server. If issues persist, [recheck sshd logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#review-your-sshd-logs). The example [sshd\_config shared above](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#review-your-sshd%5Fconfig-file-for-misconfigurations) enables debug logging and may expose more specific issues.
+After completing these troubleshooting steps, retry the connection. If issues persist, [recheck sshd logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#review-your-sshd-logs). The example [sshd\_config shared above](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#review-your-sshd%5Fconfig-file-for-misconfigurations) enables debug logging and may expose more specific issues.
 
-### 5\. Get help
+### 6\. Get help
 
 For the fastest possible troubleshooting, ensure your support ticket includes comprehensive details. The more context you provide, the faster your issue can be identified and resolved.
 
@@ -830,5 +846,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#page","headline":"SSH with Access for Infrastructure · Cloudflare One docs","description":"SSH with Access for Infrastructure in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#page","headline":"SSH with Access for Infrastructure · Cloudflare One docs","description":"SSH with Access for Infrastructure in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH"]}
 ```

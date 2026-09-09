@@ -238,3 +238,111 @@ API responses return JSON objects containing key information:
 ```
 
 When creating a new key, the response will include the key string itself. Read more in the [API reference](/docs/api/api-reference/api-keys/create-a-new-api-key).
+
+## Routes That Require a Management Key
+
+The following documented routes reject regular API keys and must be called with a Management API key.
+
+### Analytics
+
+| Method | Route                     | Reference                                                                                                                     |
+| ------ | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `GET`  | `/api/v1/activity`        | [Get user activity grouped by endpoint](/docs/api/api-reference/analytics/get-user-activity-grouped-by-endpoint)                   |
+| `GET`  | `/api/v1/analytics/meta`  | [Get available analytics metrics and dimensions](/docs/api/api-reference/analytics/get-available-analytics-metrics-and-dimensions) |
+| `POST` | `/api/v1/analytics/query` | [Query analytics data](/docs/api/api-reference/analytics/query-analytics-data)                                                     |
+
+### API Keys
+
+| Method   | Route                 | Reference                                                                |
+| -------- | --------------------- | ------------------------------------------------------------------------ |
+| `GET`    | `/api/v1/keys`        | [List API keys](/docs/api/api-reference/api-keys/list-api-keys)               |
+| `POST`   | `/api/v1/keys`        | [Create a new API key](/docs/api/api-reference/api-keys/create-a-new-api-key) |
+| `GET`    | `/api/v1/keys/{hash}` | [Get a single API key](/docs/api/api-reference/api-keys/get-a-single-api-key) |
+| `DELETE` | `/api/v1/keys/{hash}` | [Delete an API key](/docs/api/api-reference/api-keys/delete-an-api-key)       |
+| `PATCH`  | `/api/v1/keys/{hash}` | [Update an API key](/docs/api/api-reference/api-keys/update-an-api-key)       |
+
+### BYOK
+
+| Method   | Route               | Reference                                                                                      |
+| -------- | ------------------- | ---------------------------------------------------------------------------------------------- |
+| `GET`    | `/api/v1/byok`      | [List BYOK provider credentials](/docs/api/api-reference/byok/list-byok-provider-credentials)       |
+| `POST`   | `/api/v1/byok`      | [Create a BYOK provider credential](/docs/api/api-reference/byok/create-a-byok-provider-credential) |
+| `GET`    | `/api/v1/byok/{id}` | [Get a BYOK provider credential](/docs/api/api-reference/byok/get-a-byok-provider-credential)       |
+| `DELETE` | `/api/v1/byok/{id}` | [Delete a BYOK provider credential](/docs/api/api-reference/byok/delete-a-byok-provider-credential) |
+| `PATCH`  | `/api/v1/byok/{id}` | [Update a BYOK provider credential](/docs/api/api-reference/byok/update-a-byok-provider-credential) |
+
+### Credits
+
+| Method | Route             | Reference                                                                 |
+| ------ | ----------------- | ------------------------------------------------------------------------- |
+| `GET`  | `/api/v1/credits` | [Get remaining credits](/docs/api/api-reference/credits/get-remaining-credits) |
+
+### Generations
+
+| Method | Route                         | Reference                                                                                           |
+| ------ | ----------------------------- | --------------------------------------------------------------------------------------------------- |
+| `POST` | `/api/v1/generation/feedback` | [Submit feedback for a generation](/docs/api/api-reference/generations/submit-feedback-for-a-generation) |
+
+### Guardrails
+
+| Method   | Route                                                | Reference                                                                                                        |
+| -------- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `GET`    | `/api/v1/guardrails`                                 | [List guardrails](/docs/api/api-reference/guardrails/list-guardrails)                                                 |
+| `POST`   | `/api/v1/guardrails`                                 | [Create a guardrail](/docs/api/api-reference/guardrails/create-a-guardrail)                                           |
+| `GET`    | `/api/v1/guardrails/{id}`                            | [Get a guardrail](/docs/api/api-reference/guardrails/get-a-guardrail)                                                 |
+| `DELETE` | `/api/v1/guardrails/{id}`                            | [Delete a guardrail](/docs/api/api-reference/guardrails/delete-a-guardrail)                                           |
+| `PATCH`  | `/api/v1/guardrails/{id}`                            | [Update a guardrail](/docs/api/api-reference/guardrails/update-a-guardrail)                                           |
+| `GET`    | `/api/v1/guardrails/{id}/assignments/keys`           | [List key assignments for a guardrail](/docs/api/api-reference/guardrails/list-key-assignments-for-a-guardrail)       |
+| `POST`   | `/api/v1/guardrails/{id}/assignments/keys`           | [Bulk assign keys to a guardrail](/docs/api/api-reference/guardrails/bulk-assign-keys-to-a-guardrail)                 |
+| `POST`   | `/api/v1/guardrails/{id}/assignments/keys/remove`    | [Bulk unassign keys from a guardrail](/docs/api/api-reference/guardrails/bulk-unassign-keys-from-a-guardrail)         |
+| `GET`    | `/api/v1/guardrails/{id}/assignments/members`        | [List member assignments for a guardrail](/docs/api/api-reference/guardrails/list-member-assignments-for-a-guardrail) |
+| `POST`   | `/api/v1/guardrails/{id}/assignments/members`        | [Bulk assign members to a guardrail](/docs/api/api-reference/guardrails/bulk-assign-members-to-a-guardrail)           |
+| `POST`   | `/api/v1/guardrails/{id}/assignments/members/remove` | [Bulk unassign members from a guardrail](/docs/api/api-reference/guardrails/bulk-unassign-members-from-a-guardrail)   |
+| `GET`    | `/api/v1/guardrails/assignments/keys`                | [List all key assignments](/docs/api/api-reference/guardrails/list-all-key-assignments)                               |
+| `GET`    | `/api/v1/guardrails/assignments/members`             | [List all member assignments](/docs/api/api-reference/guardrails/list-all-member-assignments)                         |
+
+### Observability
+
+| Method   | Route                                     | Reference                                                                                                   |
+| -------- | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `GET`    | `/api/v1/observability/destinations`      | [List observability destinations](/docs/api/api-reference/observability/list-observability-destinations)         |
+| `POST`   | `/api/v1/observability/destinations`      | [Create an observability destination](/docs/api/api-reference/observability/create-an-observability-destination) |
+| `GET`    | `/api/v1/observability/destinations/{id}` | [Get an observability destination](/docs/api/api-reference/observability/get-an-observability-destination)       |
+| `DELETE` | `/api/v1/observability/destinations/{id}` | [Delete an observability destination](/docs/api/api-reference/observability/delete-an-observability-destination) |
+| `PATCH`  | `/api/v1/observability/destinations/{id}` | [Update an observability destination](/docs/api/api-reference/observability/update-an-observability-destination) |
+
+### Organization
+
+| Method | Route                          | Reference                                                                              |
+| ------ | ------------------------------ | -------------------------------------------------------------------------------------- |
+| `GET`  | `/api/v1/organization/members` | [List organization members](/docs/api/api-reference/organization/list-organization-members) |
+
+### SCIM
+
+| Method   | Route                              | Reference                                                                                |
+| -------- | ---------------------------------- | ---------------------------------------------------------------------------------------- |
+| `GET`    | `/api/v1/scim/group-mappings`      | [List SCIM group mappings](/docs/api/api-reference/scim/list-scim-group-mappings)             |
+| `POST`   | `/api/v1/scim/group-mappings`      | [Create a SCIM group mapping](/docs/api/api-reference/scim/create-a-scim-group-mapping)       |
+| `GET`    | `/api/v1/scim/group-mappings/{id}` | [Get a SCIM group mapping](/docs/api/api-reference/scim/get-a-scim-group-mapping)             |
+| `DELETE` | `/api/v1/scim/group-mappings/{id}` | [Delete a SCIM group mapping](/docs/api/api-reference/scim/delete-a-scim-group-mapping)       |
+| `PATCH`  | `/api/v1/scim/group-mappings/{id}` | [Update a SCIM group mapping](/docs/api/api-reference/scim/update-a-scim-group-mapping)       |
+| `GET`    | `/api/v1/scim/groups`              | [List SCIM groups](/docs/api/api-reference/scim/list-scim-groups)                             |
+| `POST`   | `/api/v1/scim/sync-jobs`           | [Start a SCIM directory sync](/docs/api/api-reference/scim/start-a-scim-directory-sync)       |
+| `GET`    | `/api/v1/scim/sync-jobs/{id}`      | [Get SCIM directory sync status](/docs/api/api-reference/scim/get-scim-directory-sync-status) |
+
+### Workspaces
+
+| Method   | Route                                        | Reference                                                                                                  |
+| -------- | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `GET`    | `/api/v1/workspaces`                         | [List workspaces](/docs/api/api-reference/workspaces/list-workspaces)                                           |
+| `POST`   | `/api/v1/workspaces`                         | [Create a workspace](/docs/api/api-reference/workspaces/create-a-workspace)                                     |
+| `GET`    | `/api/v1/workspaces/{id}`                    | [Get a workspace](/docs/api/api-reference/workspaces/get-a-workspace)                                           |
+| `DELETE` | `/api/v1/workspaces/{id}`                    | [Delete a workspace](/docs/api/api-reference/workspaces/delete-a-workspace)                                     |
+| `PATCH`  | `/api/v1/workspaces/{id}`                    | [Update a workspace](/docs/api/api-reference/workspaces/update-a-workspace)                                     |
+| `GET`    | `/api/v1/workspaces/{id}/budgets`            | [List workspace budgets](/docs/api/api-reference/workspaces/list-workspace-budgets)                             |
+| `GET`    | `/api/v1/workspaces/{id}/budgets/{interval}` | [Get a workspace budget](/docs/api/api-reference/workspaces/get-a-workspace-budget)                             |
+| `PUT`    | `/api/v1/workspaces/{id}/budgets/{interval}` | [Create or update a workspace budget](/docs/api/api-reference/workspaces/create-or-update-a-workspace-budget)   |
+| `DELETE` | `/api/v1/workspaces/{id}/budgets/{interval}` | [Delete a workspace budget](/docs/api/api-reference/workspaces/delete-a-workspace-budget)                       |
+| `GET`    | `/api/v1/workspaces/{id}/members`            | [List workspace members](/docs/api/api-reference/workspaces/list-workspace-members)                             |
+| `POST`   | `/api/v1/workspaces/{id}/members/add`        | [Bulk add members to a workspace](/docs/api/api-reference/workspaces/bulk-add-members-to-a-workspace)           |
+| `POST`   | `/api/v1/workspaces/{id}/members/remove`     | [Bulk remove members from a workspace](/docs/api/api-reference/workspaces/bulk-remove-members-from-a-workspace) |
