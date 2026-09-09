@@ -13,6 +13,8 @@ You can select a different model for a feature, which persists until you change 
 
 ## Default models
 
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/614057) model setting for GitLab Duo Code Review to **Non-Agentic Code Review** in GitLab 19.4.
+
 The following table lists the default model for each GitLab Duo feature.
 
 | Feature | Model |
@@ -31,7 +33,7 @@ The following table lists the default model for each GitLab Duo feature.
 | Merge Commit Message Generation | Claude Sonnet 4.6 Vertex|
 | Merge Request Summary | Claude Sonnet 4.6 Vertex |
 | Code Review Summary | Claude Sonnet 4.6 Vertex |
-| Code Review | Claude Sonnet 4.5 Vertex |
+| Non-Agentic Code Review | Claude Sonnet 4.5 Vertex |
 | **Other GitLab Duo features** | |
 | Vulnerability Explanation | Claude Sonnet 4.6 Vertex |
 | Vulnerability Resolution | Claude Sonnet 4.6 Vertex |
@@ -39,6 +41,8 @@ The following table lists the default model for each GitLab Duo feature.
 | GitLab Duo for CLI | Claude Sonnet 4.6 Vertex |
 
 ## Supported models
+
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/work_items/614057) model setting for GitLab Duo Code Review to **Non-Agentic Code Review** in GitLab 19.4.
 
 The following tables list the models you can select for each feature.
 
@@ -65,7 +69,7 @@ The following tables list the models you can select for each feature.
 
 ### GitLab Duo for merge requests
 
-| Model | Merge Commit Message Generation | Merge Request Summary | Code Review Summary | Code Review |
+| Model | Merge Commit Message Generation | Merge Request Summary | Code Review Summary | Non-Agentic Code Review |
 |------------|--------------------------------|------------------------|---------------------|-------------|
 | Claude Sonnet 4.5 | Yes | Yes | Yes | Yes |
 | Claude Sonnet 4.5 Vertex | No | No | No | Yes |

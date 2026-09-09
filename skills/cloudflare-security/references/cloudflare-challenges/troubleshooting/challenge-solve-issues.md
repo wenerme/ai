@@ -12,7 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Challenge solve issues
 
-Last updated Sep 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/challenge-solve-issues/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/challenge-solve-issues/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Note
+
+Challenge Pages are issued through the Cloudflare Challenge Platform, which uses the same underlying technology as Turnstile. The troubleshooting steps on this page apply to both Turnstile widgets and Challenge Pages failures.
 
 ## Challenge loops
 
@@ -66,6 +70,19 @@ Follow the steps below to ensure that your environment is properly configured.
 7. Switch to a different network.
   * Your current network may have restrictions causing Turnstile challenges to fail. Try switching to another network, such as a mobile hotspot.
 
+## Collect diagnostic information
+
+If the issue persists, collect the following information before contacting the website administrator or Cloudflare Support:
+
+* A HAR file captured while reproducing the issue. For challenge loops, enable **Preserve log** in your browser's developer tools before reproducing the problem. You may also need to select **Disable cache**.
+* A browser console log export captured during the same session.
+
+For step-by-step instructions, refer to [Gathering information for troubleshooting sites](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/).
+
+## WebView and mobile app implementations
+
+If the challenge fails only inside a native app's WebView, review the required WebView settings in [Mobile implementation](https://developers.cloudflare.com/turnstile/get-started/mobile-implementation/). Common causes include disabled JavaScript, missing DOM storage or cookie support, blocked access to `challenges.cloudflare.com`, and a User Agent that changes during the session.
+
 If none of the above resolves your issue, contact the website administrator with the [error code](https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/error-codes/) and Ray ID or submit a [feedback report](https://developers.cloudflare.com/turnstile/troubleshooting/feedback-reports/) through the Turnstile widget by selecting **Submit Feedback**.
 
 Was this helpful?
@@ -77,5 +94,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/challenge-solve-issues/#page","headline":"Challenge solve issues · Cloudflare challenges docs","description":"Fix challenge loops, unsupported browser errors, and other solve failures.","url":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/challenge-solve-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/challenge-solve-issues/#page","headline":"Challenge solve issues · Cloudflare challenges docs","description":"Fix challenge loops, unsupported browser errors, and other solve failures.","url":"https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/challenge-solve-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

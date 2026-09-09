@@ -452,10 +452,7 @@ If you'd prefer, you can [create an external agent manually](#create-an-external
 
 - Roles that can view private agents [expanded](https://gitlab.com/gitlab-org/gitlab/-/work_items/582507) in GitLab 18.7.
 - Restricted visibility [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/603253) in GitLab 19.3 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_internal_visibility`. Enabled by default.
-
-> [!flag]
-> The **Restricted** visibility option is controlled by a feature flag named `ai_catalog_internal_visibility`.
-> For more information, see the history.
+- Generally available in GitLab 19.4. Feature flag `ai_catalog_internal_visibility` removed.
 
 When you create a custom external agent, you select a project to manage it and choose
 whether the agent is public, private, or restricted.
@@ -485,10 +482,7 @@ You cannot make a public or restricted agent private if the agent has been turne
 ### Create the agent in the AI Catalog
 
 - Restricted visibility [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/603253) in GitLab 19.3 [with a feature flag](../../../administration/feature_flags/_index.md) named `ai_catalog_internal_visibility`. Enabled by default.
-
-> [!flag]
-> The **Restricted** visibility option is controlled by a feature flag named `ai_catalog_internal_visibility`.
-> For more information, see the history.
+- Generally available in GitLab 19.4. Feature flag `ai_catalog_internal_visibility` removed.
 
 Start by creating the external agent in the AI Catalog.
 

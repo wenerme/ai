@@ -183,6 +183,10 @@ Returns a list of API keys in the project.
 
     The redacted value of the API key
 
+  - `expires_at: optional number or null`
+
+    The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
+
 - `has_more: boolean`
 
 - `object: "list"`
@@ -228,7 +232,8 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys \
         }
       },
       "owner_project_access": "active",
-      "redacted_value": "redacted_value"
+      "redacted_value": "redacted_value",
+      "expires_at": 0
     }
   ],
   "has_more": true,
@@ -292,7 +297,7 @@ Retrieves an API key in the project.
 
 ### Returns
 
-- `ProjectAPIKey object { id, created_at, last_used_at, 5 more }`
+- `ProjectAPIKey object { id, created_at, last_used_at, 6 more }`
 
   Represents an individual API key in a project.
 
@@ -384,6 +389,10 @@ Retrieves an API key in the project.
 
     The redacted value of the API key
 
+  - `expires_at: optional number or null`
+
+    The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
+
 ### Example
 
 ```http
@@ -417,7 +426,8 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_K
     }
   },
   "owner_project_access": "active",
-  "redacted_value": "redacted_value"
+  "redacted_value": "redacted_value",
+  "expires_at": 0
 }
 ```
 
@@ -469,7 +479,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
 
 ### Project API Key
 
-- `ProjectAPIKey object { id, created_at, last_used_at, 5 more }`
+- `ProjectAPIKey object { id, created_at, last_used_at, 6 more }`
 
   Represents an individual API key in a project.
 
@@ -560,3 +570,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
   - `redacted_value: string`
 
     The redacted value of the API key
+
+  - `expires_at: optional number or null`
+
+    The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.

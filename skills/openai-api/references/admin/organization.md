@@ -585,7 +585,7 @@ List user actions and configuration changes within this organization.
 
 - `event_types: optional array of "api_key.created" or "api_key.updated" or "api_key.deleted" or 144 more`
 
-  Return only events with a `type` in one of these values. For example, `project.created`. For all options, see the documentation for the [audit log object](/docs/api-reference/audit-logs/object).
+  Return only events with a `type` in one of these values. For example, `project.created`. For all options, see the documentation for the [audit log object](/api/reference/resources/admin/subresources/organization/subresources/audit_logs).
 
   - `"api_key.created"`
 
@@ -7485,12 +7485,12 @@ Create a new project in the organization. Projects can be created and archived, 
 
 - `geography: optional string or null`
 
-  Create the project with the specified data residency region. Your organization must have access to Data residency functionality in order to use. See [data residency controls](/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
+  Create the project with the specified data residency region. Your organization must have access to Data residency functionality in order to use. See [data residency controls](/api/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
   Deprecated: use `residency` instead. Do not provide both `geography` and `residency`.
 
 - `residency: optional ProjectResidency or null`
 
-  Create the project with the specified residency configuration. Your organization must have access to the requested residency configuration in order to use it. See [data residency controls](/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
+  Create the project with the specified residency configuration. Your organization must have access to the requested residency configuration in order to use it. See [data residency controls](/api/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
 
   - `"GLOBAL"`
 
@@ -8301,6 +8301,10 @@ Returns a list of API keys in the project.
 
     The redacted value of the API key
 
+  - `expires_at: optional number or null`
+
+    The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
+
 - `has_more: boolean`
 
 - `object: "list"`
@@ -8346,7 +8350,8 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys \
         }
       },
       "owner_project_access": "active",
-      "redacted_value": "redacted_value"
+      "redacted_value": "redacted_value",
+      "expires_at": 0
     }
   ],
   "has_more": true,
@@ -8410,7 +8415,7 @@ Retrieves an API key in the project.
 
 ### Returns
 
-- `ProjectAPIKey object { id, created_at, last_used_at, 5 more }`
+- `ProjectAPIKey object { id, created_at, last_used_at, 6 more }`
 
   Represents an individual API key in a project.
 
@@ -8502,6 +8507,10 @@ Retrieves an API key in the project.
 
     The redacted value of the API key
 
+  - `expires_at: optional number or null`
+
+    The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
+
 ### Example
 
 ```http
@@ -8535,7 +8544,8 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_K
     }
   },
   "owner_project_access": "active",
-  "redacted_value": "redacted_value"
+  "redacted_value": "redacted_value",
+  "expires_at": 0
 }
 ```
 
@@ -8587,7 +8597,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
 
 ### Project API Key
 
-- `ProjectAPIKey object { id, created_at, last_used_at, 5 more }`
+- `ProjectAPIKey object { id, created_at, last_used_at, 6 more }`
 
   Represents an individual API key in a project.
 
@@ -8678,6 +8688,10 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
   - `redacted_value: string`
 
     The redacted value of the API key
+
+  - `expires_at: optional number or null`
+
+    The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
 # Certificates
 
@@ -12111,11 +12125,15 @@ Creates a new service account in the project. By default, this also returns an u
 
   Create the service account without default roles or an API key.
 
+- `expires_in_seconds: optional number or null`
+
+  Number of seconds until the initial API key expires. If omitted or null, the key does not expire unless the effective organization or project policy requires an expiration. When a policy sets a maximum lifetime, this value must be provided and must not exceed that limit. A non-null value cannot be used when `create_service_account_only` is true.
+
 ### Returns
 
 - `id: string`
 
-- `api_key: object { id, created_at, name, 2 more }  or null`
+- `api_key: object { id, created_at, name, 3 more }  or null`
 
   - `id: string`
 
@@ -12130,6 +12148,10 @@ Creates a new service account in the project. By default, this also returns an u
     - `"organization.project.service_account.api_key"`
 
   - `value: string`
+
+  - `expires_at: optional number or null`
+
+    The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
 - `created_at: number`
 
@@ -12168,7 +12190,8 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_account
     "created_at": 0,
     "name": "name",
     "object": "organization.project.service_account.api_key",
-    "value": "value"
+    "value": "value",
+    "expires_at": 0
   },
   "created_at": 0,
   "name": "name",
@@ -12617,7 +12640,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
   - `id: string`
 
-  - `api_key: object { id, created_at, name, 2 more }  or null`
+  - `api_key: object { id, created_at, name, 3 more }  or null`
 
     - `id: string`
 
@@ -12632,6 +12655,10 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
       - `"organization.project.service_account.api_key"`
 
     - `value: string`
+
+    - `expires_at: optional number or null`
+
+      The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
 
   - `created_at: number`
 

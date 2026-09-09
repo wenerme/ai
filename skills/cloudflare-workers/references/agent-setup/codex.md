@@ -44,7 +44,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 1. **Download Codex**
@@ -134,19 +134,19 @@ Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Tips

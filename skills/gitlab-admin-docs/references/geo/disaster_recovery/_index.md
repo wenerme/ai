@@ -17,7 +17,7 @@ Some [known issues](../_index.md#known-issues) exist.
 
 ## Secondary sites with selective synchronization enabled
 
-Promoting a secondary site with selective synchronization enabled results in **permanent data loss**
+Promoting a secondary site with selective synchronization enabled results in permanent data loss
 for all data that was not replicated to that secondary site. For more information, see
 [Promoting a secondary site with selective synchronization enabled](../replication/selective_synchronization.md#promoting-a-secondary-site-with-selective-synchronization-enabled).
 
@@ -190,7 +190,7 @@ Note the following when promoting a secondary:
      sudo gitlab-ctl geo promote
      ```
 
-   - To promote the secondary site to primary **without any further confirmation**:
+   - To promote the secondary site to primary without any further confirmation:
 
      ```shell
      sudo gitlab-ctl geo promote --force
@@ -222,7 +222,7 @@ At this point, your promoted site is the new primary GitLab site. Optionally, if
      sudo gitlab-ctl geo promote
      ```
 
-   - To promote the secondary site to primary **without any further confirmation**:
+   - To promote the secondary site to primary without any further confirmation:
 
      ```shell
      sudo gitlab-ctl geo promote --force
@@ -236,7 +236,7 @@ At this point, your promoted site is the new primary GitLab site. Optionally, if
      sudo gitlab-ctl geo promote
      ```
 
-   - To promote the secondary site to primary **without any further confirmation**:
+   - To promote the secondary site to primary without any further confirmation:
 
      ```shell
      sudo gitlab-ctl geo promote --force
@@ -260,7 +260,7 @@ when you reconfigure.
      sudo gitlab-ctl geo promote
      ```
 
-   - To promote the secondary site to primary **without any further confirmation**:
+   - To promote the secondary site to primary without any further confirmation:
 
      ```shell
      sudo gitlab-ctl geo promote --force
@@ -274,7 +274,7 @@ when you reconfigure.
      sudo gitlab-ctl geo promote
      ```
 
-   - To promote the secondary site to primary **without any further confirmation**:
+   - To promote the secondary site to primary without any further confirmation:
 
      ```shell
      sudo gitlab-ctl geo promote --force
@@ -325,7 +325,7 @@ with the secondary site:
      sudo gitlab-ctl geo promote
      ```
 
-   - To promote the secondary site to primary **without any further confirmation**:
+   - To promote the secondary site to primary without any further confirmation:
 
      ```shell
      sudo gitlab-ctl geo promote --force
@@ -339,7 +339,7 @@ with the secondary site:
      sudo gitlab-ctl geo promote
      ```
 
-   - To promote the secondary site to primary **without any further confirmation**:
+   - To promote the secondary site to primary without any further confirmation:
 
      ```shell
      sudo gitlab-ctl geo promote --force
@@ -465,7 +465,7 @@ and after that you also need two extra steps.
 1. Re-enable migrations now that PostgreSQL is restarted and listening on the
    private address.
 
-   Edit `/etc/gitlab/gitlab.rb` and **change** the configuration to `true`:
+   Edit `/etc/gitlab/gitlab.rb` and change the configuration to `true`:
 
    ```ruby
    gitlab_rails['auto_migrate'] = true
@@ -547,7 +547,7 @@ must disable the primary site:
      sudo gitlab-ctl geo promote
      ```
 
-   - To promote the secondary site node external to the Kubernetes cluster to primary **without any further confirmation**:
+   - To promote the secondary site node external to the Kubernetes cluster to primary without any further confirmation:
 
      ```shell
      sudo gitlab-ctl geo promote --force

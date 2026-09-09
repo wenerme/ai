@@ -391,6 +391,7 @@ curl --request DELETE \
 ### List all personal access tokens for a group service account
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/526924) in GitLab 17.11.
+- `last_used_ips` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250307) in GitLab 19.4.
 
 Lists all personal access tokens for a service account in a specified group.
 
@@ -438,6 +439,7 @@ Example response:
         ],
         "user_id": 195,
         "last_used_at": null,
+        "last_used_ips": [],
         "active": true,
         "expires_at": null
     }
@@ -450,6 +452,8 @@ Example of unsuccessful responses:
 - `404 Group Not Found`
 
 ### Create a personal access token for a group service account
+
+- `last_used_ips` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250307) in GitLab 19.4.
 
 Creates a personal access token for an existing service account in a specified group.
 
@@ -489,6 +493,7 @@ Example response:
   "scopes":["api"],
   "user_id":71,
   "last_used_at":null,
+  "last_used_ips":[],
   "active":true,
   "expires_at":"2024-06-12",
   "token":"<token_value>"
@@ -532,6 +537,8 @@ Other possible responses:
 
 ### Rotate a personal access token for a group service account
 
+- `last_used_ips` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250307) in GitLab 19.4.
+
 Rotates a specified personal access token for an existing service account in a specified group. This revokes the existing token and creates a new token with the same name, description, and scopes.
 
 ```plaintext
@@ -566,6 +573,7 @@ Example response:
   "scopes":["api"],
   "user_id":71,
   "last_used_at":null,
+  "last_used_ips":[],
   "active":true,
   "expires_at":"2023-06-20",
   "token":"<token_value>"
@@ -782,6 +790,8 @@ curl --request DELETE \
 
 ### List all personal access tokens for a project service account
 
+- `last_used_ips` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250307) in GitLab 19.4.
+
 Lists all personal access tokens for a service account in a project.
 
 ```plaintext
@@ -828,6 +838,7 @@ Example response:
         ],
         "user_id": 195,
         "last_used_at": null,
+        "last_used_ips": [],
         "active": true,
         "expires_at": null
     }
@@ -840,6 +851,8 @@ Example of unsuccessful responses:
 - `404 Project Not Found`
 
 ### Create a personal access token for a project service account
+
+- `last_used_ips` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250307) in GitLab 19.4.
 
 Creates a personal access token for an existing service account in a specified project.
 
@@ -879,6 +892,7 @@ Example response:
   "scopes":["api"],
   "user_id":71,
   "last_used_at":null,
+  "last_used_ips":[],
   "active":true,
   "expires_at":"2024-06-12",
   "token":"<token_value>"
@@ -920,6 +934,8 @@ Other possible responses:
 
 ### Rotate a personal access token for a project service account
 
+- `last_used_ips` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/250307) in GitLab 19.4.
+
 Rotates a personal access token for an existing service account in a specified project. This creates a new token valid for one week and revokes any existing tokens.
 
 ```plaintext
@@ -954,6 +970,7 @@ Example response:
   "scopes":["api"],
   "user_id":71,
   "last_used_at":null,
+  "last_used_ips":[],
   "active":true,
   "expires_at":"2023-06-20",
   "token":"<token_value>"

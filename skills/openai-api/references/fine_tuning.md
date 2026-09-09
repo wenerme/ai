@@ -320,7 +320,7 @@ Run a grader.
         Reducing reasoning effort can result in faster responses and fewer tokens
         used on reasoning in a response. Not all reasoning models support every
         value. See the
-        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        [reasoning guide](/api/docs/guides/reasoning)
         for model-specific support.
 
         - `"none"`
@@ -491,14 +491,14 @@ Run a grader.
 - `model_sample: string`
 
   The model sample to be evaluated. This value will be used to populate
-  the `sample` namespace. See [the guide](/docs/guides/graders) for more details.
+  the `sample` namespace. See [the guide](/api/docs/guides/graders) for more details.
   The `output_json` variable will be populated if the model sample is a
   valid JSON string.
 
 - `item: optional unknown`
 
   The dataset item provided to the grader. This will be used to populate
-  the `item` namespace. See [the guide](/docs/guides/graders) for more details.
+  the `item` namespace. See [the guide](/api/docs/guides/graders) for more details.
 
 ### Returns
 
@@ -1089,7 +1089,7 @@ Validate a grader.
         Reducing reasoning effort can result in faster responses and fewer tokens
         used on reasoning in a response. Not all reasoning models support every
         value. See the
-        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        [reasoning guide](/api/docs/guides/reasoning)
         for model-specific support.
 
         - `"none"`
@@ -1567,7 +1567,7 @@ Validate a grader.
         Reducing reasoning effort can result in faster responses and fewer tokens
         used on reasoning in a response. Not all reasoning models support every
         value. See the
-        [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+        [reasoning guide](/api/docs/guides/reasoning)
         for model-specific support.
 
         - `"none"`
@@ -2165,7 +2165,7 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
           Reducing reasoning effort can result in faster responses and fewer tokens
           used on reasoning in a response. Not all reasoning models support every
           value. See the
-          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          [reasoning guide](/api/docs/guides/reasoning)
           for model-specific support.
 
           - `"none"`
@@ -2341,7 +2341,7 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
 
 **post** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions`
 
-**NOTE:** Calling this endpoint requires an [admin API key](../admin-api-keys).
+**NOTE:** Calling this endpoint requires an [admin API key](/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys).
 
 This enables organization owners to share fine-tuned models with other projects in their organization.
 
@@ -2450,7 +2450,7 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18
 
 **delete** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions/{permission_id}`
 
-**NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
+**NOTE:** This endpoint requires an [admin API key](/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys).
 
 Organization owners can use this endpoint to delete a permission for a fine-tuned model checkpoint.
 
@@ -2515,7 +2515,7 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18
 
 **get** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions`
 
-**NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
+**NOTE:** This endpoint requires an [admin API key](/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys).
 
 Organization owners can use this endpoint to view all permissions for a fine-tuned model checkpoint.
 
@@ -2639,7 +2639,7 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18
 
 **get** `/fine_tuning/checkpoints/{fine_tuned_model_checkpoint}/permissions`
 
-**NOTE:** This endpoint requires an [admin API key](../admin-api-keys).
+**NOTE:** This endpoint requires an [admin API key](/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys).
 
 Organization owners can use this endpoint to view all permissions for a fine-tuned model checkpoint.
 
@@ -2964,7 +2964,7 @@ Immediately cancel a fine-tune job.
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/api/reference/resources/files/methods/content).
 
   - `seed: number`
 
@@ -2992,11 +2992,11 @@ Immediately cancel a fine-tune job.
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](/api/reference/resources/files/methods/content).
 
   - `validation_file: string or null`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](/api/reference/resources/files/methods/content).
 
   - `estimated_finish: optional number or null`
 
@@ -3419,7 +3419,7 @@ Immediately cancel a fine-tune job.
               Reducing reasoning effort can result in faster responses and fewer tokens
               used on reasoning in a response. Not all reasoning models support every
               value. See the
-              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              [reasoning guide](/api/docs/guides/reasoning)
               for model-specific support.
 
               - `"none"`
@@ -3826,21 +3826,21 @@ Creates a fine-tuning job which begins the process of creating a new model from 
 
 Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
 
-[Learn more about fine-tuning](/docs/guides/model-optimization)
+[Learn more about fine-tuning](/api/docs/guides/model-optimization)
 
 ### Body Parameters
 
 - `model: string or "babbage-002" or "davinci-002" or "gpt-3.5-turbo" or "gpt-4o-mini"`
 
   The name of the model to fine-tune. You can select one of the
-  [supported models](/docs/guides/fine-tuning#which-models-can-be-fine-tuned).
+  [supported models](/api/docs/guides/model-optimization#fine-tuning-methods).
 
   - `string`
 
   - `"babbage-002" or "davinci-002" or "gpt-3.5-turbo" or "gpt-4o-mini"`
 
     The name of the model to fine-tune. You can select one of the
-    [supported models](/docs/guides/fine-tuning#which-models-can-be-fine-tuned).
+    [supported models](/api/docs/guides/model-optimization#fine-tuning-methods).
 
     - `"babbage-002"`
 
@@ -3854,13 +3854,13 @@ Response includes details of the enqueued job including job status and the name 
 
   The ID of an uploaded file that contains training data.
 
-  See [upload file](/docs/api-reference/files/create) for how to upload a file.
+  See [upload file](/api/reference/resources/files/methods/create) for how to upload a file.
 
   Your dataset must be formatted as a JSONL file. Additionally, you must upload your file with the purpose `fine-tune`.
 
-  The contents of the file should differ depending on if the model uses the [chat](/docs/api-reference/fine-tuning/chat-input), [completions](/docs/api-reference/fine-tuning/completions-input) format, or if the fine-tuning method uses the [preference](/docs/api-reference/fine-tuning/preference-input) format.
+  The contents of the file should differ depending on if the model uses the [chat](/api/docs/guides/supervised-fine-tuning#formatting-your-data), [completions](/api/docs/guides/supervised-fine-tuning#formatting-your-data) format, or if the fine-tuning method uses the [preference](/api/docs/guides/direct-preference-optimization) format.
 
-  See the [fine-tuning guide](/docs/guides/model-optimization) for more details.
+  See the [fine-tuning guide](/api/docs/guides/model-optimization) for more details.
 
 - `hyperparameters: optional object { batch_size, learning_rate_multiplier, n_epochs }`
 
@@ -4317,7 +4317,7 @@ Response includes details of the enqueued job including job status and the name 
             Reducing reasoning effort can result in faster responses and fewer tokens
             used on reasoning in a response. Not all reasoning models support every
             value. See the
-            [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+            [reasoning guide](/api/docs/guides/reasoning)
             for model-specific support.
 
             - `"none"`
@@ -4621,7 +4621,7 @@ Response includes details of the enqueued job including job status and the name 
 
   Your dataset must be formatted as a JSONL file. You must upload your file with the purpose `fine-tune`.
 
-  See the [fine-tuning guide](/docs/guides/model-optimization) for more details.
+  See the [fine-tuning guide](/api/docs/guides/model-optimization) for more details.
 
 ### Returns
 
@@ -4714,7 +4714,7 @@ Response includes details of the enqueued job including job status and the name 
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/api/reference/resources/files/methods/content).
 
   - `seed: number`
 
@@ -4742,11 +4742,11 @@ Response includes details of the enqueued job including job status and the name 
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](/api/reference/resources/files/methods/content).
 
   - `validation_file: string or null`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](/api/reference/resources/files/methods/content).
 
   - `estimated_finish: optional number or null`
 
@@ -5169,7 +5169,7 @@ Response includes details of the enqueued job including job status and the name 
               Reducing reasoning effort can result in faster responses and fewer tokens
               used on reasoning in a response. Not all reasoning models support every
               value. See the
-              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              [reasoning guide](/api/docs/guides/reasoning)
               for model-specific support.
 
               - `"none"`
@@ -6010,7 +6010,7 @@ List your organization's fine-tuning jobs
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/api/reference/resources/files/methods/content).
 
   - `seed: number`
 
@@ -6038,11 +6038,11 @@ List your organization's fine-tuning jobs
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](/api/reference/resources/files/methods/content).
 
   - `validation_file: string or null`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](/api/reference/resources/files/methods/content).
 
   - `estimated_finish: optional number or null`
 
@@ -6465,7 +6465,7 @@ List your organization's fine-tuning jobs
               Reducing reasoning effort can result in faster responses and fewer tokens
               used on reasoning in a response. Not all reasoning models support every
               value. See the
-              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              [reasoning guide](/api/docs/guides/reasoning)
               for model-specific support.
 
               - `"none"`
@@ -7119,7 +7119,7 @@ Pause a fine-tune job.
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/api/reference/resources/files/methods/content).
 
   - `seed: number`
 
@@ -7147,11 +7147,11 @@ Pause a fine-tune job.
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](/api/reference/resources/files/methods/content).
 
   - `validation_file: string or null`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](/api/reference/resources/files/methods/content).
 
   - `estimated_finish: optional number or null`
 
@@ -7574,7 +7574,7 @@ Pause a fine-tune job.
               Reducing reasoning effort can result in faster responses and fewer tokens
               used on reasoning in a response. Not all reasoning models support every
               value. See the
-              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              [reasoning guide](/api/docs/guides/reasoning)
               for model-specific support.
 
               - `"none"`
@@ -8074,7 +8074,7 @@ Resume a fine-tune job.
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/api/reference/resources/files/methods/content).
 
   - `seed: number`
 
@@ -8102,11 +8102,11 @@ Resume a fine-tune job.
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](/api/reference/resources/files/methods/content).
 
   - `validation_file: string or null`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](/api/reference/resources/files/methods/content).
 
   - `estimated_finish: optional number or null`
 
@@ -8529,7 +8529,7 @@ Resume a fine-tune job.
               Reducing reasoning effort can result in faster responses and fewer tokens
               used on reasoning in a response. Not all reasoning models support every
               value. See the
-              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              [reasoning guide](/api/docs/guides/reasoning)
               for model-specific support.
 
               - `"none"`
@@ -8934,7 +8934,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
 Get info about a fine-tuning job.
 
-[Learn more about fine-tuning](/docs/guides/model-optimization)
+[Learn more about fine-tuning](/api/docs/guides/model-optimization)
 
 ### Path Parameters
 
@@ -9031,7 +9031,7 @@ Get info about a fine-tuning job.
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/api/reference/resources/files/methods/content).
 
   - `seed: number`
 
@@ -9059,11 +9059,11 @@ Get info about a fine-tuning job.
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](/api/reference/resources/files/methods/content).
 
   - `validation_file: string or null`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](/api/reference/resources/files/methods/content).
 
   - `estimated_finish: optional number or null`
 
@@ -9486,7 +9486,7 @@ Get info about a fine-tuning job.
               Reducing reasoning effort can result in faster responses and fewer tokens
               used on reasoning in a response. Not all reasoning models support every
               value. See the
-              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              [reasoning guide](/api/docs/guides/reasoning)
               for model-specific support.
 
               - `"none"`
@@ -9999,7 +9999,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
 
   - `result_files: array of string`
 
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/api/reference/resources/files/methods/content).
 
   - `seed: number`
 
@@ -10027,11 +10027,11 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
 
   - `training_file: string`
 
-    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for training. You can retrieve the training data with the [Files API](/api/reference/resources/files/methods/content).
 
   - `validation_file: string or null`
 
-    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
+    The file ID used for validation. You can retrieve the validation results with the [Files API](/api/reference/resources/files/methods/content).
 
   - `estimated_finish: optional number or null`
 
@@ -10454,7 +10454,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
               Reducing reasoning effort can result in faster responses and fewer tokens
               used on reasoning in a response. Not all reasoning models support every
               value. See the
-              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              [reasoning guide](/api/docs/guides/reasoning)
               for model-specific support.
 
               - `"none"`
@@ -11547,7 +11547,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/checkpoints \
           Reducing reasoning effort can result in faster responses and fewer tokens
           used on reasoning in a response. Not all reasoning models support every
           value. See the
-          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+          [reasoning guide](/api/docs/guides/reasoning)
           for model-specific support.
 
           - `"none"`

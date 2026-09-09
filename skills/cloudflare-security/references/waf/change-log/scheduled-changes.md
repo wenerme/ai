@@ -16,15 +16,16 @@ Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
 
-## 2026-09-01
+## 2026-09-08
 
 
-**WAF Release - Scheduled changes for 2026-09-08**
+**WAF Release - Scheduled changes for 2026-09-15**
 
-| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                                                             | Comments                                                                                                                              |
-| ----------------- | ------------ | ---------------- | -------------- | ----------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| 2026-09-01        | 2026-09-08   | Log              | N/A            | ...c76ba662 | Next.js - Image Optimizer Remote Code Execution via Crafted AVIF - Beta | This rule will be merged into the original rule "Next.js - Image Optimizer Remote Code Execution via Crafted AVIF" (ID: ...80256efe). |
-| 2026-09-01        | 2026-09-08   | Log              | N/A            | ...208457cf | Next.js - Remote Code Execution - CVE:CVE-2026-75604 - Beta             | This rule will be merged into the original rule "Next.js - Remote Code Execution - CVE:CVE-2026-75604" (ID: ...2ca6cce3).             |
+| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                                     | Comments                                                                                                      |
+| ----------------- | ------------ | ---------------- | -------------- | ----------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| 2026-09-08        | 2026-09-15   | Log              | N/A            | ...19491e62 | SSRF - Cloud - 3                                | This is a new detection.                                                                                      |
+| 2026-09-08        | 2026-09-15   | Log              | N/A            | ...e6a0b6de | Version Control - Information Disclosure - Beta | This rule will be merged into the original rule "Version Control - Information Disclosure" (ID: ...0550c529). |
+| 2026-09-08        | 2026-09-15   | Log              | N/A            | ...c1aaebda | Command Injection - Generic 10                  | This is a new detection.                                                                                      |
 
 For other WAF updates, refer to the [changelog](https://developers.cloudflare.com/waf/change-log/changelog/).
 

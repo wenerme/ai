@@ -47,7 +47,7 @@ returned.
 
     - `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
 
-      Learn about [text inputs](/docs/guides/text-generation).
+      Learn about [text inputs](/api/docs/guides/text).
 
       - `text: string`
 
@@ -71,7 +71,7 @@ returned.
 
     - `ChatCompletionContentPartImage object { image_url, type, prompt_cache_breakpoint }`
 
-      Learn about [image inputs](/docs/guides/vision).
+      Learn about [image inputs](/api/docs/guides/images-vision).
 
       - `image_url: object { url, detail }`
 
@@ -81,7 +81,7 @@ returned.
 
         - `detail: optional "auto" or "low" or "high"`
 
-          Specifies the detail level of the image. Learn more in the [Vision guide](/docs/guides/vision#low-or-high-fidelity-image-understanding).
+          Specifies the detail level of the image. Learn more in the [Vision guide](/api/docs/guides/images-vision#choose-an-image-detail-level).
 
           - `"auto"`
 

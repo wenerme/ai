@@ -350,6 +350,8 @@ components:
             - low
             - medium
             - high
+            - xhigh
+            - max
           example: high
           type: string
         resolution:
@@ -1336,7 +1338,6 @@ components:
         - Moonshot AI
         - Morph
         - VoyageAI by MongoDB
-        - NCompass
         - Nebius
         - Nex AGI
         - NextBit
@@ -1693,7 +1694,7 @@ components:
         poolside:
           additionalProperties: {}
           type: object
-        prime-intellect:
+        primeintellect:
           additionalProperties: {}
           type: object
         quiver:

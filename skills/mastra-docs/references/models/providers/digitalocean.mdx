@@ -5,7 +5,7 @@ description: "Browse DigitalOcean model IDs, capabilities, context windows, and 
 
 # [DigitalOcean logo]DigitalOcean
 
-Access 95 DigitalOcean models through Mastra's model router. Authentication is handled automatically using the `DIGITALOCEAN_ACCESS_TOKEN` environment variable.
+Access 96 DigitalOcean models through Mastra's model router. Authentication is handled automatically using the `DIGITALOCEAN_ACCESS_TOKEN` environment variable.
 
 Learn more in the [DigitalOcean documentation](https://docs.digitalocean.com/products/gradient-ai-platform/details/models/).
 
@@ -926,6 +926,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 2,
     "outputCost": 12
+  },
+  {
+    "model": "digitalocean/openai-gpt-6-astra",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 10,
+    "outputCost": 50
   },
   {
     "model": "digitalocean/openai-gpt-image-1",

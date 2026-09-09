@@ -189,7 +189,8 @@ shape. Requests with an `anthropic-version` header get the Anthropic shape.
 
 ## Download rules
 
-Files that you upload cannot be downloaded again. A request to
+Files that you upload cannot be downloaded directly, they can only be used
+within OpenRouter sandboxes created by the shell or bash tools. A request to
 `GET /api/v1/files/{file_id}/content` for an uploaded file returns a `400`
 error. Keep your own copy of every file you upload.
 
@@ -203,10 +204,6 @@ Files that a model creates are different:
   [Save a container file to your workspace](/docs/guides/features/containers#save-a-container-file-to-your-workspace).
 * Files that the [files tool](/docs/guides/features/server-tools/files) writes or
   edits also have `"downloadable": true` and can be downloaded the same way.
-
-Files that a model created before this behavior launched keep
-`"downloadable": false`. Promote the container file again, or ask the model
-to write the file again, to get a downloadable copy.
 
 ## Delete a file
 

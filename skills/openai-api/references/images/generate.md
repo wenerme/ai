@@ -2,7 +2,7 @@
 
 **post** `/images/generations`
 
-Creates an image given a prompt. [Learn more](/docs/guides/images).
+Creates an image given a prompt. [Learn more](/api/docs/guides/images-vision).
 
 ### Body Parameters
 
@@ -12,14 +12,16 @@ Creates an image given a prompt. [Learn more](/docs/guides/images).
 
 - `background: optional "transparent" or "opaque" or "auto" or null`
 
-  Set the background of the generated image(s). This parameter is only
-  supported for the GPT image models. Must be one of `transparent`, `opaque`,
-  or `auto` (default value). When `auto` is used, the model will automatically
-  determine the best background for the image.
+  Set the background of the generated image(s). This parameter is only supported for
+  the GPT image models. Must be one of `transparent`, `opaque`, or `auto` (default
+  value). When `auto` is used, the model will automatically determine the best
+  background for the image.
 
-  Transparent backgrounds are available for supported GPT Image models. For
-  `gpt-image-2` and `gpt-image-2-2026-04-21`, this support is in preview. When
-  using `transparent`, set the output format to `png` or `webp`.
+  `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`, including their `2026-09-08`
+  snapshots, support `opaque` and `transparent` backgrounds. Transparent backgrounds
+  are available for supported GPT Image models. For `gpt-image-2` and
+  `gpt-image-2-2026-04-21`, this support is in preview. When using `transparent`,
+  set the output format to `png` or `webp`.
 
   - `"transparent"`
 
@@ -29,17 +31,25 @@ Creates an image given a prompt. [Learn more](/docs/guides/images).
 
 - `model: optional string or ImageModel or null`
 
-  The model to use for image generation. One of `dall-e-2`, `dall-e-3`, or a GPT image model (`gpt-image-1`, `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`, `gpt-image-2-2026-04-21`). Defaults to `dall-e-2` unless a parameter specific to the GPT image models is used.
+  The model to use for image generation. One of `dall-e-2`, `dall-e-3`, or a GPT image model (`gpt-image-1`, `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`, `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, `gpt-image-2.5-flare-2026-09-08`). Defaults to `dall-e-2` unless a parameter specific to the GPT image models is used.
 
   - `string`
 
-  - `ImageModel = "gpt-image-1.5" or "gpt-image-2" or "gpt-image-2-2026-04-21" or 4 more`
+  - `ImageModel = "gpt-image-1.5" or "gpt-image-2" or "gpt-image-2-2026-04-21" or 8 more`
 
     - `"gpt-image-1.5"`
 
     - `"gpt-image-2"`
 
     - `"gpt-image-2-2026-04-21"`
+
+    - `"gpt-image-2.5-sunburst"`
+
+    - `"gpt-image-2.5-sunburst-2026-09-08"`
+
+    - `"gpt-image-2.5-flare"`
+
+    - `"gpt-image-2.5-flare-2026-09-08"`
 
     - `"dall-e-2"`
 
@@ -84,12 +94,15 @@ Creates an image given a prompt. [Learn more](/docs/guides/images).
   Note that the final image may be sent before the full number of partial images
   are generated if the full image is generated more quickly.
 
-- `quality: optional "standard" or "hd" or "low" or 3 more or null`
+- `quality: optional "standard" or "hd" or "low" or 5 more or null`
 
   The quality of the image that will be generated.
 
-  - `auto` (default value) will automatically select the best quality for the given model.
+  - `auto` (default value) will automatically select the best quality for the given
+    model.
   - `high`, `medium` and `low` are supported for the GPT image models.
+  - `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`, including their `2026-09-08`
+    snapshots, also support `xhigh` and `max`.
   - `hd` and `standard` are supported for `dall-e-3`.
   - `standard` is the only option for `dall-e-2`.
 
@@ -103,6 +116,10 @@ Creates an image given a prompt. [Learn more](/docs/guides/images).
 
   - `"high"`
 
+  - `"xhigh"`
+
+  - `"max"`
+
   - `"auto"`
 
 - `response_format: optional "url" or "b64_json" or null`
@@ -115,13 +132,13 @@ Creates an image given a prompt. [Learn more](/docs/guides/images).
 
 - `size: optional string or "auto" or "1024x1024" or "1536x1024" or 5 more or null`
 
-  The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
+  The size of the generated images. For `gpt-image-2`, `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and `gpt-image-2.5-flare-2026-09-08`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
   - `string`
 
   - `"auto" or "1024x1024" or "1536x1024" or 5 more`
 
-    The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
+    The size of the generated images. For `gpt-image-2`, `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and `gpt-image-2.5-flare-2026-09-08`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
 
     - `"auto"`
 
@@ -142,7 +159,7 @@ Creates an image given a prompt. [Learn more](/docs/guides/images).
 - `stream: optional boolean or null`
 
   Generate the image in streaming mode. Defaults to `false`. See the
-  [Image generation guide](/docs/guides/image-generation) for more information.
+  [Image generation guide](/api/docs/guides/image-generation) for more information.
   This parameter is only supported for the GPT image models.
 
 - `style: optional "vivid" or "natural" or null`
@@ -155,7 +172,7 @@ Creates an image given a prompt. [Learn more](/docs/guides/images).
 
 - `user: optional string`
 
-  A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](/docs/guides/safety-best-practices#end-user-ids).
+  A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
 
 ### Returns
 
@@ -201,9 +218,9 @@ Creates an image given a prompt. [Learn more](/docs/guides/images).
 
     - `"jpeg"`
 
-  - `quality: optional "low" or "medium" or "high"`
+  - `quality: optional "low" or "medium" or "high" or 2 more`
 
-    The quality of the image generated. Either `low`, `medium`, or `high`.
+    The quality of the image generated. One of `low`, `medium`, `high`, `xhigh`, or `max`.
 
     - `"low"`
 
@@ -211,15 +228,25 @@ Creates an image given a prompt. [Learn more](/docs/guides/images).
 
     - `"high"`
 
-  - `size: optional "1024x1024" or "1024x1536" or "1536x1024"`
+    - `"xhigh"`
 
-    The size of the image generated. Either `1024x1024`, `1024x1536`, or `1536x1024`.
+    - `"max"`
 
-    - `"1024x1024"`
+  - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024"`
 
-    - `"1024x1536"`
+    The image dimensions as a `WIDTHxHEIGHT` string, for example `1536x864`.
 
-    - `"1536x1024"`
+    - `string`
+
+    - `"1024x1024" or "1024x1536" or "1536x1024"`
+
+      The image dimensions as a `WIDTHxHEIGHT` string, for example `1536x864`.
+
+      - `"1024x1024"`
+
+      - `"1024x1536"`
+
+      - `"1536x1024"`
 
   - `usage: optional object { input_tokens, input_tokens_details, output_tokens, 2 more }`
 

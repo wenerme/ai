@@ -12,7 +12,7 @@ Retrieves an API key in the project.
 
 ### Returns
 
-- `ProjectAPIKey object { id, created_at, last_used_at, 5 more }`
+- `ProjectAPIKey object { id, created_at, last_used_at, 6 more }`
 
   Represents an individual API key in a project.
 
@@ -104,6 +104,10 @@ Retrieves an API key in the project.
 
     The redacted value of the API key
 
+  - `expires_at: optional number or null`
+
+    The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
+
 ### Example
 
 ```http
@@ -137,7 +141,8 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_K
     }
   },
   "owner_project_access": "active",
-  "redacted_value": "redacted_value"
+  "redacted_value": "redacted_value",
+  "expires_at": 0
 }
 ```
 

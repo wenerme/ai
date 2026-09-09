@@ -54,7 +54,7 @@ cmd
 Ask Command Code to investigate a task, make changes, and run the relevant tests. Review its diffs and command output before keeping changes.
 For example:
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ## Cloudflare platform access
@@ -134,7 +134,7 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
@@ -142,15 +142,15 @@ Add real-time collaboration to my app using Durable Objects with WebSocket hiber
 ```
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ## Tips

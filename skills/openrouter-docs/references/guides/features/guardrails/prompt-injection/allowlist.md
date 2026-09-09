@@ -9,7 +9,7 @@
 The prompt injection allowlist lets you mark specific phrases as safe so they are not caught by the [regex-based prompt injection detection guardrail](/docs/guides/features/guardrails/prompt-injection). This is useful when your application legitimately uses language that overlaps with injection patterns — for example, a security-training chatbot that discusses prompt injection techniques, or a customer-support agent whose canned responses include phrases like "ignore previous instructions."
 
 <Note>
-  The allowlist only applies to regex-based detection patterns (the patterns listed on the [Prompt Injection Detection](/docs/guides/features/guardrails/prompt-injection#detection-patterns) page). Evasion detectors — typoglycemia and Base64/hex encoding — are not affected by the allowlist because they operate on decoded or normalized text where selective phrase exemption is not meaningful.
+  Quick-add supports the regex-based patterns listed on the [Prompt Injection Detection](/docs/guides/features/guardrails/prompt-injection#detection-patterns) page. Evasion detectors — typoglycemia, [misspelled phrases](/docs/guides/features/guardrails/prompt-injection#misspelled-phrase-detection), and Base64/hex encoding — do not expose precise match spans. Allowlisting a regex match does not exempt a separate evasion hit in the same message.
 </Note>
 
 ## How It Works
@@ -67,14 +67,14 @@ When reviewing guardrail events in the [Logs](https://openrouter.ai/logs) prompt
 After adding, a confirmation links back to [Settings > Privacy](https://openrouter.ai/settings/privacy) where you can edit, toggle, or delete the pattern.
 
 <Tip>
-  The quick-add banner only appears for regex-based detections. Events triggered by evasion detectors (typoglycemia, encoding) do not show the banner because those detection types cannot be selectively allowlisted.
+  The quick-add banner only appears for regex-based detections. Events that include evasion detections (typoglycemia, misspelled phrases, encoding) do not show the banner, even if the event also includes a regex match.
 </Tip>
 
 ## Limitations
 
 * Up to **200 active patterns** per user. Inactive (toggled-off) patterns do not count toward this cap.
 * Each pattern can be up to **1,000 bytes** when UTF-8 encoded (multibyte characters count as multiple bytes).
-* **Regex-based patterns only.** The allowlist does not affect typoglycemia detection or Base64/hex encoding detection. If a message triggers one of those evasion detectors, the full message is flagged/redacted regardless of any allowlist entries.
+* **Regex-based quick-add only.** Typoglycemia, misspelled-phrase, and Base64/hex encoding detections cannot be selectively redacted. If an evasion hit remains after allowlist masking, the scanned text is still flagged, blocked, or fully redacted according to the configured action.
 * **Exact match only.** You cannot use wildcards, regex, or fuzzy matching in allowlist entries. The phrase must appear verbatim in the message text.
 * **Per-entity scope.** Allowlist patterns are scoped to the account entity, not to a guardrail. On a personal account that entity is the individual user, who manages their own allowlist. In an organization the entity is the org itself, and only org admins can manage its allowlist (non-admin members do not see the controls).
 * **Duplicate detection is case-insensitive.** You cannot add two patterns that differ only in letter casing (e.g., "Ignore" and "ignore" are treated as the same pattern).

@@ -120,6 +120,10 @@ Returns a list of API keys in the project.
 
     The redacted value of the API key
 
+  - `expires_at: optional number or null`
+
+    The Unix timestamp (in seconds) when the API key expires, or null if it does not expire.
+
 - `has_more: boolean`
 
 - `object: "list"`
@@ -165,7 +169,8 @@ curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys \
         }
       },
       "owner_project_access": "active",
-      "redacted_value": "redacted_value"
+      "redacted_value": "redacted_value",
+      "expires_at": 0
     }
   ],
   "has_more": true,

@@ -129,10 +129,10 @@ Cancels an in-progress batch. The batch will be in status `cancelling` for up to
 
   - `model: optional string`
 
-    Model ID used to process the batch, like `gpt-5.6-sol`. OpenAI
+    Model ID used to process the batch, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model
-    guide](/docs/models) to browse and compare available models.
+    guide](/api/docs/models) to browse and compare available models.
 
   - `output_file_id: optional string`
 
@@ -171,7 +171,7 @@ Cancels an in-progress batch. The batch will be in status `cancelling` for up to
       - `cached_tokens: number`
 
         The number of tokens that were retrieved from the cache. [More on
-        prompt caching](/docs/guides/prompt-caching).
+        prompt caching](/api/docs/guides/prompt-caching).
 
     - `output_tokens: number`
 
@@ -333,9 +333,9 @@ Creates and executes a batch from an uploaded file of requests
 
   The ID of an uploaded file that contains requests for the new batch.
 
-  See [upload file](/docs/api-reference/files/create) for how to upload a file.
+  See [upload file](/api/reference/resources/files/methods/create) for how to upload a file.
 
-  Your input file must be formatted as a [JSONL file](/docs/api-reference/batch/request-input), and must be uploaded with the purpose `batch`. The file can contain up to 50,000 requests, and can be up to 200 MB in size.
+  Your input file must be formatted as a [JSONL file](/api/docs/guides/batch#1-prepare-your-batch-file), and must be uploaded with the purpose `batch`. The file can contain up to 50,000 requests, and can be up to 200 MB in size.
 
 - `metadata: optional Metadata or null`
 
@@ -479,10 +479,10 @@ Creates and executes a batch from an uploaded file of requests
 
   - `model: optional string`
 
-    Model ID used to process the batch, like `gpt-5.6-sol`. OpenAI
+    Model ID used to process the batch, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model
-    guide](/docs/models) to browse and compare available models.
+    guide](/api/docs/models) to browse and compare available models.
 
   - `output_file_id: optional string`
 
@@ -521,7 +521,7 @@ Creates and executes a batch from an uploaded file of requests
       - `cached_tokens: number`
 
         The number of tokens that were retrieved from the cache. [More on
-        prompt caching](/docs/guides/prompt-caching).
+        prompt caching](/api/docs/guides/prompt-caching).
 
     - `output_tokens: number`
 
@@ -789,10 +789,10 @@ List your organization's batches.
 
   - `model: optional string`
 
-    Model ID used to process the batch, like `gpt-5.6-sol`. OpenAI
+    Model ID used to process the batch, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model
-    guide](/docs/models) to browse and compare available models.
+    guide](/api/docs/models) to browse and compare available models.
 
   - `output_file_id: optional string`
 
@@ -831,7 +831,7 @@ List your organization's batches.
       - `cached_tokens: number`
 
         The number of tokens that were retrieved from the cache. [More on
-        prompt caching](/docs/guides/prompt-caching).
+        prompt caching](/api/docs/guides/prompt-caching).
 
     - `output_tokens: number`
 
@@ -1109,10 +1109,10 @@ Retrieves a batch.
 
   - `model: optional string`
 
-    Model ID used to process the batch, like `gpt-5.6-sol`. OpenAI
+    Model ID used to process the batch, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model
-    guide](/docs/models) to browse and compare available models.
+    guide](/api/docs/models) to browse and compare available models.
 
   - `output_file_id: optional string`
 
@@ -1151,7 +1151,7 @@ Retrieves a batch.
       - `cached_tokens: number`
 
         The number of tokens that were retrieved from the cache. [More on
-        prompt caching](/docs/guides/prompt-caching).
+        prompt caching](/api/docs/guides/prompt-caching).
 
     - `output_tokens: number`
 
@@ -1394,10 +1394,10 @@ curl https://api.openai.com/v1/batches/batch_abc123 \
 
   - `model: optional string`
 
-    Model ID used to process the batch, like `gpt-5.6-sol`. OpenAI
+    Model ID used to process the batch, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model
-    guide](/docs/models) to browse and compare available models.
+    guide](/api/docs/models) to browse and compare available models.
 
   - `output_file_id: optional string`
 
@@ -1436,7 +1436,7 @@ curl https://api.openai.com/v1/batches/batch_abc123 \
       - `cached_tokens: number`
 
         The number of tokens that were retrieved from the cache. [More on
-        prompt caching](/docs/guides/prompt-caching).
+        prompt caching](/api/docs/guides/prompt-caching).
 
     - `output_tokens: number`
 
@@ -1511,7 +1511,7 @@ curl https://api.openai.com/v1/batches/batch_abc123 \
     - `cached_tokens: number`
 
       The number of tokens that were retrieved from the cache. [More on
-      prompt caching](/docs/guides/prompt-caching).
+      prompt caching](/api/docs/guides/prompt-caching).
 
   - `output_tokens: number`
 
