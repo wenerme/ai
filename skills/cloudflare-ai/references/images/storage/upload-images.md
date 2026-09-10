@@ -19,8 +19,8 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 * [Upload via custom path](https://developers.cloudflare.com/images/storage/upload-images/upload-custom-path/)
 * [Accept user-uploaded images](https://developers.cloudflare.com/images/storage/upload-images/direct-creator-upload/)
 * [Upload via batch API](https://developers.cloudflare.com/images/storage/upload-images/images-batch/)
+* [Import from S3](https://developers.cloudflare.com/images/storage/upload-images/import-from-s3/)
 * [Upload via a Worker](https://developers.cloudflare.com/images/storage/upload-images/upload-file-worker/)
-* [Upload via Sourcing Kit](https://developers.cloudflare.com/images/storage/upload-images/sourcing-kit/)
 * [Configure webhooks](https://developers.cloudflare.com/images/storage/upload-images/configure-webhooks/)
 
 Was this helpful?

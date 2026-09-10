@@ -4087,7 +4087,7 @@ the `background` parameter set to `true` can be cancelled.
 
             The canonical name of the agent that produced this item.
 
-      - `ImageGenerationCall object { id, result, status, 4 more }`
+      - `ImageGenerationCall object { id, result, status, 8 more }`
 
         An image generation request made by the model.
 
@@ -4117,6 +4117,16 @@ the `background` parameter set to `true` can be cancelled.
 
           - `"image_generation_call"`
 
+        - `action: optional "generate" or "edit" or "auto" or null`
+
+          The action used for image generation.
+
+          - `"generate"`
+
+          - `"edit"`
+
+          - `"auto"`
+
         - `agent: optional object { agent_name }  or null`
 
           The agent that produced this item.
@@ -4124,6 +4134,26 @@ the `background` parameter set to `true` can be cancelled.
           - `agent_name: string`
 
             The canonical name of the agent that produced this item.
+
+        - `background: optional "transparent" or "opaque" or "auto" or null`
+
+          The background setting used for generation.
+
+          - `"transparent"`
+
+          - `"opaque"`
+
+          - `"auto"`
+
+        - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+          The output format used for generation.
+
+          - `"png"`
+
+          - `"webp"`
+
+          - `"jpeg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -4140,6 +4170,10 @@ the `background` parameter set to `true` can be cancelled.
           - `"max"`
 
           - `"auto"`
+
+        - `revised_prompt: optional string or null`
+
+          The prompt that was used after any model prompt rewriting.
 
         - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -8519,7 +8553,7 @@ the `background` parameter set to `true` can be cancelled.
 
         The identifier of the actor that created the item.
 
-    - `ImageGenerationCall object { id, result, status, 4 more }`
+    - `ImageGenerationCall object { id, result, status, 8 more }`
 
       An image generation request made by the model.
 
@@ -8549,6 +8583,16 @@ the `background` parameter set to `true` can be cancelled.
 
         - `"image_generation_call"`
 
+      - `action: optional "generate" or "edit" or "auto" or null`
+
+        The action used for image generation.
+
+        - `"generate"`
+
+        - `"edit"`
+
+        - `"auto"`
+
       - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
@@ -8556,6 +8600,26 @@ the `background` parameter set to `true` can be cancelled.
         - `agent_name: string`
 
           The canonical name of the agent that produced this item.
+
+      - `background: optional "transparent" or "opaque" or "auto" or null`
+
+        The background setting used for generation.
+
+        - `"transparent"`
+
+        - `"opaque"`
+
+        - `"auto"`
+
+      - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+        The output format used for generation.
+
+        - `"png"`
+
+        - `"webp"`
+
+        - `"jpeg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -8572,6 +8636,10 @@ the `background` parameter set to `true` can be cancelled.
         - `"max"`
 
         - `"auto"`
+
+      - `revised_prompt: optional string or null`
+
+        The prompt that was used after any model prompt rewriting.
 
       - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -15753,7 +15821,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           The canonical name of the agent that produced this item.
 
-    - `ImageGenerationCall object { id, result, status, 4 more }`
+    - `ImageGenerationCall object { id, result, status, 8 more }`
 
       An image generation request made by the model.
 
@@ -15783,6 +15851,16 @@ Learn when and how to compact long-running conversations in the [conversation st
 
         - `"image_generation_call"`
 
+      - `action: optional "generate" or "edit" or "auto" or null`
+
+        The action used for image generation.
+
+        - `"generate"`
+
+        - `"edit"`
+
+        - `"auto"`
+
       - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
@@ -15790,6 +15868,26 @@ Learn when and how to compact long-running conversations in the [conversation st
         - `agent_name: string`
 
           The canonical name of the agent that produced this item.
+
+      - `background: optional "transparent" or "opaque" or "auto" or null`
+
+        The background setting used for generation.
+
+        - `"transparent"`
+
+        - `"opaque"`
+
+        - `"auto"`
+
+      - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+        The output format used for generation.
+
+        - `"png"`
+
+        - `"webp"`
+
+        - `"jpeg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -15806,6 +15904,10 @@ Learn when and how to compact long-running conversations in the [conversation st
         - `"max"`
 
         - `"auto"`
+
+      - `revised_prompt: optional string or null`
+
+        The prompt that was used after any model prompt rewriting.
 
       - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -26013,7 +26115,7 @@ as input for the model's response.
 
           The canonical name of the agent that produced this item.
 
-    - `ImageGenerationCall object { id, result, status, 4 more }`
+    - `ImageGenerationCall object { id, result, status, 8 more }`
 
       An image generation request made by the model.
 
@@ -26043,6 +26145,16 @@ as input for the model's response.
 
         - `"image_generation_call"`
 
+      - `action: optional "generate" or "edit" or "auto" or null`
+
+        The action used for image generation.
+
+        - `"generate"`
+
+        - `"edit"`
+
+        - `"auto"`
+
       - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
@@ -26050,6 +26162,26 @@ as input for the model's response.
         - `agent_name: string`
 
           The canonical name of the agent that produced this item.
+
+      - `background: optional "transparent" or "opaque" or "auto" or null`
+
+        The background setting used for generation.
+
+        - `"transparent"`
+
+        - `"opaque"`
+
+        - `"auto"`
+
+      - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+        The output format used for generation.
+
+        - `"png"`
+
+        - `"webp"`
+
+        - `"jpeg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -26066,6 +26198,10 @@ as input for the model's response.
         - `"max"`
 
         - `"auto"`
+
+      - `revised_prompt: optional string or null`
+
+        The prompt that was used after any model prompt rewriting.
 
       - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -33045,7 +33181,7 @@ as input for the model's response.
 
             The canonical name of the agent that produced this item.
 
-      - `ImageGenerationCall object { id, result, status, 4 more }`
+      - `ImageGenerationCall object { id, result, status, 8 more }`
 
         An image generation request made by the model.
 
@@ -33075,6 +33211,16 @@ as input for the model's response.
 
           - `"image_generation_call"`
 
+        - `action: optional "generate" or "edit" or "auto" or null`
+
+          The action used for image generation.
+
+          - `"generate"`
+
+          - `"edit"`
+
+          - `"auto"`
+
         - `agent: optional object { agent_name }  or null`
 
           The agent that produced this item.
@@ -33082,6 +33228,26 @@ as input for the model's response.
           - `agent_name: string`
 
             The canonical name of the agent that produced this item.
+
+        - `background: optional "transparent" or "opaque" or "auto" or null`
+
+          The background setting used for generation.
+
+          - `"transparent"`
+
+          - `"opaque"`
+
+          - `"auto"`
+
+        - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+          The output format used for generation.
+
+          - `"png"`
+
+          - `"webp"`
+
+          - `"jpeg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -33098,6 +33264,10 @@ as input for the model's response.
           - `"max"`
 
           - `"auto"`
+
+        - `revised_prompt: optional string or null`
+
+          The prompt that was used after any model prompt rewriting.
 
         - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -37477,7 +37647,7 @@ as input for the model's response.
 
         The identifier of the actor that created the item.
 
-    - `ImageGenerationCall object { id, result, status, 4 more }`
+    - `ImageGenerationCall object { id, result, status, 8 more }`
 
       An image generation request made by the model.
 
@@ -37507,6 +37677,16 @@ as input for the model's response.
 
         - `"image_generation_call"`
 
+      - `action: optional "generate" or "edit" or "auto" or null`
+
+        The action used for image generation.
+
+        - `"generate"`
+
+        - `"edit"`
+
+        - `"auto"`
+
       - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
@@ -37514,6 +37694,26 @@ as input for the model's response.
         - `agent_name: string`
 
           The canonical name of the agent that produced this item.
+
+      - `background: optional "transparent" or "opaque" or "auto" or null`
+
+        The background setting used for generation.
+
+        - `"transparent"`
+
+        - `"opaque"`
+
+        - `"auto"`
+
+      - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+        The output format used for generation.
+
+        - `"png"`
+
+        - `"webp"`
+
+        - `"jpeg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -37530,6 +37730,10 @@ as input for the model's response.
         - `"max"`
 
         - `"auto"`
+
+      - `revised_prompt: optional string or null`
+
+        The prompt that was used after any model prompt rewriting.
 
       - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -45413,7 +45617,7 @@ Retrieves a model response with the given ID.
 
             The canonical name of the agent that produced this item.
 
-      - `ImageGenerationCall object { id, result, status, 4 more }`
+      - `ImageGenerationCall object { id, result, status, 8 more }`
 
         An image generation request made by the model.
 
@@ -45443,6 +45647,16 @@ Retrieves a model response with the given ID.
 
           - `"image_generation_call"`
 
+        - `action: optional "generate" or "edit" or "auto" or null`
+
+          The action used for image generation.
+
+          - `"generate"`
+
+          - `"edit"`
+
+          - `"auto"`
+
         - `agent: optional object { agent_name }  or null`
 
           The agent that produced this item.
@@ -45450,6 +45664,26 @@ Retrieves a model response with the given ID.
           - `agent_name: string`
 
             The canonical name of the agent that produced this item.
+
+        - `background: optional "transparent" or "opaque" or "auto" or null`
+
+          The background setting used for generation.
+
+          - `"transparent"`
+
+          - `"opaque"`
+
+          - `"auto"`
+
+        - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+          The output format used for generation.
+
+          - `"png"`
+
+          - `"webp"`
+
+          - `"jpeg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -45466,6 +45700,10 @@ Retrieves a model response with the given ID.
           - `"max"`
 
           - `"auto"`
+
+        - `revised_prompt: optional string or null`
+
+          The prompt that was used after any model prompt rewriting.
 
         - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -49845,7 +50083,7 @@ Retrieves a model response with the given ID.
 
         The identifier of the actor that created the item.
 
-    - `ImageGenerationCall object { id, result, status, 4 more }`
+    - `ImageGenerationCall object { id, result, status, 8 more }`
 
       An image generation request made by the model.
 
@@ -49875,6 +50113,16 @@ Retrieves a model response with the given ID.
 
         - `"image_generation_call"`
 
+      - `action: optional "generate" or "edit" or "auto" or null`
+
+        The action used for image generation.
+
+        - `"generate"`
+
+        - `"edit"`
+
+        - `"auto"`
+
       - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
@@ -49882,6 +50130,26 @@ Retrieves a model response with the given ID.
         - `agent_name: string`
 
           The canonical name of the agent that produced this item.
+
+      - `background: optional "transparent" or "opaque" or "auto" or null`
+
+        The background setting used for generation.
+
+        - `"transparent"`
+
+        - `"opaque"`
+
+        - `"auto"`
+
+      - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+        The output format used for generation.
+
+        - `"png"`
+
+        - `"webp"`
+
+        - `"jpeg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -49898,6 +50166,10 @@ Retrieves a model response with the given ID.
         - `"max"`
 
         - `"auto"`
+
+      - `revised_prompt: optional string or null`
+
+        The prompt that was used after any model prompt rewriting.
 
       - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -62851,7 +63123,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-      - `ImageGenerationCall object { id, result, status, 4 more }`
+      - `ImageGenerationCall object { id, result, status, 8 more }`
 
         An image generation request made by the model.
 
@@ -62881,6 +63153,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"image_generation_call"`
 
+        - `action: optional "generate" or "edit" or "auto" or null`
+
+          The action used for image generation.
+
+          - `"generate"`
+
+          - `"edit"`
+
+          - `"auto"`
+
         - `agent: optional object { agent_name }  or null`
 
           The agent that produced this item.
@@ -62888,6 +63170,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `agent_name: string`
 
             The canonical name of the agent that produced this item.
+
+        - `background: optional "transparent" or "opaque" or "auto" or null`
+
+          The background setting used for generation.
+
+          - `"transparent"`
+
+          - `"opaque"`
+
+          - `"auto"`
+
+        - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+          The output format used for generation.
+
+          - `"png"`
+
+          - `"webp"`
+
+          - `"jpeg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -62904,6 +63206,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"max"`
 
           - `"auto"`
+
+        - `revised_prompt: optional string or null`
+
+          The prompt that was used after any model prompt rewriting.
 
         - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -67283,7 +67589,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The identifier of the actor that created the item.
 
-    - `ImageGenerationCall object { id, result, status, 4 more }`
+    - `ImageGenerationCall object { id, result, status, 8 more }`
 
       An image generation request made by the model.
 
@@ -67313,6 +67619,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"image_generation_call"`
 
+      - `action: optional "generate" or "edit" or "auto" or null`
+
+        The action used for image generation.
+
+        - `"generate"`
+
+        - `"edit"`
+
+        - `"auto"`
+
       - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
@@ -67320,6 +67636,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `agent_name: string`
 
           The canonical name of the agent that produced this item.
+
+      - `background: optional "transparent" or "opaque" or "auto" or null`
+
+        The background setting used for generation.
+
+        - `"transparent"`
+
+        - `"opaque"`
+
+        - `"auto"`
+
+      - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+        The output format used for generation.
+
+        - `"png"`
+
+        - `"webp"`
+
+        - `"jpeg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -67336,6 +67672,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"max"`
 
         - `"auto"`
+
+      - `revised_prompt: optional string or null`
+
+        The prompt that was used after any model prompt rewriting.
 
       - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -74427,7 +74767,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-        - `ImageGenerationCall object { id, result, status, 4 more }`
+        - `ImageGenerationCall object { id, result, status, 8 more }`
 
           An image generation request made by the model.
 
@@ -74457,6 +74797,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"image_generation_call"`
 
+          - `action: optional "generate" or "edit" or "auto" or null`
+
+            The action used for image generation.
+
+            - `"generate"`
+
+            - `"edit"`
+
+            - `"auto"`
+
           - `agent: optional object { agent_name }  or null`
 
             The agent that produced this item.
@@ -74464,6 +74814,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `agent_name: string`
 
               The canonical name of the agent that produced this item.
+
+          - `background: optional "transparent" or "opaque" or "auto" or null`
+
+            The background setting used for generation.
+
+            - `"transparent"`
+
+            - `"opaque"`
+
+            - `"auto"`
+
+          - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+            The output format used for generation.
+
+            - `"png"`
+
+            - `"webp"`
+
+            - `"jpeg"`
 
           - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -74480,6 +74850,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"max"`
 
             - `"auto"`
+
+          - `revised_prompt: optional string or null`
+
+            The prompt that was used after any model prompt rewriting.
 
           - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -78859,7 +79233,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The identifier of the actor that created the item.
 
-      - `ImageGenerationCall object { id, result, status, 4 more }`
+      - `ImageGenerationCall object { id, result, status, 8 more }`
 
         An image generation request made by the model.
 
@@ -78889,6 +79263,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"image_generation_call"`
 
+        - `action: optional "generate" or "edit" or "auto" or null`
+
+          The action used for image generation.
+
+          - `"generate"`
+
+          - `"edit"`
+
+          - `"auto"`
+
         - `agent: optional object { agent_name }  or null`
 
           The agent that produced this item.
@@ -78896,6 +79280,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `agent_name: string`
 
             The canonical name of the agent that produced this item.
+
+        - `background: optional "transparent" or "opaque" or "auto" or null`
+
+          The background setting used for generation.
+
+          - `"transparent"`
+
+          - `"opaque"`
+
+          - `"auto"`
+
+        - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+          The output format used for generation.
+
+          - `"png"`
+
+          - `"webp"`
+
+          - `"jpeg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -78912,6 +79316,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"max"`
 
           - `"auto"`
+
+        - `revised_prompt: optional string or null`
+
+          The prompt that was used after any model prompt rewriting.
 
         - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -86464,7 +86872,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-        - `ImageGenerationCall object { id, result, status, 4 more }`
+        - `ImageGenerationCall object { id, result, status, 8 more }`
 
           An image generation request made by the model.
 
@@ -86494,6 +86902,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"image_generation_call"`
 
+          - `action: optional "generate" or "edit" or "auto" or null`
+
+            The action used for image generation.
+
+            - `"generate"`
+
+            - `"edit"`
+
+            - `"auto"`
+
           - `agent: optional object { agent_name }  or null`
 
             The agent that produced this item.
@@ -86501,6 +86919,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `agent_name: string`
 
               The canonical name of the agent that produced this item.
+
+          - `background: optional "transparent" or "opaque" or "auto" or null`
+
+            The background setting used for generation.
+
+            - `"transparent"`
+
+            - `"opaque"`
+
+            - `"auto"`
+
+          - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+            The output format used for generation.
+
+            - `"png"`
+
+            - `"webp"`
+
+            - `"jpeg"`
 
           - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -86517,6 +86955,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"max"`
 
             - `"auto"`
+
+          - `revised_prompt: optional string or null`
+
+            The prompt that was used after any model prompt rewriting.
 
           - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -90896,7 +91338,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The identifier of the actor that created the item.
 
-      - `ImageGenerationCall object { id, result, status, 4 more }`
+      - `ImageGenerationCall object { id, result, status, 8 more }`
 
         An image generation request made by the model.
 
@@ -90926,6 +91368,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"image_generation_call"`
 
+        - `action: optional "generate" or "edit" or "auto" or null`
+
+          The action used for image generation.
+
+          - `"generate"`
+
+          - `"edit"`
+
+          - `"auto"`
+
         - `agent: optional object { agent_name }  or null`
 
           The agent that produced this item.
@@ -90933,6 +91385,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `agent_name: string`
 
             The canonical name of the agent that produced this item.
+
+        - `background: optional "transparent" or "opaque" or "auto" or null`
+
+          The background setting used for generation.
+
+          - `"transparent"`
+
+          - `"opaque"`
+
+          - `"auto"`
+
+        - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+          The output format used for generation.
+
+          - `"png"`
+
+          - `"webp"`
+
+          - `"jpeg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -90949,6 +91421,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"max"`
 
           - `"auto"`
+
+        - `revised_prompt: optional string or null`
+
+          The prompt that was used after any model prompt rewriting.
 
         - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -97982,7 +98458,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-        - `ImageGenerationCall object { id, result, status, 4 more }`
+        - `ImageGenerationCall object { id, result, status, 8 more }`
 
           An image generation request made by the model.
 
@@ -98012,6 +98488,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"image_generation_call"`
 
+          - `action: optional "generate" or "edit" or "auto" or null`
+
+            The action used for image generation.
+
+            - `"generate"`
+
+            - `"edit"`
+
+            - `"auto"`
+
           - `agent: optional object { agent_name }  or null`
 
             The agent that produced this item.
@@ -98019,6 +98505,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `agent_name: string`
 
               The canonical name of the agent that produced this item.
+
+          - `background: optional "transparent" or "opaque" or "auto" or null`
+
+            The background setting used for generation.
+
+            - `"transparent"`
+
+            - `"opaque"`
+
+            - `"auto"`
+
+          - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+            The output format used for generation.
+
+            - `"png"`
+
+            - `"webp"`
+
+            - `"jpeg"`
 
           - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -98035,6 +98541,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"max"`
 
             - `"auto"`
+
+          - `revised_prompt: optional string or null`
+
+            The prompt that was used after any model prompt rewriting.
 
           - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -102414,7 +102924,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The identifier of the actor that created the item.
 
-      - `ImageGenerationCall object { id, result, status, 4 more }`
+      - `ImageGenerationCall object { id, result, status, 8 more }`
 
         An image generation request made by the model.
 
@@ -102444,6 +102954,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"image_generation_call"`
 
+        - `action: optional "generate" or "edit" or "auto" or null`
+
+          The action used for image generation.
+
+          - `"generate"`
+
+          - `"edit"`
+
+          - `"auto"`
+
         - `agent: optional object { agent_name }  or null`
 
           The agent that produced this item.
@@ -102451,6 +102971,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `agent_name: string`
 
             The canonical name of the agent that produced this item.
+
+        - `background: optional "transparent" or "opaque" or "auto" or null`
+
+          The background setting used for generation.
+
+          - `"transparent"`
+
+          - `"opaque"`
+
+          - `"auto"`
+
+        - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+          The output format used for generation.
+
+          - `"png"`
+
+          - `"webp"`
+
+          - `"jpeg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -102467,6 +103007,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"max"`
 
           - `"auto"`
+
+        - `revised_prompt: optional string or null`
+
+          The prompt that was used after any model prompt rewriting.
 
         - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -109775,7 +110319,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-        - `ImageGenerationCall object { id, result, status, 4 more }`
+        - `ImageGenerationCall object { id, result, status, 8 more }`
 
           An image generation request made by the model.
 
@@ -109805,6 +110349,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"image_generation_call"`
 
+          - `action: optional "generate" or "edit" or "auto" or null`
+
+            The action used for image generation.
+
+            - `"generate"`
+
+            - `"edit"`
+
+            - `"auto"`
+
           - `agent: optional object { agent_name }  or null`
 
             The agent that produced this item.
@@ -109812,6 +110366,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `agent_name: string`
 
               The canonical name of the agent that produced this item.
+
+          - `background: optional "transparent" or "opaque" or "auto" or null`
+
+            The background setting used for generation.
+
+            - `"transparent"`
+
+            - `"opaque"`
+
+            - `"auto"`
+
+          - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+            The output format used for generation.
+
+            - `"png"`
+
+            - `"webp"`
+
+            - `"jpeg"`
 
           - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -109828,6 +110402,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"max"`
 
             - `"auto"`
+
+          - `revised_prompt: optional string or null`
+
+            The prompt that was used after any model prompt rewriting.
 
           - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -114207,7 +114785,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The identifier of the actor that created the item.
 
-      - `ImageGenerationCall object { id, result, status, 4 more }`
+      - `ImageGenerationCall object { id, result, status, 8 more }`
 
         An image generation request made by the model.
 
@@ -114237,6 +114815,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"image_generation_call"`
 
+        - `action: optional "generate" or "edit" or "auto" or null`
+
+          The action used for image generation.
+
+          - `"generate"`
+
+          - `"edit"`
+
+          - `"auto"`
+
         - `agent: optional object { agent_name }  or null`
 
           The agent that produced this item.
@@ -114244,6 +114832,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `agent_name: string`
 
             The canonical name of the agent that produced this item.
+
+        - `background: optional "transparent" or "opaque" or "auto" or null`
+
+          The background setting used for generation.
+
+          - `"transparent"`
+
+          - `"opaque"`
+
+          - `"auto"`
+
+        - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+          The output format used for generation.
+
+          - `"png"`
+
+          - `"webp"`
+
+          - `"jpeg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -114260,6 +114868,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"max"`
 
           - `"auto"`
+
+        - `revised_prompt: optional string or null`
+
+          The prompt that was used after any model prompt rewriting.
 
         - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -121132,7 +121744,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-        - `ImageGenerationCall object { id, result, status, 4 more }`
+        - `ImageGenerationCall object { id, result, status, 8 more }`
 
           An image generation request made by the model.
 
@@ -121162,6 +121774,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"image_generation_call"`
 
+          - `action: optional "generate" or "edit" or "auto" or null`
+
+            The action used for image generation.
+
+            - `"generate"`
+
+            - `"edit"`
+
+            - `"auto"`
+
           - `agent: optional object { agent_name }  or null`
 
             The agent that produced this item.
@@ -121169,6 +121791,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `agent_name: string`
 
               The canonical name of the agent that produced this item.
+
+          - `background: optional "transparent" or "opaque" or "auto" or null`
+
+            The background setting used for generation.
+
+            - `"transparent"`
+
+            - `"opaque"`
+
+            - `"auto"`
+
+          - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+            The output format used for generation.
+
+            - `"png"`
+
+            - `"webp"`
+
+            - `"jpeg"`
 
           - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -121185,6 +121827,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"max"`
 
             - `"auto"`
+
+          - `revised_prompt: optional string or null`
+
+            The prompt that was used after any model prompt rewriting.
 
           - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -125564,7 +126210,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The identifier of the actor that created the item.
 
-      - `ImageGenerationCall object { id, result, status, 4 more }`
+      - `ImageGenerationCall object { id, result, status, 8 more }`
 
         An image generation request made by the model.
 
@@ -125594,6 +126240,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"image_generation_call"`
 
+        - `action: optional "generate" or "edit" or "auto" or null`
+
+          The action used for image generation.
+
+          - `"generate"`
+
+          - `"edit"`
+
+          - `"auto"`
+
         - `agent: optional object { agent_name }  or null`
 
           The agent that produced this item.
@@ -125601,6 +126257,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `agent_name: string`
 
             The canonical name of the agent that produced this item.
+
+        - `background: optional "transparent" or "opaque" or "auto" or null`
+
+          The background setting used for generation.
+
+          - `"transparent"`
+
+          - `"opaque"`
+
+          - `"auto"`
+
+        - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+          The output format used for generation.
+
+          - `"png"`
+
+          - `"webp"`
+
+          - `"jpeg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -125617,6 +126293,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"max"`
 
           - `"auto"`
+
+        - `revised_prompt: optional string or null`
+
+          The prompt that was used after any model prompt rewriting.
 
         - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -132351,7 +133031,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-    - `ImageGenerationCall object { id, result, status, 4 more }`
+    - `ImageGenerationCall object { id, result, status, 8 more }`
 
       An image generation request made by the model.
 
@@ -132381,6 +133061,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"image_generation_call"`
 
+      - `action: optional "generate" or "edit" or "auto" or null`
+
+        The action used for image generation.
+
+        - `"generate"`
+
+        - `"edit"`
+
+        - `"auto"`
+
       - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
@@ -132388,6 +133078,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `agent_name: string`
 
           The canonical name of the agent that produced this item.
+
+      - `background: optional "transparent" or "opaque" or "auto" or null`
+
+        The background setting used for generation.
+
+        - `"transparent"`
+
+        - `"opaque"`
+
+        - `"auto"`
+
+      - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+        The output format used for generation.
+
+        - `"png"`
+
+        - `"webp"`
+
+        - `"jpeg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -132404,6 +133114,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"max"`
 
         - `"auto"`
+
+      - `revised_prompt: optional string or null`
+
+        The prompt that was used after any model prompt rewriting.
 
       - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -137390,7 +138104,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The canonical name of the agent that produced this item.
 
-    - `ImageGenerationCall object { id, result, status, 4 more }`
+    - `ImageGenerationCall object { id, result, status, 8 more }`
 
       An image generation request made by the model.
 
@@ -137420,6 +138134,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"image_generation_call"`
 
+      - `action: optional "generate" or "edit" or "auto" or null`
+
+        The action used for image generation.
+
+        - `"generate"`
+
+        - `"edit"`
+
+        - `"auto"`
+
       - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
@@ -137427,6 +138151,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `agent_name: string`
 
           The canonical name of the agent that produced this item.
+
+      - `background: optional "transparent" or "opaque" or "auto" or null`
+
+        The background setting used for generation.
+
+        - `"transparent"`
+
+        - `"opaque"`
+
+        - `"auto"`
+
+      - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+        The output format used for generation.
+
+        - `"png"`
+
+        - `"webp"`
+
+        - `"jpeg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -137443,6 +138187,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"max"`
 
         - `"auto"`
+
+      - `revised_prompt: optional string or null`
+
+        The prompt that was used after any model prompt rewriting.
 
       - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -143228,7 +143976,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       The identifier of the actor that created the item.
 
-  - `ImageGenerationCall object { id, result, status, 4 more }`
+  - `ImageGenerationCall object { id, result, status, 8 more }`
 
     An image generation request made by the model.
 
@@ -143258,6 +144006,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `"image_generation_call"`
 
+    - `action: optional "generate" or "edit" or "auto" or null`
+
+      The action used for image generation.
+
+      - `"generate"`
+
+      - `"edit"`
+
+      - `"auto"`
+
     - `agent: optional object { agent_name }  or null`
 
       The agent that produced this item.
@@ -143265,6 +144023,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `agent_name: string`
 
         The canonical name of the agent that produced this item.
+
+    - `background: optional "transparent" or "opaque" or "auto" or null`
+
+      The background setting used for generation.
+
+      - `"transparent"`
+
+      - `"opaque"`
+
+      - `"auto"`
+
+    - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+      The output format used for generation.
+
+      - `"png"`
+
+      - `"webp"`
+
+      - `"jpeg"`
 
     - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -143281,6 +144059,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"max"`
 
       - `"auto"`
+
+    - `revised_prompt: optional string or null`
+
+      The prompt that was used after any model prompt rewriting.
 
     - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -148029,7 +148811,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The identifier of the actor that created the item.
 
-    - `ImageGenerationCall object { id, result, status, 4 more }`
+    - `ImageGenerationCall object { id, result, status, 8 more }`
 
       An image generation request made by the model.
 
@@ -148059,6 +148841,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"image_generation_call"`
 
+      - `action: optional "generate" or "edit" or "auto" or null`
+
+        The action used for image generation.
+
+        - `"generate"`
+
+        - `"edit"`
+
+        - `"auto"`
+
       - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
@@ -148066,6 +148858,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `agent_name: string`
 
           The canonical name of the agent that produced this item.
+
+      - `background: optional "transparent" or "opaque" or "auto" or null`
+
+        The background setting used for generation.
+
+        - `"transparent"`
+
+        - `"opaque"`
+
+        - `"auto"`
+
+      - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+        The output format used for generation.
+
+        - `"png"`
+
+        - `"webp"`
+
+        - `"jpeg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -148082,6 +148894,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"max"`
 
         - `"auto"`
+
+      - `revised_prompt: optional string or null`
+
+        The prompt that was used after any model prompt rewriting.
 
       - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -152849,7 +153665,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         The identifier of the actor that created the item.
 
-    - `ImageGenerationCall object { id, result, status, 4 more }`
+    - `ImageGenerationCall object { id, result, status, 8 more }`
 
       An image generation request made by the model.
 
@@ -152879,6 +153695,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"image_generation_call"`
 
+      - `action: optional "generate" or "edit" or "auto" or null`
+
+        The action used for image generation.
+
+        - `"generate"`
+
+        - `"edit"`
+
+        - `"auto"`
+
       - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
@@ -152886,6 +153712,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `agent_name: string`
 
           The canonical name of the agent that produced this item.
+
+      - `background: optional "transparent" or "opaque" or "auto" or null`
+
+        The background setting used for generation.
+
+        - `"transparent"`
+
+        - `"opaque"`
+
+        - `"auto"`
+
+      - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+        The output format used for generation.
+
+        - `"png"`
+
+        - `"webp"`
+
+        - `"jpeg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -152902,6 +153748,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"max"`
 
         - `"auto"`
+
+      - `revised_prompt: optional string or null`
+
+        The prompt that was used after any model prompt rewriting.
 
       - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -158554,7 +159404,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-        - `ImageGenerationCall object { id, result, status, 4 more }`
+        - `ImageGenerationCall object { id, result, status, 8 more }`
 
           An image generation request made by the model.
 
@@ -158584,6 +159434,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"image_generation_call"`
 
+          - `action: optional "generate" or "edit" or "auto" or null`
+
+            The action used for image generation.
+
+            - `"generate"`
+
+            - `"edit"`
+
+            - `"auto"`
+
           - `agent: optional object { agent_name }  or null`
 
             The agent that produced this item.
@@ -158591,6 +159451,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `agent_name: string`
 
               The canonical name of the agent that produced this item.
+
+          - `background: optional "transparent" or "opaque" or "auto" or null`
+
+            The background setting used for generation.
+
+            - `"transparent"`
+
+            - `"opaque"`
+
+            - `"auto"`
+
+          - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+            The output format used for generation.
+
+            - `"png"`
+
+            - `"webp"`
+
+            - `"jpeg"`
 
           - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -158607,6 +159487,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"max"`
 
             - `"auto"`
+
+          - `revised_prompt: optional string or null`
+
+            The prompt that was used after any model prompt rewriting.
 
           - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -162986,7 +163870,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           The identifier of the actor that created the item.
 
-      - `ImageGenerationCall object { id, result, status, 4 more }`
+      - `ImageGenerationCall object { id, result, status, 8 more }`
 
         An image generation request made by the model.
 
@@ -163016,6 +163900,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"image_generation_call"`
 
+        - `action: optional "generate" or "edit" or "auto" or null`
+
+          The action used for image generation.
+
+          - `"generate"`
+
+          - `"edit"`
+
+          - `"auto"`
+
         - `agent: optional object { agent_name }  or null`
 
           The agent that produced this item.
@@ -163023,6 +163917,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `agent_name: string`
 
             The canonical name of the agent that produced this item.
+
+        - `background: optional "transparent" or "opaque" or "auto" or null`
+
+          The background setting used for generation.
+
+          - `"transparent"`
+
+          - `"opaque"`
+
+          - `"auto"`
+
+        - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+          The output format used for generation.
+
+          - `"png"`
+
+          - `"webp"`
+
+          - `"jpeg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -163039,6 +163953,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"max"`
 
           - `"auto"`
+
+        - `revised_prompt: optional string or null`
+
+          The prompt that was used after any model prompt rewriting.
 
         - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -172025,7 +172943,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 The canonical name of the agent that produced this item.
 
-          - `ImageGenerationCall object { id, result, status, 4 more }`
+          - `ImageGenerationCall object { id, result, status, 8 more }`
 
             An image generation request made by the model.
 
@@ -172055,6 +172973,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"image_generation_call"`
 
+            - `action: optional "generate" or "edit" or "auto" or null`
+
+              The action used for image generation.
+
+              - `"generate"`
+
+              - `"edit"`
+
+              - `"auto"`
+
             - `agent: optional object { agent_name }  or null`
 
               The agent that produced this item.
@@ -172062,6 +172990,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `agent_name: string`
 
                 The canonical name of the agent that produced this item.
+
+            - `background: optional "transparent" or "opaque" or "auto" or null`
+
+              The background setting used for generation.
+
+              - `"transparent"`
+
+              - `"opaque"`
+
+              - `"auto"`
+
+            - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+              The output format used for generation.
+
+              - `"png"`
+
+              - `"webp"`
+
+              - `"jpeg"`
 
             - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -172078,6 +173026,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"max"`
 
               - `"auto"`
+
+            - `revised_prompt: optional string or null`
+
+              The prompt that was used after any model prompt rewriting.
 
             - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -176457,7 +177409,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The identifier of the actor that created the item.
 
-        - `ImageGenerationCall object { id, result, status, 4 more }`
+        - `ImageGenerationCall object { id, result, status, 8 more }`
 
           An image generation request made by the model.
 
@@ -176487,6 +177439,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"image_generation_call"`
 
+          - `action: optional "generate" or "edit" or "auto" or null`
+
+            The action used for image generation.
+
+            - `"generate"`
+
+            - `"edit"`
+
+            - `"auto"`
+
           - `agent: optional object { agent_name }  or null`
 
             The agent that produced this item.
@@ -176494,6 +177456,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `agent_name: string`
 
               The canonical name of the agent that produced this item.
+
+          - `background: optional "transparent" or "opaque" or "auto" or null`
+
+            The background setting used for generation.
+
+            - `"transparent"`
+
+            - `"opaque"`
+
+            - `"auto"`
+
+          - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+            The output format used for generation.
+
+            - `"png"`
+
+            - `"webp"`
+
+            - `"jpeg"`
 
           - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -176510,6 +177492,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"max"`
 
             - `"auto"`
+
+          - `revised_prompt: optional string or null`
+
+            The prompt that was used after any model prompt rewriting.
 
           - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -179986,7 +180972,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         A compaction item generated by the [`v1/responses/compact` API](/api/reference/resources/responses/methods/compact).
 
-      - `ImageGenerationCall object { id, result, status, 4 more }`
+      - `ImageGenerationCall object { id, result, status, 8 more }`
 
         An image generation request made by the model.
 
@@ -185663,7 +186649,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               The canonical name of the agent that produced this item.
 
-        - `ImageGenerationCall object { id, result, status, 4 more }`
+        - `ImageGenerationCall object { id, result, status, 8 more }`
 
           An image generation request made by the model.
 
@@ -185693,6 +186679,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"image_generation_call"`
 
+          - `action: optional "generate" or "edit" or "auto" or null`
+
+            The action used for image generation.
+
+            - `"generate"`
+
+            - `"edit"`
+
+            - `"auto"`
+
           - `agent: optional object { agent_name }  or null`
 
             The agent that produced this item.
@@ -185700,6 +186696,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `agent_name: string`
 
               The canonical name of the agent that produced this item.
+
+          - `background: optional "transparent" or "opaque" or "auto" or null`
+
+            The background setting used for generation.
+
+            - `"transparent"`
+
+            - `"opaque"`
+
+            - `"auto"`
+
+          - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+            The output format used for generation.
+
+            - `"png"`
+
+            - `"webp"`
+
+            - `"jpeg"`
 
           - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -185716,6 +186732,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"max"`
 
             - `"auto"`
+
+          - `revised_prompt: optional string or null`
+
+            The prompt that was used after any model prompt rewriting.
 
           - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -191957,7 +192977,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-      - `ImageGenerationCall object { id, result, status, 4 more }`
+      - `ImageGenerationCall object { id, result, status, 8 more }`
 
         An image generation request made by the model.
 
@@ -191987,6 +193007,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"image_generation_call"`
 
+        - `action: optional "generate" or "edit" or "auto" or null`
+
+          The action used for image generation.
+
+          - `"generate"`
+
+          - `"edit"`
+
+          - `"auto"`
+
         - `agent: optional object { agent_name }  or null`
 
           The agent that produced this item.
@@ -191994,6 +193024,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `agent_name: string`
 
             The canonical name of the agent that produced this item.
+
+        - `background: optional "transparent" or "opaque" or "auto" or null`
+
+          The background setting used for generation.
+
+          - `"transparent"`
+
+          - `"opaque"`
+
+          - `"auto"`
+
+        - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+          The output format used for generation.
+
+          - `"png"`
+
+          - `"webp"`
+
+          - `"jpeg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -192010,6 +193060,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"max"`
 
           - `"auto"`
+
+        - `revised_prompt: optional string or null`
+
+          The prompt that was used after any model prompt rewriting.
 
         - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -198086,7 +199140,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             The canonical name of the agent that produced this item.
 
-      - `ImageGenerationCall object { id, result, status, 4 more }`
+      - `ImageGenerationCall object { id, result, status, 8 more }`
 
         An image generation request made by the model.
 
@@ -198116,6 +199170,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"image_generation_call"`
 
+        - `action: optional "generate" or "edit" or "auto" or null`
+
+          The action used for image generation.
+
+          - `"generate"`
+
+          - `"edit"`
+
+          - `"auto"`
+
         - `agent: optional object { agent_name }  or null`
 
           The agent that produced this item.
@@ -198123,6 +199187,26 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `agent_name: string`
 
             The canonical name of the agent that produced this item.
+
+        - `background: optional "transparent" or "opaque" or "auto" or null`
+
+          The background setting used for generation.
+
+          - `"transparent"`
+
+          - `"opaque"`
+
+          - `"auto"`
+
+        - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+          The output format used for generation.
+
+          - `"png"`
+
+          - `"webp"`
+
+          - `"jpeg"`
 
         - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -198139,6 +199223,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"max"`
 
           - `"auto"`
+
+        - `revised_prompt: optional string or null`
+
+          The prompt that was used after any model prompt rewriting.
 
         - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -203367,7 +204455,7 @@ Returns a list of input items for a given response.
 
         The identifier of the actor that created the item.
 
-    - `ImageGenerationCall object { id, result, status, 4 more }`
+    - `ImageGenerationCall object { id, result, status, 8 more }`
 
       An image generation request made by the model.
 
@@ -203397,6 +204485,16 @@ Returns a list of input items for a given response.
 
         - `"image_generation_call"`
 
+      - `action: optional "generate" or "edit" or "auto" or null`
+
+        The action used for image generation.
+
+        - `"generate"`
+
+        - `"edit"`
+
+        - `"auto"`
+
       - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
@@ -203404,6 +204502,26 @@ Returns a list of input items for a given response.
         - `agent_name: string`
 
           The canonical name of the agent that produced this item.
+
+      - `background: optional "transparent" or "opaque" or "auto" or null`
+
+        The background setting used for generation.
+
+        - `"transparent"`
+
+        - `"opaque"`
+
+        - `"auto"`
+
+      - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+        The output format used for generation.
+
+        - `"png"`
+
+        - `"webp"`
+
+        - `"jpeg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -203420,6 +204538,10 @@ Returns a list of input items for a given response.
         - `"max"`
 
         - `"auto"`
+
+      - `revised_prompt: optional string or null`
+
+        The prompt that was used after any model prompt rewriting.
 
       - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -208373,7 +209495,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         The identifier of the actor that created the item.
 
-    - `ImageGenerationCall object { id, result, status, 4 more }`
+    - `ImageGenerationCall object { id, result, status, 8 more }`
 
       An image generation request made by the model.
 
@@ -208403,6 +209525,16 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
         - `"image_generation_call"`
 
+      - `action: optional "generate" or "edit" or "auto" or null`
+
+        The action used for image generation.
+
+        - `"generate"`
+
+        - `"edit"`
+
+        - `"auto"`
+
       - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
@@ -208410,6 +209542,26 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
         - `agent_name: string`
 
           The canonical name of the agent that produced this item.
+
+      - `background: optional "transparent" or "opaque" or "auto" or null`
+
+        The background setting used for generation.
+
+        - `"transparent"`
+
+        - `"opaque"`
+
+        - `"auto"`
+
+      - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+        The output format used for generation.
+
+        - `"png"`
+
+        - `"webp"`
+
+        - `"jpeg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -208426,6 +209578,10 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
         - `"max"`
 
         - `"auto"`
+
+      - `revised_prompt: optional string or null`
+
+        The prompt that was used after any model prompt rewriting.
 
       - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 
@@ -213373,7 +214529,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           The canonical name of the agent that produced this item.
 
-    - `ImageGenerationCall object { id, result, status, 4 more }`
+    - `ImageGenerationCall object { id, result, status, 8 more }`
 
       An image generation request made by the model.
 
@@ -213403,6 +214559,16 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"image_generation_call"`
 
+      - `action: optional "generate" or "edit" or "auto" or null`
+
+        The action used for image generation.
+
+        - `"generate"`
+
+        - `"edit"`
+
+        - `"auto"`
+
       - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
@@ -213410,6 +214576,26 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `agent_name: string`
 
           The canonical name of the agent that produced this item.
+
+      - `background: optional "transparent" or "opaque" or "auto" or null`
+
+        The background setting used for generation.
+
+        - `"transparent"`
+
+        - `"opaque"`
+
+        - `"auto"`
+
+      - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+        The output format used for generation.
+
+        - `"png"`
+
+        - `"webp"`
+
+        - `"jpeg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -213426,6 +214612,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `"max"`
 
         - `"auto"`
+
+      - `revised_prompt: optional string or null`
+
+        The prompt that was used after any model prompt rewriting.
 
       - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 

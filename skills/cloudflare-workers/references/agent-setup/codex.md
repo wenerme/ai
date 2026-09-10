@@ -44,7 +44,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 1. **Download Codex**
@@ -130,15 +130,11 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
-```
-
-```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
@@ -146,7 +142,11 @@ Deploy a globally distributed REST API on Workers with automatic scaling and zer
 ```
 
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+```
+
+```txt
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Tips

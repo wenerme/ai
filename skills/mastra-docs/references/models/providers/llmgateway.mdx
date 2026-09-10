@@ -268,18 +268,6 @@ for await (const chunk of stream) {
     "outputCost": 0.1
   },
   {
-    "model": "llmgateway/deepseek-v4-flash-vision-exp",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1050000,
-    "maxOutput": 384000,
-    "inputCost": 0.14,
-    "outputCost": 0.28
-  },
-  {
     "model": "llmgateway/deepseek-v4-pro",
     "imageInput": false,
     "audioInput": false,
@@ -290,6 +278,18 @@ for await (const chunk of stream) {
     "maxOutput": 384000,
     "inputCost": 0.435,
     "outputCost": 0.87
+  },
+  {
+    "model": "llmgateway/deepseek-v4.1-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 384000,
+    "inputCost": 0.15,
+    "outputCost": 0.6
   },
   {
     "model": "llmgateway/ernie-4.5-vl-424b-a47b",

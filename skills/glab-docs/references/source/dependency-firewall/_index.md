@@ -35,6 +35,7 @@ df
 - [`bundle`](bundle.md)
 - [`ci-summary`](ci-summary.md)
 - [`gem`](gem.md)
+- [`maven`](maven.md)
 - [`npm`](npm.md)
 - [`pip`](pip.md)
 - [`pipenv`](pipenv.md)

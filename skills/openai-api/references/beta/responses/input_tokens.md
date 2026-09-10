@@ -3979,7 +3979,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           The canonical name of the agent that produced this item.
 
-    - `ImageGenerationCall object { id, result, status, 4 more }`
+    - `ImageGenerationCall object { id, result, status, 8 more }`
 
       An image generation request made by the model.
 
@@ -4009,6 +4009,16 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
         - `"image_generation_call"`
 
+      - `action: optional "generate" or "edit" or "auto" or null`
+
+        The action used for image generation.
+
+        - `"generate"`
+
+        - `"edit"`
+
+        - `"auto"`
+
       - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
@@ -4016,6 +4026,26 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `agent_name: string`
 
           The canonical name of the agent that produced this item.
+
+      - `background: optional "transparent" or "opaque" or "auto" or null`
+
+        The background setting used for generation.
+
+        - `"transparent"`
+
+        - `"opaque"`
+
+        - `"auto"`
+
+      - `output_format: optional "png" or "webp" or "jpeg" or null`
+
+        The output format used for generation.
+
+        - `"png"`
+
+        - `"webp"`
+
+        - `"jpeg"`
 
       - `quality: optional "low" or "medium" or "high" or 3 more or null`
 
@@ -4032,6 +4062,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         - `"max"`
 
         - `"auto"`
+
+      - `revised_prompt: optional string or null`
+
+        The prompt that was used after any model prompt rewriting.
 
       - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or null`
 

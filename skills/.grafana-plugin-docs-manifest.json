@@ -1736,8 +1736,8 @@
   },
   "grafana-slo-app/create.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/create.md",
-    "size": 12550,
-    "updatedAt": "2026-08-27T09:08:56.455Z"
+    "size": 13216,
+    "updatedAt": "2026-09-10T14:34:11.232Z"
   },
   "grafana-slo-app/dashboard.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/dashboard.md",
@@ -1781,8 +1781,8 @@
   },
   "grafana-slo-app/set-up/additionaldatasources.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/additionaldatasources.md",
-    "size": 5293,
-    "updatedAt": "2026-08-15T02:11:15.375Z"
+    "size": 5604,
+    "updatedAt": "2026-09-10T14:34:12.640Z"
   },
   "grafana-slo-app/set-up/api.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/api.md",
@@ -1801,8 +1801,8 @@
   },
   "grafana-slo-app/set-up/terraform.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/terraform.md",
-    "size": 12354,
-    "updatedAt": "2026-08-27T09:08:59.046Z"
+    "size": 13843,
+    "updatedAt": "2026-09-10T14:34:13.274Z"
   },
   "grafana-slo-app/sli-examples.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/sli-examples.md",

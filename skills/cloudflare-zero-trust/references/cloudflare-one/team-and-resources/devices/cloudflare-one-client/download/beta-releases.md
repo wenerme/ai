@@ -35,6 +35,40 @@ Cloudflare tests new Cloudflare One Client features and improvements in an unsta
 
 Latest release
 
+**Version:** Windows 2026.8.1290.1**Date:** 2026-09-09**Size:** 74.3 MB
+
+[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.8.1290.1)
+
+#### Release notes
+
+This beta release includes the following changes and improvements:
+
+* Added support for routing non-RFC 1918 local IPv4 networks through the WARP tunnel when unrestricted LAN inclusion is enabled by policy or MDM.
+* Improved DNS reliability on networks with lower MTUs by clamping the TCP maximum segment size (MSS) for DNS-over-HTTPS connections sent through the tunnel.
+* Improved API reliability by retrying requests dropped when reusing pooled connections.
+* The client no longer requires the Windows WLAN AutoConfig service to be running.
+* Implemented a service recovery mechanism backed by Windows scheduler task to start WARP service on system unlock if not already started.
+* Fixed slow captive portal checks causing the client service to become unresponsive or restart while connecting.
+* Fixed a race when switching tunnel protocols during key rotation that could prevent WireGuard from connecting.
+* Fixed the client continuing to report 'No network' after a successful manual disconnect.
+* Fixed Digital Experience Monitoring (DEX) HTTP tests failing TLS validation on Windows.
+* Fixed the client UI crashing at startup when it could not write to the Windows registry.
+* Fixed latency spikes and traffic interruptions during TPM-backed API authentication when hardware-backed registration is enabled.
+* Fixed trailing whitespace in BIOS serial numbers causing serial-number and client-certificate device posture checks to fail.
+* Fixed a client UI crash that could occur when the daemon connection was reset during an IPC request.
+* Fixed a startup crash when date formatting data for the system locale had not yet loaded.
+
+**Known issues**
+
+* None
+
+For Zero Trust documentation, see: <https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/>
+For Consumer documentation, see: <https://developers.cloudflare.com/warp-client/>
+
+Previous version history (6)
+
+Windows 2026.7.1210.1
+
 **Version:** Windows 2026.7.1210.1**Date:** 2026-07-31**Size:** 59.5 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.7.1210.1)
@@ -58,8 +92,6 @@ This beta release includes the following changes and improvements:
 * Fixed orphaned credentials left behind on multi-user uninstall.
 * A successful re-authentication will cause the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) to be re-evaluated.
 * Improved [dashboard-managed client updates](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/) by running the updater only when needed.
-
-Previous version history (6)
 
 Windows 2026.5.1155.1
 
@@ -224,36 +256,6 @@ This release contains minor fixes, improvements, and new features including Path
   * The custom DNS server address on the primary network adapter is changed while WARP is connected.
 To work around this issue, reconnect the WARP client by toggling off and back on.
 
-Windows 2025.7.106.1
-
-**Version:** Windows 2025.7.106.1**Date:** 2025-09-10**Size:** 135 MB
-
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.7.106.1)
-
-#### Release notes
-
-This release contains minor fixes and improvements including enhancements to [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) for even faster resolution. The MASQUE protocol is now the only protocol that can use Proxy mode. If you previously configured a device profile to use Proxy mode with Wireguard, you will need to select a new [WARP mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) or all devices matching the profile will lose connectivity.
-
-**Changes and improvements**
-
-* Enhancements to [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) for even faster resolution. The MASQUE protocol is now the only protocol that can use Proxy mode. If you previously configured a device profile to use Proxy mode with Wireguard, you will need to select a new [WARP mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) or all devices matching the profile will lose connectivity.
-* Improvement to keep TCP connections up the first time WARP connects on devices so that remote desktop sessions (such as RDP or SSH) continue to work.
-* Improvements to maintain Global WARP Override settings when switching between organization configurations.
-* The [MASQUE protocol](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol) is now the default protocol for all new WARP device profiles.
-* Improvement to limit idle connections in DoH mode to avoid unnecessary resource usage that can lead to DoH requests not resolving.
-
-**Known issues**
-
-* For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-* Devices with KB5055523 installed may receive a warning about Win32/ClickFix.ABA being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:
-
-  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  * A custom DNS server address is configured on the primary network adapter.
-  * The custom DNS server address on the primary network adapter is changed while WARP is connected.
-To work around this issue, reconnect the WARP client by toggling off and back on.
-
 ## macOS
 
 [Download latest beta release](https://downloads.cloudflareclient.com/v1/download/macos/beta)
@@ -271,6 +273,39 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 1. Minimum 1281 bytes with [Path MTU Discovery](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/) [↩](#user-content-fnref-1)
 
 Latest release
+
+**Version:** macOS 2026.8.1290.1**Date:** 2026-09-09**Size:** 165 MB
+
+[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.8.1290.1)
+
+#### Release notes
+
+This beta release includes the following changes and improvements:
+
+* Added support for routing non-RFC 1918 local IPv4 networks through the WARP tunnel when unrestricted LAN inclusion is enabled by policy or MDM.
+* Improved DNS reliability on networks with lower MTUs by clamping the TCP maximum segment size (MSS) for DNS-over-HTTPS connections sent through the tunnel.
+* Improved API reliability by retrying requests dropped when reusing pooled connections.
+* Fixed Extra Logging failing to capture packets across all interfaces.
+* Fixed an issue that could prevent remote diagnostics from completing.
+* Fixed DNS connectivity checks failing on IPv6-only networks.
+* Fixed the client service exiting when its route-monitoring socket was closed after sleep or wake.
+* Fixed DNS enforcement checks making the client service unresponsive on systems with large routing tables.
+* Fixed slow captive portal checks causing the client service to become unresponsive or restart while connecting.
+* Fixed a race when switching tunnel protocols during key rotation that could prevent WireGuard from connecting.
+* Fixed the client continuing to report 'No network' after a successful manual disconnect.
+* Fixed a client UI crash that could occur when the daemon connection was reset during an IPC request.
+* Fixed a startup crash when date formatting data for the system locale had not yet loaded.
+
+**Known issues**
+
+* None
+
+For Zero Trust documentation, see: <https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/>
+For Consumer documentation, see: <https://developers.cloudflare.com/warp-client/>
+
+Previous version history (7)
+
+macOS 2026.7.1210.1
 
 **Version:** macOS 2026.7.1210.1**Date:** 2026-07-31**Size:** 153 MB
 
@@ -293,8 +328,6 @@ This beta release includes the following changes and improvements:
 * Fixed the system tray icon showing "disconnected" while the UI showed "connected".
 * A successful re-authentication will cause the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) to be re-evaluated.
 * Improved [dashboard-managed client updates](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/) by running the updater only when needed.
-
-Previous version history (7)
 
 macOS 2026.6.782.1
 
@@ -429,29 +462,6 @@ This release contains minor fixes, improvements, and new features including Path
 * The GUI now displays the health of the tunnel and DNS connections by showing a connection status message when the network may be unstable. This will make it easier to debug connectivity issues.
 * Deleting registrations no longer returns an error when succeeding.
 * Path Maximum Transmission Unit Discovery (PMTUD) is now used to discover the effective MTU of the connection. This allows the client to improve connection performance optimized for the current network.
-
-**Known issues**
-
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-
-macOS 2025.7.106.1
-
-**Version:** macOS 2025.7.106.1**Date:** 2025-09-10**Size:** 108 MB
-
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.7.106.1)
-
-#### Release notes
-
-This release contains minor fixes and improvements including enhancements to [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) for even faster resolution. The MASQUE protocol is now the only protocol that can use Proxy mode. If you previously configured a device profile to use Proxy mode with Wireguard, you will need to select a new [WARP mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) or all devices matching the profile will lose connectivity.
-
-**Changes and improvements**
-
-* Enhancements to [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) for even faster resolution. The MASQUE protocol is now the only protocol that can use Proxy mode. If you previously configured a device profile to use Proxy mode with Wireguard, you will need to select a new [WARP mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) or all devices matching the profile will lose connectivity.
-* Fixed a bug preventing the `warp-diag captive-portal` command from running successfully due to the client not parsing SSID on macOS.
-* Improvements to maintain Global WARP Override settings when switching between organization configurations.
-* The [MASQUE protocol](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol) is now the default protocol for all new WARP device profiles.
-* Improvement to limit idle connections in DoH mode to avoid unnecessary resource usage that can lead to DoH requests not resolving.
 
 **Known issues**
 
