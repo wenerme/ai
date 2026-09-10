@@ -32,7 +32,9 @@ df
 
 ## Subcommands
 
+- [`bundle`](bundle.md)
 - [`ci-summary`](ci-summary.md)
+- [`gem`](gem.md)
 - [`npm`](npm.md)
 - [`pip`](pip.md)
 - [`pipenv`](pipenv.md)

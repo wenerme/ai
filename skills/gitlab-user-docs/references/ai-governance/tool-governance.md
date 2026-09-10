@@ -1,15 +1,15 @@
 # Agent tool governance
 
-Configure tool-level approval policies for GitLab Duo agents to gate sensitive actions with human approval at execution time.
+Configure tool-level approval policies for AI agents to gate sensitive actions with human approval at execution time.
 
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20466) in GitLab 19.1 as a [beta](../../../policy/development_stages_support.md) with a [feature flag](../../../administration/feature_flags/_index.md) named `gitlab_duo_governance_settings`. Enabled by default.
-- Enforcement for background flows, such as the Duo Developer foundational flow, added in GitLab 19.3 behind a [feature flag](../../../administration/feature_flags/_index.md) named `duo_workflow_background_tool_governance`. Disabled by default.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20466) in GitLab 19.1 as a [beta](../../policy/development_stages_support.md) with a [feature flag](../../administration/feature_flags/_index.md) named `gitlab_duo_governance_settings`. Enabled by default.
+- Enforcement for background flows, such as the Duo Developer foundational flow, added in GitLab 19.3 behind a [feature flag](../../administration/feature_flags/_index.md) named `duo_workflow_background_tool_governance`. Disabled by default.
 
 > [!warning]
-> This feature is in [beta](../../../policy/development_stages_support.md).
+> This feature is in [beta](../../policy/development_stages_support.md).
 > It is subject to change without notice.
 > For more information, see [GitLab Testing Agreement](https://handbook.gitlab.com/handbook/legal/testing-agreement/).
 
@@ -55,7 +55,8 @@ enforcement depends on where the flow runs:
 
 ### GitLab MCP server tools
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606073) in GitLab 19.4 with a [feature flag](../../../administration/feature_flags/_index.md) named `duo_mcp_tool_governance`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606073) in GitLab 19.4 with a [feature flag](../../administration/feature_flags/_index.md) named `duo_mcp_tool_governance`. Disabled by default.
+- [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/work_items/607499) in GitLab 19.4.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -167,17 +168,25 @@ To configure tool governance rules for a project:
 
 ## Block Model Context Protocol (MCP) servers
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/601159) in GitLab 19.3 as a [beta](../../../policy/development_stages_support.md) with a [feature flag](../../../administration/feature_flags/_index.md) named `mcp_server_block_enforcement`. Disabled by default.
-- Enforcement [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251329) in GitLab 19.4 to apply when the session's tool configuration is built.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/601159) in GitLab 19.3 as a [beta](../../policy/development_stages_support.md) with a [feature flag](../../administration/feature_flags/_index.md) named `mcp_server_block_enforcement`. Disabled by default.
+- Enforcement [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251329) for GitLab Self-Managed and GitLab Dedicated in GitLab 19.4, applied when the session's tool configuration is built. Disabled by default.
+- Enabled on GitLab.com in GitLab 19.4.
 
 > [!warning]
-> This feature is in [beta](../../../policy/development_stages_support.md).
+> This feature is in [beta](../../policy/development_stages_support.md).
 > It is subject to change without notice.
 > For more information, see [GitLab Testing Agreement](https://handbook.gitlab.com/handbook/legal/testing-agreement/).
 
 In addition to [per-tool governance](#default-governance-matrix), group Owners can block all tools from a specific
 external MCP server. When an MCP server is blocked, no tools from that server can be
 invoked, regardless of individual tool governance settings or user approvals.
+
+> [!flag]
+> Enforcement of MCP server blocks is controlled by a feature flag.
+> For more information, see the history.
+
+If enforcement is not enabled on your instance, the MCP Registry still shows the server as blocked.
+The block itself does not take effect, so the server's tools remain available to GitLab Duo Agentic Chat.
 
 The block is applied when the tools for a chat session are assembled, which happens
 on every user message, tool approval, and new session. In practice a block takes
@@ -200,12 +209,6 @@ This differs from the **Always Deny** tool governance mode:
 - **Always Deny** applies to individual tools and is configured per project or group.
 - Blocking an MCP server applies to all tools from that server and is configured in
   the MCP Registry. It overrides any user approval or tool governance setting.
-
-> [!note]
-> Blocking an MCP server from the MCP Registry requires GitLab 19.3 or later.
-> Enforcement requires GitLab 19.4 or later with the `mcp_server_block_enforcement`
-> feature flag enabled. When enforcement is unavailable, the block is not enforced
-> and tools from the server are allowed by default.
 
 ### Block an MCP server
 
@@ -266,6 +269,8 @@ ancestor.
 
 ## Related topics
 
-- [Control GitLab Duo Agent Platform availability](../turn_on_off.md)
-- [GitLab Duo Agent Platform](../_index.md)
-- [Audit events](../../../administration/compliance/audit_event_reports.md)
+- [AI Governance](_index.md)
+- [AI Governance Dashboard](governance-dashboard.md)
+- [Control GitLab Duo Agent Platform availability](../duo_agent_platform/turn_on_off.md)
+- [GitLab Duo Agent Platform](../duo_agent_platform/_index.md)
+- [Audit events](../../administration/compliance/audit_event_reports.md)

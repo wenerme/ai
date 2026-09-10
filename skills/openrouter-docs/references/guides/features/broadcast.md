@@ -61,6 +61,60 @@ Each broadcast trace includes comprehensive information about your API request:
 * **Model Information**: The model slug and provider name used for the request
 * **Tool Usage**: Whether tools were included in the request and if tool calls were made
 
+### Token and cost fields
+
+Use the root `GENERATION` observation for usage reporting. Its `promptTokens` and `completionTokens` are the token counts used by OpenRouter's accounting layer, normally derived from provider-reported usage. Provider-attempt and timing `SPAN` observations do not carry generation totals.
+
+| Observation field                                                                | Meaning                                                                                                                                                 |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `promptTokens`, `completionTokens`, `totalTokens`                                | Accounted input, output, and total tokens. These can contain fallback estimates when provider usage is missing.                                         |
+| `promptTokensDetails.cachedTokens`                                               | Tokens read from the provider's prompt cache.                                                                                                           |
+| `promptTokensDetails.cacheWriteTokens`                                           | Tokens written to the provider's prompt cache. Uses the provider-reported aggregate when available; otherwise the pricing layer's cache-write quantity. |
+| `promptTokensDetails.cacheCreation.ephemeral_5m_input_tokens`                    | Cache-write tokens with a five-minute TTL, when the provider reports a complete breakdown.                                                              |
+| `promptTokensDetails.cacheCreation.ephemeral_1h_input_tokens`                    | Cache-write tokens with a one-hour TTL, when the provider reports a complete breakdown.                                                                 |
+| `promptTokensDetails.audioTokens`, `promptTokensDetails.videoTokens`             | Available multimodal input-token breakdowns.                                                                                                            |
+| `completionTokensDetails.reasoningTokens`, `completionTokensDetails.imageTokens` | Available reasoning and image output-token breakdowns.                                                                                                  |
+| `inputCost`, `outputCost`                                                        | Prompt and completion portions of the inference cost in USD.                                                                                            |
+| `totalCost`                                                                      | The total OpenRouter charge in USD, including applicable fees and plugin charges.                                                                       |
+
+Enable **Cost** under **Additional generation metadata** on each destination to include the following fields in `metadata.openrouter_generation`. They remain available in Privacy Mode.
+
+| Metadata field           | Meaning                                                                                                                                                                        |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `cache_write_tokens`     | The same cache-write total as `promptTokensDetails.cacheWriteTokens`.                                                                                                          |
+| `cache_creation`         | The same TTL breakdown as `promptTokensDetails.cacheCreation`.                                                                                                                 |
+| `native_server_tool_use` | Available per-tool counts for provider-native server tools; see below.                                                                                                         |
+| `usage_is_estimated`     | `true` when accounting used a fallback prompt or completion quantity, or fallback pricing after a usage-calculation failure. `false` means those fallback paths were not used. |
+| `usage`                  | The OpenRouter charge, matching the generation's total cost.                                                                                                                   |
+| `is_byok`                | Whether the generation used your provider key.                                                                                                                                 |
+| `byok_usage_inference`   | Reference inference cost for BYOK, not an additional OpenRouter charge or your provider's invoice amount.                                                                      |
+
+The existing `openrouter_generation.tokens_prompt` and `tokens_completion` fields are OpenRouter's own token estimates, not the provider's token counters. The new `usage_is_estimated` flag describes the accounting path; it does not turn these two estimate fields into provider-reported measurements or certify every detailed token count and cost as provider-reported.
+
+A null or omitted quantity is unavailable, not zero. An omitted `usage_is_estimated` flag means provenance is unavailable, such as on older exports or failures without accounting data. An interrupted stream is not automatically estimated: the flag depends on whether accounting actually used fallback quantities.
+
+#### Native server-tool counts
+
+`native_server_tool_use` can contain:
+
+| Counter                     | Source                                                                                                                                                                    |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `web_search_requests`       | The existing provider-native web-search count, including Anthropic's reported usage and OpenAI Responses completed search calls.                                          |
+| `web_fetch_requests`        | Anthropic's reported native web-fetch count.                                                                                                                              |
+| `code_execution_requests`   | Distinct Anthropic code-execution invocations, or completed OpenAI Responses code-interpreter calls. Anthropic bash and text-editor code-execution variants are included. |
+| `file_search_requests`      | Completed OpenAI Responses file-search calls.                                                                                                                             |
+| `image_generation_requests` | Completed OpenAI Responses image-generation calls.                                                                                                                        |
+
+These counters exclude client function calls and OpenRouter-orchestrated tool-call totals. They are not universally invoice units: a provider may bill code execution by container, session, or duration rather than invocation, and may charge for failed work. Apply your provider's billing rules rather than multiplying every tool count by a per-call price.
+
+#### Cache TTL availability and BYOK reconciliation
+
+Anthropic may report a TTL split at stream start and subsequently increase the cache-write aggregate during server-tool execution without sending a revised split. In that case, Broadcast preserves the later total and exports a null TTL breakdown rather than attributing the difference to a guessed TTL. When iteration usage is present, the exported quantities include all reported iterations.
+
+For BYOK reconciliation, use available cache and native-tool quantities with your provider's rates, and distinguish fallback-estimated generations using `usage_is_estimated`. These additional exports do not change billing, existing native token counts, or API response usage. Provider-reported cache-write totals can differ from the quantities normalized by OpenRouter's pricing layer. The raw provider usage object is not included in these fields.
+
+See the [S3 field locations](/docs/guides/features/broadcast/s3#billing-quantities) and [OTEL attribute mappings](/docs/guides/features/broadcast/otel-collector#billing-quantities) for destination-specific examples.
+
 ### Optional Trace Data
 
 You can enrich your traces with additional context by including these optional fields in your API requests:

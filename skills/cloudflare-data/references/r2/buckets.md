@@ -21,6 +21,7 @@ Learn more about bucket level operations from the items below.
 * [Create new buckets](https://developers.cloudflare.com/r2/buckets/create-buckets/)
 * [Public buckets](https://developers.cloudflare.com/r2/buckets/public-buckets/)
 * [Configure CORS](https://developers.cloudflare.com/r2/buckets/cors/)
+* [Data Access Logs](https://developers.cloudflare.com/r2/buckets/data-access-logs/)
 * [Local uploads](https://developers.cloudflare.com/r2/buckets/local-uploads/)
 * [Delete buckets](https://developers.cloudflare.com/r2/buckets/delete-buckets/)
 * [Bucket locks](https://developers.cloudflare.com/r2/buckets/bucket-locks/)

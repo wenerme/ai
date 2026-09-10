@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Known limitations
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/known-limitations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/known-limitations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below, you will find information regarding the current limitations for Browser Isolation.
 
@@ -35,6 +35,14 @@ Our Network Vector Rendering (NVR) technology sends drawing instructions to the 
 | Microsoft Edge (Chromium-based)              | ✅             |
 | Other Chromium-based browsers (Opera, Brave) | ✅             |
 | Internet Explorer 11 and below               | ❌             |
+
+### iOS
+
+On iOS, Apple WebKit requires direct user interaction before the local browser can pass keyboard input into the remote browser. This means users should tap twice to begin entering text in an isolated session.
+
+The first tap focuses the text field. The second tap starts text entry.
+
+Browser Isolation shows an inline prompt over the focused text field when this interaction is required. If the text field is too small to display the full prompt, Browser Isolation displays a keyboard icon in the center of the field instead.
 
 ### Brave
 
@@ -95,5 +103,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/known-limitations/#page","headline":"Known limitations - Browser Isolation · Cloudflare One docs","description":"Reference information for Known limitations in Browser Isolation.","url":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/known-limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/known-limitations/#page","headline":"Known limitations - Browser Isolation · Cloudflare One docs","description":"Reference information for Known limitations in Browser Isolation.","url":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/known-limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

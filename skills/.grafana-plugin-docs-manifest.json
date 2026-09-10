@@ -189,10 +189,40 @@
     "size": 12100,
     "updatedAt": "2026-07-11T04:03:40.648Z"
   },
+  "grafana-aurora-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-aurora-datasource/latest/alerting.md",
+    "size": 4306,
+    "updatedAt": "2026-09-10T04:31:32.128Z"
+  },
+  "grafana-aurora-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-aurora-datasource/latest/configure.md",
+    "size": 21354,
+    "updatedAt": "2026-09-10T04:31:32.274Z"
+  },
   "grafana-aurora-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-aurora-datasource/latest.md",
-    "size": 13373,
-    "updatedAt": "2026-06-25T05:41:37.106Z"
+    "size": 4339,
+    "updatedAt": "2026-09-10T04:31:32.415Z"
+  },
+  "grafana-aurora-datasource/install.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-aurora-datasource/latest/install.md",
+    "size": 9110,
+    "updatedAt": "2026-09-10T04:31:32.572Z"
+  },
+  "grafana-aurora-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-aurora-datasource/latest/query-editor.md",
+    "size": 7210,
+    "updatedAt": "2026-09-10T04:31:32.726Z"
+  },
+  "grafana-aurora-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-aurora-datasource/latest/template-variables.md",
+    "size": 4600,
+    "updatedAt": "2026-09-10T04:31:32.875Z"
+  },
+  "grafana-aurora-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-aurora-datasource/latest/troubleshooting.md",
+    "size": 17912,
+    "updatedAt": "2026-09-10T04:31:33.041Z"
   },
   "grafana-azurecosmosdb-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-azurecosmosdb-datasource/latest/alerting.md",

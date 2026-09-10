@@ -441,14 +441,19 @@ the amount of reasoning effort based on the complexity of the request. You can c
 
 ### Token limits and `max_output_tokens`
 
-`max_output_tokens` caps the **combined total** of thinking tokens
-(`total_thought_tokens`) and visible output tokens (`total_output_tokens`); it
-acts as an infrastructure cutoff without changing how the model allocates its
-thinking budget (`thinking_level`). If the model hits this limit while
-reasoning, it stops generating with status `"incomplete"` and returns truncated
-or empty output (while still billing for any thinking tokens generated). To
-reduce cost or latency without truncating responses, lower `thinking_level`
-(`low` or `medium`) instead of setting a small `max_output_tokens`.
+The [`max_output_tokens`](https://ai.google.dev/api/interactions-api#request-body) generation
+parameter sets the maximum number of tokens a response can generate, including
+thought tokens.
+
+When set, this parameter acts as a hard cutoff enforced by the infrastructure
+without changing how the model allocates its thinking budget
+(`thinking_level`).
+
+If the model hits this limit while reasoning, it stops generating with status
+`"incomplete"` and returns truncated or empty output (while still billing for
+any thinking tokens generated). To reduce cost or latency without truncating
+responses, lower `thinking_level` (`low` or `medium`) instead of setting a
+small `max_output_tokens`.
 
 ## Thought signatures
 

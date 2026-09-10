@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build caching
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/build-caching/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/build-caching/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Improve Workers build times by caching dependencies and build output between builds with a project-wide shared cache.
 
@@ -28,12 +28,14 @@ The following shows which package managers and frameworks are supported for depe
 
 Workers build cache will cache the global cache directories of the following package managers:
 
-| Package Manager                 | Directories cached |
-| ------------------------------- | ------------------ |
-| [npm ↗](https://www.npmjs.com/) | .npm               |
-| [yarn ↗](https://yarnpkg.com/)  | .cache/yarn        |
-| [pnpm ↗](https://pnpm.io/)      | .pnpm-store        |
-| [bun ↗](https://bun.sh/)        | .bun/install/cache |
+| Package Manager                 | Directories cached                   |
+| ------------------------------- | ------------------------------------ |
+| [npm ↗](https://www.npmjs.com/) | .npm                                 |
+| [yarn ↗](https://yarnpkg.com/)  | .cache/yarn                          |
+| [pnpm ↗](https://pnpm.io/)      | .pnpm-store, .local/share/pnpm/store |
+| [bun ↗](https://bun.sh/)        | .bun/install/cache                   |
+
+If you configure pnpm to use a different store directory, Workers Builds does not cache it.
 
 ### Frameworks
 
@@ -89,5 +91,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/build-caching/#page","headline":"Build caching · Cloudflare Workers docs","description":"Improve build times by caching build outputs and dependencies","url":"https://developers.cloudflare.com/workers/ci-cd/builds/build-caching/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/build-caching/#page","headline":"Build caching · Cloudflare Workers docs","description":"Improve build times by caching build outputs and dependencies","url":"https://developers.cloudflare.com/workers/ci-cd/builds/build-caching/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -38,14 +38,18 @@ ori update
 
 ## Bring your own agent
 
-Run Claude Code, Codex, Grok Build, Hermes, OpenCode, Pi, Prime Agent, or DeepSeek Harness with commands you already know:
+Run Claude Code, Cline, Codex, Grok Build, Hermes, Kilo Code, Muse Code, omp, OpenCode, Pi, Prime Agent, or DeepSeek Harness with commands you already know:
 
 ```text theme={null}
 ori claude
+ori cline
 ori codex
 ori dsh
 ori grok
 ori hermes
+ori kilo
+ori muse
+ori omp
 ori opencode
 ori pi
 ori prime-agent
@@ -83,22 +87,26 @@ ori login
 Pass `--model` and any OpenRouter model ID:
 
 ```sh theme={null}
-ori claude --model anthropic/claude-sonnet-4.6
-ori codex --model openai/gpt-5.2
-ori grok --model x-ai/grok-4.5
+ori claude --model anthropic/claude-fable-5.1
+ori cline --model anthropic/claude-fable-5.1
+ori codex --model openai/gpt-6-astra
+ori grok --model x-ai/grok-4.6
 ori hermes --model openrouter/auto
+ori kilo --model openai/gpt-6-astra
+ori muse --model anthropic/claude-fable-5.1
+ori omp --model openai/gpt-6-astra
 ori opencode --model openrouter/auto
-ori pi --model openai/gpt-5.2
-ori prime-agent --model openai/gpt-5.2
+ori pi --model openai/gpt-6-astra
+ori prime-agent --model openai/gpt-6-astra
 ori dsh --model openrouter/auto
 ```
 
-For `ori dsh`, `--model` sets the default model in your dsh settings and starts nothing. For `ori grok`, `--model` is Grok Build's own flag; it already takes OpenRouter model IDs, and Ori passes it straight through.
+For `ori dsh`, `--model` sets the default model in your dsh settings and starts nothing. For `ori grok`, `--model` is Grok Build's own flag; it already takes OpenRouter model IDs, and Ori passes it straight through. Kilo Code and omp expect provider-scoped IDs, so Ori prefixes the model with `openrouter/` for you. Without `--model`, `ori kilo` defaults to `openrouter/auto` and `ori omp` selects the OpenRouter provider and keeps omp's own default model.
 
 You set the model with a single flag, and Ori sends anything after its own flags to the agent unchanged:
 
 ```sh theme={null}
-ori codex --model google/gemini-3.6-flash --full-auto
+ori codex --model google/gemini-3.8-flash --full-auto
 ```
 
 You keep your usual agent flags, and you can pick a model from any provider in the OpenRouter catalog.
@@ -117,6 +125,8 @@ For Pi (`ori pi`), Prime Agent (`ori prime-agent`), and DeepSeek Harness (`ori d
 * You turn on ZDR-only mode with `/zdr`, so your requests go only to providers that keep no data.
 
 Grok Build (`ori grok`) loads the same catalog into its own model picker, so you don't need to run `grok login`, and its model IDs are OpenRouter model IDs. It doesn't have the `/fast` and `/zdr` toggles.
+
+Muse Code (`ori muse`) also gets your catalog: Ori seeds Muse Code's model cache from OpenRouter before it starts, so its in-session model picker lists OpenRouter model IDs. Muse Code has no `/fast` or `/zdr` toggles either.
 
 ## Guardrails, on every agent
 
@@ -138,4 +148,4 @@ No. Keep the same agent, commands, and flags.
 
 ### Which agents are supported?
 
-Claude Code (`ori claude`), Codex (`ori codex`), Grok Build (`ori grok`), Hermes (`ori hermes`), OpenCode (`ori opencode`), Pi (`ori pi`), Prime Agent (`ori prime-agent`), and DeepSeek Harness (`ori dsh`) work today, and more harnesses are coming.
+Claude Code (`ori claude`), Cline (`ori cline`), Codex (`ori codex`), Grok Build (`ori grok`), Hermes (`ori hermes`), Kilo Code (`ori kilo`), Muse Code (`ori muse`), omp (`ori omp`), OpenCode (`ori opencode`), Pi (`ori pi`), Prime Agent (`ori prime-agent`), and DeepSeek Harness (`ori dsh`) work today, and more harnesses are coming.

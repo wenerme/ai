@@ -225,7 +225,7 @@ Arguments:
 
 List of AI Catalog built-in tools.
 
-Returns [`AiCatalogBuiltInToolConnection!`](#aicatalogbuiltintoolconnection).
+Returns [`AiCatalogBuiltInToolConnection`](#aicatalogbuiltintoolconnection).
 
 This field returns a [connection](#connections). It accepts the
 four standard [pagination arguments](#pagination-arguments):
@@ -1106,7 +1106,7 @@ Returns [`DuoSettings`](#duosettings).
 - Introduced in GitLab 19.3.
 - Status: Experiment.
 
-The alternative branches to the provided user message. Multiple branches can be created when a user retries a message. Returns an empty list if the `dw_read_blobs_graphql` feature flag is disabled, or if the session does not store incremental checkpoints.
+The alternative branches to the provided user message. Multiple branches can be created when a user retries a message. Returns an error unless the message is on the current branch of the session. Returns an empty list if the `dw_read_blobs_graphql` feature flag is disabled, or if the session does not store incremental checkpoints.
 
 Returns [`[DuoWorkflowBranch!]`](#duoworkflowbranch).
 
@@ -1114,7 +1114,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="query-duoworkflowbranches-threadts"></a>`threadTs` | [`String!`](#string) | Identifier of the checkpoint that introduced a user message, from `DuoMessage.threadTs`. Returns the other attempts at the same turn, so the branch that message belongs to is excluded. |
+| <a id="query-duoworkflowbranches-threadts"></a>`threadTs` | [`String!`](#string) | Identifier of the checkpoint that introduced a user message, from `DuoMessage.threadTs`. Must be a message on the current branch of the session. Returns the other attempts at the same turn, so the branch that message belongs to is excluded. |
 | <a id="query-duoworkflowbranches-workflowid"></a>`workflowId` | [`AiDuoWorkflowsWorkflowID!`](#aiduoworkflowsworkflowid) | Global ID of the session. |
 
 ### `Query.duoWorkflowEvents`
@@ -9830,6 +9830,40 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="mutation-governpolicydelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-governpolicydelete-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+
+### `Mutation.governPolicyUpdate`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Updates a policy in the policy store for an organization. Only the supplied fields are changed; omitted fields keep their current values, while an explicit null clears a nullable field.
+
+Input type: `GovernPolicyUpdateInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-governpolicyupdate-actions"></a>`actions` | [`[JSON!]`](#json) | Actions the policy takes. No more than 1000 actions. |
+| <a id="mutation-governpolicyupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-governpolicyupdate-description"></a>`description` | [`String`](#string) | Description of the policy. |
+| <a id="mutation-governpolicyupdate-lifecyclestate"></a>`lifecycleState` | [`String`](#string) | Lifecycle state of the policy. |
+| <a id="mutation-governpolicyupdate-mode"></a>`mode` | [`String`](#string) | Enforcement mode of the policy. |
+| <a id="mutation-governpolicyupdate-name"></a>`name` | [`String`](#string) | Name of the policy. |
+| <a id="mutation-governpolicyupdate-organizationid"></a>`organizationId` | [`OrganizationsOrganizationID!`](#organizationsorganizationid) | Global ID of the organization the policy belongs to. |
+| <a id="mutation-governpolicyupdate-policyid"></a>`policyId` | [`Int!`](#int) | ID of the policy. |
+| <a id="mutation-governpolicyupdate-policyscope"></a>`policyScope` | [`JSON`](#json) | Authored scope of the policy. Mutually exclusive with scopeRego. |
+| <a id="mutation-governpolicyupdate-rules"></a>`rules` | [`[JSON!]`](#json) | Rules of the policy, at least one when supplied. No more than 1000 rules. |
+| <a id="mutation-governpolicyupdate-scoperego"></a>`scopeRego` | [`String`](#string) | Rego expression scoping the policy. Mutually exclusive with policyScope. |
+| <a id="mutation-governpolicyupdate-triggertype"></a>`triggerType` | [`String`](#string) | Trigger the policy responds to. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-governpolicyupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-governpolicyupdate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-governpolicyupdate-policy"></a>`policy` | [`GovernPolicy`](#governpolicy) | Policy updated in the policy store. |
 
 ### `Mutation.groupAuditEventStreamingDestinationsCreate`
 
@@ -20286,6 +20320,29 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="aiselfhostedmodeledge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="aiselfhostedmodeledge-node"></a>`node` | [`AiSelfHostedModel`](#aiselfhostedmodel) | The item at the end of the edge. |
+
+#### `AiSuggestedReviewerConnection`
+
+The connection type for [`AiSuggestedReviewer`](#aisuggestedreviewer).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aisuggestedreviewerconnection-edges"></a>`edges` | [`[AiSuggestedReviewerEdge]`](#aisuggestedrevieweredge) | A list of edges. |
+| <a id="aisuggestedreviewerconnection-nodes"></a>`nodes` | [`[AiSuggestedReviewer]`](#aisuggestedreviewer) | A list of nodes. |
+| <a id="aisuggestedreviewerconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `AiSuggestedReviewerEdge`
+
+The edge type for [`AiSuggestedReviewer`](#aisuggestedreviewer).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aisuggestedrevieweredge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="aisuggestedrevieweredge-node"></a>`node` | [`AiSuggestedReviewer`](#aisuggestedreviewer) | The item at the end of the edge. |
 
 #### `AiToolRuleConnection`
 
@@ -33332,6 +33389,20 @@ Fields:
 | <a id="aiselfhostedmodel-releasestate"></a>`releaseState` | [`AiSelfHostedModelReleaseState!`](#aiselfhostedmodelreleasestate) | GitLab release status of the model. |
 | <a id="aiselfhostedmodel-updatedat"></a>`updatedAt` | [`Time`](#time) | Timestamp of last update. |
 
+### `AiSuggestedReviewer`
+
+AI-recommended reviewer for a merge request.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aisuggestedreviewer-approvalrule"></a>`approvalRule` | [`ApprovalRule`](#approvalrule) | Approval rule the user was suggested as a reviewer for. |
+| <a id="aisuggestedreviewer-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the suggestion was created. |
+| <a id="aisuggestedreviewer-id"></a>`id` | [`ID!`](#id) | ID of the suggested reviewer. |
+| <a id="aisuggestedreviewer-reason"></a>`reason` | [`String`](#string) | Model rationale for recommending the user. |
+| <a id="aisuggestedreviewer-user"></a>`user` | [`UserCore`](#usercore) | User recommended as a reviewer. |
+
 ### `AiToolRule`
 
 A governance rule for an AI agent tool.
@@ -33785,6 +33856,7 @@ Arguments:
 | <a id="analytics-duoworkflows-createdatto"></a>`createdAtTo` | [`Time`](#time) | Filter by flow creation timestamp. End of the range. |
 | <a id="analytics-duoworkflows-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
 | <a id="analytics-duoworkflows-projectid"></a>`projectId` | [`[String!]`](#string) | Filter by one or many project Global IDs. |
+| <a id="analytics-duoworkflows-status"></a>`status` | [`[String!]`](#string) | Filter by one or many flow statuses (created, running, finished, failed, ...). |
 | <a id="analytics-duoworkflows-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
 | <a id="analytics-duoworkflows-workflowdefinition"></a>`workflowDefinition` | [`[String!]`](#string) | Filter by one or many flow types. |
 
@@ -38586,7 +38658,7 @@ Arguments:
 | <a id="countablevulnerability-dependencies-componentnames"></a>`componentNames` | [`[String!]`](#string) | Filter dependencies by component names. |
 | <a id="countablevulnerability-dependencies-componentversions"></a>`componentVersions` | [`[String!]`](#string) | Filter dependencies by component versions. |
 | <a id="countablevulnerability-dependencies-licenses"></a>`licenses`  | [`[String!]`](#string) | Introduced in GitLab 19.2. Status: Experiment. Filter dependencies by SPDX license identifiers. |
-| <a id="countablevulnerability-dependencies-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Work in progress and gated with feature flag `malicious_packages_dependency_list_filtering`. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
+| <a id="countablevulnerability-dependencies-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Gated with feature flag `malicious_packages_dependency_list_filtering`. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
 | <a id="countablevulnerability-dependencies-notcomponentversions"></a>`notComponentVersions`  | [`[String!]`](#string) | Introduced in GitLab 18.1. Status: Experiment. Filter dependencies to exclude the specified component versions. |
 | <a id="countablevulnerability-dependencies-packagemanagers"></a>`packageManagers` | [`[PackageManager!]`](#packagemanager) | Filter dependencies by package managers. |
 | <a id="countablevulnerability-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. Cannot be combined with the `malware` argument. |
@@ -41520,9 +41592,23 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="duoworkflowsaggregationresponse-creditsused"></a>`creditsUsed` | [`DuoWorkflowsAggregationResponseCreditsUsedMetrics`](#duoworkflowsaggregationresponsecreditsusedmetrics) | Aggregated `credits_used` metrics. |
 | <a id="duoworkflowsaggregationresponse-dimensions"></a>`dimensions` | [`DuoWorkflowsAggregationResponseDimensions`](#duoworkflowsaggregationresponsedimensions) | Aggregation dimensions. Every selected dimension will be used for aggregation. |
+| <a id="duoworkflowsaggregationresponse-flowtypescount"></a>`flowTypesCount` | [`Int`](#int) | Number of unique flow types. |
 | <a id="duoworkflowsaggregationresponse-projectscount"></a>`projectsCount` | [`Int`](#int) | Number of unique projects. |
-| <a id="duoworkflowsaggregationresponse-totalcount"></a>`totalCount` | [`Int`](#int) | Total number of flows. |
 | <a id="duoworkflowsaggregationresponse-userscount"></a>`usersCount` | [`Int`](#int) | Number of unique users. |
+
+#### Fields with arguments
+
+##### `DuoWorkflowsAggregationResponse.totalCount`
+
+Total number of flows, optionally filtered by status.
+
+Returns [`Int`](#int).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowsaggregationresponse-totalcount-status"></a>`status` | [`[String!]`](#string) | Only count flows with the given statuses (created, running, finished, failed, ...). |
 
 ### `DuoWorkflowsAggregationResponseCreditsUsedMetrics`
 
@@ -41559,7 +41645,9 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="duoworkflowsaggregationresponsedimensions-modelused"></a>`modelUsed` | [`String`](#string) | Model used by the flow. |
 | <a id="duoworkflowsaggregationresponsedimensions-project"></a>`project` | [`Project`](#project) | Project the flow ran in. Returns `null` for flows not scoped to a project. |
+| <a id="duoworkflowsaggregationresponsedimensions-status"></a>`status` | [`String`](#string) | Flow status. |
 | <a id="duoworkflowsaggregationresponsedimensions-user"></a>`user` | [`UserCore`](#usercore) | Flow owner. |
 | <a id="duoworkflowsaggregationresponsedimensions-workflowdefinition"></a>`workflowDefinition` | [`String`](#string) | Type of flow. |
 
@@ -43722,12 +43810,24 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="gitlabsubscriptionusercreditsusage-blockedstatus"></a>`blockedStatus` | [`GitlabSubscriptionUsageBlockedStatus`](#gitlabsubscriptionusageblockedstatus) | Blocked status of the current user under the subscription budget cap. |
 | <a id="gitlabsubscriptionusercreditsusage-creditsused"></a>`creditsUsed` | [`Float`](#float) | GitLab Credits consumed by the current user. |
+| <a id="gitlabsubscriptionusercreditsusage-dailyusage"></a>`dailyUsage` | [`[GitlabSubscriptionUserCreditsUsageDailyUsage!]`](#gitlabsubscriptionusercreditsusagedailyusage) | Daily GitLab Credits usage for the current user. |
 | <a id="gitlabsubscriptionusercreditsusage-enabled"></a>`enabled` | [`Boolean!`](#boolean) | Indicates if the Customer Portal GitLab Credits API is enabled. |
 | <a id="gitlabsubscriptionusercreditsusage-enddate"></a>`endDate` | [`ISO8601Date`](#iso8601date) | End date of the period covered by the usage data. |
 | <a id="gitlabsubscriptionusercreditsusage-isoutdatedclient"></a>`isOutdatedClient` | [`Boolean`](#boolean) | Indicates if the GitLab instance has an outdated API contract with the Customer Portal. |
 | <a id="gitlabsubscriptionusercreditsusage-products"></a>`products` | [`[GitlabSubscriptionUserCreditsUsageProduct!]`](#gitlabsubscriptionusercreditsusageproduct) | All supported products with their associated flow types. |
 | <a id="gitlabsubscriptionusercreditsusage-startdate"></a>`startDate` | [`ISO8601Date`](#iso8601date) | Start date of the period covered by the usage data. |
 | <a id="gitlabsubscriptionusercreditsusage-usedflowtypes"></a>`usedFlowTypes` | [`[GitlabSubscriptionUsageFlowTypeInfo!]`](#gitlabsubscriptionusageflowtypeinfo) | Flow types the current user consumed credits under during the period. |
+
+### `GitlabSubscriptionUserCreditsUsageDailyUsage`
+
+Daily GitLab Credits usage for the current user.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="gitlabsubscriptionusercreditsusagedailyusage-creditsused"></a>`creditsUsed` | [`Float!`](#float) | GitLab Credits consumed by the current user on the date. |
+| <a id="gitlabsubscriptionusercreditsusagedailyusage-date"></a>`date` | [`ISO8601Date!`](#iso8601date) | Date when credits were used. |
 
 ### `GitlabSubscriptionUserCreditsUsageProduct`
 
@@ -44610,7 +44710,7 @@ Arguments:
 | <a id="group-dependencies-componentnames"></a>`componentNames` | [`[String!]`](#string) | Filter dependencies by component names. |
 | <a id="group-dependencies-componentversions"></a>`componentVersions` | [`[String!]`](#string) | Filter dependencies by component versions. |
 | <a id="group-dependencies-licenses"></a>`licenses`  | [`[String!]`](#string) | Introduced in GitLab 19.2. Status: Experiment. Filter dependencies by SPDX license identifiers. |
-| <a id="group-dependencies-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Work in progress and gated with feature flag `malicious_packages_dependency_list_filtering`. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
+| <a id="group-dependencies-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Gated with feature flag `malicious_packages_dependency_list_filtering`. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
 | <a id="group-dependencies-notcomponentversions"></a>`notComponentVersions`  | [`[String!]`](#string) | Introduced in GitLab 18.1. Status: Experiment. Filter dependencies to exclude the specified component versions. |
 | <a id="group-dependencies-packagemanagers"></a>`packageManagers` | [`[PackageManager!]`](#packagemanager) | Filter dependencies by package managers. |
 | <a id="group-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. Cannot be combined with the `malware` argument. |
@@ -44640,7 +44740,7 @@ Arguments:
 | <a id="group-dependencyaggregations-componentnames"></a>`componentNames` | [`[String!]`](#string) | Filter dependencies by component names. |
 | <a id="group-dependencyaggregations-componentversions"></a>`componentVersions` | [`[String!]`](#string) | Filter dependencies by component versions. |
 | <a id="group-dependencyaggregations-licenses"></a>`licenses`  | [`[String!]`](#string) | Introduced in GitLab 19.2. Status: Experiment. Filter dependencies by SPDX license identifiers. |
-| <a id="group-dependencyaggregations-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Work in progress and gated with feature flag `malicious_packages_dependency_list_filtering`. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
+| <a id="group-dependencyaggregations-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Gated with feature flag `malicious_packages_dependency_list_filtering`. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
 | <a id="group-dependencyaggregations-notcomponentversions"></a>`notComponentVersions`  | [`[String!]`](#string) | Introduced in GitLab 18.1. Status: Experiment. Filter dependencies to exclude the specified component versions. |
 | <a id="group-dependencyaggregations-packagemanagers"></a>`packageManagers` | [`[PackageManager!]`](#packagemanager) | Filter dependencies by package managers. |
 | <a id="group-dependencyaggregations-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. Cannot be combined with the `malware` argument. |
@@ -44758,6 +44858,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="group-duoworkflowsessionartifacts-agentclass"></a>`agentClass` | [`AiGovernanceAgentClass`](#aigovernanceagentclass) | Filter sessions by agent class. Defaults to all agent classes. |
 | <a id="group-duoworkflowsessionartifacts-not"></a>`not` | [`DuoWorkflowSessionArtifactNegatedFilterInput`](#duoworkflowsessionartifactnegatedfilterinput) | Negated filter conditions. |
 | <a id="group-duoworkflowsessionartifacts-projectpath"></a>`projectPath` | [`String`](#string) | Filter by project full path. |
 | <a id="group-duoworkflowsessionartifacts-triggeredbyuserid"></a>`triggeredByUserId` | [`UserID`](#userid) | Filter to sessions triggered by the user with the given global ID. |
@@ -48100,6 +48201,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="mergerequest-aisuggestedreviewers"></a>`aiSuggestedReviewers`  | [`AiSuggestedReviewerConnection`](#aisuggestedreviewerconnection) | Introduced in GitLab 19.4. Status: Experiment. AI-recommended reviewers for the merge request. Returns `null` unless the recommend reviewers flow is enabled for the project. |
 | <a id="mergerequest-allowcollaboration"></a>`allowCollaboration` | [`Boolean`](#boolean) | Indicates if members of the target project can push to the fork. |
 | <a id="mergerequest-allowsmultipleassignees"></a>`allowsMultipleAssignees` | [`Boolean!`](#boolean) | Allows assigning multiple users to a merge request. |
 | <a id="mergerequest-allowsmultiplereviewers"></a>`allowsMultipleReviewers` | [`Boolean!`](#boolean) | Allows assigning multiple reviewers to a merge request. |
@@ -54926,7 +55028,7 @@ Arguments:
 | <a id="project-dependencies-componentnames"></a>`componentNames` | [`[String!]`](#string) | Filter dependencies by component names. |
 | <a id="project-dependencies-componentversions"></a>`componentVersions` | [`[String!]`](#string) | Filter dependencies by component versions. |
 | <a id="project-dependencies-licenses"></a>`licenses`  | [`[String!]`](#string) | Introduced in GitLab 19.2. Status: Experiment. Filter dependencies by SPDX license identifiers. |
-| <a id="project-dependencies-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Work in progress and gated with feature flag `malicious_packages_dependency_list_filtering`. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
+| <a id="project-dependencies-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Gated with feature flag `malicious_packages_dependency_list_filtering`. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
 | <a id="project-dependencies-notcomponentversions"></a>`notComponentVersions`  | [`[String!]`](#string) | Introduced in GitLab 18.1. Status: Experiment. Filter dependencies to exclude the specified component versions. |
 | <a id="project-dependencies-packagemanagers"></a>`packageManagers` | [`[PackageManager!]`](#packagemanager) | Filter dependencies by package managers. |
 | <a id="project-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. Cannot be combined with the `malware` argument. |
@@ -55050,6 +55152,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="project-duoworkflowsessionartifacts-agentclass"></a>`agentClass` | [`AiGovernanceAgentClass`](#aigovernanceagentclass) | Filter sessions by agent class. Defaults to all agent classes. |
 | <a id="project-duoworkflowsessionartifacts-not"></a>`not` | [`DuoWorkflowSessionArtifactNegatedFilterInput`](#duoworkflowsessionartifactnegatedfilterinput) | Negated filter conditions. |
 | <a id="project-duoworkflowsessionartifacts-triggeredbyuserid"></a>`triggeredByUserId` | [`UserID`](#userid) | Filter to sessions triggered by the user with the given global ID. |
 | <a id="project-duoworkflowsessionartifacts-workflowcreatedafter"></a>`workflowCreatedAfter` | [`Time`](#time) | Return sessions created after the timestamp. |
@@ -58508,6 +58611,22 @@ Fields:
 | <a id="sastciconfigurationoptionsentity-label"></a>`label` | [`String`](#string) | Label of option entity. |
 | <a id="sastciconfigurationoptionsentity-value"></a>`value` | [`String`](#string) | Value of option entity. |
 
+### `SastConfiguration`
+
+Configuration for a SAST scan profile.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="sastconfiguration-advancedsastpartialscan"></a>`advancedSastPartialScan`  | [`SecurityScanProfileAdvancedSastPartialScan`](#securityscanprofileadvancedsastpartialscan) | Introduced in GitLab 19.4. Status: Experiment. Controls GitLab Advanced SAST diff-based scanning. |
+| <a id="sastconfiguration-analyzerimagetag"></a>`analyzerImageTag`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Tag of the analyzer image to use. |
+| <a id="sastconfiguration-excludedanalyzers"></a>`excludedAnalyzers`  | [`[String!]`](#string) | Introduced in GitLab 19.4. Status: Experiment. Analyzers excluded from the scan. |
+| <a id="sastconfiguration-excludedpaths"></a>`excludedPaths`  | [`[String!]`](#string) | Introduced in GitLab 19.4. Status: Experiment. Glob paths excluded from the scan. |
+| <a id="sastconfiguration-gitlabadvsastincrscan"></a>`gitlabAdvSastIncrScan`  | [`Boolean`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Whether GitLab Advanced SAST incremental scanning is enabled. |
+| <a id="sastconfiguration-imagesuffix"></a>`imageSuffix`  | [`SecurityScanProfileImageSuffix`](#securityscanprofileimagesuffix) | Introduced in GitLab 19.4. Status: Experiment. Suffix appended to the analyzer image name. |
+| <a id="sastconfiguration-secureanalyzersprefix"></a>`secureAnalyzersPrefix`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Prefix for the container registry from which the analyzer image is pulled. |
+
 ### `SastFalsePositiveConfiguration`
 
 Configuration for the SAST false positive detection trigger of a triage and remediation scan profile.
@@ -58813,6 +58932,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="secretsmanagerentitlement-betaprogramended"></a>`betaProgramEnded`  | [`Boolean`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Indicates whether the free-beta program has ended for the namespace. Set only when state is TRIAL_ELIGIBLE; null otherwise. |
+| <a id="secretsmanagerentitlement-betawindoweligible"></a>`betaWindowEligible`  | [`Boolean`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Indicates whether the namespace joined Secrets Manager during the free beta and keeps beta access until the beta program ends. True only when state is TRIAL_ELIGIBLE or INELIGIBLE; false or null otherwise. |
 | <a id="secretsmanagerentitlement-blockedreason"></a>`blockedReason`  | [`SecretsManagerEntitlementBlockedReason`](#secretsmanagerentitlementblockedreason) | Introduced in GitLab 19.2. Status: Experiment. Reason the entitlement is blocked; null when state is not BLOCKED. |
 | <a id="secretsmanagerentitlement-creditsremaining"></a>`creditsRemaining`  | [`Float`](#float) | Introduced in GitLab 19.2. Status: Experiment. Number of trial credits remaining. |
 | <a id="secretsmanagerentitlement-creditstotal"></a>`creditsTotal`  | [`Float`](#float) | Introduced in GitLab 19.2. Status: Experiment. Initial trial credit allocation for the current trial period. |
@@ -61424,7 +61544,7 @@ Arguments:
 | <a id="vulnerability-dependencies-componentnames"></a>`componentNames` | [`[String!]`](#string) | Filter dependencies by component names. |
 | <a id="vulnerability-dependencies-componentversions"></a>`componentVersions` | [`[String!]`](#string) | Filter dependencies by component versions. |
 | <a id="vulnerability-dependencies-licenses"></a>`licenses`  | [`[String!]`](#string) | Introduced in GitLab 19.2. Status: Experiment. Filter dependencies by SPDX license identifiers. |
-| <a id="vulnerability-dependencies-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Work in progress and gated with feature flag `malicious_packages_dependency_list_filtering`. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
+| <a id="vulnerability-dependencies-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Gated with feature flag `malicious_packages_dependency_list_filtering`. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
 | <a id="vulnerability-dependencies-notcomponentversions"></a>`notComponentVersions`  | [`[String!]`](#string) | Introduced in GitLab 18.1. Status: Experiment. Filter dependencies to exclude the specified component versions. |
 | <a id="vulnerability-dependencies-packagemanagers"></a>`packageManagers` | [`[PackageManager!]`](#packagemanager) | Filter dependencies by package managers. |
 | <a id="vulnerability-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. Cannot be combined with the `malware` argument. |
@@ -63032,6 +63152,7 @@ Fields:
 | <a id="workitemwidgetagentplan-aiplanningenabled"></a>`aiPlanningEnabled` | [`Boolean!`](#boolean) | Indicates whether AI planning is enabled for the work item. |
 | <a id="workitemwidgetagentplan-content"></a>`content` | [`String`](#string) | Content of the agent plan. This field can only be resolved for one work item in any single request. |
 | <a id="workitemwidgetagentplan-contenthtml"></a>`contentHtml` | [`String`](#string) | GitLab Flavored Markdown rendering of `content`. This field can only be resolved for one work item in any single request. |
+| <a id="workitemwidgetagentplan-generationstatus"></a>`generationStatus`  | [`WorkItemAgentPlanGenerationStatus`](#workitemagentplangenerationstatus) | Introduced in GitLab 19.4. Status: Experiment. Status of the asynchronous workplan generation flow for the work item. Reflects the most recent `workplan/v1` Duo Agent Platform workflow, if any; creation of that workflow is currently gated by the `duo_workplan_async_flow` feature flag. |
 | <a id="workitemwidgetagentplan-readinessscore"></a>`readinessScore`  | [`Int`](#int) | Introduced in GitLab 19.3. Status: Experiment. Readiness score of the agent plan (0-100). Null when the score is not yet available. Only available when the `workplan_score` feature flag is enabled. |
 | <a id="workitemwidgetagentplan-readinessscorefeedback"></a>`readinessScoreFeedback`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Markdown feedback explaining the readiness score. Null when no feedback is available. Only available when the `workplan_score` feature flag is enabled. This field can only be resolved for one work item in any single request. |
 | <a id="workitemwidgetagentplan-readinessscorefeedbackhtml"></a>`readinessScoreFeedbackHtml`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. GitLab Flavored Markdown rendering of `readiness_score_feedback`. Only available when the `workplan_score` feature flag is enabled. This field can only be resolved for one work item in any single request. |
@@ -70205,6 +70326,18 @@ Weight ID wildcard values.
 | <a id="weightwildcardid-any"></a>`ANY` | Weight is assigned. |
 | <a id="weightwildcardid-none"></a>`NONE` | No weight is assigned. |
 
+### `WorkItemAgentPlanGenerationStatus`
+
+Status of the asynchronous workplan generation flow for a work item.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="workitemagentplangenerationstatus-completed"></a>`COMPLETED` | Indicates the flow finished successfully. |
+| <a id="workitemagentplangenerationstatus-failed"></a>`FAILED` | Indicates the flow ended without completing. Includes flows canceled by a user. |
+| <a id="workitemagentplangenerationstatus-generating"></a>`GENERATING` | Indicates a workplan generation flow is in progress. |
+| <a id="workitemagentplangenerationstatus-needs_input"></a>`NEEDS_INPUT` | Indicates the flow is waiting for user input. |
+| <a id="workitemagentplangenerationstatus-not_started"></a>`NOT_STARTED` | No workplan generation flow has run for the work item. |
+
 ### `WorkItemAvailabilityAction`
 
 Action to apply to work item type availability.
@@ -72503,6 +72636,7 @@ Effective configuration for a scan profile trigger, resolved by scan type, and b
 One of:
 
 - [`AutoRemediationConfiguration`](#autoremediationconfiguration)
+- [`SastConfiguration`](#sastconfiguration)
 - [`SastFalsePositiveConfiguration`](#sastfalsepositiveconfiguration)
 - [`SastVulnerabilityResolutionConfiguration`](#sastvulnerabilityresolutionconfiguration)
 - [`SecretDetectionConfiguration`](#secretdetectionconfiguration)

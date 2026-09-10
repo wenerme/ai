@@ -39,7 +39,7 @@ https://mcp.cloudflare.com/mcp
 Ask Bionic to investigate a task, make changes, and run relevant tests. Review its diffs and command output before keeping changes.
 For example:
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ## Cloudflare platform access
@@ -119,7 +119,7 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ```txt
@@ -127,15 +127,15 @@ Optimize my Worker to serve WebP images with responsive resizing using Cloudflar
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ## Tips

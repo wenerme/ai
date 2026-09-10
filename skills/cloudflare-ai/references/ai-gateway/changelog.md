@@ -16,6 +16,30 @@ Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/ai-gateway.xml)
 
+## 2026-09-09
+
+
+**AI Gateway custom costs support cache tokens**
+
+AI Gateway custom costs now support cache-read and cache-write token rates. This lets custom cost metrics reflect negotiated cache pricing across providers.
+
+Add `per_cache_read_token` or `per_cache_write_token` to the `cf-aig-custom-cost` header:
+
+```json
+{
+	"per_token_in": 0.000001,
+	"per_token_out": 0.000002,
+	"per_cache_read_token": 0.0000001,
+	"per_cache_write_token": 0.0000005
+}
+```
+
+Cache-token pricing activates when either cache rate is present. An omitted cache rate defaults to `per_token_in`. If both cache rates are omitted, AI Gateway preserves the existing input and output calculation.
+
+Providers can include cache tokens within input tokens or report them separately. AI Gateway automatically accounts for these differences and prevents double-counting.
+
+For more information, refer to [Custom costs](https://developers.cloudflare.com/ai-gateway/configuration/custom-costs/).
+
 ## 2026-09-01
 
 

@@ -166,7 +166,15 @@ The shell tool accepts optional `parameters` to choose its execution engine and 
 
 Containers sleep after 5 minutes idle; each command renews the timer. This is not configurable — a legacy `sleep_after_seconds` parameter is accepted and ignored. See [Container lifetime](/docs/guides/features/containers#container-lifetime).
 
-Defaults and caps reflect current server-enforced limits and may change while the tool is in beta.
+Defaults and caps are server-enforced and may change while the tool is in beta:
+
+| Limit                                       | Default             | Maximum             |
+| ------------------------------------------- | ------------------- | ------------------- |
+| `timeout_ms` per command                    | 120,000 (2 minutes) | 300,000 (5 minutes) |
+| `max_output_length` per stream, per command | 16,384 characters   | 65,536 characters   |
+| `commands` per call                         | —                   | 100                 |
+
+A `timeout_ms` or `max_output_length` above the maximum is clamped to it. A call with more than 100 commands is rejected.
 
 ### Network Policy
 
@@ -237,14 +245,20 @@ The tool returns one entry per command, matching OpenAI's `shell_call_output.out
 
 Each command's `outcome` is either `{ "type": "exit", "exit_code": <int> }` or `{ "type": "timeout" }`. A non-zero exit code indicates the command failed; the error output is returned on `stderr` so the model can read and react to it.
 
+## Pricing
+
+Sandbox time (commands run with `engine: "openrouter"`) is billed at **\$0.0001 per second**. The clock starts when a request first runs a sandbox command and stops at the end of the last sandbox command. A container that is idle between requests is not billed.
+
+A request that starts a new or sleeping container is billed a minimum of 30 seconds. Later requests that reuse the same warm container pay only their metered time.
+
 ## Security
 
 Shell execution is sandboxed by design:
 
 * Commands execute in an isolated container, not on OpenRouter infrastructure or your machine. With `container_auto` the container is ephemeral; with `container_reference` it persists across requests.
 * Containers are scoped per account and workspace, so they are never shared across tenants.
-* Execution time is bounded by `timeout_ms` (clamped to a server-side maximum).
-* `stdout` and `stderr` are each truncated to `max_output_length` (a per-stream cap, itself clamped to a server-side maximum).
+* Execution time is bounded by `timeout_ms`, clamped to 5 minutes per command.
+* `stdout` and `stderr` are each truncated to `max_output_length`, a per-stream cap clamped to 65,536 characters. See [Configuration](#configuration) for the defaults.
 
 ## Next Steps
 

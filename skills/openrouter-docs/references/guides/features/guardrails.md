@@ -29,7 +29,7 @@ Each guardrail can include any combination of:
 * **Budget limit** - Spending cap in USD that resets daily, weekly, or monthly. Requests are rejected when the limit is reached. By default only OpenRouter credit spend counts toward the limit; enable **Include BYOK spend** (`include_byok_in_budgets`) to also count [BYOK](/docs/guides/overview/auth/byok) inference spend.
 * **Model allowlist** - Restrict to specific models. Leave empty to allow all.
 * **Provider allowlist** - Restrict to specific providers. Leave empty to allow all.
-* **Zero Data Retention** - Enforce ZDR per model group (Anthropic, OpenAI, Google, SpaceXAI, and non-frontier). See [Zero Data Retention](/docs/guides/features/zdr#per-model-group-zdr-enforcement) for details.
+* **Zero Data Retention** - Enforce ZDR per model group (Anthropic, OpenAI, Google, SpaceXAI, and all other models). See [Zero Data Retention](/docs/guides/features/zdr#per-model-group-zdr-enforcement) for details.
 * **Data regions** - Restrict which OpenRouter domains requests may arrive through (`allowed_data_regions`: `global` for `https://openrouter.ai`, `europe` for `https://eu.openrouter.ai`, `us` for `https://us.openrouter.ai`). Requests through any other domain are rejected. Leave unrestricted to accept any region. Data-region guardrails require a Business or Enterprise plan. See [Enforcing In-Region Routing with Guardrails](/docs/guides/features/in-region-routing#enforcing-in-region-routing-with-guardrails). Note that the guardrail value for the EU is `europe`, while the Models API region filter takes `region=eu`.
 * **Security** - Protect against prompt injection and jailbreak attacks with [regex-based detection](/docs/guides/features/guardrails/prompt-injection).
 * **[Sensitive Info](/docs/guides/features/guardrails/sensitive-info)** - Detect and redact or block sensitive information (PII) in API requests using built-in presets and NLP-based detection.
@@ -62,7 +62,7 @@ Account-wide privacy and provider settings are always enforced as a default guar
 
 * **Provider allowlists**: Intersection across all guardrails (only providers allowed by all guardrails are available)
 * **Model allowlists**: Intersection across all guardrails (only models allowed by all guardrails are available)
-* **Zero Data Retention**: OR logic per model group (if any guardrail enforces ZDR for a given scope, such as Anthropic, OpenAI, Google, SpaceXAI, or non-frontier, it is enforced for that scope)
+* **Zero Data Retention**: OR logic per model group (if any guardrail enforces ZDR for a given scope, such as Anthropic, OpenAI, Google, SpaceXAI, or all other models, it is enforced for that scope)
 * **Data regions**: Intersection across all guardrails that set `allowed_data_regions` (a guardrail that leaves it unrestricted does not affect the result). A member or API key guardrail can only narrow the regions permitted by the workspace default guardrail.
 * **Sensitive Info**: Union across all guardrails (filters from all applicable guardrails are combined). If the same entity type or pattern appears with different actions, block takes precedence over redact.
 * **Budget limits**: Each guardrail's budget is checked independently. See [Budget Enforcement](#budget-enforcement) for details.

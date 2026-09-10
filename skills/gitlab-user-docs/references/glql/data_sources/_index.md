@@ -9,6 +9,7 @@ GLQL can query the following data sources:
 | Pipelines | Yes | Yes | `Pipeline` | CI/CD pipelines. |
 | Jobs | Yes | No | `Job` | CI/CD jobs within pipelines. |
 | Projects | Yes | No | `Project` | Projects within a namespace. |
+| Agent platform sessions | No | Yes | `AgentPlatformSession` | Aggregated GitLab Duo Agent Platform session analytics. |
 | AI usage events | No | Yes | `AiUsageEvent` | Aggregated GitLab Duo usage event analytics. |
 | Code suggestions | No | Yes | `CodeSuggestion` | Aggregated GitLab Duo Code Suggestions analytics. |
 | Contributions | No | Yes | `Contribution` | Aggregated contribution activity analytics. |

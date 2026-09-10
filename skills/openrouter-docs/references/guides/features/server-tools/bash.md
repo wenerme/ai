@@ -164,6 +164,16 @@ environment:
 | `environment` | object | `container_auto` | Execution environment. Use `{ "type": "container_auto" }` for an OpenRouter-managed container, or `{ "type": "container_reference", "container_id": "..." }` to reuse an existing container. See [Containers](/docs/guides/features/containers) |
 | `engine`      | string | `auto`           | Where commands run: `openrouter` runs them server-side in the OpenRouter sandbox; `auto`/`native` (the default) return the tool call to your application to run client-side. See [Execution engine](#execution-engine)                     |
 
+Defaults and caps are server-enforced and may change while the tool is in beta:
+
+| Limit                                     | Default             | Maximum             |
+| ----------------------------------------- | ------------------- | ------------------- |
+| `timeout_ms` per batch                    | 120,000 (2 minutes) | 300,000 (5 minutes) |
+| `max_output_length` per stream, per batch | 16,384 characters   | 65,536 characters   |
+| `commands` per call                       | —                   | 100                 |
+
+When commands run in the OpenRouter sandbox, a `timeout_ms` or `max_output_length` above the maximum is clamped to it. A call with more than 100 commands is rejected.
+
 ### Network Policy
 
 When commands run in the OpenRouter sandbox (`engine: "openrouter"`), containers have **no outbound internet access by default**. The container configuration objects accept a `network_policy` field:
@@ -286,6 +296,12 @@ When the model calls the bash tool, it receives a response like:
 A non-zero `exitCode` indicates the command itself failed; the error output is
 returned on `stderr` so the model can read and react to it.
 
+## Pricing
+
+Sandbox time (commands run with `engine: "openrouter"`) is billed at **\$0.0001 per second**. The clock starts when a request first runs a sandbox command and stops at the end of the last sandbox command. A container that is idle between requests is not billed.
+
+A request that starts a new or sleeping container is billed a minimum of 30 seconds. Later requests that reuse the same warm container pay only their metered time.
+
 ## Security
 
 Running shell commands is powerful and is sandboxed by design:
@@ -295,9 +311,10 @@ Running shell commands is powerful and is sandboxed by design:
   ephemeral; with `container_reference` it persists across requests.
 * Containers are scoped per account, so they are never shared across tenants.
 * Network access is intended to be disabled by default at the container level.
-* Execution time is bounded by `timeout_ms` (clamped to a server-side maximum).
-* `stdout` and `stderr` are each truncated to `max_output_length` (a per-stream
-  cap, itself clamped to a server-side maximum).
+* Execution time is bounded by `timeout_ms`, clamped to 5 minutes.
+* `stdout` and `stderr` are each truncated to `max_output_length`, a per-stream
+  cap clamped to 65,536 characters. See [Configuration](#configuration) for the
+  defaults.
 
 ## Next Steps
 

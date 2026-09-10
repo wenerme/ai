@@ -958,6 +958,9 @@ components:
         ncompass:
           additionalProperties: {}
           type: object
+        near-ai:
+          additionalProperties: {}
+          type: object
         nebius:
           additionalProperties: {}
           type: object

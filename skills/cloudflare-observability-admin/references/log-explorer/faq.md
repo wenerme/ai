@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQ
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/log-explorer/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/log-explorer/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Which fields (or columns) are available for querying?
 
@@ -70,7 +70,13 @@ Log Explorer uses Cloudflare Logpush and R2 behind the scenes to stream and stor
 
 ## Are Custom Dashboards based on R2 Log Explorer data, or on GraphQL?
 
-Custom Dashboards currently run on [GraphQL](https://developers.cloudflare.com/analytics/graphql-api/sampling/). Over time, this will evolve to include deeper integration between the two features, such as building charts directly from logs.
+Custom Dashboards use [GraphQL](https://developers.cloudflare.com/analytics/graphql-api/sampling/) for standard analytics datasets.
+
+Customers with Log Explorer can also select Log Explorer datasets to create charts from raw, unsampled log data. This is supported on all plans and account types, with no additional enablement required.
+
+You cannot turn a saved or active Log Explorer query directly into a Custom Dashboard chart.
+
+For more information, refer to [Custom dashboards](https://developers.cloudflare.com/analytics/custom-dashboards/).
 
 ## How can I track my Log Explorer usage?
 
@@ -119,5 +125,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/faq/#page","headline":"FAQ · Cloudflare Log Explorer docs","description":"Find answers to common questions about Log Explorer.","url":"https://developers.cloudflare.com/log-explorer/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/faq/#page","headline":"FAQ · Cloudflare Log Explorer docs","description":"Find answers to common questions about Log Explorer.","url":"https://developers.cloudflare.com/log-explorer/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

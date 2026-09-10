@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ## Cloudflare platform access
@@ -136,19 +136,19 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
-```
-
-```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
-```
-
-```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
 Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+```
+
+```txt
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+```
+
+```txt
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ```txt
