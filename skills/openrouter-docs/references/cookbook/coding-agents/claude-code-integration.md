@@ -194,11 +194,11 @@ OpenRouter exposes an input that is compatible with the Anthropic Messages API.
 Claude Code uses several environment variables to determine which models to use for different tasks. You can override these to route each role through a specific model:
 
 ```bash lines theme={null}
-export ANTHROPIC_DEFAULT_FABLE_MODEL="~anthropic/claude-fable-latest"
-export ANTHROPIC_DEFAULT_OPUS_MODEL="~anthropic/claude-opus-latest"
-export ANTHROPIC_DEFAULT_SONNET_MODEL="~anthropic/claude-sonnet-latest"
+export ANTHROPIC_DEFAULT_FABLE_MODEL="~anthropic/claude-fable-latest[1m]"
+export ANTHROPIC_DEFAULT_OPUS_MODEL="~anthropic/claude-opus-latest[1m]"
+export ANTHROPIC_DEFAULT_SONNET_MODEL="~anthropic/claude-sonnet-latest[1m]"
 export ANTHROPIC_DEFAULT_HAIKU_MODEL="~anthropic/claude-haiku-latest"
-export CLAUDE_CODE_SUBAGENT_MODEL="~anthropic/claude-opus-latest"
+export CLAUDE_CODE_SUBAGENT_MODEL="~anthropic/claude-opus-latest[1m]"
 ```
 
 | Variable                         | Description                                                                               |
@@ -324,5 +324,5 @@ A few practical notes:
 
 * **Model-not-found errors for OpenRouter models** (e.g. `openrouter/auto`, `openrouter/pareto-code`): Usually caused by a credential conflict that surfaces as auth-conflict warnings on startup. There are two distinct scenarios. (1) If you have a cached Anthropic OAuth login from before switching to OpenRouter, run `/logout` inside Claude Code, then quit and re-launch `claude` to clear the cached session. (2) If your shell profile still has a real `ANTHROPIC_API_KEY` set (e.g. an old Anthropic console key), `/logout` will not help — it only clears the cached OAuth session, not shell environment variables. Instead, ensure `ANTHROPIC_API_KEY=""` is set in your shell profile per Step 2, then reload your shell. Verify with `/status` that the auth token is `ANTHROPIC_AUTH_TOKEN` and the base URL is `https://openrouter.ai/api`.
 * **Auth Errors:** Ensure your OpenRouter key is in `ANTHROPIC_AUTH_TOKEN` and that `ANTHROPIC_API_KEY` is an empty string (`""`). If `ANTHROPIC_API_KEY` holds a real Anthropic key, Claude Code sends it as `x-api-key` and may authenticate against Anthropic instead. Reload your shell after editing your profile, and if you still see auth errors, run `/logout` (see above).
-* **Context Length Errors:** If you hit context limits, consider breaking your task into smaller chunks or starting a new session.
+* **Context length always shows 200k:** Claude Code assumes a 200k context window unless the model name ends in `[1m]`. If your configured model supports a 1M context window, append `[1m]` to its slug so sessions do not compact earlier than required. The current Fable, Opus, and Sonnet `latest` aliases support this marker (e.g. `~anthropic/claude-sonnet-latest[1m]`), as shown in [Configuring Models](#configuring-models). OpenRouter strips the marker before routing, so it only changes what Claude Code assumes about the window.
 * **Privacy:** OpenRouter does not log your source code prompts unless you explicitly opt-in to prompt logging in your account settings. See our [Privacy Policy](https://openrouter.ai/privacy) for details.

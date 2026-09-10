@@ -88,7 +88,7 @@ Then sign in with OAuth on your company OpenRouter organization, and there are n
 
 ### Zero Data Retention (ZDR)
 
-Zero Data Retention ensures providers do not store your prompts or responses. ZDR can be enforced per model group (Anthropic, OpenAI, Google, SpaceXAI, and non-frontier) in your [privacy settings](https://openrouter.ai/settings/privacy), via [guardrails](/docs/guides/features/guardrails), or per-request using the `zdr` parameter.
+Zero Data Retention ensures providers do not store your prompts or responses. ZDR can be enforced per model group (Anthropic, OpenAI, Google, SpaceXAI, and all other models) in your [privacy settings](https://openrouter.ai/settings/privacy), via [guardrails](/docs/guides/features/guardrails), or per-request using the `zdr` parameter.
 
 OpenRouter itself has a ZDR policy and does not retain your prompts unless you explicitly opt in to prompt logging.
 

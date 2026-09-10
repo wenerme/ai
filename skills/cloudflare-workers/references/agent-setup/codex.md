@@ -44,7 +44,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 1. **Download Codex**
@@ -134,19 +134,19 @@ Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and
 ```
 
 ```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
-```
-
-```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
-```
-
-```txt
 Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Add bot protection and rate limiting to my login and checkout endpoints.
+```
+
+```txt
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+```
+
+```txt
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ## Tips

@@ -144,6 +144,12 @@ use shared capacity for any model on this provider"** on your
 BYOK keys in your
 [workspace BYOK settings](https://openrouter.ai/workspaces/default/byok).
 
+### BYOK and Regional Endpoints
+
+Some providers host region-pinned endpoints for a model alongside a standard one, for example `amazon-bedrock/us` or `google-vertex/europe-west1`. Providers charge a premium for these regional endpoints, so requests to the global API (`openrouter.ai`) skip them unless you target one explicitly with `provider.order` or `provider.only` (see [Targeting Specific Provider Endpoints](/docs/guides/routing/provider-selection#targeting-specific-provider-endpoints)).
+
+With a prioritized BYOK key, the regional premium is billed to your own provider account rather than to OpenRouter credits, so the rule relaxes in one case: if a provider has **no** standard-priced endpoint for the model, only regional ones, your prioritized key for that provider can route to the regional endpoint. When the provider offers both a standard and a regional endpoint for the model, your key is routed to the standard endpoint, the same as a non-BYOK request. Fallback keys never unlock regional endpoints. Requests to the regional APIs (`us.openrouter.ai`, `eu.openrouter.ai`) are unaffected, since they route to in-region endpoints by design.
+
 ### BYOK with Data Policies
 
 BYOK endpoints are subject to your data policies. Bringing your own key changes which credential authenticates the upstream request. It doesn't change which endpoints you're allowed to route to. Your provider, account, and guardrail data policies are applied **before** BYOK endpoints are created, so BYOK only routes to endpoints that already satisfy them.
@@ -271,6 +277,8 @@ curl https://openrouter.ai/api/v1/byok/11111111-2222-3333-4444-555555555555 \
     "name": "Production GPT-4o Key",
     "disabled": false,
     "is_fallback": false,
+    "is_required": false,
+    "is_byok_only": false,
     "allowed_models": ["openai/gpt-4o", "openai/gpt-4o-mini"],
     "allowed_api_key_hashes": ["f01d52606dc8f0a8303a7b5cc3fa07109c2e346cec7c0a16b40de462992ce943"],
     "allowed_user_ids": ["user_2abc123"],
@@ -287,6 +295,27 @@ curl https://openrouter.ai/api/v1/byok/11111111-2222-3333-4444-555555555555 \
 * Maximum 100 entries.
 * Must contain at least one hash if provided — an empty array (`[]`) is rejected with a `400` error. Pass `null` to clear the restriction instead, or omit the field to leave it unset (create) or unchanged (update).
 * Every hash must resolve to a live API key owned by your account; unknown or cross-account hashes return a `400` error.
+
+#### Managing Shared Capacity Fallback via the Management API
+
+The **Shared capacity fallback** setting maps to two boolean fields on the same endpoints:
+
+| UI setting                                               | API fields                                  |
+| -------------------------------------------------------- | ------------------------------------------- |
+| Use shared capacity (default)                            | `is_required: false`, `is_byok_only: false` |
+| Never use shared capacity for models this key applies to | `is_required: true`                         |
+| Never use shared capacity for any model on this provider | `is_byok_only: true`                        |
+
+Both default to `false` on create, and omitting either on update leaves the stored value unchanged. `is_byok_only` cannot be combined with `is_fallback: true`, because a fallback key only runs after shared endpoints have been tried. Sending both returns a `400` error, whether in the same request or when the stored key already has the other flag set. `is_required` and `is_byok_only` may both be `true`; in that case `is_byok_only` takes precedence and the provider is fully blocked from shared capacity.
+
+```bash theme={null}
+curl -X PATCH https://openrouter.ai/api/v1/byok/11111111-2222-3333-4444-555555555555 \
+  -H "Authorization: Bearer $OPENROUTER_MANAGEMENT_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "is_byok_only": true
+  }'
+```
 
 #### Combining Filters with Multiple Keys
 

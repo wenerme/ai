@@ -229,13 +229,11 @@ To configure your own runner for flows:
      and enter `gitlab--duo` in the **Tags** field.
    - If you configure runners with a `config.toml` file, add the tag to the `[[runners]]` section:
 
-
      ```toml
      [[runners]]
        executor = "docker"
        tags = ["gitlab--duo"]
      ```
-
 
 1. Configure the runner to use an [executor](https://docs.gitlab.com/runner/executors/) that
    supports Docker images, like `docker`, `docker-autoscaler`, or `kubernetes`.

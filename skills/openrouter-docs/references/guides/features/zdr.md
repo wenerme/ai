@@ -71,18 +71,18 @@ Rather than a single global toggle, OpenRouter lets you enforce ZDR independentl
 
 The five model group scopes are:
 
-| Model group      | Effect when enabled                                                              |
-| ---------------- | -------------------------------------------------------------------------------- |
-| **Anthropic**    | Removes first-party Anthropic endpoints (Bedrock and Vertex remain available)    |
-| **OpenAI**       | Removes first-party OpenAI endpoints (Azure remains available)                   |
-| **Google**       | Removes AI Studio endpoints (Vertex remains available)                           |
-| **SpaceXAI**     | Removes non-ZDR SpaceXAI endpoints (the ZDR SpaceXAI endpoint remains available) |
-| **Non-frontier** | Removes all other non-ZDR endpoints                                              |
+| Model group          | Effect when enabled                                                              |
+| -------------------- | -------------------------------------------------------------------------------- |
+| **Anthropic**        | Removes first-party Anthropic endpoints (Bedrock and Vertex remain available)    |
+| **OpenAI**           | Removes first-party OpenAI endpoints (Azure remains available)                   |
+| **Google**           | Removes AI Studio endpoints (Vertex remains available)                           |
+| **SpaceXAI**         | Removes non-ZDR SpaceXAI endpoints (the ZDR SpaceXAI endpoint remains available) |
+| **All other models** | Removes all other non-ZDR endpoints                                              |
 
 <Tip>
   **When to use per-model-group ZDR**
 
-  Per-model-group ZDR is useful when you only need ZDR enforcement for certain model groups. For example, you may want to enforce ZDR for non-frontier models while keeping first-party Anthropic, OpenAI, and Google endpoints available without the ZDR restriction.
+  Per-model-group ZDR is useful when you only need ZDR enforcement for certain model groups. For example, you may want to enforce ZDR for all other models while keeping first-party Anthropic, OpenAI, and Google endpoints available without the ZDR restriction.
 </Tip>
 
 ### Account-level settings
@@ -95,13 +95,13 @@ When creating or editing a [guardrail](/docs/guides/features/guardrails), you ca
 
 In the API, these are represented as separate fields on the guardrail object:
 
-| Field                   | Description                            |
-| ----------------------- | -------------------------------------- |
-| `enforce_zdr_anthropic` | Enforce ZDR for Anthropic endpoints    |
-| `enforce_zdr_openai`    | Enforce ZDR for OpenAI endpoints       |
-| `enforce_zdr_google`    | Enforce ZDR for Google endpoints       |
-| `enforce_zdr_xai`       | Enforce ZDR for SpaceXAI endpoints     |
-| `enforce_zdr_other`     | Enforce ZDR for non-frontier endpoints |
+| Field                   | Description                               |
+| ----------------------- | ----------------------------------------- |
+| `enforce_zdr_anthropic` | Enforce ZDR for Anthropic endpoints       |
+| `enforce_zdr_openai`    | Enforce ZDR for OpenAI endpoints          |
+| `enforce_zdr_google`    | Enforce ZDR for Google endpoints          |
+| `enforce_zdr_xai`       | Enforce ZDR for SpaceXAI endpoints        |
+| `enforce_zdr_other`     | Enforce ZDR for all other model endpoints |
 
 <Note>
   The legacy `enforce_zdr` field is deprecated. When provided, its value is copied into any per-model-group fields that are not explicitly set on the request. Use the per-model-group fields directly for new integrations.

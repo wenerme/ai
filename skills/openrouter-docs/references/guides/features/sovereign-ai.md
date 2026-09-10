@@ -113,7 +113,7 @@ For full details on how requests are routed, which features are available on reg
 
 [Zero Data Retention](/docs/guides/features/zdr) ensures that providers do not store your prompts or responses. This is a key component of sovereign AI, as it guarantees that no data persists outside your control after a request completes.
 
-ZDR can be enforced per model group (Anthropic, OpenAI, Google, SpaceXAI, and non-frontier) in your [privacy settings](https://openrouter.ai/settings/privacy), via [guardrails](/docs/guides/features/guardrails), or per-request:
+ZDR can be enforced per model group (Anthropic, OpenAI, Google, SpaceXAI, and all other models) in your [privacy settings](https://openrouter.ai/settings/privacy), via [guardrails](/docs/guides/features/guardrails), or per-request:
 
 ```json lines theme={null}
 {

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshoot managed rules
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/managed-rules/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/managed-rules/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, WAF's managed rulesets are compatible with most websites and web applications. However, false positives and false negatives may occur:
 
@@ -22,6 +22,8 @@ By default, WAF's managed rulesets are compatible with most websites and web app
 ## Troubleshoot false positives
 
 You can use [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) to help you identify what caused legitimate requests to get blocked. Add filters and adjust the report duration as needed.
+
+To get more detail about which part of a request matched a managed rule, enable [payload logging](https://developers.cloudflare.com/waf/managed-rules/payload-logging/) for the affected managed ruleset. Payload logging records the specific string that triggered each rule (encrypted with a key pair that you provide), which helps you confirm whether a match was a false positive. If you have not set it up yet, [configure payload logging](https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure/) so that the matched payload is available the next time you investigate a false positive. Payload logging is available on Enterprise plans.
 
 If you encounter a false positive caused by a managed rule, do one of the following:
 
@@ -38,6 +40,7 @@ If you contact Cloudflare Support to verify whether a WAF managed rule triggers 
 * If one specific rule causes false positives, disable that specific rule and not the entire ruleset.
 * For false positives with the administrator area of your website, add an [exception](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/) disabling a managed rule for the admin section of your site resources. You can use an expression similar to the following:
 `http.host eq "example.com" and starts_with(http.request.uri.path, "/admin")`
+* WAF managed rulesets are designed to inspect standard HTTP request content. Requests that upload binary content (for example, file uploads) can resemble attack payloads and cause false positives. To scan file uploads for malicious content, use [Malicious uploads detection](https://developers.cloudflare.com/waf/detections/malicious-uploads/) instead of relying on managed rules for that traffic.
 
 ## Troubleshoot false negatives
 
@@ -80,5 +83,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/troubleshooting/#page","headline":"Troubleshoot managed rules · Cloudflare Web Application Firewall (WAF) docs","description":"Troubleshoot WAF managed rules false positives and configuration issues.","url":"https://developers.cloudflare.com/waf/managed-rules/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/troubleshooting/#page","headline":"Troubleshoot managed rules · Cloudflare Web Application Firewall (WAF) docs","description":"Troubleshoot WAF managed rules false positives and configuration issues.","url":"https://developers.cloudflare.com/waf/managed-rules/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

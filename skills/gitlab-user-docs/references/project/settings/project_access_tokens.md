@@ -2,7 +2,6 @@
 
 Authentication, create, revoke, and token expiration.
 
-Tier: Free, Premium, Ultimate
 Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 Project access tokens provide authenticated access to a specific project. They are similar to

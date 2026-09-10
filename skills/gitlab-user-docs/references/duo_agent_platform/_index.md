@@ -105,8 +105,9 @@ but you require credits in your Monthly Commitment Pool to access them.
 
 | Feature | Free | Premium | Ultimate |
 |---------|---|---|---|
-| [Agent tool governance](agents/tool-governance.md)  Configure tool-level approval policies to gate sensitive agent actions with human approval at execution time. | Yes | Yes | Yes |
-| [AI audit event report](ai-audit-events.md)  Browse and filter a unified record of GitLab Duo agent activity for compliance and governance purposes. | No | Yes | Yes |
+| [Agent tool governance](../ai-governance/tool-governance.md)  Configure tool-level approval policies to gate sensitive agent actions with human approval at execution time. | Yes | Yes | Yes |
+| [AI audit event report](../ai-governance/ai-audit-events.md)  Browse and filter a unified record of GitLab Duo agent activity for compliance and governance purposes. | No | Yes | Yes |
+| [AI Governance Dashboard](../ai-governance/governance-dashboard.md)  Monitor AI agent sessions, audit logs, and developer exposure across a group. | No | No | Yes |
 | [CI Expert Agent](agents/foundational_agents/ci_expert_agent.md)  Create, debug, and optimize GitLab CI/CD pipelines. | Yes | Yes | Yes |
 | [External MCP servers](../gitlab_duo/model_context_protocol/ai_catalog_mcp_servers.md)  Connect custom agents to external data sources and third-party services using MCP servers. | No | Yes | Yes |
 | [Agentic Breaking Change Resolution Flow](flows/foundational_flows/agentic-breaking-change-resolution.md)  Analyze pipeline failures on dependency bump merge requests and create code fixes to resolve breaking changes introduced by the dependency update. | No | No | Yes |

@@ -408,10 +408,14 @@ The HTTP status each `error_type` maps to is listed in the tables below.
 
 ### Content policy
 
-| `error_type`               | HTTP Status                   | Description                                                                          |
-| -------------------------- | ----------------------------- | ------------------------------------------------------------------------------------ |
-| `content_policy_violation` | {HTTPStatus.S400_Bad_Request} | The input or output was flagged by a content filter (provider- or OpenRouter-level). |
-| `refusal`                  | {HTTPStatus.S400_Bad_Request} | The model explicitly refused to comply with the request (e.g. safety refusal).       |
+| `error_type`               | HTTP Status                 | Description                                                                                                                                                                                                               |
+| -------------------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `content_policy_violation` | {HTTPStatus.S403_Forbidden} | The input or output was flagged by a content filter that runs separately from the model (provider- or OpenRouter-level), such as Gemini's `SAFETY` block.                                                                 |
+| `refusal`                  | {HTTPStatus.S403_Forbidden} | The provider reported a model refusal as an error rather than as output (e.g. Anthropic's "refused to respond" / usage-policy error envelopes). `error.message` carries the provider's explanation when one is available. |
+
+Both policy types share one status: the request was understood and declined, so it is a 403 regardless of whether the model or a filter around it made the call, and regardless of the provider's own wire status. The two `error_type` values only tell you which mechanism declined it. `metadata.provider_name`, `metadata.provider_code`, and `metadata.raw` identify who declined and carry the provider's verbatim payload. The status is the same for every provider and skin, whether the block is the HTTP response or arrives mid-stream (in which case it is the `code` inside the error body, since the HTTP line was already committed).
+
+A refusal that the model produces as its own completed output is not an error. When the provider answers successfully with a refusal (e.g. Anthropic's `stop_reason: "refusal"`), each API keeps its native successful shape: Chat Completions returns `message.refusal` with `finish_reason: "content_filter"`, and the Responses API returns `status: "completed"` with a `refusal` content part. Fallback to another model still runs before any output is returned when routing allows it.
 
 ### Image errors
 
@@ -463,7 +467,7 @@ The Responses API maps internal error types to the OpenAI Responses error code s
 | Internal `error_type`                                                                | Responses API `code`             |
 | ------------------------------------------------------------------------------------ | -------------------------------- |
 | `rate_limit_exceeded`                                                                | `rate_limit_exceeded`            |
-| `context_length_exceeded`, `invalid_request`                                         | `invalid_prompt`                 |
+| `context_length_exceeded`, `invalid_request`, `refusal`                              | `invalid_prompt`                 |
 | `content_policy_violation`                                                           | `image_content_policy_violation` |
 | `authentication`, `provider_overloaded`, `provider_unavailable`, `timeout`, `server` | `server_error`                   |
 | All others (including `invalid_prompt`)                                              | `server_error`                   |
@@ -527,17 +531,17 @@ This allows graceful handling of limit-based errors without treating them as fai
 
 The Anthropic Messages skin maps internal types to Anthropic-native error type strings:
 
-| Internal `error_type`                                                         | Anthropic `error.type`  |
-| ----------------------------------------------------------------------------- | ----------------------- |
-| `authentication`                                                              | `authentication_error`  |
-| `permission_denied`                                                           | `permission_error`      |
-| `payment_required`                                                            | `billing_error`         |
-| `not_found`, `image_not_found`                                                | `not_found_error`       |
-| `rate_limit_exceeded`                                                         | `rate_limit_error`      |
-| `provider_overloaded`                                                         | `overloaded_error`      |
-| `timeout`                                                                     | `timeout_error`         |
-| `context_length_exceeded`, `content_policy_violation`, `invalid_request`, ... | `invalid_request_error` |
-| `provider_unavailable`, `server`, `unmapped`, ...                             | `api_error`             |
+| Internal `error_type`                                                                    | Anthropic `error.type`  |
+| ---------------------------------------------------------------------------------------- | ----------------------- |
+| `authentication`                                                                         | `authentication_error`  |
+| `permission_denied`                                                                      | `permission_error`      |
+| `payment_required`                                                                       | `billing_error`         |
+| `not_found`, `image_not_found`                                                           | `not_found_error`       |
+| `rate_limit_exceeded`                                                                    | `rate_limit_error`      |
+| `provider_overloaded`                                                                    | `overloaded_error`      |
+| `timeout`                                                                                | `timeout_error`         |
+| `context_length_exceeded`, `content_policy_violation`, `refusal`, `invalid_request`, ... | `invalid_request_error` |
+| `provider_unavailable`, `server`, `unmapped`, ...                                        | `api_error`             |
 
 Because the native `error.type` is lossy (many internal types collapse to `api_error`), the canonical `error_type` is added inside the `error` object alongside it. This holds for both the non-streaming error envelope and mid-stream SSE `error` events.
 

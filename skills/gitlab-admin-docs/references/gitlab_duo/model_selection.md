@@ -85,7 +85,7 @@ To select a model for a feature:
 
 ### Select a model for Code Review Flow
 
-- [Separate model setting](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/236876) from GitLab Duo Code Review introduced for Code Review Flow in GitLab 19.1, using the **Agentic Code Review** setting.
+- [Separate model setting](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/236876) for Code Review Flow introduced in GitLab 19.1, using the **Agentic Code Review** setting.
 
 For Code Review Flow, the setting for model selection differs based on your GitLab version.
 

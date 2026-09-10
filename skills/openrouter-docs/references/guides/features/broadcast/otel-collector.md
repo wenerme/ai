@@ -126,6 +126,31 @@ Standard GenAI semantic conventions (`gen_ai.*`) are used for model, token usage
 * Your downstream backend determines how these attributes are indexed, queried, and displayed
 * Using `parent_span_id` lets you link OpenRouter traces to your application's existing distributed traces
 
+## Billing quantities
+
+Cache-write details are exported as numeric attributes on the generation span:
+
+| Attribute                                  | Meaning                                         |
+| ------------------------------------------ | ----------------------------------------------- |
+| `gen_ai.usage.input_tokens.cache_write`    | Total cache-write tokens.                       |
+| `gen_ai.usage.input_tokens.cache_write_5m` | Five-minute cache-write tokens, when available. |
+| `gen_ai.usage.input_tokens.cache_write_1h` | One-hour cache-write tokens, when available.    |
+
+With **Cost** enabled under **Additional generation metadata**, the same quantities and native-tool counters are also queryable under `span.metadata.openrouter_generation.*`. For example:
+
+```json theme={null}
+{
+  "span.metadata.openrouter_generation.cache_write_tokens": 300,
+  "span.metadata.openrouter_generation.cache_creation.ephemeral_5m_input_tokens": 100,
+  "span.metadata.openrouter_generation.cache_creation.ephemeral_1h_input_tokens": 200,
+  "span.metadata.openrouter_generation.native_server_tool_use.web_search_requests": 1,
+  "span.metadata.openrouter_generation.native_server_tool_use.code_execution_requests": 2,
+  "span.metadata.openrouter_generation.usage_is_estimated": false
+}
+```
+
+The example shows attribute values as a flat map; OTLP encodes numbers as `intValue` and the estimate flag as `boolValue`. Root spans also carry generation metadata under `trace.metadata.openrouter_generation.*`. Read each generation once. These representations repeat the same generation quantities; do not add them together. Unavailable quantities are omitted from OTEL attributes, while zero and `false` are preserved. See [Token and cost fields](/docs/guides/features/broadcast#token-and-cost-fields) for interpretation and billing caveats.
+
 ## Privacy Mode
 
 When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) for details.

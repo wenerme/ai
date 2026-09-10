@@ -127,6 +127,15 @@ id in later requests.
 * Each workspace can store up to 10 GiB in total. When the workspace is
   full, uploads return a `403` error.
 
+### Pricing and retention
+
+* The Files API has no separate charge.
+* Workspace files do not expire.
+* Files inside a container are different: they are kept for 30 days after the
+  container was last used, then deleted. Copy a container file into your
+  workspace to keep it. See
+  [Save a container file to your workspace](/docs/guides/features/containers#save-a-container-file-to-your-workspace).
+
 ### File types
 
 The API reads the file content to find the file type. It does not trust the

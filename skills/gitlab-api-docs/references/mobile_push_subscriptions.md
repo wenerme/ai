@@ -6,10 +6,15 @@ REST API to register and unregister mobile devices for push notifications.
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248023) in GitLab 19.3 [with a flag](../administration/feature_flags/_index.md) named `mobile_push_registration_api`. Disabled by default.
+- Notification delivery [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248026) in GitLab 19.3 [with flags](../administration/feature_flags/_index.md) named `mobile_push_notifications_dispatch` and `mobile_push_notifications`. Disabled by default.
 
 Register mobile devices to receive push notifications for the authenticated
 user's [to-do items](todos.md). Every push notification corresponds to a
 to-do item.
+Registering a device does not deliver notifications by itself: delivery is
+enabled separately with the `mobile_push_notifications_dispatch` feature flag
+for the instance and the `mobile_push_notifications` feature flag for each
+user.
 
 ## Register a device
 

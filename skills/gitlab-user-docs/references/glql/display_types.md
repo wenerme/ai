@@ -29,8 +29,10 @@ The following display types are available only in analytics mode:
 | Single stat | `stat`          | A single aggregated metric, displayed as a large value. |
 | Column chart | `columnChart`   | A chart that compares metrics across the categories defined by your dimensions. |
 | Bar chart | `barChart` | A horizontal chart that compares metrics across the categories defined by your dimensions. |
+| Bar list | `barList` | A horizontal chart that shows each dimension value as a share of the total. |
 | Line chart     | `lineChart`     | A chart that plots one or more metrics as lines over a dimension, to show trends. |
 | Area chart     | `areaChart`     | A chart that plots one or more metrics as filled areas over a dimension, to show trends and volume. |
+| Heat map     | `heatMap`     | A grid of shaded cells, one per pair of dimension values, where a darker cell is a larger value. |
 
 ## Table
 
@@ -222,6 +224,65 @@ metrics: acceptedCount, rejectedCount
 ```
 ````
 
+## Bar list
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/623319) in GitLab 19.4.
+
+A bar list visualizes aggregated data from [analytics mode](_index.md#analytics-mode) as
+horizontal bars, where each bar's length is that row's percentage of the total of all rows, not a
+comparison against the largest row. A bar list answers "what share of the whole is this", while a
+bar chart answers "how do these compare to each other".
+
+A bar list requires:
+
+- Analytics mode, set with `mode: analytics`.
+- Exactly one `dimensions` value.
+- Exactly one metric, set with the `metrics` parameter.
+
+More than one dimension causes a validation error in the view. A query that names more than
+one metric renders the first and ignores the rest.
+
+Rows sort in descending order by value. Each row's label shows the percentage and the value.
+
+By default, a bar list shows six rows plus an `Other (N)` roll-up row, so a query that returns
+eight or more rows always has an `Other` row. A query that returns seven or fewer rows shows
+every row, because folding a single row would hide its name without making the list shorter.
+To show a different number of rows, set `maxRows` under `displayConfig` to a whole
+number greater than zero. GitLab keeps that many of the highest-value rows and folds the rest
+into a single row named `Other (N)`, where `N` is the number of rows folded in and the value is
+their combined total. A value that is not a whole number greater than zero falls back to six.
+
+A share of the total is meaningful only when the metric is a count or a sum. For a metric such as
+an average or a median, the total behind the shares has no meaning.
+
+### Example
+
+To display Code Suggestions usage by language over the last 30 days as a bar list:
+
+````yaml
+```glql
+display: barList
+mode: analytics
+query: type = CodeSuggestion and timestamp >= -30d
+dimensions: language
+metrics: totalCount
+```
+````
+
+To show more than the default six rows:
+
+````yaml
+```glql
+display: barList
+displayConfig:
+  maxRows: 10
+mode: analytics
+query: type = CodeSuggestion and timestamp >= -30d
+dimensions: language
+metrics: totalCount
+```
+````
+
 ## Line chart
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/240016) in GitLab 19.1.
@@ -297,6 +358,56 @@ mode: analytics
 query: type = CodeSuggestion and timestamp >= -30d
 dimensions: timestamp
 metrics: shownCount, acceptedCount
+```
+````
+
+## Heat map
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/628031) in GitLab 19.4.
+
+A heat map visualizes aggregated data from [analytics mode](_index.md#analytics-mode) as a grid of
+shaded cells, one cell per pair of dimension values. Use a heat map to compare a single metric across
+two dimensions at once, and to see where the largest values sit.
+
+A heat map requires:
+
+- Analytics mode, set with `mode: analytics`.
+- Exactly two `dimensions` to group results by. The first runs along the columns, the second down
+  the rows.
+- Exactly one metric to shade the cells by (using the `metrics` parameter).
+
+Each cell shows its value, shaded from light to dark as the value rises. Shading uses fixed bands
+derived from the values in the result, so a darker cell always means a larger value. Cells with no
+value at all are shaded a neutral gray rather than the lightest color, so that a small value is not
+mistaken for an absent one. Hover a cell for its row, column, and exact value.
+
+To describe the panel above the grid, set `description` under `displayConfig`.
+
+### Example
+
+To compare Code Suggestion volume across IDEs and languages over the last 30 days:
+
+````yaml
+```glql
+display: heatMap
+mode: analytics
+query: type = CodeSuggestion and timestamp >= -30d
+dimensions: ideName, language
+metrics: totalCount
+```
+````
+
+To add a description above the grid:
+
+````yaml
+```glql
+display: heatMap
+displayConfig:
+  description: Code Suggestions accepted per language, by IDE.
+mode: analytics
+query: type = CodeSuggestion and timestamp >= -30d
+dimensions: ideName, language
+metrics: acceptedCount
 ```
 ````
 

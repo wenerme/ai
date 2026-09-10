@@ -112,13 +112,14 @@ If you want to use local storage for specific object types, you can
 In the consolidated form, the `object_store` section defines a
 common set of parameters.
 
-| Setting           | Description                       |
-|-------------------|-----------------------------------|
-| `enabled`         | Enable or disable object storage. |
-| `proxy_download`  | Set to `true` to [enable proxying all files served](#proxy-download). This option reduces egress traffic as it allows clients to download directly from remote storage instead of proxying all data. |
-| `connection`      | Various [connection options](#configure-the-connection-settings) described below. |
-| `storage_options` | Options to use when saving new objects, such as [server side encryption](#server-side-encryption-headers). |
-| `objects`         | [Object-specific configuration](#configure-the-parameters-of-each-object). |
+| Setting                    | Description                       |
+|----------------------------|------------------------------------|
+| `enabled`                  | Enable or disable object storage. |
+| `proxy_download`           | Set to `true` to [enable proxying all files served](#proxy-download). When set to `false`, clients download directly from remote storage, reducing egress traffic on the GitLab server. |
+| `allowed_download_modes`   | Transfer modes that API clients are allowed to request with the `download_mode` parameter on supported endpoints. Defaults to only the mode set by `proxy_download`. Set to `[proxy, direct]` to [let clients request direct downloads](#allow-client-override-for-proxy-download). |
+| `connection`               | Various [connection options](#configure-the-connection-settings) described below. |
+| `storage_options`          | Options to use when saving new objects, such as [server side encryption](#server-side-encryption-headers). |
+| `objects`                  | [Object-specific configuration](#configure-the-parameters-of-each-object). |
 
 For an example, see how to [use the consolidated form and Amazon S3](#full-example-using-the-consolidated-form-and-amazon-s3).
 
@@ -139,14 +140,16 @@ The following table lists the valid `objects` that can be used:
 | `terraform_state`  | [Terraform state files](terraform_state.md) |
 | `pages`            | [Pages](pages/_index.md) |
 | `ci_secure_files`  | [Secure files](cicd/secure_files.md) |
+| `ci_catalog_bundles` | [CI/CD component bundles](../ci/components/_index.md) |
 
-Within each object type, three parameters can be defined:
+Within each object type, four parameters can be defined:
 
-| Setting          | Required?   | Description |
-|------------------|-------------|-------------|
-| `bucket`         | Yes | Bucket name for the object type. Not required if `enabled` is set to `false`. |
-| `enabled`        | No  | Overrides the [common parameter](#configure-the-common-parameters). |
-| `proxy_download` | No  | Overrides the [common parameter](#configure-the-common-parameters). |
+| Setting                  | Required?   | Description                                                         |
+|--------------------------|-------------|----------------------------------------------------------------------|
+| `bucket`                 | Yes | Bucket name for the object type. Not required if `enabled` is set to `false`. |
+| `enabled`                | No  | Overrides the [common parameter](#configure-the-common-parameters). |
+| `proxy_download`         | No  | Overrides the [common parameter](#configure-the-common-parameters). |
+| `allowed_download_modes` | No  | Overrides the [common parameter](#configure-the-common-parameters). |
 
 For an example, see how to [use the consolidated form and Amazon S3](#full-example-using-the-consolidated-form-and-amazon-s3).
 
@@ -1311,6 +1314,29 @@ Verify this in the documentation for each use case.
 
 Set `proxy_download` to `true` if you want GitLab to proxy the files.
 There can be a large performance hit to the GitLab server if `proxy_download` is set to `true`. The server deployments of GitLab have `proxy_download` set to `false`.
+
+#### Allow client override for proxy download
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/624081) in GitLab 19.4.
+
+By default, all downloads use the transfer mode set by `proxy_download`, and API clients cannot override it.
+To let API clients choose a different transfer mode on supported endpoints, set `allowed_download_modes` to a list
+that includes both `proxy` and `direct`. For example:
+
+```yaml
+object_store:
+  proxy_download: true
+  allowed_download_modes: [proxy, direct]
+```
+
+When `direct` is in `allowed_download_modes`, clients can pass `download_mode=direct` as a query parameter on
+supported endpoints to receive an HTTP 302 redirect to object storage instead of having the request proxied
+through GitLab. If the endpoint does not support direct downloads, or the client does not send the parameter,
+GitLab uses the mode set by `proxy_download`.
+
+`allowed_download_modes` must be an array containing only `proxy`, `direct`, or both. GitLab fails to start if
+this value is a plain string (for example `allowed_download_modes: proxy` instead of `allowed_download_modes: [proxy]`)
+or contains any other value.
 
 When `proxy_download` to `false`, GitLab returns an
 [HTTP 302 redirect with a pre-signed, time-limited object storage URL](https://gitlab.com/gitlab-org/gitlab/-/issues/32117#note_218532298).

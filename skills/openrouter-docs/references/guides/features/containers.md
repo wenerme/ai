@@ -140,9 +140,14 @@ the same container id arrives later, a new sandbox starts and loads the
 saved files first. Open processes, environment variables, and installed
 system state are **not restored**.
 
+Saved container files are kept for 30 days after the container was last
+used, then deleted. To keep a file longer, copy it into your workspace (see
+[Save a container file to your workspace](#save-a-container-file-to-your-workspace)).
+Workspace files do not expire.
+
 ## File persistence
 
-Commands run in `/home/sandbox`, which is also the home directory. After
+Commands run in `/workspace/home`, which is also the home directory. After
 every command, the changed files under the home directory are saved to
 storage. Deleted files stay deleted. Files outside the home directory are
 not saved.
@@ -193,7 +198,8 @@ command runs. First upload the files with the
 
 Rules:
 
-* You can attach up to 20 files.
+* A request can attach up to 20 files. The limit applies to the `file_ids`
+  array of each request, not to the container over its lifetime.
 * Each file appears in the home directory as a writable copy. The copy is
   named with the last 8 characters of the file id, a `-`, and the base
   filename. A file stored as `data/report.csv` with an id ending in
