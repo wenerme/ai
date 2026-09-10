@@ -75,6 +75,12 @@ _KEY_DRIFT_MARGIN = 4
 _KEY_PURITY_OPAQUE_RATIO = 0.6
 # At most this many trim pixels on a touched edge count as isolated drift.
 _EDGE_DRIFT_MAX_PIXELS = 8
+# Strict-alpha haze gate: when this share of an element's trimmed box sits in
+# the semi-transparent alpha band, the key field itself was recovered as soft
+# alpha (the sheet ground is not the stated key), not an element edge.
+_HAZE_ALPHA_LOW = 20
+_HAZE_ALPHA_HIGH = 150
+_HAZE_MAX_SHARE = 0.15
 # Corner sample inset (px) and minimum cell fill for the backing-panel notice.
 _PANEL_CORNER_INSET = 2
 _PANEL_MIN_FILL = 0.75
@@ -94,6 +100,20 @@ def parse_grid(spec: str) -> tuple[int, int]:
     if rows < 1 or cols < 1:
         raise ValueError(f"--grid rows and cols must be >= 1, got {rows}x{cols}")
     return rows, cols
+
+
+def parse_inset(spec: str) -> tuple[float, float]:
+    """Parse `--inset` as one fraction or `H,V`; both must lie in [0, 0.5)."""
+    parts = [part.strip() for part in str(spec).split(",")]
+    if len(parts) not in (1, 2) or not all(parts):
+        raise ValueError("--inset must be one fraction or H,V")
+    try:
+        values = [float(part) for part in parts]
+    except ValueError as exc:
+        raise ValueError("--inset must be one fraction or H,V") from exc
+    if not all(0.0 <= value < 0.5 for value in values):
+        raise ValueError("--inset must be in [0, 0.5)")
+    return (values[0], values[-1])
 
 
 def parse_hex(value: str) -> tuple[int, int, int]:
@@ -531,6 +551,39 @@ def _keying_findings(
     return findings
 
 
+def _haze_finding(
+    label: str,
+    alpha_mask: Image.Image,
+    bbox: tuple[int, int, int, int],
+    bg: tuple[int, int, int],
+) -> Optional[str]:
+    """Report an element box that is mostly semi-transparent haze.
+
+    Soft-alpha recovery assumes the key field lies at the stated key; when the
+    real ground sits farther than the tolerance, the whole field comes back as
+    faint half-foreground that reads as a glowing rectangle on a dark slide.
+    `--strict-alpha` only inspects the outer gutter, so this gate looks at the
+    trimmed box itself.
+    """
+    box = alpha_mask.crop(bbox)
+    total = box.width * box.height
+    if total == 0:
+        return None
+    histogram = box.histogram()
+    hazy = sum(histogram[_HAZE_ALPHA_LOW:_HAZE_ALPHA_HIGH + 1])
+    share = hazy / total
+    if share <= _HAZE_MAX_SHARE:
+        return None
+    hex_bg = "#{:02X}{:02X}{:02X}".format(*bg)
+    return (
+        f"{label}: {share:.0%} of the trimmed element box is semi-transparent "
+        f"(alpha {_HAZE_ALPHA_LOW}-{_HAZE_ALPHA_HIGH}): the key field itself "
+        f"was recovered as soft alpha, so the sheet ground is not {hex_bg}; "
+        "rerun with --bg set to the measured ground colour (see the sheet "
+        "border line below) instead of the nearest pure key"
+    )
+
+
 def _backing_panel_notice(
     label: str,
     alpha_mask: Image.Image,
@@ -607,18 +660,32 @@ def _log_keying_findings(
     *,
     sheet_border: tuple[tuple[int, int, int], int, int] | None = None,
     tolerance: int,
+    notices: list[str] | None = None,
 ) -> None:
     """Report incomplete flat-background keying."""
     _log("\n[WARN] Alpha extraction is incomplete — the key field or cell")
     _log("       isolation failed:")
     for finding in findings:
         _log(f"       - {finding}")
+    # A field recovered as haze is an off-key ground, not a panel: keep the
+    # measured-border rerun advice for it instead of the panel verdict.
+    hazy = any("semi-transparent" in finding for finding in findings)
+    panel_notices = [] if hazy else [n for n in (notices or []) if "backing panel" in n]
+    for notice in panel_notices:
+        _log(f"       - {notice}")
+    if panel_notices:
+        _log("       Cells painted as panels or cards keep their own ground "
+             "inside the key gutters: no --bg/--tolerance rerun on the outer "
+             "key can remove them. Regenerate with each element alone on the "
+             "key, or key each cell on its measured inner ground.")
+        return
     _log("       Fix: regenerate with one genuinely flat ground and keep every "
          "element/effect")
     _log("       inside its cell with a clear key-only gutter, or rerun with an "
          "explicit")
     _log("       --bg <hex> and a larger --tolerance; use --inset when a drawn "
-         "outer gutter is isolated from every element.")
+         "outer gutter is isolated from every element, or when the model drew "
+         "grid lines between cells (--inset 0.02, or H,V for wide cells).")
     if sheet_border is not None:
         dominant, drift, outlier = sheet_border
         hex_bg = "#{:02X}{:02X}{:02X}".format(*dominant)
@@ -673,7 +740,7 @@ def slice_sheet(
     *,
     names: Optional[list[str]] = None,
     prefix: Optional[str] = None,
-    inset: float = 0.0,
+    inset: float | tuple[float, float] = 0.0,
     trim: bool = False,
     alpha: bool = False,
     strict_alpha: bool = False,
@@ -687,6 +754,7 @@ def slice_sheet(
     automated run never silently drops cells. Each name must be a bare filename.
     """
     total_cells = rows * cols
+    inset_x, inset_y = inset if isinstance(inset, tuple) else (inset, inset)
     if strict_alpha and not alpha:
         raise ValueError("strict_alpha requires alpha=True")
     if names is not None and len(names) != total_cells:
@@ -730,9 +798,9 @@ def slice_sheet(
             # Integer cell box via per-index rounding to avoid drift.
             x0, x1 = round(c * sw / cols), round((c + 1) * sw / cols)
             y0, y1 = round(r * sh / rows), round((r + 1) * sh / rows)
-            if inset > 0:
-                dx = round((x1 - x0) * inset)
-                dy = round((y1 - y0) * inset)
+            if inset_x > 0 or inset_y > 0:
+                dx = round((x1 - x0) * inset_x)
+                dy = round((y1 - y0) * inset_y)
                 x0, x1, y0, y1 = x0 + dx, x1 - dx, y0 + dy, y1 - dy
             cell = sheet.crop((x0, y0, x1, y1))
 
@@ -753,6 +821,10 @@ def slice_sheet(
                     trim=trim, alpha=alpha, trim_mask=trim_mask, diff=diff,
                     notices=notices,
                 ))
+                if strict_alpha:
+                    haze = _haze_finding(f"cell ({r},{c})", alpha_mask, bbox, cell_bg)
+                    if haze:
+                        findings.append(haze)
 
             if trim and trim_mask is not None and alpha_mask is not None and bbox is not None:
                 cell = cell.crop(bbox)
@@ -781,6 +853,7 @@ def slice_sheet(
             findings,
             sheet_border=sheet_border,
             tolerance=tolerance,
+            notices=notices,
         )
         if strict_alpha:
             raise ValueError(
@@ -830,8 +903,12 @@ def build_parser() -> argparse.ArgumentParser:
         help="Filename prefix when --names is absent (default: '<sheet-stem>_')",
     )
     parser.add_argument(
-        "--inset", type=float, default=0.0,
-        help="Trim each cell inward by this fraction on every side (0-0.49) to drop gutters",
+        "--inset", type=str, default="0",
+        help=(
+            "Trim each cell inward by this fraction (0-0.49) to drop gutters: "
+            "one value for every side, or H,V (e.g. 0.01,0.03) when wide cells "
+            "only need the horizontal grid line trimmed"
+        ),
     )
     parser.add_argument(
         "--trim", action="store_true",
@@ -876,8 +953,10 @@ def main(argv: Optional[list[str]] = None) -> int:
         print(f"[ERROR] {exc}", file=sys.stderr)
         return 1
 
-    if not 0.0 <= args.inset < 0.5:
-        print("[ERROR] --inset must be in [0, 0.5)", file=sys.stderr)
+    try:
+        inset = parse_inset(args.inset)
+    except ValueError as exc:
+        print(f"[ERROR] {exc}", file=sys.stderr)
         return 1
     if not 0 <= args.tolerance <= 255:
         print("[ERROR] --tolerance must be in [0, 255]", file=sys.stderr)
@@ -892,7 +971,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     try:
         written = slice_sheet(
             sheet_path, rows, cols, output_dir,
-            names=names, prefix=args.prefix, inset=args.inset,
+            names=names, prefix=args.prefix, inset=inset,
             trim=args.trim, alpha=args.alpha, strict_alpha=args.strict_alpha,
             bg=bg, tolerance=args.tolerance,
         )

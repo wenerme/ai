@@ -16,6 +16,39 @@ Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/load-balancing.xml)
 
+## 2026-08-31
+
+
+**Load Balancing now supports pool sets**
+
+Cloudflare Load Balancing now supports pool sets through the API. Pool sets combine geographic matching with location-specific traffic steering. One load balancer can now use different routing behavior for different locations.
+
+Each pool set can match a Cloudflare data center, country, or region. It then supplies the candidate pools and can apply its own steering policy, pool weights, and fallback pool. Cloudflare evaluates pool sets in array order and applies the first matching pool set.
+
+For example, this pool set uses Dynamic Latency steering for traffic from Germany:
+
+```json
+{
+	"pool_sets": [
+		{
+			"name": "germany-lowest-latency",
+			"match": { "topology": { "countries": ["DE"] } },
+			"overrides": {
+				"pools": [
+					"0930eec54a4c7ae6616985b79f678210",
+					"c8b4f5a6d7e84910a2b3c4d5e6f70819"
+				],
+				"steering_policy": "dynamic_latency"
+			}
+		}
+	]
+}
+```
+
+Use pool sets for active-active traffic distribution, location-specific failover, and regional routing policies. For proxied traffic, a pool set can also return a fixed HTTP response instead of selecting a pool.
+
+For configuration details and more examples, refer to [Pool sets](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/pool-sets/).
+
 ## 2026-08-17
 
 

@@ -1,5 +1,5 @@
 ---
-description: Upload images to Cloudflare Images via the dashboard, API, or S3 import with Sourcing Kit.
+description: Upload images through the dashboard, API, Workers, or S3.
 title: Methods
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Methods
 
-Last updated Jun 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/storage/upload-images/methods/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/storage/upload-images/methods/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare gives you the option to [transform remote images](https://developers.cloudflare.com/images/optimization/transformations/overview), or upload into Images storage.
 
@@ -21,7 +21,7 @@ If you have a [paid Images plan](https://developers.cloudflare.com/images/pricin
 * Upload directly through the dashboard. This is primarily used for one-off uploads.
 * Upload using API endpoints.
 * Upload from a Worker using the [Images binding](https://developers.cloudflare.com/images/storage/binding/).
-* Import images from S3 using Sourcing Kit.
+* Import images from Amazon S3.
 
 ---
 
@@ -53,15 +53,15 @@ When uploading through the API, you can use the following features:
 
 ## Import from S3
 
-Sourcing Kit is a data migration service that lets you copy objects from your Amazon S3 bucket to your Images storage.
+Import from S3 lets you copy objects from an Amazon S3 bucket to your Images storage.
 
-With Sourcing Kit, you can:
+With Import from S3, you can:
 
 * Define repositories of images to bulk import.
 * Reuse existing sources and import only new images, skipping any other images that were already imported.
 * Define target paths and prefixes for imported images.
 
-Learn more about [Sourcing Kit](https://developers.cloudflare.com/images/storage/upload-images/sourcing-kit).
+For more information, refer to [Import from S3](https://developers.cloudflare.com/images/storage/upload-images/import-from-s3/).
 
 Was this helpful?
 
@@ -72,5 +72,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/storage/upload-images/methods/#page","headline":"Methods · Cloudflare Images docs","description":"Upload images to Cloudflare Images via the dashboard, API, or S3 import with Sourcing Kit.","url":"https://developers.cloudflare.com/images/storage/upload-images/methods/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/storage/upload-images/methods/#page","headline":"Methods · Cloudflare Images docs","description":"Upload images through the dashboard, API, Workers, or S3.","url":"https://developers.cloudflare.com/images/storage/upload-images/methods/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -167,6 +167,39 @@ resource "grafana_slo" "ratio" {
 
 For details about the SLO schema fields, formats, and requirements, refer to the [Grafana SLO documentation](https://registry.terraform.io/providers/grafana/grafana/latest/docs/resources/slo) in the Terraform Registry.
 
+### Source and destination data sources
+
+By default, the SLI query runs against the data source you name in `destination_datasource`. To run the query against a different source, set the optional `source_datasource_uid` attribute inside the query block.
+
+[Copy code to clipboard] Copy
+
+```none
+resource "grafana_slo" "source_datasource" {
+  name        = "Kubelet API Success Rate"
+  description = "99.5% of Kubelet HTTP Requests are not 5xx errors"
+  query {
+    freeform {
+      query                 = "sum(rate(kubelet_http_requests_total{status!~\"5..\"}[$__rate_interval])) / sum(rate(kubelet_http_requests_total[$__rate_interval]))"
+      source_datasource_uid = "prod-prometheus"
+    }
+    type = "freeform"
+  }
+  objectives {
+    value  = 0.995
+    window = "30d"
+  }
+  destination_datasource {
+    uid = "grafanacloud-prom"
+  }
+}
+```
+
+`source_datasource_uid` is supported on the `freeform` and `ratio` query blocks. If `source_datasource_uid` is omitted, the SLI query runs against the `destination_datasource.uid`. Recording rules are always written to `destination_datasource.uid`.
+
+The source data source must be Prometheus-compatible.
+
+A source that differs from the destination requires a stack that uses Grafana-managed recording rules. If your stack uses [legacy data source-managed recording rules](/docs/grafana-cloud/alerting-and-irm/slo/set-up/additionaldatasources/#configure-data-source-managed-recording-rules) the `source_datasource_uid` field should be omitted.
+
 #### Link the SLO to RCA workbench entities
 
 The optional `search_expression` attribute holds a Knowledge Graph search expression, which scopes the SLO to a set of entities. When you set it:

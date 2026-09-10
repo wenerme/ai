@@ -5,7 +5,7 @@ description: "Browse CrossModel model IDs, capabilities, context windows, and pr
 
 # [CrossModel logo]CrossModel
 
-Access 58 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
+Access 59 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
 
 Learn more in the [CrossModel documentation](https://www.crossmodel.ai/docs).
 
@@ -144,8 +144,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 384000,
-    "inputCost": 0.405,
-    "outputCost": 1.215
+    "inputCost": 0.27,
+    "outputCost": 1.08
   },
   {
     "model": "crossmodel/deepseek/deepseek-v4-flash-vision-exp",
@@ -156,8 +156,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 384000,
-    "inputCost": 0.405,
-    "outputCost": 1.215
+    "inputCost": 0.27,
+    "outputCost": 1.08
   },
   {
     "model": "crossmodel/deepseek/deepseek-v4-pro",
@@ -170,6 +170,18 @@ for await (const chunk of stream) {
     "maxOutput": 384000,
     "inputCost": 1.215,
     "outputCost": 3.645
+  },
+  {
+    "model": "crossmodel/deepseek/deepseek-v4.1-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 0.27,
+    "outputCost": 1.08
   },
   {
     "model": "crossmodel/gemini/gemini-2.5-flash",

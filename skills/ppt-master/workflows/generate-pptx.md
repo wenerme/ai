@@ -259,7 +259,7 @@ Read the core as one batch with the exact detail files named by the retained `sp
 python3 ${SKILL_DIR}/scripts/svg_editor/server.py <project_path> --live --daemon
 ```
 
-Default first free port from `6060` (`--port N` binds strictly); read the URL from output or `<project_path>/live_preview/lock.json` and report it — or the launch failure — before the first SVG. It is a side process: never wait for it or for user confirmation, and keep it running until the user clicks **Exit preview** or asks in chat. Do not read or apply submitted annotations during generation; that window opens after Step 7 ([`live-preview.md`](stages/live-preview.md), which also describes staged direct edits).
+Default first free port from `6060` (`--port N` binds strictly); read the URL from output or `<project_path>/live_preview/lock.json` and report it — or the launch failure, or that the user or run instructions forbade starting it — before the first SVG. It is a side process: never wait for it or for user confirmation, and keep it running until the user clicks **Exit preview** or asks in chat. Do not read or apply submitted annotations during generation; that window opens after Step 7 ([`live-preview.md`](stages/live-preview.md), which also describes staged direct edits).
 
 **Cadence (Mandatory)**: P01–P05 → early gate (a planned roster of six or fewer pages skips it) → remaining pages → final gate, in one context. Every checker invocation follows one of two events: a gate point whose covered pages all exist, or the end of one consolidated repair pass. A run with neither predecessor is a pacing violation; validating an authoring pattern early is not a reason, because the same issues surface at the gate and are fixed in the same pass. Reload under Context validity above after context invalidation.
 
@@ -279,7 +279,7 @@ python3 ${SKILL_DIR}/scripts/svg_quality_checker.py <project_path> \
   --canonical-authoring --stage early --json
 ```
 
-`--json` writes the report file (`validation/svg_quality_early_report.json`); stdout stays the human-readable summary and is never parsed as JSON. The stage checks every authored page so far under the partial-roster rules. Repair under the consolidated-pass discipline in [`executor-base.md`](../references/executor-base.md) §3; a still-failing verification is the next batch. If terminal output is truncated, extract only `categories.blocking.issues` (and `categories.introduced.issues` when needed) from `validation/svg_quality_early_report.json`. The gate validates the method, not just the pages — emit one line before editing:
+`--json` writes the report file (`validation/svg_quality_early_report.json`); stdout stays the human-readable summary and is never parsed as JSON. The stage checks every authored page so far under the partial-roster rules. Repair under the consolidated-pass discipline in [`executor-base.md`](../references/executor-base.md) §3; a still-failing verification is the next batch. If terminal output is truncated, extract only `categories.blocking.issues` (and `categories.introduced.issues` when needed) from `validation/svg_quality_early_report.json`. The gate validates the method, not just the pages — emit one line before editing (in the conversation, not to a file):
 
 ```
 gate-signal: method=<rule resolved, or none> | page-local=<count> | not-exercised=<list>

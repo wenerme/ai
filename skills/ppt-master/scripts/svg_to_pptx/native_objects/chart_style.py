@@ -1174,24 +1174,30 @@ def _chart_projection_text_variants(value: Any) -> set[str]:
     return variants
 
 
-_NUMBER_FORMAT_RE = re.compile(r"^(#,##|#|0)?(0*)(?:\.(0+))?(%?)$")
+_NUMBER_FORMAT_RE = re.compile(
+    r'^(?:"(?P<prefix>[^"]*)")?(#,##|#|0)?(0*)(?:\.(0+))?(%?)(?:"(?P<suffix>[^"]*)")?$'
+)
 
 
 def _format_number_like_excel(number: float, number_format: str) -> str | None:
     """Render ``number`` the way PowerPoint shows a plain Excel format code.
 
     Covers the codes a chart payload realistically writes — ``0``, ``0.0``,
-    ``0.00``, ``#,##0``, ``#,##0.0``, and their ``%`` forms. Anything else
-    returns ``None`` so the caller keeps only the literal variants.
+    ``0.00``, ``#,##0``, ``#,##0.0``, their ``%`` forms, and a quoted literal
+    prefix or suffix such as ``"$"#,##0`` or ``0.0"%"`` (a literal percent
+    sign does not scale the value). Anything else returns ``None`` so the
+    caller keeps only the literal variants.
     """
     match = _NUMBER_FORMAT_RE.match(number_format.strip())
     if match is None:
         return None
-    grouping, _integers, decimals, percent = match.groups()
+    prefix = match.group("prefix") or ""
+    suffix = match.group("suffix") or ""
+    grouping, _integers, decimals, percent = match.groups()[1:5]
     value = number * 100 if percent else number
     digits = len(decimals or "")
     text = f"{value:,.{digits}f}" if grouping == "#,##" else f"{value:.{digits}f}"
-    return f"{text}%" if percent else text
+    return f"{prefix}{text}{'%' if percent else ''}{suffix}"
 
 
 def _chart_number_formats(payload: dict[str, Any]) -> list[str]:
@@ -1480,10 +1486,21 @@ def _chart_companion_entries(
     return entries
 
 
+def _chart_companion_width_only(item: dict[str, Any]) -> int | None:
+    """Return the authored width when a companion carries only `width`."""
+    if "width" in item and not any(key in item for key in ("x", "y", "height")):
+        return _powerpoint_emu(item["width"], "companion text width", positive=True)
+    return None
+
+
 def _chart_companion_box(item: dict[str, Any]) -> tuple[int, int, int, int] | None:
     """Validate and resolve an optional explicit companion text box."""
     box_keys = ("x", "y", "width", "height")
     provided_box_keys = [key for key in box_keys if key in item]
+    if provided_box_keys == ["width"]:
+        # Width alone: the box is placed from the matching fallback text or
+        # the default slot; only its width is authored.
+        return None
     if provided_box_keys and len(provided_box_keys) != len(box_keys):
         raise RuntimeError(
             "Native PPTX chart companion text boxes require x/y/width/height together"
@@ -1595,6 +1612,7 @@ def _chart_companion_shapes(
         align = str(item.get("align") or ("ctr" if role == "title" else "l"))
         bold = bool(item.get("bold", role == "title"))
         explicit_box = _chart_companion_box(item)
+        width_only = _chart_companion_width_only(item)
         if explicit_box is not None:
             off_x, off_y, ext_cx, ext_cy = explicit_box
         elif role == "title":
@@ -1611,6 +1629,8 @@ def _chart_companion_shapes(
             ext_cx = chart_ext_cx
             ext_cy = px_to_emu(16)
             below_index += 1
+        if width_only is not None:
+            ext_cx = width_only
         anchor = "t"
         matches = [
             record for record in fallback_texts

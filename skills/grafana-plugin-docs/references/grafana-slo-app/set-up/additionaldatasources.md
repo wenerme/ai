@@ -74,4 +74,6 @@ These stacks have extra requirements. The data source must:
 >
 > The Grafana Mimir data source that comes with Grafana Cloud accounts is already configured to meet these requirements.
 
+To check whether your stack uses data source-managed recording rules, query `/api/plugins/grafana-slo-app/resources/v1/config`. A response of `{"usesDatasourceRecordingRules": true}` means the stack uses legacy data source-managed recording rules; `false` means the stack uses Grafana-managed recording rules.
+
 Grafana Cloud customers who want to switch to Grafana-managed recording rules for SLO should submit a support ticket through Grafana Cloud to request the change or coordinate with their Grafana account team as needed. Note that this is a stack-wide plugin configuration.

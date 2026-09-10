@@ -47,6 +47,8 @@ Certain legacy Grafana Cloud stacks may still be configured to use data source-m
 - The access policy for the data source needs the `metrics:read`, `rules:read`, and `rules:write` scopes.
 - The SLI query and the recording rules must use the same data source.
 
+To check whether your stack uses data source-managed recording rules, query `/api/plugins/grafana-slo-app/resources/v1/config`. A response of `{"usesDatasourceRecordingRules": true}` means the stack uses legacy data source-managed recording rules; `false` means the stack uses Grafana-managed recording rules.
+
 For the full requirements and the setup steps, refer to [configure data source-managed recording rules](/docs/grafana-cloud/alerting-and-irm/slo/set-up/additionaldatasources/#configure-data-source-managed-recording-rules).
 
 ## Set the time window
@@ -95,6 +97,10 @@ Before you write the SLI query, choose the:
 You can query one data source and store the recording rules in another, or use the same data source for both.
 
 If you select a Prometheus-compatible data source and the wizard shows a single **Select data source** selector instead of two, your stack uses [legacy data source-managed recording rules](#legacy-data-source-managed-recording-rules), and the SLI query and the recording rules both use that one data source.
+
+> Note
+>
+> The Terraform provider refers to the target data source as the *destination* data source: `destination_datasource`. For more information on setting the source and target data sources with Terraform, refer to [source and destination data sources](/docs/grafana-cloud/alerting-and-irm/slo/set-up/terraform/#source-and-destination-data-sources).
 
 ### Write the SLI query
 
