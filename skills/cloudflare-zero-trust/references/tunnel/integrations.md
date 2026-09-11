@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Integrations
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/integrations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/integrations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Tunnel integrates with other Cloudflare products to extend connectivity, security, and availability for your applications.
 
@@ -32,7 +32,7 @@ If you are using Cloudflare Tunnel for Zero Trust network access, VPN replacemen
 
 [Workers VPC](https://developers.cloudflare.com/workers-vpc/) enables Cloudflare Workers to access private resources such as databases, internal APIs, and other services. Cloudflare Tunnel serves as the connectivity layer, establishing a post-quantum encrypted outbound connection from your private network to Cloudflare. You can manage your tunnels directly from [Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/tunnel/), the Cloudflare Developer Platform CLI.
 
-**Get started:** [Create a tunnel](https://developers.cloudflare.com/tunnel/setup/) and then follow the [Workers VPC guide](https://developers.cloudflare.com/workers-vpc/get-started/) to configure VPC Services.
+**Get started:** [Create a tunnel](https://developers.cloudflare.com/tunnel/get-started/) and then follow the [Workers VPC guide](https://developers.cloudflare.com/workers-vpc/get-started/) to configure VPC Services.
 
 **Related:** [Connect to a private API](https://developers.cloudflare.com/workers-vpc/examples/private-api/) | [Connect to an S3 bucket](https://developers.cloudflare.com/workers-vpc/examples/private-s3-bucket/)
 
@@ -42,7 +42,7 @@ If you are using Cloudflare Tunnel for Zero Trust network access, VPN replacemen
 
 Each tunnel is assigned a subdomain (`<UUID>.cfargotunnel.com`). Add this as an endpoint in a Load Balancer pool with the application hostname as the host header.
 
-**Get started:** Refer to [Load Balancing setup](https://developers.cloudflare.com/tunnel/routing/#load-balancing) for step-by-step instructions.
+**Get started:** Refer to [Load Balancing setup](https://developers.cloudflare.com/tunnel/concepts/routing/#load-balancing) for step-by-step instructions.
 
 **Related:** [Tunnel replicas](https://developers.cloudflare.com/tunnel/configuration/#replicas-and-high-availability) | [Load Balancing reference architecture](https://developers.cloudflare.com/reference-architecture/architectures/load-balancing/)
 
@@ -91,5 +91,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/integrations/#page","headline":"Integrations · Cloudflare Docs","description":"Use Cloudflare Tunnel with Cloudflare One, Workers VPC, Load Balancing, Access, Spectrum, and other Cloudflare services.","url":"https://developers.cloudflare.com/tunnel/integrations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Integration","Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/integrations/#page","headline":"Integrations · Cloudflare Docs","description":"Use Cloudflare Tunnel with Cloudflare One, Workers VPC, Load Balancing, Access, Spectrum, and other Cloudflare services.","url":"https://developers.cloudflare.com/tunnel/integrations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Integration","Private networks"]}
 ```

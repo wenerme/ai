@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deploy the Cloudflare One Client on headless Linux machines
 
-Last updated Aug 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/deploy-client-headless-linux/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/deploy-client-headless-linux/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial explains how to deploy the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) on Linux devices using a service token and an installation script. This deployment workflow is designed for headless servers - that is, servers which do not have access to a browser for identity provider logins - and for situations where you want to fully automate the onboarding process. Because devices will not register through an identity provider, [identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/) and logging will be unavailable.
 
@@ -23,6 +23,9 @@ This tutorial focuses on deploying the Cloudflare One Client as an endpoint devi
 ## Prerequisites
 
 * [Cloudflare Zero Trust account](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization)
+* Root or `sudo` access on a supported Linux device
+* Zero Trust team name
+* Service token Client ID and Client Secret
 
 ## 1\. Create a service token
 
@@ -137,12 +140,15 @@ To allow devices to enroll using a service token:
 7. Go back to **Device enrollment permissions** and add the newly created policy to your permissions.
 8. Select **Save**.
 
+To configure service-token enrollment with Terraform, refer to [Check for a service token](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/#check-for-service-token).
+
 ## 3\. Create an installation script
 
 You can use a shell script to automate WARP installation and registration. The following example shows how to deploy the Cloudflare One Client on Ubuntu 24.04.
 
 1. In a terminal, create a new `.sh` file using a text editor. For example:
 ```sh
+umask 077
 vim install_warp.sh
 ```
 2. Press `i` to enter insert mode and add the following lines:
@@ -158,13 +164,13 @@ function warp() {
 }
 # Create an MDM file with your Cloudflare One Client deployment parameters
 function mdm() {
-	sudo touch /var/lib/cloudflare-warp/mdm.xml
-	cat > /var/lib/cloudflare-warp/mdm.xml << "EOF"
+        sudo install -m 600 /dev/null /var/lib/cloudflare-warp/mdm.xml
+        sudo tee /var/lib/cloudflare-warp/mdm.xml > /dev/null << "EOF"
 <dict>
-		<key>auth_client_id</key>
-		<string>88bf3b6d86161464f6509f7219099e57.access</string>
-		<key>auth_client_secret</key>
-		<string>cfast_EqN8f9vx3sKOSY4mwCMCbZYb02L4OvfAkacLAqTZ63a435a7</string>
+        <key>auth_client_id</key>
+        <string>YOUR_CLIENT_ID</string>
+        <key>auth_client_secret</key>
+        <string>YOUR_CLIENT_SECRET</string>
 		<key>auto_connect</key>
 		<integer>1</integer>
 		<key>onboarding</key>
@@ -179,6 +185,7 @@ EOF
 #main program
 warp
 mdm
+sudo systemctl restart warp-svc
 ```
 3. If you are using Debian or RHEL / CentOS, modify the `warp()` function so that it installs the correct [WARP package ↗](https://pkg.cloudflareclient.com/) for your OS.
 4. Modify the values in the `mdm()` function:
@@ -194,14 +201,37 @@ To install the Cloudflare One Client using the example script:
 
 1. Make the script executable:
 ```sh
-chmod +x install_warp.sh
+chmod 700 install_warp.sh
 ```
 2. Run the script:
 ```sh
 sudo ./install_warp.sh
 ```
+3. Delete the script because it contains the service token secret:
+```sh
+rm install_warp.sh
+```
 
-The Cloudflare One Client is now deployed with the configuration parameters stored in `/var/lib/cloudflare-warp/mdm.xml`. Assuming [auto\_connect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#auto%5Fconnect) is configured, the Cloudflare One Client will automatically connect to your Zero Trust organization. Once connected, the device will appear in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Team & Resources** \> **Devices** with the email `non_identity@<team-name>.cloudflareaccess.com`.
+The Cloudflare One Client is now deployed with the configuration parameters stored in the root-only `/var/lib/cloudflare-warp/mdm.xml`. Assuming [auto\_connect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#auto%5Fconnect) is configured, the Cloudflare One Client will automatically connect to your Zero Trust organization.
+
+Verify registration and connection:
+
+```sh
+sudo warp-cli --accept-tos registration show
+sudo warp-cli --accept-tos status
+```
+
+Successful enrollment creates a device in **Zero Trust** \> **Team & Resources** \> **Devices** with the email `non_identity@<team-name>.cloudflareaccess.com`. Verify that `status` reports `Connected`. A command completion or HTTP redirect alone does not prove registration or connectivity.
+
+The registration and status commands verify enrollment and the connection to Cloudflare. To verify end-to-end traffic, connect to an included destination using the protocol you intend to use. For Cloudflare Mesh, follow [Verify connectivity](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/client-devices/#2-verify-connectivity).
+
+If the client reports `Registration Missing due to: Does not exist in API`, or the `warp-svc` logs show an HTTP `400` enrollment response, enrollment failed. Confirm that the service token policy uses the _Service Auth_ action, the policy is attached to device enrollment permissions, and the MDM team name and token values are correct. After correcting or confirming the configuration, restart the service and repeat both verification commands:
+
+```sh
+sudo systemctl restart warp-svc
+sudo warp-cli --accept-tos registration show
+sudo warp-cli --accept-tos status
+```
 
 Was this helpful?
 
@@ -212,5 +242,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/deploy-client-headless-linux/#page","headline":"Deploy the Cloudflare One Client on headless Linux machines · Cloudflare One docs","description":"This tutorial explains how to deploy the Cloudflare One Client on headless Linux devices using a service token and an installation script.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/deploy-client-headless-linux/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Linux"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/deploy-client-headless-linux/#page","headline":"Deploy the Cloudflare One Client on headless Linux machines · Cloudflare One docs","description":"This tutorial explains how to deploy the Cloudflare One Client on headless Linux devices using a service token and an installation script.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/deploy-client-headless-linux/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Linux"]}
 ```

@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Scan HTTP traffic
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You can scan HTTP traffic for sensitive data through [Secure Web Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) policies. Setting up DLP is a two-step process: first, configure a **DLP profile** that defines what sensitive data patterns to detect, and then build a **Gateway HTTP policy** that defines what action to take (allow, block, or log) when Gateway finds matching data. Gateway will parse and scan your HTTP traffic for strings matching the keywords or regular expressions (regexes) specified in the DLP profile.
+You can scan HTTP traffic for sensitive data through [Secure Web Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) policies. To enforce DLP policies, first configure a **DLP profile** that defines what sensitive data patterns to detect. Then build a **Gateway HTTP policy** that defines what action to take (allow, block, or log) when Gateway finds matching data.
+
+Before creating a policy, use [Passive Detection](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/passive-detection/) to explore sensitive data in sampled Gateway traffic. Its findings can help you choose which data types and destinations your policy should cover.
 
 Note
 
@@ -29,10 +31,6 @@ To scan AI prompts and responses without Gateway HTTP filtering, you can also en
 ## 1\. Configure a DLP profile
 
 A DLP profile defines the sensitive data patterns you want to detect — for example, social security number formats, credit card numbers, or custom patterns specific to your organization. Refer to [Configure a DLP profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/). We recommend getting started with a predefined profile.
-
-Important
-
-A DLP profile only defines detection patterns. DLP scans will not start until you [create a DLP policy](#2-create-a-dlp-policy).
 
 ## 2\. Create a DLP policy
 
@@ -49,7 +47,7 @@ DLP Profiles may be used alongside other Cloudflare One rules in a [Gateway HTTP
 | Application | not in   | _Workday_                                                 |       |        |
 4. Select **Create policy**.
 
-DLP scanning is now turned on for HTTP traffic matching this policy.
+Gateway now applies the configured action when traffic matches the complete HTTP policy.
 
 ## 3\. Test DLP policy
 
@@ -94,5 +92,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/#page","headline":"Scan HTTP traffic · Cloudflare One docs","description":"Scan HTTP traffic in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance","Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/#page","headline":"Scan HTTP traffic · Cloudflare One docs","description":"Scan HTTP traffic in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance","Logging"]}
 ```

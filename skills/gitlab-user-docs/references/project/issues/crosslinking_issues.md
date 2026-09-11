@@ -1,5 +1,7 @@
 # Crosslinking issues
 
+Link issues to each other from commit messages, linked issues, merge requests, and branch names to track related work.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

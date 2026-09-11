@@ -105,6 +105,20 @@ To view the open merge requests for a file:
 1. Select the badge to see a list of open merge requests created in the past 30 days.
 1. Select any merge request in the list to go to that merge request.
 
+## Subscribe to an RSS feed of the merge request list
+
+To subscribe to an RSS feed of a project's merge request list:
+
+1. In the top bar, select **Search or go to** and find your project.
+1. In the left sidebar, select **Code** > **Merge requests**.
+1. In the upper-right corner, select **Actions** () > **Subscribe to RSS feed**.
+
+To subscribe to an RSS feed of a group's merge request list, follow the same steps. In the top
+bar, select **Search or go to** and find your group instead of a project.
+
+The feed URL contains a [feed token](../../../security/tokens/_index.md#feed-token) that
+authenticates you as the feed reader.
+
 ## Filter the list of merge requests
 
 - Filter by `merged by` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/140002) in GitLab 16.9. Available only when the feature flag `mr_merge_user_filter` is enabled.

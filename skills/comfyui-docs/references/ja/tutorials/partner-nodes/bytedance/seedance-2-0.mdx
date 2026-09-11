@@ -1,12 +1,12 @@
 ---
 title: "Seedance 2.0 - AI動画生成"
 description: "ComfyUIでSeedance 2.0を使用して、テキスト、画像、動画、音声から同期音声、一貫したキャラクター、映画的カメラコントロールを備えた高品質動画を生成"
-translationSourceHash: 3338c352
+translationSourceHash: 9b943d76
 translationFrom: tutorials/partner-nodes/bytedance/seedance-2-0.mdx
 translationBlockHashes:
   "_intro": cbd7a8d4
   "What Seedance 2.0 is good at": e790752b
-  "Available workflows": 58111e0f
+  "Available workflows": 979f78da
   "Seedance 2.0 Mini": 8d573865
   "Using real-person and AI-generated portraits in ComfyUI for Seedance 2.0": 5e61ee5a
 ---
@@ -90,6 +90,53 @@ Seedance 2.0 は ByteDance が提供する次世代マルチモーダル動画�
   
   
     サンプル末尾フレームをダウンロード
+  
+
+### リファレンスから 4K 動画を生成（R2V 4K）
+
+Seedance 2.0 でリファレンス画像から 4K 動画を生成します。この 4K ワークフローは標準 R2V と同じリファレンスフローに従います。被写体、服装、シーンのリファレンスを提供すると、モデルが大画面表示やポストプロダクションのクロップに対応した 4K 解像度で最終クリップをレンダリングします。
+
+[Seedance 2.0 リファレンス 4K 動画ワークフローのプレビュー]
+
+  
+    Comfy Cloud でリファレンス 4K ワークフローを即座に試せます。
+  
+  
+    ワークフロー JSON をダウンロードします。
+  
+
+入力素材
+
+このワークフローを試すには、以下のサンプル入力画像をダウンロードしてください：
+
+  
+    サンプル被写体リファレンスをダウンロード
+  
+
+### 絵コンテから動画へ
+
+絵コンテを 2 パスで動画に変換します。まず絵コンテを生成：Nano Banana 2 と GPT Image が各コマを描き、Gemini ノードがショットの説明文を書き、ImageStitch がコマを 1 枚のシートにまとめます。次に、完成した絵コンテを Seedance 2.0 に渡して、同期音声付きの動画としてアニメーション化します。
+
+両ステップは 1 つのワークフローに含まれています。[部分実行](/ja/interface/features/partial-execution)を使って絵コンテ生成グループを先に実行し、バイパスを Seedance グループに切り替えてから、アニメーションパスを実行してください。
+
+[Seedance 2.0 絵コンテ動画ワークフローのプレビュー]
+
+  
+    Comfy Cloud で絵コンテ動画ワークフローを即座に試せます。
+  
+  
+    ワークフロー JSON をダウンロードします。
+  
+
+入力素材
+
+このワークフローを試すには、以下のサンプル入力画像をダウンロードしてください：
+
+  
+    サンプル絵コンテ入力をダウンロード
+  
+  
+    サンプル被写体リファレンスをダウンロード
   
 
 ## Seedance 2.0 Mini

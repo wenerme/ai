@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Run Mesh in Docker / Kubernetes
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [cloudflare/mesh ↗](https://hub.docker.com/r/cloudflare/mesh) Docker image packages a Cloudflare Mesh node for Linux containers. It runs the Cloudflare One Client's `warp-svc` daemon headlessly in a minimal [Wolfi ↗](https://wolfi.dev/)\-based runtime.
 
@@ -39,29 +39,42 @@ Before starting the container, create a Mesh node and copy its token.
 4. Select **Create node**.
 5. Copy the token shown in the dashboard. You will pass it to the container as `MESH_NODE_TOKEN`.
 
-Create a node via the [Cloudflare API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/warp%5Fconnector/methods/create/):
+With an API token that has either `Cloudflare One Connectors Write` or `Cloudflare One Connector: WARP Write` permission, create a node and retrieve its connector token:
 
-```sh
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/{account_id}/warp_connector" \
-  -H "Authorization: Bearer {api_token}" \
-  -H "Content-Type: application/json" \
-  -d '{"name": "k8s-gateway"}'
+```bash
+set -euo pipefail
+
+NODE_RESPONSE=$(
+	curl --fail-with-body --silent --show-error \
+		"https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/warp_connector" \
+		--request POST \
+		--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+		--header "Content-Type: application/json" \
+		--data '{"name":"k8s-gateway"}'
+)
+
+jq -e '.success == true and (.result.id | type == "string")' \
+	<<< "$NODE_RESPONSE" > /dev/null
+NODE_ID=$(jq -r '.result.id' <<< "$NODE_RESPONSE")
+
+TOKEN_RESPONSE=$(
+	curl --fail-with-body --silent --show-error \
+		"https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/warp_connector/$NODE_ID/token" \
+		--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+)
+
+MESH_NODE_TOKEN=$(jq -er \
+	'select(.success == true) | .result | select(type == "string" and length > 0)' \
+	<<< "$TOKEN_RESPONSE")
 ```
 
-Then retrieve the token:
-
-```sh
-curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/warp_connector/{node_id}/token" \
-  -H "Authorization: Bearer {api_token}"
-```
-
-The response contains the token string. Pass it to the container as `MESH_NODE_TOKEN`.
+Install `jq`, then set `ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` before running the commands. The commands stop on an HTTP or API error. Do not continue until they return zero and set `NODE_ID` and `MESH_NODE_TOKEN`. If token retrieval fails after node creation, retry only the token request with the existing `NODE_ID`. Do not rerun the node creation request. Pass `MESH_NODE_TOKEN` to the container.
 
 Note
 
 Mesh nodes can also be managed with Terraform using the [cloudflare\_zero\_trust\_tunnel\_warp\_connector ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Ftunnel%5Fwarp%5Fconnector) resource. To manage node configuration, use [cloudflare\_zero\_trust\_tunnel\_warp\_connector\_config ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Ftunnel%5Fwarp%5Fconnector%5Fconfig).
 
-If this is your first Mesh node, the dashboard runs a [setup wizard](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/#what-the-wizard-configures) that configures your account for Mesh networking.
+If this is your first Mesh node, configure the [required account settings](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/#required-account-settings). You can use the dashboard wizard, APIs, or Terraform.
 
 Caution
 
@@ -427,5 +440,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/#page","headline":"Run Cloudflare Mesh in containers · Cloudflare One docs","description":"Run a Cloudflare Mesh node as a Docker container for Docker Compose, Kubernetes, and CI/CD environments.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks","Containers","Docker","Kubernetes"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/#page","headline":"Run Cloudflare Mesh in containers · Cloudflare One docs","description":"Run a Cloudflare Mesh node as a Docker container for Docker Compose, Kubernetes, and CI/CD environments.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks","Containers","Docker","Kubernetes"]}
 ```

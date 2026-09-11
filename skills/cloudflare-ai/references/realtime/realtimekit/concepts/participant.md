@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Participant
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Before a user can join a meeting through the RealtimeKit SDK, your backend must add that user as a participant to that meeting using the [Add Participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/). In RealtimeKit, a **participant** represents a user who is allowed to join a specific meeting.
 
@@ -33,9 +33,15 @@ RealtimeKit uses the token to authenticate the participant and determine which m
 
 ### Token validity and refresh
 
-Participant authentication tokens are time bound and eventually expire. When a token expires, you do not need to create a new participant for the same user in the meeting.
+Participant authentication tokens are JSON Web Tokens (JWTs). The `meetingId` and `participantId` fields scope each token to one participant in one meeting.
 
-Instead, your backend can call the [Refresh Participant Token](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/refresh%5Fparticipant%5Ftoken/) API endpoint. This endpoint issues a new authentication token for the existing participant record, keeping details such as the participant `id` and preset the same.
+A token becomes valid when issued and expires 100 days later. You cannot configure custom start or expiration dates. If you need scheduled access, enforce the schedule in your own system because RealtimeKit SDKs do not manage scheduling or duration logic.
+
+Your backend can call the [Refresh Participant Token](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/refresh%5Fparticipant%5Ftoken/) endpoint before or after a token expires. The new token uses the existing participant record, including its participant `id` and preset. Refreshing does not invalidate previously issued tokens. Each token remains valid until its own expiration time.
+
+To revoke all tokens for a participant in a meeting, call the [Delete Participant](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/delete%5Fmeeting%5Fparticipant/) endpoint. First, use the [Kick Participants](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/active-session/methods/kick%5Fparticipants/) endpoint to safely remove the participant from any active session.
+
+A participant cannot join a meeting with an expired or revoked token. The RealtimeKit UI and Core SDK report the token as invalid. RealtimeKit rejects the participant before they enter the [meeting stage](https://developers.cloudflare.com/realtime/realtimekit/core/stage-management/), so they are not billed.
 
 ### Custom participant identifier
 
@@ -61,5 +67,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/#page","headline":"Participant · Cloudflare Realtime docs","description":"Add and manage participants in RealtimeKit meetings with tokens and presets.","url":"https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/#page","headline":"Participant · Cloudflare Realtime docs","description":"Add and manage participants in RealtimeKit meetings with tokens and presets.","url":"https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

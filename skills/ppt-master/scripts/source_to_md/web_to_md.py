@@ -58,6 +58,7 @@ from _dispatcher import (  # noqa: E402
 )
 from _conversion_profile import (  # noqa: E402
     profile_path_for,
+    record_source_url,
     write_conversion_profile_best_effort,
 )
 
@@ -787,6 +788,44 @@ def simple_html_to_markdown_traversal(
     """Convert HTML content to Markdown using BeautifulSoup traversal."""
     lines = []
 
+    def fold(node: Tag) -> str:
+        """Convert a cell or caption like body text, folded onto one line."""
+        text = ''.join(traverse(child) for child in node.children)
+        return re.sub(r'\s+', ' ', text).strip().replace('|', '\\|')
+
+    def span(cell: Tag, name: str) -> int:
+        try:
+            return min(max(int(cell.get(name) or 1), 1), 50)
+        except ValueError:
+            return 1
+
+    def row_cells(row: Tag, carried: dict[int, int] | None = None) -> list[str]:
+        """Return one row's cells on the table grid.
+
+        A colspan pads empty cells to its right; ``carried`` maps a column to
+        the rows a rowspan above still covers, which take an empty cell here.
+        """
+        carried = {} if carried is None else carried
+        cells: list[str] = []
+
+        def fill_carried() -> None:
+            while carried.get(len(cells), 0) > 0:
+                carried[len(cells)] -= 1
+                cells.append('')
+
+        for cell in row.find_all(['td', 'th'], recursive=False):
+            fill_carried()
+            rowspan = span(cell, 'rowspan')
+            for offset in range(span(cell, 'colspan')):
+                if rowspan > 1:
+                    carried[len(cells)] = rowspan - 1
+                cells.append(fold(cell) if offset == 0 else '')
+        while any(count > 0 for column, count in carried.items() if column >= len(cells)):
+            if carried.get(len(cells), 0) > 0:
+                carried[len(cells)] -= 1
+            cells.append('')
+        return cells
+
     def traverse(node: Tag | NavigableString) -> str:
         if isinstance(node, Comment):
             # ``Comment`` is a ``NavigableString`` subclass: without this
@@ -875,24 +914,29 @@ def simple_html_to_markdown_traversal(
         if is_block:
             inner_text = inner_text.strip()
 
-        # Post-processing for tables (simplified)
         if node.name == 'tr':
-            # count tds
-            cells = [c.get_text(strip=True) for c in node.find_all(
-                ['td', 'th'], recursive=False)]
-            return f"| {' | '.join(cells)} |\n"
+            return f"| {' | '.join(row_cells(node))} |\n"
         if node.name == 'table':
-            # Try to add a separator line after first row if it looks like a header
-            rows = inner_text.strip().split('\n')
-            if rows:
-                cols_count = rows[0].count('|') - 1
-                if cols_count > 0:
-                    # rough approx
-                    sep = "| " + " | ".join(["---"] * int(cols_count/2)) + " |"
-                    # Actually, the traverse of TR returns newline terminated strings.
-                    # Let's just return what we gathered.
-                    pass
-            return f"\n\n{inner_text}\n\n"
+            carried: dict[int, int] = {}
+            rows = [
+                cells for cells in (
+                    row_cells(tr, carried) for tr in node.find_all('tr')
+                    if tr.find_parent('table') is node
+                ) if cells
+            ]
+            if not rows:
+                return f"\n\n{inner_text}\n\n"
+            width = max(len(cells) for cells in rows)
+            rows = [cells + [''] * (width - len(cells)) for cells in rows]
+            lines = [f"| {' | '.join(cells)} |" for cells in rows]
+            lines.insert(1, '| ' + ' | '.join(['---'] * width) + ' |')
+            caption = node.find('caption')
+            caption_text = (
+                fold(caption) if caption is not None and caption.find_parent('table') is node
+                else ''
+            )
+            lead = f"{caption_text}\n\n" if caption_text else ''
+            return f"\n\n{lead}" + '\n'.join(lines) + "\n\n"
 
         return f"{prefix}{inner_text}{suffix}"
 
@@ -998,6 +1042,7 @@ def remote_document_suffix(url: str, content_type: str, head: bytes) -> str | No
 
 def _convert_remote_document(
     url: str, body: bytes, suffix: str, output_file: str | None,
+    download_images: bool = True,
 ) -> tuple[bool, str, str | None, str | None]:
     """Save a downloaded document beside its Markdown and run its own converter."""
     stem = os.path.splitext(os.path.basename(urlparse(url).path))[0]
@@ -1012,12 +1057,31 @@ def _convert_remote_document(
         f.write(body)
     print(f"   [OK] Document: {len(body)} bytes saved to {local_path}")
 
-    route = build_conversion_command(local_path, output_path)
+    route = build_conversion_command(
+        local_path, output_path,
+        pdf_image_mode=None if download_images else "none",
+    )
     print(f"   [>>] {route.script_name} {local_path}")
+    sys.stdout.flush()
     rc = subprocess.run(route.command).returncode
     if rc != 0 or not os.path.isfile(output_path):
         return False, url, f"{route.script_name} exited with {rc}", None
+    record_source_url(output_path, url)
     return True, url, None, output_path
+
+
+_META_REFRESH_RE = re.compile(
+    r"^\s*(\d+(?:\.\d+)?)\s*[;,]\s*url\s*=\s*['\"]?([^'\"]+)", re.IGNORECASE)
+
+
+def _meta_refresh_target(soup: BeautifulSoup, base_url: str) -> str | None:
+    """Return the http(s) target of an immediate `<meta http-equiv="refresh">`."""
+    meta = soup.find("meta", attrs={"http-equiv": re.compile(r"^refresh$", re.IGNORECASE)})
+    match = _META_REFRESH_RE.match(meta.get("content", "")) if meta else None
+    if not match or float(match.group(1)) > 5:
+        return None
+    target = urljoin(base_url, match.group(2).strip())
+    return target if urlparse(target).scheme in {"http", "https"} else None
 
 
 def process_url(
@@ -1025,6 +1089,7 @@ def process_url(
     output_file: str | None = None,
     *,
     download_images: bool = True,
+    _refresh_hops: int = 0,
 ) -> tuple[bool, str, str | None, str | None]:
     """Fetch, convert, and save one web page as Markdown.
 
@@ -1038,13 +1103,23 @@ def process_url(
         suffix = remote_document_suffix(
             url, response.headers.get("Content-Type", ""), response.content[:8])
         if suffix:
-            return _convert_remote_document(url, response.content, suffix, output_file)
+            return _convert_remote_document(
+                url, response.content, suffix, output_file, download_images,
+            )
         html, page_url = _decode_response_text(response), response.url
         if is_plain_text_document(url, html):
             return _save_plain_text_document(url, html, output_file)
         soup = BeautifulSoup(html, 'html.parser')
         base = soup.find('base', href=True)
         base_url = urljoin(page_url, base['href']) if base else page_url
+        refresh_url = _meta_refresh_target(soup, base_url)
+        if refresh_url and refresh_url != page_url and _refresh_hops < 3:
+            print(f"   [>>] Meta refresh: {refresh_url}")
+            ok, _, error, saved = process_url(
+                refresh_url, output_file,
+                download_images=download_images, _refresh_hops=_refresh_hops + 1,
+            )
+            return ok, url, error, saved
 
         # Extract Metadata
         metadata = extract_metadata(soup, url)
@@ -1083,6 +1158,12 @@ def process_url(
         # Note: We pass the element to our traversal function
         markdown_text = simple_html_to_markdown_traversal(content_div, base_url)
         print(f"   [OK] Content: {len(markdown_text)} chars")
+        warnings = []
+        if not markdown_text.strip():
+            warnings.append(
+                "no readable body text extracted; the page may render its "
+                "content with scripts or link to it elsewhere")
+            print(f"   [WARN] {warnings[0]}")
 
         # Construct content
         final_output = []
@@ -1114,6 +1195,7 @@ def process_url(
             converter="web_to_md.py",
             conversion_type="web",
             asset_dir=image_dir if image_count else None,
+            warnings=warnings,
         )
 
         print(f"   [OK] Saved: {output_path}")
@@ -1203,10 +1285,17 @@ def main(argv: list[str] | None = None) -> int:
         )
         return 2
 
+    if args.output and len(targets) > 1:
+        print(
+            "web_to_md.py: error: -o/--output names one Markdown file and takes "
+            "one URL; for several URLs pass --dir <output directory> instead",
+            file=sys.stderr,
+        )
+        return 2
+
     results = []
     for i, url in enumerate(targets):
-        # Allow specific output file only if 1 URL
-        out = args.output if (len(targets) == 1 and args.output) else None
+        out = args.output or None
         success, url, err, out_path = process_url(
             url,
             out,

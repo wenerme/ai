@@ -12,13 +12,65 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQ
 
-Last updated Sep 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-How can I generate the Cloudflare API Token?
+### API token
+
+How can I generate a Cloudflare API token?
 
 To use RealtimeKit APIs, you must have a [Cloudflare account ↗](https://dash.cloudflare.com).
 
-Follow the [Create API token guide](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) to create a new token via the [Cloudflare dashboard ↗](https://dash.cloudflare.com/profile/api-tokens). When configuring permissions, ensure that **Realtime** / **Realtime Admin** permissions are selected. Configure any additional [access policies and restrictions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) as needed for your use case.
+Follow the [Create API token guide](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) to create a token from the [Cloudflare dashboard ↗](https://dash.cloudflare.com/profile/api-tokens). When configuring permissions, select **Realtime** \> **Realtime Admin**. Configure additional [access policies and restrictions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) for your use case.
+
+Cloudflare API tokens authenticate requests to Cloudflare APIs. Use these tokens only in your backend. Never expose an API token to your frontend or share it with an end user.
+
+### Auth tokens
+
+How do I generate an auth token for a participant?
+
+Your backend generates an auth token by adding the user as a participant to a meeting with the [Add Participant](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/) API endpoint. The API response includes a `token` field for that participant.
+
+You can send this token to your frontend for the intended participant. The token is tied to that participant and meeting. It does not grant access to other meetings.
+
+If you need a new token after the previous token expires, use the [Refresh Participant Token](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/refresh%5Fparticipant%5Ftoken/) endpoint. For more information, refer to [Participant tokens](https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/#participant-tokens).
+
+How long is an auth token valid?
+
+An auth token is a JSON Web Token (JWT) that is valid for 100 days. It contains `meetingId` and `participantId` fields that tie the token to a specific participant in a specific meeting. The token does not grant access to other meetings. If you need a new token after the previous token expires, use the [Refresh Participant Token](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/refresh%5Fparticipant%5Ftoken/) endpoint. For more information, refer to [Participant tokens](https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/#participant-tokens).
+
+Can I refresh an auth token before it expires?
+
+Yes. You can call the [Refresh Participant Token](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/refresh%5Fparticipant%5Ftoken/) endpoint before the current token expires. Refreshing an auth token generates a new token without invalidating an existing token. Each token remains valid and expires independently at its own expiration time.
+
+Can the auth token lifespan be configured?
+
+No. The auth token APIs do not support custom start or expiration dates. Tokens created through the [Add Participant](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/) or [Refresh Participant Token](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/refresh%5Fparticipant%5Ftoken/) flow become valid when issued and expire 100 days later.
+
+If you need scheduled access, implement time-based access controls in your own system. RealtimeKit SDKs do not manage scheduling or duration logic.
+
+Does generating a new auth token invalidate the previous token?
+
+No. Generating a new token, including through the refresh flow, does not invalidate an existing token. Each token remains valid and expires independently at its own expiration time.
+
+Does deleting a participant revoke all previously issued tokens?
+
+Yes. The [Delete Participant](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/delete%5Fmeeting%5Fparticipant/) endpoint immediately revokes all tokens issued to that participant for the meeting.
+
+Before deleting the participant, use the [Kick Participants](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/active-session/methods/kick%5Fparticipants/) endpoint to safely remove the participant from any active session. Then, delete the participant to revoke their tokens.
+
+What happens if a participant uses an expired or invalidated auth token?
+
+The participant cannot join the meeting. The RealtimeKit UI and Core SDK report that the token is invalid.
+
+Because RealtimeKit rejects the participant before they enter the meeting stage, they are not billed.
+
+Can a participant with a valid auth token join an inactive meeting?
+
+No. A participant cannot join a meeting with an `INACTIVE` status, even if their auth token is valid and has not expired.
+
+Does the SDK cache participant auth tokens?
+
+No. RealtimeKit SDKs do not cache participant auth tokens or store them in browser or device storage.
 
 ### Meetings
 
@@ -32,9 +84,9 @@ While RealtimeKit does not include a built-in scheduling system, you can impleme
 
 How do I prevent participants from joining a meeting after a specific date or time?
 
-You can disable the meeting at the required time by setting its status to `INACTIVE` using a `PATCH` request to the [Update Meeting](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/update%5Fmeeting%5Fby%5Fid/) endpoint.
+At the required time, first call the [Kick All Participants](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/active-session/methods/kick%5Fall%5Fparticipants/) endpoint if the meeting has an active session. This removes all participants and properly ends the session.
 
-This prevents participants from joining the meeting and prevents any new Sessions from starting.
+Then, call the [Update Meeting](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/update%5Fmeeting%5Fby%5Fid/) endpoint to set the meeting status to `INACTIVE`. This prevents participants from joining the meeting and prevents new sessions from starting.
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/realtime/kit/{APP_ID}/meetings/{MEETING_ID} \
@@ -45,10 +97,6 @@ curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/realtime/kit/{AP
 ```
 
 ### Participants
-
-How do I generate an auth token for a participant?
-
-Your backend generates an authentication token by adding the user as a participant to a meeting with the [Add Participant](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/)API endpoint. The API response includes a `token` field, which is the authentication token for that participant in that meeting. If you need a new token for an existing participant after the previous token has expired, use the [Refresh Participant Token](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/refresh%5Fparticipant%5Ftoken/)endpoint. For more details, see [Participant tokens](https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/#participant-tokens).
 
 Can the same user join from multiple devices or browser tabs?
 
@@ -176,6 +224,58 @@ Instead, set up the default meeting UI in your own website by following the [UI 
 
 The demo app and example applications may be updated at any time without prior notice.
 
+### Billing
+
+How are Audio/Video Participant and Audio-Only Participant minutes charged?
+
+RealtimeKit bills active participant minutes. Billing starts when a participant joins a meeting session and stops when they leave it.
+
+
+**Key billing rules:**
+
+* **No-shows are not billed:** Adding someone with the [Add Participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/) does not incur charges. RealtimeKit does not charge for that participant if they never join the meeting.
+* **Usage is billed by duration:** RealtimeKit charges for the exact time, including seconds, that a participant spends in an active session. The participant is still billed when they do not produce or consume audio or video.
+* **Multiple tabs are billed separately:** If someone joins from multiple browser tabs with the same auth token, RealtimeKit bills each tab separately. The RealtimeKit dashboard displays the aggregated duration for that participant.
+
+For more information about the difference between meetings and sessions, refer to [RealtimeKit concepts](https://developers.cloudflare.com/realtime/realtimekit/concepts/).
+
+
+For example:
+
+* If two participants join at 7:00 p.m. and leave at 7:30 p.m., each participant uses 30 minutes. RealtimeKit charges 60 participant minutes.
+* If one participant joins at 4:00 p.m., another joins at 4:03 p.m., and both leave at 5:00 p.m., they use 60 and 57 minutes. RealtimeKit charges 117 participant minutes.
+* If one participant joins at 3:00 p.m. and leaves at 3:27 p.m., while another joins at 3:05 p.m. and leaves at 3:30 p.m., they use 27 and 25 minutes. RealtimeKit charges 52 participant minutes.
+* If five participants are expected but only two join, RealtimeKit charges participant minutes only for the two participants who joined.
+* If two participants are expected to join a pre-created meeting at 2:00 p.m. but neither joins, RealtimeKit does not charge any participant minutes.
+
+Creating meetings and participant tokens does not incur charges.
+
+How is composite recording export charged?
+
+For composite recordings, a recorder joins the meeting as a hidden virtual participant and records its view. For more information, refer to the [recording guides](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/).
+
+After the final participant leaves, the recorder remains active for the meeting's [session\_keep\_alive\_time\_in\_secs](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/create/#%28resource%29%20realtime%5Fkit.meetings%20%3E%20%28method%29%20create%20%3E%20%28params%29%200%20%3E%20%28param%29%20session%5Fkeep%5Falive%5Ftime%5Fin%5Fsecs%20%3E%20%28schema%29). The default is 60 seconds, and the maximum is 600 seconds.
+
+RealtimeKit does not charge participant minutes for the recorder. Instead, it charges export minutes for the recorded duration. Refer to [RealtimeKit pricing](https://developers.cloudflare.com/realtime/realtimekit/pricing/) for current rates.
+
+
+When [record\_on\_start](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/create/#%28resource%29%20realtime%5Fkit.meetings%20%3E%20%28method%29%20create%20%3E%20%28params%29%200%20%3E%20%28param%29%20record%5Fon%5Fstart%20%3E%20%28schema%29) is `true`:
+
+* If two participants join at 7:00 p.m. and leave at 7:30 p.m., recording starts at 7:00 p.m. After both participants leave, the recorder remains active for the default 60-second session keep-alive period. Recording stops at 7:31 p.m., so RealtimeKit charges 31 export minutes.
+* If five participants are expected but only two join at 8:00 p.m. and leave at 8:20 p.m., recording runs until 8:21 p.m. with the default session keep-alive period. RealtimeKit charges 21 export minutes. The charge would remain 21 export minutes if all five participants joined and left at the same times because participant count does not affect recording export minutes.
+* If nobody joins a pre-created meeting, recording does not start. Creating a meeting with `record_on_start` set to `true` does not incur charges by itself.
+
+When someone starts recording during an active session:
+
+* If recording starts at 4:20 p.m. and the final participant leaves at 5:00 p.m., it stops at 5:01 p.m. by default. RealtimeKit charges 41 export minutes.
+* If recording starts at 4:20 p.m. and someone calls [kickAll()](https://developers.cloudflare.com/realtime/realtimekit/core/end-a-session/) at 5:00 p.m., recording stops immediately. RealtimeKit charges 40 export minutes.
+* If a meeting and recording start at 4:20 p.m., the meeting uses a two-minute keep-alive period, and all participants close their tabs at 5:00 p.m., recording stops at 5:02 p.m. RealtimeKit charges 42 export minutes.
+
+This keep-alive period helps workflows that must preserve a single recording across brief disconnections. For example, an education technology (EdTech) application might record a timed take-home assignment in a one-participant meeting. If the participant loses their network connection and rejoins before the keep-alive period expires, the recorder continues the same recording. The recording contains an empty gap during the disconnection, but the application does not need to combine two separate recordings.
+
+
+The export charges include the keep-alive period. To avoid this extra time, explicitly end the session by calling [kickAll()](https://developers.cloudflare.com/realtime/realtimekit/core/end-a-session/) or the [Kick all participants API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/active-session/methods/kick%5Fall%5Fparticipants/).
+
 Was this helpful?
 
 YesNo
@@ -185,5 +285,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/faq/#page","headline":"FAQ · Cloudflare Realtime docs","description":"Frequently asked questions about RealtimeKit meetings, recordings, and SDK usage.","url":"https://developers.cloudflare.com/realtime/realtimekit/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/faq/#page","headline":"FAQ · Cloudflare Realtime docs","description":"Frequently asked questions about RealtimeKit meetings, recordings, and SDK usage.","url":"https://developers.cloudflare.com/realtime/realtimekit/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

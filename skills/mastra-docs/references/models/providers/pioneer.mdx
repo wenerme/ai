@@ -5,7 +5,7 @@ description: "Browse Pioneer model IDs, capabilities, context windows, and prici
 
 # [Pioneer logo]Pioneer
 
-Access 103 Pioneer models through Mastra's model router. Authentication is handled automatically using the `PIONEER_API_KEY` environment variable.
+Access 105 Pioneer models through Mastra's model router. Authentication is handled automatically using the `PIONEER_API_KEY` environment variable.
 
 Learn more in the [Pioneer documentation](https://agent.pioneer.ai/llms.txt).
 
@@ -808,6 +808,18 @@ for await (const chunk of stream) {
     "outputCost": 1.5
   },
   {
+    "model": "pioneer/mistral-medium",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 128000,
+    "maxOutput": 64000,
+    "inputCost": 0.4,
+    "outputCost": 2
+  },
+  {
     "model": "pioneer/mistral-medium-3.5",
     "imageInput": true,
     "audioInput": false,
@@ -1274,6 +1286,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 1.4,
     "outputCost": 4.4
+  },
+  {
+    "model": "pioneer/zai-org/GLM-5.2-Fast",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 2.1,
+    "outputCost": 6.6
   }
 ]}
 />
@@ -1308,7 +1332,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "pioneer/zai-org/GLM-5.2"
+      ? "pioneer/zai-org/GLM-5.2-Fast"
       : "pioneer/HuggingFaceTB/SmolLM3-3B-Base";
   }
 });

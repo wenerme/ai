@@ -218,7 +218,7 @@ The following global flags work on every command:
 
 ### `tunnel quick-start`
 
-Start a free, temporary tunnel without a Cloudflare account using [Quick Tunnels](https://developers.cloudflare.com/tunnel/setup/#quick-tunnels-development). This is useful for quick demos, testing webhooks, or sharing local development servers.
+Start a free, temporary tunnel without a Cloudflare account using [Quick Tunnels](https://developers.cloudflare.com/tunnel/get-started/#quick-tunnels-development). This is useful for quick demos, testing webhooks, or sharing local development servers.
 
 ```txt
 wrangler tunnel quick-start <URL>

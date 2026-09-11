@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Monitor Cloudflare Tunnel with Grafana
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/tutorials/grafana/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/tutorials/grafana/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Grafana ↗](https://grafana.com/) is a dashboard tool that visualizes data stored in other databases. You can use Grafana to convert your [tunnel metrics](https://developers.cloudflare.com/tunnel/monitoring/#metrics) into actionable insights.
+[Grafana ↗](https://grafana.com/) is a dashboard tool that visualizes data stored in other databases. You can use Grafana to convert your [tunnel metrics](https://developers.cloudflare.com/tunnel/observability/#metrics) into actionable insights.
 
 It is not possible to push metrics directly from `cloudflared` to Grafana. Instead, `cloudflared` runs a [Prometheus ↗](https://prometheus.io) metrics endpoint, which a Prometheus server periodically scrapes. Grafana then uses Prometheus as a data source to present metrics to the administrator.
 
@@ -33,7 +33,7 @@ This tutorial covers how to create the metrics endpoint, set up the Prometheus s
 
 ## Before you begin
 
-* You will need a Cloudflare Tunnel. To create a tunnel, refer to our [getting started guide](https://developers.cloudflare.com/tunnel/setup/).
+* You will need a Cloudflare Tunnel. To create a tunnel, refer to our [getting started guide](https://developers.cloudflare.com/tunnel/get-started/).
 
 ## Create the metrics endpoint
 
@@ -43,7 +43,7 @@ If your tunnel was created via the CLI, run the following command on the `cloudf
 cloudflared tunnel --metrics 192.168.1.1:60123 run my-tunnel
 ```
 
-If your tunnel was created via the dashboard, the [\--metrics](https://developers.cloudflare.com/tunnel/advanced/run-parameters/#metrics) flag must be added to your `cloudflared` system service configuration. Refer to [Add tunnel run parameters](https://developers.cloudflare.com/tunnel/advanced/run-parameters/#add-run-parameters-to-tunnel-service) for instructions on how to do this.
+If your tunnel was created via the dashboard, the [\--metrics](https://developers.cloudflare.com/tunnel/reference/run-parameters/#metrics) flag must be added to your `cloudflared` system service configuration. Refer to [Add tunnel run parameters](https://developers.cloudflare.com/tunnel/reference/run-parameters/#add-run-parameters-to-tunnel-service) for instructions on how to do this.
 
 ## Set up Prometheus
 
@@ -95,7 +95,7 @@ You can optionally configure Prometheus to run as a service so that it does not 
 6. To verify that Prometheus is fetching tunnel metrics, enter `cloudflared_tunnel_total_requests` into the expression console and select **Execute**.
 ![Prometheus dashboard showing tunnel metrics data](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2264,height=773,format=webp/_astro/Prometheus-dashboard.CUKRS856.png)
 
-Refer to [Available metrics](https://developers.cloudflare.com/tunnel/monitoring/#metrics) to check what other metrics are available.
+Refer to [Available metrics](https://developers.cloudflare.com/tunnel/observability/#metrics) to check what other metrics are available.
 
 ## Connect Grafana to Prometheus
 
@@ -136,5 +136,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/tutorials/grafana/#page","headline":"Monitor Cloudflare Tunnel with Grafana · Cloudflare Docs","description":"This tutorial covers how to create the metrics endpoint and set up the Prometheus server.","url":"https://developers.cloudflare.com/tunnel/tutorials/grafana/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Grafana","Integration"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/tutorials/grafana/#page","headline":"Monitor Cloudflare Tunnel with Grafana · Cloudflare Docs","description":"This tutorial covers how to create the metrics endpoint and set up the Prometheus server.","url":"https://developers.cloudflare.com/tunnel/tutorials/grafana/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Grafana","Integration"]}
 ```

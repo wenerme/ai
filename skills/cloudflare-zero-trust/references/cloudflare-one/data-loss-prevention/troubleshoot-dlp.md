@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshoot DLP
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/troubleshoot-dlp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/troubleshoot-dlp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use this guide to troubleshoot common issues with Data Loss Prevention (DLP).
 
@@ -48,6 +48,18 @@ Once you turn on TLS decryption, you can create a DLP policy to inspect the cont
 | ----------- | -------- | --------------------- | ----- | ------ |
 | Domain      | in       | box.com               | And   | Block  |
 | DLP Profile | in       | _Credit card numbers_ |       |        |
+
+## Passive Detection shows no results
+
+[Passive Detection](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/passive-detection/) shows detections from sampled Gateway traffic. If you expect results but the dashboard is empty:
+
+1. Select a time range that includes the traffic you want to investigate.
+2. Check **Traffic direction**. Remove the filter to include all traffic directions, or select _Unknown_ to check bodies without a recorded direction.
+3. Confirm that the expected detection entry is enabled in at least one DLP profile in the account.
+4. Confirm that traffic meets the [Gateway inspection prerequisites](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/passive-detection/#prerequisites), including HTTP filtering and TLS decryption for HTTPS.
+5. Check whether a [Do Not Inspect policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) or another routing configuration excludes the traffic from inspection.
+
+An individual request or response body may not be sampled. An empty dashboard does not confirm that sensitive data is absent.
 
 ## DLP scans trigger false positives or block legitimate sites
 
@@ -105,5 +117,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/troubleshoot-dlp/#page","headline":"Troubleshoot DLP · Cloudflare One docs","description":"Troubleshoot common DLP issues in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/troubleshoot-dlp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/troubleshoot-dlp/#page","headline":"Troubleshoot DLP · Cloudflare One docs","description":"Troubleshoot common DLP issues in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/troubleshoot-dlp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

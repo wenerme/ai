@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshoot HTTPS origins with Cloudflare Tunnel
 
-Last updated Sep 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If your [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) is `Healthy` but `app.example.com` fails, check the route's `Service URL`, origin certificate, and [SSL/TLS encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/).
 
@@ -35,7 +35,7 @@ For example, `http://localhost:80` uses HTTP for the local connection, while `ht
 
 The connection between Cloudflare and `cloudflared` is encrypted independently of the zone SSL/TLS mode. `cloudflared` validates the local origin certificate through origin parameters.
 
-The zone SSL/TLS mode does not change the `Service URL`. Configure the local protocol in the route, then configure certificate validation with [originServerName](https://developers.cloudflare.com/tunnel/advanced/origin-parameters/#originservername) and the other [origin parameters](https://developers.cloudflare.com/tunnel/advanced/origin-parameters/).
+The zone SSL/TLS mode does not change the `Service URL`. Configure the local protocol in the route, then configure certificate validation with [originServerName](https://developers.cloudflare.com/tunnel/reference/origin-parameters/#originservername) and the other [origin parameters](https://developers.cloudflare.com/tunnel/reference/origin-parameters/).
 
 If `originServerName` is empty, `cloudflared` expects the certificate to cover the host in the `Service URL`. For a service URL that uses `localhost`, set `originServerName` to the hostname covered by the certificate. This value also supplies the Server Name Indication (SNI) for the TLS connection.
 
@@ -143,7 +143,7 @@ dig A app.example.com +short
 dig AAAA app.example.com +short
 ```
 A proxied record may return Cloudflare addresses instead of the `CNAME` target. Use the dashboard to verify the target in that case.
-Cloudflare does not silently fall back from a Tunnel to an `A` or `AAAA` record. If the tunnel stops, the DNS record remains and visitors receive a [1016 error](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1016/). Refer to [Tunnel DNS records](https://developers.cloudflare.com/tunnel/routing/#dns-records) for more information. If traffic appears to go directly to the origin, check whether the exact hostname has an `A` or `AAAA` record instead of the expected CNAME, or whether an explicit load balancer or another route serves it.
+Cloudflare does not silently fall back from a Tunnel to an `A` or `AAAA` record. If the tunnel stops, the DNS record remains and visitors receive a [1016 error](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1016/). Refer to [Tunnel DNS records](https://developers.cloudflare.com/tunnel/concepts/routing/#dns-records) for more information. If traffic appears to go directly to the origin, check whether the exact hostname has an `A` or `AAAA` record instead of the expected CNAME, or whether an explicit load balancer or another route serves it.
 2. **Inspect redirect headers and statuses.** From a client, request the public hostname and follow a limited number of redirects:
 ```sh
 curl -sS -D - -o /dev/null https://app.example.com/
@@ -159,13 +159,13 @@ If the origin returns an HTTPS `Location` header, use the HTTPS `Service URL` or
 openssl s_client -connect 127.0.0.1:443 -servername app.example.com -verify_hostname app.example.com -verify_return_error </dev/null
 ```
 Confirm that the certificate includes `app.example.com` and that the output contains `Verify return code: 0 (ok)`. When the service URL uses `localhost` but the certificate covers `app.example.com`, set **Origin Server Name** to `app.example.com`.
-4. **Stream Tunnel logs.** If the **Live logs** tab is available in the tunnel detail page, open it and select **Live**. You can also use [remote log streaming](https://developers.cloudflare.com/tunnel/monitoring/#remote-log-streaming) or run this command from an authenticated machine:
+4. **Stream Tunnel logs.** If the **Live logs** tab is available in the tunnel detail page, open it and select **Live**. You can also use [remote log streaming](https://developers.cloudflare.com/tunnel/observability/#remote-log-streaming) or run this command from an authenticated machine:
 ```sh
 cloudflared tail <TUNNEL_UUID>
 ```
 Look for `connection refused`, malformed HTTP responses, `x509` errors, and TLS handshake errors. These messages identify failures between `cloudflared` and the local origin, even when the Tunnel status remains `Healthy`.
 
-For protocol details, refer to [supported Tunnel protocols](https://developers.cloudflare.com/tunnel/routing/#supported-protocols). For all origin settings, refer to [Tunnel origin parameters](https://developers.cloudflare.com/tunnel/advanced/origin-parameters/).
+For protocol details, refer to [supported Tunnel protocols](https://developers.cloudflare.com/tunnel/concepts/routing/#supported-protocols). For all origin settings, refer to [Tunnel origin parameters](https://developers.cloudflare.com/tunnel/reference/origin-parameters/).
 
 Was this helpful?
 
@@ -176,5 +176,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/#page","headline":"Troubleshoot HTTPS origins with Cloudflare Tunnel · Cloudflare Docs","description":"Troubleshoot Cloudflare Tunnel HTTPS origins, including Let's Encrypt certificates, service URLs, SSL/TLS modes, and redirect loops.","url":"https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","TLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/#page","headline":"Troubleshoot HTTPS origins with Cloudflare Tunnel · Cloudflare Docs","description":"Troubleshoot Cloudflare Tunnel HTTPS origins, including Let's Encrypt certificates, service URLs, SSL/TLS modes, and redirect loops.","url":"https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","TLS"]}
 ```

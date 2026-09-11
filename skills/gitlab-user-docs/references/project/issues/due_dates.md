@@ -1,5 +1,7 @@
 # Due dates
 
+Set due dates on issues, epics, and other work items to track deadlines, view upcoming work, and export due dates to a calendar.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

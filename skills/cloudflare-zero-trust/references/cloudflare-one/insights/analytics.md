@@ -23,6 +23,7 @@ Refer to [Insights overview](https://developers.cloudflare.com/cloudflare-one/in
 * [Shadow IT SaaS analytics](https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/)
 * [AI prompt logs](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-generative-ai-prompt-content)
 * [Network session analytics](https://developers.cloudflare.com/cloudflare-one/insights/analytics/network-sessions/)
+* [Passive Detection](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/passive-detection/)
 * [AI security](https://developers.cloudflare.com/cloudflare-one/insights/analytics/ai-security/)
 * [Application Access Report](https://developers.cloudflare.com/cloudflare-one/insights/analytics/application-access/)
 * [Data security analytics](https://developers.cloudflare.com/cloudflare-one/insights/analytics/data-analytics/)

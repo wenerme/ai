@@ -1,5 +1,7 @@
 # Emoji reactions
 
+React with emoji on issues, comments, and other items to give feedback without writing a long comment thread.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

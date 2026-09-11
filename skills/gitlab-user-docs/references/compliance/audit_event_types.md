@@ -407,6 +407,12 @@ Audit event types belong to the following product categories.
 | [`duo_cli_session_blocked`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/242484) | A Duo CLI session was blocked because the administrator disabled Duo CLI | Yes | GitLab [19.2](https://gitlab.com/gitlab-org/gitlab/-/work_items/597833) | User |
 | [`lock_duo_features_enabled_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235370) | Added when lock_duo_features_enabled is changed. | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/work_items/598658) | Group |
 
+### Duo chat
+
+| Type name | Event triggered when | Saved to database | Introduced in | Scope |
+|:----------|:---------------------|:------------------|:--------------|:------|
+| [`web_search_enabled_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253643) | In a group, the setting that allows web search in GitLab Duo Chat is changed | Yes | GitLab [19.4](https://gitlab.com/gitlab-org/gitlab/-/issues/587234) | Group |
+
 ### Dynamic application security testing
 
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
@@ -673,12 +679,13 @@ Audit event types belong to the following product categories.
 | Type name | Event triggered when | Saved to database | Introduced in | Scope |
 |:----------|:---------------------|:------------------|:--------------|:------|
 | [`user_authenticated_using_job_token`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/164546) | A user is authenticated using job token | No | GitLab [17.4](https://gitlab.com/gitlab-org/gitlab/-/issues/481325) | Project |
-| [`secrets_manager_add_on_enable`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253618) | Triggered when the Secrets Manager paid add-on is enabled for a namespace | Yes | GitLab [19.4](https://gitlab.com/gitlab-org/gitlab/-/work_items/612843) | Group |
+| [`secrets_manager_add_on_enable`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253618) | Triggered when the Secrets Manager paid add-on is enabled for a namespace or on GitLab Self-Managed | Yes | GitLab [19.4](https://gitlab.com/gitlab-org/gitlab/-/work_items/612843) | Group, Instance |
 | [`secrets_manager_create_group_secret`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/218603) | This event is triggered when a group level secret is created by a user | Yes | GitLab [18.9](https://gitlab.com/gitlab-org/gitlab/-/work_items/573328) | Group |
 | [`secrets_manager_create_project_secret`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/205780) | This event is triggered when a project level secret is created by a user | Yes | GitLab [18.6](https://gitlab.com/gitlab-org/gitlab/-/issues/554056) | Project |
 | [`secrets_manager_delete_group_secret`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/218603) | This event is triggered when a group level secret is deleted by a user | Yes | GitLab [18.9](https://gitlab.com/gitlab-org/gitlab/-/work_items/573328) | Group |
 | [`secrets_manager_delete_project_secret`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/205780) | This event is triggered when a project level secret is deleted by a user | Yes | GitLab [18.6](https://gitlab.com/gitlab-org/gitlab/-/issues/554056) | Project |
 | [`secrets_manager_instance_enroll`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235078) | Triggered when the Secrets Manager is enrolled at the instance level | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/issues/598522) | Instance |
+| [`secrets_manager_instance_trial_start`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254303) | Triggered when the instance-wide Secrets Manager trial is started on a self-managed instance | Yes | GitLab [19.4](https://gitlab.com/gitlab-org/gitlab/-/work_items/628116) | Instance |
 | [`secrets_manager_instance_unenroll`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235078) | Triggered when the Secrets Manager is unenrolled at the instance level | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/issues/598522) | Instance |
 | [`secrets_manager_namespace_enroll`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235078) | Triggered when a namespace is enrolled in the Secrets Manager | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/issues/598522) | Group |
 | [`secrets_manager_namespace_unenroll`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235078) | Triggered when a namespace is unenrolled from the Secrets Manager | Yes | GitLab [19.0](https://gitlab.com/gitlab-org/gitlab/-/issues/598522) | Group |

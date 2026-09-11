@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ## Cloudflare platform access
@@ -136,19 +136,19 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ```txt

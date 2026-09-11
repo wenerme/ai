@@ -34,6 +34,47 @@ Upload this file to the `LoadImage` node:
   [Input image]
 </div>
 
+### Pixal3D: Multi Views to 3D {#pixal3d-multi-views}
+
+Generate a 3D model from a character turnaround sheet (front, side, and back views on one image). The multiview model uses the extra viewpoints to reconstruct geometry the single-image pipeline cannot see, which gives more accurate side and back profiles.
+
+Use the `Character Turnaround Sheet Generator` template in the template library to produce the turnaround sheet with Nano Banana 2, or prepare your own multi-view image with the subject separated from the background.
+
+[Pixal3D Multi Views workflow preview]
+
+  
+    Run this workflow instantly on Comfy Cloud
+  
+  
+    Download JSON or search &quot;Pixal3D: Multi Views to 3D&quot; in Template Library
+  
+
+**Input materials**
+
+Upload this file to the `LoadImage` node:
+
+  
+    `LoadImage` node 364 · `character_turnaround_4view_sheet.png`
+  
+
+The workflow uses the models listed below. Download them and place them in the corresponding `models/` subdirectories:
+
+  
+    pixal3d_multiview_int8_convrot.safetensors &#8594; ComfyUI/models/diffusion_models/
+  
+  
+    trellis_2_shape_vae_bf16.safetensors &#8594; ComfyUI/models/vae/
+  
+  
+    trellis_2_texture_vae_bf16.safetensors &#8594; ComfyUI/models/vae/
+  
+  
+    dino_v3_L_naf_fp32.safetensors &#8594; ComfyUI/models/clip_vision/
+  
+  
+    birefnet.safetensors &#8594; ComfyUI/models/background_removal/
+  
+
 ## How it works
 
 Pixal3D combines camera-aware, pixel-aligned generation with a complete mesh post-processing pipeline:

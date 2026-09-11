@@ -1,5 +1,7 @@
 # Export issues to CSV
 
+Export issues to a CSV file emailed to you for offline analysis, reporting, or importing into other systems.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

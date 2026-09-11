@@ -43,6 +43,15 @@ The following video gives you an overview of GitLab merge request approval polic
 
 ## Pipeline requirements
 
+- Blocking on failed scan jobs [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/604648) in GitLab 19.3
+  [with a feature flag](../../../administration/feature_flags/_index.md) named
+  `approval_policies_block_on_failed_scan_job`. Disabled by default.
+- [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/253104) in GitLab 19.4.
+
+> [!flag]
+> The availability of the failed-scan-job blocking behavior is controlled by a feature flag.
+> For more information, see the history.
+
 A merge request approval policy is enforced according to the outcome of the pipeline. Consider the
 following when implementing a merge request approval policy:
 
@@ -63,6 +72,23 @@ following when implementing a merge request approval policy:
 - Security scanners specified in a policy must be configured and enabled in the projects on which
   the policy is enforced. If not, the merge request approval policy cannot be evaluated and the
   corresponding approvals are required.
+- When a CI job for a scanner required by a policy rule terminates without succeeding and produces
+  no security report, approval is required — even if other scanners in the same pipeline succeeded.
+  Only the job statuses `failed`, `canceled`, and `canceling` trigger this check. Non-terminal
+  statuses (`created`, `pending`, `running`) and `manual` or `skipped` jobs do not. The check is
+  scoped to the scanners the rule actually lists. The check routes through the existing
+  [`fallback_behavior`](#fallback_behavior) path: `fail: closed` (the default) blocks the merge
+  request, while `fail: open` does not block it but still shows an advisory message: confirm that
+  all security scan jobs complete successfully, since canceled or failed scan jobs might produce
+  incomplete results.
+
+  > [!note]
+  > For Dependency Scanning v2, the resolution jobs (for example,
+  > `dependency-scanning:maven-resolution`) run in the `.pre` stage and declare only
+  > `artifacts:paths`, not `artifacts:reports:`. A failure in a resolution job is therefore
+  > invisible to this check while the downstream `dependency-scanning` job can still succeed and
+  > upload a report. This is expected behavior for the DS v2 topology and is tracked in
+  > [issue 607109](https://gitlab.com/gitlab-org/gitlab/-/work_items/607109).
 
 ## Best practices for using security scanners with merge request approval policies
 
@@ -477,6 +503,7 @@ actions:
   - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/469449) in GitLab 17.2 [with a feature flag](../../../administration/feature_flags/_index.md) named `approval_policy_disable_bot_comment_group`. Disabled by default.
   - [Enabled on GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/469449) in GitLab 17.2.
   - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/469449) in GitLab 17.3. Feature flag `approval_policy_disable_bot_comment_group` removed.
+- The `visibility` field [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/254046) in GitLab 19.4.
 
 This action enables configuration of the bot message in merge requests when policy violations are detected.
 If the action is not specified, the bot message is enabled by default. If there are multiple policies defined,
@@ -486,6 +513,7 @@ the bot message is sent as long as at least one of those policies has the `send_
 |-------|------|----------|-----------------|-------------|
 | `type` | `string` | true | `send_bot_message` | The action's type. |
 | `enabled` | `boolean` | true | `true`, `false` | Whether a bot message should be created when policy violations are detected. Default: `true` |
+| `visibility` | `string` | false | `public`, `internal` | Whether the bot message is publicly visible or an [internal note](../../discussions/_index.md#add-an-internal-note), visible only to project members with at least the Reporter role. Default: `public`. If multiple violated policies apply different visibility settings to the same merge request, the comment is internal if any of them set `internal`. If a policy change makes an existing public comment internal, GitLab deletes the existing comment and posts a new internal one on the next policy evaluation, which loses any replies posted to it. GitLab does not make an existing internal comment public again. |
 
 ### Example bot messages
 
@@ -1171,6 +1199,20 @@ Search in the following files:
 Common failure reasons:
 
 - Scanner removed by MR: Merge request approval policy expects that the scanners defined in the policy are present and that they successfully produce an artifact for comparison.
+- Security scan did not complete successfully: A scanner required by the policy had a CI job that
+  was canceled or failed after producing artifacts. The bot message reads:
+  `Policy <name> could not be evaluated because the following security scans did not complete
+  successfully: <scanners>. Ensure security scan jobs are not canceled or failing.`
+  Introduced in GitLab 18.11 by [merge request 228446](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228446).
+- Security scan job did not succeed and produced no report: A scanner required by the policy had a
+  CI job that failed or was canceled before producing any artifact, so no security report exists.
+  The bot message reads:
+  `Policy <name> could not be evaluated because the following security scans did not complete
+  successfully: <scanners>. Ensure security scan jobs are not canceled or failing.`
+  Introduced in GitLab 19.3 by [merge request 243540](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243540)
+  behind the feature flag `approval_policies_block_on_failed_scan_job`, enabled by default since
+  GitLab 19.4.
+  For the Dependency Scanning v2 limitation, see [Pipeline requirements](#pipeline-requirements).
 
 ### Inconsistent approvals from merge request approval policies
 

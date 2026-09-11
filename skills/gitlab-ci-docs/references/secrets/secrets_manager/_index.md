@@ -10,7 +10,7 @@
 - [Changed](https://gitlab.com/groups/gitlab-org/-/work_items/21731) from closed beta to public beta in GitLab 19.0.
 - [Changed](https://gitlab.com/groups/gitlab-org/-/work_items/10723) to limited availability on GitLab.com in GitLab 19.3.
 - Default read and write permissions for the Maintainer role in projects [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/623437) in GitLab 19.4.
-- Secrets permissions for groups [deprecated](https://gitlab.com/gitlab-org/gitlab/-/work_items/623457) in GitLab 19.4. Group permissions no longer grant access. Grant permissions to users or roles instead.
+- Secrets permissions for groups [removed](https://gitlab.com/gitlab-org/gitlab/-/work_items/623457) in GitLab 19.4. Group permissions no longer grant access, and the `GROUP` principal type, the `groupPath` argument of `PrincipalInput`, and the `group` field of `Principal` were removed from the GraphQL API. Grant permissions to users or roles instead.
 
 Use GitLab Secrets Manager to securely store and manage secrets and credentials for your projects and groups.
 
@@ -219,8 +219,8 @@ To update the secrets permissions for a project:
 1. In the left sidebar, select **Settings** > **General**.
 1. Expand **Visibility, project features, permissions**.
 1. Under **GitLab Secrets Manager**, in the **User permissions** section:
-   - Select **Add** to add permissions rules for specific users, groups, or roles.
-   - You can set permission scopes to read, write (create & update), and delete secrets.
+   - Select **Add** to add permissions rules for specific users or roles.
+   - You can set permission scopes to read metadata, read value, write (create & update), and delete secrets.
 
 For secrets managers enabled in GitLab 19.4 and later, users with the Maintainer role for the project have the
 read and write (create & update) permissions by default. Users with the Owner role can remove or change these default permissions.
@@ -242,8 +242,8 @@ To update the secrets permissions for a group:
    - In a top-level group, select **Settings** > **Secure**.
    - In a subgroup, select **Settings** > **General** and expand **Permissions and group features**.
 1. Under **GitLab Secrets Manager**, in the **User permissions** section:
-   - Select **Add** to add permissions rules for specific users, groups, or roles.
-   - You can set permission scopes to read, write (create & update), and delete secrets.
+   - Select **Add** to add permissions rules for specific users or roles.
+   - You can set permission scopes to read metadata, read value, write (create & update), and delete secrets.
 
 Users with the Owner role for the group always have permissions to perform all operations in the Secrets Manager.
 
@@ -311,8 +311,11 @@ Wait for provisioning to complete and create the secret before re-running the pi
 ### Error: `namespace does not have access to GitLab Secrets Manager`
 
 Jobs that request secrets from GitLab Secrets Manager fail with this error before a runner
-picks them up when the top-level group does not have access to GitLab Secrets Manager.
-Possible causes:
+picks them up when the namespace does not have access to GitLab Secrets Manager.
+
+#### GitLab.com
+
+Possible causes on GitLab.com:
 
 - The trial has expired.
 - The group has no GitLab credits available.
@@ -320,6 +323,22 @@ Possible causes:
 - The subscription grace period has expired.
 - The open beta has ended and the namespace did not opt in.
 
-To restore access, start a trial or purchase GitLab Secrets Manager for the top-level group.
-Alternatively, make sure the top-level group has GitLab credits available and on-demand
-billing enabled.
+To restore access for the top-level group, start a free trial or enable on-demand
+billing for the Secrets Manager. If the subscription has lapsed, renew it. For more
+information, see [GitLab Secrets Manager usage and billing](secrets_manager_billing.md).
+
+#### GitLab Self-Managed
+
+On GitLab Self-Managed, GitLab resolves access to Secrets Manager at the instance
+level, not per group.
+
+Possible causes:
+
+- The instance is using a trial license. Secrets Manager trials are only available with a paid subscription.
+- The Secrets Manager trial has expired.
+- The instance subscription does not include GitLab Secrets Manager.
+- The subscription grace period has expired.
+- For offline licenses, the license does not include an active GitLab Secrets Manager add-on.
+
+To restore access, ask an instance administrator to add GitLab Secrets Manager to the
+instance subscription. Instances with a paid subscription can also start a free trial.
