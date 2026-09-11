@@ -245,6 +245,11 @@ To select a self-hosted model:
 
 You can select a GitLab-managed model for a feature, even if you use a self-hosted AI Gateway and self-hosted models.
 
+With an offline license, GitLab-managed models are not available.
+For more information, see [model selection](../gitlab_duo/model_selection.md).
+
+To select a GitLab-managed model for a feature:
+
 1. In the upper-right corner, select **Admin**.
 1. In the left sidebar, select **GitLab Duo**.
 1. Select **Configure models for GitLab Duo**.

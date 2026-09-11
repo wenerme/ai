@@ -1,4 +1,4 @@
-## Delete ChatKit thread
+## Delete a ChatKit thread
 
 **delete** `/chatkit/threads/{thread_id}`
 

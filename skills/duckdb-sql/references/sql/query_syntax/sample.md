@@ -6,6 +6,13 @@ The `SAMPLE` clause allows you to run the query on a sample from the base table.
 
 Select a sample of 1% of the addresses table using default (system) sampling:
 
+<!-- test:setup
+CREATE TABLE addresses (city VARCHAR, street_name VARCHAR, income INTEGER);
+INSERT INTO addresses VALUES
+    ('Amsterdam', 'Damrak', 50000), ('Amsterdam', 'Kalverstraat', 65000),
+    ('Rotterdam', 'Coolsingel', 45000), ('Rotterdam', 'Coolsingel', 55000);
+-->
+
 ```sql
 SELECT *
 FROM addresses

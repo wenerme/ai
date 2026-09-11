@@ -44,6 +44,8 @@ Learn how to build applications with Sandbox SDK through step-by-step tutorials.
 
 [**Run Devin Outposts on Cloudflare**Deploy a Devin Outpost that runs each Devin session in an isolated Cloudflare container.](https://developers.cloudflare.com/sandbox/tutorials/devin-outposts/)
 
+[**Run Codex with Cloudflare Containers using the OpenAI Agents API**Deploy a Cloudflare execution environment that can be used by Codex via the OpenAI Agents API.](https://developers.cloudflare.com/sandbox/tutorials/openai-agents-api/)
+
 ## Before you start
 
 All tutorials assume you have:

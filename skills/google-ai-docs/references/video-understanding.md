@@ -192,6 +192,9 @@ summarize the video.
 
     jq ".steps[].content[0].text" response.json
 
+To optimize token efficiency and performance, consider using
+[Agentic video processing](https://ai.google.dev/gemini-api/docs/video-understanding#agentic-video-understanding).
+
 Always use the Files API when the total request size (including the file, text
 prompt, system instructions, etc.) is larger than 20 MB, the video duration is
 significant, or if you intend to use the same video in multiple prompts.

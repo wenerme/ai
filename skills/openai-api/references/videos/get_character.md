@@ -1,4 +1,4 @@
-## Fetch a character.
+## Retrieve a character
 
 **get** `/videos/characters/{character_id}`
 

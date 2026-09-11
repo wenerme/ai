@@ -56,7 +56,7 @@ curl -X DELETE https://api.openai.com/v1/organization/spend_limit \
 }
 ```
 
-## Retrieve organization spend limit
+## Get organization spend limit
 
 **get** `/organization/spend_limit`
 

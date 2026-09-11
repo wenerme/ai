@@ -1,4 +1,4 @@
-## List skill versions for a skill.
+## List Skill Versions
 
 **get** `/skills/{skill_id}/versions`
 

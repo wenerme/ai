@@ -1,6 +1,6 @@
 # Content
 
-## Download a skill zip bundle by its ID.
+## Get Skill Content
 
 **get** `/skills/{skill_id}/content`
 

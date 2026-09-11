@@ -10,6 +10,7 @@
 - [Changed](https://gitlab.com/groups/gitlab-org/-/work_items/21731) from closed beta to public beta in GitLab 19.0.
 - [Changed](https://gitlab.com/groups/gitlab-org/-/work_items/10723) to limited availability on GitLab.com in GitLab 19.3.
 - Default read and write permissions for the Maintainer role in projects [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/623437) in GitLab 19.4.
+- Secrets permissions for groups [deprecated](https://gitlab.com/gitlab-org/gitlab/-/work_items/623457) in GitLab 19.4. Group permissions no longer grant access. Grant permissions to users or roles instead.
 
 Use GitLab Secrets Manager to securely store and manage secrets and credentials for your projects and groups.
 
@@ -60,7 +61,7 @@ To enable or disable GitLab Secrets Manager for a project:
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Settings** > **General**.
 1. Expand **Visibility, project features, permissions**.
-1. Turn on the **Secrets manager** toggle and wait for the secrets manager to be provisioned.
+1. Turn on the **GitLab Secrets Manager** toggle and wait for the secrets manager to be provisioned.
 
    > [!warning]
    > If you later disable the Secrets Manager for the project, all the project secrets are permanently deleted.
@@ -70,6 +71,8 @@ Secrets defined for a project can only be accessed by pipelines from the same pr
 
 #### For a group
 
+- Top-level group setting [moved](https://gitlab.com/gitlab-org/gitlab/-/issues/605581) from **Settings** > **General** to **Settings** > **Secure** in GitLab 19.4
+
 Prerequisites:
 
 - You must have the Owner role for the group.
@@ -77,9 +80,10 @@ Prerequisites:
 To enable or disable GitLab Secrets Manager for a group:
 
 1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Settings** > **General**.
-1. Expand **Permissions and group features**.
-1. Turn on the **Secrets manager** toggle and wait for the secrets manager to be provisioned.
+1. In the left sidebar:
+   - In a top-level group, select **Settings** > **Secure**.
+   - In a subgroup, select **Settings** > **General** and expand **Permissions and group features**.
+1. Turn on the **GitLab Secrets Manager** toggle and wait for the secrets manager to be provisioned.
 
    > [!warning]
    > If you later disable the Secrets Manager for the group, all the group secrets are permanently deleted.
@@ -214,7 +218,7 @@ To update the secrets permissions for a project:
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Settings** > **General**.
 1. Expand **Visibility, project features, permissions**.
-1. Under **Secrets manager**, in the **Secrets manager user permissions** section, you can manage the user permissions:
+1. Under **GitLab Secrets Manager**, in the **User permissions** section:
    - Select **Add** to add permissions rules for specific users, groups, or roles.
    - You can set permission scopes to read, write (create & update), and delete secrets.
 
@@ -222,6 +226,8 @@ For secrets managers enabled in GitLab 19.4 and later, users with the Maintainer
 read and write (create & update) permissions by default. Users with the Owner role can remove or change these default permissions.
 
 ### For a group
+
+- Top-level group setting [moved](https://gitlab.com/gitlab-org/gitlab/-/issues/605581) from **Settings** > **General** to **Settings** > **Secure** in GitLab 19.4
 
 Prerequisites:
 
@@ -232,9 +238,10 @@ Prerequisites:
 To update the secrets permissions for a group:
 
 1. In the top bar, select **Search or go to** and find your group.
-1. In the left sidebar, select **Settings** > **General**.
-1. Expand **Permissions and group features**.
-1. Under **Secrets manager**, in the **Secrets manager user permissions** section, you can manage the user permissions:
+1. In the left sidebar:
+   - In a top-level group, select **Settings** > **Secure**.
+   - In a subgroup, select **Settings** > **General** and expand **Permissions and group features**.
+1. Under **GitLab Secrets Manager**, in the **User permissions** section:
    - Select **Add** to add permissions rules for specific users, groups, or roles.
    - You can set permission scopes to read, write (create & update), and delete secrets.
 

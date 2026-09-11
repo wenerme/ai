@@ -51,6 +51,8 @@ _CALIBRATION_CJK_SAMPLE = '天地玄黄宇宙洪荒日月盈昃辰宿列张寒�
 _CALIBRATION_LATIN_SAMPLE = 'Clear Slides Make Big Ideas Easy to See.'
 _CALIBRATION_CAPS_SAMPLE = 'CLEAR SLIDES MAKE BIG IDEAS EASY TO SEE.'
 _CALIBRATION_DIGITS_SAMPLE = '0123456789'
+# A source line: dataset ids, years, brackets and caps mixed into prose.
+_CALIBRATION_CITATION_SAMPLE = 'NYC DOE, dataset sgsi-66kk (2018-19 to 2022-23), v2.1'
 _CORE_CALIBRATION_ROLES = ('body', 'title', 'subtitle', 'annotation')
 _SLIDE_HEADING_RE = re.compile(
     r'^#{3,6}[ \t]+Slide[ \t]+([0-9]+|NN)\b.*$',
@@ -506,6 +508,7 @@ def _calibration_payload(
     cjk_length = len(split_project_text_clusters(_CALIBRATION_CJK_SAMPLE))
     latin_length = len(split_project_text_clusters(_CALIBRATION_LATIN_SAMPLE))
     digits_length = len(split_project_text_clusters(_CALIBRATION_DIGITS_SAMPLE))
+    citation_length = len(split_project_text_clusters(_CALIBRATION_CITATION_SAMPLE))
     role_rows = {}
     for name, family, size in roles:
         weight = weights.get(name, 'normal')
@@ -514,6 +517,7 @@ def _calibration_payload(
         latin_width = measure_text(_CALIBRATION_LATIN_SAMPLE, **style)
         caps_width = measure_text(_CALIBRATION_CAPS_SAMPLE, **style)
         digits_width = measure_text(_CALIBRATION_DIGITS_SAMPLE, **style)
+        citation_width = measure_text(_CALIBRATION_CITATION_SAMPLE, **style)
         role_rows[name] = {
             'family': family,
             'size': size,
@@ -522,6 +526,7 @@ def _calibration_payload(
             'latin_chars_per_100px': round(100.0 * latin_length / latin_width, 1),
             'caps_chars_per_100px': round(100.0 * latin_length / caps_width, 1),
             'digits_chars_per_100px': round(100.0 * digits_length / digits_width, 1),
+            'citation_chars_per_100px': round(100.0 * citation_length / citation_width, 1),
             'longest_planned_line': longest[name],
         }
     return {
@@ -556,7 +561,7 @@ def _fallback_notes(
 def _render_calibration_table(payload: dict[str, object], *, include_outline: bool) -> str:
     role_rows = payload['roles']
     assert isinstance(role_rows, dict)
-    headers = ['role', 'family', 'size', 'CJK ≈chars/100px', 'Latin ≈chars/100px', 'CAPS ≈chars/100px', 'DIGITS ≈chars/100px']
+    headers = ['role', 'family', 'size', 'CJK ≈chars/100px', 'Latin ≈chars/100px', 'CAPS ≈chars/100px', 'DIGITS ≈chars/100px', 'CITE ≈chars/100px']
     if include_outline:
         headers.append('longest planned line (px, slide, text)')
     lines = [
@@ -574,6 +579,7 @@ def _render_calibration_table(payload: dict[str, object], *, include_outline: bo
             f'{raw_row["latin_chars_per_100px"]:.1f}',
             f'{raw_row["caps_chars_per_100px"]:.1f}',
             f'{raw_row["digits_chars_per_100px"]:.1f}',
+            f'{raw_row.get("citation_chars_per_100px", 0.0):.1f}',
         ]
         if include_outline:
             planned = raw_row['longest_planned_line']
@@ -597,6 +603,12 @@ def _render_calibration_table(payload: dict[str, object], *, include_outline: bo
             'with the rates — the outline column does not cover it.'
         )
     lines.append(
+        '[NOTE] rates ignore letter-spacing and average a mixed-case sample: '
+        'a tracked role (a kicker with letter-spacing) or a display-size line '
+        '(a cover title) is sized per string with measure --letter-spacing, '
+        'not from the table.'
+    )
+    lines.append(
         '[NOTE] measure and wrap take one --weight for the whole string: a line '
         'with a bold run (an inline emphasis lead) is measured piecewise per '
         'weight and summed, or the bold clause takes its own line.'
@@ -606,7 +618,8 @@ def _render_calibration_table(payload: dict[str, object], *, include_outline: bo
         'estimator (headroom included); the checker measures each real line '
         'glyph by glyph, so capital-heavy words (WebGPU, GDP), digits (1935, '
         '83.2%) and wide letters run wider than the Latin rate — use the CAPS '
-        'rate for acronyms and uppercase, the DIGITS rate for numbers, and keep '
+        'rate for acronyms and uppercase, the DIGITS rate for numbers, the CITE '
+        'rate for source lines (dataset ids, years, brackets), and keep '
         'about 5% below any bounds width.'
     )
     return '\n'.join(lines) + '\n'
@@ -651,13 +664,19 @@ def _run_calibrate(args: argparse.Namespace) -> int:
             weights=weights,
         )
         payload['notes'] = _fallback_notes(roles, fallbacks)
+        if args.outline and not (project_path / 'design_spec.md').is_file():
+            payload['notes'].append(
+                'no design_spec.md in this project (Quick writes none), so the '
+                '--outline column has no §IX source and stays empty'
+            )
         bold_roles = sorted(name for name, weight in weights.items() if weight == 'bold')
         payload['notes'].append(
             'rates for ' + ', '.join(bold_roles) + ' are measured at bold weight'
             if bold_roles else
             'every role is measured at normal weight; recalibrate a role '
-            'realized as bold deck-wide with --role NAME:FAMILY:SIZE:bold, '
-            'since bold runs about 7% wider'
+            'realized as bold deck-wide with --role NAME:FAMILY:SIZE:bold: '
+            'bold widens Latin and digits about 7%, while the bundled advance '
+            'table gives CJK one width for both weights'
         )
         output_path = project_path / 'validation' / 'text_calibration.json'
         output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -735,8 +754,9 @@ def build_parser() -> argparse.ArgumentParser:
         type=_role_argument,
         default=[],
         metavar='NAME:FAMILY:SIZE[:bold]',
-        help='Typography role to calibrate when spec_lock.md is absent, e.g. '
-             'body:"Microsoft YaHei":20; repeatable.',
+        help='Typography role to calibrate, e.g. body:"Microsoft YaHei":20; '
+             'repeatable. Adds or overrides that role whether or not '
+             'spec_lock.md exists (FAMILY replaces the role\'s font stack).',
     )
     calibrate.add_argument('--json', action='store_true')
     for command in (measure, wrap, box):

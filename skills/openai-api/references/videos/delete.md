@@ -1,4 +1,4 @@
-## Delete video
+## Delete a video
 
 **delete** `/videos/{video_id}`
 

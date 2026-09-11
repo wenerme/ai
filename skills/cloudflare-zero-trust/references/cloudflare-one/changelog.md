@@ -100,6 +100,31 @@ iOS users should tap twice to begin entering text. This update applies automatic
 
 For more information on why this interaction is required, refer to [iOS limitations](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/known-limitations/#ios).
 
+## 2026-09-09
+
+[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)
+
+
+**New CASB integration for Zoom**
+
+[Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) now integrates with [Zoom](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/zoom/). The integration connects through Cloudflare's pre-built OAuth application — no manual app setup in Zoom is required. After an initial scan, CASB continuously scans your Zoom account to surface new findings as your environment changes.
+
+Zoom is widely used for meetings, webinars, and collaboration. Misconfigurations in account settings, meeting security controls, and recording access can expose organizations to data leakage, unauthorized access, and compliance risk. Cloudflare CASB ingests Zoom account data via API to surface security findings across these areas.
+
+#### Key capabilities
+
+Starting today, security teams can scan for security findings across the following assets:
+
+* **Account settings** — Detect weak password policies, unlocked security controls, and two-factor authentication gaps across your Zoom account
+* **User accounts** — Identify users not enforcing SSO, accounts with insecure host keys, unverified or inactive users, and unsafe overrides of account-level security settings
+* **Meetings** — Surface meetings without passwords or waiting rooms, meetings using Personal Meeting IDs (PMIs), and meetings with external domain hosts
+* **Recordings** — Detect publicly accessible cloud recordings, recordings without passcodes, and weak recording password configurations
+* **Content** — Identify sensitive information in meeting and recording content via DLP Profile matching
+
+#### Learn more
+
+This [integration](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/zoom/) is available to all Cloudflare Zero Trust customers today. New customers can sign up and start with their first two integrations for free. Existing customers can enable the integration directly in the Cloudflare One dashboard under **Cloud & SaaS findings** \> **Integrations**. The integration begins scanning immediately and surfaces findings in the dashboard within minutes.
+
 ## 2026-09-02
 
 [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
@@ -2922,7 +2947,7 @@ CASB webhooks are now available in Cloudflare One.
 
 ## 2026-04-08
 
-[Risk Score](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/)
+[Risk Score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/)
 
 
 **User risk scoring for high risk browsing activity**
@@ -4045,7 +4070,7 @@ Preview: ![Networking Navigation](https://developers.cloudflare.com/cdn-cgi/imag
 
 ## 2026-01-15
 
-[Risk Score](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/)
+[Risk Score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/)
 
 
 **Support for CrowdStrike device scores in User Risk Scoring**
@@ -6654,7 +6679,7 @@ To get started, refer to [SSH with Access for Infrastructure](https://developers
 
 ## 2024-06-17
 
-[Risk Score](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/)
+[Risk Score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/)
 
 
 **Exchange user risk scores with Okta**
@@ -6680,7 +6705,7 @@ Next, configure Okta to receive your risk scores.
 
 ## 2024-06-16
 
-[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)[Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/)[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Multi-Cloud Networking](https://developers.cloudflare.com/multi-cloud-networking/)[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/)[Network Flow](https://developers.cloudflare.com/network-flow/)[Magic Transit](https://developers.cloudflare.com/magic-transit/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Network Interconnect](https://developers.cloudflare.com/network-interconnect/)[Risk Score](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/)[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+[Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)[Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)[CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/)[Cloudflare Tunnel for SASE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)[Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/)[Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)[Email security](https://developers.cloudflare.com/cloudflare-one/email-security/)[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)[Multi-Cloud Networking](https://developers.cloudflare.com/multi-cloud-networking/)[Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/)[Network Flow](https://developers.cloudflare.com/network-flow/)[Magic Transit](https://developers.cloudflare.com/magic-transit/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)[Network Interconnect](https://developers.cloudflare.com/network-interconnect/)[Risk Score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/)[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
 
 
 **Explore product updates for Cloudflare One**

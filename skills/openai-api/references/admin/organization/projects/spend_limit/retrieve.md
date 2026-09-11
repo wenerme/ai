@@ -1,4 +1,4 @@
-## Retrieve project spend limit
+## Get project spend limit
 
 **get** `/organization/projects/{project_id}/spend_limit`
 

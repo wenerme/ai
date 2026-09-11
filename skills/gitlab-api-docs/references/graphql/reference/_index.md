@@ -1725,8 +1725,8 @@ Arguments:
 | <a id="query-mergerequests-not"></a>`not` | [`MergeRequestsResolverNegatedParams`](#mergerequestsresolvernegatedparams) | List of negated arguments. Warning: this argument is experimental and a subject to change in future. |
 | <a id="query-mergerequests-or"></a>`or` | [`UnionedMergeRequestFilterInput`](#unionedmergerequestfilterinput) | List of arguments with inclusive OR. |
 | <a id="query-mergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="query-mergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="query-mergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="query-mergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="query-mergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="query-mergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="query-mergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="query-mergerequests-sort"></a>`sort` | [`MergeRequestSort`](#mergerequestsort) | Sort merge requests by the criteria. |
@@ -4601,6 +4601,33 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="mutation-artifactregistryrolerevoke-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-artifactregistryrolerevoke-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+
+### `Mutation.artifactRegistryUpstreamTestConnection`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Tests a supplied upstream connection for the remote repository create form in Artifact Registry, before any repository exists to hold it.
+
+Input type: `ArtifactRegistryUpstreamTestConnectionInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryupstreamtestconnection-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryupstreamtestconnection-credentials"></a>`credentials` | [`ArtifactRegistryRemoteCredentialsInput`](#artifactregistryremotecredentialsinput) | Upstream credentials to probe with. Omit or pass null to probe unauthenticated. Accepted for every format, but ignored when probing a container upstream (docker or oci), whose probe is always unauthenticated. |
+| <a id="mutation-artifactregistryupstreamtestconnection-format"></a>`format` | [`ArtifactRegistryRepositoryFormat!`](#artifactregistryrepositoryformat) | Package format of the upstream to probe. Decides the credential shape and the probe auth. |
+| <a id="mutation-artifactregistryupstreamtestconnection-url"></a>`url` | [`String!`](#string) | Base URL of the upstream to probe. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryupstreamtestconnection-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryupstreamtestconnection-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-artifactregistryupstreamtestconnection-httpstatus"></a>`httpStatus` | [`Int`](#int) | Status the upstream answered the probe with. Null when the probe failed in transport and no response arrived, and when no probe ran. |
+| <a id="mutation-artifactregistryupstreamtestconnection-passed"></a>`passed` | [`Boolean`](#boolean) | Indicates the upstream answered the probe with a status below 500. Reports reachability rather than credential validity, so an upstream 401 or 404 passes. Null when no probe ran. |
 
 ### `Mutation.artifactRegistryVersionDelete`
 
@@ -13359,10 +13386,9 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="mutation-organizationusercreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
-| <a id="mutation-organizationusercreate-email"></a>`email` | [`String`](#string) | Email of the user to add to the organization. |
 | <a id="mutation-organizationusercreate-organizationid"></a>`organizationId` | [`OrganizationsOrganizationID!`](#organizationsorganizationid) | ID of the organization to add the user to. |
 | <a id="mutation-organizationusercreate-usertype"></a>`userType` | [`OrganizationUserType!`](#organizationusertype) | Type to add the organization user with. |
-| <a id="mutation-organizationusercreate-username"></a>`username` | [`String`](#string) | Username of the user to add to the organization. |
+| <a id="mutation-organizationusercreate-username"></a>`username` | [`String!`](#string) | Username of the user to add to the organization. |
 
 Fields:
 
@@ -17363,23 +17389,23 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="mutation-updatenamespacepackagesettings-auditeventsenabled"></a>`auditEventsEnabled` | [`Boolean`](#boolean) | Indicates whether audit events are created when publishing or deleting a package in the namespace (Premium and Ultimate only). |
 | <a id="mutation-updatenamespacepackagesettings-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
-| <a id="mutation-updatenamespacepackagesettings-genericduplicateexceptionregex"></a>`genericDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When generic_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. Otherwise, this setting has no effect. |
+| <a id="mutation-updatenamespacepackagesettings-genericduplicateexceptionregex"></a>`genericDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When generic_duplicates_allowed is false, you can publish duplicate packages with names or versions that match this regex. When generic_duplicates_allowed is true, duplicate packages with names or versions that match this regex are rejected. |
 | <a id="mutation-updatenamespacepackagesettings-genericduplicatesallowed"></a>`genericDuplicatesAllowed` | [`Boolean`](#boolean) | Indicates whether duplicate generic packages are allowed for the namespace. |
 | <a id="mutation-updatenamespacepackagesettings-lockmavenpackagerequestsforwarding"></a>`lockMavenPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether Maven package forwarding is locked for all descendent namespaces. |
 | <a id="mutation-updatenamespacepackagesettings-locknpmpackagerequestsforwarding"></a>`lockNpmPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether npm package forwarding is locked for all descendent namespaces. |
 | <a id="mutation-updatenamespacepackagesettings-lockpypipackagerequestsforwarding"></a>`lockPypiPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether PyPI package forwarding is locked for all descendent namespaces. |
 | <a id="mutation-updatenamespacepackagesettings-lockrubygemspackagerequestsforwarding"></a>`lockRubygemsPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether RubyGems package forwarding is locked for all descendent namespaces. |
-| <a id="mutation-updatenamespacepackagesettings-mavenduplicateexceptionregex"></a>`mavenDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When maven_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. Otherwise, this setting has no effect. |
+| <a id="mutation-updatenamespacepackagesettings-mavenduplicateexceptionregex"></a>`mavenDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When maven_duplicates_allowed is false, you can publish duplicate packages with names or versions that match this regex. When maven_duplicates_allowed is true, duplicate packages with names or versions that match this regex are rejected. |
 | <a id="mutation-updatenamespacepackagesettings-mavenduplicatesallowed"></a>`mavenDuplicatesAllowed` | [`Boolean`](#boolean) | Indicates whether duplicate Maven packages are allowed for the namespace. |
 | <a id="mutation-updatenamespacepackagesettings-mavenpackagerequestsforwarding"></a>`mavenPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether Maven package forwarding is allowed for the namespace. |
 | <a id="mutation-updatenamespacepackagesettings-namespacepath"></a>`namespacePath` | [`ID!`](#id) | Namespace path where the namespace package setting is located. |
 | <a id="mutation-updatenamespacepackagesettings-npmpackagerequestsforwarding"></a>`npmPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether npm package forwarding is allowed for the namespace. |
-| <a id="mutation-updatenamespacepackagesettings-nugetduplicateexceptionregex"></a>`nugetDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When nuget_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. Otherwise, this setting has no effect. |
+| <a id="mutation-updatenamespacepackagesettings-nugetduplicateexceptionregex"></a>`nugetDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When nuget_duplicates_allowed is false, you can publish duplicate packages with names or versions that match this regex. When nuget_duplicates_allowed is true, duplicate packages with names or versions that match this regex are rejected. |
 | <a id="mutation-updatenamespacepackagesettings-nugetduplicatesallowed"></a>`nugetDuplicatesAllowed` | [`Boolean`](#boolean) | Indicates whether duplicate NuGet packages are allowed for the namespace. |
 | <a id="mutation-updatenamespacepackagesettings-nugetsymbolserverenabled"></a>`nugetSymbolServerEnabled` | [`Boolean`](#boolean) | Indicates whether the NuGet symbol server is enabled for the namespace. |
 | <a id="mutation-updatenamespacepackagesettings-pypipackagerequestsforwarding"></a>`pypiPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether PyPI package forwarding is allowed for the namespace. |
 | <a id="mutation-updatenamespacepackagesettings-rubygemspackagerequestsforwarding"></a>`rubygemsPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether RubyGems package forwarding is allowed for the namespace. |
-| <a id="mutation-updatenamespacepackagesettings-terraformmoduleduplicateexceptionregex"></a>`terraformModuleDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When terraform_module_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. Otherwise, this setting has no effect. |
+| <a id="mutation-updatenamespacepackagesettings-terraformmoduleduplicateexceptionregex"></a>`terraformModuleDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When terraform_module_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. When terraform_module_duplicates_allowed is true, duplicate packages with names that match this regex are rejected. |
 | <a id="mutation-updatenamespacepackagesettings-terraformmoduleduplicatesallowed"></a>`terraformModuleDuplicatesAllowed` | [`Boolean`](#boolean) | Indicates whether duplicate Terraform packages are allowed for the namespace. |
 
 Fields:
@@ -31810,8 +31836,8 @@ Arguments:
 | <a id="addonuser-assignedmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="addonuser-assignedmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="addonuser-assignedmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="addonuser-assignedmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="addonuser-assignedmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="addonuser-assignedmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="addonuser-assignedmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="addonuser-assignedmergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="addonuser-assignedmergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="addonuser-assignedmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -31871,8 +31897,8 @@ Arguments:
 | <a id="addonuser-authoredmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="addonuser-authoredmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="addonuser-authoredmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="addonuser-authoredmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="addonuser-authoredmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="addonuser-authoredmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="addonuser-authoredmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="addonuser-authoredmergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="addonuser-authoredmergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="addonuser-authoredmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -32038,8 +32064,8 @@ Arguments:
 | <a id="addonuser-reviewrequestedmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="addonuser-reviewrequestedmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="addonuser-reviewrequestedmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="addonuser-reviewrequestedmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="addonuser-reviewrequestedmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="addonuser-reviewrequestedmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="addonuser-reviewrequestedmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="addonuser-reviewrequestedmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
 | <a id="addonuser-reviewrequestedmergerequests-sort"></a>`sort` | [`MergeRequestSort`](#mergerequestsort) | Sort merge requests by the criteria. |
 | <a id="addonuser-reviewrequestedmergerequests-sourcebranches"></a>`sourceBranches` | [`[String!]`](#string) | Array of source branch names. All resolved merge requests will have one of these branches as their source. |
@@ -32318,7 +32344,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="agentplatformsessionsaggregationresponsedimensions-createdeventat-granularity"></a>`granularity` | [`String`](#string) |  |
+| <a id="agentplatformsessionsaggregationresponsedimensions-createdeventat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
 
 ### `AgentPlatformSessionsAggregationResponseDurationMetrics`
 
@@ -33086,6 +33112,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="aigovernancekpi-count"></a>`count` | [`Int`](#int) | Count in the selected timeframe. |
+| <a id="aigovernancekpi-cumulativetrend"></a>`cumulativeTrend`  | [`[AiGovernanceKpiTrendPoint!]`](#aigovernancekpitrendpoint) | Introduced in GitLab 19.4. Status: Experiment. Running totals across the selected timeframe: each bucket is the total as of the end of that bucket, seeded with the 30 days before the timeframe. Agents count from the bucket of their first session in that period onward, so the series is monotonic and its last point can exceed `count`. |
 | <a id="aigovernancekpi-previouscount"></a>`previousCount` | [`Int`](#int) | Count in the preceding timeframe of equal length. |
 | <a id="aigovernancekpi-trend"></a>`trend` | [`[AiGovernanceKpiTrendPoint!]`](#aigovernancekpitrendpoint) | Bucketed counts across the selected timeframe. Each bucket is computed independently, so for distinct-count KPIs such as agents the buckets do not sum to `count`: an agent active on several days is counted once per day here and once in the total. |
 
@@ -34324,6 +34351,22 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="artifactregistryrepositorydetails-package-id"></a>`id` | [`ID!`](#id) | ID of the package in Artifact Registry. |
 
+##### `ArtifactRegistryRepositoryDetails.version`
+
+- Introduced in GitLab 19.4.
+- Status: Experiment.
+
+Single version the repository holds, by Artifact Registry ID and the ID of the package it is displayed under. Can be selected once per operation. Returns `null` for a repository holding images, for a version that is gone, and for a version that belongs to a different package. Also `null` when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx.
+
+Returns [`ArtifactRegistryVersionDetails`](#artifactregistryversiondetails).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryrepositorydetails-version-artifactid"></a>`artifactId` | [`ID!`](#id) | ID of the package the version is displayed under, in Artifact Registry. The version resolves `null` when it belongs to a different package. |
+| <a id="artifactregistryrepositorydetails-version-id"></a>`id` | [`ID!`](#id) | ID of the version in Artifact Registry. |
+
 ### `ArtifactRegistryRoleAssignment`
 
 A direct role assignment. A user, the Artifact Registry role they hold, and the resource it is assigned on. Does not represent inherited access.
@@ -34351,7 +34394,25 @@ Fields:
 | <a id="artifactregistryversion-createdby"></a>`createdBy`  | [`UserCore`](#usercore) | Introduced in GitLab 19.4. Status: Experiment. User who published the version, resolved from the reference Artifact Registry stores. Null when it stored none or the user no longer exists. |
 | <a id="artifactregistryversion-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.4. Status: Experiment. ID of the version in Artifact Registry. |
 | <a id="artifactregistryversion-project"></a>`project`  | [`Project`](#project) | Introduced in GitLab 19.4. Status: Experiment. Project the version was published from, resolved from the reference Artifact Registry stores. Null when it stored none, the project no longer exists, or the viewer cannot see the project. |
+| <a id="artifactregistryversion-sizebytes"></a>`sizeBytes`  | [`BigInt`](#bigint) | Introduced in GitLab 19.4. Status: Experiment. Stored size of the version in bytes. Null for a Maven version until Artifact Registry serializes the column, and on a remote repository. |
 | <a id="artifactregistryversion-version"></a>`version`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Version string of the package. |
+
+### `ArtifactRegistryVersionDetails`
+
+Single version of a package in an Artifact Registry repository, reached by ID and the package it is displayed under.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryversiondetails-commitpath"></a>`commitPath`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Web path to the publishing commit within the resolved project. Null when there is no SHA or project, or the viewer cannot read the project code. |
+| <a id="artifactregistryversiondetails-commitsha"></a>`commitSha`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Commit SHA the version was published from, within the resolved project. Null when there is no SHA or project, or the viewer cannot read the project code. |
+| <a id="artifactregistryversiondetails-createdat"></a>`createdAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp the version was published. Null when Artifact Registry stored none. |
+| <a id="artifactregistryversiondetails-createdby"></a>`createdBy`  | [`UserCore`](#usercore) | Introduced in GitLab 19.4. Status: Experiment. User who published the version, resolved from the reference Artifact Registry stores. Null when it stored none or the user no longer exists. |
+| <a id="artifactregistryversiondetails-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.4. Status: Experiment. ID of the version in Artifact Registry. |
+| <a id="artifactregistryversiondetails-project"></a>`project`  | [`Project`](#project) | Introduced in GitLab 19.4. Status: Experiment. Project the version was published from, resolved from the reference Artifact Registry stores. Null when it stored none, the project no longer exists, or the viewer cannot see the project. |
+| <a id="artifactregistryversiondetails-sizebytes"></a>`sizeBytes`  | [`BigInt`](#bigint) | Introduced in GitLab 19.4. Status: Experiment. Stored size of the version in bytes. Null for a Maven version until Artifact Registry serializes the column, and on a remote repository. |
+| <a id="artifactregistryversiondetails-version"></a>`version`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Version string of the package. |
 
 ### `AscpComponent`
 
@@ -34651,8 +34712,8 @@ Arguments:
 | <a id="autocompleteduser-assignedmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="autocompleteduser-assignedmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="autocompleteduser-assignedmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="autocompleteduser-assignedmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="autocompleteduser-assignedmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="autocompleteduser-assignedmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="autocompleteduser-assignedmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="autocompleteduser-assignedmergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="autocompleteduser-assignedmergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="autocompleteduser-assignedmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -34712,8 +34773,8 @@ Arguments:
 | <a id="autocompleteduser-authoredmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="autocompleteduser-authoredmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="autocompleteduser-authoredmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="autocompleteduser-authoredmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="autocompleteduser-authoredmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="autocompleteduser-authoredmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="autocompleteduser-authoredmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="autocompleteduser-authoredmergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="autocompleteduser-authoredmergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="autocompleteduser-authoredmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -34891,8 +34952,8 @@ Arguments:
 | <a id="autocompleteduser-reviewrequestedmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="autocompleteduser-reviewrequestedmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="autocompleteduser-reviewrequestedmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="autocompleteduser-reviewrequestedmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="autocompleteduser-reviewrequestedmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="autocompleteduser-reviewrequestedmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="autocompleteduser-reviewrequestedmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="autocompleteduser-reviewrequestedmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
 | <a id="autocompleteduser-reviewrequestedmergerequests-sort"></a>`sort` | [`MergeRequestSort`](#mergerequestsort) | Sort merge requests by the criteria. |
 | <a id="autocompleteduser-reviewrequestedmergerequests-sourcebranches"></a>`sourceBranches` | [`[String!]`](#string) | Array of source branch names. All resolved merge requests will have one of these branches as their source. |
@@ -38524,7 +38585,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="contributionsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) |  |
+| <a id="contributionsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
 
 ### `ContributionsAggregationScope`
 
@@ -38849,8 +38910,8 @@ Arguments:
 | <a id="currentuser-assignedmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="currentuser-assignedmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="currentuser-assignedmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="currentuser-assignedmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="currentuser-assignedmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="currentuser-assignedmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="currentuser-assignedmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="currentuser-assignedmergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="currentuser-assignedmergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="currentuser-assignedmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -38907,8 +38968,8 @@ Arguments:
 | <a id="currentuser-assigneeorreviewermergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="currentuser-assigneeorreviewermergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="currentuser-assigneeorreviewermergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="currentuser-assigneeorreviewermergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="currentuser-assigneeorreviewermergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="currentuser-assigneeorreviewermergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="currentuser-assigneeorreviewermergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="currentuser-assigneeorreviewermergerequests-reviewerreviewstates"></a>`reviewerReviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states for the merge requests the current user is a reviewer of. |
 | <a id="currentuser-assigneeorreviewermergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
 | <a id="currentuser-assigneeorreviewermergerequests-sort"></a>`sort` | [`MergeRequestSort`](#mergerequestsort) | Sort merge requests by the criteria. |
@@ -38967,8 +39028,8 @@ Arguments:
 | <a id="currentuser-authoredmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="currentuser-authoredmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="currentuser-authoredmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="currentuser-authoredmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="currentuser-authoredmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="currentuser-authoredmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="currentuser-authoredmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="currentuser-authoredmergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="currentuser-authoredmergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="currentuser-authoredmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -39152,8 +39213,8 @@ Arguments:
 | <a id="currentuser-reviewrequestedmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="currentuser-reviewrequestedmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="currentuser-reviewrequestedmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="currentuser-reviewrequestedmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="currentuser-reviewrequestedmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="currentuser-reviewrequestedmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="currentuser-reviewrequestedmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="currentuser-reviewrequestedmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
 | <a id="currentuser-reviewrequestedmergerequests-sort"></a>`sort` | [`MergeRequestSort`](#mergerequestsort) | Sort merge requests by the criteria. |
 | <a id="currentuser-reviewrequestedmergerequests-sourcebranches"></a>`sourceBranches` | [`[String!]`](#string) | Array of source branch names. All resolved merge requests will have one of these branches as their source. |
@@ -40382,7 +40443,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="deploymentsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) |  |
+| <a id="deploymentsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
 
 ##### `DeploymentsAggregationResponseDimensions.finishedAt`
 
@@ -40394,7 +40455,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="deploymentsaggregationresponsedimensions-finishedat-granularity"></a>`granularity` | [`String`](#string) |  |
+| <a id="deploymentsaggregationresponsedimensions-finishedat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
 
 ### `DeploymentsAggregationResponseDurationMetrics`
 
@@ -41085,7 +41146,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="duocodesuggestionsaggregationresponsedimensions-timestamp-granularity"></a>`granularity` | [`String`](#string) |  |
+| <a id="duocodesuggestionsaggregationresponsedimensions-timestamp-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
 
 ### `DuoCodeSuggestionsAggregationScope`
 
@@ -41206,7 +41267,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="duousageeventsaggregationresponsedimensions-timestamp-granularity"></a>`granularity` | [`String`](#string) |  |
+| <a id="duousageeventsaggregationresponsedimensions-timestamp-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
 
 ### `DuoUsageEventsAggregationScope`
 
@@ -41663,7 +41724,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="duoworkflowsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) | Date bucket granularity: daily, weekly, or monthly. |
+| <a id="duoworkflowsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
 
 ### `DuoWorkflowsAggregationScope`
 
@@ -45281,8 +45342,8 @@ Arguments:
 | <a id="group-mergerequests-not"></a>`not` | [`MergeRequestsResolverNegatedParams`](#mergerequestsresolvernegatedparams) | List of negated arguments. Warning: this argument is experimental and a subject to change in future. |
 | <a id="group-mergerequests-or"></a>`or` | [`UnionedMergeRequestFilterInput`](#unionedmergerequestfilterinput) | List of arguments with inclusive OR. |
 | <a id="group-mergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="group-mergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="group-mergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="group-mergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="group-mergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="group-mergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="group-mergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="group-mergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -48626,8 +48687,8 @@ Arguments:
 | <a id="mergerequestassignee-assignedmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="mergerequestassignee-assignedmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="mergerequestassignee-assignedmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="mergerequestassignee-assignedmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="mergerequestassignee-assignedmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="mergerequestassignee-assignedmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="mergerequestassignee-assignedmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="mergerequestassignee-assignedmergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="mergerequestassignee-assignedmergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="mergerequestassignee-assignedmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -48687,8 +48748,8 @@ Arguments:
 | <a id="mergerequestassignee-authoredmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="mergerequestassignee-authoredmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="mergerequestassignee-authoredmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="mergerequestassignee-authoredmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="mergerequestassignee-authoredmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="mergerequestassignee-authoredmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="mergerequestassignee-authoredmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="mergerequestassignee-authoredmergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="mergerequestassignee-authoredmergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="mergerequestassignee-authoredmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -48854,8 +48915,8 @@ Arguments:
 | <a id="mergerequestassignee-reviewrequestedmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="mergerequestassignee-reviewrequestedmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="mergerequestassignee-reviewrequestedmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="mergerequestassignee-reviewrequestedmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="mergerequestassignee-reviewrequestedmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="mergerequestassignee-reviewrequestedmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="mergerequestassignee-reviewrequestedmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="mergerequestassignee-reviewrequestedmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
 | <a id="mergerequestassignee-reviewrequestedmergerequests-sort"></a>`sort` | [`MergeRequestSort`](#mergerequestsort) | Sort merge requests by the criteria. |
 | <a id="mergerequestassignee-reviewrequestedmergerequests-sourcebranches"></a>`sourceBranches` | [`[String!]`](#string) | Array of source branch names. All resolved merge requests will have one of these branches as their source. |
@@ -49099,8 +49160,8 @@ Arguments:
 | <a id="mergerequestauthor-assignedmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="mergerequestauthor-assignedmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="mergerequestauthor-assignedmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="mergerequestauthor-assignedmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="mergerequestauthor-assignedmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="mergerequestauthor-assignedmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="mergerequestauthor-assignedmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="mergerequestauthor-assignedmergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="mergerequestauthor-assignedmergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="mergerequestauthor-assignedmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -49160,8 +49221,8 @@ Arguments:
 | <a id="mergerequestauthor-authoredmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="mergerequestauthor-authoredmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="mergerequestauthor-authoredmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="mergerequestauthor-authoredmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="mergerequestauthor-authoredmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="mergerequestauthor-authoredmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="mergerequestauthor-authoredmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="mergerequestauthor-authoredmergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="mergerequestauthor-authoredmergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="mergerequestauthor-authoredmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -49327,8 +49388,8 @@ Arguments:
 | <a id="mergerequestauthor-reviewrequestedmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="mergerequestauthor-reviewrequestedmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="mergerequestauthor-reviewrequestedmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="mergerequestauthor-reviewrequestedmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="mergerequestauthor-reviewrequestedmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="mergerequestauthor-reviewrequestedmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="mergerequestauthor-reviewrequestedmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="mergerequestauthor-reviewrequestedmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
 | <a id="mergerequestauthor-reviewrequestedmergerequests-sort"></a>`sort` | [`MergeRequestSort`](#mergerequestsort) | Sort merge requests by the criteria. |
 | <a id="mergerequestauthor-reviewrequestedmergerequests-sourcebranches"></a>`sourceBranches` | [`[String!]`](#string) | Array of source branch names. All resolved merge requests will have one of these branches as their source. |
@@ -49660,8 +49721,8 @@ Arguments:
 | <a id="mergerequestparticipant-assignedmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="mergerequestparticipant-assignedmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="mergerequestparticipant-assignedmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="mergerequestparticipant-assignedmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="mergerequestparticipant-assignedmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="mergerequestparticipant-assignedmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="mergerequestparticipant-assignedmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="mergerequestparticipant-assignedmergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="mergerequestparticipant-assignedmergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="mergerequestparticipant-assignedmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -49721,8 +49782,8 @@ Arguments:
 | <a id="mergerequestparticipant-authoredmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="mergerequestparticipant-authoredmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="mergerequestparticipant-authoredmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="mergerequestparticipant-authoredmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="mergerequestparticipant-authoredmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="mergerequestparticipant-authoredmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="mergerequestparticipant-authoredmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="mergerequestparticipant-authoredmergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="mergerequestparticipant-authoredmergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="mergerequestparticipant-authoredmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -49888,8 +49949,8 @@ Arguments:
 | <a id="mergerequestparticipant-reviewrequestedmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="mergerequestparticipant-reviewrequestedmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="mergerequestparticipant-reviewrequestedmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="mergerequestparticipant-reviewrequestedmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="mergerequestparticipant-reviewrequestedmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="mergerequestparticipant-reviewrequestedmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="mergerequestparticipant-reviewrequestedmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="mergerequestparticipant-reviewrequestedmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
 | <a id="mergerequestparticipant-reviewrequestedmergerequests-sort"></a>`sort` | [`MergeRequestSort`](#mergerequestsort) | Sort merge requests by the criteria. |
 | <a id="mergerequestparticipant-reviewrequestedmergerequests-sourcebranches"></a>`sourceBranches` | [`[String!]`](#string) | Array of source branch names. All resolved merge requests will have one of these branches as their source. |
@@ -50152,8 +50213,8 @@ Arguments:
 | <a id="mergerequestreviewer-assignedmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="mergerequestreviewer-assignedmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="mergerequestreviewer-assignedmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="mergerequestreviewer-assignedmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="mergerequestreviewer-assignedmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="mergerequestreviewer-assignedmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="mergerequestreviewer-assignedmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="mergerequestreviewer-assignedmergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="mergerequestreviewer-assignedmergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="mergerequestreviewer-assignedmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -50213,8 +50274,8 @@ Arguments:
 | <a id="mergerequestreviewer-authoredmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="mergerequestreviewer-authoredmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="mergerequestreviewer-authoredmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="mergerequestreviewer-authoredmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="mergerequestreviewer-authoredmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="mergerequestreviewer-authoredmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="mergerequestreviewer-authoredmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="mergerequestreviewer-authoredmergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="mergerequestreviewer-authoredmergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="mergerequestreviewer-authoredmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -50380,8 +50441,8 @@ Arguments:
 | <a id="mergerequestreviewer-reviewrequestedmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="mergerequestreviewer-reviewrequestedmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="mergerequestreviewer-reviewrequestedmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="mergerequestreviewer-reviewrequestedmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="mergerequestreviewer-reviewrequestedmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="mergerequestreviewer-reviewrequestedmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="mergerequestreviewer-reviewrequestedmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="mergerequestreviewer-reviewrequestedmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
 | <a id="mergerequestreviewer-reviewrequestedmergerequests-sort"></a>`sort` | [`MergeRequestSort`](#mergerequestsort) | Sort merge requests by the criteria. |
 | <a id="mergerequestreviewer-reviewrequestedmergerequests-sourcebranches"></a>`sourceBranches` | [`[String!]`](#string) | Array of source branch names. All resolved merge requests will have one of these branches as their source. |
@@ -50656,7 +50717,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="mergerequestsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) | Date bucket granularity: daily, weekly, or monthly. |
+| <a id="mergerequestsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
 
 ##### `MergeRequestsAggregationResponseDimensions.metricMergedAt`
 
@@ -50668,7 +50729,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="mergerequestsaggregationresponsedimensions-metricmergedat-granularity"></a>`granularity` | [`String`](#string) | Date bucket granularity: daily, weekly, or monthly. |
+| <a id="mergerequestsaggregationresponsedimensions-metricmergedat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
 
 ### `MergeRequestsAggregationResponseTimeToMergeMetrics`
 
@@ -52721,26 +52782,26 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="packagesettings-auditeventsenabled"></a>`auditEventsEnabled` | [`Boolean!`](#boolean) | Indicates whether audit events are created when publishing or deleting a package in the namespace (Premium and Ultimate only). |
-| <a id="packagesettings-genericduplicateexceptionregex"></a>`genericDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When generic_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. Otherwise, this setting has no effect. |
+| <a id="packagesettings-genericduplicateexceptionregex"></a>`genericDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When generic_duplicates_allowed is false, you can publish duplicate packages with names or versions that match this regex. When generic_duplicates_allowed is true, duplicate packages with names or versions that match this regex are rejected. |
 | <a id="packagesettings-genericduplicatesallowed"></a>`genericDuplicatesAllowed` | [`Boolean!`](#boolean) | Indicates whether duplicate generic packages are allowed for the namespace. |
 | <a id="packagesettings-lockmavenpackagerequestsforwarding"></a>`lockMavenPackageRequestsForwarding` | [`Boolean!`](#boolean) | Indicates whether Maven package forwarding is locked for all descendent namespaces. |
 | <a id="packagesettings-locknpmpackagerequestsforwarding"></a>`lockNpmPackageRequestsForwarding` | [`Boolean!`](#boolean) | Indicates whether npm package forwarding is locked for all descendent namespaces. |
 | <a id="packagesettings-lockpypipackagerequestsforwarding"></a>`lockPypiPackageRequestsForwarding` | [`Boolean!`](#boolean) | Indicates whether PyPI package forwarding is locked for all descendent namespaces. |
 | <a id="packagesettings-lockrubygemspackagerequestsforwarding"></a>`lockRubygemsPackageRequestsForwarding` | [`Boolean!`](#boolean) | Indicates whether RubyGems package forwarding is locked for all descendent namespaces. |
-| <a id="packagesettings-mavenduplicateexceptionregex"></a>`mavenDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When maven_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. Otherwise, this setting has no effect. |
+| <a id="packagesettings-mavenduplicateexceptionregex"></a>`mavenDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When maven_duplicates_allowed is false, you can publish duplicate packages with names or versions that match this regex. When maven_duplicates_allowed is true, duplicate packages with names or versions that match this regex are rejected. |
 | <a id="packagesettings-mavenduplicatesallowed"></a>`mavenDuplicatesAllowed` | [`Boolean!`](#boolean) | Indicates whether duplicate Maven packages are allowed for the namespace. |
 | <a id="packagesettings-mavenpackagerequestsforwarding"></a>`mavenPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether Maven package forwarding is allowed for the namespace. |
 | <a id="packagesettings-mavenpackagerequestsforwardinglocked"></a>`mavenPackageRequestsForwardingLocked` | [`Boolean!`](#boolean) | Indicates whether Maven package forwarding settings are locked by a parent namespace. |
 | <a id="packagesettings-npmpackagerequestsforwarding"></a>`npmPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether npm package forwarding is allowed for the namespace. |
 | <a id="packagesettings-npmpackagerequestsforwardinglocked"></a>`npmPackageRequestsForwardingLocked` | [`Boolean!`](#boolean) | Indicates whether npm package forwarding settings are locked by a parent namespace. |
-| <a id="packagesettings-nugetduplicateexceptionregex"></a>`nugetDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When nuget_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. Otherwise, this setting has no effect. |
+| <a id="packagesettings-nugetduplicateexceptionregex"></a>`nugetDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When nuget_duplicates_allowed is false, you can publish duplicate packages with names or versions that match this regex. When nuget_duplicates_allowed is true, duplicate packages with names or versions that match this regex are rejected. |
 | <a id="packagesettings-nugetduplicatesallowed"></a>`nugetDuplicatesAllowed` | [`Boolean!`](#boolean) | Indicates whether duplicate NuGet packages are allowed for the namespace. |
 | <a id="packagesettings-nugetsymbolserverenabled"></a>`nugetSymbolServerEnabled` | [`Boolean!`](#boolean) | Indicates whether the NuGet symbol server is enabled for the namespace. |
 | <a id="packagesettings-pypipackagerequestsforwarding"></a>`pypiPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether PyPI package forwarding is allowed for the namespace. |
 | <a id="packagesettings-pypipackagerequestsforwardinglocked"></a>`pypiPackageRequestsForwardingLocked` | [`Boolean!`](#boolean) | Indicates whether PyPI package forwarding settings are locked by a parent namespace. |
 | <a id="packagesettings-rubygemspackagerequestsforwarding"></a>`rubygemsPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether RubyGems package forwarding is allowed for the namespace. |
 | <a id="packagesettings-rubygemspackagerequestsforwardinglocked"></a>`rubygemsPackageRequestsForwardingLocked` | [`Boolean!`](#boolean) | Indicates whether RubyGems package forwarding settings are locked by a parent namespace. |
-| <a id="packagesettings-terraformmoduleduplicateexceptionregex"></a>`terraformModuleDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When terraform_module_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. Otherwise, this setting has no effect. |
+| <a id="packagesettings-terraformmoduleduplicateexceptionregex"></a>`terraformModuleDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When terraform_module_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. When terraform_module_duplicates_allowed is true, duplicate packages with names that match this regex are rejected. |
 | <a id="packagesettings-terraformmoduleduplicatesallowed"></a>`terraformModuleDuplicatesAllowed` | [`Boolean!`](#boolean) | Indicates whether duplicate Terraform packages are allowed for the namespace. |
 
 ### `PackageTag`
@@ -53708,7 +53769,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="pipelinesaggregationresponsedimensions-finishedat-granularity"></a>`granularity` | [`String`](#string) |  |
+| <a id="pipelinesaggregationresponsedimensions-finishedat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
 
 ##### `PipelinesAggregationResponseDimensions.startedAt`
 
@@ -53720,7 +53781,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="pipelinesaggregationresponsedimensions-startedat-granularity"></a>`granularity` | [`String`](#string) |  |
+| <a id="pipelinesaggregationresponsedimensions-startedat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
 
 ### `PipelinesAggregationResponseDurationMetrics`
 
@@ -54025,6 +54086,17 @@ Fields:
 | <a id="policystoreaction-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.4. Status: Experiment. Identifier of the action. |
 | <a id="policystoreaction-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Human-readable name of the action. |
 
+### `PolicyStoreRole`
+
+A role that can be assigned in a policy action.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="policystorerole-id"></a>`id`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Unique identifier for the role. |
+| <a id="policystorerole-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Human-readable name of the role. |
+
 ### `PolicyStoreRule`
 
 Rule kind available when creating a policy in the policy store.
@@ -54044,6 +54116,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="policystoretrigger-availableroles"></a>`availableRoles`  | [`[PolicyStoreRole!]!`](#policystorerole) | Introduced in GitLab 19.4. Status: Experiment. Roles available for the trigger type. |
 | <a id="policystoretrigger-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.4. Status: Experiment. Identifier of the trigger. |
 | <a id="policystoretrigger-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Human-readable name of the trigger. |
 
@@ -55776,8 +55849,8 @@ Arguments:
 | <a id="project-mergerequests-not"></a>`not` | [`MergeRequestsResolverNegatedParams`](#mergerequestsresolvernegatedparams) | List of negated arguments. Warning: this argument is experimental and a subject to change in future. |
 | <a id="project-mergerequests-or"></a>`or` | [`UnionedMergeRequestFilterInput`](#unionedmergerequestfilterinput) | List of arguments with inclusive OR. |
 | <a id="project-mergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="project-mergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="project-mergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="project-mergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="project-mergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="project-mergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="project-mergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="project-mergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -58881,6 +58954,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="secretdetectionfalsepositiveconfiguration-runmode"></a>`runMode`  | [`SecurityScanProfileRunMode`](#securityscanprofilerunmode) | Introduced in GitLab 19.4. Status: Experiment. Whether false positive detection runs automatically or on demand. |
+| <a id="secretdetectionfalsepositiveconfiguration-severitylevel"></a>`severityLevel`  | [`VulnerabilitySeverity`](#vulnerabilityseverity) | Introduced in GitLab 19.4. Status: Experiment. Minimum vulnerability severity that triggers false positive detection. |
 
 ### `SecretPermission`
 
@@ -60551,8 +60625,8 @@ Arguments:
 | <a id="usercore-assignedmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="usercore-assignedmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="usercore-assignedmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="usercore-assignedmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="usercore-assignedmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="usercore-assignedmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="usercore-assignedmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="usercore-assignedmergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="usercore-assignedmergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="usercore-assignedmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -60612,8 +60686,8 @@ Arguments:
 | <a id="usercore-authoredmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="usercore-authoredmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="usercore-authoredmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="usercore-authoredmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="usercore-authoredmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="usercore-authoredmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="usercore-authoredmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="usercore-authoredmergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="usercore-authoredmergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="usercore-authoredmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -60779,8 +60853,8 @@ Arguments:
 | <a id="usercore-reviewrequestedmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="usercore-reviewrequestedmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="usercore-reviewrequestedmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="usercore-reviewrequestedmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="usercore-reviewrequestedmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="usercore-reviewrequestedmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="usercore-reviewrequestedmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="usercore-reviewrequestedmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
 | <a id="usercore-reviewrequestedmergerequests-sort"></a>`sort` | [`MergeRequestSort`](#mergerequestsort) | Sort merge requests by the criteria. |
 | <a id="usercore-reviewrequestedmergerequests-sourcebranches"></a>`sourceBranches` | [`[String!]`](#string) | Array of source branch names. All resolved merge requests will have one of these branches as their source. |
@@ -66728,6 +66802,7 @@ External system that initiated a Duo Workflow session.
 
 | Value | Description |
 | ----- | ----------- |
+| <a id="duoworkflowsourcetype-mcp"></a>`MCP` | Session initiated from MCP. |
 | <a id="duoworkflowsourcetype-slack"></a>`SLACK` | Session initiated from Slack. |
 
 ### `DuoWorkflowStatus`
@@ -73915,8 +73990,8 @@ Arguments:
 | <a id="user-assignedmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="user-assignedmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="user-assignedmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="user-assignedmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="user-assignedmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="user-assignedmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="user-assignedmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="user-assignedmergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="user-assignedmergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="user-assignedmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -73976,8 +74051,8 @@ Arguments:
 | <a id="user-authoredmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="user-authoredmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="user-authoredmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="user-authoredmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="user-authoredmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="user-authoredmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="user-authoredmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="user-authoredmergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
 | <a id="user-authoredmergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
 | <a id="user-authoredmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
@@ -74143,8 +74218,8 @@ Arguments:
 | <a id="user-reviewrequestedmergerequests-projectid"></a>`projectId` | [`ProjectID`](#projectid) | The global ID of the project the authored merge requests should be in. Incompatible with projectPath. |
 | <a id="user-reviewrequestedmergerequests-projectpath"></a>`projectPath` | [`String`](#string) | The full-path of the project the authored merge requests should be in. Incompatible with projectId. |
 | <a id="user-reviewrequestedmergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
-| <a id="user-reviewrequestedmergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
-| <a id="user-reviewrequestedmergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="user-reviewrequestedmergerequests-reviewstate"></a>`reviewState` | [`MergeRequestReviewState`](#mergerequestreviewstate) | Reviewer state of the merge request. |
+| <a id="user-reviewrequestedmergerequests-reviewstates"></a>`reviewStates` | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Reviewer states of the merge request. |
 | <a id="user-reviewrequestedmergerequests-search"></a>`search` | [`String`](#string) | Search query for title or description. |
 | <a id="user-reviewrequestedmergerequests-sort"></a>`sort` | [`MergeRequestSort`](#mergerequestsort) | Sort merge requests by the criteria. |
 | <a id="user-reviewrequestedmergerequests-sourcebranches"></a>`sourceBranches` | [`[String!]`](#string) | Array of source branch names. All resolved merge requests will have one of these branches as their source. |
@@ -75836,6 +75911,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="securityscanprofilesecretdetectionfalsepositiveinput-runmode"></a>`runMode`  | [`SecurityScanProfileRunMode`](#securityscanprofilerunmode) | Introduced in GitLab 19.4. Status: Experiment. Whether false positive detection runs automatically or only when triggered by a user. |
+| <a id="securityscanprofilesecretdetectionfalsepositiveinput-severitylevel"></a>`severityLevel`  | [`VulnerabilitySeverity`](#vulnerabilityseverity) | Introduced in GitLab 19.4. Status: Experiment. Minimum vulnerability severity that triggers false positive detection. Findings below this threshold are skipped. |
 
 ### `SecurityScanProfileTriageAndRemediationConfigurationInput`
 
@@ -76222,6 +76298,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="workitemwidgetagentplaninput-content"></a>`content` | [`String`](#string) | Content of the agent plan. |
 | <a id="workitemwidgetagentplaninput-readinessscore"></a>`readinessScore`  | [`Int`](#int) | Introduced in GitLab 19.3. Status: Experiment. Readiness score of the agent plan (0-100). Null when the score is not yet available. Only available when the `workplan_score` feature flag is enabled. |
+| <a id="workitemwidgetagentplaninput-readinessscorefeedback"></a>`readinessScoreFeedback`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Markdown feedback explaining the readiness score. Only available when the `workplan_score` feature flag is enabled. |
 
 ### `WorkItemWidgetAssigneesInput`
 

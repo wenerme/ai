@@ -16,6 +16,29 @@ Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/casb.xml)
 
+## 2026-09-09
+
+
+**New CASB integration for Zoom**
+
+[Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) now integrates with [Zoom](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/zoom/). The integration connects through Cloudflare's pre-built OAuth application — no manual app setup in Zoom is required. After an initial scan, CASB continuously scans your Zoom account to surface new findings as your environment changes.
+
+Zoom is widely used for meetings, webinars, and collaboration. Misconfigurations in account settings, meeting security controls, and recording access can expose organizations to data leakage, unauthorized access, and compliance risk. Cloudflare CASB ingests Zoom account data via API to surface security findings across these areas.
+
+#### Key capabilities
+
+Starting today, security teams can scan for security findings across the following assets:
+
+* **Account settings** — Detect weak password policies, unlocked security controls, and two-factor authentication gaps across your Zoom account
+* **User accounts** — Identify users not enforcing SSO, accounts with insecure host keys, unverified or inactive users, and unsafe overrides of account-level security settings
+* **Meetings** — Surface meetings without passwords or waiting rooms, meetings using Personal Meeting IDs (PMIs), and meetings with external domain hosts
+* **Recordings** — Detect publicly accessible cloud recordings, recordings without passcodes, and weak recording password configurations
+* **Content** — Identify sensitive information in meeting and recording content via DLP Profile matching
+
+#### Learn more
+
+This [integration](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/zoom/) is available to all Cloudflare Zero Trust customers today. New customers can sign up and start with their first two integrations for free. Existing customers can enable the integration directly in the Cloudflare One dashboard under **Cloud & SaaS findings** \> **Integrations**. The integration begins scanning immediately and surfaces findings in the dashboard within minutes.
+
 ## 2026-08-21
 
 

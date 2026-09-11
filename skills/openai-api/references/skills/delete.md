@@ -1,4 +1,4 @@
-## Delete a skill by its ID.
+## Delete Skill
 
 **delete** `/skills/{skill_id}`
 

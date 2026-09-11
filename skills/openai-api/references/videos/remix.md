@@ -1,4 +1,4 @@
-## Remix video
+## Create a video remix
 
 **post** `/videos/{video_id}/remix`
 

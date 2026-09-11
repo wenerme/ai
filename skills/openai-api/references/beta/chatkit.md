@@ -36,7 +36,7 @@
 
 # Sessions
 
-## Cancel chat session
+## Cancel a ChatKit session
 
 **post** `/chatkit/sessions/{session_id}/cancel`
 
@@ -247,7 +247,7 @@ curl -X POST \
 }
 ```
 
-## Create ChatKit session
+## Create a ChatKit session
 
 **post** `/chatkit/sessions`
 
@@ -571,7 +571,7 @@ curl https://api.openai.com/v1/chatkit/sessions \
 
 # Threads
 
-## Delete ChatKit thread
+## Delete a ChatKit thread
 
 **delete** `/chatkit/threads/{thread_id}`
 
@@ -1319,7 +1319,7 @@ curl "https://api.openai.com/v1/chatkit/threads/cthr_abc123/items?limit=3" \
 }
 ```
 
-## Retrieve ChatKit thread
+## Retrieve a ChatKit thread
 
 **get** `/chatkit/threads/{thread_id}`
 

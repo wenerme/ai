@@ -1,4 +1,4 @@
-## Create a new skill.
+## Create Skill
 
 **post** `/skills`
 

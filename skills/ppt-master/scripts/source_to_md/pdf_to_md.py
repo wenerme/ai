@@ -132,6 +132,10 @@ def get_heading_level(size: float, size_map: dict, text: str = "",
     if len(text) > 80:
         return 0
 
+    # Exclusion: a bullet-led line is a list item, whatever its glyph size
+    if text[:1] in _BULLET_GLYPHS:
+        return 0
+
     # Exclusion: complete sentences ending with punctuation
     sentence_endings = '.。!！?？'
     if text and text[-1] in sentence_endings:
@@ -184,12 +188,54 @@ def format_span_text(text: str, flags: int) -> str:
     return text
 
 
+# Bullet glyphs a PDF sets as their own span; ``·`` (U+00B7) is common in
+# fact sheets, and a stray control character often follows the glyph.
+_BULLET_GLYPHS = '•●○◦▪▸►·‧∙・'
+
+
+def is_bullet_glyph_span(text: str) -> bool:
+    """Return whether a span holds only a bullet glyph (plus spaces / control characters)."""
+    stripped = re.sub(r'[\s\x00-\x1f]+', '', text)
+    return len(stripped) == 1 and stripped in _BULLET_GLYPHS
+
+
+# Below this many extracted text characters per page the PDF has no usable
+# text layer; a scan renders as one image per page and nothing else.
+SCANNED_PDF_TEXT_CHARS_PER_PAGE = 40
+
+
+def scanned_pdf_warnings(markdown: str, page_count: int, image_count: int) -> list[str]:
+    """Return a warning when the Markdown holds page images but almost no text.
+
+    ``[Done] Success`` with an empty Markdown body is worse than a failure:
+    a downstream reader takes the file as the converted source and concludes
+    the document has no usable content. The check counts text outside image
+    references and page comments against the page count.
+    """
+    if page_count <= 0:
+        return []
+    text_lines = [
+        line for line in markdown.splitlines()
+        if line.strip() and not line.lstrip().startswith(("![", "<!--"))
+    ]
+    text_chars = sum(len(line.strip()) for line in text_lines)
+    if text_chars >= SCANNED_PDF_TEXT_CHARS_PER_PAGE * page_count:
+        return []
+    if image_count < max(1, page_count // 2):
+        return []
+    return [
+        f"scanned PDF: {text_chars} text characters over {page_count} pages, "
+        f"{image_count} page images; no text layer was extracted, so the "
+        "clauses exist only inside the images (OCR or a text-layer copy is needed)"
+    ]
+
+
 def detect_list_item(text: str) -> tuple:
     """Detect if the text is a list item. Returns (is_list, list_type, content)."""
     text = text.strip()
 
     ul_patterns = [
-        (r'^[•●○◦▪▸►]\s*', '-'),
+        (rf'^[{_BULLET_GLYPHS}][\s\x00-\x1f]*', '-'),
         (r'^[-–—]\s+', '-'),
         (r'^\*\s+', '-'),
     ]
@@ -199,8 +245,11 @@ def detect_list_item(text: str) -> tuple:
             return (True, 'ul', marker + ' ' + text[match.end():])
 
     # ``83.2%`` at the start of a line is a decimal, not item 83: after a
-    # dot the marker must not be followed by another digit.
-    ol_pattern = r'^(\d+)(?:[、)]|\.(?!\d))\s*'
+    # dot the marker must not be followed by another digit. ``1. 1 职业名称``
+    # (a clause number set with a space, as Chinese standards do) is a
+    # heading path, not item 1 with the text "1 职业名称": a short digit group
+    # right after the marker, followed by a space or CJK, keeps the line as is.
+    ol_pattern = r'^(\d+)(?:[、)]|\.(?!\d)(?!\s*\d{1,2}(?:\.\s*\d+)*[\s\u4e00-\u9fff]))\s*'
     match = re.match(ol_pattern, text)
     if match:
         num = match.group(1)
@@ -1474,6 +1523,12 @@ def extract_pdf_to_markdown(
                         span_size = span["size"]
                         span_flags = span["flags"]
 
+                        # A bullet glyph set in its own larger span must not
+                        # promote the line to a heading; it is a list marker.
+                        if is_bullet_glyph_span(span_text):
+                            formatted_spans.append(span_text)
+                            continue
+
                         line_size = max(line_size, span_size)
                         line_flags |= span_flags
                         span_count += 1
@@ -1503,6 +1558,8 @@ def extract_pdf_to_markdown(
                     heading_level = get_heading_level(line_size, size_map, line_text, line_flags)
 
                     is_list, list_type, list_content = detect_list_item(line_text)
+                    if is_list and not list_content.split(' ', 1)[-1].strip():
+                        continue
 
                     if heading_level > 0:
                         prefix = '#' * heading_level + ' '
@@ -1724,6 +1781,7 @@ def extract_pdf_to_markdown(
         if prev_was_code:
             flush_code_block()
 
+    page_count = len(doc)
     doc.close()
 
     markdown_content = merge_markdown_continuation_tables(markdown_content)
@@ -1740,12 +1798,16 @@ def extract_pdf_to_markdown(
                 json.dumps(image_manifest, ensure_ascii=False, indent=2) + "\n",
                 encoding="utf-8",
             )
+        warnings = scanned_pdf_warnings(markdown_content, page_count, img_count)
+        for warning in warnings:
+            print(f"[WARN] {warning}")
         profile_path = write_conversion_profile_best_effort(
             input_path=pdf_path,
             markdown_path=output_path,
             converter="pdf_to_md.py",
             conversion_type="pdf",
             asset_dir=img_dir,
+            warnings=warnings,
         )
         print(f"[OK] Saved Markdown to: {output_path}")
         if profile_path:

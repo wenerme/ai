@@ -209,6 +209,8 @@ Below is the full syntax diagram of the `UNPIVOT` statement.
 
 The full syntax diagram is below, but the SQL Standard `UNPIVOT` syntax can be summarized as:
 
+<!-- test:skip syntax summary in square brackets, not a runnable statement -->
+
 ```sql
 FROM [dataset]
 UNPIVOT [INCLUDE NULLS] (

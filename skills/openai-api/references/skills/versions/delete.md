@@ -1,4 +1,4 @@
-## Delete a skill version.
+## Delete Skill Version
 
 **delete** `/skills/{skill_id}/versions/{version}`
 

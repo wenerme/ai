@@ -24,15 +24,28 @@ GitLab maintains a private database of advisories for known malicious packages f
 GitLab malware advisories (GLAM) are separate from the GLAD advisories described elsewhere on this page.
 GitLab automatically synchronizes these advisories to your GitLab instance in the background.
 
+GitLab obtains these advisories from three sources:
+
+- The [OpenSSF malicious-packages project](https://github.com/ossf/malicious-packages), an open
+  source repository of reports of malicious packages.
+- Scans of public package registries run by GitLab.
+- Upstream feeds of advisory data from package registries.
+
+Each malware advisory has an ID that starts with `GLAM-`, in the form
+`GLAM-<year>-<month>-<sequence>`, for example `GLAM-2026-09-00138`. Vulnerabilities created from
+these advisories carry that ID as an identifier, and have no CVE identifier.
+
 > [!note]
 > In [offline environments](../offline_deployments/_index.md), GitLab cannot synchronize these advisories automatically.
 > Instead, you [download them on a machine with internet access](../../../topics/offline/quick_start_guide.md#download-gitlab-malware-advisories) and copy them to the instance.
 
-These advisories serve two purposes:
+These advisories serve three purposes:
 
 - [Dependency scanning](../dependency_scanning/_index.md#dependency-scanning-using-sbom) uses them to create a vulnerability when a pipeline detects a malicious package.
 - [Continuous vulnerability scanning](../continuous_vulnerability_scanning/_index.md#malicious-packages)
   uses them to create a vulnerability without requiring a pipeline to run.
+- [Merge request approval policies](../policies/merge_request_approval_policies.md#block-malicious-packages-with-the-malware-rule)
+  use them to block a merge request that introduces a malicious package.
 
 ### Supported package types
 

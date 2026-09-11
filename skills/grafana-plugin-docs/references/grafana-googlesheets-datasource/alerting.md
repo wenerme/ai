@@ -15,11 +15,11 @@ For an overview of alerting in Grafana, refer to [Alerting](/docs/grafana/latest
 
 Alerting on Google Sheets is useful when your metrics or status live in a spreadsheet (for example, updated by scripts, forms, or exports) and you want Grafana to notify you when values cross a threshold or change state. Typical examples:
 
-- **Budgets and quotas** – Track spending, usage, or limits in a sheet; alert when a value exceeds or falls short of a target.
-- **KPIs and SLAs** – Monitor a single row or cell that holds a key metric (for example, uptime, error rate, NPS); alert when it goes above or below a set level.
-- **Status or health** – Use a sheet as a simple status board (for example, “ok”, “degraded”, “down”); alert when the status indicates a problem.
-- **Inventory or capacity** – Alert when stock, seats, or capacity in a sheet drops below (or rises above) a threshold.
-- **Form or survey results** – Alert when the count or average of responses in a sheet crosses a limit (for example, number of support tickets, satisfaction score).
+- **Budgets and quotas:** Track spending, usage, or limits in a sheet; alert when a value exceeds or falls short of a target.
+- **KPIs and SLAs:** Monitor a single row or cell that holds a key metric (for example, uptime, error rate, NPS); alert when it goes above or below a set level.
+- **Status or health:** Use a sheet as a status board (for example, “ok”, “degraded”, “down”); alert when the status indicates a problem.
+- **Inventory or capacity:** Alert when stock, seats, or capacity in a sheet drops below (or rises above) a threshold.
+- **Form or survey results:** Alert when the count or average of responses in a sheet crosses a limit (for example, number of support tickets, satisfaction score).
 
 ## Before you begin
 
@@ -37,7 +37,7 @@ Alerting on Google Sheets is useful when your metrics or status live in a spread
 7. Define the rule: name, folder, condition (for example, when a value is above or below a threshold), evaluation group, and contact points. For details, refer to [Configure Grafana-managed alert rules](/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
 8. Save the rule.
 
-After the rule is created, Grafana will evaluate it on the schedule you configured and send notifications when the condition is met.
+After the rule is created, Grafana evaluates it on the schedule you configured and sends notifications when the condition is met.
 
 ## Query and data considerations
 
@@ -47,7 +47,7 @@ After the rule is created, Grafana will evaluate it on the schedule you configur
 
 ## Example sheet layout
 
-A simple layout for a threshold alert is a time column plus one or more numeric columns. Format the time column as date or date-time in Google Sheets so the plugin detects it. Example:
+A basic layout for a threshold alert is a time column plus one or more numeric columns. Format the time column as date or date-time in Google Sheets so the plugin detects it. Example:
 
 Expand table
 
@@ -63,6 +63,6 @@ For a single KPI (for example, one cell or row updated by a script or formula), 
 
 ## Next steps
 
-- [Query editor](/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/) – Spreadsheet ID, Range, and Use Time Filter
+- [Query editor](/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/): Spreadsheet ID, Range, and Use Time Filter
 - [Configure the data source](/docs/plugins/grafana-googlesheets-datasource/latest/configure/)
-- [Alerting](/docs/grafana/latest/alerting/) – Grafana alerting documentation
+- [Alerting](/docs/grafana/latest/alerting/): Grafana alerting documentation

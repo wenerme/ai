@@ -75,6 +75,8 @@ SELECT CAST(42.5 AS VARCHAR);
 
 Casting from `VARCHAR` to another data type is supported, but can raise an error at runtime if DuckDB cannot parse and convert the provided text to the target data type.
 
+<!-- test:error -->
+
 ```sql
 SELECT CAST('NotANumber' AS INTEGER);
 ```

@@ -1,4 +1,4 @@
-## Cancel chat session
+## Cancel a ChatKit session
 
 **post** `/chatkit/sessions/{session_id}/cancel`
 

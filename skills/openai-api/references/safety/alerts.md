@@ -1,6 +1,6 @@
 # Alerts
 
-## Retrieve a safety alert
+## Get project safety alert
 
 **get** `/safety/alerts/{id}`
 

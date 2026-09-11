@@ -99,6 +99,8 @@ However, the `CASE WHEN` approach will not work as expected when using an aggreg
 
 “Pivot” the data out by year (move each year out to a separate column):
 
+<!-- test:run-only `first` picks an arbitrary row from a parallel scan -->
+
 ```sql
 SELECT
     first(i) FILTER (year = 2022) AS "2022",
@@ -115,6 +117,8 @@ FROM stacked_data;
 | 1474561 | 25804801 | 50749441 | 76431361 | 87500001 |
 
 This will produce `NULL` values whenever the first evaluation of the `CASE WHEN` clause returns a `NULL`:
+
+<!-- test:run-only `first` picks an arbitrary row from a parallel scan -->
 
 ```sql
 SELECT

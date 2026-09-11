@@ -1,4 +1,4 @@
-## Retrieve video
+## Retrieve a video
 
 **get** `/videos/{video_id}`
 

@@ -1,4 +1,4 @@
-## Create a new video generation job by editing a source video or existing generated video.
+## Create a video edit
 
 **post** `/videos/edits`
 
