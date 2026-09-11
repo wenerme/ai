@@ -83,16 +83,21 @@ To add a replica to an existing high-availability node, install the Cloudflare O
 
 Installation commands
 
+IP forwarding is not required to reach the node by its Mesh IP. If the node will advertise [CIDR routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/), enable persistent forwarding before connecting it:
+
 ```sh
-curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&
-echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(. /etc/os-release && echo $VERSION_CODENAME) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&
-sudo apt-get update -qq && sudo apt-get install -y -qq cloudflare-warp &&
 printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&
 sudo sysctl --system
 ```
 
 ```sh
-sudo warp-cli connector new <TOKEN> && sudo warp-cli connect
+curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&
+echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(. /etc/os-release && echo $VERSION_CODENAME) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&
+sudo apt-get update -qq && sudo apt-get install -y -qq cloudflare-warp
+```
+
+```sh
+sudo warp-cli --accept-tos connector new <TOKEN> && sudo warp-cli --accept-tos connect
 ```
 
 On RHEL 9 and later, enable the Extra Packages for Enterprise Linux (EPEL) repository before installing `cloudflare-warp`. EPEL provides dependencies required by the Cloudflare One Client UI:
@@ -105,13 +110,11 @@ Then install the package:
 
 ```sh
 curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo &&
-sudo yum install -y cloudflare-warp &&
-printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&
-sudo sysctl --system
+sudo yum install -y cloudflare-warp
 ```
 
 ```sh
-sudo warp-cli connector new <TOKEN> && sudo warp-cli connect
+sudo warp-cli --accept-tos connector new <TOKEN> && sudo warp-cli --accept-tos connect
 ```
 
 1. Retrieve the node's token:
@@ -121,15 +124,18 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/warp_connector/
 ```
 The response contains the token string.
 2. Install the client and register on a new Linux host:
+IP forwarding is not required to reach the node by its Mesh IP. If the node will advertise [CIDR routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/), enable persistent forwarding before connecting it:
 ```sh
-curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&
-echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(. /etc/os-release && echo $VERSION_CODENAME) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&
-sudo apt-get update -qq && sudo apt-get install -y -qq cloudflare-warp &&
 printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&
 sudo sysctl --system
 ```
 ```sh
-sudo warp-cli connector new <TOKEN> && sudo warp-cli connect
+curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&
+echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(. /etc/os-release && echo $VERSION_CODENAME) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&
+sudo apt-get update -qq && sudo apt-get install -y -qq cloudflare-warp
+```
+```sh
+sudo warp-cli --accept-tos connector new <TOKEN> && sudo warp-cli --accept-tos connect
 ```
 On RHEL 9 and later, enable the Extra Packages for Enterprise Linux (EPEL) repository before installing `cloudflare-warp`. EPEL provides dependencies required by the Cloudflare One Client UI:
 ```sh
@@ -138,12 +144,10 @@ sudo dnf install -y epel-release
 Then install the package:
 ```sh
 curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo &&
-sudo yum install -y cloudflare-warp &&
-printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&
-sudo sysctl --system
+sudo yum install -y cloudflare-warp
 ```
 ```sh
-sudo warp-cli connector new <TOKEN> && sudo warp-cli connect
+sudo warp-cli --accept-tos connector new <TOKEN> && sudo warp-cli --accept-tos connect
 ```
 
 The new replica will be in standby mode until the active replica disconnects.

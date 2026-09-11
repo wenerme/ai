@@ -40,8 +40,8 @@ To learn how the GitLab Strategic Marketing department uses GitLab issues with [
 - Additional filters on the Issues page in groups [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/202089) in GitLab 18.5. [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/205308).
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/520791) in GitLab 18.7. Feature flag `work_item_view_for_issues` removed.
 
-We have changed how issues look by migrating them to a unified framework for work items to better
-meet the product needs of our Agile Planning offering.
+Issues have moved to a unified framework for work items, to better
+meet the product needs of the GitLab Agile Planning offering.
 
 For more information, see [epic 9290](https://gitlab.com/groups/gitlab-org/-/work_items/9290) and the [new Agile planning experience in GitLab](https://about.gitlab.com/blog/first-look-the-new-agile-planning-experience-in-gitlab/) blog post (June 2024).
 

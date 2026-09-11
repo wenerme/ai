@@ -104,12 +104,12 @@ To create a project label:
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Manage** > **Labels**.
 1. Select **New label**.
-1. In the **Title** field, enter a short, descriptive name for the label. You
-   can also use this field to create [scoped, mutually exclusive labels](#scoped-labels).
-1. Optional. In the **Description** field, enter additional
+1. In the **Title** text box, enter a short, descriptive name for the label. You
+   can also use this text box to create [scoped, mutually exclusive labels](#scoped-labels).
+1. Optional. In the **Description** text box, enter additional
    information about how and when to use this label.
 1. Optional. Select a color by selecting from the available colors, or enter a hex color value for
-   a specific color in the **Background color** field.
+   a specific color in the **Background color** text box.
 1. Select **Create label**.
 
 ### Create a project label from an issue or merge request
@@ -140,12 +140,12 @@ To create a group label:
 1. In the top bar, select **Search or go to** and find your group.
 1. In the left sidebar, select **Manage** > **Labels**.
 1. Select **New label**.
-1. In the **Title** field, enter a short, descriptive name for the label. You
-   can also use this field to create [scoped, mutually exclusive labels](#scoped-labels).
-1. Optional. In the **Description** field, enter additional
+1. In the **Title** text box, enter a short, descriptive name for the label. You
+   can also use this text box to create [scoped, mutually exclusive labels](#scoped-labels).
+1. Optional. In the **Description** text box, enter additional
    information about how and when to use this label.
 1. Optional. Select a color by selecting from the available colors, or enter a hex color value for
-   a specific color in the **Background color** field.
+   a specific color in the **Background color** text box.
 1. Select **Create label**.
 
 ### Create a group label from an epic
@@ -216,7 +216,7 @@ To delete a **project** label:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Manage** > **Labels**.
-1. Next to the **Subscribe** button, select (), and then select **Delete**.
+1. Next to **Subscribe**, select (), and then select **Delete**.
 
 ### Delete a group label
 
@@ -226,7 +226,7 @@ To delete a **group** label:
 1. In the left sidebar, select **Manage** > **Labels**.
 1. Either:
 
-   - Next to the **Subscribe** button, select ().
+   - Next to **Subscribe**, select ().
    - Next to the label you want to edit, select **Edit** ().
 
 1. Select **Delete**.
@@ -274,7 +274,7 @@ To view archived labels:
 1. In the top bar, select **Search or go to** and find your project or group.
 1. In the left sidebar, select **Manage** > **Labels**.
 1. Go to the labels page for your project or group.
-1. Select the **Archived** tab.
+1. Select **Archived**.
 
 ### Unarchive a label
 
@@ -286,7 +286,7 @@ To unarchive a label:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Manage** > **Labels**.
-1. Select the **Archived** tab.
+1. Select **Archived**.
 1. Next to the label you want to unarchive, select **Edit** ().
 1. Clear the **Archived** checkbox.
 1. Select Save changes.
@@ -314,7 +314,7 @@ To promote a project label to a group label:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Manage** > **Labels**.
-1. Next to the **Subscribe** button, select the three dots () and
+1. Next to **Subscribe**, select the three dots () and
    select **Promote to group label**.
 
 All issues, merge requests, issue board lists, issue board filters, and label subscriptions
@@ -390,7 +390,7 @@ The following labels are created:
 Teams can use scoped labels to annotate issues, merge requests, and epics with mutually exclusive
 labels. By preventing certain labels from being used together, you can create more complex workflows.
 
-[Scoped labels]
+[A list of scoped labels.]
 
 A scoped label uses a double-colon (`::`) syntax in its title, for example: `workflow::in-review`.
 
@@ -517,7 +517,7 @@ To prioritize a label:
 1. In the left sidebar, select **Manage** > **Labels**.
 1. Next to a label you want to prioritize, select the star ().
 
-[Labels prioritized]
+[A list of labels set as prioritized.]
 
 This label now appears at the top of the label list, under **Prioritized Labels**.
 

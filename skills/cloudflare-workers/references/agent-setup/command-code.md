@@ -54,7 +54,7 @@ cmd
 Ask Command Code to investigate a task, make changes, and run the relevant tests. Review its diffs and command output before keeping changes.
 For example:
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ## Cloudflare platform access
@@ -134,23 +134,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ## Tips

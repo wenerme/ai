@@ -1188,6 +1188,9 @@ class SVGQualityChecker:
         self._pptx_structure_issues: List[Tuple[str, str]] = []
         self._has_incomplete_page_roster = False
         self._active_slide_count: int | None = None
+        # Early/page stages see part of the roster, so a slide jump's upper
+        # bound waits for the final gate.
+        self.partial_roster = False
         self._prototype_by_output: Dict[Path, Path] = {}
         self._active_prototype_path: Path | None = None
         self._active_template_reuse_scope: str | None = None
@@ -2206,10 +2209,17 @@ class SVGQualityChecker:
                 for error in errors
             )
             return
+        def normalizer(error: str) -> str:
+            if "page-space metadata" in error:
+                return (
+                    "`python3 scripts/compact_svg_coordinates.py <svg_output> "
+                    "--inplace --keep-native-frames`"
+                )
+            return "`python3 scripts/compact_svg_styles.py <svg_output> --inplace`"
+
         result['warnings'].extend(
             f"Noncanonical compact authoring: {error} "
-            "(advisory; normalize with "
-            "`python3 scripts/compact_svg_styles.py <svg_output> --inplace`, "
+            f"(advisory; normalize with {normalizer(error)}, "
             "re-stamp pages that carry Chart/Table fallbacks, and rerun the "
             "final gate, or leave the explicit form)"
             for error in errors
@@ -2779,7 +2789,7 @@ class SVGQualityChecker:
             f'Invalid SVG hyperlink: {error}'
             for error in _project_hyperlink_errors(
                 root,
-                slide_count=self._active_slide_count,
+                slide_count=None if self.partial_roster else self._active_slide_count,
             )
         )
 
@@ -9127,7 +9137,7 @@ class SVGQualityChecker:
                 "remain non-blocking"
             )
             print(f"  4. foreignObject: Use <text> + <tspan> for manual line breaks")
-            print(f"  5. Font issues: use PPT-safe exported typefaces (e.g. Microsoft YaHei / Arial / Consolas)")
+            print(f"  5. Font issues: use PPT-safe exported typefaces (e.g. Arial / Consolas, with the CJK face of the deck language)")
 
     def _carrier_receipt_summary(self) -> Dict:
         """Aggregate factual per-page carrier receipts for compact review."""

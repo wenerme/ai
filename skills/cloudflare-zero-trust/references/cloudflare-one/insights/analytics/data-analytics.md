@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Data security analytics
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/data-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/data-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Data security analytics dashboard reports security issues and sensitive data found within your SaaS applications, cloud environments, and HTTP traffic. It visualizes security findings and sensitive data detections collected from your Data Loss Prevention (DLP) and Cloud Access Security Broker (CASB) policies. If neither DLP nor CASB is configured in your account, the dashboard appears empty.
+The Data security analytics dashboard reports security issues and sensitive data found within your SaaS applications, cloud environments, and HTTP traffic. It combines Cloud Access Security Broker (CASB) findings with activity from Data Loss Prevention (DLP) policies. If neither DLP policies nor CASB integrations are configured in your account, the dashboard appears empty.
 
 To view the Data security analytics dashboard:
 
@@ -32,6 +32,8 @@ To populate this dashboard with partial data, you need at least one of the follo
 * At least one SaaS integration enrolled in [CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/).
 * At least one Cloud integration enrolled in [CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/).
 * At least one SaaS or Cloud integration enrolled in [CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) and a DLP profile applied to it.
+
+To learn which sensitive data types appear in your Gateway traffic before creating a DLP policy, use [Passive Detection](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/passive-detection/). It shows sampled detections separately from the policy activity on this dashboard.
 
 ## Available insights
 
@@ -76,5 +78,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/data-analytics/#page","headline":"Data security analytics · Cloudflare One docs","description":"Reference information for Data security analytics in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/data-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/data-analytics/#page","headline":"Data security analytics · Cloudflare One docs","description":"Reference information for Data security analytics in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/analytics/data-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
 ```

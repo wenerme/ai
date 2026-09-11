@@ -1,5 +1,7 @@
 # Sorting and ordering issue lists
 
+Sort issue lists by due date, priority, popularity, milestone, health status, or other criteria to find and organize work items.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

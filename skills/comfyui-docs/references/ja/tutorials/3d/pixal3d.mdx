@@ -1,10 +1,10 @@
 ---
 title: "Pixal3D 画像から3Dモデルへの ComfyUI ワークフロー例"
 description: "Pixal3D を使用して、1枚の画像からフル PBR テクスチャ付きの高忠実度 3Dモデルを生成します。Pixal3D は、Tencent ARC によるピクセル位置合わせ型の画像から 3Dモデルへの変換モデルです。"
-translationSourceHash: ad40ed68
+translationSourceHash: 6524a7b2
 translationFrom: tutorials/3d/pixal3d.mdx
 translationBlockHashes:
-  "_intro": 0cc856ed
+  "_intro": c3d2e1ee
   "How it works": 30b7a245
   "Steps to run": 1a7d044c
   "Model downloads": 890d9666
@@ -40,6 +40,47 @@ translationBlockHashes:
 <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
   [入力画像]
 </div>
+
+### Pixal3D: マルチビューから3Dモデルへ {#pixal3d-multi-views}
+
+キャラクターのターンアラウンドシート（1枚の画像に正面・側面・背面を配置したもの）から3Dモデルを生成します。マルチビューモデルは追加の視点を活用して、単一画像パイプラインでは捉えられないジオメトリを再構築し、より正確な側面と背面のプロファイルを実現します。
+
+テンプレートライブラリの `Character Turnaround Sheet Generator` テンプレートを使って Nano Banana 2 でターンアラウンドシートを作成するか、被写体を背景から分離したマルチビュー画像を自分で用意してください。
+
+[Pixal3D マルチビューワークフローのプレビュー]
+
+  
+    このワークフローをComfy Cloudで即座に実行
+  
+  
+    JSONをダウンロードするか、テンプレートライブラリで「Pixal3D: Multi Views to 3D」を検索してください
+  
+
+**入力マテリアル**
+
+このファイルを `LoadImage` ノードにアップロードしてください：
+
+  
+    `LoadImage` ノード364 · `character_turnaround_4view_sheet.png`
+  
+
+ワークフローは以下のモデルを使用します。モデルをダウンロードし、対応する `models/` サブディレクトリに配置してください：
+
+  
+    pixal3d_multiview_int8_convrot.safetensors &#8594; ComfyUI/models/diffusion_models/
+  
+  
+    trellis_2_shape_vae_bf16.safetensors &#8594; ComfyUI/models/vae/
+  
+  
+    trellis_2_texture_vae_bf16.safetensors &#8594; ComfyUI/models/vae/
+  
+  
+    dino_v3_L_naf_fp32.safetensors &#8594; ComfyUI/models/clip_vision/
+  
+  
+    birefnet.safetensors &#8594; ComfyUI/models/background_removal/
+  
 
 ## 仕組み
 

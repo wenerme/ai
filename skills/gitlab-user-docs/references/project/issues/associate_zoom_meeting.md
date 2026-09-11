@@ -1,5 +1,7 @@
 # Associate a Zoom meeting with an issue
 
+Associate a Zoom meeting with an issue using the /zoom quick action so team members can join a call quickly.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
@@ -25,7 +27,7 @@ a system alert notifies you of its successful addition.
 The issue's description is automatically edited to include the Zoom link, and a button
 appears right under the issue's title.
 
-[GitLab issue view showing a Join Zoom meeting button]
+[GitLab issue view showing a Join Zoom meeting button.]
 
 You are only allowed to attach a single Zoom meeting to an issue. If you attempt
 to add a second Zoom meeting using the `/zoom` quick action, it doesn't work. You

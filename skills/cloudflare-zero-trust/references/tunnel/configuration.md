@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration
 
-Last updated May 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page covers the most common configuration options for `cloudflared` tunnels, including high availability, firewall rules, and runtime parameters.
 
@@ -51,11 +51,11 @@ To deploy a replica for a remotely-managed tunnel:
 4. Select the operating system of the host where you want to deploy a replica.
 5. Copy the installation command and run it on the host.
 
-To deploy a replica for a [locally-managed tunnel](https://developers.cloudflare.com/tunnel/advanced/local-management/), run `cloudflared tunnel run <NAME>` on an additional host using the same [tunnel credentials](https://developers.cloudflare.com/tunnel/advanced/local-management/tunnel-permissions/).
+To deploy a replica for a [locally-managed tunnel](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/), run `cloudflared tunnel run <NAME>` on an additional host using the same [tunnel credentials](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/tunnel-permissions/).
 
 Note
 
-For intelligent traffic steering, failover logic, or health alerts, use [Cloudflare Load Balancing](https://developers.cloudflare.com/tunnel/routing/#load-balancing) instead of replicas.
+For intelligent traffic steering, failover logic, or health alerts, use [Cloudflare Load Balancing](https://developers.cloudflare.com/tunnel/concepts/routing/#load-balancing) instead of replicas.
 
 ## Firewall rules
 
@@ -93,7 +93,7 @@ When using the [\--region us](#region) flag, ensure your firewall allows outboun
 
 FedRAMP High IPs
 
-When deploying `cloudflared` in a [FedRAMP High ↗](https://www.cloudflare.com/cloudflare-for-government/) environment, `cloudflared` automatically routes to FedRAMP data centers based on the [tunnel token](https://developers.cloudflare.com/tunnel/advanced/tunnel-tokens/). Ensure your firewall allows outbound connections to these FedRAMP-specific destinations on port `7844` (TCP/UDP).
+When deploying `cloudflared` in a [FedRAMP High ↗](https://www.cloudflare.com/cloudflare-for-government/) environment, `cloudflared` automatically routes to FedRAMP data centers based on the [tunnel token](https://developers.cloudflare.com/tunnel/reference/tunnel-tokens/). Ensure your firewall allows outbound connections to these FedRAMP-specific destinations on port `7844` (TCP/UDP).
 
 #### `fed-region1.v2.argotunnel.com`
 
@@ -139,14 +139,14 @@ These flags apply to the `cloudflared tunnel run` command. They control how the 
 
 The most commonly used parameters:
 
-| Parameter                                                                                 | Default               | Description                                                         |
-| ----------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------- |
-| [\--loglevel](https://developers.cloudflare.com/tunnel/advanced/run-parameters/#loglevel) | info                  | Log verbosity: debug, info, warn, error, fatal                      |
-| [\--logfile](https://developers.cloudflare.com/tunnel/advanced/run-parameters/#logfile)   | stdout                | Path to write log output                                            |
-| [\--metrics](https://developers.cloudflare.com/tunnel/advanced/run-parameters/#metrics)   | 127.0.0.1:20241–20245 | Prometheus metrics endpoint address (first available port in range) |
-| [\--protocol](https://developers.cloudflare.com/tunnel/advanced/run-parameters/#protocol) | auto                  | Connection protocol: auto, quic, http2                              |
-| [\--region](https://developers.cloudflare.com/tunnel/advanced/run-parameters/#region)     | global                | Route through US-only data centers with us                          |
-| [\--token](https://developers.cloudflare.com/tunnel/advanced/run-parameters/#token)       | —                     | Tunnel token (remotely-managed tunnels)                             |
+| Parameter                                                                                  | Default               | Description                                                         |
+| ------------------------------------------------------------------------------------------ | --------------------- | ------------------------------------------------------------------- |
+| [\--loglevel](https://developers.cloudflare.com/tunnel/reference/run-parameters/#loglevel) | info                  | Log verbosity: debug, info, warn, error, fatal                      |
+| [\--logfile](https://developers.cloudflare.com/tunnel/reference/run-parameters/#logfile)   | stdout                | Path to write log output                                            |
+| [\--metrics](https://developers.cloudflare.com/tunnel/reference/run-parameters/#metrics)   | 127.0.0.1:20241–20245 | Prometheus metrics endpoint address (first available port in range) |
+| [\--protocol](https://developers.cloudflare.com/tunnel/reference/run-parameters/#protocol) | auto                  | Connection protocol: auto, quic, http2                              |
+| [\--region](https://developers.cloudflare.com/tunnel/reference/run-parameters/#region)     | global                | Route through US-only data centers with us                          |
+| [\--token](https://developers.cloudflare.com/tunnel/reference/run-parameters/#token)       | —                     | Tunnel token (remotely-managed tunnels)                             |
 
 The following example shows how to manually run a tunnel with configuration flags:
 
@@ -154,7 +154,7 @@ The following example shows how to manually run a tunnel with configuration flag
 cloudflared tunnel --loglevel info --logfile /var/log/cloudflared/cloudflared.log run --token <TOKEN VALUE>
 ```
 
-For the complete list of run parameters and instructions on how to add them to a tunnel service, refer to [Run parameters](https://developers.cloudflare.com/tunnel/advanced/run-parameters/).
+For the complete list of run parameters and instructions on how to add them to a tunnel service, refer to [Run parameters](https://developers.cloudflare.com/tunnel/reference/run-parameters/).
 
 ## Origin parameters
 
@@ -162,20 +162,20 @@ Origin configuration parameters control how `cloudflared` proxies traffic to you
 
 The most commonly used parameters:
 
-| Parameter                                                                                                 | Default | Description                               |
-| --------------------------------------------------------------------------------------------------------- | ------- | ----------------------------------------- |
-| [originServerName](https://developers.cloudflare.com/tunnel/advanced/origin-parameters/#originservername) | ""      | Hostname expected from origin certificate |
-| [noTLSVerify](https://developers.cloudflare.com/tunnel/advanced/origin-parameters/#notlsverify)           | false   | Disable TLS certificate verification      |
-| [httpHostHeader](https://developers.cloudflare.com/tunnel/advanced/origin-parameters/#httphostheader)     | ""      | Override HTTP Host header                 |
-| [connectTimeout](https://developers.cloudflare.com/tunnel/advanced/origin-parameters/#connecttimeout)     | 30s     | TCP connection timeout to origin          |
+| Parameter                                                                                                  | Default | Description                               |
+| ---------------------------------------------------------------------------------------------------------- | ------- | ----------------------------------------- |
+| [originServerName](https://developers.cloudflare.com/tunnel/reference/origin-parameters/#originservername) | ""      | Hostname expected from origin certificate |
+| [noTLSVerify](https://developers.cloudflare.com/tunnel/reference/origin-parameters/#notlsverify)           | false   | Disable TLS certificate verification      |
+| [httpHostHeader](https://developers.cloudflare.com/tunnel/reference/origin-parameters/#httphostheader)     | ""      | Override HTTP Host header                 |
+| [connectTimeout](https://developers.cloudflare.com/tunnel/reference/origin-parameters/#connecttimeout)     | 30s     | TCP connection timeout to origin          |
 
-For the complete list of origin parameters and setup instructions, refer to [Origin parameters](https://developers.cloudflare.com/tunnel/advanced/origin-parameters/).
+For the complete list of origin parameters and setup instructions, refer to [Origin parameters](https://developers.cloudflare.com/tunnel/reference/origin-parameters/).
 
 ## Permissions
 
 You can scope Cloudflare member permissions to individual [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances instead of granting account-wide access. This lets you delegate management of specific Tunnels — for example, letting an application team manage one Tunnel without exposing the rest of your account.
 
-Refer to [Granular permissions](https://developers.cloudflare.com/tunnel/advanced/granular-permissions/).
+Refer to [Granular permissions](https://developers.cloudflare.com/tunnel/guides/granular-permissions/).
 
 Was this helpful?
 
@@ -186,5 +186,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/configuration/#page","headline":"Configuration · Cloudflare Docs","description":"Configure tunnel ingress rules, origins, and protocol settings.","url":"https://developers.cloudflare.com/tunnel/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum","QUIC"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/configuration/#page","headline":"Configuration · Cloudflare Docs","description":"Configure tunnel ingress rules, origins, and protocol settings.","url":"https://developers.cloudflare.com/tunnel/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum","QUIC"]}
 ```

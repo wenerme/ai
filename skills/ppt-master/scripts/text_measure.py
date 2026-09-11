@@ -38,6 +38,12 @@ from svg_to_pptx.drawingml.utils import split_project_text_clusters  # noqa: E40
 
 _CLOSING_PUNCTUATION = frozenset(',.;:!?)]}、，。；：！？）》」』】”’')
 _OPENING_PUNCTUATION = frozenset('([{（《「『【“‘')
+# Japanese line-start prohibitions beyond punctuation: small kana, the long
+# vowel mark, iteration marks, and the middle dot never open a line.
+_NO_LINE_START = _CLOSING_PUNCTUATION | frozenset(
+    'ぁぃぅぇぉっゃゅょゎゕゖァィゥェォッャュョヮヵヶㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺㇻㇼㇽㇾㇿ'
+    'ー々ゝゞヽヾ・'
+)
 _PREFERRED_BREAK_PUNCTUATION = frozenset('，。；：')
 # A CJK clause break is preferred over the greedy break only while it keeps
 # this share of the greedy line; below it the punctuation break would leave a
@@ -123,8 +129,16 @@ def _is_latin_or_number_cluster(cluster: str) -> bool:
     )
 
 
+def _is_hangul_cluster(cluster: str) -> bool:
+    """Return whether a rendered cluster is a Hangul syllable or jamo."""
+    return any(
+        '\uac00' <= ch <= '\ud7a3' or '\u1100' <= ch <= '\u11ff' or '\u3130' <= ch <= '\u318f'
+        for ch in cluster
+    )
+
+
 def _lexical_units(text: str) -> list[str]:
-    """Split a paragraph while keeping Latin words and numbers atomic."""
+    """Split a paragraph while keeping Latin words, numbers, and Korean words atomic."""
     clusters = split_project_text_clusters(' '.join(text.split()))
     units: list[str] = []
     pending_space = False
@@ -137,7 +151,14 @@ def _lexical_units(text: str) -> list[str]:
             continue
 
         end = index + 1
-        if _is_latin_or_number_cluster(cluster):
+        word_end = index
+        while word_end < len(clusters) and not clusters[word_end].isspace():
+            word_end += 1
+        if any(_is_hangul_cluster(item) for item in clusters[index:word_end]):
+            # Korean breaks between space-separated words (eojeol), never
+            # inside one; an eojeol wider than the line is reported oversized.
+            end = word_end
+        elif _is_latin_or_number_cluster(cluster):
             while end < len(clusters):
                 next_cluster = clusters[end]
                 if _is_latin_or_number_cluster(next_cluster):
@@ -175,7 +196,7 @@ def _protected_units(text: str) -> list[str]:
     for unit in units:
         content = unit.lstrip()
         if protected and (
-            content[0] in _CLOSING_PUNCTUATION
+            content[0] in _NO_LINE_START
             or protected[-1].rstrip()[-1] in _OPENING_PUNCTUATION
         ):
             protected[-1] += unit

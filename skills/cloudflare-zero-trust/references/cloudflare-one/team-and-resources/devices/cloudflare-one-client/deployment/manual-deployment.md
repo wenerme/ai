@@ -12,12 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manual deployment
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you plan to direct your users to manually download and configure the Cloudflare One Client (formerly WARP), users will need to connect the client to your organization's Cloudflare Zero Trust instance.
 
 ## Prerequisites
 
+* Complete [Zero Trust organization setup](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization), including subscription activation.
 * [Set device enrollment permissions](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/) to specify which users can connect.
 
 ## Windows, macOS, and Linux
@@ -53,36 +54,51 @@ To enroll your device using the terminal:
 
 1. [Download ↗](https://pkg.cloudflareclient.com/) and install the Cloudflare One Client package.
 2. Open a terminal window. Ensure that you are logged into the terminal as the current user and not as root.
-3. Enroll into Cloudflare Zero Trust using your organization's team name:
+3. (Optional) Validate your organization's team name:
+```sh
+curl --fail --silent --show-error \
+  "https://<YOUR_TEAM_NAME>.cloudflareaccess.com/cdn-cgi/access/certs" \
+  > /dev/null
+```
+```powershell
+Invoke-WebRequest -UseBasicParsing "https://<YOUR_TEAM_NAME>.cloudflareaccess.com/cdn-cgi/access/certs" | Out-Null
+```
+A successful request confirms that the team domain exists and is reachable. It does not confirm enrollment eligibility. Compare the value with the team name in your Zero Trust settings.
+4. Enroll into Cloudflare Zero Trust using your team name:
 ```sh
 warp-cli registration new <your-team-name>
 ```
-4. In the browser window that opens, complete the authentication steps required by your organization.
+5. In the browser window that opens, complete the authentication steps required by your organization.
 Once authenticated, you will see a success page and a dialog prompting you to open a link.
-5. Select **Open Link**.
-6. Verify the registration in the terminal:
+6. Select **Open Link**.
+7. Verify the registration in the terminal:
 ```sh
 warp-cli registration show
 ```
-
 Troubleshoot missing registration
+The `warp-cli registration new` success message does not prove that organization enrollment completed. If the browser reports an invalid enrollment request while the CLI reports success, treat the enrollment as failed. Inspect the enrollment endpoint HTTP response in browser developer tools. You can also collect [diagnostic logs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/) with `warp-diag`.
+Do not open the bare `https://<YOUR_TEAM_NAME>.cloudflareaccess.com/warp` URL as a fallback. It does not contain the active enrollment session. If the registration continues to be missing, manually copy the authentication token from the browser to the Cloudflare One Client:
 
-The registration process may take a few minutes to complete. If the registration continues to be missing, then manually copy the authentication token from the browser to the Cloudflare One Client:
-
-1. On the success page, right-click and select **View Page Source**.
-2. Find the HTML metadata tag that contains the token. For example, `<meta http-equiv="refresh" content"=0;url=com.cloudflare.warp://<your-team-name>.cloudflareaccess.com/auth?token=yeooilknmasdlfnlnsadfojDSFJndf_kjnasdf..." />`
-3. Copy the URL field: `com.cloudflare.warp://<your-team-name>.cloudflareaccess.com/auth?token=<your-token>`
-4. In the terminal, run the following command using the URL obtained in the previous step.
-```sh
-warp-cli registration token "com.cloudflare.warp://<your-team-name>.cloudflareaccess.com/auth?token=<your-token>"
-```
-
+  1. On the success page, right-click and select **View Page Source**.
+  2. Find the HTML metadata tag that contains the token. For example, `<meta http-equiv="refresh" content"=0;url=com.cloudflare.warp://<your-team-name>.cloudflareaccess.com/auth?token=yeooilknmasdlfnlnsadfojDSFJndf_kjnasdf..." />`
+  3. Copy the URL field: `com.cloudflare.warp://<your-team-name>.cloudflareaccess.com/auth?token=<your-token>`
+  4. In the terminal, run the following command using the URL obtained in the previous step.
+  ```sh
+  warp-cli registration token "com.cloudflare.warp://<your-team-name>.cloudflareaccess.com/auth?token=<your-token>"
+  ```
 If you get a `401` error, then the token has expired. Generate a new one by refreshing the web page and quickly grab the new token from the page source.
-
-1. If you did not configure the client to [auto-connect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#auto-connect), manually connect:
+8. If you did not configure the client to [auto-connect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#auto-connect), manually connect:
 ```sh
 warp-cli connect
 ```
+9. If the device profile routes `www.cloudflare.com` through WARP, verify the data path:
+```sh
+curl --silent https://www.cloudflare.com/cdn-cgi/trace | grep '^warp=on$'
+```
+```powershell
+if (-not (curl.exe --silent https://www.cloudflare.com/cdn-cgi/trace | Select-String '^warp=on$')) { exit 1 }
+```
+In Include mode, expect `warp=off` for destinations that are not in the include list. Test an included destination instead. In DNS-only mode, use the registration output from step 7 to verify enrollment. DNS-only mode cannot carry network traffic.
 
 The device is now protected by your organization's Zero Trust policies. For more information on all available commands, run `warp-cli --help`.
 
@@ -164,5 +180,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/#page","headline":"Manual deployment · Cloudflare One docs","description":"Manual deployment in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/#page","headline":"Manual deployment · Cloudflare One docs","description":"Manual deployment in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI"]}
 ```

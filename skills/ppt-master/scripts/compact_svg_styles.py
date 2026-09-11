@@ -33,6 +33,7 @@ from typing import Optional
 from xml.etree import ElementTree as ET
 
 from console_encoding import configure_utf8_stdio
+from pptx_to_svg.preset_authoring import authored_preset_encoding
 from svg_to_pptx.drawingml.utils import INHERITABLE_ATTRS
 
 configure_utf8_stdio()
@@ -139,6 +140,11 @@ class _StyleDeclaration:
 
 def _local_name(name: object) -> str:
     return name.rsplit("}", 1)[-1] if isinstance(name, str) else ""
+
+
+def _is_preset_atom(element: ET.Element) -> bool:
+    """Return whether an element is a helper-owned authored preset group."""
+    return isinstance(element.tag, str) and authored_preset_encoding(element) is not None
 
 
 def is_canonical_presentation_value(
@@ -339,7 +345,10 @@ def _promote_common_group_defaults(
     stats: StyleCompactionStats,
 ) -> None:
     """Factor proven direct-child repetition into an existing SVG group."""
-    if _local_name(element.tag) in _DEFINITION_SUBTREES:
+    if (
+        _local_name(element.tag) in _DEFINITION_SUBTREES
+        or _is_preset_atom(element)
+    ):
         return
     for child in element:
         _promote_common_group_defaults(child, stats)
@@ -356,6 +365,10 @@ def _promote_common_group_defaults(
         }
     ]
     if len(children) < 2:
+        return
+    # Helper-owned preset atoms keep their paint local; the preset contract
+    # rejects paint that only arrives from an ancestor group.
+    if any(_is_preset_atom(child) for child in children):
         return
 
     element_styles = _style_declarations(element.get("style"))
@@ -404,7 +417,10 @@ def _remove_redundant_inherited_styles(
     inherited: dict[str, str],
     stats: StyleCompactionStats,
 ) -> None:
-    if _local_name(element.tag) in _DEFINITION_SUBTREES:
+    if (
+        _local_name(element.tag) in _DEFINITION_SUBTREES
+        or _is_preset_atom(element)
+    ):
         return
     declarations = _style_declarations(element.get("style"))
     if declarations is None:

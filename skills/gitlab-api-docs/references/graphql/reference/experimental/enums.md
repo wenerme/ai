@@ -4428,7 +4428,6 @@ Types of principal that can have secrets permissions.
 
 | Value | Description |
 | ----- | ----------- |
-| `GROUP` | group. |
 | `MEMBER_ROLE` | member role. |
 | `ROLE` | predefined role. |
 | `USER` | user. |

@@ -53,7 +53,7 @@ When editing a published application, expand **Additional application settings**
 * **Connection** — Tune connect timeout, keep-alive timeout, keep-alive connections, TCP keep-alive interval, proxy type, or disable Happy Eyeballs.
 [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 
-For the full list of origin parameters, refer to [Origin parameters](https://developers.cloudflare.com/tunnel/advanced/origin-parameters/).
+For the full list of origin parameters, refer to [Origin parameters](https://developers.cloudflare.com/tunnel/reference/origin-parameters/).
 
 ## 2026-08-11
 
@@ -106,7 +106,7 @@ In the tunnel detail view, a new **Live logs** tab lets you:
 * **Filter by log level, event type, and HTTP method** — Narrow the stream to only the events you care about (HTTP, TCP, UDP, or `cloudflared` internal), at any log level.
 [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 
-For more information, refer to [Monitor tunnels](https://developers.cloudflare.com/tunnel/monitoring/#remote-log-streaming) and [Tunnel log streams](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/).
+For more information, refer to [Tunnel observability](https://developers.cloudflare.com/tunnel/observability/#remote-log-streaming) and [Tunnel log streams](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/).
 
 ## 2026-07-09
 
@@ -280,7 +280,7 @@ Granular permissions are a parallel layer to existing account-level roles — th
 
 #### Get started
 
-* Configure [granular permissions for Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/advanced/granular-permissions/).
+* Configure [granular permissions for Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/guides/granular-permissions/).
 * Configure [granular permissions for Cloudflare Tunnel and Cloudflare Mesh in Cloudflare One](https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/).
 * Review the [resource-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles) on the Cloudflare role reference.
 
@@ -316,7 +316,7 @@ Available commands:
 * `wrangler tunnel info` — Display details about a specific tunnel.
 * `wrangler tunnel delete` — Delete a tunnel.
 * `wrangler tunnel run` — Run a tunnel using the cloudflared daemon.
-* `wrangler tunnel quick-start` — Start a free, temporary tunnel without an account using [Quick Tunnels](https://developers.cloudflare.com/tunnel/setup/#quick-tunnels-development).
+* `wrangler tunnel quick-start` — Start a free, temporary tunnel without an account using [Quick Tunnels](https://developers.cloudflare.com/tunnel/get-started/#quick-tunnels-development).
 
 Wrangler handles downloading and managing the [cloudflared](https://developers.cloudflare.com/tunnel/downloads/) binary automatically. On first use, you will be prompted to download `cloudflared` to a local cache directory.
 

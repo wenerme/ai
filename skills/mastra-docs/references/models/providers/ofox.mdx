@@ -5,7 +5,7 @@ description: "Browse Ofox model IDs, capabilities, context windows, and pricing.
 
 # [Ofox logo]Ofox
 
-Access 137 Ofox models through Mastra's model router. Authentication is handled automatically using the `OFOX_API_KEY` environment variable.
+Access 143 Ofox models through Mastra's model router. Authentication is handled automatically using the `OFOX_API_KEY` environment variable.
 
 Learn more in the [Ofox documentation](https://ofox.ai/docs).
 
@@ -484,6 +484,18 @@ for await (const chunk of stream) {
     "outputCost": 1.32
   },
   {
+    "model": "ofox/deepseek/deepseek-v4-flash-0423",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 0.19,
+    "outputCost": 0.51
+  },
+  {
     "model": "ofox/deepseek/deepseek-v4-flash-0731",
     "imageInput": false,
     "audioInput": false,
@@ -671,6 +683,18 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 0.75,
+    "outputCost": 3.75
+  },
+  {
+    "model": "ofox/google/gemini-3.8-flash",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
     "maxOutput": 65536,
     "inputCost": 0.75,
     "outputCost": 3.75
@@ -1108,6 +1132,54 @@ for await (const chunk of stream) {
     "outputCost": 50
   },
   {
+    "model": "ofox/qwen/qwen-flash",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 32000,
+    "inputCost": 0.022,
+    "outputCost": 0.22
+  },
+  {
+    "model": "ofox/qwen/qwen-max",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 32000,
+    "maxOutput": 8000,
+    "inputCost": 0.35,
+    "outputCost": 1.38
+  },
+  {
+    "model": "ofox/qwen/qwen-plus",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 1000000,
+    "maxOutput": 32000,
+    "inputCost": 0.12,
+    "outputCost": 0.29
+  },
+  {
+    "model": "ofox/qwen/qwen-turbo",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 128000,
+    "maxOutput": 16000,
+    "inputCost": 0.043,
+    "outputCost": 0.09
+  },
+  {
     "model": "ofox/qwen/qwen-vl-max",
     "imageInput": true,
     "audioInput": false,
@@ -1248,8 +1320,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 256000,
     "maxOutput": 64000,
-    "inputCost": 0.6,
-    "outputCost": 3.6
+    "inputCost": 0.43,
+    "outputCost": 2.57
   },
   {
     "model": "ofox/qwen/qwen3.6-flash",
@@ -1296,8 +1368,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1064000,
     "maxOutput": 64000,
-    "inputCost": 2.5,
-    "outputCost": 7.5
+    "inputCost": 1.71,
+    "outputCost": 5.14
   },
   {
     "model": "ofox/qwen/qwen3.7-plus",
@@ -1320,8 +1392,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1131072,
     "maxOutput": 131072,
-    "inputCost": 0.45,
-    "outputCost": 3.2
+    "inputCost": 0.5,
+    "outputCost": 1.71
   },
   {
     "model": "ofox/qwen/qwen3.8-flash",
@@ -1332,8 +1404,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 131072,
-    "inputCost": 0.15,
-    "outputCost": 0.47
+    "inputCost": 0.11,
+    "outputCost": 0.39
   },
   {
     "model": "ofox/qwen/qwen3.8-max",
@@ -1344,8 +1416,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 131072,
-    "inputCost": 2,
-    "outputCost": 6
+    "inputCost": 1.71,
+    "outputCost": 5.14
   },
   {
     "model": "ofox/qwen/qwen3.8-max-0902",
@@ -1356,8 +1428,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 131072,
-    "inputCost": 2,
-    "outputCost": 6
+    "inputCost": 1.71,
+    "outputCost": 5.14
   },
   {
     "model": "ofox/volcengine/doubao-seed-1-6",
@@ -1572,8 +1644,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 204800,
     "maxOutput": 131072,
-    "inputCost": 0.4,
-    "outputCost": 1.9
+    "inputCost": 0.6,
+    "outputCost": 2.2
   },
   {
     "model": "ofox/z-ai/glm-4.7",
@@ -1585,7 +1657,7 @@ for await (const chunk of stream) {
     "contextWindow": 204800,
     "maxOutput": 131072,
     "inputCost": 0.4,
-    "outputCost": 2
+    "outputCost": 2.2
   },
   {
     "model": "ofox/z-ai/glm-4.7-flashx",
@@ -1597,7 +1669,7 @@ for await (const chunk of stream) {
     "contextWindow": 200000,
     "maxOutput": 128000,
     "inputCost": 0.072,
-    "outputCost": 0.43
+    "outputCost": 0.4
   },
   {
     "model": "ofox/z-ai/glm-5",

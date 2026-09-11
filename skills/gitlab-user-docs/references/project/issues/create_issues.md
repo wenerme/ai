@@ -1,5 +1,7 @@
 # Create an issue
 
+Create an issue from a project, group, another issue, an issue board, email, a prefilled URL, or Service Desk.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
@@ -201,7 +203,7 @@ To create an issue in the GitLab project:
 
 ## Using Service Desk
 
-To offer email support, enable [Service Desk](../service_desk/_index.md) for your project.
+To offer email support, turn on [Service Desk](../service_desk/_index.md) for your project.
 
 Now, when your customer sends a new email, a new issue can be created in
 the appropriate project and followed up from there.

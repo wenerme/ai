@@ -1,5 +1,7 @@
 # Confidential issues
 
+Turn on confidentiality for an issue to limit visibility to project members with at least the Planner role.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

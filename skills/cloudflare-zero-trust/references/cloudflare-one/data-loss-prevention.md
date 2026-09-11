@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Data loss prevention
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Availability
 
@@ -30,11 +30,11 @@ DLP uses [**profiles**](https://developers.cloudflare.com/cloudflare-one/data-lo
 
 ## Data in transit
 
-Data Loss Prevention complements [Secure Web Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) to detect sensitive data transferred in HTTP requests. DLP scans the HTTP body (excluding headers), which may include uploaded or downloaded files, chat messages, forms, and other web content.
+Data Loss Prevention complements [Secure Web Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) to detect sensitive data transferred in HTTP requests and responses. DLP scans HTTP bodies (excluding headers), which may include uploaded or downloaded files, chat messages, forms, and other web content.
 
-DLP requires [Gateway HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/) with [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) to read the contents of HTTPS traffic in transit. The depth of visibility varies for each site or application. DLP does not scan any traffic that bypasses Cloudflare Gateway (such as traffic that matches a [Do Not Inspect](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) policy).
+DLP requires [Gateway HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/) with [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) to read HTTPS bodies in transit. The depth of visibility varies for each site or application. DLP does not scan any traffic that bypasses Cloudflare Gateway (such as traffic that matches a [Do Not Inspect](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) policy).
 
-To get started, refer to [Scan HTTP traffic with DLP](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/).
+Before deciding what to log or block, use [Passive Detection](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/passive-detection/) to learn which sensitive data types appear in sampled Gateway traffic and where they are found. Use those findings to create or refine a [Gateway DLP policy](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/).
 
 ## Data at rest
 
@@ -88,5 +88,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/#page","headline":"Data loss prevention · Cloudflare One docs","description":"How Data loss prevention works in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/#page","headline":"Data loss prevention · Cloudflare One docs","description":"How Data loss prevention works in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```
