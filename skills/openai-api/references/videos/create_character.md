@@ -1,4 +1,4 @@
-## Create a character from an uploaded video.
+## Create a character
 
 **post** `/videos/characters`
 

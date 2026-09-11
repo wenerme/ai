@@ -247,7 +247,7 @@ Each command's `outcome` is either `{ "type": "exit", "exit_code": <int> }` or `
 
 ## Pricing
 
-Sandbox time (commands run with `engine: "openrouter"`) is billed at **\$0.0001 per second**. The clock starts when a request first runs a sandbox command and stops at the end of the last sandbox command. A container that is idle between requests is not billed.
+Sandbox time (commands run with `engine: "openrouter"`) is billed at **\$0.0001 per second**. The clock starts when a request first runs a sandbox command and stops when the response completes. A container that is idle between requests is not billed.
 
 A request that starts a new or sleeping container is billed a minimum of 30 seconds. Later requests that reuse the same warm container pay only their metered time.
 

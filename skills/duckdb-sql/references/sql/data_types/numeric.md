@@ -169,6 +169,8 @@ functions.
 To generate a UUIDv7 value, use the [`uuidv7()`](https://duckdb.org/docs/current/sql/functions/utility.html#uuidv7) function.
 To retrieve the timestamp from a UUIDv7 value, use the [`uuid_extract_timestamp` function](https://duckdb.org/docs/current/sql/functions/utility.html#uuid_extract_timestampuuidv7):
 
+<!-- test:run-only the timestamp is the moment the value was generated -->
+
 ```sql
 SELECT uuid_extract_timestamp(uuidv7()) AS ts;
 ```

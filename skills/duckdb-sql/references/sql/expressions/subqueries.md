@@ -193,6 +193,8 @@ WHERE grade =
 
 The subquery uses a column from the parent query (`grades_parent.course`). Conceptually, we can see the subquery as a function where the correlated column is a parameter to that function:
 
+<!-- test:skip illustrative pseudo-query; the `?` parameter is never bound -->
+
 ```sql
 SELECT min(grade)
 FROM grades

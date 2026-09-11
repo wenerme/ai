@@ -208,10 +208,13 @@ Example configuration:
 
 ```ruby
 # in /etc/gitlab/gitlab.rb
-gitaly['pack_objects_limiting'] = {
-   'max_concurrency' => 15,
-   'max_queue_length' => 200,
-   'max_queue_wait' => '60s',
+gitaly['configuration'] = {
+   # ...
+   pack_objects_limiting: {
+      max_concurrency: 15,
+      max_queue_length: 200,
+      max_queue_wait: '60s',
+   },
 }
 ```
 
@@ -367,13 +370,16 @@ The following is an example to configure an adaptive limit for pack-objects conc
 
 ```ruby
 # in /etc/gitlab/gitlab.rb
-gitaly['pack_objects_limiting'] = {
-   'max_queue_length' => 200,
-   'max_queue_wait' => '60s',
-   'adaptive' => true,
-   'min_limit' => 10,
-   'initial_limit' => 20,
-   'max_limit' => 40
+gitaly['configuration'] = {
+   # ...
+   pack_objects_limiting: {
+      max_queue_length: 200,
+      max_queue_wait: '60s',
+      adaptive: true,
+      min_limit: 10,
+      initial_limit: 20,
+      max_limit: 40,
+   },
 }
 ```
 

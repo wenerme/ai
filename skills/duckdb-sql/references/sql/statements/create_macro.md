@@ -163,6 +163,8 @@ CREATE OR REPLACE TEMP MACRO dynamic_table(col1_value, col2_value) AS TABLE
 
 Pass an argument as a list:
 
+<!-- test:setup CREATE TABLE users (uid INTEGER, name VARCHAR); -->
+
 ```sql
 CREATE MACRO get_users(i) AS TABLE
     SELECT * FROM users WHERE uid IN (SELECT unnest(i));
@@ -307,6 +309,8 @@ SELECT add(40, 2) AS x;
 ```
 
 Internally, `add` is replaced with its definition of `a + b`:
+
+<!-- test:skip illustrative macro expansion, `a` and `b` are unbound here -->
 
 ```sql
 SELECT a + b AS x;

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Bindings (env)
 
-Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform. Bindings provide better performance and less restrictions when accessing resources from Workers than the [REST APIs](https://developers.cloudflare.com/api/) which are intended for non-Workers applications.
 
@@ -87,7 +87,7 @@ from urllib.parse import urlparse
 class Default(WorkerEntrypoint):
 	async def fetch(self, request):
 		url = urlparse(request.url)
-		key = url.path.slice(1)
+		key = url.path[1:]
 		await self.env.MY_BUCKET.put(key, request.body)
 		return Response(f"Put {key} successfully!")
 ```
@@ -140,7 +140,7 @@ export default {
 	},
 };
 ```
-* It is as class property on [WorkerEntrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#bindings-env), [DurableObject](https://developers.cloudflare.com/durable-objects/), and [Workflow](https://developers.cloudflare.com/workflows/):
+* It is a class property on [WorkerEntrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#bindings-env), [DurableObject](https://developers.cloudflare.com/durable-objects/), and [Workflow](https://developers.cloudflare.com/workflows/):
 ```js
 export class MyDurableObject extends DurableObject {
 	async sayHello() {
@@ -157,7 +157,7 @@ class Default(WorkerEntrypoint):
 * It can be imported from `cloudflare:workers`:
 ```js
 import { env } from "cloudflare:workers";
-console.log(`Hi, ${env.Name}`);
+console.log(`Hi, ${env.NAME}`);
 ```
 ```python
 from workers import env
@@ -223,7 +223,7 @@ from workers import Response, WorkerEntrypoint, env
 class Default(WorkerEntrypoint):
 	async def fetch(self, request):
 		# This works
-		mv_val = await env.KV.get("my-key")
+		my_val = await env.KV.get("my-key")
 		return Response(my_val)
 ```
 
@@ -260,7 +260,7 @@ class Default(WorkerEntrypoint):
 # env is not an argument to say_hello...
 def say_hello():
 	my_name = get_name()
-	return f"Hello, {myName}"
+	return f"Hello, {my_name}"
 
 # ...nor is it an argument to getName
 def get_name():
@@ -328,5 +328,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/#page","headline":"Bindings (env) · Cloudflare Workers docs","description":"Worker Bindings that allow for interaction with other Cloudflare Resources.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/#page","headline":"Bindings (env) · Cloudflare Workers docs","description":"Worker Bindings that allow for interaction with other Cloudflare Resources.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 ```

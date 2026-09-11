@@ -18,9 +18,12 @@ You can also [use your own runners](#configure-runners-to-execute-flows), and
 
 ## Executor architecture
 
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/600436) to a precompiled binary instead of an `npm` package in GitLab 19.4.
+
 When a flow runs in CI/CD, the runner:
 
-1. Downloads the `@gitlab/duo-cli` package from the `npm` registry.
+1. Downloads the GitLab Duo CLI binary for its operating system and architecture from the
+   GitLab package registry. Node.js and `npm` are not needed.
 1. Runs the GitLab Duo CLI, which uses WebSocket to connect to the GitLab Duo Workflow Service.
 1. Executes tools (file operations, Git commands) as directed by the AI model.
 

@@ -987,9 +987,8 @@
   },
   "client-sdks/go/sdks/workspaces/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/workspaces/README.md",
-    "lastModified": "Thu, 27 Aug 2026 09:04:49 GMT",
-    "size": 36330,
-    "updatedAt": "2026-08-27T09:04:49.717Z"
+    "size": 36403,
+    "updatedAt": "2026-09-11T04:29:27.019Z"
   },
   "client-sdks/overview.md": {
     "url": "https://openrouter.ai/docs/client-sdks/overview.md",
@@ -1162,9 +1161,8 @@
   },
   "client-sdks/python/sdks/workspaces/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/workspaces/README.md",
-    "lastModified": "Thu, 27 Aug 2026 09:05:01 GMT",
-    "size": 55321,
-    "updatedAt": "2026-08-27T09:05:01.162Z"
+    "size": 55365,
+    "updatedAt": "2026-09-11T04:29:47.562Z"
   },
   "client-sdks/typescript/overview.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/overview.md",
@@ -1322,9 +1320,8 @@
   },
   "client-sdks/typescript/sdks/workspaces/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/sdks/workspaces/README.md",
-    "lastModified": "Thu, 27 Aug 2026 09:05:11 GMT",
-    "size": 51329,
-    "updatedAt": "2026-08-27T09:05:11.300Z"
+    "size": 51409,
+    "updatedAt": "2026-09-11T04:30:06.045Z"
   },
   "client-sdks/usage-for-agents.md": {
     "url": "https://openrouter.ai/docs/client-sdks/usage-for-agents.md",
@@ -2008,8 +2005,8 @@
   },
   "guides/features/server-tools/bash.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/bash.md",
-    "size": 14071,
-    "updatedAt": "2026-09-10T04:29:39.009Z"
+    "size": 14060,
+    "updatedAt": "2026-09-11T04:31:19.494Z"
   },
   "guides/features/server-tools/datetime.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/datetime.md",
@@ -2037,8 +2034,8 @@
   },
   "guides/features/server-tools/shell.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/shell.md",
-    "size": 13803,
-    "updatedAt": "2026-09-10T04:29:41.298Z"
+    "size": 13792,
+    "updatedAt": "2026-09-11T04:31:22.666Z"
   },
   "guides/features/server-tools/subagent.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/subagent.md",

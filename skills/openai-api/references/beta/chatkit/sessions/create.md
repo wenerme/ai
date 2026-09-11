@@ -1,4 +1,4 @@
-## Create ChatKit session
+## Create a ChatKit session
 
 **post** `/chatkit/sessions`
 

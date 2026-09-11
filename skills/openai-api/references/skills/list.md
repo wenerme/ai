@@ -1,4 +1,4 @@
-## List all skills for the current project.
+## List Skills
 
 **get** `/skills`
 

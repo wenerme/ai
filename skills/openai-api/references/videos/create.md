@@ -1,4 +1,4 @@
-## Create video
+## Create a video
 
 **post** `/videos`
 

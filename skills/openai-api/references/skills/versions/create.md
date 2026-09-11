@@ -1,4 +1,4 @@
-## Create a new immutable skill version.
+## Create Skill Version
 
 **post** `/skills/{skill_id}/versions`
 

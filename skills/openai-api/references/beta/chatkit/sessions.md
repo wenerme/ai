@@ -1,6 +1,6 @@
 # Sessions
 
-## Cancel chat session
+## Cancel a ChatKit session
 
 **post** `/chatkit/sessions/{session_id}/cancel`
 
@@ -211,7 +211,7 @@ curl -X POST \
 }
 ```
 
-## Create ChatKit session
+## Create a ChatKit session
 
 **post** `/chatkit/sessions`
 

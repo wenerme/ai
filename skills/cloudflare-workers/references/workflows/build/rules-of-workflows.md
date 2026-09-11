@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rules of Workflows
 
-Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/build/rules-of-workflows/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/build/rules-of-workflows/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Workflow contains one or more steps. Each step is a self-contained, individually retryable component of a Workflow. Steps may emit (optional) state that allows a Workflow to persist and continue from that step, even if a Workflow fails due to a network or infrastructure issue.
 
@@ -610,7 +610,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 export class MyWorkflow extends WorkflowEntrypoint {
 	async run(event, step) {
-		// 🔴 Bad: The `Promise.race` is not surrounded by a `step.do`, which may cause undeterministic caching behavior.
+		// 🔴 Bad: The `Promise.race` is not surrounded by a `step.do`, which may cause non-deterministic caching behavior.
 		const race_return = await Promise.race([
 			step.do("Promise first race", async () => {
 				await sleep(1000);
@@ -637,7 +637,7 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 export class MyWorkflow extends WorkflowEntrypoint {
 	async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
-		// 🔴 Bad: The `Promise.race` is not surrounded by a `step.do`, which may cause undeterministic caching behavior.
+		// 🔴 Bad: The `Promise.race` is not surrounded by a `step.do`, which may cause non-deterministic caching behavior.
 		const race_return = await Promise.race([
 			step.do("Promise first race", async () => {
 				await sleep(1000);
@@ -1064,5 +1064,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/rules-of-workflows/#page","headline":"Rules of Workflows · Cloudflare Workflows docs","description":"Best practices for building resilient Workflows, including idempotency, state management, and error handling.","url":"https://developers.cloudflare.com/workflows/build/rules-of-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/rules-of-workflows/#page","headline":"Rules of Workflows · Cloudflare Workflows docs","description":"Best practices for building resilient Workflows, including idempotency, state management, and error handling.","url":"https://developers.cloudflare.com/workflows/build/rules-of-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

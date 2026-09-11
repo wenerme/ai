@@ -1,4 +1,4 @@
-## Create an extension of a completed video.
+## Create a video extension
 
 **post** `/videos/extensions`
 

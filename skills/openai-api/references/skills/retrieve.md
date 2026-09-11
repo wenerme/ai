@@ -1,4 +1,4 @@
-## Get a skill by its ID.
+## Get Skill
 
 **get** `/skills/{skill_id}`
 

@@ -7,6 +7,13 @@ Note that this syntax is not compatible with [`GROUP BY ALL`](https://duckdb.org
 
 Compute the average income along the provided four different dimensions:
 
+<!-- test:setup
+CREATE TABLE addresses (city VARCHAR, street_name VARCHAR, income INTEGER);
+INSERT INTO addresses VALUES
+    ('Amsterdam', 'Damrak', 50000), ('Amsterdam', 'Kalverstraat', 65000),
+    ('Rotterdam', 'Coolsingel', 45000), ('Rotterdam', 'Coolsingel', 55000);
+-->
+
 ```sql
 -- the syntax () denotes the empty set (i.e., computing an ungrouped aggregate)
 SELECT city, street_name, avg(income)

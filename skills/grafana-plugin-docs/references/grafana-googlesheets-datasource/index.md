@@ -41,11 +41,11 @@ Before you start, ensure you have:
 
 The following documents help you get started:
 
-- [Configure the data source](/docs/plugins/grafana-googlesheets-datasource/latest/configure/) – Set up authentication and connect to Google Sheets.
-- [Query editor](/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/) – Query spreadsheet data and build panels.
-- [Template variables](/docs/plugins/grafana-googlesheets-datasource/latest/template-variables/) – Create dynamic dashboards with variables.
-- [Alerting](/docs/plugins/grafana-googlesheets-datasource/latest/alerting/) – Create alert rules from Google Sheets queries.
-- [Troubleshooting](/docs/plugins/grafana-googlesheets-datasource/latest/troubleshooting/) – Solve common configuration and query errors.
+- [Configure the data source](/docs/plugins/grafana-googlesheets-datasource/latest/configure/): Set up authentication and connect to Google Sheets.
+- [Query editor](/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/): Query spreadsheet data and build panels.
+- [Template variables](/docs/plugins/grafana-googlesheets-datasource/latest/template-variables/): Create dynamic dashboards with variables.
+- [Alerting](/docs/plugins/grafana-googlesheets-datasource/latest/alerting/): Create alert rules from Google Sheets queries.
+- [Troubleshooting](/docs/plugins/grafana-googlesheets-datasource/latest/troubleshooting/): Solve common configuration and query errors.
 
 [Install the plugin](/docs/grafana/latest/administration/plugin-management/#install-a-plugin) if you haven’t already. Try the [Quick start](#quick-start-create-a-sample-dashboard) below to build a sample dashboard in a few steps.
 
@@ -57,7 +57,7 @@ You can try the data source using a [public demonstration spreadsheet](https://d
 2. Go to **Dashboards** → **New** → **New Dashboard** → **Add visualization**.
 3. Select the **Google Sheets** data source.
 4. In the query editor, paste the spreadsheet ID: `1TZlZX67Y0s4CvRro_3pCYqRCKuXer81oFp_xcsjPpe8`. You can leave **Range** empty to use the first sheet, or set a range (for example, `Sheet1!A1:E100`).
-5. Run the query. Grafana will detect time series data and suggest a time series panel; you can switch to other visualizations (for example, bar gauge, table) from the panel.
+5. Run the query. Grafana detects time series data and suggests a time series panel; you can switch to other visualizations (for example, bar gauge, table) from the panel.
 
 The embedded Grafana Play dashboard at the top of this page shows a full example you can open and edit.
 
@@ -75,7 +75,7 @@ After you configure the data source, you can:
 - Add [annotations](/docs/plugins/grafana-googlesheets-datasource/latest/annotations/) to overlay events on panels
 - Set up [alerting](/docs/plugins/grafana-googlesheets-datasource/latest/alerting/) to create alert rules from your queries
 - Use [template variables](/docs/plugins/grafana-googlesheets-datasource/latest/template-variables/) in queries
-- Use [Explore](/docs/grafana/latest/explore/) for ad-hoc queries without building a dashboard
+- Use [Explore](/docs/grafana/latest/explore/) for free-form queries without building a dashboard
 - Apply [transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to query results
 
 ## Quota

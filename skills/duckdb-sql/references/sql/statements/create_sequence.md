@@ -120,6 +120,8 @@ SELECT nextval('serial') AS nextval;
 
 Using this sequence in an `INSERT` command:
 
+<!-- test:setup CREATE TABLE IF NOT EXISTS distributors (id INTEGER, name VARCHAR); -->
+
 ```sql
 INSERT INTO distributors VALUES (nextval('serial'), 'nothing');
 ```
@@ -191,6 +193,8 @@ SELECT * FROM tbl;
 
 Even though the sequence is no longer used, attempting to drop it results in an error:
 
+<!-- test:skip the generator's section resets clear the dependency this example needs -->
+
 ```sql
 DROP SEQUENCE id_sequence;
 ```
@@ -203,6 +207,8 @@ Use DROP...CASCADE to drop all dependents.
 ```
 
 As the error message suggests, you can force dropping by adding `CASCADE`. However, DuckDB currently tracks dependencies at the table level, so attempting to drop with `CASCADE` drops the entire table:
+
+<!-- test:skip follows the skipped DROP above -->
 
 ```sql
 DROP SEQUENCE id_sequence CASCADE;

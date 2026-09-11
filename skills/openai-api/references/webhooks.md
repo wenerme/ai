@@ -372,8 +372,9 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
     - `session_id: string`
 
-      The `live_...` ID of the pending SIP session. Forward this value
-      unchanged when accepting or rejecting the call through the Live API.
+      The `live_...` ID of the pending SIP session. Pass this value unchanged
+      to Live call controls and sideband connections. The corresponding
+      `realtime.call.incoming` event uses a separate `rtc_...` call ID.
 
     - `sip_headers: array of object { name, value }`
 
@@ -1059,8 +1060,9 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `session_id: string`
 
-        The `live_...` ID of the pending SIP session. Forward this value
-        unchanged when accepting or rejecting the call through the Live API.
+        The `live_...` ID of the pending SIP session. Pass this value unchanged
+        to Live call controls and sideband connections. The corresponding
+        `realtime.call.incoming` event uses a separate `rtc_...` call ID.
 
       - `sip_headers: array of object { name, value }`
 

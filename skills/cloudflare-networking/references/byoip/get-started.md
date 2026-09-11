@@ -55,8 +55,7 @@ The process described on this page only supports using Cloudflare's ASN (AS13335
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes" \
 	--request POST \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
 		"cidr": "203.0.113.0/24",
 		"asn": 13335,
@@ -130,8 +129,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/validate" \
 	--request POST \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Once the ownership validation is successful, you can remove the token.
@@ -152,8 +150,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/delegations" \
 	--request POST \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
 		"cidr": "<IP_PREFIX_TO_DELEGATE>",
 		"delegated_account_id": "<ACCOUNT_ID>"
@@ -191,8 +188,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \
 	--request POST \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
 		"cidr": "203.0.113.0/24",
 		"service_id": "<DEFAULT_SERVICE>"
@@ -238,8 +234,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \
 	--request POST \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
 		"cidr": "203.0.113.16/29",
 		"service_id": "<SERVICE_ID>"
@@ -290,8 +285,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes/$BGP_PREFIX_ID" \
 	--request PATCH \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
 		"on_demand": {
 				"advertised": true

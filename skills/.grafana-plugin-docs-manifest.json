@@ -866,38 +866,38 @@
   },
   "grafana-googlesheets-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/alerting.md",
-    "size": 4866,
-    "updatedAt": "2026-06-25T05:42:10.778Z"
+    "size": 4848,
+    "updatedAt": "2026-09-11T04:34:08.865Z"
   },
   "grafana-googlesheets-datasource/annotations.md": {
     "url": "https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/annotations.md",
-    "size": 4786,
-    "updatedAt": "2026-06-25T05:42:11.142Z"
+    "size": 4781,
+    "updatedAt": "2026-09-11T04:34:09.028Z"
   },
   "grafana-googlesheets-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/configure.md",
-    "size": 15371,
-    "updatedAt": "2026-06-25T05:42:11.519Z"
+    "size": 15344,
+    "updatedAt": "2026-09-11T04:34:09.181Z"
   },
   "grafana-googlesheets-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest.md",
-    "size": 7028,
-    "updatedAt": "2026-06-25T05:42:11.878Z"
+    "size": 7023,
+    "updatedAt": "2026-09-11T04:34:09.355Z"
   },
   "grafana-googlesheets-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/query-editor.md",
-    "size": 14194,
-    "updatedAt": "2026-06-25T05:42:12.255Z"
+    "size": 14531,
+    "updatedAt": "2026-09-11T04:34:09.508Z"
   },
   "grafana-googlesheets-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/template-variables.md",
-    "size": 5682,
-    "updatedAt": "2026-06-25T05:42:12.616Z"
+    "size": 5691,
+    "updatedAt": "2026-09-11T04:34:09.667Z"
   },
   "grafana-googlesheets-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-googlesheets-datasource/latest/troubleshooting.md",
-    "size": 17429,
-    "updatedAt": "2026-06-25T05:42:12.985Z"
+    "size": 18180,
+    "updatedAt": "2026-09-11T04:34:09.828Z"
   },
   "grafana-helloworld-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-helloworld-datasource/latest.md",

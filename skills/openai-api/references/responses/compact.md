@@ -1,4 +1,4 @@
-## Compact a response
+## Compact conversation
 
 **post** `/responses/compact`
 

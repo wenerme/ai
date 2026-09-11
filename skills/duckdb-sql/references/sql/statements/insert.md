@@ -6,6 +6,12 @@ The `INSERT` statement inserts new data into a table.
 
 Insert the values 1, 2, 3 into `tbl`:
 
+<!-- test:setup
+CREATE TABLE tbl (i INTEGER);
+CREATE TABLE other_tbl (i INTEGER);
+INSERT INTO other_tbl VALUES (7);
+-->
+
 ```sql
 INSERT INTO tbl
     VALUES (1), (2), (3);
@@ -33,6 +39,12 @@ INSERT INTO tbl (i)
 ```
 
 Assuming `tbl` has a primary key/unique constraint, do nothing on conflict:
+
+<!-- test:setup
+DROP TABLE tbl;
+CREATE TABLE tbl (i INTEGER PRIMARY KEY);
+INSERT INTO tbl VALUES (1);
+-->
 
 ```sql
 INSERT OR IGNORE INTO tbl (i)
@@ -120,6 +132,8 @@ It's important to note that when using `INSERT INTO ... BY NAME`, the column nam
 
 An `ON CONFLICT` clause can be used to perform a certain action on conflicts that arise from `UNIQUE` or `PRIMARY KEY` constraints.
 An example for such a conflict is shown in the following example:
+
+<!-- test:error -->
 
 ```sql
 CREATE TABLE tbl (i INTEGER PRIMARY KEY, j INTEGER);
@@ -288,6 +302,8 @@ SELECT * FROM tbl;
 |--:|---:|----:|
 | 1 | 20 | 300 |
 
+<!-- test:run-only the table below is the state of `tbl`, not this statement's output -->
+
 ```sql
 INSERT INTO tbl
     VALUES (1, 40, 700)
@@ -297,6 +313,8 @@ INSERT INTO tbl
 | i | j  |  k   |
 |--:|---:|-----:|
 | 1 | 20 | 1400 |
+
+<!-- test:run-only the table below is the state of `tbl`, not this statement's output -->
 
 ```sql
 INSERT INTO tbl

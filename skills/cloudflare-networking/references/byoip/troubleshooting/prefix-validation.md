@@ -26,8 +26,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID" \
 	--request GET \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 ```json
  "result": {
@@ -63,8 +62,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/validate" \
 	--request POST \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY"
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
 Was this helpful?

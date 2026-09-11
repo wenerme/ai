@@ -19,6 +19,20 @@ For example:
 SELECT ((JSON '{"field": 42}')->'field') = 42;
 ```
 
+The low precedence also applies when an extraction is combined with other conditions in a `WHERE` clause: `AND` and `OR` bind more tightly than the arrow operators, so the condition preceding the extraction is absorbed into the arrow operator's left operand, and the query fails with an error message that does not mention precedence. For example:
+
+```sql
+SELECT count(*) FROM (VALUES ('{}'::JSON)) t(j)
+WHERE 1 = 1 AND j->>'field' IS NOT NULL;
+```
+
+```console
+Conversion Error:
+Failed to cast value to numerical: {} when casting from source column j
+```
+
+Here, the condition is parsed as `((1 = 1 AND j)->>'field') IS NOT NULL`. Parenthesizing the extraction, i.e., `(j->>'field') IS NOT NULL`, or using the equivalent function instead of the operator, i.e., `json_extract_string(j, 'field') IS NOT NULL`, avoids the issue. In DuckDB v2.0.0 and later, the arrow operators bind more tightly and this example works without parentheses.
+
 > Warning DuckDB's JSON data type uses [0-based indexing](https://duckdb.org/docs/current/data/json/overview.html#indexing).
 
 Examples:
@@ -159,6 +173,8 @@ FROM extracted;
 ```
 
 ## JSON Scalar Functions
+
+<!-- test:setup DROP TABLE IF EXISTS example; -->
 
 The following scalar JSON functions can be used to gain information about the stored JSON values.
 With the exception of `json_valid(json)`, all JSON functions produce an error when invalid JSON is supplied.
@@ -412,6 +428,8 @@ SELECT json_group_structure(j) FROM example2;
 
 ## Transforming JSON to Nested Types
 
+<!-- test:setup DROP TABLE IF EXISTS example; -->
+
 In many cases, it is inefficient to extract values from JSON one-by-one.
 Instead, we can “extract” all values at once, transforming JSON to the nested types `LIST` and `STRUCT`.
 
@@ -463,6 +481,8 @@ Failed to cast value: "anatidae"
 ```
 
 ## JSON Table Functions
+
+<!-- test:setup DROP TABLE IF EXISTS example; -->
 
 DuckDB implements two JSON table functions that take a JSON value and produce a table from it.
 

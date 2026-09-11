@@ -5,7 +5,7 @@ description: "Browse Inception model IDs, capabilities, context windows, and pri
 
 # [Inception logo]Inception
 
-Access 2 Inception models through Mastra's model router. Authentication is handled automatically using the `INCEPTION_API_KEY` environment variable.
+Access 3 Inception models through Mastra's model router. Authentication is handled automatically using the `INCEPTION_API_KEY` environment variable.
 
 Learn more in the [Inception documentation](https://platform.inceptionlabs.ai/docs).
 
@@ -50,6 +50,18 @@ for await (const chunk of stream) {
     "maxOutput": 50000,
     "inputCost": 0.25,
     "outputCost": 0.75
+  },
+  {
+    "model": "inception/mercury-2.5",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 260000,
+    "maxOutput": 65536,
+    "inputCost": 0.04,
+    "outputCost": 0.15
   },
   {
     "model": "inception/mercury-edit-2",

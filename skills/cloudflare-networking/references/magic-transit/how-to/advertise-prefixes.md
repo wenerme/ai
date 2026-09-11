@@ -73,8 +73,7 @@ Create a [POST request](https://developers.cloudflare.com/api/resources/addressi
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes" \
 	--request POST \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
 		"cidr": "192.0.2.0/24"
 	}'
@@ -107,8 +106,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes/$BGP_PREFIX_ID" \
 	--request PATCH \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
 		"on_demand": {
 				"advertised": true
@@ -151,8 +149,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes/$BGP_PREFIX_ID" \
 	--request PATCH \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
 		"asn_prepend_count": 3
 	}'
@@ -217,8 +214,7 @@ At least one of the following [token permissions](https://developers.cloudflare.
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes/$BGP_PREFIX_ID" \
 	--request PATCH \
-	--header "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-	--header "X-Auth-Key: $CLOUDFLARE_API_KEY" \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
 		"auto_advertise_withdraw": true
 	}'

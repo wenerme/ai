@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # MCP server portals
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An MCP server portal centralizes multiple [Model Context Protocol (MCP) servers ↗](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) onto a single HTTP endpoint.
 
@@ -95,8 +95,10 @@ MCP server portals were previously referred to as **Agents Gateway** in some con
 
 ## Prerequisites
 
-* An [active domain on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/)
-* Domain uses either a [full setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or a [partial (CNAME) setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)
+* A domain for the portal URL. You can use one of the following:
+  * An [active domain on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) that uses either a [full setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or a [partial (CNAME) setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)
+  * Your account's [workers.dev subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/)
+  * A `pages.dev` domain associated with a Cloudflare Pages project
 * An [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) configured on Cloudflare Zero Trust
 
 ## Add an MCP server
@@ -239,7 +241,7 @@ To create an MCP server portal:
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **MCP Portals**.
 2. Select **Add MCP server portal**.
 3. Enter any name for the portal.
-4. Under **Custom domain**, select a domain for the portal URL. Domains must belong to an active zone in your Cloudflare account. You can optionally specify a subdomain.
+4. Under **Custom domain**, select a domain for the portal URL. You can choose a domain from an active zone in your account, your account's `workers.dev` subdomain, or a `pages.dev` domain associated with a Pages project. You can optionally specify a subdomain.
 5. [Add MCP servers](#add-an-mcp-server) to the portal.
 6. (Optional) Under **MCP servers**, [configure the tools and prompts](#manage-tools-and-prompts) available through the portal.
 7. (Optional) Configure **Require user auth** for servers that support OAuth: - `Enabled`: (default) User will be prompted to utilize their own login credentials to establish a connection with the MCP server. - `Disabled`: Users who are connected to the portal will automatically have access to the MCP server via its [admin credential](#reauthenticate-the-mcp-server).
@@ -781,12 +783,28 @@ Gateway routing supports [Streamable HTTP ↗](https://spec.modelcontextprotocol
 
 ### Enable Gateway routing
 
-To route MCP server portal traffic through Gateway:
+You can route every server in a portal through Gateway or turn on routing for individual servers. If Gateway routing is enabled on the portal, it applies to every server in that portal regardless of the server-level setting.
+
+#### Route every server in a portal
+
+To route traffic from every MCP server in a portal through Gateway:
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **MCP Portals**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.
 3. Under **Basic information**, turn on **Route traffic through Cloudflare Gateway**.
 4. Select **Save**.
+
+#### Route an individual server
+
+To route traffic from one MCP server through Gateway without enabling Gateway routing for the entire portal:
+
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
+2. Go to the **MCP servers** tab.
+3. Find the server you want to configure, then select the three dots > **Edit**.
+4. Under **Basic information**, turn on **Route traffic through Cloudflare Gateway**.
+5. Select **Save**.
+
+The API field for the server-level setting is `secure_web_gateway`. It defaults to `false`.
 
 Portal traffic will now appear in your [Gateway HTTP logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/). To apply DLP scanning, [create a Gateway HTTP policy](#example-gateway-policy).
 
@@ -1187,5 +1205,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

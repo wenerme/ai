@@ -1,4 +1,4 @@
-## Retrieve ChatKit thread
+## Retrieve a ChatKit thread
 
 **get** `/chatkit/threads/{thread_id}`
 

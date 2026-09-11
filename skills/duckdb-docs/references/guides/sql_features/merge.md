@@ -86,6 +86,8 @@ INSERT INTO master_ducks VALUES
 
 This statement will perform the merge, it will check for differences between the data of target and source and follow the `WHEN MATCHED` or `WHEN NOT MATCHED` logic specified.
 
+<!-- test:run-only rows carry CURRENT_DATE, which moves; see test/docs/FINDINGS.md for the assertion failure this triggers on 2.0 -->
+
 ```sql
 MERGE INTO master_ducks AS target
 USING incoming_ducks AS source
@@ -179,6 +181,8 @@ Returns:
 - The field that will change is `location`, it is currently `Pond A` and will be updated to `Pond B`.
 
 To view the current row of data:
+
+<!-- test:run-only the dates in the result move with CURRENT_DATE -->
 
 ```sql
 SELECT * FROM master_ducks where duck_name = 'Quackers' and is_current = true;

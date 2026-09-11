@@ -1,6 +1,6 @@
 # Versions
 
-## Create a new immutable skill version.
+## Create Skill Version
 
 **post** `/skills/{skill_id}/versions`
 
@@ -89,7 +89,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions \
 }
 ```
 
-## Delete a skill version.
+## Delete Skill Version
 
 **delete** `/skills/{skill_id}/versions/{version}`
 
@@ -138,7 +138,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
 }
 ```
 
-## List skill versions for a skill.
+## List Skill Versions
 
 **get** `/skills/{skill_id}/versions`
 
@@ -251,7 +251,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions \
 }
 ```
 
-## Get a specific skill version.
+## Get Skill Version
 
 **get** `/skills/{skill_id}/versions/{version}`
 
@@ -430,7 +430,7 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
 
 # Content
 
-## Download a skill version zip bundle.
+## Get Skill Version Content
 
 **get** `/skills/{skill_id}/versions/{version}/content`
 

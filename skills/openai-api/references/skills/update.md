@@ -1,4 +1,4 @@
-## Update the default version pointer for a skill.
+## Update Skill Default Version
 
 **post** `/skills/{skill_id}`
 

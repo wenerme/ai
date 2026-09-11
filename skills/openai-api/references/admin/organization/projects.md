@@ -5341,7 +5341,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
 # API Keys
 
-## Create project service account API key
+## Create an API key for a service account
 
 **post** `/organization/projects/{project_id}/service_accounts/{service_account_id}/api_keys`
 
@@ -6300,7 +6300,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/spend_li
 }
 ```
 
-## Retrieve project spend limit
+## Get project spend limit
 
 **get** `/organization/projects/{project_id}/spend_limit`
 

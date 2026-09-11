@@ -118,7 +118,7 @@ Included products
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/mesh.xml)
 * [Multi-Cloud Networking](https://developers.cloudflare.com/multi-cloud-networking/)
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/multi-cloud-networking.xml)
-* [Risk Score](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/)
+* [Risk Score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/)
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/risk-score.xml)
 
 #### Consumer services

@@ -91,6 +91,19 @@ These errors appear in the panel, in the query editor, or in the query response 
 - If **Use Time Filter** is enabled, the panel only shows rows where the time column falls within the dashboard time range. Widen the dashboard time range or ensure the sheet has a column the plugin detects as time (date/datetime format) and that its values are inside the selected range.
 - Check that the sheet has data in the specified range and that the first row is the header row.
 
+### Null or empty values for cells with formula errors
+
+**Cause:** A cell in a number-formatted column contains a formula that returns an error (for example, `#DIV/0!`, `#N/A`, or `#REF!`) or has not yet computed a value. The plugin returns a null (empty) value for that cell.
+
+**Solution:**
+
+- Open the spreadsheet and fix the formula in the affected cell so it returns a valid number.
+- If the error is expected, either remove the cell’s contents or exclude that row from the query **Range** so the null value doesn’t affect your panel.
+
+> Note
+>
+> In plugin versions before 2.6.0, a formula error in a numeric column could cause the whole query to fail. From 2.6.0 onward, only the affected cell is null and the rest of the query still returns.
+
 ### “input data must be a wide series” or `[sse.readDataError]`
 
 **Cause:** The query range returns data in a format that Grafana cannot interpret as a wide series. This typically happens when the range is invalid, points to an empty area, or the sheet layout does not match what the panel or expression expects.
@@ -99,13 +112,13 @@ These errors appear in the panel, in the query editor, or in the query response 
 
 Expand table
 
-| Cause                       | Solution                                                                                                                                                                                                                                                                                                                                 |
-|-----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Invalid range syntax        | Use valid [A1 notation](https://developers.google.com/sheets/api/guides/concepts#a1_notation). The sheet name and cell references must be correct (for example, `Sheet1!A1:E100`, not `Sheet 1:A1:E100`). Refer to [Range syntax examples](/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/#range) for valid formats.  |
-| Range points to empty cells | Verify the range contains data. Open the spreadsheet and confirm the cells are populated.                                                                                                                                                                                                                                                |
-| Sheet name mismatch         | Sheet names in the range are case-sensitive and must match exactly, including spaces (for example, `'My Sheet'!A1:D10`). Wrap names that contain spaces in single quotes.                                                                                                                                                                |
-| Data is not in wide format  | The Google Sheets plugin returns data in wide format (one column per field). If you’re using a SQL expression or transformation that expects a different layout, refer to [Use SQL expressions with Google Sheets data](/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/#use-sql-expressions-with-google-sheets-data). |
-| Range includes only headers | Ensure your range includes at least one data row below the header row.                                                                                                                                                                                                                                                                   |
+| Cause                       | Solution                                                                                                                                                                                                                                                                                                                                  |
+|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Invalid range syntax        | Use valid [A1 notation](https://developers.google.com/sheets/api/guides/concepts#a1_notation). The sheet name and cell references must be correct (for example, `Sheet1!A1:E100`, not `Sheet 1:A1:E100`). Refer to [Range syntax examples](/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/#range) for valid formats.   |
+| Range points to empty cells | Verify the range contains data. Open the spreadsheet and confirm the cells are populated.                                                                                                                                                                                                                                                 |
+| Sheet name mismatch         | Sheet names in the range are case-sensitive and must match exactly, including spaces (for example, `'My Sheet'!A1:D10`). Wrap names that contain spaces in single quotes.                                                                                                                                                                 |
+| Data is not in wide format  | The Google Sheets plugin returns data in wide format (one column per field). If you’re using an SQL expression or transformation that expects a different layout, refer to [Use SQL expressions with Google Sheets data](/docs/plugins/grafana-googlesheets-datasource/latest/query-editor/#use-sql-expressions-with-google-sheets-data). |
+| Range includes only headers | Ensure your range includes at least one data row below the header row.                                                                                                                                                                                                                                                                    |
 
 ### Invalid time column / error while parsing date
 
@@ -127,7 +140,7 @@ Issues specific to query variables that get their options from a Google Sheet.
 **Solution:**
 
 - Confirm **Spreadsheet ID** and **Range** in the variable query. Ensure **Value Field** is set to a column that exists in the range.
-- If you use **Optional filtering** (**Filter Field** and **Filter Value**), ensure at least some rows match; otherwise the list will be empty.
+- If you use **Optional filtering** (**Filter Field** and **Filter Value**), ensure at least some rows match; otherwise the list is empty.
 - Test the same range in a panel query to confirm the sheet returns data.
 
 ## Annotations
