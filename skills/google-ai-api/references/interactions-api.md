@@ -76,13 +76,16 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
   Gemini 3.1 Flash Image.
 - `gemini-3.5-flash`
 
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
+  Gemini 3.5 Flash - Our earlier Flash model, built for speed and foundational performance across routine, high-throughput workloads.
 - `gemini-3.6-flash`
 
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
+  Gemini 3.6 Flash - Our previous generation Flash model, balancing speed and multimodal capabilities across general agentic and everyday tasks.
 - `gemini-3.7-flash`
 
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
+  Gemini 3.7 Flash - Our high-speed, efficient Flash model built for everyday coding, agentic tool use, and reliable multi-step execution.
+- `gemini-3.8-flash`
+
+  Gemini 3.8 Flash - Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.
 - `lyria-3-clip-preview`
 
   Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
@@ -649,7 +652,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Cancel Interaction
 
-<iframe src="https:///frame/api/interactions-api_51cc99d1cf6891cf46a52413632d15221a55fdec3919f1dfc02490c2c937d637.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_afe8a0a81f13769ae08ec9819006e4681a6788e73acebeb0ecff7d10b1591de5.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -738,7 +741,7 @@ If successful, the response is empty.
 
 ### Delete
 
-<iframe src="https:///frame/api/interactions-api_53aae4c0295a1b0267711808f068d4f39c64345e844fbf8869bbdefa51bb0f3a.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_ea87e486401426a4a86b18b84aa3b73ea64565bcac5a098257cd847bd211a633.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ## Resources
 
@@ -884,13 +887,16 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
   Gemini 3.1 Flash Image.
 - `gemini-3.5-flash`
 
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
+  Gemini 3.5 Flash - Our earlier Flash model, built for speed and foundational performance across routine, high-throughput workloads.
 - `gemini-3.6-flash`
 
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
+  Gemini 3.6 Flash - Our previous generation Flash model, balancing speed and multimodal capabilities across general agentic and everyday tasks.
 - `gemini-3.7-flash`
 
-  Our most intelligent model for sustained frontier performance in agentic and coding tasks.
+  Gemini 3.7 Flash - Our high-speed, efficient Flash model built for everyday coding, agentic tool use, and reliable multi-step execution.
+- `gemini-3.8-flash`
+
+  Gemini 3.8 Flash - Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.
 - `lyria-3-clip-preview`
 
   Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
@@ -1379,6 +1385,17 @@ in the final response.
 processing MediaProcessing or enum (string) (optional) How the model processes this video for understanding.
 <br />
 
+#### Fields
+
+end_offset string (optional) Optional. Segment end time. Specified as a decimal number of seconds followed
+by an 's' suffix, e.g., "30s". Must be non-negative and greater than
+\`start_offset\` if \`start_offset\` is set.
+fps number (optional) Optional. Video frame-rate sampling density.
+start_offset string (optional) Optional. Segment start time. Specified as a decimal number of seconds followed
+by an 's' suffix, e.g., "10.5s". Must be non-negative.
+type object (optional) No description provided.
+
+Always set to `"static"`.
 resolution MediaResolution (optional) The resolution of the media.
 <br />
 
@@ -2183,7 +2200,6 @@ type object (required) No description provided.
 Always set to `"file_search_result"`.
 FunctionResultDelta <br />
 
-call_id string (required) Required. ID to match the ID from the function call block.
 is_error boolean (optional) No description provided.
 name string (optional) No description provided.
 result array ([ImageContent](https://ai.google.dev/api/interactions-api#Resource:ImageContent) or [TextContent](https://ai.google.dev/api/interactions-api#Resource:TextContent)) or object or string (required) No description provided.
@@ -3513,6 +3529,7 @@ summary array (ThoughtSummaryContent) (optional) A summary of the thought.
 
 #### Possible Types
 
+Polymorphic discriminator: `type`
 ImageContent An image content block.
 data string (optional) The image content.
 mime_type enum (string) (optional) The mime type of the image.

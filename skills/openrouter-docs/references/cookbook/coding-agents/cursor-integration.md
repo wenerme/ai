@@ -50,7 +50,7 @@ Cursor supports OpenRouter through its **Override OpenAI Base URL** feature. Thi
 After connecting, add the models you want to use. In the **Models** section, click **+ Add model** and enter an [OpenRouter model ID](https://openrouter.ai/models):
 
 * `~anthropic/claude-opus-latest`
-* `~openai/gpt-latest`
+* `~openai/gpt-sol-latest`
 * `~moonshotai/kimi-latest`
 * `deepseek/deepseek-v4-flash`
 

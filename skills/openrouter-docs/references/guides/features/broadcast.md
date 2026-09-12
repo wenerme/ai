@@ -111,9 +111,49 @@ These counters exclude client function calls and OpenRouter-orchestrated tool-ca
 
 Anthropic may report a TTL split at stream start and subsequently increase the cache-write aggregate during server-tool execution without sending a revised split. In that case, Broadcast preserves the later total and exports a null TTL breakdown rather than attributing the difference to a guessed TTL. When iteration usage is present, the exported quantities include all reported iterations.
 
-For BYOK reconciliation, use available cache and native-tool quantities with your provider's rates, and distinguish fallback-estimated generations using `usage_is_estimated`. These additional exports do not change billing, existing native token counts, or API response usage. Provider-reported cache-write totals can differ from the quantities normalized by OpenRouter's pricing layer. The raw provider usage object is not included in these fields.
+For BYOK reconciliation, use available cache and native-tool quantities with your provider's rates, and distinguish fallback-estimated generations using `usage_is_estimated`. These additional exports do not change billing, existing native token counts, or API response usage. Provider-reported cache-write totals can differ from the quantities normalized by OpenRouter's pricing layer.
+
+#### Raw provider usage
+
+With the **Cost** metadata opt-in enabled, `upstream_raw_response_usage` carries the provider's own usage values as they arrived, before OpenRouter normalizes them. Unknown provider fields are preserved, so this object can change whenever a provider changes its API. Without the Cost opt-in, the field is absent from the export entirely, along with the rest of `openrouter_generation`.
+
+| Container        | Meaning                                                                                                                                                                                  |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Object           | One usage report, such as a final non-streaming or Responses usage object.                                                                                                               |
+| Array of objects | Several usage reports for one generation, in the order the provider sent them, such as Anthropic stream frames. Do not add their values together; a provider may send cumulative totals. |
+| `null`           | No provider usage was captured or the value was suppressed.                                                                                                                              |
+
+This field is provider evidence, not an invoice calculation, and not every provider reports usage. Its values are not OpenRouter's accounting inputs: read `promptTokens`, `completionTokens`, costs, and the fields above for accounting, and treat differences between the two as expected rather than as a billing discrepancy.
+
+OpenRouter replaces the object with `null` and records `upstream_raw_response_usage_suppression_reason` when:
+
+| Reason            | Condition                                                                                                         |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `privacy_mode`    | The destination has Privacy Mode enabled.                                                                         |
+| `usage_estimated` | Accounting used fallback quantities or pricing, so the partial provider report would misrepresent the generation. |
+| `size_limit`      | The provider's usage JSON exceeded 64 KiB. The object is never truncated.                                         |
+
+An absent reason with a `null` value means provider usage was simply unavailable. An absent field means the export predates this feature. A reported `0` remains a provider-reported zero.
 
 See the [S3 field locations](/docs/guides/features/broadcast/s3#billing-quantities) and [OTEL attribute mappings](/docs/guides/features/broadcast/otel-collector#billing-quantities) for destination-specific examples.
+
+### Large Trace Values
+
+This applies to the OpenTelemetry-based destinations (Arize, Grafana, Langfuse, LangSmith, New Relic, OpenInference, OTel Collector, Phoenix, Ramp, Sentry, and Webhook). Other destinations are not bounded this way and emit no truncation markers.
+
+Large agent transcripts are normal, so broadcast delivery keeps the rest of the trace when an individual trace or observation value exceeds the per-attribute character limit (currently 10,000,000 characters). The oversized value is shortened rather than causing the trace to be dropped, and a boolean `<key>.truncated` attribute is added alongside it.
+
+The shortened value carries an `openrouter_truncated` marker in one of three shapes, depending on what was cut:
+
+```json theme={null}
+{ "openrouter_truncated": { "omitted_items": 12 } }
+{ "openrouter_truncated": { "omitted_keys": 3 } }
+{ "openrouter_truncated": { "reason": "too_large" } }
+```
+
+An array keeps its leading elements and appends the `omitted_items` marker; an object keeps its leading entries and appends `omitted_keys`; a string keeps its longest fitting prefix and ends in `[truncated]`; and a value that cannot be shortened in place (or cannot be serialized at all) is replaced by the `reason` marker (`too_large` or `unserializable`).
+
+The span includes an `openrouter.trace_truncated` event with the affected attribute keys, truncation reason, and character limit. The event also includes a plain-language message explaining that part of the trace was shortened. The remainder of the trace is still delivered to the destination.
 
 ### Optional Trace Data
 

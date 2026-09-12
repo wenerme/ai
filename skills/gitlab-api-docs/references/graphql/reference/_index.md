@@ -32430,7 +32430,8 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="agentplatformsessionsaggregationresponsedimensions-createdeventat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
+| <a id="agentplatformsessionsaggregationresponsedimensions-createdeventat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, monthly, or a fixed number of days between 1d and 399d (for example 30d). |
+| <a id="agentplatformsessionsaggregationresponsedimensions-createdeventat-origin"></a>`origin` | [`Time`](#time) | Anchor for fixed-day granularities: buckets start at this timestamp and repeat every N days. Only valid with a fixed-day granularity. |
 
 ### `AgentPlatformSessionsAggregationResponseDurationMetrics`
 
@@ -33994,6 +33995,7 @@ Arguments:
 | <a id="analytics-mergerequests-authorid"></a>`authorId` | [`[String!]`](#string) | Filter by one or many author Global IDs. |
 | <a id="analytics-mergerequests-createdatfrom"></a>`createdAtFrom` | [`Time`](#time) | Filter by merge request creation timestamp. Start of the range. |
 | <a id="analytics-mergerequests-createdatto"></a>`createdAtTo` | [`Time`](#time) | Filter by merge request creation timestamp. End of the range. |
+| <a id="analytics-mergerequests-createdbyduo"></a>`createdByDuo` | [`[Boolean!]`](#boolean) | Filter by whether the merge request was created by a GitLab Duo Agent Platform session. |
 | <a id="analytics-mergerequests-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
 | <a id="analytics-mergerequests-metricmergedatfrom"></a>`metricMergedAtFrom` | [`Time`](#time) | Filter by merge timestamp. Start of the range. |
 | <a id="analytics-mergerequests-metricmergedatto"></a>`metricMergedAtTo` | [`Time`](#time) | Filter by merge timestamp. End of the range. |
@@ -34566,6 +34568,7 @@ Fields:
 | <a id="artifactregistryversion-commitsha"></a>`commitSha`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Commit SHA the version was published from, within the resolved project. Null when there is no SHA or project, or the viewer cannot read the project code. |
 | <a id="artifactregistryversion-createdat"></a>`createdAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp the version was published. Null when Artifact Registry stored none. |
 | <a id="artifactregistryversion-createdby"></a>`createdBy`  | [`UserCore`](#usercore) | Introduced in GitLab 19.4. Status: Experiment. User who published the version, resolved from the reference Artifact Registry stores. Null when it stored none or the user no longer exists. |
+| <a id="artifactregistryversion-disttags"></a>`distTags`  | [`[String!]!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Names of the npm dist-tags bound to the version, in ascending name order. Empty for Maven versions. |
 | <a id="artifactregistryversion-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.4. Status: Experiment. ID of the version in Artifact Registry. |
 | <a id="artifactregistryversion-project"></a>`project`  | [`Project`](#project) | Introduced in GitLab 19.4. Status: Experiment. Project the version was published from, resolved from the reference Artifact Registry stores. Null when it stored none, the project no longer exists, or the viewer cannot see the project. |
 | <a id="artifactregistryversion-sizebytes"></a>`sizeBytes`  | [`BigInt`](#bigint) | Introduced in GitLab 19.4. Status: Experiment. Stored size of the version in bytes. Null for a Maven version until Artifact Registry serializes the column, and on a remote repository. |
@@ -34583,6 +34586,7 @@ Fields:
 | <a id="artifactregistryversiondetails-commitsha"></a>`commitSha`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Commit SHA the version was published from, within the resolved project. Null when there is no SHA or project, or the viewer cannot read the project code. |
 | <a id="artifactregistryversiondetails-createdat"></a>`createdAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp the version was published. Null when Artifact Registry stored none. |
 | <a id="artifactregistryversiondetails-createdby"></a>`createdBy`  | [`UserCore`](#usercore) | Introduced in GitLab 19.4. Status: Experiment. User who published the version, resolved from the reference Artifact Registry stores. Null when it stored none or the user no longer exists. |
+| <a id="artifactregistryversiondetails-disttags"></a>`distTags`  | [`[String!]!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Names of the npm dist-tags bound to the version, in ascending name order. Empty for Maven versions. |
 | <a id="artifactregistryversiondetails-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.4. Status: Experiment. ID of the version in Artifact Registry. |
 | <a id="artifactregistryversiondetails-project"></a>`project`  | [`Project`](#project) | Introduced in GitLab 19.4. Status: Experiment. Project the version was published from, resolved from the reference Artifact Registry stores. Null when it stored none, the project no longer exists, or the viewer cannot see the project. |
 | <a id="artifactregistryversiondetails-sizebytes"></a>`sizeBytes`  | [`BigInt`](#bigint) | Introduced in GitLab 19.4. Status: Experiment. Stored size of the version in bytes. Null for a Maven version until Artifact Registry serializes the column, and on a remote repository. |
@@ -38759,7 +38763,8 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="contributionsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
+| <a id="contributionsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, monthly, or a fixed number of days between 1d and 399d (for example 30d). |
+| <a id="contributionsaggregationresponsedimensions-createdat-origin"></a>`origin` | [`Time`](#time) | Anchor for fixed-day granularities: buckets start at this timestamp and repeat every N days. Only valid with a fixed-day granularity. |
 
 ### `ContributionsAggregationScope`
 
@@ -40617,7 +40622,8 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="deploymentsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
+| <a id="deploymentsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, monthly, or a fixed number of days between 1d and 399d (for example 30d). |
+| <a id="deploymentsaggregationresponsedimensions-createdat-origin"></a>`origin` | [`Time`](#time) | Anchor for fixed-day granularities: buckets start at this timestamp and repeat every N days. Only valid with a fixed-day granularity. |
 
 ##### `DeploymentsAggregationResponseDimensions.finishedAt`
 
@@ -40629,7 +40635,8 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="deploymentsaggregationresponsedimensions-finishedat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
+| <a id="deploymentsaggregationresponsedimensions-finishedat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, monthly, or a fixed number of days between 1d and 399d (for example 30d). |
+| <a id="deploymentsaggregationresponsedimensions-finishedat-origin"></a>`origin` | [`Time`](#time) | Anchor for fixed-day granularities: buckets start at this timestamp and repeat every N days. Only valid with a fixed-day granularity. |
 
 ### `DeploymentsAggregationResponseDurationMetrics`
 
@@ -41320,7 +41327,8 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="duocodesuggestionsaggregationresponsedimensions-timestamp-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
+| <a id="duocodesuggestionsaggregationresponsedimensions-timestamp-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, monthly, or a fixed number of days between 1d and 399d (for example 30d). |
+| <a id="duocodesuggestionsaggregationresponsedimensions-timestamp-origin"></a>`origin` | [`Time`](#time) | Anchor for fixed-day granularities: buckets start at this timestamp and repeat every N days. Only valid with a fixed-day granularity. |
 
 ### `DuoCodeSuggestionsAggregationScope`
 
@@ -41441,7 +41449,8 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="duousageeventsaggregationresponsedimensions-timestamp-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
+| <a id="duousageeventsaggregationresponsedimensions-timestamp-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, monthly, or a fixed number of days between 1d and 399d (for example 30d). |
+| <a id="duousageeventsaggregationresponsedimensions-timestamp-origin"></a>`origin` | [`Time`](#time) | Anchor for fixed-day granularities: buckets start at this timestamp and repeat every N days. Only valid with a fixed-day granularity. |
 
 ### `DuoUsageEventsAggregationScope`
 
@@ -41898,7 +41907,8 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="duoworkflowsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
+| <a id="duoworkflowsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, monthly, or a fixed number of days between 1d and 399d (for example 30d). |
+| <a id="duoworkflowsaggregationresponsedimensions-createdat-origin"></a>`origin` | [`Time`](#time) | Anchor for fixed-day granularities: buckets start at this timestamp and repeat every N days. Only valid with a fixed-day granularity. |
 
 ##### `DuoWorkflowsAggregationResponseDimensions.userTier`
 
@@ -50861,6 +50871,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="mergerequestsaggregationresponse-acceptancerate"></a>`acceptanceRate` | [`Float`](#float) | Share of merge requests that were merged. |
 | <a id="mergerequestsaggregationresponse-dimensions"></a>`dimensions` | [`MergeRequestsAggregationResponseDimensions`](#mergerequestsaggregationresponsedimensions) | Aggregation dimensions. Every selected dimension will be used for aggregation. |
 | <a id="mergerequestsaggregationresponse-throughputcount"></a>`throughputCount` | [`Int`](#int) | Number of merged merge requests. |
 | <a id="mergerequestsaggregationresponse-timetomerge"></a>`timeToMerge` | [`MergeRequestsAggregationResponseTimeToMergeMetrics`](#mergerequestsaggregationresponsetimetomergemetrics) | Aggregated `time_to_merge` metrics. |
@@ -50889,6 +50900,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="mergerequestsaggregationresponsedimensions-author"></a>`author` | [`UserCore`](#usercore) | Merge request author. |
+| <a id="mergerequestsaggregationresponsedimensions-createdbyduo"></a>`createdByDuo` | [`Boolean`](#boolean) | Whether the merge request was created by a GitLab Duo session. |
 | <a id="mergerequestsaggregationresponsedimensions-stateid"></a>`stateId` | [`String`](#string) | Merge request state. |
 | <a id="mergerequestsaggregationresponsedimensions-targetbranch"></a>`targetBranch` | [`String`](#string) | Target branch of the merge request. |
 
@@ -50904,7 +50916,8 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="mergerequestsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
+| <a id="mergerequestsaggregationresponsedimensions-createdat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, monthly, or a fixed number of days between 1d and 399d (for example 30d). |
+| <a id="mergerequestsaggregationresponsedimensions-createdat-origin"></a>`origin` | [`Time`](#time) | Anchor for fixed-day granularities: buckets start at this timestamp and repeat every N days. Only valid with a fixed-day granularity. |
 
 ##### `MergeRequestsAggregationResponseDimensions.metricMergedAt`
 
@@ -50916,7 +50929,8 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="mergerequestsaggregationresponsedimensions-metricmergedat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
+| <a id="mergerequestsaggregationresponsedimensions-metricmergedat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, monthly, or a fixed number of days between 1d and 399d (for example 30d). |
+| <a id="mergerequestsaggregationresponsedimensions-metricmergedat-origin"></a>`origin` | [`Time`](#time) | Anchor for fixed-day granularities: buckets start at this timestamp and repeat every N days. Only valid with a fixed-day granularity. |
 
 ### `MergeRequestsAggregationResponseTimeToMergeMetrics`
 
@@ -53956,7 +53970,8 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="pipelinesaggregationresponsedimensions-finishedat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
+| <a id="pipelinesaggregationresponsedimensions-finishedat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, monthly, or a fixed number of days between 1d and 399d (for example 30d). |
+| <a id="pipelinesaggregationresponsedimensions-finishedat-origin"></a>`origin` | [`Time`](#time) | Anchor for fixed-day granularities: buckets start at this timestamp and repeat every N days. Only valid with a fixed-day granularity. |
 
 ##### `PipelinesAggregationResponseDimensions.startedAt`
 
@@ -53968,7 +53983,8 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="pipelinesaggregationresponsedimensions-startedat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, or monthly. |
+| <a id="pipelinesaggregationresponsedimensions-startedat-granularity"></a>`granularity` | [`String`](#string) | Date granularity: daily, weekly, monthly, or a fixed number of days between 1d and 399d (for example 30d). |
+| <a id="pipelinesaggregationresponsedimensions-startedat-origin"></a>`origin` | [`Time`](#time) | Anchor for fixed-day granularities: buckets start at this timestamp and repeat every N days. Only valid with a fixed-day granularity. |
 
 ### `PipelinesAggregationResponseDurationMetrics`
 

@@ -82,10 +82,12 @@ You can reference the preset as if it was a model by sending requests to `@prese
 
 2. **Preset Field**
 
+The `preset` field takes the same `@preset/{slug}` reference as the model field. A bare slug without the `@preset/` prefix is ignored.
+
 ```json lines theme={null}
 {
   "model": "openai/gpt-4",
-  "preset": "email-copywriter",
+  "preset": "@preset/email-copywriter",
   "messages": [
     {
       "role": "user",

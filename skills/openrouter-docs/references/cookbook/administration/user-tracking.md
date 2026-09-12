@@ -62,7 +62,7 @@ Include a `user` parameter in chat-completions or image-generation requests with
 
 ```json lines theme={null}
 {
-  "model": "~openai/gpt-latest",
+  "model": "~openai/gpt-sol-latest",
   "messages": [
     {"role": "user", "content": "Hello, how are you?"}
   ],
@@ -79,7 +79,7 @@ Include a `user` parameter in chat-completions or image-generation requests with
 <Template
   data={{
 API_KEY_REF,
-MODEL: "~openai/gpt-latest"
+MODEL: "~openai/gpt-sol-latest"
 }}
 >
   <CodeGroup>

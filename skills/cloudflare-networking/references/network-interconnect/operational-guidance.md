@@ -1,5 +1,5 @@
 ---
-description: Maintenance windows and troubleshooting guidance for CNI
+description: Validate CNI failover and troubleshoot connectivity issues.
 title: Operational guidance
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,35 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Operational guidance
 
-Last updated May 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-interconnect/operational-guidance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-interconnect/operational-guidance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-## Understanding maintenance and availability
+For maintenance expectations and notifications, refer to [Maintenance](https://developers.cloudflare.com/network-interconnect/maintenance/).
 
-Also refer to [Monitoring and alerts](https://developers.cloudflare.com/network-interconnect/monitoring-and-alerts).
-
-Regular network maintenance may impact Cloudflare Network Interconnect (CNI) connectivity.
-
-* **Maintenance impact**: Maintenance windows average six hours. Customers who are not redundantly connected to diverse devices, for instance in single-homed PoPs, will experience a complete service disruption on CNI in that location.
-* **Designing for availability**: For critical applications, deploy CNI in locations that support diversity on the device level (multi-homed PoPs). Cloudflare does not guarantee coordinated maintenance between PoP locations.
-
-## Maintenance expectations
-
-### Notice periods
-
-For Dataplane v2 connectivity in multi-homed PoPs only:
-
-* **Routine maintenance**: Minimum two business days notice.
-* **Emergency maintenance**: Best-effort notice, which may be less than two business days.
-
-To receive advance alerts, configure [CNI maintenance notifications](https://developers.cloudflare.com/network-interconnect/monitoring-and-alerts/).
-
-### Scheduling patterns
-
-* Maintenance on redundant devices at the same location may occur on consecutive days with a minimum 16-hour gap between windows.
-* Cloudflare does not coordinate maintenance timing between different PoP locations.
-* Routine maintenance is generally not rescheduled to accommodate customer schedule preferences.
-
-### Customer responsibility
+## Customer responsibility
 
 Your CNI deployment must tolerate an unplanned outage on any single circuit at any time. This means:
 
@@ -69,5 +45,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-interconnect/operational-guidance/#page","headline":"Operational guidance · Cloudflare Network Interconnect docs","description":"Maintenance windows and troubleshooting guidance for CNI","url":"https://developers.cloudflare.com/network-interconnect/operational-guidance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-interconnect/operational-guidance/#page","headline":"Operational guidance · Cloudflare Network Interconnect docs","description":"Validate CNI failover and troubleshoot connectivity issues.","url":"https://developers.cloudflare.com/network-interconnect/operational-guidance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

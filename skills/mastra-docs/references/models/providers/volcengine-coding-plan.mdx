@@ -5,7 +5,7 @@ description: "Browse Volcengine Ark Coding Plan model IDs, capabilities, and con
 
 # [Volcengine Ark Coding Plan logo]Volcengine Ark Coding Plan
 
-Access 8 Volcengine Ark Coding Plan models through Mastra's model router. Authentication is handled automatically using the `ARK_CODING_PLAN_API_KEY` environment variable.
+Access 10 Volcengine Ark Coding Plan models through Mastra's model router. Authentication is handled automatically using the `ARK_CODING_PLAN_API_KEY` environment variable.
 
 Learn more in the [Volcengine Ark Coding Plan documentation](https://www.volcengine.com/docs/82379/1928261).
 
@@ -112,6 +112,18 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
+    "model": "volcengine-coding-plan/glm-5.3-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "volcengine-coding-plan/kimi-k2.7-code",
     "imageInput": true,
     "audioInput": false,
@@ -120,6 +132,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 262144,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "volcengine-coding-plan/kimi-k3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null
   },

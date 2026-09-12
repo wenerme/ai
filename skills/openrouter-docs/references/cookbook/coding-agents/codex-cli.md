@@ -32,7 +32,7 @@ Codex uses a `config.toml` file, typically located at `~/.codex/config.toml`. Cr
 ```toml lines theme={null}
 model_provider = "openrouter"
 model_reasoning_effort = "high"
-model="~openai/gpt-latest"
+model="~openai/gpt-sol-latest"
 
 [model_providers.openrouter]
 name = "openrouter"
@@ -97,7 +97,7 @@ Your requests will now be routed through OpenRouter.
 | Setting                    | Description                                   | Example                                           |
 | -------------------------- | --------------------------------------------- | ------------------------------------------------- |
 | `model_provider`           | Provider to use for model requests            | `"openrouter"`                                    |
-| `model`                    | OpenRouter model ID                           | `"~openai/gpt-latest"`                            |
+| `model`                    | OpenRouter model ID                           | `"~openai/gpt-sol-latest"`                        |
 | `model_reasoning_effort`   | Reasoning effort level for Codex models       | `"low"`, `"medium"`, `"high"`, `"xhigh"`, `"max"` |
 | `show_raw_agent_reasoning` | Whether to display reasoning tokens in the UI | `true` or `false`                                 |
 | `personality`              | Agent personality preset                      | `"pragmatic"`, `"helpful"`, etc.                  |
@@ -155,12 +155,12 @@ Track Codex usage in real-time via the [OpenRouter Activity Dashboard](https://o
 
 ### Model Flexibility
 
-Point `model` at any OpenRouter slug (e.g. `~openai/gpt-latest`, `~anthropic/claude-sonnet-latest`) or a pinned version to switch models without changing your Codex installation—just update `config.toml`.
+Point `model` at any OpenRouter slug (e.g. `~openai/gpt-sol-latest`, `~anthropic/claude-sonnet-latest`) or a pinned version to switch models without changing your Codex installation—just update `config.toml`.
 
 ## Troubleshooting
 
 * **Auth Errors:** Ensure `OPENROUTER_API_KEY` is set and valid. Check at [openrouter.ai/keys](https://openrouter.ai/keys). A 401 with "Missing Authentication header" usually means the `auth` command failed to run. On Windows, make sure you use the PowerShell variant above and that the environment variable is set user-wide (`setx`), then fully restart Codex.
-* **Model Not Found:** Verify the model ID on [openrouter.ai/models](https://openrouter.ai/models). Use the exact format (e.g., `~openai/gpt-latest`).
+* **Model Not Found:** Verify the model ID on [openrouter.ai/models](https://openrouter.ai/models). Use the exact format (e.g., `~openai/gpt-sol-latest`).
 * **Privacy:** OpenRouter does not log your source code prompts unless you opt-in to prompt logging. See our [Privacy Policy](https://openrouter.ai/privacy) for details.
 
 ## Resources

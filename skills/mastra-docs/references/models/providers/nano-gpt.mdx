@@ -5,7 +5,7 @@ description: "Browse NanoGPT model IDs, capabilities, context windows, and prici
 
 # [NanoGPT logo]NanoGPT
 
-Access 589 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
+Access 594 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
 
 Learn more in the [NanoGPT documentation](https://docs.nano-gpt.com).
 
@@ -4396,6 +4396,18 @@ for await (const chunk of stream) {
     "outputCost": 50
   },
   {
+    "model": "nano-gpt/openai/gpt-astra-latest",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 10,
+    "outputCost": 50
+  },
+  {
     "model": "nano-gpt/openai/gpt-chat-latest",
     "imageInput": true,
     "audioInput": false,
@@ -4418,6 +4430,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 10,
     "outputCost": 50
+  },
+  {
+    "model": "nano-gpt/openai/gpt-luna-latest",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 0.2,
+    "outputCost": 1.2
   },
   {
     "model": "nano-gpt/openai/gpt-oss-120b",
@@ -4454,6 +4478,30 @@ for await (const chunk of stream) {
     "maxOutput": 16384,
     "inputCost": 0.075,
     "outputCost": 0.3
+  },
+  {
+    "model": "nano-gpt/openai/gpt-sol-latest",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
+  },
+  {
+    "model": "nano-gpt/openai/gpt-terra-latest",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 12
   },
   {
     "model": "nano-gpt/openai/o1",
@@ -6050,6 +6098,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.35,
     "outputCost": 1.5
+  },
+  {
+    "model": "nano-gpt/TEE/nemotron-3.5-lightning",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 65536,
+    "inputCost": 0.08,
+    "outputCost": 0.2
   },
   {
     "model": "nano-gpt/TEE/qwen2.5-vl-72b-instruct",

@@ -162,7 +162,7 @@ To offer the model a choice of advisors, include **multiple `openrouter:advisor`
       "type": "openrouter:advisor",
       "parameters": {
         "name": "architect",
-        "model": "~openai/gpt-latest",
+        "model": "~openai/gpt-sol-latest",
         "instructions": "You are a systems architect. Think about scale."
       }
     }

@@ -36,7 +36,7 @@ description: Default Generate PPTX authority for source intake, planning, SVG au
 | User provides | Action |
 |---|---|
 | PDF / DOCX / Office document / XLSX / XLSM / PPTX / EPUB / HTML / LaTeX / RST / web URL | `python3 ${SKILL_DIR}/scripts/source_to_md.py <file_or_URL_or_dir> [<file_or_URL_or_dir> ...]` |
-| CSV / TSV | Read directly as a plain-text table source |
+| CSV / TSV | Read directly as a plain-text table source; a wide public dataset (World Bank, OECD, Eurostat) is first sliced to the needed rows and columns with a short Python snippet, never read whole |
 | Markdown | Read directly |
 | Topic only | Run [`topic-research`](stages/topic-research.md) first and use its research pair as source; Step 2 imports the pair without expanding the facts JSON's URLs |
 
@@ -353,7 +353,7 @@ python3 ${SKILL_DIR}/scripts/finalize_svg.py <project_path>
 
 | Decision | Flag |
 |---|---|
-| Explicit editable Chart/Table delivery decision | Append `--native-charts-and-tables` (markers, templates, semantic tables, and imported charts never activate it; formulas are always native) |
+| Explicit editable Chart/Table delivery decision, or a structured `chart` / `table` placeholder slot | Append `--native-charts-and-tables` (markers, templates, semantic tables, and imported charts never activate it; formulas are always native) |
 | Final checker reports oversized images | Append `--image-sizing display` |
 | Preserved or produced `animations.json` | Keep the base command; the exporter reads the sidecar |
 | Deck-wide motion setting | Append the resolved [`animations.md`](../references/animations.md) flags |

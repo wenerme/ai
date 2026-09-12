@@ -5,7 +5,7 @@ description: "Browse EmpirioLabs AI model IDs, capabilities, context windows, an
 
 # [EmpirioLabs AI logo]EmpirioLabs AI
 
-Access 59 EmpirioLabs AI models through Mastra's model router. Authentication is handled automatically using the `EMPIRIOLABS_API_KEY` environment variable.
+Access 60 EmpirioLabs AI models through Mastra's model router. Authentication is handled automatically using the `EMPIRIOLABS_API_KEY` environment variable.
 
 Learn more in the [EmpirioLabs AI documentation](https://docs.empiriolabs.ai).
 
@@ -113,6 +113,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "empiriolabs/fugu-ultra-v1-1",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 5,
+    "outputCost": 30
+  },
+  {
+    "model": "empiriolabs/fugu-ultra-v2-0",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
