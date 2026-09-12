@@ -449,7 +449,7 @@ Multimodal models like [Gemma 4](https://huggingface.co/google/gemma-4-E2B-it) a
 
 ```python
 import base64
-import httpx
+from huggingface_hub.utils import httpx
 from huggingface_hub import InferenceClient
 
 audio_url = "https://huggingface.co/datasets/hf-internal-testing/dummy-audio-samples/resolve/main/obama_first_45_secs.mp3"
@@ -481,7 +481,7 @@ This week, I traveled to Chicago to deliver my final farewell address to the nat
 
 ```python
 import base64
-import httpx
+from huggingface_hub.utils import httpx
 from huggingface_hub import InferenceClient
 
 audio_url = "https://huggingface.co/datasets/hf-internal-testing/dummy-audio-samples/resolve/main/obama_first_45_secs.mp3"
@@ -516,7 +516,7 @@ This week, I traveled to Chicago to deliver my final farewell address to the nat
 
 ```python
 import base64
-import httpx
+from huggingface_hub.utils import httpx
 from openai import OpenAI
 
 client = OpenAI(base_url="http://localhost:8000/v1", api_key="<random_string>")
@@ -550,7 +550,7 @@ This week, I traveled to Chicago to deliver my final farewell address to the nat
 
 ```python
 import base64
-import httpx
+from huggingface_hub.utils import httpx
 from openai import OpenAI
 
 client = OpenAI(base_url="http://localhost:8000/v1", api_key="<random_string>")
@@ -1299,7 +1299,7 @@ data: {"content_index":0,"delta":"The ","item_id":"msg_f47ac10b","output_index":
 
 ```python
 import base64
-import httpx
+from huggingface_hub.utils import httpx
 from openai import OpenAI
 
 client = OpenAI(base_url="http://localhost:8000/v1", api_key="<random_string>")
@@ -1330,7 +1330,7 @@ This week, I traveled to Chicago to deliver my final farewell address to the nat
 
 ```python
 import base64
-import httpx
+from huggingface_hub.utils import httpx
 from openai import OpenAI
 
 client = OpenAI(base_url="http://localhost:8000/v1", api_key="<random_string>")

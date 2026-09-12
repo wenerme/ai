@@ -61,7 +61,7 @@ The **Include BYOK spend** toggle above the budget rows controls whether [BYOK](
 
 ## Setting Budgets via the API
 
-You can also manage budgets programmatically using an organization [management API key](/docs/guides/overview/auth/management-api-keys). Management keys operate at the account level and can perform administrative actions across all workspaces. The budget endpoints live under `/api/v1/workspaces/{id}/budgets`.
+You can also manage budgets programmatically using an organization [management API key](/docs/guides/overview/auth/management-api-keys). Management keys operate at the account level and can perform administrative actions across all workspaces. The budget endpoints live under `/api/v1/workspaces/{workspace_ref}/budgets`.
 
 ### List Budgets
 
