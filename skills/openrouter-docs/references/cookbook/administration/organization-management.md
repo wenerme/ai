@@ -67,6 +67,7 @@ You can transfer eligible credits from your personal account to an organization 
 
 The transfer dialog also enforces these restrictions:
 
+* You must have two-factor authentication (MFA) enabled on your account. To enable it, go to [Settings > Preferences](https://openrouter.ai/settings/preferences), select **Manage**, then open the **Security** tab.
 * New organization memberships must meet a tenure requirement before the organization can receive a transfer.
 * An organization that recently received a transfer has a cooldown before it can receive another one.
 

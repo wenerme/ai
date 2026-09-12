@@ -34,6 +34,9 @@ You can see the number of tokens which were cache hits in the response object's
 
 ## Explicit caching
 
+> [!WARNING]
+> **Beta:** Explicit context caching is currently in Beta. Endpoints and SDK methods are available under `v1beta`.
+
 Using the Gemini API explicit caching feature, you can pass some content
 to the model once, cache the input tokens, and then refer to the cached tokens
 for subsequent requests. At certain volumes, using cached tokens is lower cost

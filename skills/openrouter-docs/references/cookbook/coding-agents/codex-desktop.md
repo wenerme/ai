@@ -42,7 +42,7 @@ wire_api = "responses"
 supports_websockets = false
 ```
 
-`model` accepts any OpenRouter model ID, including tilde aliases such as `~openai/gpt-latest`. Browse the catalog at [openrouter.ai/models](https://openrouter.ai/models).
+`model` accepts any OpenRouter model ID, including tilde aliases such as `~openai/gpt-sol-latest`. Browse the catalog at [openrouter.ai/models](https://openrouter.ai/models).
 
 <Note>
   `model_provider` and `model_providers` are only honored in the user-level `~/.codex/config.toml`. Codex ignores them in a project-scoped `.codex/config.toml`.

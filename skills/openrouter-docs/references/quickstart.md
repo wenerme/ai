@@ -41,7 +41,7 @@ The most direct way to use OpenRouter. Send standard HTTP requests to the `/api/
 </Tip>
 
 <Note>
-  The examples below use `~openai/gpt-latest`, a [latest alias](/docs/guides/routing/routers/latest-resolution) that always resolves to the newest OpenAI flagship model, so your code keeps using the freshest version without redeploying. You can substitute any model slug here. Browse the full catalog at [openrouter.ai/models](https://openrouter.ai/models), or list every available slug programmatically via the [`GET /api/v1/models`](/docs/api/api-reference/models/list-all-models-and-their-properties) endpoint.
+  The examples below use `~openai/gpt-sol-latest`, a [latest alias](/docs/guides/routing/routers/latest-resolution) that always resolves to the newest model in the OpenAI GPT Sol family, so your code keeps using the freshest version without redeploying. You can substitute any model slug here. Browse the full catalog at [openrouter.ai/models](https://openrouter.ai/models), or list every available slug programmatically via the [`GET /api/v1/models`](/docs/api/api-reference/models/list-all-models-and-their-properties) endpoint.
 </Note>
 
 <CodeGroup>
@@ -57,7 +57,7 @@ The most direct way to use OpenRouter. Send standard HTTP requests to the `/api/
       "X-OpenRouter-Title": "<YOUR_SITE_NAME>", # Optional. Site title for rankings on openrouter.ai.
     },
     data=json.dumps({
-      "model": "~openai/gpt-latest",
+      "model": "~openai/gpt-sol-latest",
       "messages": [
         {
           "role": "user",
@@ -78,7 +78,7 @@ The most direct way to use OpenRouter. Send standard HTTP requests to the `/api/
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      model: '~openai/gpt-latest',
+      model: '~openai/gpt-sol-latest',
       messages: [
         {
           role: 'user',
@@ -94,7 +94,7 @@ The most direct way to use OpenRouter. Send standard HTTP requests to the `/api/
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENROUTER_API_KEY" \
     -d '{
-    "model": "~openai/gpt-latest",
+    "model": "~openai/gpt-sol-latest",
     "messages": [
       {
         "role": "user",
@@ -155,7 +155,7 @@ Then use it in your code:
 
   const completion = await client.chat.send({
     chatRequest: {
-      model: '~openai/gpt-latest',
+      model: '~openai/gpt-sol-latest',
       messages: [
         {
           role: 'user',
@@ -178,7 +178,7 @@ Then use it in your code:
 
   with OpenRouter(api_key=os.getenv("OPENROUTER_API_KEY")) as client:
       response = client.chat.send(
-          model="~openai/gpt-latest",
+          model="~openai/gpt-sol-latest",
           messages=[
               {"role": "user", "content": "What is the meaning of life?"}
           ],
@@ -280,7 +280,7 @@ You can also use the OpenAI SDK pointed at OpenRouter as a drop-in replacement. 
 
   async function main() {
     const completion = await openai.chat.completions.create({
-      model: '~openai/gpt-latest',
+      model: '~openai/gpt-sol-latest',
       messages: [
         {
           role: 'user',
@@ -308,7 +308,7 @@ You can also use the OpenAI SDK pointed at OpenRouter as a drop-in replacement. 
       "HTTP-Referer": "<YOUR_SITE_URL>", # Optional. Site URL for rankings on openrouter.ai.
       "X-OpenRouter-Title": "<YOUR_SITE_NAME>", # Optional. Site title for rankings on openrouter.ai.
     },
-    model="~openai/gpt-latest",
+    model="~openai/gpt-sol-latest",
     messages=[
       {
         "role": "user",

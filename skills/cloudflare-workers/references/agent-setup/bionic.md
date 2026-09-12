@@ -39,7 +39,7 @@ https://mcp.cloudflare.com/mcp
 Ask Bionic to investigate a task, make changes, and run relevant tests. Review its diffs and command output before keeping changes.
 For example:
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ## Cloudflare platform access
@@ -119,23 +119,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ## Tips

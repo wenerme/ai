@@ -44,7 +44,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 1. **Download Codex**
@@ -130,11 +130,11 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
@@ -142,11 +142,11 @@ Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ## Tips

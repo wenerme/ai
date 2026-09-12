@@ -754,6 +754,10 @@ EMF/WMF images referenced by a page are preserved as external references, never 
 
 Convert project SVGs into PPTX. EMF/WMF images referenced from `svg_output/` are embedded as native `image/x-emf` / `image/x-wmf` media at full vector fidelity.
 
+Each exported object is named after `data-pptx-shape-name`, else its SVG `id` (or `data-name`), else a positional `Group N` / `TextBox N`; forced-Morph `!!` names still win. The PowerPoint Selection and Animation panes therefore read like the source SVG.
+
+The deck language — the lock's `primary_language`, else the first page's root `<svg lang="...">` (Quick's channel), else `--primary-language TAG` — tags base-template default text (new text boxes, master and layout placeholders) and docProps; a right-to-left language also makes those defaults right-to-left and right-aligned, and the theme's script font for that language (`Arab`, `Hebr`, `Thai`, `Deva`, ...) points at the locked face, which a lockless roster takes from its pages. A run of Latin letters inside a non-Latin deck is tagged `en-US`.
+
 Native formulas use the two markers owned by
 [`native-formula.md`](../../references/native-formula.md). A standalone block
 stores delimiter-free LaTeX in the JSON metadata of
@@ -761,7 +765,13 @@ stores delimiter-free LaTeX in the JSON metadata of
 `<tspan data-pptx-inline-formula="...">preview</tspan>` inside ordinary text
 exports `m:oMath` in the same DrawingML paragraph as its surrounding runs; it
 inherits computed size and visible solid fill, then uses the project text
-language and Cambria Math.
+language and Cambria Math. LaTeX can be compile-checked before any SVG is
+written, so an unsupported command is caught at planning time:
+
+```bash
+python3 -c "import sys; sys.path.insert(0, 'skills/ppt-master/scripts'); from svg_to_pptx.native_objects.formula_compiler import compile_latex_to_omml as c; c(sys.argv[1])" '\frac{a}{b} \int_0^T e^{-i\omega t}\, dt'
+```
+
 Matrices, multiline derivations, and other high-structure expressions remain
 blocks. Formula replacement is always active, independent of
 `--native-charts-and-tables`: export replaces only the registered SVG preview

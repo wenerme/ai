@@ -1,5 +1,8 @@
 Context caching allows you to save and reuse precomputed input tokens that you wish to use repeatedly, for example when asking different questions about the same media file. This can lead to cost and speed savings, depending on the usage. For a detailed introduction, see the [Context caching](https://ai.google.dev/gemini-api/docs/caching) guide.
 
+> [!NOTE]
+> This API is in Beta. Endpoints are under `/v1beta/`.
+
 ## Method: cachedContents.create
 
 - [Endpoint](https://ai.google.dev/api/caching#body.HTTP_TEMPLATE)
@@ -44,7 +47,7 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
 
     client = genai.Client()
     document = client.files.upload(file=media / "a11.txt")
-    model_name = "gemini-3.7-flash"
+    model_name = "gemini-3.8-flash"
 
     cache = client.caches.create(
         model=model_name,
@@ -73,7 +76,7 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
       config: { mimeType: "text/plain" },
     });
     console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-3.7-flash";
+    const modelName = "gemini-3.8-flash";
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -106,7 +109,7 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
     	log.Fatal(err)
     }
 
-    modelName := "gemini-3.7-flash"
+    modelName := "gemini-3.8-flash"
     document, err := client.Files.UploadFromPath(
     	ctx, 
     	filepath.Join(getMedia(), "a11.txt"), 
@@ -207,7 +210,7 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
 
     client = genai.Client()
     document = client.files.upload(file=media / "a11.txt")
-    model_name = "gemini-3.7-flash"
+    model_name = "gemini-3.8-flash"
 
     cache = client.caches.create(
         model=model_name,
@@ -238,7 +241,7 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
       config: { mimeType: "text/plain" },
     });
     console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-3.7-flash";
+    const modelName = "gemini-3.8-flash";
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -273,7 +276,7 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
     	log.Fatal(err)
     }
 
-    modelName := "gemini-3.7-flash"
+    modelName := "gemini-3.8-flash"
     document, err := client.Files.UploadFromPath(
     	ctx, 
     	filepath.Join(getMedia(), "a11.txt"), 
@@ -329,7 +332,7 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
     from google.genai import types
 
     client = genai.Client()
-    model_name = "gemini-3.7-flash"
+    model_name = "gemini-3.8-flash"
     system_instruction = "You are an expert analyzing transcripts."
 
     # Create a chat session with the given system instruction.
@@ -371,7 +374,7 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-    const modelName = "gemini-3.7-flash";
+    const modelName = "gemini-3.8-flash";
     const systemInstruction = "You are an expert analyzing transcripts.";
 
     // Create a chat session with the system instruction.
@@ -431,7 +434,7 @@ End of mutually exclusive fields. `displayName` `string` Optional. Immutable. Th
     	log.Fatal(err)
     }
 
-    modelName := "gemini-3.7-flash"
+    modelName := "gemini-3.8-flash"
     systemInstruction := "You are an expert analyzing transcripts."
 
     // Create initial chat with a system instruction.
@@ -583,7 +586,7 @@ The request body must be empty.
 
     client = genai.Client()
     document = client.files.upload(file=media / "a11.txt")
-    model_name = "gemini-3.7-flash"
+    model_name = "gemini-3.8-flash"
 
     cache = client.caches.create(
         model=model_name,
@@ -605,7 +608,7 @@ The request body must be empty.
       config: { mimeType: "text/plain" },
     });
     console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-3.7-flash";
+    const modelName = "gemini-3.8-flash";
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -632,7 +635,7 @@ The request body must be empty.
     	log.Fatal(err)
     }
 
-    modelName := "gemini-3.7-flash"
+    modelName := "gemini-3.8-flash"
     document, err := client.Files.UploadFromPath(
     	ctx, 
     	filepath.Join(getMedia(), "a11.txt"), 
@@ -724,7 +727,7 @@ End of mutually exclusive fields.
 
     client = genai.Client()
     document = client.files.upload(file=media / "a11.txt")
-    model_name = "gemini-3.7-flash"
+    model_name = "gemini-3.8-flash"
 
     cache = client.caches.create(
         model=model_name,
@@ -767,7 +770,7 @@ End of mutually exclusive fields.
       config: { mimeType: "text/plain" },
     });
     console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-3.7-flash";
+    const modelName = "gemini-3.8-flash";
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -810,7 +813,7 @@ End of mutually exclusive fields.
     	log.Fatal(err)
     }
 
-    modelName := "gemini-3.7-flash"
+    modelName := "gemini-3.8-flash"
     document, err := client.Files.UploadFromPath(
     	ctx, 
     	filepath.Join(getMedia(), "a11.txt"), 
@@ -886,7 +889,7 @@ The request body must be empty.
 
     client = genai.Client()
     document = client.files.upload(file=media / "a11.txt")
-    model_name = "gemini-3.7-flash"
+    model_name = "gemini-3.8-flash"
 
     cache = client.caches.create(
         model=model_name,
@@ -908,7 +911,7 @@ The request body must be empty.
       config: { mimeType: "text/plain" },
     });
     console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-3.7-flash";
+    const modelName = "gemini-3.8-flash";
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -935,7 +938,7 @@ The request body must be empty.
     	log.Fatal(err)
     }
 
-    modelName := "gemini-3.7-flash"
+    modelName := "gemini-3.8-flash"
     document, err := client.Files.UploadFromPath(
     	ctx, 
     	filepath.Join(getMedia(), "a11.txt"), 

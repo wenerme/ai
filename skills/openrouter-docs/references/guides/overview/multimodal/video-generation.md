@@ -199,7 +199,7 @@ MODEL: 'google/veo-3.1'
         if status["status"] == "completed":
             # Step 3: Download the video
             content_url = status["unsigned_urls"][0]
-            video_response = requests.get(content_url)
+            video_response = requests.get(content_url, headers=headers)
             with open("output.mp4", "wb") as f:
                 f.write(video_response.content)
             print("Video saved to output.mp4")
@@ -242,7 +242,7 @@ MODEL: 'google/veo-3.1'
       if (status.status === 'completed') {
         // Step 3: Download the video
         const contentUrl = status.unsigned_urls[0];
-        const videoResponse = await fetch(contentUrl);
+        const videoResponse = await fetch(contentUrl, { headers });
         const videoBuffer = await videoResponse.arrayBuffer();
         // Save or process the video buffer
         console.log(`Video ready: ${contentUrl}`);
@@ -276,6 +276,7 @@ MODEL: 'google/veo-3.1'
       -H "Authorization: Bearer $OPENROUTER_API_KEY"
 
     # Step 3: Once status is "completed", download from unsigned_urls[0]
+    # using the same Authorization header
     ```
   </CodeGroup>
 </Template>
@@ -442,7 +443,7 @@ When polling the job status, the response includes additional fields as the job 
 
 ### Downloading the Video
 
-Once the job status is `completed`, the `unsigned_urls` array contains URLs to download the generated video content. You can also use the content endpoint directly:
+Once the job status is `completed`, the `unsigned_urls` array contains URLs to download the generated video content. These URLs are not presigned, so send your API key in the `Authorization` header just as you do when polling. Each entry points at the content endpoint, which you can also call directly:
 
 ```bash lines theme={null}
 curl "https://openrouter.ai/api/v1/videos/{jobId}/content?index=0" \

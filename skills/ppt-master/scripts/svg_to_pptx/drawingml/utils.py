@@ -175,9 +175,12 @@ PPT_SAFE_FONTS = frozenset({
     'meiryo', 'meiryo ui',
     'ms gothic', 'ms mincho', 'ms pgothic', 'ms pmincho', 'ms ui gothic',
     'malgun gothic', 'gulim', 'dotum', 'batang',
+    'nirmala ui', 'mangal', 'kokila', 'aparajita', 'utsaah',
+    'leelawadee ui', 'leelawadee', 'cordia new', 'angsana new', 'browallia new',
+    'david', 'miriam', 'frank ruehl', 'gisha', 'levenim mt', 'narkisim', 'aharoni',
     'arial', 'arial black', 'calibri', 'segoe ui', 'verdana',
     'helvetica', 'helvetica neue', 'tahoma', 'trebuchet ms',
-    'times new roman', 'times', 'georgia', 'cambria', 'palatino',
+    'times new roman', 'times', 'georgia', 'cambria', 'cambria math', 'palatino',
     'garamond', 'book antiqua',
     'consolas', 'courier new', 'menlo', 'monaco',
     'impact',
@@ -3477,7 +3480,29 @@ def detect_text_lang(
             frozenset({'el'}),
             'el-GR',
         )
+    if (
+        default_language
+        and language_base(default_language) in _NON_LATIN_SCRIPT_BASES
+        and any(ch.isalpha() for ch in text)
+    ):
+        # A run of Latin letters inside a CJK/Arabic/... deck (an English
+        # subtitle, a source line) proofs and reads as English, not as the
+        # deck language; digits and punctuation alone keep the deck tag.
+        return 'en-US'
     return default_language or 'en-US'
+
+
+# Language bases whose script the detector recognises above; a Latin-letter
+# run under one of these deck languages is not written in that language.
+_NON_LATIN_SCRIPT_BASES = frozenset({
+    'zh', 'ja', 'ko',
+    'ar', 'fa', 'ps', 'sd', 'ug', 'ur',
+    'he', 'yi',
+    'hi', 'mr', 'ne', 'sa',
+    'th',
+    'be', 'bg', 'kk', 'ky', 'mk', 'mn', 'ru', 'sr', 'uk',
+    'el',
+})
 
 
 def _is_grapheme_extend(ch: str) -> bool:
@@ -3641,7 +3666,13 @@ def _estimate_grapheme_width(cluster: str, font_size: float) -> float:
         and all(_is_regional_indicator(ch) for ch in bases)
     ) or '\u20e3' in cluster or any(_is_emoji_base(ch) for ch in bases):
         return font_size
-    return max(_estimate_character_width(ch, font_size) for ch in bases)
+    # Spacing combining marks (Indic vowel signs such as Devanagari aa/ii/o)
+    # sit beside the base and advance the pen; non-spacing marks do not.
+    spacing_marks = sum(1 for ch in cluster if unicodedata.category(ch) == 'Mc')
+    return (
+        max(_estimate_character_width(ch, font_size) for ch in bases)
+        + font_size * 0.3 * spacing_marks
+    )
 
 
 _FONT_ADVANCES_CACHE = None

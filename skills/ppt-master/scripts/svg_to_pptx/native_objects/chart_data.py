@@ -829,7 +829,10 @@ def _point_color(color: Any, chart_type: str) -> str | None:
     if chart_type == "line" and (color is None or _compact_key(color) == "none"):
         return None
     if color is None:
-        raise RuntimeError("Native PPTX chart series point_colors entries must be colours")
+        raise RuntimeError(
+            f"Native PPTX {chart_type} chart series point_colors entries must be "
+            "colours (only a line series may leave a point null)"
+        )
     return _clean_hex(color, "#4472C4")
 
 
@@ -891,6 +894,14 @@ def _category_series(
     for idx, item in enumerate(raw_series, start=1):
         if not isinstance(item, dict):
             raise RuntimeError("Native PPTX chart series entries must be objects")
+        if (
+            _first_present(item.get("line_style"), item.get("lineStyle")) is not None
+            and not (item.get("type") or item.get("chart_type"))
+        ):
+            raise RuntimeError(
+                "Native PPTX chart series[].line_style is not a series option; "
+                "set line_style on the chart root (combo: on the plot or typed series)"
+            )
         values = [
             _chart_point_value(value)
             for value in _chart_list(item.get("values", []), "series[].values")

@@ -154,7 +154,7 @@ With a prioritized BYOK key, the regional premium is billed to your own provider
 
 BYOK endpoints are subject to your data policies. Bringing your own key changes which credential authenticates the upstream request. It doesn't change which endpoints you're allowed to route to. Your provider, account, and guardrail data policies are applied **before** BYOK endpoints are created, so BYOK only routes to endpoints that already satisfy them.
 
-This means a BYOK key does not exempt a provider from your [Zero Data Retention](/docs/guides/features/zdr) or `data_collection` restrictions. If you enforce ZDR (via `provider.zdr`, account privacy settings, or a guardrail) and a provider's endpoint retains prompts, that endpoint stays ineligible even when you supply your own key.
+This means a BYOK key does not exempt a provider from your `data_collection` restrictions. For [Zero Data Retention](/docs/guides/features/zdr) the same is true by default: if you enforce ZDR (via `provider.zdr`, account privacy settings, or a guardrail) and a provider's endpoint retains prompts, that endpoint stays ineligible even when you supply your own key. The exception is a key with a ZDR declaration in its **Provider agreement** section: declaring your account has ZDR with the provider stamps your BYOK copy with a ZDR policy so it survives your ZDR guardrail (video generation remains excluded).
 
 For example, if you enforce ZDR and send a request that would otherwise use a BYOK key for a provider whose endpoint retains prompts:
 
@@ -168,7 +168,7 @@ For example, if you enforce ZDR and send a request that would otherwise use a BY
 
 The retaining endpoint is filtered out before your BYOK key is considered, and the request fails if no ZDR-compliant endpoint remains, even though you have a valid key for that provider.
 
-To use a provider via BYOK, make sure it's permitted by your data policies: the provider's endpoint must satisfy any ZDR or `data_collection` restrictions you've enabled. See [Zero Data Retention](/docs/guides/features/zdr) and [Provider Routing](/docs/guides/routing/provider-selection).
+To use a provider via BYOK, make sure it's permitted by your data policies: the provider's endpoint must satisfy any ZDR or `data_collection` restrictions you've enabled, either through the provider's default policy or a ZDR declaration on the key. See [Zero Data Retention](/docs/guides/features/zdr) and [Provider Routing](/docs/guides/routing/provider-selection).
 
 ### BYOK and Guardrail Budgets
 

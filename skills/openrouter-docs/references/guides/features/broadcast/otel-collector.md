@@ -151,6 +151,20 @@ With **Cost** enabled under **Additional generation metadata**, the same quantit
 
 The example shows attribute values as a flat map; OTLP encodes numbers as `intValue` and the estimate flag as `boolValue`. Root spans also carry generation metadata under `trace.metadata.openrouter_generation.*`. Read each generation once. These representations repeat the same generation quantities; do not add them together. Unavailable quantities are omitted from OTEL attributes, while zero and `false` are preserved. See [Token and cost fields](/docs/guides/features/broadcast#token-and-cost-fields) for interpretation and billing caveats.
 
+### Raw provider usage
+
+Unlike the quantities above, [`upstream_raw_response_usage`](/docs/guides/features/broadcast#raw-provider-usage) is not flattened into one attribute per provider field. It is sent as a single `stringValue` attribute holding JSON, because its keys are provider-controlled and can change without notice:
+
+```json theme={null}
+{
+  "span.metadata.openrouter_generation.upstream_raw_response_usage": "{\"input_tokens\":4,\"output_tokens\":373,\"cache_creation_input_tokens\":300}"
+}
+```
+
+Decode that string in your collector or query layer to read individual provider fields. The decoded value can be an object, an array of usage reports in provider order, or `null` — which is sent as the four-character string `null`, distinct from the attribute being absent. When it decodes to `null`, `upstream_raw_response_usage_suppression_reason` says whether the value was suppressed or simply unavailable.
+
+This attribute keeps its path even when a generation carries more ordinary metadata than fits in the attribute budget. Because collectors and backends impose their own attribute value length limits, verify that your pipeline stores the complete JSON string before relying on it.
+
 ## Privacy Mode
 
-When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. See [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) for details.
+When [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) is enabled for this destination, prompt and completion content is excluded from traces. All other trace data — token usage, costs, timing, model information, and custom metadata — is still sent normally. Raw provider usage is replaced with `null` and reported as `privacy_mode`, because a provider's usage object can contain arbitrary future fields. See [Privacy Mode](/docs/guides/features/broadcast#privacy-mode) for details.

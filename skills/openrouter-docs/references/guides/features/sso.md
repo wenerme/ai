@@ -86,6 +86,8 @@ Connections are labeled **Self-serve connection** when created through the Secur
 
 With an SSO connection in place, you can also sync groups from your identity provider and map them to OpenRouter workspaces, so workspace access is provisioned automatically. See [SCIM Group Mappings](/docs/guides/features/scim-mappings).
 
+Once your SSO connection is active, organization admins can enable SCIM provisioning themselves from the **SCIM Mappings** tab: choose your identity provider, enter the IdP group whose members should be organization admins, and copy the generated endpoint URL and API key into your identity provider. See [Set Up Provisioning](/docs/guides/features/scim-mappings#set-up-provisioning).
+
 ## User Deactivation and Deletion
 
 With SCIM provisioning connected, your identity provider is the source of truth for user lifecycle. When a user is deactivated or deleted in your identity provider, the change syncs to OpenRouter automatically:

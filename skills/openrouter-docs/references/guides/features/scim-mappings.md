@@ -16,10 +16,46 @@ SCIM group mappings connect groups from your identity provider to OpenRouter wor
 
 * Your organization must be on an Enterprise plan
 * You must be an **organization admin**
-* Your organization must have an SSO connection (see [Single Sign-On (SSO)](/docs/guides/features/sso))
-* Your identity provider must push groups to OpenRouter via SCIM provisioning
+* Your organization must have an active SSO connection (see [Single Sign-On (SSO)](/docs/guides/features/sso))
+* SCIM provisioning must be enabled for your organization (see [Set Up Provisioning](#set-up-provisioning)), and your identity provider must push groups to OpenRouter through it
 
-If no SSO connection exists yet, the SCIM Mappings tab prompts you to set one up first.
+If no SSO connection exists yet, the SCIM Mappings tab prompts you to set one up first. Once SSO is connected, the same tab lets you enable SCIM provisioning yourself. Existing customers configured by OpenRouter keep working unchanged.
+
+## Set Up Provisioning
+
+Provisioning connects your identity provider's SCIM client to a SCIM directory on your OpenRouter organization. Organization admins can create that directory from the SCIM Mappings tab without contacting support. Activation requires a verified email address on your OpenRouter account; you are prompted to verify it if needed.
+
+<Steps>
+  <Step title="Open the SCIM Mappings tab">
+    While in your organization context, navigate to [Settings > Members](https://openrouter.ai/settings/organization-members?tab=scim-mappings) and select the **SCIM Mappings** tab. When your organization has an active SSO connection and no directory yet, the tab shows **Enable SCIM provisioning**.
+  </Step>
+
+  <Step title="Choose your identity provider">
+    Click **Enable SCIM provisioning** and choose **Okta**, **Microsoft Entra ID**, or **Custom (SCIM 2.0)** for any other SCIM 2.0 client.
+  </Step>
+
+  <Step title="Enter your admin group ID">
+    Enter the ID of the group in your identity provider whose members should be OpenRouter organization admins, and optionally its display name. This mapping is created together with the directory so the organization has an admin mapping from the very first sync: group role mappings are applied on every push, and a directory with no admin mapping would leave the organization without an admin. Make sure your own account is a member of that group in your identity provider — OpenRouter cannot verify group membership before the first push, and the sync applies roles exactly as your identity provider reports them. You can add or change organization role mappings later from the same tab.
+  </Step>
+
+  <Step title="Copy the endpoint URL and API key">
+    After activation, OpenRouter shows the **SCIM endpoint URL** and a bearer **API key**. The key is shown only once. Store it in your identity provider now; if you lose it, [rotate the key](#rotating-the-api-key) to get a new one.
+  </Step>
+</Steps>
+
+### Configuring Your Identity Provider
+
+Use the values from the last step as the SCIM 2.0 base URL and bearer token in your identity provider's provisioning settings, then assign the users and push the groups you want to sync. Make sure the admin group you entered during activation is among the groups you push.
+
+* **Okta**: in your OpenRouter SAML app, open the **Provisioning** tab, choose **SCIM** integration, and enter the endpoint URL as the **SCIM connector base URL** with **HTTP Header** authentication using the API key. Enable **Create Users**, **Update User Attributes**, and **Deactivate Users**, assign users to the app, then use **Push Groups** to push your groups.
+* **Microsoft Entra ID**: in your OpenRouter enterprise application, open **Provisioning**, set the mode to **Automatic**, and enter the endpoint URL as the **Tenant URL** and the API key as the **Secret Token**. Test the connection, assign users and groups to the application, and turn provisioning on.
+* **Custom (SCIM 2.0)**: point your SCIM client at the endpoint URL with `Authorization: Bearer <API key>` and push users and groups.
+
+Once your identity provider pushes groups, they appear on the SCIM Mappings tab and can be mapped to workspaces as described below. Use **Refresh from IdP** if you have just finished configuring provisioning and do not see your groups yet.
+
+## Rotating the API Key
+
+If the API key is lost or needs to be replaced, click **Rotate API key** on the SCIM provisioning card at the top of the SCIM Mappings tab and confirm. A new key is generated and shown once; update it in your identity provider promptly. The previous key keeps working only for a short grace period, after which provisioning stops until the new key is in place. Rotations are recorded in the [audit log](#audit-log).
 
 ## Viewing Your Groups
 
@@ -79,6 +115,7 @@ Click the delete button on a mapping row. Because members may have been added to
 
 Every change made through SCIM mappings is recorded. Click **View audit log** on the SCIM Mappings tab to see:
 
+* SCIM provisioning enabled and API key rotations, with the admin who made the change
 * Mappings created, role changes, and deletions, with the admin who made the change
 * Members added to, removed from, or changed in workspaces, including changes triggered automatically by your identity provider
 
@@ -92,7 +129,11 @@ Entries link to the affected member and workspace so you can trace exactly why s
   </Accordion>
 
   <Accordion title="Why is my group list empty?">
-    Groups appear once your identity provider pushes them via SCIM provisioning. Check your IdP's provisioning configuration, then click **Refresh from IdP**. You also need an active [SSO connection](/docs/guides/features/sso).
+    Groups appear once your identity provider pushes them via SCIM provisioning. Check that provisioning is [set up](#set-up-provisioning) and that your IdP's provisioning configuration pushes groups, then click **Refresh from IdP**. You also need an active [SSO connection](/docs/guides/features/sso).
+  </Accordion>
+
+  <Accordion title="I lost the SCIM API key. Can I see it again?">
+    No. The key is shown once, at activation or rotation. [Rotate the API key](#rotating-the-api-key) to get a new one and update it in your identity provider.
   </Accordion>
 
   <Accordion title="Can I map one group to multiple workspaces?">
@@ -112,3 +153,4 @@ Entries link to the affected member and workspace so you can trace exactly why s
 
 * **Setup assistance**: Email [support@openrouter.ai](mailto:support@openrouter.ai)
 * **Enterprise plans**: Contact our sales team to enable SCIM group mappings for your organization
+* **More than one active SSO connection**: Self-serve activation requires a single active SSO connection; contact support to enable provisioning on the right one

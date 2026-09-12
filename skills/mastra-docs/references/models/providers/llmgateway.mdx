@@ -5,7 +5,7 @@ description: "Browse DevPass (LLM Gateway) model IDs, capabilities, context wind
 
 # [DevPass (LLM Gateway) logo]DevPass (LLM Gateway)
 
-Access 186 DevPass (LLM Gateway) models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 188 DevPass (LLM Gateway) models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [DevPass (LLM Gateway) documentation](https://llmgateway.io/docs).
 
@@ -304,7 +304,31 @@ for await (const chunk of stream) {
     "outputCost": 1.25
   },
   {
+    "model": "llmgateway/fugu-max",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 1000000,
+    "inputCost": 2,
+    "outputCost": 6
+  },
+  {
     "model": "llmgateway/fugu-ultra",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 1000000,
+    "inputCost": 5,
+    "outputCost": 30
+  },
+  {
+    "model": "llmgateway/fugu-ultra-v2.0",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,

@@ -167,7 +167,7 @@ Store the API key securely within the user's browser or in your own database, an
 
   const completion = await openRouter.chat.send({
     chatRequest: {
-      model: '~openai/gpt-latest',
+      model: '~openai/gpt-sol-latest',
       messages: [
         {
           role: 'user',
@@ -193,7 +193,7 @@ Store the API key securely within the user's browser or in your own database, an
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      model: '~openai/gpt-latest',
+      model: '~openai/gpt-sol-latest',
       messages: [
         {
           role: 'user',

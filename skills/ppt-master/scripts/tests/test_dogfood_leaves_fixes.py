@@ -204,7 +204,7 @@ class PolygonFilterTests(unittest.TestCase):
             svg_path.write_text(self.SVG, encoding="utf-8")
             xml, *_rest = convert_svg_to_slide_shapes(svg_path, resource_root=root)
         self.assertIn("<a:outerShdw", xml)
-        self.assertIn("Polygon", xml)
+        self.assertIn('name="sheet"', xml)  # named after its SVG id
 
 
 class PresetPaintCompactionTests(unittest.TestCase):
@@ -427,6 +427,15 @@ class KoreanIntakeTests(unittest.TestCase):
         for line in lines:
             self.assertTrue(set(line.split()) <= words, lines)
 
+    def test_wrap_keeps_arabic_and_cyrillic_words_whole(self) -> None:
+        for text in (
+            "القهوة العربية رمز للكرم والضيافة في شبه الجزيرة العربية",
+            "Кофе по-арабски является символом гостеприимства на Аравийском полуострове",
+        ):
+            lines, _widths, _oversized = text_measure.wrap_text(
+                text, size=24, max_width=260, family="Arial", include_headroom=False)
+            self.assertEqual(" ".join(lines).split(), text.split(), lines)
+
     def test_pdf_join_keeps_korean_word_space(self) -> None:
         self.assertEqual(pdf_to_md.join_wrapped_text("감소하였으며", "이중"), "감소하였으며 이중")
         self.assertEqual(pdf_to_md.join_wrapped_text("新幹", "線"), "新幹線")
@@ -462,6 +471,69 @@ class StampIndependenceTests(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertIn("01_ok.svg: unchanged", out.getvalue())
         self.assertIn("02_bad.svg: invalid SVG XML", err.getvalue())
+
+
+class ArabicPdfTests(unittest.TestCase):
+    def test_reversed_lam_alef_layer_warns(self) -> None:
+        broken = "نشرة اإلحصاءات الزراعية األعلى آالف " * 40
+        self.assertEqual(len(pdf_to_md.arabic_text_layer_warnings(broken)), 1)
+
+    def test_well_formed_arabic_does_not_warn(self) -> None:
+        clean = "القهوة العربية رمز للكرم والضيافة في شبه الجزيرة العربية " * 20
+        self.assertEqual(pdf_to_md.arabic_text_layer_warnings(clean), [])
+
+
+class RtlAndTemplateExportTests(unittest.TestCase):
+    SVG_NS = "http://www.w3.org/2000/svg"
+
+    def test_fallback_text_starts_from_inherited_anchor(self) -> None:
+        from svg_to_pptx.native_objects.marker_common import (
+            _fallback_text_records, fallback_text_inheritance, inherited_text_attrs)
+        root = ET.fromstring(
+            f'<svg xmlns="{self.SVG_NS}" text-anchor="end" fill="#2B1D15">'
+            '<g id="m"><text x="10" y="10">كلمة</text></g></svg>')
+        marker = root[0]
+        with fallback_text_inheritance(inherited_text_attrs([root])):
+            [record] = _fallback_text_records(marker)
+        self.assertEqual((record.anchor, record.fill), ("end", "2B1D15"))
+
+    def test_text_in_one_emphasis_tspan_reads_in_its_colour(self) -> None:
+        from svg_to_pptx.native_objects.marker_common import _fallback_text_records
+        marker = ET.fromstring(
+            f'<g xmlns="{self.SVG_NS}" fill="#2B1D15">'
+            '<text x="1" y="1"><tspan fill="#5E7D4F" font-weight="bold">الهيل</tspan></text>'
+            '<text x="1" y="9"><tspan fill="#5E7D4F">الهيل</tspan> والزعفران والقرفة</text></g>')
+        whole, mixed = _fallback_text_records(marker)
+        self.assertEqual((whole.fill, whole.bold), ("5E7D4F", True))
+        self.assertEqual(mixed.fill, "2B1D15")
+
+    def test_explicit_run_colour_beats_cell_default(self) -> None:
+        from svg_to_pptx.native_objects.table import _table_cell_parity_text_style
+        cell = {"color": "#2B1D15", "paragraphs": [
+            {"runs": [{"text": "الهيل", "bold": True, "color": "#5E7D4F"}]}]}
+        self.assertEqual(_table_cell_parity_text_style(cell), (True, "5E7D4F"))
+
+    def test_rtl_template_levels_flip(self) -> None:
+        from svg_to_pptx.pptx_package.builder import _rtl_text_levels
+        xml = '<a:lvl1pPr marL="0" algn="l" rtl="0"/><a:lvl1pPr algn="ctr" rtl="0"/>'
+        self.assertEqual(
+            _rtl_text_levels(xml),
+            '<a:lvl1pPr marL="0" algn="r" rtl="1"/><a:lvl1pPr algn="ctr" rtl="1"/>')
+
+    def test_rtl_theme_script_slot(self) -> None:
+        from svg_to_pptx.drawingml.theme_fonts import _complex_theme_scripts
+        self.assertEqual(_complex_theme_scripts("ar-SA"), ("Arab",))
+        self.assertEqual(_complex_theme_scripts("he-IL"), ("Hebr",))
+        self.assertEqual(_complex_theme_scripts("zh-CN"), ())
+
+
+class IntakeHousekeepingTests(unittest.TestCase):
+    def test_record_numbers_in_urls_are_not_dates(self) -> None:
+        from bs4 import BeautifulSoup
+        empty = BeautifulSoup("<html><title>x</title></html>", "html.parser")
+        date = lambda url: web_to_md.extract_metadata(empty, url)["date"]
+        self.assertEqual(date("https://iris.who.int/bitstream/handle/10665/379812/x.pdf"), "")
+        self.assertEqual(date("https://www.mem.gov.cn/kp/shaq/202205/t20220519_413952.shtml"), "2022-05")
 
 
 class SlideSizeTypeTests(unittest.TestCase):

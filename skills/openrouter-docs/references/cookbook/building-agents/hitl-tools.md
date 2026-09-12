@@ -170,7 +170,7 @@ const state: StateAccessor<typeof tools> = {
 };
 
 const result = openrouter.callModel({
-  model: '~openai/gpt-latest',
+  model: '~openai/gpt-sol-latest',
   input: 'Pay $500 to Acme Corp for the May invoice',
   tools,
   state,
@@ -240,7 +240,7 @@ if (!firstPendingCall) {
 }
 
 const resumed = openrouter.callModel({
-  model: '~openai/gpt-latest',
+  model: '~openai/gpt-sol-latest',
   input: [
     {
       type: 'function_call_output',

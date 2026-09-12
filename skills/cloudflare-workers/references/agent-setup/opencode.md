@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ## Cloudflare platform access
@@ -136,15 +136,15 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ```txt
@@ -152,7 +152,7 @@ Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ## Tips

@@ -526,7 +526,7 @@ Use `reasoning_details` when working with models that return special reasoning t
 
 For models that only return raw reasoning strings, you can use the simpler `reasoning` field. You can also use `reasoning_content` as an alias - it functions identically to `reasoning`.
 
-The `reasoning_details` functionality works identically across all supported reasoning models. You can easily switch between OpenAI reasoning models (like `~openai/gpt-latest`) and Anthropic reasoning models (like `~anthropic/claude-sonnet-latest`) without changing your code structure.
+The `reasoning_details` functionality works identically across all supported reasoning models. You can easily switch between OpenAI reasoning models (like `~openai/gpt-sol-latest`) and Anthropic reasoning models (like `~anthropic/claude-sonnet-latest`) without changing your code structure.
 
 Preserving reasoning blocks is useful specifically for tool calling. When models like Claude invoke tools, it is pausing its construction of a response to await external information. When tool results are returned, the model will continue building that existing response. This necessitates preserving reasoning blocks during tool use, for a couple of reasons:
 
@@ -576,7 +576,7 @@ MODEL: '~anthropic/claude-sonnet-latest'
     }]
 
     # First API call with tools
-    # Note: You can use '~openai/gpt-latest' instead of '~anthropic/claude-sonnet-latest' - they're completely interchangeable
+    # Note: You can use '~openai/gpt-sol-latest' instead of '~anthropic/claude-sonnet-latest' - they're completely interchangeable
     response = client.chat.completions.create(
         model="{{MODEL}}",
         messages=[
@@ -640,7 +640,7 @@ MODEL: '~anthropic/claude-sonnet-latest'
     ] as const;
 
     // First API call with tools
-    // Note: You can use '~openai/gpt-latest' instead of '~anthropic/claude-sonnet-latest' - they're completely interchangeable
+    // Note: You can use '~openai/gpt-sol-latest' instead of '~anthropic/claude-sonnet-latest' - they're completely interchangeable
     const response = await client.chat.completions.create({
       model: '{{MODEL}}',
       messages: [
@@ -715,7 +715,7 @@ When using the Responses API with manual state management (echoing output items 
 
 ```json theme={null}
 {
-  "model": "~openai/gpt-latest",
+  "model": "~openai/gpt-sol-latest",
   "input": [
     { "role": "user", "content": "Solve this math problem step by step: ..." },
     {
@@ -764,7 +764,7 @@ For each supported model, there are two equivalent ways to request pro mode on O
 
 ```json theme={null}
 {
-  "model": "~openai/gpt-latest",
+  "model": "~openai/gpt-sol-latest",
   "input": "Prove that there are infinitely many primes.",
   "reasoning": {
     "mode": "pro"

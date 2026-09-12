@@ -92,6 +92,14 @@ with the content "# New title" and commit message "Add README"
 ## `create_issue`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/203055) in GitLab 18.4.
+- [Unlisted](https://gitlab.com/gitlab-org/gitlab/-/work_items/625129) in GitLab 19.4. Superseded by [`save_work_item`](#save_work_item).
+
+Superseded by [`save_work_item`](#save_work_item), which resolves milestone titles and
+label names in the same places (the project and its ancestor groups) but is stricter
+about names it cannot find: `create_issue` creates label names that don't exist yet and
+silently drops an unknown milestone title, while `save_work_item` returns an error naming
+anything it cannot find. This tool no longer appears in `tools/list` but remains callable
+while callers migrate.
 
 Creates a new issue in a GitLab project.
 
@@ -1103,6 +1111,53 @@ Example:
 ```plaintext
 Show me the work items in this saved view: <URL>
 ```
+
+## `save_vulnerability`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/613026) in GitLab 19.4.
+
+Performs write operations on a vulnerability in a GitLab project.
+
+| Parameter            | Type   | Required | Description |
+|----------------------|--------|----------|-------------|
+| `action`             | string | Yes      | Operation to perform. One of `dismiss`, `confirm`, `revert_to_detected`, `update_severity`, or `create_issue`. |
+| `vulnerability_id`   | string | Yes      | Numeric ID of the vulnerability (for example, `567`). |
+| `comment`            | string | No       | Explanation for the action. Required when `action` is `update_severity`. |
+| `dismissal_reason`   | string | No       | Reason for dismissal. One of `ACCEPTABLE_RISK`, `FALSE_POSITIVE`, `MITIGATING_CONTROL`, `USED_IN_TESTS`, or `NOT_APPLICABLE`. Use only when `action` is `dismiss`. |
+| `severity`           | string | No       | New severity level. One of `INFO`, `UNKNOWN`, `LOW`, `MEDIUM`, `HIGH`, or `CRITICAL`. Required when `action` is `update_severity`. |
+| `project_full_path`  | string | No       | Full path of the project (for example, `namespace/project`). Required when `action` is `create_issue`. |
+
+Examples:
+
+- Dismiss a vulnerability:
+
+  ```plaintext
+  Dismiss vulnerability 123 with reason FALSE_POSITIVE
+  ```
+
+- Confirm a vulnerability:
+
+  ```plaintext
+  Mark vulnerability 456 as confirmed
+  ```
+
+- Revert to detected:
+
+  ```plaintext
+  Revert vulnerability 789 back to detected state
+  ```
+
+- Update severity:
+
+  ```plaintext
+  Change severity of vulnerability 321 to CRITICAL with comment "Reassessed based on new intel"
+  ```
+
+- Create an issue:
+
+  ```plaintext
+  Create an issue for vulnerability 654 in project gitlab-org/gitlab
+  ```
 
 ## `save_work_item`
 

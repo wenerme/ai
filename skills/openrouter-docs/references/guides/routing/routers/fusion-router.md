@@ -143,10 +143,10 @@ Pass a `fusion` plugin entry alongside `model: "openrouter/fusion"`. This is the
           id: 'fusion',
           analysisModels: [
             '~anthropic/claude-opus-latest',
-            '~openai/gpt-latest',
+            '~openai/gpt-sol-latest',
             '~google/gemini-pro-latest',
           ],
-          model: '~openai/gpt-latest',
+          model: '~openai/gpt-sol-latest',
         },
       ],
       messages: [
@@ -168,8 +168,8 @@ Pass a `fusion` plugin entry alongside `model: "openrouter/fusion"`. This is the
       "plugins": [
         {
           "id": "fusion",
-          "analysis_models": ["~anthropic/claude-opus-latest", "~openai/gpt-latest", "~google/gemini-pro-latest"],
-          "model": "~openai/gpt-latest"
+          "analysis_models": ["~anthropic/claude-opus-latest", "~openai/gpt-sol-latest", "~google/gemini-pro-latest"],
+          "model": "~openai/gpt-sol-latest"
         }
       ],
       "messages": [
@@ -200,10 +200,10 @@ When you bring your own model and add `openrouter:fusion` as a server tool, conf
           parameters: {
             analysisModels: [
               '~anthropic/claude-opus-latest',
-              '~openai/gpt-latest',
+              '~openai/gpt-sol-latest',
               '~google/gemini-pro-latest',
             ],
-            model: '~openai/gpt-latest',
+            model: '~openai/gpt-sol-latest',
           },
         },
       ],
@@ -224,8 +224,8 @@ When you bring your own model and add `openrouter:fusion` as a server tool, conf
         {
           "type": "openrouter:fusion",
           "parameters": {
-            "analysis_models": ["~anthropic/claude-opus-latest", "~openai/gpt-latest", "~google/gemini-pro-latest"],
-            "model": "~openai/gpt-latest"
+            "analysis_models": ["~anthropic/claude-opus-latest", "~openai/gpt-sol-latest", "~google/gemini-pro-latest"],
+            "model": "~openai/gpt-sol-latest"
           }
         }
       ]
@@ -233,14 +233,14 @@ When you bring your own model and add `openrouter:fusion` as a server tool, conf
   ```
 </CodeGroup>
 
-| Field                   | Default                                                                                             | Description                                                                                                                                                               |
-| ----------------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `analysis_models`       | Quality preset (`~anthropic/claude-opus-latest`, `~openai/gpt-latest`, `~google/gemini-pro-latest`) | Models that form the panel. Each runs in parallel with `openrouter:web_search` and `openrouter:web_fetch` enabled. 1–8 models allowed.                                    |
-| `model`                 | Your outer model                                                                                    | The analyst model that produces the structured analysis JSON. Defaults to the same model handling your request.                                                           |
-| `max_tool_calls`        | `4`                                                                                                 | Max tool-calling steps each panel model and the analyst may take in their `openrouter:web_search` / `openrouter:web_fetch` loop before they must return text. Range 1–16. |
-| `max_completion_tokens` | `16000`                                                                                             | Max output tokens (including reasoning) per inner panel/analyst call. Keeps reasoning-heavy models from exhausting their budget before producing visible text.            |
-| `reasoning`             | Provider default                                                                                    | Reasoning config forwarded to the panel and analyst calls: an object with optional `effort` and `max_tokens`.                                                             |
-| `temperature`           | Provider default                                                                                    | Temperature (`0`–`2`) forwarded to the panel calls. The analyst always runs at temperature 0.                                                                             |
+| Field                   | Default                                                                                                 | Description                                                                                                                                                               |
+| ----------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `analysis_models`       | Quality preset (`~anthropic/claude-opus-latest`, `~openai/gpt-sol-latest`, `~google/gemini-pro-latest`) | Models that form the panel. Each runs in parallel with `openrouter:web_search` and `openrouter:web_fetch` enabled. 1–8 models allowed.                                    |
+| `model`                 | Your outer model                                                                                        | The analyst model that produces the structured analysis JSON. Defaults to the same model handling your request.                                                           |
+| `max_tool_calls`        | `4`                                                                                                     | Max tool-calling steps each panel model and the analyst may take in their `openrouter:web_search` / `openrouter:web_fetch` loop before they must return text. Range 1–16. |
+| `max_completion_tokens` | `16000`                                                                                                 | Max output tokens (including reasoning) per inner panel/analyst call. Keeps reasoning-heavy models from exhausting their budget before producing visible text.            |
+| `reasoning`             | Provider default                                                                                        | Reasoning config forwarded to the panel and analyst calls: an object with optional `effort` and `max_tokens`.                                                             |
+| `temperature`           | Provider default                                                                                        | Temperature (`0`–`2`) forwarded to the panel calls. The analyst always runs at temperature 0.                                                                             |
 
 ## Forcing fusion on every request
 

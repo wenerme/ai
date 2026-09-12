@@ -36,6 +36,7 @@ import ipaddress
 import json
 import os
 import re
+import unicodedata
 import socket
 import subprocess
 import sys
@@ -314,12 +315,25 @@ def clean_title(title: str) -> str:
     return clean.strip()
 
 
+_FILENAME_TRANSLITERATIONS = str.maketrans({
+    'đ': 'd', 'Đ': 'D', 'ø': 'o', 'Ø': 'O', 'ł': 'l', 'Ł': 'L',
+    'ß': 'ss', 'æ': 'ae', 'Æ': 'AE', 'œ': 'oe', 'Œ': 'OE', 'ı': 'i',
+})
+
+
 def sanitize_filename(name: str) -> str:
-    """Sanitize a string for filesystem-safe filenames."""
+    """Sanitize a string for filesystem-safe filenames.
+
+    Accented Latin letters fold to their base letter (``Khát vọng`` ->
+    ``Khat_vong``) instead of vanishing; letters of any script and digits
+    stay, everything else is dropped.
+    """
+    folded = unicodedata.normalize('NFKD', name.translate(_FILENAME_TRANSLITERATIONS))
+    folded = ''.join(ch for ch in folded if not unicodedata.combining(ch))
     # Replace whitespace with underscore first
-    clean = re.sub(r'\s+', '_', name)
-    # Remove all except Chinese, English, Numbers, Underscore, Hyphen
-    clean = re.sub(r'[^\u4e00-\u9fa5a-zA-Z0-9_-]', '', clean)
+    clean = re.sub(r'\s+', '_', folded)
+    # Keep letters and digits of any script, underscore, hyphen
+    clean = ''.join(ch for ch in clean if ch.isalnum() or ch in '_-')
     # Collapse repeating underscores
     clean = re.sub(r'_+', '_', clean)
     return clean[:80]  # Truncate
@@ -587,11 +601,13 @@ def extract_metadata(soup: BeautifulSoup, url: str) -> dict[str, str]:
 
     if not date:
         # Try URL matching
-        match = re.search(r"(\d{4})(\d{2})[\/_](?:t\d+_)?", url)
+        # Only a plausible year and month: a handle or record number such as
+        # ".../10665/379812/..." is not May 3798.
+        match = re.search(r"(?<!\d)((?:19|20)\d{2})(0[1-9]|1[0-2])[\/_](?:t\d+_)?", url)
         if match:
             date = f"{match.group(1)}-{match.group(2)}"
         else:
-            match = re.search(r"(\d{4})[-\/](\d{2})[-\/](\d{2})", url)
+            match = re.search(r"(?<!\d)((?:19|20)\d{2})[-\/](0[1-9]|1[0-2])[-\/](\d{2})", url)
             if match:
                 date = f"{match.group(1)}-{match.group(2)}-{match.group(3)}"
 

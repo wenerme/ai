@@ -504,11 +504,14 @@ Standard
 | --- | --- | --- | --- | --- |
 | ChatGPT | chat-latest | $5.00 | $0.50 | $30.00 |
 | Codex | gpt-5.3-codex | $1.75 | $0.175 | $14.00 |
+| Life Sciences | gpt-rosalind-research | $5.00 | $0.50 | $25.00 |
 | Search | gpt-5-search-api | $1.25 | $0.125 | $10.00 |
 | Embedding | text-embedding-3-small | $0.02 | - | - |
 | Embedding | text-embedding-3-large | $0.13 | - | - |
 | Embedding | text-embedding-ada-002 | $0.10 | - | - |
 | Moderation | omni-moderation-latest | Free | - | - |
+
+Billing for `gpt-rosalind-research` begins on October 5, 2026. Cache-write pricing does not apply to this model. Access is limited to approved internal research through the [trusted-access program](https://help.openai.com/en/articles/20001193-gpt-rosalind-for-life-sciences-research). All eligible organizations will continue to get access to the latest GPT-Rosalind models as they’re released. Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026, that are eligible for data residency. See our [Your data](https://developers.openai.com/api/docs/guides/your-data) guide for supported regions and processing details.
 
     
 
@@ -524,6 +527,8 @@ Fast mode
 | Category | Model | Input | Cached input | Output |
 | --- | --- | --- | --- | --- |
 | Codex | gpt-5.3-codex | $3.50 | $0.35 | $28.00 |
+
+Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026, that are eligible for data residency. See our [Your data](https://developers.openai.com/api/docs/guides/your-data) guide for supported regions and processing details.
 
 
 

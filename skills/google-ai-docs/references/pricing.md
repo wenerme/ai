@@ -26,7 +26,7 @@ For production applications that require higher volumes and advanced features.
 
 ### Enterprise
 
-For large-scale deployments with custom needs for security, support, and compliance, powered by [Gemini Enterprise Agent Platform](https://cloud.google.com/gemini-enterprise-agent-platform).
+For enterprise deployments, powered by [Gemini Enterprise Agent Platform](https://cloud.google.com/gemini-enterprise-agent-platform).
 
 - check_circleAll features in Paid, plus optional access to:
 - check_circleDedicated support channels
@@ -960,6 +960,9 @@ mood.
 
 [Try it in Google AI Studio](https://aistudio.google.com?model=gemini-2.5-flash-image)
 
+> [!WARNING]
+> **Warning:** Gemini 2.5 Flash Image (`gemini-2.5-flash-image`) is [deprecated](https://ai.google.dev/gemini-api/docs/deprecations) and will be shut down on October 2, 2026; migrate to [Gemini 3.1 Flash Image](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) or [Gemini 3.1 Flash Lite Image](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image) to avoid service disruption.
+
 A native image generation model, optimized for speed, flexibility, and
 contextual understanding. Text input and output is priced the same as
 [2.5 Flash](https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-flash).
@@ -1123,29 +1126,6 @@ PDFs into a unified embedding space.
 | Video input price | Not available | $6.00 ($0.000395 per frame) |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemini Embedding
-
-*[`gemini-embedding-001`](https://ai.google.dev/gemini-api/docs/models/gemini-embedding-001)*
-
-
-[Try the API](https://ai.google.dev/gemini-api/docs/embeddings)
-
-Our first Gemini Embeddings model for text-only use cases.
-
-### Standard
-
-|   | Free Tier | Paid Tier, per 1M tokens in USD |
-|---|---|---|
-| Input price | Free of charge | $0.15 |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-### Batch
-
-|   | Free Tier | Paid Tier, per 1M tokens in USD |
-|---|---|---|
-| Input price | Not available | $0.075 |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
 ## Gemini Robotics ER 2 Preview
 
 *[`gemini-robotics-er-2-preview`](https://ai.google.dev/gemini-api/docs/models/gemini-robotics-er-2-preview)*
@@ -1192,48 +1172,27 @@ function calling.
 
 ### Standard
 
+<br />
+
+## Gemini 2.5 Computer Use Preview
+
+*[`gemini-2.5-computer-use-preview-10-2025`](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025)*
+
+<br />
+
+<br />
+
+<br />
+
+Our Computer Use model optimized for building browser control agents that
+automate tasks.
+
 |   | Free Tier | Paid Tier, per 1M tokens in USD |
 |---|---|---|
 | Input price | Free of charge | $1.00 (text / image / video / audio) through December 31, 2026. $2.00 (text / image / video / audio) starting January 1, 2027. |
 | Output price | Free of charge | $5.00 through December 31, 2026. $10.00 starting January 1, 2027. |
 | Grounding with Google Search | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-## Gemini Robotics ER 1.6 Preview
-
-*[`gemini-robotics-er-1.6-preview`](https://ai.google.dev/gemini-api/docs/models/gemini-robotics-er-1.6-preview)*
-
-
-[Try it in Google AI Studio](https://aistudio.google.com?model=gemini-robotics-er-1.6-preview)
-
-Gemini Robotics ER, short for Gemini Robotics-Embodied Reasoning, is a thinking
-model that enhances robots' abilities to understand and interact with the
-physical world.
-
-### Standard
-
-|   | Free Tier | Paid Tier, per 1M tokens in USD |
-|---|---|---|
-| Input price | Free of charge | $1.00 (text / image / video) $2.00 (audio) |
-| Output price (including thinking tokens) | Free of charge | $5.00 |
-| Grounding with Google Search | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-### Batch
-
-|   | Free Tier | Paid Tier, per 1M tokens in USD |
-|---|---|---|
-| Input price | Not available | $0.50 (text / image / video) $1.00 (audio) |
-| Output price (including thinking tokens) | Not available | $2.50 |
-| Grounding with Google Search | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
-## Gemini 2.5 Computer Use Preview
-
-*[`gemini-2.5-computer-use-preview-10-2025`](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025)*
-
-Our Computer Use model optimized for building browser control agents that
-automate tasks.
 
 |   | Free Tier | Paid Tier, per 1M tokens in USD |
 |---|---|---|
@@ -1269,7 +1228,7 @@ to each model.
 | [Code execution](https://ai.google.dev/gemini-api/docs/code-execution#billing) | Free of charge | Code execution is billed at the standard token rates for the selected model. Costs are determined solely by the tool's usage, no charges are accrued for the session runtime. The generated code and execution results are billed as **Output tokens** when created, and as **Input tokens** when the model uses them as part of its iterative reasoning process. |
 | [URL context](https://ai.google.dev/gemini-api/docs/url-context#limitations) | Free of charge | Charged as input tokens per model pricing. |
 | [Computer use](https://ai.google.dev/gemini-api/docs/computer-use) | Not available | Charged as regular tokens per model pricing (e.g., standard [Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.6-flash) pricing). See the [Gemini 2.5 Computer Use Preview](https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-computer-use-preview-10-2025) pricing table for legacy model rates. |
-| [File search](https://ai.google.dev/gemini-api/docs/file-search#pricing) | Free of charge | Charged for [embeddings](https://ai.google.dev/gemini-api/docs/pricing#gemini-embedding) at $0.15 / 1M tokens. Retrieved document tokens charged as regular tokens per model pricing. |
+| [File search](https://ai.google.dev/gemini-api/docs/file-search#pricing) | Free of charge | Charged for [embeddings](https://ai.google.dev/gemini-api/docs/pricing#gemini-embedding-2) at $0.15 / 1M tokens. Retrieved document tokens charged as regular tokens per model pricing. |
 | [Custom Tools endpoint (Gemini 3.1 Pro Preview)](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) | Not available | Same as [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.1-pro-preview) pricing |
 
 ## Pricing for agents
