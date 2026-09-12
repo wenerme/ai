@@ -75,6 +75,21 @@ PROTOCOL       = smtps
 Note that you'll need to create and use an [App password](https://support.google.com/accounts/answer/185833?hl=en) by enabling 2FA on your Google
 account. You won't be able to use your Google account password directly.
 
+An app password is the only option: Google
+[turned off access for apps that sign in with a password alone](https://workspaceupdates.googleblog.com/2023/09/winding-down-google-sync-and-less-secure-apps-support.html)
+in 2024 and asks applications to use OAuth instead, which Gitea's mailer does
+not implement — it authenticates with `CRAM-MD5`, `PLAIN` or `LOGIN`.
+
+Two things to keep in mind:
+
+- app passwords require 2-step verification on the account, and a Google
+  Workspace administrator can switch them off for the whole domain. If they are
+  not available, send through the
+  [Workspace SMTP relay service](https://support.google.com/a/answer/2956491)
+  or through another mail provider.
+- port `587` works as well, with `SMTP_PORT = 587` and
+  `PROTOCOL = smtp+starttls`.
+
 ### ProtonMail
 
 This feature is currently only available for select Proton for Business customers and those with Visionary and Family plans with custom domain addresses. See [ProtonMail's SMTP documentation](https://proton.me/support/smtp-submission) for more information. This limitation can be circumvented by using the ProtonMail Bridge application.

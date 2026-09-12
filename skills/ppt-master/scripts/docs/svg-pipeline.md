@@ -1039,7 +1039,9 @@ class-average estimate, with the existing fixed advances for monospaced faces.
   a JSON bounds object with `--json`.
 - `calibrate` measures fixed CJK and Latin samples for every typography role
   from `spec_lock.md` or repeatable `--role NAME:FAMILY:SIZE[:bold]` overrides, writes
-  `validation/text_calibration.json`, and prints a compact table or JSON. The
+  `validation/text_calibration.json`, and prints a compact table or JSON.
+  Incremental `--role` calls retain other saved roles with their weights, rates,
+  and script samples; unmeasured script cells display `-`. The
   estimator is additive across scripts, so a line mixing CJK with Latin words
   or digits is estimated as (CJK chars ÷ CJK rate + other chars ÷ Latin rate)
   × 100; spaces and ASCII punctuation count as Latin, fullwidth punctuation as
@@ -1123,6 +1125,8 @@ standards rather than this pipeline overview.
 ## `svg_position_calculator.py`
 
 Analyze and review supported chart coordinates after SVG generation.
+
+Numeric parameters and data values must be finite; NaN and either Infinity sign exit non-zero with the offending parameter or data point identified.
 
 Use this after `svg_quality_checker.py` passes, and only for chart types supported by this script: `bar`, `pie` / `donut`, `radar`, `line` / `area` / `scatter`, and `grid`. Area charts do not have a separate calculator mode: use `calc line` for the upper boundary points, then close the filled region to the plot area's bottom baseline (`y_max`) in the SVG.
 

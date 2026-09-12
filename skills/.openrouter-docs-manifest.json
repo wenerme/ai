@@ -2049,9 +2049,8 @@
   },
   "guides/features/server-tools/web-search.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/web-search.md",
-    "lastModified": "Fri, 14 Aug 2026 03:05:59 GMT",
-    "size": 31649,
-    "updatedAt": "2026-08-14T03:05:59.765Z"
+    "size": 32535,
+    "updatedAt": "2026-09-12T13:44:25.172Z"
   },
   "guides/features/service-tiers.md": {
     "url": "https://openrouter.ai/docs/guides/features/service-tiers.md",
@@ -2095,9 +2094,8 @@
   },
   "guides/features/workspaces/workspace-budgets.md": {
     "url": "https://openrouter.ai/docs/guides/features/workspaces/workspace-budgets.md",
-    "lastModified": "Wed, 02 Sep 2026 04:21:34 GMT",
-    "size": 10395,
-    "updatedAt": "2026-09-02T04:21:34.780Z"
+    "size": 10406,
+    "updatedAt": "2026-09-12T13:44:29.527Z"
   },
   "guides/features/zdr.md": {
     "url": "https://openrouter.ai/docs/guides/features/zdr.md",
@@ -2145,8 +2143,8 @@
   },
   "guides/overview/auth/management-api-keys.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/management-api-keys.md",
-    "size": 19130,
-    "updatedAt": "2026-09-09T14:40:04.080Z"
+    "size": 19284,
+    "updatedAt": "2026-09-12T13:44:35.616Z"
   },
   "guides/overview/auth/oauth.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/oauth.md",

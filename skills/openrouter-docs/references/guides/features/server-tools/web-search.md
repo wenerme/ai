@@ -487,6 +487,8 @@ The key differences:
 | **Total results cap**     | No                                           | Yes (`max_total_results`)                          |
 | **Pricing**               | Varies by engine                             | Varies by engine (same rates)                      |
 
+Use one surface per request. If a request still carries a `web` plugin (from `plugins`, an `:online` model suffix, or a preset) alongside `openrouter:web_search` and the tool runs as native provider search, the server tool's parameters override the matching plugin settings (`allowed_domains`, `excluded_domains`, `max_results`, `user_location`, `max_uses`), and plugin settings the tool does not set, such as `search_prompt`, are kept. The two domain lists count as one setting: a tool `allowed_domains` or `excluded_domains` replaces both plugin lists, so providers that accept only one list (Anthropic) never receive both. Two cases keep the plugin settings as they are: a `web` plugin pinned to a non-native `engine` (its search has already run, so the tool does not add a second provider-side search), and a `web` setting saved in your account with **Prevent overrides** enabled.
+
 ### Migration example
 
 ```json lines theme={null}

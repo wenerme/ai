@@ -90,10 +90,10 @@
   "openai-docs/deprecations.md": {
     "url": "https://developers.openai.com/api/docs/deprecations.md",
     "skill": "openai-docs",
-    "etag": "W/\"a1cb47d7260fc73e9d5c676bce998429\"",
-    "lastModified": "Mon, 31 Aug 2026 04:57:10 GMT",
-    "size": 37172,
-    "updatedAt": "2026-08-31T05:18:20.538Z"
+    "etag": "W/\"0cb1356913f427efbfbb38cbae5b2c4c\"",
+    "lastModified": "Sat, 12 Sep 2026 04:50:50 GMT",
+    "size": 37570,
+    "updatedAt": "2026-09-12T13:38:30.624Z"
   },
   "openai-docs/gpts/release-notes.md": {
     "url": "https://developers.openai.com/api/docs/gpts/release-notes.md",
@@ -1692,10 +1692,10 @@
   "openai-docs/pricing.md": {
     "url": "https://developers.openai.com/api/docs/pricing.md",
     "skill": "openai-docs",
-    "etag": "W/\"2486635b88bc028144b7a9e75a9e4315\"",
-    "lastModified": "Sat, 12 Sep 2026 01:28:27 GMT",
-    "size": 23051,
-    "updatedAt": "2026-09-12T04:22:05.002Z"
+    "etag": "W/\"9c9c657012f2a8a709e5333323e8e04f\"",
+    "lastModified": "Sat, 12 Sep 2026 04:51:02 GMT",
+    "size": 23001,
+    "updatedAt": "2026-09-12T13:39:18.217Z"
   },
   "openai-docs/quickstart.md": {
     "url": "https://developers.openai.com/api/docs/quickstart.md",

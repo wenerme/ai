@@ -332,17 +332,17 @@ The following documented routes reject regular API keys and must be called with 
 
 ### Workspaces
 
-| Method   | Route                                        | Reference                                                                                                  |
-| -------- | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `GET`    | `/api/v1/workspaces`                         | [List workspaces](/docs/api/api-reference/workspaces/list-workspaces)                                           |
-| `POST`   | `/api/v1/workspaces`                         | [Create a workspace](/docs/api/api-reference/workspaces/create-a-workspace)                                     |
-| `GET`    | `/api/v1/workspaces/{id}`                    | [Get a workspace](/docs/api/api-reference/workspaces/get-a-workspace)                                           |
-| `DELETE` | `/api/v1/workspaces/{id}`                    | [Delete a workspace](/docs/api/api-reference/workspaces/delete-a-workspace)                                     |
-| `PATCH`  | `/api/v1/workspaces/{id}`                    | [Update a workspace](/docs/api/api-reference/workspaces/update-a-workspace)                                     |
-| `GET`    | `/api/v1/workspaces/{id}/budgets`            | [List workspace budgets](/docs/api/api-reference/workspaces/list-workspace-budgets)                             |
-| `GET`    | `/api/v1/workspaces/{id}/budgets/{interval}` | [Get a workspace budget](/docs/api/api-reference/workspaces/get-a-workspace-budget)                             |
-| `PUT`    | `/api/v1/workspaces/{id}/budgets/{interval}` | [Create or update a workspace budget](/docs/api/api-reference/workspaces/create-or-update-a-workspace-budget)   |
-| `DELETE` | `/api/v1/workspaces/{id}/budgets/{interval}` | [Delete a workspace budget](/docs/api/api-reference/workspaces/delete-a-workspace-budget)                       |
-| `GET`    | `/api/v1/workspaces/{id}/members`            | [List workspace members](/docs/api/api-reference/workspaces/list-workspace-members)                             |
-| `POST`   | `/api/v1/workspaces/{id}/members/add`        | [Bulk add members to a workspace](/docs/api/api-reference/workspaces/bulk-add-members-to-a-workspace)           |
-| `POST`   | `/api/v1/workspaces/{id}/members/remove`     | [Bulk remove members from a workspace](/docs/api/api-reference/workspaces/bulk-remove-members-from-a-workspace) |
+| Method   | Route                                                   | Reference                                                                                                  |
+| -------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `GET`    | `/api/v1/workspaces`                                    | [List workspaces](/docs/api/api-reference/workspaces/list-workspaces)                                           |
+| `POST`   | `/api/v1/workspaces`                                    | [Create a workspace](/docs/api/api-reference/workspaces/create-a-workspace)                                     |
+| `GET`    | `/api/v1/workspaces/{id}`                               | [Get a workspace](/docs/api/api-reference/workspaces/get-a-workspace)                                           |
+| `DELETE` | `/api/v1/workspaces/{id}`                               | [Delete a workspace](/docs/api/api-reference/workspaces/delete-a-workspace)                                     |
+| `PATCH`  | `/api/v1/workspaces/{id}`                               | [Update a workspace](/docs/api/api-reference/workspaces/update-a-workspace)                                     |
+| `GET`    | `/api/v1/workspaces/{id}/members`                       | [List workspace members](/docs/api/api-reference/workspaces/list-workspace-members)                             |
+| `POST`   | `/api/v1/workspaces/{id}/members/add`                   | [Bulk add members to a workspace](/docs/api/api-reference/workspaces/bulk-add-members-to-a-workspace)           |
+| `POST`   | `/api/v1/workspaces/{id}/members/remove`                | [Bulk remove members from a workspace](/docs/api/api-reference/workspaces/bulk-remove-members-from-a-workspace) |
+| `GET`    | `/api/v1/workspaces/{workspace_ref}/budgets`            | [List workspace budgets](/docs/api/api-reference/workspaces/list-workspace-budgets)                             |
+| `GET`    | `/api/v1/workspaces/{workspace_ref}/budgets/{interval}` | [Get a workspace budget](/docs/api/api-reference/workspaces/get-a-workspace-budget)                             |
+| `PUT`    | `/api/v1/workspaces/{workspace_ref}/budgets/{interval}` | [Create or update a workspace budget](/docs/api/api-reference/workspaces/create-or-update-a-workspace-budget)   |
+| `DELETE` | `/api/v1/workspaces/{workspace_ref}/budgets/{interval}` | [Delete a workspace budget](/docs/api/api-reference/workspaces/delete-a-workspace-budget)                       |
