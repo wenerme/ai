@@ -5,7 +5,7 @@ description: "Browse Together AI model IDs, capabilities, context windows, and p
 
 # [Together AI logo]Together AI
 
-Access 38 Together AI models through Mastra's model router. Authentication is handled automatically using the `TOGETHER_API_KEY` environment variable.
+Access 39 Together AI models through Mastra's model router. Authentication is handled automatically using the `TOGETHER_API_KEY` environment variable.
 
 Learn more in the [Together AI documentation](https://docs.together.ai/docs/serverless-models).
 
@@ -84,6 +84,18 @@ for await (const chunk of stream) {
     "maxOutput": 384000,
     "inputCost": 1.32,
     "outputCost": 3.96
+  },
+  {
+    "model": "togetherai/deepseek-ai/DeepSeek-V4.1-Flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 384000,
+    "inputCost": 0.3,
+    "outputCost": 1.2
   },
   {
     "model": "togetherai/google/gemma-3n-E4B-it",

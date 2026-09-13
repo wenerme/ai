@@ -5,7 +5,7 @@ description: "Browse AgentRouter model IDs, capabilities, and context windows. L
 
 # [AgentRouter logo]AgentRouter
 
-Access 3 AgentRouter models through Mastra's model router. Authentication is handled automatically using the `AGENTROUTER_API_KEY` environment variable.
+Access 5 AgentRouter models through Mastra's model router. Authentication is handled automatically using the `AGENTROUTER_API_KEY` environment variable.
 
 Learn more in the [AgentRouter documentation](https://agentrouter.org/docs/opencode.html).
 
@@ -60,6 +60,30 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "agentrouter/deepseek-v4-flash",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "agentrouter/glm-5.3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null
   },
