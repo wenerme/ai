@@ -153,6 +153,8 @@ Separately, OpenRouter's own [input/output logging](/docs/guides/features/input-
 
 Sending requests to `eu.openrouter.ai` or `us.openrouter.ai` does **not** by itself regionalize your cloud deployments. When you combine BYOK with in-region routing, you must ensure your hyperscaler deployments are provisioned in the matching region. The provider-specific behavior is below.
 
+Your key is only used for a model when the provider's shared endpoint for that model is itself eligible for the region. When that shared endpoint is outside your data region but your own account with the provider processes requests inside it, declare the region on the key under **Provider agreement → Data region** in your workspace BYOK settings. See [Declaring a Data Region on a Key](/docs/guides/overview/auth/byok#declaring-a-data-region-on-a-key) for the options and the cases where the declaration is not honored.
+
 ### AWS Bedrock
 
 How OpenRouter chooses the Bedrock invocation region under in-region routing depends on your key type:
@@ -174,6 +176,12 @@ Vertex BYOK service account keys accept an optional `region` field that selects 
 * **Set `region` to a location inside your data region** (e.g. `europe-west1` for the EU, `us-central1` for the US).
 * **For most Vertex models, OpenRouter enforces this**: a key region outside your data region is rejected with an error, and an unset or `"global"` region resolves to a default location inside your data region instead of Google's global endpoint. Make sure your project has model access and quota in that location.
 * **Exceptions**: models served through Vertex's OpenAI-compatible endpoint (which includes non-OpenAI models such as Llama and DeepSeek) and models served through the Vertex Interactions API use the key's configured region directly, defaulting to `global` when unset, without enforcement against your data region. Because you cannot always tell from the model which path serves it, always set an explicit in-region location on your key and never use `"global"`, since the global location lets Google process the request in any region.
+
+### Baseten
+
+To use Baseten under in-region routing, create a [regional Dedicated Deployment](https://docs.baseten.co/deployment/regional-deployments) in Baseten and add its URL as a [private model](/docs/guides/routing/private-models) on OpenRouter. OpenRouter derives the region from the `model-{model_id}-region-{us|eu}.api.baseten.co` hostname: a `region-eu` deployment is eligible on `eu.openrouter.ai`, a `region-us` deployment on `us.openrouter.ai`.
+
+The region is fixed per deployment, so changing the URL on OpenRouter re-derives it. Shared Model APIs, non-regional dedicated hosts, and regional environments are served on the global domain only.
 
 ### Why This Matters
 

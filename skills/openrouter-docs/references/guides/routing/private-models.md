@@ -31,6 +31,10 @@ Private Models is a good fit if:
 * You want your team or organization to access these models through OpenRouter without exposing them publicly.
 * You're on the Enterprise Plan.
 
+## In-Region Routing
+
+A private deployment may be eligible for in-region routing when OpenRouter is able to derive a region from its deployment URL. Deployments without a derived region are routed on the global `openrouter.ai` domain. See the [In-Region Routing guide](/docs/guides/features/in-region-routing#byok-with-in-region-routing) for supported providers.
+
 ## Requesting an endpoint
 
 Reach out to your account representative with:
