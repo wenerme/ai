@@ -32,7 +32,8 @@ localized: false
 
 ```
 ## Description
-Enforce marking members as `readonly` if they are never modified outside the constructor.
+Enforce marking instance properties as `readonly` if they are never modified outside the
+constructor, and static properties as `readonly` if they are never reassigned.
 
 This rule ensures that class properties, especially private ones, are marked as `readonly` if their values
 remain constant after being initialized. This helps improve code readability, maintainability, and ensures

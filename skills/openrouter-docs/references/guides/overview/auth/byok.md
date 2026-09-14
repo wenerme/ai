@@ -148,15 +148,15 @@ BYOK keys in your
 
 Some providers host region-pinned endpoints for a model alongside a standard one, for example `amazon-bedrock/us` or `google-vertex/europe-west1`. Providers charge a premium for these regional endpoints, so requests to the global API (`openrouter.ai`) skip them unless you target one explicitly with `provider.order` or `provider.only` (see [Targeting Specific Provider Endpoints](/docs/guides/routing/provider-selection#targeting-specific-provider-endpoints)).
 
-With a prioritized BYOK key, the regional premium is billed to your own provider account rather than to OpenRouter credits, so the rule relaxes in one case: if a provider has **no** standard-priced endpoint for the model, only regional ones, your prioritized key for that provider can route to the regional endpoint. When the provider offers both a standard and a regional endpoint for the model, your key is routed to the standard endpoint, the same as a non-BYOK request. Fallback keys never unlock regional endpoints. Requests to the regional APIs (`us.openrouter.ai`, `eu.openrouter.ai`) are unaffected, since they route to in-region endpoints by design.
+With a prioritized BYOK key, the regional premium is billed to your own provider account rather than to OpenRouter credits, so the rule relaxes in one case: if a provider has **no** standard-priced endpoint for the model, only regional ones, your prioritized key for that provider can route to the regional endpoint. When the provider offers both a standard and a regional endpoint for the model, your key is routed to the standard endpoint, the same as a non-BYOK request. Fallback keys never unlock regional endpoints. Requests to the regional APIs (`us.openrouter.ai`, `eu.openrouter.ai`) are unaffected, since they route to in-region endpoints by design. To make a key eligible on a regional API when the provider's shared endpoint is outside that region, see [Declaring a Data Region on a Key](#declaring-a-data-region-on-a-key).
 
 ### BYOK with Data Policies
 
-BYOK endpoints are subject to your data policies. Bringing your own key changes which credential authenticates the upstream request. It doesn't change which endpoints you're allowed to route to. Your provider, account, and guardrail data policies are applied **before** BYOK endpoints are created, so BYOK only routes to endpoints that already satisfy them.
+Your data policies apply to BYOK endpoints. A BYOK key changes the credential for the upstream request. It does not change which endpoints you can route to. Your provider, account, and guardrail data policies apply to each BYOK endpoint. BYOK routes only to endpoints that pass those policies.
 
-This means a BYOK key does not exempt a provider from your `data_collection` restrictions. For [Zero Data Retention](/docs/guides/features/zdr) the same is true by default: if you enforce ZDR (via `provider.zdr`, account privacy settings, or a guardrail) and a provider's endpoint retains prompts, that endpoint stays ineligible even when you supply your own key. The exception is a key with a ZDR declaration in its **Provider agreement** section: declaring your account has ZDR with the provider stamps your BYOK copy with a ZDR policy so it survives your ZDR guardrail (video generation remains excluded).
+A BYOK key does not exempt a provider from your `data_collection` restrictions. For [Zero Data Retention](/docs/guides/features/zdr) the same is true by default. You can enforce ZDR with `provider.zdr`, your account privacy settings, or a guardrail. When you do, an endpoint that retains prompts stays blocked. Your own key does not change that. The one exception is a key with a ZDR declaration in its **Provider agreement** section. See [Declaring ZDR on a Key](#declaring-zdr-on-a-key).
 
-For example, if you enforce ZDR and send a request that would otherwise use a BYOK key for a provider whose endpoint retains prompts:
+For example, you enforce ZDR and send a request to a provider whose endpoint retains prompts. You have a BYOK key for that provider.
 
 ```json lines theme={null}
 {
@@ -166,9 +166,68 @@ For example, if you enforce ZDR and send a request that would otherwise use a BY
 }
 ```
 
-The retaining endpoint is filtered out before your BYOK key is considered, and the request fails if no ZDR-compliant endpoint remains, even though you have a valid key for that provider.
+Without a ZDR declaration, OpenRouter removes the endpoint that retains prompts. If no ZDR endpoint remains, the request fails. Your valid key for that provider does not change this.
 
-To use a provider via BYOK, make sure it's permitted by your data policies: the provider's endpoint must satisfy any ZDR or `data_collection` restrictions you've enabled, either through the provider's default policy or a ZDR declaration on the key. See [Zero Data Retention](/docs/guides/features/zdr) and [Provider Routing](/docs/guides/routing/provider-selection).
+To use a provider through BYOK, make sure your data policies allow it. The provider's endpoint must pass your `data_collection` restrictions. It must also pass your ZDR restrictions, unless your key has a ZDR declaration. See [Zero Data Retention](/docs/guides/features/zdr) and [Provider Routing](/docs/guides/routing/provider-selection).
+
+#### Declaring ZDR on a Key
+
+Some providers give your own account zero data retention. The shared endpoint that OpenRouter tracks for that provider can still retain prompts. OpenRouter cannot see your provider agreement. You tell OpenRouter what it covers. Each key card has a **Provider agreement** section with a **Zero data retention** setting. Workspace admins change the setting on the provider page (for example [/workspaces/default/byok/openai](https://openrouter.ai/workspaces/default/byok/openai)). The setting has three options:
+
+| Option                                 | Effect when ZDR is enforced                                                                                                                       |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Use OpenRouter's default** (default) | The key follows the policy that OpenRouter tracks for the endpoint. An endpoint that retains prompts stays blocked. A ZDR endpoint stays allowed. |
+| **My account has ZDR**                 | OpenRouter treats requests through this key as zero data retention. The key can serve the model even when the shared endpoint retains prompts.    |
+| **My account does not have ZDR**       | OpenRouter treats requests through this key as retaining prompts. ZDR enforcement blocks the key even when the shared endpoint has ZDR.           |
+
+The declaration is your statement about your own provider agreement. OpenRouter does not check it. You can set it on a key for any BYOK provider. It changes only the retention policy of your key's endpoints. Training (`data_collection`) restrictions still follow the policy that OpenRouter tracks for the endpoint.
+
+The declaration follows these rules:
+
+* OpenRouter judges each key by its own declaration. Suppose the shared endpoint retains prompts and you have two keys for that provider. If you declare ZDR on only one key, the other key stays blocked under ZDR enforcement.
+* Prioritized and Fallback keys both count. If the shared endpoint retains prompts and a key in either section declares ZDR, OpenRouter removes the shared endpoint and keeps your key's copy eligible. This does not guarantee that your key serves the request. A Fallback copy ranks behind the ZDR endpoints of other providers, so those are tried first. With `allow_fallbacks: false`, OpenRouter uses only the endpoint that led the pool before your key was added, which can be another provider's ZDR endpoint.
+* The declaration applies only when the key can serve the request. If the key's **This key applies to** filters exclude the request, the declaration does nothing.
+* A Fallback key with a ZDR declaration has one limit. Suppose a Prioritized key for the same provider has no declaration and has **Never use shared capacity for models this key applies to** enabled. OpenRouter then removes shared capacity for the model on that provider and does not use the Fallback key. If no other ZDR endpoint remains, the request fails with a ZDR error.
+* [Private endpoints](/docs/guides/routing/private-models) keep the data policy that OpenRouter recorded for that deployment. A key declaration does not change it.
+* The setting is not yet available through the [BYOK management API](/docs/api/api-reference/byok). Change it in your workspace BYOK settings.
+
+<Warning>
+  **Video generation is not covered.** A video provider keeps the generated video until you download it. A video endpoint retains data by design. OpenRouter treats every video endpoint as retaining. A ZDR declaration on your key does not change that. A guardrail that enforces ZDR also blocks video models on your key.
+</Warning>
+
+#### Declaring a Data Region on a Key
+
+On a regional domain, OpenRouter routes only to endpoints it has onboarded for that region (see [In-Region Routing](/docs/guides/features/in-region-routing)). OpenRouter cannot see where your own OpenAI account processes requests, so you tell OpenRouter. The **Provider agreement** section on an OpenAI key card has a **Data region** setting, next to the ZDR setting, on the [OpenAI provider detail page](https://openrouter.ai/workspaces/default/byok/openai). It has three options, each labelled with the OpenRouter hostname it applies to:
+
+| Option               | Hostname           | Effect                                                                                                                                                                                        |
+| -------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Global** (default) | `openrouter.ai`    | The key follows the region OpenRouter tracks for the endpoint. An undeclared key behaves the same way.                                                                                        |
+| **European Union**   | `eu.openrouter.ai` | Requests sent to `eu.openrouter.ai` may use this key for a model on that provider even when OpenRouter has no in-region record for the provider's shared endpoint (see the exceptions below). |
+| **United States**    | `us.openrouter.ai` | Requests sent to `us.openrouter.ai` may use this key for a model on that provider even when OpenRouter has no in-region record for the provider's shared endpoint (see the exceptions below). |
+
+The declaration is your attestation about where your own OpenAI account processes requests. OpenRouter does not verify it. The selection also sends requests made with that key to the matching OpenAI API host. Sending requests to a regional OpenRouter domain still requires a plan that includes in-region routing.
+
+The setting does not change key priority. OpenRouter first removes keys that cannot serve the request's data region, then tries the remaining keys in the order configured on the BYOK page. On the default `openrouter.ai` domain, Global, EU, and US keys are all eligible and keep that configured order.
+
+The declaration follows these rules:
+
+* OpenRouter judges each key on its own declaration. If you hold two keys for the same provider and declare a region on only one of them, only the declared key can serve a shared endpoint that is outside the region; the other key keeps serving the endpoints it is eligible for anyway.
+* Prioritized and Fallback keys both count, and their order is unchanged. A declared Prioritized key ranks ahead of the shared endpoints that are eligible for the region; a declared Fallback key ranks behind them.
+* A Fallback key with a region declaration has the same limit as with ZDR. A Prioritized key for the same provider can have no declaration and the **Never use shared capacity for models this key applies to** setting. In that case, OpenRouter removes shared capacity for the model and does not use the Fallback key. The request fails with a data region error.
+* An OpenAI regional key is pinned to its matching OpenAI API host. A US key can serve `openrouter.ai` and `us.openrouter.ai`, but not `eu.openrouter.ai`; an EU key follows the inverse rule. A Global OpenAI key uses `api.openai.com` and does not satisfy a regional request by declaration.
+* The declaration applies only when the key can serve the request. If the key's **This key applies to** filters exclude the request, the declaration has no effect.
+* A region declaration does not change your key's retention policy. Under ZDR enforcement, the key still needs a ZDR declaration or a ZDR endpoint.
+* A saved or cleared declaration takes effect within a few minutes. Routing reads your keys from a short-lived per-account cache, so requests sent right after you save can still use the previous value.
+* The setting is not yet available through the [BYOK management API](/docs/api/api-reference/byok). Change it in your workspace BYOK settings.
+
+OpenRouter fails closed where it cannot rely on your account alone to keep the request in the region. A region declaration is **not** honored for:
+
+* [Private endpoints](/docs/guides/routing/private-models). A private endpoint keeps the region OpenRouter recorded for that deployment.
+* Endpoints that OpenRouter itself pins to a specific cloud region outside the declared one (for example a shared Bedrock or Azure endpoint in a US region when you declare the EU). OpenRouter sends those requests to that location regardless of your account, so honoring the declaration would move data out of the region.
+* Cross-region inference profiles, such as Bedrock `global.` profiles, which can process a request in any region.
+* Video generation models.
+
+A [guardrail](/docs/guides/features/guardrails) that restricts `allowed_data_regions` does not yet recognize the declaration. It judges every endpoint, including your key's, by OpenRouter's own classification, so under such a guardrail the key's endpoint for a shared endpoint outside the region is removed even though the region declaration would otherwise allow it. Until the guardrail learns about declarations, a region declaration only widens routing for requests whose guardrails do not restrict `allowed_data_regions`.
 
 ### BYOK and Guardrail Budgets
 

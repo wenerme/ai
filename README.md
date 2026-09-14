@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 48320 files, 514 MiB total
+> 125 skills, 48323 files, 514 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1416,7 +1416,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [anthropic-sdk-typescript](./skills/anthropic-sdk-typescript/SKILL.md) | 159 | 8.6 MiB |
 | [argocd-cli-guide](./skills/argocd-cli-guide/SKILL.md) | 2 | 7.5 KiB |
 | [argocd-docs](./skills/argocd-docs/SKILL.md) | 424 | 2.7 MiB |
-| [biome-docs](./skills/biome-docs/SKILL.md) | 707 | 8.5 MiB |
+| [biome-docs](./skills/biome-docs/SKILL.md) | 709 | 8.5 MiB |
 | [biome-lint](./skills/biome-lint/SKILL.md) | 4 | 13 KiB |
 | [brainstorming](./skills/brainstorming/SKILL.md) | 1 | 4.6 KiB |
 | [bun-docs](./skills/bun-docs/SKILL.md) | 321 | 1.7 MiB |
@@ -1486,9 +1486,9 @@ Use when implementing React state management with Zustand, including context-sco
 | [openai-docs](./skills/openai-docs/SKILL.md) | 235 | 4.6 MiB |
 | [openai-sdk-python](./skills/openai-sdk-python/SKILL.md) | 529 | 25 MiB |
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 529 | 24 MiB |
-| [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 486 KiB |
+| [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 488 KiB |
 | [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 479 | 2.8 MiB |
-| [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2412 | 16 MiB |
+| [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2413 | 16 MiB |
 | [orpc-docs](./skills/orpc-docs/SKILL.md) | 1 | 4.7 KiB |
 | [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | 2 | 7.4 KiB |
 | [papermc-docs](./skills/papermc-docs/SKILL.md) | 192 | 877 KiB |

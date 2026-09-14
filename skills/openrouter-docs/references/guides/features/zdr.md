@@ -131,6 +131,10 @@ Include the `zdr` parameter in your provider preferences:
 
 When `zdr` is set to `true`, the request will only be routed to endpoints that have a Zero Data Retention policy. When `zdr` is `false` or not provided, ZDR enforcement still applies if enabled in your account or guardrail settings.
 
+## ZDR with BYOK Keys
+
+By default, a [BYOK](/docs/guides/overview/auth/byok) key follows the same ZDR rules as OpenRouter credits. If your own provider agreement includes zero data retention, you can declare that on the key. ZDR enforcement then allows requests through that key even when the shared endpoint retains prompts. The declaration does not cover video generation. See [Declaring ZDR on a Key](/docs/guides/overview/auth/byok#declaring-zdr-on-a-key).
+
 ## Caching
 
 Some endpoints/models provide implicit caching of prompts. This keeps repeated prompt data in an in-memory cache in the provider's datacenter, so that the repeated part of the prompt does not need to be re-processed. This can lead to considerable cost savings.

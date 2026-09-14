@@ -1918,8 +1918,8 @@
   },
   "guides/features/in-region-routing.md": {
     "url": "https://openrouter.ai/docs/guides/features/in-region-routing.md",
-    "size": 16315,
-    "updatedAt": "2026-09-04T04:25:58.581Z"
+    "size": 17495,
+    "updatedAt": "2026-09-14T04:45:58.633Z"
   },
   "guides/features/input-output-logging.md": {
     "url": "https://openrouter.ai/docs/guides/features/input-output-logging.md",
@@ -2099,8 +2099,8 @@
   },
   "guides/features/zdr.md": {
     "url": "https://openrouter.ai/docs/guides/features/zdr.md",
-    "size": 8537,
-    "updatedAt": "2026-09-10T04:29:47.056Z"
+    "size": 8999,
+    "updatedAt": "2026-09-14T04:46:12.861Z"
   },
   "guides/features/zero-completion-insurance.md": {
     "url": "https://openrouter.ai/docs/guides/features/zero-completion-insurance.md",
@@ -2138,8 +2138,8 @@
   },
   "guides/overview/auth/byok.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/byok.md",
-    "size": 30118,
-    "updatedAt": "2026-09-12T04:27:04.909Z"
+    "size": 39354,
+    "updatedAt": "2026-09-14T04:46:16.238Z"
   },
   "guides/overview/auth/management-api-keys.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/management-api-keys.md",
@@ -2164,9 +2164,8 @@
   },
   "guides/overview/models.md": {
     "url": "https://openrouter.ai/docs/guides/overview/models.md",
-    "lastModified": "Wed, 26 Aug 2026 01:59:32 GMT",
-    "size": 17097,
-    "updatedAt": "2026-08-26T01:59:32.919Z"
+    "size": 17557,
+    "updatedAt": "2026-09-14T04:46:19.064Z"
   },
   "guides/overview/multimodal/audio.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/audio.md",
@@ -2301,6 +2300,11 @@
     "size": 1745,
     "updatedAt": "2026-08-09T02:41:28.660Z"
   },
+  "guides/routing/model-variants/overview.md": {
+    "url": "https://openrouter.ai/docs/guides/routing/model-variants/overview.md",
+    "size": 9087,
+    "updatedAt": "2026-09-14T04:46:30.704Z"
+  },
   "guides/routing/model-variants/thinking.md": {
     "url": "https://openrouter.ai/docs/guides/routing/model-variants/thinking.md",
     "lastModified": "Wed, 26 Aug 2026 01:59:40 GMT",
@@ -2309,9 +2313,8 @@
   },
   "guides/routing/private-models.md": {
     "url": "https://openrouter.ai/docs/guides/routing/private-models.md",
-    "lastModified": "Sun, 09 Aug 2026 02:41:29 GMT",
-    "size": 2401,
-    "updatedAt": "2026-08-09T02:41:29.494Z"
+    "size": 2765,
+    "updatedAt": "2026-09-14T04:46:31.566Z"
   },
   "guides/routing/provider-selection.md": {
     "url": "https://openrouter.ai/docs/guides/routing/provider-selection.md",

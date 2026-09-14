@@ -88,7 +88,7 @@ GET /api/v1/model/{author}/{slug}
 
 The endpoint resolves aliases automatically. For example, `anthropic/claude-3-5-sonnet` redirects to the canonical `anthropic/claude-3.5-sonnet` and returns its data.
 
-Variant suffixes are also supported. Append a suffix such as `:free` to the slug:
+[Variant suffixes](/docs/guides/routing/model-variants/overview) are also supported. A catalog variant such as `:free` returns that variant's own entry. A routing variant such as `:nitro` returns the base model's entry, because routing variants are not separate catalog entries:
 
 ```bash lines theme={null}
 # Look up a specific model
@@ -97,11 +97,14 @@ curl "https://openrouter.ai/api/v1/model/openai/gpt-4o"
 # Aliases resolve automatically
 curl "https://openrouter.ai/api/v1/model/anthropic/claude-3-5-sonnet"
 
-# Variant suffixes
-curl "https://openrouter.ai/api/v1/model/openai/gpt-4:free"
+# Catalog variants return their own entry (id: "poolside/laguna-s-2.1:free")
+curl "https://openrouter.ai/api/v1/model/poolside/laguna-s-2.1:free"
+
+# Routing variants return the base entry (id: "openai/gpt-4o")
+curl "https://openrouter.ai/api/v1/model/openai/gpt-4o:nitro"
 ```
 
-Returns `404` if the model doesn't exist and isn't an alias for another model. The response shape wraps the same Model object used in the list endpoint:
+Returns `404` if the model doesn't exist and isn't an alias for another model, including a catalog variant suffix on a model that has no such entry. The response shape wraps the same Model object used in the list endpoint:
 
 ```json lines theme={null}
 {
